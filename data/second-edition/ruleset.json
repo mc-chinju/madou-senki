@@ -1,0 +1,37 @@
+{
+  "id": "second-online-v0.1-provisional",
+  "edition": "second",
+  "edition_decision": "user-selected",
+  "rulings_status": "provisionally-adopted",
+  "engine_status": "not-implemented",
+  "players": {
+    "min": 4,
+    "max": 10
+  },
+  "expected_action_cards": 220,
+  "expected_character_cards": 26,
+  "expected_abilities": 110,
+  "expected_deck_sections": {
+    "technique": 97,
+    "advance": 21,
+    "distance": 15,
+    "follower": 40,
+    "open": 5,
+    "general": 42
+  },
+  "sources": [
+    "resources/original/second-edition/MadoRule.pdf",
+    "resources/original/second-edition/Summary.pdf",
+    "resources/original/second-edition/CardAll.pdf",
+    "resources/original/second-edition/Character(A4).pdf"
+  ],
+  "catalogs": [
+    "actions-01-06.json",
+    "actions-07-17.json",
+    "actions-18-25.json",
+    "characters.json"
+  ],
+  "third_edition_enabled": false,
+  "rulings_decision_date": "2026-09-08",
+  "rulings_decision": "User accepted the recommended assumptions as the prototype baseline; revise after playtesting, preserving the version of ongoing games."
+}

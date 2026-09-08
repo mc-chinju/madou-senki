@@ -1,0 +1,71 @@
+{
+  "edition": "second",
+  "status": "provisionally-adopted",
+  "entries": [
+    {
+      "alias": "殴る",
+      "canonical_names": [
+        "踏み込み／殴る"
+      ],
+      "status": "source-mode",
+      "ruling": "C01"
+    },
+    {
+      "alias": "蹴る",
+      "canonical_names": [
+        "踏み込み／蹴る"
+      ],
+      "status": "source-mode",
+      "ruling": "C01"
+    },
+    {
+      "alias": "弓",
+      "canonical_names": [
+        "踏み込み／弓"
+      ],
+      "status": "source-mode",
+      "ruling": "C01"
+    },
+    {
+      "alias": "斧",
+      "canonical_names": [
+        "踏み込み／斧"
+      ],
+      "status": "source-mode",
+      "ruling": "C01"
+    },
+    {
+      "alias": "女神官シャイア",
+      "canonical_names": [
+        "女神官のシャリア"
+      ],
+      "status": "provisionally-adopted",
+      "ruling": "C01"
+    },
+    {
+      "alias": "死詩",
+      "canonical_names": [
+        "死歌"
+      ],
+      "status": "provisionally-adopted",
+      "ruling": "C01"
+    },
+    {
+      "alias": "デスナイト",
+      "canonical_names": [
+        "デス・ナイト"
+      ],
+      "status": "provisionally-adopted",
+      "ruling": "C01"
+    },
+    {
+      "alias": "水晶球",
+      "canonical_names": [
+        "赤い水晶球",
+        "遠見の水晶球"
+      ],
+      "status": "provisionally-adopted",
+      "ruling": "C01"
+    }
+  ]
+}

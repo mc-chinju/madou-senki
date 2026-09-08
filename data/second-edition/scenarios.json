@@ -1,0 +1,376 @@
+{
+  "ruleset_id": "second-online-v0.1-provisional",
+  "status": "provisionally-adopted-not-engine-tests",
+  "scenarios": [
+    {
+      "id": "S01",
+      "title": "同時介入の席順",
+      "rulings": [
+        "G03",
+        "G18"
+      ],
+      "given": "席順A→B→C→D、A手番。CとDが同じ窓に使用を送信する。",
+      "when": "Dの通信が先着し、次にCの通信が着く。",
+      "then": "優先権がCならCだけ受理。Dは新しい窓状態で再回答。到着順で勝敗を変えない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S02",
+      "title": "パスの世代",
+      "rulings": [
+        "G03"
+      ],
+      "given": "A/Bがパス済み、Cが合法な介入を宣言。",
+      "when": "子効果を解決して親へ戻る。",
+      "then": "親のパスを全て消し、新世代を起点から巡回。古い世代のPASSは拒否。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S03",
+      "title": "取消でも消費",
+      "rulings": [
+        "G05",
+        "G07"
+      ],
+      "given": "Bがいつでも札を受理され、1枚補充した。",
+      "when": "Cの命運凶変がBの使用に解決する。",
+      "then": "Bの効果は失敗し札は捨てる。Bの補充を巻き戻さず、行動や回数も返さない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S04",
+      "title": "再振りの保存",
+      "rulings": [
+        "G07",
+        "G18"
+      ],
+      "given": "2d6のロールID Xが[2,3]、神性介入で再振りする。",
+      "when": "結果[4,4]を保存直後に切断し同じコマンドを再送。",
+      "then": "2個全体が[4,4]へ置換される。再送で第三のロールは発生せずゾロ目判定も同じ。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S05",
+      "title": "判定強制失敗",
+      "rulings": [
+        "G07"
+      ],
+      "given": "2d6判定に命運凶変が解決済み。出目は成功値。",
+      "when": "神性介入で別の成功値へ振り直す。",
+      "then": "強制失敗が残るため成功しない。出目の成功と強制成否を別に保持。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S06",
+      "title": "効果Lvの締切",
+      "rulings": [
+        "G04",
+        "G08"
+      ],
+      "given": "攻撃者が効果Lv6を確定し防御比較に入った。",
+      "when": "攻撃者が気合いで効果Lv+1を要求。",
+      "then": "遅い使用として拒否。攻撃開始時の能力有無や手札を消費しない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S07",
+      "title": "同じ祈りの再使用",
+      "rulings": [
+        "G04",
+        "G06"
+      ],
+      "given": "リーアが同じ技の効果Lv計算で同じ物理の必勝の祈りを使用済み。",
+      "when": "回収して同じ技へ再度使用を要求。",
+      "then": "同じ元イベントへの再試行を拒否。後の別技への再使用は可能。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S08",
+      "title": "別の防御は試せる",
+      "rulings": [
+        "G06",
+        "G13"
+      ],
+      "given": "転移のチェックに失敗したが従者受け未開始。",
+      "when": "別の合法な反撃カードを使用する。",
+      "then": "反撃を受理する。失敗した転移自体の再試行を許したことにはならない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S09",
+      "title": "同値反撃",
+      "rulings": [
+        "G13"
+      ],
+      "given": "元技効果Lv6、反撃効果Lv6。",
+      "when": "反撃の使用チェック成功。",
+      "then": "その宛先の元ヒットと反撃は両方消える。他対象のヒットは残る。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S10",
+      "title": "遠距離の近反撃",
+      "rulings": [
+        "G12",
+        "G13"
+      ],
+      "given": "A–Bは遠、Aの技Lv5、Bの近反撃Lv7。",
+      "when": "反撃成功。",
+      "then": "元技を消すがAへ反撃ダメージは発生しない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S11",
+      "title": "間合いの共有",
+      "rulings": [
+        "G12"
+      ],
+      "given": "AからB/Cへ同じ発の攻撃。B/Cがそれぞれ間合い1枚。",
+      "when": "Aが踏み込み1枚を使用。",
+      "then": "B/Cそれぞれの1枚を打ち消す。物理の踏み込みは1枚だけ消費。距離関係は不変。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S12",
+      "title": "多段は個別回避",
+      "rulings": [
+        "G12",
+        "G14"
+      ],
+      "given": "Bに同時3発、通常の間合い1枚しか使わない。",
+      "when": "1発目へ間合いを使用、Aはパス。",
+      "then": "1発目だけ回避。残り2発に同じ間合いの効果を流用しない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S13",
+      "title": "従者HPの同時軽減",
+      "rulings": [
+        "G14"
+      ],
+      "given": "同時3発の各効果Lv5/ダメージ6。Bの前衛Lv3/HP2、士気不要、他従者なし。",
+      "when": "全発通常防御なしで従者開始。",
+      "then": "各発4ダメージ、合計12。従者物理札は一度だけ破壊。6+6+4にはしない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S14",
+      "title": "従者開始後の防御",
+      "rulings": [
+        "G04",
+        "G14"
+      ],
+      "given": "Bは従者開始済み。合法な防御札がまだ手札にある。",
+      "when": "Bがその攻撃に通常防御札を使おうとする。",
+      "then": "DEFENSE_WINDOW_CLOSED相当で拒否。第三者の有効な介入窓まで消さない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S15",
+      "title": "味方公開の境界",
+      "rulings": [
+        "G04"
+      ],
+      "given": "AとBは同陣営だがBの正体は伏せ、Aの技がBへ。",
+      "when": "従者開始前にB公開する場合と開始後に公開する場合を比較。",
+      "then": "前なら味方攻撃の影響を受けない。後なら公開はできるが既に受けた攻撃は継続。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S16",
+      "title": "ゼロダメージの公開",
+      "rulings": [
+        "G15"
+      ],
+      "given": "Bの正体は伏せ。技が本人へ届くが最終ダメージ0。",
+      "when": "命中を確定。",
+      "then": "Bの正体は公開、耐久は減らない。非命中扱いにしない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S17",
+      "title": "反射の循環",
+      "rulings": [
+        "G06",
+        "G13"
+      ],
+      "given": "Aの1ヒットをBの反射源Xが返し、Aの反射源Yが返した。",
+      "when": "Bが同じXで再度反射しようとする。",
+      "then": "同系譜でX使用済みのため不可。未使用の別防御は可能。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S18",
+      "title": "魔詩は対象限定",
+      "rulings": [
+        "G14",
+        "C03"
+      ],
+      "given": "AがB=レスター/Cへ同時3発。Bが魔詩使用。",
+      "when": "Aの魔詩抵抗が失敗。",
+      "then": "B宛3発だけ失敗。判定は3回でなく1回。C宛は継続。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S19",
+      "title": "信仰心と通常失敗",
+      "rulings": [
+        "G07",
+        "C03"
+      ],
+      "given": "ジルが魔詩への判定を[6,6]で失敗、信仰心を使う。",
+      "when": "判定結果を適用。",
+      "then": "転向とゾロ目停止は無効。通常チェック失敗によるレスターへの攻撃失敗は残る。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S20",
+      "title": "回復修正の推移",
+      "rulings": [
+        "G17"
+      ],
+      "given": "魔詩-3/-2/-1を受けた。命中時-3チェック失敗。",
+      "when": "次の本人手番-2失敗、その次-1成功。",
+      "then": "停止が解除され所定枚数補充後に手番を進める。初回回復で再度-3を使わない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S21",
+      "title": "任意能力の秘密",
+      "rulings": [
+        "G09",
+        "G18"
+      ],
+      "given": "伏せたシェリムが閾値内の技を受ける。",
+      "when": "本人が絶対結界を使用しないと選ぶ。",
+      "then": "無効化を自動適用しない。他人向け応答にキャラIDや使用しなかった候補を含めない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S22",
+      "title": "OPENの再帰補充",
+      "rulings": [
+        "G05",
+        "G10"
+      ],
+      "given": "いつでも札1枚の補充でOPENを引き、引き直しも別OPEN。",
+      "when": "両OPENの子処理を完了する。",
+      "then": "OPENは公開領域へ、通常札1枚を手札へ。元のいつでも札の解決へ同じ継続位置で戻る。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S23",
+      "title": "山札切れ",
+      "rulings": [
+        "G11"
+      ],
+      "given": "3枚補充必要、山札1枚、捨て札2枚、解決中札1枚。",
+      "when": "補充する。",
+      "then": "山札1枚を取得し捨て札2枚だけシャッフルして取得。解決中札を混ぜない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S24",
+      "title": "回収権の複製",
+      "rulings": [
+        "G11",
+        "C01"
+      ],
+      "given": "本人が同じ持ち技名の物理札Xを既に通常回収した。",
+      "when": "別物理札Yを使って通常回収を要求。",
+      "then": "名称単位の通常1回を消費済みなので拒否。追加回収の個別能力があれば別。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S25",
+      "title": "死亡時の手渡し",
+      "rulings": [
+        "G15",
+        "C11"
+      ],
+      "given": "チャムが致死ダメージで死亡予定。手札に贈与可能札X。",
+      "when": "死亡能力で生存CへXを手渡す。",
+      "then": "X移動の後でチャムの残存札を廃棄し勝敗評価。同じXを死亡時カードでも二重贈与しない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S26",
+      "title": "流浪と復帰",
+      "rulings": [
+        "G16"
+      ],
+      "given": "Bの保護対象Cが死亡しB流浪。その後試合継続中にC復活。",
+      "when": "全ての復活誘発を解決。",
+      "then": "Bも初期手札/従者を再取得して復帰。死亡と流浪で札の返却先を混同しない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S27",
+      "title": "同時全滅",
+      "rulings": [
+        "G15"
+      ],
+      "given": "対立する最後の2人が同じ同時集合で死亡、個別勝利特例なし。",
+      "when": "死亡時効果・復活誘発が全てなく後処理終了。",
+      "then": "勝者なしの引き分け。席順で先に勝利を確定しない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S28",
+      "title": "変身の継承差",
+      "rulings": [
+        "G16",
+        "C13"
+      ],
+      "given": "ランスロットに既存ダメージ4。ウーノスにも既存ダメージ4。",
+      "when": "各人の変身を別のfixtureで成功させる。",
+      "then": "ランスロット2はダメージ4と旧能力を保持。ヴァンミールは全回復しウーノス旧能力を継承しない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S29",
+      "title": "仮想従者の保存則",
+      "rulings": [
+        "G14",
+        "C07"
+      ],
+      "given": "アーネスの女性親衛隊能力が有効で同時3発を受ける。",
+      "when": "仮想従者生成→防御→攻撃グループ後処理。",
+      "then": "各発に同時集合の効果を適用。仮想札を220枚の物理札に加算せず、手札回収もしない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S30",
+      "title": "異界への干渉",
+      "rulings": [
+        "G17"
+      ],
+      "given": "Bは裂界で異界、手札と従者を保持。",
+      "when": "AがBを祈願/啓示の対象に指定。",
+      "then": "他者効果を受けないため拒否。帰還まで秘密情報を渡さない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S31",
+      "title": "使用免除と詠唱",
+      "rulings": [
+        "G01"
+      ],
+      "given": "専用欄がチェック不要とだけ記す詠属性カードを手札に持つ。",
+      "when": "詠唱不要能力なしで直接使用する。",
+      "then": "詠唱不足で拒否。チェック不要だけで詠唱済み扱いにしない。",
+      "status": "acceptance-example-not-executed"
+    },
+    {
+      "id": "S32",
+      "title": "副次値の確定",
+      "rulings": [
+        "G08"
+      ],
+      "given": "ダメージ5に+1と2倍と半減が同時に有効、従者軽減なし。",
+      "when": "ダメージ式を評価する。",
+      "then": "(5+1)×2×0.5=6。途中で丸めない。ダメージなしには+1を適用して新たな数値を作らない。",
+      "status": "acceptance-example-not-executed"
+    }
+  ]
+}

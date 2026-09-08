@@ -1,0 +1,1941 @@
+{
+  "edition": "second",
+  "source": "resources/original/second-edition/Character(A4).pdf",
+  "method": "All 7 rendered pages visually reviewed, OCR assisted; clauses normalized without claiming official rulings.",
+  "cards": [
+    {
+      "id": "c2-p01-r1c1",
+      "page": 1,
+      "row": 1,
+      "column": 1,
+      "name": "白魔術師シェリム",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 0,
+        "magic_level": 8,
+        "spirit": 8,
+        "endurance": 12
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [
+        "白輪",
+        "白光",
+        "裂界",
+        "天舞"
+      ],
+      "owned_followers": [
+        "天使"
+      ],
+      "restrictions": [],
+      "allegiance_text": "白の護り手：常にGOOD",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p01-r1c1-ab01",
+          "name": "絶対結界",
+          "timing": [
+            "defense"
+          ],
+          "specification": "効果Lv5以下の攻撃をすべて無効にする。また、従者で受ける前の技のダメージが5点以下の技（ダメージそのものがない技も含む）をすべて無効にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r1c1-ab02",
+          "name": "賢者の杖",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "すべての魔法技の効果Lv+1。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r1c1-ab03",
+          "name": "大魔術師",
+          "timing": [
+            "use-validation"
+          ],
+          "specification": "魔法技は詠唱不要。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r1c1-ab04",
+          "name": "強化詠唱",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "キャラクターカードを表にしていれば、詠唱状態にした魔法技を任意の者全てに与えられる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p01-r1c2",
+      "page": 1,
+      "row": 1,
+      "column": 2,
+      "name": "大神官ジル",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 6,
+        "magic_level": 5,
+        "spirit": 7,
+        "endurance": 18
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [
+        "殴る",
+        "蹴る",
+        "気破",
+        "死鬼界滅拳",
+        "死鬼滅殺拳",
+        "死鬼旋風脚",
+        "神罰",
+        "封傷"
+      ],
+      "owned_followers": [
+        "女神官シャイア"
+      ],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p01-r1c2-ab01",
+          "name": "気闘術の奥義",
+          "timing": [
+            "counter-declaration"
+          ],
+          "specification": "精神力チェックに成功すれば、格闘技を反撃技に変えられる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r1c2-ab02",
+          "name": "鉄拳",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "格闘技の効果Lvを自分の戦士Lvまで上げることができ、ダメージ+1d6。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r1c2-ab03",
+          "name": "拳圧",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "近距離の格闘技を遠距離技にできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r1c2-ab04",
+          "name": "信仰心",
+          "timing": [
+            "check-resolution"
+          ],
+          "specification": "ディア、ガドューラ、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力に対して、ゾロ目の効果を受けない。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "従者欄は「女神官シャイア」。行動カードの「女神官のシャリア」との対応を別名台帳で決める。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p01-r2c1",
+      "page": 1,
+      "row": 2,
+      "column": 1,
+      "name": "侍大将のシン",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 6,
+        "magic_level": 4,
+        "spirit": 8,
+        "endurance": 15
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [
+        "天地百撃斬",
+        "天地爆砕剣"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "武士道：常にGOOD",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p01-r2c1-ab01",
+          "name": "ツバメ返し",
+          "timing": [
+            "counter-declaration"
+          ],
+          "specification": "精神力チェックに成功すれば、剣技を反撃技に変えられる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c1-ab02",
+          "name": "居合抜き",
+          "timing": [
+            "use-validation"
+          ],
+          "specification": "剣技なら精神力チェックに成功すれば、詠唱せずに使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c1-ab03",
+          "name": "気合い",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "精神力チェックに成功すると、技の効果Lv+1。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c1-ab04",
+          "name": "精神統一",
+          "timing": [
+            "check-resolution"
+          ],
+          "specification": "ディア、ガドューラ、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力に対して、ゾロ目の効果を受けない。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c1-ab05",
+          "name": "鏡心",
+          "timing": [
+            "ability-response"
+          ],
+          "specification": "自身のキャラクターカードを表にしていれば、キャラクターカードを表にしたイダが「影分身」の特殊能力を使用したとき、その能力を使用できなくできる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p01-r2c2",
+      "page": 1,
+      "row": 2,
+      "column": 2,
+      "name": "小妖精のチャム",
+      "sex": "女",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 0,
+        "magic_level": 3,
+        "spirit": 8,
+        "endurance": 7
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [],
+      "owned_followers": [],
+      "restrictions": [
+        "自身が与える戦士技のダメージ半減"
+      ],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p01-r2c2-ab01",
+          "name": "ぶーんぶーん",
+          "timing": [
+            "distance-response"
+          ],
+          "specification": "「間合い」カードを1枚出すと、敵は「踏み込み」カードを2枚出さないと無効にできない。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c2-ab02",
+          "name": "なになに",
+          "timing": [
+            "draw"
+          ],
+          "specification": "自分の手番の時、手札を1枚でなく2枚補充できる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c2-ab03",
+          "name": "見ちゃった",
+          "timing": [
+            "own-turn-extra"
+          ],
+          "specification": "自分の手番の時、手番と別に一人だけ任意のキャラクターの従者を全て見られる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c2-ab04",
+          "name": "いたずらしちゃった",
+          "timing": [
+            "ability-response"
+          ],
+          "specification": "自身のキャラクターカードを表にしているとき、キャラクターカードを表にしたディア、ガドューラ、レスターの「魅了」「恐怖」「魔詩」の特殊能力を使えなくする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p01-r2c2-ab05",
+          "name": "みんな姫様を頼むね",
+          "timing": [
+            "death-before-discard"
+          ],
+          "specification": "死亡したとき、任意のキャラクターに手札を1枚だけ手渡せる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p02-r1c1",
+      "page": 2,
+      "row": 1,
+      "column": 1,
+      "name": "有翼人のティア",
+      "sex": "女",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 3,
+        "magic_level": 4,
+        "spirit": 7,
+        "endurance": 13
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [
+        "風矢",
+        "魔風",
+        "雷走",
+        "裂風",
+        "撃雷"
+      ],
+      "owned_followers": [
+        "有翼族"
+      ],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p02-r1c1-ab01",
+          "name": "飛翔",
+          "timing": [
+            "defense",
+            "distance-response"
+          ],
+          "specification": "地の魔法すべて無効。「間合い」カードを1枚出すと、敵は「踏み込み」カードを2枚出さないと無効にできない。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r1c1-ab02",
+          "name": "奇襲",
+          "timing": [
+            "follower-entry"
+          ],
+          "specification": "自身のキャラクターカードを表にしていれば、敵が従者で受けた時、「踏み込み」カードを1枚捨てることにより、従者をすべて無視できる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r1c1-ab03",
+          "name": "私、同性には興味がないもので",
+          "timing": [
+            "ability-response"
+          ],
+          "specification": "キャラクターカードを表にしているディアの精神力-1チェックを行う「魅了」の特殊能力を、自身が攻撃時に無効にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r1c1-ab04",
+          "name": "ティアがんばる",
+          "timing": [
+            "continuous"
+          ],
+          "specification": "キャラクターカードを表にしたレスターが場にいれば、精神力+1。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p02-r1c2",
+      "page": 2,
+      "row": 1,
+      "column": 2,
+      "name": "妖精王フューリー",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 5,
+        "magic_level": 7,
+        "spirit": 8,
+        "endurance": 13
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫か恩義のあるシェリムの死亡",
+      "owned_techniques": [
+        "弓",
+        "光流弓",
+        "星流弓"
+      ],
+      "owned_followers": [
+        "妖精族"
+      ],
+      "restrictions": [
+        "黒技使用不可"
+      ],
+      "allegiance_text": "光の担い手：常にGOOD",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p02-r1c2-ab01",
+          "name": "光の結界",
+          "timing": [
+            "defense-modifiers"
+          ],
+          "specification": "敵の使った魔法の効果Lvを1つ下げる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r1c2-ab02",
+          "name": "ミスリルのローブ",
+          "timing": [
+            "defense"
+          ],
+          "specification": "効果Lv3以下の技すべて無効。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r1c2-ab03",
+          "name": "妖精の弓",
+          "timing": [
+            "attack-modifiers",
+            "reclaim"
+          ],
+          "specification": "弓技を使用するとき、弓技の効果Lvとダメージをそれぞれ+1d6。自分の技を追加1回使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r1c2-ab04",
+          "name": "精霊を統べるもの",
+          "timing": [
+            "attack-modifiers",
+            "use-validation"
+          ],
+          "specification": "地・風・水・炎の魔法技は効果Lv+1、詠唱不要。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p02-r2c1",
+      "page": 2,
+      "row": 2,
+      "column": 1,
+      "name": "早駆けのランカスター",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 5,
+        "magic_level": 0,
+        "spirit": 7,
+        "endurance": 14
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [
+        "連槍撃",
+        "閃光槍",
+        "竜殺天空槍"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p02-r2c1-ab01",
+          "name": "瞬風",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "すべての戦士技に「敵は追加1枚の間合いが必要」という効果を付加できる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r2c1-ab02",
+          "name": "竜殺槍",
+          "timing": [
+            "follower-entry"
+          ],
+          "specification": "戦士技なら竜の属性を持つ従者を破壊する。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r2c1-ab03",
+          "name": "逃げるが勝ち",
+          "timing": [
+            "counter-defense"
+          ],
+          "specification": "攻撃して敵から反撃を受けたとき、ランカスターが出した「間合い」カードを相手は「踏み込み」で無効にできない。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r2c1-ab04",
+          "name": "わかんねえよ",
+          "timing": [
+            "own-turn-action"
+          ],
+          "specification": "自分の手番として、手札の魔法技をすべて捨てられる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p02-r2c2",
+      "page": 2,
+      "row": 2,
+      "column": 2,
+      "name": "聖騎士ランスロット",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 5,
+        "magic_level": 3,
+        "spirit": 9,
+        "endurance": 16
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "愛するリーア姫の死亡",
+      "owned_techniques": [
+        "破山剣",
+        "妖撃破山剣",
+        "光竜剣",
+        "光竜破山剣"
+      ],
+      "owned_followers": [
+        "アルケミア城",
+        "聖騎士団"
+      ],
+      "restrictions": [],
+      "allegiance_text": "騎士道：常にGOOD",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p02-r2c2-ab01",
+          "name": "白銀の鎧",
+          "timing": [
+            "defense",
+            "defense-modifiers"
+          ],
+          "specification": "効果Lv4以下の技すべて無効。黒技の効果Lvを1つ下げる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r2c2-ab02",
+          "name": "白龍の剣",
+          "timing": [
+            "follower-entry",
+            "damage-modifiers"
+          ],
+          "specification": "剣技で攻撃したとき、黒・死の従者を破壊し、ガドューラに対してはダメージ倍。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r2c2-ab03",
+          "name": "不屈の意志",
+          "timing": [
+            "ability-response"
+          ],
+          "specification": "ガドューラ、ディア、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力を、自身が攻撃時に無効にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r2c2-ab04",
+          "name": "主人公",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "キャラクターカードを表にしていれば、自身の技を常時再使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p02-r2c2-ab05",
+          "name": "姫への愛",
+          "timing": [
+            "state-trigger"
+          ],
+          "specification": "キャラクターカードを表にしたリーア姫がいたらランスロット2に変わる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "変身でのダメージ保持・従者欄の差・回収回数の持越しを共通裁定で固定。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p03-r1c1",
+      "page": 3,
+      "row": 1,
+      "column": 1,
+      "name": "小人のランバ",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 5,
+        "magic_level": 3,
+        "spirit": 7,
+        "endurance": 18
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [
+        "斧",
+        "撃戦斧",
+        "剛戦斧",
+        "滅殺斧",
+        "死戦斧",
+        "地槍",
+        "植縛",
+        "地流"
+      ],
+      "owned_followers": [
+        "小人族"
+      ],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p03-r1c1-ab01",
+          "name": "ミスリルの鎧",
+          "timing": [
+            "defense"
+          ],
+          "specification": "効果Lv3以下の技すべて無効。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r1c1-ab02",
+          "name": "魔法抵抗",
+          "timing": [
+            "damage-modifiers"
+          ],
+          "specification": "すべての魔法のダメージを半減。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r1c1-ab03",
+          "name": "斧使い",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "弓技を除き、自身の戦士Lv以下の戦士技のダメージ倍。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r1c1-ab04",
+          "name": "王の誇り",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "自身の技および従者を追加1回使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p03-r1c2",
+      "page": 3,
+      "row": 1,
+      "column": 2,
+      "name": "リーア姫",
+      "sex": "女",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 3,
+        "magic_level": 3,
+        "spirit": 10,
+        "endurance": 10
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "なし",
+      "owned_techniques": [
+        "破山剣",
+        "光王陣",
+        "おまえはだまされている",
+        "神性介入"
+      ],
+      "owned_followers": [
+        "王立騎士団",
+        "親衛隊",
+        "守護者"
+      ],
+      "restrictions": [],
+      "allegiance_text": "光の御子を産みし者：常にGOOD",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p03-r1c2-ab01",
+          "name": "光の加護",
+          "timing": [
+            "defense-modifiers"
+          ],
+          "specification": "精神力-3チェックに成功すれば、受けた技の効果Lvを1d6だけ低下できる。0以下になると技消滅。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r1c2-ab02",
+          "name": "神出鬼没",
+          "timing": [
+            "own-turn-extra"
+          ],
+          "specification": "自分の手番の時、攻撃中を除き、手番と別に近距離状態の任意の一人のキャラクターの詠唱状態のカードを見られる。望むならそれを捨てさせられる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r1c2-ab03",
+          "name": "この世界に愛を",
+          "timing": [
+            "continuous"
+          ],
+          "specification": "自身のキャラクターカードを表にしているとき、リーア自身を除きキャラクターカードを表にしている任意の者すべての精神力を+1。ランスロットのキャラクターカードが表になっていれば、リーアの精神力+2。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r1c2-ab04",
+          "name": "祝福",
+          "timing": [
+            "own-turn-extra"
+          ],
+          "specification": "自分の手番と別に精神力-5チェックに成功すると、ヴァンミールから特殊能力を無効にされたものを、リーアが生きている間、使用できるようにする。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "「自分の手番と別に」の能力を自分の手番中に限るかは共通裁定。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p03-r2c1",
+      "page": 3,
+      "row": 2,
+      "column": 1,
+      "name": "吟遊詩人のレスター",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 4,
+        "magic_level": 5,
+        "spirit": 8,
+        "endurance": 13
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "リーア姫の死亡",
+      "owned_techniques": [
+        "魔詩",
+        "呪歌",
+        "死詩",
+        "勇気",
+        "ソロモン王の護符"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p03-r2c1-ab01",
+          "name": "魔詩",
+          "timing": [
+            "attack-received"
+          ],
+          "specification": "反撃されたときを除き、敵から攻撃を受けたとき、敵に精神力-1チェックを要求できる。失敗するとレスター自身への攻撃のみが失敗する。このチェックがゾロ目なら無条件で攻撃失敗、攻撃者は次の自分の手番まで停止。6のゾロ目なら攻撃者はレスターと同じ陣営になり、目的が「EVILの全滅」、敗北条件が「リーア姫の死亡」になる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r2c1-ab02",
+          "name": "幻術",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "自分の魔法Lv以下の技を全て精神技にでき、人の従者を無効にできる。キャラクターカードが表になったアーネスの「女性親衛隊」の特殊能力を無効にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r2c1-ab03",
+          "name": "噂",
+          "timing": [
+            "own-turn-extra"
+          ],
+          "specification": "自分の手番と別に精神力-3チェックに成功すると、裏になったキャラクターカードを自分だけ見られる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r2c1-ab04",
+          "name": "月の愛",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "キャラクターカードを表にしていれば、「月の竪琴」「魔詩」「呪歌」カードを常時再使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "持ち技欄「死詩」と行動カード「死歌」の対応を別名台帳で確認。",
+        "6のゾロ目で陣営が変わった場合も停止を併発するかを共通裁定。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p03-r2c2",
+      "page": 3,
+      "row": 2,
+      "column": 2,
+      "name": "黒妖精のアーネス",
+      "sex": "女",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 5,
+        "magic_level": 5,
+        "spirit": 7,
+        "endurance": 13
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "ガイナスの死亡",
+      "owned_techniques": [
+        "弓",
+        "黒流弓",
+        "黒翼飛翔剣",
+        "黒翼天翔剣"
+      ],
+      "owned_followers": [
+        "女性親衛隊"
+      ],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p03-r2c2-ab01",
+          "name": "闇の結界",
+          "timing": [
+            "defense-modifiers"
+          ],
+          "specification": "敵の使った魔法の効果Lvを1つ下げる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r2c2-ab02",
+          "name": "女性親衛隊",
+          "timing": [
+            "follower-defense"
+          ],
+          "specification": "常に「従・人・女、従者Lv4、HP1、従者無視の効果を無視する」の従者がついている。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r2c2-ab03",
+          "name": "黒弓",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "弓技を「見切り不可」にして、効果Lv+1、ダメージ+2。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p03-r2c2-ab04",
+          "name": "男ごときが",
+          "timing": [
+            "check-modifiers"
+          ],
+          "specification": "キャラクターカードを表にした男性キャラクターを攻撃するか、防御するとき、精神力+2。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "能力由来の仮想従者と物理カードの女性親衛隊を別IDで扱う。前後順・再生成単位を共通裁定。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p04-r1c1",
+      "page": 4,
+      "row": 1,
+      "column": 1,
+      "name": "凍気のアイエル",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 0,
+        "magic_level": 6,
+        "spirit": 7,
+        "endurance": 13
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "ガイナスか弟のフレイアードの死亡",
+      "owned_techniques": [
+        "氷矢",
+        "凍流",
+        "氷鏡",
+        "氷結",
+        "氷狼乱舞陣"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p04-r1c1-ab01",
+          "name": "氷の結界",
+          "timing": [
+            "defense"
+          ],
+          "specification": "炎・水の技すべて無効。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r1c1-ab02",
+          "name": "氷刃",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "キャラクターカードを表にしていれば、手札の代わりに「近・魔・水、Lv4、ダメージ3、追加1枚の間合いが必要」という「氷刃」の技を出したことにできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r1c1-ab03",
+          "name": "凍気の奥義者",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "自分の技を追加1回使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r1c1-ab04",
+          "name": "双子",
+          "timing": [
+            "own-turn-action"
+          ],
+          "specification": "自分の手番として、キャラクターカードを表にしたフレイアードと手札をすべて交換できる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p04-r1c2",
+      "page": 4,
+      "row": 1,
+      "column": 2,
+      "name": "竜皇子アスフェルト",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 6,
+        "magic_level": 4,
+        "spirit": 8,
+        "endurance": 15
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "父ガイナスか母ディアの死亡",
+      "owned_techniques": [
+        "風斬剣",
+        "雷斬剣",
+        "裂風斬"
+      ],
+      "owned_followers": [
+        "歌う船",
+        "飛竜"
+      ],
+      "restrictions": [],
+      "allegiance_text": "母への愛：陣営変更チェックに+2",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p04-r1c2-ab01",
+          "name": "風龍の剣",
+          "timing": [
+            "follower-entry"
+          ],
+          "specification": "剣技か風技で攻撃時、Lv6以下の従者を全て破壊。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r1c2-ab02",
+          "name": "斬",
+          "timing": [
+            "damage-modifiers"
+          ],
+          "specification": "剣技で攻撃したとき、相手が「間合い」カードを一枚も出せずに攻撃を受けたら、ダメージ倍。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r1c2-ab03",
+          "name": "竜皇子",
+          "timing": [
+            "morale"
+          ],
+          "specification": "竜属性の従者の士気チェックに+2ボーナス。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r1c2-ab04",
+          "name": "魔導王第一軍",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "キャラクターカードを表にしていれば、「歌う船」「飛竜」カードを常時再使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r1c2-ab05",
+          "name": "真実",
+          "timing": [
+            "continuous",
+            "attack-modifiers"
+          ],
+          "specification": "GOODになると精神力+1。このとき、キャラクターカードを表にしたガイナス、ウーノスへの攻撃時、技の効果Lv+1、ダメージ+2。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p04-r2c1",
+      "page": 4,
+      "row": 2,
+      "column": 1,
+      "name": "占星術師のアルセイル",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 0,
+        "magic_level": 5,
+        "spirit": 6,
+        "endurance": 12
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "手駒たるガイナスの死亡",
+      "owned_techniques": [
+        "鏡封",
+        "錯乱",
+        "催眠",
+        "水晶球",
+        "命運凶変",
+        "人質"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p04-r2c1-ab01",
+          "name": "影",
+          "timing": [
+            "own-turn-extra"
+          ],
+          "specification": "自分の手番の時、手番と別に「本当の力」を使用する前の精神力値で精神力-1チェックを行い、成功すると表になった自分のキャラクターカードを裏にできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r2c1-ab02",
+          "name": "占星",
+          "timing": [
+            "own-turn-extra"
+          ],
+          "specification": "自分の手番の時、手番と別に精神力チェックに成功すると、任意の一人のキャラクターの手札を全て見て、任意の一枚の手札を捨てさせられる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r2c1-ab03",
+          "name": "本当の力",
+          "timing": [
+            "voluntary-reveal"
+          ],
+          "specification": "キャラクターカードが裏の時、自ら表に返して正体を明らかにすると、自分の手番または攻撃者の手番が終わるまで、精神力を12にできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r2c1-ab04",
+          "name": "陰謀",
+          "timing": [
+            "vanmil-awakened"
+          ],
+          "specification": "ヴァンミールが蘇ると勝利宣言を行い、ゲームから外れることができる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "他人の非攻撃手番中に自発公開した場合の本当の力の終了時点を共通裁定。",
+        "持ち技欄「水晶球」は「赤い水晶球」「遠見の水晶球」のどちらか、または両方か。省略名の対応を別名台帳で確定する。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p04-r2c2",
+      "page": 4,
+      "row": 2,
+      "column": 2,
+      "name": "忍びのイダ",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 5,
+        "magic_level": 4,
+        "spirit": 8,
+        "endurance": 15
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "主たるガイナスの死亡",
+      "owned_techniques": [
+        "殴る",
+        "手裏剣",
+        "裏天空剣",
+        "気斬",
+        "影分身",
+        "木の葉隠れ"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p04-r2c2-ab01",
+          "name": "影分身",
+          "timing": [
+            "attack-received"
+          ],
+          "specification": "敵から攻撃を受けたとき、精神力-2チェックに成功すれば、敵に精神力-2チェックを行わせる。敵が失敗すれば敵の攻撃を無効にして、その敵に一回攻撃できる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r2c2-ab02",
+          "name": "忍び",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "格闘技を使用したとき、従者を無視できる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r2c2-ab03",
+          "name": "必殺",
+          "timing": [
+            "hit-confirmed"
+          ],
+          "specification": "戦士技が命中したとき2d6を振り、ゾロ目なら敵は即死。サイの目が連続していればダメージ倍。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p04-r2c2-ab04",
+          "name": "隠行",
+          "timing": [
+            "own-turn-action"
+          ],
+          "specification": "自分の手番として、間合いを1枚捨てると耐久力を2点回復し、表にされた自分のキャラクターカードを裏にできる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p05-r1c1",
+      "page": 5,
+      "row": 1,
+      "column": 1,
+      "name": "邪祭ウーノス",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 2,
+        "magic_level": 6,
+        "spirit": 6,
+        "endurance": 14
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "敬愛なるディアの死亡",
+      "owned_techniques": [
+        "呪殺",
+        "復活",
+        "封獄死霊陣"
+      ],
+      "owned_followers": [
+        "竜王教団"
+      ],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p05-r1c1-ab01",
+          "name": "策謀の主",
+          "timing": [
+            "own-turn-extra"
+          ],
+          "specification": "自分の手番と別に精神力-1チェックに成功すると、指定したキャラクターカードを表にできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r1c1-ab02",
+          "name": "破壊神の力",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "黒魔法の効果Lv+1d6。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r1c1-ab03",
+          "name": "愛など無駄だ",
+          "timing": [
+            "ability-response"
+          ],
+          "specification": "キャラクターカードを表にしているレスターの精神力-1チェックを行う「魔詩」の特殊能力を、自身が攻撃時に無効にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r1c1-ab04",
+          "name": "復活の儀式",
+          "timing": [
+            "own-turn-action",
+            "transformation"
+          ],
+          "specification": "「復活の儀式」カードを自分の手番として使用すると、破壊神ヴァンミールになり、耐久力は全快する。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p05-r1c2",
+      "page": 5,
+      "row": 1,
+      "column": 2,
+      "name": "獣使いのウパニシャット",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 6,
+        "magic_level": 3,
+        "spirit": 7,
+        "endurance": 17
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "ガイナスか最愛のアーネスの死亡",
+      "owned_techniques": [
+        "獣王剣"
+      ],
+      "owned_followers": [
+        "グリフォン"
+      ],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p05-r1c2-ab01",
+          "name": "獣性",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "攻撃時のみ精神力+1。戦士技のダメージ+1。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r1c2-ab02",
+          "name": "獣使い",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "獣属性の従者を、従者として使用中でも手札からでも、同時に何枚でも攻撃カードとして使用できる。士気チェック不要。攻撃Lv・ダメージなどは従者カード下部に記載。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r1c2-ab03",
+          "name": "獣共感",
+          "timing": [
+            "attack-modifiers",
+            "damage-applied"
+          ],
+          "specification": "戦士技で攻撃するとき獣の従者を無視できる。この時、相手に1点でもダメージを与えられれば、無視した獣の従者を奪って手札にできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r1c2-ab04",
+          "name": "魔導王第三軍",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "キャラクターカードを表にしていれば、「グリフォン」カードを常時再使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r1c2-ab05",
+          "name": "悲しき愛",
+          "timing": [
+            "continuous",
+            "attack-redirect",
+            "death-before-discard"
+          ],
+          "specification": "アーネスの正体が明らかにされていれば精神力+1。アーネスをゲーム中一度だけ、いつでも身代われる。ウパニシャットがアーネスを身代わって死亡したとき、以後アーネスの精神力+1。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p05-r2c1",
+      "page": 5,
+      "row": 2,
+      "column": 1,
+      "name": "黒騎士ガーウィン",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 7,
+        "magic_level": 4,
+        "spirit": 7,
+        "endurance": 16
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "ガイナスの死亡",
+      "owned_techniques": [
+        "破黒剣",
+        "黒竜剣",
+        "魔空剣"
+      ],
+      "owned_followers": [
+        "黒騎士団"
+      ],
+      "restrictions": [],
+      "allegiance_text": "復讐：陣営変更チェックに+2",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p05-r2c1-ab01",
+          "name": "黒騎士の鎧",
+          "timing": [
+            "defense"
+          ],
+          "specification": "効果Lv4以下の戦士技無効。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r2c1-ab02",
+          "name": "執念",
+          "timing": [
+            "status-application",
+            "check-resolution"
+          ],
+          "specification": "精神技によって決して停止しない。ディア、ガドューラ、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力に対して、ゾロ目の効果を受けない。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r2c1-ab03",
+          "name": "剣匠",
+          "timing": [
+            "attack-modifiers"
+          ],
+          "specification": "近距離の戦士技を遠距離技にできる。また剣技の効果Lv+1、ダメージ+2。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r2c1-ab04",
+          "name": "衝撃波",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "キャラクターカードを表にしていれば、詠唱状態にした剣技を任意の者全てに与えられる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r2c1-ab05",
+          "name": "我がライバル",
+          "timing": [
+            "continuous"
+          ],
+          "specification": "自身がEVILのとき、キャラクターカードを表にしたランスロットがいれば、その間精神力+2。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p05-r2c2",
+      "page": 5,
+      "row": 2,
+      "column": 2,
+      "name": "魔導王ガイナス",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 8,
+        "magic_level": 7,
+        "spirit": 9,
+        "endurance": 20
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "なし",
+      "owned_techniques": [
+        "竜王爆砕剣",
+        "血流"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "悲しみの男：常にEVIL",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p05-r2c2-ab01",
+          "name": "暗黒の鎧",
+          "timing": [
+            "defense"
+          ],
+          "specification": "効果Lv5以下の攻撃をすべて無効にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r2c2-ab02",
+          "name": "魔導王の威厳",
+          "timing": [
+            "defense"
+          ],
+          "specification": "精神力-5チェックに成功すると、すべて技を攻撃者自身に跳ね返す。反撃として扱う。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r2c2-ab03",
+          "name": "実力",
+          "timing": [
+            "use-validation"
+          ],
+          "specification": "すべての技、詠唱技不要。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p05-r2c2-ab04",
+          "name": "黒龍の剣",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "キャラクターカードを表にしていれば、使用Lv6以上の剣技を任意の者全てに与えられる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "実力の印字「詠唱技不要」は共通裁定で「詠唱不要」と解釈。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p06-r1c1",
+      "page": 6,
+      "row": 1,
+      "column": 1,
+      "name": "不死王ガドューラ",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 5,
+        "magic_level": 6,
+        "spirit": 6,
+        "endurance": 15
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "主人たるガイナスの死亡",
+      "owned_techniques": [
+        "死刻鎌",
+        "疫病"
+      ],
+      "owned_followers": [
+        "スケルトン",
+        "ゾンビー",
+        "ワイト",
+        "デスナイト"
+      ],
+      "restrictions": [
+        "白技使用不可"
+      ],
+      "allegiance_text": "不死王：常にEVIL",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p06-r1c1-ab01",
+          "name": "恐怖",
+          "timing": [
+            "attack-received"
+          ],
+          "specification": "反撃されたときを除き、敵から攻撃を受けたとき、敵に精神力-1チェックを要求できる。失敗するとガドューラ自身への攻撃のみ失敗。このチェックがゾロ目なら無条件で攻撃失敗、攻撃者は次の自分の手番まで停止。6のゾロ目なら攻撃者は死亡する。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r1c1-ab02",
+          "name": "死者",
+          "timing": [
+            "defense",
+            "ability-response"
+          ],
+          "specification": "精神技無効。ディアとレスターの精神力-1チェックを行う「魅了」「魔詩」の特殊能力無効。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r1c1-ab03",
+          "name": "狂魂",
+          "timing": [
+            "follower-entry"
+          ],
+          "specification": "攻撃時、人の従者を破壊。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r1c1-ab04",
+          "name": "魔導王第二軍",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "キャラクターカードを表にしていれば、「スケルトン」「ゾンビー」「ワイト」「デスナイト」カードを常時再使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "従者欄および魔導王第二軍の「デスナイト」と行動カード「デス・ナイト」の対応を別名台帳で確認する。"
+      ],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p06-r1c2",
+      "page": 6,
+      "row": 1,
+      "column": 2,
+      "name": "魔聖母ディア",
+      "sex": "女",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 0,
+        "magic_level": 6,
+        "spirit": 9,
+        "endurance": 11
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "なし",
+      "owned_techniques": [
+        "吸魂",
+        "悪夢",
+        "死心盗"
+      ],
+      "owned_followers": [
+        "闇の聖女"
+      ],
+      "restrictions": [],
+      "allegiance_text": "破壊神により蘇りし者：常にEVIL又はヴァンミール陣営",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p06-r1c2-ab01",
+          "name": "魅了",
+          "timing": [
+            "attack-received"
+          ],
+          "specification": "反撃されたときを除き、敵から攻撃を受けたとき、敵に精神力-1チェックを要求できる。失敗するとディア自身への攻撃のみ失敗。このチェックがゾロ目なら無条件で攻撃失敗、攻撃者は次の自分の手番まで停止。6のゾロ目なら攻撃者はディアと同じ陣営になり、目的が「ディアと敵対するものの全滅」、敗北条件が「愛しいディアの死亡」になる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r1c2-ab02",
+          "name": "闇の聖女達の情報",
+          "timing": [
+            "reveal",
+            "hand-limit"
+          ],
+          "specification": "キャラクターカードを表にしていれば、以後所持できる手札枚数の上限が5枚でなく7枚になる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r1c2-ab03",
+          "name": "吸魂",
+          "timing": [
+            "damage-applied"
+          ],
+          "specification": "敵にダメージを与えると、与えたダメージ分だけ耐久力が回復。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r1c2-ab04",
+          "name": "下僕達",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "人属性の従者を、従者として使用中でも手札からでも、同時に何枚でも攻撃カードとして使用でき、士気チェック不要。攻撃Lv・ダメージなどは従者カード下部に記載。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p06-r2c1",
+      "page": 6,
+      "row": 2,
+      "column": 1,
+      "name": "爆炎のフレイアード",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 0,
+        "magic_level": 6,
+        "spirit": 7,
+        "endurance": 13
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "ガイナスか兄のアイエルの死亡",
+      "owned_techniques": [
+        "炎矢",
+        "炎流",
+        "炎舞",
+        "爆炎",
+        "烈火"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p06-r2c1-ab01",
+          "name": "炎の結界",
+          "timing": [
+            "defense"
+          ],
+          "specification": "水・炎の技すべて無効。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r2c1-ab02",
+          "name": "炎刃",
+          "timing": [
+            "attack-declaration"
+          ],
+          "specification": "キャラクターカードを表にしていれば、手札の代わりに「近・魔・炎、Lv4、ダメージ5」という「炎刃」の技を出したことにできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r2c1-ab03",
+          "name": "炎の奥義者",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "自分の技を追加1回使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r2c1-ab04",
+          "name": "双子",
+          "timing": [
+            "own-turn-action"
+          ],
+          "specification": "自分の手番として、キャラクターカードを表にしたアイエルと手札をすべて交換できる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p06-r2c2",
+      "page": 6,
+      "row": 2,
+      "column": 2,
+      "name": "餓狼ヨーツルム",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 4,
+        "magic_level": 5,
+        "spirit": 7,
+        "endurance": 16
+      },
+      "initial_faction": "EVIL",
+      "objective": "GOODの全滅",
+      "defeat_condition": "ディアの死亡",
+      "owned_techniques": [
+        "殴る",
+        "蹴る",
+        "狼牙",
+        "餓狼",
+        "妖獣",
+        "転移"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "狂狼：常にEVIL又はヴァンミール陣営",
+      "transformation_only": false,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p06-r2c2-ab01",
+          "name": "影飛び",
+          "timing": [
+            "attack-received"
+          ],
+          "specification": "精神力-2チェックに成功すると、自身への攻撃を無効にできる。無効にした後、「踏み込み」カードを1枚捨てると、「従者無視、間合い不可」で攻撃者に攻撃を行える。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r2c2-ab02",
+          "name": "野獣",
+          "timing": [
+            "use-validation",
+            "attack-modifiers"
+          ],
+          "specification": "格闘技をチェック不要で使用でき、効果Lvとダメージをそれぞれ+1d6。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r2c2-ab03",
+          "name": "闇の雄叫び",
+          "timing": [
+            "reclaim"
+          ],
+          "specification": "キャラクターカードを表にしていれば、「狼牙」「妖獣」「餓狼」カードを常時再使用可能。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p06-r2c2-ab04",
+          "name": "飢え",
+          "timing": [
+            "kill-confirmed"
+          ],
+          "specification": "精神力8以上の者を自分の手でトドメを刺し、自分が生きているなら、耐久力が全回復した上に戦士Lv+2、魔法Lv+2。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p07-r1c1",
+      "page": 7,
+      "row": 1,
+      "column": 1,
+      "name": "聖騎士ランスロット2",
+      "sex": "男",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 6,
+        "magic_level": 4,
+        "spirit": 10,
+        "endurance": 16
+      },
+      "initial_faction": "GOOD",
+      "objective": "EVILの全滅",
+      "defeat_condition": "最愛のリーア姫の死亡",
+      "owned_techniques": [
+        "破山剣",
+        "妖撃破山剣",
+        "光竜剣",
+        "光竜破山剣"
+      ],
+      "owned_followers": [
+        "聖騎士団",
+        "王立騎士団"
+      ],
+      "restrictions": [],
+      "allegiance_text": "姫を守るもの：常にGOOD",
+      "transformation_only": true,
+      "inherits_abilities_from": "c2-p02-r2c2",
+      "abilities": [
+        {
+          "id": "c2-p07-r1c1-ab01",
+          "name": "光の盾",
+          "timing": [
+            "defense"
+          ],
+          "specification": "以前持っていた特殊能力に加えて持つ。攻撃を受けたとき、精神力-5チェックに成功すれば、自分の戦士Lv以下の技を全て無効にできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p07-r1c1-ab02",
+          "name": "悲しみを胸に",
+          "timing": [
+            "ability-response"
+          ],
+          "specification": "キャラクターカードを表にしているガイナスの「魔導王の威厳」の特殊能力を、自身に対してのみ無効にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p07-r1c1-ab03",
+          "name": "成長",
+          "timing": [
+            "draw"
+          ],
+          "specification": "自分の手番の時、手札を1枚でなく2枚補充できる。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [],
+      "visually_verified": true
+    },
+    {
+      "id": "c2-p07-r1c2",
+      "page": 7,
+      "row": 1,
+      "column": 2,
+      "name": "破壊神ヴァンミール",
+      "sex": "不明",
+      "category": "character",
+      "base_stats": {
+        "warrior_level": 10,
+        "magic_level": 10,
+        "spirit": 10,
+        "endurance": 25
+      },
+      "initial_faction": "ヴァンミール",
+      "objective": "自陣営以外の全滅",
+      "defeat_condition": "なし",
+      "owned_techniques": [
+        "滅界"
+      ],
+      "owned_followers": [],
+      "restrictions": [],
+      "allegiance_text": "破壊神：常にヴァンミール陣営",
+      "transformation_only": true,
+      "inherits_abilities_from": null,
+      "abilities": [
+        {
+          "id": "c2-p07-r1c2-ab01",
+          "name": "巨神",
+          "timing": [
+            "defense"
+          ],
+          "specification": "効果Lv5以下の技すべて無効。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p07-r1c2-ab02",
+          "name": "破壊の神",
+          "timing": [
+            "use-validation",
+            "attack-modifiers"
+          ],
+          "specification": "すべての技、詠唱不要。戦士技を任意のもの全てに与えられ、ダメージ倍。魔法技を任意のもの全てに与えられ、効果Lvを10にする。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p07-r1c2-ab03",
+          "name": "神と人の差",
+          "timing": [
+            "ability-suppression"
+          ],
+          "specification": "リーア姫とランスロット2以外の任意のキャラクターの特殊能力をすべて使用できなくできる。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p07-r1c2-ab04",
+          "name": "破壊神の下僕達",
+          "timing": [
+            "state-trigger"
+          ],
+          "specification": "ディア、ヨーツルムの陣営を「ヴァンミール」、目的を「ヴァンミール陣営以外の全滅」、敗北条件を「ヴァンミールの死亡」に変更する。",
+          "activation": "optional-except-explicit-restrictions"
+        },
+        {
+          "id": "c2-p07-r1c2-ab05",
+          "name": "終末",
+          "timing": [
+            "death-settlement"
+          ],
+          "specification": "ヴァンミールが倒されると、ヴァンミール陣営以外のものの勝利でゲーム終了。",
+          "activation": "optional-except-explicit-restrictions"
+        }
+      ],
+      "questions": [
+        "ウーノスの旧能力は継承記述なし。ランスロット2の明記された継承と区別する。"
+      ],
+      "visually_verified": true
+    }
+  ],
+  "blank_cells": [
+    {
+      "page": 7,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "page": 7,
+      "row": 2,
+      "column": 2
+    }
+  ]
+}
