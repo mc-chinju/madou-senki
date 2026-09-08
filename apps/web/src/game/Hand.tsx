@@ -1,0 +1,4 @@
+import { getAction, type ActionCard } from '@madou/catalog';
+export function Hand({ ids, selected, onSelect, onInspect, disabled }: { ids:string[]; selected:string[]; onSelect:(id:string)=>void; onInspect:(card:ActionCard)=>void; disabled:boolean }) {
+  return <section className="hand" aria-label="自分の手札"><div className="section-title"><h2>手札</h2><span>{ids.length}枚</span></div><div className="card-row">{ids.map(id=>{const card=getAction(id);return <article className={`hand-card ${selected.includes(id)?'selected':''}`} key={id}><button className="card-face" disabled={disabled} aria-pressed={selected.includes(id)} onClick={()=>onSelect(id)}>{card?<><img src={card.assetId} alt="" width="400" height="560" loading="lazy"/><span>{card.name}</span></>:<span>カード</span>}</button>{card?<button className="inspect" onClick={()=>onInspect(card)} aria-label={`${card.name}の詳細を見る`}>詳細</button>:null}</article>})}</div></section>;
+}
