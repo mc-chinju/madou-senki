@@ -1,0 +1,686 @@
+{
+  "task": "Task7s targeted regression after frozen rolling received defenses",
+  "date": "2026-09-08",
+  "newBrowserCases": {
+    "passed": 10,
+    "scope": "8 unchanged cases passed initial run; 2 corrected same-viewer Grace reload assertions passed focused rerun15.7s. Initial full10 run had two test comparison failures, not a passing full run."
+  },
+  "affectedBrowserCases": {
+    "passed": 23,
+    "durationReported": "2.1m"
+  },
+  "fullBrowserSuite": "Not rerun for this slice; previous full116 passed after Task7p",
+  "humanParticipants": 0,
+  "measurements": [
+    {
+      "scenario": "combat-eight-browsers-fini-b361f-ower-reduction-on-every-hit",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 8,
+      "windows": 20,
+      "passCount": 90,
+      "elapsedMs": 10666,
+      "decisions": [
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 138
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 137
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 130
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "death-gift",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "death-gift",
+          "elapsedMs": 116
+        }
+      ]
+    },
+    {
+      "scenario": "combat-eight-browsers-sele-ed45b--one-complete-normal-attack",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 8,
+      "windows": 9,
+      "passCount": 58,
+      "elapsedMs": 6813,
+      "decisions": [
+        {
+          "kind": "declaration",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 33
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 131
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 128
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 132
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 112
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        }
+      ]
+    },
+    {
+      "scenario": "combat-six-browsers-resolv-a8445-d-its-immediate-OPEN-refill",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 6,
+      "windows": 2,
+      "passCount": 12,
+      "elapsedMs": 1459,
+      "decisions": [
+        {
+          "kind": "declaration",
+          "elapsedMs": 130
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 120
+        }
+      ]
+    }
+  ]
+}

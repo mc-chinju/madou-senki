@@ -1,0 +1,677 @@
+{
+  "date": "2026-09-08",
+  "run": "full168:167passed/1oldprivacyassertionfailed;these3combatcasespassed",
+  "method": "local automated Chromium/workerd;human0",
+  "results": [
+    {
+      "scenario": "combat-eight-browsers-fini-b361f-ower-reduction-on-every-hit",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 8,
+      "windows": 20,
+      "passCount": 90,
+      "elapsedMs": 10641,
+      "decisions": [
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 138
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 128
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 130
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 112
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 44
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "death-gift",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "death-gift",
+          "elapsedMs": 116
+        }
+      ]
+    },
+    {
+      "scenario": "combat-six-browsers-resolv-a8445-d-its-immediate-OPEN-refill",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 6,
+      "windows": 2,
+      "passCount": 12,
+      "elapsedMs": 1440,
+      "decisions": [
+        {
+          "kind": "declaration",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 112
+        }
+      ]
+    },
+    {
+      "scenario": "combat-eight-browsers-sele-ed45b--one-complete-normal-attack",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 8,
+      "windows": 9,
+      "passCount": 58,
+      "elapsedMs": 7076,
+      "decisions": [
+        {
+          "kind": "declaration",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 136
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 134
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 132
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 135
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 131
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 134
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 224
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "attack-abilities",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "follower-entry-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit-abilities",
+          "elapsedMs": 112
+        }
+      ]
+    }
+  ]
+}

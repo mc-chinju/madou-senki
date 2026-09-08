@@ -1,0 +1,621 @@
+{
+  "rulesetVersion": "second-online-v0.1-provisional",
+  "revision": 0,
+  "phase": "setup",
+  "seatOrder": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "players": {
+    "A": {
+      "id": "A",
+      "name": "A",
+      "characterId": "c2-p02-r2c2",
+      "revealed": false,
+      "faction": "GOOD",
+      "objective": "EVILの全滅",
+      "damage": 0,
+      "hand": [
+        "a2-p10-r2c3",
+        "a2-p03-r1c1",
+        "a2-p14-r3c2",
+        "a2-p16-r2c3",
+        "a2-p14-r1c2"
+      ],
+      "followers": [],
+      "chants": [],
+      "open": [],
+      "attachments": [],
+      "presence": "active",
+      "currentObjective": {
+        "kind": "extinction",
+        "enemyFactions": [
+          "EVIL"
+        ]
+      },
+      "protection": {
+        "characterIds": [
+          "c2-p03-r1c2"
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "name": "B",
+      "characterId": "c2-p06-r1c1",
+      "revealed": false,
+      "faction": "EVIL",
+      "objective": "GOODの全滅",
+      "damage": 0,
+      "hand": [
+        "a2-p07-r2c3",
+        "a2-p09-r3c3",
+        "a2-p19-r3c1",
+        "a2-p13-r2c1",
+        "a2-p05-r2c1"
+      ],
+      "followers": [],
+      "chants": [],
+      "open": [],
+      "attachments": [],
+      "presence": "active",
+      "currentObjective": {
+        "kind": "extinction",
+        "enemyFactions": [
+          "GOOD"
+        ]
+      },
+      "protection": {
+        "characterIds": [
+          "c2-p05-r2c2"
+        ]
+      }
+    },
+    "C": {
+      "id": "C",
+      "name": "C",
+      "characterId": "c2-p05-r2c2",
+      "revealed": false,
+      "faction": "EVIL",
+      "objective": "GOODの全滅",
+      "damage": 0,
+      "hand": [
+        "a2-p13-r1c1",
+        "a2-p24-r3c2",
+        "a2-p07-r2c1",
+        "a2-p14-r1c3",
+        "a2-p21-r1c1"
+      ],
+      "followers": [],
+      "chants": [],
+      "open": [],
+      "attachments": [],
+      "presence": "active",
+      "currentObjective": {
+        "kind": "extinction",
+        "enemyFactions": [
+          "GOOD"
+        ]
+      },
+      "protection": {
+        "characterIds": []
+      }
+    },
+    "D": {
+      "id": "D",
+      "name": "D",
+      "characterId": "c2-p03-r1c2",
+      "revealed": false,
+      "faction": "GOOD",
+      "objective": "EVILの全滅",
+      "damage": 0,
+      "hand": [
+        "a2-p14-r2c3",
+        "a2-p14-r2c1",
+        "a2-p04-r3c3",
+        "a2-p02-r2c3",
+        "a2-p13-r1c3"
+      ],
+      "followers": [],
+      "chants": [],
+      "open": [],
+      "attachments": [],
+      "presence": "active",
+      "currentObjective": {
+        "kind": "extinction",
+        "enemyFactions": [
+          "EVIL"
+        ]
+      },
+      "protection": {
+        "characterIds": []
+      }
+    }
+  },
+  "turnSeat": 0,
+  "setupCursor": 0,
+  "pending": {
+    "kind": "initial-followers",
+    "actorId": "A",
+    "seat": 0
+  },
+  "distances": {
+    "A": {
+      "B": "far",
+      "C": "far",
+      "D": "far"
+    },
+    "B": {
+      "A": "far",
+      "C": "far",
+      "D": "far"
+    },
+    "C": {
+      "A": "far",
+      "B": "far",
+      "D": "far"
+    },
+    "D": {
+      "A": "far",
+      "B": "far",
+      "C": "far"
+    }
+  },
+  "deck": [
+    "a2-p08-r2c1",
+    "a2-p01-r2c2",
+    "a2-p09-r1c1",
+    "a2-p14-r2c2",
+    "a2-p16-r2c1",
+    "a2-p12-r1c3",
+    "a2-p13-r2c3",
+    "a2-p01-r1c1",
+    "a2-p21-r3c1",
+    "a2-p22-r2c2",
+    "a2-p09-r3c2",
+    "a2-p06-r1c3",
+    "a2-p19-r3c2",
+    "a2-p06-r2c3",
+    "a2-p11-r3c1",
+    "a2-p02-r3c3",
+    "a2-p25-r1c3",
+    "a2-p08-r1c1",
+    "a2-p04-r3c2",
+    "a2-p04-r1c2",
+    "a2-p13-r3c2",
+    "a2-p18-r3c3",
+    "a2-p25-r1c1",
+    "a2-p05-r2c2",
+    "a2-p12-r2c2",
+    "a2-p03-r3c1",
+    "a2-p24-r3c3",
+    "a2-p01-r3c2",
+    "a2-p16-r3c3",
+    "a2-p15-r1c3",
+    "a2-p23-r2c2",
+    "a2-p15-r3c2",
+    "a2-p21-r3c2",
+    "a2-p22-r1c3",
+    "a2-p05-r3c2",
+    "a2-p04-r3c1",
+    "a2-p21-r2c2",
+    "a2-p12-r2c3",
+    "a2-p17-r2c2",
+    "a2-p08-r3c2",
+    "a2-p19-r2c3",
+    "a2-p18-r2c3",
+    "a2-p19-r1c3",
+    "a2-p23-r1c1",
+    "a2-p07-r1c3",
+    "a2-p18-r3c2",
+    "a2-p11-r2c3",
+    "a2-p10-r3c2",
+    "a2-p14-r3c3",
+    "a2-p07-r3c3",
+    "a2-p06-r2c2",
+    "a2-p10-r3c1",
+    "a2-p22-r3c3",
+    "a2-p20-r2c1",
+    "a2-p08-r3c1",
+    "a2-p07-r1c2",
+    "a2-p20-r1c3",
+    "a2-p17-r1c3",
+    "a2-p15-r2c2",
+    "a2-p09-r2c2",
+    "a2-p17-r2c3",
+    "a2-p18-r1c1",
+    "a2-p20-r2c3",
+    "a2-p16-r3c1",
+    "a2-p10-r2c1",
+    "a2-p18-r1c2",
+    "a2-p12-r2c1",
+    "a2-p15-r2c1",
+    "a2-p24-r1c3",
+    "a2-p01-r1c2",
+    "a2-p18-r3c1",
+    "a2-p20-r3c3",
+    "a2-p15-r3c3",
+    "a2-p03-r2c3",
+    "a2-p01-r2c3",
+    "a2-p10-r1c2",
+    "a2-p13-r2c2",
+    "a2-p06-r1c2",
+    "a2-p04-r1c1",
+    "a2-p18-r2c1",
+    "a2-p11-r1c1",
+    "a2-p15-r2c3",
+    "a2-p06-r3c2",
+    "a2-p17-r3c1",
+    "a2-p02-r2c1",
+    "a2-p22-r3c1",
+    "a2-p09-r3c1",
+    "a2-p19-r3c3",
+    "a2-p24-r1c1",
+    "a2-p22-r2c1",
+    "a2-p12-r3c2",
+    "a2-p15-r1c2",
+    "a2-p08-r1c2",
+    "a2-p05-r3c1",
+    "a2-p03-r1c3",
+    "a2-p19-r1c2",
+    "a2-p11-r2c1",
+    "a2-p08-r3c3",
+    "a2-p16-r2c2",
+    "a2-p20-r1c1",
+    "a2-p01-r1c3",
+    "a2-p16-r1c3",
+    "a2-p24-r1c2",
+    "a2-p17-r1c1",
+    "a2-p04-r2c1",
+    "a2-p01-r3c1",
+    "a2-p20-r3c2",
+    "a2-p24-r2c2",
+    "a2-p22-r3c2",
+    "a2-p05-r1c1",
+    "a2-p02-r1c3",
+    "a2-p17-r2c1",
+    "a2-p11-r1c3",
+    "a2-p08-r2c2",
+    "a2-p05-r2c3",
+    "a2-p02-r3c1",
+    "a2-p17-r3c3",
+    "a2-p12-r1c2",
+    "a2-p09-r1c3",
+    "a2-p06-r2c1",
+    "a2-p03-r2c1",
+    "a2-p18-r2c2",
+    "a2-p13-r1c2",
+    "a2-p21-r2c3",
+    "a2-p07-r1c1",
+    "a2-p03-r3c3",
+    "a2-p25-r2c1",
+    "a2-p14-r1c1",
+    "a2-p22-r1c2",
+    "a2-p07-r3c2",
+    "a2-p04-r2c3",
+    "a2-p21-r1c3",
+    "a2-p22-r1c1",
+    "a2-p11-r3c2",
+    "a2-p23-r2c1",
+    "a2-p21-r1c2",
+    "a2-p01-r3c3",
+    "a2-p23-r2c3",
+    "a2-p12-r3c1",
+    "a2-p09-r2c1",
+    "a2-p05-r3c3",
+    "a2-p02-r2c2",
+    "a2-p23-r1c2",
+    "a2-p13-r3c1",
+    "a2-p10-r1c3",
+    "a2-p06-r3c1",
+    "a2-p03-r1c2",
+    "a2-p23-r3c1",
+    "a2-p14-r3c1",
+    "a2-p11-r1c2",
+    "a2-p07-r2c2",
+    "a2-p03-r3c2",
+    "a2-p19-r2c1",
+    "a2-p15-r3c1",
+    "a2-p12-r1c1",
+    "a2-p08-r1c3",
+    "a2-p04-r2c2",
+    "a2-p20-r2c2",
+    "a2-p16-r3c2",
+    "a2-p23-r1c3",
+    "a2-p09-r1c2",
+    "a2-p05-r1c3",
+    "a2-p24-r3c1",
+    "a2-p17-r3c2",
+    "a2-p23-r3c2",
+    "a2-p10-r1c1",
+    "a2-p24-r2c3",
+    "a2-p02-r1c1",
+    "a2-p19-r1c1",
+    "a2-p24-r2c1",
+    "a2-p10-r3c3",
+    "a2-p25-r1c2",
+    "a2-p02-r3c2",
+    "a2-p20-r1c2",
+    "a2-p16-r1c1",
+    "a2-p11-r3c3",
+    "a2-p07-r3c1",
+    "a2-p03-r2c2",
+    "a2-p21-r2c1",
+    "a2-p17-r1c2",
+    "a2-p12-r3c3",
+    "a2-p08-r2c3",
+    "a2-p04-r1c3",
+    "a2-p22-r2c3",
+    "a2-p18-r1c3",
+    "a2-p13-r3c3",
+    "a2-p09-r2c3",
+    "a2-p05-r1c2",
+    "a2-p23-r3c3",
+    "a2-p19-r2c2",
+    "a2-p15-r1c1",
+    "a2-p10-r2c2",
+    "a2-p06-r1c1",
+    "a2-p01-r2c1",
+    "a2-p20-r3c1",
+    "a2-p16-r1c2",
+    "a2-p11-r2c2",
+    "a2-p06-r3c3",
+    "a2-p02-r1c2",
+    "a2-p21-r3c3"
+  ],
+  "discard": [],
+  "resolution": [],
+  "reclaimReservations": [],
+  "nextEventId": 25,
+  "events": [
+    {
+      "type": "CHARACTER_ASSIGNED",
+      "actorId": "A",
+      "audience": {
+        "playerId": "A"
+      },
+      "characterId": "c2-p02-r2c2",
+      "id": 1,
+      "at": 1000
+    },
+    {
+      "type": "CHARACTER_ASSIGNED",
+      "actorId": "B",
+      "audience": {
+        "playerId": "B"
+      },
+      "characterId": "c2-p06-r1c1",
+      "id": 2,
+      "at": 1000
+    },
+    {
+      "type": "CHARACTER_ASSIGNED",
+      "actorId": "C",
+      "audience": {
+        "playerId": "C"
+      },
+      "characterId": "c2-p05-r2c2",
+      "id": 3,
+      "at": 1000
+    },
+    {
+      "type": "CHARACTER_ASSIGNED",
+      "actorId": "D",
+      "audience": {
+        "playerId": "D"
+      },
+      "characterId": "c2-p03-r1c2",
+      "id": 4,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "A",
+      "audience": {
+        "playerId": "A"
+      },
+      "cardInstanceId": "a2-p10-r2c3",
+      "id": 5,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "A",
+      "audience": {
+        "playerId": "A"
+      },
+      "cardInstanceId": "a2-p03-r1c1",
+      "id": 6,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "A",
+      "audience": {
+        "playerId": "A"
+      },
+      "cardInstanceId": "a2-p14-r3c2",
+      "id": 7,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "A",
+      "audience": {
+        "playerId": "A"
+      },
+      "cardInstanceId": "a2-p16-r2c3",
+      "id": 8,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "A",
+      "audience": {
+        "playerId": "A"
+      },
+      "cardInstanceId": "a2-p14-r1c2",
+      "id": 9,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "B",
+      "audience": {
+        "playerId": "B"
+      },
+      "cardInstanceId": "a2-p07-r2c3",
+      "id": 10,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "B",
+      "audience": {
+        "playerId": "B"
+      },
+      "cardInstanceId": "a2-p09-r3c3",
+      "id": 11,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "B",
+      "audience": {
+        "playerId": "B"
+      },
+      "cardInstanceId": "a2-p19-r3c1",
+      "id": 12,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "B",
+      "audience": {
+        "playerId": "B"
+      },
+      "cardInstanceId": "a2-p13-r2c1",
+      "id": 13,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "B",
+      "audience": {
+        "playerId": "B"
+      },
+      "cardInstanceId": "a2-p05-r2c1",
+      "id": 14,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "C",
+      "audience": {
+        "playerId": "C"
+      },
+      "cardInstanceId": "a2-p13-r1c1",
+      "id": 15,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "C",
+      "audience": {
+        "playerId": "C"
+      },
+      "cardInstanceId": "a2-p24-r3c2",
+      "id": 16,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "C",
+      "audience": {
+        "playerId": "C"
+      },
+      "cardInstanceId": "a2-p07-r2c1",
+      "id": 17,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "C",
+      "audience": {
+        "playerId": "C"
+      },
+      "cardInstanceId": "a2-p14-r1c3",
+      "id": 18,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "C",
+      "audience": {
+        "playerId": "C"
+      },
+      "cardInstanceId": "a2-p21-r1c1",
+      "id": 19,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "D",
+      "audience": {
+        "playerId": "D"
+      },
+      "cardInstanceId": "a2-p14-r2c3",
+      "id": 20,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "D",
+      "audience": {
+        "playerId": "D"
+      },
+      "cardInstanceId": "a2-p14-r2c1",
+      "id": 21,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "D",
+      "audience": {
+        "playerId": "D"
+      },
+      "cardInstanceId": "a2-p04-r3c3",
+      "id": 22,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "D",
+      "audience": {
+        "playerId": "D"
+      },
+      "cardInstanceId": "a2-p02-r2c3",
+      "id": 23,
+      "at": 1000
+    },
+    {
+      "type": "CARD_DRAWN",
+      "actorId": "D",
+      "audience": {
+        "playerId": "D"
+      },
+      "cardInstanceId": "a2-p13-r1c3",
+      "id": 24,
+      "at": 1000
+    }
+  ],
+  "initialFactions": [
+    "GOOD",
+    "EVIL",
+    "EVIL",
+    "GOOD"
+  ],
+  "lifecycle": []
+}

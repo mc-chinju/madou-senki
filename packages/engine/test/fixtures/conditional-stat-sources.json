@@ -1,0 +1,92 @@
+[
+  {
+    "characterId": "c2-p02-r1c1",
+    "characterName": "有翼人のティア",
+    "id": "c2-p02-r1c1-ab04",
+    "name": "ティアがんばる",
+    "timing": [
+      "continuous"
+    ],
+    "specification": "キャラクターカードを表にしたレスターが場にいれば、精神力+1。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p03-r1c2",
+    "characterName": "リーア姫",
+    "id": "c2-p03-r1c2-ab03",
+    "name": "この世界に愛を",
+    "timing": [
+      "continuous"
+    ],
+    "specification": "自身のキャラクターカードを表にしているとき、リーア自身を除きキャラクターカードを表にしている任意の者すべての精神力を+1。ランスロットのキャラクターカードが表になっていれば、リーアの精神力+2。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p03-r2c2",
+    "characterName": "黒妖精のアーネス",
+    "id": "c2-p03-r2c2-ab04",
+    "name": "男ごときが",
+    "timing": [
+      "check-modifiers"
+    ],
+    "specification": "キャラクターカードを表にした男性キャラクターを攻撃するか、防御するとき、精神力+2。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p04-r1c2",
+    "characterName": "竜皇子アスフェルト",
+    "id": "c2-p04-r1c2-ab03",
+    "name": "竜皇子",
+    "timing": [
+      "morale"
+    ],
+    "specification": "竜属性の従者の士気チェックに+2ボーナス。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p04-r1c2",
+    "characterName": "竜皇子アスフェルト",
+    "id": "c2-p04-r1c2-ab05",
+    "name": "真実",
+    "timing": [
+      "continuous",
+      "attack-modifiers"
+    ],
+    "specification": "GOODになると精神力+1。このとき、キャラクターカードを表にしたガイナス、ウーノスへの攻撃時、技の効果Lv+1、ダメージ+2。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p05-r1c2",
+    "characterName": "獣使いのウパニシャット",
+    "id": "c2-p05-r1c2-ab01",
+    "name": "獣性",
+    "timing": [
+      "attack-modifiers"
+    ],
+    "specification": "攻撃時のみ精神力+1。戦士技のダメージ+1。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p05-r2c1",
+    "characterName": "黒騎士ガーウィン",
+    "id": "c2-p05-r2c1-ab05",
+    "name": "我がライバル",
+    "timing": [
+      "continuous"
+    ],
+    "specification": "自身がEVILのとき、キャラクターカードを表にしたランスロットがいれば、その間精神力+2。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p06-r1c2",
+    "characterName": "魔聖母ディア",
+    "id": "c2-p06-r1c2-ab02",
+    "name": "闇の聖女達の情報",
+    "timing": [
+      "reveal",
+      "hand-limit"
+    ],
+    "specification": "キャラクターカードを表にしていれば、以後所持できる手札枚数の上限が5枚でなく7枚になる。",
+    "activation": "optional-except-explicit-restrictions"
+  }
+]

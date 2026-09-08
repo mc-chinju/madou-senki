@@ -1,0 +1,44 @@
+{
+  "edition": "third",
+  "source_format": "Udonarium room snapshot",
+  "xml_files": 3,
+  "jpeg_files": 218,
+  "card_instances": 245,
+  "unique_card_fronts": 209,
+  "groups": [
+    {
+      "id": "stack-1",
+      "instances": 24,
+      "unique_fronts": 24
+    },
+    {
+      "id": "stack-2",
+      "instances": 219,
+      "unique_fronts": 183
+    },
+    {
+      "id": "loose",
+      "instances": 2,
+      "unique_fronts": 2
+    }
+  ],
+  "xml_character_objects": 14,
+  "table_masks": 4,
+  "dice_symbols": 2,
+  "unbundled_image_identifiers": [
+    "./assets/images/dice/6_dice/6_dice[1].png",
+    "./assets/images/dice/6_dice/6_dice[2].png",
+    "./assets/images/dice/6_dice/6_dice[3].png",
+    "./assets/images/dice/6_dice/6_dice[4].png",
+    "./assets/images/dice/6_dice/6_dice[5].png",
+    "./assets/images/dice/6_dice/6_dice[6].png",
+    "none_icon",
+    "testCharacter_1_image",
+    "testCharacter_3_image",
+    "testCharacter_4_image",
+    "testCharacter_5_image",
+    "testCharacter_6_image",
+    "testTableBackgroundImage_image"
+  ],
+  "note": "XML character objects include counters and Udonarium templates; game characters are cards. Counts describe this saved room, not a verified official deck list."
+}

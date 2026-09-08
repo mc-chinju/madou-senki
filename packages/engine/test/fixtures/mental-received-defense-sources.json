@@ -1,0 +1,41 @@
+[
+  {
+    "characterId": "c2-p03-r2c1",
+    "characterName": "吟遊詩人のレスター",
+    "ability": {
+      "id": "c2-p03-r2c1-ab01",
+      "name": "魔詩",
+      "timing": [
+        "attack-received"
+      ],
+      "specification": "反撃されたときを除き、敵から攻撃を受けたとき、敵に精神力-1チェックを要求できる。失敗するとレスター自身への攻撃のみが失敗する。このチェックがゾロ目なら無条件で攻撃失敗、攻撃者は次の自分の手番まで停止。6のゾロ目なら攻撃者はレスターと同じ陣営になり、目的が「EVILの全滅」、敗北条件が「リーア姫の死亡」になる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p06-r1c1",
+    "characterName": "不死王ガドューラ",
+    "ability": {
+      "id": "c2-p06-r1c1-ab01",
+      "name": "恐怖",
+      "timing": [
+        "attack-received"
+      ],
+      "specification": "反撃されたときを除き、敵から攻撃を受けたとき、敵に精神力-1チェックを要求できる。失敗するとガドューラ自身への攻撃のみ失敗。このチェックがゾロ目なら無条件で攻撃失敗、攻撃者は次の自分の手番まで停止。6のゾロ目なら攻撃者は死亡する。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p06-r1c2",
+    "characterName": "魔聖母ディア",
+    "ability": {
+      "id": "c2-p06-r1c2-ab01",
+      "name": "魅了",
+      "timing": [
+        "attack-received"
+      ],
+      "specification": "反撃されたときを除き、敵から攻撃を受けたとき、敵に精神力-1チェックを要求できる。失敗するとディア自身への攻撃のみ失敗。このチェックがゾロ目なら無条件で攻撃失敗、攻撃者は次の自分の手番まで停止。6のゾロ目なら攻撃者はディアと同じ陣営になり、目的が「ディアと敵対するものの全滅」、敗北条件が「愛しいディアの死亡」になる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  }
+]

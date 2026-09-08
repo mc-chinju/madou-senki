@@ -1,0 +1,25 @@
+{
+  "name": "@madou/worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:storage": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs vitest run test/room-storage.test.ts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
+    "build": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs WRANGLER_SEND_METRICS=false wrangler deploy --dry-run --env= --outdir dist",
+    "dev": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs WRANGLER_REGISTRY_PATH=../../.cache/wrangler/registry wrangler dev --port 8787 --persist-to ../../.cache/local-state",
+    "test": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "0.22.0",
+    "@cloudflare/workers-types": "5.20260907.1",
+    "@vitest/runner": "4.1.0",
+    "@vitest/snapshot": "4.1.0",
+    "vitest": "4.1.0",
+    "wrangler": "4.129.1"
+  },
+  "dependencies": {
+    "@madou/catalog": "workspace:*",
+    "@madou/engine": "workspace:*",
+    "@madou/protocol": "workspace:*"
+  }
+}

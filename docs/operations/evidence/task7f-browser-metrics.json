@@ -1,0 +1,326 @@
+{
+  "date": "2026-09-08",
+  "runtime": "local workerd, cached Chromium 1223, Playwright 1.63.0",
+  "humanParticipants": 0,
+  "stage": "Task7f fix1; full38browser run",
+  "results": [
+    {
+      "scenario": "combat-eight-browsers-fini-b361f-ower-reduction-on-every-hit",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 8,
+      "windows": 12,
+      "passCount": 26,
+      "elapsedMs": 3181,
+      "decisions": [
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 130
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 133
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 132
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 121
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 114
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "death-gift",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "death-gift",
+          "elapsedMs": 118
+        }
+      ]
+    },
+    {
+      "scenario": "combat-eight-browsers-sele-ed45b--one-complete-normal-attack",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 8,
+      "windows": 6,
+      "passCount": 34,
+      "elapsedMs": 4137,
+      "decisions": [
+        {
+          "kind": "declaration",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 128
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 129
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 113
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "effect-level",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 116
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 115
+        },
+        {
+          "kind": "damage",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "normal-defense",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "follower-start",
+          "elapsedMs": 122
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 130
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 126
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 128
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 120
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 127
+        },
+        {
+          "kind": "hit",
+          "elapsedMs": 122
+        }
+      ]
+    },
+    {
+      "scenario": "combat-six-browsers-resolv-a8445-d-its-immediate-OPEN-refill",
+      "method": "Automated Chromium inputs against local workerd; no human participants",
+      "seats": 6,
+      "windows": 2,
+      "passCount": 12,
+      "elapsedMs": 1462,
+      "decisions": [
+        {
+          "kind": "declaration",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 128
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 123
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 125
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 119
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 118
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 124
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 117
+        },
+        {
+          "kind": "declaration",
+          "elapsedMs": 116
+        }
+      ]
+    }
+  ]
+}

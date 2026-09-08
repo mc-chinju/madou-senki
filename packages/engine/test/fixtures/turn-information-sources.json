@@ -1,0 +1,134 @@
+[
+  {
+    "characterId": "c2-p01-r2c2",
+    "characterName": "小妖精のチャム",
+    "id": "c2-p01-r2c2-ab02",
+    "name": "なになに",
+    "timing": [
+      "draw"
+    ],
+    "specification": "自分の手番の時、手札を1枚でなく2枚補充できる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p01-r2c2",
+    "characterName": "小妖精のチャム",
+    "id": "c2-p01-r2c2-ab03",
+    "name": "見ちゃった",
+    "timing": [
+      "own-turn-extra"
+    ],
+    "specification": "自分の手番の時、手番と別に一人だけ任意のキャラクターの従者を全て見られる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p02-r2c1",
+    "characterName": "早駆けのランカスター",
+    "id": "c2-p02-r2c1-ab04",
+    "name": "わかんねえよ",
+    "timing": [
+      "own-turn-action"
+    ],
+    "specification": "自分の手番として、手札の魔法技をすべて捨てられる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p03-r1c2",
+    "characterName": "リーア姫",
+    "id": "c2-p03-r1c2-ab02",
+    "name": "神出鬼没",
+    "timing": [
+      "own-turn-extra"
+    ],
+    "specification": "自分の手番の時、攻撃中を除き、手番と別に近距離状態の任意の一人のキャラクターの詠唱状態のカードを見られる。望むならそれを捨てさせられる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p03-r2c1",
+    "characterName": "吟遊詩人のレスター",
+    "id": "c2-p03-r2c1-ab03",
+    "name": "噂",
+    "timing": [
+      "own-turn-extra"
+    ],
+    "specification": "自分の手番と別に精神力-3チェックに成功すると、裏になったキャラクターカードを自分だけ見られる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p04-r1c1",
+    "characterName": "凍気のアイエル",
+    "id": "c2-p04-r1c1-ab04",
+    "name": "双子",
+    "timing": [
+      "own-turn-action"
+    ],
+    "specification": "自分の手番として、キャラクターカードを表にしたフレイアードと手札をすべて交換できる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p04-r2c1",
+    "characterName": "占星術師のアルセイル",
+    "id": "c2-p04-r2c1-ab01",
+    "name": "影",
+    "timing": [
+      "own-turn-extra"
+    ],
+    "specification": "自分の手番の時、手番と別に「本当の力」を使用する前の精神力値で精神力-1チェックを行い、成功すると表になった自分のキャラクターカードを裏にできる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p04-r2c1",
+    "characterName": "占星術師のアルセイル",
+    "id": "c2-p04-r2c1-ab02",
+    "name": "占星",
+    "timing": [
+      "own-turn-extra"
+    ],
+    "specification": "自分の手番の時、手番と別に精神力チェックに成功すると、任意の一人のキャラクターの手札を全て見て、任意の一枚の手札を捨てさせられる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p04-r2c1",
+    "characterName": "占星術師のアルセイル",
+    "id": "c2-p04-r2c1-ab03",
+    "name": "本当の力",
+    "timing": [
+      "voluntary-reveal"
+    ],
+    "specification": "キャラクターカードが裏の時、自ら表に返して正体を明らかにすると、自分の手番または攻撃者の手番が終わるまで、精神力を12にできる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p05-r1c1",
+    "characterName": "邪祭ウーノス",
+    "id": "c2-p05-r1c1-ab01",
+    "name": "策謀の主",
+    "timing": [
+      "own-turn-extra"
+    ],
+    "specification": "自分の手番と別に精神力-1チェックに成功すると、指定したキャラクターカードを表にできる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p06-r2c1",
+    "characterName": "爆炎のフレイアード",
+    "id": "c2-p06-r2c1-ab04",
+    "name": "双子",
+    "timing": [
+      "own-turn-action"
+    ],
+    "specification": "自分の手番として、キャラクターカードを表にしたアイエルと手札をすべて交換できる。",
+    "activation": "optional-except-explicit-restrictions"
+  },
+  {
+    "characterId": "c2-p07-r1c1",
+    "characterName": "聖騎士ランスロット2",
+    "id": "c2-p07-r1c1-ab03",
+    "name": "成長",
+    "timing": [
+      "draw"
+    ],
+    "specification": "自分の手番の時、手札を1枚でなく2枚補充できる。",
+    "activation": "optional-except-explicit-restrictions"
+  }
+]

@@ -1,0 +1,174 @@
+[
+  {
+    "characterId": "c2-p01-r1c1",
+    "characterName": "白魔術師シェリム",
+    "ability": {
+      "id": "c2-p01-r1c1-ab03",
+      "name": "大魔術師",
+      "timing": [
+        "use-validation"
+      ],
+      "specification": "魔法技は詠唱不要。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p01-r1c1",
+    "characterName": "白魔術師シェリム",
+    "ability": {
+      "id": "c2-p01-r1c1-ab04",
+      "name": "強化詠唱",
+      "timing": [
+        "attack-declaration"
+      ],
+      "specification": "キャラクターカードを表にしていれば、詠唱状態にした魔法技を任意の者全てに与えられる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p01-r1c2",
+    "characterName": "大神官ジル",
+    "ability": {
+      "id": "c2-p01-r1c2-ab01",
+      "name": "気闘術の奥義",
+      "timing": [
+        "counter-declaration"
+      ],
+      "specification": "精神力チェックに成功すれば、格闘技を反撃技に変えられる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p01-r1c2",
+    "characterName": "大神官ジル",
+    "ability": {
+      "id": "c2-p01-r1c2-ab03",
+      "name": "拳圧",
+      "timing": [
+        "attack-declaration"
+      ],
+      "specification": "近距離の格闘技を遠距離技にできる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p01-r2c1",
+    "characterName": "侍大将のシン",
+    "ability": {
+      "id": "c2-p01-r2c1-ab01",
+      "name": "ツバメ返し",
+      "timing": [
+        "counter-declaration"
+      ],
+      "specification": "精神力チェックに成功すれば、剣技を反撃技に変えられる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p01-r2c1",
+    "characterName": "侍大将のシン",
+    "ability": {
+      "id": "c2-p01-r2c1-ab02",
+      "name": "居合抜き",
+      "timing": [
+        "use-validation"
+      ],
+      "specification": "剣技なら精神力チェックに成功すれば、詠唱せずに使用可能。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p02-r1c2",
+    "characterName": "妖精王フューリー",
+    "ability": {
+      "id": "c2-p02-r1c2-ab04",
+      "name": "精霊を統べるもの",
+      "timing": [
+        "attack-modifiers",
+        "use-validation"
+      ],
+      "specification": "地・風・水・炎の魔法技は効果Lv+1、詠唱不要。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p05-r2c1",
+    "characterName": "黒騎士ガーウィン",
+    "ability": {
+      "id": "c2-p05-r2c1-ab03",
+      "name": "剣匠",
+      "timing": [
+        "attack-modifiers"
+      ],
+      "specification": "近距離の戦士技を遠距離技にできる。また剣技の効果Lv+1、ダメージ+2。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p05-r2c1",
+    "characterName": "黒騎士ガーウィン",
+    "ability": {
+      "id": "c2-p05-r2c1-ab04",
+      "name": "衝撃波",
+      "timing": [
+        "attack-declaration"
+      ],
+      "specification": "キャラクターカードを表にしていれば、詠唱状態にした剣技を任意の者全てに与えられる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p05-r2c2",
+    "characterName": "魔導王ガイナス",
+    "ability": {
+      "id": "c2-p05-r2c2-ab03",
+      "name": "実力",
+      "timing": [
+        "use-validation"
+      ],
+      "specification": "すべての技、詠唱技不要。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p05-r2c2",
+    "characterName": "魔導王ガイナス",
+    "ability": {
+      "id": "c2-p05-r2c2-ab04",
+      "name": "黒龍の剣",
+      "timing": [
+        "attack-declaration"
+      ],
+      "specification": "キャラクターカードを表にしていれば、使用Lv6以上の剣技を任意の者全てに与えられる。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p06-r2c2",
+    "characterName": "餓狼ヨーツルム",
+    "ability": {
+      "id": "c2-p06-r2c2-ab02",
+      "name": "野獣",
+      "timing": [
+        "use-validation",
+        "attack-modifiers"
+      ],
+      "specification": "格闘技をチェック不要で使用でき、効果Lvとダメージをそれぞれ+1d6。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p07-r1c2",
+    "characterName": "破壊神ヴァンミール",
+    "ability": {
+      "id": "c2-p07-r1c2-ab02",
+      "name": "破壊の神",
+      "timing": [
+        "use-validation",
+        "attack-modifiers"
+      ],
+      "specification": "すべての技、詠唱不要。戦士技を任意のもの全てに与えられ、ダメージ倍。魔法技を任意のもの全てに与えられ、効果Lvを10にする。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  }
+]
