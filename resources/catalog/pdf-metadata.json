@@ -1,0 +1,26 @@
+[
+  {
+    "file": "Summary.pdf",
+    "edition": "second",
+    "pages": 1,
+    "text_quality": "readable-layout-columns-need-visual-review"
+  },
+  {
+    "file": "MadoRule.pdf",
+    "edition": "second",
+    "pages": 14,
+    "text_quality": "readable-layout-columns-need-visual-review"
+  },
+  {
+    "file": "CardAll.pdf",
+    "edition": "second",
+    "pages": 25,
+    "text_quality": "garbled-font-mapping-use-rendered-pages"
+  },
+  {
+    "file": "Character(A4).pdf",
+    "edition": "second",
+    "pages": 7,
+    "text_quality": "garbled-font-mapping-use-rendered-pages"
+  }
+]

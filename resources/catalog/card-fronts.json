@@ -1,0 +1,2510 @@
+[
+  {
+    "asset_id": "c431b11fa497a39cd77ffa29c39637ee8c5550e2b789f453d6daaa4da03fa067",
+    "front_image": "c431b11fa497a39cd77ffa29c39637ee8c5550e2b789f453d6daaa4da03fa067.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d0b9808a823889671b9cf6ae1edd34b1a2ecf354c1b7f91d91ac504e249d0d76",
+    "front_image": "d0b9808a823889671b9cf6ae1edd34b1a2ecf354c1b7f91d91ac504e249d0d76.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e5b64818db3af775994c50685cc2a8150014e60c795241f712f4281768db535d",
+    "front_image": "e5b64818db3af775994c50685cc2a8150014e60c795241f712f4281768db535d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "b1a0880a5de60ac9ed95c520fda3d93d60a1cb60b86c264043d62d739c39d793",
+    "front_image": "b1a0880a5de60ac9ed95c520fda3d93d60a1cb60b86c264043d62d739c39d793.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7bdec74ad3e49f90b7ac9e0cabfdc78c252d564087c827f5277362eac7268df6",
+    "front_image": "7bdec74ad3e49f90b7ac9e0cabfdc78c252d564087c827f5277362eac7268df6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "9df9167374a0205e9e84ece5e54d2491a71944b3aba9ac1da08fe6054252e49e",
+    "front_image": "9df9167374a0205e9e84ece5e54d2491a71944b3aba9ac1da08fe6054252e49e.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "140060a30c1b6fa25fc0913a10a6df5235aa8505b6a54591c144bd28efe0fb7d",
+    "front_image": "140060a30c1b6fa25fc0913a10a6df5235aa8505b6a54591c144bd28efe0fb7d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fed7e3b1794647cd6cbaf433716ea0d7c8fc3000c8b76e657a3bec88d20a4f93",
+    "front_image": "fed7e3b1794647cd6cbaf433716ea0d7c8fc3000c8b76e657a3bec88d20a4f93.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "efae0a30c5113833ff4ecf01b90c8055a33496cf0c5aa06391fff26faf997329",
+    "front_image": "efae0a30c5113833ff4ecf01b90c8055a33496cf0c5aa06391fff26faf997329.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "89df18ab3edc8f67d67f8cd9fd9bf62257edbb352f303deeb9f12b2a684278c6",
+    "front_image": "89df18ab3edc8f67d67f8cd9fd9bf62257edbb352f303deeb9f12b2a684278c6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d894e891f9912cd246769db968516edad81ba159ed39bb933c4cafee449eba5b",
+    "front_image": "d894e891f9912cd246769db968516edad81ba159ed39bb933c4cafee449eba5b.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cb31ed868fc0f1fe4f14f6a42839cd4fc59ce09e66ea61148fbd442fe795e0c9",
+    "front_image": "cb31ed868fc0f1fe4f14f6a42839cd4fc59ce09e66ea61148fbd442fe795e0c9.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a6cbdf1c5b941ca607a09a4d7076104e05493472bad557e44c2c10fb8669f95d",
+    "front_image": "a6cbdf1c5b941ca607a09a4d7076104e05493472bad557e44c2c10fb8669f95d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "78e36acdcc73bcd24f3b155de1d00654ecb78e2b3db87f2f6dc57d218a276008",
+    "front_image": "78e36acdcc73bcd24f3b155de1d00654ecb78e2b3db87f2f6dc57d218a276008.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "4fc826769b290865b4ec626e743d8f6d2b0cd4fa336528d3807d89303083d6a3",
+    "front_image": "4fc826769b290865b4ec626e743d8f6d2b0cd4fa336528d3807d89303083d6a3.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2b168f1c86251502ad3b80a6a812231acafa48cfe3f8274dd3d19f678ec53dd6",
+    "front_image": "2b168f1c86251502ad3b80a6a812231acafa48cfe3f8274dd3d19f678ec53dd6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e74adeaae4c12df38207b093ded6888a3d1267809deda050e4b5447134365f0b",
+    "front_image": "e74adeaae4c12df38207b093ded6888a3d1267809deda050e4b5447134365f0b.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e97f19eded59ab0d855ccda3a68bc2dc7b88ef4b6c693d45db4fae98d6052f0f",
+    "front_image": "e97f19eded59ab0d855ccda3a68bc2dc7b88ef4b6c693d45db4fae98d6052f0f.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a7bf68a145fde5b5c5104ee9464b45081ce69f963178e95434f36c42037b8274",
+    "front_image": "a7bf68a145fde5b5c5104ee9464b45081ce69f963178e95434f36c42037b8274.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "9034e10403065d0b5a9229706bf18a043ab3d0539b90e956f812467f1982b9c5",
+    "front_image": "9034e10403065d0b5a9229706bf18a043ab3d0539b90e956f812467f1982b9c5.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "f585be308bd58b0f8039a8106f9b761ac2ad23b070a5c051c79667d5e179c927",
+    "front_image": "f585be308bd58b0f8039a8106f9b761ac2ad23b070a5c051c79667d5e179c927.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "8271f32b5295d148bb7d7f77b9354f9c7003e848fcec33a5a239cd200e46e3bc",
+    "front_image": "8271f32b5295d148bb7d7f77b9354f9c7003e848fcec33a5a239cd200e46e3bc.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "4252232fed2acff4ff20314979036823b9d88ba0a852d152471dacd37e502616",
+    "front_image": "4252232fed2acff4ff20314979036823b9d88ba0a852d152471dacd37e502616.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "3e616a3494afb23953b0409de2c4c31855d52fcf431eb388e84bdcb178bd536f",
+    "front_image": "3e616a3494afb23953b0409de2c4c31855d52fcf431eb388e84bdcb178bd536f.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-1"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "ddfd1fe3f1c1cf9ac4f537c71f47c5383729663ad766740267475d76b8af2103",
+    "front_image": "ddfd1fe3f1c1cf9ac4f537c71f47c5383729663ad766740267475d76b8af2103.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "889af0d8263776d91c2909924f614ff8cfe8e8188ff3caa3968e53db3dbe33b0",
+    "front_image": "889af0d8263776d91c2909924f614ff8cfe8e8188ff3caa3968e53db3dbe33b0.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "731a7d212c77fd295f92a90d47176a3ed39ab93228c5f14fb3a8389752074ac1",
+    "front_image": "731a7d212c77fd295f92a90d47176a3ed39ab93228c5f14fb3a8389752074ac1.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "69d65044df48869da32d1c9510869e9a058091e89a45d9689b14c3941952074d",
+    "front_image": "69d65044df48869da32d1c9510869e9a058091e89a45d9689b14c3941952074d.jpg",
+    "copies": 4,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "bdaf0fcb1c8e86ca15ac1a50b7558f5c1c788a207413e832294abd03a103024a",
+    "front_image": "bdaf0fcb1c8e86ca15ac1a50b7558f5c1c788a207413e832294abd03a103024a.jpg",
+    "copies": 5,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "bcb3f6326d25d9ee9c4f4c35ecae2b6911fc11bcef8c48087f212485cfbd8ac1",
+    "front_image": "bcb3f6326d25d9ee9c4f4c35ecae2b6911fc11bcef8c48087f212485cfbd8ac1.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "ec535736b289aa1e201075073e462900123fb67658e843e697100a1898596740",
+    "front_image": "ec535736b289aa1e201075073e462900123fb67658e843e697100a1898596740.jpg",
+    "copies": 4,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "47ddf6856b53727d1af70260d247aa95462e0c28782848e847ca527c2cfefa41",
+    "front_image": "47ddf6856b53727d1af70260d247aa95462e0c28782848e847ca527c2cfefa41.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "c166c4f87032a8b5b81b853fbeba0727fe0118c27b4ea72a67a31b42f96c0b56",
+    "front_image": "c166c4f87032a8b5b81b853fbeba0727fe0118c27b4ea72a67a31b42f96c0b56.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7e10c25fc1ae118eae2c6842a0eff09b14185ccea7248580538b611c7b3df369",
+    "front_image": "7e10c25fc1ae118eae2c6842a0eff09b14185ccea7248580538b611c7b3df369.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "14d3f2069976ba8f41980e2d84a9db777284abf295c8ecc1aeb39ed9d0148a22",
+    "front_image": "14d3f2069976ba8f41980e2d84a9db777284abf295c8ecc1aeb39ed9d0148a22.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "028270d4c52d9307d18c465f9e21ea92cbdab6b9e0bf60c10a1c7a751c98c201",
+    "front_image": "028270d4c52d9307d18c465f9e21ea92cbdab6b9e0bf60c10a1c7a751c98c201.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "ab3ebafd01fb479cc641d4eb53708c4058bd93d20e512d3f950d0aafad484d1c",
+    "front_image": "ab3ebafd01fb479cc641d4eb53708c4058bd93d20e512d3f950d0aafad484d1c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cb8321e105037eb27ef63ff5e264e8e0371af23460d1bbe15cdb0c35cb8c9fbd",
+    "front_image": "cb8321e105037eb27ef63ff5e264e8e0371af23460d1bbe15cdb0c35cb8c9fbd.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cf98c9c7604e877c7ecfb5700715810c7d88da80d9c7bf291e6c57d6dd06974c",
+    "front_image": "cf98c9c7604e877c7ecfb5700715810c7d88da80d9c7bf291e6c57d6dd06974c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "37028030d7d55adaeb8ff99b7292498e6645b934ca778224ac34e03297bd11cb",
+    "front_image": "37028030d7d55adaeb8ff99b7292498e6645b934ca778224ac34e03297bd11cb.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "8e571a5ffb55de382374ca50ee2319e4c2c87c4f8fbc37894c9b52df2e7cacba",
+    "front_image": "8e571a5ffb55de382374ca50ee2319e4c2c87c4f8fbc37894c9b52df2e7cacba.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "0ac0747574f9567a4151c208f857a0dd126e939991fcba1c8aaf22df3339e49d",
+    "front_image": "0ac0747574f9567a4151c208f857a0dd126e939991fcba1c8aaf22df3339e49d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2039512545c7034aac869bdf96afbcaed8c27506ba90b9f76f455182716655a1",
+    "front_image": "2039512545c7034aac869bdf96afbcaed8c27506ba90b9f76f455182716655a1.jpg",
+    "copies": 15,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "ba607cf256e06aeafd2597488d8e2cdbcbd0f921c8121ba67a67ae2026ce5d8c",
+    "front_image": "ba607cf256e06aeafd2597488d8e2cdbcbd0f921c8121ba67a67ae2026ce5d8c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "bbe336e3b93b172078928746731d19a12a290ab331ca338687142a94728e261d",
+    "front_image": "bbe336e3b93b172078928746731d19a12a290ab331ca338687142a94728e261d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "28a7cb54f87df9ff8b894818bdd9af5725a58ad74b51a4c28308227c728cca32",
+    "front_image": "28a7cb54f87df9ff8b894818bdd9af5725a58ad74b51a4c28308227c728cca32.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "1cfd4a3a909ffb3450e1d1ea5783e196644b43b8b1d4aead5e861f16ad0432ac",
+    "front_image": "1cfd4a3a909ffb3450e1d1ea5783e196644b43b8b1d4aead5e861f16ad0432ac.jpg",
+    "copies": 2,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "af5d07d7fc77c086ea1b5595452e91e621ceb2d57e4306ea56e04f6a2c8c4760",
+    "front_image": "af5d07d7fc77c086ea1b5595452e91e621ceb2d57e4306ea56e04f6a2c8c4760.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d1dd1c81fe9ae22dda2d57dbeb11557e1e193c7b43b92ad3f766f7e2e2a83a22",
+    "front_image": "d1dd1c81fe9ae22dda2d57dbeb11557e1e193c7b43b92ad3f766f7e2e2a83a22.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "63b8e894d5b46f436b88522902ba15f61e879a92f49892572b00f0a1ecf4c8a0",
+    "front_image": "63b8e894d5b46f436b88522902ba15f61e879a92f49892572b00f0a1ecf4c8a0.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "3ae42d6e87891377fdee1f3662db35d22fd28cb1bedcab933e5a208638f07236",
+    "front_image": "3ae42d6e87891377fdee1f3662db35d22fd28cb1bedcab933e5a208638f07236.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "b4a28d744f8556521b1f7e035bcf094e774272bf3a77d29d24bb4c158c20d5eb",
+    "front_image": "b4a28d744f8556521b1f7e035bcf094e774272bf3a77d29d24bb4c158c20d5eb.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "45b1c829f98ce5bcdd4f6ff0520f8339ce0b728ec3d4d1c222ddf733ab219199",
+    "front_image": "45b1c829f98ce5bcdd4f6ff0520f8339ce0b728ec3d4d1c222ddf733ab219199.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d2f564fae2c40400243d5fe79881b2fb3db8d504901cda85fd314fa2d7bb2333",
+    "front_image": "d2f564fae2c40400243d5fe79881b2fb3db8d504901cda85fd314fa2d7bb2333.jpg",
+    "copies": 2,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e8debc08b33ad147519de36d203c5148e0ad224d0c0f82fdce3df6750ef4211d",
+    "front_image": "e8debc08b33ad147519de36d203c5148e0ad224d0c0f82fdce3df6750ef4211d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "91be55df6d36e6120a4b944bc924a949fcb811f1c81448a4c68b083fd9a8a681",
+    "front_image": "91be55df6d36e6120a4b944bc924a949fcb811f1c81448a4c68b083fd9a8a681.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "75fca8b8060e5ce2ad9be0ae848ff49e853439acdd96591561c6df58b3b637c2",
+    "front_image": "75fca8b8060e5ce2ad9be0ae848ff49e853439acdd96591561c6df58b3b637c2.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d3d2ff8fd84bdf1cda475c9516e590c7fc08721d21e6aef742bd5587e1d8d439",
+    "front_image": "d3d2ff8fd84bdf1cda475c9516e590c7fc08721d21e6aef742bd5587e1d8d439.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7448e43e3608bb78d579c90c2b92dcd14370370a5a27057cf2552531ce272d97",
+    "front_image": "7448e43e3608bb78d579c90c2b92dcd14370370a5a27057cf2552531ce272d97.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d79fa89e6e4c17be314d93e1d3f6515fd35b4aa1fdf7470ffa1400e11a159d21",
+    "front_image": "d79fa89e6e4c17be314d93e1d3f6515fd35b4aa1fdf7470ffa1400e11a159d21.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "c4ee5917a3c239f42729c50974a4b1d0258be556a237f1ac7989f1c2889f8534",
+    "front_image": "c4ee5917a3c239f42729c50974a4b1d0258be556a237f1ac7989f1c2889f8534.jpg",
+    "copies": 5,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cc33e96a08257a7cdaac59bc25f745116c065a8228807478247d68ed82fb0967",
+    "front_image": "cc33e96a08257a7cdaac59bc25f745116c065a8228807478247d68ed82fb0967.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "66699b28627118a99e536e5f2bb9f3256c0dbf1f2b83f48df1a784d60d411918",
+    "front_image": "66699b28627118a99e536e5f2bb9f3256c0dbf1f2b83f48df1a784d60d411918.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "60e241ff1857067886eb9d8c283241cbb82e182deeb7ea2fbe616bedc1441c4f",
+    "front_image": "60e241ff1857067886eb9d8c283241cbb82e182deeb7ea2fbe616bedc1441c4f.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "71530a2abd6ef73f7fe17dd9f4c5c2b6c8e0c5b67688e392ab20fed1849faa0f",
+    "front_image": "71530a2abd6ef73f7fe17dd9f4c5c2b6c8e0c5b67688e392ab20fed1849faa0f.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "28a38ebd3d438d97ac83b976f864491fd4ed45a16e76798b7a7e588e450ff3d9",
+    "front_image": "28a38ebd3d438d97ac83b976f864491fd4ed45a16e76798b7a7e588e450ff3d9.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "3bf59a4ef577ba6d152ff8cc316a2f4aaa8f02198301f1e1fa08c7b7e47409c2",
+    "front_image": "3bf59a4ef577ba6d152ff8cc316a2f4aaa8f02198301f1e1fa08c7b7e47409c2.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a18a43768a69e6d8ff8fb6b5865f2ceff80a01425cd5e344410812a67733c663",
+    "front_image": "a18a43768a69e6d8ff8fb6b5865f2ceff80a01425cd5e344410812a67733c663.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fd254da02fba20596a848b1e72970bb3eaf43a50458f6547f21c9b952d362c9b",
+    "front_image": "fd254da02fba20596a848b1e72970bb3eaf43a50458f6547f21c9b952d362c9b.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "1d57141aa038820c0b6264187fa184cbb87998c44a58af2eac6d120f8fb90afd",
+    "front_image": "1d57141aa038820c0b6264187fa184cbb87998c44a58af2eac6d120f8fb90afd.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "af3ec4b80bcab9db0ec6f9a05e6f28ea0869cfa84bbc4b59c4175c2e6901fd97",
+    "front_image": "af3ec4b80bcab9db0ec6f9a05e6f28ea0869cfa84bbc4b59c4175c2e6901fd97.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "654f4ff87d6295003407c06d9cce34b749ede8fa40d1789407a10c5ff5c71407",
+    "front_image": "654f4ff87d6295003407c06d9cce34b749ede8fa40d1789407a10c5ff5c71407.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "06704e9cd3453ae3a37daa8d905ec86ad17625f4f43003e79b325a722113794a",
+    "front_image": "06704e9cd3453ae3a37daa8d905ec86ad17625f4f43003e79b325a722113794a.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a773dffdf7ec0ce27082eea35e4eb43e6c3fd6beb280f56f3b201b6d45397869",
+    "front_image": "a773dffdf7ec0ce27082eea35e4eb43e6c3fd6beb280f56f3b201b6d45397869.jpg",
+    "copies": 2,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "55345fa80a86a4100b1dfc88bee1580bc95d59c4c9b72f82743cce8656dadc44",
+    "front_image": "55345fa80a86a4100b1dfc88bee1580bc95d59c4c9b72f82743cce8656dadc44.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "6c67eba6ed079cdbc18c8ddf78f4391961bc90b42cc760110391ca427ff575b2",
+    "front_image": "6c67eba6ed079cdbc18c8ddf78f4391961bc90b42cc760110391ca427ff575b2.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "ebc26fc1c84c55cd316630a0a362482e702ff4269005e8cb425d58c23c09cfce",
+    "front_image": "ebc26fc1c84c55cd316630a0a362482e702ff4269005e8cb425d58c23c09cfce.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "f108dcba3ebed291dc6be62361e1fbbc7e996d9fe23c5f6b0b8a3e58e7e441ec",
+    "front_image": "f108dcba3ebed291dc6be62361e1fbbc7e996d9fe23c5f6b0b8a3e58e7e441ec.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "543590789b50c3e4240695269c833050177d2c6f0a2206d889ad114437470810",
+    "front_image": "543590789b50c3e4240695269c833050177d2c6f0a2206d889ad114437470810.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "41f7d00afaf52f657411f0efe9226c3d1c2023233d2d365bbe46267d5f0515cd",
+    "front_image": "41f7d00afaf52f657411f0efe9226c3d1c2023233d2d365bbe46267d5f0515cd.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "0d02de22c74f0d6937e36ca863c168d62deaed06b020c47251ebfdd4fd4b1299",
+    "front_image": "0d02de22c74f0d6937e36ca863c168d62deaed06b020c47251ebfdd4fd4b1299.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "62bc738bd700156dc927ef599b872d092fcc9e3de998668dfb99c051b7e6036b",
+    "front_image": "62bc738bd700156dc927ef599b872d092fcc9e3de998668dfb99c051b7e6036b.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "301e8483db65c92bdcd8c1936fa4d21748964cc5f2199fa02cdc535742fa9608",
+    "front_image": "301e8483db65c92bdcd8c1936fa4d21748964cc5f2199fa02cdc535742fa9608.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "570af24ca836cdcfd192968c30e76d6a178f528d5519e2483f7cd7272f77c19d",
+    "front_image": "570af24ca836cdcfd192968c30e76d6a178f528d5519e2483f7cd7272f77c19d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "dbf8d5ce42efe8e55147da6a122042a62ddaa98313896ef064ffb03fe9ea1c91",
+    "front_image": "dbf8d5ce42efe8e55147da6a122042a62ddaa98313896ef064ffb03fe9ea1c91.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e3e3ca84152ed14208e91db28bee6f9e32ee27c4cd196456ad5fb514ad268745",
+    "front_image": "e3e3ca84152ed14208e91db28bee6f9e32ee27c4cd196456ad5fb514ad268745.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cdd95896d422b1887dad5359284486f868093d4f8725387a18d3b296f1948727",
+    "front_image": "cdd95896d422b1887dad5359284486f868093d4f8725387a18d3b296f1948727.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "eb3395ee5f7da25b9dbb89d7701b167e93408ac9476cdf4fcb343b8365444607",
+    "front_image": "eb3395ee5f7da25b9dbb89d7701b167e93408ac9476cdf4fcb343b8365444607.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "eddafa8111859af79622fb60fd4593ce36edc47bafa3045f49e1d74f37885380",
+    "front_image": "eddafa8111859af79622fb60fd4593ce36edc47bafa3045f49e1d74f37885380.jpg",
+    "copies": 3,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "0129226cfe5336021b6eb8af54f2628540c548a1b016e5bdde21fcc2691f8e01",
+    "front_image": "0129226cfe5336021b6eb8af54f2628540c548a1b016e5bdde21fcc2691f8e01.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "9c09403331713f30f759cc91bd6bbd61b43d363d62913aaee23191ab08d0735d",
+    "front_image": "9c09403331713f30f759cc91bd6bbd61b43d363d62913aaee23191ab08d0735d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "3b4f2057d98af6857dfa13e6dcbfbabe5180a59d69155ea0f2926f7a7329e978",
+    "front_image": "3b4f2057d98af6857dfa13e6dcbfbabe5180a59d69155ea0f2926f7a7329e978.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d58981c1ed866438a02b2d66126b7b8c8eaee9483634ec2ccd26d52abd5734f6",
+    "front_image": "d58981c1ed866438a02b2d66126b7b8c8eaee9483634ec2ccd26d52abd5734f6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "c5903747d20cda3741b824177cea79771c3bf43cd3df6c34a6bd246923f40237",
+    "front_image": "c5903747d20cda3741b824177cea79771c3bf43cd3df6c34a6bd246923f40237.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d3462e5e2c5439f8da3539fb59d3bc3b9065a9a338659bcd6df9feba791eec49",
+    "front_image": "d3462e5e2c5439f8da3539fb59d3bc3b9065a9a338659bcd6df9feba791eec49.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fb8ccea1d75f4a75d381d40492ec6531c882779f10fcfe963d37a7a9f500b0e7",
+    "front_image": "fb8ccea1d75f4a75d381d40492ec6531c882779f10fcfe963d37a7a9f500b0e7.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "618b58ee637e7796ff782f56fa97da08865ccfeff4c0c0d74c3f0ba6918c20e5",
+    "front_image": "618b58ee637e7796ff782f56fa97da08865ccfeff4c0c0d74c3f0ba6918c20e5.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e6fd690b0547c7802b132663f680412ead8bead47803233cf851a2beecc3a182",
+    "front_image": "e6fd690b0547c7802b132663f680412ead8bead47803233cf851a2beecc3a182.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7dcb3948271676ec20f0302bf91a9a8c85f4cde35d66b80a77305d21d68718f4",
+    "front_image": "7dcb3948271676ec20f0302bf91a9a8c85f4cde35d66b80a77305d21d68718f4.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "eef667a3e697a9b286a792fdb24cd5279594cf70d96dc4972cec57619e8172ff",
+    "front_image": "eef667a3e697a9b286a792fdb24cd5279594cf70d96dc4972cec57619e8172ff.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "bd83a5768babe2796568a7d4bc48e858c885c26a03d3f2e100a2649016ad8e3a",
+    "front_image": "bd83a5768babe2796568a7d4bc48e858c885c26a03d3f2e100a2649016ad8e3a.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "03f220af2de238c993712e19ed9e989eac11d8be24a983124df74fac6723f6a7",
+    "front_image": "03f220af2de238c993712e19ed9e989eac11d8be24a983124df74fac6723f6a7.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d9990a5df0bbbe3780efd1fa39ecb24bf329f1f627e9fdd6f2777a7924be122e",
+    "front_image": "d9990a5df0bbbe3780efd1fa39ecb24bf329f1f627e9fdd6f2777a7924be122e.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "077d0a26b31889b099b1352efa61b5e8b37d2d6ab3509ca68d23e4de2167c968",
+    "front_image": "077d0a26b31889b099b1352efa61b5e8b37d2d6ab3509ca68d23e4de2167c968.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d474a67f8b3e0bcaa05aded2c6f25d036b3e81b28301f83c049cb1933c712d2f",
+    "front_image": "d474a67f8b3e0bcaa05aded2c6f25d036b3e81b28301f83c049cb1933c712d2f.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d6e28634411c97610f260910338e74496beefbde856b2b92fcbafeb25c0c1ac1",
+    "front_image": "d6e28634411c97610f260910338e74496beefbde856b2b92fcbafeb25c0c1ac1.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "61e9e340c320fe7972889262624451efb6b6b27b9efd497e8d7de4c6e5e5ddeb",
+    "front_image": "61e9e340c320fe7972889262624451efb6b6b27b9efd497e8d7de4c6e5e5ddeb.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "f63f66296c549d48bca8511dc49dc0d141e9b45cf6696275646102b68a927469",
+    "front_image": "f63f66296c549d48bca8511dc49dc0d141e9b45cf6696275646102b68a927469.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "41ed6415d053befe88f273c91b43ad59ea021ee1d85e2927a9c139cbf243405d",
+    "front_image": "41ed6415d053befe88f273c91b43ad59ea021ee1d85e2927a9c139cbf243405d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "45b015b15d9641b2b8027f77e64020133b8eef755a77e279f27aea51b34ab298",
+    "front_image": "45b015b15d9641b2b8027f77e64020133b8eef755a77e279f27aea51b34ab298.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "c92fc42370ffadc8970693466a36f7608844292cbb48a1406ac70dba24483770",
+    "front_image": "c92fc42370ffadc8970693466a36f7608844292cbb48a1406ac70dba24483770.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "27d7bd01bc1cb501184c71daeb1e1c5194f8bebb4edab7ed8ef85be265c17192",
+    "front_image": "27d7bd01bc1cb501184c71daeb1e1c5194f8bebb4edab7ed8ef85be265c17192.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "6c50d70ec94f4dcee59e486b9a22abc42f5220d9c619909c7475e3983f6a6ac6",
+    "front_image": "6c50d70ec94f4dcee59e486b9a22abc42f5220d9c619909c7475e3983f6a6ac6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a1602a74c8f4db6347a672ef6841bcc0b1cc6f702d24cd3f741f85f292e02e4a",
+    "front_image": "a1602a74c8f4db6347a672ef6841bcc0b1cc6f702d24cd3f741f85f292e02e4a.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2a8aa12d12442e5aa6acb66cd41de2159e6915c58db29b47bcc7edf893d0f7da",
+    "front_image": "2a8aa12d12442e5aa6acb66cd41de2159e6915c58db29b47bcc7edf893d0f7da.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "b3aa4c83a790d772a19b78e0da9eee7f8c2bea12e2af6732673ff0481627b0f5",
+    "front_image": "b3aa4c83a790d772a19b78e0da9eee7f8c2bea12e2af6732673ff0481627b0f5.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "ebfd73f101d498d3ee87ec347ac2bbc1ead22d29cbe49aaca03490a8c7ff7973",
+    "front_image": "ebfd73f101d498d3ee87ec347ac2bbc1ead22d29cbe49aaca03490a8c7ff7973.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "75c2d649d9ad01449f6b3cea14790e6eb774c2863a2569f53e26f5d0cdeea70b",
+    "front_image": "75c2d649d9ad01449f6b3cea14790e6eb774c2863a2569f53e26f5d0cdeea70b.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "ea46649b241271f51398100620061d9aa23a74c790083e266254096b7abdb481",
+    "front_image": "ea46649b241271f51398100620061d9aa23a74c790083e266254096b7abdb481.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e85495759891bbfcc04bcd52da05752d96ff2585b5eeb407271ef9e1a588ebc9",
+    "front_image": "e85495759891bbfcc04bcd52da05752d96ff2585b5eeb407271ef9e1a588ebc9.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "347de01e7333641ae29d6210642757fc7ed8343d4d2a8d86c3abb97f2cf7e6db",
+    "front_image": "347de01e7333641ae29d6210642757fc7ed8343d4d2a8d86c3abb97f2cf7e6db.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "16a46e9f3076a018425226ac4f23f9f3bfd274f0fc6d158cefcb6fd55a154bf8",
+    "front_image": "16a46e9f3076a018425226ac4f23f9f3bfd274f0fc6d158cefcb6fd55a154bf8.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "67668d7ebecc3d051caef12174731d0564b839cb575b4a615b1a3bf5100a6b78",
+    "front_image": "67668d7ebecc3d051caef12174731d0564b839cb575b4a615b1a3bf5100a6b78.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "c9927c0c226ae10da5d07a2d4c396972f042ec90a53c575dc94be3cd0adc558c",
+    "front_image": "c9927c0c226ae10da5d07a2d4c396972f042ec90a53c575dc94be3cd0adc558c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "dfadf527059d50cedd13f6cf6f72e306988c0aa3c9be0b5e943b6c5eec5a4ada",
+    "front_image": "dfadf527059d50cedd13f6cf6f72e306988c0aa3c9be0b5e943b6c5eec5a4ada.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "62dd09c949e7884b0a3ed0429f7c4ccfae195b3d6e6714e420967e8971b4b658",
+    "front_image": "62dd09c949e7884b0a3ed0429f7c4ccfae195b3d6e6714e420967e8971b4b658.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e71495e56903eb13e2b737f73d4e6a2e698da4b045821f10e1c2c720954585e8",
+    "front_image": "e71495e56903eb13e2b737f73d4e6a2e698da4b045821f10e1c2c720954585e8.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cdb1bcf5ee65cd5eb215e81e8d6e6de10ad09757417bfa2160248e91b98be2b8",
+    "front_image": "cdb1bcf5ee65cd5eb215e81e8d6e6de10ad09757417bfa2160248e91b98be2b8.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "6a6ee5e8096299f9ef9327fad1ab2ddfab2972b088f924eb829dcb156ddd96f0",
+    "front_image": "6a6ee5e8096299f9ef9327fad1ab2ddfab2972b088f924eb829dcb156ddd96f0.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "82c53c22a1cc7dd7afcf34c20fea3d002271118a91ea5e5bdd6bea80d30d5f38",
+    "front_image": "82c53c22a1cc7dd7afcf34c20fea3d002271118a91ea5e5bdd6bea80d30d5f38.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d05880d8331107a4f0e6c696dcf1a933bf81d711e13d9f8a9707a49a7fc95120",
+    "front_image": "d05880d8331107a4f0e6c696dcf1a933bf81d711e13d9f8a9707a49a7fc95120.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "8fbb58f0b2c1d31e2b9053d8765020ea895ed5153b461a7c1b640258637b55f6",
+    "front_image": "8fbb58f0b2c1d31e2b9053d8765020ea895ed5153b461a7c1b640258637b55f6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2136b82b1bb94bf655d3c61f5f85eac62823899b2ac911ff90665a7ea1819e6f",
+    "front_image": "2136b82b1bb94bf655d3c61f5f85eac62823899b2ac911ff90665a7ea1819e6f.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "c64fba26084d71cf6b3cea32fbe9a405388a13515f689ff1c4e38522ac6a98d3",
+    "front_image": "c64fba26084d71cf6b3cea32fbe9a405388a13515f689ff1c4e38522ac6a98d3.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d1c9dea2e0800578ad14e3bd6869d3f1239e54dc2aef626459e726bcc96ba5b8",
+    "front_image": "d1c9dea2e0800578ad14e3bd6869d3f1239e54dc2aef626459e726bcc96ba5b8.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "bfccf24175e3e6a7495aef556bd116bd397e2105152e4a050fccd2e5a3c1d963",
+    "front_image": "bfccf24175e3e6a7495aef556bd116bd397e2105152e4a050fccd2e5a3c1d963.jpg",
+    "copies": 2,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "6bb25f9f8adb2b52da993d01f552148ef9545891831a9540865d436e87e8aff4",
+    "front_image": "6bb25f9f8adb2b52da993d01f552148ef9545891831a9540865d436e87e8aff4.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7bbb1b194f9e201e70b2637b1f8e4ff6b777812fb8bf36e3f53b07ef46b3a8b7",
+    "front_image": "7bbb1b194f9e201e70b2637b1f8e4ff6b777812fb8bf36e3f53b07ef46b3a8b7.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "720a1555a102b2cef0f99bbc93436702f5ef29ad2af6e307b48deaec95a38160",
+    "front_image": "720a1555a102b2cef0f99bbc93436702f5ef29ad2af6e307b48deaec95a38160.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "731040aa53e6b23bab5eaa1503bb59f82c8511f3d8b1ffd262412d604e88832c",
+    "front_image": "731040aa53e6b23bab5eaa1503bb59f82c8511f3d8b1ffd262412d604e88832c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "6bb92cf9fd0d89ffa56100ebacba8823aeb785a434dca0ecb6b8d000b8c7d671",
+    "front_image": "6bb92cf9fd0d89ffa56100ebacba8823aeb785a434dca0ecb6b8d000b8c7d671.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "56fa34612de8224792b4a70d81636289060338f9ea247e646f376deba6fd5ae3",
+    "front_image": "56fa34612de8224792b4a70d81636289060338f9ea247e646f376deba6fd5ae3.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "af8dbbb73f4837df28e3d17c9a1d0aaaa78ef842ddcdd199c21a5ecefb3d3277",
+    "front_image": "af8dbbb73f4837df28e3d17c9a1d0aaaa78ef842ddcdd199c21a5ecefb3d3277.jpg",
+    "copies": 2,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "5a083ae00a0d7dd862e93dd794fd13ac639d3ad6171a67057e9a732df96f1244",
+    "front_image": "5a083ae00a0d7dd862e93dd794fd13ac639d3ad6171a67057e9a732df96f1244.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "37acaa134908b1546bb147af22c9cbba6398d1f8f08abf1b1c0647970418e245",
+    "front_image": "37acaa134908b1546bb147af22c9cbba6398d1f8f08abf1b1c0647970418e245.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "4ba41bb5960164645018c2a7a6df5e42c59e5e960aff92b92096de55848f5a51",
+    "front_image": "4ba41bb5960164645018c2a7a6df5e42c59e5e960aff92b92096de55848f5a51.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a4d9e942380f7428d5659f070ac5fb184a0c4af5290eed280f65819caa61ce9c",
+    "front_image": "a4d9e942380f7428d5659f070ac5fb184a0c4af5290eed280f65819caa61ce9c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2183b36194689bd3d5e86d3240fc7bd1c90549bb9fb4abc8861877e0fe38ab85",
+    "front_image": "2183b36194689bd3d5e86d3240fc7bd1c90549bb9fb4abc8861877e0fe38ab85.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7c5b1f489b6699b0bf5d0fda65dfc8e4f5052c4b872a77b4cca31521175b0a63",
+    "front_image": "7c5b1f489b6699b0bf5d0fda65dfc8e4f5052c4b872a77b4cca31521175b0a63.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "8b547ae9329b5ba721b51dbdb808822451929578c936d50b08c42dddb8f21965",
+    "front_image": "8b547ae9329b5ba721b51dbdb808822451929578c936d50b08c42dddb8f21965.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d38f4283335c1c7cda841fa0bd1c8801ca7d390b3cd701eef1b98f27ab3d47f7",
+    "front_image": "d38f4283335c1c7cda841fa0bd1c8801ca7d390b3cd701eef1b98f27ab3d47f7.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "1aaccdd1b9a48d95bbf47935895ed191c30903979a4871ad6e2b05e845d9beb4",
+    "front_image": "1aaccdd1b9a48d95bbf47935895ed191c30903979a4871ad6e2b05e845d9beb4.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "5676e6fbd2c6d3d6439352e0b0c0080391e72b7f825ff0801693df3f5a1128c1",
+    "front_image": "5676e6fbd2c6d3d6439352e0b0c0080391e72b7f825ff0801693df3f5a1128c1.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "4453e8cd4bc0da34ff4be009a5fc4ab9ed7418f83d5daabcda7b2d1d93212987",
+    "front_image": "4453e8cd4bc0da34ff4be009a5fc4ab9ed7418f83d5daabcda7b2d1d93212987.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "1638d6a914e35df6742c366b9fb36a375d94cfecd62dea1d824bcbbd7ef1c1e4",
+    "front_image": "1638d6a914e35df6742c366b9fb36a375d94cfecd62dea1d824bcbbd7ef1c1e4.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "9ab142c305301505e8f99e2089c47f2ac0aa3abc614d29a80a85496f9adb3e9a",
+    "front_image": "9ab142c305301505e8f99e2089c47f2ac0aa3abc614d29a80a85496f9adb3e9a.jpg",
+    "copies": 2,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "179a25eb178e68fe9c15f69cb8f2c56383b659c01902e7266741e71126bbac0d",
+    "front_image": "179a25eb178e68fe9c15f69cb8f2c56383b659c01902e7266741e71126bbac0d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "d27c613fff39c5d51487f3fe27b33a110856bc3f33c43416262c0b8c5743d107",
+    "front_image": "d27c613fff39c5d51487f3fe27b33a110856bc3f33c43416262c0b8c5743d107.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "093c90d0d8f00450f891c370822de8ffda4c4067882c378122c0485d759609c9",
+    "front_image": "093c90d0d8f00450f891c370822de8ffda4c4067882c378122c0485d759609c9.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e5b24e2a38df64e5a065a76b3aa95b556c1ad667511b999a1b663809f3386ce2",
+    "front_image": "e5b24e2a38df64e5a065a76b3aa95b556c1ad667511b999a1b663809f3386ce2.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2af581c97b563fb6471799d6df95ab84d55ae37034b178a91e31bae13849ee4c",
+    "front_image": "2af581c97b563fb6471799d6df95ab84d55ae37034b178a91e31bae13849ee4c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "78a102241629ac973944f1368fc6cf46fb1257c3db2d1ee094a6b98d9e863e0d",
+    "front_image": "78a102241629ac973944f1368fc6cf46fb1257c3db2d1ee094a6b98d9e863e0d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "4eb25f62259e3748b99254977937a3833b04eec8fe730cf9ca864ad1ebc6a2f0",
+    "front_image": "4eb25f62259e3748b99254977937a3833b04eec8fe730cf9ca864ad1ebc6a2f0.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7267994be5c9c50ece2b2075a99cbd00048234f61ed4ecc8afcad35241527ee2",
+    "front_image": "7267994be5c9c50ece2b2075a99cbd00048234f61ed4ecc8afcad35241527ee2.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "f050a9206f9b37a84a5c8c8c358319f9dd49ae993e8de273f88be407e8963471",
+    "front_image": "f050a9206f9b37a84a5c8c8c358319f9dd49ae993e8de273f88be407e8963471.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "5a75ba98780fa6c178ca9c2a4b55779b83133d48e865e112391345858e828893",
+    "front_image": "5a75ba98780fa6c178ca9c2a4b55779b83133d48e865e112391345858e828893.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "344feefe1c2de4cac357d9adbd114af3314c7e3542fa21c6fa588cb1cbb79eae",
+    "front_image": "344feefe1c2de4cac357d9adbd114af3314c7e3542fa21c6fa588cb1cbb79eae.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "4c5088e2a137c1700dd9d380b4f65e76c4b2948c11f0b5a1b5bf674dae6b4cbe",
+    "front_image": "4c5088e2a137c1700dd9d380b4f65e76c4b2948c11f0b5a1b5bf674dae6b4cbe.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "32ae55a148f112fdd994a47627c67ce426b51bd92be651587363dd6fed87c52c",
+    "front_image": "32ae55a148f112fdd994a47627c67ce426b51bd92be651587363dd6fed87c52c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "4a1d17b5c79a26609986bd5be9470a13c96f93e2ef04dd36b411c69c4bc24d12",
+    "front_image": "4a1d17b5c79a26609986bd5be9470a13c96f93e2ef04dd36b411c69c4bc24d12.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "46bbabd3bf4d2645430e2071c923ab8a1894482e14006da291a31faccd5beeb8",
+    "front_image": "46bbabd3bf4d2645430e2071c923ab8a1894482e14006da291a31faccd5beeb8.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "3f52eb5984adfc1df448c08e72d05649fd67049fae96e0eef67f1ab20cd59f7a",
+    "front_image": "3f52eb5984adfc1df448c08e72d05649fd67049fae96e0eef67f1ab20cd59f7a.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "021c4ed09b40d0fb2f15007198a5642193f703e9e01fa1fc999235ae3ddf5e80",
+    "front_image": "021c4ed09b40d0fb2f15007198a5642193f703e9e01fa1fc999235ae3ddf5e80.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2040806e80ff745387ffd28cdf6f93e1a4a8bb46a6258f917ba1ac4411d8637d",
+    "front_image": "2040806e80ff745387ffd28cdf6f93e1a4a8bb46a6258f917ba1ac4411d8637d.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7c4a13967ce6c248e3c0322ded5817852e23e043ef75329f27a7761bedc70cb6",
+    "front_image": "7c4a13967ce6c248e3c0322ded5817852e23e043ef75329f27a7761bedc70cb6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "910aced2a9a00b1873a5e7bc7e7514cc9bd513372e8fc2acdec91cbf24b75eca",
+    "front_image": "910aced2a9a00b1873a5e7bc7e7514cc9bd513372e8fc2acdec91cbf24b75eca.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a596d01393279c6f21a64aeb90af1c311873865b4df74d8a51630a5ce04c125c",
+    "front_image": "a596d01393279c6f21a64aeb90af1c311873865b4df74d8a51630a5ce04c125c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cb94ae8805a250c43df2b622f0b5ddc85b174fa194cefecbfc2f0b4ab6fe492a",
+    "front_image": "cb94ae8805a250c43df2b622f0b5ddc85b174fa194cefecbfc2f0b4ab6fe492a.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "10f806579c7b949e31ea489bbda1d9862aa7e87d9203f9d8547108de6797a3b4",
+    "front_image": "10f806579c7b949e31ea489bbda1d9862aa7e87d9203f9d8547108de6797a3b4.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "3ffb6d1f400727f1d1961a0a821e1c1ccdad13917b1f72f008eecd1f5b70dfe1",
+    "front_image": "3ffb6d1f400727f1d1961a0a821e1c1ccdad13917b1f72f008eecd1f5b70dfe1.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "f5891da2228f64cc93672019d7af77749e831569b808209a6aad6223fb7f03d6",
+    "front_image": "f5891da2228f64cc93672019d7af77749e831569b808209a6aad6223fb7f03d6.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2a6743e98f4d67364c592c62c72d71e9de99d97003df62131e344dbefa87fb10",
+    "front_image": "2a6743e98f4d67364c592c62c72d71e9de99d97003df62131e344dbefa87fb10.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "cdd7d6219f9b2f76ed3a6af7c1cb999ba0d1454480a9b8b105dbfc91b4bb1fe0",
+    "front_image": "cdd7d6219f9b2f76ed3a6af7c1cb999ba0d1454480a9b8b105dbfc91b4bb1fe0.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "b278d80a7a4e616b240f8346fe679e5c952f915c3aaf3030b082c0f71419e3ac",
+    "front_image": "b278d80a7a4e616b240f8346fe679e5c952f915c3aaf3030b082c0f71419e3ac.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e15cef5d90aaaad0a5c3bdefee1e8c7ca6276cbe005345201e00295bee48551e",
+    "front_image": "e15cef5d90aaaad0a5c3bdefee1e8c7ca6276cbe005345201e00295bee48551e.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "3f952a6499f04c8f4ebd75c40aa62d9ba5936fc6184e19c2c760971a0175314f",
+    "front_image": "3f952a6499f04c8f4ebd75c40aa62d9ba5936fc6184e19c2c760971a0175314f.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fbebca4f215d9b05315826b02378d184dbd59014ad373e9386a3ef92d9fce85a",
+    "front_image": "fbebca4f215d9b05315826b02378d184dbd59014ad373e9386a3ef92d9fce85a.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "30037f922f5a9dfaf6f500f0f5367c22fc2cb5d7e9c8cec7c1892572be5e0340",
+    "front_image": "30037f922f5a9dfaf6f500f0f5367c22fc2cb5d7e9c8cec7c1892572be5e0340.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "11f15d38f01172ddca99fb70340cd574cb33cc4927c75d9132dbc9ed3e389afd",
+    "front_image": "11f15d38f01172ddca99fb70340cd574cb33cc4927c75d9132dbc9ed3e389afd.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "2504b9e09038f20991878747bbf22694cd6ad742f113a77cd8646561d4360791",
+    "front_image": "2504b9e09038f20991878747bbf22694cd6ad742f113a77cd8646561d4360791.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "a808c03ea2eed22060bb120c23cbc935816f695154553a54155b52fc03a11ee5",
+    "front_image": "a808c03ea2eed22060bb120c23cbc935816f695154553a54155b52fc03a11ee5.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "5ceabccea34607cc454e317124c8a9a5d74b45e03241275711c6d84c006e2a16",
+    "front_image": "5ceabccea34607cc454e317124c8a9a5d74b45e03241275711c6d84c006e2a16.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "086e44f02b3d331ef421f95d264b7fad38bf02c7dd2b876e64e32f76ef3e0119",
+    "front_image": "086e44f02b3d331ef421f95d264b7fad38bf02c7dd2b876e64e32f76ef3e0119.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "652f512c7488e8ecfec833e51bfd64b14dfca4607c5e5f6ea16628d8f60dc959",
+    "front_image": "652f512c7488e8ecfec833e51bfd64b14dfca4607c5e5f6ea16628d8f60dc959.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e7c5221bfda1250bb57805351a5f252b85486b476e73796e0f41c77e6afc46af",
+    "front_image": "e7c5221bfda1250bb57805351a5f252b85486b476e73796e0f41c77e6afc46af.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "88c13b8a6d2ae21588d3797ec078e0bb089fcbca2618f25d7b8ec3df8fb72d22",
+    "front_image": "88c13b8a6d2ae21588d3797ec078e0bb089fcbca2618f25d7b8ec3df8fb72d22.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "6aeb28df1f8974cef2508c00b4a88f6fe55a17a78d38598301d703758e02d17c",
+    "front_image": "6aeb28df1f8974cef2508c00b4a88f6fe55a17a78d38598301d703758e02d17c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7fcccbbd01a5bc200667beded1185448277e0726f2d16a3e0a9715c45114589c",
+    "front_image": "7fcccbbd01a5bc200667beded1185448277e0726f2d16a3e0a9715c45114589c.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "b027aa0012ce76a7922e8f8067fbf2160f84fe25fd7bb4f58de68cd33acad4c5",
+    "front_image": "b027aa0012ce76a7922e8f8067fbf2160f84fe25fd7bb4f58de68cd33acad4c5.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fc7775dff87d0a90242a18558b1e1cd450f2a9b65d94680a06f861a84431b079",
+    "front_image": "fc7775dff87d0a90242a18558b1e1cd450f2a9b65d94680a06f861a84431b079.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "8eabdd878bc863d696c496a55762f9cefa50ea87a2d597750f730a0120fb3605",
+    "front_image": "8eabdd878bc863d696c496a55762f9cefa50ea87a2d597750f730a0120fb3605.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "5cd2c93aef1cd174030eb64672a557142db3c3745aa9c03c87dbf35b21e61f8e",
+    "front_image": "5cd2c93aef1cd174030eb64672a557142db3c3745aa9c03c87dbf35b21e61f8e.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "59b74059b73c32ed6d4cd0c4bd521c6ae02be031f8cf10fdd5944c161e60ea09",
+    "front_image": "59b74059b73c32ed6d4cd0c4bd521c6ae02be031f8cf10fdd5944c161e60ea09.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fe5bf3d421444a3bb8fa6b54bbbb2946f6d5014a1a5bcce10249a4ac542d7e3e",
+    "front_image": "fe5bf3d421444a3bb8fa6b54bbbb2946f6d5014a1a5bcce10249a4ac542d7e3e.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7a1168b2bde1f61f8de4749e22e11a4d6e5bbdded7dc60d07a8e46904afd88c3",
+    "front_image": "7a1168b2bde1f61f8de4749e22e11a4d6e5bbdded7dc60d07a8e46904afd88c3.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fac2662710154003b112347dd0aaaca0be479c71c799e8dfaab314ca59f5e3a5",
+    "front_image": "fac2662710154003b112347dd0aaaca0be479c71c799e8dfaab314ca59f5e3a5.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "7def8c17f721df52ef0049ea0bebc3c5605fc9f36889690ccf09673464e25159",
+    "front_image": "7def8c17f721df52ef0049ea0bebc3c5605fc9f36889690ccf09673464e25159.jpg",
+    "copies": 1,
+    "source_groups": [
+      "stack-2"
+    ],
+    "source_labels": [
+      "カード"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "fdd367ea9b6be935f792d6761fa1f9a10c913e4df641c5cf345fe1a48ba64be2",
+    "front_image": "fdd367ea9b6be935f792d6761fa1f9a10c913e4df641c5cf345fe1a48ba64be2.jpg",
+    "copies": 1,
+    "source_groups": [
+      "loose"
+    ],
+    "source_labels": [
+      "魔導戦記1 破壊神ヴァンミール"
+    ],
+    "rules_status": "image-only-untranscribed"
+  },
+  {
+    "asset_id": "e79447501392f96c181f0595ff6562b4dd9bb84480867164713fa82d21291895",
+    "front_image": "e79447501392f96c181f0595ff6562b4dd9bb84480867164713fa82d21291895.jpg",
+    "copies": 1,
+    "source_groups": [
+      "loose"
+    ],
+    "source_labels": [
+      "魔導戦記1 聖騎士ランスロット2"
+    ],
+    "rules_status": "image-only-untranscribed"
+  }
+]
