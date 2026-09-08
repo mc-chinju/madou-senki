@@ -1,0 +1,91 @@
+import {it,expect} from 'vitest';
+import {viewFor,transition,type GameState} from '../src/index.js';
+import {act,ready,until,pass,closeWindow,finish} from './combat-helpers.js';
+import {character,handCard,entropy} from './fixtures.js';
+const BEAST='c2-p05-r1c2-ab03';
+function place(s:GameState,owner:string,name:string){const id=handCard(s,owner,name);s.players[owner]!.hand=s.players[owner]!.hand.filter(x=>x!==id);s.players[owner]!.followers.push({cardInstanceId:id,revealed:false});return id;}
+function priority(s:GameState,actor='A'){for(let i=0;i<30;i++){const w=s.windows!.at(-1)!;if(w.participants[w.cursor]===actor)return s;s=pass(s);}throw Error('PRIORITY');}
+function use(s:GameState,id=BEAST,actor='A'){s=priority(s,actor);const o=viewFor(s,actor).abilityOptions.find(o=>o.abilityId===id);expect(o).toBeDefined();return act(s,actor,{type:'USE_ABILITY',abilityId:id,targetEventId:o!.targetEventId});}
+function start(cardName='黒翼飛翔剣'){let s=ready();character(s,'A','獣使いのウパニシャット');s.distances.A!.B=s.distances.B!.A='near';const first=place(s,'B','飛竜'),second=place(s,'B','グリフォン'),card=handCard(s,'A',cardName);s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});return {s:until(s,'attack-abilities'),first,second,card};}
+function choose(s:GameState,ids:string[]){const v=viewFor(s,'A').beastCapture!;return act(s,'A',{type:'CHOOSE_BEAST_CAPTURE',groupId:v.groupId,windowId:v.windowId,cardInstanceIds:ids});}
+it('canonical Upa selects ignore, earns a private saved subset after damage, transfers exact physical source',()=>{
+ let {s,first,second}=start();s=use(s);s=until(s,'normal-defense');expect(viewFor(s,'B').currentAttack!.technique.beastIgnore).toBe(true);
+ for(const actor of ['A','C','D']){const wire=JSON.stringify(viewFor(s,actor));expect(wire).not.toContain(first);expect(wire).not.toContain(second);}
+ s=until(s,'follower-start');s=closeWindow(s);expect(viewFor(s,'A').followerDefenseResults.every(d=>!d.cardInstanceId)).toBe(true);s=until(s,'beast-capture');
+ expect(s.players.B!.damage).toBe(7);expect(Object.keys(s.groups!)).toHaveLength(0);expect(Object.keys(s.actions!)).toHaveLength(0);
+ expect(viewFor(s,'A').beastCapture!.candidates.map(c=>c.cardInstanceId)).toEqual([first,second]);
+ for(const actor of ['B','C','D']){expect(viewFor(s,actor).beastCapture).toBeNull();expect(viewFor(s,actor).lifecycleDecision).toBeNull();}
+ for(const actor of ['C','D']){expect(JSON.stringify(viewFor(s,actor))).not.toContain(first);expect(JSON.stringify(viewFor(s,actor))).not.toContain(second);}
+ s=choose(s,[second]);expect(viewFor(s,'A').beastCapture).toBeNull();expect(s.players.A!.hand).toContain(second);expect(s.players.B!.followers).toEqual([{cardInstanceId:first,revealed:false}]);expect(s.phase).toBe('withdrawal');
+ for(const actor of ['C','D'])expect(JSON.stringify(viewFor(s,actor))).not.toContain(second);
+});
+it.each(['empty','pass','all'])('capture %s completes once without costs or refill',mode=>{
+ let {s,first,second}=start();s=use(s);s=until(s,'beast-capture');const hand=s.players.A!.hand.length,deck=[...s.deck];s=mode==='pass'?pass(s):choose(s,mode==='empty'?[]:[first,second]);expect(s.players.A!.hand.length).toBe(hand+(mode==='all'?2:0));expect(s.deck).toEqual(deck);expect(s.phase).toBe('withdrawal');
+});
+it('invalid capture commands reject unchanged atomically',()=>{
+ let {s,first}=start();s=use(s);s=until(s,'beast-capture');const v=viewFor(s,'A').beastCapture!;const base={type:'CHOOSE_BEAST_CAPTURE',groupId:v.groupId,windowId:v.windowId,cardInstanceIds:[first]};
+ for(const [actor,patch,code] of [['B',{},'NOT_PRIORITY'],['A',{groupId:'stale'},'INVALID_TARGET'],['A',{windowId:'stale'},'INVALID_TARGET'],['A',{cardInstanceIds:[first,first]},'INVALID_TARGET'],['A',{cardInstanceIds:['forged']},'INVALID_TARGET'],['A',{cardInstanceIds:[first,'a2-p05-r3c1']},'INVALID_TARGET']] as const){const before=JSON.stringify(s);expect(transition(s,{actorId:actor,command:{...base,...patch}} as any,entropy())).toEqual({ok:false,code});expect(JSON.stringify(s)).toBe(before);}
+ s=choose(s,[]);expect(transition(s,{actorId:'A',command:base} as any,entropy())).toEqual({ok:false,code:'WRONG_PHASE'});
+});
+function rejectAbility(s:GameState,actor='A',code='ABILITY_DISABLED',targetEventId=s.windows!.at(-1)!.eventId){const before=JSON.stringify(s);expect(transition(s,{actorId:actor,command:{type:'USE_ABILITY',abilityId:BEAST,targetEventId}},entropy())).toEqual({ok:false,code});expect(JSON.stringify(s)).toBe(before);}
+it('ignore is optional, canceled once/group, late/spent/wrong-owner/wrong-school reject without hidden target eligibility',()=>{
+ for(const canceled of [false,true]){let {s}=start();const event=s.windows!.at(-1)!.eventId;rejectAbility(s,'A','INVALID_TARGET','stale');rejectAbility(s,'B');
+  const noBeasts=structuredClone(s);noBeasts.deck.push(...noBeasts.players.B!.followers.map(f=>f.cardInstanceId));noBeasts.players.B!.followers=[];expect(viewFor(s,'A').abilityOptions).toEqual(viewFor(noBeasts,'A').abilityOptions);
+  if(canceled){const fate=handCard(s,'B','命運凶変');s=use(s);s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(s,'B').reactionTargetAbilityId!});s=closeWindow(s);s=closeWindow(s);s=priority(s);expect(s.used).toContain(`${event}:A:${BEAST}`);rejectAbility(s);}
+  s=until(s,'normal-defense');expect(viewFor(s,'B').currentAttack!.technique.beastIgnore).toBe(false);rejectAbility(s);s=finish(s);expect(s.events.some(e=>e.type==='BEAST_CAPTURED')).toBe(false);
+ }
+ const {s}=start('風矢');rejectAbility(s);expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===BEAST)).toBe(false);
+});
+it('selected package has no costs or gratuitous reveal',()=>{let {s}=start();const before=[...s.players.A!.hand];expect(s.players.A!.revealed).toBe(false);expect(transition(s,{actorId:'A',command:{type:'USE_ABILITY',abilityId:BEAST,targetEventId:s.windows!.at(-1)!.eventId,costCardInstanceId:before[0]!}},entropy())).toEqual({ok:false,code:'INVALID_COMMAND'});s=use(s);s=closeWindow(s);expect(s.players.A!.hand).toEqual(before);expect(s.players.A!.revealed).toBe(false);s=finish(s);});
+it.each(['blocked-front','zero-body','cancel-ignore','normal-defense'] as const)('no acquisition when %s',mode=>{
+ let {s,first,second}=start(mode==='zero-body'?'妖撃破山剣':'黒翼飛翔剣');
+ if(mode==='blocked-front'){place(s,'B','メタルゴーレム');s.players.B!.followers=[s.players.B!.followers.pop()!,...s.players.B!.followers];}
+ if(mode==='zero-body')place(s,'B','城');
+ if(mode==='cancel-ignore')place(s,'B','親衛隊');
+ s=use(s);s=until(s,'normal-defense');if(mode==='normal-defense'){const evade=handCard(s,'B','見切る');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:evade,dedicated:false});}
+ if(mode==='zero-body'||mode==='cancel-ignore'){s=until(s,'follower-start');s=closeWindow(s);for(let i=0;i<80&&!Object.values(s.groups!)[0]!.targets[0]!.followersSettled;i++)s=pass(s);const t=Object.values(s.groups!)[0]!.targets[0]!;if(mode==='zero-body'){expect(t.hits[0]!.damage).toBe(0);expect(t.followerDefense!.at(-1)!.hits[0]).toMatchObject({outcome:'lower-destroyed',hpReduction:5});}else {expect(t.followerIgnoreCancelled).toBe(true);expect(t.ignoredBeasts).toBeUndefined();}}
+ s=finish(s);expect(viewFor(s,'A').beastCapture).toBeNull();expect(s.players.A!.hand).not.toContain(first);expect(s.players.A!.hand).not.toContain(second);expect(s.events.some(e=>e.type==='BEAST_CAPTURED')).toBe(false);
+});
+it('actual lethal damage marks target pending then captures before death gift and disposal',()=>{
+ let {s,first,second}=start();s.players.B!.damage=viewFor(s,'B').self.stats.endurance-1;s=use(s);s=until(s,'beast-capture');expect(s.players.B!.presence).toBe('pending-death');expect(s.events.some(e=>e.type==='PLAYER_DIED')).toBe(false);expect(s.lifecycle!.map(t=>t.kind)).toEqual(['death-batch','beast-capture']);
+ s=choose(s,[first]);expect(s.windows!.at(-1)!.kind).toBe('death-gift');expect(s.players.A!.hand).toContain(first);s=finish(s);expect(s.discard).toContain(second);expect(s.discard).not.toContain(first);expect(s.events.findIndex(e=>e.type==='BEAST_CAPTURED')).toBeLessThan(s.events.findIndex(e=>e.type==='PLAYER_DIED'));
+});
+function bundle(mixed=false,boostMagic=false){let s=ready();character(s,'A','獣使いのウパニシャット');const griffin=handCard(s,'A','グリフォン');const fire=mixed?handCard(s,'A','炎竜'):undefined;const beast=place(s,'B','水竜');const prayer=boostMagic?handCard(s,'A','必勝の祈り'):undefined;const o=viewFor(s,'A').followerBundleOptions.find(o=>o.abilityId==='c2-p05-r1c2-ab02')!;s=act(s,'A',{type:'USE_FOLLOWER_ATTACK',abilityId:o.abilityId,targetEventId:o.targetEventId,sources:[{cardInstanceId:griffin,dedicated:false,targetIds:['B']},...(fire?[{cardInstanceId:fire,dedicated:false,targetIds:['B','C','D']}]:[])]});if(prayer){for(let n=0;n<150;n++){if(s.windows!.at(-1)!.kind==='effect-level'&&Object.values(s.actions!).find(a=>a.id===s.windows!.at(-1)!.continuation.id)?.cardInstanceId===fire)break;s=pass(s);}s=priority(s);s=act(s,'A',{type:'PLAY_REACTION',cardInstanceId:prayer,mode:'effect-plus',targetActionId:s.windows!.at(-1)!.continuation.id});s=closeWindow(s,[2]);s=closeWindow(s);}s=until(s,'attack-abilities');return {s,beast,griffin,fire};}
+it.each([false,true])('actual C10 Griffin two warrior hits qualifies individually; mixed=%s magic does not',mixed=>{
+ let {s,beast}=bundle(mixed);s=use(s);s=until(s,'normal-defense');expect(viewFor(s,'B').currentAttack!.targets.find(t=>t.actorId==='B')!.hits.map(h=>h.technique!.beastIgnore)).toEqual(mixed?[true,true,false]:[true,true]);
+ s=until(s,'beast-capture');const task=s.lifecycle!.at(-1)!;expect(task.kind).toBe('beast-capture');if(task.kind!=='beast-capture')throw Error('CAPTURE');expect(task.candidates).toHaveLength(1);expect(task.candidates[0]!.hits.map(h=>h.index)).toEqual([0,1]);s=choose(s,[beast]);expect(s.players.A!.hand.filter(id=>id===beast)).toHaveLength(1);expect(s.phase).toBe('withdrawal');
+});
+it('actual mixed C10 unrelated magic damage cannot earn a beast traversed by defended warrior hits',()=>{
+ let {s,beast}=bundle(true,true);s=use(s);s=until(s,'normal-defense');const evade=handCard(s,'B','見切る');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:evade,dedicated:false});
+ // Second distinct ordinary defense handles Griffin hit 2; FireDragon remains successful.
+ s=until(s,'normal-defense');const teleport=handCard(s,'B','転移');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:teleport,dedicated:false});s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);expect(s.players.A!.hand).not.toContain(beast);expect(s.events.some(e=>e.type==='BEAST_CAPTURED')).toBe(false);
+});
+it('actual ordinary counter return opens its own attack selection and capture; pure evade does not',()=>{
+ let s=ready();character(s,'B','獣使いのウパニシャット');s.distances.A!.B=s.distances.B!.A='near';const beast=place(s,'A','グリフォン'),attack=handCard(s,'A','踏み込み／弓'),counter=handCard(s,'B','妖撃破山剣');s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});s=until(s,'normal-defense');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false});expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===BEAST)).toBe(false);s=until(s,'attack-abilities');s=use(s,BEAST,'B');s=until(s,'beast-capture');expect(viewFor(s,'B').beastCapture!.candidates.map(c=>c.cardInstanceId)).toEqual([beast]);const v=viewFor(s,'B').beastCapture!;s=act(s,'B',{type:'CHOOSE_BEAST_CAPTURE',groupId:v.groupId,windowId:v.windowId,cardInstanceIds:[beast]});s=finish(s);expect(s.players.B!.hand).toContain(beast);expect(s.phase).toBe('withdrawal');
+});
+it.each(['before','after'] as const)('helper source suppression %s target snapshot separates frozen ignore from new acquisition',boundary=>{
+ let {s,first,second}=start();s=use(s);s=until(s,boundary==='before'?'follower-entry-abilities':'follower-start');const g=Object.values(s.groups!)[0]!;const id=g.id;s.players.A!.statuses=[{id:'helper-seal',kind:'ability-disabled',modifiers:[0],nextCheck:0}];expect(viewFor(s,'B').currentAttack!.technique.beastIgnore).toBe(boundary==='after');
+ s=until(s,'follower-start');s=closeWindow(s);if(boundary==='after'){expect(s.groups![id]!.targets[0]!.ignoredBeasts!.map(c=>c.cardInstanceId)).toEqual([first,second]);expect(s.groups![id]!.targets[0]!.hits[0]!.technique!.ignoreFollowerAttributes).toContain('獣');}
+ s=finish(s);expect(s.players.B!.damage).toBe(boundary==='after'?7:0);expect(s.players.A!.hand).not.toContain(first);expect(s.players.A!.hand).not.toContain(second);
+});
+it('actual Royal Guard reflects effective warrior beast-ignore, original lineage, no acquisition for either actor',()=>{
+ let {s,first,second,card}=start('破黒剣');const ownBeast=place(s,'A','水竜'),guard=place(s,'B','王立騎士団');s=use(s);s=until(s,'follower-start');for(let i=0;i<80&&Object.keys(s.groups!).length<2;i++)s=pass(s);
+ const child=Object.values(s.groups!).find(g=>g.attackerId==='B')!;expect(child).toBeDefined();expect(s.actions![child.actionId]).toMatchObject({fixedReceivedEffect:true,effectSourceCardInstanceId:card,cardInstanceId:guard});expect(child.technique.ignoreFollowerAttributes).toContain('獣');expect(child.targets[0]!.hits[0]!.lineage).toContain(guard);
+ expect(child.beastEmpathy).toBeUndefined();s=until(s,'follower-start');s=closeWindow(s);expect(s.groups![child.id]!.targets[0]!.ignoredBeasts).toBeUndefined();s=finish(s);expect(s.players.A!.damage).toBe(5);expect(s.players.B!.damage).toBe(0);expect(s.players.A!.followers).toContainEqual({cardInstanceId:ownBeast,revealed:false});expect(s.players.B!.followers.some(f=>f.cardInstanceId===first)).toBe(true);expect(s.players.B!.followers.some(f=>f.cardInstanceId===second)).toBe(true);expect(s.events.some(e=>e.type==='BEAST_CAPTURED')).toBe(false);
+});
+it('actual reflected child can kill original Upa and never grants postmortem acquisition',()=>{
+ let {s,first,second}=start('破黒剣');place(s,'B','王立騎士団');s.players.A!.damage=viewFor(s,'A').self.stats.endurance-1;s=use(s);s=finish(s);expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.hand).toEqual([]);expect(s.players.B!.followers.some(f=>f.cardInstanceId===first)).toBe(true);expect(s.players.B!.followers.some(f=>f.cardInstanceId===second)).toBe(true);expect(s.events.some(e=>e.type==='BEAST_CAPTURED')).toBe(false);
+});
+it('actual Upa C10 dedicated Griffin → Ida Shadow → Confusion disables source before later target snapshot',()=>{
+ let s=ready();character(s,'A','獣使いのウパニシャット');character(s,'B','忍びのイダ');const source=handCard(s,'A','グリフォン'),seal=handCard(s,'B','錯乱'),beast=place(s,'C','飛竜');const o=viewFor(s,'A').followerBundleOptions[0]!;s=act(s,'A',{type:'USE_FOLLOWER_ATTACK',abilityId:o.abilityId,targetEventId:o.targetEventId,sources:[{cardInstanceId:source,dedicated:true,targetIds:['B','C']}]});s=until(s,'attack-abilities');s=use(s);s=until(s,'normal-defense');const parentId=Object.keys(s.groups!)[0]!;s=use(s,'c2-p04-r2c2-ab01','B');s=closeWindow(s);s=closeWindow(s,[1,1]);s=closeWindow(s);s=closeWindow(s,[6,6]);s=closeWindow(s);expect(s.windows!.at(-1)!.kind).toBe('ability-attack');s=act(s,'B',{type:'ATTACK',cardInstanceId:seal,targetIds:['A'],dedicated:false});
+ for(let n=0;n<150;n++){const w=s.windows!.at(-1)!;if(w.kind==='normal-defense'&&w.continuation.kind==='group'&&w.continuation.id===parentId&&w.continuation.targetId==='C')break;const r=s.rolls?.at(-1);s=pass(s,w.kind==='before-roll'&&r?.purpose==='status-resistance'?[6,6]:Array(30).fill(1));}
+ expect(s.players.A!.statuses).toEqual(expect.arrayContaining([expect.objectContaining({kind:'ability-disabled',sourceActorId:'B',sourceCardInstanceId:seal})]));expect(s.groups![parentId]!.targets.find(t=>t.actorId==='C')!.followerSnapshot).toBeNull();expect(viewFor(s,'C').currentAttack!.technique.beastIgnore).toBe(false);s=finish(s);expect(s.players.C!.damage).toBe(0);expect(s.players.C!.followers).toContainEqual({cardInstanceId:beast,revealed:true});expect(s.events.some(e=>e.type==='BEAST_CAPTURED')).toBe(false);
+});
+it('intrinsic general ignore alone earns nothing; selected overlapping ignore keeps entitlement with distinct provenance',()=>{
+ for(const selected of [false,true]){let {s,first,second}=start('気斬');if(selected)s=use(s);s=until(s,'follower-start');const g=Object.values(s.groups!)[0]!;expect(g.targets[0]!.hits[0]!.technique!.followerIgnore).toBe(true);expect(!!g.targets[0]!.hits[0]!.frozenBeastEmpathy).toBe(selected);s=selected?until(s,'beast-capture'):finish(s);if(selected){expect(viewFor(s,'A').beastCapture!.candidates.map(c=>c.cardInstanceId)).toEqual([first,second]);s=choose(s,[]);}else expect(s.lifecycle?.some(t=>t.kind==='beast-capture')??false).toBe(false);}
+});
+it.each(['stopped','ability-disabled','transformed','moved'] as const)('helper current capture resolution revalidation %s is atomic and cannot recreate physical cards',mode=>{
+ let {s,first,second}=start();s=use(s);s=until(s,'beast-capture');const v=viewFor(s,'A').beastCapture!;
+ if(mode==='transformed')character(s,'A','黒騎士ガーウィン');else if(mode==='moved'){s.players.B!.followers=s.players.B!.followers.filter(f=>f.cardInstanceId!==second);s.players.C!.hand.push(second);}else s.players.A!.statuses=[{id:'helper-after-capture',kind:mode,modifiers:[0],nextCheck:0}];
+ const before=JSON.stringify(s);expect(transition(s,{actorId:'A',command:{type:'CHOOSE_BEAST_CAPTURE',groupId:v.groupId,windowId:v.windowId,cardInstanceIds:[first,second]}},entropy())).toEqual({ok:false,code:mode==='stopped'?'STOPPED':mode==='moved'?'INVALID_TARGET':'ABILITY_DISABLED'});expect(JSON.stringify(s)).toBe(before);s=pass(s);expect(s.players.A!.hand).not.toContain(first);expect(s.players.A!.hand).not.toContain(second);
+});

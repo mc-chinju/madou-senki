@@ -1,0 +1,108 @@
+[
+  {
+    "characterId": "c2-p01-r1c2",
+    "characterName": "大神官ジル",
+    "ability": {
+      "id": "c2-p01-r1c2-ab04",
+      "name": "信仰心",
+      "timing": [
+        "check-resolution"
+      ],
+      "specification": "ディア、ガドューラ、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力に対して、ゾロ目の効果を受けない。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p01-r2c1",
+    "characterName": "侍大将のシン",
+    "ability": {
+      "id": "c2-p01-r2c1-ab04",
+      "name": "精神統一",
+      "timing": [
+        "check-resolution"
+      ],
+      "specification": "ディア、ガドューラ、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力に対して、ゾロ目の効果を受けない。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p01-r2c2",
+    "characterName": "小妖精のチャム",
+    "ability": {
+      "id": "c2-p01-r2c2-ab04",
+      "name": "いたずらしちゃった",
+      "timing": [
+        "ability-response"
+      ],
+      "specification": "自身のキャラクターカードを表にしているとき、キャラクターカードを表にしたディア、ガドューラ、レスターの「魅了」「恐怖」「魔詩」の特殊能力を使えなくする。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p02-r1c1",
+    "characterName": "有翼人のティア",
+    "ability": {
+      "id": "c2-p02-r1c1-ab03",
+      "name": "私、同性には興味がないもので",
+      "timing": [
+        "ability-response"
+      ],
+      "specification": "キャラクターカードを表にしているディアの精神力-1チェックを行う「魅了」の特殊能力を、自身が攻撃時に無効にする。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p02-r2c2",
+    "characterName": "聖騎士ランスロット",
+    "ability": {
+      "id": "c2-p02-r2c2-ab03",
+      "name": "不屈の意志",
+      "timing": [
+        "ability-response"
+      ],
+      "specification": "ガドューラ、ディア、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力を、自身が攻撃時に無効にする。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p05-r1c1",
+    "characterName": "邪祭ウーノス",
+    "ability": {
+      "id": "c2-p05-r1c1-ab03",
+      "name": "愛など無駄だ",
+      "timing": [
+        "ability-response"
+      ],
+      "specification": "キャラクターカードを表にしているレスターの精神力-1チェックを行う「魔詩」の特殊能力を、自身が攻撃時に無効にする。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p05-r2c1",
+    "characterName": "黒騎士ガーウィン",
+    "ability": {
+      "id": "c2-p05-r2c1-ab02",
+      "name": "執念",
+      "timing": [
+        "status-application",
+        "check-resolution"
+      ],
+      "specification": "精神技によって決して停止しない。ディア、ガドューラ、レスターの精神力-1チェックを行う「恐怖」「魅了」「魔詩」の特殊能力に対して、ゾロ目の効果を受けない。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  },
+  {
+    "characterId": "c2-p06-r1c1",
+    "characterName": "不死王ガドューラ",
+    "ability": {
+      "id": "c2-p06-r1c1-ab02",
+      "name": "死者",
+      "timing": [
+        "defense",
+        "ability-response"
+      ],
+      "specification": "精神技無効。ディアとレスターの精神力-1チェックを行う「魅了」「魔詩」の特殊能力無効。",
+      "activation": "optional-except-explicit-restrictions"
+    }
+  }
+]
