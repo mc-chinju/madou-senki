@@ -1,0 +1,22 @@
+# Local source assets are reproducible from the supplied downloads.
+/resources/original/
+/resources/extracted/
+/resources/text/
+/resources/catalog/preview.html
+/tmp/
+__pycache__/
+.DS_Store
+node_modules/
+.wrangler/
+dist/
+.env
+.env.*
+!.env.example
+.dev.vars
+.cache/
+.superpowers/
+.vitest/
+test-results/
+playwright-report/
+/apps/web/public/cards/second/
+/apps/worker/dist-staging/
