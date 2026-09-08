@@ -1,0 +1,15 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "madou-storage-test",
+  "main": "fixtures/store-worker.ts",
+  "compatibility_date": "2026-08-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [
+      { "name": "PROBE", "class_name": "RoomStoreProbe" },
+      { "name": "ROOMS", "class_name": "Room" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RoomStoreProbe", "Room"] }],
+  "d1_databases": [{ "binding": "DB", "database_name": "madou-test" }]
+}

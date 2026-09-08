@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "madou-browser-test-local",
+  "main": "fixtures/e2e-worker.ts",
+  "compatibility_date": "2026-08-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "BrowserFixtureRoom" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["BrowserFixtureRoom"] }],
+  "d1_databases": [{ "binding": "DB", "database_name": "madou-browser-test", "database_id": "00000000-0000-0000-0000-000000000001", "migrations_dir": "../migrations" }],
+  "assets": { "directory": "../../web/dist", "not_found_handling": "single-page-application", "run_worker_first": ["/api/*", "/__test/*"] }
+}
