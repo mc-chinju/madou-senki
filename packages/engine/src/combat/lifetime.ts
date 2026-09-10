@@ -1,3 +1,4 @@
+import {physicalEffectCard,effectProvenance} from './action-source.js';
 import {commitMentalStopPrevention} from '../abilities/mental-protection.js';
 import {hasPendingFatal} from '../state.js';
 import {saveBeastCapture} from '../abilities/beast-empathy.js';
@@ -34,7 +35,7 @@ export function prepareLifetimeHit(s:GameState,g:AttackGroup,t:AttackTarget,dice
   if(effect.optional&&!choose())return false;
   if(t.lifetimeChoice==='apply')t.pendingInstantDeath='instant-death';else if(!t.pendingStatDrain){
    t.pendingStatDrain=true;
-   (s.players[t.actorId]!.statuses??=[]).push({id:`${g.id}:${t.actorId}:lifetime`,kind:'stat-drain',timing:'until-death',amount:1,sourceActorId:action.actorId,sourceCardInstanceId:action.effectSourceCardInstanceId??action.cardInstanceId,targetId:t.actorId});
+   (s.players[t.actorId]!.statuses??=[]).push({id:`${g.id}:${t.actorId}:lifetime`,kind:'stat-drain',timing:'until-death',amount:1,sourceActorId:action.actorId,sourceCardInstanceId:physicalEffectCard(action),targetId:t.actorId});
   }
  }else if(effect.kind==='otherworld')t.pendingOtherworld=true;
  else if(effect.kind==='deadly-stop')t.pendingDeadlyStop=effect.modifier;
@@ -43,27 +44,31 @@ export function prepareLifetimeHit(s:GameState,g:AttackGroup,t:AttackTarget,dice
 }
 /** The declaration cost is independent, so every failure path consumes it once. */
 export function consumeSelfCost(s:GameState,a:ActionFrame):DamageIntent[]{
- if(a.followerOrigin||!a.technique.selfCost||a.selfCostSettled)return [];
+ if(a.substituteOrigin||a.followerOrigin||!a.technique.selfCost||a.selfCostSettled)return [];
  a.selfCostSettled=true;const p=s.players[a.actorId]!;
  s.discard.push(...p.followers.map(f=>f.cardInstanceId));p.followers=[];
  if(a.technique.selfCost.damage===0)return [];
- return [{targetId:p.id,damage:a.technique.selfCost.damage,cause:'self-damage',sourceActorId:p.id,sourceCardInstanceId:a.effectSourceCardInstanceId??a.cardInstanceId,actionId:a.id,eventId:a.eventId}];
+ return [{targetId:p.id,damage:a.technique.selfCost.damage,cause:'self-damage',sourceActorId:p.id,...effectProvenance(a),actionId:a.id,eventId:a.eventId}];
 }
 export function settleLifetimeGroup(s:GameState,g:AttackGroup,now:number):void{
  const a=s.actions![g.actionId]!;
- const intents:DamageIntent[]=g.targets.map(t=>({targetId:t.actorId,damage:t.pendingDamage??0,...(t.pendingInstantDeath?{instantDeath:true}:{}),cause:t.pendingInstantDeath??'attack',sourceActorId:g.attackerId,sourceCardInstanceId:a.effectSourceCardInstanceId??a.cardInstanceId,groupId:g.id,actionId:a.id,eventId:a.eventId}));
+ const entries=[{group:g,action:a},...(g.substituteResults??[])];
+ const intents=entries.flatMap(({group:g,action:a})=>{
+ const intents:DamageIntent[]=g.targets.map(t=>({targetId:t.actorId,damage:t.pendingDamage??0,...(g.substituteOrigin?.sadLoveSource?{sadLoveSource:structuredClone(g.substituteOrigin.sadLoveSource)}:{}),...(t.pendingInstantDeath?{instantDeath:true}:{}),cause:t.pendingInstantDeath??'attack',sourceActorId:g.attackerId,...effectProvenance(a),groupId:g.id,actionId:a.id,eventId:a.eventId}));
  if(g.followerBundleId){intents.length=0;for(const t of g.targets){for(const hit of t.hits){if(!hit.hit)continue;const source=s.actions![hit.sourceActionId!]!;intents.push({targetId:t.actorId,damage:hit.bodyDamage?.total??hit.damage??0,...(hit.abilityInstantDeath?{instantDeath:true}:{}),cause:hit.abilityInstantDeath?'instant-death':'attack',sourceActorId:g.attackerId,sourceCardInstanceId:hit.sourceCardInstanceId!,groupId:g.id,actionId:source.id,eventId:source.eventId});}}}
  intents.push(...(g.pendingFatalIntents??[]));
  intents.push(...consumeSelfCost(s,a).map(intent=>({...intent,groupId:g.id})));
+ return intents;
+ });
  // Post-death benefits sit below the complete death batch and above stable outcomes.
- const drained=g.technique.lifetimeHit?.kind==='soul-drain'?g.targets.filter(t=>t.pendingInstantDeath).map(t=>t.actorId):[];
+ const drained=entries.flatMap(({group})=>group.technique.lifetimeHit?.kind==='soul-drain'?group.targets.filter(t=>t.pendingInstantDeath).map(t=>t.actorId):[]);
  const before=s.lifecycle?.length??0;const sinceEventId=s.nextEventId;
  settleDamage(s,intents,now);
  const accepted=drained.filter(id=>s.players[id]!.presence==='pending-death');
  if(accepted.length&&isActive(s.players[a.actorId]!))(s.lifecycle??=[]).splice(before,0,{kind:'post-death-heal',id:`heal-${g.id}`,actorId:a.actorId,targetIds:accepted,sinceEventId});
- for(const t of g.targets){const p=s.players[t.actorId]!;if(!isActive(p))continue;
-  const source={id:`${g.id}:${p.id}:lifetime`,sourceActorId:a.actorId,sourceCardInstanceId:a.effectSourceCardInstanceId??a.cardInstanceId,targetId:p.id};
-  for(const hit of t.hits){if(!hit.hit||!(hit.technique??g.technique).stopUntilSourceTurn||commitMentalStopPrevention(s,g,t,hit))continue;const card=hit.sourceCardInstanceId??a.effectSourceCardInstanceId??a.cardInstanceId;(p.statuses??=[]).push({id:`${g.id}:${p.id}:water:${hit.index}`,kind:'stopped',timing:'source-turn',sourceActorId:g.attackerId,sourceCardInstanceId:card,targetId:p.id});}
+ for(const {group:g,action:a} of entries)for(const t of g.targets){const p=s.players[t.actorId]!;if(!isActive(p))continue;
+  const source={id:`${g.id}:${p.id}:lifetime`,sourceActorId:a.actorId,...effectProvenance(a),targetId:p.id};
+  for(const hit of t.hits){if(!hit.hit||!(hit.technique??g.technique).stopUntilSourceTurn||commitMentalStopPrevention(s,g,t,hit))continue;const card=hit.sourceCardInstanceId??physicalEffectCard(a);(p.statuses??=[]).push({id:`${g.id}:${p.id}:water:${hit.index}`,kind:'stopped',timing:'source-turn',sourceActorId:g.attackerId,sourceCardInstanceId:card,targetId:p.id});}
   if(t.pendingOtherworld){p.presence='otherworld';clearDistances(s,p.id);}
   if(t.pendingFixedStop&&!commitMentalStopPrevention(s,g,t))(p.statuses??=[]).push({...source,kind:'stopped',timing:'fixed-turns',remainingTurns:t.pendingFixedStop});
   if(t.pendingDeadlyStop!==undefined&&!commitMentalStopPrevention(s,g,t))(p.statuses??=[]).push({...source,kind:'stopped',timing:'deadly-recovery',modifiers:[t.pendingDeadlyStop],nextCheck:0});

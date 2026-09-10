@@ -1,3 +1,4 @@
+import {enqueueLifecycle} from './events.js';
 import {resolveMagicGate} from './magic-gate.js';
 import type {GameState,PlayerState} from '../state.js';
 import type {ActionFrame,Technique} from '../reactions/continuations.js';
@@ -21,8 +22,8 @@ export function resolveTurnTechnique(s:GameState,a:ActionFrame):void{
  if(effect==='magic-gate'){resolveMagicGate(s,a);return;}
  if(effect==='revive'){
   // The selected set is stable; invalidated targets are skipped, never replaced.
-  (s.lifecycle??=[]).push({kind:'resume-phase',id:`resume-${a.id}`,phase:'hand-adjustment'});
-  s.lifecycle!.push({kind:'protection',id:`protection-${a.id}`});
-  s.lifecycle!.push({kind:'technique-revival',id:`revive-${a.id}`,sourceActorId:p.id,targetIds:[...a.targetIds],convertTargetIds:[...(a.convertTargetIds??[])],cursor:0});
+  enqueueLifecycle(s,{kind:'resume-phase',rootEventIds:[a.eventId],id:`resume-${a.id}`,phase:'hand-adjustment'});
+  enqueueLifecycle(s,{kind:'protection',rootEventIds:[a.eventId],id:`protection-${a.id}`});
+  enqueueLifecycle(s,{kind:'technique-revival',rootEventIds:[a.eventId],id:`revive-${a.id}`,sourceActorId:p.id,targetIds:[...a.targetIds],convertTargetIds:[...(a.convertTargetIds??[])],cursor:0});
  }else if(validTurnTechniqueTargets(s,p.id,a.technique,a.targetIds,[]))s.players[a.targetIds[0]!]!.damage=0;
 }

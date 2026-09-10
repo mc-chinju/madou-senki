@@ -29,7 +29,7 @@ export function followerAttackFor(id:string,name:string|undefined,dedicated:bool
  if(id==='a2-p21-r2c3')t.useLevelSource='own-warrior';
  if(id==='a2-p21-r3c3'){t.effectLevelFormula='d6';t.damageFormula='d6';t.damageAdditive=4;}
  if(id==='a2-p22-r3c1')t.evadeProhibited=true;
- if(id==='a2-p22-r3c2')t.maaiRequired=2;
+ if(id==='a2-p22-r3c2'){t.maaiRequired=2;t.maaiAtomic=true;}
  if(id==='a2-p22-r3c3')t.maaiProhibited=true;
  return t;
 }
@@ -44,6 +44,7 @@ export function followerBottomFor(id:string):Technique|undefined{
  if(id==='a2-p21-r2c3')t.useLevelSource='own-warrior';
  if(id==='a2-p21-r3c3'){t.effectLevelFormula='d6';t.damageFormula='d6';t.damageAdditive=4;}
  if(id==='a2-p22-r3c1')t.evadeProhibited=true;
+ if(id==='a2-p22-r3c2'){t.maaiRequired=2;t.maaiAtomic=true;}
  if(id==='a2-p22-r2c3')t.destroyAllFollowersExceptAttributes=['空'];
  if(id==='a2-p23-r1c1')t.stopUntilSourceTurn=true;
  return t;

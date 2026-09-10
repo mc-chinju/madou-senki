@@ -2,8 +2,9 @@ import {readFileSync} from 'node:fs';
 import {actionCards,characters} from '@madou/catalog';
 import {expect,it} from 'vitest';
 import {viewFor,type GameState} from '../src/index.js';
-import {act,ready,until,pass,finish,closeWindow} from './combat-helpers.js';
+import {act,ready,until,pass,finish,closeWindow as closeBoundary,passReclaims} from './combat-helpers.js';
 import {character,handCard} from './fixtures.js';
+function closeWindow(s:GameState,dice:number[]=Array(30).fill(1)){return passReclaims(closeBoundary(s,dice));}
 const mental=['c2-p03-r2c1-ab01','c2-p06-r1c1-ab01','c2-p06-r1c2-ab01'];
 const guards=['c2-p01-r1c2-ab04','c2-p01-r2c1-ab04','c2-p05-r2c1-ab02'];
 const named=['c2-p01-r2c2-ab04','c2-p02-r1c1-ab03','c2-p02-r2c2-ab03','c2-p05-r1c1-ab03','c2-p06-r1c1-ab02'];

@@ -1,4 +1,6 @@
+import {enqueueLifecycle} from './lifecycle/events.js';
 import {spiritBase} from './abilities/spirit-lifetime.js';
+import {hasStatus} from './state.js';
 import {factionObjective,initialProtection} from './lifecycle/objectives.js';
 import {advanceLifecycle} from './lifecycle/advance.js';
 import { deck, getAction, getCharacter, initialCharacterPool, ruleset } from '@madou/catalog';
@@ -18,16 +20,17 @@ export function shuffle<T>(items: readonly T[], random: () => number): T[] {
 export function appendEvent(state: GameState, at: number, event: Omit<GameEvent, 'id' | 'at'>): void {
   state.events.push({ ...event, id: state.nextEventId++, at });
 }
-export function derivedStats(player: PlayerState, options:{excludeSourceAbilityId?:string|undefined;spiritAddition?:number}={}): DerivedStats {
+/** Player-local arithmetic; live game callers must supply the state-aware ability gate via gameStats. */
+export function derivedStats(player: PlayerState, options:{excludeSourceAbilityId?:string|undefined;spiritAddition?:number;magicAddition?:number;abilityAllowed?:boolean}={}): DerivedStats {
   const c = getCharacter(player.characterId); if (!c) throw new Error('UNKNOWN_CHARACTER');
   const names = (player.presence==='wandering'?[]:player.open).map(id => getAction(id)?.name);
   const blood = names.filter(n => n === '神々の血').length;
   const blessing = names.filter(n => n === '祝福').length;
   const haja = names.filter(n => n === '賢者ハジャ').length;
-  const attachments=(player.presence==='wandering'?[]:player.attachments).map(id=>getAction(id)?.name);const warrior=attachments.filter(name=>name==='香具羅').length;const magic=attachments.filter(name=>name==='魔導書').length;const spirit=attachments.filter(name=>name==='悪の魅力'||name==='聖光').length;
+  const attachments=(player.presence==='wandering'?[]:player.attachments).map(id=>getAction(id)?.name);const warrior=attachments.filter(name=>name==='香具羅'||name==='修行（戦士技）').length;const magic=attachments.filter(name=>name==='魔導書'||name==='修行（魔法技）').length;const spirit=attachments.filter(name=>name==='悪の魅力'||name==='聖光').length;
   const drain=(player.statuses??[]).reduce((sum,status)=>sum+(status.timing==='until-death'?status.amount:0),0);
-  return { warrior_level: Math.max(0,c.base_stats.warrior_level + (player.permanent?.warrior_level??0) + blood+warrior-drain), magic_level: Math.max(0,c.base_stats.magic_level + (player.permanent?.magic_level??0) + blood+magic-drain),
-    spirit: Math.max(0,spiritBase(player,c.base_stats.spirit,options.excludeSourceAbilityId) + (player.permanent?.spirit??0) + blood+spirit-drain+(options.spiritAddition??0)), endurance: c.base_stats.endurance+(player.permanent?.endurance??0),
+  return { warrior_level: Math.max(0,c.base_stats.warrior_level + (player.permanent?.warrior_level??0) + blood+warrior-drain), magic_level: Math.max(0,c.base_stats.magic_level + (player.permanent?.magic_level??0) + blood+magic-drain+(options.magicAddition??0)),
+    spirit: Math.max(0,spiritBase(player,c.base_stats.spirit,options.abilityAllowed??(!hasStatus(player,'stopped')&&!hasStatus(player,'ability-disabled')),options.excludeSourceAbilityId) + (player.permanent?.spirit??0) + blood+spirit-drain+(options.spiritAddition??0)), endurance: c.base_stats.endurance+(player.permanent?.endurance??0),
     handLimit: 5 + haja, followerLimit: 2 + blessing, chantLimit: 1 + haja, followerLevelBonus: blessing, moraleBonus: blessing };
 }
 /** Setup refills to five, even when Haja raises the eventual hand limit. OPEN is resolved before the next draw. */
@@ -35,7 +38,7 @@ export function refillInitialHand(state: GameState, player: PlayerState, random:
   refillHand(state, player, 5, random, now);
 }
 export function refillHand(state: GameState, player: PlayerState, target: number, random: () => number, now: number): void {
-  (state.lifecycle??=[]).push({kind:'draw',id:`draw-${state.revision}-${player.id}-${state.nextEventId}`,actorId:player.id,target});
+  enqueueLifecycle(state,{kind:'draw',id:`draw-${state.revision}-${player.id}-${state.nextEventId}`,actorId:player.id,target});
 }
 
 export function createGame(players: { id: string; name: string }[], entropy: Entropy, options: SetupOptions = {}): GameState {

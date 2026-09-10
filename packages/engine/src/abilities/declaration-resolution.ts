@@ -1,3 +1,4 @@
+import {printedTechniqueAllowed} from '../combat/printed-restrictions.js';
 import {gameStats} from '../game-stats.js';
 import { getCharacter } from '@madou/catalog';
 import type { GameState } from '../state.js';
@@ -40,7 +41,7 @@ export function declarationSelection(s: GameState, viewer: string): DeclarationS
 }
 export function liveDeclarationEffects(s: GameState, a: ActionFrame): DeclarationEffects[] {
     const d = a.declaration, p = s.players[a.actorId];
-    if (!d || a.fixedReceivedEffect || !p || !isActive(p) || !canUseCharacterAbility(p))
+    if (!d || a.fixedReceivedEffect || !p || !isActive(p) || !canUseCharacterAbility(p,s))
         return [];
     return d.queue.flatMap(q => {
         if (q.status !== 'accepted' || !ownsAbility(p, q.abilityId))
@@ -54,7 +55,7 @@ export function validDeclarationAbility(s: GameState, f: AbilityFrame): boolean 
         return false;
     const a = s.actions?.[f.context.actionId], p = s.players[f.actorId];
     const d = a?.declaration;
-    return !!a && !!d && !d.committed && !a.canceled && !!p && isActive(p) && canUseCharacterAbility(p) && ownsAbility(p, f.abilityId)
+    return !!a && !!d && !d.committed && !a.canceled && !!p && isActive(p) && canUseCharacterAbility(p,s) && ownsAbility(p, f.abilityId)
         && d.queue.some(q => q.frameId === f.id && q.status === 'resolving')
         && !!declarationEffects(f.abilityId as DeclarationAbilityId, d.base, d.kind, !!a.fromChant, p.revealed);
 }
@@ -79,11 +80,11 @@ function finalUsageLegal(s: GameState, a: ActionFrame, t: Technique): boolean {
     const p = s.players[a.actorId]!, d = a.declaration!;
     if (!isActive(p) || hasStatus(p, 'stopped') || t.school === 'magic' && hasStatus(p, 'silenced') || t.chant && !a.fromChant)
         return false;
-    if (t.prohibitedFactions?.includes(p.faction) || t.attributes.includes('白') && getCharacter(p.characterId)?.restrictions.includes('白技使用不可'))
+    if (!printedTechniqueAllowed(p,t))
         return false;
     if (d.kind === 'defense') {
         const group = s.groups?.[a.groupId!];
-        return !!group && !defenseLegality(s, t, group, a.actorId, a.cardInstanceId);
+        return !!group && !!a.cardInstanceId && !defenseLegality(s, t, group, a.actorId, a.cardInstanceId);
     }
     if (d.kind === 'turn-technique')
         return validTurnTechniqueTargets(s, a.actorId, t, a.targetIds, a.convertTargetIds ?? []);
@@ -109,7 +110,7 @@ export function usageChecks(s: GameState, a: ActionFrame): NonNullable<ActionFra
     if ((!waived || !!a.coSource && !explicitNoChecks) && t.activationCheckModifier !== undefined)
         checks.unshift({ purpose: 'activation', modifier: t.activationCheckModifier });
     if (!waived && t.defense === 'teleport')
-        checks.push({ purpose: 'teleport', modifier: 0 });
+        checks.push({ purpose: 'teleport', modifier: t.teleportCheckModifier ?? 0 });
     if (a.kind === 'defense' && t.counterCheck && !t.counterNoChecks && !explicitNoChecks)
         checks.push({ purpose: 'counter', modifier: 0 });
     return checks;

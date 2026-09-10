@@ -10,7 +10,8 @@ interface RollOptions {
   purpose: RollPurpose;
   formula: RollFormula;
   resume: RollResume;
-  check?: { excludeSourceAbilityId?:string; modifier: number; base?: 'spirit' | 'morale' | 'fixed'; threshold?:number };
+  beforeRoll?: boolean;
+  check?: { excludeSourceAbilityId?:string; modifier: number; base?: 'spirit' | 'morale' | 'fixed'|'warrior'|'magic'; comparison?:'greater-than'; threshold?:number };
 }
 
 const FORMULAS: Record<RollFormula, { count: number; modifier: number; multiply: boolean }> = {
@@ -32,14 +33,15 @@ export function beginRoll(state: GameState, options: RollOptions, dice: () => nu
       ? `roll-${options.resume.actionId}-damage` : `roll-${state.nextEventId++}`,
     eventId: options.eventId, rollerId: options.rollerId, purpose: options.purpose,
     kind: options.check ? 'check' : 'numeric', formula: options.formula,
-    stage: options.check ? 'before-roll' : 'after-roll', generation: 0,
+    stage: options.check || options.beforeRoll ? 'before-roll' : 'after-roll', generation: 0,
     faces: [], modifier: options.check?.modifier ?? FORMULAS[options.formula].modifier,
     total: null, forcedFailure: false, attempts: [], resume: options.resume,
+    ...(options.check?.comparison?{comparison:options.check.comparison}:{}),
     ...(options.check?.excludeSourceAbilityId?{excludeSourceAbilityId:options.check.excludeSourceAbilityId}:{}),
     ...(options.check ? { checkBase: options.check.base ?? 'spirit', ...(options.check.threshold!==undefined?{threshold:options.check.threshold}:{}) } : {}),
   };
   (state.rolls ??= []).push(frame);
-  if (!options.check) throwRoll(frame, dice);
+  if (frame.stage === 'after-roll') throwRoll(frame, dice);
   openWindow(state, frame.stage === 'before-roll' ? 'before-roll' : 'after-roll', frame.eventId, { kind: 'roll', id: frame.id });
   return frame;
 }
@@ -56,7 +58,7 @@ export function throwRoll(frame: RollFrame, dice: () => number): void {
   const total = frame.formula==='d6-product-min10'?Math.max(10,faces[0]!*faces[1]!):formula.multiply ? sum * frame.modifier : sum + (frame.kind === 'numeric' ? frame.modifier : 0);
   frame.faces = faces;
   frame.total = total;
-  if (frame.kind === 'check') frame.success = !frame.forcedFailure && total <= frame.threshold!;
+  if (frame.kind === 'check') frame.success = !frame.forcedFailure && (frame.comparison==='greater-than'?total>frame.threshold!:total<=frame.threshold!);
   frame.attempts.push({
     generation: frame.generation, faces: [...faces], total,
     ...(frame.kind === 'check' ? { success: frame.success! } : {}),
@@ -64,8 +66,10 @@ export function throwRoll(frame: RollFrame, dice: () => number): void {
 }
 
 export function closeBeforeRoll(state: GameState, frame: RollFrame, dice: () => number): void {
+  if(frame.kind==='check'){
   const stats = gameStats(state,frame.rollerId,{excludeSourceAbilityId:frame.excludeSourceAbilityId,provenance:{kind:'roll',id:frame.id}});
-  if(frame.checkBase!=='fixed')frame.threshold = stats.spirit + frame.modifier + (frame.checkBase === 'morale' ? stats.moraleBonus : 0);
+  if(frame.checkBase!=='fixed')frame.threshold = (frame.checkBase==='warrior'?stats.warrior_level:frame.checkBase==='magic'?stats.magic_level:stats.spirit) + frame.modifier + (frame.purpose==='faction-change'&&['c2-p04-r1c2','c2-p05-r2c1'].includes(state.players[frame.rollerId]!.characterId)?2:0) + (frame.checkBase === 'morale' ? stats.moraleBonus : 0);
+  }
   throwRoll(frame, dice);
   frame.stage = 'after-roll';
   if (frame.resume.kind === 'action-check') {
@@ -96,6 +100,7 @@ export function visibleRoll(state: GameState): RollFrame | undefined {
 export function projectRoll(state: GameState, frame: RollFrame, viewerId: string): PublicRollView {
   const seeCheck = frame.rollerId === viewerId || state.players[frame.rollerId]!.revealed;
   return {
+    ...(frame.comparison?{comparison:frame.comparison}:{}),
     rollId: frame.id, eventId: frame.eventId, purpose: frame.purpose, rollerId: frame.rollerId,
     kind: frame.kind, formula: frame.formula, stage: frame.stage, generation: frame.generation,
     faces: [...frame.faces], modifier: frame.modifier, total: frame.total, forcedFailure: frame.forcedFailure,

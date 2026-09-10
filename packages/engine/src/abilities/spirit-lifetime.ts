@@ -3,16 +3,16 @@ import {canUseCharacterAbility} from '../state.js';
 import {ownsAbility} from './ownership.js';
 import {TRUE_POWER} from './turn-packages.js';
 /** Typed base replacements keep G08 additions independent of source-specific exclusions. */
-export interface SpiritReplacement {id:string;sourceAbilityId?:string;sourceCharacterId?:string;base:number;expiresOnActorId:string;timing:'turn-end'}
-export function replacementActive(p:PlayerState,r:SpiritReplacement):boolean{return (!p.presence||p.presence==='active')&&(!r.sourceCharacterId||p.characterId===r.sourceCharacterId)&&(!r.sourceAbilityId||canUseCharacterAbility(p)&&ownsAbility(p,r.sourceAbilityId));}
-export function spiritBase(p:PlayerState,printed:number,excludeSourceAbilityId?:string):number{
- const live=(p.spiritReplacements??[]).filter(r=>(!excludeSourceAbilityId||r.sourceAbilityId!==excludeSourceAbilityId)&&replacementActive(p,r));
+export interface SpiritReplacement {id:string;sourceAbilityId?:string;sourceCharacterId?:string;sourceCardInstanceId?:string;expiresAfterEventId?:string;awaitingOwnAction?:boolean;base:number;expiresOnActorId:string;timing:'turn-end'|'action-end'}
+export function replacementActive(p:PlayerState,r:SpiritReplacement,abilityAllowed:boolean):boolean{return (!p.presence||p.presence==='active')&&(!r.sourceCharacterId||p.characterId===r.sourceCharacterId)&&(!r.sourceAbilityId||abilityAllowed&&ownsAbility(p,r.sourceAbilityId));}
+export function spiritBase(p:PlayerState,printed:number,abilityAllowed:boolean,excludeSourceAbilityId?:string):number{
+ const live=(p.spiritReplacements??[]).filter(r=>(!excludeSourceAbilityId||r.sourceAbilityId!==excludeSourceAbilityId)&&replacementActive(p,r,abilityAllowed));
  return live.at(-1)?.base??printed;
 }
-export function expireTurnEnd(s:GameState,actorId:string):void{for(const p of Object.values(s.players))if(p.spiritReplacements)p.spiritReplacements=p.spiritReplacements.filter(r=>r.expiresOnActorId!==actorId);}
+export function expireTurnEnd(s:GameState,actorId:string):void{for(const p of Object.values(s.players))if(p.spiritReplacements)p.spiritReplacements=p.spiritReplacements.filter(r=>r.expiresOnActorId!==actorId||r.timing==='action-end'&&!r.awaitingOwnAction);}
 export function cleanSpiritLifetimes(s:GameState):void{for(const p of Object.values(s.players))if(p.spiritReplacements)p.spiritReplacements=p.spiritReplacements.filter(r=>(!p.presence||p.presence==='active')&&(!r.sourceCharacterId||p.characterId===r.sourceCharacterId));}
 export interface SpiritExpiryView {abilityId:typeof TRUE_POWER;expiresOnActorId:string;timing:'turn-end';active:boolean}
-export function spiritExpiryView(p:PlayerState):SpiritExpiryView|null{const r=p.spiritReplacements?.find(r=>r.sourceAbilityId===TRUE_POWER);return r?{abilityId:TRUE_POWER,expiresOnActorId:r.expiresOnActorId,timing:'turn-end',active:replacementActive(p,r)}:null;}
+export function spiritExpiryView(p:PlayerState,s:GameState):SpiritExpiryView|null{const r=p.spiritReplacements?.find(r=>r.sourceAbilityId===TRUE_POWER);return r?{abilityId:TRUE_POWER,expiresOnActorId:r.expiresOnActorId,timing:'turn-end',active:replacementActive(p,r,canUseCharacterAbility(p,s))}:null;}
 /** Resolve saved work before enclosing windows: a returned attack window may already be popped. */
 export function revealExpiryActor(s:GameState):string{
  const seen=new Set<string>();

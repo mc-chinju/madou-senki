@@ -1,3 +1,4 @@
+import {enqueueLifecycle} from '../lifecycle/events.js';
 import {gameStats} from '../game-stats.js';
 import {settleDamage} from '../lifecycle/advance.js';
 import {completeOwnTurn} from '../state.js';
@@ -36,7 +37,7 @@ export function advanceTurnRolls(s: GameState, dice: () => number, random: () =>
     }
     else {
         if (turn.hadStopped){
-            (s.lifecycle??=[]).push({kind:'resume-phase',id:`resume-${turn.id}`,phase:'draw'});
+            enqueueLifecycle(s,{kind:'resume-phase',id:`resume-${turn.id}`,phase:'draw'});
             refillHand(s, p, gameStats(s,p.id).handLimit, random, now);
         }else s.phase = 'draw';
     }

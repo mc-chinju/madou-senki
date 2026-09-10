@@ -1,3 +1,7 @@
+export {printedTechniqueAllowed} from './combat/printed-restrictions.js';
+export {canSelectDedicated} from './combat/legality.js';
+export {techniqueFor} from './effects/registry.js';
+export {canSelectPrintedDedicated} from './effects/techniques.js';
 export {gameStats,type GameStatOptions,type StatProvenance} from './game-stats.js';
 export type {ConditionalAbilitySetting} from './abilities/conditional-selection.js';
 export * from './state.js';

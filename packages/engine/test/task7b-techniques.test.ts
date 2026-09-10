@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest';
+import {techniqueFor} from '../src/effects/registry.js';
 import * as engine from '../src/index.js';
 import { closeWindow, act, finish, pass, ready, until } from './combat-helpers.js';
 import { character, entropy, handCard } from './fixtures.js';
@@ -210,7 +211,7 @@ it('supports generic mandatory, optional, and waived chant paths without hiding 
   expect(state.players.B!.damage).toBe(20);
 });
 
-it('rejects optional chant for a wrong owner and noChecks never waives a required chant', () => {
+it('S31 actual dedicated noChecks rejects missing chant then resolves after legal chant', () => {
   let state = ready();
   let card = handCard(state, 'A', '竜殺天空槍');
   let before = JSON.stringify(state);
@@ -220,9 +221,34 @@ it('rejects optional chant for a wrong owner and noChecks never waives a require
   state = ready();
   character(state, 'A', '妖精王フューリー');
   card = handCard(state, 'A', '星流弓');
+  expect(techniqueFor(card,'妖精王フューリー',true)).toMatchObject({noChecks:true,chant:true});
   before = JSON.stringify(state);
   expect(engine.transition(state, { actorId: 'A', command: { type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: true } }, entropy())).toEqual({ ok: false, code: 'CHANT_REQUIRED' });
   expect(JSON.stringify(state)).toBe(before);
+  state = act(state, 'A', { type: 'CHANT', cardInstanceId: card });
+  expect(state.players.A!.chants).toEqual([{ cardInstanceId: card, revealed: false }]);
+  for (let n = 0; n < 50; n++) {
+    const actor = state.seatOrder[state.turnSeat]!;
+    if (state.windows?.length) state = finish(state);
+    else if (state.phase === 'action') {
+      if (actor === 'A') break;
+      state = act(state, actor, { type: 'PASS_ACTION' });
+    } else if (state.phase === 'withdrawal') state = act(state, actor, { type: 'PASS_WITHDRAWAL' });
+    else if (state.phase === 'hand-adjustment') state = act(state, actor, {
+      type: 'END_TURN', discardIds: state.players[actor]!.hand.slice(engine.gameStats(state, actor).handLimit),
+    });
+    else if (state.phase === 'turn-start') state = act(state, actor, { type: 'START_TURN' });
+    else if (state.phase === 'draw') state = act(state, actor, { type: 'CHOOSE_DRAW', draw: false });
+    else throw Error(`S31 unexpected phase ${state.phase}`);
+  }
+  expect(state.phase).toBe('action');
+  expect(state.seatOrder[state.turnSeat]).toBe('A');
+  state = act(state, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: true });
+  expect(Object.values(state.actions!)[0]!).toMatchObject({ fromChant: true, technique: { noChecks: true, chant: true } });
+  state = finish(state);
+  expect(state.players.B!.damage).toBe(13);
+  expect(state.discard.filter(id => id === card)).toHaveLength(1);
+  expect(state.resolution).not.toContain(card);
 });
 
 it('doubles only a selected dedicated 竜殺天空槍 that used optional chant', () => {

@@ -1,3 +1,10 @@
+import {printedTechniqueAllowed} from './combat/printed-restrictions.js';
+import {playWish} from './effects/wish.js';
+import {playTurnChoiceCard} from './effects/turn-choice-cards.js';
+import {discardPhysical} from './discard.js';
+import {playRemainingTurnCard,payTurnCardBatch} from './effects/remaining-turn-cards.js';
+import {lifeIdentity} from './abilities/suppression-state.js';
+import {enqueueLifecycle} from './lifecycle/events.js';
 import {gameStats} from './game-stats.js';
 import {revealCharacter} from './abilities/character-visibility.js';
 import {canPlaceFollower,canRemoveFollower} from './combat/follower-placement.js';
@@ -10,6 +17,9 @@ import { techniqueFor } from './effects/registry.js';
 import { canSelectPrintedDedicated } from './effects/techniques.js';
 export function transitionTurn(state: GameState, input: GameInput, entropy: Entropy): TransitionResult {
   const command = input.command;
+  if(command.type==='PLAY_TURN_CARD'&&'mode' in command&&command.mode==='wish')return playWish(state,input.actorId,command.cardInstanceId);
+  if(command.type==='PLAY_TURN_CARD'&&'targetId' in command)return playTurnChoiceCard(state,input.actorId,command);
+  if(command.type==='PLAY_TURN_CARD'&&'cardInstanceId' in command)return playRemainingTurnCard(state,input.actorId,command.cardInstanceId,command.mode);
   if(state.windows?.length)return {ok:false,code:'WRONG_PHASE'};
   if (command.type === 'PASS_SETUP' || command.type === 'PLACE_INITIAL_FOLLOWER') return { ok: false, code: 'WRONG_PHASE' };
   const player = state.players[input.actorId]!;
@@ -34,6 +44,7 @@ export function transitionTurn(state: GameState, input: GameInput, entropy: Entr
       const dedicated = command.dedicated === true;
       const technique = techniqueFor(command.cardInstanceId, name, dedicated);
       if (!technique || (dedicated && !canSelectPrintedDedicated(command.cardInstanceId, name)) || (!technique.chant && !technique.optionalChant)) return { ok: false, code: 'UNSUPPORTED_CARD' };
+      if (!printedTechniqueAllowed(player,technique)) return { ok: false, code: 'UNSUPPORTED_CARD' };
       if (technique.school === 'magic' && hasStatus(player, 'silenced')) return { ok: false, code: 'SILENCED' };
       if (player.chants.length >= gameStats(state,player.id).chantLimit) return { ok: false, code: 'CHANT_CAPACITY' };
     } else if (command.type === 'END_TURN') {
@@ -47,33 +58,32 @@ export function transitionTurn(state: GameState, input: GameInput, entropy: Entr
     switch (command.type) {
       case 'REVEAL_CHARACTER': revealCharacter(next,p.id,entropy.now); break;
       case 'START_TURN': {
+        next.earlyTurnBook={actorId:p.id,closed:false};
         if((p.skipTurns??0)>0){p.skipTurns!--;completeOwnTurn(p,next);next.turnSeat=(next.turnSeat+1)%next.seatOrder.length;next.phase='turn-start';break;}
         next.turnRoll={id:`turn-${next.nextEventId++}`,actorId:p.id,kind:'recovery',remainingIds:(p.statuses??[]).filter(status=>status.timing!=='next-own-seat'&&status.timing!=='source-turn'&&status.timing!=='fixed-turns'&&status.timing!=='until-death').map(status=>status.id),hadStopped:p.statuses?.some(status=>status.kind==='stopped')??false};
         advanceTurnRolls(next,()=>{throw new EntropyError('ENTROPY_EXHAUSTED');},random,entropy.now);
         break;
       }
-      case 'CHOOSE_DRAW': if (command.draw){(next.lifecycle??=[]).push({kind:'resume-phase',id:`resume-${next.revision}`,phase:'action'});refillHand(next, p, p.hand.length + 1, random, entropy.now);}else next.phase = 'action'; break;
+      case 'CHOOSE_DRAW': if (command.draw){enqueueLifecycle(next,{kind:'resume-phase',id:`resume-${next.revision}`,phase:'action'});refillHand(next, p, p.hand.length + 1, random, entropy.now);}else next.phase = 'action'; break;
       case 'ARRANGE_FOLLOWERS': {
         const old = p.followers;
         next.discard.push(...old.filter(f => !command.cardInstanceIds.includes(f.cardInstanceId)).map(f => f.cardInstanceId));
-        p.followers = command.cardInstanceIds.map(id => old.find(f => f.cardInstanceId === id) ?? { cardInstanceId: id, revealed: false });
+        p.followers = command.cardInstanceIds.map(id => old.find(f => f.cardInstanceId === id) ?? {cardInstanceId:id,revealed:false,placedById:p.id,placedLifeId:lifeIdentity(p)});
         p.hand = p.hand.filter(id => !command.cardInstanceIds.includes(id)); next.phase = 'hand-adjustment'; break;
       }
       case 'REST':
-        for (const id of command.cardInstanceIds) { p.hand.splice(p.hand.indexOf(id), 1); next.discard.push(id); }
-        p.damage = Math.max(0, p.damage - command.cardInstanceIds.length); next.phase = 'hand-adjustment'; break;
+        payTurnCardBatch(next,p.id,command.cardInstanceIds,'rest');break;
       case 'CHANT': p.hand.splice(p.hand.indexOf(command.cardInstanceId), 1); p.chants.push({ cardInstanceId: command.cardInstanceId, revealed: false }); next.phase = 'hand-adjustment'; break;
       case 'PASS_ACTION':
         if(hasStatus(p,'stopped')){completeOwnTurn(p,next);next.turnSeat=(next.turnSeat+1)%next.seatOrder.length;next.phase='turn-start';}else next.phase='hand-adjustment';
         break;
       case 'PLAY_TURN_CARD':{
-        const potions:string[]=[];for(const id of command.cardInstanceIds){p.hand.splice(p.hand.indexOf(id),1);if(getAction(id)!.name==='回復の薬'){next.resolution.push(id);potions.push(id);}else p.attachments.push(id);}
-        if(potions.length){next.turnRoll={id:`turn-${next.nextEventId++}`,actorId:p.id,kind:'potion',remainingIds:potions,hadStopped:false};let cursor=0;advanceTurnRolls(next,()=>{const die=entropy.dice[cursor++];if(die===undefined)throw new EntropyError('ENTROPY_EXHAUSTED');return die;},random,entropy.now);}else next.phase='hand-adjustment';break;
+        payTurnCardBatch(next,p.id,command.cardInstanceIds,getAction(command.cardInstanceIds[0]!)!.name==='回復の薬'?'potion':'attachment');break;
       }
       case 'END_TURN':
         completeOwnTurn(p,next);
-        for (const id of command.discardIds) { p.hand.splice(p.hand.indexOf(id), 1); next.discard.push(id); }
-        (next.lifecycle??=[]).push({kind:'resume-phase',id:`resume-${next.revision}`,phase:'turn-start',turnSeat:(next.turnSeat+1)%next.seatOrder.length});
+        for (const id of command.discardIds) discardPhysical(next,id,{zone:'hand',ownerId:p.id},p.id,`turn-end-${p.id}-${next.revision}`);
+        enqueueLifecycle(next,{kind:'resume-phase',id:`resume-${next.revision}`,phase:'turn-start',turnSeat:(next.turnSeat+1)%next.seatOrder.length});
         if(!hasStatus(p,'stopped'))refillHand(next, p, gameStats(next,p.id).handLimit, random, entropy.now);break;
     }
     next.revision++; return { ok: true, state: next, events: structuredClone(next.events.slice(start)) };

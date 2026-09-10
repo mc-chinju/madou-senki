@@ -1,3 +1,4 @@
+import {discardPlayerCards} from '../discard.js';
 import {getCharacter} from '@madou/catalog';
 import {canUseCharacterAbility,hasStatus,type GameState} from '../state.js';
 import type {GameInput,TransitionResult,EngineErrorCode} from '../commands.js';
@@ -15,7 +16,7 @@ export function eligibleGiftRecipients(s:GameState,batchId:string,actorId:string
  return s.seatOrder.filter(id=>id!==actorId&&!batch.actorIds.includes(id)&&isActive(s.players[id]!));
 }
 export function availableLifecycleAbilities(s:GameState,actorId:string):LifecycleAbility[]{
- const p=s.players[actorId]!;const w=s.windows?.at(-1);if(s.outcome||!isActive(p)||!canUseCharacterAbility(p)||w&&w.participants[w.cursor]!==actorId)return [];
+ const p=s.players[actorId]!;const w=s.windows?.at(-1);if(s.outcome||!isActive(p)||!canUseCharacterAbility(p,s)||w&&w.participants[w.cursor]!==actorId)return [];
  const task=w?.continuation.kind==='lifecycle'?s.lifecycle?.find(task=>task.id===w.continuation.id):undefined;
  const result:LifecycleAbility[]=[];
  if(p.characterId==='c2-p02-r2c2'&&Object.values(s.players).some(other=>other.characterId==='c2-p03-r1c2'&&other.revealed)&&!s.used?.includes(`${actorId}:lancelot-transform`))result.push('lancelot-transform');
@@ -89,6 +90,6 @@ export function resolveLifecycleAbility(s:GameState,actorId:string,ability:Lifec
   return;
  }
  actor.presence='exited';(s.individualResults??={})[actor.id]='won';clearDistances(s,actor.id);
- s.discard.push(...actor.hand,...actor.open,...actor.attachments,...actor.followers.map(f=>f.cardInstanceId),...actor.chants.map(f=>f.cardInstanceId));actor.hand=[];actor.open=[];actor.attachments=[];actor.followers=[];actor.chants=[];
+ discardPlayerCards(s,actor.id,actor.id,s.windows?.at(-1)?.eventId??`exit-${actor.id}-${s.revision}`);
  appendEvent(s,now,{type:'PLAYER_EXITED',actorId:actor.id,audience:'public'});
 }

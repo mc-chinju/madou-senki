@@ -35,7 +35,7 @@ function eligible(s:GameState,actorId:string,id:AbilityId,source:AbilityFrame):b
 }
 export function namedResponseOptions(s:GameState,actorId:string):AbilityOption[] {
  const window=s.windows?.at(-1);
- if(window?.kind!=='declaration'||window.continuation.kind!=='ability')return [];
+ if(window?.kind!=='declaration'||window.continuation.kind!=='ability')return hostageResponseOptions(s,actorId);
  const source=s.abilities?.[window.continuation.id];
  if(!source)return [];
  return RESPONSES
@@ -48,5 +48,17 @@ export function validNamedResponse(s:GameState,frame:AbilityFrame):boolean {
  return !!source&&eligible(s,frame.actorId,frame.abilityId,source);
 }
 export function resolveNamedResponse(s:GameState,frame:AbilityFrame):void {
+ if(frame.printedCardResponse){s.actions![frame.printedCardResponse.sourceActionId]!.canceled=true;return;}
  if(frame.context.kind==='ability-response')s.abilities![frame.context.sourceAbilityId]!.canceled=true;
+}
+
+/** A14 grants a card-specific public Cham response, separate from character ability suppression. */
+export function hostageResponseOptions(s:GameState,actorId:string):AbilityOption[]{
+ const p=s.players[actorId],w=s.windows?.at(-1),a=w?.continuation.kind==='action'?s.actions?.[w.continuation.id]:undefined;
+ if(!p||!w||w.kind!=='declaration'||w.participants[w.cursor]!==actorId||(p.presence??'active')!=='active'||!p.revealed||p.characterId!=='c2-p01-r2c2'||p.statuses?.some(x=>x.kind==='stopped')||!a||a.cardInstanceId!=='a2-p02-r2c2'||a.anytimeEffect!=='fail-attack'||a.canceled||s.used?.includes(`${a.id}:${actorId}:c2-p01-r2c2-ab04`))return [];
+ return [{abilityId:'c2-p01-r2c2-ab04',name:'人質を中止する',buttonLabel:'人質を中止する',targetEventId:a.id,description:'表向きのチャムとして人質だけを中止します。人質の即時補充は残ります。'}];
+}
+export function validHostageResponse(s:GameState,f:AbilityFrame):boolean {
+ const p=s.players[f.actorId],a=s.actions?.[f.printedCardResponse!.sourceActionId];
+ return !!p&&(p.presence??'active')==='active'&&p.revealed&&p.characterId==='c2-p01-r2c2'&&!p.statuses?.some(x=>x.kind==='stopped')&&!!a&&!a.canceled&&a.stage==='declaration'&&a.cardInstanceId==='a2-p02-r2c2'&&s.windows?.some(w=>w.kind==='declaration'&&w.continuation.kind==='action'&&w.continuation.id===a.id)===true;
 }

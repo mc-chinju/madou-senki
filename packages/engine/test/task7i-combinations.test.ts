@@ -1,3 +1,4 @@
+import {passReclaims} from './combat-helpers.js';
 import { describe, it, expect } from 'vitest';
 import { transition, viewFor, type GameState } from '../src/index.js';
 import { act, ready, until, pass, finish, closeWindow } from './combat-helpers.js';
@@ -64,7 +65,7 @@ describe('Task7i printed attacks through real transitions', () => {
         const card = handCard(s, 'A', '魔空剣');
         const cost = handCard(s, 'A', '踏み込み／弓');
         const count = s.players.A!.hand.length;
-        s = act(s, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B', 'C'], dedicated: true, advanceCardInstanceIds: [cost] });
+        s = passReclaims(act(s, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B', 'C'], dedicated: true, advanceCardInstanceIds: [cost] }));
         expect(s.players.A!.hand).toHaveLength(count - 2);
         expect(s.discard).toContain(cost);
         expect(Object.values(s.actions!)[0]!.technique.effectLevel).toBe(8);
@@ -88,7 +89,7 @@ describe('Task7i printed attacks through real transitions', () => {
         const cost = handCard(s, 'A', '踏み込み／弓');
         s = until(s, 'hit-advance-choice');
         const groupId = group(s).id;
-        s = act(s, 'A', { type: 'PAY_HIT_ADVANCES', groupId, cardInstanceIds: [cost] });
+        s = passReclaims(act(s, 'A', { type: 'PAY_HIT_ADVANCES', groupId, cardInstanceIds: [cost] }));
         expect(s.discard).toContain(cost);
         s = finish(s);
         expect(s.players.B!.damage).toBe(20);
@@ -204,7 +205,7 @@ describe('Task7i legality, costs, and saved source choices', () => {
         const card = handCard(s, 'A', '魔空剣');
         const cost = handCard(s, 'A', '踏み込み／弓');
         const fate = handCard(s, 'B', '命運凶変');
-        s = act(s, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: true, advanceCardInstanceIds: [cost] });
+        s = passReclaims(act(s, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: true, advanceCardInstanceIds: [cost] }));
         s = priority(s, 'B');
         s = act(s, 'B', { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel', targetActionId: viewFor(s, 'B').reactionTargetActionId! });
         s = finish(s);
@@ -255,15 +256,15 @@ describe('Task7i legality, costs, and saved source choices', () => {
         const event = viewFor(s, 'A').abilityOptions[0]!.targetEventId;
         s = act(s, 'A', { type: 'USE_ABILITY', abilityId: 'c2-p04-r2c2-ab03', targetEventId: event });
         s = act(s, 'B', { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel-ability', targetAbilityId: viewFor(s, 'B').reactionTargetAbilityId! });
-        s = closeWindow(s);
-        s = closeWindow(s);
+        s = passReclaims(closeWindow(s));
+        s = passReclaims(closeWindow(s));
         s = act(s, 'A', { type: 'USE_ABILITY', abilityId: 'c2-p04-r2c2-ab03', targetEventId: event });
-        s = closeWindow(s, [2, 2]);
+        s = passReclaims(closeWindow(s, [2, 2]));
         const roll = s.rolls!.at(-1)!.id;
         s = priority(s, 'C');
         s = act(s, 'C', { type: 'PLAY_REACTION', cardInstanceId: god, mode: 'reroll', targetRollId: roll });
-        s = closeWindow(s, [1, 2]);
-        s = closeWindow(s);
+        s = passReclaims(closeWindow(s, [1, 2]));
+        s = passReclaims(closeWindow(s));
         expect(viewFor(s, 'A').abilityOptions).toEqual([]);
         s = finish(s);
         expect(s.players.B!.damage).toBe(10);
@@ -476,7 +477,7 @@ describe('Task7i pending-hit arithmetic and nested source continuations', () => 
         g.targets[0]!.hits[0]!.damage = 30;
         g.targets[0]!.hits[0]!.damageMultiplier = 2;
         g.targets.push({ actorId: 'D', followerStarted: true, normalDefenseClosed: true, followerSnapshot: [], hitsApplied: true, pendingDamage: 15, hits: [{ index: 0, defended: false, damage: 15, hit: true, lineage: [] }] });
-        s = act(s, 'A', { type: 'PAY_HIT_ADVANCES', groupId: g.id, cardInstanceIds: [cost] });
+        s = passReclaims(act(s, 'A', { type: 'PAY_HIT_ADVANCES', groupId: g.id, cardInstanceIds: [cost] }));
         expect(group(s).targets[0]!.hits[0]!.damage).toBe(40);
         expect(group(s).targets[1]!.pendingDamage).toBe(15);
         expect(group(s).targets[1]!.hits[0]!.damage).toBe(15);
@@ -491,12 +492,12 @@ describe('Task7i pending-hit arithmetic and nested source continuations', () => 
         const id = s.rolls!.at(-1)!.id;
         s = priority(s, 'B');
         s = act(s, 'B', { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'force-fail', targetRollId: id });
-        s = closeWindow(s);
-        s = closeWindow(s, [1, 1]);
+        s = passReclaims(closeWindow(s));
+        s = passReclaims(closeWindow(s, [1, 1]));
         s = priority(s, 'C');
         s = act(s, 'C', { type: 'PLAY_REACTION', cardInstanceId: god, mode: 'reroll', targetRollId: id });
-        s = closeWindow(s, [2, 2]);
-        s = closeWindow(s);
+        s = passReclaims(closeWindow(s, [2, 2]));
+        s = passReclaims(closeWindow(s));
         s = finish(s);
         expect(s.players.B!.damage).toBe(10);
         expect(s.rolls!.filter(r => r.purpose === 'technique-check')).toHaveLength(1);
@@ -597,7 +598,7 @@ describe('Task7i physical follower effects and immutable source legality', () =>
         s = attack('黒翼天翔剣', '黒妖精のアーネス', false);
         const maai = handCard(s, 'B', '間合い／休息');
         s = until(s, 'normal-defense');
-        s = act(s, 'B', { type: 'PLAY_MAAI', cardInstanceId: maai });
+        s = passReclaims(act(s, 'B', { type: 'PLAY_MAAI', cardInstanceId: maai }));
         s = finish(s);
         expect(s.players.B!.damage).toBe(12);
         s = ready();

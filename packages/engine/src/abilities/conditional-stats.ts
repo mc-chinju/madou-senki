@@ -1,3 +1,4 @@
+import {sadLoveAuraActive,ARNES} from './sad-love-state.js';
 import {getCharacter} from '@madou/catalog';
 import type {GameState,PlayerState} from '../state.js';
 import {isActive} from '../lifecycle/objectives.js';
@@ -11,6 +12,7 @@ function publicLancelot(s:GameState):boolean{return publicPerson(s,'c2-p02-r2c2'
 function publicMale(s:GameState,id:string):boolean{const p=s.players[id];return !!p&&isActive(p)&&p.revealed&&getCharacter(p.characterId)?.sex==='男';}
 export function conditionalStatAdditions(s:GameState,p:PlayerState,provenance?:StatProvenance):{spirit:number;handLimit:number;moraleBonus:number}{
  let spirit=0,handLimit=0,moraleBonus=0;
+ if(sadLoveAuraActive(s,p)&&publicPerson(s,ARNES))spirit++;
  const context=combatStatContext(s,provenance);
  if(conditionalActive(p,TIA_SPIRIT,s)&&publicPerson(s,'c2-p03-r2c1'))spirit++;
  if(conditionalActive(p,LIA_AURA,s)&&publicLancelot(s))spirit+=2;
@@ -31,7 +33,7 @@ export function conditionalStatAdditions(s:GameState,p:PlayerState,provenance?:S
  return {spirit,handLimit,moraleBonus};
 }
 /** Whole-source damage/effect clauses are evaluated only for the real technique producer. */
-export function conditionalTechniqueAdditions(s:GameState,a:ActionFrame,targetId?:string):{effect:number;damage:number}{
+export function conditionalTechniqueAdditions(s:GameState,a:Pick<ActionFrame,'actorId'|'kind'|'technique'|'canceled'|'fixedReceivedEffect'|'followerOrigin'>,targetId?:string):{effect:number;damage:number}{
  let effect=0,damage=0;const p=s.players[a.actorId];if(!p||a.fixedReceivedEffect||a.followerOrigin)return {effect,damage};
  const technique=['attack','defense','turn-technique'].includes(a.kind)&&a.technique.attributes.some(x=>x==='戦'||x==='魔');
  if(technique&&conditionalActive(p,UPA_BEAST,s)&&a.technique.school==='warrior')damage++;

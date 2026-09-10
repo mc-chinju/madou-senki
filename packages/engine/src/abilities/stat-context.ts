@@ -12,7 +12,7 @@ export function combatStatContext(s:GameState,provenance?:StatProvenance):Combat
   if(p.kind==='roll'){
    const r=s.rolls?.find(r=>r.id===p.id);if(!r)return;const c=r.resume;
    if('groupId' in c){const context=resolve({kind:'group',id:c.groupId,targetId:c.targetId});return context&&{...context,...(c.kind==='follower'?{moraleFollowerCardInstanceId:c.cardInstanceId}:{})};}
-   if('actionId' in c)return resolve({kind:'action',id:c.actionId});
+   if('actionId' in c){const context=resolve({kind:'action',id:c.actionId}),a=s.actions?.[c.actionId];return context&&{...context,...(r.purpose==='follower-morale'&&a?.allArmyParentId&&a.cardInstanceId?{moraleFollowerCardInstanceId:a.cardInstanceId}:{})};}
    if(c.kind==='ability')return resolve({kind:'ability',id:c.abilityId});
    return;
   }
@@ -37,6 +37,20 @@ export function combatStatContext(s:GameState,provenance?:StatProvenance):Combat
   const w=s.windows?.find(w=>w.id===p.id);if(!w)return;const c=w.continuation;
   return (c.kind==='action'||c.kind==='ability'||c.kind==='roll'||c.kind==='group'?resolve({kind:c.kind,id:c.id,...(c.kind==='group'?{targetId:c.targetId}:{})}):undefined)
    ??(w.parentId?resolve({kind:'window',id:w.parentId}):undefined);
+ }
+ return resolve(provenance??(s.windows?.at(-1)?{kind:'window',id:s.windows.at(-1)!.id}:undefined));
+}
+/** A level correction belongs to the actual selected technique, not to its surrounding combat. */
+export function techniqueStatContext(s:GameState,provenance?:StatProvenance):{actorId:string;technique:{school:string;attributes:string[]}}|undefined {
+ const seen=new Set<string>();
+ function resolve(p:StatProvenance|undefined):ReturnType<typeof techniqueStatContext>{
+  if(!p||p.kind==='none'||p.kind==='combat'||p.kind==='group')return;
+  const key=`${p.kind}:${p.id}`;if(seen.has(key))return;seen.add(key);
+  if(p.kind==='action'){const a=s.actions?.[p.id];return a&&['attack','defense','turn-technique'].includes(a.kind)&&!a.fixedReceivedEffect?{actorId:a.actorId,technique:a.technique}:undefined;}
+  if(p.kind==='roll'){const r=s.rolls?.find(r=>r.id===p.id);return r&&'actionId' in r.resume?resolve({kind:'action',id:r.resume.actionId}):undefined;}
+  if(p.kind==='ability'){const a=s.abilities?.[p.id];return a&&'actionId' in a.context?resolve({kind:'action',id:a.context.actionId}):undefined;}
+  const w=s.windows?.find(w=>w.id===p.id),c=w?.continuation;
+  return c&&(c.kind==='action'||c.kind==='roll'||c.kind==='ability')?resolve({kind:c.kind,id:c.id}):undefined;
  }
  return resolve(provenance??(s.windows?.at(-1)?{kind:'window',id:s.windows.at(-1)!.id}:undefined));
 }
