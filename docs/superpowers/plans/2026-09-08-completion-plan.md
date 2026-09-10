@@ -1,6 +1,6 @@
 # 魔導戦記オンライン・残工程 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. 既存の独立レビュー体制を継続する。今回は整理と計画改訂までで、新しい効果群の実装は開始していない。
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. 受け入れは [試験受け入れ方針](../../operations/acceptance-policy.md) `acceptance-policy/test-only-v1`。独立レビュー receipt は作らない。
 
 **Goal:** 採用済みの2nd・暫定オンライン裁定で、正式卓の開始から勝敗確定、切断復帰までを検証し、Cloudflareで公開できる状態にする。
 
@@ -155,7 +155,7 @@ R3の自動操作部分: [M0と同じ候補で4件成功](../../operations/evide
 - [ ] 通常の持ち技/従者回収と、常時再使用・追加1回を共通の保存処理で扱う。使用済み回数の単位、予約時機、取消時、山札再構成、死亡/流浪、複数権利者の順序を採用裁定に従って確定する。
 - [ ] 再使用10候補を全条項で実装する。フューリー「妖精の弓」はランダム数値修正も含めて完了判定する。
 - [ ] 予約された札が引かれる/二重取得される/捨て札に残ることを拒否する試験と、保存→復帰→同じ選択の一回確定を各群の受け入れに含める。
-- [ ] Engine/Protocol、Worker、UIの必要経路と独立レビューを終え、台帳を更新する。
+- [ ] Engine/Protocol、Worker、UIの必要経路と [試験受け入れ方針](../../operations/acceptance-policy.md) による受け入れを終え、台帳を更新する。独立レビュー receipt は作らない。
 
 ## Task R5: 残る戦闘・死亡能力とカード効果を完成させる
 
@@ -168,7 +168,7 @@ R3の自動操作部分: [M0と同じ候補で4件成功](../../operations/evide
 - [x] 斬・悲しき愛・吸魂・飢え・チャムの死亡贈与を、共有する死亡境界に合わせて実装する。身代わり前後の対象、撃破者の発生元、同時死亡、報酬の前提時点、永久修正と一時能力の違いを検査する。
 - [x] ウーノスの復活の儀式とヴァンミール終末は既存の変身/終了処理へ全条項を照合する。証拠不足なら不足試験または修正を行い、重複したハンドラーを作らない。 人物2能力のsemantic12条項を既存処理へ対応し、実儀式→終末、履歴保持、実死亡/流浪/退場/異界退去、能力無効/行動停止の不足検証を完了。[最終補足](../../operations/evidence/2026-09-10-r5-ritual-disabled.md)。全件acceptedや他のR5項目の完了とは区別する。
 - [ ] R2で確定した残カード効果・全用途を依存順に実装する。効果ごとに実カードの成立経路、不使用/取消/禁止、保存再開、公開範囲を確認する。
-- [ ] 群ごとに独立レビューを閉じ、同時に複数の作りかけ群を残さない。
+- [ ] 群ごとに試験受け入れを閉じ、同時に複数の作りかけ群を残さない。独立レビューは行わない。
 
 ## Task R6: 原典例と組み合わせの検証を閉じる
 

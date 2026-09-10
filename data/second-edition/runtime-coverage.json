@@ -5,7 +5,8 @@
     "pending": "Missing effect or correspondence not yet established; gapKind distinguishes them.",
     "implemented": "Reachable handler inspected; exact clause/tests/current execution still unverified.",
     "verified": "Bound successful execution evidence, no automatic acceptance.",
-    "accepted": "Independent review plus all dependencies accepted and no remaining condition."
+    "notApplicable": "Current edition cannot legally produce the clause; basis matches live card data and retained tests are bound. Not a successful printed path.",
+    "accepted": "Test-only acceptance receipt plus all dependencies accepted or notApplicable and no remaining condition."
   },
   "rows": [
     {

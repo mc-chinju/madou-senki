@@ -1,6 +1,6 @@
 # R6 原典例・組み合わせ受け入れ Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans. 各群を独立レビューで閉じる。無断のcommit/stashは行わない。
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans. 各群を [試験受け入れ方針](../../operations/acceptance-policy.md) で閉じる。独立レビュー receipt は作らない。無断のcommit/stashは行わない。
 
 **Goal:** 原典S01〜S32を指定された値・操作順で検証し、保存復帰とカード保存則を含めて条項台帳へ対応付ける。
 
@@ -93,7 +93,7 @@ S09の実producerはA=小人のランバの専用 `死戦斧 a2-p11-r3c2`（効�
 
 - [x] 表の値に一致する実札と合法な印刷修正をcatalogから選ぶ。成立しない組合せをfixtureで固定値上書きして通さず、原典抽象値の解決器試験と実producer試験に明示的に分ける。
 - [x] 既存の関連試験へ不足assertionを追加できる場合は重複させない。S番号と役割をliteral test名へ含め、台帳は具体的なparameter tupleまで束縛する。
-- [ ] 各変更の失敗→修正→対象suite成功を記録し、表の全条件について独立レビューする。
+- [ ] 各変更の失敗→修正→対象suite成功を記録し、表の全条件について試験受け入れ方針で束縛する。独立レビューは行わない。
 
 Run: `pnpm exec vitest run packages/engine/test/combat.test.ts packages/engine/test/distance.test.ts packages/engine/test/multi-hit.test.ts packages/engine/test/task7b-techniques.test.ts packages/engine/test/action-value-arithmetic.test.ts`。
 
@@ -172,8 +172,8 @@ expect([...ids].sort()).toEqual(actionCards.map(card => card.id).sort());
 ```
 
 - [x] 入力を待っているだけの合法状態は保存・再投影できれば成立とする。進行可能な入力が消えた状態と区別して失敗時traceに最後の窓/候補を残す。
-- [ ] S01〜S32各例について出典全文と最終test本文を独立照合し、値・手順・全assertion・具体的tuple・実行結果を記録。成功した関連試験だけでacceptedへ進めない。
-- [ ] 現在のソース集合を固定する実行証跡、台帳/実行に結び付いた独立レビュー証跡を作り、acceptedに必要な依存条項を検査する。
+- [ ] S01〜S32各例について出典全文と最終test本文を照合し、値・手順・全assertion・具体的tuple・実行結果を記録。成功した関連試験だけでacceptedへ進めない。
+- [ ] 現在のソース集合を固定する実行証跡と試験受け入れ receipt を作り、acceptedに必要な依存条項を検査する。独立レビュー証跡は作らない。
 
 Run: 対象Engine/Worker suite、`pnpm typecheck`、`python3 scripts/validate_runtime_coverage.py`。群ごとの限定成功を全件成功と呼ばず、R7で全ゲートを実行する。
 
