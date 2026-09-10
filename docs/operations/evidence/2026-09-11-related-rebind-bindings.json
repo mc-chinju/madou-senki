@@ -3637,6 +3637,1105 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab02#public-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "Tia entry consumes only advance hand cost without refund, replacement draw or distance change",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower entry consumes exactly one advance card, rejects maai as cost, does not draw replacement or change distances."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m Tia surprise scope and cancellation"
+          ],
+          "title": "hidden Tia explicitly reveals first; no-follower entry has no cost option",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden Tia has no option until actual reveal; an entry with no followers has no cost option."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab02#enemy-follower-entry",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "Tia entry consumes only advance hand cost without refund, replacement draw or distance change",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower entry consumes exactly one advance card, rejects maai as cost, does not draw replacement or change distances."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m Tia surprise scope and cancellation"
+          ],
+          "title": "hidden Tia explicitly reveals first; no-follower entry has no cost option",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden Tia has no option until actual reveal; an entry with no followers has no cost option."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m Tia surprise scope and cancellation"
+          ],
+          "title": "distinct target entries need distinct costs and never leak ignore to another target",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Each target requires a distinct cost/event; all targeted followers survive and each target receives the unblocked7."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab02#one-advance-discard",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "Tia entry consumes only advance hand cost without refund, replacement draw or distance change",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower entry consumes exactly one advance card, rejects maai as cost, does not draw replacement or change distances."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab02#all-followers-ignore",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "Tia entry consumes only advance hand cost without refund, replacement draw or distance change",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower entry consumes exactly one advance card, rejects maai as cost, does not draw replacement or change distances."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m Tia surprise scope and cancellation"
+          ],
+          "title": "distinct target entries need distinct costs and never leak ignore to another target",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Each target requires a distinct cost/event; all targeted followers survive and each target receives the unblocked7."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m actual additional coverage"
+          ],
+          "title": "Tia surprise fixes all three actual residual hits and remains fixed after source disable",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "All three real hits pass through the follower unchanged for7 each and the follower remains placed."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab01#warrior-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+          "parameters": "c2-p02-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+        },
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "Lancaster Wind is not offered for an actual magic attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Lancaster magic attack is not offered the warrior-only Wind ability."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab01#optional-one-extra-maai",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+          "parameters": "c2-p02-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+        },
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "actual BlackWing native two plus Wind needs third; shared advance preserves paid progress/reload",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Three actual maai payments meet native2 plus selected Wind1; shared advance consumes one progress and reload preserves it."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab02#warrior-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "早駆けのランカスター",
+            "c2-p02-r2c1-ab02",
+            "黒翼飛翔剣",
+            "飛竜",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "早駆けのランカスター",
+            "c2-p02-r2c1-ab02",
+            "黒翼飛翔剣",
+            "兵士",
+            "lower-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+          "parameters": [
+            "早駆けのランカスター",
+            "c2-p02-r2c1-ab02",
+            "風矢"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Lancaster cannot select Dragon on printed wind magic."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p02-r2c1-ab02",
+            "黒翼飛翔剣"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Lancaster cannot select Dragon on printed wind magic."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab02#dragon-follower-destruction",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "早駆けのランカスター",
+            "c2-p02-r2c1-ab02",
+            "黒翼飛翔剣",
+            "飛竜",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "早駆けのランカスター",
+            "c2-p02-r2c1-ab02",
+            "黒翼飛翔剣",
+            "兵士",
+            "lower-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab02#sword-black-follower-destruction",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "聖騎士ランスロット",
+            "c2-p02-r2c2-ab02",
+            "黒翼飛翔剣",
+            "小悪魔",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "聖騎士ランスロット",
+            "c2-p02-r2c2-ab02",
+            "黒翼飛翔剣",
+            "スケルトン",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "聖騎士ランスロット",
+            "c2-p02-r2c2-ab02",
+            "黒翼飛翔剣",
+            "兵士",
+            "lower-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab02#sword-dead-follower-destruction",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "聖騎士ランスロット",
+            "c2-p02-r2c2-ab02",
+            "黒翼飛翔剣",
+            "小悪魔",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "聖騎士ランスロット",
+            "c2-p02-r2c2-ab02",
+            "黒翼飛翔剣",
+            "スケルトン",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "聖騎士ランスロット",
+            "c2-p02-r2c2-ab02",
+            "黒翼飛翔剣",
+            "兵士",
+            "lower-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab02#gadyoora-damage-double",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "WhiteSword applies actual Gadyoora multiplier independent of reveal=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "With either hidden/public Gad, selected sword doubles damage7 to14 only for Gad, and keeps the ordinary target at7."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "WhiteSword applies actual Gadyoora multiplier independent of reveal=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "With either hidden/public Gad, selected sword doubles damage7 to14 only for Gad, and keeps the ordinary target at7."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab02#usage-level-vs-magic-spirit-conversion",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m actual additional coverage"
+          ],
+          "title": "selection qualification freezes current magic at acceptance but compares printed use Lv independently of effect Lv",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real Prayer produces effect6 but printed use5 qualifies for conversion at acceptance; later magic reduction does not erase accepted spirit."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m independent Lester branches"
+          ],
+          "title": "conversion retains exact original warrior values and attributes, deduplicates spirit, and passes Wood Golem",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "The converted warrior retains exact printed values and prior attributes while adding spirit only once."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab02#physical-human-invalidation",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m independent Lester branches"
+          ],
+          "title": "physical human invalidation suppresses its own column ignore cancellation and does not reveal, morale, destroy or revive it",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected human invalidation marks the physical human ineffective; no morale, reveal, destruction or revival occurs and damage8 passes through."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m independent Lester branches"
+          ],
+          "title": "suppression resolves from public Arnes identity at snapshot (revealed=%s), never erases physical women guard",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Public Arnes loses the virtual source at snapshot while hidden Arnes retains it; the physical Female Guard remains a separate source."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m independent Lester branches"
+          ],
+          "title": "suppression resolves from public Arnes identity at snapshot (revealed=%s), never erases physical women guard",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Public Arnes loses the virtual source at snapshot while hidden Arnes retains it; the physical Female Guard remains a separate source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab02#independent-subset-one-use",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m independent Lester branches"
+          ],
+          "title": "no qualifying source offers only human invalidation and suppression; malformed, stale and unowned use is atomic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "When spirit conversion is unavailable, human and Arnes branches remain selectable; empty, duplicate and malformed subsets reject unchanged."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m independent Lester branches"
+          ],
+          "title": "one cancellation frame cancels the whole selected set without undoing remaining attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "A combined three-branch selection creates one frame; canceling it removes the whole selection without modifying the base technique."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#optional-virtual-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "declines Arnes by default and generates no physical or virtual source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "No explicit selection produces neither a physical nor virtual guard."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#cancel-ignore",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m Tia surprise scope and cancellation"
+          ],
+          "title": "selected virtual-only guard enables Tia on restarted entry and protects the whole column from ignore",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Tia ignore is selected but the virtual guard sets followerIgnoreCancelled and reduces damage to6."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#front-position",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#no-physical-card",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m virtual guard lifetime and restrictions"
+          ],
+          "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "One virtual source reduces each of three real hits by1, never enters the220 physical IDs, hand, discard or reclaim decisions, then disappears."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m virtual guard lifetime and restrictions"
+          ],
+          "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "One virtual source reduces each of three real hits by1, never enters the220 physical IDs, hand, discard or reclaim decisions, then disappears."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab03#bow-no-evade",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+          "parameters": "c2-p03-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+        },
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [],
+          "title": "actual Arnes dedicated BlackFlowBow → Ida Shadow → Confusion opens later evade with fixed 6/12",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Shadow/Confusion removes later-target evade prohibition while previously fixed effect6 and damage12 survive."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab03#effect-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+          "parameters": "c2-p03-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+        },
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [],
+          "title": "actual Arnes dedicated BlackFlowBow → Ida Shadow → Confusion opens later evade with fixed 6/12",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Shadow/Confusion removes later-target evade prohibition while previously fixed effect6 and damage12 survive."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab03#damage-plus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+          "parameters": "c2-p03-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+        },
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [],
+          "title": "actual Arnes dedicated BlackFlowBow → Ida Shadow → Confusion opens later evade with fixed 6/12",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Shadow/Confusion removes later-target evade prohibition while previously fixed effect6 and damage12 survive."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab03#separate-numeric-and-live-property-cutoffs",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [
+            "Task7q real canonical attack property packages"
+          ],
+          "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+          "parameters": "c2-p03-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+        },
+        {
+          "path": "packages/engine/test/attack-property-abilities.test.ts",
+          "suite": [],
+          "title": "actual Arnes dedicated BlackFlowBow → Ida Shadow → Confusion opens later evade with fixed 6/12",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Shadow/Confusion removes later-target evade prohibition while previously fixed effect6 and damage12 survive."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab01#follower-threshold-six",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "黒翼飛翔剣",
+            "飛竜",
+            "level-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "風矢",
+            "兵士",
+            "level-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "風矢",
+            "飛竜",
+            "blocked"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "Asfelt effective Lv6 boundary includes Blessing crossing=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Effective follower6 is destroyed, Blessing-raised7 blocks instead."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "Asfelt effective Lv6 boundary includes Blessing crossing=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Effective follower6 is destroyed, Blessing-raised7 blocks instead."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "Asfelt respects dedicated level7 instead of printed level5",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual dedicated follower7 is compared as7 rather than printed5 and blocks."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab01#destroy-all-eligible",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "黒翼飛翔剣",
+            "飛竜",
+            "level-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "風矢",
+            "兵士",
+            "level-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "風矢",
+            "飛竜",
+            "blocked"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s real ordinary Heavenly Hundred Slash freezes shared destruction and physical HP independently on three hits",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-hit attack destroys both eligible front follower and rear Castle; all three hits retain7 and both cards reach discard after response."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab03#attack-only",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "不死王ガドューラ",
+            "c2-p06-r1c1-ab03",
+            "黒翼飛翔剣",
+            "兵士",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "不死王ガドューラ",
+            "c2-p06-r1c1-ab03",
+            "黒翼飛翔剣",
+            "小悪魔",
+            "lower-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s pure turn technique has no destruction option",
+          "parameters": [
+            "不死王ガドューラ",
+            "c2-p06-r1c1-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Frenzy is absent on a real turn-healing technique."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s pure parry does not acquire destruction",
+          "parameters": [
+            "不死王ガドューラ",
+            "c2-p06-r1c1-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Frenzy is absent for a real pure parry defense."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab03#human-follower-destruction",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "不死王ガドューラ",
+            "c2-p06-r1c1-ab03",
+            "黒翼飛翔剣",
+            "兵士",
+            "attribute-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s reaches %s with %s: %s → %s",
+          "parameters": [
+            "不死王ガドューラ",
+            "c2-p06-r1c1-ab03",
+            "黒翼飛翔剣",
+            "小悪魔",
+            "lower-destroyed"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#virtual-human-attribute",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#virtual-female-attribute",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#virtual-base-level-four",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab02#virtual-hp-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m follower entry"
+          ],
+          "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m virtual guard lifetime and restrictions"
+          ],
+          "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "One virtual source reduces each of three real hits by1, never enters the220 physical IDs, hand, discard or reclaim decisions, then disappears."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m virtual guard lifetime and restrictions"
+          ],
+          "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "One virtual source reduces each of three real hits by1, never enters the220 physical IDs, hand, discard or reclaim decisions, then disappears."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }

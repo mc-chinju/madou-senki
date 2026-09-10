@@ -171041,12 +171041,12 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:fffb029ca756730d"
+        "t:4587d1200578de81",
+        "t:5eee10f05b520bf1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:bc61ea5cec465d78",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171067,12 +171067,13 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:fffb029ca756730d"
+        "t:4587d1200578de81",
+        "t:5eee10f05b520bf1",
+        "t:dec5f9f21059701c"
       ],
       "status": "implemented",
       "remaining": [
-        "n:bc61ea5cec465d78",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171093,12 +171094,11 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:fffb029ca756730d"
+        "t:4587d1200578de81"
       ],
       "status": "implemented",
       "remaining": [
-        "n:bc61ea5cec465d78",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171119,12 +171119,13 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:fffb029ca756730d"
+        "t:4587d1200578de81",
+        "t:dec5f9f21059701c",
+        "t:45722408bc23f680"
       ],
       "status": "implemented",
       "remaining": [
-        "n:bc61ea5cec465d78",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171541,12 +171542,12 @@
         "h:923e76d54b50b9c8"
       ],
       "tests": [
-        "t:211c73131a3565f0"
+        "t:bb219dd997d71ced",
+        "t:87a478bc7f72ce11"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171566,12 +171567,12 @@
         "h:923e76d54b50b9c8"
       ],
       "tests": [
-        "t:211c73131a3565f0"
+        "t:bb219dd997d71ced",
+        "t:608aee26f6f6ce42"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171592,12 +171593,14 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:28977cd8b2c5eb92"
+        "t:734e471652fb1812",
+        "t:2ba2a5139a981f90",
+        "t:7356d84b24157b80",
+        "t:230fb417a778e03c"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171618,12 +171621,12 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:28977cd8b2c5eb92"
+        "t:734e471652fb1812",
+        "t:2ba2a5139a981f90"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171805,12 +171808,13 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:fa7303b3038693e3"
+        "t:7e05801708194e30",
+        "t:f74a5e83276d89d5",
+        "t:393ac98e3f591952"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171831,12 +171835,13 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:fa7303b3038693e3"
+        "t:7e05801708194e30",
+        "t:f74a5e83276d89d5",
+        "t:393ac98e3f591952"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171857,12 +171862,12 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:fa7303b3038693e3"
+        "t:728336599d5b4db8",
+        "t:4cf17bdd07206b40"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172928,12 +172933,12 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:90003b34fc33355e"
+        "t:b6b7fb85f8f7d123",
+        "t:f97dd8b7766b6663"
       ],
       "status": "implemented",
       "remaining": [
-        "n:3f10334d7b7e4ccf",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172953,12 +172958,11 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:90003b34fc33355e"
+        "t:585171a29ece5f6b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:3f10334d7b7e4ccf",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172978,12 +172982,12 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:90003b34fc33355e"
+        "t:d703d0e735051da1",
+        "t:871248d42a51e949"
       ],
       "status": "implemented",
       "remaining": [
-        "n:3f10334d7b7e4ccf",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173003,12 +173007,12 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:90003b34fc33355e"
+        "t:8704cd32efbf1c41",
+        "t:2c41b3b08d191641"
       ],
       "status": "implemented",
       "remaining": [
-        "n:3f10334d7b7e4ccf",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173293,12 +173297,12 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:6d7c5871e0f1a9cb"
+        "t:e987b540afa726df",
+        "t:043439dd4fced69f"
       ],
       "status": "implemented",
       "remaining": [
-        "n:bc61ea5cec465d78",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173319,12 +173323,12 @@
         "h:f079f399bef97019"
       ],
       "tests": [
-        "t:6d7c5871e0f1a9cb"
+        "t:e987b540afa726df",
+        "t:ec612f9022b8f14e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:bc61ea5cec465d78",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173341,13 +173345,15 @@
         "C07"
       ],
       "handler": [
-        "h:de49b81966388e25",
-        "h:9f0c4b1ca744a7af"
+        "h:d35398a500204650",
+        "h:7b5fa28d017655f1"
       ],
-      "tests": [],
+      "tests": [
+        "t:e987b540afa726df"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:1530f9e455001013"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173364,13 +173370,17 @@
         "C07"
       ],
       "handler": [
-        "h:de49b81966388e25",
-        "h:9f0c4b1ca744a7af"
+        "h:d35398a500204650",
+        "h:7b5fa28d017655f1"
       ],
-      "tests": [],
+      "tests": [
+        "t:e987b540afa726df",
+        "t:7997c06152ff7fe0",
+        "t:49202abb1006c011"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:1530f9e455001013"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173422,12 +173432,12 @@
         "h:923e76d54b50b9c8"
       ],
       "tests": [
-        "t:c36d9c0914f32025"
+        "t:943020143c4b1be4",
+        "t:7823fc14312de0f7"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173447,12 +173457,12 @@
         "h:923e76d54b50b9c8"
       ],
       "tests": [
-        "t:c36d9c0914f32025"
+        "t:943020143c4b1be4",
+        "t:7823fc14312de0f7"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173472,12 +173482,12 @@
         "h:923e76d54b50b9c8"
       ],
       "tests": [
-        "t:c36d9c0914f32025"
+        "t:943020143c4b1be4",
+        "t:7823fc14312de0f7"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173497,12 +173507,12 @@
         "h:923e76d54b50b9c8"
       ],
       "tests": [
-        "t:c36d9c0914f32025"
+        "t:943020143c4b1be4",
+        "t:7823fc14312de0f7"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173793,12 +173803,16 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:28977cd8b2c5eb92"
+        "t:3f462f715ba4b28f",
+        "t:29a55c62924b708c",
+        "t:9324f95dacc40330",
+        "t:09132d6b7ca00d66",
+        "t:e8efeaa40c82ac11",
+        "t:2b77cf60ace5f7e5"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173819,12 +173833,14 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:28977cd8b2c5eb92"
+        "t:3f462f715ba4b28f",
+        "t:29a55c62924b708c",
+        "t:9324f95dacc40330",
+        "t:4ccb0591d8953cc1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176613,12 +176629,14 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:28977cd8b2c5eb92"
+        "t:8b338b3867eecf53",
+        "t:4f1afde38290b0ca",
+        "t:04c100e5a98e6ef7",
+        "t:bab5ba2e8f6d7add"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176639,12 +176657,12 @@
         "h:8f7297acbe094a4e"
       ],
       "tests": [
-        "t:28977cd8b2c5eb92"
+        "t:8b338b3867eecf53",
+        "t:4f1afde38290b0ca"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -227116,13 +227134,15 @@
       ],
       "kind": "ability-effect",
       "handler": [
-        "h:de49b81966388e25",
-        "h:9f0c4b1ca744a7af"
+        "h:d35398a500204650",
+        "h:7b5fa28d017655f1"
       ],
-      "tests": [],
+      "tests": [
+        "t:e987b540afa726df"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:1530f9e455001013"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "coverageClass": "semantic"
@@ -227138,13 +227158,15 @@
       ],
       "kind": "ability-effect",
       "handler": [
-        "h:de49b81966388e25",
-        "h:9f0c4b1ca744a7af"
+        "h:d35398a500204650",
+        "h:7b5fa28d017655f1"
       ],
-      "tests": [],
+      "tests": [
+        "t:e987b540afa726df"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:1530f9e455001013"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "coverageClass": "semantic"
@@ -227160,13 +227182,15 @@
       ],
       "kind": "ability-effect",
       "handler": [
-        "h:de49b81966388e25",
-        "h:9f0c4b1ca744a7af"
+        "h:d35398a500204650",
+        "h:7b5fa28d017655f1"
       ],
-      "tests": [],
+      "tests": [
+        "t:e987b540afa726df"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:1530f9e455001013"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "coverageClass": "semantic"
@@ -227182,13 +227206,17 @@
       ],
       "kind": "ability-effect",
       "handler": [
-        "h:de49b81966388e25",
-        "h:9f0c4b1ca744a7af"
+        "h:d35398a500204650",
+        "h:7b5fa28d017655f1"
       ],
-      "tests": [],
+      "tests": [
+        "t:e987b540afa726df",
+        "t:7997c06152ff7fe0",
+        "t:49202abb1006c011"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:1530f9e455001013"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "coverageClass": "semantic"
@@ -409907,6 +409935,10 @@
     "h:5fa111ca04921c80": {
       "path": "packages/engine/src/reclaim.ts",
       "symbol": "reclaimEventId"
+    },
+    "h:7b5fa28d017655f1": {
+      "path": "packages/engine/src/abilities/follower-entry.ts",
+      "symbol": "virtualGuardWillEnter"
     }
   },
   "testCases": {
@@ -455468,6 +455500,492 @@
       "kind": "canonical-transition",
       "parameters": "a2-p17-r1c1",
       "bindingNote": "Printed mental attacks cause no damage, resistance roll or status after whole-hit negation."
+    },
+    "t:4587d1200578de81": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m follower entry"
+      ],
+      "title": "Tia entry consumes only advance hand cost without refund, replacement draw or distance change",
+      "declarationSha256": "dffc825cd9f2dcd390d6b1744e96b91dbc4470116ac4246f1c2605fada9cb2fd",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual follower entry consumes exactly one advance card, rejects maai as cost, does not draw replacement or change distances."
+    },
+    "t:5eee10f05b520bf1": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m Tia surprise scope and cancellation"
+      ],
+      "title": "hidden Tia explicitly reveals first; no-follower entry has no cost option",
+      "declarationSha256": "3754913220db0bc7aa2f08bddcb8d207c9a4beb287e88ef585fcdefd44bdca71",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Hidden Tia has no option until actual reveal; an entry with no followers has no cost option."
+    },
+    "t:dec5f9f21059701c": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m Tia surprise scope and cancellation"
+      ],
+      "title": "distinct target entries need distinct costs and never leak ignore to another target",
+      "declarationSha256": "f847ff779d2cc4e96d737572d45335c0eba067e68e609440b33fa2d108b84037",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Each target requires a distinct cost/event; all targeted followers survive and each target receives the unblocked7."
+    },
+    "t:45722408bc23f680": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m actual additional coverage"
+      ],
+      "title": "Tia surprise fixes all three actual residual hits and remains fixed after source disable",
+      "declarationSha256": "4a08dfd405c1a2e1ddfe17b9b2fce70a41cbb9eef46563797c58225905459453",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "All three real hits pass through the follower unchanged for7 each and the follower remains placed."
+    },
+    "t:bb219dd997d71ced": {
+      "path": "packages/engine/test/attack-property-abilities.test.ts",
+      "suite": [
+        "Task7q real canonical attack property packages"
+      ],
+      "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+      "declarationSha256": "41044ed02159ff9fb191b89c6ef816ceb1bb402c0d3c7954030bbb31339c1c74",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c1-ab01",
+      "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+    },
+    "t:87a478bc7f72ce11": {
+      "path": "packages/engine/test/attack-property-abilities.test.ts",
+      "suite": [
+        "Task7q real canonical attack property packages"
+      ],
+      "title": "Lancaster Wind is not offered for an actual magic attack",
+      "declarationSha256": "ac4967cba6c624a89047a6d76a0740dadfe8b0739b8d4828d465cae4748535d1",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Lancaster magic attack is not offered the warrior-only Wind ability."
+    },
+    "t:608aee26f6f6ce42": {
+      "path": "packages/engine/test/attack-property-abilities.test.ts",
+      "suite": [
+        "Task7q real canonical attack property packages"
+      ],
+      "title": "actual BlackWing native two plus Wind needs third; shared advance preserves paid progress/reload",
+      "declarationSha256": "969a84e0a6c6d500cecd2671bd5205e094abdb3bea858e8becd3a9209d211804",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Three actual maai payments meet native2 plus selected Wind1; shared advance consumes one progress and reload preserves it."
+    },
+    "t:734e471652fb1812": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "早駆けのランカスター",
+        "c2-p02-r2c1-ab02",
+        "黒翼飛翔剣",
+        "飛竜",
+        "attribute-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:2ba2a5139a981f90": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "早駆けのランカスター",
+        "c2-p02-r2c1-ab02",
+        "黒翼飛翔剣",
+        "兵士",
+        "lower-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:7356d84b24157b80": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+      "declarationSha256": "d56dd55c3d6a1cf44d15590071a7ac994a235ae3e89c2505e5fb5dd179c10435",
+      "kind": "canonical-transition",
+      "parameters": [
+        "早駆けのランカスター",
+        "c2-p02-r2c1-ab02",
+        "風矢"
+      ],
+      "bindingNote": "Lancaster cannot select Dragon on printed wind magic."
+    },
+    "t:230fb417a778e03c": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+      "declarationSha256": "d56dd55c3d6a1cf44d15590071a7ac994a235ae3e89c2505e5fb5dd179c10435",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p02-r2c1-ab02",
+        "黒翼飛翔剣"
+      ],
+      "bindingNote": "Lancaster cannot select Dragon on printed wind magic."
+    },
+    "t:7e05801708194e30": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "聖騎士ランスロット",
+        "c2-p02-r2c2-ab02",
+        "黒翼飛翔剣",
+        "小悪魔",
+        "attribute-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:f74a5e83276d89d5": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "聖騎士ランスロット",
+        "c2-p02-r2c2-ab02",
+        "黒翼飛翔剣",
+        "スケルトン",
+        "attribute-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:393ac98e3f591952": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "聖騎士ランスロット",
+        "c2-p02-r2c2-ab02",
+        "黒翼飛翔剣",
+        "兵士",
+        "lower-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:728336599d5b4db8": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "WhiteSword applies actual Gadyoora multiplier independent of reveal=%s",
+      "declarationSha256": "aa7f172c77d417ef3c829415a4a9c9781e7b082f6cccefed43c2eb6feba5784a",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "With either hidden/public Gad, selected sword doubles damage7 to14 only for Gad, and keeps the ordinary target at7."
+    },
+    "t:4cf17bdd07206b40": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "WhiteSword applies actual Gadyoora multiplier independent of reveal=%s",
+      "declarationSha256": "aa7f172c77d417ef3c829415a4a9c9781e7b082f6cccefed43c2eb6feba5784a",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "With either hidden/public Gad, selected sword doubles damage7 to14 only for Gad, and keeps the ordinary target at7."
+    },
+    "t:b6b7fb85f8f7d123": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m actual additional coverage"
+      ],
+      "title": "selection qualification freezes current magic at acceptance but compares printed use Lv independently of effect Lv",
+      "declarationSha256": "e8ee5ddb22722a840e2f91e4ba7404b455092535c4224d7749ec7670906eae64",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Real Prayer produces effect6 but printed use5 qualifies for conversion at acceptance; later magic reduction does not erase accepted spirit."
+    },
+    "t:f97dd8b7766b6663": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m independent Lester branches"
+      ],
+      "title": "conversion retains exact original warrior values and attributes, deduplicates spirit, and passes Wood Golem",
+      "declarationSha256": "167b207de58e6222584df54fae12570fbce8104dac72f6528cdf2d09f1dd100f",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "The converted warrior retains exact printed values and prior attributes while adding spirit only once."
+    },
+    "t:585171a29ece5f6b": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m independent Lester branches"
+      ],
+      "title": "physical human invalidation suppresses its own column ignore cancellation and does not reveal, morale, destroy or revive it",
+      "declarationSha256": "75326f34ed31481973909272c487289d771836d1200bbb762b61c9a169126e2f",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Selected human invalidation marks the physical human ineffective; no morale, reveal, destruction or revival occurs and damage8 passes through."
+    },
+    "t:d703d0e735051da1": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m independent Lester branches"
+      ],
+      "title": "suppression resolves from public Arnes identity at snapshot (revealed=%s), never erases physical women guard",
+      "declarationSha256": "e5e71c87d4965045dc85e18983caa6ace4ab94b7a3730b3ffe28b80efb6135b8",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Public Arnes loses the virtual source at snapshot while hidden Arnes retains it; the physical Female Guard remains a separate source."
+    },
+    "t:871248d42a51e949": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m independent Lester branches"
+      ],
+      "title": "suppression resolves from public Arnes identity at snapshot (revealed=%s), never erases physical women guard",
+      "declarationSha256": "e5e71c87d4965045dc85e18983caa6ace4ab94b7a3730b3ffe28b80efb6135b8",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Public Arnes loses the virtual source at snapshot while hidden Arnes retains it; the physical Female Guard remains a separate source."
+    },
+    "t:8704cd32efbf1c41": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m independent Lester branches"
+      ],
+      "title": "no qualifying source offers only human invalidation and suppression; malformed, stale and unowned use is atomic",
+      "declarationSha256": "5a4195a86deef3e632ace858e5ab1d36c8135425540b36888c75246b9dd37a35",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "When spirit conversion is unavailable, human and Arnes branches remain selectable; empty, duplicate and malformed subsets reject unchanged."
+    },
+    "t:2c41b3b08d191641": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m independent Lester branches"
+      ],
+      "title": "one cancellation frame cancels the whole selected set without undoing remaining attack",
+      "declarationSha256": "91690db7e8565c89a940e3b711f3b7fc7d56e65dd54d50686789002e86da2ff9",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "A combined three-branch selection creates one frame; canceling it removes the whole selection without modifying the base technique."
+    },
+    "t:e987b540afa726df": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m follower entry"
+      ],
+      "title": "accepts hidden Arnes with no cost and freezes exact Lv4 HP1 morale-free virtual source before two physical slots",
+      "declarationSha256": "32740abf4b3487c066c4d91864b064c29e5f63250dd53f808735c5d67a202fa5",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Selected hidden Arnes creates one virtual source at position-1 before two physical slots, with exact level4 HP1 human/female attributes, no morale and cancelIgnore."
+    },
+    "t:043439dd4fced69f": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m follower entry"
+      ],
+      "title": "declines Arnes by default and generates no physical or virtual source",
+      "declarationSha256": "b6248f44b6afbee68c1f7590c9acbe60a03eff6b526e36229a4144f438c8dc6e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "No explicit selection produces neither a physical nor virtual guard."
+    },
+    "t:ec612f9022b8f14e": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m Tia surprise scope and cancellation"
+      ],
+      "title": "selected virtual-only guard enables Tia on restarted entry and protects the whole column from ignore",
+      "declarationSha256": "1d3683cb6fc9ffac606f5d68d330794e8464a4083e3ecde2474c51a4e81307a3",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Tia ignore is selected but the virtual guard sets followerIgnoreCancelled and reduces damage to6."
+    },
+    "t:7997c06152ff7fe0": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m virtual guard lifetime and restrictions"
+      ],
+      "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+      "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "One virtual source reduces each of three real hits by1, never enters the220 physical IDs, hand, discard or reclaim decisions, then disappears."
+    },
+    "t:49202abb1006c011": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m virtual guard lifetime and restrictions"
+      ],
+      "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+      "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "One virtual source reduces each of three real hits by1, never enters the220 physical IDs, hand, discard or reclaim decisions, then disappears."
+    },
+    "t:943020143c4b1be4": {
+      "path": "packages/engine/test/attack-property-abilities.test.ts",
+      "suite": [
+        "Task7q real canonical attack property packages"
+      ],
+      "title": "select/decline/cancel/spent/late %s are explicit, private and atomic",
+      "declarationSha256": "41044ed02159ff9fb191b89c6ef816ceb1bb402c0d3c7954030bbb31339c1c74",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c2-ab03",
+      "bindingNote": "Actual select versus decline/cancel compares Wind required3 versus2, or Bow effect6/damage12 versus5/10 plus live evade prohibition."
+    },
+    "t:7823fc14312de0f7": {
+      "path": "packages/engine/test/attack-property-abilities.test.ts",
+      "suite": [],
+      "title": "actual Arnes dedicated BlackFlowBow → Ida Shadow → Confusion opens later evade with fixed 6/12",
+      "declarationSha256": "a188c165d6baf0f2292551452e81abbd657b11c04dccc46f04a1d7c7e7488e63",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Shadow/Confusion removes later-target evade prohibition while previously fixed effect6 and damage12 survive."
+    },
+    "t:3f462f715ba4b28f": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab01",
+        "黒翼飛翔剣",
+        "飛竜",
+        "level-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:29a55c62924b708c": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab01",
+        "風矢",
+        "兵士",
+        "level-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:9324f95dacc40330": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab01",
+        "風矢",
+        "飛竜",
+        "blocked"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:09132d6b7ca00d66": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "Asfelt effective Lv6 boundary includes Blessing crossing=%s",
+      "declarationSha256": "45172686b4a5753179dc44245653612198e125e45fbf3f0995c041b4a7a52389",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Effective follower6 is destroyed, Blessing-raised7 blocks instead."
+    },
+    "t:e8efeaa40c82ac11": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "Asfelt effective Lv6 boundary includes Blessing crossing=%s",
+      "declarationSha256": "45172686b4a5753179dc44245653612198e125e45fbf3f0995c041b4a7a52389",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Effective follower6 is destroyed, Blessing-raised7 blocks instead."
+    },
+    "t:2b77cf60ace5f7e5": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "Asfelt respects dedicated level7 instead of printed level5",
+      "declarationSha256": "eff89607162b10cdbf108d67c1d694f98a50334890f3606285db4a37e98fda8e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual dedicated follower7 is compared as7 rather than printed5 and blocks."
+    },
+    "t:4ccb0591d8953cc1": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s real ordinary Heavenly Hundred Slash freezes shared destruction and physical HP independently on three hits",
+      "declarationSha256": "a5e9361bd01c80373d5e46e52c83ecb0e061295b97012217e24ca72201ed1818",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab01"
+      ],
+      "bindingNote": "Actual three-hit attack destroys both eligible front follower and rear Castle; all three hits retain7 and both cards reach discard after response."
+    },
+    "t:8b338b3867eecf53": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "不死王ガドューラ",
+        "c2-p06-r1c1-ab03",
+        "黒翼飛翔剣",
+        "兵士",
+        "attribute-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:4f1afde38290b0ca": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s reaches %s with %s: %s → %s",
+      "declarationSha256": "17f6c07edade56f8beb2a14386beb0f068839a1b607b1e34f3cf3bf17819b0be",
+      "kind": "canonical-transition",
+      "parameters": [
+        "不死王ガドューラ",
+        "c2-p06-r1c1-ab03",
+        "黒翼飛翔剣",
+        "小悪魔",
+        "lower-destroyed"
+      ],
+      "bindingNote": "The actual owner/source pair asserts attribute/level destruction versus ordinary comparison, zero HP reduction, no morale and physical disposal."
+    },
+    "t:04c100e5a98e6ef7": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s pure turn technique has no destruction option",
+      "declarationSha256": "d9867a7f038ecfb26e24e162f5c43362050fb1d578991d2ab9710b2d80ccd5d3",
+      "kind": "canonical-transition",
+      "parameters": [
+        "不死王ガドューラ",
+        "c2-p06-r1c1-ab03"
+      ],
+      "bindingNote": "Frenzy is absent on a real turn-healing technique."
+    },
+    "t:bab5ba2e8f6d7add": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s pure parry does not acquire destruction",
+      "declarationSha256": "ae690a953a1631b9a1ef016192fe67a0ce523843572183b2bdd27c28bac77b27",
+      "kind": "canonical-transition",
+      "parameters": [
+        "不死王ガドューラ",
+        "c2-p06-r1c1-ab03"
+      ],
+      "bindingNote": "Frenzy is absent for a real pure parry defense."
     }
   },
   "remainingNotes": {
