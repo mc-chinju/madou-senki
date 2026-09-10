@@ -37,6 +37,23 @@ class RuntimeRunTest(unittest.TestCase):
                  for status in ['failed', 'passed']]
         self.assertEqual(match_cases({'t:1': ref}, items)[0]['result'], 'failed')
 
+    def test_same_reported_title_cannot_certify_different_parameter_rows(self):
+        first = self.ref()
+        first['parameters'] = ['a', 'first card']
+        second = dict(first, parameters=['a', 'second card'])
+        item = {'path': first['path'], 'ancestors': ['s'], 'title': 'a does it', 'status': 'passed'}
+        for reported in [[item], [item, item]]:
+            with self.subTest(result_count=len(reported)):
+                with self.assertRaisesRegex(ValueError, 'ambiguous reported test'):
+                    match_cases({'t:1': first, 't:2': second}, reported)
+
+    def test_same_execution_can_support_multiple_binding_notes(self):
+        first = self.ref()
+        second = dict(first, bindingNote='Another clause about the same execution')
+        item = {'path': first['path'], 'ancestors': ['s'], 'title': 'a does it', 'status': 'passed'}
+        cases = match_cases({'t:1': first, 't:2': second}, [item])
+        self.assertEqual([case['result'] for case in cases], ['passed', 'passed'])
+
     def test_skipped_and_related_are_not_successful_evidence(self):
         ref = self.ref()
         item = {'path': ref['path'], 'ancestors': ['s'], 'title': 'a does it', 'status': 'pending'}

@@ -120,7 +120,7 @@ def match_cases(refs, reported, indices=None):
     for item in reported:
         key = (item['path'], tuple(item['ancestors']), item['title'])
         by_key.setdefault(key, []).append(item['status'])
-    cases, seen = [], set()
+    cases, seen, executions = [], set(), {}
     for test_id, ref in refs.items():
         if ref.get('kind') not in CONCRETE:
             continue
@@ -128,10 +128,18 @@ def match_cases(refs, reported, indices=None):
             title = format_title(ref['title'], ref.get('parameters'), (indices or {}).get(test_id))
         except ValueError:
             continue
-        results = by_key.get((ref['path'], tuple(ref.get('suite', [])), title))
+        key = (ref['path'], tuple(ref.get('suite', [])), title)
+        results = by_key.get(key)
         identity = canonical_digest(ref)
         if results is None or identity in seen:
             continue
+        # A title may omit parameters. Repeated successes cannot identify which
+        # row ran, so require an unambiguous execution before issuing evidence.
+        execution = canonical_digest({field: ref.get(field) for field in
+                                      ('title', 'parameters', 'declarationSha256')})
+        if key in executions and executions[key] != execution:
+            raise ValueError(f'ambiguous reported test: {ref["path"]}: {title}')
+        executions[key] = execution
         seen.add(identity)
         cases.append({'test': ref, 'result': 'passed' if all(r == 'passed' for r in results) else 'failed',
                       'reportedTitle': title})
