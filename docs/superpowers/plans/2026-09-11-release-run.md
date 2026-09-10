@@ -542,7 +542,7 @@ git add scripts/apply_ledger_bindings.py scripts/test_apply_ledger_bindings.py &
 - Produces: 台帳更新。`implemented` 行のうち `tests` 全件が run で `passed` の行を `verified` にし `runEvidence: {path, sha256}` を付ける。`verified` 行のうち依存行が全て `accepted`/`notApplicable` の行に受け入れ receipt（`docs/operations/evidence/acceptance/<entryId>--<clauseKey>.json`）を書き、`accepted` にして `remaining: []` にする。依存順に反復し、変化がなくなるまで回す。`notApplicable` 行の `retainedTests` も同じ run に束縛する（`runEvidence` を付ける）。
 - receipt は `generate_acceptance_receipt.build_acceptance_receipt(manifest, key, row, obligation, dependency_rows, run)` を使う。`dependency_rows` は `obligation.dependsOn` の実行（台帳の該当行 dict）。
 
-- [ ] **Step 1: 失敗するテストを書く**
+- [x] **Step 1: 失敗するテストを書く**
 
 ```python
 # scripts/test_promote_ledger.py
@@ -589,12 +589,12 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-- [ ] **Step 2: 失敗を確認**
+- [x] **Step 2: 失敗を確認**
 
 Run: `python3 -m unittest scripts.test_promote_ledger`
 Expected: `ModuleNotFoundError`
 
-- [ ] **Step 3: `generate_acceptance_receipt.py` の CLI が依存行を渡すように直し、`promote_ledger.py` を実装**
+- [x] **Step 3: `generate_acceptance_receipt.py` の CLI が依存行を渡すように直し、`promote_ledger.py` を実装**
 
 `generate_acceptance_receipt.main()` の `{}` を、`--ledger` と `--manifest` から `dependsOn` の行を引いた dict に置き換える。`promote_ledger.py`:
 
@@ -672,12 +672,12 @@ if __name__ == '__main__':
 
 `reviewed_row_digest` が row の `status`/`acceptanceEvidence` を除外し `remaining` を含むため、receipt 生成は `remaining=[]`・`status='accepted'` に更新した後に行う（上記の順序）。validator の `reviewed_row_digest(row, expected, dependency_rows)` の第3引数が「全行 dict」か「依存行だけの dict」かを 118〜140 行で確認し、同じものを渡す。
 
-- [ ] **Step 4: 成功を確認**
+- [x] **Step 4: 成功を確認**
 
 Run: `python3 -m unittest scripts.test_promote_ledger scripts.test_validate_runtime_coverage`
 Expected: OK（validator 側の既存 fixture も成功）
 
-- [ ] **Step 5: 小さな実run で end-to-end 確認（Task A4 Step 5 の receipt を使う）**
+- [x] **Step 5: 小さな実run で end-to-end 確認（Task A4 Step 5 の receipt を使う）**
 
 ```bash
 cp .cache/run/receipt.json docs/operations/evidence/2026-09-11-probe-run.json
@@ -687,11 +687,13 @@ python3 scripts/validate_runtime_coverage.py | cut -c1-200
 
 Expected: 一部の行が verified/accepted になり validator は `valid: true`。確認後 `git checkout data/ docs/operations/evidence/acceptance` と `rm docs/operations/evidence/2026-09-11-probe-run.json` で戻す（候補が変わるたびに run は無効になるため、本番の昇格は Task B8 で一度に行う）。
 
-- [ ] **Step 6: コミット**
+- [x] **Step 6: コミット**
 
 ```bash
 git add scripts/promote_ledger.py scripts/test_promote_ledger.py scripts/generate_acceptance_receipt.py && git commit -m "scripts: 成功runから台帳を依存順にverified/acceptedへ昇格する"
 ```
+
+実装補足: 候補・manifest一致と重複case拒否を昇格前に検査する。参照IDを展開し推移的依存行をreceiptへ渡す。ファイル名は行キーのSHA256で衝突を避ける。実probeは新しいsnapshot/runを取得し3行accepted、全12,178行validator validを確認後、台帳とprobeを復元済み。新規5試験成功（既存validator58試験も成功）。
 
 ### Task A7: `notApplicable` の basis 種別を D4a/b/d へ拡張
 

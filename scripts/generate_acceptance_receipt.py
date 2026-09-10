@@ -33,16 +33,31 @@ def build_acceptance_receipt(manifest, row_key, row, obligation, dependency_rows
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--manifest', type=Path, required=True)
+    parser.add_argument('--ledger', type=Path, required=True)
     parser.add_argument('--row-key', required=True)
     parser.add_argument('--row', type=Path, required=True)
     parser.add_argument('--obligation', type=Path, required=True)
     parser.add_argument('--run', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    try:
+        from .promote_ledger import resolved_rows
+    except ImportError:
+        from promote_ledger import resolved_rows
+    manifest = json.loads(args.manifest.read_text())
+    rows, obligations = resolved_rows(manifest, json.loads(args.ledger.read_text()))
+    if args.row_key not in rows or args.row_key not in obligations:
+        raise ValueError('row key must exist in ledger and manifest')
+    # Require the caller-provided row/obligation to describe the ledger input.
+    ledger_row = next(r for r in json.loads(args.ledger.read_text())['rows']
+                      if f"{r['entryId']}#{r['clauseKey']}" == args.row_key)
+    manifest_obligation = next(o for o in manifest['obligations']
+                               if f"{o['entryId']}#{o['clauseKey']}" == args.row_key)
+    if json.loads(args.row.read_text()) != ledger_row or json.loads(args.obligation.read_text()) != manifest_obligation:
+        raise ValueError('row/obligation input differs from ledger/manifest')
     receipt = build_acceptance_receipt(
-        json.loads(args.manifest.read_text()), args.row_key,
-        json.loads(args.row.read_text()), json.loads(args.obligation.read_text()),
-        {}, json.loads(args.run.read_text()))
+        manifest, args.row_key, rows[args.row_key], obligations[args.row_key],
+        rows, json.loads(args.run.read_text()))
     args.output.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps({'written': str(args.output), 'policy': ACCEPTANCE_POLICY}))
     return 0
