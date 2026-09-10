@@ -170132,12 +170132,14 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0238dbe147e27113"
+        "t:d471fe5ca91f0d04",
+        "t:40c3a390cd9d88e5",
+        "t:85d1080e793bc729",
+        "t:24788a5cbfb724b4"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170157,12 +170159,14 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0238dbe147e27113"
+        "t:082108f30db71c77",
+        "t:86ebec128d838063",
+        "t:f95cb1ad97fbc609",
+        "t:8ad0e7ec04a2141d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170182,14 +170186,15 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0238dbe147e27113",
-        "t:873b62f165a5e0cf"
+        "t:5c73e35cdea23fea",
+        "t:5677eae4a7d6ae89",
+        "t:4143931e9f018b23",
+        "t:3c14743a54473a1f",
+        "t:e478a8da4bd0ee13"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6",
-        "S18-S20 correspondence: exact scenario cases registered; untested boundaries and current frozen candidate/full clause acceptance remain. No review performed."
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170416,12 +170421,14 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0238dbe147e27113"
+        "t:988719fb4f408da1",
+        "t:a9d5aa30dbb94307",
+        "t:ca41b6369cae4cd7",
+        "t:f53c17b7b130f0cc"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170441,12 +170448,14 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0238dbe147e27113"
+        "t:f9d101934f10fdec",
+        "t:7317a1e06daef2f3",
+        "t:6898c91571fe737a",
+        "t:16225d954af3f663"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170466,12 +170475,14 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0238dbe147e27113"
+        "t:4c90b971dd65308b",
+        "t:246a447eee0d91a6",
+        "t:1e5b43d71a2b4cce",
+        "t:8640892f7982d4e6"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170764,12 +170775,21 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:c3c9f28043b8cadf",
+        "t:cd36ca582acdcad6",
+        "t:083375d4f47f324e",
+        "t:577b5cd50deaa141",
+        "t:050e768cd5882b92",
+        "t:5df769c6b2df459e",
+        "t:6a518c7eab424763",
+        "t:e37c513836e026f0",
+        "t:036d96ae54b6fd3f",
+        "t:5018c10a9f99617e",
+        "t:a6c1725a897da7d3"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170789,12 +170809,17 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:083375d4f47f324e",
+        "t:577b5cd50deaa141",
+        "t:050e768cd5882b92",
+        "t:5df769c6b2df459e",
+        "t:6a518c7eab424763",
+        "t:e37c513836e026f0",
+        "t:036d96ae54b6fd3f"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170814,12 +170839,17 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:cd36ca582acdcad6",
+        "t:577b5cd50deaa141",
+        "t:050e768cd5882b92",
+        "t:5df769c6b2df459e",
+        "t:6a518c7eab424763",
+        "t:e37c513836e026f0",
+        "t:036d96ae54b6fd3f"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170839,12 +170869,17 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:c3c9f28043b8cadf",
+        "t:577b5cd50deaa141",
+        "t:050e768cd5882b92",
+        "t:5df769c6b2df459e",
+        "t:6a518c7eab424763",
+        "t:e37c513836e026f0",
+        "t:036d96ae54b6fd3f"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171109,12 +171144,18 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:9ec0f3a0be63f2b7",
+        "t:f3e87b483ee92d1c",
+        "t:062b6e005fd87d79",
+        "t:9114f0753d426402",
+        "t:651503732c773f38",
+        "t:8fb2a66225922c8f",
+        "t:bc00d08c7c1cf6ce",
+        "t:7ec9d7fba8a273ce"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171134,12 +171175,17 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:9ec0f3a0be63f2b7",
+        "t:f3e87b483ee92d1c",
+        "t:062b6e005fd87d79",
+        "t:9114f0753d426402",
+        "t:651503732c773f38",
+        "t:8fb2a66225922c8f",
+        "t:bc00d08c7c1cf6ce"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171159,12 +171205,17 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:9ec0f3a0be63f2b7",
+        "t:f3e87b483ee92d1c",
+        "t:062b6e005fd87d79",
+        "t:9114f0753d426402",
+        "t:651503732c773f38",
+        "t:8fb2a66225922c8f",
+        "t:bc00d08c7c1cf6ce"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171831,12 +171882,21 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:fa1b7321e9225d75"
+        "t:0f84dc94c791565a",
+        "t:be4a3c0e57997831",
+        "t:983efb688df29441",
+        "t:e8594c7e39858090",
+        "t:42a4bf9b95749ac6",
+        "t:5825328afd5a1027",
+        "t:e2195a0c724dd815",
+        "t:c7f8afaa6c31ae8e",
+        "t:aae22ad6da59099f",
+        "t:dda5532eb116acea",
+        "t:78112307e1240e48"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171856,12 +171916,18 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:fa1b7321e9225d75"
+        "t:be4a3c0e57997831",
+        "t:e8594c7e39858090",
+        "t:42a4bf9b95749ac6",
+        "t:5825328afd5a1027",
+        "t:e2195a0c724dd815",
+        "t:c7f8afaa6c31ae8e",
+        "t:aae22ad6da59099f",
+        "t:78112307e1240e48"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171881,12 +171947,18 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:fa1b7321e9225d75"
+        "t:983efb688df29441",
+        "t:e8594c7e39858090",
+        "t:42a4bf9b95749ac6",
+        "t:5825328afd5a1027",
+        "t:e2195a0c724dd815",
+        "t:c7f8afaa6c31ae8e",
+        "t:aae22ad6da59099f",
+        "t:78112307e1240e48"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171906,12 +171978,18 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:fa1b7321e9225d75"
+        "t:0f84dc94c791565a",
+        "t:e8594c7e39858090",
+        "t:42a4bf9b95749ac6",
+        "t:5825328afd5a1027",
+        "t:e2195a0c724dd815",
+        "t:c7f8afaa6c31ae8e",
+        "t:aae22ad6da59099f",
+        "t:78112307e1240e48"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174921,12 +174999,18 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:f54b35e3d52d2ae9",
+        "t:6eabe6bee684f275",
+        "t:2b6fa8df33b599a3",
+        "t:390288f34c506925",
+        "t:33859080541f4562",
+        "t:3b402833a9826f40",
+        "t:9aee0984893d3956",
+        "t:de4ff92336841101"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174946,12 +175030,17 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:f54b35e3d52d2ae9",
+        "t:6eabe6bee684f275",
+        "t:2b6fa8df33b599a3",
+        "t:390288f34c506925",
+        "t:33859080541f4562",
+        "t:3b402833a9826f40",
+        "t:9aee0984893d3956"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174971,12 +175060,17 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:0cfb63991c4f6f18"
+        "t:f54b35e3d52d2ae9",
+        "t:6eabe6bee684f275",
+        "t:2b6fa8df33b599a3",
+        "t:390288f34c506925",
+        "t:33859080541f4562",
+        "t:3b402833a9826f40",
+        "t:9aee0984893d3956"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175797,12 +175891,12 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:a295f77ee684dc27"
+        "t:29de339eb22905c8",
+        "t:e047a20baa5de245"
       ],
       "status": "implemented",
       "remaining": [
-        "n:96d524ad6ab210cf",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176490,12 +176584,15 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:8982b29571dedf13"
+        "t:dc6b40dc990ba7c2",
+        "t:c8d61375fda7f9f3",
+        "t:5156da6286d2dbfa",
+        "t:e64718f249e71e91",
+        "t:c7b82ccbc89b8156"
       ],
       "status": "implemented",
       "remaining": [
-        "n:96d524ad6ab210cf",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -454501,6 +454598,876 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Transformed third-party LancelotII cannot cancel Majesty against another attacker and command rejects unchanged."
+    },
+    "t:d471fe5ca91f0d04": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c2-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:40c3a390cd9d88e5": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c2-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:85d1080e793bc729": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c2-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:24788a5cbfb724b4": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c2-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:082108f30db71c77": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c1-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:86ebec128d838063": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c1-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:f95cb1ad97fbc609": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c1-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:8ad0e7ec04a2141d": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p06-r1c1-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:5c73e35cdea23fea": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p03-r2c1-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:5677eae4a7d6ae89": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p03-r2c1-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:4143931e9f018b23": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p03-r2c1-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:3c14743a54473a1f": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r1c2-ab04",
+        "c2-p03-r2c1-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:e478a8da4bd0ee13": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "S19 actual Gil spirit threshold failure on Lester sixes retains ordinary cancellation",
+      "declarationSha256": "b883a9a754ce9cd8ce2a08fbd25ce0e693849bf4ed09f60f7830cc167ac5980a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "S19 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+    },
+    "t:988719fb4f408da1": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c2-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:a9d5aa30dbb94307": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c2-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:ca41b6369cae4cd7": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c2-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:f53c17b7b130f0cc": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c2-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:f9d101934f10fdec": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c1-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:7317a1e06daef2f3": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c1-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:6898c91571fe737a": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c1-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:16225d954af3f663": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p06-r1c1-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:4c90b971dd65308b": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p03-r2c1-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:246a447eee0d91a6": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p03-r2c1-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:1e5b43d71a2b4cce": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p03-r2c1-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:8640892f7982d4e6": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c1-ab04",
+        "c2-p03-r2c1-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+    },
+    "t:c3c9f28043b8cadf": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p03-r2c1-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:cd36ca582acdcad6": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p06-r1c1-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:083375d4f47f324e": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p06-r1c2-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:577b5cd50deaa141": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p03-r2c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:050e768cd5882b92": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p03-r2c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:5df769c6b2df459e": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p06-r1c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:6a518c7eab424763": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p06-r1c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:e37c513836e026f0": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p06-r1c2-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:036d96ae54b6fd3f": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p01-r2c2-ab04",
+        "c2-p06-r1c2-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:5018c10a9f99617e": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Cham own reveal %s is necessary even with revealed source",
+      "declarationSha256": "afa81df3d0f6e7cc0c2f5c4ff05cd572e82df1097eafefb49bc48ae9704852a2",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Hidden Cham cannot cancel even a revealed source; public Cham can."
+    },
+    "t:a6c1725a897da7d3": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Cham own reveal %s is necessary even with revealed source",
+      "declarationSha256": "afa81df3d0f6e7cc0c2f5c4ff05cd572e82df1097eafefb49bc48ae9704852a2",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Hidden Cham cannot cancel even a revealed source; public Cham can."
+    },
+    "t:9ec0f3a0be63f2b7": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c1-ab03",
+        "c2-p06-r1c2-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:f3e87b483ee92d1c": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c1-ab03",
+        "c2-p03-r2c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:062b6e005fd87d79": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c1-ab03",
+        "c2-p03-r2c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:9114f0753d426402": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c1-ab03",
+        "c2-p06-r1c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:651503732c773f38": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c1-ab03",
+        "c2-p06-r1c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:8fb2a66225922c8f": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c1-ab03",
+        "c2-p06-r1c2-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:bc00d08c7c1cf6ce": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c1-ab03",
+        "c2-p06-r1c2-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:7ec9d7fba8a273ce": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s third party role boundary",
+      "declarationSha256": "4ca62909ff374bf2815d914f04b1b5688c0e0030732c5131775254704165b79c",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r1c1-ab03",
+      "bindingNote": "This responder is absent as a third party; the ability applies only against the responder own attack."
+    },
+    "t:0f84dc94c791565a": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p03-r2c1-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:be4a3c0e57997831": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p06-r1c1-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:983efb688df29441": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p06-r1c2-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:e8594c7e39858090": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p03-r2c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:42a4bf9b95749ac6": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p03-r2c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:5825328afd5a1027": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p06-r1c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:e2195a0c724dd815": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p06-r1c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:c7f8afaa6c31ae8e": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p06-r1c2-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:aae22ad6da59099f": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab03",
+        "c2-p06-r1c2-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:dda5532eb116acea": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s third party role boundary",
+      "declarationSha256": "4ca62909ff374bf2815d914f04b1b5688c0e0030732c5131775254704165b79c",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c2-ab03",
+      "bindingNote": "This responder is absent as a third party; the ability applies only against the responder own attack."
+    },
+    "t:78112307e1240e48": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "actual Lancelot II transformation retains inherited mental response without revealing source",
+      "declarationSha256": "58cc9f611a676782701166c12da87945882bde5bbcd49cd45e142d4c77405e3d",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual transformation retains the former form mental response, including an unrevealed source."
+    },
+    "t:f54b35e3d52d2ae9": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c1-ab03",
+        "c2-p03-r2c1-ab01"
+      ],
+      "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+    },
+    "t:6eabe6bee684f275": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c1-ab03",
+        "c2-p03-r2c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:2b6fa8df33b599a3": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c1-ab03",
+        "c2-p03-r2c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:390288f34c506925": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c1-ab03",
+        "c2-p06-r1c1-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:33859080541f4562": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c1-ab03",
+        "c2-p06-r1c1-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:3b402833a9826f40": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c1-ab03",
+        "c2-p06-r1c2-ab01",
+        false
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:9aee0984893d3956": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s exact mental source %s revealed %s",
+      "declarationSha256": "89f55965f10a5d25d5c24e57609119beb2a13b5bf0ceb1f15f8213fa84d1f97f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c1-ab03",
+        "c2-p06-r1c2-ab01",
+        true
+      ],
+      "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+    },
+    "t:de4ff92336841101": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s third party role boundary",
+      "declarationSha256": "4ca62909ff374bf2815d914f04b1b5688c0e0030732c5131775254704165b79c",
+      "kind": "canonical-transition",
+      "parameters": "c2-p05-r1c1-ab03",
+      "bindingNote": "This responder is absent as a third party; the ability applies only against the responder own attack."
+    },
+    "t:29de339eb22905c8": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Garwin selected nightmare preserves damage and resistance but blocks stop",
+      "declarationSha256": "06b1540a2bdcbf9a7de2180676846caf5e6f8c8f70408f274795e7aa236a2603",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Nightmare still deals2 and rolls one resistance; selected guard prevents the stop status only."
+    },
+    "t:e047a20baa5de245": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "actual Lester dedicated action-card 魔詩 protects Garwin only, other recipient stops",
+      "declarationSha256": "60b92f6e9f153de51c1d8a5817ae8e80051f2f4f50ca2bbd56095e096a1fc4c1",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual dedicated multi-target magic deals7 to both, but only selected Garwin avoids the stop."
+    },
+    "t:dc6b40dc990ba7c2": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Gad whole ordinary warrior mental %s uses attributes",
+      "declarationSha256": "7a24db2a51217311ab2e62f98ea6ab6e75fb2a034801bfda06d171f797d6854f",
+      "kind": "canonical-transition",
+      "parameters": "a2-p08-r3c3",
+      "bindingNote": "Printed warrior mental attacks are fully negated by selected Gad ability regardless of school."
+    },
+    "t:c8d61375fda7f9f3": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Gad whole ordinary warrior mental %s uses attributes",
+      "declarationSha256": "7a24db2a51217311ab2e62f98ea6ab6e75fb2a034801bfda06d171f797d6854f",
+      "kind": "canonical-transition",
+      "parameters": "a2-p09-r3c2",
+      "bindingNote": "Printed warrior mental attacks are fully negated by selected Gad ability regardless of school."
+    },
+    "t:5156da6286d2dbfa": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Gad negates entire received mental %s",
+      "declarationSha256": "414205c85d0969407e1cd92c5a50076dcce07d2998932436de5d5d26e7a4bc1a",
+      "kind": "canonical-transition",
+      "parameters": "a2-p15-r2c2",
+      "bindingNote": "Printed mental attacks cause no damage, resistance roll or status after whole-hit negation."
+    },
+    "t:e64718f249e71e91": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Gad negates entire received mental %s",
+      "declarationSha256": "414205c85d0969407e1cd92c5a50076dcce07d2998932436de5d5d26e7a4bc1a",
+      "kind": "canonical-transition",
+      "parameters": "a2-p13-r2c1",
+      "bindingNote": "Printed mental attacks cause no damage, resistance roll or status after whole-hit negation."
+    },
+    "t:c7b82ccbc89b8156": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "Gad negates entire received mental %s",
+      "declarationSha256": "414205c85d0969407e1cd92c5a50076dcce07d2998932436de5d5d26e7a4bc1a",
+      "kind": "canonical-transition",
+      "parameters": "a2-p17-r1c1",
+      "bindingNote": "Printed mental attacks cause no damage, resistance roll or status after whole-hit negation."
     }
   },
   "remainingNotes": {

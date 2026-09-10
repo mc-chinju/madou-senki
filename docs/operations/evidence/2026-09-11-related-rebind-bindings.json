@@ -1763,6 +1763,1880 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab04#Dia-doubles-protection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c2-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c2-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c2-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c2-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab04#Gadyoora-doubles-protection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p06-r1c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab04#Lester-doubles-protection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p03-r2c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p03-r2c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p03-r2c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r1c2-ab04",
+            "c2-p03-r2c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "S19 actual Gil spirit threshold failure on Lester sixes retains ordinary cancellation",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S19 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab04#Dia-doubles-protection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c2-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c2-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c2-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c2-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab04#Gadyoora-doubles-protection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p06-r1c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab04#Lester-doubles-protection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p03-r2c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p03-r2c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p03-r2c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p01-r2c1-ab04",
+            "c2-p03-r2c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual guard/source pair suppresses both2 and6 doubles side effects while retaining ordinary check success/failure, damage and active presence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab04#public-self",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Cham own reveal %s is necessary even with revealed source",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden Cham cannot cancel even a revealed source; public Cham can."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Cham own reveal %s is necessary even with revealed source",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden Cham cannot cancel even a revealed source; public Cham can."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab04#public-Dia-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab04#public-Gadyoora-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab04#public-Lester-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p01-r2c2-ab04",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab03#own-attack",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s third party role boundary",
+          "parameters": "c2-p02-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "This responder is absent as a third party; the ability applies only against the responder own attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab03#public-Dia",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab03#charm-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab03#own-attack",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s third party role boundary",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "This responder is absent as a third party; the ability applies only against the responder own attack."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "actual Lancelot II transformation retains inherited mental response without revealing source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation retains the former form mental response, including an unrevealed source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab03#Gadyoora-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "actual Lancelot II transformation retains inherited mental response without revealing source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation retains the former form mental response, including an unrevealed source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab03#Dia-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "actual Lancelot II transformation retains inherited mental response without revealing source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation retains the former form mental response, including an unrevealed source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab03#Lester-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p02-r2c2-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "actual Lancelot II transformation retains inherited mental response without revealing source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation retains the former form mental response, including an unrevealed source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab03#own-attack",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s third party role boundary",
+          "parameters": "c2-p05-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "This responder is absent as a third party; the ability applies only against the responder own attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab03#public-Lester",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab03#poem-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The actual named responder cancels this exact pending mental source before ability-check rolls; original attack damage8 remains."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p03-r2c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c1-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s exact mental source %s revealed %s",
+          "parameters": [
+            "c2-p05-r1c1-ab03",
+            "c2-p06-r1c2-ab01",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact named-source/reveal matrix checks eligible and ineligible mental sources with public/hidden source identities."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab02#mental-technique-stop-prevention",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Garwin selected nightmare preserves damage and resistance but blocks stop",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Nightmare still deals2 and rolls one resistance; selected guard prevents the stop status only."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "actual Lester dedicated action-card 魔詩 protects Garwin only, other recipient stops",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual dedicated multi-target magic deals7 to both, but only selected Garwin avoids the stop."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab02#mental-whole-hit-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Gad whole ordinary warrior mental %s uses attributes",
+          "parameters": "a2-p08-r3c3",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed warrior mental attacks are fully negated by selected Gad ability regardless of school."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Gad whole ordinary warrior mental %s uses attributes",
+          "parameters": "a2-p09-r3c2",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed warrior mental attacks are fully negated by selected Gad ability regardless of school."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Gad negates entire received mental %s",
+          "parameters": "a2-p15-r2c2",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed mental attacks cause no damage, resistance roll or status after whole-hit negation."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Gad negates entire received mental %s",
+          "parameters": "a2-p13-r2c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed mental attacks cause no damage, resistance roll or status after whole-hit negation."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "Gad negates entire received mental %s",
+          "parameters": "a2-p17-r1c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed mental attacks cause no damage, resistance roll or status after whole-hit negation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }
