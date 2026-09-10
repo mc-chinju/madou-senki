@@ -122,7 +122,7 @@ git add docs && git commit -m "docs: 対人評価を公開後のM5へ移し、�
 **Interfaces:**
 - Produces: `report(root: Path) -> dict` — `{'semantic': {'accepted': n, 'notApplicable': n, 'verified': n, 'implementedConcrete': n, 'implementedRelatedOnly': n, 'implementedNoTests': n, 'pending': {kind: n}}, 'aggregateBlocked': n}`。CLI は JSON を stdout に出す。
 
-- [ ] **Step 1: 失敗するテストを書く**
+- [x] **Step 1: 失敗するテストを書く**
 
 ```python
 # scripts/test_ledger_report.py
@@ -150,12 +150,12 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-- [ ] **Step 2: 失敗を確認**
+- [x] **Step 2: 失敗を確認**
 
 Run: `python3 -m unittest scripts.test_ledger_report`
 Expected: `ModuleNotFoundError: No module named 'ledger_report'`
 
-- [ ] **Step 3: 実装**
+- [x] **Step 3: 実装**
 
 ```python
 #!/usr/bin/env python3
@@ -195,12 +195,12 @@ if __name__ == '__main__':
     print(json.dumps(report(sys.argv[1] if len(sys.argv) > 1 else '.'), ensure_ascii=False, indent=1))
 ```
 
-- [ ] **Step 4: 成功を確認し、実台帳で実行**
+- [x] **Step 4: 成功を確認し、実台帳で実行**
 
 Run: `python3 -m unittest scripts.test_ledger_report && python3 scripts/ledger_report.py`
 Expected: OK、実台帳の集計 JSON
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add scripts/ledger_report.py scripts/test_ledger_report.py && git commit -m "scripts: 台帳の証拠強度別集計を追加する"
