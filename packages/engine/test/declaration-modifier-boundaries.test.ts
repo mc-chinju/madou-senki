@@ -66,6 +66,31 @@ function attackFrame(s: GameState) { return Object.values(s.actions!).find(a => 
 // Expected values are independent printed card numbers, not preview-derived expectations.
 describe('all-target declaration conditions and preserved targets', () => {
     it.each([
+        ['白魔術師シェリム', '烈火', SHELIM_ALL, true, false, false],
+        ['白魔術師シェリム', '天地百撃斬', SHELIM_ALL, true, true, false],
+        ['黒騎士ガーウィン', '天地百撃斬', GARWIN_ALL, true, false, false],
+        ['黒騎士ガーウィン', '天地百撃斬', GARWIN_ALL, false, true, false],
+        ['黒騎士ガーウィン', '烈火', GARWIN_ALL, true, true, false],
+        ['魔導王ガイナス', '裂風斬', GAINAS_ALL, false, false, false],
+        ['魔導王ガイナス', '烈火', GAINAS_ALL, true, true, false],
+        ['魔導王ガイナス', '裂風斬', GAINAS_ALL, false, true, true],
+    ] as const)('%s %s all-target %s requires chant=%s reveal=%s eligible=%s', (name, cardName, id, chanted, revealed, eligible) => {
+        const initial = scenario(name, cardName, chanted, revealed);
+        for (const target of ['B', 'C']) initial.s.distances.A![target] = initial.s.distances[target]!.A = 'near';
+        const candidates = viewFor(initial.s, 'A').declarationCandidates.filter(c => c.choice.cardInstanceId === initial.card && !c.choice.dedicated);
+        expect(candidates.some(c => c.abilities.some(a => a.abilityId === id))).toBe(eligible);
+        const command = {type: 'ATTACK', cardInstanceId: initial.card, dedicated: false, targetIds: ['B','C'], declarationAbilityIds: [id]} as const;
+        if (!eligible) {
+            const saved = JSON.stringify(initial.s);
+            expect(transition(initial.s, {actorId: 'A', command: {...command, targetIds: [...command.targetIds], declarationAbilityIds: [...command.declarationAbilityIds]}}, entropy()).ok).toBe(false);
+            expect(JSON.stringify(initial.s)).toBe(saved);
+        } else {
+            const s = until(attack(initial.s, initial.card, [id], ['B','C']), 'normal-defense');
+            expect(attackFrame(s).technique.useLevel).toBe(6);
+            expect(viewFor(s, 'A').currentAttack!.targetIds).toEqual(['B','C']);
+        }
+    });
+    it.each([
         ['白魔術師シェリム', '烈火', SHELIM_ALL],
         ['黒騎士ガーウィン', '天地百撃斬', GARWIN_ALL],
         ['魔導王ガイナス', '天地百撃斬', GAINAS_ALL],
@@ -168,6 +193,7 @@ describe('separate numeric cutoffs and actual transformation', () => {
     it('Yotsurm saves independent effect and damage dice with usage checks waived', () => {
         const { s: initial, card } = scenario('餓狼ヨーツルム', '踏み込み／蹴る');
         initial.distances.A!.B = initial.distances.B!.A = 'near';
+        initial.players.A!.permanent!.warrior_level = -20;
         let s = attack(initial, card, [BEAST]);
         s = until(s, 'effect-level');
         s = closeWindow(s, [2]);
@@ -196,7 +222,7 @@ describe('separate numeric cutoffs and actual transformation', () => {
         s = until(s, 'normal-defense');
         expect(viewFor(s, 'B').currentAttack!.technique).toMatchObject({ effectLevel: ['before-use', 'before-effect'].includes(cutoff) ? 4 : 5, damage: cutoff === 'after-damage' ? 7 : 5 });
     });
-    it('actual Uonos ritual becomes Vanmil and does not inherit Uonos abilities', () => {
+    it.each([['烈火', 10, 15], ['黒流弓', 5, 20], ['天地百撃斬', 7, 14]] as const)('actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance', (cardName, effectLevel, damage) => {
         let s = ready();
         character(s, 'A', '邪祭ウーノス');
         handCard(s, 'A', '復活の儀式');
@@ -205,10 +231,10 @@ describe('separate numeric cutoffs and actual transformation', () => {
         s = nextOwnTurn(s);
         expect(s.players.A!.characterId).toBe('c2-p07-r1c2');
         expect(s.players.A!.abilityCharacterIds).toEqual(['c2-p07-r1c2']);
-        const card = handCard(s, 'A', '烈火');
+        const card = handCard(s, 'A', cardName);
         s = attack(s, card, [VANMIL], ['B', 'C']);
         s = until(s, 'normal-defense');
-        expect(viewFor(s, 'B').currentAttack!.technique).toMatchObject({ effectLevel: 10, damage: 15 });
+        expect(viewFor(s, 'B').currentAttack!.technique).toMatchObject({ effectLevel, damage });
         expect(viewFor(s, 'A').currentAttack!.targetIds).toEqual(['B', 'C']);
     });
 });

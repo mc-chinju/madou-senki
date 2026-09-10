@@ -27,6 +27,29 @@ function rejected(s: GameState, command: unknown, code: string, actorId = 'A') {
     expect(JSON.stringify(s)).toBe(before);
 }
 describe('whole declaration packages', () => {
+    it.each([
+        ['大神官ジル', '黒翼飛翔剣', 'c2-p01-r1c2-ab01'],
+        ['侍大将のシン', '狼牙', SHIN_COUNTER],
+    ])('%s counter conversion rejects unrelated %s for %s', (name, cardName, abilityId) => {
+        let s = ready();character(s, 'B', name!);
+        const incoming = handCard(s, 'A', '踏み込み／弓'), card = handCard(s, 'B', cardName!);
+        s = until(act(s, 'A', {type: 'ATTACK', cardInstanceId: incoming, dedicated: false, targetIds: ['B']}), 'normal-defense');
+        const saved = JSON.stringify(s);
+        expect(transition(s, {actorId: 'B', command: {type: 'PLAY_DEFENSE', cardInstanceId: card, dedicated: false, declarationAbilityIds: [abilityId!]}}, entropy()).ok).toBe(false);
+        expect(JSON.stringify(s)).toBe(saved);
+    });
+    it.each([
+        ['白魔術師シェリム', '天地百撃斬', SHELIM],
+        ['侍大将のシン', '烈火', SHIN_CHANT],
+        ['大神官ジル', '黒翼飛翔剣', 'c2-p01-r1c2-ab03'],
+    ])('%s cannot select declaration %s with unrelated filter %s', (name, cardName, abilityId) => {
+        const {s, card} = setup(name!, cardName!);
+        const candidate = viewFor(s, 'A').declarationCandidates.find(c => c.choice.cardInstanceId === card && !c.choice.dedicated);
+        expect(candidate?.abilities.some(a => a.abilityId === abilityId) ?? false).toBe(false);
+        const saved = JSON.stringify(s);
+        expect(transition(s, {actorId: 'A', command: {type: 'ATTACK', cardInstanceId: card, dedicated: false, targetIds: ['B'], declarationAbilityIds: [abilityId!]}}, entropy()).ok).toBe(false);
+        expect(JSON.stringify(s)).toBe(saved);
+    });
     it('keeps all thirteen independent Japanese source records intact', () => {
         expect(sources).toHaveLength(13);
         for (const entry of sources) {
@@ -38,6 +61,7 @@ describe('whole declaration packages', () => {
         ['白魔術師シェリム', '烈火', SHELIM],
         ['妖精王フューリー', '烈火', FURY],
         ['魔導王ガイナス', '烈火', 'c2-p05-r2c2-ab03'],
+        ['魔導王ガイナス', '天地百撃斬', 'c2-p05-r2c2-ab03'],
         ['侍大将のシン', '天地百撃斬', SHIN_CHANT],
     ])('%s explicitly waives chant through a saved cancellable declaration', (name, cardName, abilityId) => {
         const { s: initial, card } = setup(name!, cardName!);

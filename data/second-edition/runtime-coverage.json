@@ -169795,12 +169795,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:a1525047309c4f23"
+        "t:78d06138a1b06b17",
+        "t:f35e4af445fb93e3"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169821,12 +169821,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:a1525047309c4f23"
+        "t:78d06138a1b06b17"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169847,12 +169846,13 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:b089d6b267523701"
+        "t:dfa49b91a0f6e22b",
+        "t:fe65e860e8317fe0",
+        "t:de8456ac629736e6"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169873,12 +169873,13 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:b089d6b267523701"
+        "t:dfa49b91a0f6e22b",
+        "t:fe65e860e8317fe0",
+        "t:de8456ac629736e6"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169899,12 +169900,14 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:b089d6b267523701"
+        "t:dfa49b91a0f6e22b",
+        "t:fe65e860e8317fe0",
+        "t:de8456ac629736e6",
+        "t:0c07e23264074ef1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169925,12 +169928,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:b089d6b267523701"
+        "t:dfa49b91a0f6e22b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169951,12 +169953,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:854e57d221c5a18e"
+        "t:5f7988b4050f6f42",
+        "t:754c2581da8c4ec5"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169977,12 +169979,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:854e57d221c5a18e"
+        "t:5f7988b4050f6f42",
+        "t:8cbd4f8a5fba90db"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170003,12 +170005,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:854e57d221c5a18e"
+        "t:5f7988b4050f6f42"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170081,12 +170082,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:a8298a108acad177"
+        "t:230aaed70420b958",
+        "t:de4db625cf6b1d47"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170107,12 +170108,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:a8298a108acad177"
+        "t:230aaed70420b958"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170215,12 +170215,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ca502a2a1a35944f"
+        "t:fa9c64d091f3b987",
+        "t:5241918e21728068"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170241,12 +170241,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ca502a2a1a35944f"
+        "t:fa9c64d091f3b987",
+        "t:1bbeb10845190c44"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170267,12 +170267,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ca502a2a1a35944f"
+        "t:fa9c64d091f3b987",
+        "t:5241918e21728068"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170293,12 +170293,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ca502a2a1a35944f"
+        "t:fa9c64d091f3b987",
+        "t:b9d0d85682096dcd"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170319,12 +170319,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ca502a2a1a35944f"
+        "t:fa9c64d091f3b987",
+        "t:6d9baebe41f9ac56"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170345,12 +170345,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ca502a2a1a35944f"
+        "t:fa9c64d091f3b987",
+        "t:adecdcad12166452"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171491,12 +171491,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ffc1a01b8ff6ec00"
+        "t:9333aaf9f2a829ef",
+        "t:3ca205f3ba46c1e6"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171517,12 +171517,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ffc1a01b8ff6ec00"
+        "t:9333aaf9f2a829ef"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175933,12 +175932,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:f615926904708a2c"
+        "t:117b92a74450b170"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175959,12 +175957,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:f615926904708a2c"
+        "t:117b92a74450b170",
+        "t:3f475ce387761ec0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175985,12 +175983,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:f615926904708a2c"
+        "t:117b92a74450b170",
+        "t:3f475ce387761ec0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176011,12 +176009,14 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:2ad308e990fcffa6"
+        "t:bde8e76237260c60",
+        "t:285516d15b05eccb",
+        "t:641f7817abd9b7c2",
+        "t:28389985c33528e1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176037,12 +176037,14 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:2ad308e990fcffa6"
+        "t:bde8e76237260c60",
+        "t:285516d15b05eccb",
+        "t:641f7817abd9b7c2",
+        "t:28389985c33528e1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176063,12 +176065,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:2ad308e990fcffa6"
+        "t:bde8e76237260c60"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176345,12 +176346,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:0f2e596e8c5cd949"
+        "t:ed7df6c9a6be01af",
+        "t:9231b714c42ac952"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176371,12 +176372,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:0f2e596e8c5cd949"
+        "t:ed7df6c9a6be01af",
+        "t:9231b714c42ac952"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176397,12 +176398,14 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:3bde058a94e94b08"
+        "t:4a34791aeb16017c",
+        "t:b9fd02ae71f7eab4",
+        "t:fda6eb26d92e669c",
+        "t:4fd07dedfd3f0ced"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176423,12 +176426,14 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:3bde058a94e94b08"
+        "t:4a34791aeb16017c",
+        "t:b9fd02ae71f7eab4",
+        "t:fda6eb26d92e669c",
+        "t:4fd07dedfd3f0ced"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176449,12 +176454,15 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:3bde058a94e94b08"
+        "t:4a34791aeb16017c",
+        "t:b9fd02ae71f7eab4",
+        "t:fda6eb26d92e669c",
+        "t:4fd07dedfd3f0ced",
+        "t:dc623aaa0cb03354"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176475,12 +176483,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:3bde058a94e94b08"
+        "t:4a34791aeb16017c"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177592,12 +177599,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ded82f34f34db37b"
+        "t:ff3ec42b0b7902af"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177618,12 +177624,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ded82f34f34db37b"
+        "t:ff3ec42b0b7902af",
+        "t:cbf525d21480cdde"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177644,12 +177650,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ded82f34f34db37b"
+        "t:ff3ec42b0b7902af",
+        "t:cbf525d21480cdde"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178138,12 +178144,13 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:8f5cdea119229224"
+        "t:32a9516bffdd13be",
+        "t:be4eb926cee526b3",
+        "t:85c19eb680740d60"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178164,12 +178171,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:8f5cdea119229224"
+        "t:be4eb926cee526b3",
+        "t:85c19eb680740d60"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178190,12 +178197,12 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:8f5cdea119229224"
+        "t:be4eb926cee526b3",
+        "t:85c19eb680740d60"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178216,12 +178223,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:8f5cdea119229224"
+        "t:32a9516bffdd13be"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178242,12 +178248,11 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:8f5cdea119229224"
+        "t:32a9516bffdd13be"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -455986,6 +455991,560 @@
         "c2-p06-r1c1-ab03"
       ],
       "bindingNote": "Frenzy is absent for a real pure parry defense."
+    },
+    "t:78d06138a1b06b17": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "de5bedaacb0024fe0b5be5e0c3c726b45eb10fb4023f522de41f5595446a9c5d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "白魔術師シェリム",
+        "烈火",
+        "c2-p01-r1c1-ab03"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:f35e4af445fb93e3": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s cannot select declaration %s with unrelated filter %s",
+      "declarationSha256": "b0b8ef0b33596042b9209028baaf371cb62838cee20ce28dac19709261edddb0",
+      "kind": "canonical-transition",
+      "parameters": [
+        "白魔術師シェリム",
+        "天地百撃斬",
+        "c2-p01-r1c1-ab03"
+      ],
+      "bindingNote": "Shelim cannot select magic-only waiver on an actual warrior sword."
+    },
+    "t:dfa49b91a0f6e22b": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s selects, declines and cancels the whole all-target package",
+      "declarationSha256": "662fda0f4e08f6a272a153f593f65bc03d0c61c92affaaaa11c83835577ee33d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "白魔術師シェリム",
+        "烈火",
+        "c2-p01-r1c1-ab04"
+      ],
+      "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+    },
+    "t:fe65e860e8317fe0": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "白魔術師シェリム",
+        "烈火",
+        "c2-p01-r1c1-ab04",
+        true,
+        false,
+        false
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:de8456ac629736e6": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "白魔術師シェリム",
+        "天地百撃斬",
+        "c2-p01-r1c1-ab04",
+        true,
+        true,
+        false
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:0c07e23264074ef1": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "real chant is distinct from waiver, and unrevealed source conditions reject",
+      "declarationSha256": "f71c2d1900155bf016a5593fcf76253279c503d498eeec81afd1f96dc1eb7632",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Combining waiver with all-target cannot substitute for a real chant, even after reveal."
+    },
+    "t:5f7988b4050f6f42": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "range, counter acceptance and failure boundaries"
+      ],
+      "title": "Gil conversion has one spirit check, equality cancels and near at far only blocks",
+      "declarationSha256": "7df62edfe206b2c7b7d4142840109b2b2cabb3d0d6f267ede0934f1d71465548",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual martial defense invokes one spirit check; equal or out-of-near return does not hit either player."
+    },
+    "t:754c2581da8c4ec5": {
+      "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+      "suite": [
+        "counter prerequisites fail through ordinary disposal"
+      ],
+      "title": "Fate force-fail of Gil conversion fails defense and spends both sources",
+      "declarationSha256": "c659960b4c6a451419c1d20d241624dc56d12d40679ada1907e192888444c9f4",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual forced failure aborts the conversion, disposes both sources, and preserves ordinary incoming damage."
+    },
+    "t:8cbd4f8a5fba90db": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s counter conversion rejects unrelated %s for %s",
+      "declarationSha256": "63c15c0f170168b8d6ac0f77abac37ec81f1c719ac42cfcb76dc3ad60c286df0",
+      "kind": "canonical-transition",
+      "parameters": [
+        "大神官ジル",
+        "黒翼飛翔剣",
+        "c2-p01-r1c2-ab01"
+      ],
+      "bindingNote": "Gil cannot use the martial conversion on an actual sword."
+    },
+    "t:230aaed70420b958": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "range, counter acceptance and failure boundaries"
+      ],
+      "title": "Gil range is selected, declined or canceled without manufacturing a generic attack",
+      "declarationSha256": "4e5b12e176f8d5d3b1b5b4980b2b99bc81b1c20c7dd09b052ce2f0a36d75550c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Near martial kick cannot reach far unless selected conversion resolves; selected technique has far range and deals2, cancellation deals0."
+    },
+    "t:de4db625cf6b1d47": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s cannot select declaration %s with unrelated filter %s",
+      "declarationSha256": "b0b8ef0b33596042b9209028baaf371cb62838cee20ce28dac19709261edddb0",
+      "kind": "canonical-transition",
+      "parameters": [
+        "大神官ジル",
+        "黒翼飛翔剣",
+        "c2-p01-r1c2-ab03"
+      ],
+      "bindingNote": "The near martial range package rejects an actual sword source."
+    },
+    "t:fa9c64d091f3b987": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "two Shin abilities use separate checks and convert an unchanted sword defense",
+      "declarationSha256": "ebbc4f93595ed0d5510355b10c342b26279173ace219786e1217a2385202f6c8",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual unchanted sword defense uses both separate spirit-check frames, stops the incoming attack and disposes the sword."
+    },
+    "t:5241918e21728068": {
+      "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+      "suite": [
+        "counter prerequisites fail through ordinary disposal"
+      ],
+      "title": "canceling requisite %s spends unchanted noncounter and preserves incoming targets",
+      "declarationSha256": "75daf82ad2109a88ae98e1cb7821693ed6bbab32e45577b0c19ab3e04815f114",
+      "kind": "canonical-transition",
+      "parameters": "c2-p01-r2c1-ab01",
+      "bindingNote": "Canceling this requisite spends the unchanted noncounter without consuming the other target context."
+    },
+    "t:1bbeb10845190c44": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s counter conversion rejects unrelated %s for %s",
+      "declarationSha256": "63c15c0f170168b8d6ac0f77abac37ec81f1c719ac42cfcb76dc3ad60c286df0",
+      "kind": "canonical-transition",
+      "parameters": [
+        "侍大将のシン",
+        "狼牙",
+        "c2-p01-r2c1-ab01"
+      ],
+      "bindingNote": "Shin sword-only declaration rejects an unrelated printed source unchanged."
+    },
+    "t:b9d0d85682096dcd": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s cannot select declaration %s with unrelated filter %s",
+      "declarationSha256": "b0b8ef0b33596042b9209028baaf371cb62838cee20ce28dac19709261edddb0",
+      "kind": "canonical-transition",
+      "parameters": [
+        "侍大将のシン",
+        "烈火",
+        "c2-p01-r2c1-ab02"
+      ],
+      "bindingNote": "Shin sword-only declaration rejects an unrelated printed source unchanged."
+    },
+    "t:6d9baebe41f9ac56": {
+      "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+      "suite": [
+        "counter prerequisites fail through ordinary disposal"
+      ],
+      "title": "canceling requisite %s spends unchanted noncounter and preserves incoming targets",
+      "declarationSha256": "75daf82ad2109a88ae98e1cb7821693ed6bbab32e45577b0c19ab3e04815f114",
+      "kind": "canonical-transition",
+      "parameters": "c2-p01-r2c1-ab02",
+      "bindingNote": "Canceling this requisite spends the unchanted noncounter without consuming the other target context."
+    },
+    "t:adecdcad12166452": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "de5bedaacb0024fe0b5be5e0c3c726b45eb10fb4023f522de41f5595446a9c5d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "侍大将のシン",
+        "天地百撃斬",
+        "c2-p01-r2c1-ab02"
+      ],
+      "bindingNote": "Actual Shin uses the printed chanted sword from hand only after explicit waiver."
+    },
+    "t:9333aaf9f2a829ef": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "de5bedaacb0024fe0b5be5e0c3c726b45eb10fb4023f522de41f5595446a9c5d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "妖精王フューリー",
+        "烈火",
+        "c2-p02-r1c2-ab04"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:3ca205f3ba46c1e6": {
+      "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+      "suite": [
+        "whole numeric package decline/cancellation"
+      ],
+      "title": "%s %s declines or cancels all numeric clauses together",
+      "declarationSha256": "8289e316c3f21be30f43a94c93befe55ba174550b6c92ac03a609ad95335b09b",
+      "kind": "canonical-transition",
+      "parameters": [
+        "妖精王フューリー",
+        "炎矢",
+        "c2-p02-r1c2-ab04",
+        4,
+        5,
+        5,
+        5
+      ],
+      "bindingNote": "Fury selection changes actual fire effect4 to5 without changing damage5; decline/cancel leaves effect4."
+    },
+    "t:117b92a74450b170": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "Garwin selects both range and sword numeric clauses together",
+      "declarationSha256": "292c27fbbd59741bca0063609e154c32bfbef59cbf1c0cf0026124365c71d574",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual near sword is usable at far with selected package and exact final effect5/damage7."
+    },
+    "t:3f475ce387761ec0": {
+      "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+      "suite": [
+        "whole numeric package decline/cancellation"
+      ],
+      "title": "%s %s declines or cancels all numeric clauses together",
+      "declarationSha256": "8289e316c3f21be30f43a94c93befe55ba174550b6c92ac03a609ad95335b09b",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "破黒剣",
+        "c2-p05-r2c1-ab03",
+        4,
+        5,
+        5,
+        7
+      ],
+      "bindingNote": "Selected Garwin sword changes base effect4/damage5 to5/7; decline/cancel retains4/5."
+    },
+    "t:bde8e76237260c60": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s selects, declines and cancels the whole all-target package",
+      "declarationSha256": "662fda0f4e08f6a272a153f593f65bc03d0c61c92affaaaa11c83835577ee33d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "天地百撃斬",
+        "c2-p05-r2c1-ab04"
+      ],
+      "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+    },
+    "t:285516d15b05eccb": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "天地百撃斬",
+        "c2-p05-r2c1-ab04",
+        true,
+        false,
+        false
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:641f7817abd9b7c2": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "天地百撃斬",
+        "c2-p05-r2c1-ab04",
+        false,
+        true,
+        false
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:28389985c33528e1": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "烈火",
+        "c2-p05-r2c1-ab04",
+        true,
+        true,
+        false
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:ed7df6c9a6be01af": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "de5bedaacb0024fe0b5be5e0c3c726b45eb10fb4023f522de41f5595446a9c5d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "烈火",
+        "c2-p05-r2c2-ab03"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:9231b714c42ac952": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "de5bedaacb0024fe0b5be5e0c3c726b45eb10fb4023f522de41f5595446a9c5d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "天地百撃斬",
+        "c2-p05-r2c2-ab03"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:4a34791aeb16017c": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s selects, declines and cancels the whole all-target package",
+      "declarationSha256": "662fda0f4e08f6a272a153f593f65bc03d0c61c92affaaaa11c83835577ee33d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "天地百撃斬",
+        "c2-p05-r2c2-ab04"
+      ],
+      "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+    },
+    "t:b9fd02ae71f7eab4": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "裂風斬",
+        "c2-p05-r2c2-ab04",
+        false,
+        false,
+        false
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:fda6eb26d92e669c": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "烈火",
+        "c2-p05-r2c2-ab04",
+        true,
+        true,
+        false
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:4fd07dedfd3f0ced": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+      "declarationSha256": "3131a17b16fc31162cfb1125ac2ca537705851fd4769330a662a7d77e17090b7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "裂風斬",
+        "c2-p05-r2c2-ab04",
+        false,
+        true,
+        true
+      ],
+      "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+    },
+    "t:dc623aaa0cb03354": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "all-target declaration conditions and preserved targets"
+      ],
+      "title": "Gainas requires actual source usage level six, irrespective of later effect boosts",
+      "declarationSha256": "1e2e1fd7b145a12817277537a3c0155a9dfa67a9c4301d3311af59d276bf48b3",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual lower-usage sword cannot select Gainas all-target despite public source."
+    },
+    "t:2a1ae8ddb52404a1": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "separate numeric cutoffs and actual transformation"
+      ],
+      "title": "Yotsurm saves independent effect and damage dice with usage checks waived",
+      "declarationSha256": "532114dfeae7a6d56e0ccbc4e6b326e89ce7f5002b443ae86a45500d07909737",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual martial attack saves separate effect2 and damage5 dice, produces effect3/damage7, and no excess-level roll."
+    },
+    "t:cbf525d21480cdde": {
+      "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+      "suite": [
+        "whole numeric package decline/cancellation"
+      ],
+      "title": "Yotsurm Divine reroll changes effect die without copying it to the damage die",
+      "declarationSha256": "240f792e7cb02c0b53b39950ccf1a9ee68a84e4e69ef21e35fa02bc0ffbbca9c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Effect die is independently rerolled while damage die keeps its distinct saved result."
+    },
+    "t:32a9516bffdd13be": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "separate numeric cutoffs and actual transformation"
+      ],
+      "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+      "declarationSha256": "993bd3ed990d593c51541c81f6d6cfce41cff68a156ab1431ff2edf741e9820f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "烈火",
+        10,
+        15
+      ],
+      "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+    },
+    "t:be4eb926cee526b3": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "separate numeric cutoffs and actual transformation"
+      ],
+      "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+      "declarationSha256": "993bd3ed990d593c51541c81f6d6cfce41cff68a156ab1431ff2edf741e9820f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒流弓",
+        5,
+        20
+      ],
+      "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+    },
+    "t:85c19eb680740d60": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "separate numeric cutoffs and actual transformation"
+      ],
+      "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+      "declarationSha256": "993bd3ed990d593c51541c81f6d6cfce41cff68a156ab1431ff2edf741e9820f",
+      "kind": "canonical-transition",
+      "parameters": [
+        "天地百撃斬",
+        7,
+        14
+      ],
+      "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+    },
+    "t:ff3ec42b0b7902af": {
+      "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+      "suite": [
+        "separate numeric cutoffs and actual transformation"
+      ],
+      "title": "Yotsurm saves independent effect and damage dice with usage checks waived",
+      "declarationSha256": "a5e004b5136fe1425137fc17d8d2b4d4cff3cbc30c5bfe6bdb1398f37a23e287",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual martial attack saves separate effect2 and damage5 dice, produces effect3/damage7, and no excess-level roll."
     }
   },
   "remainingNotes": {

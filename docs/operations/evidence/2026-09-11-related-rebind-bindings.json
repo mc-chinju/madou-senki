@@ -4736,6 +4736,1533 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab03#magic-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s cannot select declaration %s with unrelated filter %s",
+          "parameters": [
+            "白魔術師シェリム",
+            "天地百撃斬",
+            "c2-p01-r1c1-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Shelim cannot select magic-only waiver on an actual warrior sword."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab03#chant-waiver",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab04#public-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab04",
+            true,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "白魔術師シェリム",
+            "天地百撃斬",
+            "c2-p01-r1c1-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab04#magic-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab04",
+            true,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "白魔術師シェリム",
+            "天地百撃斬",
+            "c2-p01-r1c1-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab04#chanted-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab04",
+            true,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "白魔術師シェリム",
+            "天地百撃斬",
+            "c2-p01-r1c1-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "real chant is distinct from waiver, and unrevealed source conditions reject",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Combining waiver with all-target cannot substitute for a real chant, even after reveal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab04#selected-all-targets",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "白魔術師シェリム",
+            "烈火",
+            "c2-p01-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab01#spirit-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "range, counter acceptance and failure boundaries"
+          ],
+          "title": "Gil conversion has one spirit check, equality cancels and near at far only blocks",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial defense invokes one spirit check; equal or out-of-near return does not hit either player."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "counter prerequisites fail through ordinary disposal"
+          ],
+          "title": "Fate force-fail of Gil conversion fails defense and spends both sources",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual forced failure aborts the conversion, disposes both sources, and preserves ordinary incoming damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab01#martial-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "range, counter acceptance and failure boundaries"
+          ],
+          "title": "Gil conversion has one spirit check, equality cancels and near at far only blocks",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial defense invokes one spirit check; equal or out-of-near return does not hit either player."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s counter conversion rejects unrelated %s for %s",
+          "parameters": [
+            "大神官ジル",
+            "黒翼飛翔剣",
+            "c2-p01-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Gil cannot use the martial conversion on an actual sword."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab01#counter-conversion",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "range, counter acceptance and failure boundaries"
+          ],
+          "title": "Gil conversion has one spirit check, equality cancels and near at far only blocks",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial defense invokes one spirit check; equal or out-of-near return does not hit either player."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab03#near-martial-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "range, counter acceptance and failure boundaries"
+          ],
+          "title": "Gil range is selected, declined or canceled without manufacturing a generic attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Near martial kick cannot reach far unless selected conversion resolves; selected technique has far range and deals2, cancellation deals0."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s cannot select declaration %s with unrelated filter %s",
+          "parameters": [
+            "大神官ジル",
+            "黒翼飛翔剣",
+            "c2-p01-r1c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The near martial range package rejects an actual sword source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab03#far-conversion",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "range, counter acceptance and failure boundaries"
+          ],
+          "title": "Gil range is selected, declined or canceled without manufacturing a generic attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Near martial kick cannot reach far unless selected conversion resolves; selected technique has far range and deals2, cancellation deals0."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab01#spirit-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "two Shin abilities use separate checks and convert an unchanted sword defense",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual unchanted sword defense uses both separate spirit-check frames, stops the incoming attack and disposes the sword."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "counter prerequisites fail through ordinary disposal"
+          ],
+          "title": "canceling requisite %s spends unchanted noncounter and preserves incoming targets",
+          "parameters": "c2-p01-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Canceling this requisite spends the unchanted noncounter without consuming the other target context."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab01#sword-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "two Shin abilities use separate checks and convert an unchanted sword defense",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual unchanted sword defense uses both separate spirit-check frames, stops the incoming attack and disposes the sword."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s counter conversion rejects unrelated %s for %s",
+          "parameters": [
+            "侍大将のシン",
+            "狼牙",
+            "c2-p01-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Shin sword-only declaration rejects an unrelated printed source unchanged."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab01#counter-conversion",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "two Shin abilities use separate checks and convert an unchanted sword defense",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual unchanted sword defense uses both separate spirit-check frames, stops the incoming attack and disposes the sword."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "counter prerequisites fail through ordinary disposal"
+          ],
+          "title": "canceling requisite %s spends unchanted noncounter and preserves incoming targets",
+          "parameters": "c2-p01-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Canceling this requisite spends the unchanted noncounter without consuming the other target context."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab02#sword-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "two Shin abilities use separate checks and convert an unchanted sword defense",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual unchanted sword defense uses both separate spirit-check frames, stops the incoming attack and disposes the sword."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s cannot select declaration %s with unrelated filter %s",
+          "parameters": [
+            "侍大将のシン",
+            "烈火",
+            "c2-p01-r2c1-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Shin sword-only declaration rejects an unrelated printed source unchanged."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab02#spirit-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "two Shin abilities use separate checks and convert an unchanted sword defense",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual unchanted sword defense uses both separate spirit-check frames, stops the incoming attack and disposes the sword."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "counter prerequisites fail through ordinary disposal"
+          ],
+          "title": "canceling requisite %s spends unchanted noncounter and preserves incoming targets",
+          "parameters": "c2-p01-r2c1-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Canceling this requisite spends the unchanted noncounter without consuming the other target context."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab02#chant-waiver",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "two Shin abilities use separate checks and convert an unchanted sword defense",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual unchanted sword defense uses both separate spirit-check frames, stops the incoming attack and disposes the sword."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "侍大将のシン",
+            "天地百撃斬",
+            "c2-p01-r2c1-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Shin uses the printed chanted sword from hand only after explicit waiver."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#effect-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "妖精王フューリー",
+            "烈火",
+            "c2-p02-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "whole numeric package decline/cancellation"
+          ],
+          "title": "%s %s declines or cancels all numeric clauses together",
+          "parameters": [
+            "妖精王フューリー",
+            "炎矢",
+            "c2-p02-r1c2-ab04",
+            4,
+            5,
+            5,
+            5
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Fury selection changes actual fire effect4 to5 without changing damage5; decline/cancel leaves effect4."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#chant-waiver",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "妖精王フューリー",
+            "烈火",
+            "c2-p02-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab03#near-warrior-to-far",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "Garwin selects both range and sword numeric clauses together",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near sword is usable at far with selected package and exact final effect5/damage7."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab03#sword-effect-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "Garwin selects both range and sword numeric clauses together",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near sword is usable at far with selected package and exact final effect5/damage7."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "whole numeric package decline/cancellation"
+          ],
+          "title": "%s %s declines or cancels all numeric clauses together",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "破黒剣",
+            "c2-p05-r2c1-ab03",
+            4,
+            5,
+            5,
+            7
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Selected Garwin sword changes base effect4/damage5 to5/7; decline/cancel retains4/5."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab03#sword-damage-plus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "Garwin selects both range and sword numeric clauses together",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near sword is usable at far with selected package and exact final effect5/damage7."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "whole numeric package decline/cancellation"
+          ],
+          "title": "%s %s declines or cancels all numeric clauses together",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "破黒剣",
+            "c2-p05-r2c1-ab03",
+            4,
+            5,
+            5,
+            7
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Selected Garwin sword changes base effect4/damage5 to5/7; decline/cancel retains4/5."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab04#public-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "天地百撃斬",
+            "c2-p05-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "天地百撃斬",
+            "c2-p05-r2c1-ab04",
+            true,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "天地百撃斬",
+            "c2-p05-r2c1-ab04",
+            false,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "烈火",
+            "c2-p05-r2c1-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab04#chanted-sword",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "天地百撃斬",
+            "c2-p05-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "天地百撃斬",
+            "c2-p05-r2c1-ab04",
+            true,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "天地百撃斬",
+            "c2-p05-r2c1-ab04",
+            false,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "烈火",
+            "c2-p05-r2c1-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab04#selected-all-targets",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "天地百撃斬",
+            "c2-p05-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab03#all-techniques",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "魔導王ガイナス",
+            "烈火",
+            "c2-p05-r2c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "魔導王ガイナス",
+            "天地百撃斬",
+            "c2-p05-r2c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab03#chant-waiver",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "魔導王ガイナス",
+            "烈火",
+            "c2-p05-r2c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifiers.test.ts",
+          "suite": [
+            "whole declaration packages"
+          ],
+          "title": "%s explicitly waives chant through a saved cancellable declaration",
+          "parameters": [
+            "魔導王ガイナス",
+            "天地百撃斬",
+            "c2-p05-r2c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab04#public-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "魔導王ガイナス",
+            "天地百撃斬",
+            "c2-p05-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "裂風斬",
+            "c2-p05-r2c2-ab04",
+            false,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "烈火",
+            "c2-p05-r2c2-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "裂風斬",
+            "c2-p05-r2c2-ab04",
+            false,
+            true,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab04#sword-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "魔導王ガイナス",
+            "天地百撃斬",
+            "c2-p05-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "裂風斬",
+            "c2-p05-r2c2-ab04",
+            false,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "烈火",
+            "c2-p05-r2c2-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "裂風斬",
+            "c2-p05-r2c2-ab04",
+            false,
+            true,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab04#usage-level-at-least-six",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "魔導王ガイナス",
+            "天地百撃斬",
+            "c2-p05-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "裂風斬",
+            "c2-p05-r2c2-ab04",
+            false,
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "烈火",
+            "c2-p05-r2c2-ab04",
+            true,
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s %s all-target %s requires chant=%s reveal=%s eligible=%s",
+          "parameters": [
+            "魔導王ガイナス",
+            "裂風斬",
+            "c2-p05-r2c2-ab04",
+            false,
+            true,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The real source matrix explicitly checks missing reveal, wrong school, absent real chant and Gainas printed usage6 boundary."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "Gainas requires actual source usage level six, irrespective of later effect boosts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual lower-usage sword cannot select Gainas all-target despite public source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab04#selected-all-targets",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "all-target declaration conditions and preserved targets"
+          ],
+          "title": "%s selects, declines and cancels the whole all-target package",
+          "parameters": [
+            "魔導王ガイナス",
+            "天地百撃斬",
+            "c2-p05-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own-turn chant and public identity allow selected targets B,C; decline retains B only and cancellation stops all targets."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab02#martial-no-checks",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "Yotsurm saves independent effect and damage dice with usage checks waived",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial attack saves separate effect2 and damage5 dice, produces effect3/damage7, and no excess-level roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab02#effect-d6",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "Yotsurm saves independent effect and damage dice with usage checks waived",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial attack saves separate effect2 and damage5 dice, produces effect3/damage7, and no excess-level roll."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "whole numeric package decline/cancellation"
+          ],
+          "title": "Yotsurm Divine reroll changes effect die without copying it to the damage die",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Effect die is independently rerolled while damage die keeps its distinct saved result."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab02#independent-damage-d6",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "Yotsurm saves independent effect and damage dice with usage checks waived",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial attack saves separate effect2 and damage5 dice, produces effect3/damage7, and no excess-level roll."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-numerics.test.ts",
+          "suite": [
+            "whole numeric package decline/cancellation"
+          ],
+          "title": "Yotsurm Divine reroll changes effect die without copying it to the damage die",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Effect die is independently rerolled while damage die keeps its distinct saved result."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab02#all-techniques-chant-waiver",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "烈火",
+            10,
+            15
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "黒流弓",
+            5,
+            20
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "天地百撃斬",
+            7,
+            14
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab02#warrior-selected-all",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "黒流弓",
+            5,
+            20
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "天地百撃斬",
+            7,
+            14
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab02#warrior-double",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "黒流弓",
+            5,
+            20
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "天地百撃斬",
+            7,
+            14
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab02#magic-selected-all",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "烈火",
+            10,
+            15
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab02#magic-effect-replace-ten",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-boundaries.test.ts",
+          "suite": [
+            "separate numeric cutoffs and actual transformation"
+          ],
+          "title": "actual Uonos ritual grants Vanmil %s effect%i damage%i without Uonos inheritance",
+          "parameters": [
+            "烈火",
+            10,
+            15
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos ritual grants Vanmil without inheritance; unchanted magic resolves effect10, warrior doubles damage, and both target B,C."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }
