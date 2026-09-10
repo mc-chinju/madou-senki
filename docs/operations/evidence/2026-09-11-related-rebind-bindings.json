@@ -9451,6 +9451,626 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab01#self-spirit-minus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Self spirit-minus-two roll precedes enemy spirit-minus-two and the real child attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab01#enemy-spirit-minus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Both actual rolls assert the exact actor and minus-two modifier."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab01#enemy-failure-current-hit-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Enemy failure cancels incoming body damage while the real child can deal damage."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h saved attempts and live restrictions"
+          ],
+          "title": "Shadow failed own or successful enemy check grants no child (%i,%i)",
+          "parameters": [
+            6,
+            6,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Self failure and enemy success leave incoming damage intact."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h saved attempts and live restrictions"
+          ],
+          "title": "Shadow failed own or successful enemy check grants no child (%i,%i)",
+          "parameters": [
+            1,
+            1,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Self failure and enemy success leave incoming damage intact."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab01#optional-one-real-child-attack",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected child pays its physical technique and completes before the parent returns."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h independent hit budgets and child legality"
+          ],
+          "title": "Shadow child obeys target, range, chant and real cost then can be declined without a free card",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Wrong target, range, unprepared chant and unrelated commands are rejected; pass costs no card."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab02#martial-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "踏み込み／殴る",
+            true,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial, bow and magic producers assert the martial-only follower-bypass filter."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "踏み込み／弓",
+            false,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial, bow and magic producers assert the martial-only follower-bypass filter."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "風矢",
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual martial, bow and magic producers assert the martial-only follower-bypass filter."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab02#optional-ignore-followers",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "martial follower bypass is explicitly elected for this group only",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Explicit election leaves the physical follower in place while the attack reaches body."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h saved attempts and live restrictions"
+          ],
+          "title": "declined/canceled martial use keeps the normal follower (%s)",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Passing or cancellation leaves normal follower defense in effect."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h saved attempts and live restrictions"
+          ],
+          "title": "declined/canceled martial use keeps the normal follower (%s)",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Passing or cancellation leaves normal follower defense in effect."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab03#warrior-hit-2d6",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "踏み込み／殴る",
+            true,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Warrior hits offer lethal; magic never offers lethal in its entire resolution."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "踏み込み／弓",
+            false,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Warrior hits offer lethal; magic never offers lethal in its entire resolution."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "風矢",
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Warrior hits offer lethal; magic never offers lethal in its entire resolution."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            2,
+            2,
+            "dead"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Saved numeric roll is exactly 2d6 with the supplied pair."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            2,
+            3,
+            8
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Saved numeric roll is exactly 2d6 with the supplied pair."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            1,
+            6,
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Saved numeric roll is exactly 2d6 with the supplied pair."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab03#doubles-instant-death",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            2,
+            2,
+            "dead"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Doubles produce death; adjacent and nonadjacent faces produce exact distinct damage."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            2,
+            3,
+            8
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Doubles produce death; adjacent and nonadjacent faces produce exact distinct damage."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            1,
+            6,
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Doubles produce death; adjacent and nonadjacent faces produce exact distinct damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab03#abs-difference-one-damage-double",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            2,
+            2,
+            "dead"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Adjacent faces double damage to8; nonadjacent faces retain4, doubles kill."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            2,
+            3,
+            8
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Adjacent faces double damage to8; nonadjacent faces retain4, doubles kill."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "numeric lethal faces %i/%i produce exact hit result %s",
+          "parameters": [
+            1,
+            6,
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Adjacent faces double damage to8; nonadjacent faces retain4, doubles kill."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab03#no-cost",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "踏み込み／殴る",
+            true,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "No hand card or damage is spent by actual optional lethal selection and completion."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "踏み込み／弓",
+            false,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "No hand card or damage is spent by actual optional lethal selection and completion."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+          "parameters": [
+            "風矢",
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "No hand card or damage is spent by actual optional lethal selection and completion."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab03#per-hit-budget",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h independent hit budgets and child legality"
+          ],
+          "title": "each actual multi-hit grants one numeric attempt; cancellation never reallocates that right",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Each actual hit has granted1/accepted1; cancellation consumes the first and does not reallocate it."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h saved attempts and live restrictions"
+          ],
+          "title": "God replaces the complete numeric pair, rejects Fate numeric failure and cannot mint an attempt",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Reroll replaces the pair but does not grant a new attempt."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab04#own-action",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "accepts conceal/heal as an own action with exact physical maai cost, private declaration and no refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Healing consumes main action and enters hand adjustment with no refill."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "public Ida healing independently elects conceal=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Foreign actor is rejected; actual owner consumes main action."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "public Ida healing independently elects conceal=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Foreign actor is rejected; actual owner consumes main action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab04#exact-maai-cost",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "accepts conceal/heal as an own action with exact physical maai cost, private declaration and no refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exactly one physical Maai leaves hand for resolution and is not refilled."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "rejects forged IDs, event, foreign costs, suppressed and stopped uses before payment",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Wrong physical card and foreign Maai are rejected atomically before payment."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab04#heal-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "accepts conceal/heal as an own action with exact physical maai cost, private declaration and no refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Damage5 becomes3 after resolution."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "concealed healing remains concealed and hides canonical ID from other views",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Damage1 floors at0."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab04#optional-conceal",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "public Ida healing independently elects conceal=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Both conceal true and false resolve healing; revealed state changes only when elected."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "public Ida healing independently elects conceal=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Both conceal true and false resolve healing; revealed state changes only when elected."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }

@@ -174500,12 +174500,11 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:6b2f2fcc2cca4ba0"
+        "t:0110a963e4aefb87"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174526,12 +174525,11 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:6b2f2fcc2cca4ba0"
+        "t:f49be686b8926611"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174552,12 +174550,13 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:6b2f2fcc2cca4ba0"
+        "t:21d1cf6895add79e",
+        "t:31ef54020734ce1a",
+        "t:7de68595bf18e7e5"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174578,12 +174577,12 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:6b2f2fcc2cca4ba0"
+        "t:c9bdad7a3675e957",
+        "t:43427644c4aeb685"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174604,12 +174603,13 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:778374774edeb07e"
+        "t:7353d3d54aedffb2",
+        "t:f287c0dbf8535954",
+        "t:91dc11ada19a06a0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174630,12 +174630,13 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:778374774edeb07e"
+        "t:78ddac81a874d89d",
+        "t:70c44340a5bb5248",
+        "t:c00a73c5b08df632"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174656,12 +174657,16 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:cdab1d2cdebc1c76"
+        "t:d20fe6bda484f685",
+        "t:9528d9e00d11dd89",
+        "t:691e307e9efc3185",
+        "t:617908ab42a0ca83",
+        "t:3aebdcbbe8a6537f",
+        "t:ccc3c78b987c6267"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174682,12 +174687,13 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:cdab1d2cdebc1c76"
+        "t:562223e77bb3c1d2",
+        "t:4e10a6b1c821ddad",
+        "t:d4bd48a92bb680e1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174708,12 +174714,13 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:cdab1d2cdebc1c76"
+        "t:0f1d858ab02ce3e8",
+        "t:84e37ced44d00895",
+        "t:871fad341e7365a0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174734,12 +174741,13 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:cdab1d2cdebc1c76"
+        "t:224f08488ddfe1f6",
+        "t:1fdd423b8c23ecff",
+        "t:7ecae3c5ae6dca2c"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174760,12 +174768,12 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:cdab1d2cdebc1c76"
+        "t:eb85e89b441de5aa",
+        "t:ad24a72dc0e28c3c"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174786,12 +174794,13 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:b2648335063d2060"
+        "t:44ba4cd25f5261ab",
+        "t:dedf83d7f244aae2",
+        "t:9bb80053520aa1f0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174812,12 +174821,12 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:b2648335063d2060"
+        "t:6974f32d5423fe54",
+        "t:8beecd7bf9c3919b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174838,12 +174847,12 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:b2648335063d2060"
+        "t:7f26848222d2df68",
+        "t:bede27fba253e8ce"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174864,12 +174873,12 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:b2648335063d2060"
+        "t:d34e05aff3358a80",
+        "t:40084cc87c6e8e3e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a4266746d971c103",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -458872,6 +458881,515 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+    },
+    "t:0110a963e4aefb87": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+      "declarationSha256": "943ace8f98721c92c1a74a06d68a76a0e34fbf7ca9b270b0e9f90972a4230c54",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Self spirit-minus-two roll precedes enemy spirit-minus-two and the real child attack."
+    },
+    "t:f49be686b8926611": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+      "declarationSha256": "943ace8f98721c92c1a74a06d68a76a0e34fbf7ca9b270b0e9f90972a4230c54",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Both actual rolls assert the exact actor and minus-two modifier."
+    },
+    "t:21d1cf6895add79e": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+      "declarationSha256": "943ace8f98721c92c1a74a06d68a76a0e34fbf7ca9b270b0e9f90972a4230c54",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Enemy failure cancels incoming body damage while the real child can deal damage."
+    },
+    "t:31ef54020734ce1a": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h saved attempts and live restrictions"
+      ],
+      "title": "Shadow failed own or successful enemy check grants no child (%i,%i)",
+      "declarationSha256": "270fa99ac011cb90081aca2e458ef4804ca69d2632e58171984165fcd03ef71b",
+      "kind": "canonical-transition",
+      "parameters": [
+        6,
+        6,
+        1
+      ],
+      "bindingNote": "Self failure and enemy success leave incoming damage intact."
+    },
+    "t:7de68595bf18e7e5": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h saved attempts and live restrictions"
+      ],
+      "title": "Shadow failed own or successful enemy check grants no child (%i,%i)",
+      "declarationSha256": "270fa99ac011cb90081aca2e458ef4804ca69d2632e58171984165fcd03ef71b",
+      "kind": "canonical-transition",
+      "parameters": [
+        1,
+        1,
+        2
+      ],
+      "bindingNote": "Self failure and enemy success leave incoming damage intact."
+    },
+    "t:c9bdad7a3675e957": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Shadow checks self then enemy and grants optional real non-counter child attack",
+      "declarationSha256": "943ace8f98721c92c1a74a06d68a76a0e34fbf7ca9b270b0e9f90972a4230c54",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Selected child pays its physical technique and completes before the parent returns."
+    },
+    "t:43427644c4aeb685": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h independent hit budgets and child legality"
+      ],
+      "title": "Shadow child obeys target, range, chant and real cost then can be declined without a free card",
+      "declarationSha256": "57f82097e59e0379a51a4360e23a720ae7bfb3933b893078ab812b4654e201e3",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Wrong target, range, unprepared chant and unrelated commands are rejected; pass costs no card."
+    },
+    "t:7353d3d54aedffb2": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "踏み込み／殴る",
+        true,
+        true
+      ],
+      "bindingNote": "Actual martial, bow and magic producers assert the martial-only follower-bypass filter."
+    },
+    "t:f287c0dbf8535954": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "踏み込み／弓",
+        false,
+        true
+      ],
+      "bindingNote": "Actual martial, bow and magic producers assert the martial-only follower-bypass filter."
+    },
+    "t:91dc11ada19a06a0": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "風矢",
+        false,
+        false
+      ],
+      "bindingNote": "Actual martial, bow and magic producers assert the martial-only follower-bypass filter."
+    },
+    "t:78ddac81a874d89d": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "martial follower bypass is explicitly elected for this group only",
+      "declarationSha256": "5002efefce4630f48c4120cd84b331b5de2daa02a7636d8cc60f40e8466a584a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Explicit election leaves the physical follower in place while the attack reaches body."
+    },
+    "t:70c44340a5bb5248": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h saved attempts and live restrictions"
+      ],
+      "title": "declined/canceled martial use keeps the normal follower (%s)",
+      "declarationSha256": "fd52dfb02af29d9ae5f6dad21d9600019d6ec92d174eda4cea23ca75c6847ecc",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Passing or cancellation leaves normal follower defense in effect."
+    },
+    "t:c00a73c5b08df632": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h saved attempts and live restrictions"
+      ],
+      "title": "declined/canceled martial use keeps the normal follower (%s)",
+      "declarationSha256": "fd52dfb02af29d9ae5f6dad21d9600019d6ec92d174eda4cea23ca75c6847ecc",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Passing or cancellation leaves normal follower defense in effect."
+    },
+    "t:d20fe6bda484f685": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "踏み込み／殴る",
+        true,
+        true
+      ],
+      "bindingNote": "Warrior hits offer lethal; magic never offers lethal in its entire resolution."
+    },
+    "t:9528d9e00d11dd89": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "踏み込み／弓",
+        false,
+        true
+      ],
+      "bindingNote": "Warrior hits offer lethal; magic never offers lethal in its entire resolution."
+    },
+    "t:691e307e9efc3185": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "風矢",
+        false,
+        false
+      ],
+      "bindingNote": "Warrior hits offer lethal; magic never offers lethal in its entire resolution."
+    },
+    "t:617908ab42a0ca83": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        2,
+        "dead"
+      ],
+      "bindingNote": "Saved numeric roll is exactly 2d6 with the supplied pair."
+    },
+    "t:3aebdcbbe8a6537f": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        3,
+        8
+      ],
+      "bindingNote": "Saved numeric roll is exactly 2d6 with the supplied pair."
+    },
+    "t:ccc3c78b987c6267": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        1,
+        6,
+        4
+      ],
+      "bindingNote": "Saved numeric roll is exactly 2d6 with the supplied pair."
+    },
+    "t:562223e77bb3c1d2": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        2,
+        "dead"
+      ],
+      "bindingNote": "Doubles produce death; adjacent and nonadjacent faces produce exact distinct damage."
+    },
+    "t:4e10a6b1c821ddad": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        3,
+        8
+      ],
+      "bindingNote": "Doubles produce death; adjacent and nonadjacent faces produce exact distinct damage."
+    },
+    "t:d4bd48a92bb680e1": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        1,
+        6,
+        4
+      ],
+      "bindingNote": "Doubles produce death; adjacent and nonadjacent faces produce exact distinct damage."
+    },
+    "t:0f1d858ab02ce3e8": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        2,
+        "dead"
+      ],
+      "bindingNote": "Adjacent faces double damage to8; nonadjacent faces retain4, doubles kill."
+    },
+    "t:84e37ced44d00895": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        3,
+        8
+      ],
+      "bindingNote": "Adjacent faces double damage to8; nonadjacent faces retain4, doubles kill."
+    },
+    "t:871fad341e7365a0": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "numeric lethal faces %i/%i produce exact hit result %s",
+      "declarationSha256": "71fc58b7d873512db1139f857e990e3d0403140c57471a594e49a74fa07f9bc8",
+      "kind": "canonical-transition",
+      "parameters": [
+        1,
+        6,
+        4
+      ],
+      "bindingNote": "Adjacent faces double damage to8; nonadjacent faces retain4, doubles kill."
+    },
+    "t:224f08488ddfe1f6": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "踏み込み／殴る",
+        true,
+        true
+      ],
+      "bindingNote": "No hand card or damage is spent by actual optional lethal selection and completion."
+    },
+    "t:1fdd423b8c23ecff": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "踏み込み／弓",
+        false,
+        true
+      ],
+      "bindingNote": "No hand card or damage is spent by actual optional lethal selection and completion."
+    },
+    "t:7ecae3c5ae6dca2c": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Ida printed %s offers martial=%s and warrior lethal=%s",
+      "declarationSha256": "936f0cbb84d5f732421c4ebf6685ae5ddb3a8bcd7184357919daad2fbc38fd58",
+      "kind": "canonical-transition",
+      "parameters": [
+        "風矢",
+        false,
+        false
+      ],
+      "bindingNote": "No hand card or damage is spent by actual optional lethal selection and completion."
+    },
+    "t:eb85e89b441de5aa": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h independent hit budgets and child legality"
+      ],
+      "title": "each actual multi-hit grants one numeric attempt; cancellation never reallocates that right",
+      "declarationSha256": "3bc99ee17153c7f8bf4354819b287ae15d99b9eeacd065af8fa452e275ab6631",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Each actual hit has granted1/accepted1; cancellation consumes the first and does not reallocate it."
+    },
+    "t:ad24a72dc0e28c3c": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h saved attempts and live restrictions"
+      ],
+      "title": "God replaces the complete numeric pair, rejects Fate numeric failure and cannot mint an attempt",
+      "declarationSha256": "594456ff7e47eabafeaff1b56f5c1cb82a0c237f896e24cd0c2c32f8b7a4d6ee",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Reroll replaces the pair but does not grant a new attempt."
+    },
+    "t:44ba4cd25f5261ab": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "accepts conceal/heal as an own action with exact physical maai cost, private declaration and no refill",
+      "declarationSha256": "08e2084f34a57f5c40204ba1a2626248ec25c4222770fe3806db6ea556bf556c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Healing consumes main action and enters hand adjustment with no refill."
+    },
+    "t:dedf83d7f244aae2": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "public Ida healing independently elects conceal=%s",
+      "declarationSha256": "3da4aa0340107736d21c2e0a9492f10e026c7c9b91da41e850a6ba9029af1f3e",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Foreign actor is rejected; actual owner consumes main action."
+    },
+    "t:9bb80053520aa1f0": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "public Ida healing independently elects conceal=%s",
+      "declarationSha256": "3da4aa0340107736d21c2e0a9492f10e026c7c9b91da41e850a6ba9029af1f3e",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Foreign actor is rejected; actual owner consumes main action."
+    },
+    "t:6974f32d5423fe54": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "accepts conceal/heal as an own action with exact physical maai cost, private declaration and no refill",
+      "declarationSha256": "08e2084f34a57f5c40204ba1a2626248ec25c4222770fe3806db6ea556bf556c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exactly one physical Maai leaves hand for resolution and is not refilled."
+    },
+    "t:8beecd7bf9c3919b": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "rejects forged IDs, event, foreign costs, suppressed and stopped uses before payment",
+      "declarationSha256": "edd81ced99e1ee402e01b5018a511246cca90ccecc82a2b90367b2c414cb6e68",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Wrong physical card and foreign Maai are rejected atomically before payment."
+    },
+    "t:7f26848222d2df68": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "accepts conceal/heal as an own action with exact physical maai cost, private declaration and no refill",
+      "declarationSha256": "08e2084f34a57f5c40204ba1a2626248ec25c4222770fe3806db6ea556bf556c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Damage5 becomes3 after resolution."
+    },
+    "t:bede27fba253e8ce": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "concealed healing remains concealed and hides canonical ID from other views",
+      "declarationSha256": "f0938b0e5504261bd3710e3548df935135f8f4394c3d51169450266aef245843",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Damage1 floors at0."
+    },
+    "t:d34e05aff3358a80": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "public Ida healing independently elects conceal=%s",
+      "declarationSha256": "3da4aa0340107736d21c2e0a9492f10e026c7c9b91da41e850a6ba9029af1f3e",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Both conceal true and false resolve healing; revealed state changes only when elected."
+    },
+    "t:40084cc87c6e8e3e": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "public Ida healing independently elects conceal=%s",
+      "declarationSha256": "3da4aa0340107736d21c2e0a9492f10e026c7c9b91da41e850a6ba9029af1f3e",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Both conceal true and false resolve healing; revealed state changes only when elected."
     }
   },
   "remainingNotes": {
