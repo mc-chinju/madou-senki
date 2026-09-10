@@ -1,0 +1,81 @@
+{
+  "task": "R5 Task11 A39 and A40 printed combination components",
+  "status": "accepted-scope",
+  "acceptedPhysicalSources": [
+    "a2-p05-r1c3",
+    "a2-p05-r2c1"
+  ],
+  "implementation": [
+    "ATTACK/PLAY_DEFENSE carry copied finite combinationCardInstanceIds, reject duplicates/unknown sources and forbid late, approach, reaction or standalone turn use.",
+    "Actual source selection validates physical hand ownership and legal counter/mental technique before any payment. All components are paid without refill at original acceptance.",
+    "ActionFrame.printedComponents records each physical source, child ID and pending/active/canceled status. Cancellable reaction children dispose through the common named-card-used path, then open the next component or resume the identical parent.",
+    "CombinationSpirit stores owner life, parent/component source and root event plus turn seat/number. It starts on accepted declaration and is removed on source cancellation, whole attack abort, withdrawal end or owner life/presence expiry.",
+    "Harp adds2 effect and4 damage through unfrozen arithmetic. Null remains null; actual numeric-zero Ida spirit-based damage becomes4. Frozen values are not recomputed.",
+    "Finite view options and PrintedCombinationFields support Board, physical follower attacks, granted attacks and normal-defense counters. Component declarations display their purpose instead of the copied internal technique scaffold."
+  ],
+  "acceptance": [
+    "Real Magic Poem base effect5/damage5 becomes7/9; independent Fate cancellation of each component leaves the other active and every source paid.",
+    "Canceling the parent or failing its excess-level check ends spirit without refund; omitting the components keeps both in hand.",
+    "Real null-damage silence and real dedicated Ida spirit0 damage verify null/numeric-zero distinction.",
+    "Real returned counter, defensive counter plus component, prior actual approach and actual withdrawal preserve the adopted lifetime.",
+    "Real CHANT followed by next-turn Shin two-target three-hit attack retains spirit through all6 hits, then removes it at withdrawal; both targets take21.",
+    "Every accepted engine input is checked against JSON restoration with220 unique physical cards; stale/forged/foreign/wrong source conditions reject unchanged.",
+    "Actual DO payment, each component cancellation, parent cancellation, counter and withdrawal eviction/replay are idempotent; browser select/decline/counter/reload routes pass."
+  ],
+  "checks": [
+    {
+      "command": "pnpm exec vitest run packages/engine/test/printed-combinations.test.ts packages/protocol/test/printed-combinations.test.ts packages/engine/test/task7i-combinations.test.ts packages/engine/test/turn-information-spirit.test.ts packages/engine/test/anytime-information.test.ts apps/web/test/commands.test.ts",
+      "passed": 124,
+      "exitCode": 0,
+      "log": "/tmp/madou-combinations-acceptance.log"
+    },
+    {
+      "command": "pnpm exec vitest run packages/engine/test/printed-combinations.test.ts",
+      "passed": 13,
+      "exitCode": 0,
+      "note": "Same13 included in124, with explicit no-effect-level source rejection added to existing case.",
+      "log": "/tmp/madou-combinations-final-engine.log"
+    },
+    {
+      "command": "pnpm --filter @madou/worker exec vitest run test/room-printed-combinations.test.ts",
+      "passed": 5,
+      "exitCode": 0,
+      "log": "/tmp/madou-combinations-worker.log"
+    },
+    {
+      "command": "pnpm exec playwright test tests/e2e/printed-combinations.spec.ts",
+      "passed": 3,
+      "exitCode": 0,
+      "log": "/tmp/madou-combinations-browser.log"
+    },
+    {
+      "command": "pnpm exec playwright test tests/e2e/printed-combinations.spec.ts --grep 'use=true'",
+      "passed": 1,
+      "exitCode": 0,
+      "note": "Same use=true case, with final component-specific declaration display assertion.",
+      "log": "/tmp/madou-combinations-final-browser.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-combinations-checked-type.log"
+    },
+    {
+      "command": "python3 scripts/validate_runtime_coverage.py",
+      "valid": true,
+      "rows": 12109,
+      "repairs": [],
+      "semanticPromotion": false,
+      "log": "/tmp/madou-combinations-ledger.log"
+    }
+  ],
+  "testCorrections": [
+    "Magic Poem is printed effect5/damage5, not the initially assumed3/6; fixed expected values to5/7 and5/9.",
+    "The turn card Charm has no attack effect-level; it is tested as a rejection. Actual a2-p18-r1c1 supplies the null-damage mental attack case."
+  ],
+  "remaining": [
+    "All Army actual hand follower/morale/dependent declarations",
+    "Task11 shared recovery obligations and other unchecked R4/R5/R6–R9/R3 tasks"
+  ],
+  "constraints": "No subagents, reviews, full suites, R0/R1 audit or full catalog reads; formal START remains unavailable."
+}

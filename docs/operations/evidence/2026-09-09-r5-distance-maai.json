@@ -1,0 +1,72 @@
+{
+  "task": "R5 Task 1 combat maai abilities",
+  "status": "listed-combat-acceptance-complete-approach-withdrawal-printed-scope-pending",
+  "implementation": [
+    "Finite PLAY_MAAI.abilityId accepts only Cham ab01, Tia ab01 and Lancaster ab03; private maaiAbilityOptions validates current actor/hit, ownership, availability and spent attempt before payment.",
+    "Payment opens an ordinary cancellable AbilityFrame with a saved maai context. Success saves the hit election; canceled or unavailable ability leaves the paid ordinary maai. Both return through common physical reclaim before parent response progresses.",
+    "MaaiElection saves life, source action, original attacker and returned-counter provenance. Actual counter resolver changes its action kind to attack, so Lancaster uses the saved counter technique and resume parent rather than expecting kind defense.",
+    "Shared advance accounting uses submitted minus floor(advances/factor), factor two for selected live Cham/Tia and no advance cancellation for eligible Lancaster. Required physical advance count is shared across targets and rechecked after recovery. Existing carried maai is retained; each later hit starts fresh.",
+    "Tia retains one canonical ID for earth and maai contexts. A paid Flight against magic earth also cancels that hit, rather than treating the two clauses as separate abilities.",
+    "Physical payment retains its original source life even if the declaration finishes in a later life.",
+    "ReactionPanel offers a private default-off ability selector bound to the current window; MaaiDefenseSummary uses the same actual effective count and explains two advances or uncancelable maai without publishing hidden ability IDs."
+  ],
+  "canonicalEvidence": [
+    "Cham and Tia actual bow defense: one maai survives one advance, two cancel it; decline remains ordinary.",
+    "Lancaster actual attack then actual returned counter: selected maai cannot be canceled. Ordinary incoming attack offers no such election and ordinary maai is canceled by one advance.",
+    "Actual Fate cancellation retains paid maai and reduces cancellation requirement to one advance.",
+    "Actual attacking Vanmil suppresses Tia after the first paid advance; no refund, no second payment, original damage applies.",
+    "Actual Ramba two-target Earth Spear with unequal elections uses each advance once for both targets.",
+    "Actual Griffin next hit resets election and advances.",
+    "Actual CHANT and later dedicated Shin Heavenly Hundred Strikes, with actual hit-count die three, reaches the second simultaneous hit with both target submissions/effective counts and shared advances reset. Final body damage respects one defended hit and all other actual hits.",
+    "Foreign source/actor rejected unchanged; all Engine steps JSON replay and conserve 220 unique physical cards."
+  ],
+  "structuralEvidence": [
+    "Later-life boundary test confirms paid maai provenance is not rewritten; it does not assert an actual death/revival sequence for this exact declaration."
+  ],
+  "transport": [
+    "DO cases for Cham, Tia, actual Lancaster counter and canceled Cham: payment/first/second advance eviction and identical ACK replay; no double payment.",
+    "Browser cases use real finite selector/buttons, owner/opponent refresh between advances, and actual Fate cancellation. Three non-owner participant views cannot see unused private options."
+  ],
+  "verification": {
+    "engineProtocolWeb": {
+      "uniquePassed": 103,
+      "runs": [
+        {
+          "passed": 99,
+          "log": "/tmp/madou-maai-focused.log"
+        },
+        {
+          "passed": 23,
+          "log": "/tmp/madou-maai-final-fixed.log",
+          "note": "21 distance plus 2 protocol; 20 overlap the 99, adds 3."
+        },
+        {
+          "passed": 1,
+          "log": "/tmp/madou-maai-shared-three.log",
+          "note": "Adds the real chanted three-hit case."
+        }
+      ]
+    },
+    "worker": {
+      "uniquePassed": 7,
+      "logs": [
+        "/tmp/madou-maai-worker.log",
+        "/tmp/madou-maai-worker-cancel.log"
+      ]
+    },
+    "browser": {
+      "uniquePassed": 7,
+      "logs": [
+        "/tmp/madou-maai-browser-fixed.log",
+        "/tmp/madou-maai-browser-cancel.log"
+      ]
+    },
+    "typecheck": "passed /tmp/madou-maai-types-final-all.log",
+    "ledger": "12109 rows structurally valid, statuses unchanged /tmp/madou-maai-ledger.log"
+  },
+  "remaining": [
+    "The printed Cham/Tia maai clause is not restricted to attack defense. Approach/withdrawal still use alternating one-card distance responses; they do not yet accept/use these elections. This is explicitly left as the next Task 1 work, not hidden by accepting only combat tests.",
+    "Initial WITHDRAW needs a finite optional election alongside PLAY_MAAI in distance response. Preserve the same canceled payment, live source, saved response and distance marker rules.",
+    "Parent R5 distance checkbox and whole distance group remain incomplete until that printed scope is handled. Other R4/R5/R6–R9 and human acceptance remain open."
+  ]
+}

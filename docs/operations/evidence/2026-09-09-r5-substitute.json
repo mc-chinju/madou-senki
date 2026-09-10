@@ -1,0 +1,86 @@
+{
+  "task": "R5 Task9 Substitute and legal two-target three-hit Keil scope",
+  "status": "in-progress",
+  "acceptedScope": [
+    "Physical Substitute validates exact source/group/target/hit and source/recipient life before a cancellable payment/refill/OPEN child",
+    "Only one original hit transfers; the nonphysical received group creates no extra physical card and cannot itself be transferred again",
+    "Hand counter or own character abilities only; ordinary defenses, maai, followers, chant counters and own physical reactions rejected",
+    "Third-party named responses retain original attack scope across the live substituted group",
+    "No original range/faction/sex selection is rerun; receiver water immunity and mental defense use its actual character",
+    "Transferred hit retains damage already reduced by original followers; receiver followers still guard its independent original hits",
+    "Completed transfer joins original damage/death/status batch; irrevocable fatal intentions remain public while deferred",
+    "Black-wing hit payment and decline are shared once with the original attack",
+    "Live two-target three-hit receipt/reload chooses exactly B hit2 into C, gives14/28 damage instead of21/21, and preserves220 unique physical cards",
+    "Real OPEN refill pauses binding until revival decline and resumes the exact same hit",
+    "Both actual Lancelot and Lia reveal after follower start in one Shin two-target three-hit trajectory; third-party Keil protects exactly their3 hits and leaves other3, growing only Lancelot"
+  ],
+  "implementation": [
+    "effects/substitute.ts and ActionFrame substituteBinding/substituteTransfer/substituteOrigin; AttackGroup substituteResults stores completed nonphysical group/action snapshots",
+    "settleLifetimeGroup merges original and transferred intents before one settleDamage; hasPendingFatal reads deferred results",
+    "attackScopeGroups maintains original cancellation scope, hitPaymentGroups shares late advance costs",
+    "currentAttack.substitution projects original target/hit; ReactionPanel offers hand counters and own ability controls only",
+    "AnytimeCardPanel keys include group and hit index; Worker fixture generates actual chant and attack before live card command"
+  ],
+  "checks": [
+    {
+      "command": "pnpm exec vitest run packages/engine/test/substitute.test.ts packages/engine/test/anytime-responses.test.ts packages/engine/test/dispel.test.ts packages/engine/test/received-defense-abilities.test.ts packages/engine/test/mental-received-defenses.test.ts packages/engine/test/task7g-lifetime.test.ts packages/engine/test/distance-reclaim.test.ts apps/web/test/commands.test.ts",
+      "passed": 223,
+      "exitCode": 0,
+      "log": "/tmp/madou-substitute-engine.log"
+    },
+    {
+      "command": "pnpm exec vitest run packages/engine/test/anytime-responses.test.ts",
+      "passed": 21,
+      "newCases": 2,
+      "note": "Two newly added actual late-reveal Keil cases;19 cases were also counted in223.",
+      "exitCode": 0,
+      "log": "/tmp/madou-keil-late.log"
+    },
+    {
+      "command": "pnpm --filter @madou/worker exec vitest run test/room-reclaim.test.ts",
+      "passed": 35,
+      "exitCode": 0,
+      "log": "/tmp/madou-substitute-worker.log"
+    },
+    {
+      "command": "pnpm --filter @madou/worker exec vitest run test/room-reclaim.test.ts -t 'actual substitute'",
+      "passed": 2,
+      "skipped": 33,
+      "exitCode": 0,
+      "note": "Final affected checks; same cases already counted in35.",
+      "log": "/tmp/madou-substitute-worker-final.log"
+    },
+    {
+      "command": "pnpm exec playwright test tests/e2e/reclaim.spec.ts --grep 'substitute exact hit'",
+      "passed": 2,
+      "exitCode": 0,
+      "log": "/tmp/madou-substitute-browser.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-substitute-type.log"
+    },
+    {
+      "command": "python3 scripts/validate_runtime_coverage.py",
+      "valid": true,
+      "rows": 12109,
+      "repairs": [
+        "One shared declarationSha256 for the changed Gadyoora fatal test referenced by the four reported c2-p06-r1c1-ab01 clauses"
+      ],
+      "semanticPromotion": false,
+      "log": "/tmp/madou-substitute-ledger.log"
+    }
+  ],
+  "testCorrections": [
+    "Existing mental-received and received-defense helpers explicitly pass common physical reclaim responses after a reaction before resuming the original window",
+    "Two pre-existing death-gift assertions now check exactly one paid source across resolution/discard while disposition is pending; final discard assertions remain",
+    "The reported task7g force-failure/reroll case also waits for the actual reclaim boundary",
+    "Metalgolem printed HP is5: its three original hits contribute6, plus the substituted residual2, total8"
+  ],
+  "remaining": [
+    "Task9 three grouped acceptance checkboxes still need complete per-source correspondence for positive/negative/cancel/save boundaries",
+    "Task10 Wish and every remaining unchecked overall completion task"
+  ],
+  "constraints": "No subagents, reviews, full-suite reruns, R0/R1 re-audit or full character/action JSON reads; formal START remains unavailable."
+}

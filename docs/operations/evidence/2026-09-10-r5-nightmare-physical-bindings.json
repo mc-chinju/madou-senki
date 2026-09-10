@@ -1,0 +1,202 @@
+{
+  "task": "R5 Task11 Nightmare physical binding",
+  "completedAt": "2026-09-10 13:10 JST",
+  "implementation": "Added actual mental attack and source-owned stopped recovery coverage. No production change.",
+  "canonicalEvidence": [
+    "悪夢23条項＋main。実攻撃の遠/魔/精/黒、使用効果Lv6、通常2。ディア任意専用は使用チェック不要・任意全対象・2d6合計×2を共有し4/14/24、神性介入で10→18。命中時の精神−1抵抗（SP6で5成功/6失敗）、アスフェルトのみ−2（4成功/5失敗）。失敗時はsource付き停止、実手番開始で同じ修正の回復判定を行い、失敗では停止継続と手番停止、次の成功で解除。回復ではダメージを繰り返さない。間合い不可・従者無視で配置従者は不変かつ士気判定なし。見切る/反撃/詠唱拒否、同陣営・不正owner/actor/targets、実混乱下の専用・沈黙拒否・催眠手番停止、命運取消と不使用を含む。",
+    "Engine初回44成功/1失敗。魔法の沈黙禁止を試験が成功と期待していたため拒否へ修正し、失敗1件のみ再実行成功。",
+    "共有lifetime/回収、広い精神防御・停止の複合交差と全体受入れは未完。accepted昇格なし。ブラウザは実抵抗結果を読み、初期抵抗成功なら停止を作らず、失敗した回復ケースでは実手番開始の回復結果に応じて継続または解除を確認する。必ず失敗→成功の連続を通す確定証跡はEngine/DO。"
+  ],
+  "validation": {
+    "engine": {
+      "uniquePassed": 45,
+      "initial": {
+        "passed": 44,
+        "failed": 1,
+        "log": "/tmp/madou-nightmare-engine.log"
+      },
+      "fixed": {
+        "selection": "nightmare-silenced",
+        "passed": 1,
+        "failed": 0,
+        "log": "/tmp/madou-nightmare-engine-fix.log"
+      }
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7e-status-defenses.test.ts -t '悪夢'",
+      "passed": 2,
+      "log": "/tmp/madou-nightmare-related.log"
+    },
+    "worker": {
+      "passed": 31,
+      "batches": [
+        {
+          "pattern": "ordinary|owner-ordinary|low|dedicated|pair",
+          "passed": 5,
+          "log": "/tmp/madou-nightmare-do-1.log"
+        },
+        {
+          "pattern": "all|near|same-faction|water|metal",
+          "passed": 5,
+          "log": "/tmp/madou-nightmare-do-2.log"
+        },
+        {
+          "pattern": "lower|maai-ordinary|maai-dedicated|evade-ordinary|evade-dedicated",
+          "passed": 5,
+          "log": "/tmp/madou-nightmare-do-3.log"
+        },
+        {
+          "pattern": "fate|suppressed|silenced|stopped|wrong-owner",
+          "passed": 5,
+          "log": "/tmp/madou-nightmare-do-4.log"
+        },
+        {
+          "pattern": "decline|noncounter|reroll|asfelt-ordinary|asfelt-dedicated",
+          "passed": 5,
+          "log": "/tmp/madou-nightmare-do-5.log"
+        },
+        {
+          "pattern": "recovery-ordinary|recovery-dedicated|asfelt-recovery-ordinary|asfelt-recovery-dedicated|resist-success-ordinary",
+          "passed": 5,
+          "log": "/tmp/madou-nightmare-do-6.log"
+        },
+        {
+          "pattern": "resist-success-dedicated",
+          "passed": 1,
+          "log": "/tmp/madou-nightmare-do-7.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/nightmare-physical.spec.ts",
+      "passed": 31,
+      "log": "/tmp/madou-nightmare-browser.log"
+    },
+    "types": [
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-nightmare-types.log"
+      },
+      {
+        "command": "pnpm --filter @madou/worker typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-nightmare-worker-types.log"
+      },
+      {
+        "command": "pnpm typecheck:e2e",
+        "exitCode": 0,
+        "log": "/tmp/madou-nightmare-e2e-types.log"
+      }
+    ],
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8519,
+        "implemented": 3593
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p15-r2c2::semantic/ordinary/school",
+      "a2-p15-r2c2::semantic/ordinary/range",
+      "a2-p15-r2c2::semantic/ordinary/use-level",
+      "a2-p15-r2c2::semantic/ordinary/base-effect-level",
+      "a2-p15-r2c2::semantic/ordinary/damage",
+      "a2-p15-r2c2::semantic/ordinary/attribute-0",
+      "a2-p15-r2c2::semantic/ordinary/attribute-1",
+      "a2-p15-r2c2::semantic/ordinary/attribute-2",
+      "a2-p15-r2c2::semantic/ordinary/attack-use",
+      "a2-p15-r2c2::semantic/dedicated/0/select-optional",
+      "a2-p15-r2c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p15-r2c2::semantic/dedicated/0/effect-replacement",
+      "a2-p15-r2c2::semantic/dedicated/0/damage-replacement",
+      "a2-p15-r2c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p15-r2c2::semantic/dedicated/0/chant-retain",
+      "a2-p15-r2c2::semantic/dedicated/0/target-subset",
+      "a2-p15-r2c2::semantic/ordinary/no-maai",
+      "a2-p15-r2c2::semantic/ordinary/ignore-followers",
+      "a2-p15-r2c2::semantic/ordinary/initial-minus-one",
+      "a2-p15-r2c2::semantic/ordinary/recovery-minus-one",
+      "a2-p15-r2c2::semantic/ordinary/stop-until-success",
+      "a2-p15-r2c2::semantic/ordinary/asfelt-initial-minus-two",
+      "a2-p15-r2c2::semantic/ordinary/asfelt-recovery-minus-two"
+    ],
+    "mainProducerBindings": [
+      "a2-p15-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:a1c056d0c88c03df",
+      "t:69b7c7ec56a58aa1",
+      "t:f24f91f2f26b45d6",
+      "t:41a1a0eb7479a096",
+      "t:4f7a906c32db0b53",
+      "t:01f245c5ff257c44",
+      "t:75f65d13fd9482c2",
+      "t:e730c906f5548f2e",
+      "t:be783fe86662d638",
+      "t:912e293d1597b033",
+      "t:0f7d785a88545f6d",
+      "t:dc529de43ec19e8f",
+      "t:01b34b48c7413811",
+      "t:048da36bf4a901db",
+      "t:0dfb31841c9ffa30",
+      "t:1757b78687915b93",
+      "t:ca4719f022dee33d",
+      "t:a4f9a5d266293f64",
+      "t:3b7063902896a790",
+      "t:c45e7ca0589ee0d7",
+      "t:26059ffd1761cc36",
+      "t:712b2a05ae874601",
+      "t:76791f44e94d25c4",
+      "t:27dea2583ae84b7d",
+      "t:d125c44ab84687dc",
+      "t:c86ba2305e09aed0",
+      "t:e723f16edf02d6b2",
+      "t:2b0c1027dae7561b",
+      "t:0f3376fcf93ccae5",
+      "t:2b46f64d90e4b2b7",
+      "t:5aa5d699b746e8a7",
+      "t:1d41fce6930ecfe5",
+      "t:fc8dea30feda33e2",
+      "t:2019185497e30a9f",
+      "t:3b396a4f42a92ae9",
+      "t:ff9e9f6509e0ec4b",
+      "t:db7629a52591724e",
+      "t:c9fe04362dc720a6",
+      "t:ec010823311ad9c6",
+      "t:0a496bb7b52d78b7",
+      "t:f689405d56344fbb",
+      "t:69ca1dfa27dadf8d",
+      "t:b6f3447bfc428d07",
+      "t:10da09fce955dafe",
+      "t:7e37a3695580c65f"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 208
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 184
+    }
+  },
+  "remaining": "共有lifetime/回収、広い精神防御・停止の複合交差と全体受入れは未完。accepted昇格なし。ブラウザは実抵抗結果を読み、初期抵抗成功なら停止を作らず、失敗した回復ケースでは実手番開始の回復結果に応じて継続または解除を確認する。必ず失敗→成功の連続を通す確定証跡はEngine/DO。"
+}

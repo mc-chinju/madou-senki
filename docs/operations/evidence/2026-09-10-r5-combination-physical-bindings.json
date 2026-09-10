@@ -1,0 +1,102 @@
+{
+  "task": "R5 Task11 Spirit combination a2-p05-r1c3 and Moon Harp a2-p05-r2c1",
+  "status": "combination-physical-bindings-integrated-other20-open",
+  "completedAt": "2026-09-10 05:57 JST",
+  "implementation": "No production change. Five semantic clauses and two pending main producers bound to17 new actual-setup canonical cases.",
+  "canonicalEvidence": [
+    "おまえは、俺の敵でないっ！！2条項・月の竪琴3条項＋各pending main2対応。実初期deal/setup/START/補充選択から同一攻撃宣言で両複合/片方/不使用を選び、技と各複合元札を即時補充なしに独立支払い、自分だけ精神力+2、魔詩5/5を7/9へ補正。実沈黙の無損害nullはnullのまま効果6→8、実イダ専用気斬で精神力0の数値damage0は4・効果9になり、不在damageの新造と数値0補正を区別。実命運による片方だけ取消はもう片方を維持し親処理へ復帰、親取消は精神力補正を終了、支払いは返らず各元札1回処分。初期magic4に対する魔詩use5で実判定threshold8を固定し出目8成功/10失敗、失敗による補正終了と確定判定の不変、出目確認後の追加禁止を確認。実防御側反撃への複合と相手からの子反撃を受ける間も精神力補正を維持し撤退終了時に除去。実先行進撃は無補正、後続実撤退中は補正を保ち完了で除去。実詠唱/全手番を経たシン専用天地百撃斬の2対象3hit計6hitを通して補正を維持し、実全手番後の独立Bow攻撃へ持ち越さない。非精神技の竪琴/重複/他人の札/未知ID/単独使用/後付けはstate全view不変で拒否。新Engine17/関連13/既存DO5保存再起動再送/既存browser3選択・不使用・反撃・reload/型/ledger確認。semantic5＋main2の7行implemented、accepted0昇格。",
+    "The new fixture only arranges the initial deal/character/stat values before setup. CHANT, full turn cycle, approach, attack, counter, Fate cancellation, withdrawal and subsequent independent attack all use transition commands. Every accepted engine input verifies JSON restoration and220 unique physical cards. Numeric-zero/null cases inspect the real attack group. Counter paths observe retained spirit; a counter-side roll using that boost and a separate child additional-attack producer are not claimed and remain shared unmeasured crossings. Existing related13 unit cases include older constructed states; new17 provide the canonical setup paths. Existing DO5 and UI3 are rerun unchanged for their actual setup/payment/cancellation/counter/reload routes."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/combination-physical.test.ts",
+      "passed": 17,
+      "log": "/tmp/madou-combination-physical-engine.log",
+      "firstAttempt": true
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/printed-combinations.test.ts",
+      "passed": 13,
+      "log": "/tmp/madou-combination-physical-related.log",
+      "firstAttempt": true
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-printed-combinations.test.ts",
+      "passed": 5,
+      "log": "/tmp/madou-combination-physical-do.log",
+      "firstAttempt": true,
+      "scope": "Existing actual payment/component or parent cancellation/counter/withdrawal replay edges; not every PASS command replayed."
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/printed-combinations.spec.ts",
+      "passed": 3,
+      "log": "/tmp/madou-combination-physical-browser.log",
+      "firstAttempt": true,
+      "scope": "Existing actual select/decline/counter/reload controls."
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-combination-physical-types.log",
+      "firstAttempt": true
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9096,
+        "implemented": 3016
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p05-r1c3::semantic/boost/self-spirit-plus-two",
+      "a2-p05-r1c3::semantic/boost/attack-chain-lifetime",
+      "a2-p05-r2c1::semantic/combine/spirit-only",
+      "a2-p05-r2c1::semantic/combine/effect-plus-two",
+      "a2-p05-r2c1::semantic/combine/damage-plus-four"
+    ],
+    "mainProducerBindings": [
+      "a2-p05-r1c3::main-producer",
+      "a2-p05-r2c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:4a54dbb2c65e1085",
+      "t:20bdcf556873f2da",
+      "t:d324c8237b5cded3",
+      "t:44b9541942d7bd3e",
+      "t:1f804630e3883a99",
+      "t:fc0a4219a92b79d1",
+      "t:3f7214d91f7e079e",
+      "t:c0cc97ca653951c8",
+      "t:9ee699f608b6abee",
+      "t:4ce970de05e91b1b",
+      "t:fcd8145c27d93e45",
+      "t:7fad290b1e2cf25a",
+      "t:64d695ee21594651",
+      "t:dca150bb77366f51",
+      "t:d31156e4ac29051e",
+      "t:7f659da0a33b8c26",
+      "t:e158ef5d62e534ce"
+    ]
+  },
+  "remaining": "175/195 semantic bindings integrated; other20 includes partialSingingShip1 andWingedFolk1 plus18othercards. Actual child additional attack/counter-side boosted roll/owner lifetime crossing, candidate/shared receipts, strictA31 andwhole-goalgates pending. Noacceptedpromotion.",
+  "followupCorrection": {
+    "at": "2026-09-10 06:07 JST",
+    "note": "次の札ID確認時に前回のcombination-physical通常防御拒否ケースがa2-p06-r1c3間合い/休息を使っていたことを確認し、a2-p05-r3c1見切るへ変更。複合なしの通常防御が実際に成立する分岐を正の対照として追加した上で、同札＋Spiritの拒否と反撃での使用可を確認。該当counter2ケースと型が成功し、currentASTへ再binding。通常防御拒否を証明する旧入力の不足を補い、本番処理は変更なし。",
+    "passed": 2,
+    "log": "/tmp/madou-combination-physical-defense-fix.log",
+    "typecheckLog": "/tmp/madou-army-physical-types-combination-fix.log"
+  }
+}

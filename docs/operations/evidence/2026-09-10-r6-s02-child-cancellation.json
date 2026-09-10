@@ -1,0 +1,55 @@
+{
+  "task": "R6 S02 actual child cancellation parent generation",
+  "status": "S02-condition-complete-R6-open",
+  "recordedAt": "2026-09-10 13:58 JST",
+  "implementation": "No production changes. Optional canceledChild fixture branch deals actual God to C and Fate to D before real setup/poem attack; original fixture defaults preserved. Added Engine/DO/browser literal S02 tests.",
+  "requirements": {
+    "parent": "Actual A/B passes reach C after-roll priority, parent cursor2 and passed[A,B].",
+    "childCancellation": "C declares physical God reroll; D physical Fate cancels that action. Neither synthetic child nor injected cancellation.",
+    "resume": "Original parent ID returns with larger window revision, cursor0 and passed[]. Original roll/attempts unchanged; physical sources paid.",
+    "staleAndCurrent": "DO rejects A PASS with original window revision; helper proves stored state/revision unchanged and duplicate rejection after eviction. Fresh A PASS is accepted and parent cursor1/passed[A].",
+    "browser": "Real C/D controls, C/A reloads, original parent with newer revision and A priority, actual A pass advances B."
+  },
+  "verification": {
+    "engine": {
+      "passed": 1,
+      "log": "/tmp/madou-s02-engine.log"
+    },
+    "relatedEngine": {
+      "passed": 3,
+      "log": "/tmp/madou-s02-related.log"
+    },
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-s02-do-fix.log"
+    },
+    "browser": {
+      "passed": 1,
+      "log": "/tmp/madou-s02-browser.log"
+    },
+    "types": {
+      "exitCode": 0,
+      "log": "/tmp/madou-s02-types-fix.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8389,
+        "implemented": 3723
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "correction": "First DO/type failed because fixture dispatcher lacked makeR6RollScenario import. Added import; failed scopes passed.",
+  "remaining": "S03-S07 and R6 Task1 explicit protected commandEntropy/canonical-room boundary still open. Existing S04 crypto mocks are not that specified boundary. Whole goal remains active.",
+  "processes": "All terminal."
+}

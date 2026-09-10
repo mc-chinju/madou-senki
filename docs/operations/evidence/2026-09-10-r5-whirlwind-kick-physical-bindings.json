@@ -1,0 +1,150 @@
+{
+  "task": "R5 Task11 Whirlwind Kick physical binding",
+  "completedAt": "2026-09-10 11:31 JST",
+  "implementation": "Added physical fixture, Engine/DO/browser tests and fixture registration. Existing production behavior satisfies measured paths.",
+  "canonicalEvidence": [
+    "死鬼旋風脚 a2-p09-r3c3 の13用途条項とmain証跡を対応。実初期配置・APPROACH・ATTACKで近/戦/格、使用・効果Lv6、固定ダメージ6、間合い2枚、単体・詠唱不可・印刷反撃不可。ジル通常は自動専用化せず、任意専用はnoChecksのみ。専用戦士0/精神0でも不足6回の判定なし。術者精神0/1/12と対象精神11に関係なく6。水竜Lv7は止めて残存、メタルゴーレムLv6は同値で止めて処分、砦Lv3/HP2は4ダメージ。両modeとも実間合い1枚は処分されても不足で6、2枚は0、接近関係は維持。見切るは両modeで使用可能、0ダメージ・防御札処分。通常戦士5/精神6の不足判定は合計6成功/7失敗。実命運取消は命中前に0・札1回処分。実混乱/沈黙後も印刷効果を維持、実催眠で手番を飛ばす。実弓への両mode防御を拒否しA4・札保持。不正owner/target/actor/timing/REST/turncard・同陣営対象・不使用を確認。",
+    "Engine28・関連4・DO22は初回成功。browser初回は全22件がChromium起動前のmacOS MachPort Permission deniedで終了。許可された実行環境で22件を再実行。DOは各コマンド保存→再起動→同一envelope再送と220枚保存を確認。ブラウザは実接近・間合い1/2枚・見切る・取消・通常/専用選択とreload。通常使用と水竜士気の成否は実乱数から読む。",
+    "共有lifetime/回収・能力追加による反撃化の交差、AppendixSword1、strict A31、共有受入れと計画全体は未完。acceptedへの昇格なし。"
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/whirlwind-kick-physical.test.ts",
+      "passed": 28,
+      "log": "/tmp/madou-whirlwind-kick-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/techniques.test.ts -t '死鬼旋風脚'",
+      "passed": 4,
+      "log": "/tmp/madou-whirlwind-kick-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "passed": 22,
+      "batches": [
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-whirlwind-kick-physical.test.ts -t '^whirlwind-kick-(ordinary|owner-ordinary|low|dedicated|far) '",
+          "passed": 5,
+          "log": "/tmp/madou-whirlwind-kick-do-1.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-whirlwind-kick-physical.test.ts -t '^whirlwind-kick-(same-faction|water|equal|lower|maai-one-ordinary) '",
+          "passed": 5,
+          "log": "/tmp/madou-whirlwind-kick-do-2.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-whirlwind-kick-physical.test.ts -t '^whirlwind-kick-(maai-two-ordinary|maai-one-dedicated|maai-two-dedicated|evade-ordinary|evade-dedicated) '",
+          "passed": 5,
+          "log": "/tmp/madou-whirlwind-kick-do-3.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-whirlwind-kick-physical.test.ts -t '^whirlwind-kick-(fate|suppressed|silenced|stopped|wrong-owner) '",
+          "passed": 5,
+          "log": "/tmp/madou-whirlwind-kick-do-4.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-whirlwind-kick-physical.test.ts -t '^whirlwind-kick-(decline|noncounter) '",
+          "passed": 2,
+          "log": "/tmp/madou-whirlwind-kick-do-5.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/whirlwind-kick-physical.spec.ts",
+      "passed": 22,
+      "log": "/tmp/madou-whirlwind-kick-browser-permitted.log",
+      "initialInfrastructureFailure": {
+        "log": "/tmp/madou-whirlwind-kick-browser.log",
+        "failedBeforeTestActions": 22,
+        "reason": "Chromium macOS MachPort Permission denied; terminal exit1; rerun with existing permitted Playwright execution"
+      }
+    },
+    "types": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-whirlwind-kick-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8662,
+        "implemented": 3450
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p09-r3c3::semantic/ordinary/school",
+      "a2-p09-r3c3::semantic/ordinary/range",
+      "a2-p09-r3c3::semantic/ordinary/use-level",
+      "a2-p09-r3c3::semantic/ordinary/base-effect-level",
+      "a2-p09-r3c3::semantic/ordinary/damage",
+      "a2-p09-r3c3::semantic/ordinary/attribute-0",
+      "a2-p09-r3c3::semantic/ordinary/attribute-1",
+      "a2-p09-r3c3::semantic/ordinary/attack-use",
+      "a2-p09-r3c3::semantic/dedicated/0/select-optional",
+      "a2-p09-r3c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p09-r3c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p09-r3c3::semantic/dedicated/0/chant-retain",
+      "a2-p09-r3c3::semantic/ordinary/maai-extra-one"
+    ],
+    "mainProducerBindings": [
+      "a2-p09-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:5831705dd2ac7a1a",
+      "t:1f1f3cf0cc7b1dce",
+      "t:0e23a39a28566a03",
+      "t:ca587ab56648aeb2",
+      "t:32544b8f07e74fde",
+      "t:0f3f8cbbb7b305ca",
+      "t:743947a8934489e0",
+      "t:9fb845d570c1017c",
+      "t:d26c18f221bc2e8f",
+      "t:36355d5f19eb33db",
+      "t:172d397908b5adc0",
+      "t:5237320df32c7c86",
+      "t:75099e6075e36bf7",
+      "t:9d2f13c30d16e6da",
+      "t:86100554413ccb4b",
+      "t:fa66ab0c69ac3fd8",
+      "t:55be7004df8c0e8c",
+      "t:ba79d40067c88b76",
+      "t:e0189ba91acfd574",
+      "t:2148290148cc80dd",
+      "t:3df67edf30329efd",
+      "t:a1f9c6ec3d1be38a",
+      "t:59228e782040c139",
+      "t:3da7e3523b10cfac",
+      "t:20a2d860ce6cd120",
+      "t:461be7acf35b738f",
+      "t:e52a616e684641a8",
+      "t:b739e3f3d83cddd4"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 201
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 177
+    }
+  },
+  "remaining": "共有lifetime/回収・能力追加による反撃化の交差、AppendixSword1、strict A31、共有受入れと計画全体は未完。acceptedへの昇格なし。"
+}

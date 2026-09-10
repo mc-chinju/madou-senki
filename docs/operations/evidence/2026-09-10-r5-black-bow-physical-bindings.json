@@ -1,0 +1,136 @@
+{
+  "task": "R5 Task11 Other195 BlackBow physical binding",
+  "status": "black-bow-physical-bindings-integrated-other35-open",
+  "completedAt": "2026-09-10 06:40 JST",
+  "implementation": "ブラウザー初回15成功/1失敗で、誤所有者が専用チェックを選んだとき攻撃ボタンが有効になる本番UI不備を検出。既存サーバー資格判定canSelectPrintedDedicatedをengine公開APIへexportし、Boardの攻撃command構築にも同じ判定を適用して送信ボタンを無効化。型成功後、同じbrowser16を再実行して全件成功。Engine/関連/DOは初回成功。",
+  "canonicalEvidence": [
+    "黒流弓a2-p07-r3c3の14用途条項＋既存main証跡を対応。実初期配札/setup後の通常遠戦弓use5/effect5/damage10、戦士4の不足1判定で精神6・出目6成功/7失敗、通常アーネスが専用を自動選択しないこと、実配置メタルゴーレム6による通常損害0・従者公開を確認。選択したアーネス専用は戦士0/精神0でも使用5チェックを省略、合法な1/2/全3対象を選択でき、実公開した同陣営対象は拒否、実進撃後の近距離相手にも使用可能。専用従者無視は実配置したメタルゴーレム/兵士を非公開のまま保持して各10damageを与える。実混乱で人物能力が停止しても専用効果を使用でき、実沈黙は戦士技を禁止せず、実催眠/回復失敗は手番を飛ばす。実命運取消で対象damageなし・元札1回処分、チェック不要攻撃への強制失敗は拒否。実間合い/見切るは専用でも使用でき、Bだけ回避/C10、人物弓能力は自動付与しない。誤所有者の専用・偽対象・誤時機・REST/turn/CHANT・再使用はstate全view不変で拒否、不使用は札保持。Engine18/関連5/DO16全コマンド保存再起動再送/browser16実UI・reload/型/ledger成功。semantic14だけimplemented増、main1再binding、accepted0昇格。",
+    "Engine18 covers the additional warrior0/spirit0 branch and fixed threshold boundary; DO/UI16 cover the declared scenarios with real saved commands and controls. Browser low-level roll uses its actual random success/failure outcome. Shared owner/target lifetime and other ability crossings remain unmeasured."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/black-bow-physical.test.ts",
+      "passed": 18,
+      "firstAttempt": true,
+      "log": "/tmp/madou-black-bow-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/techniques.test.ts -t '黒流弓|follower HP bypass'",
+      "passed": 5,
+      "skipped": 42,
+      "firstAttempt": true,
+      "log": "/tmp/madou-black-bow-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-black-bow-physical.test.ts",
+      "passed": 16,
+      "firstAttempt": true,
+      "log": "/tmp/madou-black-bow-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/black-bow-physical.spec.ts",
+      "initial": {
+        "passed": 15,
+        "failed": 1,
+        "log": "/tmp/madou-black-bow-browser.log"
+      },
+      "afterProductionFix": {
+        "passed": 16,
+        "log": "/tmp/madou-black-bow-browser-fix.log"
+      }
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-black-bow-types-fix.log",
+      "earlierPasses": [
+        "/tmp/madou-black-bow-types.log",
+        "/tmp/madou-black-bow-types-do.log",
+        "/tmp/madou-black-bow-types-ui.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8976,
+        "implemented": 3136
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p07-r3c3::semantic/ordinary/school",
+      "a2-p07-r3c3::semantic/ordinary/range",
+      "a2-p07-r3c3::semantic/ordinary/use-level",
+      "a2-p07-r3c3::semantic/ordinary/base-effect-level",
+      "a2-p07-r3c3::semantic/ordinary/damage",
+      "a2-p07-r3c3::semantic/ordinary/attribute-0",
+      "a2-p07-r3c3::semantic/ordinary/attribute-1",
+      "a2-p07-r3c3::semantic/ordinary/attack-use",
+      "a2-p07-r3c3::semantic/dedicated/0/select-optional",
+      "a2-p07-r3c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p07-r3c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p07-r3c3::semantic/dedicated/0/chant-retain",
+      "a2-p07-r3c3::semantic/dedicated/0/target-subset",
+      "a2-p07-r3c3::semantic/dedicated/ignore-followers"
+    ],
+    "mainProducerBindings": [
+      "a2-p07-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:737452081039dda9",
+      "t:8838691dd594cab2",
+      "t:a91a71f284201be4",
+      "t:9d4a34b30564c880",
+      "t:366fbf406cdb1e63",
+      "t:9d6752e9e457bff7",
+      "t:39e97d5313d77d0a",
+      "t:0bafe11365d0ac76",
+      "t:6c7ec0416e1b7bc1",
+      "t:c1f99aee968bad15",
+      "t:4e43f15da4d7ef55",
+      "t:f05f9c05a8e2af62",
+      "t:0a24ab1d61e4b75b",
+      "t:67858cdf21456a04",
+      "t:94402842c2acafd2",
+      "t:95e31d565934aefb",
+      "t:ff194e1ae1d53596",
+      "t:cdbb2d5a74c800c4"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 184
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 160
+    }
+  },
+  "scopeCorrection": "docs/operations/evidence/2026-09-10-r5-binding-count-scope-correction.json",
+  "remaining": "Other35, AppendixSword1 and shared/candidate receipts, strictA31 and whole-goal gates remain. No accepted promotion.",
+  "followUpCorrections": [
+    {
+      "recordedAt": "2026-09-10 07:44 JST",
+      "issue": "The earlier Board guard used partial canSelectPrintedDedicated, unintentionally disabling legacy dedicated Shuriken and other legacy action packages.",
+      "fix": "黒流弓時に追加したBoardの資格確認が、サーバー全体判定ではなくcanSelectPrintedDedicatedという部分判定に接続されていた。このため旧登録方式の手裏剣専用が画面で無効となり、browser初回は2成功/3timeout後に原因を確認して停止（exit130、残9件未完走）。サーバーで使うcanSelectDedicatedを既存のまま公開exportし、Boardを同じ全体判定へ変更。停止後に残った当該試験workerd PID68274が8787番を保持し再試行が起動前に失敗したため、lsofで本repoのapps/workerプロセスと確認して当該PIDだけTERM終了。修正後の同じbrowser14全件と関連browser3（シン天地百撃斬、黒流弓誤所有者、黒翼天翔剣の専用詠唱必須）・型が成功。",
+      "evidence": "docs/operations/evidence/2026-09-10-r5-shuriken-physical-bindings.json"
+    }
+  ]
+}

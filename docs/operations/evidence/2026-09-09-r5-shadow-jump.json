@@ -1,0 +1,69 @@
+{
+  "task": "R5 Task 3 Shadow jump",
+  "status": "listed-acceptance-complete",
+  "completedAt": "2026-09-09 05:42 JST",
+  "implementation": [
+    "Registers canonical Yotsurm ab01 once and offers existing USE_ABILITY only for the current own unresolved hit. Ordinary ability declaration and attempt ledger remain shared.",
+    "AbilityFrame.shadowJump saves original group/target/hit/attacker, source life, stage, roll ID, paid advance and child action. A single self spirit-minus-two check is used; no enemy roll.",
+    "Successful check marks the exact parent hit defended before opening shadow-jump-cost. Passing either cost or later attack choice retains that earned defense.",
+    "Finite PAY_SHADOW_JUMP binds the exact saved ability event to one currently owned physical advance. Payment uses the existing common physical disposition with original owner life and advance mode, without refill or distance marker.",
+    "The existing ability-attack grant, ATTACK legality and abilityReturnId cleanup are shared with Ida. Shadow child adds saved provenance, followerIgnore and maaiProhibited; no standalone combat phase, target selection or free virtual source.",
+    "Owner-only ShadowJumpPanel displays the optional physical payment. Existing AbilityPanel selects or declines the child and explains its restrictions. Opponents see neither cost candidates nor private child options."
+  ],
+  "canonicalEvidence": [
+    "Actual incoming bow: self-check success then cost decline, paid attack decline or actual child; no enemy check, no extra turn or distance changes, exact root withdrawal continuation.",
+    "Actual Fate before self-check yields no defense or ability roll; actual child Fate cancellation retains parent defense and once-only advance disposal.",
+    "Self-check failure and real God reroll use the defender as the only ability-check roller.",
+    "Stale ability event, wrong actor, non-advance, foreign card and repeated payment rejected unchanged. Changed child target, near-only punch against far target and unchanted Heavenly Hundred Strikes rejected before source payment.",
+    "Actual Earth Spear child and actual nested Ice Mirror resolve through the exact saved child and defended original parent once.",
+    "Actual initial Soldier placement survives a real shadow child; body takes six despite Soldier, physical maai is rejected unchanged and stays in hand. Child ordinary excess-level checks are exercised.",
+    "Every Engine step replays via JSON with all 220 unique cards. Real DO cases restart and verify duplicate ACK after every command across declaration, self-check, payment, child and cleanup.",
+    "Browser cases cover cost decline, child decline, child attack, child cancellation and original ability cancellation, with refresh at declaration/check/cost/attack boundaries."
+  ],
+  "structuralEvidence": [
+    "Dead-original-attacker rejection uses an explicitly labeled structural presence change after payment; no actual kill producer for this exact boundary is claimed.",
+    "Low spirit and low child magic are initial fixture stats for check success/failure coverage, not a live modifier producer."
+  ],
+  "verification": {
+    "engineProtocolWeb": {
+      "uniquePassed": 110,
+      "files": 7,
+      "newEngine": 11,
+      "newProtocol": 1,
+      "runs": [
+        {
+          "passed": 103,
+          "log": "/tmp/madou-shadow-jump-focused-final.log"
+        },
+        {
+          "passed": 7,
+          "log": "/tmp/madou-shadow-jump-web.log"
+        }
+      ]
+    },
+    "worker": {
+      "passed": 5,
+      "log": "/tmp/madou-shadow-jump-do.log"
+    },
+    "browser": {
+      "passed": 5,
+      "log": "/tmp/madou-shadow-jump-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-shadow-jump-types-final2.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12109,
+      "log": "/tmp/madou-shadow-jump-ledger.log",
+      "note": "Structural only; no blanket promotion."
+    }
+  },
+  "testCorrections": [
+    "Black Wing Sword is a far technique; the near-range rejection case now uses actual Punch.",
+    "Yotsurm magic five is sufficient for Earth Spear Lv4; the explicit child excess-level fixture lowers initial magic.",
+    "The existing web filename is ability-panels.test.ts; it was run separately after the focused six files."
+  ],
+  "reviewPerformed": false
+}

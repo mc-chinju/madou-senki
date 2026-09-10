@@ -1,0 +1,122 @@
+{
+  "task": "R6 S28 dependency connection to completed ritual clauses",
+  "addedDependencies": [
+    "c2-p05-r1c1-ab04#transform-Vanmil",
+    "c2-p05-r1c1-ab04#full-heal",
+    "c2-p05-r1c1-ab04#no-Uonos-inheritance"
+  ],
+  "addedTestRefs": [
+    "t:9011e40bd8b91e0f",
+    "t:957b4dfb6a334f40",
+    "t:f6f8ff734eab7cd5",
+    "t:8368d8a8612fe197"
+  ],
+  "sourceDigest": "88c307caa8011b2b56340a81f6c73e4cf27a1ee987a771b58a1fe8ab715c395b",
+  "ledgerDigest": "772a9b4689a9ca65845f336a9c2664382d7daeb0d203c9331b089a729c22ccfb",
+  "reachable": [
+    {
+      "key": "S28#acceptance-correspondence",
+      "status": "implemented",
+      "remaining": [
+        "n:25424c582788d87e"
+      ]
+    },
+    {
+      "key": "c2-p05-r1c1-ab04#full-heal",
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ]
+    },
+    {
+      "key": "c2-p05-r1c1-ab04#no-Uonos-inheritance",
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ]
+    },
+    {
+      "key": "c2-p05-r1c1-ab04#transform-Vanmil",
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ]
+    },
+    {
+      "key": "common:G09#activation/decline-preserves-secret",
+      "status": "pending",
+      "remaining": [
+        "n:f38efb2ebb6d94e7"
+      ]
+    },
+    {
+      "key": "common:G09#activation/explicit-optional-use",
+      "status": "pending",
+      "remaining": [
+        "n:f38efb2ebb6d94e7"
+      ]
+    },
+    {
+      "key": "ruling:G16#semantic/lancelot-transform-retains-damage-and-abilities",
+      "status": "implemented",
+      "remaining": [
+        "Selected outcome implementation/cases registered; whole source and current frozen candidate acceptance remain. No review performed."
+      ]
+    },
+    {
+      "key": "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities",
+      "status": "implemented",
+      "remaining": [
+        "Selected outcome implementation/cases registered; whole source and current frozen candidate acceptance remain. No review performed."
+      ]
+    }
+  ],
+  "edges": [
+    [
+      "S28#acceptance-correspondence",
+      "ruling:G16#semantic/lancelot-transform-retains-damage-and-abilities"
+    ],
+    [
+      "S28#acceptance-correspondence",
+      "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities"
+    ],
+    [
+      "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities",
+      "c2-p05-r1c1-ab04#transform-Vanmil"
+    ],
+    [
+      "c2-p05-r1c1-ab04#transform-Vanmil",
+      "common:G09#activation/decline-preserves-secret"
+    ],
+    [
+      "c2-p05-r1c1-ab04#transform-Vanmil",
+      "common:G09#activation/explicit-optional-use"
+    ],
+    [
+      "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities",
+      "c2-p05-r1c1-ab04#full-heal"
+    ],
+    [
+      "c2-p05-r1c1-ab04#full-heal",
+      "common:G09#activation/decline-preserves-secret"
+    ],
+    [
+      "c2-p05-r1c1-ab04#full-heal",
+      "common:G09#activation/explicit-optional-use"
+    ],
+    [
+      "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities",
+      "c2-p05-r1c1-ab04#no-Uonos-inheritance"
+    ],
+    [
+      "c2-p05-r1c1-ab04#no-Uonos-inheritance",
+      "common:G09#activation/decline-preserves-secret"
+    ],
+    [
+      "c2-p05-r1c1-ab04#no-Uonos-inheritance",
+      "common:G09#activation/explicit-optional-use"
+    ]
+  ],
+  "accepted": false,
+  "note": "Mechanical traversal of declared dependencies only. No independent review, full-source completeness assertion or candidate test receipt is created. Exact S28 damage4 test remains separate; new physical cases prove actual transform/heal/inheritance behavior."
+}

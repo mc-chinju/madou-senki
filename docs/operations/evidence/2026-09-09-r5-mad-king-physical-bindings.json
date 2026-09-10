@@ -1,0 +1,117 @@
+{
+  "task": "R5 Task11 other93: Mad King physical card",
+  "status": "mad-king-physical-bindings-integrated-other92-open",
+  "completedAt": "2026-09-09 17:00 JST",
+  "implementation": "No production changes. Engine20, related2, DO6 case coverage, browser6 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual initial Shelim source and Gaenas target, real Metal6 and Soldier2 placement, non-target Dia Water Dragon7. Mad King a2-p17-r3c1 magic/far/use5/effect5/damage5/魔精黒反/nonCHANT/counter. Actual far and paid approach near, initial magic4/5 produce one/zero checks. No-follower resistance success preserves normal damage5, no stop. Actual target spirit6 minus2 threshold4 with2+2 succeeds or2+3 fails; Metal passes mental attack alive, Soldier HP1 reduces body to4, only target B receives source-owned stopped status [-2,-1,0] nextCheck1 on failure. Non-target follower and status unaffected.",
+    "Actual black attack faces Guardian8: base5 blocked and follower held; Prayer3 raises effect8 equal and destroys Guardian with body0/no resistance; Prayer4 effect9 destroys and reaches target body5 plus failed-resistance stop. Actual Teleport/maai protect target and preserve followers, while mental Evade rejects unchanged and attack resolves4/stop.",
+    "Actual A pass, intervening phases, B Fire Arrow to A, A Mad King hand counter without CHANT. Countermagic4/5 retains one/zero checks; only incoming B receives damage4 and stop, A0/C0. Actual B Prayer1/2 raises incoming4 to5/6: equal cancels both with no stop, higher rejects counter and preserves source in hand while A receives5. Both attack and counter actual use failure/Fate cancellation spend source once with no B stop or resistance; counter cancellation/failure restores incoming A5. Unprinted dedicated/CHANT/turn-use, invalid targets, foreign actor and actual revealed friendly D refuse with entire state/all views unchanged.",
+    "Actual target own turns: first recovery minus1 threshold5, later recovery zero threshold6, successful attempt1/2/3 exercised. Failed recovery keeps same source-owned stop, advances nextCheck, skips B draw/action to C turn-start without B hand refill and disables abilities. Success restores B draw and actual CHOOSE_DRAW false leads to action, removes stop but preserves damage4. Every accepted engine command JSON roundtrips and preserves220 unique physical cards.",
+    "DO6 actual attack, successful resistance, counter, source Fate cancellation, Teleport and forced-failed resistance then recovery. Every turn/attack/counter/reaction/pass command saves, evicts and replays identical ACK/state with220 IDs. Low-spirit2 stop worlds persist first minus1 failure and second zero success; high-spirit14 real Fate force-fail initial then first minus1 succeeds. Browser6 actual same source/counter commands, outcomes and reload, plus actual high-spirit target forced initial failure and own-turn recovery back to action.",
+    "15 semantic rows and main1 rebound. Wider shared crossing acceptance and candidate-bound receipts remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p17-r3c1::semantic/ordinary/school",
+      "a2-p17-r3c1::semantic/ordinary/range",
+      "a2-p17-r3c1::semantic/ordinary/use-level",
+      "a2-p17-r3c1::semantic/ordinary/base-effect-level",
+      "a2-p17-r3c1::semantic/ordinary/damage",
+      "a2-p17-r3c1::semantic/ordinary/attribute-0",
+      "a2-p17-r3c1::semantic/ordinary/attribute-1",
+      "a2-p17-r3c1::semantic/ordinary/attribute-2",
+      "a2-p17-r3c1::semantic/ordinary/attribute-3",
+      "a2-p17-r3c1::semantic/ordinary/attack-use",
+      "a2-p17-r3c1::semantic/ordinary/counter-capable",
+      "a2-p17-r3c1::semantic/ordinary/initial-minus-two",
+      "a2-p17-r3c1::semantic/ordinary/first-recovery-minus-one",
+      "a2-p17-r3c1::semantic/ordinary/later-recovery-zero",
+      "a2-p17-r3c1::semantic/ordinary/stop-until-success"
+    ],
+    "mainProducerRebindings": [
+      "a2-p17-r3c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:13cd7b48cd424b8e",
+      "t:21cccb8f672b9093",
+      "t:b6c7297486e7d5aa",
+      "t:e2e68f92277757c7",
+      "t:5d4ea69eb1114601",
+      "t:45c14ee2442e8641",
+      "t:8c9379c0146039c0",
+      "t:f57d8585ad2a15e8",
+      "t:517e2c0d168b6d72",
+      "t:e924b804befdc8ee",
+      "t:c40e8d7392e661c9",
+      "t:9b9cbed6c3030545",
+      "t:878783508656448e",
+      "t:22cc87791c86e96e",
+      "t:115d5d91d455e122",
+      "t:6a61d26f93181d72",
+      "t:8424b9c14975289a",
+      "t:7be2abb87070c0ff",
+      "t:f14c7510b8308816",
+      "t:9ed8e511d5087352"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/mad-king-physical.test.ts",
+      "passed": 20,
+      "log": "/tmp/madou-mad-king-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7e-status-defenses.test.ts -t '狂王陣'",
+      "passed": 2,
+      "skipped": 48,
+      "log": "/tmp/madou-mad-king-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-mad-king-physical.test.ts",
+      "cwd": "apps/worker",
+      "initialPassed": 5,
+      "initialFailed": 1,
+      "log": "/tmp/madou-mad-king-physical-do.log",
+      "focusedRetry": {
+        "passed": 1,
+        "skipped": 5,
+        "log": "/tmp/madou-mad-king-physical-do-recover-final.log"
+      },
+      "typedEnvelopeRetest": {
+        "passed": 2,
+        "skipped": 4,
+        "log": "/tmp/madou-mad-king-physical-do-typed.log"
+      },
+      "note": "Recover test incorrectly supplied both targetActionId and targetRollId. Diagnostic exact error INVALID_ENVELOPE confirmed strict protocol only accepts one target form. Corrected to roll-only for force-fail, action-only for cancellation; split complete union objects for TypeScript. Initial diagnostic rerun repeated failure; one command tried a root-relative edit from worker cwd and found no file before an unchanged rerun. No production change."
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/mad-king-physical.spec.ts",
+      "passed": 6,
+      "log": "/tmp/madou-mad-king-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-mad-king-physical-types-bound.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10155,
+        "implemented": 1957
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "103/195 per-entry semantic/main bindings integrated; other92 and whole-goal gates open. No accepted promotion."
+}

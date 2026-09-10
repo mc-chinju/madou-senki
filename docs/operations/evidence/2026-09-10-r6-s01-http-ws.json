@@ -1,0 +1,60 @@
+{
+  "task": "R6 S01 HTTP/WS priority correspondence",
+  "status": "S01-condition-complete-R6-open",
+  "recordedAt": "2026-09-10 13:55 JST",
+  "implementation": [
+    "Added GET /api/rooms/:roomId/snapshot, returning revision and caller-projected game through authenticated session and Room.gameSnapshot. Same viewFor as WebSocket; no-store.",
+    "Anonymous401; authenticated outsider403; caller actor headers ignored. No HTTP mutation or connection-generation changes.",
+    "S01 supplemental DO assertion compares game/revision; connected flags may legitimately differ after eviction and concurrent reconnect."
+  ],
+  "verification": {
+    "browser": {
+      "passed": 4,
+      "log": "/tmp/madou-s01-http-browser.log",
+      "redLog": "/tmp/madou-s01-http-red.log",
+      "redReason": "New HTTP route returned404 before implementation."
+    },
+    "worker": {
+      "passedUnique": 4,
+      "initialLog": "/tmp/madou-s01-http-related-do.log",
+      "correctionLog": "/tmp/madou-s01-http-do-fix.log",
+      "correction": "3 passed initially; supplemental test compared volatile connection flags and failed. Compare complete projected game/revision, preserving exact S01 invariant; failed subset1 passed."
+    },
+    "types": {
+      "exitCode": 0,
+      "logs": [
+        "/tmp/madou-s01-http-types.log",
+        "/tmp/madou-s01-http-types-final.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8389,
+        "implemented": 3723
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "S01Requirements": {
+    "seatPriority": "Existing actual r6-s01-s02-s05 fixture fixes A,B passes and C priority. DO S01 S02 S05 test verifies parent.passed A,B and D rejection then C accepted at unchanged revision.",
+    "rejectionInvariant": "S01 rejected D at C priority preserves all WebSocket views and creates no roll attempt or replacement; saved game/revision, all4 projected games, rolls and CARD_DRAWN unchanged through eviction/replay.",
+    "httpWs": "tests/e2e/scenario-s01-http.spec.ts literal S01 authenticated HTTP snapshots match all four WebSocket priority views and reject outsiders verifies full game equality and C pending actor for every session.",
+    "ui": "Existing force browser case verifies no D reaction control and C real command then priority continuation."
+  },
+  "remaining": [
+    "S02 exact child-cancellation generation sequence.",
+    "R6 Task1 protected commandEntropy and canonical test-only boundary specified by plan remain to reconcile/implement; current S04 mocks crypto.",
+    "All other R6 and broader goal requirements remain; no catalog row status promotions."
+  ],
+  "processes": "All terminal."
+}

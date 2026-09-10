@@ -1,0 +1,111 @@
+{
+  "scope": "R6 Task5 reservation protection and existing hidden recovery envelope Engine evidence",
+  "changedTest": {
+    "path": "packages/engine/test/sword-shuffle.test.ts",
+    "title": "real astrology discard suspends the already queued refill, dawn=%s, until a hidden Cham elects reservation",
+    "tuples": [
+      true,
+      false
+    ]
+  },
+  "assertions": [
+    "Actual astrology discards opponent hand Sword during suspended Revelation refill; hidden Cham reveals and elects actual reservation",
+    "Each continuation checks exact catalog IDs and exclusive ownership in reservation or legitimate Cham hand; Sword never enters deck/discard/resolution/foreign hand",
+    "Duplicate original claim rejected before and after continuation, unchanged JSON and zero entropy numeric consumption; validation scans excluded via bound raw some method",
+    "Final Sword exists once in living Cham hand"
+  ],
+  "privacy": {
+    "path": "packages/engine/test/reclaim-privacy.test.ts",
+    "titles": [
+      "Hidden owned versus unowned name has the same empty-or-private opportunity envelope",
+      "All-pass zero base extra and combined private histories preserve every public bow transition"
+    ],
+    "scope": "Existing actual attack/heal + full foreign view comparisons through each pass, four hidden prior budget inputs. No hidden unlimited-world claim."
+  },
+  "verification": {
+    "reservationEngine": {
+      "passed": 2,
+      "log": "/tmp/madou-reserved-shuffle-engine.log",
+      "exit": 0
+    },
+    "privacyEngine": {
+      "passed": 2,
+      "log": "/tmp/madou-recovery-privacy-engine.log",
+      "exit": 0
+    },
+    "types": {
+      "log": "/tmp/madou-reserved-do-types.log",
+      "exit": 0
+    },
+    "ledger": {
+      "log": "/tmp/madou-reserved-do-ledger.log",
+      "exit": 0,
+      "rows": 12112,
+      "pending": 8389,
+      "implemented": 3723
+    },
+    "workerReservation": {
+      "passed": 2,
+      "log": "/tmp/madou-reserved-shuffle-do.log",
+      "exit": 0
+    },
+    "workerPrivacy": {
+      "passed": 1,
+      "log": "/tmp/madou-recovery-privacy-do.log",
+      "exit": 0
+    }
+  },
+  "failuresCorrected": [
+    "Initial assertion incorrectly required reservation through later inspection; actual origin completion legitimately releases to Cham hand. Invariant now covers both exclusive dispositions.",
+    "AST has one each declaration with two parameter values; refreshed the two individually bound tuple hashes. Initial stale-hash validator failed; final validator valid."
+  ],
+  "remaining": [
+    "R4-B1 hidden unlimited contract and strict A31 producer gaps unaffected",
+    "Full R6 acceptance/source bindings and remaining Task5 combinations still incomplete"
+  ],
+  "productionChanges": false,
+  "rowPromotions": 0,
+  "workerReferences": [
+    {
+      "key": "t:1a6fdd6d5e77cec4",
+      "path": "apps/worker/test/room-sword-shuffle.test.ts",
+      "suite": [],
+      "title": "%s saves real discard, reveal and reservation before resuming its pending refill",
+      "declarationSha256": "5ce0f3443bd596df24f25e2c96e6c19637ade629e9a2411a818549f7f994c266",
+      "parameters": "reclaim-sword-dawn",
+      "kind": "worker-persistence",
+      "bindingNote": "R6 Task5 saved recovery reservation protection or hidden owned/no-right all-seat schedule; each explicit pass replayed after eviction."
+    },
+    {
+      "key": "t:8a3861781e950af6",
+      "path": "apps/worker/test/room-sword-shuffle.test.ts",
+      "suite": [],
+      "title": "%s saves real discard, reveal and reservation before resuming its pending refill",
+      "declarationSha256": "5ce0f3443bd596df24f25e2c96e6c19637ade629e9a2411a818549f7f994c266",
+      "parameters": "reclaim-sword-rebuild",
+      "kind": "worker-persistence",
+      "bindingNote": "R6 Task5 saved recovery reservation protection or hidden owned/no-right all-seat schedule; each explicit pass replayed after eviction."
+    },
+    {
+      "key": "t:2d78854b45aa20a0",
+      "path": "apps/worker/test/room-reclaim.test.ts",
+      "suite": [],
+      "title": "zero-right and owned worlds retain the same all-seat schedule through disconnect and explicit passes",
+      "declarationSha256": "2f740a8285ba09ccac95f35d95f078285cc31ebc9e57c6155b74fb3ca502f2be",
+      "parameters": null,
+      "kind": "worker-persistence",
+      "bindingNote": "R6 Task5 saved recovery reservation protection or hidden owned/no-right all-seat schedule; each explicit pass replayed after eviction."
+    }
+  ],
+  "workerAssertions": [
+    "Each accepted sword continuation compares exact 220 IDs and replays original ACK after eviction; reservation or legitimate owner hand exclusive through refill",
+    "Duplicate take under new ID and current revision rejected before/after refill with unchanged saved state; same error after eviction",
+    "Final actions/groups/lifecycle/windows/resolution/reservations empty; four views equal engine projection",
+    "Owned/no-right worlds preserve full foreign views for four recovery seats and final state; both rooms replay each pass after eviction"
+  ],
+  "task5ThirdRequirement": {
+    "cancellationSequence": "2026-09-10-r6-canonical-recovery-dawn.json",
+    "reservationAndPrivacy": "this evidence, plus referenced Engine and DO tests",
+    "note": "Canceled extra declaration stays in resolution and never becomes a reservation. Accepted reservation protection is a separate actual Sword trajectory, not an invented canceled reservation."
+  }
+}

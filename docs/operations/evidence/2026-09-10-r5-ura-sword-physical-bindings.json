@@ -1,0 +1,195 @@
+{
+  "task": "R5 Task11 Other195 UraSword physical binding",
+  "status": "ura-sword-physical-bindings-integrated-other28-open",
+  "completedAt": "2026-09-10 08:00 JST",
+  "implementation": "No production code changed. Added physical preparation fixture and focused Engine/DO/browser acceptance paths; registered test fixtures.",
+  "canonicalEvidence": [
+    "裏天空剣a2-p08-r3c1の17用途条項＋既存main証跡を対応。実初期deal/setupでBメタルゴーレム・C兵士を配置し、手札の進撃を実APPROACHして距離標へ保存した近距離から使用。通常近戦剣忍use/effect5・damage5・単体・詠なし/反なし。通常イダも専用自動選択なし、実メタル6が防いで本体0・従者公開。選択イダ専用は同じeffect5/damage5/近距離のまま、精神0/戦士0でも5回の使用チェックを省略し、メタルを非公開のまま無視。通常戦士4は精神6の不足1回判定、出目6成功/7失敗。実混乱下も印刷専用/2回予算は残るが人物の必殺は使えず、沈黙下は戦士技と人物の必殺を使用可、催眠/回復失敗は手番飛ばし。実命中の必殺を0/1/2回任意選択、通常イダは1回だけ。耐久コスト0、1/6や2/4は倍化なし、1/2と5/6の2回成功で20damage、各回に実numeric2d6が必要で3回目拒否。1回目ゾロ目は即死予定を記録しても対象はまだactive・damage0・従者保持、任意2回目を省略して窓終了後に1回だけ死亡/廃棄。1回目の実命運による能力取消も1回分を消費し、2回目を実神性介入で2/2から1/2へ全出目再判定すると即死にならず10damage。numericへの命運強制失敗は原子拒否。実間合い1枚/見切るは従者を隠したまま回避し、必殺の機会も出ない。元技の命運取消は命中前で止まり元札1回処分。遠距離では両モード拒否、実進撃後は使用可。アーネスへ実進撃後に正体公開すると同陣営対象拒否。実次B手番の弓をAへ撃ち、本当の防御窓でも反属性のない裏天空剣は通常/専用とも拒否、元弓4damageを受け裏天空剣は手札保持。誤所有者・不正対象・別actor・時機外・REST/通常使用/CHANT等はstate全view不変で拒否、不使用では札を保持。Engine24/関連7/DO21各コマンド保存再起動再送/browser17実操作・実ランダム結果・reload/型/ledger成功。semantic17だけimplemented増、main1再binding、accepted0昇格。",
+    "Engine初回13成功/8失敗は、進撃成功札を捨て札と誤認した7件と死亡時lifeIdが更新されないと誤認した1件。実装の距離標保存と死亡境界を確認して当該8だけ再実行し1成功/7失敗、残7はmaaiRequired省略時の既定1を明示fieldと誤認しており既定を含む比較へ修正して7成功。後続のnumeric命運拒否/実公開同陣営/実防御窓拒否3件は初回成功、unique24。DOは7件ずつ3組、最初3成功/4失敗はロールを一度も生成しないstateのrolls未定義を試験が直接filterしたもの。空配列扱いへ修正して当該4だけ再実行成功、残2組各7件初回成功。DO timeoutなし。型は初回/DO追加後成功、UI追加後nullable参照5件を修正し最終成功。browser初回16成功/1失敗は進撃等と共通の対象チェック欄を距離で無効とした試験期待。遠距離攻撃を実送信→INVALID_ACTION/通知表示/revisionと全game不変・未払い→reload→実進撃→専用攻撃5damage成立へ直し当該1件成功。修正後の最初の選択条件はファイル名を含むPlaywright titleを先頭anchorで絞って0件/exit1となり、anchorを外して同じ1件を実行。2回目は公開エラーをEngine内部のOUT_OF_RANGEと誤認して1失敗、WorkerのINVALID_ACTION正規化と日本語通知を確認して当該1件を修正。本番コードの変更なし。",
+    "Fixture preparation uses accepted initial follower/APPROACH commands with deterministic JSON replay and220 unique physical cards. DO and UI normally begin at that actually prepared fixture state and cover subsequent saved commands/controls; UI far scenario itself performs actual approach after rejected attack. Shared post-pending-instant-death healing, simultaneous other-target damage/death batching, and source-target lifetime/other ability crossings remain unmeasured; no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/ura-sword-physical.test.ts",
+      "initial": {
+        "passed": 13,
+        "failed": 8,
+        "log": "/tmp/madou-ura-sword-engine.log"
+      },
+      "firstFix": {
+        "command": "pnpm exec vitest run packages/engine/test/ura-sword-physical.test.ts -t 'actual initial followers|actual first equal pair'",
+        "passed": 1,
+        "failed": 7,
+        "log": "/tmp/madou-ura-sword-engine-fix.log"
+      },
+      "defaultFix": {
+        "command": "pnpm exec vitest run packages/engine/test/ura-sword-physical.test.ts -t 'actual initial followers'",
+        "passed": 7,
+        "log": "/tmp/madou-ura-sword-engine-default-fix.log"
+      },
+      "addedCases": {
+        "command": "pnpm exec vitest run packages/engine/test/ura-sword-physical.test.ts -t 'actual numeric lethal after-roll|actual approach to Arness|actual intervening turns'",
+        "passed": 3,
+        "firstAttempt": true,
+        "log": "/tmp/madou-ura-sword-engine-cross.log"
+      },
+      "currentUniquePassed": 24
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7i-combinations.test.ts packages/engine/test/task7h-abilities.test.ts -t 'printed Ura|printed critical source|critical cancellation|numeric lethal faces|lethal numeric doubling'",
+      "passed": 7,
+      "firstAttempt": true,
+      "log": "/tmp/madou-ura-sword-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "uniquePassed": 21,
+      "batches": [
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ura-sword-physical.test.ts -t '^ura-sword-(ordinary|guard|owner-ordinary|owner-hit|low|dedicated|far) '",
+          "passed": 3,
+          "failed": 4,
+          "log": "/tmp/madou-ura-sword-do-1.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ura-sword-physical.test.ts -t '^ura-sword-(fate|maai|evade|suppressed|stopped|silenced|wrong-owner) '",
+          "passed": 7,
+          "failed": 0,
+          "log": "/tmp/madou-ura-sword-do-2.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ura-sword-physical.test.ts -t '^ura-sword-(decline|critical-one|critical-two|instant|cancel|reroll|nonconsecutive) '",
+          "passed": 7,
+          "failed": 0,
+          "log": "/tmp/madou-ura-sword-do-3.log"
+        }
+      ],
+      "fix": {
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ura-sword-physical.test.ts -t '^ura-sword-(ordinary|guard|owner-ordinary|dedicated) '",
+        "passed": 4,
+        "log": "/tmp/madou-ura-sword-do-1-fix.log"
+      }
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/ura-sword-physical.spec.ts",
+      "initial": {
+        "passed": 16,
+        "failed": 1,
+        "log": "/tmp/madou-ura-sword-browser.log"
+      },
+      "fix": {
+        "command": "pnpm exec playwright test tests/e2e/ura-sword-physical.spec.ts -g 'ura-sword-far '",
+        "passed": 1,
+        "log": "/tmp/madou-ura-sword-browser-far-fix-3.log"
+      },
+      "publicErrorExpectationFailure": {
+        "passed": 0,
+        "failed": 1,
+        "log": "/tmp/madou-ura-sword-browser-far-fix-2.log"
+      },
+      "filterFailure": {
+        "exitCode": 1,
+        "testsExecuted": 0,
+        "reason": "Anchored grep omitted Playwright filename prefix; removed anchor and reran the same case.",
+        "log": "/tmp/madou-ura-sword-browser-far-fix.log"
+      },
+      "currentUniquePassed": 17
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "initialAndDOExitCode": 0,
+      "uiFirstExitCode": 2,
+      "uiFirstLog": "/tmp/madou-ura-sword-types-ui.log",
+      "exitCode": 0,
+      "log": "/tmp/madou-ura-sword-types-last.log",
+      "otherPasses": [
+        "/tmp/madou-ura-sword-types.log",
+        "/tmp/madou-ura-sword-types-transport.log",
+        "/tmp/madou-ura-sword-types-final.log",
+        "/tmp/madou-ura-sword-types-browser-fix.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8843,
+        "implemented": 3269
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p08-r3c1::semantic/ordinary/school",
+      "a2-p08-r3c1::semantic/ordinary/range",
+      "a2-p08-r3c1::semantic/ordinary/use-level",
+      "a2-p08-r3c1::semantic/ordinary/base-effect-level",
+      "a2-p08-r3c1::semantic/ordinary/damage",
+      "a2-p08-r3c1::semantic/ordinary/attribute-0",
+      "a2-p08-r3c1::semantic/ordinary/attribute-1",
+      "a2-p08-r3c1::semantic/ordinary/attribute-2",
+      "a2-p08-r3c1::semantic/ordinary/attack-use",
+      "a2-p08-r3c1::semantic/dedicated/0/select-optional",
+      "a2-p08-r3c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p08-r3c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p08-r3c1::semantic/dedicated/0/chant-retain",
+      "a2-p08-r3c1::semantic/dedicated/ignore-followers",
+      "a2-p08-r3c1::semantic/dedicated/lethal-on-hit",
+      "a2-p08-r3c1::semantic/dedicated/lethal-two-attempts",
+      "a2-p08-r3c1::semantic/dedicated/lethal-not-auto-success"
+    ],
+    "mainProducerBindings": [
+      "a2-p08-r3c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:99a676deb16b85e1",
+      "t:27d31573ada91be3",
+      "t:a3e6f82cfab58a87",
+      "t:62b4919e2be9b808",
+      "t:ed08b68f8dc2f655",
+      "t:0c6f54221b20309e",
+      "t:1684234021a9267e",
+      "t:e420c8822a25cb51",
+      "t:126fd9b264f6e04b",
+      "t:3a825b5e40480ee8",
+      "t:386c2592cf91e6e5",
+      "t:cb1a9631fa733c14",
+      "t:e59303ee0b317bcf",
+      "t:4b1eb3c70e3fc1ab",
+      "t:cffc1195d91d547a",
+      "t:46a6bb0d856920e6",
+      "t:ab82598bf6da4961",
+      "t:05660a8feb983ba8",
+      "t:50261f9cffb0170d",
+      "t:33bd62f798d00018",
+      "t:212692b41bc9c485",
+      "t:67310423d0072b06",
+      "t:6a4720af5aec57b9",
+      "t:4195d0a47414485d"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 191
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 167
+    }
+  },
+  "remaining": "Other28, AppendixSword1 and shared/candidate receipts, strictA31 and whole-goal gates remain. Noacceptedpromotion."
+}

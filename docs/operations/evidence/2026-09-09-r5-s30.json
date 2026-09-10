@@ -1,0 +1,43 @@
+{
+  "task": "R5 Task12 S30",
+  "status": "s30-same-trajectory-acceptance-complete",
+  "completedAt": "2026-09-09 08:26 JST",
+  "implementation": "No new production handler. Shared r6-otherworld-scenario.ts produces actual placement, installation, CHANT, intervening turns and dedicated 裂界 before live Wish/Revelation assertions.",
+  "canonicalEvidence": [
+    "B actual Soldier placement, Magic Book installation and hidden chant remain attached to B after A actual chanted dedicated 裂界/apply and failed [6,6] resistance. B otherworld with damage12; no seeded otherworld state.",
+    "C uses a2-p04-r3c2 and a2-p04-r3c3 across real turns in the same continued state. Each excludes B hand/public-source candidates and rejects direct B hand, actual attachment and hidden-chant ID requests unchanged. D physical Revelation uses a current event from an otherwise legal target and rejects B. All player views and authoritative game state remain identical on refusals.",
+    "First Wish legally acquires a random A hand card. Second Wish acquires Dawn from deck, triggering actual OPEN and returning B once with every possession, damage12 and life unchanged; no revival or re-setup.",
+    "DO executes the full two-Wish sequence, saves/restarts every command and returns identical duplicate ACK/error. Worker public errors intentionally use INVALID_ACTION, while Engine asserts INVALID_TARGET.",
+    "Two browser fixtures retain the actual prior command trajectory and use each physical Wish live; B is absent from hand/public selectors, only chooser receives selection details, and reload preserves the ordinary first acquisition and Dawn return."
+  ],
+  "verification": {
+    "engine": {
+      "passed": 41,
+      "files": [
+        "scenario-s30.test.ts",
+        "wish.test.ts",
+        "anytime-information.test.ts"
+      ],
+      "log": "/tmp/madou-s30-focused.log"
+    },
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-s30-do-final.log"
+    },
+    "browser": {
+      "passed": 2,
+      "log": "/tmp/madou-s30-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s30-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-s30-ledger.log"
+    }
+  },
+  "remaining": "S01-S17 exact correspondence gaps and combined invariants remain pending, with S21 awaiting G15 clarification. Broader R4/R5/R6-R9/R3 conditions and whole goal remain active."
+}

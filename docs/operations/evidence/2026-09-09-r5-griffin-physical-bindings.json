@@ -1,0 +1,129 @@
+{
+  "task": "R5 Task11 Griffin a2-p20-r3c1",
+  "status": "griffin-physical-bindings-integrated-other71-open",
+  "completedAt": "2026-09-09 19:10 JST",
+  "implementation": "No production changes. Griffin27 semantic clauses and main producer bind26 actual transition references.",
+  "canonicalEvidence": [
+    "Actual initial/own-turn placement, reorder/removal, private physical identity, foreign/duplicate/capacity refusals and maai retention. Physical level5 HP3 air/beast against real Bow3; high Metal front leaves hidden rear untouched. Actual Dia paid approach plus Dwarf three6-damage hits at warrior4/5/6 gives body0/0/9 with alive/equal discard/higher discard; ordinary morale passes. Every accepted command JSON-reexecutes and preserves220 unique physical IDs; rejection preserves complete state/all views. Initial character/draw logs agree with scripted initial preconditions.",
+    "Actual reached non-Upa Griffin faces Dwarf6 three hits: spirit6 modifier0 morale2d6 once, faces2/4 pass gives HP3 each for9 total, faces3/4 fail gives no comparison/HP defense for18 total. Source discarded once. A lower Dwarf4 group keeps Griffin with one morale roll; after actual full turns a later Bow3 group rolls again. High Metal front prevents reaching a rear Griffin at spirit0, so no morale roll and no identity reveal. Actual explicit START_FOLLOWERS dedicated package by Upanishat at spirit0 waives morale and still appliesHP3 per higher hit for9. Simply declining the package uses ordinary morale; the test does not assume automatic selection.",
+    "Actual Upa dedicated hand/field attacks at warrior0 waive use checks, retain far warrior use/effect5 and damage8 x2 with air-independent far/warrior/unarmed attack attributes. All seven nonempty target subsets are exercised, each selected target receives two8 hits. Invalid empty/self/duplicate/missing targets reject. Real BlackKnights4 HP5 reduces each8 to3 for total6, whereas first-hit maai cancels only that hit and second deals3; selected C still receives16. Real Mirror cancels one B hit, leaving B8 and C16. These are distinct normal-defense/hit paths, never lumped16 damage.",
+    "Actual Upa beast ability ordinary hand/field grant uses one target and two8 hits, keeps one use check at warrior4, with no morale check. Actual non-Upa Army uses only ordinary hand source, one target, far warrior5 two8 hits, own4/5 produces one/zero use checks plus one morale check. Actual near approach remains legal. Placed Army, direct ordinary or foreign dedicated and CHANT refuse. Actual dedicated hand/field Fate, Army parent/child cancel, Army morale/use forced failure and Upa grant ability cancellation pay once and never return source to defense.",
+    "DO15 executes actual setup/turn placement, morale pass/fail and explicitly selected waiver, Army, dedicated hand/field, first-hit maai with BlackKnights, ordinary Upa beast hand/field and four cancellations. Every accepted command saves/evicts/replays identical ACK/state and220 IDs. Browser11 operates all eleven normal scenarios, including actual follower dedicated-defense checkbox and normal-defense confirmation, ordinary Upa/Dia bundles and selected two-target dedicated attacks, with reload across resolution.",
+    "27 semantic clauses and main1 implemented, no accepted promotion. Fully integrated card count124/195. Remaining71 includes Singing Ship with1 pending earth-warrior clause and70 other cards; wider shared/candidate receipts remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/griffin-physical.test.ts",
+      "initial": {
+        "passed": 21,
+        "failed": 5,
+        "log": "/tmp/madou-griffin-physical-engine.log"
+      },
+      "correction": "Test assumed automatic morale waiver; select real dedicated-defense package explicitly and expect ordinary roll when declined. Place B follower after A passes setup. Use actual excess-level roll purpose. No production changes.",
+      "passed": 26,
+      "log": "/tmp/madou-griffin-physical-engine-retry.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts -t 'グリフォン'",
+      "passed": 9,
+      "skipped": 244,
+      "log": "/tmp/madou-griffin-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-griffin-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 15,
+      "log": "/tmp/madou-griffin-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/griffin-physical.spec.ts",
+      "passed": 11,
+      "log": "/tmp/madou-griffin-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-griffin-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9800,
+        "implemented": 2312
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p20-r3c1::semantic/follower/printed-level",
+      "a2-p20-r3c1::semantic/follower/printed-hp",
+      "a2-p20-r3c1::semantic/placement/setup",
+      "a2-p20-r3c1::semantic/placement/own-action",
+      "a2-p20-r3c1::semantic/defense/front-order",
+      "a2-p20-r3c1::semantic/follower/attribute-0",
+      "a2-p20-r3c1::semantic/follower/attribute-1",
+      "a2-p20-r3c1::semantic/morale/receive-trigger",
+      "a2-p20-r3c1::semantic/morale/spirit-modifier",
+      "a2-p20-r3c1::semantic/morale/failure-discard",
+      "a2-p20-r3c1::semantic/attack/grant-required",
+      "a2-p20-r3c1::semantic/attack/ordinary-hand-grant",
+      "a2-p20-r3c1::semantic/attack/discard-not-return",
+      "a2-p20-r3c1::semantic/attack/printed-level",
+      "a2-p20-r3c1::semantic/attack/printed-damage",
+      "a2-p20-r3c1::semantic/attack/attribute-0",
+      "a2-p20-r3c1::semantic/attack/attribute-1",
+      "a2-p20-r3c1::semantic/attack/attribute-2",
+      "a2-p20-r3c1::semantic/dedicated/owner-filter",
+      "a2-p20-r3c1::semantic/dedicated/from-hand",
+      "a2-p20-r3c1::semantic/dedicated/from-placement",
+      "a2-p20-r3c1::semantic/dedicated/use-check",
+      "a2-p20-r3c1::semantic/dedicated/any-subset-targets",
+      "a2-p20-r3c1::semantic/dedicated/morale-waiver",
+      "a2-p20-r3c1::semantic/attack/hit-count",
+      "a2-p20-r3c1::semantic/attack/not-lumped-damage",
+      "a2-p20-r3c1::semantic/attack/per-hit-defense"
+    ],
+    "mainProducerRebindings": [
+      "a2-p20-r3c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:1f5d7b73fb855082",
+      "t:8bb22b8fe57e1647",
+      "t:d8a13611393d3c0e",
+      "t:b678b122f9367627",
+      "t:83ed3adac56d2ab2",
+      "t:9c1ab847752f6acd",
+      "t:df812caa57169ab9",
+      "t:67485405e666f444",
+      "t:48d23ea5b5a6101c",
+      "t:cabdc9e8091e0734",
+      "t:eb6a9d0c5f98a900",
+      "t:2dbdaa73e78c1bbb",
+      "t:ea77542856321e95",
+      "t:5d54762044485bda",
+      "t:dc79750cbe195a70",
+      "t:1a8fbe4ca9e338eb",
+      "t:40019169c9b0d57f",
+      "t:74b99c494a2cc811",
+      "t:769a40664e7cf69b",
+      "t:4da97b1e6493cf06",
+      "t:0c27877d9aef46aa",
+      "t:c54d0470a7a0a4ff",
+      "t:6eec93a25b50078c",
+      "t:a32bd3db82a4912e",
+      "t:c7a2f568e4b37502",
+      "t:1f2d8275085b444b"
+    ]
+  },
+  "remaining": "124/195 fully integrated; other71 includes Singing Ship one pending clause and70 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

@@ -1,0 +1,39 @@
+{
+  "task": "R5 Task11 shared A09 and paired public privacy",
+  "status": "shared-a09-and-privacy-complete-a31-origins-pending",
+  "completedAt": "2026-09-09 07:26 JST",
+  "implementation": "Existing common reclaim adapter is unchanged. Both Engine files, Worker and browser use shared-reclaim-scenarios.ts, whose setup and actual Courage cancellation or sword discard are reproduced through real commands.",
+  "evidence": [
+    "A09 uses GOOD A/Gil, hidden B/Lester and actual C/Dia charm. B reveals without losing his response slot, requests a single spirit check, then only A can take or decline. B take, duplicate check and A check commands reject unchanged. A receives one saved reservation and final physical return without charging either owned-name budget. Four take/beneficiary-decline/checker-decline/failure branches are tested.",
+    "A09 hidden Lester/no Lester and A31 hidden Cham/no Cham follow identical explicit passes, with equal non-owner views, public event IDs and revisions. Four private Fury budget worlds give zero/base/extra/both claims privately but the same public source and four response slots.",
+    "Worker tests restart after each accepted command, replay identical ACK, and compare non-owner WebSocket snapshot game payloads at every committed state and all PASS receipts across paired rooms. Paired tests fix Date.now and crypto.getRandomValues so live entropy is identical; an initial unmatched real clock produced the observed timestamp-only failure.",
+    "Five browser cases use the same shared producer: four A09 branches reload during check and beneficiary choice/reservation, and A31 hand discard reloads before B reveal and after take.",
+    "R4 reclaim-reservations.test.ts and R5 r5-combinations-riders.test.ts bind the exact shared A09 fixture. R4 plan references this same evidence; no separate lookalike adapter was added."
+  ],
+  "verification": {
+    "engine": {
+      "passed": 43,
+      "files": 4,
+      "log": "/tmp/madou-shared-reclaim-engine-final.log"
+    },
+    "worker": {
+      "passed": 7,
+      "log": "/tmp/madou-shared-reclaim-do-final.log"
+    },
+    "browser": {
+      "passed": 5,
+      "log": "/tmp/madou-shared-reclaim-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-shared-reclaim-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-shared-reclaim-ledger.log"
+    }
+  },
+  "remaining": "Full A31 source-origin matrix is pending, including a real deck-origin producer and living-Cham direct attachment disposal. R4 all-package/unlimited and catalog source-clause bindings remain pending. These results do not establish every transient room-metadata broadcast or blanket catalog acceptance."
+}

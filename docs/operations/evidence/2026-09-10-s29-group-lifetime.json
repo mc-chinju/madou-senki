@@ -1,0 +1,67 @@
+{
+  "row": "c2-p03-r2c2-ab02#group-lifetime",
+  "status": "implemented",
+  "handlers": [
+    "h:de49b81966388e25",
+    "h:98f992ab60eab6d9",
+    "h:efeb4e32d1a02263",
+    "h:9f0c4b1ca744a7af"
+  ],
+  "tests": [
+    "t:36af2e610b9c1632",
+    "t:32c23af814ac3c11",
+    "t:0aa7dddb145f5bce",
+    "t:c5a8c86950397cfc",
+    "t:711e2b4c2925e1dd",
+    "t:d8beda1ef1525cc5",
+    "t:35825c3bfb81bad6"
+  ],
+  "sourceId": "src:520c93c73e6d61df",
+  "ruling": "docs/rules/second-edition/rulings-characters.md#C07",
+  "verification": {
+    "engine": {
+      "passed": 5,
+      "skipped": 29,
+      "log": "/tmp/madou-s29-lifetime-engine.log"
+    },
+    "worker": {
+      "passed": 1,
+      "skipped": 8,
+      "log": "/tmp/madou-s29-lifetime-do.log"
+    },
+    "browser": {
+      "passed": 1,
+      "log": "/tmp/madou-s29-lifetime-browser.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12178,
+      "statuses": {
+        "pending": 8354,
+        "implemented": 3824
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5259,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    },
+    "readiness": {
+      "valid": true,
+      "ready": false
+    }
+  },
+  "typecheck": "Not rerun: only evidence/ledger metadata changed; runtime and test bodies unchanged.",
+  "remaining": [
+    "C07 attack-group creation, shared hit snapshot and terminal disposal correspondence established. Current-candidate execution receipt, dependency acceptance and independent acceptance remain pending."
+  ],
+  "declaredS29DependencyClosure": {
+    "rows": 8,
+    "pending": 0,
+    "note": "Declared edges only; no source-completeness or accepted claim."
+  }
+}

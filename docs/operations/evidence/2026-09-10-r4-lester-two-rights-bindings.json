@@ -1,0 +1,70 @@
+{
+  "row": {
+    "entryId": "a2-p01-r3c3",
+    "clauseKey": "semantic/return/user-choice",
+    "status": "implemented"
+  },
+  "statusUnchanged": true,
+  "tests": [
+    {
+      "id": "t:d33a93df6d8a0304",
+      "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+      "suite": [],
+      "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+      "declarationSha256": "0ec9d85562d229ed6853ec738eb127961838c752f6e0116f88ef555310abe50b",
+      "parameters": "base",
+      "kind": "canonical-transition",
+      "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
+    },
+    {
+      "id": "t:f7b2b8d33a9ba5ba",
+      "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+      "suite": [],
+      "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+      "declarationSha256": "0ec9d85562d229ed6853ec738eb127961838c752f6e0116f88ef555310abe50b",
+      "parameters": "printed",
+      "kind": "canonical-transition",
+      "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
+    },
+    {
+      "id": "t:4f787bd2edb25be5",
+      "path": "apps/worker/test/room-lester-two-rights.test.ts",
+      "suite": [],
+      "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+      "declarationSha256": "25a4ae4aafb77174d3e14947a97b51f7d7f22cc912e1305186b77be1565abd25",
+      "parameters": "base",
+      "kind": "worker-persistence",
+      "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
+    },
+    {
+      "id": "t:70ccc08ca598b636",
+      "path": "apps/worker/test/room-lester-two-rights.test.ts",
+      "suite": [],
+      "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+      "declarationSha256": "25a4ae4aafb77174d3e14947a97b51f7d7f22cc912e1305186b77be1565abd25",
+      "parameters": "printed",
+      "kind": "worker-persistence",
+      "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
+    },
+    {
+      "id": "t:86687363f6855b88",
+      "path": "tests/e2e/lester-two-rights.spec.ts",
+      "suite": [],
+      "title": "Actual Lester Courage base selection survives browser reload and returns once",
+      "declarationSha256": "81b1847b35992ccac061a0c67bb3fda44a9b58a6ac330ddf4db4d1eda37b9f11",
+      "parameters": null,
+      "kind": "browser",
+      "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
+    },
+    {
+      "id": "t:e495ceca553b152d",
+      "path": "tests/e2e/lester-two-rights.spec.ts",
+      "suite": [],
+      "title": "Actual Lester Courage printed selection survives browser reload and returns once",
+      "declarationSha256": "1714a4d1352c3657f0a208429c95b4f045e0d72d2cf77895afc7adfe60e46d84",
+      "parameters": null,
+      "kind": "browser",
+      "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
+    }
+  ]
+}

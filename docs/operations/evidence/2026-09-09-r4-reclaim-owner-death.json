@@ -1,0 +1,48 @@
+{
+  "task": "R4-B1 reserved recipient actual death and unavailable release boundaries",
+  "status": "actual-owner-death-complete-b1-remains-open",
+  "completedAt": "2026-09-09 09:26 JST",
+  "implementation": "No production changes. Extended Lia prayer initial fixture with a fatal attack against B and added Engine/DO/browser acceptance.",
+  "canonicalEvidence": [
+    "Initial Lia remaining endurance1, actual A ordinary bow aimed at B, B actual dedicated physical prayer response. The exact prayer becomes reserved while B remains active. Actual hit reaches pending-death with root lifecycle provenance, prayer still reserved, and no early outcome. All remaining responses settle actual death; prayer is discarded exactly once and never returned to any hand. Used event key remains, reservation metadata is removed, physical220 conserved, repeated settled continuation/view cannot mutate disposition.",
+    "Every Engine input checks JSON replay. DO saves/evicts/replays each command with identical ACK and unchanged stored retry; reservation and pending-death are inspected across authenticated sockets. Browser performs live prayer input, reloads reserved and pending-death boundaries and verifies final dead owner plus one discard."
+  ],
+  "structuralEvidence": [
+    "Existing release matrix active/otherworld/wandering and changed life remains separate. New pending-death/dead/exited initial presence mutations isolate unavailable-owner finalization after a command-created prayer reservation; these three are not labeled actual lifecycle producers."
+  ],
+  "verification": {
+    "engine": {
+      "passed": 16,
+      "files": [
+        "reclaim-owner-death.test.ts",
+        "reclaim-reservations.test.ts",
+        "lia-prayer-rider.test.ts"
+      ],
+      "log": "/tmp/madou-r4-owner-death-engine.log"
+    },
+    "worker": {
+      "passed": 2,
+      "files": [
+        "room-reclaim-owner-death.test.ts",
+        "room-lia-prayer.test.ts"
+      ],
+      "log": "/tmp/madou-r4-owner-death-do.log"
+    },
+    "browser": {
+      "passed": 1,
+      "file": "reclaim-owner-death.spec.ts",
+      "log": "/tmp/madou-r4-owner-death-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-r4-owner-death-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-r4-owner-death-ledger.log"
+    }
+  },
+  "remaining": "Unlimited paired-world comparison scope, strict A31 actual source producers, remaining lifetime intersections and catalog bindings, S21 clarification, R6-R8 and R3 human operation remain pending."
+}

@@ -1,0 +1,44 @@
+{
+  "task": "R5 Task12 S01-S05",
+  "status": "s01-s05-acceptance-complete",
+  "completedAt": "2026-09-09 08:33 JST",
+  "implementation": "No new production handler; actual physical poem, God and Fate commands in shared r6-roll-scenarios.ts.",
+  "canonicalEvidence": {
+    "S01": "D God request arrives first at C priority and is rejected unchanged; C Fate then accepted at the same expected revision. D later answers the new parent generation legally.",
+    "S02": "A/B passes cleared after actual C force-fail child; same parent ID, cursor0 and greater revision. Real DO rejects a fresh command carrying the old window generation with STALE_WINDOW and replays the same error.",
+    "S03": "B actual God declaration pays/refills once, then C actual Fate cancels it. Both cards discarded, B replacement and used-event key retained, no reroll/dice consumption and no original action refund.",
+    "S04": "Actual whole 2d6 [2,3]→[4,4], stable roll ID and two attempts. DO saves the result-writing command, changes entropy to6 before restart, replays identical receipt and never produces a third roll; doubles retained.",
+    "S05": "C actual force-fail then D actual God reroll to [4,4] total8/threshold9 preserves forcedFailure and unsuccessful outcome, causing actual poem damage5/stop1."
+  },
+  "verification": {
+    "engine": {
+      "passed": 42,
+      "files": [
+        "scenario-s01-s05.test.ts",
+        "reactions.test.ts",
+        "task7d-rolls.test.ts"
+      ],
+      "log": "/tmp/madou-s01-s05-focused.log"
+    },
+    "worker": {
+      "passed": 3,
+      "log": "/tmp/madou-s01-s05-do.log"
+    },
+    "browser": {
+      "passed": 3,
+      "log": "/tmp/madou-s01-s05-browser.log",
+      "scope": "Real UI declarations and reload preserve live observed reroll; exact 4,4 and changed-entropy duplicate receipt are Engine/DO evidence."
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s01-s05-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-s01-s05-ledger.log"
+    }
+  },
+  "remaining": "S06-S17, S21 pending G15 clarification, combined invariants and broader completion plan remain active."
+}

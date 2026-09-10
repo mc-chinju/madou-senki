@@ -1,0 +1,76 @@
+{
+  "task": "R5 Task11 a2-p04-r2c1 Fairy Sword nine semantic clauses",
+  "status": "implemented-bindings-shared-A31-acceptance-pending",
+  "recordedAt": "2026-09-10 13:48 JST",
+  "implementation": "No production changes. Existing actual install/cancel/discard/reveal/recovery/refill/Wish/reinstall paths reused. Added fairy-sword-physical.test.ts four cases for non-Cham, wrong turn, spent action and public Cham decline with immutable rejection.",
+  "verification": {
+    "engine": {
+      "passed": 16,
+      "skippedUnrelated": 12,
+      "log": "/tmp/madou-fairy-sword-engine.log"
+    },
+    "worker": {
+      "passed": 4,
+      "log": "/tmp/madou-fairy-sword-do.log"
+    },
+    "browser": {
+      "passed": 4,
+      "log": "/tmp/madou-fairy-sword-browser.log"
+    },
+    "types": {
+      "exitCode": 0,
+      "log": "/tmp/madou-fairy-sword-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "log": "/tmp/madou-fairy-sword-ledger.log"
+    }
+  },
+  "bindings": {
+    "semanticRows": [
+      "semantic/timing/turn",
+      "semantic/use/cham-only",
+      "semantic/effect/warrior-half-exception",
+      "semantic/zone/self-attachment",
+      "semantic/reclaim/actual-discard-trigger",
+      "semantic/reclaim/cham-only",
+      "semantic/reclaim/public-cham",
+      "semantic/reclaim/optional",
+      "semantic/reclaim/hand-beneficiary"
+    ],
+    "concreteTests": [
+      "t:0293d9243eb2981a",
+      "t:fb54d81ebee2d8d4",
+      "t:da596d28f9ec45f5",
+      "t:d69e1261573f69ab",
+      "t:02846a04bf57646a",
+      "t:a723cd814927c11c",
+      "t:24dc038030d87813",
+      "t:fc8ff19c11a39a65",
+      "t:5068bac648748739",
+      "t:6353cd2f4a9a57fd",
+      "t:6bf29b0ce5088b95",
+      "t:9eab7c79eb3946ef",
+      "t:7abe79995475b453",
+      "t:7ddf43559811ac6e",
+      "t:9b8a9d9b955c3394",
+      "t:5d648fd64c5ff97b"
+    ]
+  },
+  "rows": 12112,
+  "statuses": {
+    "pending": 8389,
+    "implemented": 3723
+  },
+  "semanticCards": {
+    "all": 218,
+    "appendix": 25,
+    "other": 193
+  },
+  "remaining": [
+    "Direct deck-origin discard and living-Cham attachment-origin discard have no proven actual producer; shared A31 remains open. Wish is attachment-to-hand, not direct attachment discard.",
+    "New public decline and timing rejection cases are Engine-only; existing DO/UI prove installation, public reveal/take and reservation across refill. These are not a full cross-layer matrix.",
+    "Shared lifecycle/reclaim, earth-warrior clauses and broader plan acceptance remain pending. No accepted promotion."
+  ],
+  "processes": "All commands terminal."
+}

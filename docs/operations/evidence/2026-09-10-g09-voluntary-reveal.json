@@ -1,0 +1,28 @@
+{
+  "handlers": [
+    "h:177994ceee78a372",
+    "h:ce27470122dec00b",
+    "h:24e8184bfa687b3f"
+  ],
+  "explicitUseTests": [
+    "t:6baf7bbb511e1b18",
+    "t:d9330f0a470dde57",
+    "t:c1db4b82896a4b90",
+    "t:2447d99b45165d6d",
+    "t:4609ba17fae6450f",
+    "t:8995859bfdde8b76",
+    "t:4ddbb394731f5178"
+  ],
+  "preRevealPrivacyTests": [
+    "t:4609ba17fae6450f",
+    "t:4ddbb394731f5178"
+  ],
+  "status": "pending",
+  "logs": {
+    "engine": "/tmp/madou-g09-reveal-engine.log",
+    "worker": "/tmp/madou-g09-reveal-do.log",
+    "browser": "/tmp/madou-g09-reveal-browser.log",
+    "types": "/tmp/madou-g09-reveal-types.log"
+  },
+  "dynamicBrowserCases": "4 voluntary base12 cases executed; not registered as concrete atomic declarations because AST title retains ${entry.scenario}."
+}

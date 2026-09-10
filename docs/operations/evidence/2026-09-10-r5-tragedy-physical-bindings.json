@@ -1,0 +1,134 @@
+{
+  "task": "R5 Task11 Alexandria Tragedy a2-p01-r2c3",
+  "status": "tragedy-physical-bindings-integrated-other45-open",
+  "completedAt": "2026-09-10 01:45 JST",
+  "implementation": "No production change.5 semantic clauses and previously pending main producer bind15 canonical transition cases; total6 newly implemented rows.",
+  "canonicalEvidence": [
+    "Actual setup, named Gainas or Dia reveal, mandatorychant and subsequent actual attack. Tragedy cancels all3 unresolved HundredSlash hits or both15damage EarthBlast targets. Beforegroup declaration cancellation prevents every attackcheck. Hidden Gainas or unrelated revealed Garwin never offers response and card stays unspent; actual hiddenGainas reveal during same event enables cancellation. Foreign actor/stale event and postcompletion requests reject exact state/all4views unchanged.",
+    "Actual first-target15 damage including lethal damage committed into group survives late thirdparty cancellation of remaining second target; final firsttarget damage/death retained, second0. After actual Griffin followerstart, defenderB cannot use Tragedy but thirdpartyD can. Griffin payment/destruction retainedonce. Actual Lancaster dedicated FlashSpear successful spiritcheck creates separate7damage counter from the first EarthBlast target; Tragedy cancels remaining original target but counter7 still hitsA.",
+    "Actual Fate cancellation of Tragedy preserves payment and immediate refill then resumes original all3 hits. Actual Tragedy immediate replacementdraw opens GodsBlood and adds3stats once before childdeclaration; original cancels0 with oneOPEN and oneTragedydiscard. Engine15 unique cases everycommandJSONreexecution220uniqueIDs. DO12 saves/restarts/replays every accepted command; UI12 actual chantedattack, response, counter, Fate and reload at boundaries. Shared/candidate receipts remain pending; no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/tragedy-physical.test.ts",
+      "uniquePassed": 15,
+      "attempts": [
+        {
+          "log": "/tmp/madou-tragedy-engine.log",
+          "passed": 13,
+          "failed": 2,
+          "reason": "Counter5 could not receive level7; refill prefix omitted actual initial setup hand deficits."
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/tragedy-physical.test.ts -t 'actual generated counter|actual immediate Blood'",
+          "log": "/tmp/madou-tragedy-engine-boundaries.log",
+          "passed": 1,
+          "failed": 1,
+          "skipped": 13,
+          "reason": "Blood corrected; one-hit Bow was already fully defended before generated counter so no remaining original cancellation target."
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/tragedy-physical.test.ts -t 'actual generated counter'",
+          "log": "/tmp/madou-tragedy-engine-counter.log",
+          "passed": 1,
+          "skipped": 14,
+          "resolution": "Actual two-target EarthBlast and Lancaster dedicated FlashSpear spiritcheck creates legal counter and retains unresolved original C target."
+        }
+      ]
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/anytime-responses.test.ts packages/engine/test/anytime-matrix.test.ts packages/engine/test/substitute.test.ts -t 'Tragedy|tragedy|a2-p01-r2c3'",
+      "passed": 10,
+      "skipped": 62,
+      "log": "/tmp/madou-tragedy-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-tragedy-physical.test.ts",
+      "uniquePassed": 12,
+      "timeoutMs": 15000,
+      "attempts": [
+        {
+          "passed": 11,
+          "failed": 1,
+          "log": "/tmp/madou-tragedy-do.log",
+          "reason": "tragedy-canceled exceeded15secondslimit; no causal claim."
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-tragedy-physical.test.ts -t 'tragedy-canceled'",
+          "passed": 1,
+          "skipped": 11,
+          "log": "/tmp/madou-tragedy-do-canceled.log",
+          "sameLimitAndTest": true
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/tragedy-physical.spec.ts",
+      "passed": 12,
+      "log": "/tmp/madou-tragedy-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "attempts": [
+        {
+          "log": "/tmp/madou-tragedy-types.log",
+          "exitCode": 2,
+          "reason": "E2E tsconfig cannot resolve @madou/catalog alias; used the two known printed fixture attack labels."
+        },
+        {
+          "log": "/tmp/madou-tragedy-types-final.log",
+          "exitCode": 0
+        }
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9286,
+        "implemented": 2826
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p01-r2c3::semantic/timing/printed-window",
+      "a2-p01-r2c3::semantic/cancel/gainas-attacker",
+      "a2-p01-r2c3::semantic/cancel/dia-attacker",
+      "a2-p01-r2c3::semantic/cancel/public-attacker",
+      "a2-p01-r2c3::semantic/cancel/whole-attack"
+    ],
+    "mainProducerRebindings": [
+      "a2-p01-r2c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:c19fd746314d680c",
+      "t:f419e86950f0c4c1",
+      "t:9a95d1c2fde1b4b9",
+      "t:6dbdbd17d99b4be1",
+      "t:cbac6932b14c1514",
+      "t:b3fd73adaeb45293",
+      "t:2f4fc6a65e9f2fc9",
+      "t:e8f2e2d4d89ab3c1",
+      "t:f097cc3f0f147b8e",
+      "t:c209135bdcf303e2",
+      "t:bd00ecf68443d489",
+      "t:eae120ed031adbbc",
+      "t:1baa7cf56787e82e",
+      "t:d62724c1e9fd34f2",
+      "t:03f64bce3d7c09c0"
+    ]
+  },
+  "remaining": "150/195 fully integrated; other45 includes partial SingingShip1 and WingedFolk1 plus43 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

@@ -1,0 +1,59 @@
+{
+  "obligation": {
+    "entryId": "ruling:G11",
+    "clauseKey": "semantic/base-reclaim-survives-ability-ban",
+    "source": [
+      "src:0ca5cb42ef4431de"
+    ],
+    "rulingIds": [
+      "docs/rules/second-edition/rulings.md#G11"
+    ],
+    "kind": "reclaim-eligibility",
+    "meaning": "人物能力が禁止されても、持ち札の権利としての通常回収は失われない。",
+    "dependsOn": [],
+    "coverageClass": "semantic",
+    "contextRefs": []
+  },
+  "handlers": {
+    "h:e0e62a694d897112": {
+      "path": "packages/engine/src/reclaim.ts",
+      "symbol": "baseClaims"
+    },
+    "h:4911703f221e0fd7": {
+      "path": "packages/engine/src/abilities/reuse.ts",
+      "symbol": "reuseClaims"
+    }
+  },
+  "tests": {
+    "t:1e2dd90aea228564": {
+      "title": "Actual Vanmil suppression leaves only ordinary recovery for %s using %s",
+      "suite": [],
+      "declarationSha256": "4f228cb883bd006fa26a55ab84d34b516a59ee7cb33ac1698c21f8d7cb08e1e1",
+      "path": "packages/engine/test/reclaim-live-suppression.test.ts",
+      "parameters": [
+        "妖精王フューリー",
+        "踏み込み／弓"
+      ],
+      "kind": "canonical-transition",
+      "bindingNote": "Actual Vanmil ability resolves before the physical attack recovery; ordinary claim remains, additional/unlimited claims absent. Two Engine cases passed 2026-09-10; full candidate acceptance remains."
+    },
+    "t:95994744b98bd9ad": {
+      "title": "Actual Vanmil suppression leaves only ordinary recovery for %s using %s",
+      "suite": [],
+      "declarationSha256": "4f228cb883bd006fa26a55ab84d34b516a59ee7cb33ac1698c21f8d7cb08e1e1",
+      "path": "packages/engine/test/reclaim-live-suppression.test.ts",
+      "parameters": [
+        "聖騎士ランスロット",
+        "破山剣"
+      ],
+      "kind": "canonical-transition",
+      "bindingNote": "Actual Vanmil ability resolves before the physical attack recovery; ordinary claim remains, additional/unlimited claims absent. Two Engine cases passed 2026-09-10; full candidate acceptance remains."
+    }
+  },
+  "engine": {
+    "passed": 2,
+    "exitCode": 0,
+    "log": "/tmp/madou-r4-live-suppression-engine-fixed.log"
+  },
+  "initialFailure": "Test expected generic status; actual live Vanmil source uses suppressionDesignations. Corrected assertion; runtime unchanged."
+}

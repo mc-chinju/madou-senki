@@ -1,0 +1,36 @@
+{
+  "obligation": {
+    "entryId": "ruling:G11",
+    "clauseKey": "semantic/actual-otherworld-excluded-from-public-responses",
+    "source": [
+      "src:c31ba5b3a54854ca"
+    ],
+    "rulingIds": [
+      "docs/rules/second-edition/rulings.md#G11"
+    ],
+    "kind": "reclaim-response",
+    "meaning": "実際の異界退去後に開く回収窓では不在者を回答席から除外し、残る公開参加者は時計回りに明示回答する。",
+    "dependsOn": [],
+    "coverageClass": "semantic",
+    "contextRefs": []
+  },
+  "handler": [
+    "h:07d3f3892f1d7d6c",
+    "h:097d1cb728f724aa"
+  ],
+  "tests": {
+    "t:56a4888d5bbcf770": {
+      "title": "Reservation owner actual Rift banishment preserves its life and returns prayer once after the root",
+      "suite": [],
+      "declarationSha256": "578341a19bfcf30473051bd6f7a3afc744adb2a739cfce4c2e4b8752788d8ddf",
+      "path": "packages/engine/test/reclaim-owner-otherworld.test.ts",
+      "parameters": null,
+      "kind": "canonical-transition",
+      "bindingNote": "Actual Rift banishes B before its physical recovery; saved replies visit A/C/D, B cannot reply and rejected input preserves full state and all views. Existing life/reservation assertions retained. Engine 1 passed."
+    }
+  },
+  "updatedCurrentLedgerRefs": {
+    "t:e7031c4865413fa9": "t:cda118a0e1bf762a"
+  },
+  "historicalEvidence": "Unchanged historical records refer to earlier declaration; only current ledger rows rebound."
+}

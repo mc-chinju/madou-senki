@@ -1,0 +1,164 @@
+{
+  "scope": "Selected S04-S06 boundaries; full acceptance remains",
+  "bindings": [
+    {
+      "scenario": "S04",
+      "obligation": {
+        "entryId": "ruling:G07",
+        "clauseKey": "semantic/whole-two-dice-reroll-same-identity",
+        "source": [
+          "src:a482f8f234e8dcb8"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G07"
+        ],
+        "kind": "roll-value-boundary",
+        "meaning": "2d6を一つのロールとして全出目を置換し、同じロールIDで新出目と試行を保存する。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:1e543f95b8705cc9": {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueAction"
+        },
+        "h:e3b6bb1aa10a271b": {
+          "path": "packages/engine/src/rolls/advance.ts",
+          "symbol": "throwRoll"
+        }
+      },
+      "tests": {
+        "t:12c903156c68e687": {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "declarationSha256": "e9a94f3caaf20707ee6bc5aa69f925b0855430c348e1d4b9331c34ca042f8922",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        },
+        "t:be904c34c43bcb86": {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 DO disconnects directly after saving 4,4 and duplicate command cannot create a third attempt even with changed entropy",
+          "declarationSha256": "9e35b3ab2148aebdbdb3ec2a70099fad2256383aaa5cbeec46fb2eb8586e5db6",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        },
+        "t:11ce1081763cc708": {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "suite": [],
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "declarationSha256": "d9c39366277e4ccc2572843ab60f8b2d68c0dfc179d0900647e12d4dd738374a",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        },
+        "t:e576534611a9fab6": {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "suite": [],
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "declarationSha256": "22a892032e85c1dfe57b4957379d214f41be5c676362afda9b709fcca561b33b",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        }
+      }
+    },
+    {
+      "scenario": "S05",
+      "obligation": {
+        "entryId": "ruling:G07",
+        "clauseKey": "semantic/forced-failure-survives-reroll",
+        "source": [
+          "src:aadaa828ea25113d"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G07"
+        ],
+        "kind": "roll-value-boundary",
+        "meaning": "命運凶変の強制失敗が解決した判定は、成功値への再振りでも成功しない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:e3b6bb1aa10a271b": {
+          "path": "packages/engine/src/rolls/advance.ts",
+          "symbol": "throwRoll"
+        }
+      },
+      "tests": {
+        "t:4f0a8d5fb92f2616": {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 S02 S05 D first is rejected at C priority then C force-fail resets the parent and D rerolls successful-valued faces without clearing failure",
+          "declarationSha256": "f9170c940e9fff56f7d4115d1abce7586ab38cb0637acfed50919d7d913da090",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S05 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        },
+        "t:d6912a369c097efa": {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 S02 S05 DO rejects D first, accepts C at the unchanged revision, rejects old parent PASS generation and keeps forced failure after D reroll",
+          "declarationSha256": "ead75fb49c302b0b21698f8695685c9fabda58cdd30594cbaa6e2b01a543ee63",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S05 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        },
+        "t:500ccd9141994c4c": {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "suite": [],
+          "title": "S01-S05 force retains priority paid cards and roll continuation across reload",
+          "declarationSha256": "abfb920c51580238ad99519c0cf6caeeb4bd34b8bb06517dc2d6fead34c86f04",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S05 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        }
+      }
+    },
+    {
+      "scenario": "S06",
+      "obligation": {
+        "entryId": "ruling:G08",
+        "clauseKey": "semantic/frozen-effect-rejects-late-spirit",
+        "source": [
+          "src:ef81c60b0d8f0281",
+          "src:4e7dbcf95380b5f2"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G08"
+        ],
+        "kind": "roll-value-boundary",
+        "meaning": "効果Lv確定後の防御比較中は気合いによる変更を拒否し、手札・試行・ロールを消費しない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:91be5a2c7a752cd3": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "actionModifierOptions"
+        },
+        "h:c91dd0b92485dbc9": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "validActionModifier"
+        }
+      },
+      "tests": {
+        "t:8858110663aae524": {
+          "path": "packages/engine/test/scenario-s06-s10.test.ts",
+          "suite": [],
+          "title": "S06 actual level6 is frozen at normal defense and late Shin Spirit spends no hand ability attempt or roll",
+          "declarationSha256": "50040156fb4341cdfd180d659ba9eb5ad3b8abb626f58782061f491bf69c152a",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S06 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        }
+      }
+    }
+  ]
+}

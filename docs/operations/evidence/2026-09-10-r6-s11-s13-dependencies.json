@@ -1,0 +1,144 @@
+{
+  "scope": "S11-S13 selected source dependencies, not full acceptance",
+  "bindings": [
+    {
+      "obligation": "ruling:G12#semantic/defense-exchange-preserves-distance",
+      "scenario": "S11",
+      "handler": {
+        "path": "packages/engine/src/combat/attack.ts",
+        "symbol": "resolveDefenseMaai"
+      },
+      "tests": {
+        "t:565c044458196850": {
+          "path": "packages/engine/test/scenario-s11-s13.test.ts",
+          "suite": [],
+          "title": "S11 actual chanted one-hit two-target sword shares one advance against both maai and preserves pair distances through final damage",
+          "parameters": null,
+          "declarationSha256": "97bb926b0c5b4a48e13848abaf40dccaaeed5eb391bf310b3b513a57d0a0a5ac",
+          "kind": "canonical-transition",
+          "bindingNote": "S11 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        "t:bdd8c558396945e4": {
+          "path": "apps/worker/test/room-scenario-s11-s12.test.ts",
+          "suite": [],
+          "title": "S11-S12 three=%s DO saves each physical payment and preserves exact scope on duplicate receipt",
+          "parameters": false,
+          "declarationSha256": "257334d091f8a2c33a2fa461a2f300924301785fd9a8945ed8ef5d9b22e32fdf",
+          "kind": "worker-persistence",
+          "bindingNote": "S11 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        "t:ab0f563d078c3b52": {
+          "path": "tests/e2e/scenario-s11-s12.spec.ts",
+          "suite": [],
+          "title": "S11 shared advance actual maai buttons preserve payment and final scope across reload",
+          "parameters": null,
+          "declarationSha256": "9878fd491ba4335f81b91e3c025333392c92dedf2cebb412c6ef5c8d923065ff",
+          "kind": "browser",
+          "bindingNote": "S11 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        }
+      }
+    },
+    {
+      "obligation": "ruling:G12#semantic/one-advance-cancels-each-target-maai",
+      "scenario": "S11",
+      "handler": {
+        "path": "packages/engine/src/abilities/distance.ts",
+        "symbol": "uncanceledMaai"
+      },
+      "tests": {
+        "t:565c044458196850": {
+          "path": "packages/engine/test/scenario-s11-s13.test.ts",
+          "suite": [],
+          "title": "S11 actual chanted one-hit two-target sword shares one advance against both maai and preserves pair distances through final damage",
+          "parameters": null,
+          "declarationSha256": "97bb926b0c5b4a48e13848abaf40dccaaeed5eb391bf310b3b513a57d0a0a5ac",
+          "kind": "canonical-transition",
+          "bindingNote": "S11 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        "t:bdd8c558396945e4": {
+          "path": "apps/worker/test/room-scenario-s11-s12.test.ts",
+          "suite": [],
+          "title": "S11-S12 three=%s DO saves each physical payment and preserves exact scope on duplicate receipt",
+          "parameters": false,
+          "declarationSha256": "257334d091f8a2c33a2fa461a2f300924301785fd9a8945ed8ef5d9b22e32fdf",
+          "kind": "worker-persistence",
+          "bindingNote": "S11 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        "t:ab0f563d078c3b52": {
+          "path": "tests/e2e/scenario-s11-s12.spec.ts",
+          "suite": [],
+          "title": "S11 shared advance actual maai buttons preserve payment and final scope across reload",
+          "parameters": null,
+          "declarationSha256": "9878fd491ba4335f81b91e3c025333392c92dedf2cebb412c6ef5c8d923065ff",
+          "kind": "browser",
+          "bindingNote": "S11 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        }
+      }
+    },
+    {
+      "obligation": "ruling:G14#semantic/maai-applies-to-current-hit-only",
+      "scenario": "S12",
+      "handler": {
+        "path": "packages/engine/src/combat/attack.ts",
+        "symbol": "resolveDefenseMaai"
+      },
+      "tests": {
+        "t:40c72834f3a77d59": {
+          "path": "packages/engine/test/scenario-s11-s13.test.ts",
+          "suite": [],
+          "title": "S12 actual chanted three-hit sword one maai evades only the first hit and retains exactly two live hits",
+          "parameters": null,
+          "declarationSha256": "f5e68aa6431b35cdfdc4a4fe055a8c7ea22ecc50fa2aeca55bf288294db2a818",
+          "kind": "canonical-transition",
+          "bindingNote": "S12 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        "t:9831091c131b70eb": {
+          "path": "packages/engine/test/scenario-s11-s13.test.ts",
+          "suite": [],
+          "title": "S12 second and third actual Hundred Slash hits open separate normal defenses after first-hit maai",
+          "parameters": null,
+          "declarationSha256": "4e0e2db83e873e5fa0a7e3e812b94c98ded0a802cc288bed25801f9761199ae4",
+          "kind": "canonical-transition",
+          "bindingNote": "S12 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        "t:f814a68a6c0d167f": {
+          "path": "apps/worker/test/room-scenario-s11-s12.test.ts",
+          "suite": [],
+          "title": "S11-S12 three=%s DO saves each physical payment and preserves exact scope on duplicate receipt",
+          "parameters": true,
+          "declarationSha256": "257334d091f8a2c33a2fa461a2f300924301785fd9a8945ed8ef5d9b22e32fdf",
+          "kind": "worker-persistence",
+          "bindingNote": "S12 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        "t:775ab489885090c4": {
+          "path": "tests/e2e/scenario-s11-s12.spec.ts",
+          "suite": [],
+          "title": "S12 three hits actual maai buttons preserve payment and final scope across reload",
+          "parameters": null,
+          "declarationSha256": "da9a2161396e7260772cccde1d58ae2cf766d04a28f804359070bf6964619d4f",
+          "kind": "browser",
+          "bindingNote": "S12 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        }
+      }
+    },
+    {
+      "obligation": "ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit",
+      "scenario": "S13",
+      "handler": {
+        "path": "packages/engine/src/combat/followers.ts",
+        "symbol": "resolveFollowerSnapshot"
+      },
+      "tests": {
+        "t:168ba7d581c5b2ea": {
+          "path": "packages/engine/test/scenario-s11-s13.test.ts",
+          "suite": [],
+          "title": "S13 abstract Lv5 damage6 three-hit resolver with front Lv3 HP2 yields four each and destroys one physical follower once",
+          "parameters": null,
+          "declarationSha256": "55250d0e52eec3d780f422513b137c0d00e500f021443bfeee76d805e08f05c9",
+          "kind": "structural-resolver",
+          "bindingNote": "S13 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        }
+      }
+    }
+  ]
+}

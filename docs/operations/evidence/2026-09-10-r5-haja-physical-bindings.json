@@ -1,0 +1,81 @@
+{
+  "task": "R5 Task11 Haja a2-p01-r2c2",
+  "status": "haja-physical-bindings-integrated-other46-open",
+  "completedAt": "2026-09-10 01:29 JST",
+  "implementation": "No production change.3 semantic clauses and main producer bind10 canonical transition cases.",
+  "canonicalEvidence": [
+    "Actual optional draw or secretbook OPEN changes only currentowner handlimit6 chantlimit2; otherstats/players remain unchanged and identity stayshidden. Initialsetup dealt5, bookdraw1 leaves5 and actual turnend fills6. Actual six held across turns, optional seventhdraw requires exactlyone discard at turnend; no-Haja control retains5 and sixth requiresone. Rejected emptydiscard leaves state unchanged.",
+    "Actual mandatorychant IceWolf a2-p13-r1c1 and Rift a2-p14-r2c2 are placed over separate actual turns. With Haja second allowed and third Mekai rejected; no-Haja control second rejected. Both remainprivate/back to others. Actual IceWolf attack fromchant deals7 and frees one slot; later actual MekaiCHANT occupies freedslot. The older injected Wish example used nonchantable card IDs; these new proofs use printed chantable physical cards.",
+    "Actual opponent Wish transfers publicHaja and immediately changes oldcaps to5/1, newcaps6/2. Originalowner alone sees and submits mandatory one-chant disposal; eitherIceWolf orRift canbechosen. Empty/multiple/foreign/notchanted choices reject unchanged. One selectedchant discardedonce, six handcards remain exact through otherseats and owners nextaction, then actual ownhandadjustment requiresone discard.",
+    "Actual ownWish reacquires alreadypublicHaja, restores6/2 but retains just survivingRift and never restores discardedIceWolf. Onlyone OPENpublication. Actual lethalBow killsowner withtwo actualchants; allownedcards includingHaja andbothchants discardonce, capacitiesreturn5/1 withno deadcapacitychoice. Engine10 everycommandJSONreexecution220uniqueIDs/rejectedfullstateallviews. DO6 fullactualturns saved/restarted/replayed; UI6 actualdraw/handadjustment/twochants/cast/slotreuse/Wishloss/ownturnend/reacquisition/death withreload. Shared/candidate receipts remainpending; no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/haja-physical.test.ts",
+      "passed": 10,
+      "log": "/tmp/madou-haja-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/wish.test.ts packages/engine/test/early-turn-cards.test.ts -t 'Haja|extra cards|another opening'",
+      "passed": 3,
+      "skipped": 52,
+      "log": "/tmp/madou-haja-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-haja-physical.test.ts",
+      "passed": 6,
+      "log": "/tmp/madou-haja-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/haja-physical.spec.ts",
+      "passed": 6,
+      "log": "/tmp/madou-haja-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-haja-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9292,
+        "implemented": 2820
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p01-r2c2::semantic/timing/open",
+      "a2-p01-r2c2::semantic/capacity/hand-plus-one",
+      "a2-p01-r2c2::semantic/capacity/chant-plus-one"
+    ],
+    "mainProducerRebindings": [
+      "a2-p01-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:dec76094bc75caaa",
+      "t:153925dbcb75da0b",
+      "t:07695d2d81af5948",
+      "t:2d682cec37c2b689",
+      "t:46653fd9225b12eb",
+      "t:55cb98261e645d62",
+      "t:7c83ec9831e433ea",
+      "t:d019c3bf19d0e89e",
+      "t:1a5394c2dd66aa32",
+      "t:642348d2956d783a"
+    ]
+  },
+  "remaining": "149/195 fully integrated; other46 includes partial SingingShip1 and WingedFolk1 plus44 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

@@ -1,0 +1,160 @@
+{
+  "bindings": [
+    {
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/named-reuse-excludes-voluntary-discard",
+        "source": [
+          "src:50ac9cf81bbf696b"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "reclaim-source",
+        "meaning": "名称列挙の再使用能力があっても、手番終了の任意廃棄を実使用として扱わず対象札を回収しない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": [
+        "h:4911703f221e0fd7"
+      ],
+      "tests": {
+        "t:c79888e9d9dbac62": {
+          "title": "%s does not reclaim voluntarily discarded %s as an actual use",
+          "suite": [],
+          "declarationSha256": "8a0d584959167ca0603c6fadda5cc062cfc1a4e7dba9394f1eff319ad611ddcb",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p02-r2c2-ab04",
+            "破山剣"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        },
+        "t:5f4b7b4a69b5006c": {
+          "title": "%s does not reclaim voluntarily discarded %s as an actual use",
+          "suite": [],
+          "declarationSha256": "8a0d584959167ca0603c6fadda5cc062cfc1a4e7dba9394f1eff319ad611ddcb",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p03-r2c1-ab04",
+            "魔詩"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        },
+        "t:2b7f2c1ff6bd7a7d": {
+          "title": "%s does not reclaim voluntarily discarded %s as an actual use",
+          "suite": [],
+          "declarationSha256": "8a0d584959167ca0603c6fadda5cc062cfc1a4e7dba9394f1eff319ad611ddcb",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p04-r1c2-ab04",
+            "歌う船"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        },
+        "t:136ed41cebc45332": {
+          "title": "%s does not reclaim voluntarily discarded %s as an actual use",
+          "suite": [],
+          "declarationSha256": "8a0d584959167ca0603c6fadda5cc062cfc1a4e7dba9394f1eff319ad611ddcb",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p05-r1c2-ab04",
+            "グリフォン"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        },
+        "t:ce73fe6dbd049dfa": {
+          "title": "%s does not reclaim voluntarily discarded %s as an actual use",
+          "suite": [],
+          "declarationSha256": "8a0d584959167ca0603c6fadda5cc062cfc1a4e7dba9394f1eff319ad611ddcb",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "スケルトン"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        },
+        "t:9af50b326d863db3": {
+          "title": "%s does not reclaim voluntarily discarded %s as an actual use",
+          "suite": [],
+          "declarationSha256": "8a0d584959167ca0603c6fadda5cc062cfc1a4e7dba9394f1eff319ad611ddcb",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r2c2-ab03",
+            "狼牙"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        }
+      }
+    },
+    {
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/named-reuse-excludes-failed-morale",
+        "source": [
+          "src:50ac9cf81bbf696b"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "reclaim-source",
+        "meaning": "全軍突撃の実士気失敗を使用や死亡として扱わず、名称列挙の再使用権を作らない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": [
+        "h:4911703f221e0fd7"
+      ],
+      "tests": {
+        "t:741451b489927652": {
+          "title": "named recovery excludes an actual All Army morale failure",
+          "suite": [],
+          "declarationSha256": "c6db9bd1d425e7e51b63b8c421a2b32a7eb4d76aa277e3b23bfdb16aedd8dd1f",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        }
+      }
+    },
+    {
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/owned-extra-follower-requires-actual-death",
+        "source": [
+          "src:50ac9cf81bbf696b"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "reclaim-source",
+        "meaning": "持ち従者全般への追加枠は本人が実配置した従者の実死亡後に使え、従者攻撃での使用には使わない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": [
+        "h:4911703f221e0fd7"
+      ],
+      "tests": {
+        "t:e7ea4c873d88a38b": {
+          "title": "Ramba extra follower recovery needs an actual placed follower death, not its attack use",
+          "suite": [],
+          "declarationSha256": "de9917464ecb4486c13cda783e00b254d69a0c404cc85dc1789db37d58e5143a",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-end discard, actual All Army morale failure, or actual arranged Ramba follower death versus its attack use. Current file 86 passed. Initial physical hands are fixture inputs; no synthetic reclaim decision injected."
+        }
+      }
+    }
+  ]
+}

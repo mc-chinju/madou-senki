@@ -1,0 +1,148 @@
+{
+  "task": "R5 Task11 ConversionGOOD/EVIL a2-p04-r1c1/a2-p04-r1c2",
+  "status": "conversion-physical-bindings-integrated-other28-open",
+  "completedAt": "2026-09-10 04:39 JST",
+  "implementation": "No production change. Eighteen semantic clauses and two pending main producers newly implemented with33 canonical cases.",
+  "canonicalEvidence": [
+    "Actualsetup/START/draw andtargetownREVEAL precede sourceuse. Hidden/self/wrongseat/beforeSTART/draw/astrology/pendingduplicate commands rejectstate/all4views. Physicalsourcepayment removesonehandcard withoutrefill andmainconsumed, eventualdiscardonce; targethand/open/attachments/followers/chants/character/damage/permanent remainunchanged. Declinekeepssource. Actualtarget2d6 atSP6 freezesordinarythreshold5, equalitysuccess/oneabovefail. ActualcurrentLia/Uonos source automaticallythreshold4 viaordinarycommand, equalitysuccess/oneabovefail. ActualAsfelt/Garwinmandatory+2 yields7, equalitysuccess/8fail. Publictarget meansall4views showthreshold.",
+    "Failedresistance replacesfaction plusfullobjective/currentObjective/protection/defeatCondition; successorwholefixedfactionprohibition preservesexactpriorprofile withoutFACTION_CHANGED. Samefactioniseligible: GOODtargetwithLia+Arnesprotection becomesLiaonly; EVILAsfeltwithGaia+DiabecomesGaiaonly. ActualFatecancel stopsbeforetargetroll anddiscardsource; actualforcedfailure survivesGodreroll2 whileordinaryreroll2 restoresresistance. Nochangepre-finalafter-roll thenapplyonlyafterinterventionwindow.",
+    "ActualallEVILinitialdeal withhiddenparticipants postponesoutcome. SourceDia, targetUonos, GaiaC andDcharacter c2-p06-r2c2: priorDrealBowkillsGaia, setupplacedBfollower remains, END/STARTA andBactualREVEAL. ActualCharmfails andimmediatelyreplacesprotectionthenwandersB, returnsallrealhand+placedfollower todeck, nooutcome becausehiddeninitialdealstillpending. DeadC excludedasconversiontarget. Engine33 JSONreexecution/220uniqueIDs; DO25 everycommandsave/restart/replay; UI25 actualtargetselection/publicreveal/rollthreshold/interventions/reloads. Browser observesrandomresistance; deadprotectorbranchconditional, deterministicEngine/DO provefailureandwandering."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/conversion-physical.test.ts",
+      "initialPassed": 32,
+      "initialFailed": 2,
+      "initialLog": "/tmp/madou-conversion-engine.log",
+      "correction": "Both attempted mixed-faction priorBow protector deaths completed the game before conversion. Removed these unreachable fixtures; final32 passed. Then added a real all-EVIL hidden-deal path for Charm, whose priorGaia death does not end game; one new canonicalcase passed. GOODdeadLia remainsunmeasured.",
+      "finalPassed": 32,
+      "log": "/tmp/madou-conversion-engine-final.log",
+      "added": {
+        "command": "pnpm exec vitest run packages/engine/test/conversion-physical.test.ts -t 'all-EVIL hidden deal'",
+        "passed": 1,
+        "log": "/tmp/madou-conversion-engine-dead.log"
+      },
+      "uniqueCanonicalTotal": 33
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/turn-choice-cards.test.ts -t 'successful target check|later real conversion'",
+      "passed": 2,
+      "log": "/tmp/madou-conversion-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-conversion-physical.test.ts",
+      "passed": 24,
+      "log": "/tmp/madou-conversion-do.log",
+      "firstAttempt": true,
+      "added": {
+        "filter": "conversion-evil-protector-dead",
+        "passed": 1,
+        "log": "/tmp/madou-conversion-do-dead.log",
+        "firstAttempt": true
+      }
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/conversion-physical.spec.ts",
+      "passed": 24,
+      "log": "/tmp/madou-conversion-browser.log",
+      "firstAttempt": true,
+      "added": {
+        "filter": "conversion-evil-protector-dead",
+        "passed": 1,
+        "log": "/tmp/madou-conversion-browser-dead.log",
+        "firstAttempt": true
+      },
+      "scope": "Actualrandom2d6 andrerolloutcomes. Deterministicequality/boundaries/forcedsuccessfulnewtotal anddeadprotectorrule establishedbyEngine/DO."
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-conversion-types-dead.log",
+      "priorPasses": [
+        "/tmp/madou-conversion-types.log",
+        "/tmp/madou-conversion-types-ui.log"
+      ],
+      "firstAttemptEach": true
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9156,
+        "implemented": 2956
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p04-r1c1::semantic/timing/turn",
+      "a2-p04-r1c1::semantic/target/public",
+      "a2-p04-r1c1::semantic/target/not-self",
+      "a2-p04-r1c1::semantic/check/target-spirit-minus-one",
+      "a2-p04-r1c1::semantic/dedicated/target-spirit-minus-two",
+      "a2-p04-r1c1::semantic/failure/faction",
+      "a2-p04-r1c1::semantic/failure/objective",
+      "a2-p04-r1c1::semantic/failure/defeat",
+      "a2-p04-r1c1::semantic/success/no-change",
+      "a2-p04-r1c2::semantic/timing/turn",
+      "a2-p04-r1c2::semantic/target/public",
+      "a2-p04-r1c2::semantic/target/not-self",
+      "a2-p04-r1c2::semantic/check/target-spirit-minus-one",
+      "a2-p04-r1c2::semantic/dedicated/target-spirit-minus-two",
+      "a2-p04-r1c2::semantic/failure/faction",
+      "a2-p04-r1c2::semantic/failure/objective",
+      "a2-p04-r1c2::semantic/failure/defeat",
+      "a2-p04-r1c2::semantic/success/no-change"
+    ],
+    "mainProducerBindings": [
+      "a2-p04-r1c1::main-producer",
+      "a2-p04-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:07351d3e88d75937",
+      "t:50dcc41738c75466",
+      "t:e1ec594f19ba0fb6",
+      "t:666da876cec12c69",
+      "t:b2669ad0157cc67b",
+      "t:7314354aaac18e8d",
+      "t:f30673ca83c89626",
+      "t:4795e30ab5fa5e43",
+      "t:3e3d2be79854ccfa",
+      "t:cf572c3dea70c677",
+      "t:6a57e7204b9d9875",
+      "t:33928eeb41e22ac5",
+      "t:55aaae3a0cbd2d7e",
+      "t:4485108744bf33f0",
+      "t:fb02b4fd43b836d6",
+      "t:2f85658989194248",
+      "t:46c81290c935bffa",
+      "t:964c48a9df1ae203",
+      "t:9e91d86f23ac12b1",
+      "t:121bef8a75244f8f",
+      "t:7e6619ae2cdb886e",
+      "t:6c8b506f1d8ba2bf",
+      "t:e8c274d149e569b0",
+      "t:f152acd989c4b15e",
+      "t:dcf362ded99a4d57",
+      "t:5415fface8900a0a",
+      "t:042a310dcdb8c3c5",
+      "t:f68b2850635f451b",
+      "t:4f20bb15dd5fd27f",
+      "t:534db2e1c647313c",
+      "t:680a16070e96bc7d",
+      "t:e1b9d6767522f6b7",
+      "t:fe4bd1d5ae5f0567"
+    ]
+  },
+  "remaining": "167/195 semantic bindings integrated; other28 includes partialSingingShip1 andWingedFolk1 plus26othercards. GOODalreadydeadLia, conversion target lifetime crossings and status-suppressed mandatorybonus canonicalcross remainunmeasured/sharedpending. Prior deathgiftunmeasuredcrossings, Hostageunresolved-timefactionchange, shared/candidate receipts andwhole-goalgates remainopen; noacceptedpromotion."
+}

@@ -1,0 +1,77 @@
+{
+  "rows": [
+    "ruling:G06#semantic/physical-card-once-per-event",
+    "ruling:G06#semantic/recovery-after-parent-event",
+    "ruling:G06#semantic/physical-card-reuse-later-attack"
+  ],
+  "status": "implemented",
+  "handlers": [
+    "h:c651d46a4832f3b2",
+    "h:5fa111ca04921c80",
+    "h:c3709e3361240776",
+    "h:c88dd55b0cb10564",
+    "h:7d2240be1c8bd96a",
+    "h:ffa6515431cc0948",
+    "h:177994ceee78a372"
+  ],
+  "additionalTests": {
+    "repeated physical reaction": "t:e147ca1620b60434",
+    "parent declaration generation": "t:6b6702df633dbc02",
+    "Dedicated Lia prayer keeps": "t:3291a61f9b97e198",
+    "actual death boundary": "t:051402ae9409a5cb",
+    "nested counter": "t:77c017166ebc0a0a",
+    "S24 unlimited": "t:90ef0febb79a3b0a",
+    "original attempt": "t:d31724cfc5ece0e8",
+    "counter parent event identity": "t:e47e0a7968b36c5b"
+  },
+  "reboundIds": {
+    "t:dffc0a1913f4fa8b": "t:190e9fdfaf332080"
+  },
+  "verification": {
+    "engine": {
+      "passed": 9,
+      "log": "/tmp/madou-g06-general-engine.log"
+    },
+    "finalReopened": {
+      "passed": 1,
+      "log": "/tmp/madou-g06-reopened-final.log"
+    },
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-g06-general-do.log"
+    },
+    "browserLog": "/tmp/madou-g06-general-browser.log",
+    "typecheckLog": "/tmp/madou-g06-general-types.log",
+    "browser": {
+      "passed": 1,
+      "log": "/tmp/madou-g06-general-browser.log"
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "log": "/tmp/madou-g06-general-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12178,
+      "statuses": {
+        "pending": 8349,
+        "implemented": 3829
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5259,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    },
+    "readiness": {
+      "valid": true,
+      "ready": false
+    }
+  },
+  "remaining": "Full G06 source scope/current candidate/independent acceptance; no review.",
+  "declaredScenarioPending": {}
+}

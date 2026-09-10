@@ -1,0 +1,236 @@
+{
+  "scope": "Seven actual follower deaths with decline/cancel/live prohibition; no full acceptance",
+  "bindings": [
+    {
+      "entryId": "c2-p04-r1c2-ab04",
+      "clauseKey": "unlimited-SingingShip",
+      "tests": {
+        "t:ee70dd7fa2563bde": {
+          "title": "%s actual death can be declined without an automatic return",
+          "suite": [],
+          "declarationSha256": "4cdc72d484c301f952fb03a5dda6c09186ea777a10500acd6780b9b31cc932bd",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-ship",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:52c50a22db0fe8f5": {
+          "title": "%s actual death recovery cancellation consumes only its one attempt",
+          "suite": [],
+          "declarationSha256": "e4dd8f82907b09f6153f1bd82edbfea8e16a5d86069ed687716a6582d94a524d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-ship",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:9b1a501cc0c760a5": {
+          "title": "%s actual death recovery respects a live Vanmil ban before resolution",
+          "suite": [],
+          "declarationSha256": "7add9e997d5c7ee47d002f490a371a247600b2fda761638342e55d18f443d51d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-ship",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab04",
+      "clauseKey": "unlimited-FlyingDragon",
+      "tests": {
+        "t:5030e9b4f0ce954e": {
+          "title": "%s actual death can be declined without an automatic return",
+          "suite": [],
+          "declarationSha256": "4cdc72d484c301f952fb03a5dda6c09186ea777a10500acd6780b9b31cc932bd",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-dragon",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:5f6091a4c5b296b1": {
+          "title": "%s actual death recovery cancellation consumes only its one attempt",
+          "suite": [],
+          "declarationSha256": "e4dd8f82907b09f6153f1bd82edbfea8e16a5d86069ed687716a6582d94a524d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-dragon",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:6fb7a365672e228f": {
+          "title": "%s actual death recovery respects a live Vanmil ban before resolution",
+          "suite": [],
+          "declarationSha256": "7add9e997d5c7ee47d002f490a371a247600b2fda761638342e55d18f443d51d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-dragon",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab04",
+      "clauseKey": "unlimited-Griffon",
+      "tests": {
+        "t:e88d72be9c386a49": {
+          "title": "%s actual death can be declined without an automatic return",
+          "suite": [],
+          "declarationSha256": "4cdc72d484c301f952fb03a5dda6c09186ea777a10500acd6780b9b31cc932bd",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-griffin",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:0abc2e8f5076973d": {
+          "title": "%s actual death recovery cancellation consumes only its one attempt",
+          "suite": [],
+          "declarationSha256": "e4dd8f82907b09f6153f1bd82edbfea8e16a5d86069ed687716a6582d94a524d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-griffin",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:e1f6507bad121054": {
+          "title": "%s actual death recovery respects a live Vanmil ban before resolution",
+          "suite": [],
+          "declarationSha256": "7add9e997d5c7ee47d002f490a371a247600b2fda761638342e55d18f443d51d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-griffin",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Skeleton",
+      "tests": {
+        "t:a016cfb764cad811": {
+          "title": "%s actual death can be declined without an automatic return",
+          "suite": [],
+          "declarationSha256": "4cdc72d484c301f952fb03a5dda6c09186ea777a10500acd6780b9b31cc932bd",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-skeleton",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:a2712b5e240bc4d6": {
+          "title": "%s actual death recovery cancellation consumes only its one attempt",
+          "suite": [],
+          "declarationSha256": "e4dd8f82907b09f6153f1bd82edbfea8e16a5d86069ed687716a6582d94a524d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-skeleton",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:03ca3cfa387b0e2e": {
+          "title": "%s actual death recovery respects a live Vanmil ban before resolution",
+          "suite": [],
+          "declarationSha256": "7add9e997d5c7ee47d002f490a371a247600b2fda761638342e55d18f443d51d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-skeleton",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Zombie",
+      "tests": {
+        "t:5ae0f8bbf9b8a576": {
+          "title": "%s actual death can be declined without an automatic return",
+          "suite": [],
+          "declarationSha256": "4cdc72d484c301f952fb03a5dda6c09186ea777a10500acd6780b9b31cc932bd",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-zombie",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:3fbb040fd74613f1": {
+          "title": "%s actual death recovery cancellation consumes only its one attempt",
+          "suite": [],
+          "declarationSha256": "e4dd8f82907b09f6153f1bd82edbfea8e16a5d86069ed687716a6582d94a524d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-zombie",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:c590f9142527a337": {
+          "title": "%s actual death recovery respects a live Vanmil ban before resolution",
+          "suite": [],
+          "declarationSha256": "7add9e997d5c7ee47d002f490a371a247600b2fda761638342e55d18f443d51d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-zombie",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Wight",
+      "tests": {
+        "t:887cf43213090a9f": {
+          "title": "%s actual death can be declined without an automatic return",
+          "suite": [],
+          "declarationSha256": "4cdc72d484c301f952fb03a5dda6c09186ea777a10500acd6780b9b31cc932bd",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-wight",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:068fceecc71eef56": {
+          "title": "%s actual death recovery cancellation consumes only its one attempt",
+          "suite": [],
+          "declarationSha256": "e4dd8f82907b09f6153f1bd82edbfea8e16a5d86069ed687716a6582d94a524d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-wight",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:2091acd9ec0e7793": {
+          "title": "%s actual death recovery respects a live Vanmil ban before resolution",
+          "suite": [],
+          "declarationSha256": "7add9e997d5c7ee47d002f490a371a247600b2fda761638342e55d18f443d51d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-wight",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-DeathKnight",
+      "tests": {
+        "t:864e9b2df421d1cf": {
+          "title": "%s actual death can be declined without an automatic return",
+          "suite": [],
+          "declarationSha256": "4cdc72d484c301f952fb03a5dda6c09186ea777a10500acd6780b9b31cc932bd",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-knight",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:559d68ee554df0ed": {
+          "title": "%s actual death recovery cancellation consumes only its one attempt",
+          "suite": [],
+          "declarationSha256": "e4dd8f82907b09f6153f1bd82edbfea8e16a5d86069ed687716a6582d94a524d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-knight",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        },
+        "t:040d10038ed6e856": {
+          "title": "%s actual death recovery respects a live Vanmil ban before resolution",
+          "suite": [],
+          "declarationSha256": "7add9e997d5c7ee47d002f490a371a247600b2fda761638342e55d18f443d51d",
+          "path": "packages/engine/test/named-follower-death-cancel.test.ts",
+          "parameters": "reclaim-named-death-knight",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual follower death, explicit decline / actual Fate cancellation / actual live Vanmil declaration before recovery resolution. Save-load preserves no return; selected attempts remain consumed and base budget untouched. Engine 21 passed. Initial hand/character are fixture inputs."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1606 @@
+{
+  "config": {
+    "argv": [
+      "/Users/chinju/.nodenv/versions/22.18.0/bin/node",
+      "/Users/chinju/git/madou-senki/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/e2e/scenario-s01-http.spec.ts",
+      "tests/e2e/scenario-s01-s05.spec.ts",
+      "tests/e2e/scenario-s06-s10.spec.ts",
+      "tests/e2e/scenario-s07-prayer.spec.ts",
+      "tests/e2e/scenario-s09-s10-canonical.spec.ts",
+      "tests/e2e/scenario-s11-s12.spec.ts",
+      "tests/e2e/scenario-s14-s17.spec.ts",
+      "tests/e2e/scenario-reveal-boundary.spec.ts",
+      "tests/e2e/scenario-s18.spec.ts",
+      "tests/e2e/r6-scenarios.spec.ts",
+      "tests/e2e/scenario-s21-secrecy.spec.ts",
+      "tests/e2e/reclaim.spec.ts",
+      "tests/e2e/death-gift-physical.spec.ts",
+      "tests/e2e/scenario-s26.spec.ts",
+      "tests/e2e/scenario-s27.spec.ts",
+      "tests/e2e/lifecycle.spec.ts",
+      "tests/e2e/follower-entry.spec.ts",
+      "tests/e2e/scenario-s30.spec.ts",
+      "--workers=1",
+      "--grep",
+      "S01 authenticated HTTP snapshots match all four WebSocket priority views and reject outsiders|S01-S05 force retains priority paid cards and roll continuation across reload|S02 canceled C intervention returns parent priority to A across reload|S01-S05 cancel retains priority paid cards and roll continuation across reload|S01-S05 reroll retains priority paid cards and roll continuation across reload|S06-S10 s06 real defense continuation retains exact outcome across reload|S07 Lia reuses the same returned prayer on a later independent attack across browser reloads|S06-S10 s08 real defense continuation retains exact outcome across reload|S09 specified physical counter preserves target-local outcome across reload|S10 specified physical counter preserves target-local outcome across reload|S11 shared advance actual maai buttons preserve payment and final scope across reload|S12 three hits actual maai buttons preserve payment and final scope across reload|S14 follower start hides unavailable defense and permits legal continuation across reload|canonical-S15-before reveal timing and numeric zero remain correct after reload|canonical-S15-after reveal timing and numeric zero remain correct after reload|canonical-S16 reveal timing and numeric zero remain correct after reload|S17 reflection hides unavailable defense and permits legal continuation across reload|S18 actual Lester use retains the three-hit parent before resistance and between targets on reload|S18 saved actual ordinary failure resumes at C with B three hits canceled and no attacker stop|S20 exact saved minus3 minus2 failure and minus1 success resumes refill then a real normal draw and turn|S21 White Light5 damage6 alternate hidden worlds match HTTP and WS before hit and disclose no unused ability in DOM|S22 r6-s22 completes two OPEN in one refill and reloads the original declaration|S22 r6-s22-choice completes two OPEN in one refill and reloads the original declaration|S23 reload preserves exact three-card draw while natural exhaustion excludes the resolving book|S24 reclaim-extra chooses recovery printed=true and reloads its declaration|S24 reclaim-extra chooses recovery printed=false and reloads its declaration|S24 reclaim-unlimited chooses recovery printed=true and reloads its declaration|S24 reclaim-unlimited chooses recovery printed=false and reloads its declaration|S25 death-gift-good-ability-first actual death gift selectors privacy and independent abilities survive reload|S25 death-gift-good-printed-first actual death gift selectors privacy and independent abilities survive reload|S25 death-gift-evil-ability-first actual death gift selectors privacy and independent abilities survive reload|S25 death-gift-evil-printed-first actual death gift selectors privacy and independent abilities survive reload|S26 r6-s26-revive restores protected wanderer with five fresh cards and a newly placed follower|S26 r6-s26-return restores protected wanderer with five fresh cards and a newly placed follower|S27 actual chanted destruction of the last two people reloads simultaneous death and final all-dead draw|Lancelot can transform after passing the full Lia boundary without a raw reaction command|Uonos performs the ritual, selects subordinates and Arseil wins individually while play continues|S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card|S30 r6-s30-first excludes real away owner from Wish and Revelation and persists the chosen continuation|S30 r6-s30-second excludes real away owner from Wish and Revelation and persists the chosen continuation",
+      "--reporter=json"
+    ],
+    "configFile": "/Users/chinju/git/madou-senki/playwright.config.ts",
+    "rootDir": "/Users/chinju/git/madou-senki/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/chinju/git/madou-senki/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/chinju/git/madou-senki/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm --filter @madou/web build && pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --local --config test/wrangler.e2e.jsonc --persist-to ../../.cache/e2e-state && pnpm --filter @madou/worker exec wrangler dev --config test/wrangler.e2e.jsonc --port 8787 --persist-to ../../.cache/e2e-state",
+      "url": "http://localhost:8787",
+      "reuseExistingServer": false,
+      "timeout": 60000,
+      "env": {
+        "WRANGLER_SEND_METRICS": "false",
+        "WRANGLER_LOG_PATH": "/Users/chinju/git/madou-senki/.cache/wrangler/logs",
+        "WRANGLER_REGISTRY_PATH": "/Users/chinju/git/madou-senki/.cache/wrangler/registry"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "death-gift-physical.spec.ts",
+      "file": "death-gift-physical.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S25 death-gift-good-ability-first actual death gift selectors privacy and independent abilities survive reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4008,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:25:52.020Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8703fab262bbbd4dae8f-4bf77b4f2536e8e37372",
+          "file": "death-gift-physical.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "S25 death-gift-good-printed-first actual death gift selectors privacy and independent abilities survive reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4045,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:25:56.131Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8703fab262bbbd4dae8f-87516c2b9bf4de2c0b5c",
+          "file": "death-gift-physical.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "S25 death-gift-evil-ability-first actual death gift selectors privacy and independent abilities survive reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4016,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:00.183Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8703fab262bbbd4dae8f-bdd80b5dbed81531d8b0",
+          "file": "death-gift-physical.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "S25 death-gift-evil-printed-first actual death gift selectors privacy and independent abilities survive reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4069,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:04.204Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8703fab262bbbd4dae8f-7d1bcd8e97a74028908b",
+          "file": "death-gift-physical.spec.ts",
+          "line": 23,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "follower-entry.spec.ts",
+      "file": "follower-entry.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6048,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:08.286Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b9f41a13b6003787490-e446c344b60229a44501",
+          "file": "follower-entry.spec.ts",
+          "line": 50,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "lifecycle.spec.ts",
+      "file": "lifecycle.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Lancelot can transform after passing the full Lia boundary without a raw reaction command",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2946,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:14.347Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1f1785dee40219527314-2d4ab22e0a9b0c7fe2ca",
+          "file": "lifecycle.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "Uonos performs the ritual, selects subordinates and Arseil wins individually while play continues",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5066,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:17.298Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1f1785dee40219527314-e1a6758ce48f3be95e47",
+          "file": "lifecycle.spec.ts",
+          "line": 158,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "r6-scenarios.spec.ts",
+      "file": "r6-scenarios.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S20 exact saved minus3 minus2 failure and minus1 success resumes refill then a real normal draw and turn",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2061,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:22.375Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c746a8e36cffd15554e7-f991d949cc87b52b4d29",
+          "file": "r6-scenarios.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "S22 r6-s22 completes two OPEN in one refill and reloads the original declaration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:24.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c746a8e36cffd15554e7-d58c96f67b9d5af600b0",
+          "file": "r6-scenarios.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "S22 r6-s22-choice completes two OPEN in one refill and reloads the original declaration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3076,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:28.512Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c746a8e36cffd15554e7-6809cfd54741001a3f35",
+          "file": "r6-scenarios.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "S23 reload preserves exact three-card draw while natural exhaustion excludes the resolving book",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2405,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:31.594Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c746a8e36cffd15554e7-cf56e57759aed46f7d7d",
+          "file": "r6-scenarios.spec.ts",
+          "line": 9,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reclaim.spec.ts",
+      "file": "reclaim.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S24 reclaim-extra chooses recovery printed=true and reloads its declaration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:34.013Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "61c609fe9fb160c2912d-fca7a4a9914c425305d8",
+          "file": "reclaim.spec.ts",
+          "line": 344,
+          "column": 1
+        },
+        {
+          "title": "S24 reclaim-extra chooses recovery printed=false and reloads its declaration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6070,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:40.654Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "61c609fe9fb160c2912d-0ab5b65a91e49d923d5c",
+          "file": "reclaim.spec.ts",
+          "line": 345,
+          "column": 1
+        },
+        {
+          "title": "S24 reclaim-unlimited chooses recovery printed=true and reloads its declaration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6573,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:46.730Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "61c609fe9fb160c2912d-a9cbdef677a3b0658636",
+          "file": "reclaim.spec.ts",
+          "line": 346,
+          "column": 1
+        },
+        {
+          "title": "S24 reclaim-unlimited chooses recovery printed=false and reloads its declaration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6107,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:53.309Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "61c609fe9fb160c2912d-291bc4cdc8fcf0a57ffc",
+          "file": "reclaim.spec.ts",
+          "line": 347,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-reveal-boundary.spec.ts",
+      "file": "scenario-reveal-boundary.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "canonical-S15-before reveal timing and numeric zero remain correct after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2108,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:26:59.427Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d5360f3e69ebdae23e8-72f249e2656156c823ec",
+          "file": "scenario-reveal-boundary.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "canonical-S15-after reveal timing and numeric zero remain correct after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3759,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:01.540Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d5360f3e69ebdae23e8-5fdaa9a4340d950b443a",
+          "file": "scenario-reveal-boundary.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "canonical-S16 reveal timing and numeric zero remain correct after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4187,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:05.304Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d5360f3e69ebdae23e8-ea0b8bbeb192ff6885b1",
+          "file": "scenario-reveal-boundary.spec.ts",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s01-http.spec.ts",
+      "file": "scenario-s01-http.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S01 authenticated HTTP snapshots match all four WebSocket priority views and reject outsiders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1780,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:09.501Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd85bf3689e00662d5d5-d18e69288e845d53b3c8",
+          "file": "scenario-s01-http.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s01-s05.spec.ts",
+      "file": "scenario-s01-s05.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S01-S05 force retains priority paid cards and roll continuation across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5590,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:11.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73da965f9c62c21c33df-44919dbc2aaff9751e27",
+          "file": "scenario-s01-s05.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "S01-S05 cancel retains priority paid cards and roll continuation across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5141,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:16.885Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73da965f9c62c21c33df-bf4e9f67c2232878ed3d",
+          "file": "scenario-s01-s05.spec.ts",
+          "line": 9,
+          "column": 1
+        },
+        {
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4074,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:22.031Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73da965f9c62c21c33df-14266eb0b2cf46a08917",
+          "file": "scenario-s01-s05.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "S02 canceled C intervention returns parent priority to A across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3813,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:26.110Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73da965f9c62c21c33df-472f20c2cd396ab26269",
+          "file": "scenario-s01-s05.spec.ts",
+          "line": 11,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s06-s10.spec.ts",
+      "file": "scenario-s06-s10.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S06-S10 s06 real defense continuation retains exact outcome across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3573,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:29.932Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5bde730d3f225110fd28-5f4d1a28dc10fb8585b6",
+          "file": "scenario-s06-s10.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "S06-S10 s08 real defense continuation retains exact outcome across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6690,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:33.511Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5bde730d3f225110fd28-eae3467de524d0d47536",
+          "file": "scenario-s06-s10.spec.ts",
+          "line": 12,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s07-prayer.spec.ts",
+      "file": "scenario-s07-prayer.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S07 Lia reuses the same returned prayer on a later independent attack across browser reloads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14389,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:40.210Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0b7e8f83c5b0c4d35b5b-49dbbce9127f3cbbc92e",
+          "file": "scenario-s07-prayer.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s09-s10-canonical.spec.ts",
+      "file": "scenario-s09-s10-canonical.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S09 specified physical counter preserves target-local outcome across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7613,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:27:54.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3e803ff32952b785aa57-7cd3b4418de07b55bb01",
+          "file": "scenario-s09-s10-canonical.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "S10 specified physical counter preserves target-local outcome across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5717,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:02.229Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3e803ff32952b785aa57-8761853561598ed1d795",
+          "file": "scenario-s09-s10-canonical.spec.ts",
+          "line": 18,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s11-s12.spec.ts",
+      "file": "scenario-s11-s12.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S11 shared advance actual maai buttons preserve payment and final scope across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8213,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:07.957Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3e4adc2c76b206362186-8be8de89fe560f4a40ff",
+          "file": "scenario-s11-s12.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "S12 three hits actual maai buttons preserve payment and final scope across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5526,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:16.177Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3e4adc2c76b206362186-f24813c43d92b7ce2920",
+          "file": "scenario-s11-s12.spec.ts",
+          "line": 13,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s14-s17.spec.ts",
+      "file": "scenario-s14-s17.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S14 follower start hides unavailable defense and permits legal continuation across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7744,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:21.711Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "be2432afd4120dffd80e-95400a8cb56d6d819165",
+          "file": "scenario-s14-s17.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "S17 reflection hides unavailable defense and permits legal continuation across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6052,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:29.460Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "be2432afd4120dffd80e-d4b9b79867cbe0711fa6",
+          "file": "scenario-s14-s17.spec.ts",
+          "line": 12,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s18.spec.ts",
+      "file": "scenario-s18.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S18 actual Lester use retains the three-hit parent before resistance and between targets on reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:35.522Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4823c668028d0ed1474d-0ad04d8dcb9fc7e9b313",
+          "file": "scenario-s18.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "S18 saved actual ordinary failure resumes at C with B three hits canceled and no attacker stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5524,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:42.725Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4823c668028d0ed1474d-36683f30c638f5dcc6d6",
+          "file": "scenario-s18.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s21-secrecy.spec.ts",
+      "file": "scenario-s21-secrecy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S21 White Light5 damage6 alternate hidden worlds match HTTP and WS before hit and disclose no unused ability in DOM",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:48.257Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a057ac8b25732e4bcab3-2d3890125f2357d08075",
+          "file": "scenario-s21-secrecy.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s26.spec.ts",
+      "file": "scenario-s26.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S26 r6-s26-revive restores protected wanderer with five fresh cards and a newly placed follower",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3200,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:56.732Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dbbf74c9fbf1fd762798-1f8a28fcc8889ff3c9d5",
+          "file": "scenario-s26.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "S26 r6-s26-return restores protected wanderer with five fresh cards and a newly placed follower",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2054,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:28:59.937Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dbbf74c9fbf1fd762798-b664cd36b1ac841602d8",
+          "file": "scenario-s26.spec.ts",
+          "line": 9,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s27.spec.ts",
+      "file": "scenario-s27.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S27 actual chanted destruction of the last two people reloads simultaneous death and final all-dead draw",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3741,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:29:02.000Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "71f6dd53ea7ae4c07b58-9c2b03c77bdb835d9d67",
+          "file": "scenario-s27.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "scenario-s30.spec.ts",
+      "file": "scenario-s30.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S30 r6-s30-first excludes real away owner from Wish and Revelation and persists the chosen continuation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:29:05.750Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3562e602fdde229403f9-e0cc583aa1c02ff6920a",
+          "file": "scenario-s30.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "S30 r6-s30-second excludes real away owner from Wish and Revelation and persists the chosen continuation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2860,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T07:29:08.390Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3562e602fdde229403f9-bd1d918ecaf94961d8b7",
+          "file": "scenario-s30.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-10T07:25:48.407Z",
+    "duration": 203259.346,
+    "expected": 40,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

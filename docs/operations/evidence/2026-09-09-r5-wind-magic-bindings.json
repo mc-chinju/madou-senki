@@ -1,0 +1,159 @@
+{
+  "task": "R5 Task11 other133: Wind Arrow, Magic Wind and Lightning Run physical modes",
+  "status": "three-wind-magic-card-bindings-integrated-other130-open",
+  "completedAt": "2026-09-09 12:23 JST",
+  "implementation": "No production changes. Actual-command fixture,39 Engine cases,6 DO cases and6 browser modes.",
+  "canonicalEvidence": [
+    "Wind Arrow a2-p14-r3c3 ordinary magic/far/use4/effect4/damage4; Magic Wind a2-p15-r1c1 use5/effect5/damage4; Lightning Run a2-p15-r1c2 use5/effect5/damage7. All魔風/noCHANT. Elected Tia effect5/6/6, damage7/7/10, noChecks and selected all. Actual use-minus1/exact-use gives ordinary check1/0 versus dedicated0; unselected D0 and one source disposal.",
+    "All6 real attacks permit one maai for B only, leaving dedicated C damage. Actual Evade is allowed for Wind Arrow, refused with ILLEGAL_DEFENSE for ordinary and dedicated Magic Wind/Lightning Run; rejected Evade remains in B hand. Actual initial Soldier HP1 reduces damage and disposes once.",
+    "All6 actual Fate cancellation, base reclaim and full subsequent turns lead to same physical source reuse with original elected/ordinary values. Canceled damage0, one returned source, named base budget spent once and final source disposed once.",
+    "All6 actual Gil Silence and failed66 plus full intervening turns lead to SILENCED even for dedicated magic. Foreign dedicated owner, ordinary multiple targets, CHANT and unsupported variant preserve raw/all views on refusal. Every fixture/Engine act checks JSON/220.",
+    "DO6 individually save/evict/replay every attack/pass/accepted Evade. Magic Wind/Lightning Run attempted Evade returns INVALID_ACTION and entire stored snapshot remains unchanged. Final B/C damage and source/Evade disposition persist.",
+    "Browser6 actual hand/dedicated/target selection and reloads. Wind Arrow has actual Evade submission; other two cards have no Evade option. Printed elected damage/effect and final target-specific damage are checked."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p14-r3c3::semantic/ordinary/school",
+      "a2-p14-r3c3::semantic/ordinary/range",
+      "a2-p14-r3c3::semantic/ordinary/use-level",
+      "a2-p14-r3c3::semantic/ordinary/base-effect-level",
+      "a2-p14-r3c3::semantic/ordinary/damage",
+      "a2-p14-r3c3::semantic/ordinary/attribute-0",
+      "a2-p14-r3c3::semantic/ordinary/attribute-1",
+      "a2-p14-r3c3::semantic/ordinary/attack-use",
+      "a2-p14-r3c3::semantic/dedicated/0/select-optional",
+      "a2-p14-r3c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p14-r3c3::semantic/dedicated/0/effect-replacement",
+      "a2-p14-r3c3::semantic/dedicated/0/damage-replacement",
+      "a2-p14-r3c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p14-r3c3::semantic/dedicated/0/chant-retain",
+      "a2-p14-r3c3::semantic/dedicated/0/target-subset",
+      "a2-p14-r3c3::semantic/ordinary/no-extra-effects",
+      "a2-p15-r1c1::semantic/ordinary/school",
+      "a2-p15-r1c1::semantic/ordinary/range",
+      "a2-p15-r1c1::semantic/ordinary/use-level",
+      "a2-p15-r1c1::semantic/ordinary/base-effect-level",
+      "a2-p15-r1c1::semantic/ordinary/damage",
+      "a2-p15-r1c1::semantic/ordinary/attribute-0",
+      "a2-p15-r1c1::semantic/ordinary/attribute-1",
+      "a2-p15-r1c1::semantic/ordinary/attack-use",
+      "a2-p15-r1c1::semantic/dedicated/0/select-optional",
+      "a2-p15-r1c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p15-r1c1::semantic/dedicated/0/effect-replacement",
+      "a2-p15-r1c1::semantic/dedicated/0/damage-replacement",
+      "a2-p15-r1c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p15-r1c1::semantic/dedicated/0/chant-retain",
+      "a2-p15-r1c1::semantic/dedicated/0/target-subset",
+      "a2-p15-r1c1::semantic/ordinary/no-evade",
+      "a2-p15-r1c2::semantic/ordinary/school",
+      "a2-p15-r1c2::semantic/ordinary/range",
+      "a2-p15-r1c2::semantic/ordinary/use-level",
+      "a2-p15-r1c2::semantic/ordinary/base-effect-level",
+      "a2-p15-r1c2::semantic/ordinary/damage",
+      "a2-p15-r1c2::semantic/ordinary/attribute-0",
+      "a2-p15-r1c2::semantic/ordinary/attribute-1",
+      "a2-p15-r1c2::semantic/ordinary/attack-use",
+      "a2-p15-r1c2::semantic/dedicated/0/select-optional",
+      "a2-p15-r1c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p15-r1c2::semantic/dedicated/0/effect-replacement",
+      "a2-p15-r1c2::semantic/dedicated/0/damage-replacement",
+      "a2-p15-r1c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p15-r1c2::semantic/dedicated/0/chant-retain",
+      "a2-p15-r1c2::semantic/dedicated/0/target-subset",
+      "a2-p15-r1c2::semantic/ordinary/no-evade"
+    ],
+    "mainProducerRebindings": [
+      "a2-p14-r3c3::main-producer",
+      "a2-p15-r1c1::main-producer",
+      "a2-p15-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:58437fcf984e6dbd",
+      "t:0c79f37848f4234c",
+      "t:44c3f368d7a39015",
+      "t:b69a7ef522b89204",
+      "t:080386319c9e1a35",
+      "t:28744cbe5bb6034b",
+      "t:7c35970a8528eec3",
+      "t:f182e4b6ffecd96c",
+      "t:6764d6db0a4829f9",
+      "t:ce7068480113e219",
+      "t:90c440d75896ee16",
+      "t:4af85fd945758db4",
+      "t:de89640f982583e1",
+      "t:8ca92a875c7459f6",
+      "t:ec91ccd5e21bfaf2",
+      "t:41b007fa58ea69cf",
+      "t:7c6ec6ec0558e369",
+      "t:f3a03e205eea4319",
+      "t:da8ac03c447632ee",
+      "t:b198e9376ad35ab7",
+      "t:3b484667fabcd922",
+      "t:69c28d15081c6212",
+      "t:8884a966252c48d7",
+      "t:83ece9fb74efcf48",
+      "t:5dc2dcb3a46a4054",
+      "t:2911c0e960d263fb",
+      "t:6081f63dd44f94aa",
+      "t:22600ac504bc1d48",
+      "t:ab641071ccb03cd4",
+      "t:8d6a0a91e868b3a9",
+      "t:edf3699e12562e50",
+      "t:eedfbe078eca7f11",
+      "t:5df873d0a5ca7b5b",
+      "t:acab4217961b5b2c",
+      "t:589109a6c2f2595c",
+      "t:496c138b9d17485f",
+      "t:7fa78d60455735b2",
+      "t:0ec950a37368dfbd",
+      "t:86549d05681a5432"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/wind-magic-physical.test.ts",
+      "passed": 39,
+      "log": "/tmp/madou-wind-magic-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7c-magic-techniques.test.ts -t '風矢|魔風|雷走'",
+      "passed": 9,
+      "skipped": 90,
+      "log": "/tmp/madou-wind-magic-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-wind-magic.test.ts",
+      "cwd": "apps/worker",
+      "passed": 6,
+      "log": "/tmp/madou-wind-magic-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/wind-magic.spec.ts",
+      "passed": 6,
+      "log": "/tmp/madou-wind-magic-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-wind-magic-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10797,
+        "implemented": 1315
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "65/195 action-card per-entry semantic/main bindings integrated; other130 and whole-goal gates open. No accepted promotion."
+}

@@ -1,0 +1,96 @@
+{
+  "task": "R5 Task11 other158: physical Ice Mirror a2-p12-r3c2",
+  "status": "aiel-dedicated-and-relative-limit-fixed-ice-bindings-integrated-other157-open",
+  "completedAt": "2026-09-09 10:41 JST",
+  "implementation": [
+    "Added Ice Mirror Aiel-only dedicated eligibility. Selected Aiel has noChecks and warrior block at its effectLv, retaining magic reflection. Ordinary source still cannot block warrior.",
+    "Added source-relative magic offset0 and optional warrior offset0. freezeRelativeDefenseLimits changes only declared relative school limits, preserving ordinary warrior sentinel-1 and existing fixed God King upper limit6.",
+    "Adjusted existing composite Mirror regression test to await actual parent damage window after Prayer disposal before asserting frozen limits.",
+    "New shared fixture initially allocates Aiel magic5/spirit6, ice/prayer and C Fate, then actual setup/start/printed level6 Flame Dance or warrior bow. Above-limit magic is actual Prayer1 on that Flame Dance; warrior above-limit is actual level8 near technique from coherent initial near distance."
+  ],
+  "canonicalEvidence": [
+    "Ordinary Ice Mirror at magic5 makes one actual excess-level check; dedicated Aiel makes none. Both retain magic6, range-none, effect6, null damage, magic/counter attributes and no chant; Flame Dance damage5 reflects to original attacker only.",
+    "Ordinary refuses actual warrior6; dedicated Aiel blocks it without returned damage. Foreign dedicated owner rejects unchanged.",
+    "Actual Prayer2 on ordinary/dedicated defense produces effect8/magic-limit8, with warrior-limit-1 ordinary or8 dedicated. UseLv6 stays fixed; reflected original damage5 is unchanged.",
+    "Above6 actual incoming magic/warrior rejects before payment; actual failed check and Fate cancellation keep paid ice and original damage5. Own-turn attack/follower-start/actual counter-prohibited Lester poem reject unchanged.",
+    "Every accepted Engine step verifies JSON continuation and220 unique physical IDs; refusal checks full state and all views. DO3 each-command persistence/eviction/same-receipt replay includes actual Prayer2 and frozen relative limits. Foreign views omit Aiel identity.",
+    "Browser3 actual source selection and dedicated checkbox reload declaration and final result. Ordinary uses live dice; saved check decides reflect or incoming damage. Dedicated reflects magic and blocks warrior with no check.",
+    "Existing actual S17 reflection chain and composite Mirror/fixed God King regressions pass in the focused run. Formal shared/ruling acceptance remains open."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p12-r3c2::semantic/ordinary/school",
+      "a2-p12-r3c2::semantic/ordinary/range",
+      "a2-p12-r3c2::semantic/ordinary/use-level",
+      "a2-p12-r3c2::semantic/ordinary/base-effect-level",
+      "a2-p12-r3c2::semantic/ordinary/damage",
+      "a2-p12-r3c2::semantic/ordinary/attribute-0",
+      "a2-p12-r3c2::semantic/ordinary/attribute-1",
+      "a2-p12-r3c2::semantic/ordinary/defense-only",
+      "a2-p12-r3c2::semantic/ordinary/counter-capable",
+      "a2-p12-r3c2::semantic/dedicated/0/select-optional",
+      "a2-p12-r3c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p12-r3c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p12-r3c2::semantic/dedicated/0/chant-retain",
+      "a2-p12-r3c2::semantic/ordinary/no-warrior",
+      "a2-p12-r3c2::semantic/ordinary/reflect-magic-at-effect",
+      "a2-p12-r3c2::semantic/dedicated/block-warrior-at-effect",
+      "a2-p12-r3c2::semantic/dedicated/retain-magic-reflection"
+    ],
+    "mainProducerRebindings": [
+      "a2-p12-r3c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:e7e19d3467cc7759",
+      "t:30f53af7ca586174",
+      "t:c1fe59176f2b3498",
+      "t:8aeb22dc070bb9e0",
+      "t:03cb4f80bb8be769",
+      "t:e73743fe0a6f1497",
+      "t:da14bf7dedf35c30",
+      "t:cc929c2fe3a6e2a4",
+      "t:bfef09b8243771c6"
+    ],
+    "rows": 12112,
+    "pending": 11250,
+    "implemented": 862,
+    "acceptedPromotions": 0,
+    "remaining": "Candidate-bound execution/acceptance receipts and shared/ruling dependencies remain pending."
+  },
+  "verification": {
+    "red": {
+      "productionFailures": 4,
+      "note": "Three missing dedicated acceptance paths and ordinary Prayer relative limit reproduced. Retained final RED log has5 failures/3passes; fifth was an incorrect above-limit fixture assumption, corrected to actual boosted Flame Dance. Initial6-failure run also had spirit20 unsuitable for forced66 check failure; fixture now spirit6.",
+      "log": "/tmp/madou-ice-mirror-red.log"
+    },
+    "engine": {
+      "passed": 26,
+      "newCases": 9,
+      "files": [
+        "ice-mirror-physical.test.ts",
+        "scenario-s14-s17.test.ts",
+        "task7i-fix1.test.ts"
+      ],
+      "log": "/tmp/madou-ice-mirror-engine.log"
+    },
+    "worker": {
+      "passed": 3,
+      "file": "room-ice-mirror.test.ts",
+      "log": "/tmp/madou-ice-mirror-do.log"
+    },
+    "browser": {
+      "passed": 3,
+      "file": "ice-mirror.spec.ts",
+      "log": "/tmp/madou-ice-mirror-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-ice-mirror-types.log"
+    },
+    "validator": {
+      "valid": true,
+      "log": "/tmp/madou-ice-mirror-ledger.log"
+    }
+  },
+  "remaining": "38/195 action-card per-entry semantic/main bindings integrated; other157 and whole-goal gates remain open. No accepted promotion."
+}

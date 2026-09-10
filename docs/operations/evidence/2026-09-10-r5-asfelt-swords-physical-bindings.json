@@ -1,0 +1,192 @@
+{
+  "task": "R5 Task11 Other195 Asfelt three physical swords",
+  "status": "asfelt-swords-physical-bindings-integrated-other30-open",
+  "completedAt": "2026-09-10 07:17 JST",
+  "implementation": "No production change.57 semantic rows implemented and3 main producers rebound.",
+  "canonicalEvidence": [
+    "風斬剣a2-p08-r1c3/雷斬剣p08r2c1/裂風斬p08r2c2の19/17/21用途条項、計57＋既存main3証跡を対応。実初期deal/setup/STARTから通常遠戦剣風use/effect4・5・6、damage6・7・8、選択したアスフェルト専用effect6・7・8、damage12・14・16を確認。通常アスフェルトは自動専用化しない。実砦Lv3/HP2を通したdamageはHP無視の風斬6/裂風8・通常雷斬5、専用では12/16/12。実水竜Lv7は士気成功後に風斬専用Lv6を防いで残り、雷斬専用Lv7とは相殺して本体0・破壊、裂風専用Lv8は士気前に破壊して本体16。実メタルゴーレムLv6/HP5は風斬専用と相殺0、雷斬専用では本体9、裂風専用では破壊して16。Cのsetup実補充で祝福を開き、水竜snapshot levels[8]・level-destroyed・士気なしを確認、効果Lv8との同値でも全3対象へ16damage。従者HP無視は従者Lv防御を省略しない。通常不足1Lvの精神6判定は出目6成功/7失敗、専用戦士0/精神0は全使用チェック省略。実進撃後の近距離、1/2/全3対象選択、実公開同陣営拒否、実混乱/沈黙で印刷戦士専用使用可、実催眠/回復失敗で手番飛ばしを確認。通常/専用とも風斬・裂風は間合い2枚、雷斬は1枚、未完の1枚なら被弾、十分な枚数なら従者を非公開のまま保持して回避。見切るは風斬のみ可能で雷斬/裂風は支払い前拒否。実命運取消は対象/従者不変・元札1回処分、不使用/誤所有者/誤時機/偽対象/CHANT/REST/turn/再使用は原子拒否または手札保持。Engine22登録（各card parameterの試験内で複数の実mode経路）/関連18/DO24全コマンド保存再起動再送/代表browser18各札guard・専用・全対象・間合い・見切る・取消/型3回/ledger成功。semantic57だけimplemented増、main3再binding、accepted0昇格。",
+    "本番変更なし。Engine初回20成功/風斬・雷斬のmatrix2失敗は水竜の正規士気1回を総roll数に含めていなかった期待値不足。該当2ケースを修正して成功。祝福境界の観測追加時は完了後に破棄済みのgroupを参照して1失敗、解決中のsnapshotでLv8・破壊outcome・士気なしを観測するよう直し当該1ケース成功。既存の他19登録ケースは初回成功を維持、現行unique22成功。DO初回19成功/5件15秒timeout（雷斬evade、裂風dedicated/all/maai/evade）は同じ5件を無変更で再実行して成功。制限時間は変更せず時間要因の恒久解消は主張しない。browserでは水竜の実ランダム士気成否をC本人viewから観測し、失敗時の本体被弾/従者処分もその実結果に従って検証する。",
+    "All accepted Engine commands prove JSON replay and220 unique physical cards; refusals compare whole state/all4 views. The22 AST cases include7 parameterized cases per exact card plus Rending blessed-level boundary. DO24 are8 scenarios per card; UI18 are6 representative scenarios per card, not every Engine internal branch. Shared actual follower level above8 producer, post-entry level changes, owner/target lifetime and other ability crossings remain unmeasured."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/asfelt-swords-physical.test.ts",
+      "initial": {
+        "passed": 20,
+        "failed": 2,
+        "log": "/tmp/madou-asfelt-swords-engine.log"
+      },
+      "moraleFix": {
+        "command": "pnpm exec vitest run packages/engine/test/asfelt-swords-physical.test.ts -t 'wind actual initial|thunder actual initial'",
+        "passed": 2,
+        "log": "/tmp/madou-asfelt-swords-engine-morale-fix.log"
+      },
+      "boundaryObservation": {
+        "initialFailed": 1,
+        "initialLog": "/tmp/madou-asfelt-swords-engine-blessing.log",
+        "command": "pnpm exec vitest run packages/engine/test/asfelt-swords-physical.test.ts -t 'Rending actual first-refill'",
+        "passed": 1,
+        "log": "/tmp/madou-asfelt-swords-engine-blessing-fix.log"
+      },
+      "currentUniquePassed": 22
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/techniques.test.ts -t '風斬剣|雷斬剣|裂風斬|follower HP bypass|shares each attacker advance'",
+      "passed": 18,
+      "firstAttempt": true,
+      "log": "/tmp/madou-asfelt-swords-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-asfelt-swords-physical.test.ts",
+      "initial": {
+        "passed": 19,
+        "failed": 5,
+        "log": "/tmp/madou-asfelt-swords-do.log"
+      },
+      "unchangedRetry": {
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-asfelt-swords-physical.test.ts -t 'asfelt-thunder-evade |asfelt-rend-(dedicated|all|maai|evade) '",
+        "passed": 5,
+        "log": "/tmp/madou-asfelt-swords-do-retry.log"
+      },
+      "uniquePassed": 24
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/asfelt-swords-physical.spec.ts",
+      "passed": 18,
+      "firstAttempt": true,
+      "log": "/tmp/madou-asfelt-swords-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-asfelt-swords-types-boundary.log",
+      "priorPasses": [
+        "/tmp/madou-asfelt-swords-types.log",
+        "/tmp/madou-asfelt-swords-types-transport.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8881,
+        "implemented": 3231
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p08-r1c3::semantic/ordinary/school",
+      "a2-p08-r1c3::semantic/ordinary/range",
+      "a2-p08-r1c3::semantic/ordinary/use-level",
+      "a2-p08-r1c3::semantic/ordinary/base-effect-level",
+      "a2-p08-r1c3::semantic/ordinary/damage",
+      "a2-p08-r1c3::semantic/ordinary/attribute-0",
+      "a2-p08-r1c3::semantic/ordinary/attribute-1",
+      "a2-p08-r1c3::semantic/ordinary/attribute-2",
+      "a2-p08-r1c3::semantic/ordinary/attack-use",
+      "a2-p08-r1c3::semantic/dedicated/0/select-optional",
+      "a2-p08-r1c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p08-r1c3::semantic/dedicated/0/effect-replacement",
+      "a2-p08-r1c3::semantic/dedicated/0/damage-replacement",
+      "a2-p08-r1c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p08-r1c3::semantic/dedicated/0/chant-retain",
+      "a2-p08-r1c3::semantic/dedicated/0/target-subset",
+      "a2-p08-r1c3::semantic/ordinary/maai-extra-one",
+      "a2-p08-r1c3::semantic/ordinary/ignore-follower-hp",
+      "a2-p08-r1c3::semantic/ordinary/retain-follower-level",
+      "a2-p08-r2c1::semantic/ordinary/school",
+      "a2-p08-r2c1::semantic/ordinary/range",
+      "a2-p08-r2c1::semantic/ordinary/use-level",
+      "a2-p08-r2c1::semantic/ordinary/base-effect-level",
+      "a2-p08-r2c1::semantic/ordinary/damage",
+      "a2-p08-r2c1::semantic/ordinary/attribute-0",
+      "a2-p08-r2c1::semantic/ordinary/attribute-1",
+      "a2-p08-r2c1::semantic/ordinary/attribute-2",
+      "a2-p08-r2c1::semantic/ordinary/attack-use",
+      "a2-p08-r2c1::semantic/dedicated/0/select-optional",
+      "a2-p08-r2c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p08-r2c1::semantic/dedicated/0/effect-replacement",
+      "a2-p08-r2c1::semantic/dedicated/0/damage-replacement",
+      "a2-p08-r2c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p08-r2c1::semantic/dedicated/0/chant-retain",
+      "a2-p08-r2c1::semantic/dedicated/0/target-subset",
+      "a2-p08-r2c1::semantic/ordinary/no-evade",
+      "a2-p08-r2c2::semantic/ordinary/school",
+      "a2-p08-r2c2::semantic/ordinary/range",
+      "a2-p08-r2c2::semantic/ordinary/use-level",
+      "a2-p08-r2c2::semantic/ordinary/base-effect-level",
+      "a2-p08-r2c2::semantic/ordinary/damage",
+      "a2-p08-r2c2::semantic/ordinary/attribute-0",
+      "a2-p08-r2c2::semantic/ordinary/attribute-1",
+      "a2-p08-r2c2::semantic/ordinary/attribute-2",
+      "a2-p08-r2c2::semantic/ordinary/attack-use",
+      "a2-p08-r2c2::semantic/dedicated/0/select-optional",
+      "a2-p08-r2c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p08-r2c2::semantic/dedicated/0/effect-replacement",
+      "a2-p08-r2c2::semantic/dedicated/0/damage-replacement",
+      "a2-p08-r2c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p08-r2c2::semantic/dedicated/0/chant-retain",
+      "a2-p08-r2c2::semantic/dedicated/0/target-subset",
+      "a2-p08-r2c2::semantic/ordinary/no-evade",
+      "a2-p08-r2c2::semantic/ordinary/maai-extra-one",
+      "a2-p08-r2c2::semantic/ordinary/ignore-follower-hp",
+      "a2-p08-r2c2::semantic/ordinary/retain-follower-level",
+      "a2-p08-r2c2::semantic/dedicated/destroy-at-effect-level"
+    ],
+    "mainProducerBindings": [
+      "a2-p08-r1c3::main-producer",
+      "a2-p08-r2c1::main-producer",
+      "a2-p08-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:f488b2ca11f90ec3",
+      "t:26b4519971ac6114",
+      "t:676c37093e35bddf",
+      "t:e23ce740ca734bca",
+      "t:a62315cd187a7f42",
+      "t:32be4f67894c7ee2",
+      "t:4f1dabffe78a3bb2",
+      "t:17cbf30d1bf14e87",
+      "t:2b3b07eb6331ea27",
+      "t:54e56aa2b54392d7",
+      "t:d10fc4fecc84c388",
+      "t:09e436ea985dbb72",
+      "t:cef1366f9dcf83d6",
+      "t:9867831e215613bd",
+      "t:c09a0aa18f795ebe",
+      "t:aaddd17b51500ec8",
+      "t:eeddba5825417c6f",
+      "t:a58f2a621e07e5e4",
+      "t:ae602271b7ea096b",
+      "t:4737ce5f84320de2",
+      "t:03d18c42e4b14b1a",
+      "t:1d2fc6b68294b907"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 189
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 165
+    }
+  },
+  "remaining": "Other30, AppendixSword1 and shared/candidate receipts, strictA31 and whole-goal gates remain. Noacceptedpromotion."
+}

@@ -1,0 +1,116 @@
+{
+  "task": "R5 Task11 Peace a2-p02-r1c1",
+  "status": "peace-physical-bindings-integrated-other41-open",
+  "completedAt": "2026-09-10 02:36 JST",
+  "implementation": "Fix acceptInformationAnytime to consider live target ability frames when binding current-action expiry. Actual Ida own-action ability previously incorrectly got next-own-action expiry. Five semantic clauses and pending main producer bind19 canonical cases, six newly implemented rows.",
+  "canonicalEvidence": [
+    "Actual GOOD D uses Peace on another player, replaces spirit base with12 then retains permanent signed additions -3/0/2. Other stats, user stats and hidden identity unchanged. Actual Blood acquired later increases14 to15, survives Peace expiry. Actual Dawn plus optional deck Wish reacquire the same discarded physical Peace; repeated use stays14, not additive24. Immediate replacement draw and one physical discard retained.",
+    "Actual next own Bow, PASS_ACTION, CHANT expire at main action end. SecretBook is nonmain and retains replacement until subsequent pass. Current Bow and actual generated counter retain through whole enclosing chain. Current own Ida ability is regression for production fix; current defensive Dia mental ability also binds enclosing attack. Passive incoming recipient with no own action keeps next-own-action expiry after damage4, until own pass. Actual excess-level check before-roll uses14, after-roll preserves already frozen threshold; ending chain restores original spirit. Public expiry timing all4views and real browser panels/reloads.",
+    "Actual Fate canceled Peace keeps immediate refill and original phase, creates no replacement or expiry. EVIL owner excluded; self/foreign/stale/malformed commands reject exact state/all4views. Optional decline leaves cardunspent. Engine19 unique canonical cases JSON reexecution220IDs; DO15 everyacceptedcommand save/restart/replay; browser15 actual setup/action/ability/Peace/counter/check/Fate/Dawn/Wish/turn controls and reload. Shared/candidate receipts remain pending, no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/peace-physical.test.ts",
+      "uniquePassed": 19,
+      "attempts": [
+        {
+          "log": "/tmp/madou-peace-engine-initial.log",
+          "passed": 7,
+          "failed": 1,
+          "reason": "Actual current own ability got next-own-action expiry; production fallback now considers active ability frames."
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/peace-physical.test.ts -t 'actual active own ability'",
+          "log": "/tmp/madou-peace-engine-own-ability.log",
+          "passed": 1,
+          "skipped": 7
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/peace-physical.test.ts -t 'actual running|actual excess-level|defensive mental|passive attack|Dawn and Wish|Fate canceled|EVIL owner|self foreign|optional Peace'",
+          "log": "/tmp/madou-peace-engine-boundaries.log",
+          "passed": 11,
+          "skipped": 8
+        }
+      ]
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/anytime-information.test.ts packages/engine/test/turn-information-spirit.test.ts packages/engine/test/task7h-abilities.test.ts -t 'Peace|peace|conceal|healing|own action'",
+      "passed": 6,
+      "skipped": 59,
+      "log": "/tmp/madou-peace-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-peace-physical.test.ts",
+      "passed": 15,
+      "log": "/tmp/madou-peace-do.log",
+      "firstAttempt": true
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/peace-physical.spec.ts",
+      "passed": 15,
+      "log": "/tmp/madou-peace-browser.log",
+      "firstAttempt": true
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-peace-types-final.log",
+      "initialFailure": {
+        "log": "/tmp/madou-peace-types.log",
+        "reason": "Test predicate could return undefined; explicitly coerce optional actions existence to boolean."
+      }
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9255,
+        "implemented": 2857
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p02-r1c1::semantic/timing/printed-window",
+      "a2-p02-r1c1::semantic/use/good-only",
+      "a2-p02-r1c1::semantic/target/not-self",
+      "a2-p02-r1c1::semantic/spirit/replace-twelve",
+      "a2-p02-r1c1::semantic/spirit/target-action-expiry"
+    ],
+    "mainProducerRebindings": [
+      "a2-p02-r1c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:aee8802cf897741b",
+      "t:7ad1036acf549e96",
+      "t:468790784f3473d5",
+      "t:4b151b16a9668fef",
+      "t:1a0ad8396282d06b",
+      "t:4b38fa35c3fad277",
+      "t:81393a047d7758b1",
+      "t:c32d5dc6fcb3903e",
+      "t:5e61402cf85a38c7",
+      "t:7363457fcf481669",
+      "t:7c4b36262e3d86b1",
+      "t:8fd91fcf9580b85f",
+      "t:c5e328a2da781186",
+      "t:48a7ac7d17d94d5c",
+      "t:01815e558fdf0d16",
+      "t:077b86c461f7cf01",
+      "t:c6cfd65f933763e4",
+      "t:a4c225120ab2e075",
+      "t:3dcdabbac04c2aac"
+    ]
+  },
+  "remaining": "154/195 fully integrated; other41 includes partial SingingShip1 and WingedFolk1 plus39 other cards. Shared/candidate receipts and whole-goal gates remain open."
+}

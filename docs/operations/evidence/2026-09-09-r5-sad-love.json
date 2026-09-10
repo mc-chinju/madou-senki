@@ -1,0 +1,73 @@
+{
+  "task": "R5 Task5 whole sad-love",
+  "status": "task5-acceptance-complete",
+  "completedAt": "2026-09-09 06:36 JST",
+  "implementation": [
+    "Canonical Upa ab05 is registered once. USE_ABILITY has a source-specific finite aura/enabled or substitute/actual group-target-hit variant; other sources cannot accept these extra fields.",
+    "R5-P1 online supplement was recorded before aura implementation. The final text is appended under C11 at the end of the ruling document, preserving existing source blocks. It applies C15 election, temporary suppression, lifetime and attempt rules only to the aura.",
+    "sad-love-state.ts separates aura selection, permanent once-game substitution attempt and per-recipient reward IDs. Conditional stat composition adds one to Upa only while the elected aura is live and Arnes is active/public. Existing publicAbilityOpportunity and cleanup handle off/suppression/ownership/death semantics without adding this compound to the eight C15 sources.",
+    "sad-love.ts handles private owner view and source-specific commands. It saves group, original target, hit, actual source action, actor life and substitution event. Common substituteCandidates/resolveSubstitute/startSubstituteHit provide A13 restrictions and transfer with no fabricated physical card or ability payment.",
+    "The substituted group carries sadLoveSource through saved substituteResults into the ordinary DamageIntent/death batch. After actual Upa death disposal, rewardSadLove adds one permanent spirit to saved Arnes and records the event once. It does not re-declare an optional ability or consult later suppression.",
+    "SadLovePanel offers separate aura use/non-use and exact target-hit substitution buttons. Opponent views contain none of the unused private selection details."
+  ],
+  "canonicalEvidence": [
+    "Explicit aura waits for public Arnes; turning it off leaves substitution unspent. Actual Vanmil ban suppresses it; actual Lia blessing resumes it. Off remains legal while suppressed, and cancellation does not refund the same opportunity.",
+    "Actual substitution transfers only one received Shuriken hit to Upa without payment. Decline leaves Arnes hit. Actual Fate or pre-resolution Vanmil cancellation leaves the hit on Arnes but spends substitution.",
+    "Actual hidden Arnes substitution does not inherit the separate aura-publicity condition or force reveal. Wrong actor/target/hit/group/event and finalized-source input reject without mutation.",
+    "Transferred hit rejects ordinary defense, maai and followers; own aura ability and actual Flash Spear hand counter remain legal. The common A13 chain prohibition is retained.",
+    "Actual attributable Upa death grants Arnes one permanent spirit only after death disposal; unrelated Upa death grants none. An actual post-transfer Vanmil ban on both source and beneficiary cannot revoke the saved reward.",
+    "Actual CHANT followed by actual dedicated Shin two-target/three-hit attack kills Arnes and Upa concurrently. Arnes receives the reward while dead and retains it through real Uonos no-check revival. Upa is also actually revived, with aura off and substitution still spent.",
+    "Every accepted Engine command replays from JSON and conserves 220 unique physical cards. DO restarts after every command return identical duplicate ACK and do not repeat permanent growth.",
+    "Five browser cases cover aura use/off, substitution, decline, cancellation and death reward with refresh during declaration and before/after death."
+  ],
+  "structuralEvidence": [
+    "Temporary wandering/otherworld aura pause/resumption is an explicitly structural presence boundary; this does not claim a new physical absence producer."
+  ],
+  "verification": {
+    "red": {
+      "failed": 3,
+      "log": "/tmp/madou-sad-love-red.log"
+    },
+    "independentClauseMutations": {
+      "detected": 3,
+      "restored": true,
+      "logs": [
+        "/tmp/madou-sad-love-mutation-aura.log",
+        "/tmp/madou-sad-love-mutation-substitution.log",
+        "/tmp/madou-sad-love-mutation-reward.log"
+      ],
+      "method": "Remove each production clause separately, run its exact acceptance test expecting one failure, restore the file in finally, then run the complete focused set."
+    },
+    "engineProtocolWeb": {
+      "passed": 119,
+      "files": 5,
+      "newEngine": 17,
+      "newProtocol": 1,
+      "log": "/tmp/madou-sad-love-focused-final.log"
+    },
+    "durableObject": {
+      "passed": 5,
+      "files": 1,
+      "command": "cd apps/worker && WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-sad-love.test.ts",
+      "log": "/tmp/madou-sad-love-do.log"
+    },
+    "browser": {
+      "passed": 5,
+      "log": "/tmp/madou-sad-love-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-sad-love-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "pending": 11604,
+      "implemented": 508,
+      "log": "/tmp/madou-sad-love-ledger2.log"
+    }
+  },
+  "boundedLedgerRepair": "Validator reported only three new R5-P1 source blocks. Added exactly those source anchors and pending obligations/rows (one integrity, two aggregate) to the manifest/ledger and updated counts. Existing row statuses and the 5193 semantic obligations are unchanged.",
+  "remaining": "Task6 absorption/hunger/Cham gift and remaining parent plan conditions. Previously recorded incidental beast-capture Worker failure is relevant to Task6 ordering and remains unresolved.",
+  "review": "No review or subagents used, per user instruction. This is implementation and plan acceptance evidence only; no blanket catalog/ledger promotion."
+}

@@ -1,0 +1,91 @@
+{
+  "task": "R5 Task11 other164: three physical evade cards",
+  "status": "three-evade-bindings-integrated-other161-open",
+  "completedAt": "2026-09-09 10:18 JST",
+  "implementation": "No production changes. New21 Engine cases,3 complete DO paths,3 browser paths. Shared fixture places each exact evade before actual setup, CHANT and full intervening turns using existing R6 fixture.",
+  "canonicalEvidence": [
+    "Each of the3 physical evades cancels only the first of3 actually chanted seven-damage hits, leaving14. In an actual two-target single-hit technique, B cancels its own hit and C still receives7.",
+    "Each source can be declined and retained with actual bow damage4, or paid to negate. Actual physical Fate cancellation keeps defense paid and restores original damage4.",
+    "Each source rejects actual mental poem and evade-prohibited magic before cost with raw state and all views unchanged. Actual nonmental flame arrow is negated without generating a comparison check.",
+    "Each source rejects defending a different recipient and actual START_FOLLOWERS closes its own normal defense. The retained card remains unique and actual damage continues.",
+    "All accepted new Engine commands verify JSON continuation and220 unique physical IDs. DO each command persists, evicts, replays identical ACK with identical full stored state; exact source is hidden before declaration, public as current defense after declaration, and discards once at completion.",
+    "Browser3 actual exact-ID defense selections and button presses reload declaration and final completion with14 damage and no defense in hand. Transport coverage is the actual three-hit path; other boundaries are Engine evidence."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p05-r3c1::semantic/defense/self-incoming",
+      "a2-p05-r3c1::semantic/defense/cancel",
+      "a2-p05-r3c1::semantic/defense/no-spirit",
+      "a2-p05-r3c2::semantic/defense/self-incoming",
+      "a2-p05-r3c2::semantic/defense/cancel",
+      "a2-p05-r3c2::semantic/defense/no-spirit",
+      "a2-p05-r3c3::semantic/defense/self-incoming",
+      "a2-p05-r3c3::semantic/defense/cancel",
+      "a2-p05-r3c3::semantic/defense/no-spirit"
+    ],
+    "mainProducerRebindings": [
+      "a2-p05-r3c1::main-producer",
+      "a2-p05-r3c2::main-producer",
+      "a2-p05-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:d16ddfd647a0e6e1",
+      "t:440a7e956b3cbc92",
+      "t:5af1c8b60fe5e8a4",
+      "t:fc8d7ef2e2b6c8fc",
+      "t:77a3df64af67dd9e",
+      "t:09b2a9b352e2f3b1",
+      "t:f415a9b1c0c7df6f",
+      "t:6cde54e832b7feef",
+      "t:ef21a71ac01241b9",
+      "t:0027a51e8de00427",
+      "t:2f3f59fe993bbbcf",
+      "t:3e45424f91d034ad",
+      "t:693e0b94edfffda8",
+      "t:cf09268ef68f5180",
+      "t:708b46f690e2ef34",
+      "t:42a120661ec039b1",
+      "t:128f8667ff2208ab",
+      "t:424c5dd0728d35c1",
+      "t:5bf352b92ac3c873",
+      "t:0fd6c0afa05847a6",
+      "t:1117fb16be4b79a6"
+    ],
+    "rows": 12112,
+    "pending": 11288,
+    "implemented": 824,
+    "acceptedPromotions": 0,
+    "remaining": "Candidate-bound execution/acceptance receipts and shared/ruling dependencies remain pending."
+  },
+  "verification": {
+    "engine": {
+      "passed": 37,
+      "newCases": 21,
+      "files": [
+        "evade-physical.test.ts",
+        "combat.test.ts"
+      ],
+      "log": "/tmp/madou-evade-physical-engine.log"
+    },
+    "worker": {
+      "passed": 3,
+      "file": "room-evade-physical.test.ts",
+      "log": "/tmp/madou-evade-physical-do.log"
+    },
+    "browser": {
+      "passed": 3,
+      "file": "evade-physical.spec.ts",
+      "log": "/tmp/madou-evade-physical-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-evade-physical-types.log"
+    },
+    "validator": {
+      "valid": true,
+      "log": "/tmp/madou-evade-physical-ledger.log"
+    }
+  },
+  "initialFailure": "Three added magic checks incorrectly expected internal school in the public technique view. Moved that assertion to the actual attack frame; focused37 and typecheck rerun passed. Only validator-reported declaration refs were refreshed.",
+  "remaining": "34/195 action-card per-entry semantic/main bindings integrated; other161 and whole-goal gates remain open. No accepted promotion."
+}

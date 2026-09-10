@@ -1,0 +1,53 @@
+{
+  "task": "R6 S08 S11 S12 S13 condition correspondence",
+  "status": "conditions-mapped-R6-Task2-open",
+  "recordedAt": "2026-09-10 14:17 JST",
+  "implementation": "No production changes. Added S12 literal Engine test for distinct second/third normal-defense windows. Existing actual fixtures and other tests retained.",
+  "requirements": {
+    "S08": "Actual teleport [6,6] fails, source discarded; repeat same teleport rejects unchanged; different actual Flash Lance accepted before followers, attacker5/defender0. DO rejects/replays and UI accepts counter after real failure.",
+    "S11": "Actual Hundred Slash CHANT/full turn cycle then one hit two targets; B/C one maai each, A one advance; exact3 physical costs once, distances unchanged, both targets damage7. DO/UI preserve costs and continuation.",
+    "S12": "Actual Hundred Slash CHANT creates3 hits. First maai defends first only; new Engine test sees distinct normal-defense window IDs at hitCursor1 and2, then two hits total14. DO/UI verify same maai scope and saved continuation.",
+    "S13": "Explicit abstract resolver boundary only: Lv5/damage6 x3, frontLv3/HP2; one frozen snapshot gives4each total12, physical follower removed once; repeat resolver call idempotent and JSON continuation equal. Actual Hundred Slash producer is separately retained in S11/S12; abstract numbers are not a printed combo."
+  },
+  "verification": {
+    "engine": {
+      "passed": 5,
+      "logs": [
+        "/tmp/madou-s08-s13-engine.log",
+        "/tmp/madou-s08-engine.log"
+      ],
+      "note": "Initial filter omitted S08 by title mismatch; separately ran exact S08 prefix1. No false passing count."
+    },
+    "worker": {
+      "passed": 3,
+      "log": "/tmp/madou-s08-s12-do.log"
+    },
+    "browser": {
+      "passed": 3,
+      "log": "/tmp/madou-s08-s12-browser.log"
+    },
+    "types": {
+      "exitCode": 0,
+      "log": "/tmp/madou-s08-s13-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8389,
+        "implemented": 3723
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "S14-S17/S31-S32, Task2 prescribed suite group and formal scenario binding still need closure. S13 has no assertion that its synthetic arithmetic path was executed via browser or DO. Whole goal remains active.",
+  "processes": "All terminal."
+}

@@ -1,0 +1,42 @@
+{
+  "task": "R5 Task11 dedicated Lia prayer subcondition",
+  "status": "prayer-subcondition-complete-other195-and-shared-adapter-pending",
+  "completedAt": "2026-09-09 07:15 JST",
+  "implementation": "No new recovery handler. Existing printed prayer and common reservation path are verified with actual declarations in two distinct real turn events.",
+  "canonicalEvidence": [
+    "The single physical prayer ID a2-p05-r2c3 is used by Lia on A actual bow attack. It enters a saved inaccessible reservation and an actual same-event resubmission fails without mutation.",
+    "The first attack completes and returns the physical card once. Actual turn commands progress to D, whose real Black Wing Sword attacks A. Lia uses the same prayer in this distinct event and receives one final return. Both event-specific used keys remain.",
+    "Lia ordinary prayer works on her own actual attack and goes to discard, with no dedicated return. Ordinary prayer against another actor attack rejects unchanged.",
+    "Every accepted engine command restores from JSON and conserves 220 unique physical cards. One DO test traverses both full events and intervening real turns, restarts after each command, replays identical ACK and verifies same-event rejection.",
+    "Two browser scenarios cover first use and later second use. The second fixture generates the first prayer use, its release and later turns through real commands. Both use actual dedicated checkbox and prayer button, reload during declaration and reservation, omit the reserved physical ID from selectable cards and return it only after the event ends."
+  ],
+  "verification": {
+    "engine": {
+      "passed": 11,
+      "files": [
+        "packages/engine/test/lia-prayer-rider.test.ts",
+        "packages/engine/test/reclaim-reservations.test.ts"
+      ],
+      "log": "/tmp/madou-task11-prayer2.log"
+    },
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-task11-prayer-do.log"
+    },
+    "browser": {
+      "passed": 2,
+      "log": "/tmp/madou-task11-prayer-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-task11-prayer-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-task11-prayer-ledger.log"
+    }
+  },
+  "remaining": "The combined Task11 checkbox includes other195 physical/mode/owned-name source-clause bindings and remains unchecked. Sword direct-discard producers and shared adapter obligations are also pending. This partial evidence is not blanket catalog acceptance."
+}

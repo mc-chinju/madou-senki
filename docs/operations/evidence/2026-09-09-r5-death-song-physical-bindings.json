@@ -1,0 +1,125 @@
+{
+  "task": "R5 Task11 other90: Death Song physical card",
+  "status": "death-song-physical-bindings-integrated-other89-open",
+  "completedAt": "2026-09-09 17:18 JST",
+  "implementation": "No production changes. Engine25 case coverage, related4, DO8, browser6 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual initial Lester, Gaenas or Gadyura B, Aiel C, real Metal6/Soldier2 B and Water7 C. Death Song a2-p17-r1c3 magic/far/use7/ordinary effect7/2d6x2/魔精歌詠/followerIgnore; Lester selected effect8/caster magic x3/noChecks/all/counterProhibited/deathSongResistance. Both modes require actual CHANT and full intervening turns, including later paid approach near. Initial source magic6/7 produces ordinary one/zero checks while selected remains zero; hand casts reject even selected. Non-target D remains unaffected unless selected. Ordinary damage exact2d6 faces1+2 or6+6 gives6/24; selected source magic3/7/10 gives9/21/30 to all B/C/D without damage rolls.",
+    "Actual Metal/Soldier and Water are ignored intact with no HP reduction. Guardian7 cancels ignore: ordinary equal destroys Guardian/body0, actual Prayer1 effect8 reaches body4; selected effect8/Prayer9 both destroy and reach21. Teleport/maai protect B locally, C selected damage remains; mental Evade rejects. Actual B God Judgment CHANT during intervening turn counters ordinary Death Song for A16/B0, but selected song rejects it. Base Mirror Shield/Ice Mirror both have magic limit6 and reject ordinary effect7 as well; selected counterProhibited is independently projected true. No claim that ordinary mirrors can defend this level.",
+    "Actual initial Gadyura plus0 own resistance opens only after normal defense and before body damage; initial spirit6 with3+3 succeeds for0 or3+4 fails for21. Exactly one B hit-resistance record; C receives21 independently and ignored followers remain. Third-party roll view has no character identifier metadata. Separate actual Gadyura Fear invocation gives attacker A minus1 roll1+2 success, followed later by B own plus0 roll3+4 failure. These use distinct rollers, purposes and timing despite selected own activation waiver.",
+    "Actual use failure and D Fate cancellation never reach Gadyura own resistance, preserve followers and body0, source paid once. Actual owned alias base recovery after cast returns Death Song to hand, records baseSpent under 死歌 and not 死詩, requires another actual CHANT/full turns before later opposite selected mode. Foreign Shelim ordinary cast succeeds after CHANT, dedicated rejects. Empty/self/duplicate/missing/ordinary-multi and actually revealed friendly Shin reject with state/all views unchanged. Every accepted engine command JSON roundtrips and preserves220 unique physical IDs.",
+    "DO8 actual initial CHANT/full turns/cast: ordinary/selected with normal or actual Fate cancellation, actual Teleport on each, selected Gadyura success spirit14 and failure spirit1. Every command saves/evicts/replays identical ACK and state/220 IDs; ordinary2d6x2 record faces1+1 total4 and Gadyura plus0 target rolls persist. Browser6 actual hand CHANT, all intervening turns, chanted selection and optional dedicated checkbox, real Teleport or Gadyura plus0 success/failure, source cleanup and target-local damage/followers survive reload.",
+    "22 semantic rows and main1 rebound; candidate receipts and broader shared crossings remain pending. No accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p17-r1c3::semantic/ordinary/school",
+      "a2-p17-r1c3::semantic/ordinary/range",
+      "a2-p17-r1c3::semantic/ordinary/use-level",
+      "a2-p17-r1c3::semantic/ordinary/base-effect-level",
+      "a2-p17-r1c3::semantic/ordinary/damage",
+      "a2-p17-r1c3::semantic/ordinary/attribute-0",
+      "a2-p17-r1c3::semantic/ordinary/attribute-1",
+      "a2-p17-r1c3::semantic/ordinary/attribute-2",
+      "a2-p17-r1c3::semantic/ordinary/attribute-3",
+      "a2-p17-r1c3::semantic/ordinary/attack-use",
+      "a2-p17-r1c3::semantic/ordinary/chant-required",
+      "a2-p17-r1c3::semantic/dedicated/0/select-optional",
+      "a2-p17-r1c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p17-r1c3::semantic/dedicated/0/effect-replacement",
+      "a2-p17-r1c3::semantic/dedicated/0/damage-replacement",
+      "a2-p17-r1c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p17-r1c3::semantic/dedicated/0/chant-retain",
+      "a2-p17-r1c3::semantic/dedicated/0/target-subset",
+      "a2-p17-r1c3::semantic/ordinary/ignore-followers",
+      "a2-p17-r1c3::semantic/dedicated/no-counter",
+      "a2-p17-r1c3::semantic/dedicated/gadyoora-check",
+      "a2-p17-r1c3::semantic/dedicated/gadyoora-failure-damage"
+    ],
+    "mainProducerRebindings": [
+      "a2-p17-r1c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:6f12c69a00db0c74",
+      "t:f551ef1f21994290",
+      "t:577d2a6489e61d3e",
+      "t:b71a906edcd233fb",
+      "t:c3e285893597d670",
+      "t:4321d9232358f8ee",
+      "t:00b9ec436f0cb43a",
+      "t:e9ff439f977db9e6",
+      "t:54233cfb2b423bf9",
+      "t:0f6c72f68d03c6ac",
+      "t:b42edebd771fef2a",
+      "t:586e441ba9433e1a",
+      "t:69b0a60a225575ba",
+      "t:dbd67b4e756d156a",
+      "t:a2d6c91d9aa86109",
+      "t:fd76facef2df2f3c",
+      "t:a6f25b46219785a6",
+      "t:7eaffa3198ffa81a",
+      "t:da479559e62e8e68",
+      "t:9b3ab9658e88041d",
+      "t:7a10a764186d4284",
+      "t:1e060daef1fec94c",
+      "t:561363a0969b86a3",
+      "t:31f6ae7a05010741",
+      "t:abee498c1a2bc314"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/death-song-physical.test.ts",
+      "initialPassed": 23,
+      "initialFailed": 2,
+      "log": "/tmp/madou-death-song-physical-engine.log",
+      "focusedRetry": {
+        "passed": 3,
+        "skipped": 22,
+        "log": "/tmp/madou-death-song-physical-counters.log"
+      },
+      "finalCaseCoverage": 25,
+      "note": "Initial expectation wrongly allowed base Mirror and Ice Mirror against ordinary effect7. Read actual defense factories: both base magic limits6; corrected rejection expectations, retained real prior chanted God ordinary acceptance and selected prohibition."
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7i-combinations.test.ts -t '死歌|Death Song'",
+      "passed": 4,
+      "skipped": 50,
+      "log": "/tmp/madou-death-song-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-death-song-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 8,
+      "log": "/tmp/madou-death-song-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/death-song-physical.spec.ts",
+      "passed": 6,
+      "log": "/tmp/madou-death-song-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-death-song-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10093,
+        "implemented": 2019
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "106/195 per-entry semantic/main bindings integrated; other89 and whole-goal gates open. No accepted promotion."
+}

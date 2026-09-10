@@ -1,0 +1,173 @@
+{
+  "scope": "Seven named follower death recoveries across Worker persistence and browser reload; no full acceptance",
+  "bindings": [
+    {
+      "entryId": "c2-p04-r1c2-ab04",
+      "clauseKey": "unlimited-SingingShip",
+      "tests": {
+        "t:69ff22e77edc87f0": {
+          "title": "%s saves actual death recovery and replays one accepted claim",
+          "suite": [],
+          "declarationSha256": "84d7913d60c0801405e7ad97afe8e55af7f2a57f6f6de0ecd797647cbde9dc44",
+          "path": "apps/worker/test/room-named-follower-death.test.ts",
+          "parameters": "reclaim-named-death-ship",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        },
+        "t:a11166c962b3a00d": {
+          "title": "Named death Singing Ship returns once across browser reloads",
+          "suite": [],
+          "declarationSha256": "eda44b4aed08370421d6fab1aa7d54ae55762a0973351cde93aea1d56e5c945b",
+          "path": "tests/e2e/named-follower-death.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab04",
+      "clauseKey": "unlimited-FlyingDragon",
+      "tests": {
+        "t:80221b0948cb120d": {
+          "title": "%s saves actual death recovery and replays one accepted claim",
+          "suite": [],
+          "declarationSha256": "84d7913d60c0801405e7ad97afe8e55af7f2a57f6f6de0ecd797647cbde9dc44",
+          "path": "apps/worker/test/room-named-follower-death.test.ts",
+          "parameters": "reclaim-named-death-dragon",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        },
+        "t:3fd335ed9fbfc159": {
+          "title": "Named death Flying Dragon returns once across browser reloads",
+          "suite": [],
+          "declarationSha256": "f2f8f2d41552f0d1e7152da736446bac1c8b2e004b70462419db3305cb1c1695",
+          "path": "tests/e2e/named-follower-death.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab04",
+      "clauseKey": "unlimited-Griffon",
+      "tests": {
+        "t:7bb94231de70f867": {
+          "title": "%s saves actual death recovery and replays one accepted claim",
+          "suite": [],
+          "declarationSha256": "84d7913d60c0801405e7ad97afe8e55af7f2a57f6f6de0ecd797647cbde9dc44",
+          "path": "apps/worker/test/room-named-follower-death.test.ts",
+          "parameters": "reclaim-named-death-griffin",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        },
+        "t:08b4ded65d10b5a1": {
+          "title": "Named death Griffon returns once across browser reloads",
+          "suite": [],
+          "declarationSha256": "b736a446f6b0b5d7e29b014e83fbeeb191c3ee8efe50631182799491adeb74c9",
+          "path": "tests/e2e/named-follower-death.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Skeleton",
+      "tests": {
+        "t:38880f7a2814da4e": {
+          "title": "%s saves actual death recovery and replays one accepted claim",
+          "suite": [],
+          "declarationSha256": "84d7913d60c0801405e7ad97afe8e55af7f2a57f6f6de0ecd797647cbde9dc44",
+          "path": "apps/worker/test/room-named-follower-death.test.ts",
+          "parameters": "reclaim-named-death-skeleton",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        },
+        "t:a8c7baa5433126cd": {
+          "title": "Named death Skeleton returns once across browser reloads",
+          "suite": [],
+          "declarationSha256": "62f40b6c8b1103a9c050608628021bb94f07ea6f09ceaa6d0918b43daf68f8ac",
+          "path": "tests/e2e/named-follower-death.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Zombie",
+      "tests": {
+        "t:a72e442ee1c11fde": {
+          "title": "%s saves actual death recovery and replays one accepted claim",
+          "suite": [],
+          "declarationSha256": "84d7913d60c0801405e7ad97afe8e55af7f2a57f6f6de0ecd797647cbde9dc44",
+          "path": "apps/worker/test/room-named-follower-death.test.ts",
+          "parameters": "reclaim-named-death-zombie",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        },
+        "t:01ef68bf0e225f74": {
+          "title": "Named death Zombie returns once across browser reloads",
+          "suite": [],
+          "declarationSha256": "abf9a7d15347a938d5e2f4fdbd93a318a71a87ba93274a4706ea8fd241ae0cd6",
+          "path": "tests/e2e/named-follower-death.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Wight",
+      "tests": {
+        "t:f702de452d6978aa": {
+          "title": "%s saves actual death recovery and replays one accepted claim",
+          "suite": [],
+          "declarationSha256": "84d7913d60c0801405e7ad97afe8e55af7f2a57f6f6de0ecd797647cbde9dc44",
+          "path": "apps/worker/test/room-named-follower-death.test.ts",
+          "parameters": "reclaim-named-death-wight",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        },
+        "t:5ce253fbdb56b2aa": {
+          "title": "Named death Wight returns once across browser reloads",
+          "suite": [],
+          "declarationSha256": "af1a57f627f35bd4bf14f36318b09ea9e0cf6ef894d08621e275de5c633635d0",
+          "path": "tests/e2e/named-follower-death.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-DeathKnight",
+      "tests": {
+        "t:8b7728b26efc4de5": {
+          "title": "%s saves actual death recovery and replays one accepted claim",
+          "suite": [],
+          "declarationSha256": "84d7913d60c0801405e7ad97afe8e55af7f2a57f6f6de0ecd797647cbde9dc44",
+          "path": "apps/worker/test/room-named-follower-death.test.ts",
+          "parameters": "reclaim-named-death-knight",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        },
+        "t:81105de39f048e37": {
+          "title": "Named death Death Knight returns once across browser reloads",
+          "suite": [],
+          "declarationSha256": "610f319d4069dc3fb4410b2ee5a259aad39e3a70286538ac53c134d6513aee90",
+          "path": "tests/e2e/named-follower-death.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
+        }
+      }
+    }
+  ]
+}

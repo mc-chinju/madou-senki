@@ -1,0 +1,142 @@
+{
+  "task": "R5 Task11 Female Guard a2-p21-r2c2",
+  "status": "female-guard-physical-bindings-integrated-other65-open",
+  "completedAt": "2026-09-09 20:37 JST",
+  "implementation": "No production changes.25 semantic clauses and main producer bind35 actual transition references.",
+  "canonicalEvidence": [
+    "Actual initial and own-turn placement, order/removal and hidden source. Physical follower5 HP4 human/female. Actual Dia approach and Dwarf4/5/6 three6-damage hits give body0/0/6. Exact spirit6 modifier0 morale faces2/4 pass and3/4 fail: one result per reached group, HP4 per higher hit on success and no HP on failure/body18. Later Bow group rechecks; hidden unreached rear does not. Explicit Arnes atspirit0 waives morale without changing5 HP4: three Dwarf6 hits give6; omission fails/body18.",
+    "Actual Gadyura dedicated Wight generic ignore hitsA/C. FrontMetal plus rearFemale Guard selected Arnes package cancels ignore for entireA column, A0 C5; omission givesA5 C5, both hidden. Actual Tia dedicated MagicWind effect7damage12 ignores sky only: frontGriffin sky HP3 plus rearFemale Guard HP4, selected package cancels sky ignore and yieldsA5 C12; omission leaves Griffin hidden/untouched and Female Guard alone reduces4, A8 C12. Griffin ordinary morale remains one; Female Guard dedicated waiver is its own effect. Ignore cancellation is target-local.",
+    "Actual Lester uses Army Wight plus human-invalidation before defense: selected physical Female Guard is ineffective and cannot cancel ignore, frontMetal and Female Guard both remain hidden, A5. Actual Alseil dedicated MirrorSeal explicitly destroys Female Guard even with selected Arnes package. Foreign and duplicate package selection refuse. Actual optional Arnes virtual guard enters as separate4 HP1 source before physical5 HP4: Dwarf6 gives3 with virtual or6 without, exactly one physical Female Guard discard, no extra physical card.",
+    "Actual Arnes dedicated hand/field, Dia human ordinary hand/field and Army hand: far magic bow use/effect4 damage6, single target. Magic3 withwarrior20 needs one use check; magic4 withwarrior0 needs none, proving printed magic school is retained. Army alone rolls morale. Actual near approach remains legal. Direct ordinary/foreign dedicated/CHANT, multiple dedicated targets and placed Army refuse. Actual maai protects B; Mirror reflects6 to A after source payment, no source return. Hand/field Fate, Army parent/child/morale/use failure, dedicated use failure and Dia grant cancellation consume once.",
+    "Every accepted Engine command JSON-reexecutes and preserves220 unique IDs; rejections preserve state/all views. Initial character/draw events align with actual initial deals. DO21 saves, evicts and replays identical ACK/state after every command. Browser17 operates actual defense/morale/waiver, generic/sky ignore cancellation or decline, Lester invalidation, explicit destruction and dedicated/grant/Army attacks with reload.",
+    "25 rows implemented, main1 rebound, no accepted promotion. Fully integrated130/195; other65 includes partial Singing Ship21/22 and Winged Folk27/28 plus63 other cards. Shared/candidate requirements remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/female-guard-physical.test.ts",
+      "passed": 35,
+      "log": "/tmp/madou-female-guard-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts packages/engine/test/follower-entry-abilities.test.ts -t '女性親衛隊|physical human invalidation suppresses'",
+      "passed": 10,
+      "skipped": 277,
+      "log": "/tmp/madou-female-guard-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-female-guard-physical.test.ts",
+      "cwd": "apps/worker",
+      "coverage": 21,
+      "initial": {
+        "passed": 11,
+        "failed": 10,
+        "reason": "Ten cases exceeded15000ms test limit; cause undetermined.",
+        "log": "/tmp/madou-female-guard-physical-do.log"
+      },
+      "unchangedTargetedRetry": {
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-female-guard-physical.test.ts -t '(sky-decline|invalid|army|ded-hand|ded-field|grant-hand|grant-field) canceled=false|(army|ded-field|grant-field) canceled=true'",
+        "passed": 10,
+        "skipped": 11,
+        "timeoutMs": 15000,
+        "log": "/tmp/madou-female-guard-physical-do-target.log"
+      }
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/female-guard-physical.spec.ts",
+      "passed": 17,
+      "log": "/tmp/madou-female-guard-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-female-guard-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9659,
+        "implemented": 2453
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p21-r2c2::semantic/follower/printed-level",
+      "a2-p21-r2c2::semantic/follower/printed-hp",
+      "a2-p21-r2c2::semantic/placement/setup",
+      "a2-p21-r2c2::semantic/placement/own-action",
+      "a2-p21-r2c2::semantic/defense/front-order",
+      "a2-p21-r2c2::semantic/follower/attribute-0",
+      "a2-p21-r2c2::semantic/follower/attribute-1",
+      "a2-p21-r2c2::semantic/morale/receive-trigger",
+      "a2-p21-r2c2::semantic/morale/spirit-modifier",
+      "a2-p21-r2c2::semantic/morale/failure-discard",
+      "a2-p21-r2c2::semantic/attack/grant-required",
+      "a2-p21-r2c2::semantic/attack/ordinary-hand-grant",
+      "a2-p21-r2c2::semantic/attack/discard-not-return",
+      "a2-p21-r2c2::semantic/attack/printed-level",
+      "a2-p21-r2c2::semantic/attack/printed-damage",
+      "a2-p21-r2c2::semantic/attack/attribute-0",
+      "a2-p21-r2c2::semantic/attack/attribute-1",
+      "a2-p21-r2c2::semantic/attack/attribute-2",
+      "a2-p21-r2c2::semantic/dedicated/arnes-cancel-ignore",
+      "a2-p21-r2c2::semantic/attack/magic-bow-not-warrior",
+      "a2-p21-r2c2::semantic/dedicated/owner-filter",
+      "a2-p21-r2c2::semantic/dedicated/from-hand",
+      "a2-p21-r2c2::semantic/dedicated/from-placement",
+      "a2-p21-r2c2::semantic/dedicated/use-check",
+      "a2-p21-r2c2::semantic/dedicated/morale-waiver"
+    ],
+    "mainProducerRebindings": [
+      "a2-p21-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:524e3cd6b1f8714e",
+      "t:dca1a2d17e16dc15",
+      "t:f88276c02bd3fa8f",
+      "t:fb45e1abf4201511",
+      "t:16a761a7f46e3ac5",
+      "t:04b70cb2f8483d68",
+      "t:363feaf86b87070d",
+      "t:e2b93e9c6afcc637",
+      "t:b3d86499be142e17",
+      "t:b29fbb7b03e707c4",
+      "t:923c772400453620",
+      "t:1ad285354e0b020f",
+      "t:3b29f5a469eae4c3",
+      "t:4d75af6f69708a31",
+      "t:d8a62335eb51cba5",
+      "t:fe0b31a3150810f2",
+      "t:59b0c15f0ad251f2",
+      "t:0a997af035502ade",
+      "t:59f991d25baa0b50",
+      "t:d84e375d766352ee",
+      "t:bf8d411bfa95240c",
+      "t:acbcee77a141503b",
+      "t:f5fc8ab119e73592",
+      "t:62aed90815317c16",
+      "t:8aea2a6b9528a566",
+      "t:dfd93e0a0ccd8cb2",
+      "t:d5ceba1688b1d716",
+      "t:36ec96e5353efe52",
+      "t:67714a2fc302e011",
+      "t:d8d6fd235e9562d3",
+      "t:f8659db83bfb12d7",
+      "t:a1d5e3928c936c9d",
+      "t:2cc473fb977a94be",
+      "t:f3ca51c871582cc4",
+      "t:6ba2032da3af270d"
+    ]
+  },
+  "remaining": "130/195 fully integrated; other65 includes partial SingingShip1 and WingedFolk1 plus63 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

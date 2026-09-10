@@ -1,0 +1,178 @@
+{
+  "scope": "Selected S01-S03 boundaries; full acceptance remains",
+  "bindings": [
+    {
+      "scenario": "S01",
+      "obligation": {
+        "entryId": "ruling:G03",
+        "clauseKey": "semantic/accept-only-current-priority",
+        "source": [
+          "src:2f2b6fac6be674e6"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G03"
+        ],
+        "kind": "reaction-boundary",
+        "meaning": "通信到着順ではなく現在の優先権者の合法な介入だけ受理する。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:c651d46a4832f3b2": {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      },
+      "tests": {
+        "t:c029186f0f2fd9f6": {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 S02 S05 D first is rejected at C priority then C force-fail resets the parent and D rerolls successful-valued faces without clearing failure",
+          "declarationSha256": "f9170c940e9fff56f7d4115d1abce7586ab38cb0637acfed50919d7d913da090",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S01 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        },
+        "t:efe5d62e3a3eb10c": {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 S02 S05 DO rejects D first, accepts C at the unchanged revision, rejects old parent PASS generation and keeps forced failure after D reroll",
+          "declarationSha256": "ead75fb49c302b0b21698f8695685c9fabda58cdd30594cbaa6e2b01a543ee63",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S01 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        },
+        "t:60bae16ed85327e5": {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 rejected D at C priority preserves all WebSocket views and creates no roll attempt or replacement",
+          "declarationSha256": "4204588168b81c5aed55679f78029744a0218363f7230510b4dcb5b1837437ca",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S01 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        },
+        "t:a26d58d198fbbbc9": {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "suite": [],
+          "title": "S01-S05 force retains priority paid cards and roll continuation across reload",
+          "declarationSha256": "abfb920c51580238ad99519c0cf6caeeb4bd34b8bb06517dc2d6fead34c86f04",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S01 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        }
+      }
+    },
+    {
+      "scenario": "S02",
+      "obligation": {
+        "entryId": "ruling:G03",
+        "clauseKey": "semantic/intervention-resets-parent-pass-generation",
+        "source": [
+          "src:2f2b6fac6be674e6"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G03"
+        ],
+        "kind": "reaction-boundary",
+        "meaning": "介入後に親窓のパスを消し、新しい世代で親の起点から再開する。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:e21bce609c868658": {
+          "path": "packages/engine/src/reactions/windows.ts",
+          "symbol": "resetParent"
+        }
+      },
+      "tests": {
+        "t:82c71192f9481d9c": {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S02 actual C reroll canceled by D resets the A B passed parent without changing its roll",
+          "declarationSha256": "14d836014af4f05cc3592532ec6cd7be4a5737d08487cf09ae95bd06a999721e",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S02 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        },
+        "t:911aedb00ae3f385": {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S02 DO child cancellation resets parent passes and rejects stale generation before accepting current A pass",
+          "declarationSha256": "45ce8502e55cadd4a66de206d741906a41bc7500ffd77c3b328afa2322cbe074",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S02 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        },
+        "t:11133323e119dbf1": {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "suite": [],
+          "title": "S02 canceled C intervention returns parent priority to A across reload",
+          "declarationSha256": "b03c2e6c4293f418efd632d1d9acb465aa1432850d8861acfe5c35308d704028",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S02 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        }
+      }
+    },
+    {
+      "scenario": "S03",
+      "obligation": {
+        "entryId": "ruling:G05",
+        "clauseKey": "semantic/canceled-anytime-keeps-payment-and-refill",
+        "source": [
+          "src:dd07c6a8b5c188e3",
+          "src:0b9db514854fcef6"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G05"
+        ],
+        "kind": "reaction-boundary",
+        "meaning": "受理済みいつでも札が取り消されても支払いと回数を返さず、取得済み補充札を保持する。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:c651d46a4832f3b2": {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        },
+        "h:1e543f95b8705cc9": {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueAction"
+        }
+      },
+      "tests": {
+        "t:78313c8640efece8": {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S03 B accepted God retains its paid replacement and used event after C Fate cancels it without a reroll or action refund",
+          "declarationSha256": "a4e78dcf6f476faaa199d5bd61266163d64fd10570b8f53de8f02f1a8b9c8ee5",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S03 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        },
+        "t:0df8f6ce6f2f9a68": {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S03 DO cancellation preserves B payment refill and usage and never executes the canceled reroll",
+          "declarationSha256": "ccea8645d8f1ffcd71046a1f4b067822558ef7ee957be9e80f336a935a475dd6",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S03 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        },
+        "t:e12d573dd857637a": {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "suite": [],
+          "title": "S01-S05 cancel retains priority paid cards and roll continuation across reload",
+          "declarationSha256": "32ea8a9dd40b20bdce1c67f6f22d2019598a045d03b39aac7a453c7098c0bdc4",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S03 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
+        }
+      }
+    }
+  ]
+}

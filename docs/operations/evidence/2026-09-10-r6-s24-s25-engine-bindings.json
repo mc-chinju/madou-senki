@@ -1,0 +1,42 @@
+{
+  "task": "R6 Task4 S24/S25 Engine bindings",
+  "recordedAt": "2026-09-10 14:49 JST",
+  "status": "engine-conditions-bound-transport-pending",
+  "changes": [
+    "Literal S24 names on independent extra/base/third-refusal and unlimited/base-preservation tests. Existing same-name physical X/Y ordinary allowance retained.",
+    "S25 literal name on4 GOOD/EVIL ability-first/printed-first tuples. Added explicit pending-death and outcome undefined immediately after both independent gifts, before final disposal.",
+    "Bound3 S24 Engine refs and6 S25 refs including privacy and pending-death gift tests. Existing test references refreshed by exact renamed declaration. No production change or status promotion."
+  ],
+  "verification": {
+    "engine": {
+      "uniquePassed": 115,
+      "files": [
+        "owned-reclaim.test.ts",
+        "reuse-abilities.test.ts",
+        "cham-death-gift.test.ts",
+        "death-gift-physical.test.ts",
+        "death-reward-lifecycle.test.ts"
+      ],
+      "log": "/tmp/madou-r6-s24-s25-engine.log",
+      "afterAssertionAdded": {
+        "passed": 4,
+        "log": "/tmp/madou-r6-s25-boundary.log"
+      }
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "logs": [
+        "/tmp/madou-r6-s24-s25-types.log",
+        "/tmp/madou-r6-s25-boundary-types.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "pending": 8389,
+      "implemented": 3723,
+      "log": "/tmp/madou-r6-s24-s25-ledger.log"
+    }
+  },
+  "remaining": "S24/S25 existing transport references must be made concrete. Task4 S26 onward and task-boundary prescribed suite group remain. No review performed."
+}

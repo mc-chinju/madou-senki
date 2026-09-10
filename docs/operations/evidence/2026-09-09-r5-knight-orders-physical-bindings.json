@@ -1,0 +1,139 @@
+{
+  "task": "R5 Task11 other76: Black and Holy Knights physical cards",
+  "status": "knight-orders-physical-bindings-integrated-other74-open",
+  "completedAt": "2026-09-09 18:32 JST",
+  "implementation": "No production changes. Exact initial fixtures, Engine26, related14, DO18, browser12 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual Black Knights a2-p20-r1c2 and Holy Knights a2-p20-r1c3 begin in setup with follower4 HP5 human/cavalry. Actual initial/own-turn placement, private physical identity, foreign/duplicate/capacity refusals, later full-turn reorder/removal, high Metal front protecting hidden rear, Bow3 block and maai retention. Actual Dia approaches and grants Dwarf three damage6 hits at own warrior3/4/5: block/alive0, equal/destroyed0, lower/destroyed with HP5 on each hit for body3. Black dedicated attack modifiers do not alter the follower4 HP5 defense.",
+    "Actual Garwin or Lancelot direct dedicated hand and field attacks require paid near approach and exactly one legal target. Initial own warrior3/4 yields one/zero use checks for both: dedicated permission does not grant a waiver. Black keeps use4 but computes effect5 damage10 from printed5 doubled; Holy keeps use/effect4 damage4/近戦剣白. Source leaves hand/field at payment, reserves then discards once. Foreign Dia, ordinary direct ATTACK, CHANT and empty/self/duplicate/missing/multiple targets reject unchanged. Actual Fate cancellation or force-failed use roll consumes source with no damage or return.",
+    "Actual All Army with named owners uses only ordinary hand bottoms after paid approach: Black near warrior4 effect4 damage5/近戦剣, Holy near warrior4 effect4 damage4/近戦剣白. Own warrior3/4 yields one/zero checks. Field sources are absent from hand-only Army options and reject. Army plus follower reserve then discard once; named-owner upgrades are not automatic.",
+    "Actual Garwin Sword Master declaration c2-p05-r2c1-ab03 selected with dedicated Black Knights permits far attack, effect6 and damage(5+2)x2=14. Actual own Prayer with die3 raises effect to9 while damage remains14, confirming damage additions precede doubling and effect additions remain separate. Effect selection is declared before resolution. Actual Mirror remains legal for both ordinary-counterable dedicated knight attacks and cancels damage without returning the paid source.",
+    "Initial inherited Lancelot2 is an explicit owner precondition, not a newly claimed transformation path. Actual hand/field Holy Knights attacks from that owner preserve use4, one check at warrior3, effect4 damage4 and white sword attributes. The named inherited-owner path is exercised in Engine, persistence and UI.",
+    "Every accepted Engine command JSON roundtrips and preserves220 unique physical IDs; rejection preserves complete state/all views. Initial private draw/character logs agree with each fixture deal. DO18 executes initial/turn placement, both Army uses, four hand/field dedicated uses, Sword Master, inherited Lancelot2 and six cancellations; every command saves/evicts/replays identical ACK/state and220 IDs. Browser12 operates actual setup/turn placement, paid approach, Army and follower-attack controls, optional Sword Master checkbox and inherited-owner field attack, reloading across and after resolution.",
+    "41 semantic clauses (Black21/Holy20) and main2 bind26 concrete test references. Candidate-bound receipts and wider shared crossings remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p20-r1c2::semantic/follower/printed-level",
+      "a2-p20-r1c2::semantic/follower/printed-hp",
+      "a2-p20-r1c2::semantic/placement/setup",
+      "a2-p20-r1c2::semantic/placement/own-action",
+      "a2-p20-r1c2::semantic/defense/front-order",
+      "a2-p20-r1c2::semantic/follower/attribute-0",
+      "a2-p20-r1c2::semantic/follower/attribute-1",
+      "a2-p20-r1c2::semantic/attack/grant-required",
+      "a2-p20-r1c2::semantic/attack/ordinary-hand-grant",
+      "a2-p20-r1c2::semantic/attack/discard-not-return",
+      "a2-p20-r1c2::semantic/attack/printed-level",
+      "a2-p20-r1c2::semantic/attack/printed-damage",
+      "a2-p20-r1c2::semantic/attack/attribute-0",
+      "a2-p20-r1c2::semantic/attack/attribute-1",
+      "a2-p20-r1c2::semantic/attack/attribute-2",
+      "a2-p20-r1c2::semantic/dedicated/owner-filter",
+      "a2-p20-r1c2::semantic/dedicated/from-hand",
+      "a2-p20-r1c2::semantic/dedicated/from-placement",
+      "a2-p20-r1c2::semantic/dedicated/use-check",
+      "a2-p20-r1c2::semantic/dedicated/effect-plus-one",
+      "a2-p20-r1c2::semantic/dedicated/double-damage",
+      "a2-p20-r1c3::semantic/follower/printed-level",
+      "a2-p20-r1c3::semantic/follower/printed-hp",
+      "a2-p20-r1c3::semantic/placement/setup",
+      "a2-p20-r1c3::semantic/placement/own-action",
+      "a2-p20-r1c3::semantic/defense/front-order",
+      "a2-p20-r1c3::semantic/follower/attribute-0",
+      "a2-p20-r1c3::semantic/follower/attribute-1",
+      "a2-p20-r1c3::semantic/attack/grant-required",
+      "a2-p20-r1c3::semantic/attack/ordinary-hand-grant",
+      "a2-p20-r1c3::semantic/attack/discard-not-return",
+      "a2-p20-r1c3::semantic/attack/printed-level",
+      "a2-p20-r1c3::semantic/attack/printed-damage",
+      "a2-p20-r1c3::semantic/attack/attribute-0",
+      "a2-p20-r1c3::semantic/attack/attribute-1",
+      "a2-p20-r1c3::semantic/attack/attribute-2",
+      "a2-p20-r1c3::semantic/attack/attribute-3",
+      "a2-p20-r1c3::semantic/dedicated/owner-filter",
+      "a2-p20-r1c3::semantic/dedicated/from-hand",
+      "a2-p20-r1c3::semantic/dedicated/from-placement",
+      "a2-p20-r1c3::semantic/dedicated/use-check"
+    ],
+    "mainProducerRebindings": [
+      "a2-p20-r1c2::main-producer",
+      "a2-p20-r1c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:c0c09617eb177105",
+      "t:16707193a20aac2b",
+      "t:1fb321e9ee14291d",
+      "t:6aea78a97cc51932",
+      "t:f9b7f708c04fb149",
+      "t:06d917bc1563f449",
+      "t:61cf4a554127c747",
+      "t:3a120481ba8e4170",
+      "t:263f507644d9e834",
+      "t:bb29eb0e6b671a46",
+      "t:9aa1235377b633ff",
+      "t:a0485347b30f4867",
+      "t:fcd6393aa360977a",
+      "t:63107ed34c870c60",
+      "t:245a862b99827d0e",
+      "t:8e87bb20c5166872",
+      "t:a1e0f9aab48a293d",
+      "t:fcc90f638c419a5e",
+      "t:e6f3cd463b4c20e0",
+      "t:7fef0ffd807125a7",
+      "t:9cb0bd5a5b872277",
+      "t:32bae74a9c0fe66b",
+      "t:d9fd69b6d3130731",
+      "t:5b10b825754ada9a",
+      "t:9db4c7521c718bbc",
+      "t:b476647ae4cc229d"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/knight-orders-physical.test.ts",
+      "passed": 26,
+      "log": "/tmp/madou-knight-orders-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts -t '黒騎士団|聖騎士団'",
+      "passed": 14,
+      "skipped": 239,
+      "log": "/tmp/madou-knight-orders-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-knight-orders-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 18,
+      "log": "/tmp/madou-knight-orders-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/knight-orders-physical.spec.ts",
+      "passed": 12,
+      "log": "/tmp/madou-knight-orders-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-knight-orders-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9882,
+        "implemented": 2230
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "121/195 per-entry semantic/main bindings integrated; other74 and whole-goal gates open. No accepted promotion."
+}

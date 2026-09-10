@@ -1,0 +1,61 @@
+{
+  "task": "R4-C Fury bow numeric clauses and common recovery ID",
+  "status": "numeric-and-transport-accepted-canonical-counter-and-reflection-route-pending",
+  "implementation": [
+    "One canonical c2-p02-r1c2-ab03 registers both reuse and fairy-bow numeric contexts. Real selected bow technique qualification excludes automatic follower origin and fixed received copies.",
+    "One selection saves an effect d6 on the ability frame and a distinct later damage d6 on SelectedActionModifier. Both opt into saved numeric before/after windows; numeric rolls acquire no check threshold. Existing numeric rolls retain their prior default timing.",
+    "Stable selected-modifier iteration retains separate Fist/Fury/native damage IDs. Only applied live additions are counted; effect and damage freeze separately, and null damage remains null."
+  ],
+  "acceptance": {
+    "canonical": [
+      "Actual 踏み込み／弓: effect 2, damage 5, use Lv 3 unchanged; distinct IDs and final faces, JSON transition replay and 220 unique physical cards on every accepted command.",
+      "Decline and actual Fate cancellation produce no optional dice. Actual God rerolls effect or damage independently; numeric force-failure rejected at the rightful response seat.",
+      "Actual revealed Vanmil declaration before effect freeze removes both additions; after effect freeze keeps effect and skips the not-yet-started damage roll.",
+      "Actual dedicated 光流弓 shares one pair of totals over B and C, one hit each.",
+      "Actual same-event bow values then printed extra recovery complete through the same Fury ability ID, preserve base and return one physical card.",
+      "Unrelated actual 黒翼飛翔剣 offers no Fury numerical option."
+    ],
+    "structural": [
+      "Dia actual two-source Fairy/Soldier bundle with helper-only Fury inheritance: source-specific values and independent native/Fury damage rolls. This does not assert canonical Dia/Fury inheritance.",
+      "Fixed-received-copy exclusion and automatic-follower-origin exclusion use structural action provenance.",
+      "Null-damage resolver is structural; printed bow profiles used here have numerical damage."
+    ],
+    "transport": [
+      "Actual DO/WebSocket commands, eviction and ACK replay at effect before/after, effect freeze, damage before/after, one actual effect reroll and final parent resolution. Opponent cannot see the hidden Fury source ID.",
+      "Browser actual ability selection, reroll and explicit passes, owner/opponent reload between separate visible rolls, unchanged use requirement and stable roll history."
+    ]
+  },
+  "verification": {
+    "engine": {
+      "passed": 170,
+      "files": [
+        "packages/engine/test/fury-bow.test.ts",
+        "packages/engine/test/action-value-abilities.test.ts",
+        "packages/engine/test/reuse-abilities.test.ts",
+        "packages/engine/test/task7d-rolls.test.ts"
+      ],
+      "log": "/tmp/madou-fury-focus.log"
+    },
+    "finalFocused": {
+      "passed": 13,
+      "log": "/tmp/madou-fury-final.log",
+      "note": "After strengthening force-failure rejection to use the current rightful seat; overlaps the 170."
+    },
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-fury-worker.log"
+    },
+    "browser": {
+      "passed": 1,
+      "log": "/tmp/madou-fury-browser.log"
+    },
+    "typecheck": "passed /tmp/madou-fury-typecheck.log",
+    "ledger": "12109 rows structurally valid; statuses unchanged /tmp/madou-fury-ledger.log"
+  },
+  "remaining": [
+    "No legally reachable canonical Fury bow counter demonstrated. The identified printed bow counter permission belongs to Shin. No invented source or inheritance closes that condition.",
+    "Fixed-copy reflection exclusion is structural, not an actual reflected warrior-bow play route.",
+    "B2 requested non-bow owned Fury positive remains unavailable: Fury listed bow/light-bow/star-bow techniques all carry bow attribute.",
+    "R4-B1 remaining cross conditions, exact A31 deck/attachment cases, other plan tasks and formal acceptance remain unfinished."
+  ]
+}

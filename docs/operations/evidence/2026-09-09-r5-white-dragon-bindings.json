@@ -1,0 +1,158 @@
+{
+  "task": "R5 Task11 other148: White Dragon Sword and White Dragon Mountain Sword physical modes",
+  "status": "two-white-dragon-card-bindings-integrated-other146-open",
+  "completedAt": "2026-09-09 11:30 JST",
+  "implementation": "No production changes. Actual-command preparation fixture,32 new Engine cases,8 DO cases and8 browser modes.",
+  "canonicalEvidence": [
+    "Sword a2-p11-r2c1 ordinary warrior/near/use6/effect6/damage6/戦剣白; first package effect7/damage10 and full II effect8/damage15. Actual separate physical approach enables each near attack. Ordinary far rejects before cost. All dedicated Sword modes require2 physical maai versus ordinary1; repeated spent card rejects.",
+    "Mountain Sword a2-p11-r2c2 ordinary warrior/far/use7/effect7/damage10/戦剣白詠 requires actual CHANT and full intervening turns. First dedicated package effect8/4d6+1 still requires chant for both initial I and initial II; full II effect9/damage25 waives chant. Partial package and first-owner II selection reject.",
+    "Each8 elected mode tests initial use-minus1 and exact use boundary. Ordinary actual checks1/0; dedicated0. Each checks all printed profile fields and source fromChant. Initial II may also choose ordinary effects; initial II allocation is not a new actual-transformation proof.",
+    "First dedicated Mountain Sword creates one shared actual4d6+1 result faces2,3,4,5 total15; both selected targets receive15. Full II both receive25, ordinary one10. Unselected D stays0. Effects/values are replacements, not sums.",
+    "Actual initial Small Devil and Skeleton are attribute-destroyed before follower HP by each ordinary physical sword. Actual Fate cancels every8 mode before checks/damage dice and spends the source once, clearing chants. Foreign owners, non-elected variants, invented variants, ordinary multiple targets and unchanted first/ordinary Mountain Sword reject with raw/all-view invariance.",
+    "All Engine act commands and fixture preparation verify JSON continuation and220 unique physical cards. Required preparation uses real CHANT/full turns or real separate physical APPROACH, with private chant back/position projection asserted.",
+    "DO8 starts from the actual-command prepared fixture and saves/evicts/exactly replays each subsequent attack/pass. Numeric result save switches entropy to6; retry keeps one original4d6+1 attempt and shared15. It does not claim those fixture preparation commands were separately persisted by the DO.",
+    "Browser8 selects actual hand or own chant source and dedicated checkbox; initial II explicitly selects inherited/full variant. Declaration, defense and final reload preserve source, effect level and exact live shared damage. The required CHANT/APPROACH preparation is performed by the canonical fixture; these browser paths test attack selection onward."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p11-r2c1::semantic/ordinary/school",
+      "a2-p11-r2c1::semantic/ordinary/range",
+      "a2-p11-r2c1::semantic/ordinary/use-level",
+      "a2-p11-r2c1::semantic/ordinary/base-effect-level",
+      "a2-p11-r2c1::semantic/ordinary/damage",
+      "a2-p11-r2c1::semantic/ordinary/attribute-0",
+      "a2-p11-r2c1::semantic/ordinary/attribute-1",
+      "a2-p11-r2c1::semantic/ordinary/attribute-2",
+      "a2-p11-r2c1::semantic/ordinary/attack-use",
+      "a2-p11-r2c1::semantic/dedicated/0/select-optional",
+      "a2-p11-r2c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p11-r2c1::semantic/dedicated/0/effect-replacement",
+      "a2-p11-r2c1::semantic/dedicated/0/damage-replacement",
+      "a2-p11-r2c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p11-r2c1::semantic/dedicated/0/chant-retain",
+      "a2-p11-r2c1::semantic/dedicated/1/select-optional",
+      "a2-p11-r2c1::semantic/dedicated/1/eligible-owner/0",
+      "a2-p11-r2c1::semantic/dedicated/1/effect-replacement",
+      "a2-p11-r2c1::semantic/dedicated/1/damage-replacement",
+      "a2-p11-r2c1::semantic/dedicated/1/activation-check-waive",
+      "a2-p11-r2c1::semantic/dedicated/1/chant-retain",
+      "a2-p11-r2c1::semantic/ordinary/destroy-black",
+      "a2-p11-r2c1::semantic/ordinary/destroy-dead",
+      "a2-p11-r2c1::semantic/dedicated/maai-extra-one",
+      "a2-p11-r2c1::semantic/dedicated/variants-not-stack",
+      "a2-p11-r2c2::semantic/ordinary/school",
+      "a2-p11-r2c2::semantic/ordinary/range",
+      "a2-p11-r2c2::semantic/ordinary/use-level",
+      "a2-p11-r2c2::semantic/ordinary/base-effect-level",
+      "a2-p11-r2c2::semantic/ordinary/damage",
+      "a2-p11-r2c2::semantic/ordinary/attribute-0",
+      "a2-p11-r2c2::semantic/ordinary/attribute-1",
+      "a2-p11-r2c2::semantic/ordinary/attribute-2",
+      "a2-p11-r2c2::semantic/ordinary/attribute-3",
+      "a2-p11-r2c2::semantic/ordinary/attack-use",
+      "a2-p11-r2c2::semantic/ordinary/chant-required",
+      "a2-p11-r2c2::semantic/dedicated/0/select-optional",
+      "a2-p11-r2c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p11-r2c2::semantic/dedicated/0/effect-replacement",
+      "a2-p11-r2c2::semantic/dedicated/0/damage-replacement",
+      "a2-p11-r2c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p11-r2c2::semantic/dedicated/0/chant-retain",
+      "a2-p11-r2c2::semantic/dedicated/0/target-subset",
+      "a2-p11-r2c2::semantic/dedicated/1/select-optional",
+      "a2-p11-r2c2::semantic/dedicated/1/eligible-owner/0",
+      "a2-p11-r2c2::semantic/dedicated/1/effect-replacement",
+      "a2-p11-r2c2::semantic/dedicated/1/damage-replacement",
+      "a2-p11-r2c2::semantic/dedicated/1/activation-check-waive",
+      "a2-p11-r2c2::semantic/dedicated/1/chant-waive",
+      "a2-p11-r2c2::semantic/dedicated/1/target-subset",
+      "a2-p11-r2c2::semantic/ordinary/destroy-black",
+      "a2-p11-r2c2::semantic/ordinary/destroy-dead",
+      "a2-p11-r2c2::semantic/dedicated/variants-not-stack"
+    ],
+    "mainProducerRebindings": [
+      "a2-p11-r2c1::main-producer",
+      "a2-p11-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:d4b27e0277967657",
+      "t:3a1de782c81dd4d5",
+      "t:cb526cc2195b7cdb",
+      "t:73c7544d7c4b7a98",
+      "t:bfbfc98506a1a676",
+      "t:4ac9f61637b65a62",
+      "t:de4e1ca0145cee77",
+      "t:d82c11f21cc3eba3",
+      "t:eb5cf3444cad249b",
+      "t:0bb5afe6cd38e30c",
+      "t:97fa2b175f1caf2f",
+      "t:e6e0b2246c15aa1d",
+      "t:fd2677728f6c0700",
+      "t:0a06cf1b67cc5797",
+      "t:a473534758d66de7",
+      "t:34bbdde6abb32a20",
+      "t:bea6dbaed80adf7f",
+      "t:f3c6a79b0c133af3",
+      "t:3bc4025b06cc2c4c",
+      "t:016f1839cc17990d",
+      "t:776752a33175723c",
+      "t:21f92bf8225237cd",
+      "t:330227c8f4878969",
+      "t:ed30b5717f187b9a",
+      "t:5222e3d1f880d154",
+      "t:77469248e74a0e18",
+      "t:8858da5e52b19250",
+      "t:729cc117a28f4a90",
+      "t:8415ab4824dba871",
+      "t:4ab9c2872aec09e9",
+      "t:2183b9cf135ad566",
+      "t:6340eeafcabdec66"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/white-dragon-physical.test.ts",
+      "passed": 32,
+      "log": "/tmp/madou-white-dragon-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7b-techniques.test.ts -t '光竜|inherited and full Lancelot|Lancelot II can explicitly'",
+      "passed": 17,
+      "skipped": 70,
+      "log": "/tmp/madou-white-dragon-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-white-dragon.test.ts",
+      "cwd": "apps/worker",
+      "passed": 8,
+      "log": "/tmp/madou-white-dragon-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/white-dragon.spec.ts",
+      "passed": 8,
+      "log": "/tmp/madou-white-dragon-browser.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 11051,
+        "implemented": 1061
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-white-dragon-types.log"
+    }
+  },
+  "remaining": "49/195 action-card per-entry semantic/main bindings integrated; other146 and whole-goal gates remain open. No accepted promotion."
+}

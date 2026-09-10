@@ -1,0 +1,57 @@
+{
+  "task": "R5 Task12 S26/S27",
+  "status": "s26-s27-acceptance-complete",
+  "completedAt": "2026-09-09 08:12 JST",
+  "s26": [
+    "A Uonos/B Fury/C Shelim/D Lia. Actual B initial Soldier placement, real A bow kills C and protection makes B wander. Lia survives to keep the game ongoing. B hand/follower shuffle into deck while C death cards enter discard.",
+    "Actual intervening turns and Uonos dedicated resurrection: C draws initial5/setup then B returns with initial5/setup, damage2 and same life. Old B cards are absent; real new Dwarf placement refills to5 and original A hand-adjustment resumes. No seeded dead/wandering state.",
+    "Engine and DO execute full sequence with220 unique cards, save/replay every command and identical duplicate receipts. Deterministic shuffle entropy preserves replacement card identities. Browser two cases begin at actual prefix-generated revival and return setup, use live commands and reload."
+  ],
+  "s27": [
+    "Actual Ramba dedicated earth spear kills C/D; real turns, actual CHANT of destruction and more turns leave final A/B. No seeded final-two state.",
+    "Actual ordinary 滅界 deals target20 and own10 in one simultaneous pending-death batch. No outcome until all4 are dead and source/reservations finish. Exact mutual-extinction draw, no winners, all results draw, one GAME_COMPLETED and one physical source discard.",
+    "DO restarts/replays each final attack response and saves pending batch. Browser selects actual chanted card and attacks, reloads at simultaneous death, then verifies draw display and identical final outcome after reload."
+  ],
+  "verification": {
+    "engine": {
+      "passed": 97,
+      "s26": 96,
+      "s27": 1,
+      "files": [
+        "scenario-s26.test.ts",
+        "task7g-lifetime.test.ts",
+        "task7f-lifecycle.test.ts",
+        "r6-scenarios.test.ts (S27 filter)"
+      ],
+      "logs": [
+        "/tmp/madou-s26-focused.log",
+        "/tmp/madou-s27-engine-final.log"
+      ]
+    },
+    "worker": {
+      "passed": 2,
+      "logs": [
+        "/tmp/madou-s26-do.log",
+        "/tmp/madou-s27-do.log"
+      ]
+    },
+    "browser": {
+      "passed": 3,
+      "logs": [
+        "/tmp/madou-s26-browser.log",
+        "/tmp/madou-s27-browser.log"
+      ]
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s27-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-s26-s27-ledger.log"
+    }
+  },
+  "remaining": "S28 onward, S01-S17 gaps and full semantic binding/catalog/completion plan remain pending; S21 awaits G15 clarification."
+}

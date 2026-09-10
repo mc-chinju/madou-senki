@@ -1,0 +1,71 @@
+{
+  "task": "R5 Task11 A41 All Army",
+  "status": "accepted-scope",
+  "acceptedPhysicalSources": [
+    "a2-p05-r2c2"
+  ],
+  "implementation": [
+    "PLAY_ALL_ARMY validates one actual own-hand follower, complete printed bottom profile and ordinary targets/restrictions before paying both physical cards without refill.",
+    "ActionFrame parent and dependent child retain source IDs, owner life and common root. Parent declaration, child declaration and required morale are independently cancellable and saveable. Parent cancellation disposes both sources; child/morale failure ends the paid action without reselection.",
+    "Normal followerBottomFor is reused only after explicit school/range/level/damage completeness validation; printed follower-ignore and special maai conditions are preserved. Actual own-warrior/random levels, random damage, multi-hit and mandatory-all use the ordinary attack continuation.",
+    "Morale is saved once and uses printed requirement/modifier rather than dedicated follower permissions. Roll provenance identifies the hand follower for human-only installed-card morale modifiers. Peace binds to the accepted main root and expires at its end.",
+    "Both sources enter common named-card-used disposition, without ordinary follower-death recovery. The parent finishes only after the dependent attack and its returned counters/dispositions.",
+    "Finite allArmyOptions and AllArmyPanel expose one hand source, legal targets, morale requirement, explicit payment and local decline. ActionSummary explains the parent-to-child transition."
+  ],
+  "acceptance": [
+    "Actual Griffon two hits cause16 damage; real approach permits near Wood Golem with5 damage and no morale; hand attack never creates a placed follower.",
+    "Actual Fate parent/child/morale cancellation keeps both cards spent and ends the action. Frozen failed morale cannot be rerolled by replaying or choosing a replacement follower.",
+    "Fairy actual3+d6 use level is fixed before excess-level checks; incomplete profiles, missing school/range, forged extra source/profile, placed/foreign source and forbidden black/white/silenced attacks reject before payment.",
+    "Earth Dragon requires every legal target; actual Lancaster dedicated counter returns7 then resumes the second Griffon hit for8; a prior actual Peace survives morale and expires after this main attack.",
+    "All engine accepted transitions compare JSON-restored results and retain220 unique physical cards. Actual DO success/failure and all3 cancellation boundaries survive eviction and identical command replay; thrown morale is also saved/replayed.",
+    "Browser success, failure and decline pass, with reload at parent declaration, follower declaration, before-roll and after-roll. Source selection is cleared without paying when declined."
+  ],
+  "checks": [
+    {
+      "command": "pnpm exec vitest run packages/engine/test/all-army.test.ts packages/protocol/test/all-army.test.ts packages/engine/test/dedicated-follower-attacks.test.ts packages/engine/test/early-turn-cards.test.ts packages/engine/test/turn-information-spirit.test.ts packages/engine/test/anytime-information.test.ts",
+      "passed": 201,
+      "exitCode": 0,
+      "log": "/tmp/madou-army-related.log"
+    },
+    {
+      "command": "pnpm --filter @madou/worker test test/room-all-army.test.ts",
+      "passed": 5,
+      "exitCode": 0,
+      "log": "/tmp/madou-army-worker-fixed.log"
+    },
+    {
+      "command": "pnpm exec playwright test tests/e2e/all-army.spec.ts",
+      "passed": 3,
+      "exitCode": 0,
+      "log": "/tmp/madou-army-browser.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-army-type-final.log"
+    },
+    {
+      "command": "python3 scripts/validate_runtime_coverage.py",
+      "exitCode": 0,
+      "rows": 12109,
+      "valid": true,
+      "log": "/tmp/madou-army-ledger.log"
+    }
+  ],
+  "resolvedFailures": [
+    "Initial white restriction test incorrectly used Garwin; actual catalog restriction belongs to Gadyoora. Fixture corrected without changing card rules.",
+    "Random Fairy use-level continuation initially entered effect-level before ordinary excess checks. Resume now returns to declaration until its use level has been prepared.",
+    "Worker fixture initially used a nonexistent Shin display name; corrected to actual catalog name. Type narrowing uses one saved currentAction local.",
+    "Initial counter test expected equal-Lv Flash Spear to return an attack. Adopted behavior blocks without return; actual higher-Lv Lancaster dedicated counter is used to prove return continuation.",
+    "Peace fixture now resolves its printed name by exact source ID."
+  ],
+  "ledgerChanges": false,
+  "semanticPromotion": false,
+  "remaining": [
+    "Task11 recovery rider acceptance and common R4 adapter obligations",
+    "R4-B remaining crossings, additional/unlimited recovery and Fury random value",
+    "Other unchecked R5/R6-R9 tasks and R3 human interaction acceptance",
+    "Formal START remains gated; no deployment or human playtest performed"
+  ],
+  "workflow": "No subagents, independent review, self review, R0/R1 re-audit, full character/action JSON reads or full-suite run."
+}

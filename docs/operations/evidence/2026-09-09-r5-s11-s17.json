@@ -1,0 +1,57 @@
+{
+  "task": "R5 Task12 S11-S17",
+  "status": "s11-s17-acceptance-complete",
+  "completedAt": "2026-09-09 08:52 JST",
+  "implementation": "No production handler changes. New shared r6-maai-scenarios.ts and r6-boundary-scenarios.ts produce actual setup, CHANT/intervening turns, attack and reflection commands.",
+  "canonicalEvidence": {
+    "S11": "Actual CHANT and intervening turns produce Shin one-hit sword B/C. Both physical maai paid, one actual advance cancels both, all three physical cards discarded once. Full distance matrix unchanged before/after final B7/C7 and withdrawal. DO each command restart/duplicate receipt and live browser payments/reload.",
+    "S12": "Actual CHANT and intervening turns produce die3 with B three hits. B pays exactly one maai, A passes; defended [true,false,false], hitCursor1 and fresh normal defense, final B14. Same physical maai discarded once; DO each command and browser live inputs/reload.",
+    "S13": "Explicit abstract boundary substitutes Lv5/damage6×3 and frozen physical front descriptor Lv3/HP2/no morale. Resolver gives [4,4,4], reduction [2,2,2], one physical follower destroyed/resolution source; JSON continuation equal, repeated settled resolver unchanged, final damage12 and discard once. Separate existing printed 天地7×3/SoldierHP1→18 rerun. Abstract values are not claimed as printed bow/Soldier behavior.",
+    "S14": "Real initial Royal Knight placement and actual bow. B START_FOLLOWERS closes owned 見切る with DEFENSE_WINDOW_CLOSED/unchanged, then actual morale roll still permits C physical God reroll. Stable roll ID/second attempt, B0 and follower/unused defense retained. DO restart/duplicate ACK-error; browser no normal-defense button, live C God/reload.",
+    "S15": "Existing exact real bow test retained and rerun: same faction hidden B reveals before follower start→damage0, after explicit START_FOLLOWERS and follower-start→damage4. Exact pair is Engine evidence; no new browser producer claimed.",
+    "S16": "Existing exact actual bow/prayer2 and Wood Golem HP4 test retained and rerun: boosted effect reaches body with numeric damage0, follower destroyed and B revealed. Numeric-zero proof is this Engine path, not the separate null-damage silence test.",
+    "S17": "Real silence→B Mirror X→A Ice Y creates [X,Y] lineage. Live spent-X request rejected unchanged; B unused teleport accepted in the original unmodified trajectory, no statuses, all three physical defenses discarded once and groups/windows empty. Separate copied structural X-in-hand challenge asserts ALREADY_USED unchanged to isolate lineage; explicitly not a physical reclaim producer. DO and browser continue only the actual path."
+  },
+  "verification": {
+    "engine": {
+      "passed": 33,
+      "files": [
+        "scenario-s11-s13.test.ts",
+        "scenario-s14-s17.test.ts",
+        "distance.test.ts",
+        "multi-hit.test.ts",
+        "combat.test.ts"
+      ],
+      "log": "/tmp/madou-s11-s17-engine.log"
+    },
+    "worker": {
+      "passed": 4,
+      "logs": [
+        "/tmp/madou-s11-s12-do.log",
+        "/tmp/madou-s14-s17-do.log"
+      ],
+      "scope": "Every live command saved/restarted and duplicate identical ACK/error; 220 unique physical cards."
+    },
+    "browser": {
+      "passed": 4,
+      "log": "/tmp/madou-s11-s17-browser.log",
+      "scope": "Live S11/S12 payments, S14 God on follower morale and S17 alternative teleport with reloads. S13 arithmetic and S15/S16 exact boundary pair remain Engine evidence."
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s11-s17-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-s11-s17-ledger.log"
+    }
+  },
+  "testCorrections": [
+    "Use group.hitCursor for the next hit; window continuation has no hitIndex.",
+    "Abstract hit fixture includes required hit:false field.",
+    "Browser catalog import uses existing relative source path; root package alias was unavailable."
+  ],
+  "remaining": "S21 awaits the G15 clarification. Combined legally produced cross-feature invariants, remaining Task11/R4 obligations, R6-R9 and R3 remain pending; whole goal active."
+}

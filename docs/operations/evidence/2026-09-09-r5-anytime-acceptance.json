@@ -1,0 +1,77 @@
+{
+  "task": "R5 Task9 grouped anytime acceptance",
+  "status": "accepted",
+  "correspondence": {
+    "all8trueAnytimeDeclineForeignFateAfterOpen": [
+      "packages/engine/test/anytime-matrix.test.ts"
+    ],
+    "TragedyKeilAmuletHostagePositiveConditionsChamCancellationAndTwoTargetThreeHitScopes": [
+      "packages/engine/test/anytime-responses.test.ts",
+      "docs/operations/evidence/2026-09-09-r5-anytime-responses.json",
+      "docs/operations/evidence/2026-09-09-r5-substitute.json"
+    ],
+    "CouragePositiveMentalScopeAndLesterCheck": [
+      "packages/engine/test/printed-reclaim-adapters.test.ts"
+    ],
+    "PeaceLifetimeAndRevelationPrivateSnapshots": [
+      "packages/engine/test/anytime-information.test.ts",
+      "docs/operations/evidence/2026-09-09-r5-anytime-information.json"
+    ],
+    "SubstituteExactHitRestrictionsCounterOwnAbilitiesAndOpen": [
+      "packages/engine/test/substitute.test.ts",
+      "docs/operations/evidence/2026-09-09-r5-substitute.json"
+    ],
+    "DispelPaymentNoRefillGolemsParentAndDecline": [
+      "packages/engine/test/dispel.test.ts",
+      "docs/operations/evidence/2026-09-09-r5-dispel.json"
+    ],
+    "liveReceiptsEvictionPrivateInformationAndNewOpenRollPause": [
+      "apps/worker/test/room-reclaim.test.ts",
+      "tests/e2e/reclaim.spec.ts"
+    ]
+  },
+  "checks": [
+    {
+      "command": "pnpm exec vitest run packages/engine/test/anytime-matrix.test.ts packages/engine/test/anytime-responses.test.ts packages/engine/test/anytime-information.test.ts packages/engine/test/substitute.test.ts packages/engine/test/dispel.test.ts packages/engine/test/printed-reclaim-adapters.test.ts",
+      "passed": 109,
+      "exitCode": 0,
+      "log": "/tmp/madou-task9-engine.log"
+    },
+    {
+      "command": "pnpm --filter @madou/worker exec vitest run test/room-reclaim.test.ts",
+      "passed": 35,
+      "failed": 1,
+      "log": "/tmp/madou-task9-worker.log",
+      "note": "Only the newly added OPEN test failed because it assumed a successful random revival roll. Corrected to save after either real outcome."
+    },
+    {
+      "command": "pnpm --filter @madou/worker exec vitest run test/room-reclaim.test.ts -t 'substitute refill OPEN'",
+      "passed": 1,
+      "skipped": 35,
+      "exitCode": 0,
+      "log": "/tmp/madou-task9-open-worker.log"
+    },
+    {
+      "command": "pnpm exec playwright test tests/e2e/reclaim.spec.ts --grep 'substitute OPEN'",
+      "passed": 1,
+      "exitCode": 0,
+      "log": "/tmp/madou-task9-open-browser.log",
+      "note": "Same initial random-success assumption failed in browser; corrected test saves before/after OPEN roll and in substitute defense. Engine deterministic test also covers successful roll and revival decline."
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-task9-final-type.log"
+    },
+    {
+      "command": "python3 scripts/validate_runtime_coverage.py",
+      "valid": true,
+      "rows": 12109,
+      "repairs": [],
+      "semanticPromotion": false,
+      "log": "/tmp/madou-task9-ledger.log"
+    }
+  ],
+  "constraints": "No subagents, reviews, full-suite reruns, R0/R1 audit or full catalog reads. Formal START remains unavailable.",
+  "remaining": "Task10 Wish and other unchecked completion tasks remain in progress."
+}

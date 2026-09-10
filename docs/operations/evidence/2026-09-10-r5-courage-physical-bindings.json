@@ -1,0 +1,123 @@
+{
+  "task": "R5 Task11 Courage a2-p01-r3c3",
+  "status": "courage-physical-bindings-integrated-other42-open",
+  "completedAt": "2026-09-10 02:20 JST",
+  "implementation": "No production change.10 semantic clauses and previously pending main producer bind18 canonical transition cases; total11 newly implemented rows.",
+  "canonicalEvidence": [
+    "Actual setup/reveal and incomingBow plus actual DiaCharm/GadyooraFear optional defense declaration. GOOD user Courage cancels exact mentaldeclaration with no enemycheck and originalBow4 resumes. Actual EVIL cardowner and actual Lesterpoem excluded; optionaldecline/afterroll rejection leave cardunspent. Fatecanceled Courage preserves payment/refill and resumes mentaldouble stop but never creates printedreturncheck. Foreign/stale/malformed role choices reject state/all4views.",
+    "Actual public LesterC chooses printed request-check, then bound2d6 check belongs C, then originaluserD chooses take/decline. Distinctchecker/user and sameCchecker/user both tested; sameC explicitly chooses printed request-check from alongside separate ordinaryclaim. Hiddenchecker or real stoppedchecker has no printedcandidate; stopcame from actual prior CWhiteLight and Dia mentaldouble. Publicchecker maydecline, successful beneficiary maydecline, neither forcesreturn. Actual hiddenLester reveal during unchanged savedcheckwindow enablesconsent. Spirit6 exact3+3 succeeds and3+4 fails. Actual God reroll changes samefailed6+6 roll to1+2 success with onecheckattempt.",
+    "Successful take reserves physicalCourage, which remains absent from hands/discard until parentattack chain ends. Then only originaluser receives card once, hand5afterimmediate refill becomes6afterreturn; normalname reclaimbudget remainsunused. Actual Blood immediateOPEN +3stats belongsuser and is separate from laterreturn. Actual later secondBow permits both same mentalability and returnedCourage again, withsecond consenting check and totalBdamage8; onephysicalcard preserved. Engine18 uniquecases JSONreexecution220uniqueIDs/rejectedstateallviews. DO14 save/restart/replay everyacceptedcommand; UI14 actualattack/ability/Courage/Lester reveal/consent/check/beneficiarychoice/Fate/reuse withreload. Shared/candidate receipts remainpending; no acceptedpromotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/courage-physical.test.ts",
+      "uniquePassed": 18,
+      "attempts": [
+        {
+          "log": "/tmp/madou-courage-engine.log",
+          "passed": 17,
+          "failed": 1,
+          "reason": "SameuserLester has an ordinary take claim before printed request-check; test now explicitly selects printed request-check."
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/courage-physical.test.ts -t 'courage-same'",
+          "log": "/tmp/madou-courage-engine-same.log",
+          "passed": 1,
+          "skipped": 17
+        }
+      ]
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/printed-reclaim-adapters.test.ts packages/engine/test/anytime-matrix.test.ts -t 'A09|Courage|courage|a2-p01-r3c3'",
+      "passed": 14,
+      "skipped": 41,
+      "log": "/tmp/madou-courage-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-courage-physical.test.ts",
+      "uniquePassed": 14,
+      "timeoutMs": 15000,
+      "attempts": [
+        {
+          "passed": 11,
+          "failed": 3,
+          "log": "/tmp/madou-courage-do.log",
+          "reason": "courage-refill/courage-stopped/courage-later exceeded15secondslimit; no causal claim."
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-courage-physical.test.ts -t 'courage-refill|courage-stopped|courage-later'",
+          "passed": 3,
+          "skipped": 11,
+          "log": "/tmp/madou-courage-do-boundaries.log",
+          "sameLimitAndTest": true
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/courage-physical.spec.ts",
+      "passed": 14,
+      "log": "/tmp/madou-courage-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-courage-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9261,
+        "implemented": 2851
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p01-r3c3::semantic/timing/printed-window",
+      "a2-p01-r3c3::semantic/use/good-only",
+      "a2-p01-r3c3::semantic/cancel/dia-charm",
+      "a2-p01-r3c3::semantic/cancel/gadyoora-fear",
+      "a2-p01-r3c3::semantic/return/checker-lester",
+      "a2-p01-r3c3::semantic/return/checker-revealed",
+      "a2-p01-r3c3::semantic/return/check-success",
+      "a2-p01-r3c3::semantic/return/user-choice",
+      "a2-p01-r3c3::semantic/return/user-beneficiary",
+      "a2-p01-r3c3::semantic/return/distinct-roles"
+    ],
+    "mainProducerRebindings": [
+      "a2-p01-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:7a7876d88d702348",
+      "t:5b7dc729975099bb",
+      "t:d7de9aa757e0e3a3",
+      "t:938974954a9c9fda",
+      "t:bc7a65ecf4fc819b",
+      "t:740476bede621a41",
+      "t:4930e0f914bca252",
+      "t:dae616018bc8ea51",
+      "t:cdd6138848501bde",
+      "t:edaf727339a1c851",
+      "t:cf2fb65a782b4bde",
+      "t:b3aa472846f0f983",
+      "t:9d3feb3abf53fb68",
+      "t:dea06f9f6a93d061",
+      "t:945d8ea80f174d7d",
+      "t:9da2b93053e6d6f4",
+      "t:0ff1ff1008bf340b",
+      "t:3549cc1635cf6570"
+    ]
+  },
+  "remaining": "153/195 fully integrated; other42 includes partial SingingShip1 and WingedFolk1 plus40 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

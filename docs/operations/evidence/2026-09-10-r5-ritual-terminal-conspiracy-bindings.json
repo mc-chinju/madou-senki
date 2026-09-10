@@ -1,0 +1,51 @@
+{
+  "task": "R5 actual personal win then terminal",
+  "addedTests": {
+    "t:14e6ec039a275ad8": {
+      "path": "apps/worker/test/room-ritual-terminal.test.ts",
+      "suite": [],
+      "title": "actual ritual to Vanmil death persists one terminal result with subordinates %s through every eviction and replay",
+      "declarationSha256": "3f278e5a6ebe9ca0d6a7fc530852bb2b88e67226aeadb31fa7a8f32cec058d06",
+      "parameters": "conspiracy",
+      "kind": "worker-persistence",
+      "bindingNote": "Actual six-seat ritual, elected subordinates, F Arseil reveal and conspiracy victory/exit, later actual dedicated chant and lethal Dragon Spear against Vanmil. F individual win remains before and after terminal; winner IDs contain F exactly once. Engine JSON replay, DO every receipt eviction/replay or browser controls/reloads. F remains non-Vanmil; no synthetic faction change of an exited actor and no dead/wandering-winner proof."
+    },
+    "t:911344478d5918f6": {
+      "path": "tests/e2e/ritual-terminal.spec.ts",
+      "suite": [],
+      "title": "actual Arseil conspiracy personal victory survives later ritual terminal and all browser reloads",
+      "declarationSha256": "10de8d1453ce06e3c7dba351f2a59cb7c1715ef2c332008b42b77d2abd0adac5",
+      "parameters": null,
+      "kind": "browser",
+      "bindingNote": "Actual six-seat ritual, elected subordinates, F Arseil reveal and conspiracy victory/exit, later actual dedicated chant and lethal Dragon Spear against Vanmil. F individual win remains before and after terminal; winner IDs contain F exactly once. Engine JSON replay, DO every receipt eviction/replay or browser controls/reloads. F remains non-Vanmil; no synthetic faction change of an exited actor and no dead/wandering-winner proof."
+    },
+    "t:8b69e74af5772a9a": {
+      "path": "packages/engine/test/ritual-terminal.test.ts",
+      "suite": [],
+      "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+      "declarationSha256": "e5b68bc9ba7b3b255f114a1694084fd32a44dbbeda37b29b9985f4162af9c90e",
+      "parameters": "conspiracy",
+      "kind": "canonical-transition",
+      "bindingNote": "Actual six-seat ritual, elected subordinates, F Arseil reveal and conspiracy victory/exit, later actual dedicated chant and lethal Dragon Spear against Vanmil. F individual win remains before and after terminal; winner IDs contain F exactly once. Engine JSON replay, DO every receipt eviction/replay or browser controls/reloads. F remains non-Vanmil; no synthetic faction change of an exited actor and no dead/wandering-winner proof."
+    }
+  },
+  "updatedReferences": {
+    "t:8d2cf5c5645d840f": "t:9c86928c62f6cb02",
+    "t:c814f10811ade711": "t:7aee5d9b49c99a9b",
+    "t:67a07efd73b2ad1d": "t:7f778224d78f5d59",
+    "t:ebb4caa8c7dc67d7": "t:712f227296ba7bfb",
+    "t:abb618959861a028": "t:abb618959861a028",
+    "t:242d897c223bd4c5": "t:242d897c223bd4c5"
+  },
+  "bindings": [
+    "c2-p05-r1c1-ab04#own-turn-ritual-card-use",
+    "c2-p05-r1c1-ab04#transform-Vanmil",
+    "c2-p05-r1c1-ab04#full-heal",
+    "c2-p05-r1c1-ab04#awakening-boundary",
+    "c2-p07-r1c2-ab05#actual-death-trigger",
+    "c2-p07-r1c2-ab05#mandatory-end",
+    "c2-p07-r1c2-ab05#nonVanmil-active-winners",
+    "c2-p07-r1c2-ab05#retain-prior-individual-win"
+  ],
+  "status": "No row promotion"
+}

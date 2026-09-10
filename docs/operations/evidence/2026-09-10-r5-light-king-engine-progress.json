@@ -1,0 +1,74 @@
+{
+  "task": "R5 Task11 Light King physical Engine stage",
+  "updatedAt": "2026-09-10 13:26 JST",
+  "status": "in-progress",
+  "cardId": "a2-p16-r3c3",
+  "semanticPending": 25,
+  "productionChanges": false,
+  "completed": [
+    "Physical fixture: normal defense and Lia whole-group substitution; actual Hundred Slash CHANT and 2 targets x 3 hits; real Death Song CHANT counter prohibition; Nightmare Maai prohibition/follower ignore and actual Water on return.",
+    "Engine30 unique cases: ordinary defense only; GOOD restriction; non-Lia precheck paid before use; ordinary Lv equality3 and spirit6/9; source consumed on failed checks; whole other-hit set; self/follower-started exclusions; one return; failed group check, Fate, reroll; actual product min10 boundaries.",
+    "Registered fixture in game-scenarios and e2e-worker for next transport tests."
+  ],
+  "validation": {
+    "engine": {
+      "uniquePassed": 30,
+      "runs": [
+        {
+          "passed": 12,
+          "failed": 12,
+          "log": "/tmp/madou-light-king-engine.log"
+        },
+        {
+          "passed": 12,
+          "failed": 0,
+          "log": "/tmp/madou-light-king-engine-fix.log"
+        },
+        {
+          "passed": 5,
+          "failed": 1,
+          "log": "/tmp/madou-light-king-engine-boundaries.log"
+        },
+        {
+          "passed": 1,
+          "failed": 0,
+          "log": "/tmp/madou-light-king-engine-equality-fix.log"
+        }
+      ]
+    },
+    "related": {
+      "passed": 8,
+      "command": "pnpm exec vitest run packages/engine/test/task7i-combinations.test.ts -t 'Light King|Lia'",
+      "log": "/tmp/madou-light-king-related.log"
+    },
+    "types": [
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-light-king-types.log"
+      },
+      {
+        "command": "pnpm exec tsc --noEmit",
+        "exitCode": 0,
+        "log": "/tmp/madou-light-king-root-types.log"
+      },
+      {
+        "command": "pnpm --filter @madou/worker typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-light-king-worker-types.log"
+      }
+    ]
+  },
+  "fixtureCorrections": [
+    "Substitution product dice are consumed after substitution check result; feed desired dice at this saved result boundary.",
+    "Death Song requires actual CHANT before its attack.",
+    "Incoming Bow printed Lv3; ordinary equal-level defense test uses spirit3, not2."
+  ],
+  "remaining": [
+    "DO replay/restart coverage for20 physical scenarios",
+    "Browser20 paths including group defense UI; use actual dice/check results and owner-only private success where relevant",
+    "Bind25 semantic clauses and main using AST cases, validate ledger, update progress/checkpoint only after transport results",
+    "Shared lifetime/reclaim and full completion-plan acceptance remain pending."
+  ],
+  "runningHandles": []
+}

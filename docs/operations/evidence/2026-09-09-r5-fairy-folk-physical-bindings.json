@@ -1,0 +1,167 @@
+{
+  "task": "R5 Task11 Fairy Folk a2-p21-r3c3",
+  "status": "fairy-folk-physical-bindings-integrated-other61-open",
+  "completedAt": "2026-09-09 22:04 JST",
+  "implementation": "No production changes.29 semantic clauses and main producer bind37 actual transition references.",
+  "canonicalEvidence": [
+    "Actual initial and own-turn placement, reorder/removal, hidden source and front-first defense. Physical follower5 HP0 human/white. Actual Bow3 and granted Dwarf4/5/6 three damage6 hits give body0/0/18, keep/equal-destroy/higher-destroy. Spirit6 modifier0 faces2/4 pass or3/4 fail; one morale result per reached group with no HP. Later group rechecks, hidden rear behind Metal does not. Fury atspirit0 still fails and cannot select an unprinted dedicated defensive package.",
+    "Actual White Light5, White Ring6 and Shelim dedicated Ring7 use Fairy magic6: body0/0/10 and keep/equal-destroy/higher-destroy. Atspirit0 even Light5 reaches body6 after morale failure. Actual nonwhite Earth Split6 also uses defense6 and equal-destroys with body0; nonmagic Dwarf retains printed5.",
+    "Actual Fury hand/field dedicated atwarrior0 or9: no use checks and arbitrary nonempty subsets. Actual one and all-other-player commands are tested. Dia human hand/field and Army hand retain ordinary single targets; printed random use is prepared before checks, warrior6/7 against rolled use7 gives1/0 actual excess rolls. Only Army checks morale for attack. Far warrior bow white: printed level die4 gives use/effect7, independent damage die2 gives6 shared across selected B/C; unselectedD stays0. Actual near approach remains legal and placed Army rejects.",
+    "Actual first maai/Mirror blocks onlyB and leavesC at saved9 damage. Actual Dia Fairy level4 damage9 is reflected by real Royal Knights placed by Fury; originalA takes9, B0, both original numeric rolls reused and no new Fury ability numbers. Actual God reroll replaces only level2 with6 (use/effect9, damage9 unchanged), or damage5 with6 (damage10, use/effect5 unchanged). Numeric force-fail rejects without mutation.",
+    "Actual optional Fury bow adds two additional independent numeric events: ability effect3, printed level2, printed damage5, ability damage6. Four distinct IDs yield use5/effect8/damage15 shared acrossB/C. The character bonus does not replace either printed die or change printed use. Source cancellation and Army parent/child/morale/use failure, ordinary Dia grant/use failure spend every paid card once without return. Each accepted Engine command JSON-reexecutes and preserves220 unique IDs; rejected state/all views unchanged. Initial private events align with the scripted deals.",
+    "DO19 saves/evicts/replays every accepted command with identical ACK and stored state, preserving the two numeric events. Browser15 operates physical/magic defense and morale failure, dedicated and ordinary hand/field/Army attacks, reads both real dice and projected effect/damage at normal defense, reloads there, and verifies selected-target damage afterward.29 rows implemented/main1 rebound, no accepted promotion; shared/candidate gates remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/fairy-folk-physical.test.ts",
+      "initial": {
+        "passed": 30,
+        "failed": 5,
+        "log": "/tmp/madou-fairy-engine.log"
+      },
+      "finalCoverage": 37,
+      "targetedAfterTestCorrections": {
+        "command": "pnpm exec vitest run packages/engine/test/fairy-folk-physical.test.ts -t 'actual far white warrior bow|numeric die rejects|optional Fury bow'",
+        "passed": 8,
+        "skipped": 28,
+        "log": "/tmp/madou-fairy-engine-target.log",
+        "reason": "Use-check queue already shifted into the active roll; assert completed excess-roll count instead. Test force-fail rejection on its own canonical branch so passing to later D does not close the earlier C reroll opportunity. Added actual four-die Fury bonus case."
+      },
+      "nonwhiteMagic": {
+        "command": "pnpm exec vitest run packages/engine/test/fairy-folk-physical.test.ts -t 'actual nonwhite Earth Split'",
+        "passed": 1,
+        "skipped": 36,
+        "log": "/tmp/madou-fairy-engine-earth.log"
+      }
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts packages/engine/test/all-army.test.ts -t '妖精族|Fairy'",
+      "passed": 10,
+      "skipped": 259,
+      "log": "/tmp/madou-fairy-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-fairy-folk-physical.test.ts",
+      "cwd": "apps/worker",
+      "coverage": 19,
+      "initial": {
+        "passed": 14,
+        "failed": 5,
+        "skipped": 0,
+        "log": "/tmp/madou-fairy-do.log",
+        "reason": "Cases exceeded15000ms test limit; cause undetermined."
+      },
+      "unchangedTargetedRetry": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 14,
+        "timeoutMs": 15000,
+        "log": "/tmp/madou-fairy-do-target.log",
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-fairy-folk-physical.test.ts -t 'fairy-(army|ded-hand|ded-field|grant-hand|grant-field) canceled=false'"
+      }
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/fairy-folk-physical.spec.ts",
+      "passed": 15,
+      "log": "/tmp/madou-fairy-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-fairy-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9555,
+        "implemented": 2557
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p21-r3c3::semantic/follower/printed-level",
+      "a2-p21-r3c3::semantic/follower/printed-hp",
+      "a2-p21-r3c3::semantic/placement/setup",
+      "a2-p21-r3c3::semantic/placement/own-action",
+      "a2-p21-r3c3::semantic/defense/front-order",
+      "a2-p21-r3c3::semantic/follower/attribute-0",
+      "a2-p21-r3c3::semantic/follower/attribute-1",
+      "a2-p21-r3c3::semantic/morale/receive-trigger",
+      "a2-p21-r3c3::semantic/morale/spirit-modifier",
+      "a2-p21-r3c3::semantic/morale/failure-discard",
+      "a2-p21-r3c3::semantic/attack/grant-required",
+      "a2-p21-r3c3::semantic/attack/ordinary-hand-grant",
+      "a2-p21-r3c3::semantic/attack/discard-not-return",
+      "a2-p21-r3c3::semantic/attack/printed-level",
+      "a2-p21-r3c3::semantic/attack/printed-damage",
+      "a2-p21-r3c3::semantic/attack/attribute-0",
+      "a2-p21-r3c3::semantic/attack/attribute-1",
+      "a2-p21-r3c3::semantic/attack/attribute-2",
+      "a2-p21-r3c3::semantic/attack/attribute-3",
+      "a2-p21-r3c3::semantic/defense/magic-level",
+      "a2-p21-r3c3::semantic/defense/nonmagic-base",
+      "a2-p21-r3c3::semantic/dedicated/owner-filter",
+      "a2-p21-r3c3::semantic/dedicated/from-hand",
+      "a2-p21-r3c3::semantic/dedicated/from-placement",
+      "a2-p21-r3c3::semantic/dedicated/use-check",
+      "a2-p21-r3c3::semantic/dedicated/any-subset-targets",
+      "a2-p21-r3c3::semantic/attack/effect-d6",
+      "a2-p21-r3c3::semantic/attack/damage-independent-d6",
+      "a2-p21-r3c3::semantic/dedicated/morale-not-waived"
+    ],
+    "mainProducerRebindings": [
+      "a2-p21-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:5d6a2a539199255d",
+      "t:f7e26ed00102c564",
+      "t:e6c883b7968e9796",
+      "t:f0b19fe4122c0746",
+      "t:13e197b3ae787567",
+      "t:e5d9a77cbb87e34f",
+      "t:524b151995066af1",
+      "t:29f7d5310e836da8",
+      "t:c98b3f361c83462b",
+      "t:d44249a525b2ae9a",
+      "t:5c74e5ec4592d0b9",
+      "t:db8b0c340f24d1e7",
+      "t:7c1fa42b08a65757",
+      "t:3e0a2035322d04cf",
+      "t:f0fd1f68730a2c6e",
+      "t:75567c002b623d8b",
+      "t:7942ab0aaafa217c",
+      "t:777288a179e6ed4c",
+      "t:5671b8067570e806",
+      "t:7e508715b04dd0c6",
+      "t:b086965859cfa793",
+      "t:768aea13f1f021c3",
+      "t:319e030413488af7",
+      "t:28c03c1637ffd543",
+      "t:92b1b1d84b299536",
+      "t:6bd640cfc5ef92e1",
+      "t:a4b6de72b5b2a477",
+      "t:097df4818dd677d1",
+      "t:d81a22ea040e1319",
+      "t:fae36eb29f426970",
+      "t:11220a32f36398c1",
+      "t:66a8a44c06e30252",
+      "t:05b8b6ec5ced3727",
+      "t:6bd1011e14d2ef17",
+      "t:ec89aba85c02b3cd",
+      "t:38089e3cde857d6c",
+      "t:e17c87a40b7a60d2"
+    ]
+  },
+  "remaining": "134/195 fully integrated; other61 includes partial SingingShip1 and WingedFolk1 plus59 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

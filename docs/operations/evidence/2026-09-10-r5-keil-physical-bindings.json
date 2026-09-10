@@ -1,0 +1,145 @@
+{
+  "task": "R5 Task11 Keil a2-p01-r3c1",
+  "status": "keil-physical-bindings-integrated-other44-open",
+  "completedAt": "2026-09-10 01:58 JST",
+  "implementation": "No production change.7 semantic clauses and previously pending main producer bind20 canonical transition cases; total8 newly implemented rows.",
+  "canonicalEvidence": [
+    "Actual target Lancelot or Lia reveal, mandatorychant and actual attack. Selected recipient all3 HundredSlash hits canceled; two-target EarthBlast protects chosenB only, C15 and userD0. No Substitute damage transfer. Beforegroup selected protection persists into actual generated hits. Hidden Lancelot or unrelated publicTia has no candidate and declining preserves card/growth. Actual hiddenLancelot reveal during same event enables protection. Earlier other-target15 remains committed while laterB is protected. Foreign actor/invalid target/stale postcompletion requests reject state/all4views unchanged.",
+    "Actual Lancelot protection adds exactlyone independent permanent spirit, Lia gainszero and thirdpartyuserD gainszero. Griffin followerstart excludes defender but permits thirdparty; follower discardedonce and no damage transfer. Fate cancellation leaves payment/immediate refill but no protection/growth. Actual immediate BloodOPEN raises usersD3stats and separately Keil permanentgrowth belongs protectedB only.",
+    "Actual later optionaldraw opens Dawn, shuffles real discardedKeil into deck; actual Wish fromdeck reacquires samephysicalcard and second realBow attack declaration permits another use adding permanentgrowthto2. Growth remains across intervening turns. Actual Lancelottransform afterprotection retains independentgrowth. Actualtransform beforeKeildeclaration or duringpendingKeil also remains eligible and resolvesonegrowth/protection. Actual later lethalBow killsprotectedLancelot and dedicated UonosResurrection plus owner re-setup preservesgrowth, resetsdamage and keepscharacter/faction. Engine20 uniquecases everycommandJSONreexecution220uniqueIDs, rejectedstateallviews. DO13 save/restart/replay allcommands and UI13 actualbuttons/reloads including Dawn/Wish/reuse/transform/revive. Shared/candidate receipts remainpending; no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/keil-physical.test.ts",
+      "uniquePassed": 20,
+      "attempts": [
+        {
+          "log": "/tmp/madou-keil-engine.log",
+          "passed": 13,
+          "failed": 5,
+          "reason": "Lia reveal creates a real boundary to settle beforechant; Alseil initialworld was samefaction so substituted unrelatedGOODTia; no perhit interruption during atomic same-target warrior damage; Wish has no discard source."
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/keil-physical.test.ts -t 'keil-lia|keil-unrelated|earlier target|later Wish'",
+          "log": "/tmp/madou-keil-engine-boundaries.log",
+          "passed": 5,
+          "skipped": 13,
+          "resolution": "Settle actual Lia reveal; unrelated publicTia; earlierother-target15/laterprotectedB; actual Dawn then deckWish."
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/keil-physical.test.ts -t 'transformation|lethal later Bow'",
+          "log": "/tmp/madou-keil-engine-transform.log",
+          "passed": 4,
+          "skipped": 16,
+          "resolution": "Two new actualtransform-before/during-Keil cases plus existing transform/revival after optional-number typing correction."
+        }
+      ]
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/anytime-responses.test.ts packages/engine/test/anytime-matrix.test.ts packages/engine/test/task7h-abilities.test.ts -t 'Keil|keil|a2-p01-r3c1|Lancelot|transformation'",
+      "passed": 17,
+      "skipped": 73,
+      "log": "/tmp/madou-keil-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-keil-physical.test.ts",
+      "uniquePassed": 13,
+      "timeoutMs": 15000,
+      "attempts": [
+        {
+          "log": "/tmp/madou-keil-do.log",
+          "exitCode": 1,
+          "reason": "Initial invocation from root found no Worker tests; corrected cwd before executing tests."
+        },
+        {
+          "passed": 11,
+          "failed": 2,
+          "log": "/tmp/madou-keil-do-worker.log",
+          "reason": "keil-growth and keil-revive exceeded15secondslimit; no causal claim."
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-keil-physical.test.ts -t 'keil-growth|keil-revive'",
+          "passed": 2,
+          "skipped": 11,
+          "log": "/tmp/madou-keil-do-lifecycle.log",
+          "sameLimitAndTest": true
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/keil-physical.spec.ts",
+      "passed": 13,
+      "log": "/tmp/madou-keil-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "attempts": [
+        {
+          "log": "/tmp/madou-keil-types.log",
+          "exitCode": 2,
+          "reason": "Two optional permanent fields needed explicit initial100 endurance arithmetic/non-null assertion in fixture tests."
+        },
+        {
+          "log": "/tmp/madou-keil-types-final.log",
+          "exitCode": 0
+        }
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9278,
+        "implemented": 2834
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p01-r3c1::semantic/timing/printed-window",
+      "a2-p01-r3c1::semantic/guard/lancelot-target",
+      "a2-p01-r3c1::semantic/guard/lia-target",
+      "a2-p01-r3c1::semantic/guard/public-target",
+      "a2-p01-r3c1::semantic/guard/cancel-attack",
+      "a2-p01-r3c1::semantic/growth/lancelot-only",
+      "a2-p01-r3c1::semantic/growth/no-lia"
+    ],
+    "mainProducerRebindings": [
+      "a2-p01-r3c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:3a22253ff93d3ff6",
+      "t:9b5660a5e0ba140a",
+      "t:e04a9faacc65a065",
+      "t:25954fe5d2ae628f",
+      "t:eaee1bc5fdbbb876",
+      "t:8cf4b2a13b5fd96e",
+      "t:ea9abf92165f6eff",
+      "t:d90a751757859907",
+      "t:5fe666f7c08f8b54",
+      "t:924808f97e06e37f",
+      "t:045c34d3097554e9",
+      "t:2c16d187bbb990d9",
+      "t:3c6c108e38a9bd58",
+      "t:a807987798eacd45",
+      "t:040caf0d6dd98945",
+      "t:76d34306287ccae2",
+      "t:6808288709dfe8b3",
+      "t:fd05ce6609f3619a",
+      "t:19cf0a044305b5aa",
+      "t:7b6dc1d72ec2ebb0"
+    ]
+  },
+  "remaining": "151/195 fully integrated; other44 includes partial SingingShip1 and WingedFolk1 plus42 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

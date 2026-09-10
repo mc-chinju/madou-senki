@@ -1,0 +1,115 @@
+{
+  "task": "R5 Task11 other118: Curse Kill physical ordinary and Uonos modes",
+  "status": "curse-card-bindings-integrated-other117-open",
+  "completedAt": "2026-09-09 13:44 JST",
+  "implementation": "No production changes. Initial setup and actual CHANT/turn fixture,18 Engine cases,4 DO cases and4 browser cases.",
+  "canonicalEvidence": [
+    "Curse Kill a2-p13-r3c2 magic/far/use7/effect7/damage14/魔精黒詠/maai prohibited. Actual hand attack rejects in both modes; actual CHANT and full intervening turns enable use. Initial magic6/7 yields ordinary one/zero checks and Uonos elected zero checks. Dedicated retains effect7, damage14 and CHANT while permitting chosen multiple targets. Actual ordinary excess-level failure gives0, elected mode at the same initial level gives14 per target.",
+    "Actual initial Metal Golem6 passes through the mental technique with zero HP reduction, stays hidden and survives; B receives14. Dedicated C Soldier independently absorbs HP1, is destroyed and leaves body13. Target-local Teleport success prevents B damage and preserves its follower while C still receives13.",
+    "Actual Guardian receives black-magic conditional level8. Actual Prayer0/1/2 yields attack effect7/8/9: blocked/body0, equal-destroyed/body0, lower-destroyed/HP0/body14 in both modes. C is not selected in this matrix and keeps its Soldier. Outcome is captured while the real follower group still exists. Prayer and morale receive real entropy at their actual boundaries.",
+    "Actual maai/Evade reject without payment or view mutation; public maai/evade restrictions true and counter restriction false. Ordinary multiple targets, foreign dedicated owner and unsupported variant reject after actual CHANT. No synthetic chants or mid-test identity/stat changes.",
+    "Actual Fate cancellation leaves all damage0, followed by actual base reclaim, full later turns, refused unchanted reuse, fresh CHANT/full turns and switched ordinary/dedicated mode. The new use deals14 to its new selected subset, with source disposed once and no stale target mode. Every act verifies JSON replay/220 unique cards; refusals preserve raw/all recipient views.",
+    "DO4 ordinary/elected x success/cancel-reclaim-reuse saves, evicts and replays every actual CHANT/intervening-turn/ATTACK/PASS/Fate/reclaim command with identical ACK/stored state and220 unique cards. Both cancel cases perform fresh CHANT before later reuse. Initial Metal/Soldier setup precedes DO seeding; no Prayer/Guardian transport claim.",
+    "Browser4 ordinary/elected x pass/Teleport: actual hand CHANT, full turns, chanted attack, dedicated/target selections, live Teleport result, restrictions and reloads. B Metal remains hidden regardless of hit; body follows actual Teleport result, dedicated C receives13 independently. Initial follower placement is canonical fixture preparation; CHANT and later commands are browser clicks."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p13-r3c2::semantic/ordinary/school",
+      "a2-p13-r3c2::semantic/ordinary/range",
+      "a2-p13-r3c2::semantic/ordinary/use-level",
+      "a2-p13-r3c2::semantic/ordinary/base-effect-level",
+      "a2-p13-r3c2::semantic/ordinary/damage",
+      "a2-p13-r3c2::semantic/ordinary/attribute-0",
+      "a2-p13-r3c2::semantic/ordinary/attribute-1",
+      "a2-p13-r3c2::semantic/ordinary/attribute-2",
+      "a2-p13-r3c2::semantic/ordinary/attribute-3",
+      "a2-p13-r3c2::semantic/ordinary/attack-use",
+      "a2-p13-r3c2::semantic/ordinary/chant-required",
+      "a2-p13-r3c2::semantic/dedicated/0/select-optional",
+      "a2-p13-r3c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p13-r3c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p13-r3c2::semantic/dedicated/0/chant-retain",
+      "a2-p13-r3c2::semantic/dedicated/0/target-subset",
+      "a2-p13-r3c2::semantic/ordinary/no-maai"
+    ],
+    "mainProducerRebindings": [
+      "a2-p13-r3c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:cbebbe2cfb6d96f0",
+      "t:b7312103419ca4aa",
+      "t:41ca53febe292bec",
+      "t:dd8d4c73c4c96cec",
+      "t:eaf5c3d93f96cb1f",
+      "t:ad40bcab7d7824b6",
+      "t:9fc37e43f12597af",
+      "t:8bb11927824ef093",
+      "t:61c753744361028c",
+      "t:5b723c6899fda2c7",
+      "t:3c2e5a7b66eb192c",
+      "t:cadd2bfc70f931aa",
+      "t:5653a6d9adcef43d",
+      "t:dd8ae8a6cb247a6e",
+      "t:e8e3cf31c08a1ce8",
+      "t:5d6c225996ed059a",
+      "t:1c4035d23cb564a1",
+      "t:3bc498695d08437d"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/curse-physical.test.ts",
+      "initialPassed": 12,
+      "initialFailed": 6,
+      "log": "/tmp/madou-curse-physical-engine.log",
+      "retest": {
+        "command": "pnpm exec vitest run packages/engine/test/curse-physical.test.ts -t 'actual black Guardian'",
+        "passed": 6,
+        "skipped": 12,
+        "log": "/tmp/madou-curse-physical-guardian.log"
+      },
+      "finalCaseCoverage": 18,
+      "note": "Guardian test initially supplied only one die at a real 2d6 morale boundary. Supplied sufficient entropy through actual Prayer and morale windows, including correct Prayer2 timing. Production unchanged."
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7c-magic-techniques.test.ts -t '呪殺'",
+      "passed": 3,
+      "skipped": 96,
+      "log": "/tmp/madou-curse-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-curse-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 4,
+      "log": "/tmp/madou-curse-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/curse-physical.spec.ts",
+      "passed": 4,
+      "log": "/tmp/madou-curse-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-curse-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10552,
+        "implemented": 1560
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "78/195 action-card per-entry semantic/main bindings integrated; other117 and whole-goal gates open. Candidate-bound receipts and shared dependencies pending. No accepted promotion."
+}
