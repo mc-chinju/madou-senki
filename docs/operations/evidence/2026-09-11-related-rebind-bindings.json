@@ -1,0 +1,1046 @@
+{
+  "bindings": [
+    {
+      "row": "c2-p01-r1c1-ab01#effect-threshold-5",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "Shelim effect5 is immune even when printed damage6 exceeds the damage threshold",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Effect5/damage6 is immune; Prayer makes effect6/damage6 remain vulnerable."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "Shelim actual Prayer WhiteLight magic6/damage6 with Soldier HP1 still lands5",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Effect6/damage6 is not immune before Soldier HP1 reduces actual received damage to5."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab01#pre-follower-damage-threshold-5",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "Shelim real high-effect low/null damage %s is immune before followers",
+          "parameters": "a2-p16-r1c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed high-effect attacks with low or null damage are stopped before followers."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "Shelim real high-effect low/null damage %s is immune before followers",
+          "parameters": "a2-p15-r2c3",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed high-effect attacks with low or null damage are stopped before followers."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "Shelim actual Prayer WhiteLight magic6/damage6 with Soldier HP1 still lands5",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Effect6/damage6 is not immune before Soldier HP1 reduces actual received damage to5."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab01#null-damage-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "Shelim real high-effect low/null damage %s is immune before followers",
+          "parameters": "a2-p16-r1c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed high-effect attacks with low or null damage are stopped before followers."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "Shelim real high-effect low/null damage %s is immune before followers",
+          "parameters": "a2-p15-r2c3",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed high-effect attacks with low or null damage are stopped before followers."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab01#incoming-enemy-magic",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Only B effect6 becomes5, while C remains6 and both printed damage8 values survive."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s magic-only reduction never offered on warrior",
+          "parameters": "c2-p02-r1c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The owner cannot select the magic-only reduction against a printed warrior attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab01#effect-minus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Only B effect6 becomes5, while C remains6 and both printed damage8 values survive."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab02#effect-threshold-three",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p02-r1c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab02#all-techniques-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p02-r1c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab01#effect-threshold-four",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p02-r2c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab01#black-effect-minus-one-before-threshold",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "WhiteSilver black5→4 only on actual black, source %s",
+          "parameters": [
+            "a2-p14-r1c1",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Black effect5 becomes4 and is stopped; nonblack effect5 remains and deals6."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "WhiteSilver black5→4 only on actual black, source %s",
+          "parameters": [
+            "a2-p14-r1c2",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Black effect5 becomes4 and is stopped; nonblack effect5 remains and deals6."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab01#effect-threshold-three",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p03-r1c1",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab01#all-techniques-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p03-r1c1",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab01#incoming-enemy-magic",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s reflection copies target-local effect once; parent follower snapshot never double subtracts",
+          "parameters": "Royal",
+          "kind": "canonical-transition",
+          "bindingNote": "Arnes reduction makes actual incoming magic4 become3, retained through Royal/mirror return."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s reflection copies target-local effect once; parent follower snapshot never double subtracts",
+          "parameters": "mirror",
+          "kind": "canonical-transition",
+          "bindingNote": "Arnes reduction makes actual incoming magic4 become3, retained through Royal/mirror return."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s magic-only reduction never offered on warrior",
+          "parameters": "c2-p03-r2c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The owner cannot select the magic-only reduction against a printed warrior attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab01#effect-minus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s reflection copies target-local effect once; parent follower snapshot never double subtracts",
+          "parameters": "Royal",
+          "kind": "canonical-transition",
+          "bindingNote": "Arnes reduction makes actual incoming magic4 become3, retained through Royal/mirror return."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s reflection copies target-local effect once; parent follower snapshot never double subtracts",
+          "parameters": "mirror",
+          "kind": "canonical-transition",
+          "bindingNote": "Arnes reduction makes actual incoming magic4 become3, retained through Royal/mirror return."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab01#fire-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s both fire and water magic, no earth immunity",
+          "parameters": "c2-p04-r1c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual fire and water attacks deal0; earth magic offers no immunity."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "helper warrior fire/water predicate for %s is school-independent",
+          "parameters": "c2-p04-r1c1",
+          "kind": "structural-resolver",
+          "bindingNote": "Synthetic warrior fire/water predicates confirm school-independent immunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab01#water-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s both fire and water magic, no earth immunity",
+          "parameters": "c2-p04-r1c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual fire and water attacks deal0; earth magic offers no immunity."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "helper warrior fire/water predicate for %s is school-independent",
+          "parameters": "c2-p04-r1c1",
+          "kind": "structural-resolver",
+          "bindingNote": "Synthetic warrior fire/water predicates confirm school-independent immunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab01#warrior-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p05-r2c1",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab01#effect-threshold-four",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p05-r2c1",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab01#immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p05-r2c1",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab01#effect-threshold-five",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p05-r2c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab01#attack-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p05-r2c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab01#water-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s both fire and water magic, no earth immunity",
+          "parameters": "c2-p06-r2c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual fire and water attacks deal0; earth magic offers no immunity."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "helper warrior fire/water predicate for %s is school-independent",
+          "parameters": "c2-p06-r2c1",
+          "kind": "structural-resolver",
+          "bindingNote": "Synthetic warrior fire/water predicates confirm school-independent immunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab01#fire-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s both fire and water magic, no earth immunity",
+          "parameters": "c2-p06-r2c1",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual fire and water attacks deal0; earth magic offers no immunity."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "helper warrior fire/water predicate for %s is school-independent",
+          "parameters": "c2-p06-r2c1",
+          "kind": "structural-resolver",
+          "bindingNote": "Synthetic warrior fire/water predicates confirm school-independent immunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab01#effect-threshold-five",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p07-r1c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab01#all-techniques-immunity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+          "parameters": "c2-p07-r1c2",
+          "kind": "canonical-transition",
+          "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab02#magic-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Staff strengthens an actual own turn healing technique without creating damage",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual magic healing effect5 becomes6 and heals10 without creating damage."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "does not offer %s on an unrelated printed school/attribute",
+          "parameters": [
+            "白魔術師シェリム",
+            "黒翼飛翔剣",
+            "c2-p01-r1c1-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Staff rejects a printed warrior card."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c1-ab02#effect-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Staff strengthens an actual own turn healing technique without creating damage",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual magic healing effect5 becomes6 and heals10 without creating damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab02#martial-effect-warrior-floor",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "canonical action-value abilities"
+          ],
+          "title": "real Prayer and Fist compose max(base,warrior)+addition in either selection order (%s)",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Both election orders assert max(base5,warrior6)+Prayer3=9 while usage remains5."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "canonical action-value abilities"
+          ],
+          "title": "real Prayer and Fist compose max(base,warrior)+addition in either selection order (%s)",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Both election orders assert max(base5,warrior6)+Prayer3=9 while usage remains5."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "title": "Fist uses warrior at effect cutoff, never lowers stronger base, and freezes that result",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Printed base8 is not lowered to warrior6; warrior10 at cutoff raises effect to10 and later decrease leaves10."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r1c2-ab02#independent-damage-d6",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "action-value cutoff, rolls and public projection"
+          ],
+          "title": "Fist native 2d6 and independent d6 survive whole-roll reroll and JSON replay",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Native2d6 faces2,3 stay5 while independent bonus d6 rerolls4 to6; total damage11."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab03#spirit-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "action-value cutoff, rolls and public projection"
+          ],
+          "title": "keeps parent numeric summary through a concealed Shin check and freezes only at cutoff",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Shin spirit check has modifier0; success raises effect5 to6 only at the proper cutoff."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "action-value cutoff, rolls and public projection"
+          ],
+          "title": "Shin failed check consumes its attempt without an addition",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Failed6,6 check spends one attempt and leaves effect5 unchanged."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab03#effect-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "action-value cutoff, rolls and public projection"
+          ],
+          "title": "keeps parent numeric summary through a concealed Shin check and freezes only at cutoff",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Shin spirit check has modifier0; success raises effect5 to6 only at the proper cutoff."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab03#warrior-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "踏み込み／弓",
+            0,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "黒翼飛翔剣",
+            -4,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "死鬼旋風脚",
+            5,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "does not offer %s on an unrelated printed school/attribute",
+          "parameters": [
+            "小人のランバ",
+            "妖獣",
+            "c2-p03-r1c1-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Axe is not offered on printed magic."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab03#exclude-bow",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "踏み込み／弓",
+            0,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "黒翼飛翔剣",
+            -4,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "死鬼旋風脚",
+            5,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab03#source-usage-at-most-own-warrior",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "踏み込み／弓",
+            0,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "黒翼飛翔剣",
+            -4,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "死鬼旋風脚",
+            5,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab03#damage-double",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "踏み込み／弓",
+            0,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "黒翼飛翔剣",
+            -4,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+          "parameters": [
+            "小人のランバ",
+            "死鬼旋風脚",
+            5,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab02#black-magic-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "source continuations and ability result ownership"
+          ],
+          "title": "Uonos numeric value is independently rerollable and keeps printed usage unchanged",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black magic effect4 gains independent rerolled d6=5 to reach9 while usage remains4."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "title": "does not offer %s on an unrelated printed school/attribute",
+          "parameters": [
+            "邪祭ウーノス",
+            "黒翼飛翔剣",
+            "c2-p05-r1c1-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Uonos black-magic source is not offered on an unrelated warrior card."
+        },
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "title": "Uonos black magic package rejects actual nonblack magic",
+          "suite": [
+            "printed eligibility and shared source semantics"
+          ],
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteLight is magic without black attribute and offers no Uonos numerical package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab02#effect-d6",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "source continuations and ability result ownership"
+          ],
+          "title": "Uonos numeric value is independently rerollable and keeps printed usage unchanged",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black magic effect4 gains independent rerolled d6=5 to reach9 while usage remains4."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2#no-Uonos-inheritance",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/action-value-abilities.test.ts",
+          "suite": [
+            "source continuations and ability result ownership"
+          ],
+          "title": "Vanmil actual transformation does not inherit Uonos numerical ability",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Revival Ritual leaves only Vanmil abilityCharacterIds and later black magic offers no Uonos numerical power."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    }
+  ]
+}

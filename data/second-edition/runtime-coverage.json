@@ -169667,12 +169667,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:8041277fbb722e79"
+        "t:d74e6899bea7a9f5",
+        "t:a7731fea57908e50"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169692,12 +169692,13 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:8041277fbb722e79"
+        "t:1cd40d67c337ca06",
+        "t:86af7d061373d882",
+        "t:a7731fea57908e50"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169717,12 +169718,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:8041277fbb722e79"
+        "t:1cd40d67c337ca06",
+        "t:86af7d061373d882"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169743,12 +169744,12 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:8f1fb727605d5f34",
+        "t:0e64fe41ce6521c5"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -169769,12 +169770,11 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:8f1fb727605d5f34"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170029,12 +170029,13 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:da5bf35370764aad",
+        "t:8fb74eacdbc6a13c",
+        "t:7f44f31dd301cc1e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170055,12 +170056,11 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:e563f6c3f0a40685"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170366,12 +170366,12 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:fba1e771c08a234b",
+        "t:ffb99239208d4318"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170392,12 +170392,11 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:fba1e771c08a234b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171230,12 +171229,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:253e2f8eedc32de0"
+        "t:0385cea0955f7d8e",
+        "t:455b32f333ec57bd"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171255,12 +171254,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:253e2f8eedc32de0"
+        "t:0385cea0955f7d8e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171280,12 +171278,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:b10f3bbcdf4e9719"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171305,12 +171302,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:b10f3bbcdf4e9719"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171703,12 +171699,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:d437a91e324dd061"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171728,12 +171723,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:705a43e0bdaa8d52",
+        "t:0a9dec150fbab5a8"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172122,12 +172117,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:fd1a78ec85e95f65"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172147,12 +172141,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:fd1a78ec85e95f65"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172225,12 +172218,14 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:d6a97f43ad20ec7e",
+        "t:e15f1b620a178b7b",
+        "t:76245539a3485919",
+        "t:b340589816404b78"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172251,12 +172246,13 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:d6a97f43ad20ec7e",
+        "t:e15f1b620a178b7b",
+        "t:76245539a3485919"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172277,12 +172273,13 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:d6a97f43ad20ec7e",
+        "t:e15f1b620a178b7b",
+        "t:76245539a3485919"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172303,12 +172300,13 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:d6a97f43ad20ec7e",
+        "t:e15f1b620a178b7b",
+        "t:76245539a3485919"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173162,12 +173160,13 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:a91511fcf1a018ef"
+        "t:ce6a07cddc6740f9",
+        "t:0ac42d95e11b26cf",
+        "t:4aad63338c7ba400"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173187,12 +173186,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:a91511fcf1a018ef"
+        "t:ce6a07cddc6740f9",
+        "t:0ac42d95e11b26cf"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173494,12 +173493,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:300dfe7c6dedc3d3"
+        "t:089234ba563900ec",
+        "t:f218ada9b4ee283d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173519,12 +173518,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:300dfe7c6dedc3d3"
+        "t:089234ba563900ec",
+        "t:f218ada9b4ee283d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174865,12 +174864,13 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:e5e9e7bc1ca75695",
+        "t:6b495c20c4484536",
+        "t:f21b6e562c0272a9"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174891,12 +174891,11 @@
         "h:5e23f49da5e50038"
       ],
       "tests": [
-        "t:2e9e9269355dccb7"
+        "t:e5e9e7bc1ca75695"
       ],
       "status": "implemented",
       "remaining": [
-        "n:03b1cd3c27057992",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175721,12 +175720,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:952253aa31f17916"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175746,12 +175744,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:952253aa31f17916"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175771,12 +175768,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:952253aa31f17916"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176081,12 +176077,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:bddd48575bc1d276"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176106,12 +176101,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:bddd48575bc1d276"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177159,12 +177153,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:300dfe7c6dedc3d3"
+        "t:a6db3b999933fabd",
+        "t:9e984e7b28c5b392"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177184,12 +177178,12 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:300dfe7c6dedc3d3"
+        "t:a6db3b999933fabd",
+        "t:9e984e7b28c5b392"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177976,12 +177970,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:4340dcf990fc21ce"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178001,12 +177994,11 @@
         "h:f71d1d43f246211b"
       ],
       "tests": [
-        "t:07da0fb41b01f169"
+        "t:4340dcf990fc21ce"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -196127,10 +196119,12 @@
       "handler": [
         "h:63b8bf1884da261a"
       ],
-      "tests": [],
+      "tests": [
+        "t:b3283bf4c3723843"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:a375ee145fe96dfd"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "inheritance",
@@ -453844,6 +453838,416 @@
       "parameters": null,
       "kind": "structural-resolver",
       "bindingNote": "G06 focused correspondence. Repeated reaction seeds used history; counter morale test physically restores God solely to probe the event guard; death-boundary test adjusts pre-hit victim damage. These are structural boundary evidence, not complete legal producers. Reopened Fate case uses actual payment/refill/cancel and rejects retry without hand injection. Nested counter and later unlimited attack use actual commands. No general source completeness or formal START claim."
+    },
+    "t:d74e6899bea7a9f5": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "Shelim effect5 is immune even when printed damage6 exceeds the damage threshold",
+      "declarationSha256": "20d50b015ef42cfb373776b551bdc10115f936ff371fc49c3c5423564eb48e16",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Effect5/damage6 is immune; Prayer makes effect6/damage6 remain vulnerable."
+    },
+    "t:a7731fea57908e50": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "Shelim actual Prayer WhiteLight magic6/damage6 with Soldier HP1 still lands5",
+      "declarationSha256": "1f3fdc503db02e034c8ba992f7f99d8496264204afc01d8f39c7aa34481330aa",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Effect6/damage6 is not immune before Soldier HP1 reduces actual received damage to5."
+    },
+    "t:1cd40d67c337ca06": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "Shelim real high-effect low/null damage %s is immune before followers",
+      "declarationSha256": "0818e39296af6dc0de8eb127b72560080b7b72ae20b4c555a21d51165231bfd7",
+      "kind": "canonical-transition",
+      "parameters": "a2-p16-r1c1",
+      "bindingNote": "Printed high-effect attacks with low or null damage are stopped before followers."
+    },
+    "t:86af7d061373d882": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "Shelim real high-effect low/null damage %s is immune before followers",
+      "declarationSha256": "0818e39296af6dc0de8eb127b72560080b7b72ae20b4c555a21d51165231bfd7",
+      "kind": "canonical-transition",
+      "parameters": "a2-p15-r2c3",
+      "bindingNote": "Printed high-effect attacks with low or null damage are stopped before followers."
+    },
+    "t:0385cea0955f7d8e": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+      "declarationSha256": "49443337d8a353392758911bdf93443b0cd3296de5a635d761c9d4f496acbeaf",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Only B effect6 becomes5, while C remains6 and both printed damage8 values survive."
+    },
+    "t:455b32f333ec57bd": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s magic-only reduction never offered on warrior",
+      "declarationSha256": "15d6bd0fcc0b080790bf7f61ed55713dbf3f5bd09efa64cac789a3d931253bfe",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r1c2",
+      "bindingNote": "The owner cannot select the magic-only reduction against a printed warrior attack."
+    },
+    "t:b10f3bbcdf4e9719": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+      "declarationSha256": "981a1bf2097d2c51e2fde36e89d617b3bc0895babb04e98f53e08388f11fbcef",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r1c2",
+      "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+    },
+    "t:d437a91e324dd061": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+      "declarationSha256": "981a1bf2097d2c51e2fde36e89d617b3bc0895babb04e98f53e08388f11fbcef",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c2",
+      "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+    },
+    "t:705a43e0bdaa8d52": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "WhiteSilver black5→4 only on actual black, source %s",
+      "declarationSha256": "84ba1946d483e35496d6755e8b47829e6816375545b1292c09af1131e1e9e2f5",
+      "kind": "canonical-transition",
+      "parameters": [
+        "a2-p14-r1c1",
+        true
+      ],
+      "bindingNote": "Black effect5 becomes4 and is stopped; nonblack effect5 remains and deals6."
+    },
+    "t:0a9dec150fbab5a8": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "WhiteSilver black5→4 only on actual black, source %s",
+      "declarationSha256": "84ba1946d483e35496d6755e8b47829e6816375545b1292c09af1131e1e9e2f5",
+      "kind": "canonical-transition",
+      "parameters": [
+        "a2-p14-r1c2",
+        false
+      ],
+      "bindingNote": "Black effect5 becomes4 and is stopped; nonblack effect5 remains and deals6."
+    },
+    "t:fd1a78ec85e95f65": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+      "declarationSha256": "981a1bf2097d2c51e2fde36e89d617b3bc0895babb04e98f53e08388f11fbcef",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r1c1",
+      "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+    },
+    "t:ce6a07cddc6740f9": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s reflection copies target-local effect once; parent follower snapshot never double subtracts",
+      "declarationSha256": "598ac44741a6fd1fbbcfbd5f32db1257f8f115b97546db57e5a861523e471858",
+      "kind": "canonical-transition",
+      "parameters": "Royal",
+      "bindingNote": "Arnes reduction makes actual incoming magic4 become3, retained through Royal/mirror return."
+    },
+    "t:0ac42d95e11b26cf": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s reflection copies target-local effect once; parent follower snapshot never double subtracts",
+      "declarationSha256": "598ac44741a6fd1fbbcfbd5f32db1257f8f115b97546db57e5a861523e471858",
+      "kind": "canonical-transition",
+      "parameters": "mirror",
+      "bindingNote": "Arnes reduction makes actual incoming magic4 become3, retained through Royal/mirror return."
+    },
+    "t:4aad63338c7ba400": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s magic-only reduction never offered on warrior",
+      "declarationSha256": "15d6bd0fcc0b080790bf7f61ed55713dbf3f5bd09efa64cac789a3d931253bfe",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c2",
+      "bindingNote": "The owner cannot select the magic-only reduction against a printed warrior attack."
+    },
+    "t:089234ba563900ec": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s both fire and water magic, no earth immunity",
+      "declarationSha256": "c97fa80924e830f678f06eebb0c43bcc26f4f048dcf4fc64f17e22ef4e2eae33",
+      "kind": "canonical-transition",
+      "parameters": "c2-p04-r1c1",
+      "bindingNote": "Actual fire and water attacks deal0; earth magic offers no immunity."
+    },
+    "t:f218ada9b4ee283d": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "helper warrior fire/water predicate for %s is school-independent",
+      "declarationSha256": "99eeb3c655b611ea04324228875aad19f07e60d6a4e788f4ab97773a2706f7e6",
+      "kind": "structural-resolver",
+      "parameters": "c2-p04-r1c1",
+      "bindingNote": "Synthetic warrior fire/water predicates confirm school-independent immunity."
+    },
+    "t:952253aa31f17916": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+      "declarationSha256": "981a1bf2097d2c51e2fde36e89d617b3bc0895babb04e98f53e08388f11fbcef",
+      "kind": "canonical-transition",
+      "parameters": "c2-p05-r2c1",
+      "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+    },
+    "t:bddd48575bc1d276": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+      "declarationSha256": "981a1bf2097d2c51e2fde36e89d617b3bc0895babb04e98f53e08388f11fbcef",
+      "kind": "canonical-transition",
+      "parameters": "c2-p05-r2c2",
+      "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+    },
+    "t:a6db3b999933fabd": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s both fire and water magic, no earth immunity",
+      "declarationSha256": "c97fa80924e830f678f06eebb0c43bcc26f4f048dcf4fc64f17e22ef4e2eae33",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r2c1",
+      "bindingNote": "Actual fire and water attacks deal0; earth magic offers no immunity."
+    },
+    "t:9e984e7b28c5b392": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "helper warrior fire/water predicate for %s is school-independent",
+      "declarationSha256": "99eeb3c655b611ea04324228875aad19f07e60d6a4e788f4ab97773a2706f7e6",
+      "kind": "structural-resolver",
+      "parameters": "c2-p06-r2c1",
+      "bindingNote": "Synthetic warrior fire/water predicates confirm school-independent immunity."
+    },
+    "t:4340dcf990fc21ce": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual %s armor boundary warrior3/4/5/6 and magic4/5/6",
+      "declarationSha256": "981a1bf2097d2c51e2fde36e89d617b3bc0895babb04e98f53e08388f11fbcef",
+      "kind": "canonical-transition",
+      "parameters": "c2-p07-r1c2",
+      "bindingNote": "The real owner stops printed attacks at the owner threshold, lets above-threshold damage through, and checks school restrictions."
+    },
+    "t:8f1fb727605d5f34": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "Staff strengthens an actual own turn healing technique without creating damage",
+      "declarationSha256": "0e965bde8b5348081febfbadf454985ae946d7879a9f9b83867cfc9fdefd2ae0",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual magic healing effect5 becomes6 and heals10 without creating damage."
+    },
+    "t:0e64fe41ce6521c5": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "does not offer %s on an unrelated printed school/attribute",
+      "declarationSha256": "8648d0aecdd41cb30f5410bc2b43cbe78043a5cbc061b1902af98e8a50880c35",
+      "kind": "canonical-transition",
+      "parameters": [
+        "白魔術師シェリム",
+        "黒翼飛翔剣",
+        "c2-p01-r1c1-ab02"
+      ],
+      "bindingNote": "Staff rejects a printed warrior card."
+    },
+    "t:da5bf35370764aad": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "canonical action-value abilities"
+      ],
+      "title": "real Prayer and Fist compose max(base,warrior)+addition in either selection order (%s)",
+      "declarationSha256": "51a1e70e02753c6cbee8aea67adc71dbdd449f257904f88b52b2fbad2cb6d573",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Both election orders assert max(base5,warrior6)+Prayer3=9 while usage remains5."
+    },
+    "t:8fb74eacdbc6a13c": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "canonical action-value abilities"
+      ],
+      "title": "real Prayer and Fist compose max(base,warrior)+addition in either selection order (%s)",
+      "declarationSha256": "51a1e70e02753c6cbee8aea67adc71dbdd449f257904f88b52b2fbad2cb6d573",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Both election orders assert max(base5,warrior6)+Prayer3=9 while usage remains5."
+    },
+    "t:e563f6c3f0a40685": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "action-value cutoff, rolls and public projection"
+      ],
+      "title": "Fist native 2d6 and independent d6 survive whole-roll reroll and JSON replay",
+      "declarationSha256": "e73b4f594e8ac091fe0d0821a38781994028984c7e53ea6b5501866555193b9b",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Native2d6 faces2,3 stay5 while independent bonus d6 rerolls4 to6; total damage11."
+    },
+    "t:fba1e771c08a234b": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "action-value cutoff, rolls and public projection"
+      ],
+      "title": "keeps parent numeric summary through a concealed Shin check and freezes only at cutoff",
+      "declarationSha256": "757ccd42ea0fafe6a396acec6892b8b25be144d326484a77d1c091c7575b1216",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Shin spirit check has modifier0; success raises effect5 to6 only at the proper cutoff."
+    },
+    "t:ffb99239208d4318": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "action-value cutoff, rolls and public projection"
+      ],
+      "title": "Shin failed check consumes its attempt without an addition",
+      "declarationSha256": "31a00de424feb9033c077eb0d32f688ff6709acbd8ceda91b7311beda2484ead",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Failed6,6 check spends one attempt and leaves effect5 unchanged."
+    },
+    "t:d6a97f43ad20ec7e": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+      "declarationSha256": "067455294e4a7746d172fc78b8e75adc7f4fcac4904ea36e9a0a0599df6a8134",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小人のランバ",
+        "踏み込み／弓",
+        0,
+        false
+      ],
+      "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+    },
+    "t:e15f1b620a178b7b": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+      "declarationSha256": "067455294e4a7746d172fc78b8e75adc7f4fcac4904ea36e9a0a0599df6a8134",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小人のランバ",
+        "黒翼飛翔剣",
+        -4,
+        true
+      ],
+      "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+    },
+    "t:76245539a3485919": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "Axe on %s %s retains declared qualification after warrior delta %s",
+      "declarationSha256": "067455294e4a7746d172fc78b8e75adc7f4fcac4904ea36e9a0a0599df6a8134",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小人のランバ",
+        "死鬼旋風脚",
+        5,
+        false
+      ],
+      "bindingNote": "Bow and printed usage above declaration warrior are rejected; qualified sword retains eligibility after warrior delta and doubles7 to14."
+    },
+    "t:b340589816404b78": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "does not offer %s on an unrelated printed school/attribute",
+      "declarationSha256": "8648d0aecdd41cb30f5410bc2b43cbe78043a5cbc061b1902af98e8a50880c35",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小人のランバ",
+        "妖獣",
+        "c2-p03-r1c1-ab03"
+      ],
+      "bindingNote": "Axe is not offered on printed magic."
+    },
+    "t:e5e9e7bc1ca75695": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "source continuations and ability result ownership"
+      ],
+      "title": "Uonos numeric value is independently rerollable and keeps printed usage unchanged",
+      "declarationSha256": "57630a284b897c1877b97ee9594324c7d60660c52a9f7ebb813c6daae31c3a81",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual black magic effect4 gains independent rerolled d6=5 to reach9 while usage remains4."
+    },
+    "t:6b495c20c4484536": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "does not offer %s on an unrelated printed school/attribute",
+      "declarationSha256": "8648d0aecdd41cb30f5410bc2b43cbe78043a5cbc061b1902af98e8a50880c35",
+      "kind": "canonical-transition",
+      "parameters": [
+        "邪祭ウーノス",
+        "黒翼飛翔剣",
+        "c2-p05-r1c1-ab02"
+      ],
+      "bindingNote": "Uonos black-magic source is not offered on an unrelated warrior card."
+    },
+    "t:b3283bf4c3723843": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "source continuations and ability result ownership"
+      ],
+      "title": "Vanmil actual transformation does not inherit Uonos numerical ability",
+      "declarationSha256": "10f8870b4d590856c966f5865e20abed5f5ebdb771e1afa4d3e9200ae2b8583d",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Revival Ritual leaves only Vanmil abilityCharacterIds and later black magic offers no Uonos numerical power."
+    },
+    "t:7f44f31dd301cc1e": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "Fist uses warrior at effect cutoff, never lowers stronger base, and freezes that result",
+      "declarationSha256": "1248bb19887f109c34da84cedb7741a85a8026cdd6c78504677267c772ae07e7",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Printed base8 is not lowered to warrior6; warrior10 at cutoff raises effect to10 and later decrease leaves10."
+    },
+    "t:f21b6e562c0272a9": {
+      "path": "packages/engine/test/action-value-abilities.test.ts",
+      "suite": [
+        "printed eligibility and shared source semantics"
+      ],
+      "title": "Uonos black magic package rejects actual nonblack magic",
+      "declarationSha256": "9b23df31a62f743b869786129d0969d40bf94148b8923684eee1bea7823860df",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual WhiteLight is magic without black attribute and offers no Uonos numerical package."
     }
   },
   "remainingNotes": {
@@ -453992,7 +454396,8 @@
     "n:4bd3be42de1a2e92": "Actual nondefault distance and once-per-game recovery history retention now have Engine proof; the same nondefault-history trajectory still needs DO/browser evidence. Current-candidate acceptance remains incomplete.",
     "n:31cf0a4d49509def": "Printed ritual uses the physical-card handler; existing cancellation and main-action evidence is bound. Actual use while Uonos character abilities are disabled has not been exercised; no rule defect is inferred. Current-candidate acceptance remains incomplete.",
     "n:1569d58b4e26c7a8": "Actual nondefault distance and once-per-game recovery history have Engine/DO canonical evidence; browser performs the same actions and verifies projected possessions/distances after reload. Private history remains covered at Engine/DO. Current-candidate acceptance and required receipts remain incomplete.",
-    "n:c5c2ef76ed6e8813": "Named ritual and terminal semantic implementation correspondence is complete for the recorded canonical paths, including actual ability-disable versus stopped-turn behavior. Current-candidate acceptance and required receipts remain incomplete; implemented is not accepted."
+    "n:c5c2ef76ed6e8813": "Named ritual and terminal semantic implementation correspondence is complete for the recorded canonical paths, including actual ability-disable versus stopped-turn behavior. Current-candidate acceptance and required receipts remain incomplete; implemented is not accepted.",
+    "n:6d9fe79b4ce22f05": "Exact clause assertions bound; current candidate successful run remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {
