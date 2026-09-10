@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { inspectionCommand, type InspectionInputView } from './information-input.js';
 
 type Props = { view: InspectionInputView; names: Record<string, string>; disabled: boolean; send: (command: GameCommand) => boolean; onInspect: (card: ActionCard | CharacterCard) => void };
-const zoneNames = { hand: '手札', followers: '従者', chants: '詠唱札', character: '人物カード' };
+const zoneNames = { all:'手札・従者・詠唱札', hand: '手札', followers: '従者', chants: '詠唱札', character: '人物カード' };
 export function InspectionPanel(props: Props) {
   if (!props.view.inspection && props.view.activeWindow?.kind !== 'private-inspection') return null;
   return <InspectionChoice key={props.view.inspection?.decisionId ?? 'waiting'} {...props}/>;
@@ -27,7 +27,7 @@ function InspectionChoice({ view, names, disabled, send, onInspect }: Props) {
       const card = getAction(source.cardInstanceId);
       return <li key={source.cardInstanceId}>
         {decision.discardMode === 'one' ? <label className="inline"><input type="radio" name={`inspection-${decision.decisionId}`} disabled={!canChoose} checked={selected === source.cardInstanceId} onChange={() => setSelected(source.cardInstanceId)}/>
-          {source.position + 1}番目：{card?.name ?? 'カード'}</label> : <span>{source.position + 1}番目：{card?.name ?? 'カード'}</span>}
+          {source.position + 1}番目：{card?.name ?? 'カード'}</label> : <span>{source.zone?`${zoneNames[source.zone]} `:''}{source.position + 1}番目：{card?.name ?? 'カード'}</span>}
         {card ? <button className="secondary compact" aria-label={`${card.name}の詳細を見る`} onClick={() => onInspect(card)}>詳細</button> : null}
       </li>;
     })}</ul> : !character ? <p>確認できるカードはありません。</p> : null}

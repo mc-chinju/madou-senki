@@ -1,8 +1,9 @@
+import { suppressionAbilityIds } from './suppression-input.js';
 import { applyDeclarationSelection, candidateFor, type DeclarationInputView } from './declaration-input.js';
 import type { GameCommand, TechniqueVariant } from '@madou/protocol';
 
 export interface AbilityEffectOption { id: 'spirit-conversion' | 'human-invalidation' | 'arnes-suppression'; name: string }
-export interface AbilityOption { abilityId: string; name: string; targetEventId: string; description?: string; targetIds?: string[]; actionCost?: 'main' | 'extra'; costCardInstanceIds?: string[]; canConceal?: boolean; effectOptions?: AbilityEffectOption[] }
+export interface AbilityOption { buttonLabel?:string; abilityId: string; name: string; targetEventId: string; description?: string; targetIds?: string[]; actionCost?: 'main' | 'extra'; costCardInstanceIds?: string[]; canConceal?: boolean; effectOptions?: AbilityEffectOption[] }
 export interface GrantedAttackCoSource { cardInstanceId: string; dedicated: boolean; techniqueVariant?: TechniqueVariant }
 export interface GrantedAttackOption { cardInstanceId: string; dedicated: boolean; techniqueVariant?: TechniqueVariant; coSource?: GrantedAttackCoSource }
 export interface AbilityInputView extends DeclarationInputView {
@@ -19,7 +20,7 @@ export const abilityCommands = new Set(['USE_ABILITY', 'USE_FOLLOWER_ATTACK']);
 const lifecycleAbilityIds = new Set(['c2-p02-r2c2-ab05', 'c2-p07-r1c2-ab04', 'c2-p04-r2c1-ab04']);
 export function selectableAbilities(view: Pick<AbilityInputView, 'abilityOptions' | 'legalChoices'>): AbilityOption[] {
   if (!view.legalChoices.includes('USE_ABILITY')) return [];
-  return view.abilityOptions.filter(option => !view.legalChoices.includes('USE_LIFECYCLE_ABILITY') || !lifecycleAbilityIds.has(option.abilityId));
+  return view.abilityOptions.filter(option => !suppressionAbilityIds.has(option.abilityId) && (!view.legalChoices.includes('USE_LIFECYCLE_ABILITY') || !lifecycleAbilityIds.has(option.abilityId)));
 }
 export function abilityCommand(view: AbilityInputView, abilityId: string, costCardInstanceId?: string, conceal = false, selectedEffects: string[] = [], targetId?: string): GameCommand | null {
   const option = selectableAbilities(view).find(item => item.abilityId === abilityId);

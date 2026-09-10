@@ -1,0 +1,6 @@
+import type {PlayerView} from '@madou/engine';
+import type {GameCommand} from '@madou/protocol';
+export function SadLovePanel({view,disabled,send}:{view:PlayerView;disabled:boolean;send:(command:GameCommand)=>unknown}){
+ const love=view.sadLove;if(!love)return null;
+ return <section className="panel" aria-label="悲しき愛"><h2>悲しき愛</h2><p>公開されたアーネスがいる間、選んだ継続効果で精神力が1増えます。</p><p role="status">{love.auraEnabled?love.auraActive?'継続効果は有効です':'継続効果を選択済みです。条件が戻ると再び有効になります':'継続効果は使用していません'}</p><button disabled={disabled||!(love.auraEnabled?love.canDeactivate:love.canActivate)} onClick={()=>send({type:'USE_ABILITY',abilityId:'c2-p05-r1c2-ab05',mode:'aura',enabled:!love.auraEnabled,targetEventId:love.targetEventId!})}>{love.auraEnabled?'継続効果を不使用にする':'悲しき愛の継続効果を使う'}</button><p>{love.substitutionSpent?'身代わりは使用済みです。':'身代わりは1試合に1回です。宣言を取り消されても使用済みになります。'}</p>{love.substitutions.length?<><p>引き受けた攻撃には、手札の反撃技と自分の能力で対応できます。従者では受けられません。</p>{love.substitutions.map(o=><button key={`${o.groupId}:${o.targetId}:${o.hitIndex}`} disabled={disabled} onClick={()=>send({type:'USE_ABILITY',abilityId:'c2-p05-r1c2-ab05',mode:'substitute',...o})}>{view.players[o.targetId]!.name}への{o.hitIndex+1}発目を身代わりする</button>)}</>:null}</section>;
+}

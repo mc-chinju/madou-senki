@@ -15,6 +15,22 @@ test('mandatory-all is a fixed visible recipient set while selected-all offers e
   const selectable = renderToStaticMarkup(createElement(FollowerAttackTargets, { option: { ...option, targetMode: 'selected-all' }, names, selected: [], disabled: false, change: () => {} }));
   expect(selectable.match(/type="checkbox"/g)).toHaveLength(2); expect(selectable).not.toContain('checked');
 });
+test('target-specific preview values use public player names instead of rendering only the shared baseline', () => {
+  const html = renderToStaticMarkup(createElement(FollowerAttackTargets, {
+    option: { ...option, targetValues: [
+      { actorId: 'B', effectLevel: 7, damage: 11 },
+      { actorId: 'C', effectLevel: 6, damage: 9 },
+    ] },
+    names,
+    selected: [],
+    disabled: false,
+    change: () => {},
+  }));
+  expect(html).toContain('楓：効果Lv 7・ダメージ 11');
+  expect(html).toContain('凛：効果Lv 6・ダメージ 9');
+  expect(html).not.toContain('B：');
+  expect(html).not.toContain('C：');
+});
 test('the attack panel begins without a source or dedicated consent and explains placed-source loss', () => {
   const view = { self: { id: 'A', hand: [], followers: [{ cardInstanceId: option.cardInstanceId }] }, players: { B: { name: '楓' }, C: { name: '凛' } },
     legalChoices: ['ATTACK'], activeWindow: null, followerAttackOptions: [option] } as unknown as PlayerView;

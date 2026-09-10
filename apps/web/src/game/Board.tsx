@@ -1,3 +1,18 @@
+import {printedTechniqueAllowed} from '@madou/engine';
+import {canSelectDedicated,techniqueFor} from '@madou/engine';
+import {SadLovePanel} from './SadLovePanel.js';
+import {ShadowJumpPanel} from './ShadowJumpPanel.js';
+import {VirtualBladePanel} from './VirtualBladePanel.js';
+import {PrintedCombinationFields,withPrintedComponents} from './PrintedCombinationFields.js';
+import {WishPanel} from './WishPanel.js';
+import {AllArmyPanel} from './AllArmyPanel.js';
+import {DispelFields,withDispel} from './DispelFields.js';
+import {InformationHistoryPanel} from './InformationHistoryPanel.js';
+import {TurnChoiceCardPanel} from './TurnChoiceCardPanel.js';
+import {TurnCardPanel} from './TurnCardPanel.js';
+import {AnytimeCardPanel} from './AnytimeCardPanel.js';
+import { ReclaimPanel } from './ReclaimPanel.js';
+import { SuppressionPanel } from './SuppressionPanel.js';
 import { ConditionalAbilityPanel } from './ConditionalAbilityPanel.js';
 import { DrawControl, RevealControl, SpiritExpiryNotice } from './OptionalTurnControls.js';
 import { InspectionPanel } from './InspectionPanel.js';
@@ -6,6 +21,7 @@ import { DeclarationFields } from './DeclarationFields.js';
 import { applyDeclarationSelection, candidateFor, type DeclarationCommand } from './declaration-input.js';
 import { CurrentGoals } from './CurrentGoals.js';
 import { PendingFatalNotice } from './PendingFatalNotice.js';
+import {DistanceExchangeSummary} from './DistanceExchangeSummary.js';
 import { MaaiDefenseSummary } from './MaaiDefenseSummary.js';
 import { ReceivedTechniqueSummary } from './ReceivedTechniqueSummary.js';
 import { BeastCapturePanel } from './BeastCapturePanel.js';
@@ -49,14 +65,23 @@ const commandNames:Record<string,string>={REVEAL_CHARACTER:'正体を公開',PAS
 export function Board({room,actorId,disabled:connectionDisabled,send}:{room:RoomView;actorId:string;disabled:boolean;send:(command:Command)=>boolean}){
  const disabled=connectionDisabled||room.status!=='playing'; const view=room.game!; const [selected,setSelected]=useState<string[]>([]); const [targets,setTargets]=useState<string[]>([]); const [inspect,setInspect]=useState<ActionCard|CharacterCard|null>(null); const [dedicated,setDedicated]=useState(false); const [variant,setVariant]=useState<TechniqueVariant|''>(''); const character=getCharacter(view.self.characterId); const activeCard=selected.length===1?getAction(selected[0]!):undefined; const discard=discardRequirement(view.self.hand.length,view.self.stats.handLimit,selected); const votes=new Set(room.closeVotes); const variants=techniqueVariants(activeCard?.id,character?.name,dedicated); const chosenVariant=variants.find(option=>option.value===variant)?.value??variants[0]?.value;
  const [coSource,setCoSource]=useState<CoSource|undefined>(); const [advanceCosts,setAdvanceCosts]=useState<string[]>([]);
+ const [dispelTarget,setDispelTarget]=useState('');
+ const [withdrawAbility,setWithdrawAbility]=useState<{revision:number;abilityId:string}|null>(null);
+ const selectedWithdrawAbility=withdrawAbility?.revision===view.revision?view.maaiAbilityOptions.find(o=>o.abilityId===withdrawAbility.abilityId)?.abilityId:undefined;
+ const [printedComponents,setPrintedComponents]=useState<string[]>([]);
  const [declarationIds,setDeclarationIds]=useState<string[]>([]);
- const baseAttack=activeCard?.category==='follower'?null:attackWithCosts(view,buildCardCommand('ATTACK',{cardId:activeCard?.id,targetIds:targets,dedicated,techniqueVariant:chosenVariant}),coSource,advanceCosts);
+ const baseAttack=activeCard?.category==='follower'||dedicated&&!canSelectDedicated(activeCard?.id??'',character?.name)?null:attackWithCosts(view,buildCardCommand('ATTACK',{cardId:activeCard?.id,targetIds:targets,dedicated,techniqueVariant:chosenVariant}),coSource,advanceCosts);
  const declarationCandidate=candidateFor(view,activeCard?{type:'ATTACK',cardInstanceId:activeCard.id,targetIds:targets,dedicated,...(chosenVariant?{techniqueVariant:chosenVariant}:{}),...(coSource?{coSource}:{})}:null);
- const attackCommand=applyDeclarationSelection(view,baseAttack as DeclarationCommand|null,declarationIds);
- function clearAttackCosts(){setCoSource(undefined);setAdvanceCosts([]);setDeclarationIds([]);}
+ const chantSource=coSource??{cardInstanceId:activeCard?.id??'',dedicated,techniqueVariant:chosenVariant};
+ const unpreparedPrintedChant=!declarationCandidate&&techniqueFor(chantSource.cardInstanceId,character?.name,chantSource.dedicated,chantSource.techniqueVariant)?.chant&&!view.self.chants.some(card=>card.cardInstanceId===chantSource.cardInstanceId);
+ const selectedPrintedTechnique=techniqueFor(activeCard?.id??'',character?.name,dedicated,chosenVariant);
+ const forbiddenPrintedAttack=selectedPrintedTechnique&&!printedTechniqueAllowed(view.self,selectedPrintedTechnique);
+ const declaredAttack=unpreparedPrintedChant||forbiddenPrintedAttack?null:applyDeclarationSelection(view,baseAttack as DeclarationCommand|null,declarationIds);
+ const attackCommand=withPrintedComponents(view,withDispel(declaredAttack,view.self.hand,dispelTarget),printedComponents);
+ function clearAttackCosts(){setWithdrawAbility(null);setPrintedComponents([]);setDispelTarget('');setCoSource(undefined);setAdvanceCosts([]);setDeclarationIds([]);}
  const silenced=view.players[view.self.id]!.statuses.some(status=>status.kind==='silenced');
  const silenceBlocksAttack=silenced&&Array.isArray(activeCard?.stats?.attributes)&&activeCard.stats.attributes.includes('魔');
- function act(choice:string){let command:Command|null=null;const cardId=selected[0];if(choice==='ATTACK')command=attackCommand;else if(choice==='APPROACH'||choice==='WITHDRAW')command=buildCardCommand(choice,{cardId,targetId:targets[0]});else if(choice==='PLACE_INITIAL_FOLLOWER')command=cardId?initialFollowerCommand(view,cardId):null;else if(choice==='CHANT')command=buildCardCommand(choice,{cardId,...(dedicated&&hasOptionalChant(cardId,character?.name)?{dedicated:true}:{})});else if(choice==='REST'||choice==='PLAY_TURN_CARD')command={type:choice,cardInstanceIds:selected};else if(choice==='END_TURN')command=discard.valid?{type:'END_TURN',discardIds:selected}:null;else if(['REVEAL_CHARACTER','PASS_SETUP','START_TURN','PASS_ACTION','PASS_WITHDRAWAL'].includes(choice))command={type:choice} as Command;if(command&&send(command)){setSelected([]);setTargets([]);clearAttackCosts();}}
+ function act(choice:string){let command:Command|null=null;const cardId=selected[0];if(choice==='ATTACK')command=attackCommand;else if(choice==='APPROACH'||choice==='WITHDRAW'){command=buildCardCommand(choice,{cardId,targetId:targets[0]});if(command?.type==='WITHDRAW'&&selectedWithdrawAbility&&selectedWithdrawAbility!=='c2-p02-r2c1-ab03')command={...command,abilityId:selectedWithdrawAbility};}else if(choice==='PLACE_INITIAL_FOLLOWER')command=cardId?initialFollowerCommand(view,cardId):null;else if(choice==='CHANT')command=buildCardCommand(choice,{cardId,...(dedicated&&hasOptionalChant(cardId,character?.name)?{dedicated:true}:{})});else if(choice==='REST'||choice==='PLAY_TURN_CARD')command=choice==='REST'?{type:'REST',cardInstanceIds:selected}:{type:'PLAY_TURN_CARD',cardInstanceIds:selected};else if(choice==='END_TURN')command=discard.valid?{type:'END_TURN',discardIds:selected}:null;else if(['REVEAL_CHARACTER','PASS_SETUP','START_TURN','PASS_ACTION','PASS_WITHDRAWAL'].includes(choice))command={type:choice} as Command;if(command&&send(command)){setSelected([]);setTargets([]);clearAttackCosts();}}
  return <main id="main-content" className="board"><header className="board-header"><div><p className="eyebrow">{phaseNames[view.phase]??view.phase}</p><h1>戦場</h1></div><div>山札 {view.deckCount} · 捨て札 {view.discard.length}</div></header>
  <ResultPanel view={view}/>
  <PendingFatalNotice players={view.seatOrder.map(id=>view.players[id]!)}/>
@@ -64,6 +89,8 @@ export function Board({room,actorId,disabled:connectionDisabled,send}:{room:Room
  <SpiritExpiryNotice value={view.spiritExpiry} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
  <RevealControl key={`reveal:${view.revision}`} view={view} disabled={disabled} send={send}/>
  <section className="players" aria-label="参加者の公開状態">{view.seatOrder.map(id=>{const p=view.players[id]!;const person=p.revealed&&p.characterId?getCharacter(p.characterId):undefined;const shown=(cards:typeof p.followers)=>cards.length?cards.map((card,index)=><span key={card.position}>{index?'、':''}{card.face==='front'?<PublicCardLinks ids={[card.cardInstanceId]} onInspect={setInspect}/>: '裏向き'}</span>):'なし';return <article className={`player panel ${id===view.seatOrder[view.turnSeat]?'current':''}`} key={id}><h2>{p.name}</h2><p className="tag">{presenceLabels[p.presence]}</p><p>{person?<button className="card-link" onClick={()=>setInspect(person)} aria-label={`${person.name}の人物カードを見る`}>{person.name}</button>:p.revealed?'公開済み':'正体非公開'} · 損傷 {p.damage} · 手札 {p.handCount}</p><dl className="public-zones"><div><dt>従者</dt><dd>{shown(p.followers)}</dd></div><div><dt>詠唱</dt><dd>{shown(p.chants)}</dd></div><div><dt>OPEN</dt><dd><PublicCardLinks ids={p.open} onInspect={setInspect}/></dd></div><div><dt>強化</dt><dd><PublicCardLinks ids={p.attachments} onInspect={setInspect}/></dd></div></dl><StatusList player={p} own={id===view.self.id}/>{id!==view.self.id?<><p>距離: {view.distances[view.self.id]?.[id]==='near'?'近距離':'遠距離'}</p><label className="target"><input type="checkbox" disabled={disabled||p.presence!=='active'} checked={targets.includes(id)} onChange={()=>setTargets(value=>toggleSelection(value,id))}/> 対象に選ぶ</label></>:null}</article>})}</section>
+ {!view.activeWindow&&view.legalChoices.includes('ATTACK')?<DispelFields hand={view.self.hand} targets={targets} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))} targetId={dispelTarget} disabled={disabled} onChange={setDispelTarget}/>:null}
+ <PrintedCombinationFields view={view} command={declaredAttack} selected={printedComponents} disabled={disabled} onChange={setPrintedComponents}/>
  <DeclarationStatus selection={view.declarationSelection}/>
  <ActionSummary action={view.currentAction} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
  <ActionCalculationSummary value={view.actionCalculation} currentAction={view.currentAction} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
@@ -78,9 +105,21 @@ export function Board({room,actorId,disabled:connectionDisabled,send}:{room:Room
  {view.legalChoices.includes('ARRANGE_FOLLOWERS')?<FollowerEditor key={view.revision} view={view} disabled={disabled} confirm={command=>send(command)}/>:null}
  {view.phase==='hand-adjustment'?<p className={discard.valid?'hint':'error'} role="status">手札上限は{view.self.stats.handLimit}枚です。{discard.required}枚を捨て札として選択してください（現在 {selected.length}枚）。</p>:null}
  <DrawControl key={`draw:${view.revision}`} view={view} disabled={disabled} send={send}/>
- {!view.activeWindow?<section className="command-bar" aria-label="現在できる操作">{view.legalChoices.flatMap(choice=>choice==='SET_CONDITIONAL_ABILITY'||choice==='CHOOSE_DRAW'||choice==='ARRANGE_FOLLOWERS'||choice==='REVEAL_CHARACTER'||(lifecycleCommands.has(choice)||lifetimeCommands.has(choice)||abilityCommands.has(choice)||combinationCommands.has(choice))?[]:[<button key={choice} disabled={disabled||(choice==='PLACE_INITIAL_FOLLOWER'&&!initialFollowerCommand(view,selected[0]??''))||(choice==='END_TURN'&&!discard.valid)||(choice==='CHANT'&&(selected.length!==1||!eligibleChantCards(view.self.hand,character?.name,dedicated,silenced).includes(selected[0]!)||view.self.chants.length>=view.self.stats.chantLimit))||(['ATTACK','APPROACH','WITHDRAW','PLACE_INITIAL_FOLLOWER'].includes(choice)&&selected.length!==1)||(choice==='ATTACK'&&(!attackCommand||!targets.length||silenceBlocksAttack||turnTechniqueIds.has(activeCard?.id??'')))} onClick={()=>act(choice)}>{choice==='END_TURN'?`選んだ${discard.required}枚を捨てて手番を終える`:commandNames[choice]??(choice==='ATTACK'?'攻撃を確認して実行':choice)}</button>])}</section>:null}
+ {!view.activeWindow&&view.legalChoices.includes('WITHDRAW')&&view.maaiAbilityOptions.length?<label>離脱の間合いに添える能力<select disabled={disabled} value={selectedWithdrawAbility??''} onChange={e=>setWithdrawAbility({revision:view.revision,abilityId:e.target.value})}><option value="">使わない</option>{view.maaiAbilityOptions.map(o=><option key={o.abilityId} value={o.abilityId}>{o.name}</option>)}</select></label>:null}
+ {!view.activeWindow?<section className="command-bar" aria-label="現在できる操作">{view.legalChoices.flatMap(choice=>choice==='PLAY_ANYTIME_CARD'||choice==='SET_CONDITIONAL_ABILITY'||choice==='CHOOSE_DRAW'||choice==='ARRANGE_FOLLOWERS'||choice==='REVEAL_CHARACTER'||(lifecycleCommands.has(choice)||lifetimeCommands.has(choice)||abilityCommands.has(choice)||combinationCommands.has(choice))?[]:[<button key={choice} disabled={disabled||(choice==='PLACE_INITIAL_FOLLOWER'&&!initialFollowerCommand(view,selected[0]??''))||(choice==='END_TURN'&&!discard.valid)||(choice==='CHANT'&&(selected.length!==1||!eligibleChantCards(view.self.hand,character?.name,dedicated,silenced,view.self.faction).includes(selected[0]!)||view.self.chants.length>=view.self.stats.chantLimit))||(['ATTACK','APPROACH','WITHDRAW','PLACE_INITIAL_FOLLOWER'].includes(choice)&&selected.length!==1)||(choice==='ATTACK'&&(!attackCommand||!targets.length||silenceBlocksAttack||turnTechniqueIds.has(activeCard?.id??'')))} onClick={()=>act(choice)}>{choice==='END_TURN'?`選んだ${discard.required}枚を捨てて手番を終える`:commandNames[choice]??(choice==='ATTACK'?'攻撃を確認して実行':choice)}</button>])}</section>:null}
  <CombinationPanel key={`combination:${view.revision}`} view={view} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))} disabled={disabled} send={send}/>
+ <SadLovePanel view={view} disabled={disabled} send={send}/>
  <ConditionalAbilityPanel key={`conditional:${view.revision}`} view={view} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))} disabled={disabled} send={send}/>
+ <InformationHistoryPanel view={view}/>
+ <TurnChoiceCardPanel view={view} disabled={disabled} send={send}/>
+ <WishPanel view={view} disabled={disabled} send={send}/>
+ <VirtualBladePanel key={`virtual-blade:${view.revision}`} view={view} disabled={disabled} send={send}/>
+ <AllArmyPanel key={`all-army:${view.revision}`} view={view} disabled={disabled} send={send}/>
+ <TurnCardPanel view={view} disabled={disabled} send={send}/>
+ <AnytimeCardPanel view={view} disabled={disabled} send={send}/>
+ <ReclaimPanel view={view} disabled={disabled} send={send}/>
+ <SuppressionPanel view={view} disabled={disabled} send={send}/>
+ <ShadowJumpPanel key={`shadow-jump:${view.activeWindow?.windowId}`} view={view} disabled={disabled} send={send}/>
  <AbilityPanel key={`ability:${view.activeWindow?.windowId??view.phase}:${view.revision}`} view={view} disabled={disabled} send={send}/>
  <FollowerAttackPanel key={`follower-attack:${view.revision}`} view={view} disabled={disabled} send={send}/>
  <FollowerBundlePanel key={`follower-bundle:${view.revision}`} view={view} disabled={disabled} send={send}/>
@@ -89,6 +128,7 @@ export function Board({room,actorId,disabled:connectionDisabled,send}:{room:Room
  <LifetimeDecisionPanel view={view} disabled={disabled} send={send}/>
  <LifecyclePanel key={`lifecycle:${view.activeWindow?.windowId??view.phase}:${view.revision}`} view={view} disabled={disabled} send={send}/>
  <BeastCapturePanel view={view} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))} disabled={disabled} send={send}/>
+ <DistanceExchangeSummary progress={view.distanceExchange} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
  <MaaiDefenseSummary progress={view.maaiDefense} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
  <InspectionPanel view={view} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))} disabled={disabled} send={send} onInspect={setInspect}/>
  <ReactionPanel key={`${view.activeWindow?.windowId??'none'}:${view.activeWindow?.windowRevision??0}`} view={view} disabled={disabled} send={send}/><PublicLog view={view}/>

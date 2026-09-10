@@ -3,6 +3,7 @@ import { applyDeclarationSelection, candidateFor, type DeclarationInputView } fr
 import type { GameCommand } from '@madou/protocol';
 
 export interface FollowerAttackOption {
+  targetValues?: { actorId: string; effectLevel: number | string; damage: number | string }[];
   cardInstanceId: string; dedicated: true; sourceZone: 'hand' | 'followers';
   targetMode: 'one' | 'selected-all' | 'mandatory-all'; legalTargetIds: string[];
   range: 'near' | 'far'; school: 'warrior' | 'magic'; attributes: string[];

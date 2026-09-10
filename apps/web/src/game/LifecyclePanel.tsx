@@ -12,7 +12,7 @@ const abilityLabels = {
   'arseil-conspiracy': '陰謀を使い、勝利して退場する',
 } as const;
 export const lifecycleCommands = new Set([
-  'PLAY_DEATH_GIFT', 'CHOOSE_REVIVAL', 'USE_LIFECYCLE_ABILITY', 'TRANSFER_RITUAL', 'USE_REVIVAL_RITUAL',
+  'CHAM_DEATH_GIFT', 'PLAY_DEATH_GIFT', 'CHOOSE_REVIVAL', 'USE_LIFECYCLE_ABILITY', 'TRANSFER_RITUAL', 'USE_REVIVAL_RITUAL',
 ]);
 
 export function LifecyclePanel({ view, disabled, send }: {
@@ -58,7 +58,19 @@ export function LifecyclePanel({ view, disabled, send }: {
     const command = deathGiftCommand({ hand: view.self.hand, faction: view.self.faction,
       eligibleTargetIds: decision.eligibleTargetIds, cardInstanceId: sourceId, giftCardInstanceId: giftId, targetId });
     return withActions(<aside className="decision" aria-label="死亡時の贈与">{waiting}<h2>最後にカードを託す</h2>
-      <p>{name(decision.actorId)}さんの死亡時の処理です。託す場合は、死亡時に使うカードとは別の手札を1枚選びます。</p>
+      <p>{name(decision.actorId)}さんの死亡時の処理です。使える能力やカードで、残った手札を託せます。</p>
+      {mine && decision.chamGift && allowed('CHAM_DEATH_GIFT') ? <section aria-label="みんな姫様を頼むね">
+        <h3>みんな姫様を頼むね</h3><p>手札を1枚託します。手札の補充はありません。</p>
+        <label>能力で託す手札<select value={giftId} onChange={event => setGiftId(event.target.value)}>
+          <option value="">手札を選択</option>{decision.chamGift.cardInstanceIds.map(id => <option key={id} value={id}>{getAction(id)?.name}</option>)}
+        </select></label>
+        <label>能力で託す相手<select value={targetId} onChange={event => setTargetId(event.target.value)}>
+          <option value="">相手を選択</option>{decision.chamGift.eligibleTargetIds.map(id => <option key={id} value={id}>{name(id)}</option>)}
+        </select></label>
+        <p className="hint">カードの中身は受取人だけが確認できます。能力を取り消された場合は、選んだ手札も死亡時に捨てます。</p>
+        <button disabled={disabled || !decision.chamGift.cardInstanceIds.includes(giftId) || !decision.chamGift.eligibleTargetIds.includes(targetId)}
+          onClick={() => send({type:'CHAM_DEATH_GIFT',decisionId:decision.chamGift!.decisionId,cardInstanceId:giftId,targetId})}>能力で手札を託す</button>
+      </section> : null}
       {mine ? <>{allowed('PLAY_DEATH_GIFT') ? <>
         <label>死亡時に使うカード<select value={sourceId} onChange={event => { setSourceId(event.target.value); setGiftId(''); }}>
           <option value="">カードを選択</option>{sourceCards.map(id => <option key={id} value={id}>{getAction(id)?.name}</option>)}

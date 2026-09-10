@@ -7,8 +7,8 @@ export interface OptionalTurnInputView {
 }
 export type InspectionChoice = 'finish' | 'discard-one' | 'discard-all';
 export interface InspectionDecision {
-  decisionId: string; actorId: string; targetId: string; zone: 'hand' | 'followers' | 'chants' | 'character';
-  cards: { position: number; cardInstanceId: string }[]; characterId?: string;
+  decisionId: string; actorId: string; targetId: string; zone: 'all' | 'hand' | 'followers' | 'chants' | 'character';
+  cards: { zone?:'hand'|'followers'|'chants';position: number; cardInstanceId: string }[]; characterId?: string;
   discardMode: 'none' | 'one' | 'all'; choices: InspectionChoice[];
 }
 export interface InspectionInputView {
