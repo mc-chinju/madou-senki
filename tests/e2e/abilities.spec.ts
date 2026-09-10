@@ -11,8 +11,15 @@ test('Ida explicitly pays for healing and concealment after a cancellable declar
     await panel.getByLabel('消費する間合い').selectOption('a2-p07-r3c1');
     await panel.getByLabel('正体を裏に戻す').check();
     await panel.getByRole('button', { name: '隠行を使う', exact: true }).click();
-    await expect.poll(() => views.get(owner)?.game?.currentAction?.source).toBe('ability');
+    await expect.poll(() => views.get(owner)?.game?.activeWindow?.kind).toBe('reclaim');
+    const decision=views.get(owner)!.game!.reclaim!.decisionId;
+    await table.pages[0]!.reload();
+    await expect(table.pages[0]!.getByRole('button', {name:'回収せずに進む',exact:true})).toBeVisible();
+    expect(views.get(owner)!.game!.reclaim!.decisionId).toBe(decision);
     expect(views.get(owner)!.game!.self.damage).toBe(5);
+    await passUntil(table,views,game=>game.activeWindow?.kind==='declaration');
+    expect(views.get(owner)!.game!.self.damage).toBe(5);
+    expect(views.get(owner)!.game!.currentAction?.source).toBe('ability');
     await passUntil(table, views, game => !game.activeWindow);
     expect(views.get(owner)!.game!.self.damage).toBe(3);
     expect(views.get(owner)!.game!.self.hand).toEqual(hand.filter(id => id !== 'a2-p07-r3c1'));

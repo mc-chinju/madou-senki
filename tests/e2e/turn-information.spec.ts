@@ -311,3 +311,132 @@ test('Uonos forces Lia public and preserves the other player’s real transforma
     await reload(table, views, 2);
   } finally { await table.close(); }
 });
+
+test('G09 ordinary reveal leaves TruePower unchecked and inactive after reload', async ({ browser, request }) => {
+  const table = await tableFixture(browser, request, 'info-alseil-truepower');
+  try {
+    const views = await observe(table), owner = table.sessions[0]!.id;
+    const base = game(table, views).self.stats.spirit;
+    const choice = table.pages[0]!.getByRole('checkbox', { name: '本当の力：基礎精神力を12にする', exact: true });
+    await expect(choice).not.toBeChecked();
+    for (let seat = 1; seat < 4; seat++) {
+      expect(JSON.stringify(game(table, views, seat))).not.toContain('c2-p04-r2c1');
+      await expect(table.pages[seat]!.getByRole('checkbox', { name: '本当の力：基礎精神力を12にする', exact: true })).toHaveCount(0);
+    }
+    await reload(table, views);
+    await expect(choice).not.toBeChecked();
+    await click(table, views, 0, '正体を公開');
+    await passUntil(table, views, state => !state.activeWindow, 500);
+    await reload(table, views);
+    await reload(table, views, 1);
+    for (let seat = 0; seat < 4; seat++) {
+      expect(game(table, views, seat).players[owner]!.characterId).toBe('c2-p04-r2c1');
+      expect(game(table, views, seat).revealAbilityOptions).toEqual([]);
+    }
+    expect(game(table, views).self.stats.spirit).toBe(base);
+    expect(game(table, views).spiritExpiry).toBeNull();
+    await expect(choice).toHaveCount(0);
+  } finally { await table.close(); }
+});
+
+async function ordinaryOptionalDraw(browser: Parameters<typeof tableFixture>[0], request: Parameters<typeof tableFixture>[1], scenario: 'info-cham-draw' | 'info-lancelot-growth', name: string) {
+  const table = await tableFixture(browser, request, scenario);
+  try {
+    const views = await observe(table), before = game(table, views).self.hand.length;
+    const label = `${name}：1枚の代わりに2枚補充する`;
+    const choice = table.pages[0]!.getByRole('checkbox', { name: label, exact: true });
+    await expect(choice).not.toBeChecked();
+    for (let seat = 1; seat < 4; seat++) {
+      expect(game(table, views, seat).drawAbilityOptions).toEqual([]);
+      await expect(table.pages[seat]!.getByRole('checkbox', { name: label, exact: true })).toHaveCount(0);
+      if (scenario === 'info-cham-draw') expect(JSON.stringify(game(table, views, seat))).not.toContain('c2-p01-r2c2');
+    }
+    await reload(table, views);
+    await expect(choice).not.toBeChecked();
+    await click(table, views, 0, 'カードを引く');
+    await passUntil(table, views, state => !state.activeWindow, 500);
+    expect(game(table, views).self.hand).toHaveLength(before + 1);
+    expect(game(table, views).phase).toBe('action');
+    await reload(table, views);
+    await reload(table, views, 1);
+    await expect(choice).toHaveCount(0);
+    if (scenario === 'info-cham-draw') for (let seat = 1; seat < 4; seat++) expect(JSON.stringify(game(table, views, seat))).not.toContain('c2-p01-r2c2');
+  } finally { await table.close(); }
+}
+test('G09 Cham ordinary draw leaves optional replacement unused and concealed after reload', async ({ browser, request }) => {
+  await ordinaryOptionalDraw(browser, request, 'info-cham-draw', 'なになに');
+});
+test('G09 transformed Lancelot ordinary draw leaves Growth unused after reload', async ({ browser, request }) => {
+  await ordinaryOptionalDraw(browser, request, 'info-lancelot-growth', '成長');
+});
+
+async function declineInformation(browser: Parameters<typeof tableFixture>[0], request: Parameters<typeof tableFixture>[1], scenario: Parameters<typeof tableFixture>[2], abilityId: string) {
+  const table = await tableFixture(browser, request, scenario);
+  try {
+    const views = await observe(table), owner = table.sessions[0]!.id;
+    const before = structuredClone(game(table, views));
+    expect(before.abilityOptions.some(option => option.abilityId === abilityId)).toBe(true);
+    function privacy() {
+      for (let seat = 1; seat < 4; seat++) {
+        const view = game(table, views, seat);
+        expect(view.abilityOptions.some(option => option.abilityId === abilityId)).toBe(false);
+        expect(view.inspection).toBeNull();
+        if (!before.players[owner]!.revealed) expect(view.players[owner]).not.toHaveProperty('characterId');
+      }
+    }
+    privacy();
+    await reload(table, views);
+    await click(table, views, 0, '行動を終える');
+    await reload(table, views);
+    privacy();
+    const own = game(table, views).self;
+    const excess = Math.max(0, own.hand.length - own.stats.handLimit);
+    for (let index = 0; index < excess; index++) await table.pages[0]!.getByRole('region', { name: '自分の手札', exact: true }).getByRole('article').nth(index).getByRole('button').first().click();
+    await click(table, views, 0, `選んだ${excess}枚を捨てて手番を終える`);
+    await reload(table, views);
+    await reload(table, views, 1);
+    const done = game(table, views);
+    expect(done.phase).toBe('turn-start');
+    expect(done.turnSeat).toBe(1);
+    expect(done.self.hand).toEqual(before.self.hand.slice(excess));
+    expect(done.players).toEqual({ ...before.players, [owner]: { ...before.players[owner], handCount: before.players[owner]!.handCount - excess } });
+    expect(done.inspection).toBeNull();
+    privacy();
+  } finally { await table.close(); }
+}
+
+test('G09 decline information info-cham-followers survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-cham-followers', 'c2-p01-r2c2-ab03');
+});
+
+test('G09 decline information info-lia-chants survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-lia-chants', 'c2-p03-r1c2-ab02');
+});
+
+test('G09 decline information info-lester-rumor survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-lester-rumor', 'c2-p03-r2c1-ab03');
+});
+
+test('G09 decline information info-alseil-hand survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-alseil-hand', 'c2-p04-r2c1-ab02');
+});
+
+test('G09 decline information info-lancaster-discard survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-lancaster-discard', 'c2-p02-r2c1-ab04');
+});
+
+test('G09 decline information info-aiel-twins survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-aiel-twins', 'c2-p04-r1c1-ab04');
+});
+
+test('G09 decline information info-flaiard-twins survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-flaiard-twins', 'c2-p06-r2c1-ab04');
+});
+
+test('G09 decline information info-alseil-shadow survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-alseil-shadow', 'c2-p04-r2c1-ab01');
+});
+
+test('G09 decline information info-uonos-reveal survives end-turn reload', async ({ browser, request }) => {
+  await declineInformation(browser, request, 'info-uonos-reveal', 'c2-p05-r1c1-ab01');
+});

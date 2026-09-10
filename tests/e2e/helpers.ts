@@ -31,7 +31,7 @@ export async function tableFixture(browser: Browser, request: APIRequestContext,
 }
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
-export const windowPassButtonName = /^(パス|託さずに進む|奪わずに進む|能力を使わず進む|追加攻撃をしない|追加しない|判定しない)$/;
+export const windowPassButtonName = /^(パス|回収せずに進む|託さずに進む|奪わずに進む|能力を使わず進む|追加攻撃をしない|追加しない|判定しない)$/;
 export async function observe(table: Table) {
   const views = new Map<string, RoomView>();
   for (const [index, page] of table.pages.entries()) {

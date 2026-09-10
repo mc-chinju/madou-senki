@@ -14,6 +14,7 @@ async function click(table: Table, views: Views, seat: number, label: string) {
 async function card(table: Table, views: Views, seat: number, cardId: string, label: string) {
   await table.pages[seat]!.getByRole('combobox', { name: '使うカード', exact: true }).selectOption(cardId);
   await click(table, views, seat, label);
+  if(label==='間合いを使う'||label==='踏み込みを使う')await passUntil(table,views,g=>g.activeWindow?.kind!=='reclaim');
 }
 async function normal(table: Table, views: Views) { return passUntil(table, views, state => state.activeWindow?.kind === 'normal-defense', 500); }
 

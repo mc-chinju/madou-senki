@@ -46,6 +46,10 @@ test('Void Sword consumes the selected advance with its source and raises effect
     await page.getByRole('group', { name: '消費する踏み込み' }).getByRole('checkbox', { name: '踏み込み／殴る', exact: true }).check();
     await page.getByRole('article').filter({ has: page.getByRole('heading', { name: '楓', exact: true }) }).getByRole('checkbox').check();
     await page.getByRole('button', { name: '攻撃を確認して実行', exact: true }).click();
+    await expect.poll(()=>views.get(owner)?.game?.activeWindow?.kind).toBe('reclaim');
+    await page.reload();
+    await expect(page.getByRole('region',{name:'カードの回収'}).getByRole('button',{name:'回収せずに進む',exact:true})).toBeEnabled();
+    await passUntil(table,views,g=>g.activeWindow?.kind!=='reclaim');
     await expect.poll(() => currentCardAction(views.get(owner)?.game)?.cardInstanceId).toBe('a2-p09-r2c1');
     expect(views.get(owner)!.game!.self.hand).toEqual(before.self.hand.filter(id => !['a2-p09-r2c1', 'a2-p23-r1c2'].includes(id)));
     const defense = await passUntil(table, views, game => game.activeWindow?.kind === 'normal-defense');
@@ -65,6 +69,8 @@ test('Black Wing post-hit payment is explicit and survives reload at its saved c
     await panel.getByRole('checkbox', { name: '踏み込み／殴る', exact: true }).check();
     await panel.getByRole('button', { name: '踏み込みを消費して追加する', exact: true }).click();
     await expect.poll(() => views.get(owner)?.game?.self.hand.includes('a2-p23-r1c2')).toBe(false);
+    await page.reload();
+    await expect(page.getByRole('region',{name:'カードの回収'}).getByRole('button',{name:'回収せずに進む',exact:true})).toBeEnabled();
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(20);
     expect(done.discard.filter(id => id === 'a2-p23-r1c2')).toHaveLength(1);
