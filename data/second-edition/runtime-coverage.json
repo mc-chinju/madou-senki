@@ -186517,31 +186517,31 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:35e89376ed0087ca",
-        "t:5fb5ae2226ad344a",
-        "t:381aad30d55793bd",
-        "t:1fd7581d69e73879",
-        "t:c32ebbbd89b27cea",
-        "t:67b3e9d296ddd3ae",
-        "t:5f4bf96070cfdc09",
-        "t:645d64a00abeb7e2",
-        "t:4a6089ab222456ca",
-        "t:e050b0d6a15eca06",
-        "t:86ab97fadb60b703",
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa",
-        "t:85c28135e25f464c",
-        "t:6c0124fa5b8d2eed",
-        "t:f4bef6b2b5355711",
-        "t:928bb44784eb40b2",
-        "t:9e7967d55e95dfa3"
+        "t:e5c6f7e137036f4c",
+        "t:1b2f4a3688ee387a",
+        "t:c7317ed68189b4e4",
+        "t:c85d3e466652e3d1",
+        "t:d37c4d4e7e0bac3f",
+        "t:3d51412c02c2f751",
+        "t:d893571224ca9cff",
+        "t:2169201492ad5b6d",
+        "t:55e9a9c79ef5e12f",
+        "t:5f8b3f4d8f110b7f",
+        "t:10bc0498a54104ad",
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf",
+        "t:e8629410189895d5",
+        "t:61f8cad0bbef052b",
+        "t:609e32e551d7fe13",
+        "t:1ee9b84fc8860570",
+        "t:915f737ac1a83a08"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "kind": "main-producer",
@@ -368054,15 +368054,15 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:35e89376ed0087ca",
-        "t:5fb5ae2226ad344a"
+        "t:e5c6f7e137036f4c",
+        "t:1b2f4a3688ee387a"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368104,19 +368104,19 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:35e89376ed0087ca",
-        "t:5fb5ae2226ad344a",
-        "t:381aad30d55793bd",
-        "t:1fd7581d69e73879",
-        "t:c32ebbbd89b27cea",
-        "t:67b3e9d296ddd3ae"
+        "t:e5c6f7e137036f4c",
+        "t:1b2f4a3688ee387a",
+        "t:c7317ed68189b4e4",
+        "t:c85d3e466652e3d1",
+        "t:d37c4d4e7e0bac3f",
+        "t:3d51412c02c2f751"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368158,14 +368158,14 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:35e89376ed0087ca"
+        "t:e5c6f7e137036f4c"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368207,14 +368207,14 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:5f4bf96070cfdc09"
+        "t:d893571224ca9cff"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368256,16 +368256,16 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:645d64a00abeb7e2",
-        "t:4a6089ab222456ca",
-        "t:67b3e9d296ddd3ae"
+        "t:2169201492ad5b6d",
+        "t:55e9a9c79ef5e12f",
+        "t:3d51412c02c2f751"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368307,17 +368307,17 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:35e89376ed0087ca",
-        "t:381aad30d55793bd",
-        "t:1fd7581d69e73879",
-        "t:c32ebbbd89b27cea"
+        "t:e5c6f7e137036f4c",
+        "t:c7317ed68189b4e4",
+        "t:c85d3e466652e3d1",
+        "t:d37c4d4e7e0bac3f"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368359,17 +368359,17 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:35e89376ed0087ca",
-        "t:381aad30d55793bd",
-        "t:1fd7581d69e73879",
-        "t:c32ebbbd89b27cea"
+        "t:e5c6f7e137036f4c",
+        "t:c7317ed68189b4e4",
+        "t:c85d3e466652e3d1",
+        "t:d37c4d4e7e0bac3f"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368410,18 +368410,18 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:e050b0d6a15eca06",
-        "t:86ab97fadb60b703",
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa",
-        "t:85c28135e25f464c"
+        "t:5f8b3f4d8f110b7f",
+        "t:10bc0498a54104ad",
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf",
+        "t:e8629410189895d5"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368462,16 +368462,16 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa",
-        "t:86ab97fadb60b703"
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf",
+        "t:10bc0498a54104ad"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368512,19 +368512,19 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa",
-        "t:6c0124fa5b8d2eed",
-        "t:f4bef6b2b5355711",
-        "t:928bb44784eb40b2",
-        "t:9e7967d55e95dfa3"
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf",
+        "t:61f8cad0bbef052b",
+        "t:609e32e551d7fe13",
+        "t:1ee9b84fc8860570",
+        "t:915f737ac1a83a08"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368566,15 +368566,15 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa"
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368616,15 +368616,15 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa"
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368666,15 +368666,15 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa"
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368716,15 +368716,15 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa"
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368766,16 +368766,16 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:b55fc7a73713c2f0",
-        "t:5d787b308d11eefa",
-        "t:85c28135e25f464c"
+        "t:059ee71a2293ed36",
+        "t:1d1d4cee00317edf",
+        "t:e8629410189895d5"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368816,17 +368816,17 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:381aad30d55793bd",
-        "t:1fd7581d69e73879",
-        "t:c32ebbbd89b27cea",
-        "t:67b3e9d296ddd3ae"
+        "t:c7317ed68189b4e4",
+        "t:c85d3e466652e3d1",
+        "t:d37c4d4e7e0bac3f",
+        "t:3d51412c02c2f751"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -368867,16 +368867,16 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:35e89376ed0087ca",
-        "t:5fb5ae2226ad344a",
-        "t:67b3e9d296ddd3ae"
+        "t:e5c6f7e137036f4c",
+        "t:1b2f4a3688ee387a",
+        "t:3d51412c02c2f751"
       ],
       "status": "implemented",
       "remaining": [
-        "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
+        "n:88c79cddce919acd"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -410079,6 +410079,10 @@
     "h:84adc9b316e3235b": {
       "path": "packages/engine/src/abilities/sad-love.ts",
       "symbol": "transitionSadLove"
+    },
+    "h:a07f3f4f85423feb": {
+      "path": "packages/engine/src/effects/all-army.ts",
+      "symbol": "transitionAllArmy"
     }
   },
   "testCases": {
@@ -460242,6 +460246,168 @@
         "c2-p05-r2c2-ab03"
       ],
       "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:e5c6f7e137036f4c": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual setup placement hides identity and physical Bow3 compares printed level HP and attributes",
+      "declarationSha256": "dbff1b0414bdfbc8d0bb1ae309fc7287ec046e864ba03bcb7a0f79ccaf143a5b",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-setup",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:1b2f4a3688ee387a": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual granted Dwarf three hits compare higher equal lower and apply HP independently to every hit",
+      "declarationSha256": "d90b5cf3f79e1d5e183fbda37e3163415c803c0be80927a4b8a0f2bcd96566f4",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-setup",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:c7317ed68189b4e4": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual non-destroying magic uses Small Angel conditional5 with printed HP0",
+      "declarationSha256": "5d7c7f5c5abad31fc3503f05acb84df5d02d1a3f066dd0cb7211b563c5ddae3c",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-magic4",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:c85d3e466652e3d1": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual non-destroying magic uses Small Angel conditional5 with printed HP0",
+      "declarationSha256": "5d7c7f5c5abad31fc3503f05acb84df5d02d1a3f066dd0cb7211b563c5ddae3c",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-magic5",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:d37c4d4e7e0bac3f": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual non-destroying magic uses Small Angel conditional5 with printed HP0",
+      "declarationSha256": "5d7c7f5c5abad31fc3503f05acb84df5d02d1a3f066dd0cb7211b563c5ddae3c",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-magic6",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:3d51412c02c2f751": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual mixed Dia group gives Small Angel physical4 and magic5 for each constituent without extra HP",
+      "declarationSha256": "309d393ef64679a3c94bcc03f4847eb447f1f6cb6aaf8feca869fad7f8f3d21c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:d893571224ca9cff": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual own-action placement reordering and voluntary removal maintain physical order and hidden input",
+      "declarationSha256": "1078b4f1cff7b144f27c680718753afcd0f1c7d3a853e5ef1dc975ed12f4f4f0",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-setup",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:2169201492ad5b6d": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual front-first defense consumes reached low follower but high front keeps hidden rear untouched",
+      "declarationSha256": "eb3eaf5da36e99689d63f03e6bf45abc9d7beb357074edac6e0440bfe0ece387",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-setup",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:55e9a9c79ef5e12f": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual maai prevents final follower defense and maintains hidden physical source",
+      "declarationSha256": "0074050d2c3514b7b3a248dec41dc0f8601e520247dacf14961d00ccca16f2d7",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-setup",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:5f8b3f4d8f110b7f": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "%s actual hand and field cannot invent direct attacks and Dia human grant excludes the nonhuman angel",
+      "declarationSha256": "75cfa3bb129e43e6547e1339c1cb68190a8d3c5287e16646424129e1c3266bcb",
+      "kind": "canonical-transition",
+      "parameters": "small-angel-setup",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:10bc0498a54104ad": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual placed Small Angel cannot use hand-only Army or invent dedication",
+      "declarationSha256": "16be9fda421c5e021db7499f8e012fccadc628ae8ea0e8d68f17ed3ac5767f5d",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:059ee71a2293ed36": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual Small Angel Army ordinary far magic3 damage4 uses own magic%i checks and also accepts real near approach",
+      "declarationSha256": "b6ef064e5d780af41359781dd71b00185cd532f05e54692f58fce616730ccaa2",
+      "kind": "canonical-transition",
+      "parameters": 2,
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:1d1d4cee00317edf": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual Small Angel Army ordinary far magic3 damage4 uses own magic%i checks and also accepts real near approach",
+      "declarationSha256": "b6ef064e5d780af41359781dd71b00185cd532f05e54692f58fce616730ccaa2",
+      "kind": "canonical-transition",
+      "parameters": 3,
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:e8629410189895d5": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual Gadyura cannot attack through white Small Angel Army even with both physical cards in hand",
+      "declarationSha256": "57287ed0072e517196da8e387ed070e885743512907b014984d8f75a3e9e2687",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:61f8cad0bbef052b": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual Small Angel Army %s spends both cards without damage or returning follower",
+      "declarationSha256": "e74e9df34262ae52b25358ca3d5448692049eb84a49b588f4613189b6adcb639",
+      "kind": "canonical-transition",
+      "parameters": "parent",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:609e32e551d7fe13": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual Small Angel Army %s spends both cards without damage or returning follower",
+      "declarationSha256": "e74e9df34262ae52b25358ca3d5448692049eb84a49b588f4613189b6adcb639",
+      "kind": "canonical-transition",
+      "parameters": "child",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:1ee9b84fc8860570": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual Small Angel Army %s spends both cards without damage or returning follower",
+      "declarationSha256": "e74e9df34262ae52b25358ca3d5448692049eb84a49b588f4613189b6adcb639",
+      "kind": "canonical-transition",
+      "parameters": "use-failure",
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:915f737ac1a83a08": {
+      "path": "packages/engine/test/small-angel-physical.test.ts",
+      "suite": [],
+      "title": "actual Mirror reflects Small Angel Army magic after source payment so spent Small Angel cannot defend reflected hit",
+      "declarationSha256": "3aa390cc2336b7eb5a13a408b94676823f544a8f3109f1aca88cb4fd47cfa893",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact Small Angel a2-p20-r2c2 starts in setup with aligned private initial deal/character logs. Actual initial/own-turn placement, reorder/removal, privacy and invalid refusals. Printed warrior defense4 HP0 white/flying versus real Bow and Dia Dwarf3/4/5 three hits; magic conditional5 versus actual Shock4/MagicShock5/EarthSplit6; actual mixed Dwarf5x3 and DarkSaint5 uses per-source levels4/4/4/5. Actual Army ordinary hand-only far magic3 damage4 white at ownmagic2/3 with one/zero checks and actual near approach. Direct ordinary/dedicated/CHANT and Dia human grant refuse; placed Army and Gadyura white use refuse. Army parent/child/use failure and real Mirror spend source once without returning it. Accepted JSON replay/220 and rejected full-state/all-view invariants. Candidate receipts/shared crossings remain pending."
     }
   },
   "remainingNotes": {
@@ -460391,7 +460557,8 @@
     "n:31cf0a4d49509def": "Printed ritual uses the physical-card handler; existing cancellation and main-action evidence is bound. Actual use while Uonos character abilities are disabled has not been exercised; no rule defect is inferred. Current-candidate acceptance remains incomplete.",
     "n:1569d58b4e26c7a8": "Actual nondefault distance and once-per-game recovery history have Engine/DO canonical evidence; browser performs the same actions and verifies projected possessions/distances after reload. Private history remains covered at Engine/DO. Current-candidate acceptance and required receipts remain incomplete.",
     "n:c5c2ef76ed6e8813": "Named ritual and terminal semantic implementation correspondence is complete for the recorded canonical paths, including actual ability-disable versus stopped-turn behavior. Current-candidate acceptance and required receipts remain incomplete; implemented is not accepted.",
-    "n:6d9fe79b4ce22f05": "Exact clause assertions bound; current candidate successful run remains."
+    "n:6d9fe79b4ce22f05": "Exact clause assertions bound; current candidate successful run remains.",
+    "n:88c79cddce919acd": "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

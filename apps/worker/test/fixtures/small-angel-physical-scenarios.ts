@@ -1,7 +1,7 @@
 import {getAction} from '@madou/catalog';
 import {createGame,gameStats} from '@madou/engine';
 import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
-export const smallAngelPhysicalScenarios=['angel-setup','angel-turn','angel-magic4','angel-magic5','angel-magic6','angel-mixed','angel-army','angel-army-reflect'] as const;
+export const smallAngelPhysicalScenarios=['small-angel-setup','small-angel-turn','small-angel-magic4','small-angel-magic5','small-angel-magic6','small-angel-mixed','small-angel-army','small-angel-army-reflect'] as const;
 export type SmallAngelPhysicalScenario=typeof smallAngelPhysicalScenarios[number];
 export function isSmallAngelPhysicalScenario(name:string):name is SmallAngelPhysicalScenario{return (smallAngelPhysicalScenarios as readonly string[]).includes(name);}
 export function smallAngelPhysicalMode(name:SmallAngelPhysicalScenario){return{card:'a2-p20-r2c2',name:'小天使',level:4,hp:0,attributes:['白','飛'],army:name.includes('-army'),reflect:name.endsWith('-reflect'),magic:name.includes('-magic'),magicLevel:name.endsWith('4')?4:name.endsWith('5')?5:6,mixed:name.endsWith('-mixed'),initial:name.endsWith('-setup')||name.includes('-magic')||name.endsWith('-mixed')};}
