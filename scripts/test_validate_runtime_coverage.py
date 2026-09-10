@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 SCRIPT = Path(__file__).with_name('validate_runtime_coverage.py')
 spec = importlib.util.spec_from_file_location('coverage_validator', SCRIPT)
@@ -495,8 +496,40 @@ class CoverageValidation(unittest.TestCase):
                       'edition': 'second-online-v0.1-provisional'},
             'edition': 'second-online-v0.1-provisional', 'decidedOn': '2026-09-10', 'decidedBy': 'user',
             'retainedTests': self.ledger['rows'][0]['tests']})
-        self.assertEqual(self.errors(), [])
-        self.assertEqual(v.validate(self.root, self.manifest, self.ledger, fixture=True, require_accepted=True), [])
+        # This fixture models receipt acceptance; real card queries have separate tests.
+        with patch.object(v, 'earth_warrior_technique_matches', return_value=[]):
+            self.assertEqual(self.errors(), [])
+            self.assertEqual(v.validate(self.root, self.manifest, self.ledger, fixture=True, require_accepted=True), [])
+
+    def test_card_filter_basis_is_recomputed_and_unknown_filters_rejected(self):
+        (self.root / 'data/second-edition/actions-empty.json').write_text('{"cards": []}')
+        row = {'tests': [], 'notApplicable': {
+            'reason': 'absent', 'edition': v.ADOPTED_EDITION, 'decidedOn': '2026-09-11',
+            'decidedBy': 'user', 'retainedTests': [], 'basis': {
+                'kind': 'card-data-filter', 'edition': v.ADOPTED_EDITION,
+                'query': {'dataset': 'actions', 'where': {'counter': True}}, 'matches': []}}}
+        self.assertEqual(v.not_applicable_errors(self.root, row, 'a#x', self.manifest), [])
+        row['notApplicable']['basis']['matches'] = ['forged']
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', self.manifest))
+        row['notApplicable']['basis']['matches'] = []
+        row['notApplicable']['basis']['query']['where'] = {'typo': 'x'}
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', self.manifest))
+
+    def test_adopted_ruling_basis_binds_known_ruling_and_file_hash(self):
+        evidence = self.root / '.evidence/ruling.json'
+        evidence.write_text('{}')
+        row = {'tests': [], 'notApplicable': {
+            'reason': 'unreachable', 'edition': v.ADOPTED_EDITION, 'decidedOn': '2026-09-11',
+            'decidedBy': 'user', 'retainedTests': [], 'basis': {
+                'kind': 'adopted-ruling', 'edition': v.ADOPTED_EDITION,
+                'rulingIds': ['rules.md#A31'], 'evidence': {
+                    'path': '.evidence/ruling.json', 'sha256': hashlib.sha256(evidence.read_bytes()).hexdigest()}}}}
+        manifest = {'obligations': [{'rulingIds': ['rules.md#A31']}]}
+        self.assertEqual(v.not_applicable_errors(self.root, row, 'a#x', manifest), [])
+        evidence.write_text('{"changed":true}')
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', manifest))
+        row['notApplicable']['basis']['rulingIds'] = ['unknown#A31']
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', manifest))
 
 
 if __name__ == '__main__':

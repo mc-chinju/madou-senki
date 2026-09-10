@@ -149,7 +149,15 @@ def earth_warrior_technique_matches(root):
     return module.collect_earth_warrior_techniques(root)
 
 
-def not_applicable_errors(root, row, key):
+def card_data_query(root, query):
+    spec = importlib.util.spec_from_file_location(
+        'inspect_card_data', Path(__file__).with_name('inspect_card_data.py'))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.run_query(root, query)
+
+
+def not_applicable_errors(root, row, key, manifest=None):
     spec = row.get('notApplicable')
     if not isinstance(spec, dict):
         return [f'missing notApplicable {key}']
@@ -161,11 +169,31 @@ def not_applicable_errors(root, row, key):
     if spec.get('retainedTests') != row.get('tests'):
         return [f'missing notApplicable retainedTests {key}']
     basis = spec.get('basis')
-    if not isinstance(basis, dict) or basis.get('kind') != 'earth-warrior-technique-absence':
+    if not isinstance(basis, dict) or basis.get('edition') != ADOPTED_EDITION:
         return [f'missing notApplicable basis {key}']
-    if basis.get('edition') != ADOPTED_EDITION or basis.get('matches') != earth_warrior_technique_matches(root):
+    kind = basis.get('kind')
+    try:
+        if kind == 'earth-warrior-technique-absence':
+            if basis.get('matches') == [] and earth_warrior_technique_matches(root) == []:
+                return []
+        elif kind == 'card-data-filter':
+            if basis.get('matches') == [] and card_data_query(root, basis.get('query'))['matches'] == []:
+                return []
+        elif kind == 'adopted-ruling':
+            known = {rid for o in (manifest or {}).get('obligations', []) for rid in o.get('rulingIds', [])}
+            ruling_ids = basis.get('rulingIds')
+            if not isinstance(ruling_ids, list) or not ruling_ids or any(rid not in known for rid in ruling_ids):
+                return [f'notApplicable basis mismatch {key}']
+            evidence = basis.get('evidence', {})
+            root = Path(root).resolve()
+            path = (root / evidence.get('path', '')).resolve()
+            if path.is_relative_to(root) and path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == evidence.get('sha256'):
+                return []
+        else:
+            return [f'missing notApplicable basis {key}']
+    except (ValueError, OSError, KeyError, TypeError, AttributeError):
         return [f'notApplicable basis mismatch {key}']
-    return []
+    return [f'notApplicable basis mismatch {key}']
 
 
 def leaves(value, pointer=''):
@@ -450,7 +478,7 @@ def validate(root, manifest, ledger, fixture=False, require_accepted=False):
                 if actual.get(dep, {}).get('status') not in {'accepted', 'notApplicable'}: errors.append(f'unaccepted dependency {key}: {dep}')
         if status == 'notApplicable':
             if row.get('remaining'): errors.append(f'accepted row has remaining {key}')
-            errors.extend(not_applicable_errors(root, row, key))
+            errors.extend(not_applicable_errors(root, row, key, manifest))
             for dep in expected.get(key, {}).get('dependsOn', []):
                 if actual.get(dep, {}).get('status') not in {'accepted', 'notApplicable'}: errors.append(f'unaccepted dependency {key}: {dep}')
         for ref in row.get('handler', []):

@@ -710,7 +710,7 @@ git add scripts/promote_ledger.py scripts/test_promote_ledger.py scripts/generat
   - `adopted-ruling`（D4d）: `{"kind": "adopted-ruling", "edition": ..., "rulingIds": ["A31"], "evidence": {"path": "docs/operations/evidence/2026-09-09-r4-sword-shuffle.json", "sha256": "..."}}`。validator は rulingId が manifest の `rulingIds` 集合に存在し、evidence ファイルの hash が一致することを要求する。
 - `run_query` の where 仕様: `dataset=actions` は `actions-*.json` の `cards[]` を対象に、`attributes_contains`（属性文字列）、`printed_category`、`counter: true/false`（`specification`/`printed_text` に「反撃」を含むか）で絞る。`dataset=character-owned-techniques` は `characters.json` の `owned_techniques` を行動カード名に解決し、`character` と `attribute_not_contains` で絞る。
 
-- [ ] **Step 1: 失敗するテストを書く（`scripts/test_inspect_card_data.py`）**
+- [x] **Step 1: 失敗するテストを書く（`scripts/test_inspect_card_data.py`）**
 
 ```python
 import unittest
@@ -739,12 +739,12 @@ if __name__ == '__main__':
 
 行動カードの属性・技種別のフィールド名は `inspect_earth_warrior_actions.py` が読んでいるキーをそのまま使う（作成時に該当箇所を確認し、`attributes_contains` / `technique_class` をそのキーに対応させる）。フューリーのIDは `characters.json` で「妖精王フューリー」を検索して確定する。
 
-- [ ] **Step 2: 失敗を確認**
+- [x] **Step 2: 失敗を確認**
 
 Run: `python3 -m unittest scripts.test_inspect_card_data`
 Expected: `ModuleNotFoundError`
 
-- [ ] **Step 3: `inspect_card_data.py` を実装し、`inspect_earth_warrior_actions.collect_earth_warrior_techniques` をそれを呼ぶ形に置き換える**
+- [x] **Step 3: `inspect_card_data.py` を実装し、`inspect_earth_warrior_actions.collect_earth_warrior_techniques` をそれを呼ぶ形に置き換える**
 
 ```python
 #!/usr/bin/env python3
@@ -797,7 +797,7 @@ if __name__ == '__main__':
 
 `_matches_actions` の属性・技種別キーは実データのキー名（`inspect_earth_warrior_actions.py` が使うもの）に合わせて書き換える。未解決の所有技名（`unresolved:`）が出た場合は basis に使えないので、名前の表記揺れを `characters.json` と照合して解決する。
 
-- [ ] **Step 4: validator の `not_applicable_errors` を basis 種別で分岐させ、`test_validate_runtime_coverage.py` に `card-data-filter` 一致／不一致、`adopted-ruling` の hash 不一致のケースを追加する**
+- [x] **Step 4: validator の `not_applicable_errors` を basis 種別で分岐させ、`test_validate_runtime_coverage.py` に `card-data-filter` 一致／不一致、`adopted-ruling` の hash 不一致のケースを追加する**
 
 ```python
 def not_applicable_errors(root, row, key, manifest):
@@ -834,12 +834,12 @@ def not_applicable_errors(root, row, key, manifest):
 
 呼び出し側（`errors.extend(not_applicable_errors(root, row, key))`）に `manifest` を渡す。`card_data_query` は `inspect_card_data.run_query` を `earth_warrior_technique_matches` と同じ importlib 方式で読み込む。
 
-- [ ] **Step 5: 成功を確認**
+- [x] **Step 5: 成功を確認**
 
 Run: `python3 -m unittest scripts.test_inspect_card_data scripts.test_inspect_earth_warrior_actions scripts.test_validate_runtime_coverage`
 Expected: OK
 
-- [ ] **Step 6: D4 対象行を特定し、束縛ファイルを書いて適用する**
+- [x] **Step 6: D4 対象行を特定し、束縛ファイルを書いて適用する**
 
 対象行の特定コマンド（結果を束縛ファイルの `row` に使う）:
 
@@ -869,13 +869,19 @@ EOF
 Run: `python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-d4-not-applicable-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160`
 Expected: `valid: true`、statuses に `notApplicable` が出る
 
-- [ ] **Step 7: コミット**
+- [x] **Step 7: コミット**
 
 ```bash
 git add scripts data docs && git commit -m "scripts,data: notApplicableのbasisをカードデータ照会と採用裁定へ拡張し、D4a〜D4dを台帳へ束縛する"
 ```
 
 ---
+
+実装補足（サンプルより優先）:
+- D4a/b/d は独立した台帳行が存在しない分岐判断。束縛ファイルの branchDecisions に根拠と保持試験を記録し、弓補正・回収・そぅど設置の行全体を適用外にはしない。独立した D4c 2行のみ bindings に含める。
+- D4c は structural-resolver（合成consumer）として保持。歌う船の既存試験と、有翼族の追加試験を使う。retainedTests は validator が比較する展開済み参照オブジェクトで保存する。
+- 成功runを要求する validator に合わせ、Step 6 は一時適用→事前snapshot→対象4ファイル実行→run束縛→昇格→全台帳 valid:true を確認し復元。恒久適用は B8 の snapshot 前に行う。2行 notApplicable、18参照一致・失敗0を確認済み。
+- Python70試験、対象Engine試験、tsc --noEmit成功。現行台帳はpendingのまま保存し、後続変更で古くなるrunを残さない。
 
 ## Phase B: 台帳束縛（semantic 5,259行）
 
@@ -1266,12 +1272,14 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 # scripts/run_candidate.sh — run every suite with JSON reports and record one bound run receipt.
 set -uo pipefail
 mkdir -p .cache/run
+python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-d4-not-applicable-bindings.json || exit 1
+python3 scripts/record_runtime_run.py --freeze-output .cache/run/snapshot.json || exit 1
 STATUS=0
 pnpm exec vitest run --reporter=json --outputFile=.cache/run/unit.json || STATUS=1
 pnpm --filter @madou/worker exec vitest run --reporter=json --outputFile=../../.cache/run/worker.json || STATUS=1
 pnpm exec playwright test --reporter=json > .cache/run/browser.json || STATUS=1
 python3 scripts/record_runtime_run.py \
-  --vitest .cache/run/unit.json --vitest .cache/run/worker.json --playwright .cache/run/browser.json \
+  --snapshot .cache/run/snapshot.json --vitest .cache/run/unit.json --vitest .cache/run/worker.json --playwright .cache/run/browser.json \
   --command "pnpm exec vitest run" --command "pnpm --filter @madou/worker exec vitest run" --command "pnpm exec playwright test" \
   --exit-code "$STATUS" --output "${1:-docs/operations/evidence/$(date +%F)-candidate-run.json}"
 exit "$STATUS"

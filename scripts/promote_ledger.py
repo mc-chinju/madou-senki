@@ -81,7 +81,7 @@ def promote(root, run_path):
         if row.get('status') not in {'implemented', 'verified', 'notApplicable'}:
             continue
         if row['status'] == 'notApplicable':
-            errors = not_applicable_errors(root, row, key)
+            errors = not_applicable_errors(root, row, key, manifest)
             if errors:
                 raise ValueError('; '.join(errors))
         elif not row.get('handler'):

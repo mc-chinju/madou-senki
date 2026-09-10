@@ -26,25 +26,16 @@ def attributes_of(value):
 
 def collect_earth_warrior_techniques(root):
     """Return printed technique and follower-attack rows that are 地 and 戦."""
-    matches = []
-    root = Path(root)
-    for path in sorted((root / 'data/second-edition').glob('actions-*.json')):
-        relative = str(path.relative_to(root))
-        for card in json.loads(path.read_text()).get('cards', []):
-            stats = card.get('stats') or {}
-            if card.get('category') == 'follower':
-                attack_attrs = set((stats.get('attack') or {}).get('attributes') or [])
-                if '地' in attack_attrs and '戦' in attack_attrs:
-                    matches.append({'id': card.get('id'), 'name': card.get('name'), 'kind': 'follower-attack',
-                                    'path': relative, 'attributes': sorted(attack_attrs)})
-                continue
-            attrs = set(stats.get('attributes') or [])
-            for mode in card.get('modes') or []:
-                attrs.update(mode.get('attributes') or [])
-            if '地' in attrs and '戦' in attrs:
-                matches.append({'id': card.get('id'), 'name': card.get('name'), 'kind': 'technique',
-                                'path': relative, 'attributes': sorted(attrs)})
-    return matches
+    try:
+        from .inspect_card_data import run_query
+    except ImportError:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('inspect_card_data', Path(__file__).with_name('inspect_card_data.py'))
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        run_query = module.run_query
+    return run_query(root, {'dataset': 'actions', 'where': {
+        'attributes_contains': '地', 'technique_class': '戦士'}})['matches']
 
 
 def main():
