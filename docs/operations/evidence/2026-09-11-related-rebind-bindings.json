@@ -6263,6 +6263,901 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab02#magic-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [
+            "Task7s canonical received defense continuations"
+          ],
+          "title": "Lamba declares magic half without roll and settles damage once",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected magic half resolves without ability-check and halves real incoming4 to2."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical magic %s damage %i behind actual SoldierHP1 floors last to %i",
+          "parameters": [
+            "a2-p17-r2c2",
+            7,
+            3
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Soldier HP1 is subtracted before floor division:7 to3 and6 to2."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical magic %s damage %i behind actual SoldierHP1 floors last to %i",
+          "parameters": [
+            "a2-p14-r1c2",
+            6,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Soldier HP1 is subtracted before floor division:7 to3 and6 to2."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical magic null with successful resistance stays null and zero; warrior failure10 is never halved",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Null magic remains null; an actual warrior source never offers half and keeps independent resistance failure damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c1-ab02#per-hit-damage-half",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [
+            "Task7s canonical received defense continuations"
+          ],
+          "title": "Lamba declares magic half without roll and settles damage once",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected magic half resolves without ability-check and halves real incoming4 to2."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical magic %s damage %i behind actual SoldierHP1 floors last to %i",
+          "parameters": [
+            "a2-p17-r2c2",
+            7,
+            3
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Soldier HP1 is subtracted before floor division:7 to3 and6 to2."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical magic %s damage %i behind actual SoldierHP1 floors last to %i",
+          "parameters": [
+            "a2-p14-r1c2",
+            6,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Soldier HP1 is subtracted before floor division:7 to3 and6 to2."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical C10 mixed human bundle halves each magic hit and leaves warrior source unchanged",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-source human bundle offers half on each magic hit only, leaves warrior unchanged, and settles total7 once."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab01#spirit-minus-three-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [
+            "Task7s canonical received defense continuations"
+          ],
+          "title": "Lia check then separate saved d6 closes exact-zero current hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "An actual modifier-3 successful check is followed by a distinct d6=4, reducing incoming4 to0 and closing the hit without damage."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Lia failed check spends attempt and force-fail result child prevents value die",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Failed or forced-failed check spends the attempt, creates no value die, and leaves original damage4."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab01#separate-reduction-d6",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [
+            "Task7s canonical received defense continuations"
+          ],
+          "title": "Lia check then separate saved d6 closes exact-zero current hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "An actual modifier-3 successful check is followed by a distinct d6=4, reducing incoming4 to0 and closing the hit without damage."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Lia positive residual is fixed once after ordinary reroll choices",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Only one saved reduction die is rerolled1 to2; effect6 becomes4 and printed damage10 remains."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab01#zero-effect-disappearance",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [
+            "Task7s canonical received defense continuations"
+          ],
+          "title": "Lia check then separate saved d6 closes exact-zero current hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "An actual modifier-3 successful check is followed by a distinct d6=4, reducing incoming4 to0 and closing the hit without damage."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Lia reduction and disappearance affect only one target",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact-zero reduction closes B only; original group effect6 and C damage8 remain."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#ordinary-incoming-only",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "counter",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "mirror",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "majesty",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#attacker-spirit-minus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#sixes-faction-copy",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s sixes replace exact private objective and protection",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#sixes-objective-EVIL",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s sixes replace exact private objective and protection",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#sixes-protection-Lia",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s sixes replace exact private objective and protection",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab03#voluntary-hidden-to-public",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "nested attack reveal uses actual attacker end and restores exact attack window",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual voluntary reveal restores the exact interrupted attack window and expires at the actual attacker end."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "voluntary reveal decline does not auto-activate and duplicate/stale reveal cannot retrigger",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Plain voluntary reveal leaves base6 and cannot be retriggered with a duplicate reveal."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "setup fallback expires at chosen first seat end, not at its start",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected reveal during setup yields base12 through first-seat start, then returns to6 at its end."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab03#optional-base-spirit-twelve",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "nested attack reveal uses actual attacker end and restores exact attack window",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual voluntary reveal restores the exact interrupted attack window and expires at the actual attacker end."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "voluntary reveal decline does not auto-activate and duplicate/stale reveal cannot retrigger",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Plain voluntary reveal leaves base6 and cannot be retriggered with a duplicate reveal."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "setup fallback expires at chosen first seat end, not at its start",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected reveal during setup yields base12 through first-seat start, then returns to6 at its end."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab03#actual-attacker-or-current-turn-end-expiry",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "nested attack reveal uses actual attacker end and restores exact attack window",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual voluntary reveal restores the exact interrupted attack window and expires at the actual attacker end."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "ordinary other-player voluntary reveal expires on current non-attacking turn end",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Outside combat the benefit expires at the current turn actor end."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "counterattack %s roll provenance takes priority over the original parent attack",
+          "parameters": "follower",
+          "kind": "canonical-transition",
+          "bindingNote": "Returned attack follower/hit roll binds expiry to its real counterattacker B, surviving parent A end until B end."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "counterattack %s roll provenance takes priority over the original parent attack",
+          "parameters": "hit",
+          "kind": "canonical-transition",
+          "bindingNote": "Returned attack follower/hit roll binds expiry to its real counterattacker B, surviving parent A end until B end."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab02#spirit-minus-five",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Gainas two-target reflection consumes only his received hit and original C still lands",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real successful spirit-5 reflection closes B, returns a child targeting original attacker A, and leaves C damage8; A receives8."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical failed Gainas check consumes attempt without reflecting",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Failure spends the attempt without creating a reflected child and B takes4."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab02#incoming-technique-reflect",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Gainas two-target reflection consumes only his received hit and original C still lands",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real successful spirit-5 reflection closes B, returns a child targeting original attacker A, and leaves C damage8; A receives8."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab02#original-attacker-target",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Gainas two-target reflection consumes only his received hit and original C still lands",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real successful spirit-5 reflection closes B, returns a child targeting original attacker A, and leaves C damage8; A receives8."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c2-ab02#treat-as-counter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Gainas two-target reflection consumes only his received hit and original C still lands",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real successful spirit-5 reflection closes B, returns a child targeting original attacker A, and leaves C damage8; A receives8."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical dedicated counter-prohibited skeleton offers and accepts no Gainas reflection",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual counter-prohibited dedicated Skeleton refuses Gainas reflection."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical Gainas reflection permits original attacker ordinary counter defense and preserves source privacy",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Original attacker can play an ordinary counter defense against the returned attack; both receive0."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#ordinary-incoming-only",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "counter",
+            "c2-p06-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "mirror",
+            "c2-p06-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "majesty",
+            "c2-p06-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#attacker-spirit-minus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#failure-own-target-all-hits-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary failure cancels only own target without stop",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Ordinary failure closes only this owner target, leaves C damage and does not apply stop."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c1-ab01",
+            "first",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c1-ab01",
+            "second",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#sixes-pending-fatal-intent-after-other-target-hits",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "Gadyoora sixes save irrevocable fatal intent until other target damage and G15 death gift",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Sixes commit a pending instant-death intent while attacker remains active; other target damage is applied before pending-death and G15 death gift."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#ordinary-incoming-only",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "counter",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "mirror",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "actual %s returned attack cannot use mental defense %s",
+          "parameters": [
+            "majesty",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#attacker-spirit-minus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#failure-own-target-all-hits-cancel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary success leaves every declared target hit intact",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s ordinary failure cancels only own target without stop",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Ordinary failure closes only this owner target, leaves C damage and does not apply stop."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c2-ab01",
+            "first",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c2-ab01",
+            "second",
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#sixes-faction-copy",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s sixes replace exact private objective and protection",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#snapshot-Dia-enemy-factions",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s sixes replace exact private objective and protection",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "Dia snapshots enemy factions at conversion and does not follow later allegiance changes",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Dia enemy faction objective is snapshotted at conversion and stays fixed after a later allegiance change."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#replace-protection-Dia",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s sixes replace exact private objective and protection",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab01#spirit-minus-five-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation grants a spirit-5 shield check; successful1,1 prevents damage while failed6,6 leaves12."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation grants a spirit-5 shield check; successful1,1 prevents damage while failed6,6 leaves12."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }

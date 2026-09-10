@@ -172253,12 +172253,14 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:b69b4dc6e9818dda"
+        "t:d44b4e0188090e8c",
+        "t:419f6122daeaf66a",
+        "t:a5bcd37f0ccee5e3",
+        "t:29e4a1997e5207ac"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172279,12 +172281,14 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:b69b4dc6e9818dda"
+        "t:d44b4e0188090e8c",
+        "t:419f6122daeaf66a",
+        "t:a5bcd37f0ccee5e3",
+        "t:cce19e6004efd837"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172470,12 +172474,12 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:42b464f47ffb46e7"
+        "t:e5e16e0dffb6fc01",
+        "t:3e4a76eb60c24d3b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172496,12 +172500,12 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:42b464f47ffb46e7"
+        "t:e5e16e0dffb6fc01",
+        "t:2d744aafc1e984f0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172522,12 +172526,12 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:42b464f47ffb46e7"
+        "t:e5e16e0dffb6fc01",
+        "t:aaa4e603bf678ce8"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172775,12 +172779,14 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:b61fbaf1644aa2eb",
+        "t:d5181fe3a72530dd",
+        "t:6fbdfcf94197b2c0",
+        "t:21055508f30746bd"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172800,12 +172806,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:b61fbaf1644aa2eb"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172857,12 +172862,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:a1568722490f0f0e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172882,12 +172886,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:a1568722490f0f0e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172907,12 +172910,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:a1568722490f0f0e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174309,12 +174311,13 @@
         "h:b559cef8ce10a3d9"
       ],
       "tests": [
-        "t:6adfc7ffc23d4cc5"
+        "t:e85a47a10805b529",
+        "t:8c3234ce3a2253c0",
+        "t:2fefe706c08550aa"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a91d8082f1f521a0",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174335,12 +174338,13 @@
         "h:b559cef8ce10a3d9"
       ],
       "tests": [
-        "t:6adfc7ffc23d4cc5"
+        "t:e85a47a10805b529",
+        "t:8c3234ce3a2253c0",
+        "t:2fefe706c08550aa"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a91d8082f1f521a0",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174361,12 +174365,14 @@
         "h:b559cef8ce10a3d9"
       ],
       "tests": [
-        "t:6adfc7ffc23d4cc5"
+        "t:e85a47a10805b529",
+        "t:abe9a1c180c9f757",
+        "t:1d56042f0125bede",
+        "t:f2f6d224c3ea9722"
       ],
       "status": "implemented",
       "remaining": [
-        "n:a91d8082f1f521a0",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176242,12 +176248,12 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:cfda0705e0569238"
+        "t:98ab1f703d03cf97",
+        "t:813bde9468868d09"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176268,12 +176274,11 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:cfda0705e0569238"
+        "t:98ab1f703d03cf97"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176294,12 +176299,11 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:cfda0705e0569238"
+        "t:98ab1f703d03cf97"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176320,12 +176324,13 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:cfda0705e0569238"
+        "t:98ab1f703d03cf97",
+        "t:727ca0293a625634",
+        "t:f03ceaea878720ce"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176507,12 +176512,14 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:2d69b9583f1bde30"
+        "t:61f83a7ac07b5671",
+        "t:22ea1c855fd35227",
+        "t:e77039729fc33ce0",
+        "t:de83fae2ab55c8d8"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176532,12 +176539,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:2d69b9583f1bde30"
+        "t:61f83a7ac07b5671"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176557,12 +176563,14 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:2d69b9583f1bde30"
+        "t:61f83a7ac07b5671",
+        "t:444fdf6423967f05",
+        "t:055fd35918414a66",
+        "t:c1ca7333a585869f"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176582,12 +176590,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:2d69b9583f1bde30"
+        "t:07e0b84ed0960ed0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176873,12 +176880,14 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:cbb55b814ff75b9c",
+        "t:4c87220169e3df36",
+        "t:adcdcbf5c00b3b2f",
+        "t:b9945624978a49aa"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176898,12 +176907,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:cbb55b814ff75b9c"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176923,12 +176931,14 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:cbb55b814ff75b9c",
+        "t:1c5d33b5a4c9a46a",
+        "t:1ea6646ec7ead299",
+        "t:4e62188c41dffdd3"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176948,12 +176958,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:04c3f766a8c7a62b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176973,12 +176982,12 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:04c3f766a8c7a62b",
+        "t:77d9ea0ff7209c55"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176998,12 +177007,11 @@
         "h:7dcc0d462891f4ac"
       ],
       "tests": [
-        "t:ac92c8894777593c"
+        "t:04c3f766a8c7a62b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:ffc07c5e56cd5af5",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177947,12 +177955,12 @@
         "h:db927e8f9466e49e"
       ],
       "tests": [
-        "t:c0ae04c3296a9b06"
+        "t:e1605f1489b9699b",
+        "t:6840715bb0bd7718"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6525a61e869d3618",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -456545,6 +456553,464 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual martial attack saves separate effect2 and damage5 dice, produces effect3/damage7, and no excess-level roll."
+    },
+    "t:d44b4e0188090e8c": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [
+        "Task7s canonical received defense continuations"
+      ],
+      "title": "Lamba declares magic half without roll and settles damage once",
+      "declarationSha256": "a337840da821d4fc2110ec35a94da924ff9344d97cbb67bfa597e63eac684176",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Selected magic half resolves without ability-check and halves real incoming4 to2."
+    },
+    "t:419f6122daeaf66a": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical magic %s damage %i behind actual SoldierHP1 floors last to %i",
+      "declarationSha256": "5427c24ce7cba758bfbd4d7deab27fd7f4118a901bf7e1fa3606bc7c0bd7c5f1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "a2-p17-r2c2",
+        7,
+        3
+      ],
+      "bindingNote": "Actual Soldier HP1 is subtracted before floor division:7 to3 and6 to2."
+    },
+    "t:a5bcd37f0ccee5e3": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical magic %s damage %i behind actual SoldierHP1 floors last to %i",
+      "declarationSha256": "5427c24ce7cba758bfbd4d7deab27fd7f4118a901bf7e1fa3606bc7c0bd7c5f1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "a2-p14-r1c2",
+        6,
+        2
+      ],
+      "bindingNote": "Actual Soldier HP1 is subtracted before floor division:7 to3 and6 to2."
+    },
+    "t:29e4a1997e5207ac": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical magic null with successful resistance stays null and zero; warrior failure10 is never halved",
+      "declarationSha256": "3cee6424732ad76f82eee614ccad964708f1ce6a8d3ea4d2d220e5fc5ba92b1e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Null magic remains null; an actual warrior source never offers half and keeps independent resistance failure damage."
+    },
+    "t:cce19e6004efd837": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical C10 mixed human bundle halves each magic hit and leaves warrior source unchanged",
+      "declarationSha256": "8f6b0a6912a15c49b4cabb46583cbe55a3672383feab76c3f2c136ffff52f1e0",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual three-source human bundle offers half on each magic hit only, leaves warrior unchanged, and settles total7 once."
+    },
+    "t:e5e16e0dffb6fc01": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [
+        "Task7s canonical received defense continuations"
+      ],
+      "title": "Lia check then separate saved d6 closes exact-zero current hit",
+      "declarationSha256": "9ca5d55a5d90a97f2683d6a7a01d821ae8424cd358865bea718ca71c593fb759",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "An actual modifier-3 successful check is followed by a distinct d6=4, reducing incoming4 to0 and closing the hit without damage."
+    },
+    "t:3e4a76eb60c24d3b": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical Lia failed check spends attempt and force-fail result child prevents value die",
+      "declarationSha256": "25b4f74506e7245da4ac22a321877fd240c8112ee47ef6bf698e040a68d1f3c6",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Failed or forced-failed check spends the attempt, creates no value die, and leaves original damage4."
+    },
+    "t:2d744aafc1e984f0": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical Lia positive residual is fixed once after ordinary reroll choices",
+      "declarationSha256": "ac26c6ba3defd9eba22538c26a9a10d01c5cd1c94babe4bb6e4d9e1ae4a6f51d",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Only one saved reduction die is rerolled1 to2; effect6 becomes4 and printed damage10 remains."
+    },
+    "t:aaa4e603bf678ce8": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical Lia reduction and disappearance affect only one target",
+      "declarationSha256": "b61d675cff5205dda5198a2b67b471c0cd2a7087e0500921fa7f62ebf56c6758",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact-zero reduction closes B only; original group effect6 and C damage8 remain."
+    },
+    "t:b61fbaf1644aa2eb": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s ordinary success leaves every declared target hit intact",
+      "declarationSha256": "4ed601d306e53542f5f0ce04b5286dd4a97981a4ab2d744b4e2f2b351ed0700e",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+    },
+    "t:d5181fe3a72530dd": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "counter",
+        "c2-p03-r2c1-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:6fbdfcf94197b2c0": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "mirror",
+        "c2-p03-r2c1-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:21055508f30746bd": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "majesty",
+        "c2-p03-r2c1-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:a1568722490f0f0e": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s sixes replace exact private objective and protection",
+      "declarationSha256": "12c7253400eb0cc08defc0e4e161b90332d3f65c62a388b209d7fd82570ca30f",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+    },
+    "t:e85a47a10805b529": {
+      "path": "packages/engine/test/turn-information-spirit.test.ts",
+      "suite": [],
+      "title": "nested attack reveal uses actual attacker end and restores exact attack window",
+      "declarationSha256": "de54e633741ac56f61192889d3cf8ce93e0712fe6de20be8a1e90b6ae0eae24f",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual voluntary reveal restores the exact interrupted attack window and expires at the actual attacker end."
+    },
+    "t:8c3234ce3a2253c0": {
+      "path": "packages/engine/test/turn-information-spirit.test.ts",
+      "suite": [],
+      "title": "voluntary reveal decline does not auto-activate and duplicate/stale reveal cannot retrigger",
+      "declarationSha256": "03d8147a7575a876f4ad90cf382bfc8486377f2dcea16be30c7a11ffe0b94f64",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Plain voluntary reveal leaves base6 and cannot be retriggered with a duplicate reveal."
+    },
+    "t:2fefe706c08550aa": {
+      "path": "packages/engine/test/turn-information-spirit.test.ts",
+      "suite": [],
+      "title": "setup fallback expires at chosen first seat end, not at its start",
+      "declarationSha256": "da9ecee34f3e00119dc1a5c3600d3ebb0237dc14f25a2d66c7afe91250dad284",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual selected reveal during setup yields base12 through first-seat start, then returns to6 at its end."
+    },
+    "t:abe9a1c180c9f757": {
+      "path": "packages/engine/test/turn-information-spirit.test.ts",
+      "suite": [],
+      "title": "ordinary other-player voluntary reveal expires on current non-attacking turn end",
+      "declarationSha256": "9e52cc03503538bccbf0de8ee13c5595339561058866ba18c9b65f2c2a05fc34",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Outside combat the benefit expires at the current turn actor end."
+    },
+    "t:1d56042f0125bede": {
+      "path": "packages/engine/test/turn-information-spirit.test.ts",
+      "suite": [],
+      "title": "counterattack %s roll provenance takes priority over the original parent attack",
+      "declarationSha256": "9bbb1ab6de78bd450760e86df59a52b47a3c9d0ce3967526ea9386a5aed41829",
+      "kind": "canonical-transition",
+      "parameters": "follower",
+      "bindingNote": "Returned attack follower/hit roll binds expiry to its real counterattacker B, surviving parent A end until B end."
+    },
+    "t:f2f6d224c3ea9722": {
+      "path": "packages/engine/test/turn-information-spirit.test.ts",
+      "suite": [],
+      "title": "counterattack %s roll provenance takes priority over the original parent attack",
+      "declarationSha256": "9bbb1ab6de78bd450760e86df59a52b47a3c9d0ce3967526ea9386a5aed41829",
+      "kind": "canonical-transition",
+      "parameters": "hit",
+      "bindingNote": "Returned attack follower/hit roll binds expiry to its real counterattacker B, surviving parent A end until B end."
+    },
+    "t:98ab1f703d03cf97": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical Gainas two-target reflection consumes only his received hit and original C still lands",
+      "declarationSha256": "1350f61fb1fcb79b9da5a11ee57ee61468fb1929c9c06876258021d947d2c74c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Real successful spirit-5 reflection closes B, returns a child targeting original attacker A, and leaves C damage8; A receives8."
+    },
+    "t:813bde9468868d09": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical failed Gainas check consumes attempt without reflecting",
+      "declarationSha256": "66dd49bd5c9919df6a15467dabea9fe333ecde21b9e5339e0a4d0c04ecdcb4fe",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Failure spends the attempt without creating a reflected child and B takes4."
+    },
+    "t:727ca0293a625634": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical dedicated counter-prohibited skeleton offers and accepts no Gainas reflection",
+      "declarationSha256": "3524ede0ccf8f68f755f970662e1780c9dace70c752e0755693836e9f405b5e5",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual counter-prohibited dedicated Skeleton refuses Gainas reflection."
+    },
+    "t:f03ceaea878720ce": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical Gainas reflection permits original attacker ordinary counter defense and preserves source privacy",
+      "declarationSha256": "6dc9b0d05ea018a73b6f02bd5b3d1773cd1a3ff84d601e5756694cae09773c5e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Original attacker can play an ordinary counter defense against the returned attack; both receive0."
+    },
+    "t:61f83a7ac07b5671": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s ordinary success leaves every declared target hit intact",
+      "declarationSha256": "4ed601d306e53542f5f0ce04b5286dd4a97981a4ab2d744b4e2f2b351ed0700e",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+    },
+    "t:22ea1c855fd35227": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "counter",
+        "c2-p06-r1c1-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:e77039729fc33ce0": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "mirror",
+        "c2-p06-r1c1-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:de83fae2ab55c8d8": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "majesty",
+        "c2-p06-r1c1-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:444fdf6423967f05": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s ordinary failure cancels only own target without stop",
+      "declarationSha256": "02fe86033c34fb7bb5ab3a117744ac6712a2b21e7aa2553a46d8efba6d3b8962",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "Ordinary failure closes only this owner target, leaves C damage and does not apply stop."
+    },
+    "t:055fd35918414a66": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab01",
+        "first",
+        true
+      ],
+      "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+    },
+    "t:c1ca7333a585869f": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab01",
+        "second",
+        true
+      ],
+      "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+    },
+    "t:07e0b84ed0960ed0": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "Gadyoora sixes save irrevocable fatal intent until other target damage and G15 death gift",
+      "declarationSha256": "674fb91f27770979e31d954cb6d2c8009f97c314df1d7851d3ce6ac30c3656b9",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Sixes commit a pending instant-death intent while attacker remains active; other target damage is applied before pending-death and G15 death gift."
+    },
+    "t:cbb55b814ff75b9c": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s ordinary success leaves every declared target hit intact",
+      "declarationSha256": "4ed601d306e53542f5f0ce04b5286dd4a97981a4ab2d744b4e2f2b351ed0700e",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "Exact defender source asks attacker A for an ability-check with modifier-1; ordinary success leaves all target damage intact."
+    },
+    "t:4c87220169e3df36": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "counter",
+        "c2-p06-r1c2-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:adcdcbf5c00b3b2f": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "mirror",
+        "c2-p06-r1c2-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:b9945624978a49aa": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "actual %s returned attack cannot use mental defense %s",
+      "declarationSha256": "cc4b8fdab0205b739dcbaafcd1af8dc756590d0dcaa62625eb14fc1e8ed44671",
+      "kind": "canonical-transition",
+      "parameters": [
+        "majesty",
+        "c2-p06-r1c2-ab01"
+      ],
+      "bindingNote": "With the actual source owner present from initial setup, returned counter/mirror/Majesty attacks do not offer this mental defense."
+    },
+    "t:1c5d33b5a4c9a46a": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s ordinary failure cancels only own target without stop",
+      "declarationSha256": "02fe86033c34fb7bb5ab3a117744ac6712a2b21e7aa2553a46d8efba6d3b8962",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "Ordinary failure closes only this owner target, leaves C damage and does not apply stop."
+    },
+    "t:1ea6646ec7ead299": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c2-ab01",
+        "first",
+        true
+      ],
+      "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+    },
+    "t:4e62188c41dffdd3": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c2-ab01",
+        "second",
+        true
+      ],
+      "bindingNote": "Actual two-hit Griffin ordinary failure closes all unprocessed owner hits at first or second hit; already applied8 is retained."
+    },
+    "t:04c3f766a8c7a62b": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s sixes replace exact private objective and protection",
+      "declarationSha256": "12c7253400eb0cc08defc0e4e161b90332d3f65c62a388b209d7fd82570ca30f",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "Actual sixes copy the defender faction and replace the precise private extinction objective and protected identity; other viewers do not receive objective data."
+    },
+    "t:77d9ea0ff7209c55": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "Dia snapshots enemy factions at conversion and does not follow later allegiance changes",
+      "declarationSha256": "a04f4954ba3db1957da9d2205658d20295f14a24e9696adc6e336202d6f1c7ba",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Dia enemy faction objective is snapshotted at conversion and stays fixed after a later allegiance change."
+    },
+    "t:e1605f1489b9699b": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+      "declarationSha256": "7d26e8a9a799ed45a9ebea00bf26de81f3139eac33d41defa022c1b4cde82e49",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Actual transformation grants a spirit-5 shield check; successful1,1 prevents damage while failed6,6 leaves12."
+    },
+    "t:6840715bb0bd7718": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+      "declarationSha256": "7d26e8a9a799ed45a9ebea00bf26de81f3139eac33d41defa022c1b4cde82e49",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual transformation grants a spirit-5 shield check; successful1,1 prevents damage while failed6,6 leaves12."
     }
   },
   "remainingNotes": {
