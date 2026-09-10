@@ -217,7 +217,7 @@ git add scripts/ledger_report.py scripts/test_ledger_report.py && git commit -m 
 - Consumes: Vitest の `--reporter=json --outputFile=<path>`（Jest互換: `testResults[].name`, `assertionResults[].ancestorTitles/title/status`）、Playwright の `--reporter=json`（`suites[].file`, 入れ子 `suites[].title`, `specs[].title`, `specs[].tests[].results[].status`）。
 - Produces: `runtime-coverage-run/v2` JSON。`cases[]` の `test` は台帳 `testCases` の参照オブジェクトと同一（`path, suite, title, declarationSha256, kind, parameters, bindingNote`）。`format_title(template, parameters)` は Vitest の `%s %i %d %o %j %#` と `$name` を展開する。
 
-- [ ] **Step 1: 失敗するテストを書く**
+- [x] **Step 1: 失敗するテストを書く**
 
 ```python
 # scripts/test_record_runtime_run.py
@@ -242,12 +242,12 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-- [ ] **Step 2: 失敗を確認**
+- [x] **Step 2: 失敗を確認**
 
 Run: `python3 -m unittest scripts.test_record_runtime_run`
 Expected: `ModuleNotFoundError`
 
-- [ ] **Step 3: 実装**
+- [x] **Step 3: 実装**
 
 ```python
 #!/usr/bin/env python3
@@ -352,25 +352,29 @@ if __name__ == '__main__':
 
 `candidate_files` の戻り値が `{path: sha256}` の dict であることを `validate_runtime_coverage.py` の 47〜70 行で確認してから使う。異なる場合はそこで使われている形に合わせる（validator は `run['files'] == frozen_candidate` を比較する）。
 
-- [ ] **Step 4: 成功を確認**
+- [x] **Step 4: 成功を確認**
 
 Run: `python3 -m unittest scripts.test_record_runtime_run`
 Expected: OK
 
-- [ ] **Step 5: 実レポートで試す（小さな対象）**
+- [x] **Step 5: 実レポートで試す（小さな対象）**
 
 ```bash
+python3 scripts/record_runtime_run.py --freeze-output .cache/run/snapshot.json
 pnpm exec vitest run packages/engine/test/scenario-s01-s05.test.ts --reporter=json --outputFile=.cache/run/engine.json
-python3 scripts/record_runtime_run.py --vitest .cache/run/engine.json --command "pnpm exec vitest run packages/engine/test/scenario-s01-s05.test.ts" --exit-code 0 --output .cache/run/receipt.json
+python3 scripts/record_runtime_run.py --snapshot .cache/run/snapshot.json --vitest .cache/run/engine.json --command "pnpm exec vitest run packages/engine/test/scenario-s01-s05.test.ts" --exit-code 0 --output .cache/run/receipt.json
 ```
 
 Expected: `matched` が 1 以上、`failed` 0。`.cache/` は `.gitignore` 済みであることを `git check-ignore .cache` で確認する。
 
-- [ ] **Step 6: コミット**
+- [x] **Step 6: コミット**
 
 ```bash
 git add scripts/record_runtime_run.py scripts/test_record_runtime_run.py && git commit -m "scripts: 試験レポートから候補固定のrun証跡を生成する"
 ```
+
+
+実装時補足: 実行前の --freeze-output と、実行後の --snapshot を必須手順に追加。候補/manifest変更とsnapshotより古いレポートを拒否する。%#は引数位置ではなくASTの行番号を用い、曖昧な参照は未束縛のままとする。空結果・skip・失敗を含む再試行を成功に数えない。参考コードより実装ファイルを正本とする。単体7件成功、S01〜S05実レポートから13参照一致・失敗0。
 
 ### Task A5: 束縛適用スクリプト `apply_ledger_bindings.py`
 
