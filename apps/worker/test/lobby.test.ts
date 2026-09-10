@@ -27,8 +27,8 @@ async function guest(name: string) {
   const session = await response.json<{ id: string; name: string }>();
   return { ...session, cookie: response.headers.get('Set-Cookie')!.split(';')[0]! };
 }
-async function makeRoom(cookie: string, visibility = 'public') {
-  const response = await api('/api/rooms', cookie, { title: '魔導戦記の卓', capacity: 4, visibility, rulesetId: ruleset.id });
+async function makeRoom(cookie: string, visibility = 'public', capacity = 4) {
+  const response = await api('/api/rooms', cookie, { title: '魔導戦記の卓', capacity, visibility, rulesetId: ruleset.id });
   expect(response.status).toBe(201);
   return response.json<{ roomId: string; revision: number }>();
 }
@@ -52,7 +52,15 @@ async function connect(roomId: string, cookie: string) {
   }
   const first = await next(message => message.type === 'snapshot');
   if (first.type !== 'snapshot') throw Error('No snapshot');
-  return { initial: first.view, async command(commandId: string, expectedRevision: number, command: unknown) {
+  return { initial: first.view,
+    async batchCommands(items: {commandId:string;expectedRevision:number;command:unknown}[]) {
+      // Send all requests first; this inbox deliberately has only one active waiter.
+      for(const item of items)socket.send(JSON.stringify({protocolVersion:1,...item}));
+      const replies:Message[]=[];
+      for(const item of items)replies.push(await next(message=>message.type!=='snapshot'&&message.commandId===item.commandId));
+      return replies;
+    },
+    async command(commandId: string, expectedRevision: number, command: unknown) {
     socket.send(JSON.stringify({ protocolVersion: 1, commandId, expectedRevision, command }));
     return next(message => message.type !== 'snapshot' && (message.commandId === commandId || message.commandId === undefined));
   } };
@@ -161,6 +169,27 @@ describe('table HTTP lifecycle', () => {
     expect(Object.values((await stored(room.roomId)).state.members).every(m => !m.ready)).toBe(true);
     await runDurableObjectAlarm(env.ROOMS.getByName(room.roomId));
     expect(await (await api('/api/rooms', guests[0]!.cookie)).json()).toEqual({ rooms: [] });
+  });
+
+  it.each([4,6,8,10])('R7 %i authenticated seats keep rejected concurrent START and stale readiness from creating a game', async count => {
+    const guests = await Promise.all(Array.from({length:count},(_,i)=>guest(`席${i+1}`)));
+    const room = await makeRoom(guests[0]!.cookie,'public',count);
+    for(const person of guests.slice(1))expect((await api(`/api/rooms/${room.roomId}/join`,person.cookie,{})).status).toBe(200);
+    const clients = await Promise.all(guests.map(g=>connect(room.roomId,g.cookie)));
+    let revision=(await stored(room.roomId)).revision;
+    for(let i=0;i<count-1;i++)expect(await clients[i]!.command(`prepare-${i}`,revision++,{type:'READY',ready:true})).toMatchObject({type:'ack',revision});
+    expect(await clients[0]!.command('before-all-ready',revision,{type:'START'})).toMatchObject({type:'error',code:'NOT_READY'});
+    expect(await clients[count-1]!.command('last-ready',revision++,{type:'READY',ready:true})).toMatchObject({type:'ack',revision});
+    const saved=await stored(room.roomId);
+    expect(await clients[0]!.command('stale-ready',revision-1,{type:'READY',ready:false})).toMatchObject({type:'error',code:'STALE_REVISION'});
+    expect(await stored(room.roomId)).toEqual(saved);
+    const secondOwner=await connect(room.roomId,guests[0]!.cookie);
+    expect(await clients[0]!.command('old-writer-start',revision,{type:'START'})).toMatchObject({type:'error',code:'READ_ONLY_CONNECTION'});
+    const results=await secondOwner.batchCommands(['start-one','start-two'].map(commandId=>({commandId,expectedRevision:revision,command:{type:'START'}}))); 
+    for(const result of results)expect(result).toMatchObject({type:'error',code:'RULESET_NOT_READY'});
+    expect(await stored(room.roomId)).toEqual(saved);expect(saved.state.game).toBeNull();
+    await evictDurableObject(env.ROOMS.getByName(room.roomId),{webSockets:'close'});
+    for(const person of guests){const restored=await connect(room.roomId,person.cookie);expect(restored.initial.game).toBeNull();expect(restored.initial.revision).toBe(revision);}
   });
 
   it('transfers ownership on lobby departure, acknowledges a repeated leave and closes an empty room', async () => {

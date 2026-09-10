@@ -1,0 +1,119 @@
+{
+  "task": "R5 Task11 other153: Wolf Fang and Repeated Spear Strike physical modes",
+  "status": "two-warrior-card-bindings-integrated-other151-open",
+  "completedAt": "2026-09-09 11:04 JST",
+  "implementation": "No production changes. New actual-command fixture,20 Engine cases,5 full DO and5 browser mode paths.",
+  "canonicalEvidence": [
+    "Wolf ordinary near/use5/effect5/2d6 versus dedicated Yotsurm far/3d6/noChecks. Actual dice2,3 yield5 and2,3,4 yield9. Ordinary far rejection is followed by actual separate physical approach, then a legal near attack.",
+    "Lance ordinary use4/effect4/damage5/one hit versus elected Lancaster effect5/damage7/noChecks with explicit one-hit or two-hit variants. Actual final damage7 or14 and one physical source disposal. Two targets and mismatched/invented variants reject without mutation.",
+    "Each mode has a full printed profile and initial level-one-short/exact-boundary check test. Ordinary creates1/0 actual excess-level checks; elected dedicated creates0 in both allocations. No new chant requirement is introduced.",
+    "Actual first-hit maai needs1 for ordinary Wolf and2 for dedicated Wolf/all Lance modes. Repeating a spent maai rejects. In two-hit Lance, defending first hit leaves the second7 intact.",
+    "Actual initially placed Soldier HP1 reduces each simultaneous7-damage Lance hit to6, total12, and the one physical follower discards once.",
+    "Actual physical Fate cancellation spends the source/action without attack dice or hits in all5 modes. Initial foreign dedicated owners reject. All Engine act commands verify JSON continuation and220 IDs; refusals preserve state/all views.",
+    "DO5 persists, evicts and exactly replays each command. Wolf entropy changes after numeric result save, but one stored attempt and exact2/3 dice remain unchanged. Browser5 uses actual hand/target/dedicated/variant controls and reloads declaration, hit boundary and final result; live Wolf faces drive expected final damage."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p10-r3c1::semantic/ordinary/school",
+      "a2-p10-r3c1::semantic/ordinary/range",
+      "a2-p10-r3c1::semantic/ordinary/use-level",
+      "a2-p10-r3c1::semantic/ordinary/base-effect-level",
+      "a2-p10-r3c1::semantic/ordinary/damage",
+      "a2-p10-r3c1::semantic/ordinary/attribute-0",
+      "a2-p10-r3c1::semantic/ordinary/attribute-1",
+      "a2-p10-r3c1::semantic/ordinary/attack-use",
+      "a2-p10-r3c1::semantic/dedicated/0/select-optional",
+      "a2-p10-r3c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p10-r3c1::semantic/dedicated/0/damage-replacement",
+      "a2-p10-r3c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p10-r3c1::semantic/dedicated/0/chant-retain",
+      "a2-p10-r3c1::semantic/dedicated/far-range",
+      "a2-p10-r3c1::semantic/dedicated/damage-three-d6",
+      "a2-p10-r3c1::semantic/dedicated/maai-extra-one",
+      "a2-p10-r3c2::semantic/ordinary/school",
+      "a2-p10-r3c2::semantic/ordinary/range",
+      "a2-p10-r3c2::semantic/ordinary/use-level",
+      "a2-p10-r3c2::semantic/ordinary/base-effect-level",
+      "a2-p10-r3c2::semantic/ordinary/damage",
+      "a2-p10-r3c2::semantic/ordinary/attribute-0",
+      "a2-p10-r3c2::semantic/ordinary/attribute-1",
+      "a2-p10-r3c2::semantic/ordinary/attack-use",
+      "a2-p10-r3c2::semantic/dedicated/0/select-optional",
+      "a2-p10-r3c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p10-r3c2::semantic/dedicated/0/effect-replacement",
+      "a2-p10-r3c2::semantic/dedicated/0/damage-replacement",
+      "a2-p10-r3c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p10-r3c2::semantic/dedicated/0/chant-retain",
+      "a2-p10-r3c2::semantic/ordinary/maai-extra-one",
+      "a2-p10-r3c2::semantic/dedicated/two-hits-optional",
+      "a2-p10-r3c2::semantic/dedicated/seven-per-hit",
+      "a2-p10-r3c2::semantic/dedicated/per-hit-defense",
+      "a2-p10-r3c2::semantic/dedicated/per-hit-hp"
+    ],
+    "mainProducerRebindings": [
+      "a2-p10-r3c1::main-producer",
+      "a2-p10-r3c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:5d85a7671658db9e",
+      "t:c9e62e9d7697f63d",
+      "t:98472974050509a4",
+      "t:95fdb043ce2820d2",
+      "t:c7ef6c823b9d206f",
+      "t:5b29ede8611b49b2",
+      "t:d281ff7f15ec071f",
+      "t:0c88fde5ca5e5e20",
+      "t:614178d0c9cfcdc2",
+      "t:73f03a52bfbf200f",
+      "t:8b0be2dedab12050",
+      "t:9c6c5747a53a5cd7",
+      "t:fc3564fe642bd08e",
+      "t:b4703862ff20ecfc",
+      "t:4334145b73f6bbcd",
+      "t:3028d19f98f38433",
+      "t:ad5a6d16e7f58f72",
+      "t:39325b785ff87ddf",
+      "t:1ac2d32d39faeb8a",
+      "t:3aa5bfcb302c1029"
+    ],
+    "rows": 12112,
+    "pending": 11164,
+    "implemented": 948,
+    "acceptedPromotions": 0,
+    "remaining": "Candidate-bound execution/acceptance receipts and shared/ruling dependencies remain pending."
+  },
+  "verification": {
+    "engine": {
+      "passed": 20,
+      "newCases": 20,
+      "file": "wolf-lance-physical.test.ts",
+      "log": "/tmp/madou-wolf-lance-engine.log"
+    },
+    "relatedEngine": {
+      "passed": 6,
+      "skipped": 81,
+      "file": "task7b-techniques.test.ts",
+      "selection": "dedicated 連槍撃 explicitly choose|mismatched printed variant",
+      "log": "/tmp/madou-wolf-lance-related.log"
+    },
+    "worker": {
+      "passed": 5,
+      "file": "room-wolf-lance.test.ts",
+      "log": "/tmp/madou-wolf-lance-do.log"
+    },
+    "browser": {
+      "passed": 5,
+      "file": "wolf-lance.spec.ts",
+      "log": "/tmp/madou-wolf-lance-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-wolf-lance-types.log"
+    },
+    "validator": {
+      "valid": true,
+      "log": "/tmp/madou-wolf-lance-ledger.log"
+    }
+  },
+  "remaining": "44/195 action-card per-entry semantic/main bindings integrated; other151 and whole-goal gates remain open. No accepted promotion."
+}

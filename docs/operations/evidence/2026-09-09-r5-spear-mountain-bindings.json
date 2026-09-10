@@ -1,0 +1,142 @@
+{
+  "task": "R5 Task11 other151: Flash Spear and Mountain Sword physical modes",
+  "status": "two-counter-card-bindings-integrated-other149-open",
+  "completedAt": "2026-09-09 11:14 JST",
+  "implementation": "No production changes. New actual-command fixture,27 Engine cases,4 full DO and4 browser mode paths.",
+  "canonicalEvidence": [
+    "Physical ordinary Spear warrior/far/use5/effect5/damage5/戦槍反; Mountain warrior/near/use5/effect5/damage4/戦剣白反. Both actual root and counter declarations pay/discard once. Initial warrior4/5 yields1/0 root usage checks except elected Spear which waives them. No chant added.",
+    "Elected Lancaster Spear effect6/damage7 retains a separate spirit check only for counter use. Actual Flame6 plus attacker Prayer2 produces level8; ordinary Spear rejects while successful dedicated counter cancels and returns7 despite lower own level. Actual initial Water Dragon remains unrevealed on return. Dedicated root attack instead faces and reveals that follower and does0 damage.",
+    "Actual dedicated Spear66 spirit failure spends the source, cannot retry as ordinary, and leaves the original hit for a different physical Evade. Both ordinary physical counters cancel equal-level BlackWing5 and refuse actual Flame6.",
+    "Mountain dedicated effect6/damage7 keeps use5 and its insufficient-level root check while counter use waives it. Initial Lancelot II also keeps the root check; this is not evidence of an actual transformation. Actual far counter blocks without returned damage; far root rejects until a separate physical approach moves near.",
+    "Mountain ordinary actual initial Small Devil and Skeleton are attribute-destroyed at the follower snapshot before HP reduction, produce full4 body damage, and physically discard once. This is explicit black/dead destruction, not an inferred comparison-destruction outcome.",
+    "All4 modes actual Fate cancellation preserves the incoming hit and allows a different Evade; source retry, wrong actor, foreign dedicated owner, actual Lester counter-prohibited attack and defense after START_FOLLOWERS reject without state/all-view mutation. All Engine act commands verify JSON equality and220 unique cards.",
+    "DO4 saves, evicts and replays every command. After a check result is saved, entropy switches to6; exact retry retains one successful11 attempt. Browser4 uses actual defense selection and dedicated checkbox, reloads declaration/check/final, and derives success/failure body expectations from live rolls.",
+    "Existing actual S08 failed Teleport then Spear and S10 far BlackWing then Mountain with Prayer2 remain successful in scenario-s06-s10, together with S06/S07. Related selected4 old dedicated counter/root checks also pass; other133 skipped."
+  ],
+  "initialFailure": "Initial27 had7 fixture failures and20 passes because approach and incoming bow selected the same physical card. Changed incoming bow to distinct a2-p24-r1c3; all27 then pass. No production defect inferred from that fixture failure.",
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p10-r3c3::semantic/ordinary/school",
+      "a2-p10-r3c3::semantic/ordinary/range",
+      "a2-p10-r3c3::semantic/ordinary/use-level",
+      "a2-p10-r3c3::semantic/ordinary/base-effect-level",
+      "a2-p10-r3c3::semantic/ordinary/damage",
+      "a2-p10-r3c3::semantic/ordinary/attribute-0",
+      "a2-p10-r3c3::semantic/ordinary/attribute-1",
+      "a2-p10-r3c3::semantic/ordinary/attribute-2",
+      "a2-p10-r3c3::semantic/ordinary/attack-use",
+      "a2-p10-r3c3::semantic/ordinary/counter-capable",
+      "a2-p10-r3c3::semantic/dedicated/0/select-optional",
+      "a2-p10-r3c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p10-r3c3::semantic/dedicated/0/effect-replacement",
+      "a2-p10-r3c3::semantic/dedicated/0/damage-replacement",
+      "a2-p10-r3c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p10-r3c3::semantic/dedicated/0/chant-retain",
+      "a2-p10-r3c3::semantic/dedicated/counter-spirit-check",
+      "a2-p10-r3c3::semantic/dedicated/success-cancel",
+      "a2-p10-r3c3::semantic/dedicated/success-counter",
+      "a2-p10-r3c3::semantic/dedicated/return-ignore-followers",
+      "a2-p10-r3c3::semantic/dedicated/no-ordinary-ignore",
+      "a2-p11-r1c2::semantic/ordinary/school",
+      "a2-p11-r1c2::semantic/ordinary/range",
+      "a2-p11-r1c2::semantic/ordinary/use-level",
+      "a2-p11-r1c2::semantic/ordinary/base-effect-level",
+      "a2-p11-r1c2::semantic/ordinary/damage",
+      "a2-p11-r1c2::semantic/ordinary/attribute-0",
+      "a2-p11-r1c2::semantic/ordinary/attribute-1",
+      "a2-p11-r1c2::semantic/ordinary/attribute-2",
+      "a2-p11-r1c2::semantic/ordinary/attribute-3",
+      "a2-p11-r1c2::semantic/ordinary/attack-use",
+      "a2-p11-r1c2::semantic/ordinary/counter-capable",
+      "a2-p11-r1c2::semantic/dedicated/0/select-optional",
+      "a2-p11-r1c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p11-r1c2::semantic/dedicated/0/effect-replacement",
+      "a2-p11-r1c2::semantic/dedicated/0/damage-replacement",
+      "a2-p11-r1c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p11-r1c2::semantic/dedicated/0/chant-retain",
+      "a2-p11-r1c2::semantic/ordinary/destroy-black",
+      "a2-p11-r1c2::semantic/ordinary/destroy-dead",
+      "a2-p11-r1c2::semantic/dedicated/counter-check-waiver-context"
+    ],
+    "mainProducerRebindings": [
+      "a2-p10-r3c3::main-producer",
+      "a2-p11-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:6c13f560c055c420",
+      "t:11101adeb4c5e53e",
+      "t:9b6f7f77a0d51a54",
+      "t:ae1c1cf063b80889",
+      "t:fa7801222096f918",
+      "t:bc463e168455398a",
+      "t:89041006d1da5bcb",
+      "t:ff248ac139c96b49",
+      "t:2fad8cbc622a4a05",
+      "t:60a443c5715f6290",
+      "t:379053fcbd8d4520",
+      "t:b00fec058773ac3a",
+      "t:846348928321be19",
+      "t:bb01a92492d66313",
+      "t:46abfa90e93a8863",
+      "t:0dd064959794ffb6",
+      "t:2aa49d12bdbc3b40",
+      "t:f724ea40e4afb4a5",
+      "t:bab9fd23b9d78c09",
+      "t:25c1be67112fd3f5",
+      "t:8e280de8e05a5e64",
+      "t:6a7cd3928dbf296a",
+      "t:0e8a88d3deb7a720",
+      "t:f9067a6419d1020b",
+      "t:7194c8526af49d03",
+      "t:f5a02ed4f09eaf0e",
+      "t:538f598ee76c2326"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/spear-mountain-physical.test.ts packages/engine/test/scenario-s06-s10.test.ts",
+      "passed": 31,
+      "log": "/tmp/madou-spear-mountain-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7e-status-defenses.test.ts packages/engine/test/task7b-techniques.test.ts -t 'dedicated 閃光槍|妖撃破山剣 counter values'",
+      "passed": 4,
+      "skipped": 133,
+      "log": "/tmp/madou-spear-mountain-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-spear-mountain.test.ts",
+      "cwd": "apps/worker",
+      "passed": 4,
+      "log": "/tmp/madou-spear-mountain-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/spear-mountain.spec.ts",
+      "passed": 4,
+      "log": "/tmp/madou-spear-mountain-browser.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 11123,
+        "implemented": 989
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-spear-mountain-types.log"
+    }
+  },
+  "remaining": "46/195 action-card per-entry semantic/main bindings integrated; other149 and whole-goal gates remain open. No accepted promotion."
+}

@@ -1,0 +1,63 @@
+{
+  "task": "R5 Task9 Dispel attached to committed physical ATTACK",
+  "status": "in-progress",
+  "acceptedScope": [
+    "finite ATTACK.dispel selection validates source ownership and a locked legal attack target atomically before either payment",
+    "cancelable Dispel child precedes saved attack declaration; no anytime refill on success or cancellation",
+    "all placed golems are removed using actual follower attributes; nongolems remain hidden and ordered",
+    "real destruction keeps follower-died recovery provenance from placement owner/life; public log exposes only destroyed golems",
+    "zero-golem use consumes source; omission leaves source untouched; Fate cancels only Dispel and does not refund committed attack",
+    "common source disposal resumes the saved parent once; advance cost dispositions wait until pre-attack child finishes",
+    "pre-attack parent is excluded from named attack response options until its declaration resumes",
+    "Board, dedicated follower attack and granted attack controls share optional Dispel target selection",
+    "actual Worker commands persist/replay at payment, Fate cancellation and destruction disposal; final saved attack resolves once",
+    "browser use/decline and reload retain source payment and public/nonpublic follower boundaries"
+  ],
+  "checks": [
+    {
+      "command": "pnpm exec vitest run packages/engine/test/dispel.test.ts packages/protocol/test/dispel.test.ts packages/engine/test/anytime-responses.test.ts packages/engine/test/anytime-information.test.ts packages/protocol/test/task7i-combinations.test.ts apps/web/test/follower-attack-panel.test.ts apps/web/test/ability-panels.test.ts",
+      "passed": 68,
+      "exitCode": 0,
+      "log": "/tmp/madou-dispel-engine.log"
+    },
+    {
+      "command": "pnpm --filter @madou/worker exec vitest run test/room-reclaim.test.ts",
+      "passed": 33,
+      "exitCode": 0,
+      "log": "/tmp/madou-dispel-worker.log"
+    },
+    {
+      "command": "pnpm --filter @madou/worker exec vitest run test/room-reclaim.test.ts -t 'actual pre-attack Dispel'",
+      "passed": 2,
+      "skipped": 31,
+      "exitCode": 0,
+      "note": "Final affected-source check, same two cases already counted in33.",
+      "log": "/tmp/madou-dispel-worker-final.log"
+    },
+    {
+      "command": "pnpm exec playwright test tests/e2e/reclaim.spec.ts --grep 'pre-attack Dispel'",
+      "passed": 2,
+      "exitCode": 0,
+      "log": "/tmp/madou-dispel-browser.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-dispel-type.log"
+    },
+    {
+      "command": "python3 scripts/validate_runtime_coverage.py",
+      "valid": true,
+      "rows": 12109,
+      "repairs": [],
+      "semanticPromotion": false,
+      "log": "/tmp/madou-dispel-ledger.log"
+    }
+  ],
+  "remaining": [
+    "Substitute exact one-hit receiver, counter/own-ability-only defense and preservation of prior follower reduction",
+    "Full Task9 cross matrix including unproven legal two-target/three-hit Keil trajectory",
+    "Wish and all remaining unchecked completion-plan tasks"
+  ],
+  "constraints": "No subagents, reviews, full-suite runs, R0/R1 re-audit or all-character/action JSON reads. Formal START remains unavailable."
+}

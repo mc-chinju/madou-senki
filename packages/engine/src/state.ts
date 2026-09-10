@@ -1,4 +1,5 @@
 import {expireTurnEnd} from './abilities/spirit-lifetime.js';
+import {vanmilSuppressed} from './abilities/suppression-state.js';
 import type {AbilityFrame} from './abilities/frames.js';
 import type {Presence,CurrentObjective,Protection,DeathIdentity,LifecycleTask,Outcome,DamageIntent} from './lifecycle/types.js';
 import type { RollFrame, TurnRollContinuation } from './rolls/frames.js';
@@ -7,7 +8,7 @@ import type { CharacterBaseStats } from '@madou/catalog';
 export type PlayerId = string;
 export interface Entropy { now: number; dice: readonly number[]; random?: readonly number[] }
 export interface SetupOptions { distribution?: 'balanced' | 'random'; startingSeat?: number }
-export interface PlacedCard { cardInstanceId: string; revealed: boolean }
+export interface PlacedCard { placedById?:string;placedLifeId?:string;cardInstanceId: string; revealed: boolean }
 export type StatusKind = 'stopped' | 'silenced' | 'ability-disabled';
 interface StatusSource {id:string;sourceActorId?:PlayerId;sourceCardInstanceId?:string;targetId?:PlayerId}
 export type PersistentStatus = StatusSource & (
@@ -28,6 +29,10 @@ export interface RandomRollRecord {
   formula:'d6'|'d6-product-min10'|'d6x5'|'d6x2'|'d6x4'|'2d6x2'|'2d6'|'3d6'|'4d6+1'; faces:number[]; modifier:number; total:number;
 }
 export interface PlayerState {
+  combatRewardIds?:string[];
+  sadLoveAura?:{sourceLifeId:string};sadLoveSubstitutionSpent?:boolean;sadLoveRewardIds?:string[];
+  reclaimUsage?:Record<string,import('./reclaim.js').ReclaimBudget>;
+  lifeId?:string;
   conditionalSelections?:import('./abilities/conditional-sources.js').ConditionalSelection[];
   spiritReplacements?:import('./abilities/spirit-lifetime.js').SpiritReplacement[];
   skipTurns?:number; statuses?: PersistentStatus[]; presence?: Presence; currentObjective?:CurrentObjective; protection?:Protection; deathIdentity?:DeathIdentity; permanent?:Partial<CharacterBaseStats>; abilityCharacterIds?:string[];
@@ -38,10 +43,17 @@ export interface PlayerState {
 export interface GameEvent {
   death?:Pick<DamageIntent,'cause'|'eventId'|'sourceActorId'|'sourceCardInstanceId'>;
   id: number; at: number; audience: 'public' | { playerId: PlayerId };
-  type: 'BEAST_CAPTURED' | 'CHARACTER_ASSIGNED' | 'CARD_DRAWN' | 'OPEN' | 'FOLLOWER_PLACED' | 'SETUP_PASSED' | 'CHARACTER_REVEALED' | 'SETUP_COMPLETE' | 'DEATH_PENDING' | 'PLAYER_DIED' | 'PLAYER_REVIVED' | 'PLAYER_WANDERING' | 'PLAYER_RETURNED' | 'PLAYER_EXITED' | 'CHARACTER_TRANSFORMED' | 'FACTION_CHANGED' | 'CARD_GIFTED' | 'GAME_COMPLETED';
+  type: 'WISH_ACQUIRED' | 'WISH_DISCARDED' | 'FOLLOWER_DESTROYED' | 'CHARACTER_INSPECTED' | 'BEAST_CAPTURED' | 'CHARACTER_ASSIGNED' | 'CARD_DRAWN' | 'OPEN' | 'FOLLOWER_PLACED' | 'SETUP_PASSED' | 'CHARACTER_REVEALED' | 'SETUP_COMPLETE' | 'DEATH_PENDING' | 'PLAYER_DIED' | 'PLAYER_REVIVED' | 'PLAYER_WANDERING' | 'PLAYER_RETURNED' | 'PLAYER_EXITED' | 'CHARACTER_TRANSFORMED' | 'FACTION_CHANGED' | 'CARD_GIFTED' | 'GAME_COMPLETED';
   actorId: PlayerId; cardInstanceId?: string; characterId?: string; targetId?:string; count?:number;
 }
 export interface GameState {
+  combinationSpirit?:import('./effects/printed-combinations.js').CombinationSpirit[];
+  wishes?:import('./effects/wish.js').WishDecision[];
+  discardOccurrences?:import('./discard.js').DiscardOccurrence[];
+  reclaimDecisions?:import('./reclaim.js').ReclaimDecision[];
+  suppressionDesignations?:import('./abilities/suppression-state.js').SuppressionDesignation[];
+  blessingLeases?:import('./abilities/suppression-state.js').BlessingLease[];
+  inspectionHistory?:import('./abilities/private-inspection.js').InspectionView[];
   inspections?:import('./abilities/private-inspection.js').PrivateInspection[];
   followerBundles?:Record<string,import('./combat/follower-bundles.js').FollowerBundle>;
   abilities?:Record<string,AbilityFrame>;
@@ -49,7 +61,8 @@ export interface GameState {
   windows?: ReactionWindow[]; actions?: Record<string, ActionFrame>; groups?: Record<string, AttackGroup>; used?: string[];
   rolls?: RollFrame[]; turnRoll?: TurnRollContinuation;
   randomRolls?: RandomRollRecord[];
-  reclaim?: Record<string,{ownerId:PlayerId;eventId:string}>;
+  reclaim?: Record<string,import('./reclaim.js').ReclaimReservation>;
+  earlyTurnBook?:{actorId:string;closed:boolean};
   rulesetVersion: string; revision: number; phase: 'setup' | 'turn-start' | 'draw' | 'action' | 'hand-adjustment' | 'combat' | 'withdrawal';
   seatOrder: PlayerId[]; players: Record<PlayerId, PlayerState>; turnSeat: number;
   setupCursor: number; pending: { kind: 'initial-followers'; actorId: PlayerId; seat: number } | null;
@@ -62,8 +75,8 @@ export interface DerivedStats extends CharacterBaseStats { handLimit: number; fo
 export function hasStatus(player: PlayerState, kind: StatusKind): boolean {
   return player.statuses?.some(status => status.kind === kind) ?? false;
 }
-export function canUseCharacterAbility(player: PlayerState): boolean {
-  return !hasStatus(player, 'stopped') && !hasStatus(player, 'ability-disabled');
+export function canUseCharacterAbility(player: PlayerState, state: GameState): boolean {
+  return !hasStatus(player, 'stopped') && !hasStatus(player, 'ability-disabled') && !vanmilSuppressed(state,player.id);
 }
 export function allCardInstanceIds(state: GameState): string[] {
   return [...state.deck, ...state.discard, ...state.resolution, ...state.reclaimReservations,
@@ -73,5 +86,7 @@ export function allCardInstanceIds(state: GameState): string[] {
 
 /** Irrevocable ability death waits for its already-declared group to settle. */
 export function hasPendingFatal(s:GameState,actorId:string):boolean {
-  return Object.values(s.groups??{}).some(g=>g.pendingFatalIntents?.some(intent=>intent.targetId===actorId));
+  const groups=Object.values(s.groups??{});
+  for(let i=0;i<groups.length;i++){const g=groups[i]!;if(g.pendingFatalIntents?.some(intent=>intent.targetId===actorId))return true;groups.push(...(g.substituteResults??[]).map(result=>result.group));}
+  return false;
 }

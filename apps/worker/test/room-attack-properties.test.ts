@@ -30,7 +30,8 @@ function fixture(name: AttackPropertyScenarioName) {
     const option = viewFor(game, 'A').abilityOptions.find(option => option.abilityId === abilityId)!;
     act('A', { type: 'USE_ABILITY', abilityId, targetEventId: option.targetEventId }); return option.targetEventId;
   }
-  return { get game() { return game; }, act, until, use };
+  function pay(actorId:string,command:GameCommand){act(actorId,command);until(s=>s.windows?.at(-1)?.kind!=='reclaim');}
+  return { get game() { return game; }, act, pay, until, use };
 }
 function publicProgress(game: GameState) {
   const expected = viewFor(game, 'A').maaiDefense;
@@ -60,7 +61,7 @@ for (const selected of [false, true]) it(`Lancaster selected=${selected} adds to
   expect(transition(f.game, { actorId: 'A', command: { type: 'USE_ABILITY', abilityId: lancaster, targetEventId: event } }, entropy())).toMatchObject({ ok: false, code: 'ABILITY_DISABLED' });
   expect(f.game).toEqual(before);
   for (let i = 0; i < required; i++) {
-    f.act('B', { type: 'PLAY_MAAI', cardInstanceId: cards[i]! });
+    f.pay('B', { type: 'PLAY_MAAI', cardInstanceId: cards[i]! });
     expect(publicProgress(f.game).targets[0]).toMatchObject({ submitted: i + 1, effective: i + 1, remaining: required - i - 1 });
     expect(viewFor(f.game, 'A').activeWindow?.kind).toBe(i + 1 === required ? 'defense-advance' : 'normal-defense');
   }
@@ -108,7 +109,7 @@ it.each(['property-lancaster', 'property-arnes'] as const)('%s cancellation spen
   } else {
     expect(publicProgress(f.game).targets[0]!.required).toBe(2);
     const cards = maaiCards(f.game, 'B');
-    for (const card of cards.slice(0, 2)) f.act('B', { type: 'PLAY_MAAI', cardInstanceId: card });
+    for (const card of cards.slice(0, 2)) f.pay('B', { type: 'PLAY_MAAI', cardInstanceId: card });
     expect(viewFor(f.game, 'A').activeWindow?.kind).toBe('defense-advance'); f.act('A', { type: 'PASS' });
   }
   f.until(game => !game.windows?.length);
@@ -139,22 +140,23 @@ async function savedRoom(name: AttackPropertyScenarioName) {
   const option = (await room.snapshotFor('A')).game!.abilityOptions.find(option => option.abilityId === lancaster)!;
   const selected = await send('A', { type: 'USE_ABILITY', abilityId: lancaster, targetEventId: option.targetEventId });
   await replay(selected); await advance(game => game.windows?.at(-1)?.kind === 'normal-defense');
-  return { ...room, send, advance, replay };
+  async function pay(actorId:string,command:GameCommand){const receipt=await send(actorId,command);await advance(s=>s.windows?.at(-1)?.kind!=='reclaim');return receipt;}
+  return { ...room, send, pay, advance, replay };
 }
 it('DO restores each partial maai payment and the shared advance without duplicating a card or old receipt', async () => {
   const room = await savedRoom('property-lancaster'); const initial = (await room.stored()).state.game!;
   const cards = maaiCards(initial, 'B'); const distances = structuredClone(initial.distances);
-  const first = await room.send('B', { type: 'PLAY_MAAI', cardInstanceId: cards[0]! }); await room.replay(first);
+  const first = await room.pay('B', { type: 'PLAY_MAAI', cardInstanceId: cards[0]! }); await room.replay(first);
   expect((await room.snapshotFor('B')).game!.maaiDefense!.targets[0]).toMatchObject({ required: 3, submitted: 1, effective: 1, remaining: 2 });
-  const second = await room.send('B', { type: 'PLAY_MAAI', cardInstanceId: cards[1]! }); await room.replay(second);
+  const second = await room.pay('B', { type: 'PLAY_MAAI', cardInstanceId: cards[1]! }); await room.replay(second);
   expect((await room.snapshotFor('B')).game!.maaiDefense!.targets[0]).toMatchObject({ submitted: 2, remaining: 1 });
-  await room.send('B', { type: 'PLAY_MAAI', cardInstanceId: cards[2]! });
+  await room.pay('B', { type: 'PLAY_MAAI', cardInstanceId: cards[2]! });
   const push = initial.players.A!.hand.find(id => getAction(id)?.name === '踏み込み／殴る')!;
-  const pushed = await room.send('A', { type: 'PLAY_ADVANCE', cardInstanceId: push }); await room.replay(pushed);
+  const pushed = await room.pay('A', { type: 'PLAY_ADVANCE', cardInstanceId: push }); await room.replay(pushed);
   expect((await room.snapshotFor('B')).game!.maaiDefense).toMatchObject({ responding: true, sharedAdvances: 1, targets: [{ submitted: 3, effective: 2, remaining: 1 }] });
   await room.send('A', { type: 'PASS' });
   expect((await room.snapshotFor('B')).game!.maaiDefense!.targets[0]).toMatchObject({ carried: 2, submitted: 0, effective: 2, remaining: 1 });
-  await room.send('B', { type: 'PLAY_MAAI', cardInstanceId: cards[3]! }); await room.send('A', { type: 'PASS' });
+  await room.pay('B', { type: 'PLAY_MAAI', cardInstanceId: cards[3]! }); await room.send('A', { type: 'PASS' });
   await room.advance(game => !game.windows?.length); await room.replay(first); await room.replay(second); await room.replay(pushed);
   const done = (await room.stored()).state.game!;
   expect(done.players.B!.damage).toBe(0); expect(done.distances).toEqual(distances); expect(viewFor(done, 'A').maaiDefense).toBeNull();
@@ -164,15 +166,15 @@ it('DO carries independent progress for both real spear targets after one paid s
   const room = await savedRoom('property-lancaster-shared'); const initial = (await room.stored()).state.game!;
   const b = maaiCards(initial, 'B'); const c = maaiCards(initial, 'C'); const distances = structuredClone(initial.distances);
   expect(publicProgress(initial).targets.map(target => target.required)).toEqual([2, 2]);
-  for (const [actor, cards] of [['B', b], ['C', c]] as const) for (const card of cards.slice(0, 2)) await room.send(actor, { type: 'PLAY_MAAI', cardInstanceId: card });
+  for (const [actor, cards] of [['B', b], ['C', c]] as const) for (const card of cards.slice(0, 2)) await room.pay(actor, { type: 'PLAY_MAAI', cardInstanceId: card });
   const push = initial.players.A!.hand.find(id => getAction(id)?.name === '踏み込み／殴る')!;
-  const pushed = await room.send('A', { type: 'PLAY_ADVANCE', cardInstanceId: push }); await room.replay(pushed);
+  const pushed = await room.pay('A', { type: 'PLAY_ADVANCE', cardInstanceId: push }); await room.replay(pushed);
   const waiting = (await room.snapshotFor('A')).game!.maaiDefense!;
   expect(waiting.sharedAdvances).toBe(1); expect(waiting.targets.map(target => [target.actorId, target.effective, target.remaining])).toEqual([['B', 1, 1], ['C', 1, 1]]);
   await room.send('A', { type: 'PASS' }); await room.restart();
   const resumed = (await room.snapshotFor('B')).game!.maaiDefense!;
   expect(resumed.targetId).toBe('B'); expect(resumed.targets.map(target => [target.carried, target.submitted, target.remaining])).toEqual([[1, 0, 1], [1, 0, 1]]);
-  await room.send('B', { type: 'PLAY_MAAI', cardInstanceId: b[2]! }); await room.send('C', { type: 'PLAY_MAAI', cardInstanceId: c[2]! }); await room.send('A', { type: 'PASS' });
+  await room.pay('B', { type: 'PLAY_MAAI', cardInstanceId: b[2]! }); await room.pay('C', { type: 'PLAY_MAAI', cardInstanceId: c[2]! }); await room.send('A', { type: 'PASS' });
   await room.advance(game => !game.windows?.length); await room.replay(pushed);
   const done = (await room.stored()).state.game!;
   expect(done.players.B!.damage).toBe(0); expect(done.players.C!.damage).toBe(0); expect(done.distances).toEqual(distances);

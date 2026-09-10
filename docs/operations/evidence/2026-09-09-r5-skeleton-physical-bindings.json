@@ -1,0 +1,137 @@
+{
+  "task": "R5 Task11 other83: Skeleton physical card",
+  "status": "skeleton-physical-bindings-integrated-other82-open",
+  "completedAt": "2026-09-09 17:57 JST",
+  "implementation": "No production changes. Exact initial Skeleton fixture, Engine26 case coverage, related12, DO12, browser9 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual Skeleton a2-p19-r2c1 initial/own-turn placement, hidden physical ID, placement provenance, later full-turn reorder and voluntary removal without revival. Frozen follower descriptor level3 HP4 dead attribute and revivalLimit4. Actual initial defender Shelim A and Dia B approaches and grants Dwarf three damage6 hits at own warrior2/3/4/5. Attack2 blocks/survives0, equal3 defeats then revives0, attack4 passes HP4 on all three for body6 and revives, attack5 passes HP4 on all three for body6 and permanently discards once. No morale.",
+    "Actual Skeleton/Metal front and rear arrangements preserve revival position, freeze only one Skeleton source in the simultaneous group, and protect unreached hidden rear. Later actual full-turn Bow3 group confirms revived source remains usable; no same-group reentry. Actual Dia Dwarf4 plus BlackKnights4 creates four effect4 hits with HP4 each, body7 and revival. Dwarf4 plus DarkSaint5 in either order creates effect4/5 hits with HP4 each, body8 and no revival: one above-cap defeat disqualifies entire group. Actual Mountain Breaker4 after paid approach destroys dead Skeleton within revival cap without HP reduction, body4 and permanent discard. Actual Bow/maai avoids final follower processing and keeps source hidden.",
+    "Actual Gadyura dedicated attack from hand and initially placed field uses far warrior use2/effect2/damage2/遠戦棒/noChecks/counterProhibited/nonCHANT. Initial own warrior0 still produces no use checks. Actual target subsets B, C, BC, BCD independently receive2; empty/self/duplicate/missing targets and ordinary direct attack/CHANT reject unchanged. Actual paid approach also permits this far technique at near distance; real B maai protects only B while C receives2. Physical source leaves hand/field at payment, stays reserved, then is discarded once, never revived as a follower even when actual D Fate cancels the attack.",
+    "Actual All Army grants only Skeleton in hand, requires real near approach and prints near warrior2 damage2/近戦棒 without dedicated check waiver or counter ban. Own warrior1/2 gives one/zero checks. Both Army and Skeleton enter resolution and are discarded once. Actual parent cancellation, child cancellation and force-failed use roll pay both cards and do no damage; no return or revival. Placed Skeleton is absent from hand-only Army options; its dead attribute also excludes Dia human grant. Foreign Dia cannot select Gadyura dedication. Actual Mirror defense negates ordinary Army Skeleton but is rejected against dedicated Skeleton.",
+    "Every accepted Engine command JSON roundtrips and preserves220 unique physical IDs; refusal preserves complete state and every view. DO12 performs actual setup/turn placement, Dwarf equal/cap/mixed group, Mountain destruction, hand/field dedicated attack, Army, target-local maai, dedicated hand/field Fate and Army parent cancellation. Every command saves/evicts/replays identical ACK and state with220 IDs. Browser9 actual initial/turn placement, actual Dia approach and bundle controls, actual Mountain attack, Gadyura follower-attack panel hand/field with selected BC, Army panel and real maai, reloads across attack and terminal results.",
+    "23 semantic clauses and main1 bind26 concrete test references. Candidate-bound receipts and wider shared crossings remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p19-r2c1::semantic/follower/printed-level",
+      "a2-p19-r2c1::semantic/follower/printed-hp",
+      "a2-p19-r2c1::semantic/placement/setup",
+      "a2-p19-r2c1::semantic/placement/own-action",
+      "a2-p19-r2c1::semantic/defense/front-order",
+      "a2-p19-r2c1::semantic/follower/attribute-0",
+      "a2-p19-r2c1::semantic/attack/grant-required",
+      "a2-p19-r2c1::semantic/attack/ordinary-hand-grant",
+      "a2-p19-r2c1::semantic/attack/discard-not-return",
+      "a2-p19-r2c1::semantic/attack/printed-level",
+      "a2-p19-r2c1::semantic/attack/printed-damage",
+      "a2-p19-r2c1::semantic/attack/attribute-0",
+      "a2-p19-r2c1::semantic/attack/attribute-1",
+      "a2-p19-r2c1::semantic/attack/attribute-2",
+      "a2-p19-r2c1::semantic/revival/effect-threshold",
+      "a2-p19-r2c1::semantic/revival/destruction-exception",
+      "a2-p19-r2c1::semantic/dedicated/owner-filter",
+      "a2-p19-r2c1::semantic/dedicated/from-hand",
+      "a2-p19-r2c1::semantic/dedicated/from-placement",
+      "a2-p19-r2c1::semantic/dedicated/use-check",
+      "a2-p19-r2c1::semantic/dedicated/any-subset-targets",
+      "a2-p19-r2c1::semantic/dedicated/far-range",
+      "a2-p19-r2c1::semantic/dedicated/no-counter"
+    ],
+    "mainProducerRebindings": [
+      "a2-p19-r2c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:a0a878cc00c0e51c",
+      "t:4e66c55dc3c2905d",
+      "t:d1cbdf9425ee0c22",
+      "t:0b7a237d62705977",
+      "t:097ddff32fdf1dbb",
+      "t:cac4a39bffdb46d4",
+      "t:084fe879021867e7",
+      "t:60c9612c28da64f8",
+      "t:b705b843259d5752",
+      "t:a734e1cf1e1afb07",
+      "t:91ae7739f5c4261e",
+      "t:6229c6855d564081",
+      "t:45647725ffdbc679",
+      "t:3172b55fde01ad30",
+      "t:656591c5df0a58e0",
+      "t:c05b5ba99a636cf9",
+      "t:0e0ecb75ecfa5fb7",
+      "t:ac9f6323ca778893",
+      "t:af30f1f2de105a0e",
+      "t:59a5078ea58d086d",
+      "t:ccb6c55b25acb962",
+      "t:d76637a061ca4279",
+      "t:642c07142439d799",
+      "t:a4fa6d3078962d15",
+      "t:655700c887f538ed",
+      "t:a39c1a16838e5d39"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/skeleton-physical.test.ts",
+      "initialPassed": 19,
+      "initialFailed": 3,
+      "log": "/tmp/madou-skeleton-physical-engine.log",
+      "focusedRetry": {
+        "command": "pnpm exec vitest run packages/engine/test/skeleton-physical.test.ts -t 'All Army|ordinary versus dedicated|actual maai|remains usable'",
+        "passed": 10,
+        "skipped": 16,
+        "log": "/tmp/madou-skeleton-physical-army.log"
+      },
+      "finalCaseCoverage": 26,
+      "note": "Army commands initially omitted required cardInstanceId; added actual Army ID to legal and refusal commands. Replaced single maai on Dwarf three-hit test with real single Bow/maai privacy test. Added actual near/maai and Army parent/child/use-failure cases; focused10 passed."
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts packages/engine/test/follower-continuations.test.ts -t 'スケルトン|Skeleton|skeleton'",
+      "passed": 12,
+      "skipped": 262,
+      "log": "/tmp/madou-skeleton-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-skeleton-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 12,
+      "log": "/tmp/madou-skeleton-physical-do.log",
+      "note": "A preliminary root-cwd command selected no Worker tests; corrected cwd before actual12-case run. Preliminary log /tmp/madou-skeleton-physical-do-wrongcwd.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/skeleton-physical.spec.ts",
+      "initialPassed": 8,
+      "initialFailed": 1,
+      "log": "/tmp/madou-skeleton-physical-browser.log",
+      "focusedRetry": {
+        "command": "pnpm exec playwright test tests/e2e/skeleton-physical.spec.ts -g skeleton-defense-revive",
+        "passed": 1,
+        "log": "/tmp/madou-skeleton-physical-browser-revive.log"
+      },
+      "finalCaseCoverage": 9,
+      "note": "Revive case hit45s test timeout while awaiting revision greater than49. Trace showed two pass calls spending14.5s/21.1s before first locator log and completing locator/click in roughly44ms afterward. Cause remains unproven. Unchanged source/timeout isolated retry passed. Observations /tmp/madou-skeleton-physical-browser-delay.json"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-skeleton-physical-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10014,
+        "implemented": 2098
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "113/195 per-entry semantic/main bindings integrated; other82 and whole-goal gates open. No accepted promotion."
+}

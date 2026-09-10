@@ -1,0 +1,109 @@
+{
+  "task": "R5 Task11 other85: Orc and Fort physical cards",
+  "status": "orc-fort-physical-bindings-integrated-other83-open",
+  "completedAt": "2026-09-09 17:44 JST",
+  "implementation": "No production changes. Exact Orc/Fort fixture, Engine16, related4, DO8, browser6 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual Orc a2-p19-r1c2 (level3 HP0 monster/human) and Fort a2-p19-r1c3 (level3 HP2 building) begin in real initial setup. Foreign/duplicate initial placement rejects unchanged; real placement preserves placedById A and initial-life:A provenance and hides physical ID from all others. Actual Bow effect3 damage4 reaches equal defense, destroys selected physical follower, does no body damage and triggers no morale.",
+    "Actual own-action placement, later full-turn reorder and voluntary removal, foreign/duplicate/over-capacity rejection. Actual selected follower front at level3 blocks equal Bow and is consumed while Metal rear remains; Metal front blocks the Bow and protects hidden selected rear without disclosure. Actual maai avoids final follower defense and preserves hidden source.",
+    "Actual initial Dia B approaches A and grants ordinary Dwarf three damage6 hits at own warrior levels2/3/4. Frozen selected follower descriptor has level3 and HP0 or2 on each hit. Below2 leaves follower alive/body0; equal3 destroys it/body0; above4 destroys it and repeated per-hit HP gives Orc body18 or Fort body12. HP is mitigation on every hit, not a depleted pool.",
+    "Both real hand and field reject direct ordinary/dedicated ATTACK and CHANT after actual paid approach. Fort has no bottom; Dia source options exclude it and forged grant rejects. Orc printed attack near warrior2 damage3 needs actual Dia c2-p06-r1c2-ab04 permission. Far/forged dedicated/replay reject. Hand and field grant modes reserve source in resolution, remove it from original zone, expose near/warrior/use2/effect2/damage3/近戦 then deal B3 and discard once. Real D Fate cancel-ability targets accepted Dia grant and consumes Orc once with body0 and no hand/field return.",
+    "Every accepted engine command JSON roundtrips and preserves220 unique physical IDs; every rejected command preserves complete state and all views. DO8 covers initial/turn placement for both cards, Orc hand/field grant and each grant cancellation. Every command saves/evicts/replays identical ACK/state and220 IDs. Browser6 operates actual initial or turn placement, or actual paid approach plus Dia bundle controls for Orc hand/field; reload after placement, during attack and terminal resolution preserves body0 for equal defense, B3 for granted Orc and unique physical discard.",
+    "21 semantic clauses (Orc14/Fort7) and main2 bind16 concrete test references. Candidate-bound receipts and shared crossings remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p19-r1c2::semantic/follower/printed-level",
+      "a2-p19-r1c2::semantic/follower/printed-hp",
+      "a2-p19-r1c2::semantic/placement/setup",
+      "a2-p19-r1c2::semantic/placement/own-action",
+      "a2-p19-r1c2::semantic/defense/front-order",
+      "a2-p19-r1c2::semantic/follower/attribute-0",
+      "a2-p19-r1c2::semantic/follower/attribute-1",
+      "a2-p19-r1c2::semantic/attack/grant-required",
+      "a2-p19-r1c2::semantic/attack/ordinary-hand-grant",
+      "a2-p19-r1c2::semantic/attack/discard-not-return",
+      "a2-p19-r1c2::semantic/attack/printed-level",
+      "a2-p19-r1c2::semantic/attack/printed-damage",
+      "a2-p19-r1c2::semantic/attack/attribute-0",
+      "a2-p19-r1c2::semantic/attack/attribute-1",
+      "a2-p19-r1c3::semantic/follower/printed-level",
+      "a2-p19-r1c3::semantic/follower/printed-hp",
+      "a2-p19-r1c3::semantic/placement/setup",
+      "a2-p19-r1c3::semantic/placement/own-action",
+      "a2-p19-r1c3::semantic/defense/front-order",
+      "a2-p19-r1c3::semantic/follower/attribute-0",
+      "a2-p19-r1c3::semantic/attack/no-bottom"
+    ],
+    "mainProducerRebindings": [
+      "a2-p19-r1c2::main-producer",
+      "a2-p19-r1c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:f1766dc9752ec3ee",
+      "t:1bc1266282de2a76",
+      "t:c5c2312d43810493",
+      "t:402f5c94c2873fe6",
+      "t:c0539d4f6a17cc90",
+      "t:665949dd83865780",
+      "t:932475a749022ef8",
+      "t:a6bc5c7ba1dbcb76",
+      "t:c2ada5df8d14649c",
+      "t:46eb79a2ed9de07f",
+      "t:40bca2cb2da0c6cd",
+      "t:c680fb7f3a2800bf",
+      "t:40cdae8a60a1163b",
+      "t:3b2bcf1ca262f161",
+      "t:9fcc29f312a27557",
+      "t:b9e549799bac81bb"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/orc-fort-physical.test.ts",
+      "passed": 16,
+      "log": "/tmp/madou-orc-fort-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts -t 'オーク|砦'",
+      "passed": 4,
+      "skipped": 126,
+      "log": "/tmp/madou-orc-fort-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-orc-fort-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 8,
+      "log": "/tmp/madou-orc-fort-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/orc-fort-physical.spec.ts",
+      "passed": 6,
+      "log": "/tmp/madou-orc-fort-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-orc-fort-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10037,
+        "implemented": 2075
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    },
+    "setupCorrection": "Initial registration edit asserted body.scenario but fixture API uses body.name; corrected exact predicate before DO/browser execution. All actual test runs passed first time."
+  },
+  "remaining": "112/195 per-entry semantic/main bindings integrated; other83 and whole-goal gates open. No accepted promotion."
+}

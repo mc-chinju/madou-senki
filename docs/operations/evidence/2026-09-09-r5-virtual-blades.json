@@ -1,0 +1,59 @@
+{
+  "task": "R5 Task 2 virtual ice/fire attacks",
+  "status": "listed-acceptance-complete",
+  "completedAt": "2026-09-09 05:28 JST",
+  "implementation": [
+    "Finite DECLARE_VIRTUAL_BLADE accepts exactly the two canonical ability IDs, one target and optional event identifier; arbitrary numeric/source/card payloads are rejected. Current own-action entry rejects stale event bindings.",
+    "virtual-blade-sources.ts registers the two abilities without runtime import cycles. virtual-blades.ts constructs the printed profiles and private candidates, validates current own public live source and near target, and opens a cancellable ordinary ability declaration.",
+    "A normal ActionFrame saves source kind ability, actor and ability ID with cardInstanceId null and empty sourceCardInstanceIds. Normal physical attack/counter declarations save source kind card. No sentinel or invented physical card enters the zones.",
+    "After the ability declaration, existing action checks, effect/damage freeze, normal defense, maai, counter/reflection and completion run. Cancellation or declaration-time source suppression consumes the attack without source discard or refill.",
+    "action-source.ts separates physical action card, physical effect card, source card collection and optional ability damage provenance. Physical-only continuations assert their physical requirement. Reflections retain the original ability provenance while displaying the physical reflector.",
+    "Public action projection can show a declared ability technique and its ordinary calculated values. VirtualBladePanel presents available names, printed profile and legal near target only to the owner; ActionSummary and ActionCalculationSummary display the declared source."
+  ],
+  "acceptanceEvidence": [
+    "Exact ice near/magic/water Lv4 damage3 maaiRequired2 and fire near/magic/fire Lv4 damage5 maaiRequired1; one group, normal withdrawal, unchanged source hand and no source discard.",
+    "Both sources: hidden source, foreign actor, far target, invented numerical payload and stale binding rejected unchanged; owner-only candidate projection and unchanged action opportunity before selection.",
+    "Both sources: actual Fate cancellation consumes action, only the real Fate card is disposed.",
+    "Both sources: one/two physical maai submission outcomes match printed requirements.",
+    "Both sources: actual Ice Mirror reflects the virtual attack with empty original physical source list and preserved source ability ID.",
+    "Actual physical Demon Mountain Sword counter returns to the exact saved virtual parent once; no remaining action/group after cleanup.",
+    "Actual Vanmil ban during declaration cancels the virtual use without a hit or physical disposal.",
+    "Ordinary excess-level before/after rolls, failure and actual God reroll succeed/fail through the existing check path. Lower magic/spirit are initial fixture stats, not a claimed live stat-drain producer.",
+    "Every Engine command JSON-replays and conserves 220 unique physical cards. Actual DO restarts and duplicate ACK verification run after every command, including declaration, use rolls, cancellation and resolution.",
+    "Browser cases for both sources and cancellation use the actual finite UI; source owner refreshes during declaration and ice use roll. Other participants receive no candidate panel."
+  ],
+  "verification": {
+    "engineProtocolWeb": {
+      "passed": 254,
+      "files": 8,
+      "newEngine": 15,
+      "newProtocol": 1,
+      "log": "/tmp/madou-virtual-focused-final.log"
+    },
+    "worker": {
+      "passed": 4,
+      "log": "/tmp/madou-virtual-do-final.log"
+    },
+    "browser": {
+      "passed": 4,
+      "log": "/tmp/madou-virtual-browser-final.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-virtual-types-final2.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12109,
+      "log": "/tmp/madou-virtual-ledger-final.log",
+      "note": "Structural only; no status promotion."
+    }
+  },
+  "resolvedFailures": [
+    "Optional targetEventId initially counted as a mandatory exact key; parser now includes it only when supplied.",
+    "Registering source constants through the runtime factory caused an import-cycle registration failure; constants now live in a dependency-free module.",
+    "Physical reflection display initially used the effect source instead of the physical reflector. The established placed-Skeleton reflection acceptance failed; physicalActionCard and physicalEffectCard now have separate purposes and all targeted tests pass.",
+    "Fixture reflection/God names were corrected to their canonical known physical IDs; the excess-level fixture lowers ice magic below Lv4 rather than to exactly Lv4."
+  ],
+  "reviewPerformed": false
+}

@@ -1,0 +1,58 @@
+{
+  "task": "R5 Task12 S22/S23",
+  "status": "s22-s23-acceptance-complete",
+  "completedAt": "2026-09-09 07:57 JST",
+  "implementation": "No production handler change; exact named acceptance via shared R6 fixtures and actual commands.",
+  "s22": [
+    "Initial deal/order and prior damage only; actual bow kills D, real turns reach next A attack, C uses physical Fate cancellation.",
+    "The same one-card reaction refill reveals FuSen, suspends at d6/revival choice, saves then declines successful revival, reveals Dawn and draws one ordinary card. Fate and attack remain in resolution outside shuffle.",
+    "Parent window retains original ID with advanced revision and reset responses. Engine conserves220/replays every transition. DO restarts after each command and returns identical duplicate ACK, rejects old generation with repeatable STALE_WINDOW error.",
+    "Two browser cases: live random FuSen outcome retained across reload; separately real successful-roll prefix reaches optional revival choice, declines, resumes both OPEN refill and parent."
+  ],
+  "s23": [
+    "Explicit structural initial deck1/discard2 distribution; remaining ordinary cards held by another player and OPEN public. Not a whole-match reachability claim.",
+    "Actual Secret Book command/declaration produces d6=3 and sole resolution book. Natural deck exhaustion draws first deck card then deterministic shuffled discard2; no resolution card enters shuffle.",
+    "Book remains in resolution until common reclaim responses finish, then enters discard exactly once. Ordinary action resumes with no lifecycle debt. JSON220/DO same ACK replay/browser reload preserve actual draw result.",
+    "Typecheck identified fixture string ID outside finite PLAY_TURN_CARD union; replaced with same canonical literal and re-ran target Engine plus typecheck."
+  ],
+  "verification": {
+    "engine": {
+      "s22RunPassed": 43,
+      "s23RunPassed": 31,
+      "uniquePassed": 71,
+      "finalTargetPassed": 1,
+      "finalTargetOverlaps": true,
+      "logs": [
+        "/tmp/madou-s22-focused.log",
+        "/tmp/madou-s23-focused.log",
+        "/tmp/madou-s23-engine-final.log"
+      ]
+    },
+    "worker": {
+      "uniquePassed": 3,
+      "includesPriorS20": true,
+      "logs": [
+        "/tmp/madou-s22-do.log",
+        "/tmp/madou-s23-do.log"
+      ]
+    },
+    "browser": {
+      "passed": 3,
+      "logs": [
+        "/tmp/madou-s22-browser.log",
+        "/tmp/madou-s23-browser.log"
+      ]
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s23-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-s23-ledger.log"
+    }
+  },
+  "remaining": "S21 pending G15 clarification; S24 onward and other unfinished plan conditions/semantic bindings remain active."
+}

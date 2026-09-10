@@ -1,0 +1,116 @@
+{
+  "task": "R5 Task11 Mother Truth a2-p05-r1c2",
+  "status": "mother-truth-physical-bindings-integrated-other23-open",
+  "completedAt": "2026-09-10 05:31 JST",
+  "implementation": "No production change. Ten semantic clauses and pending main producer implemented with17 new canonical cases and2 reused Wish-removal cases.",
+  "canonicalEvidence": [
+    "母様の真実10条項＋pending main1対応。実setup/START/補充選択/対象本人REVEAL後、公開activeアスフェルトだけを対象にし、アスフェルト本人の使用・別人物・非公開・本人指定・他席・開始前/補充前・占星・未解決重複はstate全view不変で拒否。実シェリム詠唱/全手番/専用裂界の異界対象は候補外、実催眠と回復失敗で停止中の自己手番も使用不可。実混乱と回復失敗の能力禁止中は印刷カード使用可。元札を即時補充なしで支払い、解決前は対象不変、SP0/13でも判定を作らずGOOD・EVIL全滅目的・Lia保護/敗北条件を一括置換して対象attachmentへ公開設置、主行動消費。実先行GOOD変換済みアスフェルトにも使用可。判定なしのため命運強制失敗の対象なし、実手札使用取消は元札捨て札/主行動消費のみで対象全体不変。実全手番後のGOOD変換なら設置維持、魅了抵抗成功なら維持、魅了抵抗失敗でEVILへ変更した時点で設置札を1回捨て、実後続GOOD変換では自動復帰なし。実Bowでアスフェルト本人が死亡すると死亡贈与窓までは設置を保持して通常処分後に除去、実BowでLiaが死亡するとGOODアスフェルトは放浪して手札返却・勝敗判定へ進み母様札は保持。前回実Wish2物理のMother取得後profile保持2ケースをAST一致で再利用し、除去だけで陣営等を巻き戻さない証跡を対応。Engine新17/関連4＋再利用2/DO16全保存再送/browser16対象公開・制限・設置・後続変換・死亡/放浪・reload/型/ledger確認。10条項＋主処理1の11行implemented、accepted0昇格。",
+    "Browser laterconversion outcomes use observed real random rolls; Mother attachment follows whether it has actually left GOOD, including both outcomes of subsequent return-to-GOOD attempt. Deterministic Engine/DO establish successful resistance, failed conversion and later successful return without restoration. ActualpriorRift/Hypnosis/Confusion and laterBow death/wandering are transition-produced. Already-dead Lia before Mother resolves remains a canonical gap; the passing related constructed-state unit test only proves that conditional implementation and is not claimed to establish an actual timeline."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/mother-truth-physical.test.ts",
+      "passed": 17,
+      "log": "/tmp/madou-mother-engine.log",
+      "firstAttempt": true
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/turn-choice-cards.test.ts -t 'Mother truth attaches|Mother attachment is discarded|canceled a2-p05-r1c2|Mother truth immediately'",
+      "passed": 4,
+      "log": "/tmp/madou-mother-related.log",
+      "scope": "Includes constructed already-deadLia unit case; not treated as canonical timeline."
+    },
+    "reused": {
+      "cases": 2,
+      "path": "packages/engine/test/wish-physical.test.ts",
+      "parameters": [
+        "wish-one-mother",
+        "wish-two-mother"
+      ],
+      "evidence": "docs/operations/evidence/2026-09-10-r5-wish-physical-bindings.json",
+      "currentASTHashesMatched": true,
+      "scope": "ActualMother setup/fullturns thenWish removal retains establishedprofile; reusedwithoutrepeatingpassedtests."
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-mother-truth-physical.test.ts",
+      "passed": 16,
+      "log": "/tmp/madou-mother-do.log",
+      "firstAttempt": true
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/mother-truth-physical.spec.ts",
+      "passed": 16,
+      "log": "/tmp/madou-mother-browser.log",
+      "firstAttempt": true
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-mother-types-ui.log",
+      "priorPasses": [
+        "/tmp/madou-mother-types.log",
+        "/tmp/madou-mother-types-do.log"
+      ],
+      "firstAttemptEach": true
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9111,
+        "implemented": 3001
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p05-r1c2::semantic/timing/turn",
+      "a2-p05-r1c2::semantic/target/asfelt-only",
+      "a2-p05-r1c2::semantic/target/public",
+      "a2-p05-r1c2::semantic/user/not-asfelt",
+      "a2-p05-r1c2::semantic/change/no-check",
+      "a2-p05-r1c2::semantic/change/good",
+      "a2-p05-r1c2::semantic/change/objective",
+      "a2-p05-r1c2::semantic/change/defeat",
+      "a2-p05-r1c2::semantic/zone/target-attachment",
+      "a2-p05-r1c2::semantic/zone/until-not-good"
+    ],
+    "mainProducerBindings": [
+      "a2-p05-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:c37a74bb3b6be7c5",
+      "t:9957616af6a62cc8",
+      "t:81a21216a5d71c92",
+      "t:2766f2f1857a9200",
+      "t:fbc72518c64598fa",
+      "t:2613a7155418af77",
+      "t:888961abbe5c87c5",
+      "t:6a5ee75afbc3782a",
+      "t:28581771d17c3cfd",
+      "t:5133ebc66eb49ffc",
+      "t:93792c43ed235a75",
+      "t:514201ae5999cea2",
+      "t:a7153ce194ecbd58",
+      "t:c4614a1ef15ea1e0",
+      "t:aaefd20a81f89291",
+      "t:6ca7cd76044f4964",
+      "t:edf35a93e30c3315"
+    ],
+    "reusedWishRemovalRefs": [
+      "t:e13ee2c573dbe04a",
+      "t:a1c115b7dc0b5049"
+    ]
+  },
+  "remaining": "172/195 semantic bindings integrated; other23 includes partialSingingShip1 andWingedFolk1 plus21othercards. AlreadydeadLia canonical Mother/conversion crossings, candidate/shared receipts, strictA31 andwhole-goalgates pending. Noacceptedpromotion."
+}

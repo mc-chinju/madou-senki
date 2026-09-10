@@ -1,0 +1,53 @@
+{
+  "scope": "R7 supplemental rejection coverage with actual authenticated HTTP/WebSocket 4/6/8/10 seats, no accepted-catalog bypass",
+  "test": {
+    "path": "apps/worker/test/lobby.test.ts",
+    "title": "R7 %i authenticated seats keep rejected concurrent START and stale readiness from creating a game",
+    "parameters": [
+      4,
+      6,
+      8,
+      10
+    ]
+  },
+  "assertions": [
+    "Normal sessions create/join matching capacity room and explicitly READY each seat",
+    "START before all ready rejected; stale READY rejected with persisted state unchanged",
+    "Reconnecting owner makes prior socket read-only; old-writer START rejected",
+    "Two current-writer START envelopes sent before waiting for either reply, both RULESET_NOT_READY",
+    "No game/state/revision mutation; after eviction every independent session sees null game and same revision"
+  ],
+  "fixes": [
+    "Initial two sockets expected same writer privilege; corrected to assert READ_ONLY_CONNECTION on old socket separately",
+    "Parallel helper command calls overwrite single inbox waiter; added batchCommands to send both first and consume keyed replies sequentially. Four timeouts were test-harness behavior."
+  ],
+  "verification": {
+    "worker": {
+      "passed": 4,
+      "log": "/tmp/madou-r7-lobby-counts-batch.log",
+      "exit": 0
+    },
+    "priorFailures": [
+      "/tmp/madou-r7-lobby-counts.log",
+      "/tmp/madou-r7-lobby-counts-final.log"
+    ],
+    "types": {
+      "allInitialExit": 0,
+      "initialLog": "/tmp/madou-r7-lobby-counts-types.log",
+      "finalWorkerLog": "/tmp/madou-r7-lobby-counts-worker-types.log",
+      "finalWorkerExit": 0
+    },
+    "ledger": {
+      "log": "/tmp/madou-r7-lobby-counts-ledger.log",
+      "valid": true,
+      "rows": 12112,
+      "pending": 8389,
+      "implemented": 3723
+    }
+  },
+  "remaining": [
+    "Does not prove successful formal START, one-winner concurrent START, playing-room join rejection, or full games; all remain pending",
+    "R4 hidden/unlimited all-pass interpretation question sent asynchronously; no answer yet, no dependent rule change",
+    "No production runtime changes"
+  ]
+}

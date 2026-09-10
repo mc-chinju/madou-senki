@@ -1,3 +1,4 @@
+import {enqueueLifecycle} from '../lifecycle/events.js';
 import {getAction} from '@madou/catalog';
 import {canUseCharacterAbility,hasStatus,type GameState} from '../state.js';
 import {isActive} from '../lifecycle/objectives.js';
@@ -11,7 +12,7 @@ export interface SelectedBeastEmpathy {abilityId:typeof BEAST_EMPATHY;actorId:st
 export interface IgnoredBeast {cardInstanceId:string;targetId:string;position:number;hits:{index:number;sourceActionId:string;sourceCardInstanceId:string;lineage:string[]}[]}
 export interface BeastCaptureTask {kind:'beast-capture';id:string;groupId:string;actorId:string;selected:SelectedBeastEmpathy;candidates:IgnoredBeast[];waiting?:boolean}
 export interface BeastCaptureView {groupId:string;windowId:string;actorId:string;candidates:{cardInstanceId:string;name:string;targetId:string;position:number}[]}
-export function activeBeastOwner(s:GameState,actorId:string):boolean {const p=s.players[actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p)&&ownsAbility(p,BEAST_EMPATHY);}
+export function activeBeastOwner(s:GameState,actorId:string):boolean {const p=s.players[actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p,s)&&ownsAbility(p,BEAST_EMPATHY);}
 function qualifies(s:GameState,g:AttackGroup,h:AttackTarget['hits'][number],base:Technique):boolean {
  const a=s.actions?.[h.sourceActionId??g.actionId];
  return !!a&&!a.canceled&&a.actorId===g.attackerId&&!a.fixedReceivedEffect&&!a.followerOrigin&&(a.kind==='attack'||a.kind==='defense'&&a.technique.defense==='counter')&&base.school==='warrior';
@@ -37,7 +38,8 @@ export function beastTechnique(s:GameState,g:AttackGroup,t:AttackTarget,h:Attack
 export function recordIgnoredBeast(s:GameState,g:AttackGroup,t:AttackTarget,h:AttackTarget['hits'][number],d:FollowerDefenseSnapshot):void {
  if(!h.frozenBeastEmpathy||d.source!=='physical'||!d.descriptor.attributes.includes('獣'))return;
  const a=s.actions?.[h.sourceActionId??g.actionId];if(!a)return;
- const source={index:h.index,sourceActionId:a.id,sourceCardInstanceId:h.sourceCardInstanceId??a.effectSourceCardInstanceId??a.cardInstanceId,lineage:[...h.lineage]};
+ const card=h.sourceCardInstanceId??a.effectSourceCardInstanceId??a.cardInstanceId;if(!card)return;
+ const source={index:h.index,sourceActionId:a.id,sourceCardInstanceId:card,lineage:[...h.lineage]};
  const previous=t.ignoredBeasts?.find(x=>x.cardInstanceId===d.cardInstanceId);
  if(previous){if(!previous.hits.some(x=>x.index===h.index))previous.hits.push(source);}
  else (t.ignoredBeasts??=[]).push({cardInstanceId:d.cardInstanceId,targetId:t.actorId,position:d.position,hits:[source]});
@@ -52,7 +54,7 @@ export function saveBeastCapture(s:GameState,g:AttackGroup):void {
   if(!hits.length||!stillOwned(s,ignored)||candidates.some(c=>c.cardInstanceId===ignored.cardInstanceId))continue;
   candidates.push(structuredClone({...ignored,hits}));
  }
- if(candidates.length)(s.lifecycle??=[]).push({kind:'beast-capture',id:`capture-${g.id}`,groupId:g.id,actorId:g.beastEmpathy.actorId,selected:{...g.beastEmpathy},candidates});
+ if(candidates.length)enqueueLifecycle(s,{kind:'beast-capture',rootEventIds:[s.actions![g.actionId]!.eventId],id:`capture-${g.id}`,groupId:g.id,actorId:g.beastEmpathy.actorId,selected:{...g.beastEmpathy},candidates});
 }
 export function beastCaptureView(s:GameState,viewerId:string):BeastCaptureView|null {
  const w=s.windows?.at(-1);if(w?.kind!=='beast-capture'||w.continuation.kind!=='lifecycle'||w.participants[w.cursor]!==viewerId)return null;

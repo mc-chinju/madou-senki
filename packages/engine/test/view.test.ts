@@ -41,7 +41,7 @@ it('projects only public window ownership and private legal command kinds',()=>{
   expect(actorView.legalChoices).toEqual(['REVEAL_CHARACTER','PASS','PLAY_REACTION']);expect(JSON.stringify(publicView.activeWindow)).not.toContain(s.players.C!.characterId);
 });
 
-it('projects explicit setup and turn choices only to the eligible viewer',()=>{const setup=freshGame();expect(viewFor(setup,'A').legalChoices).toEqual(['REVEAL_CHARACTER','PLACE_INITIAL_FOLLOWER','PASS_SETUP']);expect(viewFor(setup,'B').legalChoices).toEqual(['REVEAL_CHARACTER']);let turn=ready();expect(viewFor(turn,'A').legalChoices).toEqual(['REVEAL_CHARACTER','ATTACK','APPROACH','CHANT','ARRANGE_FOLLOWERS','REST','PLAY_TURN_CARD','PLAY_TURN_TECHNIQUE','PASS_ACTION']);expect(viewFor(turn,'B').legalChoices).toEqual(['REVEAL_CHARACTER']);});
+it('projects explicit setup and turn choices only to the eligible viewer',()=>{const setup=freshGame();expect(viewFor(setup,'A').legalChoices).toEqual(['REVEAL_CHARACTER','PLACE_INITIAL_FOLLOWER','PASS_SETUP']);expect(viewFor(setup,'B').legalChoices).toEqual(['REVEAL_CHARACTER']);let turn=ready();expect(viewFor(turn,'A').legalChoices).toEqual(['REVEAL_CHARACTER','ATTACK','APPROACH','CHANT','ARRANGE_FOLLOWERS','REST','PLAY_TURN_CARD','PLAY_TURN_TECHNIQUE','PASS_ACTION']);expect(viewFor(turn,'B').legalChoices).toEqual(['REVEAL_CHARACTER','SET_CONDITIONAL_ABILITY']);expect(viewFor(turn,'B').conditionalAbilities).toEqual([expect.objectContaining({abilityId:'c2-p05-r2c1-ab05',enabled:false,canActivate:true,canDeactivate:false})]);});
 
 it('projects self reveal at combat boundaries and out of turn without leaking concealed opponents',()=>{
   let s=ready();

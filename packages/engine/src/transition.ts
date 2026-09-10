@@ -1,3 +1,14 @@
+import {transitionChamGift} from './abilities/cham-death-gift.js';
+import {transitionSadLove} from './abilities/sad-love.js';
+import {transitionAllArmy} from './effects/all-army.js';
+import {cleanCombinationSpirit} from './effects/printed-combinations.js';
+import {transitionWish} from './effects/wish.js';
+import {bindPeaceAction,cleanPeaceLifetimes} from './abilities/peace-lifetime.js';
+import {cleanMotherTruth} from './effects/turn-choice-cards.js';
+import {advanceDiscardResponses} from './discard.js';
+import {finalizeReclaimReservations} from './reclaim.js';
+import {transitionSuppression} from './abilities/suppression.js';
+import {cleanBlessingLeases,lifeIdentity} from './abilities/suppression-state.js';
 import {gameStats} from './game-stats.js';
 import {transitionConditionalAbility,cleanConditionalSelections} from './abilities/conditional-selection.js';
 import {revealCharacter} from './abilities/character-visibility.js';
@@ -22,7 +33,7 @@ function transitionCore(state: GameState, input: GameInput, entropy: Entropy): T
   const command = parseGameCommand(input?.command);
   if (!command.ok) return { ok: false, code: 'INVALID_COMMAND' };
   if (!input || !Object.hasOwn(state.players, input.actorId)) return { ok: false, code: 'UNKNOWN_ACTOR' };
-  if (state.windows?.length || state.phase === 'combat' || state.phase === 'withdrawal' || ['PLAY_TURN_TECHNIQUE','CHOOSE_LIFETIME_EFFECT','ATTACK', 'APPROACH', 'WITHDRAW', 'PASS_WITHDRAWAL', 'PLAY_MAAI', 'PLAY_ADVANCE', 'PLAY_DEFENSE', 'PLAY_REACTION', 'CANCEL_REACTION', 'PASS', 'START_FOLLOWERS'].includes(command.value.type)) return transitionCombat(state, { actorId: input.actorId, command: command.value }, entropy);
+  if (state.windows?.length || state.phase === 'combat' || state.phase === 'withdrawal' || ['DECLARE_VIRTUAL_BLADE','PLAY_ANYTIME_CARD','PLAY_TURN_TECHNIQUE','CHOOSE_LIFETIME_EFFECT','ATTACK', 'APPROACH', 'WITHDRAW', 'PASS_WITHDRAWAL', 'PLAY_MAAI', 'PLAY_ADVANCE', 'PLAY_DEFENSE', 'PLAY_REACTION', 'CANCEL_REACTION', 'PASS', 'START_FOLLOWERS'].includes(command.value.type)) return transitionCombat(state, { actorId: input.actorId, command: command.value }, entropy);
   if (state.phase !== 'setup') return transitionTurn(state, { actorId: input.actorId, command: command.value }, entropy);
   if (!['PLACE_INITIAL_FOLLOWER', 'PASS_SETUP', 'REVEAL_CHARACTER'].includes(command.value.type)) return { ok: false, code: 'WRONG_PHASE' };
   const p = state.players[input.actorId]!;
@@ -47,7 +58,7 @@ function transitionCore(state: GameState, input: GameInput, entropy: Entropy): T
       case 'REVEAL_CHARACTER':
         revealCharacter(next,player.id,entropy.now); break;
       case 'PLACE_INITIAL_FOLLOWER': {
-        const id = command.value.cardInstanceId; player.hand.splice(player.hand.indexOf(id), 1); player.followers.push({ cardInstanceId: id, revealed: false });
+        const id = command.value.cardInstanceId; player.hand.splice(player.hand.indexOf(id), 1); player.followers.push({cardInstanceId:id,revealed:false,placedById:player.id,placedLifeId:lifeIdentity(player)});
         appendEvent(next, entropy.now, { type: 'FOLLOWER_PLACED', actorId: player.id, audience: 'public' });
         refillInitialHand(next, player, random, entropy.now); break;
       }
@@ -68,12 +79,15 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
  if(state.outcome)return {ok:false,code:'GAME_COMPLETE'};
  const command=parsed.value;const w=state.windows?.at(-1);const actor=state.players[input.actorId]!;
  const special=w?.continuation.kind==='lifecycle'&&w.participants[w.cursor]===actor.id;
- if(!isActive(actor)&&!(special&&['PASS','PLAY_DEATH_GIFT','CHOOSE_REVIVAL'].includes(command.type)))return {ok:false,code:'INACTIVE_ACTOR'};
+ if(!isActive(actor)&&!(special&&['PASS','PLAY_DEATH_GIFT','CHAM_DEATH_GIFT','CHOOSE_REVIVAL'].includes(command.type)))return {ok:false,code:'INACTIVE_ACTOR'};
+ if(w?.kind==='wish'&&command.type!=='CHOOSE_WISH'||w?.kind==='wish-capacity'&&command.type!=='CHOOSE_WISH_CAPACITY')return {ok:false,code:'WRONG_PHASE'};
+ if(w?.kind==='reclaim'&&!['CHOOSE_RECLAIM','PASS','REVEAL_CHARACTER'].includes(command.type))return {ok:false,code:'WRONG_PHASE'};
  if(w?.kind==='private-inspection'&&!['PASS','CHOOSE_INSPECTION','REVEAL_CHARACTER'].includes(command.type))return {ok:false,code:'WRONG_PHASE'};
  if(command.type==='REVEAL_CHARACTER'&&command.abilityId&&!revealAbilityOptions(state,input.actorId).some(o=>o.abilityId===command.abilityId))return {ok:false,code:'ABILITY_DISABLED'};
  const selectedReveal=command.type==='REVEAL_CHARACTER'&&command.abilityId;
  const expiresOnActorId=selectedReveal?revealExpiryActor(state):undefined;
  try{
+  const random=randomSource(entropy);
   let result:TransitionResult;
   if(command.type==='CHOOSE_REVIVAL'){
    if(!special||w!.kind!=='revival')return {ok:false,code:'WRONG_PHASE'};
@@ -92,22 +106,23 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
    const s=structuredClone(state);const p=s.players[actor.id]!;s.windows!.pop();
    const task=s.lifecycle!.find(t=>t.id===w!.continuation.id)!;
    if(command.type==='PASS_SETUP')s.lifecycle=s.lifecycle!.filter(t=>t.id!==task.id);
-   else {p.hand.splice(p.hand.indexOf(command.cardInstanceId),1);p.followers.push({cardInstanceId:command.cardInstanceId,revealed:false});if(task.kind==='re-setup')task.waiting=false;refillInitialHand(s,p,randomSource(entropy),entropy.now);}
+   else {p.hand.splice(p.hand.indexOf(command.cardInstanceId),1);p.followers.push({cardInstanceId:command.cardInstanceId,revealed:false,placedById:p.id,placedLifeId:lifeIdentity(p)});if(task.kind==='re-setup')task.waiting=false;refillInitialHand(s,p,randomSource(entropy),entropy.now);}
    s.revision++;result={ok:true,state:s,events:[]};
-  }else result=transitionConditionalAbility(state,{actorId:input.actorId,command})??transitionInspection(state,{actorId:input.actorId,command})??transitionTurnPackage(state,{actorId:input.actorId,command})??transitionBeastCapture(state,{actorId:input.actorId,command},entropy.now)??transitionFollowerBundle(state,{actorId:input.actorId,command})??transitionAbilityCommand(state,{actorId:input.actorId,command})??transitionLifecycleCommand(state,{actorId:input.actorId,command},entropy.now)??transitionCore(state,{actorId:input.actorId,command},entropy);
+  }else result=transitionChamGift(state,{actorId:input.actorId,command})??transitionAllArmy(state,{actorId:input.actorId,command})??transitionWish(state,{actorId:input.actorId,command},random,entropy.now)??transitionSuppression(state,{actorId:input.actorId,command})??transitionConditionalAbility(state,{actorId:input.actorId,command})??transitionInspection(state,{actorId:input.actorId,command})??transitionTurnPackage(state,{actorId:input.actorId,command})??transitionBeastCapture(state,{actorId:input.actorId,command},entropy.now)??transitionFollowerBundle(state,{actorId:input.actorId,command})??transitionSadLove(state,{actorId:input.actorId,command})??transitionAbilityCommand(state,{actorId:input.actorId,command})??transitionLifecycleCommand(state,{actorId:input.actorId,command},entropy.now)??transitionCore(state,{actorId:input.actorId,command},entropy);
   if(!result.ok)return result;
-  const s=result.state;
+  const s=result.state;bindPeaceAction(s,state,{actorId:input.actorId,command});
+  if(state.phase==='action'&&state.seatOrder[state.turnSeat]===actor.id&&s.phase!=='action'&&s.earlyTurnBook)s.earlyTurnBook.closed=true;
   if(selectedReveal)startVoluntaryBenefit(s,input.actorId,expiresOnActorId!);
-  cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);maintainFollowers(s);const random=randomSource(entropy);
+  cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);maintainFollowers(s);
   if(s.events.slice(state.events.length).some(e=>e.type==='CHARACTER_REVEALED'&&e.characterId==='c2-p03-r1c2'))scheduleBoundary(s,'lia-revealed');
   let diceCursor=0;const dice=()=>{const value=entropy.dice[diceCursor++];if(value===undefined)throw new EntropyError('ENTROPY_EXHAUSTED');return value;};
-  for(let n=0;n<1000;n++){advanceLifecycle(s,random,entropy.now);maintainFollowers(s);drainEmptyWindows(s,dice,random,entropy.now);const top=s.lifecycle?.at(-1);if(!top||'waiting' in top&&top.waiting||s.windows?.at(-1)?.continuation.kind==='roll')break;}
+  for(let n=0;n<1000;n++){advanceLifecycle(s,random,entropy.now);maintainFollowers(s);drainEmptyWindows(s,dice,random,entropy.now);const top=s.lifecycle?.at(-1);if(!top||'waiting' in top&&top.waiting||s.windows?.at(-1)?.continuation.kind==='roll'||s.discardOccurrences?.some(o=>o.stage==='open'&&s.reclaimDecisions?.find(d=>d.id===o.decisionId)?.stage!=='closed'))break;}
   if(!s.lifecycle?.length&&!s.windows?.length&&s.phase!=='setup'){
    settleDamage(s,[],entropy.now);advanceLifecycle(s,random,entropy.now);
    if(!s.lifecycle?.length){settleProtection(s,random,entropy.now);advanceLifecycle(s,random,entropy.now);}
   }
   if(s.turnSeat!==state.turnSeat)expireSourceTurn(s,s.seatOrder[s.turnSeat]!);
-  normalizeTurn(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);if(s.turnSeat!==state.turnSeat)s.turnNumber=(state.turnNumber??0)+1;stableOutcome(s,entropy.now);
+  normalizeTurn(s);cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);if(s.turnSeat!==state.turnSeat)s.turnNumber=(state.turnNumber??0)+1;cleanPeaceLifetimes(s);cleanCombinationSpirit(s);finalizeReclaimReservations(s);advanceDiscardResponses(s);stableOutcome(s,entropy.now);
   for(const event of s.events.slice(state.events.length))event.at=entropy.now;
   result.events=structuredClone(s.events.slice(state.events.length));return result;
  }catch(error){if(error instanceof EntropyError)return {ok:false,code:'INVALID_ENTROPY'};throw error;}

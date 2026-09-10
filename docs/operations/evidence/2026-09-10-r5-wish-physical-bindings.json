@@ -1,0 +1,148 @@
+{
+  "task": "R5 Task11 Wish twins a2-p04-r3c2/a2-p04-r3c3",
+  "status": "wish-physical-bindings-integrated-other24-open",
+  "completedAt": "2026-09-10 05:17 JST",
+  "implementation": "No production change. Eighteen semantic clauses and two pending main producers implemented with44 canonical cases.",
+  "canonicalEvidence": [
+    "祈願2物理各9条項＋pending main2対応。実setup/START後に元札を即時補充なしで支払い、本人だけのwish窓で1札取得を選択。山札は名前別枚数だけの非公開候補・存在しない名前の拒否後も同じ窓で再選択、同名回復薬2物理の各index取得と残山札shuffle、相手手札の各物理index取得と本人手札の再取得を確認。通常取得札は自己手札へ入り旧設置/詠唱状態解除、実B魔導書設置→取得で旧魔法Lv+1消失・新所有者は次の実自己手番で再設置するまで補正なし。実B詠唱は名前非公開のslot tokenで指定し取得後も詠唱状態を持ち越さない。実自己配置従者を手札へ戻せるが追加配置なし、実相手配置3従者（解除不能闇の聖女含む）は取得拒否。実B初期配置時の補充でBlood/祝福/ハジャ/夜明け/フーセンを初回OPENにし、公開札取得は旧所有者から新公開領域へ移す。Blood3能力値は所有者に追従、実祝福喪失は補正を即時除去し本人だけの従者超過選択で闇の聖女を候補外、実ハジャ喪失は実2詠唱から1札選択破棄し6手札は本人の次START/補充辞退/mainpassまで保持してENDで1枚捨てる。実シェリム詠唱/全手番/専用裂界で異界を作り、異界所有者の実手札とOPENを対象外、既公開夜明けの移動は異界の者を帰還させず、山札から未公開夜明けを取得すると初回帰還処理。フーセン初回公開後の実Bow死亡に対し公開フーセン移動は復活を再発動しない。実B公開/母様の真実/全手番後の取得は成立済み陣営・目的・保護対象を保持。実Bow捨て札、解決中元札、人物、他席、未解決重複、stale選択等はstate全view不変で拒否。公開既知札だけ取得内容を公開、非公開詠唱/自己裏従者/山札/手札は取得者と元所有者だけの私的履歴。命運取消は選択/取得なし、辞退は元札保持。Engine44/関連4/DO34全保存再送/browser34私的取得候補・各移動・上限選択・ハジャEND調整・reload/型/ledger確認。18条項＋主処理2の20行implemented、accepted0昇格。",
+    "Both copies have independent actual uses in every zone and intervention scenario. Random hand tests exercise every index of actual hand; named deck test exercises both physical same-name potions. They prove index mapping and committed entropy behavior, not a statistical randomness-quality audit. DO and UI use real server entropy and assert membership and exact ownership deltas. All persistent zones and otherworld/death prerequisite transitions are actual commands; only initial inventory, stats and deck order are arranged. Source/target lifetime changes during selection, nested revival acceptance and remaining shared crossings remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/wish-physical.test.ts",
+      "initialPassed": 28,
+      "initialFailed": 8,
+      "initialLog": "/tmp/madou-wish-engine.log",
+      "correction": "Six fixtures incorrectly used a2-p17-r3c3 as a banishment attack; replaced with actual Shelim CHANT/fullturns/dedicatedRift/apply, failed target resistance then successful source check. Two own-follower cases incorrectly expected a public identity despite its unrevealed face; acquisition remains private.",
+      "targetedRerun": {
+        "filter": "wish-(one|two)-(dawn|deck-dawn|otherworld|own-follower) ",
+        "passed": 8,
+        "log": "/tmp/madou-wish-engine-fixes.log"
+      },
+      "added": {
+        "filter": "same-name deck|opponent placed followers|later own main|six hand cards through",
+        "passed": 8,
+        "log": "/tmp/madou-wish-engine-extra.log"
+      },
+      "uniqueCanonicalTotal": 44
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/wish.test.ts -t 'independent spirit growth|actual crown/crystal'",
+      "passed": 4,
+      "log": "/tmp/madou-wish-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-wish-physical.test.ts",
+      "passed": 34,
+      "log": "/tmp/madou-wish-do.log",
+      "firstAttempt": true
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/wish-physical.spec.ts",
+      "passed": 34,
+      "log": "/tmp/madou-wish-browser.log",
+      "firstAttempt": true
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-wish-types-ui.log",
+      "priorPass": "/tmp/madou-wish-types-fixed.log",
+      "initialFailure": {
+        "log": "/tmp/madou-wish-types.log",
+        "reason": "Initial permanent.spirit optional type; initialized value asserted nonnull before adjustment."
+      }
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9122,
+        "implemented": 2990
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p04-r3c2::semantic/timing/turn",
+      "a2-p04-r3c2::semantic/wish/one-card",
+      "a2-p04-r3c2::semantic/wish/open-zone",
+      "a2-p04-r3c2::semantic/wish/attachment-zone",
+      "a2-p04-r3c2::semantic/wish/chant-zone",
+      "a2-p04-r3c2::semantic/wish/opponent-hand-zone",
+      "a2-p04-r3c2::semantic/wish/no-discard",
+      "a2-p04-r3c2::semantic/wish/no-placed-opponent-follower",
+      "a2-p04-r3c2::semantic/wish/random-hand",
+      "a2-p04-r3c3::semantic/timing/turn",
+      "a2-p04-r3c3::semantic/wish/one-card",
+      "a2-p04-r3c3::semantic/wish/open-zone",
+      "a2-p04-r3c3::semantic/wish/attachment-zone",
+      "a2-p04-r3c3::semantic/wish/chant-zone",
+      "a2-p04-r3c3::semantic/wish/opponent-hand-zone",
+      "a2-p04-r3c3::semantic/wish/no-discard",
+      "a2-p04-r3c3::semantic/wish/no-placed-opponent-follower",
+      "a2-p04-r3c3::semantic/wish/random-hand"
+    ],
+    "mainProducerBindings": [
+      "a2-p04-r3c2::main-producer",
+      "a2-p04-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:8c2b23fcb18f76d9",
+      "t:2ea5025b961b3627",
+      "t:0220f8fad8114d0a",
+      "t:382b8259c7e7eab4",
+      "t:7e3f1f05759bbd55",
+      "t:c383daa7240351c9",
+      "t:563037dd9935a675",
+      "t:51de8fa5a37f939b",
+      "t:a652c2c5443ef4f2",
+      "t:b8e1e661eb3a7893",
+      "t:31ada6a884892903",
+      "t:6dcdff7145f37ffb",
+      "t:23279b26904a775d",
+      "t:9c3e88dc5947d9a2",
+      "t:83e02004ae9ccfa5",
+      "t:e250a49984ee530a",
+      "t:31bc783d8b31564e",
+      "t:b9595d94655ccec5",
+      "t:ef3b6ceccd7b14e3",
+      "t:81909d11ed701f4f",
+      "t:af48634c3aa9e25e",
+      "t:2466d2fd51658e27",
+      "t:4ccd862d126ed1a8",
+      "t:a01e5ecce62b963d",
+      "t:894c27e5d1a82c77",
+      "t:b5ca8bbadff24a19",
+      "t:cb262b00690befec",
+      "t:a7e50ad58ab4c3fb",
+      "t:e13ee2c573dbe04a",
+      "t:a1c115b7dc0b5049",
+      "t:9b74603afd672d96",
+      "t:cb4e51739aa20c91",
+      "t:82f700ca285dc4e8",
+      "t:c6df5a1c46b1fe8a",
+      "t:8816455c5bc4c1be",
+      "t:21e548c7c5af8944",
+      "t:6b2501f9741b7bc3",
+      "t:a97da650deca07ca",
+      "t:e17b8cd5f719e872",
+      "t:24404cb091cdaadb",
+      "t:f9900996b5affafb",
+      "t:a19be360ef3d1b26",
+      "t:5b53b061af9c2168",
+      "t:52849406974bd1e4"
+    ]
+  },
+  "remaining": "171/195 semantic bindings integrated; other24 includes partialSingingShip1 andWingedFolk1 plus22othercards. Shared/candidate receipts, strictA31, source/target lifetime and nestedrevival crossings, priorunmeasuredcases andwhole-goalgates pending. Noacceptedpromotion."
+}

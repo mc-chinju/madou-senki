@@ -27,7 +27,8 @@ function originalSource(table: Table, views: Views) {
   expect(attack.technique).toMatchObject({ effectLevel: shared ? 6 : 5, damage: shared ? 8 : 6 });
   return original.cardInstanceId;
 }
-function consumed(done: ReturnType<typeof game>, source: string) {
+function consumed(done: ReturnType<typeof game>, source: string | null) {
+  if(source===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
   expect(done.discard.filter(id => id === source)).toHaveLength(1);
   expect(done.self.hand).not.toContain(source);
   expect(done.self.chants.map(card => card.cardInstanceId)).not.toContain(source);

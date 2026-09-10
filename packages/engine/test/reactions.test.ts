@@ -36,7 +36,15 @@ it('persists a cancellable reaction child and restores the parent declaration ge
   s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:parentId});const reaction=Object.values(s.actions!).find(a=>a.kind==='reaction')!;
   expect(JSON.parse(JSON.stringify(s))).toEqual(s);expect(s.windows).toHaveLength(2);
   s=act(s,'D',{type:'CANCEL_REACTION',targetActionId:reaction.id});while(Object.values(s.actions!).some(a=>a.kind==='reaction'))s=act(s,s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!,{type:'PASS'});
-  expect(s.windows).toHaveLength(1);expect(s.windows![0]!.passed).toEqual([]);expect(s.windows![0]!.cursor).toBe(0);s=finish(s);
+  expect(s.windows).toHaveLength(1);expect(s.windows![0]!.passed).toEqual([]);expect(s.windows![0]!.cursor).toBe(0);
+  const originalEvent=s.actions![parentId]!.eventId;
+  expect(s.used).toContain(`${originalEvent}:C:${fate}`);
+  s=act(s,'A',{type:'PASS'});s=act(s,'B',{type:'PASS'});
+  const reopened=JSON.stringify(s);
+  expect(engine.transition(s,{actorId:'C',command:{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:parentId}},entropy()).ok).toBe(false);
+  expect(JSON.stringify(s)).toBe(reopened);
+  expect(s.actions![parentId]!.eventId).toBe(originalEvent);
+  s=finish(s);
   expect(s.players.B!.damage).toBe(4);expect(s.discard).toEqual(expect.arrayContaining([attack,fate]));
 });
 

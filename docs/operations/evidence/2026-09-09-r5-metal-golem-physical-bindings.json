@@ -1,0 +1,104 @@
+{
+  "task": "R5 Task11 Metal Golem a2-p22-r1c1",
+  "status": "metal-golem-physical-bindings-integrated-other60-open",
+  "completedAt": "2026-09-09 22:12 JST",
+  "implementation": "No production changes.17 semantic clauses and main producer bind17 actual transition references.",
+  "canonicalEvidence": [
+    "Actual initial and own-turn placement, reorder/removal, hidden source and front-first defense. Physical follower6 HP5 golem/iron/earth. Actual Bow3 blocks and survives. Actual granted Dwarf5/6/7 three damage6 hits give body0/0/3 and keep/equal-destroy/higher-destroy, HP5 applied independently to each higher hit. Actual Metal6 before Stone5 against Dwarf6 blocks all three hits and leaves Stone hidden; reversed order consumes Stone then Metal with body0. No morale, including spirit0 in the ordering case.",
+    "Actual ordinary mental Beast4 passes higher Metal6 without comparison, HP5 reduction or destruction; Metal stays hidden in place and body takes5. Adding real rear Soldier3 HP1 passes on to that follower, which is discarded and reduces body to4. Actual Alseil mental Mirror Seal explicitly destroys Metal despite spiritPass and its higher level6; no body damage. Normal maai prevents follower entry and preserves the hidden source.",
+    "Actual hand/field direct ordinary/dedicated/CHANT uses reject, and Dia human grant excludes the golem attributes. Actual Army uses hand source only after actual approach; near warrior martial use/effect5 damage10, warrior4/5 gives1/0 checks with noChecks false. Placed source and empty/self/duplicate/multiple targets reject before payment. Actual parent/child Fate cancellation and forced use failure consume both physical cards once without return; actual maai/Mirror blocks the warrior attack without reflection or refund.",
+    "Each Engine command JSON-reexecutes and preserves220 unique IDs; rejection preserves state and all actor views. Initial character/draw events align with actual scripted deals. DO9 saves/evicts/replays every command with identical ACK and stored state. Browser8 operates actual setup/turn, Dwarf equal/higher, mental pass alone/with rear Soldier, explicit destruction and Army attack after approach, with reload.17 rows implemented/main1 rebound, no accepted promotion; shared/candidate gates remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/metal-golem-physical.test.ts",
+      "passed": 17,
+      "log": "/tmp/madou-metal-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/all-army.test.ts -t 'メタルゴーレム'",
+      "passed": 2,
+      "skipped": 144,
+      "filesPassed": 1,
+      "filesSkipped": 1,
+      "log": "/tmp/madou-metal-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-metal-golem-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 9,
+      "log": "/tmp/madou-metal-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/metal-golem-physical.spec.ts",
+      "passed": 8,
+      "log": "/tmp/madou-metal-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-metal-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9538,
+        "implemented": 2574
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p22-r1c1::semantic/follower/printed-level",
+      "a2-p22-r1c1::semantic/follower/printed-hp",
+      "a2-p22-r1c1::semantic/placement/setup",
+      "a2-p22-r1c1::semantic/placement/own-action",
+      "a2-p22-r1c1::semantic/defense/front-order",
+      "a2-p22-r1c1::semantic/follower/attribute-0",
+      "a2-p22-r1c1::semantic/follower/attribute-1",
+      "a2-p22-r1c1::semantic/follower/attribute-2",
+      "a2-p22-r1c1::semantic/attack/grant-required",
+      "a2-p22-r1c1::semantic/attack/ordinary-hand-grant",
+      "a2-p22-r1c1::semantic/attack/discard-not-return",
+      "a2-p22-r1c1::semantic/attack/printed-level",
+      "a2-p22-r1c1::semantic/attack/printed-damage",
+      "a2-p22-r1c1::semantic/attack/attribute-0",
+      "a2-p22-r1c1::semantic/attack/attribute-1",
+      "a2-p22-r1c1::semantic/attack/attribute-2",
+      "a2-p22-r1c1::semantic/defense/no-spirit"
+    ],
+    "mainProducerRebindings": [
+      "a2-p22-r1c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:3fa23c8097acd92b",
+      "t:409e3ea0cfb74d15",
+      "t:7aeeb8dac867e375",
+      "t:1c079e2e9f0142da",
+      "t:e680abe409eee5a9",
+      "t:b8c94aa5a33fc5da",
+      "t:16ab1be525f994a9",
+      "t:2beb739df7a06037",
+      "t:0e55ef8f6cd21329",
+      "t:9a7fc6c3430fd648",
+      "t:cba9233980929941",
+      "t:16a5c6fb1e6ba176",
+      "t:1b069a08819c7393",
+      "t:3f8099cdc5cfde57",
+      "t:902ae259a030a6f7",
+      "t:8c233bfcd11f3d89",
+      "t:290b6910cbf4840e"
+    ]
+  },
+  "remaining": "135/195 fully integrated; other60 includes partial SingingShip1 and WingedFolk1 plus58 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

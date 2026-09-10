@@ -1,3 +1,4 @@
+import readiness from './readiness.json' with { type: 'json' };
 import actions01To06 from '../../../../data/second-edition/actions-01-06.json' with { type: 'json' };
 import actions07To17 from '../../../../data/second-edition/actions-07-17.json' with { type: 'json' };
 import actions18To25 from '../../../../data/second-edition/actions-18-25.json' with { type: 'json' };
@@ -122,7 +123,7 @@ export function normalizeActionRecord(path: string, value: unknown): ActionCard 
     source: sourceRef(path, input),
     assetId: `/cards/second/${input.id}.webp`,
     copies: 1,
-    implementation: 'pending',
+    implementation: readiness.ready ? 'tested' : 'pending',
     category: requireString(card.category, path, id, 'category'),
     printed_text: requireString(card.printed_text, path, id, 'printed_text'),
     timing: requireStringArray(card.timing, path, id, 'timing'),
@@ -158,7 +159,7 @@ function normalizeAbility(value: unknown, path: string, characterId: string, ind
     timing: requireStringArray(ability.timing, path, characterId, `abilities[${index}].timing`),
     specification: requireString(ability.specification, path, characterId, `abilities[${index}].specification`),
     activation: requireString(ability.activation, path, characterId, `abilities[${index}].activation`),
-    implementation: 'pending',
+    implementation: readiness.ready ? 'tested' : 'pending',
   } as CharacterAbility;
 }
 
@@ -183,7 +184,7 @@ function normalizeCharacter(value: unknown, index: number): CharacterCard {
     source: sourceRef('data/second-edition/characters.json', input),
     assetId: `/cards/second/${input.id}.webp`,
     copies: 1,
-    implementation: 'pending',
+    implementation: readiness.ready ? 'tested' : 'pending',
     sex,
     initial_faction: faction,
     transformation_only: requireBoolean(card.transformation_only, path, id, 'transformation_only'),
@@ -270,10 +271,12 @@ export function getCharacter(id: string): CharacterCard | undefined {
   return charactersById.get(id);
 }
 
-export function ownedCardNames(characterId: string): string[] | undefined {
+export function ownedCardNames(characterId: string, kind?:'technique'|'follower'): string[] | undefined {
   const character = getCharacter(characterId);
   if (!character) return undefined;
-  return [...character.owned_techniques, ...character.owned_followers].flatMap(
+  const names=kind==='technique'?character.owned_techniques:kind==='follower'?character.owned_followers:
+    [...character.owned_techniques, ...character.owned_followers];
+  return names.flatMap(
     (name) => aliases.get(name) ?? [name],
   );
 }
@@ -282,7 +285,7 @@ export function deriveCharacterImplementation(character: Pick<CharacterCard, 'ab
   return character.abilities.every((ability) => ability.implementation === 'tested') ? 'tested' : 'pending';
 }
 
-export function assertPlayableCatalog(catalog: readonly (ActionCard | CharacterCard)[]): void {
+export function assertCatalogDefinitions(catalog: readonly (ActionCard | CharacterCard)[]): void {
   for (const entry of catalog) {
     if (entry.implementation === 'pending') {
       throw new Error(`${entry.id}: pending implementation`);
@@ -343,5 +346,13 @@ export function assertPlayableCatalog(catalog: readonly (ActionCard | CharacterC
   const abilityIds = catalogCharacters.flatMap((character) => character.abilities.map((ability) => ability.id));
   if (abilityIds.length !== 110 || new Set(abilityIds).size !== 110 || abilityIds.some((id) => !selectedAbilityIds.has(id))) {
     throw new Error('catalog must contain all 110 selected character abilities exactly once');
+  }
+}
+
+/** Structural catalog validity is insufficient for a production START. */
+export function assertPlayableCatalog(catalog: readonly (ActionCard | CharacterCard)[]): void {
+  assertCatalogDefinitions(catalog);
+  if (readiness.format !== 'catalog-readiness/v1' || readiness.ready !== true) {
+    throw new Error('catalog has no complete accepted coverage');
   }
 }

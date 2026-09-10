@@ -1,0 +1,59 @@
+{
+  "task": "R5 Task 4 remaining mandatory damage and conversion fields",
+  "status": "task4-acceptance-complete",
+  "completedAt": "2026-09-09 06:17 JST",
+  "implementation": "Existing common damagePreview/composeValue, faction-change roll cutoff and lifecycle resurrection already implement these mandatory fields. This work adds missing acceptance and transport fixtures; no additional production change was needed.",
+  "canonicalEvidence": [
+    "Actual Cham Shuriken five yields two and actual Beast magic five yields five, both with no optional election and after a real Vanmil ability ban.",
+    "Existing sword-shuffle case uses actual install, opponent Wish steal, actual discard/recovery, later attack with Sword only in hand yielding two and actual reinstall/later attack yielding five.",
+    "Actual GOOD conversion on both Asfelt and Garwin after actual Vanmil ban freezes target effective spirit minus one plus two.",
+    "Actual Peace after either conversion roll changes effective spirit to twelve. Actual God reroll retains the already frozen spirit-minus-one-plus-two threshold, so sixes fail and conversion completes.",
+    "Actual Lester mental defense against either hidden Asfelt or Garwin uses only ordinary spirit minus one. Owner sees the check threshold; opponents have no hidden threshold, success, character, faction, stats or current objective.",
+    "Actual Uonos GOOD conversion first makes Asfelt/Garwin GOOD; real Black Wing Sword kills each target; a later real dedicated Resurrection converts them to EVIL with no new roll and starts a new life. Their later actual EVIL conversion check retains plus two against Uonos modifier minus two.",
+    "Actual Cham death and Uonos no-check revival preserve warrior half and magic five. Actual Fury death and no-check revival preserve atomic black-technique rejection.",
+    "Existing actual Mother Truth on public Asfelt performs conversion and attachment with no roll.",
+    "Every accepted Engine helper command replays from JSON and conserves 220 unique physical cards. Initial deck arrangement is performed only before these command histories.",
+    "DO four cases save and restart at every command and return identical duplicate ACK; mandatory hit values and frozen conversion thresholds persist. Four browser cases reload before and after value freeze and verify the displayed threshold and final damage."
+  ],
+  "abstractEvidence": "The separately named Zan composeValue case base5 +1 then x2 x0.5 yields6. It is not described as a real multi-owner character producer.",
+  "relatedTask4Evidence": [
+    "docs/operations/evidence/2026-09-09-r5-zan.json",
+    "docs/operations/evidence/2026-09-09-r5-mandatory-fury.json"
+  ],
+  "verification": {
+    "engineProtocolWeb": {
+      "passed": 87,
+      "files": 7,
+      "newEngine": 14,
+      "log": "/tmp/madou-mandatory-fields-focused.log",
+      "command": "pnpm exec vitest run packages/engine/test/mandatory-fields.test.ts packages/engine/test/mandatory-restrictions.test.ts packages/engine/test/zan.test.ts packages/engine/test/sword-shuffle.test.ts packages/engine/test/turn-choice-cards.test.ts packages/protocol/test/zan.test.ts apps/web/test/commands.test.ts"
+    },
+    "durableObject": {
+      "passed": 4,
+      "files": 1,
+      "command": "cd apps/worker && WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-mandatory-fields.test.ts",
+      "log": "/tmp/madou-mandatory-fields-do.log"
+    },
+    "browser": {
+      "passed": 4,
+      "log": "/tmp/madou-mandatory-fields-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-mandatory-fields-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12109,
+      "pending": 11601,
+      "implemented": 508,
+      "log": "/tmp/madou-mandatory-fields-ledger.log"
+    }
+  },
+  "next": "R5 Task5 whole sad-love: separate C15-style aura, once-game A13 substitution, permanent Arnes reward through concurrent death/revival. Task5 three checkboxes remain incomplete.",
+  "limitations": [
+    "No review performed per user instruction.",
+    "No ledger status promotion.",
+    "Overall R5 and parent completion plan remain incomplete. The previously recorded incidental beast-capture Worker failure remains unresolved outside Task4."
+  ]
+}

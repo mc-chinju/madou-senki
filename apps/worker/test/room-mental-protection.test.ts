@@ -43,7 +43,8 @@ function fixture(name: MentalProtectionScenarioName) {
   const source = game.actions![viewFor(game, 'A').currentAttack!.actionId]!.cardInstanceId;
   return { get game() { return game; }, act, until, use, source };
 }
-function consumed(game: GameState, source: string) {
+function consumed(game: GameState, source: string | null) {
+  if(source===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
   expect(game.discard.filter(id => id === source)).toHaveLength(1);
   expect(game.players.A!.hand).not.toContain(source);
   expect(game.players.A!.chants.map(card => card.cardInstanceId)).not.toContain(source);

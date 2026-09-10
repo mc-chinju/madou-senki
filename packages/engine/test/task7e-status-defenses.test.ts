@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import * as engine from '../src/index.js';
-import { act, closeWindow, finish, pass, ready, until } from './combat-helpers.js';
+import { act, closeWindow, finish, pass, ready, until, passReclaims } from './combat-helpers.js';
 import { character, entropy, handCard, handCards } from './fixtures.js';
 
 function moveToChant(state: engine.GameState, owner: string, cardInstanceId: string) {
@@ -42,7 +42,7 @@ it('keeps printed Arseil cancellation and character-limited cards legal despite 
   character(state, 'C', '占星術師のアルセイル');
   state.players.C!.revealed = true;
   state.players.C!.statuses = [{ id: 'confusion', kind: 'ability-disabled', modifiers: [-2, -1], nextCheck: 1 } as any];
-  expect(engine.canUseCharacterAbility(state.players.C!)).toBe(false);
+  expect(engine.canUseCharacterAbility(state.players.C!,state)).toBe(false);
   const fate = handCard(state, 'B', '命運凶変');
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: handCard(state, 'A', '踏み込み／弓'), targetIds: ['D'], dedicated: false });
   state = pass(state);
@@ -227,7 +227,7 @@ it('uses each 結界 copy as a dynamic-level one-hit magic negate and resumes de
   const firstAction = Object.values(state.actions!).find(action => action.cardInstanceId === first)!;
   expect(firstAction.technique.useLevel).toBe(7);
   expect(firstAction.checks).toHaveLength(1);
-  state = until(state, 'before-roll'); state = closeWindow(state, [6, 6]); state = closeWindow(state);
+  state = until(state, 'before-roll'); state = closeWindow(state, [6, 6]); state = closeWindow(state); state = passReclaims(state);
   expect(state.discard).toContain(first);
   expect(state.windows!.at(-1)!.kind).toBe('normal-defense');
   expect(engine.transition(state, { actorId: 'B', command: { type: 'PLAY_DEFENSE', cardInstanceId: first!, dedicated: false } }, entropy())).toEqual({ ok: false, code: 'CARD_NOT_IN_HAND' });
@@ -261,7 +261,7 @@ it('reflects magic through 神王界 at fixed level six without ordinary compari
   const firstRollId = engine.viewFor(state, 'C').currentRoll!.rollId;
   while (state.windows!.at(-1)!.participants[state.windows!.at(-1)!.cursor] !== 'C') state = pass(state);
   state = act(state, 'C', { type: 'PLAY_REACTION', cardInstanceId: god, mode: 'reroll', targetRollId: firstRollId });
-  state = closeWindow(state, [4]); state = closeWindow(state);
+  state = passReclaims(closeWindow(state, [4])); state = closeWindow(state);
   const frozen = state.randomRolls![0]!;
   expect(frozen).toMatchObject({ id:firstRollId, faces:[4], total:8 });
   state = until(state, 'normal-defense'); state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: defense, dedicated: false });
@@ -300,7 +300,7 @@ it('consumes failed dedicated 閃光槍 and restores the parent for another defe
   const attack = handCard(state, 'A', '踏み込み／弓'); const counter = handCard(state, 'B', '閃光槍'); const evade = handCard(state, 'B', '見切る');
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false }); state = until(state, 'normal-defense');
   state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: counter, dedicated: true }); state = until(state, 'before-roll');
-  state = closeWindow(state, [6, 6]); state = closeWindow(state);
+  state = closeWindow(state, [6, 6]); state = closeWindow(state); state = passReclaims(state);
   expect(state.discard).toContain(counter);
   expect(state.windows!.at(-1)!.kind).toBe('normal-defense');
   state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: evade, dedicated: false }); state = finish(state);

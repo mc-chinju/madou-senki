@@ -1,0 +1,50 @@
+{
+  "task": "R5 Task 1 approach and withdrawal maai abilities",
+  "status": "listed-acceptance-complete",
+  "implementation": [
+    "WITHDRAW has a finite optional Cham/Tia ability ID; PLAY_MAAI reuses the same finite validated choice for distance responses. Lancaster remains exclusive to an actual returned combat counter.",
+    "Distance ActionFrame saves the election, original owner life, advance baseline, response actor and committed response. A normal cancellable ability declaration precedes resuming the paid exchange.",
+    "A selected live ability requires two additional advances per maai. First payment retains the advance actor, second returns to the maai actor. Each later maai resets its own baseline while retaining the elected action ability.",
+    "A real ban after the first advance lowers the current threshold and returns priority immediately without another payment. Physical distance dispositions and successful approach marker remain on the existing common path.",
+    "Board offers default-off initial withdrawal selection bound to the current revision. ReactionPanel handles response selection. DistanceExchangeSummary projects actual paid/required counts and the next responder without private source IDs."
+  ],
+  "canonicalEvidence": [
+    "Both Cham and Tia: actual approach and initial withdrawal, one-versus-two additional advance outcome branches.",
+    "Both distance modes: declined or Fate-canceled election needs one advance, retains the maai payment and leaves the unused second advance in hand.",
+    "Both distance modes: actual Vanmil ban after one paid advance immediately returns priority; the old actor second payment is rejected without mutation.",
+    "Repeated actual withdrawal maai requires two fresh advances; previous completed response payments are not counted again.",
+    "Every Engine transition replays through JSON and conserves 220 unique physical cards. Successful approach stores its last advance as the distance marker rather than discarding it."
+  ],
+  "verification": {
+    "engineProtocol": {
+      "passed": 47,
+      "files": 4,
+      "log": "/tmp/madou-distance-response-focused.log"
+    },
+    "worker": {
+      "passed": 4,
+      "log": "/tmp/madou-distance-response-do.log",
+      "cases": "Approach and withdrawal, each accepted or canceled; actual DO restart and duplicate ACK after every command."
+    },
+    "browser": {
+      "passed": 4,
+      "log": "/tmp/madou-distance-response-browser.log",
+      "cases": "Real initial/response selection, both modes and actual Fate cancellation, owner/opponent refresh after first payment."
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-distance-response-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12109,
+      "log": "/tmp/madou-distance-response-ledger.log",
+      "note": "Structural validation only; no blanket status promotion."
+    }
+  },
+  "testCorrections": [
+    "The first suppression assertion expected all advances in discard. The actual established successful approach path makes its last advance the distance marker; the assertion now checks the correct physical destination."
+  ],
+  "reviewPerformed": false,
+  "completedAt": "2026-09-09 05:13 JST"
+}

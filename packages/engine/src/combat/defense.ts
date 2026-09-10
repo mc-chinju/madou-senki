@@ -13,7 +13,7 @@ export function counterOutcome(incoming:Technique,counter:Technique,distance:'ne
 export function freezeRelativeDefenseLimits(technique:Technique):void {
   const relative=technique.relativeDefenseLimits;
   if(!relative)return;
-  technique.blockWarriorLimit=technique.effectLevel+relative.warriorOffset;
+  if(relative.warriorOffset!==undefined)technique.blockWarriorLimit=technique.effectLevel+relative.warriorOffset;
   technique.reflectMagicLimit=technique.effectLevel+relative.magicOffset;
 }
 
@@ -24,6 +24,7 @@ export function defenseLegality(
   const incoming=currentEffectiveTechnique(state,group,actorId);
   const target=group.targets.find(t=>t.actorId===actorId);
   if(!target||target.followerStarted)return 'DEFENSE_WINDOW_CLOSED';
+  if(group.substituteOrigin&&(technique.defense!=='counter'||!state.players[actorId]!.hand.includes(cardInstanceId)))return 'ILLEGAL_DEFENSE';
   if(technique.defense==='none'||
     technique.defense==='evade'&&(incoming.attributes.includes('精')||incoming.evadeProhibited)||
     technique.defense==='counter'&&!technique.counterIgnoresLevel&&technique.effectLevel<incoming.effectLevel||

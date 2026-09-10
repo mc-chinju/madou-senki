@@ -1,0 +1,52 @@
+{
+  "task": "R5 Task12 S24/S25",
+  "status": "s24-s25-acceptance-complete",
+  "completedAt": "2026-09-09 08:01 JST",
+  "s24": [
+    "Existing actual physical 封傷 X then Y across real intervening turns, no intermediate damage mutation. X consumes name-based base budget. Y has no claim and rejects current-decision canonical base request unchanged, in addition to old-decision rejection.",
+    "Separate actual Fury base recovery, later extra recovery and third-use refusal prove independent extra allowance. Full X/Y and three-use sequence are Engine evidence; Worker/browser persist ordinary/extra selection components."
+  ],
+  "s25": [
+    "Actual lethal attack reaches Cham pending-death. Ability gift X then physical death card attempting the same X rejects unchanged; distinct Y succeeds. Reverse order similarly rejects the already moved card via ability. Both pre-outcome boundaries asserted.",
+    "Existing real Uonos ritual then chanted two-target sword kills Vanmil and Cham together. Terminal outcome waits until Cham gift has moved.",
+    "Worker/browser cover actual Cham use/decline/cancellation, restart, identical command receipts and private gift projection. Cross-gift same-card rejection is Engine evidence."
+  ],
+  "verification": {
+    "engine": {
+      "passed": 13,
+      "files": [
+        "owned-reclaim.test.ts",
+        "reuse-abilities.test.ts",
+        "cham-death-gift.test.ts",
+        "death-reward-lifecycle.test.ts"
+      ],
+      "filter": "S24|Extra recovery permits|Cham|Vanmil",
+      "log": "/tmp/madou-s24-s25-engine.log"
+    },
+    "worker": {
+      "passed": 5,
+      "logs": [
+        "/tmp/madou-s24-do.log",
+        "/tmp/madou-s25-do.log"
+      ]
+    },
+    "browser": {
+      "passed": 6,
+      "logs": [
+        "/tmp/madou-s24-browser.log",
+        "/tmp/madou-s25-browser.log"
+      ]
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s24-s25-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-s24-s25-ledger.log"
+    }
+  },
+  "remaining": "Next S26 actual protected death/wandering/revival; S21 remains pending G15 clarification. Whole goal, other scenario conditions and tracked semantic bindings remain active."
+}

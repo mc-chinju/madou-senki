@@ -1,0 +1,125 @@
+{
+  "scope": "Selected S18-S20 existing semantic dependencies and case correspondence; no acceptance promotion",
+  "bindings": [
+    {
+      "scenario": "S18",
+      "dependsOn": [
+        "c2-p03-r2c1-ab01#ordinary-incoming-only",
+        "c2-p03-r2c1-ab01#attacker-spirit-minus-one",
+        "c2-p03-r2c1-ab01#failure-cancels-own-target-all-hits",
+        "c2-p03-r2c1-ab01#once-group-target-before-followers",
+        "c2-p03-r2c1-ab01#other-target-declared-hits-survive"
+      ],
+      "testCases": {
+        "t:cd0909e47d018896": {
+          "path": "apps/worker/test/room-scenario-s18.test.ts",
+          "suite": [],
+          "title": "S18 persists before the single ordinary-failure resistance and between B and C across real DO command replay",
+          "declarationSha256": "3ebbabdeb780a585f329c422222a5227edccdfbbe0d1f8fe3954ca0de1062d14",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S18 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        },
+        "t:9f06413614fd07c9": {
+          "path": "packages/engine/test/scenario-s18.test.ts",
+          "suite": [],
+          "title": "S18 actual chanted two-target three-hit sword uses one Lester resistance and cancels only B three hits",
+          "declarationSha256": "c8f9e40aa219a5ed8949557d4016c5e1ef9c9bf313022c1a2dd6ee28249eb147",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S18 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        },
+        "t:94018177aa9dae95": {
+          "path": "tests/e2e/scenario-s18.spec.ts",
+          "suite": [],
+          "title": "S18 actual Lester use retains the three-hit parent before resistance and between targets on reload",
+          "declarationSha256": "0a66d5e344c2d1eff7cb83aa1b20c348a735b36870a1bf779374e281b118b5f8",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S18 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        },
+        "t:5cc8ee61ae2384e7": {
+          "path": "tests/e2e/scenario-s18.spec.ts",
+          "suite": [],
+          "title": "S18 saved actual ordinary failure resumes at C with B three hits canceled and no attacker stop",
+          "declarationSha256": "d0bdfdbde424e81172ec2faf7d1c28bef74d1f8d44ee32b316cc4f4b6ca87967",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S18 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        }
+      },
+      "boundOutcomeClauses": [
+        "c2-p03-r2c1-ab01#failure-cancels-own-target-all-hits",
+        "c2-p03-r2c1-ab01#once-group-target-before-followers",
+        "c2-p03-r2c1-ab01#other-target-declared-hits-survive"
+      ]
+    },
+    {
+      "scenario": "S19",
+      "dependsOn": [
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p03-r2c1-ab01#attacker-spirit-minus-one",
+        "c2-p03-r2c1-ab01#failure-cancels-own-target-all-hits"
+      ],
+      "testCases": {
+        "t:873b62f165a5e0cf": {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "S19 actual Gil spirit threshold failure on Lester sixes retains ordinary cancellation",
+          "declarationSha256": "b883a9a754ce9cd8ce2a08fbd25ce0e693849bf4ed09f60f7830cc167ac5980a",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S19 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        }
+      },
+      "boundOutcomeClauses": [
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p03-r2c1-ab01#failure-cancels-own-target-all-hits"
+      ]
+    },
+    {
+      "scenario": "S20",
+      "dependsOn": [
+        "a2-p17-r1c1#semantic/ordinary/initial-minus-three",
+        "a2-p17-r1c1#semantic/ordinary/first-recovery-minus-two",
+        "a2-p17-r1c1#semantic/ordinary/later-recovery-minus-one",
+        "a2-p17-r1c1#semantic/ordinary/stop-until-success"
+      ],
+      "testCases": {
+        "t:59c58b365a605941": {
+          "path": "apps/worker/test/room-r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S20 physical poem saves the same stop through minus3 minus2 minus1 and resumes refill draw and actual turn",
+          "declarationSha256": "53a46dc8470f31e9432e3788a7b065307cab2d2bfa3f265f7cfd540343c2172c",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S20 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        },
+        "t:1ba52ef5b4b82e7c": {
+          "path": "packages/engine/test/r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S20 physical ordinary poem advances the same stop from initial minus3 failure through minus2 failure and minus1 success with refill and normal draw",
+          "declarationSha256": "66ed1b814df078aec4db8acf8044608ad5c8d047296446ac6809d5862588892e",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S20 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        },
+        "t:451831ab83208d5f": {
+          "path": "tests/e2e/r6-scenarios.spec.ts",
+          "suite": [],
+          "title": "S20 exact saved minus3 minus2 failure and minus1 success resumes refill then a real normal draw and turn",
+          "declarationSha256": "3fa57029be400f5eeb9c018a59110745183a16bf984727cd4ce83116096acd8c",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S20 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
+        }
+      },
+      "boundOutcomeClauses": [
+        "a2-p17-r1c1#semantic/ordinary/initial-minus-three",
+        "a2-p17-r1c1#semantic/ordinary/first-recovery-minus-two",
+        "a2-p17-r1c1#semantic/ordinary/later-recovery-minus-one",
+        "a2-p17-r1c1#semantic/ordinary/stop-until-success"
+      ]
+    }
+  ]
+}

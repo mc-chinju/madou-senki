@@ -1,3 +1,4 @@
+import type {Browser,APIRequestContext} from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
@@ -18,7 +19,7 @@ async function chooseEffect(table: Table, views: Views, id: string) {
   const option = own.abilityOptions.find(option => option.abilityId === 'c2-p03-r2c1-ab02')!.effectOptions!.find(effect => effect.id === id)!;
   await table.pages[0]!.getByRole('checkbox', { name: option.name, exact: true }).check();
 }
-for (const selected of [false, true]) test(`Arnes explicitly selects virtual defense=${selected} for three real hits without adding a physical card`, async ({ browser, request }) => {
+async function verifyGuard(browser:Browser,request:APIRequestContext,selected:boolean){
   const table = await tableFixture(browser, request, 'entry-arnes');
   try {
     const views = await observe(table); const a = table.sessions[0]!.id; const b = table.sessions[1]!.id;
@@ -44,7 +45,9 @@ for (const selected of [false, true]) test(`Arnes explicitly selects virtual def
     expect(done.players[b]!.damage).toBe(selected ? 15 : 18); expect(done.virtualFollowerDefense).toEqual([]);
     expect(done.players[b]!.followers).toEqual([]);
   } finally { await table.close(); }
-});
+}
+test('Arnes explicitly declines virtual defense for three real hits',async({browser,request})=>{await verifyGuard(browser,request,false);});
+test('S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card',async({browser,request})=>{await verifyGuard(browser,request,true);});
 test('a third party cancels virtual guard after reload and the original three hits continue', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'entry-arnes-cancel');
   try {

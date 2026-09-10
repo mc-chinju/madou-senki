@@ -1,0 +1,203 @@
+{
+  "task": "R5 Task11 Blast Sword physical binding",
+  "completedAt": "2026-09-10 12:28 JST",
+  "implementation": "Added actual physical fixture and Engine/DO/browser coverage. No production change needed.",
+  "canonicalEvidence": [
+    "天地爆砕剣19用途条項とmain証跡。実CHANTと介在手番後の遠/戦/剣/詠、使用・効果Lv8、固定15を通常2対象へ同時適用。非シンは支払い後SP−2事前判定（合計4成功/5失敗）、成功後も通常不足判定が必要。シン通常は事前判定だけ省略、任意専用は不足判定省略・任意対象全員・反撃・間合い2枚、詠唱は維持。詠唱済み専用の反撃は元の攻撃者だけへ15/Lv8/間合い2を返す。反撃への水竜HPで11、見切るで0、間合い1枚では15・2枚なら0。通常攻撃への水竜11/メタル10/砦13。命運は宣言取消または事前成功後の次の不足判定強制失敗。無詠唱、別人物、通常反撃、不使用、不正対象・時機、実混乱/沈黙/催眠を含む。",
+    "Engine初回43成功/1失敗。counter-foreign試験用fixtureがowner条件のOR式で誤ってシンを選択していたため除外条件を修正。その1件だけ再実行し成功、unique44。",
+    "共有lifetime/回収、広い複合交差と全体受入れは未完。accepted昇格なし。ブラウザは実乱数の判定結果を読み、通常の自然失敗時は0ダメージと札1回消費を確認する。成功後の命運強制失敗の確定証跡はEngine/DO。"
+  ],
+  "validation": {
+    "engine": {
+      "uniquePassed": 44,
+      "initial": {
+        "command": "pnpm exec vitest run packages/engine/test/blast-sword-physical.test.ts",
+        "passed": 43,
+        "failed": 1,
+        "log": "/tmp/madou-blast-sword-engine.log"
+      },
+      "fixed": {
+        "selection": "counter-foreign",
+        "passed": 1,
+        "failed": 0,
+        "log": "/tmp/madou-blast-sword-engine-fix.log"
+      }
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7b-techniques.test.ts -t '天地爆砕剣'",
+      "passed": 6,
+      "log": "/tmp/madou-blast-sword-related.log"
+    },
+    "worker": {
+      "passed": 40,
+      "batches": [
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(ordinary|owner-ordinary|ordinary-pair|owner-pair|low) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-1.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(owner-low|dedicated|pair|all|near) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-2.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(same-faction|water|metal|fort|maai-ordinary) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-3.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(maai-one-dedicated|maai-two-dedicated|evade-ordinary|evade-dedicated|fate-before) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-4.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(fate-after|suppressed|silenced|stopped|wrong-owner) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-5.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(decline|unprepared-ordinary|unprepared-dedicated|chant-ordinary|chant-dedicated) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-6.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(counter-ordinary|counter-dedicated|counter-unprepared|counter-decline|counter-fate) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-7.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-blast-sword-physical.test.ts -t '^blast-sword-(counter-maai-one|counter-maai-two|counter-water|counter-evade|counter-foreign) '",
+          "passed": 5,
+          "log": "/tmp/madou-blast-sword-do-8.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/blast-sword-physical.spec.ts",
+      "passed": 40,
+      "log": "/tmp/madou-blast-sword-browser.log"
+    },
+    "types": [
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-blast-sword-types.log"
+      },
+      {
+        "command": "pnpm --filter @madou/worker typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-blast-sword-worker-types.log"
+      },
+      {
+        "command": "pnpm typecheck:e2e",
+        "exitCode": 0,
+        "log": "/tmp/madou-blast-sword-e2e-types.log"
+      }
+    ],
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8587,
+        "implemented": 3525
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p10-r2c1::semantic/ordinary/school",
+      "a2-p10-r2c1::semantic/ordinary/range",
+      "a2-p10-r2c1::semantic/ordinary/use-level",
+      "a2-p10-r2c1::semantic/ordinary/base-effect-level",
+      "a2-p10-r2c1::semantic/ordinary/damage",
+      "a2-p10-r2c1::semantic/ordinary/attribute-0",
+      "a2-p10-r2c1::semantic/ordinary/attribute-1",
+      "a2-p10-r2c1::semantic/ordinary/attribute-2",
+      "a2-p10-r2c1::semantic/ordinary/attack-use",
+      "a2-p10-r2c1::semantic/ordinary/chant-required",
+      "a2-p10-r2c1::semantic/dedicated/0/select-optional",
+      "a2-p10-r2c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p10-r2c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p10-r2c1::semantic/dedicated/0/chant-retain",
+      "a2-p10-r2c1::semantic/dedicated/0/target-subset",
+      "a2-p10-r2c1::semantic/ordinary/non-shin-precheck",
+      "a2-p10-r2c1::semantic/ordinary/normal-two-targets",
+      "a2-p10-r2c1::semantic/dedicated/counter-use",
+      "a2-p10-r2c1::semantic/dedicated/maai-extra-one"
+    ],
+    "mainProducerBindings": [
+      "a2-p10-r2c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:d843dbc1f97e33e9",
+      "t:c21e969fa1e9652d",
+      "t:0b6de60c24d15293",
+      "t:d1cb93f6a02daded",
+      "t:e9022f8ba998c179",
+      "t:1e73d9d69bea60fe",
+      "t:b98df18db9bb04d3",
+      "t:51125dc9b724c5ea",
+      "t:6107d98ad875b4b4",
+      "t:18787171c7103a0b",
+      "t:772cfde0748d3b60",
+      "t:ee972a47235a91a0",
+      "t:bfc0953d549d00a1",
+      "t:3ac7ec7294618599",
+      "t:6eff2bcc25e43d16",
+      "t:ba83dcf12d3fd044",
+      "t:273f0b53ae855025",
+      "t:6d77d76636797cb3",
+      "t:288adf9922a4e596",
+      "t:b6d7395dd9fc1115",
+      "t:c4c9aac2cbdf7e4f",
+      "t:03626c722f22114f",
+      "t:a2ee2994425bd70f",
+      "t:955cb71ae615ef4c",
+      "t:170909a0f2d4567b",
+      "t:a3969cd3edffd29d",
+      "t:8ea0305f6c49408e",
+      "t:8934008b440b7a12",
+      "t:1f11205c50573e84",
+      "t:b31ce719bba8a6d4",
+      "t:2c1b537c7f39b674",
+      "t:41b13f7dec327672",
+      "t:58f70b730facded0",
+      "t:c97aa627f8ad7205",
+      "t:25f2b22eb11ddb68",
+      "t:9b5e6e958ae25e53",
+      "t:7d99ca9d5b77b3c5",
+      "t:91856195681ba515",
+      "t:26b3c6d4c65ed651",
+      "t:6d2c5ed0fcb44e1c",
+      "t:f5df6da73d597be3",
+      "t:663e470cef6e9579",
+      "t:7e7b66a3b4eed85f",
+      "t:a73bdf5ae42518ed"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 205
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 181
+    }
+  },
+  "remaining": "共有lifetime/回収、広い複合交差と全体受入れは未完。accepted昇格なし。ブラウザは実乱数の判定結果を読み、通常の自然失敗時は0ダメージと札1回消費を確認する。成功後の命運強制失敗の確定証跡はEngine/DO。"
+}

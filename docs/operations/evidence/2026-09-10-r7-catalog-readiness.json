@@ -1,0 +1,62 @@
+{
+  "scope": "R7 catalog readiness gate implementation; formal START remains blocked by actual pending coverage",
+  "changes": [
+    "assertCatalogDefinitions preserves selected physical/ability/immutable structure checks; assertPlayableCatalog additionally requires generated ready=true",
+    "Action/character/ability implementation now derives from compact generated readiness; mere tested copies cannot start",
+    "generate_catalog_readiness delegates structural and require_accepted validation to existing validator, embeds manifest/ledger digests, supports --check and --require-ready",
+    "Root build and verify:catalog check generated artifact; stale/modified readiness rejected",
+    "runtime-candidate-v3 excludes derived readiness from files to avoid output/receipt cycle; generator itself remains frozen"
+  ],
+  "verification": {
+    "red": {
+      "log": "/tmp/madou-r7-catalog-gate-red.log",
+      "reason": "Old guard admitted full tested copy without accepted evidence"
+    },
+    "catalog": {
+      "passed": 25,
+      "log": "/tmp/madou-r7-catalog-gate-green.log"
+    },
+    "python": {
+      "uniquePassed": 57,
+      "initial": {
+        "passed": 51,
+        "failed": 5,
+        "log": "/tmp/madou-r7-readiness-python.log"
+      },
+      "fixedAndNew": {
+        "passed": 6,
+        "log": "/tmp/madou-r7-readiness-python-fix.log"
+      },
+      "reason": "Receipt fixtures hardcoded v2; now use active policy, with new generator-included/readiness-excluded candidate test"
+    },
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-r7-readiness-do.log",
+      "scope": "Actual authenticated lobby ownership/readiness/START returns RULESET_NOT_READY"
+    },
+    "types": {
+      "exit": 0,
+      "log": "/tmp/madou-r7-readiness-types.log"
+    },
+    "gateMutations": {
+      "log": "/tmp/madou-r7-readiness-gate-check.log",
+      "currentCheck": 0,
+      "requireReady": 1,
+      "forgedReady": 1,
+      "artifactRestored": true
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "pending": 8389,
+      "implemented": 3723,
+      "log": "/tmp/madou-r7-readiness-ledger.log"
+    }
+  },
+  "remaining": [
+    "No real all-accepted candidate exists; first R7 acceptance checkbox remains open",
+    "4/6/8/10 formal start/full games and failure recovery not completed",
+    "Original missing clauses and review-policy conflict remain; no independent review performed",
+    "R6 v2 receipt is historical after these code changes; do not represent it as current v3 validation"
+  ]
+}

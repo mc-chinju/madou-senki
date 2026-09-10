@@ -1,0 +1,128 @@
+{
+  "task": "R5 Task11 other110: Rift physical card",
+  "status": "rift-physical-bindings-integrated-other109-open",
+  "completedAt": "2026-09-09 14:57 JST",
+  "implementation": "No production changes. New Engine19 cases, DO4 and browser2, existing related5 passed.",
+  "canonicalEvidence": [
+    "Rift a2-p14-r2c2 ordinary magic/far/use7/effect7/damage8/魔白詠 and dedicated Shelim effect8/damage12 retain actual CHANT/full turns. Initial exact magic6/7 produces ordinary one/zero use checks versus dedicated zero. Ordinary accepts three and rejects four; dedicated accepts five and arbitrary two/one subsets. Foreign dedication, unchanted, empty/self/duplicate/invalid target and turn-technique forms reject without raw or recipient view changes.",
+    "Actual initial Metal6 and Water7 followers remain through bypass and body damage. White Guardian7 cancels ignore: ordinary effect7 equal destroys guardian but prevents hit; actual Prayer1 ordinary effect8 destroys then hits, as does dedicated effect8. Nonselected C follower stays. Actual ordinary failed use and Fate cancellation prevent damage/banishment, actual Teleport prevents only B hit and C still reaches resistance.",
+    "Every ordinary/elected hit retains target spirit resistance. Dedicated per-target B/C/both/none optional minus3 choice occurs before resistance, thresholds3 versus6 for actual spirit6. Successful resistance preserves body damage8/12 but avoids otherworld. Failed resistance sends target away after body settlement; G15 hit reveals identity. All five living EVIL targets away still prevent GOOD outcome.",
+    "Actual B CHANT during intervening turn is retained with exact hand and followers while otherworld; actual skipped own turns do not return it. Away players cannot START_TURN, receive APPROACH or Revelation, or supply hand/public chant for Wish; legitimate same-event Revelation target alternatives exist. Both raw invalid commands and all-view invariance are checked. Existing S30 supplements exact real attachment and both physical Wish copies, no private inspection leak.",
+    "Actual Wish from deck acquires first Dawn OPEN and returns all away targets in A-current clockwise order before discarded Rift enters shuffled deck. Same player records survive except active presence; no re-setup. Additional actual failed Teleport spends B hand to4 before banishment; real Dawn returns B with exact hand4/follower/chant/damage retained, proving no refill.",
+    "DO4 executes actual CHANT, complete turns including B CHANT, attack all other three, target-local modifier choices/resistance or Fate cancellation, skipped away turns and Wish Dawn return. Every command saves, evicts and replays identical ACK/state with220 unique physical cards. Source exactly once in discard before Dawn; Dawn later legitimately shuffles that source into deck.",
+    "Browser2 initial low scenarios assign all enemy spirit0 before setup; all actual attack rolls and optional choices are live. Six players perform actual CHANT/full turns, ordinary3/elected5, B minus3 and other target decline, away possession reload and real Wish acquisition of Dawn/one return event per target. No post-start status or roll injection. Follower placement is canonical fixture preparation.",
+    "Shared T35 independent prior stop/ability suppression, different current-turn rotation, already-public Dawn movement and protector-death interactions are not claimed as new complete worlds. Legacy related5 includes focused supplementary cases. Candidate-bound receipts remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p14-r2c2::semantic/ordinary/school",
+      "a2-p14-r2c2::semantic/ordinary/range",
+      "a2-p14-r2c2::semantic/ordinary/use-level",
+      "a2-p14-r2c2::semantic/ordinary/base-effect-level",
+      "a2-p14-r2c2::semantic/ordinary/damage",
+      "a2-p14-r2c2::semantic/ordinary/attribute-0",
+      "a2-p14-r2c2::semantic/ordinary/attribute-1",
+      "a2-p14-r2c2::semantic/ordinary/attribute-2",
+      "a2-p14-r2c2::semantic/ordinary/attack-use",
+      "a2-p14-r2c2::semantic/ordinary/chant-required",
+      "a2-p14-r2c2::semantic/dedicated/0/select-optional",
+      "a2-p14-r2c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p14-r2c2::semantic/dedicated/0/effect-replacement",
+      "a2-p14-r2c2::semantic/dedicated/0/damage-replacement",
+      "a2-p14-r2c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p14-r2c2::semantic/dedicated/0/chant-retain",
+      "a2-p14-r2c2::semantic/dedicated/0/target-subset",
+      "a2-p14-r2c2::semantic/ordinary/ignore-followers",
+      "a2-p14-r2c2::semantic/ordinary/up-to-three",
+      "a2-p14-r2c2::semantic/ordinary/target-spirit-check",
+      "a2-p14-r2c2::semantic/ordinary/failure-otherworld",
+      "a2-p14-r2c2::semantic/ordinary/until-dawn",
+      "a2-p14-r2c2::semantic/otherworld/keep-hand",
+      "a2-p14-r2c2::semantic/otherworld/keep-followers",
+      "a2-p14-r2c2::semantic/otherworld/no-influence",
+      "a2-p14-r2c2::semantic/otherworld/no-wish",
+      "a2-p14-r2c2::semantic/otherworld/no-revelation",
+      "a2-p14-r2c2::semantic/dedicated/optional-minus-three"
+    ],
+    "mainProducerRebindings": [
+      "a2-p14-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:e1839f6c3c288134",
+      "t:0d8ee0b1a3e7b02d",
+      "t:369024569d2d2390",
+      "t:0bc2e830596ca9ea",
+      "t:77495e1e41f84a36",
+      "t:095e9e57f541ca6b",
+      "t:31a7b7a93464769a",
+      "t:fae26ab235e3b100",
+      "t:b7942270f9df6508",
+      "t:c7ab9727cd8efd64",
+      "t:6f92f35873812c1d",
+      "t:ec73f981cde00dcf",
+      "t:02407b9365a9d5c7",
+      "t:215c46b615fc9408",
+      "t:4fc497d49a031757",
+      "t:aff95c9077cbe2ba",
+      "t:db7eccc111d0fd6d",
+      "t:61d14dc4d0e6bbff",
+      "t:17a24d2375e96c78",
+      "t:99cddd3892a3a549"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/rift-physical.test.ts",
+      "passed": 17,
+      "log": "/tmp/madou-rift-physical-engine.log",
+      "additional": {
+        "command": "pnpm exec vitest run packages/engine/test/rift-physical.test.ts -t 'actual failed Teleport'",
+        "passed": 2,
+        "skipped": 17,
+        "log": "/tmp/madou-rift-physical-hand4.log"
+      },
+      "finalCaseCoverage": 19
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/scenario-s30.test.ts packages/engine/test/task7g-lifetime.test.ts -t 'rift|裂界|Dawn'",
+      "passed": 5,
+      "skipped": 58,
+      "log": "/tmp/madou-rift-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-rift-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 4,
+      "log": "/tmp/madou-rift-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/rift-physical.spec.ts",
+      "passed": 2,
+      "log": "/tmp/madou-rift-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-rift-physical-types-complete.log",
+      "note": "Initial browser assertion used self.open, which is absent in the private self view. Corrected to public players[a].open before browser run. Final complete types include additional hand4 tests."
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10391,
+        "implemented": 1721
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "86/195 per-entry semantic/main bindings integrated; other109 and whole-goal gates open. Candidate-bound receipts and shared T35 dependencies remain pending. No accepted promotion."
+}

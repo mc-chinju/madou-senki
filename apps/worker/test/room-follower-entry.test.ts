@@ -103,7 +103,7 @@ it('Tia pays separately at each target, virtual ignore cancellation protects B w
   expect(f.game.discard).toEqual(expect.arrayContaining(['a2-p23-r1c2', 'a2-p23-r1c3']));
   expect(f.game.distances).toEqual(distances);
 });
-it('real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards', async () => {
+it('S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards', async () => {
   const room = await openTestRoom('entry-arnes'); let sequence = 0;
   async function advance(done: (game: GameState) => boolean) {
     for (let i = 0; i < 500; i++) {
@@ -125,6 +125,13 @@ it('real DO restores a selected virtual guard and its frozen snapshot without du
   await room.restart(); expect((await room.snapshotFor('A')).game!.virtualFollowerDefense).toEqual(shown);
   expect(await room.command('B', envelope)).toEqual(ack); expect(await room.stored()).toEqual(frozen);
   expect(allCardInstanceIds(frozen.state.game!)).toHaveLength(220); expect(new Set(allCardInstanceIds(frozen.state.game!)).size).toBe(220);
+  const virtualId=shown[0]!.sourceId;
+  await advance(game=>!game.windows?.length);
+  const completed=await room.stored(),final=completed.state.game!;
+  expect(final.players.B!.damage).toBe(15);expect(viewFor(final,'A').virtualFollowerDefense).toEqual([]);
+  expect(allCardInstanceIds(final)).toHaveLength(220);expect(new Set(allCardInstanceIds(final)).size).toBe(220);expect(allCardInstanceIds(final)).not.toContain(virtualId);
+  expect(final.reclaimDecisions?.some(d=>d.cardInstanceId===virtualId)??false).toBe(false);for(const p of Object.values(final.players))expect(p.hand).not.toContain(virtualId);
+  await room.restart();expect(await room.command('B',envelope)).toEqual(ack);expect(await room.stored()).toEqual(completed);
 });
 it('real DO restores selected illusion branches through a Fate child and retains both receipts', async () => {
   const room = await openTestRoom('entry-lester-hidden'); let sequence = 0;

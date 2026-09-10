@@ -1,0 +1,126 @@
+{
+  "task": "R5 Task11 death-gift twins a2-p02-r3c2/a2-p02-r3c3",
+  "status": "death-gift-physical-bindings-integrated-other35-open",
+  "completedAt": "2026-09-10 03:38 JST",
+  "implementation": "No production change. Twelve semantic clauses newly implemented and two existing main producers rebound to21 canonical cases.",
+  "canonicalEvidence": [
+    "Actual setup and initialtraining with zero injectedwounds, actual Bow lethal4 or actualCHANT/fullturns EarthBlast lethal15 toB/C produce deathIdentity, pendingdeath and completeowningbatch. Giftwindow beforedeathdisposal/protection/outcome. GOOD/EVILprintedsource and wrongtwinreject. Actualprior REVEAL plusCharm converts originalEVIL toGOOD and originalGOODCham toEVIL; deathfaction determines printedsource, and convertedCham retains independentability.",
+    "Printedsource leaveshand forresolution withnogift/refill yet. One selected residualcard movesphysically toone otherrecipient onlyonresolution. Selectedidentity absentfromallotherfullviews beforetransfer and onlygiver/receiverprivateLogs aftertransfer; publicCARD_GIFTED noidentity. Self/foreign/sourceitself/wrongactor/alive/anytime/duplicate rejectall4views andstate. Actual simultaneousB/C batch excludesboth beforeandafterfirstgiverdisposal/cursoradvance. Actualprotectedrecipient receivesgiftbefore laterwandering shufflesitscards, whileotherprofilesretainreceivedcard. Actualrecipientnextturn retains6cards throughSTART/draw/mainpass, then normalEND requiresone discard.",
+    "Actual Fatecancel discardsprintedsource butselectedgift remainsgiverhand untilnormaldeathdisposal; decline disposesall. ActualChamability andprintedcard each transferone distinctcard inbothorders forGOODandactualconvertedEVILCham, cannotreusemovedcard orability; noinstantrefill. Engine21 replay/220uniqueIDs plusrelatedCham10. DO15 everyacceptedcommand saves,restartsandreplayssameACK, browser15 actualsource/gift/recipientselectors, sourceitselfexcluded, wrongfactionnotlisted, cancel/ability/privateviews/reloads."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/death-gift-physical.test.ts packages/engine/test/cham-death-gift.test.ts",
+      "newCanonicalPassed": 17,
+      "relatedPassed": 10,
+      "log": "/tmp/madou-death-gift-engine-final.log",
+      "attempts": [
+        "/tmp/madou-death-gift-engine.log",
+        "/tmp/madou-death-gift-engine-2.log",
+        "/tmp/madou-death-gift-engine-3.log",
+        "/tmp/madou-death-gift-engine-4.log",
+        "/tmp/madou-death-gift-engine-5.log"
+      ],
+      "fixtureCorrections": "Explicit startingSeat0 (orD forconversion), exactLia catalogname, independentD survivor ratherthanGaia-dependentAlseil inbatch, printedCharm usesPLAY_TURN_CARD onactualrevealedtarget, goodconvertedtarget requiresopposingpublicattacker."
+    },
+    "engineAdditional": {
+      "command": "pnpm exec vitest run packages/engine/test/death-gift-physical.test.ts -t 'received excess|actual second death'",
+      "passed": 2,
+      "failed": 2,
+      "log": "/tmp/madou-death-gift-engine-boundaries.log",
+      "correction": "Mainpass may enterhand-adjustment directly; onlyPASS_WITHDRAWAL ifactualphase offersit.",
+      "targetedRerun": {
+        "command": "pnpm exec vitest run packages/engine/test/death-gift-physical.test.ts -t 'received excess'",
+        "passed": 2,
+        "log": "/tmp/madou-death-gift-engine-boundaries-2.log"
+      },
+      "uniqueNewCanonicalTotal": 21
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-death-gift-physical.test.ts",
+      "passed": 15,
+      "log": "/tmp/madou-death-gift-do.log",
+      "firstAttempt": true
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/death-gift-physical.spec.ts",
+      "passed": 15,
+      "log": "/tmp/madou-death-gift-browser.log",
+      "firstAttempt": true
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-death-gift-types-boundaries.log",
+      "priorPass": "/tmp/madou-death-gift-types-final.log",
+      "initialFailure": "/tmp/madou-death-gift-types.log",
+      "correction": "Optional permanent needsnonnull assertion in fixture initialtraining."
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9214,
+        "implemented": 2898
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p02-r3c2::semantic/timing/printed-window",
+      "a2-p02-r3c2::semantic/gift/death-timing",
+      "a2-p02-r3c2::semantic/gift/faction",
+      "a2-p02-r3c2::semantic/gift/one-hand-card",
+      "a2-p02-r3c2::semantic/gift/one-recipient",
+      "a2-p02-r3c2::semantic/gift/physical-transfer",
+      "a2-p02-r3c3::semantic/timing/printed-window",
+      "a2-p02-r3c3::semantic/gift/death-timing",
+      "a2-p02-r3c3::semantic/gift/faction",
+      "a2-p02-r3c3::semantic/gift/one-hand-card",
+      "a2-p02-r3c3::semantic/gift/one-recipient",
+      "a2-p02-r3c3::semantic/gift/physical-transfer"
+    ],
+    "mainProducerRebindings": [
+      "a2-p02-r3c2::main-producer",
+      "a2-p02-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:c3eda3175da00b0e",
+      "t:3b6e2e6b76d96951",
+      "t:cea49cb8baf40c3a",
+      "t:99e7e8c6fe4f54f2",
+      "t:860f167486fdd1bd",
+      "t:db35ad3b9f9ed3ce",
+      "t:51f620c191813bd4",
+      "t:debb6faebdc9f09d",
+      "t:1cfeeda8a501e5de",
+      "t:95dc437f9f62c591",
+      "t:be560fb1c13b43cd",
+      "t:f13c0cbd94c3bd01",
+      "t:9ac9432eabe515e5",
+      "t:8b5719e4a3adaefc",
+      "t:fea2aee1e5c23d80",
+      "t:61c21caa3d170065",
+      "t:520543d9b2816595",
+      "t:f638150e90e3abcb",
+      "t:58d746ccf1150a14",
+      "t:be2f95ba632b1f88",
+      "t:fb3ccd1061a5d2e1"
+    ]
+  },
+  "remainingCanonicalCrossings": [
+    "No new actual death-gift crossing for source-only hand or absence of all eligible recipients.",
+    "No new death-gift crossing for previously exited/otherworld recipients or nested revival of the same owning batch; fullbatch exclusion is measured before and after ordinary disposal."
+  ],
+  "remaining": "160/195 semantic bindings integrated; other35 includes partial SingingShip1 and WingedFolk1 plus33 othercards. Listed unmeasured death-gift crossings, Hostage unresolved-time factionchange, shared/candidate receipts and whole-goal gates remainopen; noacceptedpromotion."
+}

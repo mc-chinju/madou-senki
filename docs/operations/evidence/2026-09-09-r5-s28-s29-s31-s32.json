@@ -1,0 +1,45 @@
+{
+  "task": "R5 Task12 S28/S29/S31/S32",
+  "status": "four-scenario-conditions-complete",
+  "completedAt": "2026-09-09 08:18 JST",
+  "s28": "Actual Lancelot transformation retains damage4 and old/current IDs; actual Uonos ritual from damage4 heals to0 and now asserts Vanmil-only IDs in the same body. Separate actual Giant case proves no Uonos inheritance. Exact pair is Engine evidence, both transformation UI flows pass.",
+  "s29": "Actual Dia Dwarf three hits meet the same virtual Arnes guard, reduce each to5 and finish15. Both Blessing parameters assert220 unique physical IDs and no virtual ID in any physical inventory, hand or reclaim decision throughout remaining responses. DO extends saved frozen guard to cleanup/final damage and original duplicate receipt after restart. Browser completes selected guard through all3 hits.",
+  "s31": "Actual Fury dedicated Star Bow factory asserts noChecks:true/chant:true. Direct physical hand attack without any waiver rejects CHANT_REQUIRED unchanged. Engine legality evidence.",
+  "s32": "Abstract exact5/add1/multipliers2,0.5 returns6; null with same modifiers remainsnull. Existing fractional final-floor case retained. No canonical combination or browser producer claimed.",
+  "verification": {
+    "engine": {
+      "passed": 16,
+      "files": [
+        "task7f-lifecycle.test.ts",
+        "received-defense-abilities.test.ts",
+        "follower-entry-abilities.test.ts",
+        "task7b-techniques.test.ts",
+        "action-value-arithmetic.test.ts"
+      ],
+      "log": "/tmp/madou-s28-s29-s31-s32-engine.log"
+    },
+    "worker": {
+      "passed": 1,
+      "scope": "S29 real DO",
+      "log": "/tmp/madou-s29-do.log"
+    },
+    "browser": {
+      "passed": 3,
+      "scope": "S28 both transformation flows; S29 selected guard",
+      "log": "/tmp/madou-s28-s29-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s28-s32-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "updatedSharedTestHashes": 4,
+      "reportedAffectedRows": 19,
+      "promotions": 0,
+      "log": "/tmp/madou-s28-s32-ledger-final.log"
+    }
+  },
+  "remaining": "S30, S01-S17 gaps, combined invariants and other completion-plan obligations remain pending. S21 still awaits G15 clarification."
+}

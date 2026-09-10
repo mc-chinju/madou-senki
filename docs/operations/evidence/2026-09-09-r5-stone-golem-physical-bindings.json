@@ -1,0 +1,99 @@
+{
+  "task": "R5 Task11 Stone Golem a2-p20-r2c3",
+  "status": "stone-golem-physical-bindings-integrated-other72-open",
+  "completedAt": "2026-09-09 18:59 JST",
+  "implementation": "No production changes. Stone Golem17 semantic clauses and main producer bind13 actual transition references. All checks passed first attempt.",
+  "canonicalEvidence": [
+    "Actual initial/own-turn placement, reorder/removal, hidden physical identity, foreign/duplicate/capacity refusals and maai retention. Physical level5 HP4 golem/earth/stone versus real Bow3; high Metal front leaves hidden rear untouched. Actual Dia paid approach and Dwarf three6-damage hits at warrior4/5/6 give body0/0/6 with alive/equal discard/higher discard; HP4 applies independently to every higher hit. Every accepted command JSON-reexecutes and preserves220 unique physical IDs; rejection preserves complete state/all views. Scripted initial character/draw logs agree with initial deals.",
+    "Actual ordinary Beast4 mental attack skips higher Stone5 without comparing level, reducing byHP4, removing it or revealing its identity. Owner takes5, or rear Soldier alone reduces it to4 and is discarded while Stone remains hidden. Actual Alseil dedicated mental Mirror Seal explicitly destroys Stone despite the spirit-pass condition; destruction is processed first, HP reduction0 and body0 with successful resistance. Both start in setup and use only actual placement, turn and attack commands.",
+    "Actual Army ordinary hand-only attack needs paid near approach, uses warrior4/effect4 damage7 and near/warrior/unarmed attributes. Own warrior3/4 gives one/zero use checks. Direct ordinary/dedicated ATTACK and CHANT reject; Dia human permission excludes golem attributes. Placed source is absent from Army options and rejects. Actual parent/child Fate cancellation and forced use failure spend both physical cards once and cause no damage or return to followers. Real Mirror remains legal against the warrior attack, preventing damage without refunding the source.",
+    "DO6 executes actual setup/turn placement, Army, mental pass, explicit mental destruction and Army parent cancellation. Every accepted command saves/evicts/replays identical ACK/state and preserves220 IDs. Browser5 uses actual initial/own-turn arrangement, paid approach and Army controls, ordinary Beast and dedicated Mirror Seal, with reload across resolution. All focused checks and full typecheck passed first attempt.",
+    "17 semantic clauses and main1 implemented, no accepted promotion. Fully integrated card count123/195. Remaining72 includes Singing Ship with1 pending earth-warrior clause and71 other cards; wider shared/candidate receipts remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/stone-golem-physical.test.ts",
+      "passed": 13,
+      "log": "/tmp/madou-stone-golem-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts -t 'ストーンゴーレム'",
+      "passed": 2,
+      "skipped": 128,
+      "log": "/tmp/madou-stone-golem-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-stone-golem-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 6,
+      "log": "/tmp/madou-stone-golem-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/stone-golem-physical.spec.ts",
+      "passed": 5,
+      "log": "/tmp/madou-stone-golem-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-stone-golem-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9827,
+        "implemented": 2285
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p20-r2c3::semantic/follower/printed-level",
+      "a2-p20-r2c3::semantic/follower/printed-hp",
+      "a2-p20-r2c3::semantic/placement/setup",
+      "a2-p20-r2c3::semantic/placement/own-action",
+      "a2-p20-r2c3::semantic/defense/front-order",
+      "a2-p20-r2c3::semantic/follower/attribute-0",
+      "a2-p20-r2c3::semantic/follower/attribute-1",
+      "a2-p20-r2c3::semantic/follower/attribute-2",
+      "a2-p20-r2c3::semantic/attack/grant-required",
+      "a2-p20-r2c3::semantic/attack/ordinary-hand-grant",
+      "a2-p20-r2c3::semantic/attack/discard-not-return",
+      "a2-p20-r2c3::semantic/attack/printed-level",
+      "a2-p20-r2c3::semantic/attack/printed-damage",
+      "a2-p20-r2c3::semantic/attack/attribute-0",
+      "a2-p20-r2c3::semantic/attack/attribute-1",
+      "a2-p20-r2c3::semantic/attack/attribute-2",
+      "a2-p20-r2c3::semantic/defense/no-spirit"
+    ],
+    "mainProducerRebindings": [
+      "a2-p20-r2c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:e047dc3c6401744d",
+      "t:87ff6a61c96956c7",
+      "t:f99f969785759033",
+      "t:717964963c7a9a68",
+      "t:ca07c87c777bb029",
+      "t:5bd8f136ccd11b0e",
+      "t:9a4d77fdecd9bf0d",
+      "t:6366f2adc82ec6c5",
+      "t:e7bc065cba8be6c5",
+      "t:4b2bb0194ddfe6d8",
+      "t:0c7a01cdeb06a50a",
+      "t:1b0ba70d39401d14",
+      "t:a6ff8a22c332397b"
+    ]
+  },
+  "remaining": "123/195 fully integrated; other72 includes Singing Ship one pending clause and71 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

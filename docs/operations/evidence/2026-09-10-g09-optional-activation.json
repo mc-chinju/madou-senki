@@ -1,0 +1,36 @@
+{
+  "rows": [
+    "common:G09#activation/explicit-optional-use",
+    "common:G09#activation/decline-preserves-secret"
+  ],
+  "handlers": [
+    "h:801725d850420eee",
+    "h:7f1ee9c12188008e",
+    "h:e490708f32b82b86"
+  ],
+  "tests": [
+    "t:c1414901383c1b8b",
+    "t:0e496c23c88a087c",
+    "t:562415e0c1b4bbc6",
+    "t:6d193e1ebcf428cb",
+    "t:4674fb684bd6f2be",
+    "t:8048ee908f11c73d"
+  ],
+  "status": "pending",
+  "engine": {
+    "passed": 2,
+    "log": "/tmp/madou-g09-optional-engine.log"
+  },
+  "worker": {
+    "passed": 2,
+    "log": "/tmp/madou-g09-optional-do-final.log"
+  },
+  "browser": {
+    "passed": 2,
+    "log": "/tmp/madou-g09-optional-browser.log"
+  },
+  "typecheck": {
+    "passed": true,
+    "log": "/tmp/madou-g09-optional-types.log"
+  }
+}

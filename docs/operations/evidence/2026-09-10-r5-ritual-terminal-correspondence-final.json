@@ -1,0 +1,419 @@
+{
+  "task": "Final R5 named ritual and terminal implementation correspondence",
+  "status": "Implementation correspondence complete; acceptance and whole goal incomplete",
+  "rows": [
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "own-turn-ritual-card-use",
+      "source": [
+        "src:a67c9c4463c9ff3c"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197",
+        "t:b217690ae52bfb13",
+        "t:82a8f82bbd5c7198",
+        "t:6b7cc22226a46a09",
+        "t:f125c63bd590402f",
+        "t:7081ffb77e2d46ce",
+        "t:ed3c8e09444dab13"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:c5c2ef76ed6e8813"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "transform-Vanmil",
+      "source": [
+        "src:a67c9c4463c9ff3c"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "full-heal",
+      "source": [
+        "src:a67c9c4463c9ff3c"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "retain-zones-distance-once-history",
+      "source": [
+        "src:a67c9c4463c9ff3c"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197",
+        "t:73bb46030a592275",
+        "t:b724e2ca4c5fbdb1",
+        "t:b7f49da599a1d310"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:1569d58b4e26c7a8"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "no-Uonos-inheritance",
+      "source": [
+        "src:a67c9c4463c9ff3c"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "awakening-boundary",
+      "source": [
+        "src:a67c9c4463c9ff3c"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "actual-death-trigger",
+      "source": [
+        "src:c605b0f5fb216c64"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:2b1c5d30fb1e3b89",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc",
+        "t:a010a9a2b127c87d",
+        "t:7b991936f62aed85",
+        "t:614cc5ebafaa6abc"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "mandatory-end",
+      "source": [
+        "src:c605b0f5fb216c64"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:2b1c5d30fb1e3b89",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc",
+        "t:a010a9a2b127c87d",
+        "t:7b991936f62aed85",
+        "t:614cc5ebafaa6abc"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "retain-prior-individual-win",
+      "source": [
+        "src:c605b0f5fb216c64"
+      ],
+      "rulingIds": [
+        "C01"
+      ],
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:2b1c5d30fb1e3b89",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "gapKind": "evidence-missing",
+      "kind": "ability-effect",
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "nonVanmil-active-winners",
+      "source": [
+        "src:c605b0f5fb216c64"
+      ],
+      "rulingIds": [
+        "C13"
+      ],
+      "kind": "ability-effect",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "nonVanmil-dead-winners",
+      "source": [
+        "src:c605b0f5fb216c64"
+      ],
+      "rulingIds": [
+        "C13"
+      ],
+      "kind": "ability-effect",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "coverageClass": "semantic"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "nonVanmil-wandering-winners",
+      "source": [
+        "src:c605b0f5fb216c64"
+      ],
+      "rulingIds": [
+        "C13"
+      ],
+      "kind": "ability-effect",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc"
+      ],
+      "status": "implemented",
+      "remaining": [
+        "n:0181aa57796d7021"
+      ],
+      "coverageClass": "semantic"
+    }
+  ],
+  "evidence": [
+    "2026-09-10-r5-ritual-terminal-clause-map.md",
+    "2026-09-10-r5-ritual-history-transport.md",
+    "2026-09-10-r5-ritual-disabled.md"
+  ]
+}

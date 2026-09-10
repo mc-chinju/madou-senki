@@ -1,0 +1,299 @@
+{
+  "task": "R5 two named abilities semantic correspondence",
+  "newTest": {
+    "id": "t:73bb46030a592275",
+    "path": "packages/engine/test/ritual-history.test.ts",
+    "suite": [],
+    "title": "actual Uonos approach and once-per-game Curse recovery survive the ritual transformation",
+    "declarationSha256": "017dab54d7dff5010a8c8fe3b66ccf451ff6648403e7a6c907e738ceddea4e3c",
+    "parameters": null,
+    "kind": "canonical-transition",
+    "bindingNote": "Actual Uonos APPROACH produces nondefault distances; ordinary chanted Curse hits an opposing Lancaster, explicit base recovery consumes once-per-game budget. Later ritual retains distances, used history, same lifeId, baseSpent, hand except ritual, placed follower, book and other physical zones. No direct history/distance mutation. Engine only for this nondefault-history path."
+  },
+  "rows": [
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "own-turn-ritual-card-use",
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "remaining": [
+        "Printed ritual uses the physical-card handler; existing cancellation and main-action evidence is bound. Actual use while Uonos character abilities are disabled has not been exercised; no rule defect is inferred. Current-candidate acceptance remains incomplete."
+      ]
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "transform-Vanmil",
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "full-heal",
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "retain-zones-distance-once-history",
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197",
+        "t:73bb46030a592275"
+      ],
+      "remaining": [
+        "Actual nondefault distance and once-per-game recovery history retention now have Engine proof; the same nondefault-history trajectory still needs DO/browser evidence. Current-candidate acceptance remains incomplete."
+      ]
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "no-Uonos-inheritance",
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab04",
+      "clauseKey": "awakening-boundary",
+      "handler": [
+        "h:00b3c01452cb984c",
+        "h:3019052aa33e16c2",
+        "h:63b8bf1884da261a"
+      ],
+      "tests": [
+        "t:b09ba2b9db683e91",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:9011e40bd8b91e0f",
+        "t:957b4dfb6a334f40",
+        "t:f6f8ff734eab7cd5",
+        "t:8368d8a8612fe197"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "actual-death-trigger",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:2b1c5d30fb1e3b89",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc",
+        "t:a010a9a2b127c87d",
+        "t:7b991936f62aed85",
+        "t:614cc5ebafaa6abc"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "mandatory-end",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:2b1c5d30fb1e3b89",
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc",
+        "t:a010a9a2b127c87d",
+        "t:7b991936f62aed85",
+        "t:614cc5ebafaa6abc"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "retain-prior-individual-win",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:2b1c5d30fb1e3b89",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "nonVanmil-active-winners",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:9c86928c62f6cb02",
+        "t:7aee5d9b49c99a9b",
+        "t:7f778224d78f5d59",
+        "t:712f227296ba7bfb",
+        "t:abb618959861a028",
+        "t:242d897c223bd4c5",
+        "t:14e6ec039a275ad8",
+        "t:911344478d5918f6",
+        "t:8b69e74af5772a9a",
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "nonVanmil-dead-winners",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab05",
+      "clauseKey": "nonVanmil-wandering-winners",
+      "handler": [
+        "h:c03b038b90ba2fce",
+        "h:4a0e9301a40f2aaa"
+      ],
+      "tests": [
+        "t:a5f3845c288f991f",
+        "t:3306b44f6722241b",
+        "t:24aa552477dbc9dc"
+      ],
+      "remaining": [
+        "Exact current implementation and clause-specific canonical evidence are bound. Current-candidate acceptance and required receipts remain uncompleted; implemented is not accepted."
+      ]
+    }
+  ],
+  "status": "No row promotions; ritual history transport and disabled-ability crossing remain"
+}

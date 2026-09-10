@@ -1,0 +1,108 @@
+{
+  "task": "R5 Task11 Revelation a2-p02-r1c2",
+  "status": "revelation-physical-bindings-integrated-other40-open",
+  "completedAt": "2026-09-10 02:45 JST",
+  "implementation": "No production change. Five semantic clauses and pending main producer bind11 canonical cases, six newly implemented rows.",
+  "canonicalEvidence": [
+    "Actual setup places two hidden followers; actual setup refill opens Haja and permits two real CHANTs over complete turns. Revelation selects other B with hand/twofollowers/twochants, selfD with immediate refill included, C with handonly, or actual EVIL D user. Actual incoming Bow against C may be interrupted by D viewing B. Exact all-zone positions/cardIDs snapshot; no character inspection and no discard/reorder choice. No new revealed faces, order/zone change or fulltargetprofile change.",
+    "Only actual user D sees inspection and history. Target retains its own hand; all other actors get null inspection and emptyhistory; hidden IDs absent from nonowner/nontarget fullviews and actual publicevents. Fixture clears only pre-arranged createGame deal logs before actual setup, preserving every actual setup/turn log. Saved ACK or PASS acknowledgement closes choice and restores original action; Bow does4 once. History keeps original snapshot across actual later targetdraw, no newly acquired card ID leaked. Selfuse snapshots postpayment/refill current hand.",
+    "Actual Fate canceled Revelation retains immediate refill and originalphase with no inspection/history. Existing actual Rift timeline produces otherworld B with actual follower/attachment/chant possessions; Revelation excludesB withoutcost. Foreign/stale/malformed target and wrongactor/stale/discard/reorder choices reject fullstate/all4views; completeddecision replay is rejected. Optional decline leavescard andzones intact. Engine11 unique canonical cases JSONreexecution220IDs; DO9 everyacceptedcommand save/restart/replay; browser9 actualcontrols, owneronly panel/history, reload both active and finished and afternewdraw. Shared/candidate receipts pending, no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/revelation-physical.test.ts",
+      "uniquePassed": 11,
+      "attempts": [
+        {
+          "log": "/tmp/madou-revelation-engine.log",
+          "passed": 1,
+          "failed": 10,
+          "reason": "Initial fixture lacked two-chant capacity. Added actual setupdraw Haja before the real CHANT commands."
+        },
+        {
+          "log": "/tmp/madou-revelation-engine-haja.log",
+          "passed": 6,
+          "failed": 5,
+          "reason": "Pre-arranged createGame deal logs still referred to prior owners. Clear only those synthetic initial logs before all actual setup commands."
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/revelation-physical.test.ts -t 'revelation-zones|revelation-combat|revelation-history|revelation-pass|revelation-evil'",
+          "log": "/tmp/madou-revelation-engine-privacy.log",
+          "passed": 5,
+          "skipped": 6
+        }
+      ]
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/anytime-information.test.ts packages/engine/test/turn-information-abilities.test.ts -t 'Revelation|revelation|inspection'",
+      "passed": 7,
+      "skipped": 82,
+      "log": "/tmp/madou-revelation-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-revelation-physical.test.ts",
+      "passed": 9,
+      "log": "/tmp/madou-revelation-do.log",
+      "firstAttempt": true
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/revelation-physical.spec.ts",
+      "passed": 9,
+      "log": "/tmp/madou-revelation-browser.log",
+      "firstAttempt": true
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-revelation-types-final.log",
+      "initialFailure": {
+        "log": "/tmp/madou-revelation-types.log",
+        "reason": "Test flatMap inferred hand-only zone type; explicitly supply the full three-zone union in Engine and DO test expected snapshots."
+      }
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9249,
+        "implemented": 2863
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p02-r1c2::semantic/timing/printed-window",
+      "a2-p02-r1c2::semantic/inspect/one-player",
+      "a2-p02-r1c2::semantic/inspect/all-hand",
+      "a2-p02-r1c2::semantic/inspect/all-followers",
+      "a2-p02-r1c2::semantic/inspect/all-chants"
+    ],
+    "mainProducerRebindings": [
+      "a2-p02-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:82d97fb494e86896",
+      "t:ec4f535e2210ef62",
+      "t:8f828166fe6731e6",
+      "t:d93218d08de92c8b",
+      "t:7a051b70d34d30ff",
+      "t:a884cc5b4546dfb1",
+      "t:dfed12c7811d2ea3",
+      "t:14267a348a0db89c",
+      "t:cba4b82473798783",
+      "t:4b65a9f601cf82dc",
+      "t:a63ef3bc6543a3cc"
+    ]
+  },
+  "remaining": "155/195 fully integrated; other40 includes partial SingingShip1 and WingedFolk1 plus38 other cards. Shared/candidate receipts and whole-goal gates remain open."
+}

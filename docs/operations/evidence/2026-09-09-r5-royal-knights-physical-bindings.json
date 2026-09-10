@@ -1,0 +1,151 @@
+{
+  "task": "R5 Task11 Royal Knights a2-p21-r1c2",
+  "status": "royal-knights-physical-bindings-integrated-other67-open",
+  "completedAt": "2026-09-09 19:50 JST",
+  "implementation": "No production changes. 24 semantic clauses and main producer bind29 actual transition references.",
+  "canonicalEvidence": [
+    "Actual setup and own-turn placement, reorder/removal, hidden identity, front-first Metal protection and maai avoid entry. Physical follower5 HP0 human knight. Actual Dia approach and Dwarf4/5/6 three6-damage hits yield reflected18 at4, equal destruction/body0 at5, higher destruction/body18 at6. Fixed reflection limit4 is distinct from follower5.",
+    "Actual spirit6 morale modifier0: faces2/4 succeeds and reflects all three hits, faces3/4 fails and applies no reflection or HP, source discards once and body18. Once per reached group, never for hidden unreached rear, another actual Bow group rolls again. Explicit Lia defense package at spirit0 waives morale and reflects18; omitted package fails normally. Foreign and duplicate dedicated selections reject.",
+    "Actual reflected Bow retains range/school/use3/effect3/damage4, no extra checks/payment and physical lineage; original attacker can use new maai defense. Actual Gadyura Skeleton counterban does not prevent local physical reflection: owner0, attacker2, other selected player2. Actual dedicated Wight ignore bypasses Royal without morale/reveal/reflection: owner5, attacker0, other5. Actual Shock magic4 reflects5; MagicShock5 does not reflect and equal-destroys Royal with body0. Actual Mirror returns reflected Shock, but the same Royal physical source cannot reflect twice in that lineage; its ordinary higher defense blocks the returned hit.",
+    "Actual Lia dedicated hand/field, Dia human ordinary grant hand/field and Army hand require near approach and produce one near warrior sword use/effect4 damage5 hit. Own warrior3/4 retains one/zero use checks; dedicated does not add all-targets or noChecks. Army alone rolls morale. Unsupported ordinary/foreign dedicated/CHANT, multi-target dedicated and placed Army refuse. Hand/field Fate cancellation, Army parent/child/morale failure and dedicated use failure consume paid source once without return.",
+    "Every accepted Engine command JSON-reexecutes and preserves220 unique card IDs; rejections preserve state and full views. Initial character/draw logs align with scripted deals. DO16 persists, evicts and replays identical ACK/state after every command. Browser13 operates actual setup/turn defense, equal/higher/fail/waive, counterban/ignore, Army, dedicated and Dia grant hand/field with reload.",
+    "24 rows implemented, main1 rebound, no accepted promotion. Fully integrated128/195, other67 includes Singing Ship one pending earth-warrior clause and66 other cards. Shared rulings and candidate receipts remain open."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/royal-knights-physical.test.ts",
+      "initial": {
+        "passed": 23,
+        "failed": 2,
+        "log": "/tmp/madou-royal-knights-physical-engine.log"
+      },
+      "correction": "Dia grant options do not exist before near approach; assert their absence and construct the grant after actual approach. No runtime change.",
+      "targeted": {
+        "passed": 7,
+        "skipped": 19,
+        "log": "/tmp/madou-royal-knights-physical-engine-target.log",
+        "note": "Five allowed-attack paths plus two reflected-defense variants; includes added maai variant."
+      },
+      "magicAdded": {
+        "passed": 3,
+        "skipped": 26,
+        "log": "/tmp/madou-royal-knights-physical-engine-magic.log"
+      },
+      "coverage": 29
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts -t '王立騎士団|Royal guard reflects'",
+      "passed": 9,
+      "skipped": 244,
+      "log": "/tmp/madou-royal-knights-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-royal-knights-physical.test.ts",
+      "cwd": "apps/worker",
+      "coverage": 16,
+      "initial": {
+        "passed": 8,
+        "failed": 8,
+        "reason": "Eight cases exceeded15000ms test limit; cause undetermined.",
+        "log": "/tmp/madou-royal-knights-physical-do.log"
+      },
+      "unchangedTargetedRetry": {
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-royal-knights-physical.test.ts -t '(counterban|ignore|army|ded-hand|ded-field|grant-hand|grant-field) canceled=false|army canceled=true'",
+        "passed": 8,
+        "skipped": 8,
+        "timeoutMs": 15000,
+        "log": "/tmp/madou-royal-knights-physical-do-target.log"
+      }
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/royal-knights-physical.spec.ts",
+      "passed": 13,
+      "log": "/tmp/madou-royal-knights-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-royal-knights-physical-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9733,
+        "implemented": 2379
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p21-r1c2::semantic/follower/printed-level",
+      "a2-p21-r1c2::semantic/follower/printed-hp",
+      "a2-p21-r1c2::semantic/placement/setup",
+      "a2-p21-r1c2::semantic/placement/own-action",
+      "a2-p21-r1c2::semantic/defense/front-order",
+      "a2-p21-r1c2::semantic/follower/attribute-0",
+      "a2-p21-r1c2::semantic/follower/attribute-1",
+      "a2-p21-r1c2::semantic/morale/receive-trigger",
+      "a2-p21-r1c2::semantic/morale/spirit-modifier",
+      "a2-p21-r1c2::semantic/morale/failure-discard",
+      "a2-p21-r1c2::semantic/attack/grant-required",
+      "a2-p21-r1c2::semantic/attack/ordinary-hand-grant",
+      "a2-p21-r1c2::semantic/attack/discard-not-return",
+      "a2-p21-r1c2::semantic/attack/printed-level",
+      "a2-p21-r1c2::semantic/attack/printed-damage",
+      "a2-p21-r1c2::semantic/attack/attribute-0",
+      "a2-p21-r1c2::semantic/attack/attribute-1",
+      "a2-p21-r1c2::semantic/attack/attribute-2",
+      "a2-p21-r1c2::semantic/defense/reflect-fixed-four",
+      "a2-p21-r1c2::semantic/dedicated/owner-filter",
+      "a2-p21-r1c2::semantic/dedicated/from-hand",
+      "a2-p21-r1c2::semantic/dedicated/from-placement",
+      "a2-p21-r1c2::semantic/dedicated/use-check",
+      "a2-p21-r1c2::semantic/dedicated/morale-waiver"
+    ],
+    "mainProducerRebindings": [
+      "a2-p21-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:99dda822c56b9744",
+      "t:79f142bb037ec062",
+      "t:98e782df659cd5f7",
+      "t:66a002276de1525d",
+      "t:1b14b1db7030bac2",
+      "t:4352e56ec348431a",
+      "t:27b987da7d8940f2",
+      "t:3a760795bf710f5f",
+      "t:11b272846940b605",
+      "t:c93bcd92b55aacd6",
+      "t:e86edbdedbd69276",
+      "t:9412559887c543dd",
+      "t:9ef84482e9401e4a",
+      "t:e69f5d2e8c34d8ad",
+      "t:3c4e7657e897524a",
+      "t:1fbb064185f9441f",
+      "t:983c14c4da5029c8",
+      "t:b3b89012cd675d30",
+      "t:0c7853283413e5ab",
+      "t:9a739024cb7313a5",
+      "t:97aa8c13e6e07108",
+      "t:d4ed83b35f056701",
+      "t:9c21363825b85e74",
+      "t:df3e7d0462cf57ed",
+      "t:57d9796fe95008ab",
+      "t:789671076646550f",
+      "t:6d6b5a0760aad1bb",
+      "t:949a05a58e08f728",
+      "t:d7c4b7e32162f413"
+    ]
+  },
+  "remaining": "128/195 integrated, other67 including partial Singing Ship. Strict shared/candidate receipts and whole-goal gates remain open."
+}

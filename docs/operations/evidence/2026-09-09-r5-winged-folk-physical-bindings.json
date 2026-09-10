@@ -1,0 +1,155 @@
+{
+  "task": "R5 Task11 Winged Folk a2-p21-r1c3",
+  "status": "winged-folk-partial27-of28-other67-open",
+  "completedAt": "2026-09-09 20:05 JST",
+  "implementation": "No production changes. 27 semantic clauses and main producer bind34 actual transition references; one earth-warrior exclusion clause remains pending.",
+  "canonicalEvidence": [
+    "Actual initial and own-turn placement, order/removal/privacy, front-first and hidden unreached rear. Physical follower5 HP0 human/sky/wing. Actual Dia approach and Dwarf4/5/6 three6-damage hits give body0/0/18 and keep/discard/discard. Morale spirit6 modifier-1 has threshold5:2+3 succeeds,3+3 fails. Both higher-hit paths use HP0; failure disables all defense. Once per reached group, later actual Bow group rechecks, hidden rear has no morale.",
+    "Actual explicit Tia package freezes7 HP0 versus Dwarf6/7/8, with no morale at spirit0 and body0/0/18; lower survives, equal/higher discard. Omitted Tia package keeps ordinary morale and fails at spirit0; foreign/duplicate dedicated selections refuse.",
+    "Actual Ramba Earth Spear effect4damage9 targets A and C. Reached Winged Folk nullifies onlyA after morale success, C9; morale failure givesA9 C9 and discard. Explicit Tia atspirit0 nullifies without morale. FrontMetal blocks ordinary Earth Spear before hidden rear Winged Folk. Actual revealed Tia attacker pays advance for surprise; ordinary Earth Spear bypasses hidden Winged Folk with no morale/nullification/HP and A6. Both latter sources remain hidden. Earth-warrior exclusion lacks an actual producer and stays pending, as for Singing Ship.",
+    "Actual Tia dedicated hand/field, Dia human ordinary hand/field, Army hand: far wind magic use/effect7, mandatory complete target set, one10+2d6 roll shared by B/C/D. Magic6/7 gives one/zero use checks, dedicated retains checks. Faces2/5 give17 to each target, no per-target reroll; near targets also legal. Army alone requires morale. Missing/self/duplicate target sets refuse; placed Army and unpermitted ordinary/foreign dedicated/CHANT refuse. Local maai protects onlyB. Actual Lancelot dedicated Mirror can reflect effect7 to A with17, B0/C17/D17 and one attack roll. Ordinary Mirror limit6 is insufficient.",
+    "Actual dedicated Fate hand/field, Army parent/child/morale/use failure, dedicated use failure and Dia grant cancellation consume paid source once without return. Every accepted Engine command JSON-reexecutes with220 unique IDs; rejected state/all views unchanged. DO20 persists, evicts and replays identical ACK/state after every command. Browser16 exercises all normal scenarios including reveal and paid Tia surprise, explicit defense package, mandatory-all controls and shared numeric roll across all three recipients; reload is retained.",
+    "27/28 semantic rows implemented, main1 rebound; not-earth-warrior pending. No accepted promotion. Fully integrated128/195 remains unchanged, other67 includes partial Singing Ship21/22 and Winged Folk27/28 plus65 other cards. Shared/candidate requirements remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/winged-folk-physical.test.ts",
+      "initial": {
+        "passed": 33,
+        "failed": 1,
+        "log": "/tmp/madou-winged-folk-physical-engine.log"
+      },
+      "correction": "Ordinary Mirror has magic limit6 and cannot reflect Winged Folk7; use actual Lancelot dedicated Mirror with limit7. No runtime change.",
+      "targetedRetry": {
+        "passed": 1,
+        "skipped": 33,
+        "log": "/tmp/madou-winged-folk-physical-engine-mirror.log"
+      },
+      "coverage": 34
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts -t '有翼族|future heterogeneous reached earth warrior'",
+      "passed": 13,
+      "skipped": 240,
+      "log": "/tmp/madou-winged-folk-physical-related.log",
+      "note": "No actual earth-warrior producer proof is claimed."
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-winged-folk-physical.test.ts",
+      "cwd": "apps/worker",
+      "coverage": 20,
+      "initial": {
+        "passed": 14,
+        "failed": 6,
+        "reason": "Six cases exceeded15000ms test limit; cause undetermined.",
+        "log": "/tmp/madou-winged-folk-physical-do.log"
+      },
+      "unchangedTargetedRetry": {
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-winged-folk-physical.test.ts -t '(army|ded-hand|ded-field|grant-hand|grant-field) canceled=false|army canceled=true'",
+        "passed": 6,
+        "skipped": 14,
+        "timeoutMs": 15000,
+        "log": "/tmp/madou-winged-folk-physical-do-target.log"
+      }
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/winged-folk-physical.spec.ts",
+      "passed": 16,
+      "log": "/tmp/madou-winged-folk-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "initialCorrection": "Projected roll.total can be null; compare total against faces and calculate expected damage from the observed faces.",
+      "log": "/tmp/madou-winged-folk-physical-types-final.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9706,
+        "implemented": 2406
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p21-r1c3::semantic/follower/printed-level",
+      "a2-p21-r1c3::semantic/follower/printed-hp",
+      "a2-p21-r1c3::semantic/placement/setup",
+      "a2-p21-r1c3::semantic/placement/own-action",
+      "a2-p21-r1c3::semantic/defense/front-order",
+      "a2-p21-r1c3::semantic/follower/attribute-0",
+      "a2-p21-r1c3::semantic/follower/attribute-1",
+      "a2-p21-r1c3::semantic/follower/attribute-2",
+      "a2-p21-r1c3::semantic/morale/receive-trigger",
+      "a2-p21-r1c3::semantic/morale/spirit-modifier",
+      "a2-p21-r1c3::semantic/morale/failure-discard",
+      "a2-p21-r1c3::semantic/attack/grant-required",
+      "a2-p21-r1c3::semantic/attack/ordinary-hand-grant",
+      "a2-p21-r1c3::semantic/attack/discard-not-return",
+      "a2-p21-r1c3::semantic/attack/printed-level",
+      "a2-p21-r1c3::semantic/attack/printed-damage",
+      "a2-p21-r1c3::semantic/attack/attribute-0",
+      "a2-p21-r1c3::semantic/attack/attribute-1",
+      "a2-p21-r1c3::semantic/attack/attribute-2",
+      "a2-p21-r1c3::semantic/defense/earth-magic-null",
+      "a2-p21-r1c3::semantic/dedicated/owner-filter",
+      "a2-p21-r1c3::semantic/dedicated/from-hand",
+      "a2-p21-r1c3::semantic/dedicated/from-placement",
+      "a2-p21-r1c3::semantic/dedicated/use-check",
+      "a2-p21-r1c3::semantic/dedicated/morale-waiver",
+      "a2-p21-r1c3::semantic/dedicated/base-level-seven",
+      "a2-p21-r1c3::semantic/attack/all-targets"
+    ],
+    "mainProducerRebindings": [
+      "a2-p21-r1c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:dc489f8cc4e328e0",
+      "t:41dcd806d7abff96",
+      "t:acaeab995f60275a",
+      "t:aef5e0360664e432",
+      "t:a70461d3f6420653",
+      "t:e8f025b82c2ac612",
+      "t:246e92df2f2dda5f",
+      "t:96a61f46143a7127",
+      "t:8e82a31880a3decb",
+      "t:ae667a0a44b1e5f1",
+      "t:306d3c4c853b0851",
+      "t:804ccfa1e8335c9a",
+      "t:4b7f6859d78aae39",
+      "t:5ab0f670be2cddaf",
+      "t:dc0a1e36da183852",
+      "t:ca89b5faa6c33732",
+      "t:b0743fbfd262d30d",
+      "t:09094ce4b1ef6d4f",
+      "t:68350bfc50779a42",
+      "t:672d93d0e3770f4e",
+      "t:e3f9b76b6700f3e9",
+      "t:a39b03edd8a7f476",
+      "t:1f45ef6ec3d70c1b",
+      "t:535919d62504b13d",
+      "t:25b577de291a0e41",
+      "t:568cce2e9490f9a8",
+      "t:b9b15e64d7ec6a43",
+      "t:c478ca21c1d6f095",
+      "t:7c215f219ccb91c3",
+      "t:3b187bad4ac3d32c",
+      "t:c629f5cc3040d199",
+      "t:394d095cb0caa677",
+      "t:e693e5eede24c0f0",
+      "t:1cdcbe415ebd9d59"
+    ]
+  },
+  "remaining": "128/195 fully integrated; other67 includes SingingShip1 pending and WingedFolk1 pending plus65 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

@@ -1,3 +1,4 @@
+import {uncanceledMaai,maaiAdvanceFactor} from './distance.js';
 import {canUseCharacterAbility,type GameState} from '../state.js';
 import {isActive} from '../lifecycle/objectives.js';
 import {ownsAbility} from './ownership.js';
@@ -6,8 +7,8 @@ import {currentHit,type ActionFrame,type AttackGroup,type AttackTarget,type Tech
 export const LANCASTER_WIND='c2-p02-r2c1-ab01';
 export const BLACK_BOW='c2-p03-r2c2-ab03';
 export interface SelectedWind {abilityId:typeof LANCASTER_WIND;actorId:string}
-export function actualPropertyAttack(a:ActionFrame):boolean {return !a.canceled&&!a.fixedReceivedEffect&&!a.followerOrigin&&(a.kind==='attack'||a.kind==='defense'&&a.technique.defense==='counter');}
-function active(s:GameState,actorId:string,id:AbilityId):boolean {const p=s.players[actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p)&&ownsAbility(p,id);}
+export function actualPropertyAttack(a:Pick<ActionFrame,'kind'|'technique'|'canceled'|'fixedReceivedEffect'|'followerOrigin'>):boolean {return !a.canceled&&!a.fixedReceivedEffect&&!a.followerOrigin&&(a.kind==='attack'||a.kind==='defense'&&a.technique.defense==='counter');}
+function active(s:GameState,actorId:string,id:AbilityId):boolean {const p=s.players[actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p,s)&&ownsAbility(p,id);}
 function warriorSource(s:GameState,g:AttackGroup,h:AttackTarget['hits'][number],base:Technique):boolean {const a=s.actions?.[h.sourceActionId??g.actionId];return !!a&&actualPropertyAttack(a)&&a.actorId===g.attackerId&&base.school==='warrior';}
 export function windAbilityOptions(s:GameState,actorId:string,add:(id:AbilityId,extra?:Partial<AbilityOption>)=>void):void {
  const w=s.windows?.at(-1);if(w?.kind!=='attack-abilities'||w.continuation.kind!=='group')return;
@@ -23,13 +24,13 @@ export function attackPropertyTechnique(s:GameState,g:AttackGroup,t:AttackTarget
  const bow=base.attributes.includes('弓')&&a.modifiers?.selected.some(m=>m.abilityId===BLACK_BOW&&m.actorId===a.actorId&&active(s,m.actorId,BLACK_BOW));
  return wind||bow?{...base,...(wind?{maaiRequired:(base.maaiRequired??1)+1}:{}),...(bow?{evadeProhibited:true}:{})}:base;
 }
-export interface MaaiDefenseView {groupId:string;attackerId:string;hitIndex:number;targetId:string|null;responding:boolean;sharedAdvances:number;targets:{actorId:string;hitIndex:number;required:number;prohibited:boolean;carried:number;submitted:number;effective:number;remaining:number;closed:boolean}[]}
+export interface MaaiDefenseView {groupId:string;attackerId:string;hitIndex:number;targetId:string|null;responding:boolean;sharedAdvances:number;targets:{actorId:string;hitIndex:number;required:number;advanceFactor?:number|null;prohibited:boolean;carried:number;submitted:number;effective:number;remaining:number;closed:boolean}[]}
 /** Allowlisted public current-exchange counts; never expose physical submissions or private sources. */
 export function maaiDefenseView(s:GameState,effectiveTechnique:(s:GameState,g:AttackGroup,t:AttackTarget,h:AttackTarget['hits'][number])=>Technique):MaaiDefenseView|null {
  const w=s.windows?.at(-1);if(!w||!['normal-defense','defense-advance'].includes(w.kind)||w.continuation.kind!=='group')return null;
  const g=s.groups?.[w.continuation.id];if(!g?.maai)return null;const exchange=g.maai;
  return {groupId:g.id,attackerId:g.attackerId,hitIndex:g.hitCursor,targetId:w.continuation.targetId,responding:w.kind==='defense-advance',sharedAdvances:exchange.advances.length,targets:g.targets.flatMap(t=>{
-  const h=currentHit(g,t.actorId);if(!h)return [];const technique=effectiveTechnique(s,g,t,h);const required=technique.maaiRequired??1,carried=h.maaiProgress??0,submitted=exchange.submissions[t.actorId]?.length??0,effective=carried+Math.max(0,submitted-exchange.advances.length);
-  return [{actorId:t.actorId,hitIndex:h.index,required,prohibited:!!technique.maaiProhibited,carried,submitted,effective,remaining:Math.max(0,required-effective),closed:t.normalDefenseClosed||h.defended||!!h.passedDefense}];
+  const h=currentHit(g,t.actorId);if(!h)return [];const technique=effectiveTechnique(s,g,t,h);const required=technique.maaiRequired??1,carried=h.maaiProgress??0,submitted=exchange.submissions[t.actorId]?.length??0,effective=carried+uncanceledMaai(s,g,t.actorId);
+  return [{actorId:t.actorId,hitIndex:h.index,required,advanceFactor:maaiAdvanceFactor(s,g,t.actorId),prohibited:!!technique.maaiProhibited,carried,submitted,effective,remaining:Math.max(0,required-effective),closed:t.normalDefenseClosed||h.defended||!!h.passedDefense}];
  })};
 }

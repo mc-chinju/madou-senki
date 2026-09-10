@@ -87,8 +87,8 @@ describe('whole numeric package decline/cancellation', () => {
         s = priority(s, 'B');
         const effectRoll = source(s).declaration!.effectRollId!;
         s = act(s, 'B', { type: 'PLAY_REACTION', cardInstanceId: divine, mode: 'reroll', targetRollId: effectRoll });
-        s = closeWindow(s, [6]);
-        s = closeWindow(s);
+        // Reroll payment and its renewed after-roll responses may add child windows.
+        for (let n = 0; s.windows!.at(-1)!.kind !== 'damage' && n < 300; n++) s = pass(s, [6]);
         expect(s.windows!.at(-1)!.kind).toBe('damage');
         s = closeWindow(s, [4]);
         s = closeWindow(s);

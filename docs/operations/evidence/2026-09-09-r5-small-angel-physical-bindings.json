@@ -1,0 +1,110 @@
+{
+  "task": "R5 Task11 Small Angel a2-p20-r2c2",
+  "status": "small-angel-physical-bindings-integrated-other73-open",
+  "completedAt": "2026-09-09 18:54 JST",
+  "implementation": "No production changes. Small Angel17 semantic clauses and main producer bind18 actual transition test references.",
+  "canonicalEvidence": [
+    "Actual initial/own-turn placement, reorder/removal, hidden identity, foreign/duplicate/capacity refusal and maai retention. Physical level4 HP0 white/flying. Actual Bow3 blocks; Metal front prevents reaching hidden rear. Actual Dia approaches and grants Dwarf three6-damage hits at warrior3/4/5: body0/0/18 with alive/equal discard/higher discard. Every command JSON-reexecutes and preserves220 unique IDs; rejected commands preserve complete state/all views. Private initial character/draw events agree with scripted initial preconditions.",
+    "Actual ordinary Shock4/MagicShock5/EarthSplit6 compare against conditional magic-defense5, with body0/0/8 and survive/equal discard/higher discard. Actual Dia Dwarf5x3 plus DarkSaint5 one group freezes physical-source levels4/4/4/5, outcomes lower/lower/lower/equal, HP reductions0 each and total body18. Follower is discarded once. Warrior baseline is4 even though magic defense is5.",
+    "Actual Army hand-only ordinary bottom is far magic use3/effect3 damage4 white, with ownmagic2/3 giving one/zero use checks. Actual paid near approach also permits the far attack. Direct ordinary/dedicated ATTACK and CHANT reject; Dia human grant excludes this nonhuman follower. Placed source is absent from Army choices and rejects. Gadyura with both physical cards in hand cannot use its white attack. Army parent/child Fate cancellation and forced use failure spend both cards once, without damage/refund/return to defense. Real Mirror reflects4 to source owner after Small Angel physical payment, leaving no follower available to absorb the returned hit.",
+    "DO9 exercises actual setup/turn placement, three magic boundary attacks, mixed Dia group, Army, actual Mirror and parent cancellation. Every command saves/evicts/replays identical ACK/state and220 IDs. Browser8 uses actual placement, spell attacks, mixed follower-bundle controls, Army and Mirror, with reload before/after resolution.",
+    "17 semantic clauses and main1 are implemented, no accepted promotion. Fully integrated card count122/195. Remaining73 includes Singing Ship with1 pending earth-warrior clause and72 other cards; candidate receipts/shared crossings remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/small-angel-physical.test.ts",
+      "passed": 18,
+      "log": "/tmp/madou-small-angel-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/follower-attack-grants.test.ts -t '小天使'",
+      "passed": 3,
+      "skipped": 127,
+      "filesExecuted": [
+        "packages/engine/test/physical-followers.test.ts"
+      ],
+      "log": "/tmp/madou-small-angel-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-small-angel-physical.test.ts",
+      "cwd": "apps/worker",
+      "initial": "Transform error from copied mockImplementation identifier; no tests executed. Corrected that test-only identifier.",
+      "initialLog": "/tmp/madou-small-angel-physical-do.log",
+      "passed": 9,
+      "log": "/tmp/madou-small-angel-physical-do-retry.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/small-angel-physical.spec.ts",
+      "passed": 8,
+      "log": "/tmp/madou-small-angel-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-small-angel-physical-types.log",
+      "correction": "Same Worker test identifier syntax error corrected; full typecheck passed."
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9844,
+        "implemented": 2268
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p20-r2c2::semantic/follower/printed-level",
+      "a2-p20-r2c2::semantic/follower/printed-hp",
+      "a2-p20-r2c2::semantic/placement/setup",
+      "a2-p20-r2c2::semantic/placement/own-action",
+      "a2-p20-r2c2::semantic/defense/front-order",
+      "a2-p20-r2c2::semantic/follower/attribute-0",
+      "a2-p20-r2c2::semantic/follower/attribute-1",
+      "a2-p20-r2c2::semantic/attack/grant-required",
+      "a2-p20-r2c2::semantic/attack/ordinary-hand-grant",
+      "a2-p20-r2c2::semantic/attack/discard-not-return",
+      "a2-p20-r2c2::semantic/attack/printed-level",
+      "a2-p20-r2c2::semantic/attack/printed-damage",
+      "a2-p20-r2c2::semantic/attack/attribute-0",
+      "a2-p20-r2c2::semantic/attack/attribute-1",
+      "a2-p20-r2c2::semantic/attack/attribute-2",
+      "a2-p20-r2c2::semantic/defense/magic-level",
+      "a2-p20-r2c2::semantic/defense/nonmagic-base"
+    ],
+    "mainProducerRebindings": [
+      "a2-p20-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:35e89376ed0087ca",
+      "t:5f4bf96070cfdc09",
+      "t:645d64a00abeb7e2",
+      "t:5fb5ae2226ad344a",
+      "t:4a6089ab222456ca",
+      "t:e050b0d6a15eca06",
+      "t:381aad30d55793bd",
+      "t:1fd7581d69e73879",
+      "t:c32ebbbd89b27cea",
+      "t:67b3e9d296ddd3ae",
+      "t:b55fc7a73713c2f0",
+      "t:5d787b308d11eefa",
+      "t:86ab97fadb60b703",
+      "t:6c0124fa5b8d2eed",
+      "t:f4bef6b2b5355711",
+      "t:928bb44784eb40b2",
+      "t:9e7967d55e95dfa3",
+      "t:85c28135e25f464c"
+    ]
+  },
+  "remaining": "122/195 fully integrated; other73 includes Singing Ship one pending clause and72 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

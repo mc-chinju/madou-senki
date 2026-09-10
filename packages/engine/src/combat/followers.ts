@@ -1,3 +1,5 @@
+import {reclaimEventId} from '../reclaim.js';
+import {lifeIdentity} from '../abilities/suppression-state.js';
 import {gameStats} from '../game-stats.js';
 import {recordIgnoredBeast} from '../abilities/beast-empathy.js';
 import {freezeEntryModifiers,virtualGuardWillEnter} from '../abilities/follower-entry.js';
@@ -25,7 +27,7 @@ export function freezeFollowerSnapshot(state: GameState, group: AttackGroup, tar
     });
 }
 function ignored(t: AttackTarget, source: FollowerDefenseSnapshot, technique: Technique, index: number): boolean {
-    return !!(technique.followerIgnore || t.frozenAbilityIgnore || t.followerBypassChoice && source.levels[index]! <= technique.effectLevel || technique.ignoreFollowerAttributes?.some(a => source.descriptor.attributes.includes(a)));
+    return !!(technique.ignoreDarkSaint&&source.source==='physical'&&source.cardInstanceId==='a2-p21-r2c1' || technique.followerIgnore || t.frozenAbilityIgnore || t.followerBypassChoice && source.levels[index]! <= technique.effectLevel || technique.ignoreFollowerAttributes?.some(a => source.descriptor.attributes.includes(a)));
 }
 function destruction(d: FollowerDefenseSnapshot, t: Technique, level: number): FollowerOutcome | undefined {
     const attributes = d.descriptor.attributes;
@@ -172,8 +174,13 @@ export function resolveFollowerSnapshot(state: GameState, group: AttackGroup, ta
             continue;
         const at = player.followers.findIndex(f => f.cardInstanceId === d.cardInstanceId);
         if (at >= 0) {
-            player.followers.splice(at, 1);
-            state.discard.push(d.cardInstanceId);
+            const [placed]=player.followers.splice(at,1);
+            state.resolution.push(d.cardInstanceId);
+            const sourceActorId=placed!.placedById??player.id;
+            (target.followerReclaimSources??=[]).push({kind:'ordinary-disposition',fromZone:'resolution',
+              sourceId:`${group.id}-${target.actorId}-${d.cardInstanceId}`,eventId:reclaimEventId(state,state.actions![group.actionId]!),
+              sourceActorId,sourceLifeId:placed!.placedLifeId??lifeIdentity(state.players[sourceActorId]!),
+              cardInstanceId:d.cardInstanceId,trigger:'follower-died'});
         }
     }
     target.followersSettled = true;

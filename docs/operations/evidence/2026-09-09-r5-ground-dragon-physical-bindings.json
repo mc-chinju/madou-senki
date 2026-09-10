@@ -1,0 +1,144 @@
+{
+  "task": "R5 Task11 Ground Dragon a2-p22-r2c3",
+  "status": "ground-dragon-physical-bindings-integrated-other55-open",
+  "completedAt": "2026-09-09 23:09 JST",
+  "implementation": "No production changes.25 semantic clauses and main producer bind36 actual transition references.",
+  "canonicalEvidence": [
+    "Actual initial/own-action placement, reorder/removal, hidden identity and front order. Follower6 HP6 dragon/beast/earth/sky. Actual Bow3 blocks and survives; actual Dia-granted Dwarf5/6/7 triple6 gives body0/0/0 with keep/equal-destroy/higher-destroy and HP6 each higher hit. Spirit6 modifier0 faces2/4 pass3/4 fail once per reached group, failure gives noHP body18/discardonce, later group rechecks/unreached hidden rear none. Maai prevents follower entry.",
+    "Actual nonwhite EarthSplit6, Shelim WhiteRing7 and Prayer makes8 compare magic defense7 and body0/0/4. Spirit0 failure takes8 even against magic6. Asfelt/Upa cannot elect unprinted waiver or direct hand/placed ordinary/dedicated/CHANT attack. Actual Tia sky ignore leaves Ground Dragon hidden and dealsA/C12 withoutHP6/morale. Alseil explicit MirrorSeal destruction also bypasses HP/morale and destroys with body0.",
+    "Actual Upa beast grant hand/placed and Army hand ordinary far earth magic6damage8 mandatory all B/C/D. Magic5/6 gives1/0 use checks independent warrior, only Army morale. Empty/self/duplicate/subset targets or unprinted dedicated grant reject. Dia human excludes dragon and placed Army rejects. Real attack destroys reached non-sky front Metal/rear Guard before level/HP/morale, body8. Printed flying SmallAngel/SmallDevil also both destroyed, no reinterpretation as sky. Front Angel magic7 blocks normally and keeps rear Metal hidden, both retained. Lower sky Griffin compares normally with HP3 then rear Metal explicitly destroyed, body5. Actual Upa grant retains same explicit destruction and body8 without defender morale.",
+    "Actual maai/Mirror remove local hit before nonsky destruction, preserving front Metal/rear Guard hidden; C/D8, reflectionA8 when Mirror. Actual approach also allowed. Parent/child/ability cancellation and forced morale/use failure consume physical costs once before all targets, no return. Every Engine command JSON-reexecutes220 unique IDs, rejection preserves state/all actor views. DO19 saves/evicts/replays ACK/state, including all-target Army/Upa grant cancellations and three real defensive pairs. Browser17 actual setup/turn, magic6/7/Prayer8/fail, sky ignore/destruction, Army and Upa hand/placed all targets, reached nonsky/flying destruction and skyfront hidden rear, with reload.25 rows implemented/main1 rebound, no accepted promotion; shared/candidate gates pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/ground-dragon-physical.test.ts",
+      "initialPassed": 33,
+      "initialFailed": 3,
+      "initialFailure": "Two WhiteRing tests wrongly declared two targets; corrected to its single target. Front Angel correctly reports blocked rather than higher-block; expectation corrected.",
+      "log": "/tmp/madou-ground-dragon-engine.log",
+      "targetCommand": "pnpm exec vitest run packages/engine/test/ground-dragon-physical.test.ts -t 'magic-equal|magic-high|skyfront front'",
+      "targetPassed": 3,
+      "targetSkipped": 33,
+      "targetLog": "/tmp/madou-ground-dragon-engine-target.log",
+      "coveredCases": 36
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts packages/engine/test/all-army.test.ts -t '地竜'",
+      "passed": 3,
+      "skipped": 266,
+      "filesPassed": 1,
+      "filesSkipped": 2,
+      "log": "/tmp/madou-ground-dragon-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ground-dragon-physical.test.ts",
+      "cwd": "apps/worker",
+      "log": "/tmp/madou-ground-dragon-do.log",
+      "initialPassed": 11,
+      "initialFailed": 8,
+      "initialFailure": "15-second test timeouts; cause unresolved. Same source and same limit, only failed cases retried.",
+      "targetPassed": 8,
+      "targetSkipped": 11,
+      "targetLog": "/tmp/madou-ground-dragon-do-target.log",
+      "targetCommand": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ground-dragon-physical.test.ts -t 'ground-dragon-(army|army-nonsky|army-skyfront|army-flying|grant-hand|grant-field) canceled='"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/ground-dragon-physical.spec.ts",
+      "passed": 17,
+      "log": "/tmp/madou-ground-dragon-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-ground-dragon-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9420,
+        "implemented": 2692
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p22-r2c3::semantic/follower/printed-level",
+      "a2-p22-r2c3::semantic/follower/printed-hp",
+      "a2-p22-r2c3::semantic/placement/setup",
+      "a2-p22-r2c3::semantic/placement/own-action",
+      "a2-p22-r2c3::semantic/defense/front-order",
+      "a2-p22-r2c3::semantic/follower/attribute-0",
+      "a2-p22-r2c3::semantic/follower/attribute-1",
+      "a2-p22-r2c3::semantic/follower/attribute-2",
+      "a2-p22-r2c3::semantic/follower/attribute-3",
+      "a2-p22-r2c3::semantic/morale/receive-trigger",
+      "a2-p22-r2c3::semantic/morale/spirit-modifier",
+      "a2-p22-r2c3::semantic/morale/failure-discard",
+      "a2-p22-r2c3::semantic/attack/grant-required",
+      "a2-p22-r2c3::semantic/attack/ordinary-hand-grant",
+      "a2-p22-r2c3::semantic/attack/discard-not-return",
+      "a2-p22-r2c3::semantic/attack/printed-level",
+      "a2-p22-r2c3::semantic/attack/printed-damage",
+      "a2-p22-r2c3::semantic/attack/attribute-0",
+      "a2-p22-r2c3::semantic/attack/attribute-1",
+      "a2-p22-r2c3::semantic/attack/attribute-2",
+      "a2-p22-r2c3::semantic/defense/magic-level",
+      "a2-p22-r2c3::semantic/defense/nonmagic-base",
+      "a2-p22-r2c3::semantic/attack/all-targets",
+      "a2-p22-r2c3::semantic/attack/destroy-nonsky",
+      "a2-p22-r2c3::semantic/attack/retain-sky"
+    ],
+    "mainProducerRebindings": [
+      "a2-p22-r2c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:7b526997cb720904",
+      "t:a1da5cb67638a759",
+      "t:f3ad6b16545e8cf1",
+      "t:8647768f612ec8b9",
+      "t:9c99d4221be97968",
+      "t:b433e2664cfd20f0",
+      "t:0c7b4bdcce44c22b",
+      "t:9230b87b02264b45",
+      "t:5e923b70cd33d928",
+      "t:dcfa48c7821875eb",
+      "t:e6abe09eefcd3c50",
+      "t:781e692b76a650c1",
+      "t:48b6185167becd68",
+      "t:ed4cb8ba7ea86a16",
+      "t:a47c9f61b426f43a",
+      "t:787bb4e73a3c36ef",
+      "t:43211ab3510972b6",
+      "t:9d96d3dc53751471",
+      "t:259049bb54fcae5a",
+      "t:96b0ac250993eb79",
+      "t:cd3f4ffc1b3a2e90",
+      "t:6b404eb0e334edba",
+      "t:7512657d46f7a114",
+      "t:cf0d3e4850a30dc8",
+      "t:f2252edf362da94d",
+      "t:e578339bdf02b373",
+      "t:b4c8552ecd295b6c",
+      "t:5281c025d8995bf5",
+      "t:55c363dab432af82",
+      "t:9fc5c0ff3210e286",
+      "t:d7bd6e1c07b2d9e1",
+      "t:778a73eae45b3ee4",
+      "t:3ea3a4e0dbaa4040",
+      "t:db97091680cd0edb",
+      "t:ab1dd4fe350bb223",
+      "t:29e3b8c9aef0b3fb"
+    ]
+  },
+  "remaining": "140/195 fully integrated; other55 includes partial SingingShip1 and WingedFolk1 plus53 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

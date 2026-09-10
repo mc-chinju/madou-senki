@@ -1,0 +1,89 @@
+{
+  "task": "R5 Task11 Gods Blood a2-p01-r1c3",
+  "status": "gods-blood-physical-bindings-integrated-other48-open",
+  "completedAt": "2026-09-10 01:07 JST",
+  "implementation": "No production change.4 semantic clauses and main producer bind10 canonical transition cases.",
+  "canonicalEvidence": [
+    "Actual optional draw or secretbook reveals Gods Blood once in public OPEN zone, never hand/attachment. Exactly owner warrior magic spirit plus1, unchanged endurance/capacities and permanent counters; otherplayers unchanged. Owner identity remains hidden; everyviewer sees public card. Bonus persists into another seat turn.",
+    "Actual opponent Wish moves alreadypublic Blood directly to newowners publiczone. Oldowner loses allthree, recipient gains allthree, no secondOPEN or permanentconversion and no discard. Owner-only Wish choice rejects foreign actor unchanged. Actual lethal Bow kills Bloodowner; death disposal discards physicalBlood exactlyonce, allthree bonuses disappear and independent permanent training remains. Opposing living factions retain unfinished game.",
+    "Actual Bow uselevel3 with warrior2 versus3 and actual EarthSplit uselevel6 with magic5 versus6 show excesscheck required versus bypassed. Actual Bow with remaining excesslevels uses current spirit6 or7; identical3+4 fails at6 and succeeds at7. Physicalattack card discardedonce on either outcome. Everycanonicalcommand JSON reexecution and220uniqueIDs; rejected state/allviews unchanged.",
+    "DO7 real setup/draw/book/transfer/death/Bow/EarthSplit/spirit paths save and restart everycommand, then replay sameenvelope with identicalack and savedstate. UI7 realclicks, ownerstats and publiccard, one-card turnend adjustment, privateWish and transfer, lethalBow, actual excesschecks withreload. Related4 verifies alreadypublic OPEN transfer and reaction/refill boundaries. Shared/candidate receipts remainpending; no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/gods-blood-physical.test.ts",
+      "initialPassed": 4,
+      "initialFailed": 6,
+      "log": "/tmp/madou-gods-blood-engine.log",
+      "initialFailure": "Tests used wrong purpose use instead of excess-level, expected threshold before before-roll closed, and assumed rolls array existed when no check. Corrected expectations to actual boundaries.",
+      "targetCommand": "pnpm exec vitest run packages/engine/test/gods-blood-physical.test.ts -t 'actual use boundary'",
+      "targetPassed": 6,
+      "targetSkipped": 4,
+      "targetLog": "/tmp/madou-gods-blood-engine-boundary.log",
+      "uniqueCasesPassed": 10
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/wish.test.ts packages/engine/test/reactions.test.ts packages/engine/test/dwarf-physical.test.ts -t 'already-public OPEN|refill|frozen|blood'",
+      "passed": 4,
+      "skipped": 70,
+      "log": "/tmp/madou-gods-blood-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-gods-blood-physical.test.ts",
+      "passed": 7,
+      "log": "/tmp/madou-gods-blood-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/gods-blood-physical.spec.ts",
+      "passed": 7,
+      "log": "/tmp/madou-gods-blood-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-gods-blood-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9299,
+        "implemented": 2813
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p01-r1c3::semantic/timing/open",
+      "a2-p01-r1c3::semantic/stat/warrior-plus-one",
+      "a2-p01-r1c3::semantic/stat/magic-plus-one",
+      "a2-p01-r1c3::semantic/stat/spirit-plus-one"
+    ],
+    "mainProducerRebindings": [
+      "a2-p01-r1c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:5e31289a03cddc27",
+      "t:177d91fa2c60843b",
+      "t:d9afe6a26e92590e",
+      "t:5c4558ec8ce65056",
+      "t:f5e83311d44267ce",
+      "t:830986436f374611",
+      "t:688711aed202f911",
+      "t:aca9949484fc29c5",
+      "t:57746af00d9a810e",
+      "t:ce8e86a2c54c9b1c"
+    ]
+  },
+  "remaining": "147/195 fully integrated; other48 includes partial SingingShip1 and WingedFolk1 plus46 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

@@ -1,0 +1,154 @@
+{
+  "task": "R5 Task11 other146: Ramba Strike, Mighty and Death Axe physical modes",
+  "status": "three-ramba-axe-card-bindings-integrated-other143-open",
+  "completedAt": "2026-09-09 11:44 JST",
+  "implementation": "No production changes. Actual-command preparation fixture,35 new Engine cases,6 DO cases and6 browser modes.",
+  "canonicalEvidence": [
+    "Strike a2-p11-r2c3 near/use4/effect4/damage6; Mighty a2-p11-r3c1 near/use5/effect5/damage8; Death a2-p11-r3c2 far/use6/effect6/damage10. Each retains warrior/戦斧 and no chant. Initial use-minus1/exact-use gives1/0 ordinary checks; elected Ramba noChecks gives0. Values do not increase on dedicated selection.",
+    "Dedicated fixed follower caps5/6/7 tested against actual initially placed Royal Knights5/Metal Golem6/Water Dragon7. All dedicated boundary followers are level-destroyed by the fixed rule before ordinary defense; body damage6/8/10. Ordinary keeps each follower and body0; ordinary Strike is actually reflected by Royal Knights and deals6 to A.",
+    "Each one-above follower survives a dedicated unboosted axe with body0. Above7 is Water Dragon8 after actual B Blessing draw via START_TURN during real intervening turns. No direct follower-level or open-card injection is used for that level8 boundary.",
+    "Actual Prayer2 raises each attack effect to its follower cap+1 while destroyFollowersAtOrBelow stays5/6/7. The above-cap follower then has equal-destroyed, the normal equal-level comparison outcome, rather than level-destroyed from the explicit fixed rule; body0. Water Dragon morale resolves before reading that result.",
+    "Actual per-target maai requires1 for Strike/Mighty and2 for Death in either mode; same physical payment cannot repeat. Dedicated Death attacks selectedB/C, defendingB leavesC10 and unselectedD0. Near axes reject far until a distinct physical APPROACH succeeds.",
+    "Actual Fate cancels each6 mode before any follower destruction, preserving the original concealed guard and all damage0 while discarding the axe once. Foreign dedicated owners, ordinary multiple targets and invented variant reject without raw/all-view mutation. All Engine act and fixture commands check JSON equality and220 unique IDs.",
+    "DO6 starts at the actual-command prepared state and persists/evicts/exactly replays every attack/pass, including actual reflected ordinary Strike, dedicated fixed-cap destruction and Death two-target results. Preparation commands are canonical fixture execution, not claimed as individually persisted DO commands.",
+    "Browser6 selects actual hand card, dedicated checkbox and target checkboxes, reloads declaration, follower-start and final result, and checks ordinary follower survival versus dedicated physical destruction/body damage."
+  ],
+  "testCorrection": "Initial35:33 passed,2 Prayer/Water Dragon cases read hits before morale finished. Updated those cases to pass the actual pending check until the saved follower outcome exists. No production defect inferred.",
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p11-r2c3::semantic/ordinary/school",
+      "a2-p11-r2c3::semantic/ordinary/range",
+      "a2-p11-r2c3::semantic/ordinary/use-level",
+      "a2-p11-r2c3::semantic/ordinary/base-effect-level",
+      "a2-p11-r2c3::semantic/ordinary/damage",
+      "a2-p11-r2c3::semantic/ordinary/attribute-0",
+      "a2-p11-r2c3::semantic/ordinary/attribute-1",
+      "a2-p11-r2c3::semantic/ordinary/attack-use",
+      "a2-p11-r2c3::semantic/dedicated/0/select-optional",
+      "a2-p11-r2c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p11-r2c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p11-r2c3::semantic/dedicated/0/chant-retain",
+      "a2-p11-r2c3::semantic/dedicated/destroy-fixed-level",
+      "a2-p11-r2c3::semantic/dedicated/not-effect-relative",
+      "a2-p11-r3c1::semantic/ordinary/school",
+      "a2-p11-r3c1::semantic/ordinary/range",
+      "a2-p11-r3c1::semantic/ordinary/use-level",
+      "a2-p11-r3c1::semantic/ordinary/base-effect-level",
+      "a2-p11-r3c1::semantic/ordinary/damage",
+      "a2-p11-r3c1::semantic/ordinary/attribute-0",
+      "a2-p11-r3c1::semantic/ordinary/attribute-1",
+      "a2-p11-r3c1::semantic/ordinary/attack-use",
+      "a2-p11-r3c1::semantic/dedicated/0/select-optional",
+      "a2-p11-r3c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p11-r3c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p11-r3c1::semantic/dedicated/0/chant-retain",
+      "a2-p11-r3c1::semantic/dedicated/destroy-fixed-level",
+      "a2-p11-r3c1::semantic/dedicated/not-effect-relative",
+      "a2-p11-r3c2::semantic/ordinary/school",
+      "a2-p11-r3c2::semantic/ordinary/range",
+      "a2-p11-r3c2::semantic/ordinary/use-level",
+      "a2-p11-r3c2::semantic/ordinary/base-effect-level",
+      "a2-p11-r3c2::semantic/ordinary/damage",
+      "a2-p11-r3c2::semantic/ordinary/attribute-0",
+      "a2-p11-r3c2::semantic/ordinary/attribute-1",
+      "a2-p11-r3c2::semantic/ordinary/attack-use",
+      "a2-p11-r3c2::semantic/dedicated/0/select-optional",
+      "a2-p11-r3c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p11-r3c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p11-r3c2::semantic/dedicated/0/chant-retain",
+      "a2-p11-r3c2::semantic/dedicated/0/target-subset",
+      "a2-p11-r3c2::semantic/dedicated/destroy-fixed-level",
+      "a2-p11-r3c2::semantic/dedicated/not-effect-relative",
+      "a2-p11-r3c2::semantic/ordinary/maai-extra-one"
+    ],
+    "mainProducerRebindings": [
+      "a2-p11-r2c3::main-producer",
+      "a2-p11-r3c1::main-producer",
+      "a2-p11-r3c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:8ca3fa99be63089a",
+      "t:74603ed66ec5d04e",
+      "t:90fcfc9b5d380e41",
+      "t:361194290500641e",
+      "t:d809b45a00d21a1b",
+      "t:454de68ffd62ef95",
+      "t:2f0d9ceb5571a37e",
+      "t:ca171b22e03da3bd",
+      "t:a6bae827f585e576",
+      "t:bbc8e6b5eab87001",
+      "t:8efae72266e41cdc",
+      "t:6a2de64953141e3b",
+      "t:89e1a38a2c116f21",
+      "t:1e75ac67e7285e36",
+      "t:5dd1a78ccc1ba9f0",
+      "t:e550a1d44281e7cd",
+      "t:03063fbf74cbfde3",
+      "t:00d064d10f4eeb71",
+      "t:0d4b44e828dbd777",
+      "t:1d3b4ea871d105ba",
+      "t:b08fab8915b33f51",
+      "t:aa56dc2386cb3ea3",
+      "t:94952c184c2f9c65",
+      "t:0564c870bb61e7fc",
+      "t:28141ed652f56f5d",
+      "t:3e4babafccadca48",
+      "t:1c189ecf9781428e",
+      "t:077408aea91d4440",
+      "t:54adf64e1918b683",
+      "t:dd4ad681cbf13a42",
+      "t:d62ab1428fcbb20f",
+      "t:faf917c674ce6d84",
+      "t:fd7e844ad4cb0f29",
+      "t:0f54680b762815c4",
+      "t:adce973007ec410a"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/ramba-axes-physical.test.ts",
+      "passed": 35,
+      "log": "/tmp/madou-ramba-axes-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7b-techniques.test.ts -t '撃戦斧|剛戦斧|死戦斧|fixed threshold, dynamic threshold'",
+      "passed": 10,
+      "skipped": 77,
+      "log": "/tmp/madou-ramba-axes-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ramba-axes.test.ts",
+      "cwd": "apps/worker",
+      "passed": 6,
+      "log": "/tmp/madou-ramba-axes-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/ramba-axes.spec.ts",
+      "passed": 6,
+      "log": "/tmp/madou-ramba-axes-browser.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 11007,
+        "implemented": 1105
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-ramba-axes-types.log"
+    }
+  },
+  "remaining": "52/195 action-card per-entry semantic/main bindings integrated; other143 and whole-goal gates remain open. No accepted promotion."
+}

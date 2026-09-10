@@ -1,0 +1,133 @@
+{
+  "task": "R5 Task11 other125: Poison Flow and Freeze physical modes",
+  "status": "water-status-card-bindings-integrated-other123-open",
+  "completedAt": "2026-09-09 13:08 JST",
+  "implementation": "No production changes. Actual initial setup/attack/turn fixture,24 Engine cases,8 DO cases and6 browser modes.",
+  "canonicalEvidence": [
+    "Poison Flow a2-p12-r3c1 ordinary magic/far/use5/effect5/damage4/魔水; Aiel elected effect6/noChecks/all retains damage4. Actual target spirit0 check remains required in dedicated mode. B success deals4, failure adds6 for10; dedicated C independently succeeds for4.",
+    "Freeze a2-p12-r3c3 ordinary magic/far/use6/effect6/damage4/魔水; elected effect8/damage8/noChecks/all. Actual initial failure creates source-owned stopped with ordinary modifier[-1] or elected[-3], nextCheck1. The same faces[2,2] at B spirit6 pass ordinary threshold5 but fail elected threshold3.",
+    "Both Freeze modes use actual failed Teleport defense to expend one hand card, then fail target resistance. Initial Soldier absorbs1 damage; B receives3/7 and stops with four hand cards. Full actual intervening turns and failed recovery retain the original modifier, increment nextCheck to2, keep four cards and skip B to C. Full later turns and successful recovery remove the same status, draw exactly one replacement to five, and resume B draw/action. This proves recovery refill from an actual deficit. God was removed from this test because its immediate replacement draw does not cause a deficit.",
+    "All four modes cover actual use-level below/exact, dedicated no activation checks but target checks retained, maai/Evade preventing B resistance, independent C result, actual Fate cancellation/source disposition once, no unprinted CHANT, foreign dedicated owner and ordinary multiple-target/variant refusal. All act commands verify JSON/220; refusals preserve raw/all views.",
+    "DO8 four modes x initial success/failure save, evict and replay every actual command with identical ACK/stored state and220 unique cards. Both Freeze failure cases also persist full intervening turns, failed recovery, more turns and successful recovery, preserving modifiers/status progression. These use no follower and do not claim the Engine hand-deficit setup.",
+    "Browser4 actual hand attack/dedicated/target clicks, live before-roll resistance and reload, then damage/status matching the actual B result with independent C success. Browser2 recovery scenarios start from a canonical actual failed Freeze attack fixture; actual turn commands, live recovery modifier and reload are clicked in the browser. Attack preparation for those two recovery cases is not claimed as browser clicks."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p12-r3c1::semantic/ordinary/school",
+      "a2-p12-r3c1::semantic/ordinary/range",
+      "a2-p12-r3c1::semantic/ordinary/use-level",
+      "a2-p12-r3c1::semantic/ordinary/base-effect-level",
+      "a2-p12-r3c1::semantic/ordinary/damage",
+      "a2-p12-r3c1::semantic/ordinary/attribute-0",
+      "a2-p12-r3c1::semantic/ordinary/attribute-1",
+      "a2-p12-r3c1::semantic/ordinary/attack-use",
+      "a2-p12-r3c1::semantic/dedicated/0/select-optional",
+      "a2-p12-r3c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p12-r3c1::semantic/dedicated/0/effect-replacement",
+      "a2-p12-r3c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p12-r3c1::semantic/dedicated/0/chant-retain",
+      "a2-p12-r3c1::semantic/dedicated/0/target-subset",
+      "a2-p12-r3c1::semantic/ordinary/target-spirit-check",
+      "a2-p12-r3c1::semantic/ordinary/failure-extra-six",
+      "a2-p12-r3c1::semantic/dedicated/no-damage-replacement",
+      "a2-p12-r3c3::semantic/ordinary/school",
+      "a2-p12-r3c3::semantic/ordinary/range",
+      "a2-p12-r3c3::semantic/ordinary/use-level",
+      "a2-p12-r3c3::semantic/ordinary/base-effect-level",
+      "a2-p12-r3c3::semantic/ordinary/damage",
+      "a2-p12-r3c3::semantic/ordinary/attribute-0",
+      "a2-p12-r3c3::semantic/ordinary/attribute-1",
+      "a2-p12-r3c3::semantic/ordinary/attack-use",
+      "a2-p12-r3c3::semantic/dedicated/0/select-optional",
+      "a2-p12-r3c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p12-r3c3::semantic/dedicated/0/effect-replacement",
+      "a2-p12-r3c3::semantic/dedicated/0/damage-replacement",
+      "a2-p12-r3c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p12-r3c3::semantic/dedicated/0/chant-retain",
+      "a2-p12-r3c3::semantic/dedicated/0/target-subset",
+      "a2-p12-r3c3::semantic/ordinary/initial-minus-one",
+      "a2-p12-r3c3::semantic/ordinary/recovery-minus-one",
+      "a2-p12-r3c3::semantic/ordinary/stop-until-success",
+      "a2-p12-r3c3::semantic/dedicated/initial-minus-three",
+      "a2-p12-r3c3::semantic/dedicated/recovery-minus-three"
+    ],
+    "mainProducerRebindings": [
+      "a2-p12-r3c1::main-producer",
+      "a2-p12-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:b015c836b69ea43c",
+      "t:06e016c7269fb508",
+      "t:344e16df23822df4",
+      "t:65168431f668db53",
+      "t:038f684cf73129c9",
+      "t:124a5aadf5d5eb1c",
+      "t:45b72aed816db389",
+      "t:4016b17d7ba208b1",
+      "t:fc80802323fba172",
+      "t:a71af816643df93e",
+      "t:d06d6211a230deab",
+      "t:7eaf5ca094211b5e",
+      "t:2e7ec772f2f71cae",
+      "t:02e76aafe4aaf0ef",
+      "t:85a2f9fb5c68fa8e",
+      "t:49e5e4eeb860fa54",
+      "t:38ca9e8aecbf8ed3",
+      "t:bcaa1e602cef6cf1",
+      "t:a5c95e77d27d2fdc",
+      "t:f31ad6fa39ec01d1",
+      "t:ad5bda86a849e26d",
+      "t:f88d044635c55a8c",
+      "t:15a64155c6a5576f",
+      "t:216459bbed17f44e"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/water-status-physical.test.ts",
+      "passed": 24,
+      "log": "/tmp/madou-water-status-engine-complete.log",
+      "initialFailures": "Initial maai expectation assumed rolls array existed. Recovery assumptions used fixed hand size, invalid ordinary Prayer on another actor, and God which immediately refills; a real failed Teleport expenditure now proves the deficit. Final full24 pass."
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7e-status-defenses.test.ts -t '毒流|氷結'",
+      "passed": 6,
+      "skipped": 44,
+      "log": "/tmp/madou-water-status-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-water-status.test.ts",
+      "cwd": "apps/worker",
+      "passed": 8,
+      "log": "/tmp/madou-water-status-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/water-status.spec.ts",
+      "passed": 6,
+      "log": "/tmp/madou-water-status-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-water-status-types-complete.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10668,
+        "implemented": 1444
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "72/195 action-card per-entry semantic/main bindings integrated; other123 and whole-goal gates open. Candidate-bound receipts and shared dependencies pending. No accepted promotion."
+}

@@ -1,0 +1,51 @@
+{
+  "task": "R6 canonical scenario entrypoints and S05",
+  "status": "canonical-fixtures-integrated-S05-condition-complete",
+  "recordedAt": "2026-09-10 14:03 JST",
+  "implementation": [
+    "Added canonical-scenarios.ts mapping canonical-S01 and canonical-S04 to existing actual setup/poem/resistance producer. Registered both names in shared fixture dispatcher and test-only browser endpoint.",
+    "Canonical DO S04 now uses canonical-S04. S01 authenticated HTTP browser case uses canonical-S01. No production changes."
+  ],
+  "S05": "Existing literal S01 S02 S05 Engine and DO tests force failure with C Fate then D God rerolls the full2d6 to4,4, total8 below threshold9, keeping forcedFailure=true and success=false. Same roll ID, exactly2 attempts; actual resulting status remains. Browser force case retains forced failure across real reroll/reload.",
+  "verification": {
+    "engine": {
+      "passed": 1,
+      "log": "/tmp/madou-s05-engine.log"
+    },
+    "worker": {
+      "passed": 2,
+      "log": "/tmp/madou-canonical-alias-do.log"
+    },
+    "browser": {
+      "passed": 2,
+      "log": "/tmp/madou-canonical-alias-browser.log"
+    },
+    "types": {
+      "exitCode": 0,
+      "log": "/tmp/madou-canonical-alias-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8389,
+        "implemented": 3723
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": [
+    "S06 existing tests need complete condition correspondence.",
+    "S07 existing reclaim-reservations test proves reservation/release but lacks complete later independent event reuse and same-event rejected command evidence.",
+    "All later R6 and broader goal requirements remain."
+  ],
+  "processes": "All terminal."
+}

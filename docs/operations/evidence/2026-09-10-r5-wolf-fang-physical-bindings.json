@@ -1,0 +1,179 @@
+{
+  "task": "R5 Task11 Wolf Fang supplemental physical binding",
+  "completedAt": "2026-09-10 13:00 JST",
+  "implementation": "No production change. Supplemental physical tests for previously implemented Wolf Fang; no new semantic completion count.",
+  "priorEvidence": "docs/operations/evidence/2026-09-09-r5-wolf-lance-bindings.json",
+  "canonicalEvidence": [
+    "狼牙の既存16用途条項＋mainへ追加の実経路証跡。通常近/戦/格/使用効果Lv5/2d6とヨーツルム任意専用遠/3d6/noChecks/間合い2。実接近後の通常使用、単一対象、詠唱/反撃不可。実出目の最小・混合・最大2/7/12と3/10/18を防御前に確定。神性介入は同じロールIDを1回振り直し、Engineで2→12・3→18を確認。DOは同じ出目でもgeneration1と保存再送一致、UIは実出目の合計を読む。通常Lv4/SP6は合計6成功/7失敗、失敗時ダメージロールなし。間合い通常1/専用2、見切る合法。水竜7/メタル6は停止生存、砦3はHP2を減算。実混乱/沈黙/催眠、不正owner/targets/actor、命運取消・不使用を含む。",
+    "Engine初回31成功/2失敗。試験用Cがヨーツルムと異なる陣営だったためガイナスへ変更し、接近札の辞書形式を正しく確認するよう修正。失敗2件だけ再実行成功。E2E型の確定済みtotalへのnullable参照1件を修正し再検査成功。",
+    "狼牙は2026-09-09-r5-wolf-lance-bindings.jsonで既存implemented。今回の16条項は新規件数に加算せず追加検証として扱う。再開メモのカード順指定を修正し、次は台帳semantic pendingにある悪夢23条項。共有lifetime/回収・広い交差・全体受入れは未完、accepted昇格なし。"
+  ],
+  "validation": {
+    "engine": {
+      "uniquePassed": 33,
+      "initial": {
+        "passed": 31,
+        "failed": 2,
+        "log": "/tmp/madou-wolf-fang-engine.log"
+      },
+      "fixed": {
+        "selection": "same-faction|actual far ordinary rejection",
+        "passed": 2,
+        "failed": 0,
+        "log": "/tmp/madou-wolf-fang-engine-fix.log"
+      }
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7b-techniques.test.ts -t '狼牙'",
+      "passed": 7,
+      "log": "/tmp/madou-wolf-fang-related.log"
+    },
+    "worker": {
+      "passed": 23,
+      "batches": [
+        {
+          "pattern": "ordinary|owner-ordinary|low|dedicated|far",
+          "passed": 5,
+          "log": "/tmp/madou-wolf-fang-do-1.log"
+        },
+        {
+          "pattern": "same-faction|water|metal|lower|maai-one-ordinary",
+          "passed": 5,
+          "log": "/tmp/madou-wolf-fang-do-2.log"
+        },
+        {
+          "pattern": "maai-one-dedicated|maai-two-dedicated|evade-ordinary|evade-dedicated|fate",
+          "passed": 5,
+          "log": "/tmp/madou-wolf-fang-do-3.log"
+        },
+        {
+          "pattern": "suppressed|silenced|stopped|wrong-owner|decline",
+          "passed": 5,
+          "log": "/tmp/madou-wolf-fang-do-4.log"
+        },
+        {
+          "pattern": "noncounter|reroll-ordinary|reroll-dedicated",
+          "passed": 3,
+          "log": "/tmp/madou-wolf-fang-do-5.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/wolf-fang-physical.spec.ts",
+      "passed": 23,
+      "log": "/tmp/madou-wolf-fang-browser.log"
+    },
+    "types": [
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-wolf-fang-types.log"
+      },
+      {
+        "command": "pnpm --filter @madou/worker typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-wolf-fang-worker-types.log"
+      },
+      {
+        "command": "pnpm typecheck:e2e",
+        "exitCode": 2,
+        "log": "/tmp/madou-wolf-fang-e2e-types.log"
+      },
+      {
+        "command": "pnpm typecheck:e2e",
+        "exitCode": 0,
+        "log": "/tmp/madou-wolf-fang-e2e-types-fix.log"
+      }
+    ],
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8542,
+        "implemented": 3570
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p10-r3c1::semantic/ordinary/school",
+      "a2-p10-r3c1::semantic/ordinary/range",
+      "a2-p10-r3c1::semantic/ordinary/use-level",
+      "a2-p10-r3c1::semantic/ordinary/base-effect-level",
+      "a2-p10-r3c1::semantic/ordinary/damage",
+      "a2-p10-r3c1::semantic/ordinary/attribute-0",
+      "a2-p10-r3c1::semantic/ordinary/attribute-1",
+      "a2-p10-r3c1::semantic/ordinary/attack-use",
+      "a2-p10-r3c1::semantic/dedicated/0/select-optional",
+      "a2-p10-r3c1::semantic/dedicated/0/eligible-owner/0",
+      "a2-p10-r3c1::semantic/dedicated/0/damage-replacement",
+      "a2-p10-r3c1::semantic/dedicated/0/activation-check-waive",
+      "a2-p10-r3c1::semantic/dedicated/0/chant-retain",
+      "a2-p10-r3c1::semantic/dedicated/far-range",
+      "a2-p10-r3c1::semantic/dedicated/damage-three-d6",
+      "a2-p10-r3c1::semantic/dedicated/maai-extra-one"
+    ],
+    "mainProducerBindings": [
+      "a2-p10-r3c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:4e1cc6c1dbc3f268",
+      "t:70669c8627868989",
+      "t:786535500028e547",
+      "t:03a00baf072a3f5c",
+      "t:acd67216091cd8cb",
+      "t:0937635d7bd85564",
+      "t:738b43efab211cb0",
+      "t:017e5959f0560d4d",
+      "t:cf1a1560c0830210",
+      "t:f81c288998fbfe9c",
+      "t:25080f9faa4ea78a",
+      "t:d54b3e6de64f03cc",
+      "t:79065fd50a2109a9",
+      "t:183bdc717831f81c",
+      "t:b1f5d860325d7716",
+      "t:7c6da59e13ad68d6",
+      "t:281710a06d4c457e",
+      "t:5af8c16fe39f9698",
+      "t:1aff967cc457866c",
+      "t:f61e6f9ed972ddfc",
+      "t:c3720c32778414f8",
+      "t:7ac9f150ff24ac9d",
+      "t:45cae7bff03c0468",
+      "t:f18051cde6dbf520",
+      "t:0e3070990722e87a",
+      "t:35cf2ae24098a061",
+      "t:40ba64a6b3d18ddd",
+      "t:cbae033f09a35bde",
+      "t:7478eba822b1aea5",
+      "t:6dad58720a62d5c9",
+      "t:fa118184d981e6d6",
+      "t:b7edda4dc27bf7ee",
+      "t:8bce8b10b2671afc"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 207
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 183
+    }
+  },
+  "remaining": "狼牙は2026-09-09-r5-wolf-lance-bindings.jsonで既存implemented。今回の16条項は新規件数に加算せず追加検証として扱う。再開メモのカード順指定を修正し、次は台帳semantic pendingにある悪夢23条項。共有lifetime/回収・広い交差・全体受入れは未完、accepted昇格なし。"
+}

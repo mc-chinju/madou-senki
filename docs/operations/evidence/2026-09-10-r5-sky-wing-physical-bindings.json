@@ -1,0 +1,161 @@
+{
+  "task": "R5 Task11 Other195 SkyWing Sword physical binding",
+  "status": "sky-wing-physical-bindings-integrated-other33-open",
+  "completedAt": "2026-09-10 07:01 JST",
+  "implementation": "browser初回4成功/専用6失敗から、人物宣言能力候補のないアーネス専用では未詠唱でも攻撃ボタンが有効になる本番UI不備を確認。engineの既存techniqueForを公開exportし、Boardの候補不在時にも選択した印刷技（複合時は従属技）のchantと実詠唱領域を確認する。宣言能力候補がある場合は既存preview判定を維持し、人物の詠唱省略を妨げない。修正後の同じbrowser10全件と関連browser5（シン/シェリムの省略、氷狼専用の未詠唱/詠唱、獣王複合）・型が成功。",
+  "canonicalEvidence": [
+    "黒翼天翔剣a2-p08-r1c2の22用途条項＋既存main証跡を対応。実初期配札/setup後の手札では通常/専用とも攻撃拒否、実CHANT直後も拒否し、自己END・他3人の全手番・次の自己START/補充選択後に発動。通常遠戦剣詠use/effect7・damage12・単体・間合い2枚を確認。実アーネスも通常選択なら7/12で、実配置メタルゴーレムLv6/HP5を処分し本体7damage。専用選択ならeffect8/damage15・従者無視で同従者を非公開のまま保持し15damage。戦士0/精神0でも7回の使用チェックを省略するが詠唱を省略しない。通常戦士6は不足1回の精神6判定、出目6成功/7失敗。実進撃の近距離相手にも使用でき、実混乱/沈黙でも印刷戦士専用を使用可、実催眠/回復失敗は手番飛ばし。実命中後の専用窓で任意0/1/2物理踏み込みを一括消費し+0/5/10、一度だけ・即時補充なし・全支払い各1回処分。重複・非踏み込み・他人の札・未知札・別group・他席・窓外・再支払いはstate全view不変で拒否。通常/専用不選択・追加不選択は追加コスト保持。実Bの間合い2枚→実Aの第1踏み込みで取消→命中後の別の第2踏み込みだけで+5、先に使った物理は再支払い不可、距離不変を確認。実間合い1枚なら15damage、2枚または見切るで回避すると命中後支払い窓を開かず全追加コスト保持。実命運取消は詠唱元札だけ処分し命中/追加支払いなし。Engine21/関連5/DO18各コマンド保存再起動再送/代表browser10実詠唱・全手番・実コスト選択・reload/型3回/ledger成功。semantic22だけimplemented増、main1再binding、accepted0昇格。",
+    "Engine初回20成功/1失敗は、防御者の間合い2枚のうち1枚提出時点で攻撃者へ進めた試験手順のNOT_PRIORITY。実normal-defenseの追加提出を終えdefense-advanceへ進んでから攻撃者が支払うよう修正し、該当1件のみ再実行成功。残20は初回成功を維持。DO初回15成功・見切る/混乱/沈黙3件が15秒timeout。同じ3件を無変更で再実行して成功、制限時間は変更せず時間要因の恒久解消は主張しない。",
+    "browser初回4成功/専用6失敗から、人物宣言能力候補のないアーネス専用では未詠唱でも攻撃ボタンが有効になる本番UI不備を確認。engineの既存techniqueForを公開exportし、Boardの候補不在時にも選択した印刷技（複合時は従属技）のchantと実詠唱領域を確認する。宣言能力候補がある場合は既存preview判定を維持し、人物の詠唱省略を妨げない。修正後の同じbrowser10全件と関連browser5（シン/シェリムの省略、氷狼専用の未詠唱/詠唱、獣王複合）・型が成功。",
+    "Engine accepted commands validate deterministic JSON replay and220 physical unique cards. DO18 cover declared scenarios and every accepted postfixture command across saved restart/replay, including the full intervening turn order. Browser10 represent ordinary/guard/dedicated/onecost/twocost/separate-defensecost/twoMaai/Fate/wrongowner/decline, not all18 cases. T02 adopted posthit-before-damage timing and once-only batch are exercised. Actual postpayment recovery/mitigation, pending hit multiplier/finalized targets/nested hits and owner/target lifetime remain unmeasured shared intersections. Existing related test that injects multiplier/finalized targets is only related evidence, never a new canonical receipt."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/sky-wing-physical.test.ts",
+      "initial": {
+        "passed": 20,
+        "failed": 1,
+        "log": "/tmp/madou-sky-wing-engine.log"
+      },
+      "fix": {
+        "command": "pnpm exec vitest run packages/engine/test/sky-wing-physical.test.ts -t 'actual defense advance payment'",
+        "passed": 1,
+        "log": "/tmp/madou-sky-wing-engine-defense-fix.log"
+      },
+      "uniquePassed": 21
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7i-combinations.test.ts -t 'Black Wing|黒翼天翔剣'",
+      "passed": 5,
+      "skipped": 49,
+      "firstAttempt": true,
+      "log": "/tmp/madou-sky-wing-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-sky-wing-physical.test.ts",
+      "uniquePassed": 18,
+      "initial": {
+        "passed": 15,
+        "failed": 3,
+        "log": "/tmp/madou-sky-wing-do.log"
+      },
+      "unchangedRetry": {
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-sky-wing-physical.test.ts -t 'sky-wing-evade |sky-wing-suppressed |sky-wing-silenced '",
+        "passed": 3,
+        "log": "/tmp/madou-sky-wing-do-retry.log"
+      },
+      "note": "Three15s timeouts retried unchanged and passed; timeout limit unchanged, timing cause not proven fixed."
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/sky-wing-physical.spec.ts",
+      "initial": {
+        "passed": 4,
+        "failed": 6,
+        "log": "/tmp/madou-sky-wing-browser.log"
+      },
+      "afterProductionFix": {
+        "passed": 10,
+        "log": "/tmp/madou-sky-wing-browser-fix.log"
+      }
+    },
+    "browserRelated": {
+      "command": "pnpm exec playwright test tests/e2e/declaration-abilities.spec.ts tests/e2e/ice-wolf.spec.ts tests/e2e/combinations.spec.ts -g 'declare-shin-waive selects|declare-shelim-waive selects|ice-wolf-dedicated |ice-wolf-chanted-dedicated |Beast King explicitly'",
+      "passed": 5,
+      "log": "/tmp/madou-sky-wing-browser-related.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-sky-wing-types-fix.log",
+      "priorPasses": [
+        "/tmp/madou-sky-wing-types.log",
+        "/tmp/madou-sky-wing-types-transport.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8938,
+        "implemented": 3174
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p08-r1c2::semantic/ordinary/school",
+      "a2-p08-r1c2::semantic/ordinary/range",
+      "a2-p08-r1c2::semantic/ordinary/use-level",
+      "a2-p08-r1c2::semantic/ordinary/base-effect-level",
+      "a2-p08-r1c2::semantic/ordinary/damage",
+      "a2-p08-r1c2::semantic/ordinary/attribute-0",
+      "a2-p08-r1c2::semantic/ordinary/attribute-1",
+      "a2-p08-r1c2::semantic/ordinary/attribute-2",
+      "a2-p08-r1c2::semantic/ordinary/attack-use",
+      "a2-p08-r1c2::semantic/ordinary/chant-required",
+      "a2-p08-r1c2::semantic/dedicated/0/select-optional",
+      "a2-p08-r1c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p08-r1c2::semantic/dedicated/0/effect-replacement",
+      "a2-p08-r1c2::semantic/dedicated/0/damage-replacement",
+      "a2-p08-r1c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p08-r1c2::semantic/dedicated/0/chant-retain",
+      "a2-p08-r1c2::semantic/ordinary/maai-extra-one",
+      "a2-p08-r1c2::semantic/dedicated/ignore-followers",
+      "a2-p08-r1c2::semantic/dedicated/post-hit-advance-choice",
+      "a2-p08-r1c2::semantic/dedicated/physical-advance-cost",
+      "a2-p08-r1c2::semantic/dedicated/damage-five-per-cost",
+      "a2-p08-r1c2::semantic/dedicated/not-defense-advance-payment"
+    ],
+    "mainProducerBindings": [
+      "a2-p08-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:9564b71de03de0bd",
+      "t:2ef25f259727a92a",
+      "t:9f653dbddf641dff",
+      "t:e30e1148a5d5d4f0",
+      "t:776beb745195ad05",
+      "t:4ff23bde556a3d15",
+      "t:f71f5642b608b76c",
+      "t:cb9c62e9928ece7c",
+      "t:b520c8a677026c34",
+      "t:5a4fdcb086f4bc67",
+      "t:26d4e38242e3b747",
+      "t:421c51fa47de00f4",
+      "t:b488f4896ed20c6b",
+      "t:cb91886ba47fb4f9",
+      "t:52204a970b57c8f6",
+      "t:72bfa8e6d30e4f25",
+      "t:14ad7a8b9c3a043f",
+      "t:4b815c1ea535eca4",
+      "t:d0828f1b419c16ca",
+      "t:47b5402c2a398706",
+      "t:5468faa39c1f0571"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 186
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 162
+    }
+  },
+  "remaining": "Other33, AppendixSword1 and shared/candidate receipts, strictA31 and whole-goal gates remain. Noacceptedpromotion."
+}

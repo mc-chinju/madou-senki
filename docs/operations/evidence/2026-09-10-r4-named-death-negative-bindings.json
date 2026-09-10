@@ -1,0 +1,488 @@
+{
+  "scope": "Seven followers x three negative paths x Worker/browser; no full candidate acceptance",
+  "bindings": [
+    {
+      "entryId": "c2-p04-r1c2-ab04",
+      "clauseKey": "unlimited-SingingShip",
+      "tests": {
+        "t:bf04d3317c3f51ce": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-ship",
+            "decline"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:3bfaf72b56107c8c": {
+          "title": "Named death ship decline stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "4ec7d18f6fee3c02a88952788d4bea581e84692a919a7ea193d7237ada26c327",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:23c0792004e1a31c": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-ship-cancel",
+            "cancel"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:468317dd1ba31860": {
+          "title": "Named death ship cancel stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "e4a9b7966121fc6a7a6a12dffb672eabc42a3bae3dcbb29f0fb037098c9df9dc",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:a0ba369cb2a107be": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-ship-ban",
+            "ban"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:b0e45b29beaa85c4": {
+          "title": "Named death ship ban stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "551759ee36046503a7bc113a0aae3c3f3103c2017cd013a5a97c70062b5c20fe",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab04",
+      "clauseKey": "unlimited-FlyingDragon",
+      "tests": {
+        "t:45e744e8e8213367": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-dragon",
+            "decline"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:ebe660998c54f835": {
+          "title": "Named death dragon decline stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "7834718f73adfcd5ab7a3ebdb3c75be02e9c6f726657c7eba8f653e76a78d7e2",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:d4e33767796128a6": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-dragon-cancel",
+            "cancel"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:60d5c2e604060aab": {
+          "title": "Named death dragon cancel stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "ff7fba0cb063eea5cb0fb38fe8ecd300de4ea46147e0e6c7bdd18940dc39c11a",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:79bed5168c3e5aab": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-dragon-ban",
+            "ban"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:63c28cf9eb34f453": {
+          "title": "Named death dragon ban stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "f24930ffa32502ddba9fd057acd368cab3c57e43eb71557258a466f32167bb46",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab04",
+      "clauseKey": "unlimited-Griffon",
+      "tests": {
+        "t:df07f03284b2da7a": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-griffin",
+            "decline"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:0b3c59d9c71796e0": {
+          "title": "Named death griffin decline stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "02b9d20eef4b308111f3cbaf27ff84bc1363f4a618524210df6a2ef6be5e6ecf",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:eaa83bab644ad4b0": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-griffin-cancel",
+            "cancel"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:edc534bc804ee9f5": {
+          "title": "Named death griffin cancel stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "dcb8cafef970451b249ca5fef371fbed211604e723a2d2326133dfcc7f31f4af",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:e80c1032e87857a3": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-griffin-ban",
+            "ban"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:b9e4c413f2acc588": {
+          "title": "Named death griffin ban stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "fd3fb63c2696acfe0f4a763327f691e0c35ca8eee60aab97ebe775440d7398be",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Skeleton",
+      "tests": {
+        "t:f63a03a07b0024ec": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-skeleton",
+            "decline"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:0eb755e64476aa70": {
+          "title": "Named death skeleton decline stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "3d2f88d87af61e0f4b9512674311ad3fed99638c675544eb34c0ebccc2f7d7f8",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:6f4168607192b8f3": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-skeleton-cancel",
+            "cancel"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:93d705d17d106b7f": {
+          "title": "Named death skeleton cancel stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "c066ff9e10a527876dcb840a590c826551326693141e2372ed31b186ce9f8c44",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:884f48b9e8f296ee": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-skeleton-ban",
+            "ban"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:e74589f4d6d34e69": {
+          "title": "Named death skeleton ban stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "68b783490c9524ae6013e1ce40cbfed52c8af7006e6ac5102be2c2efed1e132c",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Zombie",
+      "tests": {
+        "t:ea9b19f7b652eeaa": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-zombie",
+            "decline"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:a6b149045b658bcd": {
+          "title": "Named death zombie decline stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "b8df624c6d5af9da07c980ef292fbce441547001aac396982886102975a28310",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:5958c467f071fa75": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-zombie-cancel",
+            "cancel"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:c59433ddab355c8e": {
+          "title": "Named death zombie cancel stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "f131dea6becd5562b77d095515fc07309591c9e437d6ce0adc3c9176a9c34252",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:9e16d9d75a8ff723": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-zombie-ban",
+            "ban"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:d7b2492e52f547df": {
+          "title": "Named death zombie ban stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "99a4fdc10baf4ef30f1fa599d408c6726015de338be512ebd8c5c17dd1e386aa",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-Wight",
+      "tests": {
+        "t:7fabf5e125fbcdd1": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-wight",
+            "decline"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:54e46f6d2367d9e1": {
+          "title": "Named death wight decline stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "4ea89b96407babd7717680d40357ba22c4f927c71dbb4a984ccaea3f743009fb",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:3c496cc7e22e5de9": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-wight-cancel",
+            "cancel"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:9145713b0551072a": {
+          "title": "Named death wight cancel stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "b9c31ead74aa33ca7223866e9ce21c7c1f72355c8bb706690feb605d34db8b86",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:94665d859c743493": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-wight-ban",
+            "ban"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:4c14b66f97269da8": {
+          "title": "Named death wight ban stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "1f4da750460c1ae05c9d09189da4670bfcac049818b575c64c26f8081bd90356",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        }
+      }
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab04",
+      "clauseKey": "unlimited-DeathKnight",
+      "tests": {
+        "t:f8f25de1355abded": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-knight",
+            "decline"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:a2706ba7121f548e": {
+          "title": "Named death knight decline stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "20ff945f3d73c851e7ad0f8da5e38c0990d33bf0df5efc19bd28baed4af56a9b",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:3e92b1ae2a5121ac": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-knight-cancel",
+            "cancel"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:6eeab3fb4eead4c8": {
+          "title": "Named death knight cancel stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "038158783a1a5e2f719e3663a5dff796bab4a03a8f0d6088c622d0fb1fd8a1e7",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:24fc65416c63ff87": {
+          "title": "%s preserves the actual %s result through eviction and ACK replay",
+          "suite": [],
+          "declarationSha256": "ff1ce5321cece49a532878f458ebe932f82bae8dc80e0112e2080f3033fedfd0",
+          "path": "apps/worker/test/room-named-follower-death-negative.test.ts",
+          "parameters": [
+            "reclaim-named-death-knight-ban",
+            "ban"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        },
+        "t:56b9458641dd0248": {
+          "title": "Named death knight ban stays discarded after browser reload",
+          "suite": [],
+          "declarationSha256": "ef3e5d54136a8cb8d278af6ac0806114d315a0eb7eabf49fb4015447d74c6854",
+          "path": "tests/e2e/named-follower-death-negative.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
+        }
+      }
+    }
+  ]
+}

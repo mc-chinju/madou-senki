@@ -13,11 +13,12 @@ export function App(){
  const [session,setSession]=useState<Session|null|undefined>(undefined);const [startupError,setStartupError]=useState('');
  useEffect(()=>{void getCurrentSession().then(setSession,reason=>{if(reason instanceof Error&&reason.message==='セッションを作成してください')setSession(null);else {setStartupError(reason instanceof Error?reason.message:'セッションを確認できません');setSession(null);}})},[]);
  async function register(event:FormEvent<HTMLFormElement>){event.preventDefault();setStartupError('');try{setSession(await createSession(String(new FormData(event.currentTarget).get('name'))));}catch(reason){setStartupError(reason instanceof Error?reason.message:'セッションを作成できません')}}
- if(session===undefined)return <div className="center"><p role="status">セッションを確認しています…</p></div>;
- if(!session)return <><SiteHeader/><main className="page narrow"><section className="panel name-entry"><p className="eyebrow">2nd edition</p><h1>魔導戦記へ</h1><p>表示名を決めてください。このブラウザに参加情報が保存されます。卓へ戻るときは同じブラウザをご利用ください。</p>{startupError?<p className="error" role="alert">{startupError}</p>:null}<form className="stack" onSubmit={register}><label>表示名<input name="name" required maxLength={24} autoComplete="nickname" autoFocus/></label><button>はじめる</button></form></section></main></>;
- const roomMatch=location.pathname.match(/^\/rooms\/([^/]+)\/?$/);return <><SiteHeader/>{roomMatch?<RoomRoute session={session} roomId={decodeURIComponent(roomMatch[1]!)} />:<Lobby session={session}/>}</>;
+ if(session===undefined)return <><div className="center"><p role="status">セッションを確認しています…</p></div><SiteCredits/></>;
+ if(!session)return <><SiteHeader/><main className="page narrow"><section className="panel name-entry"><p className="eyebrow">2nd edition</p><h1>魔導戦記へ</h1><p>表示名を決めてください。このブラウザに参加情報が保存されます。卓へ戻るときは同じブラウザをご利用ください。</p>{startupError?<p className="error" role="alert">{startupError}</p>:null}<form className="stack" onSubmit={register}><label>表示名<input name="name" required maxLength={24} autoComplete="nickname" autoFocus/></label><button>はじめる</button></form></section></main><SiteCredits/></>;
+ const roomMatch=location.pathname.match(/^\/rooms\/([^/]+)\/?$/);return <><SiteHeader/>{roomMatch?<RoomRoute session={session} roomId={decodeURIComponent(roomMatch[1]!)} />:<Lobby session={session}/>}<SiteCredits/></>;
 }
 function SiteHeader(){return <header className="site-header"><a href="/" className="brand"><span>魔導戦記</span><small>2nd</small></a><span className="prototype">検証版</span></header>}
+function SiteCredits(){return <footer className="site-credits" aria-label="クレジット"><p>原作カードゲーム: 魔導戦記カードゲーム 2nd edition</p><p>作者: 夢祭遙 · <a href="https://note.com/dreamfv/n/nb58307ec682c" target="_blank" rel="noopener noreferrer">作者配布ページ（新しいタブで開く）</a></p></footer>}
 
 function RoomRoute({session,roomId}:{session:Session;roomId:string}){
  const [seated,setSeated]=useState<boolean|null>(null);const [error,setError]=useState('');const [joining,setJoining]=useState(false);

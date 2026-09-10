@@ -1,0 +1,13 @@
+import {getAction} from '@madou/catalog';
+import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
+import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+export const petrifyPhysicalScenarios=['petrify-physical','petrify-physical-low','petrify-physical-high'] as const;
+export type PetrifyPhysicalScenario=typeof petrifyPhysicalScenarios[number];
+export function isPetrifyPhysicalScenario(name:string):name is PetrifyPhysicalScenario{return petrifyPhysicalScenarios.some(x=>x===name);}
+export const PETRIFY='a2-p18-r2c1',REVIVE='a2-p13-r3c1';
+export function makePetrifyPhysicalScenario(name:PetrifyPhysicalScenario,players:{id:string;name:string}[],options:{level?:number;endurance?:number;follower?:'metal'|'earth'|'guardian'}={}){
+ let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];for(const [i,p] of players.entries())assignCharacter(s,p.id,['邪祭ウーノス','侍大将のシン','大神官ジル','魔導王ガイナス'][i]!);for(const p of Object.values(s.players)){p.permanent={endurance:100,warrior_level:20,magic_level:20,spirit:20};p.permanent.spirit=20+(p.id===b?(name.endsWith('-low')?0:name.endsWith('-high')?12:6):p.id===a&&name.endsWith('-low')?12:6)-gameStats(s,p.id).spirit;}s.players[a]!.permanent!.magic_level=20+(options.level??7)-gameStats(s,a).magic_level;if(options.endurance!==undefined)s.players[b]!.permanent!.endurance=100+options.endurance-gameStats(s,b).endurance;
+ const keep=[takeCard(s,a,PETRIFY),takeCard(s,a,REVIVE),takeCard(s,b,'a2-p06-r1c1'),takeCard(s,b,'a2-p05-r3c1'),takeCard(s,d,'命運凶変')],guard=options.follower?takeCard(s,b,options.follower==='metal'?'メタルゴーレム':options.follower==='earth'?'a2-p20-r2c1':'守護者'):null;if(guard)keep.push(guard);if(options.follower==='guardian')keep.push(takeCard(s,a,'必勝の祈り'));for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
+ function act(actorId:string,command:GameCommand){const input={actorId,command},e={...entropy(),dice:Array(100).fill(1)},r=transition(s,input,e);if(!r.ok)throw Error(`PETRIFY_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('PETRIFY_JSON');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('PETRIFY_IDS');}
+ for(const p of players){if(p.id===b&&guard)act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:guard});act(p.id,{type:'PASS_SETUP'});}act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
+}

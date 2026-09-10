@@ -1,0 +1,85 @@
+{
+  "task": "R5 Task11 other86: Militia physical card",
+  "status": "militia-physical-bindings-integrated-other85-open",
+  "completedAt": "2026-09-09 17:40 JST",
+  "implementation": "No production changes. Added exact Militia cases to existing common physical follower scenario, Engine and Worker tables; browser enumerates registered scenarios. Engine6, related2, DO2, browser2 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual Militia a2-p19-r1c1 starts in initial setup with level2 HP0 and human attribute. Foreign and duplicate initial placement reject with state and all views unchanged. Real initial placement preserves placedById A and initial-life:A provenance, hides physical ID from B/C/D, and actual Bow effect3 damage4 reaches final defense then body4 with exactly one physical discard and no morale.",
+    "Actual own-action placement followed by later full-turn reordering and voluntary removal; foreign, duplicate and over-capacity arrays reject unchanged. Real front Militia is consumed before Metal6 protects body; Metal front protects hidden rear Militia without disclosure. Real maai cancels reached defense and retains hidden source.",
+    "Initial Dia B actually approaches A and grants ordinary Dwarf three damage6 hits at own warrior levels1/2/3. Militia frozen descriptor is level2 HP0 human across all three hits. Attack1 leaves Militia alive and body0; equal2 destroys it but body0; attack3 destroys it and all three hits apply HP0 for body18. This distinguishes mitigation from consumable HP and processes the physical source only once.",
+    "Militia has no attack bottom. Both actual hand and actual field paths reject ordinary/dedicated ATTACK and CHANT after real approach; Dia source projection excludes it and forged grant rejects. Every accepted engine command JSON roundtrips and preserves220 unique physical IDs; refusals preserve complete state and all player views.",
+    "DO2 starts in initial setup, exercising real initial placement or own-turn arrangement followed by actual Bow attack. Every command saves/evicts/replays identical ACK and stored state with220 unique physical IDs. Browser2 exercises actual setup and own-turn placement controls, reloads after placement, during attack and after final resolution, verifies body4, physical source removed from hand/field and present once in discard.",
+    "7 semantic clauses and main1 bind6 exact militia-setup test parameters. Candidate-bound receipts and shared crossings remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p19-r1c1::semantic/follower/printed-level",
+      "a2-p19-r1c1::semantic/follower/printed-hp",
+      "a2-p19-r1c1::semantic/placement/setup",
+      "a2-p19-r1c1::semantic/placement/own-action",
+      "a2-p19-r1c1::semantic/defense/front-order",
+      "a2-p19-r1c1::semantic/follower/attribute-0",
+      "a2-p19-r1c1::semantic/attack/no-bottom"
+    ],
+    "mainProducerRebindings": [
+      "a2-p19-r1c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:74f593bf16129b3f",
+      "t:817bd99c09759719",
+      "t:d134e5f79b0f24f5",
+      "t:10b95005231e32d4",
+      "t:08cf29f898b8be7c",
+      "t:fae85bf1802db52a"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/common-followers-physical.test.ts -t militia",
+      "passed": 6,
+      "skipped": 22,
+      "log": "/tmp/madou-militia-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts -t 民兵",
+      "passed": 2,
+      "skipped": 128,
+      "log": "/tmp/madou-militia-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-common-followers-physical.test.ts -t militia",
+      "cwd": "apps/worker",
+      "passed": 2,
+      "skipped": 10,
+      "log": "/tmp/madou-militia-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/common-followers-physical.spec.ts -g militia",
+      "passed": 2,
+      "log": "/tmp/madou-militia-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-militia-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10058,
+        "implemented": 2054
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "110/195 per-entry semantic/main bindings integrated; other85 and whole-goal gates open. No accepted promotion."
+}

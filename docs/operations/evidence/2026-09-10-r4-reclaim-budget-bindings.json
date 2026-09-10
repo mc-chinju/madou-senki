@@ -1,0 +1,253 @@
+{
+  "scope": "Three G11 budget conditions; no full acceptance",
+  "bindings": [
+    {
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/base-and-extra-separate-name-budgets",
+        "source": [
+          "src:0ca5cb42ef4431de"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "reclaim-budget",
+        "meaning": "通常枠と追加枠を人物・正規化名称ごとに別管理し、通常1回と追加1回の後に第三回収を許さない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": [
+        "h:c05134350cafc68f",
+        "h:c1cf9974115950e8",
+        "h:4911703f221e0fd7"
+      ],
+      "tests": {
+        "t:5cf3869bf9876f29": {
+          "title": "S24 extra recovery permits base plus extra but never a third same-name return",
+          "suite": [],
+          "declarationSha256": "4181ec4ab699fd7e85f822f5546668b5e169fb709080a724e7e1e5c50e5e9274",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        }
+      },
+      "dependentClauses": [
+        "c2-p02-r1c2-ab03#owned-technique-additional-use",
+        "c2-p03-r1c1-ab04#owned-technique-additional-use",
+        "c2-p03-r1c1-ab04#owned-follower-additional-use",
+        "c2-p04-r1c1-ab03#owned-techniques-additional-one",
+        "c2-p06-r2c1-ab03#owned-techniques-additional-one"
+      ]
+    },
+    {
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/unlimited-preserves-base-budget",
+        "source": [
+          "src:0ca5cb42ef4431de"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "reclaim-budget",
+        "meaning": "本人が無制限を選んだ回収では通常枠を消費しない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": [
+        "h:c05134350cafc68f",
+        "h:c1cf9974115950e8"
+      ],
+      "tests": {
+        "t:7de42a8ccabdf0ca": {
+          "title": "S24 unlimited recovery leaves base slot intact and is finite per event",
+          "suite": [],
+          "declarationSha256": "d05ccfd9abc85b10d94fdd1d2f63403eb38e6bfdd49d40ef55b4a6a893ee601b",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:ff26012715d784ff": {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p02-r2c2-ab04",
+            "破山剣",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:0f02bab8144850b0": {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p03-r2c1-ab04",
+            "魔詩",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:e9d46b9e959730ae": {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p04-r1c2-ab04",
+            "歌う船",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:34d6d668b86010ea": {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p05-r1c2-ab04",
+            "グリフォン",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:90c1e1a30386b566": {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "スケルトン",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:e4b76faca1a04503": {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r2c2-ab03",
+            "狼牙",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        }
+      },
+      "dependentClauses": [
+        "c2-p02-r2c2-ab04#owned-techniques-unlimited",
+        "c2-p03-r2c1-ab04#unlimited-MoonHarp",
+        "c2-p03-r2c1-ab04#unlimited-MagicPoem",
+        "c2-p03-r2c1-ab04#unlimited-CurseSong",
+        "c2-p04-r1c2-ab04#unlimited-SingingShip",
+        "c2-p04-r1c2-ab04#unlimited-FlyingDragon",
+        "c2-p05-r1c2-ab04#unlimited-Griffon",
+        "c2-p06-r1c1-ab04#unlimited-Skeleton",
+        "c2-p06-r1c1-ab04#unlimited-Zombie",
+        "c2-p06-r1c1-ab04#unlimited-Wight",
+        "c2-p06-r1c1-ab04#unlimited-DeathKnight",
+        "c2-p06-r2c2-ab03#unlimited-WolfFang",
+        "c2-p06-r2c2-ab03#unlimited-DemonBeast",
+        "c2-p06-r2c2-ab03#unlimited-StarvingWolf"
+      ]
+    },
+    {
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/canceled-extra-spends-attempt-and-budget",
+        "source": [
+          "src:0ca5cb42ef4431de"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "reclaim-budget",
+        "meaning": "追加回収宣言を受理した時点で追加枠を消費し、取消後も返さずその回収試行を終了する。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": [
+        "h:c1cf9974115950e8",
+        "h:cda4645a919e1dd3"
+      ],
+      "tests": {
+        "t:bf280addf8a2c17f": {
+          "title": "%s cancellation consumes its selected attempt without a physical clone",
+          "suite": [],
+          "declarationSha256": "3a8e58f78aeeac7bff72c5567f80827889f7c48eb633830cc713d6cb0b21d23a",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p02-r1c2-ab03",
+            "踏み込み／弓",
+            "extra"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:bd113a7c395b2a6f": {
+          "title": "%s cancellation consumes its selected attempt without a physical clone",
+          "suite": [],
+          "declarationSha256": "3a8e58f78aeeac7bff72c5567f80827889f7c48eb633830cc713d6cb0b21d23a",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p03-r1c1-ab04",
+            "踏み込み／斧",
+            "extra"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:abf1cb0f2185e084": {
+          "title": "%s cancellation consumes its selected attempt without a physical clone",
+          "suite": [],
+          "declarationSha256": "3a8e58f78aeeac7bff72c5567f80827889f7c48eb633830cc713d6cb0b21d23a",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p04-r1c1-ab03",
+            "氷矢",
+            "extra"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        "t:a0a2703eee73d599": {
+          "title": "%s cancellation consumes its selected attempt without a physical clone",
+          "suite": [],
+          "declarationSha256": "3a8e58f78aeeac7bff72c5567f80827889f7c48eb633830cc713d6cb0b21d23a",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r2c1-ab03",
+            "炎矢",
+            "extra"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        }
+      },
+      "dependentClauses": [
+        "c2-p02-r1c2-ab03#owned-technique-additional-use",
+        "c2-p03-r1c1-ab04#owned-technique-additional-use",
+        "c2-p03-r1c1-ab04#owned-follower-additional-use",
+        "c2-p04-r1c1-ab03#owned-techniques-additional-one",
+        "c2-p06-r2c1-ab03#owned-techniques-additional-one"
+      ]
+    }
+  ]
+}

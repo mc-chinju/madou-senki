@@ -11,7 +11,7 @@ export function ActionCalculationSummary({ value, currentAction, names }: {
 }) {
   if (!value || currentAction?.source !== 'ability' && currentAction?.actionId === value.actionId) return null;
   return <section className="panel" aria-label="計算中の技"><h2>計算中の技</h2>
-    <p>{names[value.actorId]} · {getAction(value.cardInstanceId)?.name ?? '技'}</p>
+    <p>{names[value.actorId]} · {value.abilityName ?? (value.cardInstanceId?getAction(value.cardInstanceId)?.name:undefined) ?? '技'}</p>
     <p>効果Lv {value.effectLevel}{calculationLabel(value.calculation.effectLevel)} / ダメージ {value.damage ?? 'なし'}{calculationLabel(value.calculation.damage)}</p>
   </section>;
 }

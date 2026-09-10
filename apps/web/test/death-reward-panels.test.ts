@@ -1,0 +1,11 @@
+import {createElement} from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+import {expect,it} from 'vitest';
+import {viewFor} from '@madou/engine';
+import {makeDeathRewardScenario} from '../../worker/test/fixtures/death-reward-scenarios.js';
+import {AbilityPanel} from '../src/game/AbilityPanel.js';
+import {LifecyclePanel} from '../src/game/LifecyclePanel.js';
+import {abilityCommand} from '../src/game/ability-input.js';
+const players=['A','B','C','D'].map(id=>({id,name:id}));
+it.each(['death-reward-dia','death-reward-hunger'] as const)('%s sends the saved reward without requesting a new target',name=>{const view=viewFor(makeDeathRewardScenario(name,players),'A'),o=view.abilityOptions.find(o=>o.abilityId===(name==='death-reward-dia'?'c2-p06-r1c2-ab03':'c2-p06-r2c2-ab04'))!;expect(abilityCommand(view,o.abilityId)).toEqual({type:'USE_ABILITY',abilityId:o.abilityId,targetEventId:o.targetEventId});const html=renderToStaticMarkup(createElement(AbilityPanel,{view,disabled:false,send:()=>true}));expect(html).toContain(o.name+'を使う');expect(html).not.toContain('能力の対象');});
+it('Cham death panel shows one residual-hand choice only to its giver',()=>{const s=makeDeathRewardScenario('cham-death-gift',players);for(const actor of ['A','B','C','D']){const html=renderToStaticMarkup(createElement(LifecyclePanel,{view:viewFor(s,actor),disabled:false,send:()=>true}));expect(html.includes('能力で手札を託す')).toBe(actor==='B');if(actor==='B'){expect(html).toContain('能力で託す相手');expect(html).toContain('託さずに進む');expect(html).toContain('手札の補充はありません');}}});

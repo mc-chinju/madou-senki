@@ -1,0 +1,117 @@
+{
+  "task": "R5 Task11 other119: Mekai physical ordinary and Vanmil modes",
+  "status": "mekai-card-bindings-integrated-other118-open",
+  "completedAt": "2026-09-09 13:37 JST",
+  "implementation": "No production changes. Actual initial Uonos/ritual transformation and CHANT/turn fixture,15 Engine cases,6 DO cases and4 browser cases.",
+  "canonicalEvidence": [
+    "Mekai a2-p13-r2c3 magic/far/use10/effect10/damage20/魔詠. Both ordinary and elected Vanmil retain CHANT and own use checks. Initial Uonos receives actual ritual card and performs USE_REVIVAL_RITUAL, resolves transformation/boundary and all intervening turns before tests. No post-start assignment to Vanmil. Both modes reject hand attack without CHANT; actual CHANT/full turns enable it. Initial prepared future magic9/10 gives one/zero checks, with profile unchanged and elected self damage0 versus ordinary10.",
+    "Actual initial own Metal Golem6/Soldier1 and target Water Dragon7/building Fort3. Successful Mekai destroys both target followers with level-destroyed outcomes; target receives full20. Own followers are destroyed independently; ordinary receives full10 despite their HP, elected receives0 but still loses both. Other players take0, all physical sources disposed once. At declaration own followers/damage remain intact until settlement.",
+    "Actual excess-level failure and actual Fate cancellation leave B followers intact and body0 but still destroy own followers and charge ordinary10/elected0 once. Invalid self/multiple target, unchanted cast and foreign dedicated owner reject without payment/self damage/zone/view changes.",
+    "Actual successful Teleport protects B and its followers while self cost remains. Actual Lancaster elected Flash Spear counter cancels incoming20 and returns7 ignoring own followers, giving ordinary A17 or elected A7; own followers still destroyed, B followers intact. Actual Lamba magic-half ability is available under the restriction, reducing target20 to10 while both follower columns are destroyed. Maai and Evade reject before payment; public limitedDefenses remains teleport/counter.",
+    "Actual ordinary cast by initial Lancelot with legal initial endurance10 and target Shin endurance20 enters one simultaneous death batch containing target20 and self10; both are pending-death before any outcome. After processing both are dead, resolution empty and no winner while other GOOD/EVIL players remain. This death case uses an ordinary initial character, not Vanmil transformation. The first attempted fatal fixture gave initial Uonos nonpositive endurance when calibrated to future Vanmil; corrected the fixture selection rather than mutating post-start damage.",
+    "Every act verifies JSON replay/220 unique cards; refusal snapshots preserve raw and all recipient views. Initial assignments/stat allocations precede actual setup. All chant/turn/ritual operations are canonical transitions.",
+    "DO6 ordinary/elected x hit/cancel/failed-check saves, evicts and replays every actual CHANT/intervening-turn/ATTACK/PASS/reaction command with identical ACK/stored state and220 unique cards. Initial ritual/transformation/full-turn preparation precedes DO seeding; tested persistence starts at actual CHANT.",
+    "Browser4 ordinary/elected x pass/Teleport uses actual CHANT, all intervening turns, chanted attack/target/dedicated choice, defense restrictions, optional live Teleport result and reloads. Target damage/followers follow actual Teleport result, independent self damage/own follower destruction persists. Initial ritual transformation is canonical fixture preparation, not claimed as browser clicks."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p13-r2c3::semantic/ordinary/school",
+      "a2-p13-r2c3::semantic/ordinary/range",
+      "a2-p13-r2c3::semantic/ordinary/use-level",
+      "a2-p13-r2c3::semantic/ordinary/base-effect-level",
+      "a2-p13-r2c3::semantic/ordinary/damage",
+      "a2-p13-r2c3::semantic/ordinary/attribute-0",
+      "a2-p13-r2c3::semantic/ordinary/attribute-1",
+      "a2-p13-r2c3::semantic/ordinary/attack-use",
+      "a2-p13-r2c3::semantic/ordinary/chant-required",
+      "a2-p13-r2c3::semantic/dedicated/0/select-optional",
+      "a2-p13-r2c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p13-r2c3::semantic/dedicated/0/activation-check-retain",
+      "a2-p13-r2c3::semantic/dedicated/0/chant-retain",
+      "a2-p13-r2c3::semantic/ordinary/destroy-all-followers",
+      "a2-p13-r2c3::semantic/ordinary/defense-teleport",
+      "a2-p13-r2c3::semantic/ordinary/defense-counter",
+      "a2-p13-r2c3::semantic/ordinary/defense-ability",
+      "a2-p13-r2c3::semantic/ordinary/no-other-defense",
+      "a2-p13-r2c3::semantic/ordinary/self-ten",
+      "a2-p13-r2c3::semantic/ordinary/self-follower-destruction",
+      "a2-p13-r2c3::semantic/ordinary/self-cost-on-failure",
+      "a2-p13-r2c3::semantic/dedicated/no-self-damage"
+    ],
+    "mainProducerRebindings": [
+      "a2-p13-r2c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:feaf465e674daee9",
+      "t:68284674a7110252",
+      "t:266e78649c39f7ac",
+      "t:9bc1409349e1977e",
+      "t:7e528095247e1547",
+      "t:44846da2bf6d76cf",
+      "t:e69d8feef70478df",
+      "t:7eae722221760ae5",
+      "t:ea619432449b80d0",
+      "t:c0cf643c556133b8",
+      "t:3977b52b45fb325b",
+      "t:1666750db2873b43",
+      "t:d7daf66b24c6d123",
+      "t:4266a7d5321b68bd",
+      "t:1db8784b26599ac1"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/mekai-physical.test.ts",
+      "initialPassed": 14,
+      "initialFailed": 1,
+      "log": "/tmp/madou-mekai-physical-engine.log",
+      "retest": {
+        "command": "pnpm exec vitest run packages/engine/test/mekai-physical.test.ts -t 'actual lethal twenty'",
+        "passed": 1,
+        "skipped": 14,
+        "log": "/tmp/madou-mekai-physical-death.log"
+      },
+      "finalCaseCoverage": 15
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7g-lifetime.test.ts -t '滅界|Vanmil dedicated destruction|a2-p13-r2c3 dedicated'",
+      "passed": 8,
+      "skipped": 54,
+      "log": "/tmp/madou-mekai-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-mekai-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 6,
+      "log": "/tmp/madou-mekai-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/mekai-physical.spec.ts",
+      "passed": 4,
+      "log": "/tmp/madou-mekai-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-mekai-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10569,
+        "implemented": 1543
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "77/195 action-card per-entry semantic/main bindings integrated; other118 and whole-goal gates open. Candidate-bound receipts and shared dependencies pending. No accepted promotion."
+}

@@ -1,0 +1,182 @@
+{
+  "scope": "Selected S24-S26 dependencies; full acceptance remains",
+  "bindings": [
+    {
+      "scenario": "S24",
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/base-reclaim-shared-by-name",
+        "source": [
+          "src:9db1f8340d37ac6e"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "通常回収の一回分を人物と正規化した名称で管理し、別の同名物理札で増やさない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:e0e62a694d897112": {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        },
+        "h:c05134350cafc68f": {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "commitReclaim"
+        }
+      },
+      "tests": {
+        "t:2655d29a061d7b20": {
+          "path": "packages/engine/test/owned-reclaim.test.ts",
+          "suite": [],
+          "title": "S24 same-name physical copies share one base allowance",
+          "declarationSha256": "f127a92f38fa3a57ad877091695d2730332f8df258c77ff022adcbbeb1010a57",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S24 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        }
+      }
+    },
+    {
+      "scenario": "S26",
+      "obligation": {
+        "entryId": "ruling:G16",
+        "clauseKey": "semantic/wandering-hand-followers-return-to-deck",
+        "source": [
+          "src:9be704415444e5ae"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G16"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "流浪時の手札・従者は捨て札でなく山札へ戻してシャッフルする。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:d55fdb4b8dbaa431": {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleProtection"
+        }
+      },
+      "tests": {
+        "t:cf3864c91362adbd": {
+          "path": "apps/worker/test/room-scenario-s26.test.ts",
+          "suite": [],
+          "title": "S26 actual protected death wandering and resurrection preserve distinct destinations and both setup continuations through every restart",
+          "declarationSha256": "7f33799b5a10e72923123845d8403190d1eaf8928f59bd3f956add173bd99ff6",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        },
+        "t:ea5223143ec8c428": {
+          "path": "packages/engine/test/scenario-s26.test.ts",
+          "suite": [],
+          "title": "S26 actual protected death returns wandering cards to deck and resurrection replaces initial hands and followers before the suspended turn",
+          "declarationSha256": "2dc4044bc3e5db05240317d700801aab78273171fd9320677ace22040385687b",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        },
+        "t:b9c4f7c8c8ee00a7": {
+          "path": "tests/e2e/scenario-s26.spec.ts",
+          "suite": [],
+          "title": "S26 r6-s26-revive restores protected wanderer with five fresh cards and a newly placed follower",
+          "declarationSha256": "e3e4a42b38e29bbf162abf1a21d09f11577f2b6d068f8af06ad6385583b399fb",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        },
+        "t:2f7a6fd7af9ba61a": {
+          "path": "tests/e2e/scenario-s26.spec.ts",
+          "suite": [],
+          "title": "S26 r6-s26-return restores protected wanderer with five fresh cards and a newly placed follower",
+          "declarationSha256": "540f77a86eb5bbc7aa8f2a364ffd5cee4fddcb31d303017598a5bc93714e3303",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        }
+      }
+    },
+    {
+      "scenario": "S26",
+      "obligation": {
+        "entryId": "ruling:G16",
+        "clauseKey": "semantic/protected-revival-resets-wanderer-setup",
+        "source": [
+          "src:9be704415444e5ae"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G16"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "保護対象の復活で流浪者が初期と同じ手札・従者取得を行い復帰する。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:d55fdb4b8dbaa431": {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleProtection"
+        },
+        "h:6bdfb7cdd54412c3": {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "beginResetup"
+        }
+      },
+      "tests": {
+        "t:cf3864c91362adbd": {
+          "path": "apps/worker/test/room-scenario-s26.test.ts",
+          "suite": [],
+          "title": "S26 actual protected death wandering and resurrection preserve distinct destinations and both setup continuations through every restart",
+          "declarationSha256": "7f33799b5a10e72923123845d8403190d1eaf8928f59bd3f956add173bd99ff6",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        },
+        "t:ea5223143ec8c428": {
+          "path": "packages/engine/test/scenario-s26.test.ts",
+          "suite": [],
+          "title": "S26 actual protected death returns wandering cards to deck and resurrection replaces initial hands and followers before the suspended turn",
+          "declarationSha256": "2dc4044bc3e5db05240317d700801aab78273171fd9320677ace22040385687b",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        },
+        "t:b9c4f7c8c8ee00a7": {
+          "path": "tests/e2e/scenario-s26.spec.ts",
+          "suite": [],
+          "title": "S26 r6-s26-revive restores protected wanderer with five fresh cards and a newly placed follower",
+          "declarationSha256": "e3e4a42b38e29bbf162abf1a21d09f11577f2b6d068f8af06ad6385583b399fb",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        },
+        "t:2f7a6fd7af9ba61a": {
+          "path": "tests/e2e/scenario-s26.spec.ts",
+          "suite": [],
+          "title": "S26 r6-s26-return restores protected wanderer with five fresh cards and a newly placed follower",
+          "declarationSha256": "540f77a86eb5bbc7aa8f2a364ffd5cee4fddcb31d303017598a5bc93714e3303",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
+        }
+      }
+    },
+    {
+      "scenario": "S25",
+      "dependsOn": [
+        "c2-p01-r2c2-ab05#optional-one-hand-card-gift",
+        "c2-p01-r2c2-ab05#residual-hand-excludes-used-source",
+        "c2-p01-r2c2-ab05#coexists-physical-gift-no-double-card"
+      ],
+      "existingTestsDeclarationHashesMatched": true,
+      "status": "No row promotion; existing card-level bindings preserved"
+    }
+  ]
+}

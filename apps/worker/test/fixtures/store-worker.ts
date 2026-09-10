@@ -1,6 +1,6 @@
 import { DurableObject } from 'cloudflare:workers';
 import { RoomStorage, type CommitInput } from '../../src/rooms/storage.js';
-export { Room } from '../../src/rooms/room.js';
+export { CanonicalRoom as Room } from './canonical-room.js';
 
 export interface ProbeState { count: number; secret: string }
 export interface ProbeEvent { type: string; privateValue: string }

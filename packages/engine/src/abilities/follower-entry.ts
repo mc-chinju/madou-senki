@@ -1,3 +1,5 @@
+import {darkSaintIgnoreTechnique} from '../effects/dark-saint.js';
+import {freezeZan} from './zan.js';
 import {gameStats} from '../game-stats.js';
 import {receivedTechnique} from './received-defense.js';
 import {attackPropertyTechnique} from './attack-properties.js';
@@ -20,7 +22,7 @@ export const ILLUSION_EFFECTS: {id:AbilityEffectId;name:string}[]=[
  {id:'arnes-suppression',name:'公開済みアーネスの仮想親衛隊を無効'},
 ];
 export function activeAbilitySource(s:GameState,actorId:string,id:AbilityId):boolean {
- const p=s.players[actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p)&&ownsAbility(p,id);
+ const p=s.players[actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p,s)&&ownsAbility(p,id);
 }
 /** Per-hit actual source; never reuse the first source's printed level for a bundle. */
 export function qualifiesForSpirit(s:GameState,g:AttackGroup,h:AttackTarget['hits'][number],magicLevel:number):boolean {
@@ -103,7 +105,8 @@ export function resolveFollowerAbility(s:GameState,f:AbilityFrame):boolean {
 }
 /** Live modifiers are fixed once at entry. Subsequent child resumes use saved values. */
 export function freezeEntryModifiers(s:GameState,g:AttackGroup,t:AttackTarget):void {
+ freezeZan(s,g,t);
  t.frozenAbilityIgnore=!!(t.surpriseActorId&&activeAbilitySource(s,t.surpriseActorId,TIA_SURPRISE)||g.abilityFollowerIgnore&&activeAbilitySource(s,g.abilityFollowerIgnore,'c2-p04-r2c2-ab02'));
  t.physicalHumansInvalid=illusionActive(s,g,'human-invalidation');
- for(const h of t.hits){const selected=liveBeastSelection(s,g,h,h.technique??g.technique);if(selected)h.frozenBeastEmpathy={...selected};h.technique=effectiveHitTechnique(s,g,t,h);if(h.receivedDefense)h.receivedDefense.snapshotApplied=true;}
+ for(const h of t.hits){const selected=liveBeastSelection(s,g,h,h.technique??g.technique);if(selected)h.frozenBeastEmpathy={...selected};h.technique=darkSaintIgnoreTechnique(s,g,t,effectiveHitTechnique(s,g,t,h));if(h.receivedDefense)h.receivedDefense.snapshotApplied=true;}
 }

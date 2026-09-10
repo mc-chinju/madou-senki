@@ -1,0 +1,236 @@
+{
+  "scope": "Selected S21-S23 boundaries only; no whole-source acceptance",
+  "bindings": [
+    {
+      "scenario": "S21",
+      "obligation": {
+        "entryId": "ruling:G09",
+        "clauseKey": "semantic/unused-shelim-barrier-not-applied",
+        "source": [
+          "src:b71118276f900f30"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G09"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "伏せたシェリムの絶対結界は不使用時に自動適用しない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": {
+        "path": "packages/engine/src/abilities/received-defense.ts",
+        "symbol": "evaluateReceivedReservations"
+      },
+      "testCases": {
+        "t:489863dad096c0ed": {
+          "path": "apps/worker/test/room-s21-secrecy.test.ts",
+          "suite": [],
+          "title": "S21 White Light6 hidden alternate worlds keep foreign snapshots equal until hit through restart and duplicate receipt",
+          "declarationSha256": "cf1eba4f9b434640d64fdcdffac8127bec84172e4e70d64da19e3b8c1fc488e1",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:e0974ef8a0be704b": {
+          "path": "packages/engine/test/r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S21 actual White Light5 damage6 keeps unused Shelim ability private until mandatory G15 hit publication",
+          "declarationSha256": "28fe782850ae292dcf629a9cbfceae9cec8c0ce23db5c13402864fefeeb53cdd",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:151922dd9c9eb638": {
+          "path": "packages/engine/test/r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S21 alternate hidden character has identical foreign projections and pass order until the actual hit reveals identity",
+          "declarationSha256": "c97edecdc4d9c24ec200950f73c04d875890cf5285dcda79f267c29182e2a2b3",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:723ecc5cc37cd68d": {
+          "path": "tests/e2e/scenario-s21-secrecy.spec.ts",
+          "suite": [],
+          "title": "S21 White Light5 damage6 alternate hidden worlds match HTTP and WS before hit and disclose no unused ability in DOM",
+          "declarationSha256": "c2129f35f2887ef3739a35a2bcdca71540cc548aca9abca024e8ccc267395e6c",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        }
+      }
+    },
+    {
+      "scenario": "S21",
+      "obligation": {
+        "entryId": "ruling:G09",
+        "clauseKey": "semantic/hidden-unused-ability-private-before-hit",
+        "source": [
+          "src:b71118276f900f30"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G09"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "命中による強制公開前に、非公開人物の実IDと不使用能力候補を他人へ送らない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": {
+        "path": "packages/engine/src/view.ts",
+        "symbol": "viewFor"
+      },
+      "testCases": {
+        "t:489863dad096c0ed": {
+          "path": "apps/worker/test/room-s21-secrecy.test.ts",
+          "suite": [],
+          "title": "S21 White Light6 hidden alternate worlds keep foreign snapshots equal until hit through restart and duplicate receipt",
+          "declarationSha256": "cf1eba4f9b434640d64fdcdffac8127bec84172e4e70d64da19e3b8c1fc488e1",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:e0974ef8a0be704b": {
+          "path": "packages/engine/test/r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S21 actual White Light5 damage6 keeps unused Shelim ability private until mandatory G15 hit publication",
+          "declarationSha256": "28fe782850ae292dcf629a9cbfceae9cec8c0ce23db5c13402864fefeeb53cdd",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:151922dd9c9eb638": {
+          "path": "packages/engine/test/r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S21 alternate hidden character has identical foreign projections and pass order until the actual hit reveals identity",
+          "declarationSha256": "c97edecdc4d9c24ec200950f73c04d875890cf5285dcda79f267c29182e2a2b3",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:723ecc5cc37cd68d": {
+          "path": "tests/e2e/scenario-s21-secrecy.spec.ts",
+          "suite": [],
+          "title": "S21 White Light5 damage6 alternate hidden worlds match HTTP and WS before hit and disclose no unused ability in DOM",
+          "declarationSha256": "c2129f35f2887ef3739a35a2bcdca71540cc548aca9abca024e8ccc267395e6c",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        }
+      }
+    },
+    {
+      "scenario": "S22",
+      "obligation": {
+        "entryId": "ruling:G10",
+        "clauseKey": "semantic/open-refill-resumes-after-child",
+        "source": [
+          "src:840ff1642b3ac77f"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G10"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "補充中に取得したOPENを公開領域へ置き、その効果の子処理後に同じ補充へ戻って通常札を取得する。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": {
+        "path": "packages/engine/src/lifecycle/advance.ts",
+        "symbol": "advanceLifecycle"
+      },
+      "testCases": {
+        "t:ae05f6dc50205516": {
+          "path": "apps/worker/test/room-r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S22 same refill saves FuSen then Dawn and rejects the old generation after original parent resume",
+          "declarationSha256": "7a9202ff4095ca1aabe9b478562c6848620350f3b3d0b3585a475cc98c11b1d9",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S22 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:1520a944a7f24806": {
+          "path": "packages/engine/test/r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S22 two OPEN share one actual reaction refill and resume the original parent generation after saved FuSen choice",
+          "declarationSha256": "2308c655a504fd9ed6cdf28c9e58f412f816974deceaa2431e9789a8ba50a6bb",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S22 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:85825600e6b13506": {
+          "path": "tests/e2e/r6-scenarios.spec.ts",
+          "suite": [],
+          "title": "S22 r6-s22 completes two OPEN in one refill and reloads the original declaration",
+          "declarationSha256": "6890fd51f7106de3250d1c8ba5ea0a1fa62a9f5f54f27f636390dcdcd84721f4",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S22 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:a56b33f2510244d3": {
+          "path": "tests/e2e/r6-scenarios.spec.ts",
+          "suite": [],
+          "title": "S22 r6-s22-choice completes two OPEN in one refill and reloads the original declaration",
+          "declarationSha256": "add7d26f87585e8c5fbd2d7564225691354988ed0dbf642f99418a1426618c41",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S22 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        }
+      }
+    },
+    {
+      "scenario": "S23",
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/exhaustion-shuffles-discard-excludes-resolution",
+        "source": [
+          "src:9a232cefdd693b28"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "不足時は山札の残りを取得して捨て札だけを再構成し、解決中札を混ぜず取得を続ける。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": {
+        "path": "packages/engine/src/lifecycle/advance.ts",
+        "symbol": "advanceLifecycle"
+      },
+      "testCases": {
+        "t:fa407719d27c1ed5": {
+          "path": "apps/worker/test/room-r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S23 actual three-card draw naturally shuffles only two discard and preserves resolution across restart",
+          "declarationSha256": "3bd0b9e5dcf7d5165e765be790b35f455034eb90e413e247af03eda3eb51dcb2",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S23 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:5cff2ceff45a8135": {
+          "path": "packages/engine/test/r6-scenarios.test.ts",
+          "suite": [],
+          "title": "S23 natural exhaustion draws 1 plus 2 discard with the real secret book still in resolution and deterministic replay",
+          "declarationSha256": "2151f288f75c4be7c6cf888c15e30c54e4c68a37f7235802d79d5adebec45761",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "S23 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        },
+        "t:f4200f569b9e6ce1": {
+          "path": "tests/e2e/r6-scenarios.spec.ts",
+          "suite": [],
+          "title": "S23 reload preserves exact three-card draw while natural exhaustion excludes the resolving book",
+          "declarationSha256": "defca17944faffba52ec5d05dee03ef333e207a524cc5f002842712546a52949",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S23 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
+        }
+      }
+    }
+  ]
+}

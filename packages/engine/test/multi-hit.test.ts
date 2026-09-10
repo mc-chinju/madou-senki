@@ -27,7 +27,7 @@ it('snapshots a nonzero-HP follower once and subtracts its HP from every simulta
 
 it('records one failed morale check for the simultaneous group before level comparison',()=>{
   let s=ready();character(s,'A','侍大将のシン');const card=handCard(s,'A','天地百撃斬');const follower=handCard(s,'B','王立騎士団');s.players.A!.hand=s.players.A!.hand.filter(id=>id!==card);s.players.A!.chants=[{cardInstanceId:card,revealed:false}];s.players.B!.hand=s.players.B!.hand.filter(id=>id!==follower);s.players.B!.followers=[{cardInstanceId:follower,revealed:false}];s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:true});s=until(s,'damage');s=closeWindow(s,[2]);s=closeWindow(s);
-  while(s.windows!.at(-1)!.kind!=='follower-start')s=pass(s);s=pass(s);s=closeWindow(s,[6,6]);s=closeWindow(s);const group=Object.values(s.groups!)[0]!;expect(group.targets[0]!.followerResults).toEqual([{cardInstanceId:follower,morale:{dice:[6,6],threshold:engine.derivedStats(s.players.B!).spirit,success:false},outcome:'morale-failed',hpReduction:0}]);expect(s.discard).toContain(follower);s=finish(s);expect(s.players.B!.damage).toBe(14);
+  while(s.windows!.at(-1)!.kind!=='follower-start')s=pass(s);s=pass(s);s=closeWindow(s,[6,6]);s=closeWindow(s);const group=Object.values(s.groups!)[0]!;expect(group.targets[0]!.followerResults).toEqual([{cardInstanceId:follower,morale:{dice:[6,6],threshold:engine.derivedStats(s.players.B!).spirit,success:false},outcome:'morale-failed',hpReduction:0}]);expect(s.resolution).toContain(follower);s=finish(s);expect(s.discard).toContain(follower);expect(s.players.B!.damage).toBe(14);
 });
 
 it('applies Goblin then nonzero HP follower order to every hit and records distinct causes',()=>{

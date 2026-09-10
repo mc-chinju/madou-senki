@@ -1,0 +1,64 @@
+{
+  "task": "R5 Task 4 Zan portion",
+  "status": "zan-acceptance-complete-mandatory-restrictions-and-conversion-pending",
+  "completedAt": "2026-09-09 05:55 JST",
+  "implementation": [
+    "Canonical Asfelt ab02 is registered once. Existing USE_ABILITY is offered in the current target follower-entry window after its maai responses and before follower HP resolution.",
+    "Accepted physical combat maai records maaiWasSubmitted on its exact hit before continuing any payment ability/reclaim. Canceled advances do not erase history; later hits have independent fields.",
+    "zan.ts saves ability, actor life, actual source action, target and hit index on each qualifying reached sword hit of the selected target. Non-sword, already defended and any prior maai submission are excluded.",
+    "freezeZan commits once through existing follower-entry cutoff before HP deduction using composeValue. Live suppression before commitment prevents multiplication; later suppression does not rewrite the frozen value. Damage multiplier provenance also accompanies the hit.",
+    "Existing owner ability UI handles selection/cancellation; its description explains that canceled maai still prevents the conditional double. No client-supplied damage or history is accepted."
+  ],
+  "canonicalEvidence": [
+    "Actual Crush Sword damage five becomes ten only with an accepted Zan selection; decline and actual Fate cancellation retain five.",
+    "Actual physical maai then actual advance cancellation preserves submitted history, removes the Zan offer and leaves five damage.",
+    "Actual dedicated Asfelt Wind Sword hits two targets; selecting Zan only against B yields B24/C12.",
+    "Actual CHANT and later two-hit Heavenly Hundred Strikes: first-hit maai canceled by actual advance remains disqualifying; second hit independently doubles. Actual damage seven plus fourteen totals twenty-one.",
+    "Actual Vanmil ban during declaration or reserved pre-entry selection prevents doubling; ban after snapshot retains ten.",
+    "Actual initially placed Soldier receives the doubled value before its HP is subtracted, resulting in body damage nine.",
+    "Non-sword actual bow offers no Zan; every Engine command replays through JSON and conserves 220 unique physical cards.",
+    "DO and browser select/decline/cancel/previous-maai cases preserve the exact hit history and once-only cutoff; DO restarts and duplicate ACK checks follow every command."
+  ],
+  "structuralEvidence": [
+    "Null sword damage uses an explicitly structural null boundary; it remains null.",
+    "The required abstract composeValue case base5 +1 then x2 x0.5 yields6 and is separate from real card producers."
+  ],
+  "verification": {
+    "engineProtocolWeb": {
+      "passed": 166,
+      "files": 7,
+      "newEngine": 12,
+      "newProtocol": 1,
+      "log": "/tmp/madou-zan-focused-final.log"
+    },
+    "worker": {
+      "passed": 4,
+      "log": "/tmp/madou-zan-do.log"
+    },
+    "browser": {
+      "passed": 4,
+      "log": "/tmp/madou-zan-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-zan-types-final2.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12109,
+      "log": "/tmp/madou-zan-ledger.log",
+      "note": "Structural only; no status promotion."
+    }
+  },
+  "relatedAcceptanceFixes": [
+    "Two existing Tia surprise tests assumed immediate cost discard and immediate cancellation target before the shared reclaim answers. They now explicitly pass that payment reclaim window first.",
+    "Browser target hit technique is optional in the public type; the known actual fixture projection is asserted before reading its damage."
+  ],
+  "remaining": [
+    "Task4 Cham mandatory half/attached and stolen fairy sword acceptance.",
+    "Task4 Fury black-technique restriction and all listed real declaration routes.",
+    "Task4 Asfelt/Garwin conversion resistance plus two, freeze and no-check exceptions.",
+    "Task4 mandatory behavior under suppression/revival and common validation."
+  ],
+  "reviewPerformed": false
+}

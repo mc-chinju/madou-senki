@@ -8,6 +8,6 @@ export function revealCharacter(s:GameState,actorId:string,now:number):void{
  appendEvent(s,now,{type:'CHARACTER_REVEALED',actorId,audience:'public',characterId:p.characterId});
  for(const g of Object.values(s.groups??{}))for(const t of g.targets){
   const target=s.players[t.actorId]!;
-  if(!t.followerStarted&&target.revealed&&target.faction===s.players[g.attackerId]!.faction)for(const hit of t.hits)hit.defended=true;
+  if(!g.substituteOrigin&&!t.followerStarted&&target.revealed&&target.faction===s.players[g.attackerId]!.faction)for(const hit of t.hits)hit.defended=true;
  }
 }

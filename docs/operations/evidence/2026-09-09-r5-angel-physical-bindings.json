@@ -1,0 +1,139 @@
+{
+  "task": "R5 Task11 Angel a2-p22-r2c1",
+  "status": "angel-physical-bindings-integrated-other57-open",
+  "completedAt": "2026-09-09 22:47 JST",
+  "implementation": "No production changes.24 semantic clauses and main producer bind32 actual transition references.",
+  "canonicalEvidence": [
+    "Actual initial/own-action placement, reorder/removal, hidden identity and front order. Follower6 HP0 celestial/white/sky. Actual Bow3 blocks and survives; actual Dia-granted Dwarf5/6/7 triple damage6 gives body0/0/18 and keep/equal-destroy/higher-destroy. Spirit6 modifier0 faces2/4 pass3/4 fail, one roll per reached group, no HP0 reduction in either branch, failure discards once. A surviving later group rechecks; unreached rear stays hidden with no morale. Maai prevents follower entry.",
+    "Explicit Shelim and Lia defensive selection at spirit0 waives only morale, nonmagic6 HP0 unchanged; omitted choice fails against Dwarf6 and gives18, selected equal defense gives0 with one discard. Real nonwhite EarthSplit6, Shelim WhiteRing7, and actual Prayer makes8 compare against magic7: body0/0/10 and keep/equal-destroy/higher-destroy. Ordinary spirit0 fails even against EarthSplit6 and takes8. Both owners selected waiver preserve magic7 and block EarthSplit6 at spirit0. Real Tia MagicWind ignores sky Angel despite selected waiver/magic7, leaves hidden source and deals12 to A/C. Actual Alseil mental MirrorSeal explicitly destroys Angel7 despite selected waiver and deals0.",
+    "Actual foreign owner cannot select waiver, and Dia human grant excludes celestial Angel after approach. Both actual Shelim and Lia hand/placed ordinary/dedicated direct attacks and CHANT reject; printed defensive text grants no attack permission. Actual Army hand far magic white use/effect6 damage6 single, magic5/6 gives1/0 use checks independent warrior20/0, ordinary morale retained even Shelim/Lia spirit0 failures. Near after actual approach also allowed; placed source and empty/self/duplicate/multiple targets reject unchanged. Parent/child cancellation and forced morale/use failure consume both cards once with no return. Actual maai blocks and magic Mirror reflects6 while source already spent.",
+    "Every Engine command JSON-reexecutes with220 unique IDs; rejected commands preserve state/all actor views. Fixture initial character/draw events agree with actual deal; Army target changed to distinct Garwin to preserve requested Shelim ownership, verified by explicit identity assertion. DO15 saves/evicts/replays each command with identical ACK and stored state, including Army cancellation. Browser14 actual placement, equal/higher/fail, both owners waiver, magic6/7/Prayer8/fail, sky ignore, explicit destruction and Army with reload.24 rows implemented/main1 rebound, no accepted promotion; shared/candidate gates remain pending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/angel-physical.test.ts",
+      "initialPassed": 31,
+      "initialFailed": 1,
+      "initialFailure": "Army target and requested owner were both Shelim; fixture character reassignment displaced owner and caused UNSUPPORTED_CARD. Target changed to distinct Garwin, owner identity assertions added.",
+      "log": "/tmp/madou-angel-engine.log",
+      "targetCommand": "pnpm exec vitest run packages/engine/test/angel-physical.test.ts -t 'Army|unprinted'",
+      "targetPassed": 13,
+      "targetSkipped": 19,
+      "targetLog": "/tmp/madou-angel-engine-target.log",
+      "coveredCases": 32
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/dedicated-follower-attacks.test.ts packages/engine/test/all-army.test.ts -t '天使'",
+      "passed": 8,
+      "skipped": 261,
+      "filesPassed": 1,
+      "filesSkipped": 2,
+      "log": "/tmp/madou-angel-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-angel-physical.test.ts",
+      "cwd": "apps/worker",
+      "log": "/tmp/madou-angel-do.log",
+      "initialPassed": 12,
+      "initialFailed": 3,
+      "initialFailure": "15-second test timeouts; cause unresolved. Same source and same limit, only failed cases retried.",
+      "targetPassed": 3,
+      "targetSkipped": 12,
+      "targetLog": "/tmp/madou-angel-do-target.log",
+      "targetCommand": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-angel-physical.test.ts -t 'angel-(sky|destroy|army) canceled=false'"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/angel-physical.spec.ts",
+      "passed": 14,
+      "log": "/tmp/madou-angel-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-angel-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9467,
+        "implemented": 2645
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p22-r2c1::semantic/follower/printed-level",
+      "a2-p22-r2c1::semantic/follower/printed-hp",
+      "a2-p22-r2c1::semantic/placement/setup",
+      "a2-p22-r2c1::semantic/placement/own-action",
+      "a2-p22-r2c1::semantic/defense/front-order",
+      "a2-p22-r2c1::semantic/follower/attribute-0",
+      "a2-p22-r2c1::semantic/follower/attribute-1",
+      "a2-p22-r2c1::semantic/follower/attribute-2",
+      "a2-p22-r2c1::semantic/morale/receive-trigger",
+      "a2-p22-r2c1::semantic/morale/spirit-modifier",
+      "a2-p22-r2c1::semantic/morale/failure-discard",
+      "a2-p22-r2c1::semantic/attack/grant-required",
+      "a2-p22-r2c1::semantic/attack/ordinary-hand-grant",
+      "a2-p22-r2c1::semantic/attack/discard-not-return",
+      "a2-p22-r2c1::semantic/attack/printed-level",
+      "a2-p22-r2c1::semantic/attack/printed-damage",
+      "a2-p22-r2c1::semantic/attack/attribute-0",
+      "a2-p22-r2c1::semantic/attack/attribute-1",
+      "a2-p22-r2c1::semantic/attack/attribute-2",
+      "a2-p22-r2c1::semantic/defense/magic-level",
+      "a2-p22-r2c1::semantic/defense/nonmagic-base",
+      "a2-p22-r2c1::semantic/dedicated/shelim-morale-waiver",
+      "a2-p22-r2c1::semantic/dedicated/lia-morale-waiver",
+      "a2-p22-r2c1::semantic/dedicated/no-direct-attack-grant"
+    ],
+    "mainProducerRebindings": [
+      "a2-p22-r2c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:c65cace765bfc0ba",
+      "t:616b1f46ba759036",
+      "t:fa86609ffdd1cd8f",
+      "t:463c7f3c78ea6736",
+      "t:65ef7a5adaf3f092",
+      "t:69c55dfcc82eecac",
+      "t:3de814f8761c6f24",
+      "t:b9d99da4a392d005",
+      "t:a023a6a2a2ed1fb3",
+      "t:b498dd381eb45f81",
+      "t:e65487e22767a0f2",
+      "t:f2fc6f980ab31b7c",
+      "t:29a088b8adb7cd35",
+      "t:f0f68bd3ff9f5194",
+      "t:ba4c2ead3b1a34ba",
+      "t:86cf0af70d3a23a9",
+      "t:51ecd74cafd293ab",
+      "t:a7605d7608cad3f5",
+      "t:dbdc33d9985c31d7",
+      "t:82a6eb9c04a7ce0e",
+      "t:acf5e20e619fedf5",
+      "t:13c1bc6502590bb9",
+      "t:4c6ac98de0534237",
+      "t:d32b657906d22229",
+      "t:118d2c091e71fb03",
+      "t:c147497fa04712b2",
+      "t:fa27a1ab699d0fbd",
+      "t:9761078e9604b8c9",
+      "t:6926b03a28682214",
+      "t:b64ba60a2d62cc3e",
+      "t:781929f8f40df7b1",
+      "t:3dc503744ace0207"
+    ]
+  },
+  "remaining": "138/195 fully integrated; other57 includes partial SingingShip1 and WingedFolk1 plus55 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

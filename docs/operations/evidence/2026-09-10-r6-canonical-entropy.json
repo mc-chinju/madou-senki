@@ -1,0 +1,59 @@
+{
+  "task": "R6 S03/S04 and canonical one-command entropy boundary",
+  "status": "S03-S04-conditions-complete-R6-open",
+  "recordedAt": "2026-09-10 14:00 JST",
+  "implementation": [
+    "Room protected commandEntropy() wraps unchanged production entropy(); both transition and createGame use it.",
+    "Test-only CanonicalRoom offers setNextEntropy and probe; consumes override once, clears before returning, otherwise delegates to production. Only store-worker exports subclass.",
+    "New room-canonical-scenarios.test.ts sends actual WebSocket commands and overrides entropy through runInDurableObject; no crypto mocking in this new S04 test."
+  ],
+  "requirements": {
+    "S03": "Existing Engine/DO/browser actual B God, replacement draw then C Fate cancellation; source and replacement retained in correct zones, used event remains, no reroll or action refund.",
+    "S04": "Real poem roll [2,3], God then final PASS produces [4,4]; stable roll ID, attempts exactly[[2,3],[4,4]], success true. Each real command consumes one queued override. Immediately evict after save, queue another override, replay exact final PASS receipt; ACK/saved state identical and provider calls/consumed unchanged with pending override retained."
+  },
+  "verification": {
+    "red": {
+      "log": "/tmp/madou-canonical-entropy-red.log",
+      "reason": "Provider not wired: calls0/consumed0/pendingtrue failed expected1/1/false."
+    },
+    "worker": {
+      "passed": 3,
+      "log": "/tmp/madou-canonical-entropy-green.log"
+    },
+    "engine": {
+      "passed": 2,
+      "log": "/tmp/madou-canonical-entropy-engine.log"
+    },
+    "browser": {
+      "passed": 2,
+      "log": "/tmp/madou-canonical-entropy-browser.log"
+    },
+    "types": {
+      "exitCode": 0,
+      "log": "/tmp/madou-canonical-entropy-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8389,
+        "implemented": 3723
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": [
+    "R6 Task1 canonical-S01/canonical-S04 fixture names and canonical-scenarios.ts organization in plan are not yet integrated; tests currently reuse real r6-s03-s04 fixture.",
+    "S05-S07 remaining conditions and all later R6 tasks remain open.",
+    "No all-catalog acceptance promotion; broader goal incomplete."
+  ],
+  "processes": "All terminal."
+}

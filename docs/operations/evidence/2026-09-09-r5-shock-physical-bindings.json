@@ -1,0 +1,136 @@
+{
+  "task": "R5 Task11 other96: Shock, Magic Shock and Phantom Arrow physical cards",
+  "status": "shock-physical-bindings-integrated-other93-open",
+  "completedAt": "2026-09-09 16:51 JST",
+  "implementation": "No production changes. Engine19 case coverage, related4, DO11, browser7 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual initial Shelim source and Gaenas target, real Stone Golem5 and Soldier2 placement, non-target Dia Metal6. Shock a2-p17-r2c1 magic/far/use4/effect4/damage5 and Magic Shock a2-p17-r2c2 magic/far/use5/effect5/damage7 have only 魔 and no extra effect. Phantom Arrow a2-p17-r2c3 magic/far/use5/effect5/null/魔精 ignores followers and uses target minus1 resistance with failureDamage10. Actual far and paid approach to near each exercise initial magic at use minus1 and use level: one/zero checks, no CHANT or dedication. No-follower worlds prove fixed5/7 and Phantom10 only on failed resistance; no persistent status.",
+    "Actual Stone5 with rear Soldier2: Shock4 higher follower blocks and retains2; Magic Shock5 equal destroys Stone, stops attack and retains rear1. Actual Prayer bonuses1/2 distinguish higher/equal/lower comparisons, fixed damage unchanged, lower followers subtract HP4+1. Non-target Metal remains. Phantom bypasses Stone/rear without destruction or HP subtraction, target spirit6 minus1 threshold5 succeeds at2+3 for0 or fails3+3 for10, no normal base addition/status. Actual Guardian7 cancels ignore: Phantom5 blocked, Prayer2 effect7 equal destroys Guardian with0/no resistance, Prayer3 effect8 reaches target and failed resistance deals10.",
+    "Actual Teleport and maai protect target on all three; actual Evade succeeds against nonmental Shock variants but is rejected unchanged against mental Phantom, which then reaches resistance. Actual use failure and D Fate cancellation spend physical source once, leave all target followers intact and start no resistance. Dedicated, empty/self/duplicate/missing/multiple targets, wrong actor, wrong turn-technique form and actually revealed friendly Shin reject with whole state and all views unchanged. Every accepted engine command JSON roundtrips and preserves220 unique cards.",
+    "DO11: normal/canceled Shock, Magic Shock, Phantom resistance-success and Phantom resistance-failure worlds, plus actual Teleport on each card. Every attack, defense, Fate and pass saves/evicts/replays identical ACK and state/220 IDs. Persisted Phantom check is target minus1, threshold13 success or threshold1 failure; expected0/10, no statuses, bypassed followers held. Browser7 actual hand attacks, normal follower high/equal block, Phantom success/failure, and real Teleport; public currentAction school/range/use and currentAttack effect/damage/attributes; reload during attack/defense and final state.",
+    "30 semantic rows (9/9/12) and main3 rebound. Wider shared crossings and candidate-bound receipts remain pending. No accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p17-r2c1::semantic/ordinary/school",
+      "a2-p17-r2c1::semantic/ordinary/range",
+      "a2-p17-r2c1::semantic/ordinary/use-level",
+      "a2-p17-r2c1::semantic/ordinary/base-effect-level",
+      "a2-p17-r2c1::semantic/ordinary/damage",
+      "a2-p17-r2c1::semantic/ordinary/attribute-0",
+      "a2-p17-r2c1::semantic/ordinary/empty-attribute-1",
+      "a2-p17-r2c1::semantic/ordinary/attack-use",
+      "a2-p17-r2c1::semantic/ordinary/no-extra-effects",
+      "a2-p17-r2c2::semantic/ordinary/school",
+      "a2-p17-r2c2::semantic/ordinary/range",
+      "a2-p17-r2c2::semantic/ordinary/use-level",
+      "a2-p17-r2c2::semantic/ordinary/base-effect-level",
+      "a2-p17-r2c2::semantic/ordinary/damage",
+      "a2-p17-r2c2::semantic/ordinary/attribute-0",
+      "a2-p17-r2c2::semantic/ordinary/empty-attribute-1",
+      "a2-p17-r2c2::semantic/ordinary/attack-use",
+      "a2-p17-r2c2::semantic/ordinary/no-extra-effects",
+      "a2-p17-r2c3::semantic/ordinary/school",
+      "a2-p17-r2c3::semantic/ordinary/range",
+      "a2-p17-r2c3::semantic/ordinary/use-level",
+      "a2-p17-r2c3::semantic/ordinary/base-effect-level",
+      "a2-p17-r2c3::semantic/ordinary/damage",
+      "a2-p17-r2c3::semantic/ordinary/attribute-0",
+      "a2-p17-r2c3::semantic/ordinary/attribute-1",
+      "a2-p17-r2c3::semantic/ordinary/attack-use",
+      "a2-p17-r2c3::semantic/ordinary/ignore-followers",
+      "a2-p17-r2c3::semantic/ordinary/target-minus-one",
+      "a2-p17-r2c3::semantic/ordinary/failure-ten",
+      "a2-p17-r2c3::semantic/ordinary/no-base-addition"
+    ],
+    "mainProducerRebindings": [
+      "a2-p17-r2c1::main-producer",
+      "a2-p17-r2c2::main-producer",
+      "a2-p17-r2c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:894b33260bd72aec",
+      "t:34eee0029e565a05",
+      "t:7e3f6973048b2b50",
+      "t:8a3173d92a00062b",
+      "t:9ccac780b5bdf546",
+      "t:878692b75ccf5dba",
+      "t:c2ae78cae9dccb49",
+      "t:c19dee6745cfa640",
+      "t:17928efee95f5565",
+      "t:e87694a9a3496139",
+      "t:76e766e4ababd0d7",
+      "t:165e6ba47c980c40",
+      "t:0f9d96a944f4b47b",
+      "t:7add27de7b814e37",
+      "t:11eba6a4a28bbac0",
+      "t:d5fe21629cadb010",
+      "t:3132d893124b68f2",
+      "t:c1f62cd00d54b1b4",
+      "t:bfe483c336873ae4"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/shock-physical.test.ts",
+      "initialPassed": 14,
+      "initialFailed": 5,
+      "initialLog": "/tmp/madou-shock-physical-engine.log",
+      "phantomRetest": {
+        "passed": 9,
+        "skipped": 10,
+        "log": "/tmp/madou-shock-physical-phantom.log"
+      },
+      "finalCaseCoverage": 19,
+      "note": "Initial package-filter invocation found no tests because root Vitest include paths are root-relative. Correct root command used. Initial Phantom fixture adjustment reused constant20 after earlier spirit adjustment, yielding threshold28 instead of5; changed to existing permanent spirit plus desired minus current. Focused all Phantom9 passed. Optional permanent field coalesced for strict E2E typecheck."
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7c-magic-techniques.test.ts -t '衝破|魔衝破|幻矢'",
+      "passed": 4,
+      "skipped": 95,
+      "log": "/tmp/madou-shock-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-shock-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 11,
+      "log": "/tmp/madou-shock-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/shock-physical.spec.ts",
+      "initialFailed": 7,
+      "initialLog": "/tmp/madou-shock-physical-browser.log",
+      "passed": 6,
+      "failed": 1,
+      "log": "/tmp/madou-shock-physical-browser-final.log",
+      "focusedRetry": {
+        "passed": 1,
+        "log": "/tmp/madou-shock-physical-browser-teleport.log"
+      },
+      "note": "Initial common assertion incorrectly expected school/range/useLevel in currentAttack.technique. Actual public type places them under currentAction.technique; corrected references, retaining effect/damage/attributes checks under currentAttack. Six passed; Shock small Teleport alone timed out waiting for target revision50 while observing49. Unchanged isolated retry passed with the same timeout. The intermittent revision-lag cause is not established as resolved."
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-shock-physical-types-browser.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10170,
+        "implemented": 1942
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "102/195 per-entry semantic/main bindings integrated; other93 and whole-goal gates open. No accepted promotion."
+}

@@ -1,0 +1,121 @@
+{
+  "bindings": [
+    {
+      "obligation": {
+        "entryId": "ruling:G11",
+        "clauseKey": "semantic/named-followers-recover-after-actual-death",
+        "source": [
+          "src:50ac9cf81bbf696b"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G11"
+        ],
+        "kind": "reclaim-source",
+        "meaning": "名称列挙の従者7種を本人が実配置し実戦闘で死亡した後、無制限回収を選び予約・保存復帰を経て親終了後に一枚戻す。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handler": [
+        "h:4911703f221e0fd7",
+        "h:c1cf9974115950e8",
+        "h:cda4645a919e1dd3"
+      ],
+      "tests": {
+        "t:19bffe5191671b62": {
+          "title": "%s recovers actually placed and combat-killed %s once after the parent",
+          "suite": [],
+          "declarationSha256": "8e14ef0f9c0c35feb9376d0567a47f1c58406b7aeb72d3e5b74126c183675bd0",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p04-r1c2-ab04",
+            "歌う船"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual placement, combat destruction, unlimited claim, saved reservation and one return. Flying Dragon needs actual Victory Prayer before lethal attack. Current file 93 passed. No synthetic death or recovery decision."
+        },
+        "t:ea34806c97bab0a7": {
+          "title": "%s recovers actually placed and combat-killed %s once after the parent",
+          "suite": [],
+          "declarationSha256": "8e14ef0f9c0c35feb9376d0567a47f1c58406b7aeb72d3e5b74126c183675bd0",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p04-r1c2-ab04",
+            "飛竜"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual placement, combat destruction, unlimited claim, saved reservation and one return. Flying Dragon needs actual Victory Prayer before lethal attack. Current file 93 passed. No synthetic death or recovery decision."
+        },
+        "t:11074dd1729ede4e": {
+          "title": "%s recovers actually placed and combat-killed %s once after the parent",
+          "suite": [],
+          "declarationSha256": "8e14ef0f9c0c35feb9376d0567a47f1c58406b7aeb72d3e5b74126c183675bd0",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p05-r1c2-ab04",
+            "グリフォン"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual placement, combat destruction, unlimited claim, saved reservation and one return. Flying Dragon needs actual Victory Prayer before lethal attack. Current file 93 passed. No synthetic death or recovery decision."
+        },
+        "t:35914d4d3b36cd7b": {
+          "title": "%s recovers actually placed and combat-killed %s once after the parent",
+          "suite": [],
+          "declarationSha256": "8e14ef0f9c0c35feb9376d0567a47f1c58406b7aeb72d3e5b74126c183675bd0",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "スケルトン"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual placement, combat destruction, unlimited claim, saved reservation and one return. Flying Dragon needs actual Victory Prayer before lethal attack. Current file 93 passed. No synthetic death or recovery decision."
+        },
+        "t:248825ae14782719": {
+          "title": "%s recovers actually placed and combat-killed %s once after the parent",
+          "suite": [],
+          "declarationSha256": "8e14ef0f9c0c35feb9376d0567a47f1c58406b7aeb72d3e5b74126c183675bd0",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "ゾンビー"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual placement, combat destruction, unlimited claim, saved reservation and one return. Flying Dragon needs actual Victory Prayer before lethal attack. Current file 93 passed. No synthetic death or recovery decision."
+        },
+        "t:d0c44e539e41d05a": {
+          "title": "%s recovers actually placed and combat-killed %s once after the parent",
+          "suite": [],
+          "declarationSha256": "8e14ef0f9c0c35feb9376d0567a47f1c58406b7aeb72d3e5b74126c183675bd0",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "ワイト"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual placement, combat destruction, unlimited claim, saved reservation and one return. Flying Dragon needs actual Victory Prayer before lethal attack. Current file 93 passed. No synthetic death or recovery decision."
+        },
+        "t:090df0a4f579d4ca": {
+          "title": "%s recovers actually placed and combat-killed %s once after the parent",
+          "suite": [],
+          "declarationSha256": "8e14ef0f9c0c35feb9376d0567a47f1c58406b7aeb72d3e5b74126c183675bd0",
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "デス・ナイト"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual placement, combat destruction, unlimited claim, saved reservation and one return. Flying Dragon needs actual Victory Prayer before lethal attack. Current file 93 passed. No synthetic death or recovery decision."
+        }
+      },
+      "dependentClauses": [
+        "c2-p04-r1c2-ab04#unlimited-SingingShip",
+        "c2-p04-r1c2-ab04#unlimited-FlyingDragon",
+        "c2-p05-r1c2-ab04#unlimited-Griffon",
+        "c2-p06-r1c1-ab04#unlimited-Skeleton",
+        "c2-p06-r1c1-ab04#unlimited-Zombie",
+        "c2-p06-r1c1-ab04#unlimited-Wight",
+        "c2-p06-r1c1-ab04#unlimited-DeathKnight"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { arrangeFollowers, buildCardCommand, discardRequirement, eligibleChantCards, eligibleReactionCards, moveFollower, toggleSelection } from '../src/game/commands.js';
+test('Printed black chant prohibition stays mandatory in Fury selection UI',()=>{expect(eligibleChantCards(['a2-p13-r3c2','a2-p09-r2c3','a2-p10-r1c3'],'妖精王フューリー')).toEqual(['a2-p10-r1c3']);});
 
 describe('game command input', () => {
   test('attack requires a card and at least one target before it builds a command', () => {
@@ -126,4 +127,10 @@ test('limited teleport/counter defenses exclude fixed barriers from Mekai choice
   expect(eligibleReactionCards('PLAY_DEFENSE', ['a2-p18-r2c2', 'a2-p06-r1c1'], [], 'cancel', {
     incomingAttributes: ['魔'], incomingEffectLevel: 10, limitedDefenses: ['teleport', 'counter'],
   })).toEqual(['a2-p06-r1c1']);
+});
+
+test.each([['侍大将のシン','GOOD',false],['侍大将のシン','EVIL',true],['黒騎士ガーウィン','GOOD',false],['黒騎士ガーウィン','EVIL',true]] as const)('Blood Flow chant uses current allegiance for %s faction%s eligible=%s',(name,faction,eligible)=>{
+ const cards=eligibleChantCards(['a2-p09-r2c3','a2-p10-r1c3'],name,false,false,faction);
+ expect(cards.includes('a2-p09-r2c3')).toBe(eligible);
+ expect(cards).toContain('a2-p10-r1c3');
 });

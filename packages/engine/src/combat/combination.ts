@@ -1,3 +1,4 @@
+import {printedTechniqueAllowed} from './printed-restrictions.js';
 import {gameStats} from '../game-stats.js';
 import {canSelectFollowerAttack} from '../effects/follower-attacks.js';
 import { getAction, getCharacter } from '@madou/catalog';
@@ -53,9 +54,7 @@ export function coSourceFor(s: GameState, actorId: string, choice: NonNullable<E
     }
     if (ordinary.useLevel > gameStats(s,p.id).warrior_level)
         return;
-    if (technique.chant && !chant && !allowUnchanted || technique.prohibitedFactions?.includes(p.faction))
-        return;
-    if (technique.attributes.includes('白') && getCharacter(p.characterId)?.restrictions.includes('白技使用不可'))
+    if (technique.chant && !chant && !allowUnchanted || !printedTechniqueAllowed(p,technique))
         return;
     return { cardInstanceId: choice.cardInstanceId, dedicated: choice.dedicated, technique, fromChant: chant, ...(fromFollowers?{fromFollowers:true}:{}) };
 }

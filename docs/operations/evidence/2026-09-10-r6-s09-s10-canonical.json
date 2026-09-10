@@ -1,0 +1,54 @@
+{
+  "task": "R6 S09/S10 exact planned physical producers",
+  "status": "S09-S10-producer-conditions-complete-R6-open",
+  "recordedAt": "2026-09-10 14:14 JST",
+  "implementation": [
+    "Added canonical-defense-scenarios.ts and canonical-S09/S10 registrations; initial card/character arrangement then actual setup/attack commands. Old alternative fixtures remain intact as related evidence.",
+    "New Engine and DO literal S09/S10 tests assert exact plan numbers; DO sets next-command entropy1 using CanonicalRoom and evicts/replays every accepted command.",
+    "New browser cases use actual specified counter cards and prayer controls with reload; real browser prayer randomness is not forced to1."
+  ],
+  "requirements": {
+    "S09": "A Ramba dedicated Death Axe a2-p11-r3c2 level6 damage10 noChecks, two targets. B Shin ordinary parry a2-p12-r1c3 at warrior5 makes exactly one use check; level6 matches. Only B hit negated; C hit10 remains and A/B damage0.",
+    "S10": "A Arnes ordinary Black Bow a2-p07-r3c3 level5, far. B Lancelot dedicated sword a2-p11-r1c2 level6 counterNoChecks with zero checks; real prayer a2-p05-r2c3 die1 freezes effect7. Original hit negated with zero returned damage; distances stayfar."
+  },
+  "verification": {
+    "engine": {
+      "passedUnique": 2,
+      "initialLog": "/tmp/madou-s09-s10-canonical-engine.log",
+      "fixedS10Log": "/tmp/madou-s10-canonical-engine-fix.log"
+    },
+    "worker": {
+      "passed": 2,
+      "log": "/tmp/madou-canonical-defense-do.log"
+    },
+    "browser": {
+      "passed": 2,
+      "log": "/tmp/madou-canonical-defense-browser.log",
+      "scope": "Exact card controls and final target-local damage/reload; exact prayer1/Lv7 proven Engine/DO, not forced in browser."
+    },
+    "types": {
+      "exitCode": 0,
+      "log": "/tmp/madou-canonical-defense-transport-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8389,
+        "implemented": 3723
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "correction": "S10 initial expected blanket noChecks but printed dedicated effect uses counterNoChecks. Corrected to counterNoChecks=true and checks.length0; no production change.",
+  "remaining": "S08 and S11 onward still require condition mapping; R6 Task2 overall and all later goal requirements remain open. No card row promotions.",
+  "processes": "All terminal."
+}

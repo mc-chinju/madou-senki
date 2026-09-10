@@ -14,7 +14,7 @@ export type DestructionAbilityId=keyof typeof DESTRUCTION_ABILITIES;
 /** Selected provenance is never stored in printed Technique predicates. */
 export interface SelectedDestructionModifier {abilityId:DestructionAbilityId;actorId:string}
 export function isDestructionAbility(id:string):id is DestructionAbilityId{return Object.hasOwn(DESTRUCTION_ABILITIES,id);}
-function active(s:GameState,m:SelectedDestructionModifier):boolean {const p=s.players[m.actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p)&&ownsAbility(p,m.abilityId);}
+function active(s:GameState,m:SelectedDestructionModifier):boolean {const p=s.players[m.actorId];return !!p&&isActive(p)&&canUseCharacterAbility(p,s)&&ownsAbility(p,m.abilityId);}
 function qualifies(t:Technique,id:DestructionAbilityId):boolean {
  switch(DESTRUCTION_ABILITIES[id]){
   case 'dragon':return t.school==='warrior';

@@ -1,8 +1,19 @@
+import {VIRTUAL_BLADES} from './virtual-blade-sources.js';
 import {CONDITIONAL_ABILITIES} from './conditional-sources.js';
+import {REUSE_ABILITIES} from './reuse-sources.js';
+import {SUPPRESSION_ABILITIES} from './suppression-state.js';
 import {TURN_PACKAGES} from './turn-packages.js';
 import {DECLARATION_ABILITIES} from './declaration-effects.js';
 /** Canonical source IDs stay in engine storage and the owning player's selection only. */
 export const ABILITIES = {
+ 'c2-p01-r2c2-ab05':{name:'みんな姫様を頼むね',kind:'cham-gift'},
+ 'c2-p04-r1c2-ab02':{name:'斬',kind:'zan'},
+ 'c2-p06-r2c2-ab01':{name:'影飛び',kind:'shadow-jump'},
+ ...VIRTUAL_BLADES,
+ 'c2-p01-r2c2-ab01':{name:'ぶーんぶーん',kind:'distance'},
+ 'c2-p02-r2c1-ab03':{name:'逃げるが勝ち',kind:'distance'},
+ ...REUSE_ABILITIES,
+ ...SUPPRESSION_ABILITIES,
  ...DECLARATION_ABILITIES,
  ...TURN_PACKAGES,
  ...CONDITIONAL_ABILITIES,
@@ -24,6 +35,7 @@ export const ABILITIES = {
  'c2-p07-r1c1-ab01':{name:'光の盾',kind:'received-defense'},
  'c2-p05-r2c2-ab02':{name:'魔導王の威厳',kind:'received-defense'},
  'c2-p01-r1c1-ab01':{name:'絶対結界',kind:'received-defense'},
+ 'c2-p02-r1c1-ab01':{name:'飛翔',kind:'received-defense'},
  'c2-p02-r1c2-ab01':{name:'光の結界',kind:'received-defense'},
  'c2-p02-r1c2-ab02':{name:'ミスリルのローブ',kind:'received-defense'},
  'c2-p02-r2c2-ab01':{name:'白銀の鎧',kind:'received-defense'},
@@ -59,18 +71,23 @@ export const ABILITIES = {
  'c2-p04-r2c2-ab02':{name:'忍び',kind:'martial-bypass'},
  'c2-p04-r2c2-ab03':{name:'必殺',kind:'lethal'},
  'c2-p04-r2c2-ab04':{name:'隠行',kind:'conceal-heal'},
+ 'c2-p05-r1c2-ab05':{name:'悲しき愛',kind:'sad-love'},
+ 'c2-p06-r1c2-ab03':{name:'吸魂',kind:'combat-reward'},
+ 'c2-p06-r2c2-ab04':{name:'飢え',kind:'combat-reward'},
 } as const;
 export type AbilityId=keyof typeof ABILITIES;
 export type AbilityEffectId=import('@madou/protocol').AbilityEffectId;
-export interface AbilityOption {targetIds?:string[];actionCost?:'main'|'extra';description?:string;abilityId:AbilityId;name:string;targetEventId:string;costCardInstanceIds?:string[];canConceal?:boolean;effectOptions?:{id:AbilityEffectId;name:string}[]}
+export interface AbilityOption {buttonLabel?:string;targetIds?:string[];actionCost?:'main'|'extra';description?:string;abilityId:AbilityId;name:string;targetEventId:string;costCardInstanceIds?:string[];canConceal?:boolean;effectOptions?:{id:AbilityEffectId;name:string}[]}
 export interface AbilityFrame {
+ shadowJump?:import('./shadow-jump.js').ShadowJump;
+ printedCardResponse?:{sourceActionId:string};
  mentalGuards?:{actorId:string;abilityId:AbilityId;rollId:string}[];
  abilityEffectIds?:AbilityEffectId[];spiritSourceHitKeys?:string[];
  followerBundleId?:string;
  source:'ability'; id:string; abilityId:AbilityId; actorId:string; targetIds:string[];
  eventId:string; parentWindowId:string|null; useOrdinal:number;
  costs:{cardInstanceId?:string;ownAction:boolean};
- stage:'declaration'|'self-check'|'enemy-check'|'numeric'|'attack-choice'|'child-attack'|'applied';
+ stage:'declaration'|'cost-choice'|'self-check'|'enemy-check'|'numeric'|'attack-choice'|'child-attack'|'applied';
  canceled:boolean; rollIds:string[]; conceal?:boolean;
- context:import('./conditional-selection.js').ConditionalContext|import('./turn-information.js').TurnAbilityContext|{kind:'mental-guard';sourceAbilityId:string;rollId:string}|{kind:'ability-response';sourceAbilityId:string}|{kind:'action';actionId:string}|{kind:'follower-entry';groupId:string;targetId:string}|{kind:'boundary';triggerId:string}|{kind:'own-action'}|{kind:'group';groupId:string;targetId:string|null;hitIndex:number};
+ context:import('./cham-death-gift.js').ChamGiftContext|import('./combat-rewards.js').CombatRewardContext|import('./sad-love.js').SadLoveContext|{kind:'virtual-blade';actionId:string;lifeId:string}|import('./distance.js').DistanceMaaiContext|import('./distance.js').MaaiContext|import('./reuse.js').ReuseContext|import('./suppression-state.js').SuppressionContext|import('./conditional-selection.js').ConditionalContext|import('./turn-information.js').TurnAbilityContext|{kind:'mental-guard';sourceAbilityId:string;rollId:string}|{kind:'ability-response';sourceAbilityId:string}|{kind:'action';actionId:string}|{kind:'follower-entry';groupId:string;targetId:string}|{kind:'boundary';triggerId:string}|{kind:'own-action'}|{kind:'group';groupId:string;targetId:string|null;hitIndex:number};
 }

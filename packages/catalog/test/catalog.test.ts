@@ -4,6 +4,7 @@ import type { ActionCard, CharacterCard } from '../src/index.js';
 import {
   actionCards,
   assertPlayableCatalog,
+  assertCatalogDefinitions,
   characters,
   deck,
   entries,
@@ -95,8 +96,8 @@ describe('second-edition runtime catalog', () => {
       : { ...entry, implementation: 'tested' as const });
   }
 
-  it('accepts only the complete selected catalog after every handler is tested', () => {
-    expect(() => assertPlayableCatalog(testedCatalog())).not.toThrow();
+  it('rejects a complete catalog relabeled tested without accepted coverage evidence', () => {
+    expect(() => assertPlayableCatalog(testedCatalog())).toThrow(/accepted coverage/);
   });
 
   it.each([
@@ -166,11 +167,12 @@ describe('second-edition runtime catalog', () => {
     expect(() => assertPlayableCatalog(catalog)).toThrow(/immutable definition|ability membership/);
   });
 
-  it('accepts equivalent raw objects regardless of property insertion order', () => {
+  it('validates equivalent raw objects regardless of property insertion order', () => {
     const catalog = testedCatalog();
     const first = catalog[0]!;
     catalog[0] = { ...first, raw: Object.fromEntries(Object.entries(first.raw).reverse()) };
-    expect(() => assertPlayableCatalog(catalog)).not.toThrow();
+    expect(() => assertCatalogDefinitions(catalog)).not.toThrow();
+    expect(() => assertPlayableCatalog(catalog)).toThrow(/accepted coverage/);
   });
 
   it('validates malformed required source fields with source path and physical id', () => {

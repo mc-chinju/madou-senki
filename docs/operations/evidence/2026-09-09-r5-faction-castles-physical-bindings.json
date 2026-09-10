@@ -1,0 +1,117 @@
+{
+  "task": "R5 Task11 Alkemia/Gainas Castles a2-p20-r3c2/r3c3",
+  "status": "faction-castles-physical-bindings-integrated-other69-open",
+  "completedAt": "2026-09-09 19:21 JST",
+  "implementation": "No production changes. Alkemia9/Gainas10 semantic clauses and main2 bind21 actual transition references.",
+  "canonicalEvidence": [
+    "Actual initial/own-turn placement, reorder/removal, private physical identity, foreign/duplicate/capacity refusals and actual maai retention. Both level5 HP5 building/castle against actual Bow3 and Dia Dwarf4/5/6 three6-damage hits: body0/0/3 and alive/equal discard/higher discard. High Metal front leaves hidden rear unvisited. Incompatible EVIL Alkemia owner or GOOD Gainas owner keeps the card in hand but cannot place during setup or own action. Both lack attack bottoms: actual Army card present does not grant an attack, and direct/dedicated ATTACK and CHANT refuse from hand or field.",
+    "Actual revealed convertible GOOD Tia or EVIL Alseil receives ordinary printed conversion-evil/good card on B turn, with spirit0 minus1 resistance failing. Faction commits before incompatible placed castle is publicly discarded once; a castle held in hand remains private and retained. A later actual Bow attack sees no castle and deals4. Actual Fate cancellation consumes conversion card while preserving former faction and hidden castle. Fixed-GOOD Shelim was deliberately not changed; fixture uses convertible Tia to exercise the required pathway.",
+    "Actual Alseil explicitly selects Gainas Castle dedicated defense6 versus actual Dwarf5/6/7 three hits: body0/0/3, retain/equal discard/higher discard, HP5 unchanged. Declining keeps printed defense5 and corresponding comparison. No morale roll. Foreign EVIL Garwin cannot select the Alseil package. Actual conversion of Alseil toGOOD while holding the card makes subsequent own-action placement reject, showing the named level package does not waive faction restrictions.",
+    "Every accepted Engine command JSON-reexecutes and preserves220 unique physical IDs; rejection preserves full state/all views. Initial character/draw logs agree with scripted initial preconditions. DO9 saves/evicts/replays identical ACK/state after every command for four setup/turn placements, two conversions, dedicated defense and two canceled conversions. Browser7 operates placement controls, real public reveal, targeted conversion card controls, Dia Dwarf bundle and explicit dedicated-defense checkbox/confirmation, with reload across resolution.",
+    "19 semantic clauses and main2 implemented, no accepted promotion. Existing synthetic frozen-castle continuation test is only a related regression. A new actual faction change after a frozen follower snapshot is not claimed; wider shared frozen-boundary crossing and candidate receipts remain open. Fully integrated per-entry card count126/195, other69 includes Singing Ship one pending earth-warrior clause and68 other cards."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/faction-castles-physical.test.ts",
+      "initial": {
+        "passed": 19,
+        "failed": 2,
+        "log": "/tmp/madou-faction-castles-physical-engine.log"
+      },
+      "correction": "SheliM is fixed GOOD and cannot convert; use initially GOOD convertible Tia and opposite-faction B for the later real attack. Bow printed damage is4, use level3 is separate. No runtime changes.",
+      "passed": 21,
+      "log": "/tmp/madou-faction-castles-physical-engine-retry.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/follower-continuations.test.ts -t 'アルケミア城|ガイナス城|frozen castle'",
+      "passed": 8,
+      "skipped": 143,
+      "log": "/tmp/madou-faction-castles-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-faction-castles-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 9,
+      "log": "/tmp/madou-faction-castles-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/faction-castles-physical.spec.ts",
+      "passed": 7,
+      "log": "/tmp/madou-faction-castles-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-faction-castles-physical-types.log",
+      "correction": "Root E2E tsconfig does not resolve @madou/catalog; browser reads projected turn-choice label instead of importing catalog."
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9781,
+        "implemented": 2331
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p20-r3c2::semantic/follower/printed-level",
+      "a2-p20-r3c2::semantic/follower/printed-hp",
+      "a2-p20-r3c2::semantic/placement/setup",
+      "a2-p20-r3c2::semantic/placement/own-action",
+      "a2-p20-r3c2::semantic/defense/front-order",
+      "a2-p20-r3c2::semantic/follower/attribute-0",
+      "a2-p20-r3c2::semantic/follower/attribute-1",
+      "a2-p20-r3c2::semantic/attack/no-bottom",
+      "a2-p20-r3c2::semantic/placement/good-only",
+      "a2-p20-r3c3::semantic/follower/printed-level",
+      "a2-p20-r3c3::semantic/follower/printed-hp",
+      "a2-p20-r3c3::semantic/placement/setup",
+      "a2-p20-r3c3::semantic/placement/own-action",
+      "a2-p20-r3c3::semantic/defense/front-order",
+      "a2-p20-r3c3::semantic/follower/attribute-0",
+      "a2-p20-r3c3::semantic/follower/attribute-1",
+      "a2-p20-r3c3::semantic/attack/no-bottom",
+      "a2-p20-r3c3::semantic/placement/evil-only",
+      "a2-p20-r3c3::semantic/dedicated/arseil-level-six"
+    ],
+    "mainProducerRebindings": [
+      "a2-p20-r3c2::main-producer",
+      "a2-p20-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:bb904fe4968e092a",
+      "t:5fc6fe7f74d38b76",
+      "t:1a35a05af333e4a4",
+      "t:4650730e0dc3abee",
+      "t:d1ef7aa821217f03",
+      "t:e28b4903225ff426",
+      "t:0eae1abe41c942c5",
+      "t:79a4be4c4906b986",
+      "t:2cb0633067195d99",
+      "t:1895f4c66935d0ae",
+      "t:c76091c8ddda8e31",
+      "t:d5b7c82a5661302f",
+      "t:00c703d5c320b237",
+      "t:00ed55513c8f83b3",
+      "t:3f90fc9387ec2d27",
+      "t:6be867ae9bbde5cb",
+      "t:bd9b186a9288a4a0",
+      "t:8bcfcf53b56f70e0",
+      "t:54fac5bdb9f159f1",
+      "t:c5a9598411141bfa",
+      "t:c637ff79b1ed738d"
+    ]
+  },
+  "remaining": "126/195 per-entry bindings integrated; other69 includes Singing Ship one pending clause and68 other cards. Strict shared frozen crossings/candidate receipts and whole-goal gates remain open."
+}

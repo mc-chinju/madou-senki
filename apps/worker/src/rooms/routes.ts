@@ -12,10 +12,16 @@ function requireSuccess(result: RoomMutationResult): asserts result is Extract<R
 
 export async function roomRoute(request: Request, env: Env): Promise<Response | null> {
   const path = new URL(request.url).pathname;
-  const match = /^\/api\/rooms\/([A-Za-z0-9_-]{1,128})\/(join|invites|seat)$/.exec(path);
+  const match = /^\/api\/rooms\/([A-Za-z0-9_-]{1,128})\/(join|invites|seat|snapshot)$/.exec(path);
   if (path !== '/api/rooms' && !match) return null;
   const session = await requireSession(request, env.DB);
   if (path === '/api/rooms' && request.method === 'GET') return json({ rooms: await listRooms(env.DB) });
+  if (match?.[2] === 'snapshot') {
+    if (request.method !== 'GET') return null;
+    const snapshot = await env.ROOMS.getByName(match[1]!).gameSnapshot(session.id);
+    if (!snapshot) throw new HttpError(403, 'FORBIDDEN');
+    return json(snapshot);
+  }
   if (match?.[2] === 'seat') return request.method === 'GET' ? json(await env.ROOMS.getByName(match[1]!).seat(session.id)) : null;
   if (request.method !== 'POST') return null;
   const body = await readJson(request);

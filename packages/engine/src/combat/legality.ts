@@ -1,3 +1,6 @@
+import {printedTechniqueAllowed} from './printed-restrictions.js';
+import {shadowJumpGrantLive} from '../abilities/shadow-jump.js';
+import {conditionalSourcePreview,type ConditionalTargetValue} from '../abilities/conditional-preview.js';
 import {conditionalTechniqueAdditions} from '../abilities/conditional-stats.js';
 import {gameStats} from '../game-stats.js';
 import {availableDeclarationEffects} from '../abilities/declaration-effects.js';
@@ -48,7 +51,7 @@ type SelectionResult = {
     code: EngineErrorCode;
 };
 /** Legacy supported printed packages share the same eligibility as the newer registry. */
-function canSelectDedicated(id: string, name: string | undefined): boolean {
+export function canSelectDedicated(id: string, name: string | undefined): boolean {
     if (canSelectFollowerAttack(id,name)||canSelectPrintedDedicated(id, name))
         return true;
     if (id === 'a2-p10-r1c3')
@@ -107,9 +110,7 @@ export function resolveTechniqueSelection(state: GameState, actorId: string, cho
         technique.useLevel = gameStats(state,player.id,{provenance:'group' in context&&context.group?{kind:'combat',attackerId:actorId,targetIds:[context.group.attackerId]}:context.kind==='attack'?{kind:'combat',attackerId:actorId,targetIds:context.targetIds}:{kind:'none'}}).spirit;
         technique.effectLevel = technique.useLevel;
     }
-    if (technique.attributes.includes('白') && character?.restrictions.includes('白技使用不可'))
-        return reject('UNSUPPORTED_CARD');
-    if (technique.prohibitedFactions?.includes(player.faction))
+    if (!printedTechniqueAllowed(player,technique))
         return reject('UNSUPPORTED_CARD');
     if (technique.school === 'magic' && hasStatus(player, 'silenced'))
         return reject('SILENCED');
@@ -141,7 +142,7 @@ export function resolveTechniqueSelection(state: GameState, actorId: string, cho
         if (technique.range === 'none' || ids.some(id => technique.range === 'near' && state.distances[actorId]![id] !== 'near'))
             return reject('OUT_OF_RANGE');
     }
-    const conditionalEffect = context.kind==='defense'?conditionalTechniqueAdditions(state,{actorId,kind:'defense',technique,targetIds:[context.group.attackerId]} as ActionFrame,context.group.attackerId).effect:0;
+    const conditionalEffect = context.kind==='defense'?conditionalTechniqueAdditions(state,{actorId,kind:'defense',technique,canceled:false},context.group.attackerId).effect:0;
     if(conditionalEffect)technique.effectLevel+=conditionalEffect;
     if (context.kind === 'defense') {
         const error = defenseLegality(state,technique, context.group, actorId, choice.cardInstanceId);
@@ -162,7 +163,7 @@ export function additionalAttackTarget(state: GameState, actorId: string): strin
     }
     if (window.continuation.kind === 'ability') {
         const source = state.abilities?.[window.continuation.id];
-        if (source?.actorId === actorId && source.stage === 'attack-choice')
+        if (source?.actorId === actorId && source.stage === 'attack-choice' && (!source.shadowJump||shadowJumpGrantLive(state,source)))
             return source.targetIds[0];
     }
 }
@@ -228,6 +229,7 @@ export function sourceChoices(state: GameState, actorId: string) {
 }
 
 export interface FollowerAttackOption {
+ targetValues?:ConditionalTargetValue[];
  cardInstanceId:string;dedicated:true;sourceZone:'hand'|'followers';targetMode:'one'|'selected-all'|'mandatory-all';legalTargetIds:string[];
  range:'near'|'far';school:'warrior'|'magic';attributes:string[];useLevel:number|string;effectLevel:number|string;damage:number|string;hitCount:number;noChecks:boolean;
 }
@@ -244,7 +246,7 @@ export function followerAttackOptions(state:GameState,actorId:string):FollowerAt
   const choice={cardInstanceId:id,dedicated:true};const selected=resolveTechniqueSelection(state,actorId,choice,{kind:'selection'});if(!selected.ok)continue;
   const t=selected.technique;const normal=legalAttackTargets(state,actorId,t);const ids=grant?[grant]:normal;
   if(!ids.length||!resolveTechniqueSelection(state,actorId,choice,{kind:'attack',targetIds:t.mandatoryAll?ids:t.target==='one'?[ids[0]!]:ids}).ok)continue;
-  result.push({cardInstanceId:id,dedicated:true,sourceZone:selected.fromFollowers?'followers':'hand',targetMode:t.mandatoryAll?'mandatory-all':t.target==='all'?'selected-all':'one',legalTargetIds:ids,range:t.range as 'near'|'far',school:t.school,attributes:[...t.attributes],useLevel:t.effectLevelFormula?'3+1d6':t.useLevel,effectLevel:t.effectLevelFormula?'3+1d6':t.effectLevel,damage:t.damageFormula?`${t.damageAdditive?String(t.damageAdditive)+'+':''}${t.damageFormula==='d6'?'1d6':t.damageFormula}`:(t.damage??0)*(t.damageMultiplier??1),hitCount:t.hitCount as number,noChecks:t.noChecks});
+  result.push({cardInstanceId:id,dedicated:true,sourceZone:selected.fromFollowers?'followers':'hand',targetMode:t.mandatoryAll?'mandatory-all':t.target==='all'?'selected-all':'one',legalTargetIds:ids,range:t.range as 'near'|'far',school:t.school,attributes:[...t.attributes],useLevel:t.effectLevelFormula?'3+1d6':t.useLevel,...conditionalSourcePreview(state,actorId,t,ids),hitCount:t.hitCount as number,noChecks:t.noChecks});
  }
  return result;
 }

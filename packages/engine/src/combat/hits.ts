@@ -1,3 +1,5 @@
+import {physicalEffectCard} from './action-source.js';
+import {hitPaymentGroups} from '../effects/substitute.js';
 import {commitMentalStopPrevention} from '../abilities/mental-protection.js';
 import {hasPendingFatal} from '../state.js';
 import {MAGIC_HALF} from '../abilities/received-defense.js';
@@ -19,7 +21,7 @@ export function applyHits(state:GameState,target:AttackTarget,technique:Techniqu
   if(personallyImmune||!reached){target.hitsApplied=true;return true;}
   if(!player.revealed){player.revealed=true;appendEvent(state,now,{type:'CHARACTER_REVEALED',actorId:player.id,audience:'public',characterId:player.characterId});}
   const group=state.groups![sourceId]!;
-  if(technique.postHitAdvances&&!group.postHitAdvancePaid&&hasPendingFatal(state,group.attackerId)){group.postHitAdvancePaid=true;group.postHitAdvanceAmount=0;}
+  if(technique.postHitAdvances&&!group.postHitAdvancePaid&&hasPendingFatal(state,group.attackerId)){for(const scope of hitPaymentGroups(state,group)){scope.postHitAdvancePaid=true;scope.postHitAdvanceAmount=0;}}
   if(technique.postHitAdvances&&!group.postHitAdvancePaid){openWindow(state,'hit-advance-choice',group.actionId,{kind:'group',id:sourceId,targetId:target.actorId},[group.attackerId]);return false;}
   if(!prepareHitAbilityWindow(state,sourceId,target))return false;
   const resistance=technique.onHitResistance??(technique.onHitStatus?{modifiers:technique.onHitStatus.modifiers,statusKind:technique.onHitStatus.kind}:undefined);
@@ -34,7 +36,7 @@ export function applyHits(state:GameState,target:AttackTarget,technique:Techniqu
       if(resistance.statusKind&&!(resistance.statusKind==='stopped'&&commitMentalStopPrevention(state,group,target))){
         const action=state.actions![state.groups![sourceId]!.actionId]!;
         const id=`${sourceId}:${target.actorId}:${resistance.statusKind}`;
-        if(!player.statuses?.some(status=>status.id===id))(player.statuses??=[]).push({id,kind:resistance.statusKind,modifiers:[...modifiers],nextCheck:1,sourceActorId:action.actorId,sourceCardInstanceId:action.effectSourceCardInstanceId??action.cardInstanceId,targetId:player.id});
+        if(!player.statuses?.some(status=>status.id===id))(player.statuses??=[]).push({id,kind:resistance.statusKind,modifiers:[...modifiers],nextCheck:1,sourceActorId:action.actorId,sourceCardInstanceId:physicalEffectCard(action),targetId:player.id});
       }
     }
   }

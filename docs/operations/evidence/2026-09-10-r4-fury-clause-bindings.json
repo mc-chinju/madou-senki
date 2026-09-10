@@ -1,0 +1,321 @@
+{
+  "scope": "Existing Fury implementation and exact case correspondence; no accepted promotion",
+  "bindings": [
+    {
+      "clause": "bow-effect-d6",
+      "handlers": {
+        "h:91be5a2c7a752cd3": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "actionModifierOptions"
+        },
+        "h:afcd657fbb9121b4": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "resolveActionModifier"
+        },
+        "h:b33bfa4f3400d3d2": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "effectPreview"
+        },
+        "h:b6bd58acff6b5362": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "freezeEffectLevel"
+        }
+      },
+      "addedTests": {
+        "t:b94d11a0d5c1bbc0": {
+          "title": "Fury bow freezes independent effect two and damage five without changing use level",
+          "suite": [],
+          "declarationSha256": "2b1783a013b9e77cc92efd2ef275fec1678820298d1cd53f5dcd37001fc3af49",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:bdf7c55ba70113f6": {
+          "title": "Fury decline and cancellation roll neither optional die",
+          "suite": [],
+          "declarationSha256": "7e1cd28d485ca861708eb3586e3970c45a994f801d6b460e4b00e68cc95d4d21",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:69e7234ffd1aeb17": {
+          "title": "Fury non-bow never offers numerical modifier",
+          "suite": [],
+          "declarationSha256": "b086f80cb5bca411a0f6a8497023f918714963174d69b5c8ec4b13aa4bb51146",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:346f0485a6895200": {
+          "title": "Fury effect reroll does not alter independent damage roll",
+          "suite": [],
+          "declarationSha256": "31785634b4f6e78fa40146272ad209b6d51977b90cb6cba61eed6836d16e4d62",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:02fae4af27ca7150": {
+          "title": "Fury damage reroll preserves already frozen effect",
+          "suite": [],
+          "declarationSha256": "3fb86c0ea900f47ff0d7a97f899eeec5652b772cbcac75381b928b87298c9dda",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:26315519aaf071fc": {
+          "title": "Fury suppressed before effect freeze loses both live additions",
+          "suite": [],
+          "declarationSha256": "4d88bbceb563e1960d9a4dda78e4176e09fe8ca4c6a4c9c1d0859e1151b5523e",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:4685d5e7e54eb845": {
+          "title": "Fury suppressed after effect freeze preserves effect and omits unfrozen damage",
+          "suite": [],
+          "declarationSha256": "c161b600177ef75e300000bb358cfbbcd941983e758a3328fe0c6543963813b9",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:f5c9fd0ac6be4a7b": {
+          "title": "Fury one bow declaration shares saved numbers across targets and hits",
+          "suite": [],
+          "declarationSha256": "f927a9ae3f239d5aee23e970b0812f32ef71551c4dcbdaacdcb311479cfe8a57",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:f4bc31d4b5f772c6": {
+          "title": "Fury reflection does not declare new numeric bonuses",
+          "suite": [],
+          "declarationSha256": "9324ef334bbbe2b837d2779343da145490005bc31fff995b47a8eb2f37984672",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:6e0164a0d70d30f9": {
+          "title": "Fury automatic follower origin does not offer the character numerical package (structural exclusion)",
+          "suite": [],
+          "declarationSha256": "3288a00e72577bf0da4ed574eb3108527f755aa6b0e919b896526a29f236cc5e",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:322596fb2c88fbc0": {
+          "title": "Fury source-specific bundle modifier never spills into another source",
+          "suite": [],
+          "declarationSha256": "87ff7e9412134796a93c6d6380ad196b1e9e1b3f77e65c6ea0482b1cc00bea24",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:67ba580133d29864": {
+          "title": "Fury DO reloads both numeric dice before and after rolling and rerolls one saved die",
+          "suite": [],
+          "declarationSha256": "5fdbc507c28164ed821cfaba73e3f143062dd2c0dcbeb2424f3375cb19a9ef1d",
+          "path": "apps/worker/test/room-fury-bow.test.ts",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:6ac867f714d3dbfb": {
+          "title": "Fury keeps two visible bow rolls and hidden source through two-client refresh and reroll",
+          "suite": [],
+          "declarationSha256": "ce1dfef713a816f7bdd4af5bc4259dcf30f43811461b246b93ba73c1acdfb3e0",
+          "path": "tests/e2e/fury-bow.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        }
+      },
+      "status": "implemented"
+    },
+    {
+      "clause": "bow-damage-independent-d6",
+      "handlers": {
+        "h:87e33c57f0a6b5a5": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "prepareModifierDamage"
+        },
+        "h:273af95de3a5fa61": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "damagePreview"
+        },
+        "h:3d073653e30e7024": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "freezeDamage"
+        }
+      },
+      "addedTests": {
+        "t:b94d11a0d5c1bbc0": {
+          "title": "Fury bow freezes independent effect two and damage five without changing use level",
+          "suite": [],
+          "declarationSha256": "2b1783a013b9e77cc92efd2ef275fec1678820298d1cd53f5dcd37001fc3af49",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:bdf7c55ba70113f6": {
+          "title": "Fury decline and cancellation roll neither optional die",
+          "suite": [],
+          "declarationSha256": "7e1cd28d485ca861708eb3586e3970c45a994f801d6b460e4b00e68cc95d4d21",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:69e7234ffd1aeb17": {
+          "title": "Fury non-bow never offers numerical modifier",
+          "suite": [],
+          "declarationSha256": "b086f80cb5bca411a0f6a8497023f918714963174d69b5c8ec4b13aa4bb51146",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:346f0485a6895200": {
+          "title": "Fury effect reroll does not alter independent damage roll",
+          "suite": [],
+          "declarationSha256": "31785634b4f6e78fa40146272ad209b6d51977b90cb6cba61eed6836d16e4d62",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:02fae4af27ca7150": {
+          "title": "Fury damage reroll preserves already frozen effect",
+          "suite": [],
+          "declarationSha256": "3fb86c0ea900f47ff0d7a97f899eeec5652b772cbcac75381b928b87298c9dda",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:26315519aaf071fc": {
+          "title": "Fury suppressed before effect freeze loses both live additions",
+          "suite": [],
+          "declarationSha256": "4d88bbceb563e1960d9a4dda78e4176e09fe8ca4c6a4c9c1d0859e1151b5523e",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:4685d5e7e54eb845": {
+          "title": "Fury suppressed after effect freeze preserves effect and omits unfrozen damage",
+          "suite": [],
+          "declarationSha256": "c161b600177ef75e300000bb358cfbbcd941983e758a3328fe0c6543963813b9",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:f5c9fd0ac6be4a7b": {
+          "title": "Fury one bow declaration shares saved numbers across targets and hits",
+          "suite": [],
+          "declarationSha256": "f927a9ae3f239d5aee23e970b0812f32ef71551c4dcbdaacdcb311479cfe8a57",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:f4bc31d4b5f772c6": {
+          "title": "Fury reflection does not declare new numeric bonuses",
+          "suite": [],
+          "declarationSha256": "9324ef334bbbe2b837d2779343da145490005bc31fff995b47a8eb2f37984672",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:6e0164a0d70d30f9": {
+          "title": "Fury automatic follower origin does not offer the character numerical package (structural exclusion)",
+          "suite": [],
+          "declarationSha256": "3288a00e72577bf0da4ed574eb3108527f755aa6b0e919b896526a29f236cc5e",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:3864f012930fc7a1": {
+          "title": "Fury null damage remains null",
+          "suite": [],
+          "declarationSha256": "9feadc7b3761d61bbc2559aff60df01dd34a902701fd787f1d42c5c6b59c4c0c",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:322596fb2c88fbc0": {
+          "title": "Fury source-specific bundle modifier never spills into another source",
+          "suite": [],
+          "declarationSha256": "87ff7e9412134796a93c6d6380ad196b1e9e1b3f77e65c6ea0482b1cc00bea24",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:67ba580133d29864": {
+          "title": "Fury DO reloads both numeric dice before and after rolling and rerolls one saved die",
+          "suite": [],
+          "declarationSha256": "5fdbc507c28164ed821cfaba73e3f143062dd2c0dcbeb2424f3375cb19a9ef1d",
+          "path": "apps/worker/test/room-fury-bow.test.ts",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        },
+        "t:6ac867f714d3dbfb": {
+          "title": "Fury keeps two visible bow rolls and hidden source through two-client refresh and reroll",
+          "suite": [],
+          "declarationSha256": "ce1dfef713a816f7bdd4af5bc4259dcf30f43811461b246b93ba73c1acdfb3e0",
+          "path": "tests/e2e/fury-bow.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        }
+      },
+      "status": "implemented"
+    },
+    {
+      "clause": "owned-technique-additional-use",
+      "handlers": {
+        "h:4911703f221e0fd7": {
+          "path": "packages/engine/src/abilities/reuse.ts",
+          "symbol": "reuseClaims"
+        },
+        "h:c1cf9974115950e8": {
+          "path": "packages/engine/src/abilities/reuse.ts",
+          "symbol": "beginReuse"
+        },
+        "h:cda4645a919e1dd3": {
+          "path": "packages/engine/src/abilities/reuse.ts",
+          "symbol": "resolveReuse"
+        }
+      },
+      "addedTests": {
+        "t:70976f196099275d": {
+          "title": "Fury extra owned return and two bow dice complete one printed ability",
+          "suite": [],
+          "declarationSha256": "c106c2cf75f896ed88f6c076e6e03ce1309e39cf317ba4dab0896b36303ecb38",
+          "path": "packages/engine/test/fury-bow.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
+        }
+      },
+      "status": "implemented"
+    }
+  ]
+}

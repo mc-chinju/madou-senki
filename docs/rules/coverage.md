@@ -1201,3 +1201,74 @@ only that printed zone, never follower bottoms or character-specific overrides.
 Engine evidence does not claim Web, real Durable Object or browser completion. Those integration
 gates remain separately root-owned. Catalogue implementation flags remain pending, production
 START remains disabled, and this slice does not complete all of Task 7.
+
+## Task 7y / R0–R1 — 条件付き継続能力の再検証
+
+対象は次の8能力。選択は初期OFF、使用宣言の成立後だけ保持し、印刷条件の成立と選択ONを区別する。
+
+| 能力ID | 原典の能力 | 対応する処理 |
+| --- | --- | --- |
+| `c2-p02-r1c1-ab04` | ティアがんばる | 公開レスターによる精神力+1 |
+| `c2-p03-r1c2-ab03` | この世界に愛を | 選択した公開他者+1と、公開ランスロットによる自身+2 |
+| `c2-p03-r2c2-ab04` | 男ごときが | 現在の攻撃・防御相手が公開男性の場合の精神力+2 |
+| `c2-p04-r1c2-ab03` | 竜皇子 | 竜属性の従者の士気判定値+2 |
+| `c2-p04-r1c2-ab05` | 真実 | GOOD時の精神力+1、公開ガイナス/ウーノスへの効果Lv+1・ダメージ+2 |
+| `c2-p05-r1c2-ab01` | 獣性 | 攻撃時の精神力+1、戦士技ダメージ+1 |
+| `c2-p05-r2c1-ab05` | 我がライバル | EVILかつ公開ランスロットによる精神力+2 |
+| `c2-p06-r1c2-ab02` | 闇の聖女達の情報 | 本人公開中の手札上限+2、ハジャと加算 |
+
+出典の独立した固定入力は `packages/engine/test/fixtures/conditional-stat-sources.json`。
+`conditional-stats.test.ts` は全8件の原典項目、使用・取消・不使用、対象更新、公開範囲、数値と保存状態を扱う。
+有限コマンドの検証は `packages/protocol/test/conditional-stats.test.ts`。
+実装は `abilities/conditional-sources.ts`、`conditional-selection.ts`、`conditional-stats.ts`、
+`conditional-preview.ts` と `game-stats.ts` を中心に接続する。
+
+一時不在、G15死亡確定前の致死保留、死亡処理後の選択消去、公開回復窓と私的・必須処理の区別は
+[採用済みC15](second-edition/rulings-characters.md#c15--条件付きの継続能力2026-09-08暫定採用)へ同期した。
+構造的な状態変更で条件の境界を検査するテストと、実際の宣言・回復・変身・死亡を通すテストを区別する。
+
+R0・R1の現在ソースを再検証し、M0へ到達した。対象Engine/Protocol106件・関連346件、
+Web197件・Worker437件・全型検査・指定ブラウザ64件（うち新規19件）が成功。
+独立エンジン・画面/通信・実画像レビューは指摘なし。検査後372ファイルのハッシュ一致を確認した。
+[受け入れ証跡](../operations/evidence/2026-09-08-r1-acceptance.json)へ保存。旧Task7yの件数からの推定ではない。
+カタログはpendingを維持し、正式STARTの未対応ルール拒否を解除していない。
+
+
+## R6 Task5 — 実操作の組み合わせ（2026-09-10）
+
+Engine の `canonical-combinations.test.ts` と対応する DO 試験で、次の四列を検証した。
+
+| 列 | 確認した成立経路 | 証跡 |
+| --- | --- | --- |
+| 生存VanmilとLia | 実禁止、Asfelt継続値停止、祝福、Lia実死亡で解除失効、実復活、新lifeで再祝福 | [Lia life](../operations/evidence/2026-09-10-r6-canonical-lia-life.json) |
+| Vanmil死亡 | 死亡待ちまで指定保持、G15確定でC13を一回だけ確定 | [Vanmil terminal](../operations/evidence/2026-09-10-r6-canonical-vanmil-terminal.json) |
+| 回収と再構成 | 同じ弓の追加回収宣言をFateで取消、即時補充のDawnで再構成、親終了時に一枚だけ廃棄 | [Recovery Dawn](../operations/evidence/2026-09-10-r6-canonical-recovery-dawn.json) |
+| 多段と反撃死亡 | 実詠唱の天地百撃斬2対象3hit、Bの専用反撃からAだけに1hit7、B残14/C兵士軽減18、同時G15死亡をB→Cで確定 | [Counter deaths](../operations/evidence/2026-09-10-r6-canonical-counter-deaths.json) |
+
+取消された追加回収宣言の札は解決領域に残り、予約は成立しない。
+成立済み予約の保護は別の実占星術廃棄→Cham回収→保留補充再開の列で検証した。
+夜明け・山札枯渇の両方で、再構成前後の二重取得拒否と正当な返却までの所属一意性を確認。
+Engine では拒否前後のJSONと乱数消費ゼロ、DOでは拒否前後の保存状態と再起動後の同一エラーを検査する。
+非公開の持ち技/使用歴の比較は全員パスの実経路を使い、第三者の投影と回収窓の順序を比較する。
+[予約・秘密窓の証跡](../operations/evidence/2026-09-10-r6-reservation-protection.json)に対象tupleと実行結果を保存した。
+
+これらは限定した組み合わせの証拠であり、R6全条件・全カードのacceptedを意味しない。
+Task5の4列では、全操作/パスのexact220・JSON投影同値・全処理が空の安定終了をEngineで確認し、DOの各保存地点で全員の再投影を確認した。
+[共通invariant証跡](../operations/evidence/2026-09-10-r6-canonical-invariants.json)を参照。
+S01〜S32の最終出典対応と候補全体の検査は未完。
+strict A31の未証明producerとR4-B1の秘密契約も、この列から完了とは判定しない。
+
+
+R6 S01〜S32の出典本文・裁定ID・122件の具体試験参照と24件の過去実行証跡を
+[出典対応インデックス](../operations/evidence/2026-09-10-r6-scenario-source-index.json)に統合した。
+過去ログは全参照先が存在し、ハッシュを記録した。現在の試験ファイルの実行を過去ログから推定しない。
+[候補スナップショット](../operations/evidence/2026-09-10-r6-candidate-snapshot.json)は既存バリデータの
+`runtime-candidate-v2` 定義で1640ファイルを固定した機械的記録であり、成功実行receiptではない。
+現在候補に紐付く実行結果と依存条項の受け入れは引き続き未完。
+
+
+固定候補に対してEngine45ケース・DO47ケース・ブラウザ40ケースが成功し、
+122件すべての具体参照を[統合実行receipt](../operations/evidence/2026-09-10-r6-candidate-run.json)へ紐付けた。
+各層のJSON reporter原本と実行前後の候補一致を記録した。DOは参照外の同宣言tuple12件も実行している。
+ブラウザはスキップ・失敗・flakyとも0。これにより現在候補のR6参照試験の実行は確認できるが、
+依存条項のaccepted・独立レビュー・R7全ゲートの完了は意味しない。

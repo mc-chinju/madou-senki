@@ -21,13 +21,13 @@ class Inbox {
 }
 
 /** Exercises the real DO/WebSocket boundary; direct storage access only seeds/inspects test fixtures. */
-export async function openTestRoom(name: ScenarioName) {
+export async function openTestRoom(name: ScenarioName, actorIds: string[] = ['A', 'B', 'C', 'D']) {
   const roomId = crypto.randomUUID();
   const room = env.ROOMS.getByName(roomId);
-  const players = ['A', 'B', 'C', 'D'].map(id => ({ id, name: `${id}さん` }));
+  const players = actorIds.map(id => ({ id, name: `${id}さん` }));
   const game = makeScenario(name, players);
   const state: RoomData = { schemaVersion: 1, roomId, title: name, ownerId: 'A', rulesetId: ruleset.id,
-    capacity: 4, visibility: 'private', status: 'playing', createdAt: 1000, game, inviteHash: 'internal-only', closeVotes: [],
+    capacity: players.length, visibility: 'private', status: 'playing', createdAt: 1000, game, inviteHash: 'internal-only', closeVotes: [],
     members: Object.fromEntries(players.map(p => [p.id, { ...p, ready: true, joinedAt: 1000 }])) };
   await runInDurableObject(room, (_instance, context) => { new RoomStorage(context.storage).initialize(state); });
   async function connect(actorId: string) {

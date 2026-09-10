@@ -1,0 +1,12 @@
+import {getAction} from '@madou/catalog';
+import {createGame,gameStats} from '@madou/engine';
+import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+export const commonFollowersPhysicalScenarios=['militia-setup','militia-turn','goblin-setup','goblin-turn','citizen-setup','citizen-turn','soldier-setup','soldier-turn','soldier-grant-hand','soldier-grant-field'] as const;
+export type CommonFollowersPhysicalScenario=typeof commonFollowersPhysicalScenarios[number];
+export function isCommonFollowersPhysicalScenario(name:string):name is CommonFollowersPhysicalScenario{return (commonFollowersPhysicalScenarios as readonly string[]).includes(name);}
+export function commonFollowersPhysicalMode(name:CommonFollowersPhysicalScenario){const soldier=name.startsWith('soldier'),goblin=name.startsWith('goblin'),militia=name.startsWith('militia');return{card:militia?'a2-p19-r1c1':soldier?'a2-p18-r3c3':goblin?'a2-p18-r3c1':'a2-p18-r3c2',name:militia?'民兵':soldier?'兵士':goblin?'ゴブリン':'市民',level:soldier||militia?2:1,hp:soldier?1:0,attributes:goblin?['怪','人']:['人'],grant:name.includes('-grant-'),initial:name.endsWith('-setup')||name.endsWith('-field')};}
+/** Every scenario starts in real initial placement; tests issue all placement and turn commands. */
+export function makeCommonFollowersPhysicalScenario(name:CommonFollowersPhysicalScenario,players:{id:string;name:string}[],options:{dwarf?:boolean;level?:number;owner?:string}={}){
+ const m=commonFollowersPhysicalMode(name),s=createGame(players,entropy(),{startingSeat:0}),[a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];for(const [i,p] of players.entries())assignCharacter(s,p.id,[options.dwarf?'魔導王ガイナス':options.owner??'魔聖母ディア',options.dwarf?'魔聖母ディア':'白魔術師シェリム','凍気のアイエル','侍大将のシン'][i]!);for(const p of Object.values(s.players)){p.permanent={endurance:100,warrior_level:20,magic_level:20,spirit:20};p.permanent.spirit=20+14-gameStats(s,p.id).spirit;}if(options.level!==undefined)s.players[b]!.permanent!.warrior_level=20+options.level-gameStats(s,b).warrior_level;
+ const keep=[takeCard(s,a,m.card),takeCard(s,a,'a2-p24-r1c3'),takeCard(s,a,'a2-p22-r1c1'),takeCard(s,a,'a2-p23-r1c1'),takeCard(s,a,'a2-p07-r1c1'),takeCard(s,b,'a2-p24-r1c2'),takeCard(s,b,'a2-p24-r2c1'),takeCard(s,b,'a2-p21-r2c3'),takeCard(s,d,'a2-p02-r2c3')];for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];return s;
+}

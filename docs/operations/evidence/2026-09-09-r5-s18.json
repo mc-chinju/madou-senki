@@ -1,0 +1,43 @@
+{
+  "task": "R5 Task12 exact S18",
+  "status": "s18-same-trajectory-acceptance-complete",
+  "completedAt": "2026-09-09 07:32 JST",
+  "implementation": "No duplicate mental defense handler. Shared scenario-s18.ts generates actual CHANT, real intervening turn commands, dedicated Shin physical 天地百撃斬 on B Lester and C, and a saved hit-count die of three.",
+  "canonicalEvidence": [
+    "The two target arrays each contain three hits. B actually chooses canonical Lester 魔詩. Only one attacker resistance is created, saved before its roll, and resolved with non-double [2,3] ordinary failure. All B hits become defended while all C hits remain intact.",
+    "A save/restore between target resolution resumes C and completes final body damage B=0/C=21, with no attacker stopped status and exactly one ability-check. The original hit-count roll remains [3]. Every accepted fixture and Engine transition replays from JSON and conserves 220 unique cards.",
+    "DO test fixes only its test entropy to non-double [2,3], executes the actual ability and every response through room commands, restarts after every command and receives identical duplicate ACK. It asserts both saved boundaries and final outcome.",
+    "One browser case actually selects 魔詩 and retains its live random resistance across reload before/after roll and between targets; ordinary failure has no stop, while observed doubles retain their separate printed stop semantics. The second browser fixture generates the exact ordinary [2,3] failure through real commands, reloads at C and finishes B=0/C=21 with no stop.",
+    "A relevant existing morale test had expected immediate follower discard before common recovery responses. Its assertion now confirms resolution membership first and final discard after responses, while retaining exact failed-morale and fourteen-damage checks."
+  ],
+  "verification": {
+    "engine": {
+      "passed": 57,
+      "files": [
+        "scenario-s18.test.ts",
+        "mental-received-defenses.test.ts",
+        "multi-hit.test.ts"
+      ],
+      "log": "/tmp/madou-s18-focused2.log"
+    },
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-s18-do.log"
+    },
+    "browser": {
+      "passed": 2,
+      "log": "/tmp/madou-s18-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-s18-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "promotions": 0,
+      "log": "/tmp/madou-s18-ledger.log"
+    }
+  },
+  "remaining": "Only the standalone Task12 S18 checkbox and its Appendix B correspondence are closed. Other S01-S32 rows, combined invariants, R2 tracked semantic bindings and catalog acceptance remain pending."
+}

@@ -1,3 +1,4 @@
+import {passReclaims} from './combat-helpers.js';
 import { expect, it } from 'vitest';
 import * as engine from '../src/index.js';
 import { character, entropy, handCard, loadFixture } from './fixtures.js';
@@ -46,7 +47,7 @@ it('a higher far counter replaces the incoming hit and damages its attacker',()=
 });
 
 it('allows defensive maai against a returned counter child before resuming its parent hit',()=>{
-  let s=ready();const attack=handCard(s,'A','踏み込み／弓');const counter=handCard(s,'B','閃光槍');const maai=handCard(s,'A','間合い／休息');s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});s=until(s,'normal-defense');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false});while(Object.keys(s.groups!).length<2)s=pass(s);s=until(s,'normal-defense');s=act(s,'A',{type:'PLAY_MAAI',cardInstanceId:maai});expect(s.windows!.at(-1)!.kind).toBe('defense-advance');s=act(s,'B',{type:'PASS'});s=finish(s);expect(s.players.A!.damage).toBe(0);expect(s.players.B!.damage).toBe(0);
+  let s=ready();const attack=handCard(s,'A','踏み込み／弓');const counter=handCard(s,'B','閃光槍');const maai=handCard(s,'A','間合い／休息');s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});s=until(s,'normal-defense');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false});while(Object.keys(s.groups!).length<2)s=pass(s);s=until(s,'normal-defense');s=passReclaims(act(s,'A',{type:'PLAY_MAAI',cardInstanceId:maai}));expect(s.windows!.at(-1)!.kind).toBe('defense-advance');s=act(s,'B',{type:'PASS'});s=finish(s);expect(s.players.A!.damage).toBe(0);expect(s.players.B!.damage).toBe(0);
 });
 
 it('returns reflection as nested attack groups and terminates a two-source loop by lineage',()=>{

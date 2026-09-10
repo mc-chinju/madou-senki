@@ -187,6 +187,7 @@ const dedicatedOwners: Record<string, string> = {
   'a2-p09-r3c3': '大神官ジル',
   'a2-p10-r1c1': '大神官ジル',
   'a2-p10-r1c2': '大神官ジル',
+  'a2-p10-r1c3': '侍大将のシン',
   'a2-p10-r2c1': '侍大将のシン',
   'a2-p10-r2c2': '妖精王フューリー',
   'a2-p10-r2c3': '妖精王フューリー',
@@ -219,6 +220,8 @@ export function canSelectPrintedVariant(id:string, characterName:string|undefine
 }
 
 export function canSelectPrintedDedicated(id: string, characterName?: string): boolean {
+  if (id==='a2-p12-r3c2') return characterName==='凍気のアイエル';
+  if (['a2-p06-r1c1','a2-p06-r1c2'].includes(id)) return characterName === '餓狼ヨーツルム';
   if (canSelectCombinationDedicated(id,characterName)||canSelectLifetimeDedicated(id,characterName)||canSelectPrintedMagicDedicated(id,characterName)) return true;
   if (['a2-p11-r1c2', 'a2-p11-r2c1', 'a2-p11-r2c2'].includes(id)) return characterName === '聖騎士ランスロット' || characterName === '聖騎士ランスロット2';
   if (id === 'a2-p12-r1c1') return characterName === 'リーア姫' || characterName === '聖騎士ランスロット' || characterName === '聖騎士ランスロット2';

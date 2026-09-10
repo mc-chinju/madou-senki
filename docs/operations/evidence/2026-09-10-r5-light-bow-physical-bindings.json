@@ -1,0 +1,224 @@
+{
+  "task": "R5 Task11 Light Bow physical binding",
+  "completedAt": "2026-09-10 12:37 JST",
+  "implementation": "Added actual physical fixture and Engine/DO/browser coverage. No production change needed.",
+  "canonicalEvidence": [
+    "光流弓21用途条項とmain証跡。実初期配置から遠/戦/弓/白、使用・効果Lv6、通常8、任意フューリー専用10/noChecks/全選択対象/間合い2。通常も専用もガドューラだけ2倍で16/20、ディア8/10。倍化は対象ごとに防御前に確定し、人物公開は被弾まで保留。水竜Lv7は成功なら停止して生存、メタルLv6は相打ち停止、砦Lv3はHP2を倍化後に差し引きガドューラ14/18。黒・死従者は士気/Lv/HP前に破壊され、他対象の従者は維持。実間合い通常1・専用2、見切る、命運、不使用はダメージ/破壊/公開を抑止。通常Lv5不足判定6成功/7失敗、精神0/1/12に依存しない固定値、専用Lv0判定なし。実接近・混乱/沈黙/催眠・通常API拒否・白禁止・詠唱/反撃不可も確認。",
+    "Engine初回47成功/4失敗。前カードLv8の従者期待値を残していた試験誤りを、光流弓Lv6に従い水竜停止生存・メタル相打ち停止へ修正。ガドューラに対する低Lv砦のHP減算2件を追加し、修正4件＋新規2件だけ成功。unique53。",
+    "共有lifetime/回収、広い複合交差と全体受入れは未完。accepted昇格なし。ブラウザは実乱数の判定結果を読み、通常の自然失敗時は0ダメージと札1回消費を確認する。水竜の士気失敗ではダメージを受けて水竜を処分する。"
+  ],
+  "validation": {
+    "engine": {
+      "uniquePassed": 53,
+      "initial": {
+        "command": "pnpm exec vitest run packages/engine/test/light-bow-physical.test.ts",
+        "passed": 47,
+        "failed": 4,
+        "log": "/tmp/madou-light-bow-engine.log"
+      },
+      "fixed": {
+        "selection": "water|metal|gad-water|dia-water|gad-lower-ordinary|gad-lower-dedicated",
+        "passed": 6,
+        "failed": 0,
+        "log": "/tmp/madou-light-bow-engine-fix.log"
+      }
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7b-techniques.test.ts -t '光流弓'",
+      "passed": 3,
+      "log": "/tmp/madou-light-bow-related.log"
+    },
+    "worker": {
+      "passed": 48,
+      "batches": [
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(ordinary|owner-ordinary|low|dedicated|near) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-1.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(same-faction|water|metal|lower|maai-one-ordinary) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-2.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(maai-one-dedicated|evade-ordinary|evade-dedicated|fate|suppressed) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-3.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(silenced|stopped|wrong-owner|decline|noncounter) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-4.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(black-ordinary|black-dedicated|dead-ordinary|dead-dedicated|black-maai) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-5.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(dead-evade|black-fate|black-decline|white-prohibited|gad-ordinary) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-6.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(gad-dedicated|dia-ordinary|dia-dedicated|gad-public|dia-public) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-7.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(gad-water|dia-water|gad-black|dia-dead|gad-maai) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-8.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(dia-evade|gad-fate|dia-decline|pair|all) '",
+          "passed": 5,
+          "log": "/tmp/madou-light-bow-do-9.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm --filter @madou/worker exec vitest run test/room-light-bow-physical.test.ts -t '^light-bow-(maai-two-dedicated|gad-lower-ordinary|gad-lower-dedicated) '",
+          "passed": 3,
+          "log": "/tmp/madou-light-bow-do-10.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/light-bow-physical.spec.ts",
+      "passed": 48,
+      "log": "/tmp/madou-light-bow-browser.log"
+    },
+    "types": [
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-light-bow-types.log"
+      },
+      {
+        "command": "pnpm --filter @madou/worker typecheck",
+        "exitCode": 0,
+        "log": "/tmp/madou-light-bow-worker-types.log"
+      },
+      {
+        "command": "pnpm typecheck:e2e",
+        "exitCode": 0,
+        "log": "/tmp/madou-light-bow-e2e-types.log"
+      }
+    ],
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8566,
+        "implemented": 3546
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p10-r2c2::semantic/ordinary/school",
+      "a2-p10-r2c2::semantic/ordinary/range",
+      "a2-p10-r2c2::semantic/ordinary/use-level",
+      "a2-p10-r2c2::semantic/ordinary/base-effect-level",
+      "a2-p10-r2c2::semantic/ordinary/damage",
+      "a2-p10-r2c2::semantic/ordinary/attribute-0",
+      "a2-p10-r2c2::semantic/ordinary/attribute-1",
+      "a2-p10-r2c2::semantic/ordinary/attribute-2",
+      "a2-p10-r2c2::semantic/ordinary/attack-use",
+      "a2-p10-r2c2::semantic/dedicated/0/select-optional",
+      "a2-p10-r2c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p10-r2c2::semantic/dedicated/0/effect-replacement",
+      "a2-p10-r2c2::semantic/dedicated/0/damage-replacement",
+      "a2-p10-r2c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p10-r2c2::semantic/dedicated/0/chant-retain",
+      "a2-p10-r2c2::semantic/dedicated/0/target-subset",
+      "a2-p10-r2c2::semantic/ordinary/destroy-black",
+      "a2-p10-r2c2::semantic/ordinary/destroy-dead",
+      "a2-p10-r2c2::semantic/ordinary/gadyoora-double",
+      "a2-p10-r2c2::semantic/dedicated/retain-gadyoora-multiplier",
+      "a2-p10-r2c2::semantic/dedicated/maai-extra-one"
+    ],
+    "mainProducerBindings": [
+      "a2-p10-r2c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:b61cdee50757f470",
+      "t:5e472e4d26058b9a",
+      "t:099853118d05b4ff",
+      "t:0ca78b25e25eb387",
+      "t:82b4fbaabaabe757",
+      "t:7387cf0c11dd5c4d",
+      "t:1a60318a330e5d81",
+      "t:4ab058ade7d35c86",
+      "t:85616d664cde73cf",
+      "t:f1c5302b9142fe23",
+      "t:e2e3d1b689e7d29c",
+      "t:8c190827c319956a",
+      "t:cad743ce17361936",
+      "t:8a7a142f79ade8f8",
+      "t:9bbe389755319e27",
+      "t:5e5ddb935e5265d5",
+      "t:f84775ebbe22aefc",
+      "t:2ba72efb2f5d57ee",
+      "t:5c61ae949d02f9a2",
+      "t:c2ef4bd3d22fb0c0",
+      "t:68efecd4f99af875",
+      "t:3ce8c4ebebb49764",
+      "t:12b0a036cb41771b",
+      "t:51d35a511f2d22b4",
+      "t:ee8da0c3e9a75c64",
+      "t:2a71886dbee3492c",
+      "t:f6886ee443406b41",
+      "t:2073a0866f543453",
+      "t:6508c4aef9a80cc6",
+      "t:bf069823d399427b",
+      "t:d17a626080543b01",
+      "t:5f344d522fb3b144",
+      "t:7b517d71fa5b9300",
+      "t:a38581e00bdf98c1",
+      "t:4664af4c96fa833d",
+      "t:c2870f0668a27cac",
+      "t:c1e0a63ae9104cd9",
+      "t:9d376d143be7d1c3",
+      "t:81d562d1d7c914d8",
+      "t:b798a60a1e3f2a0c",
+      "t:a217e109f814738f",
+      "t:84336252aae6446a",
+      "t:1678a1f1321968e4",
+      "t:f2184905cb03a429",
+      "t:af95626deaaa2dd5",
+      "t:9477101cf5805dbc",
+      "t:2d87508982201fdd",
+      "t:37f57efc1cbe9a80",
+      "t:825b189a66b54e4e",
+      "t:0bbd56716015545e",
+      "t:e774f3f65c84b50f",
+      "t:100df52809fd8a8e",
+      "t:fcd560f7172f55c1"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 206
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 182
+    }
+  },
+  "remaining": "共有lifetime/回収、広い複合交差と全体受入れは未完。accepted昇格なし。ブラウザは実乱数の判定結果を読み、通常の自然失敗時は0ダメージと札1回消費を確認する。水竜の士気失敗ではダメージを受けて水竜を処分する。"
+}

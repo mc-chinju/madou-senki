@@ -1,0 +1,61 @@
+{
+  "task": "R5 ability-disabled ritual and stopped-turn exclusion",
+  "testCases": {
+    "t:b217690ae52bfb13": {
+      "path": "packages/engine/test/ritual-disabled.test.ts",
+      "suite": [],
+      "title": "%s actual mental attack distinguishes character ability disable from inability to perform the ritual",
+      "declarationSha256": "2498f4cb47881e5b38fc74b2db857e2c694e48014dd780598175ad8d1d0490bd",
+      "parameters": "ritual-disabled",
+      "kind": "canonical-transition",
+      "bindingNote": "Actual Confusion on Uonos and failed own-turn recovery retain ability-disabled. Physical ritual remains usable and transforms/heals without clearing the disabling status. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
+    },
+    "t:82a8f82bbd5c7198": {
+      "path": "packages/engine/test/ritual-disabled.test.ts",
+      "suite": [],
+      "title": "%s actual mental attack distinguishes character ability disable from inability to perform the ritual",
+      "declarationSha256": "2498f4cb47881e5b38fc74b2db857e2c694e48014dd780598175ad8d1d0490bd",
+      "parameters": "ritual-stopped",
+      "kind": "canonical-transition",
+      "bindingNote": "Actual Hypnosis on Uonos and failed own-turn recovery skip the whole turn to B. Ritual remains in hand; Engine rejects WRONG_PHASE, Worker maps to INVALID_ACTION, browser exposes no ritual control. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
+    },
+    "t:6b7cc22226a46a09": {
+      "path": "apps/worker/test/room-ritual-disabled.test.ts",
+      "suite": [],
+      "title": "%s actual mental attack and ritual boundary persist under every DO eviction and replay",
+      "declarationSha256": "9c1ed0360d0075de86661fe41d24d9981a611535a336b49bfe1debe2a76d4bdd",
+      "parameters": "ritual-disabled",
+      "kind": "worker-persistence",
+      "bindingNote": "Actual Confusion on Uonos and failed own-turn recovery retain ability-disabled. Physical ritual remains usable and transforms/heals without clearing the disabling status. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
+    },
+    "t:f125c63bd590402f": {
+      "path": "apps/worker/test/room-ritual-disabled.test.ts",
+      "suite": [],
+      "title": "%s actual mental attack and ritual boundary persist under every DO eviction and replay",
+      "declarationSha256": "9c1ed0360d0075de86661fe41d24d9981a611535a336b49bfe1debe2a76d4bdd",
+      "parameters": "ritual-stopped",
+      "kind": "worker-persistence",
+      "bindingNote": "Actual Hypnosis on Uonos and failed own-turn recovery skip the whole turn to B. Ritual remains in hand; Engine rejects WRONG_PHASE, Worker maps to INVALID_ACTION, browser exposes no ritual control. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
+    },
+    "t:7081ffb77e2d46ce": {
+      "path": "tests/e2e/ritual-disabled.spec.ts",
+      "suite": [],
+      "title": "actual Confusion disables Uonos abilities but physical ritual still transforms after reload",
+      "declarationSha256": "b7a3f77d0c446791cffc849cdb5b9b89e134605ccf844850777ac524f3805d22",
+      "parameters": null,
+      "kind": "browser",
+      "bindingNote": "Actual Confusion on Uonos and failed own-turn recovery retain ability-disabled. Physical ritual remains usable and transforms/heals without clearing the disabling status. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
+    },
+    "t:ed3c8e09444dab13": {
+      "path": "tests/e2e/ritual-disabled.spec.ts",
+      "suite": [],
+      "title": "actual Hypnosis skips Uonos main action and retains unused ritual after reload",
+      "declarationSha256": "3da20675cc538431576ae59f5791806565fd37f58ceb71b5339409706b19fad7",
+      "parameters": null,
+      "kind": "browser",
+      "bindingNote": "Actual Hypnosis on Uonos and failed own-turn recovery skip the whole turn to B. Ritual remains in hand; Engine rejects WRONG_PHASE, Worker maps to INVALID_ACTION, browser exposes no ritual control. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
+    }
+  },
+  "clauseKey": "c2-p05-r1c1-ab04#own-turn-ritual-card-use",
+  "status": "No status promotion"
+}

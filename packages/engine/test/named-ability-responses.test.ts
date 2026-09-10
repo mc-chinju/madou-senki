@@ -1,6 +1,6 @@
 import {describe,expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
-import {act,ready,until,pass,finish,closeWindow} from './combat-helpers.js';
+import {act,ready,until,pass,passReclaims,finish,closeWindow} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 
 const SHIN='c2-p01-r2c1-ab05';
@@ -108,7 +108,7 @@ function cancelResponse(s:GameState,actor:string,id:string){
  const handCount=s.players.D!.hand.length;
  s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:responseId});
  expect(s.players.D!.hand).toHaveLength(handCount);
- s=closeWindow(s);
+ s=passReclaims(closeWindow(s));
  expect(s.abilities![responseId]!.canceled).toBe(true);
  expect(s.discard).toContain(fate);
  s=closeWindow(s);
@@ -345,7 +345,7 @@ it('helper: another revealed Shin retains independent entitlement after first re
  reject(s,'C',{type:'USE_ABILITY',abilityId:SHIN,targetEventId:sourceId});
  s=priority(s,'D');
  s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(s,'D').reactionTargetAbilityId!});
- s=closeWindow(s);
+ s=passReclaims(closeWindow(s));
  s=closeWindow(s);
  expect(option(s,'C',SHIN)?.targetEventId).toBe(sourceId);
  s=use(s,'C',SHIN);

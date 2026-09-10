@@ -1,3 +1,5 @@
+import {PrintedCombinationFields,withPrintedComponents} from './PrintedCombinationFields.js';
+import {DispelFields,withDispel} from './DispelFields.js';
 import { DeclarationFields } from './DeclarationFields.js';
 import { candidateFor } from './declaration-input.js';
 import { getAction, getCharacter } from '@madou/catalog';
@@ -12,6 +14,8 @@ import { coSourceKey, type CoSource } from './combination-input.js';
 const mentalDefenseDescription = '同じ攻撃につき1回、攻撃者に精神力−1の判定を要求します。失敗すると自分への残りの発を無効にします。ゾロ目なら成否にかかわらず自分への攻撃を無効にし、攻撃者の次の手番が来るまで停止させます。反撃・反射された攻撃には使えません。';
 const fixedAllegianceDescription = '陣営を変更できない人物は目的と敗北条件も変わりませんが、攻撃の無効と停止は残ります。';
 const descriptions: Record<string, string> = {
+  'c2-p04-r1c2-ab02':'この相手が間合いを一枚も出していない剣技のヒットを、従者処理の前にダメージ2倍にします。間合いが踏み込みで打ち消されていても、そのヒットは倍になりません。',
+  'c2-p06-r2c2-ab01':'精神力−2の判定に成功すると、自分へのこの攻撃を無効にします。その後、踏み込みを1枚捨てると、元の攻撃者へ従者無視・間合い不可で追加攻撃できます。支払いと追加攻撃は任意です。',
   'c2-p03-r2c1-ab01': `${mentalDefenseDescription}6のゾロ目ならレスターと同じ陣営へ転向し、目的は「EVILの全滅」、敗北条件は「リーア姫の死亡」に変わります。${fixedAllegianceDescription}`,
   'c2-p06-r1c2-ab01': `${mentalDefenseDescription}6のゾロ目ならディアと同じ陣営へ転向し、目的は「ディアと敵対するものの全滅」、敗北条件は「愛しいディアの死亡」に変わります。対象陣営は転向した時点で確定します。${fixedAllegianceDescription}`,
   'c2-p06-r1c1-ab01': `${mentalDefenseDescription}6のゾロ目なら攻撃者への死亡効果が確定します。宣言済みの他の対象への攻撃が終わってから、死亡時の処理へ進みます。`,
@@ -69,15 +73,17 @@ export function AbilityChoice({ view, option, disabled, send }: { view: AbilityI
       <option value="">カードを選択</option>{option.costCardInstanceIds.filter(id => view.self.hand.includes(id)).map(id => <option key={id} value={id}>{getAction(id)?.name ?? 'カード'}</option>)}
     </select></label> : null}
     {option.canConceal ? <label className="inline"><input type="checkbox" checked={conceal} onChange={event => setConceal(event.target.checked)}/> 正体を裏に戻す</label> : null}
-    <button disabled={disabled || !command} onClick={() => { if (command) send(command); }}>{option.name}を使う</button>
+    <button disabled={disabled || !command} onClick={() => { if (command) send(command); }}>{option.buttonLabel??`${option.name}を使う`}</button>
   </div>;
 }
 export function AbilityPanel({ view, disabled, send }: { view: PlayerView; disabled: boolean; send: (command: GameCommand) => boolean }) {
+  const [dispelTarget,setDispelTarget]=useState('');
+  const [printedComponents,setPrintedComponents]=useState<string[]>([]);
   const [declarationIds, setDeclarationIds] = useState<string[]>([]);
   const [sourceId, setSourceId] = useState(''); const [dedicated, setDedicated] = useState(false); const [variant, setVariant] = useState<TechniqueVariant | ''>('');
   const [coSource, setCoSource] = useState<CoSource | undefined>();
   const [advances, setAdvances] = useState<string[]>([]);
-  const clearCosts = () => { setCoSource(undefined); setAdvances([]); setDeclarationIds([]); };
+  const clearCosts = () => { setPrintedComponents([]); setDispelTarget(''); setCoSource(undefined); setAdvances([]); setDeclarationIds([]); };
   const options = selectableAbilities(view);
   if (view.activeWindow?.kind === 'ability-attack') {
     const mine = view.activeWindow.pendingActorId === view.self.id;
@@ -94,7 +100,8 @@ export function AbilityPanel({ view, disabled, send }: { view: PlayerView; disab
     const exactCandidates = modeCandidates.filter(option => option.techniqueVariant === selectedVariant);
     const coSources = [...new Map(exactCandidates.flatMap(option => option.coSource ? [[coSourceKey(option.coSource), option.coSource] as const] : [])).values()];
     const selectedCoSource = coSource && coSources.some(option => coSourceKey(option) === coSourceKey(coSource)) ? coSource : undefined;
-    const command = grantedAttackCommand(view, selectedSource, selectedDedicated, selectedVariant, selectedCoSource, advances, declarationIds);
+    const baseCommand = withDispel(grantedAttackCommand(view, selectedSource, selectedDedicated, selectedVariant, selectedCoSource, advances, declarationIds),view.self.hand,dispelTarget);
+    const command=withPrintedComponents(view,baseCommand,printedComponents);
     const declarationCandidate = candidateFor(view, { type: 'ATTACK', cardInstanceId: selectedSource, dedicated: selectedDedicated, targetIds: view.additionalAttack ? [view.additionalAttack.targetId] : [], ...(selectedVariant ? { techniqueVariant: selectedVariant } : {}), ...(selectedCoSource ? { coSource: selectedCoSource } : {}) });
     const grant = view.additionalAttack;
     const target = grant?.targetId;
@@ -102,6 +109,7 @@ export function AbilityPanel({ view, disabled, send }: { view: PlayerView; disab
     return <aside className="decision" aria-label={title}><h2>{title}を選ぶ</h2>
       <p role="status">{mine ? 'あなたの判断です' : `${view.players[view.activeWindow.pendingActorId]?.name}さんの判断を待っています`}</p>
       <p>対象: {target ? view.players[target]?.name : '元の攻撃者'}。手札・詠唱中・配置中の候補から攻撃札を1枚使用します。射程・詠唱・使用条件を満たす札を選んでください。</p>
+      {view.additionalAttack?.shadowJump?<p>影飛びの追加攻撃は従者無視・間合い不可です。攻撃しなくても、支払った踏み込みは戻りません。</p>:null}
       {mine ? <><label>追加攻撃に使うカード<select value={selectedSource} onChange={event => { setSourceId(event.target.value); setDedicated(false); setVariant(''); clearCosts(); }}>
         <option value="">カードを選択</option>{sources.map(id => <option key={id} value={id}>{getAction(id)?.name ?? 'カード'}{view.self.followers.some(card => card.cardInstanceId === id) ? '（配置中）' : view.self.chants.some(card => card.cardInstanceId === id) ? '（詠唱中）' : ''}</option>)}
       </select></label><label className="inline"><input type="checkbox" checked={selectedDedicated} disabled={!canUseDedicated} onChange={event => { setDedicated(event.target.checked); setVariant(''); clearCosts(); }}/> 専用技として使う</label>
@@ -110,6 +118,7 @@ export function AbilityPanel({ view, disabled, send }: { view: PlayerView; disab
       <AttackCostFields view={view} cardId={selectedSource} dedicated={selectedDedicated} coSource={selectedCoSource} advances={advances} disabled={disabled} onCoSource={source => { setCoSource(source); setDeclarationIds([]); }} onAdvances={setAdvances}
         coSourceOptions={coSources} allowNoCoSource={exactCandidates.some(option => !option.coSource)}/>
       <DeclarationFields candidate={declarationCandidate} selected={declarationIds} disabled={disabled} onChange={setDeclarationIds}/>
+      <PrintedCombinationFields view={view} command={baseCommand} selected={printedComponents} disabled={disabled} onChange={setPrintedComponents}/><DispelFields hand={view.self.hand} targets={command?.type==='ATTACK'?command.targetIds:[]} names={Object.fromEntries(Object.entries(view.players).map(([id,p])=>[id,p.name]))} targetId={dispelTarget} disabled={disabled} onChange={setDispelTarget}/>
       <div className="button-row"><button disabled={disabled || !command} onClick={() => { if (command) send(command); }}>追加攻撃を行う</button>
         {view.legalChoices.includes('PASS') ? <button className="secondary" disabled={disabled} onClick={() => send({ type: 'PASS' })}>追加攻撃をしない</button> : null}</div></> : null}
     </aside>;

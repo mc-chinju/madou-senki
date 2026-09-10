@@ -1,0 +1,88 @@
+{
+  "task": "R5 Task11 other171: four basic stat attachments",
+  "status": "four-basic-attachment-bindings-integrated-other167-remains-open",
+  "completedAt": "2026-09-09 10:01 JST",
+  "implementation": "No production changes. New shared basic-attachment-scenarios fixture,14 Engine cases,4 live DO and4 browser paths.",
+  "canonicalEvidence": [
+    "Actual physical 香具羅/魔導書/悪の魅力/聖光 turn-card declarations pay first, then install exactly one physical source on the actor. Only the printed warrior/magic/spirit stat increases by1, other actor stats unchanged, action consumed, repeated use rejected unchanged. All seats see the public attached source while actor sees its stat.",
+    "Actual physical Fate cancellation leaves no installation/bonus, paid source discards once and action remains consumed.",
+    "Actual following B turn uses physical Wish, chooses public A attachment, and takes it into B hand. A full stats return to prior baseline; B gets no attachment bonus merely from holding the card. Exact one source, no discard/install duplication.",
+    "Evil Charm under initial GOOD and Holy Light under initial EVIL reject without payment or state/view mutation. These are coherent initial faction fixtures, not claimed mid-declaration conversion producers.",
+    "Every accepted Engine command checks JSON continuation and220 unique physical IDs. DO full install→later Wish paths evict/replay every command with identical ACK/state; foreign Wish decision payloads remain null. Browser uses actual card/turn/Wish buttons and reloads declaration, installation, private choice and final ownership."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p03-r2c1::semantic/timing/turn",
+      "a2-p03-r2c1::semantic/stat/plus-one",
+      "a2-p03-r2c1::semantic/zone/self-attachment",
+      "a2-p03-r3c1::semantic/timing/turn",
+      "a2-p03-r3c1::semantic/stat/plus-one",
+      "a2-p03-r3c1::semantic/zone/self-attachment",
+      "a2-p03-r3c2::semantic/timing/turn",
+      "a2-p03-r3c2::semantic/stat/plus-one",
+      "a2-p03-r3c2::semantic/zone/self-attachment",
+      "a2-p03-r3c2::semantic/use/faction-only",
+      "a2-p03-r3c3::semantic/timing/turn",
+      "a2-p03-r3c3::semantic/stat/plus-one",
+      "a2-p03-r3c3::semantic/zone/self-attachment",
+      "a2-p03-r3c3::semantic/use/faction-only"
+    ],
+    "mainProducerRebindings": [
+      "a2-p03-r2c1::main-producer",
+      "a2-p03-r3c1::main-producer",
+      "a2-p03-r3c2::main-producer",
+      "a2-p03-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:12a25d02b81b0476",
+      "t:b100e2e283699571",
+      "t:1c0da5eea129707d",
+      "t:a539fac9d486a1df",
+      "t:31b3e2ccb196ab15",
+      "t:92a278c64f936503",
+      "t:a735d2ed822bc54c",
+      "t:60687d555ce20f40",
+      "t:6850fbd02871649b",
+      "t:03e37e8402983bbf",
+      "t:e53fe6ca1513533f",
+      "t:628edbc15dc97703",
+      "t:611f1eb47598302c",
+      "t:5bd415a96e66a170"
+    ],
+    "rows": 12112,
+    "pending": 11316,
+    "implemented": 796,
+    "acceptedPromotions": 0,
+    "remaining": "Candidate-bound execution/acceptance receipts and shared/ruling dependencies pending; no playable catalog promotion."
+  },
+  "verification": {
+    "engine": {
+      "passed": 37,
+      "newCases": 14,
+      "files": [
+        "basic-attachment-physical.test.ts",
+        "early-turn-cards.test.ts"
+      ],
+      "log": "/tmp/madou-basic-attachment-engine.log"
+    },
+    "worker": {
+      "passed": 4,
+      "file": "room-basic-attachments.test.ts",
+      "log": "/tmp/madou-basic-attachment-do.log"
+    },
+    "browser": {
+      "passed": 4,
+      "file": "basic-attachments.spec.ts",
+      "log": "/tmp/madou-basic-attachment-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-basic-attachment-types.log"
+    },
+    "validator": {
+      "valid": true,
+      "log": "/tmp/madou-basic-attachment-ledger.log"
+    }
+  },
+  "remaining": "28/195 action-card per-entry semantic/main bindings integrated; other167 and shared A31/full goal gates remain open. Next reaction card bindings."
+}

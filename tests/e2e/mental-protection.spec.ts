@@ -21,7 +21,8 @@ function originalSource(table: Table, views: Views, expected = 'a2-p14-r1c2') {
   expect(original).toMatchObject({ actorId: table.sessions[0]!.id, kind: 'attack', cardInstanceId: expected });
   return original.cardInstanceId;
 }
-function consumed(done: ReturnType<typeof game>, source: string) {
+function consumed(done: ReturnType<typeof game>, source: string | null) {
+  if(source===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
   expect(done.discard.filter(id => id === source)).toHaveLength(1);
   expect(done.self.hand).not.toContain(source);
   expect(done.self.chants.map(card => card.cardInstanceId)).not.toContain(source);

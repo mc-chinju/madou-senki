@@ -1,7 +1,8 @@
+import {makeFuryBowScenario} from './fury-bow-scenarios.js';
 import { allCardInstanceIds, createGame, transition, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 
-export const techniqueValueScenarioNames = ['value-staff', 'value-fist', 'value-spirit', 'value-axe', 'value-black-magic'] as const;
+export const techniqueValueScenarioNames = ['value-fury', 'value-staff', 'value-fist', 'value-spirit', 'value-axe', 'value-black-magic'] as const;
 export type TechniqueValueScenarioName = typeof techniqueValueScenarioNames[number];
 export function isTechniqueValueScenario(name: string): name is TechniqueValueScenarioName {
   return (techniqueValueScenarioNames as readonly string[]).includes(name);
@@ -12,10 +13,11 @@ const sources = {
   'value-spirit': { character: '侍大将のシン', card: '黒翼飛翔剣' },
   'value-axe': { character: '小人のランバ', card: '黒翼飛翔剣' },
   'value-black-magic': { character: '邪祭ウーノス', card: '妖獣' },
-} satisfies Record<TechniqueValueScenarioName, { character: string; card: string }>;
+} satisfies Record<Exclude<TechniqueValueScenarioName, 'value-fury'>, { character: string; card: string }>;
 
 /** Prior ownership and endurance/spirit training only; new abilities remain unselected. */
 export function makeTechniqueValueScenario(name: TechniqueValueScenarioName, players: { id: string; name: string }[]): GameState {
+  if(name === 'value-fury') return makeFuryBowScenario(players);
   let state = createGame(players, entropy(), { startingSeat: 0 });
   const [a, b, c, d] = players.map(player => player.id) as [string, string, string, string];
   function act(actorId: string, command: GameCommand) {

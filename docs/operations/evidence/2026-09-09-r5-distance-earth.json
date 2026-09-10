@@ -1,0 +1,67 @@
+{
+  "task": "R5 Task 1 distance — Tia earth-magic clause",
+  "status": "earth-clause-accepted-whole-flight-and-three-distance-abilities-incomplete",
+  "implementation": [
+    "Canonical Tia ab01 is registered once as received-defense. Shared package adds earthMagic qualification requiring magic school and earth attribute.",
+    "Existing optional USE_ABILITY creates a cancellable declaration and spent hit attempt; received reservation revalidates the live source before defending exactly its current target/hit. No separate defense pipeline or fabricated roll.",
+    "Existing AbilityPanel and hidden-source projection expose only the owner option and anonymize a concealed declaration."
+  ],
+  "canonicalEvidence": [
+    "Real Earth Spear use/decline/Fate cancellation preserves optional behavior; canceled use leaves normal defense open and cannot repeat.",
+    "Stale hit and foreign actor reject with unchanged state and no physical payment or roll.",
+    "Ordinary real warrior attack gets no earth-immunity option.",
+    "Actually placed initial Soldier remains concealed and intact when Earth Spear is canceled by Flight before follower defense.",
+    "Real Ramba dedicated Earth Spear targets B/C: Tia B takes zero, C takes nine.",
+    "Real revealed Vanmil ban during pending Flight declaration suppresses it; original Earth Spear deals six.",
+    "Every accepted Engine step JSON-replays with fixed entropy and conserves 220 unique physical cards."
+  ],
+  "structuralEvidence": [
+    "Warrior+earth predicate exclusion is a structural source test, not a demonstrated canonical warrior-earth attack."
+  ],
+  "transport": [
+    "Actual DO commands, saved unselected/declaration/cancellation states, eviction, duplicate ACK replay and final physical source disposal for use/decline/cancel.",
+    "Actual browser buttons, hidden owner versus three other participant views, owner/canceler reload and use/decline/cancel."
+  ],
+  "verification": {
+    "engineProtocol": {
+      "uniquePassed": 51,
+      "runs": [
+        {
+          "passed": 48,
+          "log": "/tmp/madou-r5-distance-focus.log"
+        },
+        {
+          "passed": 7,
+          "log": "/tmp/madou-r5-distance-final.log",
+          "overlap": 6
+        },
+        {
+          "passed": 9,
+          "log": "/tmp/madou-r5-distance-cross.log",
+          "overlap": 7
+        }
+      ],
+      "files": [
+        "packages/protocol/test/r5-commands.test.ts",
+        "packages/engine/test/r5-distance.test.ts",
+        "packages/engine/test/received-defense-abilities.test.ts"
+      ]
+    },
+    "worker": {
+      "passed": 3,
+      "log": "/tmp/madou-r5-distance-worker.log"
+    },
+    "browser": {
+      "passed": 3,
+      "log": "/tmp/madou-r5-distance-browser.log"
+    },
+    "typecheck": "passed /tmp/madou-r5-distance-types-cross.log",
+    "ledger": "12109 rows structurally valid; no status promotion /tmp/madou-r5-distance-ledger.log"
+  },
+  "remaining": [
+    "Cham and Tia elected maai require two advances; Lancaster only protects maai against a returned counter to the original attacker.",
+    "Finite PLAY_MAAI abilityId, per-target/hit saved election, public payment arithmetic, cancellation/suppression, shared advances, next-hit reset and transport/UI still need implementation.",
+    "Whole Flight is not accepted until its maai clause is complete. Task 1 and parent distance checkboxes remain unchecked.",
+    "Other R4 exact crossings, R5 tasks, R6–R9 and human play acceptance remain active."
+  ]
+}

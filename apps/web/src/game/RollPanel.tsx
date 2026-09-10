@@ -1,6 +1,8 @@
 import type { PlayerView, PublicRollView } from '@madou/engine';
 
 const purposeNames: Record<PublicRollView['purpose'], string> = {
+  'faction-change':'陣営変更への抵抗','card-inspection':'遠見の判定',
+  training:'修行の判定','extra-draw':'秘伝書の追加枚数',
   'technique-check': '技の追加判定', 'technique-value': '技のサイコロ', 'hit-resistance': '命中時の抵抗判定',
   'ability-check': '特殊能力の判定', 'ability-value': '特殊能力のサイコロ',
   'stop-duration': '停止する手番数',
@@ -29,7 +31,7 @@ function RollResult({ roll, name, announce = false }: { roll: PublicRollView; na
     <h3>{name} · {purposeNames[roll.purpose]}</h3>
     <p>{roll.stage === 'before-roll' ? '判定前' : roll.stage === 'after-roll' ? '結果の確認中' : '適用済み'}</p>
     <p role={announce ? "status" : undefined}>{diceText(roll)}{resultText(roll) ? ` · ${resultText(roll)}` : ''}</p>
-    {roll.threshold === undefined ? null : <p>判定値: {roll.threshold}以下</p>}
+    {roll.threshold === undefined ? null : <p>判定値: {roll.threshold}{roll.comparison==='greater-than'?'より大きい':'以下'}</p>}
     {roll.generation > 0 ? <details><summary>振り直し {roll.generation}回</summary><ol>{roll.attempts.map(attempt =>
       <li key={attempt.generation}>{attempt.generation === 0 ? '最初' : `振り直し ${attempt.generation}回目`}: {diceText(roll, attempt.faces, attempt.total)}</li>,
     )}</ol></details> : null}

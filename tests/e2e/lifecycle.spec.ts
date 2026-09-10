@@ -181,3 +181,52 @@ test('Uonos performs the ritual, selects subordinates and Arseil wins individual
     await expect(table.pages[2]!.getByRole('region', { name: '個人の勝利' })).toContainText('対戦は続きます');
   } finally { await table.close(); }
 });
+
+async function hiddenTransformation(browser: Parameters<typeof tableFixture>[0], request: Parameters<typeof tableFixture>[1], use: boolean) {
+  const table = await tableFixture(browser, request, 'lifecycle-transform-hidden');
+  try {
+    const views = await observe(table), owner = table.sessions[0]!.id;
+    async function click(seat: number, label: string) {
+      const revision = views.get(owner)!.revision;
+      await table.pages[seat]!.getByRole('button', { name: label, exact: true }).click();
+      await expect.poll(() => views.get(owner)?.revision).toBeGreaterThan(revision);
+    }
+    async function reload(seat: number) {
+      const before = structuredClone(views.get(table.sessions[seat]!.id)!.game);
+      await table.pages[seat]!.reload();
+      await expect(table.pages[seat]!.getByRole('region', { name: '自分の手札' })).toBeVisible();
+      expect(views.get(table.sessions[seat]!.id)!.game).toEqual(before);
+    }
+    function hidden() {
+      for (const session of table.sessions.slice(1)) {
+        const game = views.get(session.id)!.game!;
+        expect(game.players[owner]).not.toHaveProperty('characterId');
+        expect(game.lifecycleAbilities).not.toContain('lancelot-transform');
+      }
+    }
+    await click(1, '正体を公開');
+    await passUntil(table, views, game => !game.activeWindow);
+    hidden(); await reload(0);
+    await expect(table.pages[0]!.getByRole('button', { name: 'ランスロットⅡへ変身する', exact: true })).toBeEnabled();
+    if (use) {
+      await click(0, 'ランスロットⅡへ変身する');
+      await reload(0);
+      await passUntil(table, views, game => !game.activeWindow);
+    } else {
+      await click(0, '行動を終える');
+      const self = views.get(owner)!.game!.self, excess = Math.max(0, self.hand.length - self.stats.handLimit);
+      for (let n = 0; n < excess; n++) await table.pages[0]!.getByRole('region', { name: '自分の手札' }).getByRole('article').nth(n).getByRole('button').first().click();
+      await click(0, `選んだ${excess}枚を捨てて手番を終える`);
+    }
+    await reload(0); await reload(1);
+    expect(views.get(owner)!.game!.self.characterId).toBe(use ? 'c2-p07-r1c1' : 'c2-p02-r2c2');
+    expect(views.get(owner)!.game!.players[owner]!.revealed).toBe(use);
+    if (!use) { hidden(); expect(views.get(owner)!.game!.turnSeat).toBe(1); }
+  } finally { await table.close(); }
+}
+test('G09 hidden Lancelot declines transformation through turn end and reload', async ({ browser, request }) => {
+  await hiddenTransformation(browser, request, false);
+});
+test('G09 hidden Lancelot explicitly transforms and publishes only after use', async ({ browser, request }) => {
+  await hiddenTransformation(browser, request, true);
+});

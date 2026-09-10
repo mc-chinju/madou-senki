@@ -1,3 +1,16 @@
+import {resolveChamGift} from './cham-death-gift.js';
+import {combatRewardOptions,initializeCombatReward,resolveCombatReward} from './combat-rewards.js';
+import {resolveSadLove} from './sad-love.js';
+import {startSubstituteHit} from '../combat/attack.js';
+import {ZAN,zanOptions,validZan,resolveZan} from './zan.js';
+import {shadowJumpOptions,initializeShadowJump,resolveShadowJump} from './shadow-jump.js';
+import {resolveVirtualBlade} from './virtual-blades.js';
+import {resolveDistanceMaaiAbility,resolveMaaiAbility} from './distance.js';
+import {resolveReuse} from './reuse.js';
+import {suppressionOptions,resolveSuppression} from './suppression.js';
+import {lifeIdentity} from './suppression-state.js';
+import {offerReclaim,reclaimEventId} from '../reclaim.js';
+import {isSuppressionAbility} from './suppression-state.js';
 import {gameStats} from '../game-stats.js';
 import {isConditionalAbility} from './conditional-sources.js';
 import {resolveConditionalAbility} from './conditional-selection.js';
@@ -7,7 +20,7 @@ import {isDeclarationAbility} from './declaration-effects.js';
 import {resolveDeclarationAbility} from './declaration-resolution.js';
 import {isMentalProtection,mentalProtectionOptions,mentalProtectionAttempt,validMentalProtection,resolveMentalProtection} from './mental-protection.js';
 import {isMentalDefense,mentalDefenseOptions,validMentalDefense,mentalDefenseAttempt,resolveMentalDefense} from './mental-defense.js';
-import {isNamedResponse,namedResponseOptions,validNamedResponse,resolveNamedResponse} from './named-responses.js';
+import {hostageResponseOptions,validHostageResponse,isNamedResponse,namedResponseOptions,validNamedResponse,resolveNamedResponse} from './named-responses.js';
 import {isReceivedDefense,receivedDefenseOptions,validReceivedDefense,receiveAttempt,resolveReceivedDefense} from './received-defense.js';
 import {LANCASTER_WIND,windAbilityOptions,validWindAbility,resolveWindAbility} from './attack-properties.js';
 import {BEAST_EMPATHY,beastAbilityOptions,validBeastAbility,resolveBeastAbility} from './beast-empathy.js';
@@ -16,7 +29,7 @@ import {actionModifierOptions,isValueAbility,validActionModifier,resolveActionMo
 import {followerAbilityOptions,validFollowerAbility,resolveFollowerAbility,LESTER_ILLUSION,qualifiesForSpirit} from './follower-entry.js';
 import {ownsAbility} from './ownership.js';
 import {currentHit,currentTechnique} from '../reactions/continuations.js';
-import {continueFollowerBundle,finishReceivedDefense,resumeDeclarationAction} from '../combat/attack.js';
+import {continueFollowerBundle,finishReceivedDefense,resumeDeclarationAction,resumeMaaiAbilityPayment} from '../combat/attack.js';
 import {discardBundle} from '../combat/follower-bundles.js';
 import {getAction} from '@madou/catalog';
 import type {GameState} from '../state.js';
@@ -34,8 +47,9 @@ function lifecycleSource(ability:string):AbilityId|undefined{return (Object.keys
 function usedKey(eventId:string,actorId:string,id:AbilityId):string{return `${eventId}:${actorId}:${id}`;}
 export function availableAbilities(s:GameState,actorId:string):AbilityOption[]{
  const p=s.players[actorId];const w=s.windows?.at(-1);
- if(!p||s.outcome||!isActive(p)||!canUseCharacterAbility(p)||w&&w.participants[w.cursor]!==actorId)return [];
- const eventId=abilityEventId(s);const result:AbilityOption[]=turnAbilityOptions(s,actorId);
+ if(!p||s.outcome||!isActive(p)||w&&w.participants[w.cursor]!==actorId)return [];
+ if(!canUseCharacterAbility(p,s))return hostageResponseOptions(s,actorId);
+ const eventId=abilityEventId(s);const result:AbilityOption[]=[...turnAbilityOptions(s,actorId),...suppressionOptions(s,actorId)];
  const add=(id:AbilityId,extra:Partial<AbilityOption>={})=>{if(!s.used?.includes(usedKey(eventId,actorId,id)))result.push({abilityId:id,name:ABILITIES[id].name,targetEventId:eventId,...extra});};
  for(const ability of availableLifecycleAbilities(s,actorId)){const id=lifecycleSource(ability);if(id)add(id);}
  followerAbilityOptions(s,actorId,add);
@@ -44,6 +58,9 @@ export function availableAbilities(s:GameState,actorId:string):AbilityOption[]{
  beastAbilityOptions(s,actorId,add);
  windAbilityOptions(s,actorId,add);
  receivedDefenseOptions(s,actorId,add);
+ shadowJumpOptions(s,actorId,add);
+ zanOptions(s,actorId,add);
+ combatRewardOptions(s,actorId,add);
  mentalDefenseOptions(s,actorId,add);
  result.push(...mentalProtectionOptions(s,actorId));
  result.push(...namedResponseOptions(s,actorId));
@@ -66,7 +83,7 @@ export function availableAbilities(s:GameState,actorId:string):AbilityOption[]{
 }
 export function transitionAbilityCommand(state:GameState,input:GameInput):TransitionResult|undefined{
  const c=input.command;if(c.type!=='USE_ABILITY'&&c.type!=='USE_LIFECYCLE_ABILITY')return;
- const p=state.players[input.actorId]!;if(hasStatus(p,'stopped'))return {ok:false,code:'STOPPED'};if(!canUseCharacterAbility(p))return {ok:false,code:'ABILITY_DISABLED'};
+ const p=state.players[input.actorId]!,printed=c.type==='USE_ABILITY'&&hostageResponseOptions(state,p.id).some(o=>o.abilityId===c.abilityId&&o.targetEventId===c.targetEventId);if(hasStatus(p,'stopped'))return {ok:false,code:'STOPPED'};if(!printed&&!canUseCharacterAbility(p,state))return {ok:false,code:'ABILITY_DISABLED'};
  const id=c.type==='USE_ABILITY'?c.abilityId:lifecycleSource(c.ability);
  const option=availableAbilities(state,p.id).find(option=>option.abilityId===id);
  if(!option)return {ok:false,code:'ABILITY_DISABLED'};
@@ -84,20 +101,25 @@ export function transitionAbilityCommand(state:GameState,input:GameInput):Transi
  const target=group?.targets.find(t=>t.actorId===targetId);
  const hitIndex=kind==='lethal'?target!.hits.find(h=>!h.defended&&!!h.abilityBudget&&!h.abilityBudget.closed)!.index:group?.hitCursor??0;
  const hit=target?.hits.find(h=>h.index===hitIndex);const ordinal=kind==='lethal'?++hit!.abilityBudget!.accepted:1;
- const frame:AbilityFrame={source:'ability',id:`ability-${s.nextEventId++}`,abilityId,actorId:p.id,eventId:option.targetEventId,parentWindowId:w?.id??null,useOrdinal:ordinal,
-  targetIds:kind==='surprise'?[targetId!]:kind==='illusion'?group!.targets.map(t=>t.actorId):(kind==='shadow'||kind==='mental-defense')?[group!.attackerId]:kind==='lethal'?[targetId!]:kind==='martial-bypass'?group!.targets.map(t=>t.actorId):kind==='vanmil-subordinates'?[]:[p.id],
+ const frame:AbilityFrame={...(printed?{printedCardResponse:{sourceActionId:option.targetEventId}}:{}),source:'ability',id:`ability-${s.nextEventId++}`,abilityId,actorId:p.id,eventId:option.targetEventId,parentWindowId:w?.id??null,useOrdinal:ordinal,
+  targetIds:kind==='zan'?[targetId!]:kind==='surprise'?[targetId!]:kind==='illusion'?group!.targets.map(t=>t.actorId):(kind==='shadow'||kind==='shadow-jump'||kind==='mental-defense')?[group!.attackerId]:kind==='lethal'?[targetId!]:kind==='martial-bypass'?group!.targets.map(t=>t.actorId):kind==='vanmil-subordinates'?[]:[p.id],
   costs:{...(cost?{cardInstanceId:cost}:{}),ownAction:kind==='conceal-heal'},stage:'declaration',canceled:false,rollIds:[],...(conceal!==undefined?{conceal}:{}),
   ...(effects?{abilityEffectIds:[...effects]}:{}),
   ...(abilityId===LESTER_ILLUSION&&effects?.includes('spirit-conversion')?{spiritSourceHitKeys:group!.targets.flatMap(t=>t.hits.filter(h=>qualifiesForSpirit(s,group!,h,gameStats(s,actor.id).magic_level)).map(h=>`${t.actorId}:${h.index}`))}:{}),
-  context:isMentalProtection(abilityId)&&w?.kind==='after-roll'&&w.continuation.kind==='roll'?{kind:'mental-guard',sourceAbilityId:option.targetEventId,rollId:w.continuation.id}:isNamedResponse(abilityId)&&w?.kind==='declaration'?{kind:'ability-response',sourceAbilityId:option.targetEventId}:(kind==='action-value'||abilityId==='c2-p02-r2c2-ab02')&&w?.continuation.kind==='action'?{kind:'action',actionId:w.continuation.id}:w?.kind==='follower-entry-abilities'?{kind:'follower-entry',groupId:group!.id,targetId:targetId!}:group?{kind:'group',groupId:group.id,targetId,hitIndex}:kind==='conceal-heal'?{kind:'own-action'}:{kind:'boundary',triggerId:w?.continuation.id??option.targetEventId}};
+  context:printed?{kind:'action',actionId:option.targetEventId}:isMentalProtection(abilityId)&&w?.kind==='after-roll'&&w.continuation.kind==='roll'?{kind:'mental-guard',sourceAbilityId:option.targetEventId,rollId:w.continuation.id}:isNamedResponse(abilityId)&&w?.kind==='declaration'?{kind:'ability-response',sourceAbilityId:option.targetEventId}:(kind==='action-value'||abilityId==='c2-p02-r2c2-ab02')&&w?.continuation.kind==='action'?{kind:'action',actionId:w.continuation.id}:w?.kind==='follower-entry-abilities'?{kind:'follower-entry',groupId:group!.id,targetId:targetId!}:group?{kind:'group',groupId:group.id,targetId,hitIndex}:kind==='conceal-heal'?{kind:'own-action'}:{kind:'boundary',triggerId:w?.continuation.id??option.targetEventId}};
+ initializeShadowJump(s,frame);
+ initializeCombatReward(s,frame);
  receiveAttempt(s,frame);
  mentalDefenseAttempt(s,frame);
  mentalProtectionAttempt(s,frame);
  (s.abilities??={})[frame.id]=frame;(s.used??=[]).push(usedKey(frame.eventId,p.id,abilityId));
  if(kind==='lancelot-transform')s.used.push(`${p.id}:lancelot-transform`);
  if(kind==='vanmil-subordinates'||kind==='arseil-conspiracy')s.used.push(`${frame.context.kind==='boundary'?frame.context.triggerId:frame.eventId}:${p.id}:${kind}`);
- if(cost){actor.hand.splice(actor.hand.indexOf(cost),1);s.discard.push(cost);if(kind==='conceal-heal')s.phase='hand-adjustment';}
+ if(cost){actor.hand.splice(actor.hand.indexOf(cost),1);s.resolution.push(cost);if(kind==='conceal-heal')s.phase='hand-adjustment';}
  openWindow(s,'declaration',frame.eventId,{kind:'ability',id:frame.id},w?participants(s,(s.seatOrder.indexOf(p.id)+1)%s.seatOrder.length):participants(s));
+ if(cost)offerReclaim(s,{kind:'ordinary-disposition',fromZone:'resolution',eventId:reclaimEventId(s,frame),
+  sourceId:`${frame.id}-cost`,sourceActorId:actor.id,sourceLifeId:lifeIdentity(actor),cardInstanceId:cost,
+  trigger:'named-card-used',usedModeName:'distance'});
  s.revision++;return {ok:true,state:s,events:[]};
 }
 export function finishAbility(s:GameState,frame:AbilityFrame):void{
@@ -105,13 +127,15 @@ export function finishAbility(s:GameState,frame:AbilityFrame):void{
 }
 /** Revalidate live source and target restrictions without rechecking consumed attempt limits. */
 function validResolution(s:GameState,f:AbilityFrame):boolean{
- const context=f.context;const p=s.players[f.actorId]!;if(!isActive(p)||!canUseCharacterAbility(p)||!ownsAbility(p,f.abilityId))return false;
+ if(f.printedCardResponse)return validHostageResponse(s,f);
+ const context=f.context;const p=s.players[f.actorId]!;if(!isActive(p)||!canUseCharacterAbility(p,s)||!ownsAbility(p,f.abilityId))return false;
  if(isNamedResponse(f.abilityId)&&f.context.kind==='ability-response')return validNamedResponse(s,f);
  if(isMentalProtection(f.abilityId))return validMentalProtection(s,f);
  if(isMentalDefense(f.abilityId))return validMentalDefense(s,f);
  if(isReceivedDefense(f.abilityId))return validReceivedDefense(s,f);
  if(isValueAbility(f.abilityId))return validActionModifier(s,f);
  if(isDestructionAbility(f.abilityId))return validDestructionAbility(s,f);
+ if(f.abilityId===ZAN)return validZan(s,f);
  if(f.abilityId===LANCASTER_WIND)return validWindAbility(s,f);
  if(f.abilityId===BEAST_EMPATHY)return validBeastAbility(s,f);
  const followerValid=validFollowerAbility(s,f);if(followerValid!==undefined)return followerValid;
@@ -123,12 +147,20 @@ function validResolution(s:GameState,f:AbilityFrame):boolean{
   if(kind==='martial-bypass')return g.attackerId===p.id&&g.technique.attributes.includes('格')&&!g.targets.some(t=>t.followerSnapshot!==null);
   const targetId=f.context.targetId;const t=g.targets.find(t=>t.actorId===targetId);const hit=t?.hits.find(h=>h.index===(f.context as Extract<AbilityFrame['context'],{kind:'group'}>).hitIndex);
   if(!t||!hit||!isActive(s.players[t.actorId]!)||!isActive(s.players[g.attackerId]!))return false;
-  if(kind==='shadow')return !hit.defended&&!t.followerStarted;
+  if(kind==='shadow'||kind==='shadow-jump')return !hit.defended&&!t.followerStarted;
   return !hit.defended&&!t.hitsApplied;
  }
  return true;
 }
 export function continueAbility(s:GameState,f:AbilityFrame,dice:()=>number,now:number):void{
+ if(f.context.kind==='cham-gift'){resolveChamGift(s,f,now);finishAbility(s,f);return;}
+ if(f.context.kind==='combat-reward'){resolveCombatReward(s,f);finishAbility(s,f);return;}
+ if(f.context.kind==='sad-love'){const transfer=resolveSadLove(s,f);finishAbility(s,f);if(transfer)startSubstituteHit(s,transfer);return;}
+ if(f.context.kind==='virtual-blade'){const a=resolveVirtualBlade(s,f);finishAbility(s,f);if(a)resumeDeclarationAction(s,a,dice);return;}
+ if(f.context.kind==='distance-maai'){resolveDistanceMaaiAbility(s,f);finishAbility(s,f);return;}
+ if(f.context.kind==='maai'){resolveMaaiAbility(s,f);finishAbility(s,f);resumeMaaiAbilityPayment(s,f);return;}
+ if(f.context.kind==='reclaim'){resolveReuse(s,f);return;}
+ if(isSuppressionAbility(f.abilityId)){if(resolveSuppression(s,f,dice))finishAbility(s,f);return;}
  if(isConditionalAbility(f.abilityId)){resolveConditionalAbility(s,f);finishAbility(s,f);return;}
  if(isTurnPackage(f.abilityId)){if(resolveTurnPackage(s,f,dice,now))finishAbility(s,f);return;}
  if(isDeclarationAbility(f.abilityId)){
@@ -140,8 +172,10 @@ export function continueAbility(s:GameState,f:AbilityFrame,dice:()=>number,now:n
   return;
  }
 
- if(f.followerBundleId){const b=s.followerBundles![f.followerBundleId]!;const valid=!f.canceled&&validResolution(s,f);finishAbility(s,f);if(!valid){discardBundle(s,b);s.phase='withdrawal';return;}b.stage='prepare';continueFollowerBundle(s,b);return;}
+ if(f.followerBundleId){const b=s.followerBundles![f.followerBundleId]!;const valid=!f.canceled&&validResolution(s,f);finishAbility(s,f);if(!valid){discardBundle(s,b);return;}b.stage='prepare';continueFollowerBundle(s,b);return;}
  if(f.canceled||!validResolution(s,f)){finishAbility(s,f);return;}
+ if(f.abilityId===ZAN){resolveZan(s,f);finishAbility(s,f);return;}
+ if(f.shadowJump){if(resolveShadowJump(s,f,dice))finishAbility(s,f);return;}
  if(isMentalProtection(f.abilityId)&&f.context.kind!=='ability-response'){resolveMentalProtection(s,f);finishAbility(s,f);finishReceivedDefense(s);return;}
  if(isNamedResponse(f.abilityId)){resolveNamedResponse(s,f);finishAbility(s,f);return;}
  if(isMentalDefense(f.abilityId)){if(resolveMentalDefense(s,f,dice)){finishAbility(s,f);finishReceivedDefense(s);}return;}

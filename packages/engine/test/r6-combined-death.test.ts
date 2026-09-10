@@ -1,0 +1,13 @@
+import {expect,it} from 'vitest';
+import {getAction} from '@madou/catalog';
+import {allCardInstanceIds,transition,type GameState} from '../src/index.js';
+import {act,finish,pass} from './combat-helpers.js';
+import {entropy} from './fixtures.js';
+import {makeR6CombinedDeathScenario} from '../../../apps/worker/test/fixtures/r6-combined-death-scenario.js';
+const players=['A','B','C','D'].map(id=>({id,name:id}));
+it('R6 actual chanted two-target three-hit parry and Soldier HP settle B14 C18 in one simultaneous death batch',()=>{
+ let s=makeR6CombinedDeathScenario(players),b=s.players.B!.damage,c=s.players.C!.damage;const counter=s.players.B!.hand.find(id=>getAction(id)!.name==='受け流し')!,soldier=s.players.C!.followers[0]!.cardInstanceId,group=Object.values(s.groups!)[0]!;const sword=s.actions![group.actionId]!.cardInstanceId;expect(group.hitIndices).toEqual([0,1,2]);expect(group.targets.map(t=>t.actorId)).toEqual(['B','C']);expect(s.outcome).toBeUndefined();
+ s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false});expect(Object.values(s.actions!).find(a=>a.kind==='defense')!.checks).toHaveLength(1);let sawParry=false,sawFollower=false;
+ for(let n=0;n<400;n++){expect(s.outcome).toBeUndefined();if(s.players.B!.presence==='pending-death')break;const g=s.groups?.[group.id];if(g?.targets[0]!.hits[0]!.defended){sawParry=true;expect(g.targets[0]!.hits.map(h=>h.defended)).toEqual([true,false,false]);}if(g?.targets[1]!.followersSettled){sawFollower=true;expect(g.targets[1]!.hits.map(h=>h.damage)).toEqual([6,6,6]);expect(g.targets[1]!.followerDestroyed).toEqual([soldier]);}s=pass(s);}
+ expect(sawParry).toBe(true);expect(sawFollower).toBe(true);expect(s.players.B).toMatchObject({presence:'pending-death',damage:b+14});expect(s.players.C).toMatchObject({presence:'pending-death',damage:c+18});expect(s.lifecycle!.find(t=>t.kind==='death-batch')).toMatchObject({actorIds:['B','C']});expect(s.events.filter(e=>e.type==='PLAYER_DIED')).toEqual([]);const before=JSON.stringify(s);expect(transition(s,{actorId:'B',command:{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);s=finish(JSON.parse(before) as GameState);expect(s.events.filter(e=>e.type==='PLAYER_DIED').map(e=>e.actorId)).toEqual(['B','C']);expect(s.players.B!.presence).toBe('dead');expect(s.players.C!.presence).toBe('dead');expect(s.outcome).toBeUndefined();expect(s.windows).toEqual([]);expect(s.groups).toEqual({});expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);for(const id of [counter,soldier,sword])expect(s.discard.filter(x=>x===id)).toHaveLength(1);expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+});

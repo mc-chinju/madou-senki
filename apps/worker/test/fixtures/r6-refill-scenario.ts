@@ -1,0 +1,17 @@
+import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand,type GameState} from '@madou/engine';
+import {getAction} from '@madou/catalog';
+import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+/** Only the initial deal, deck order and prior damage are arranged; death and the suspended reaction use real commands. */
+export function makeR6RefillScenario(players:{id:string;name:string}[],choice=false):GameState {
+ let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];
+ assignCharacter(s,a,'大神官ジル');assignCharacter(s,b,'吟遊詩人のレスター');assignCharacter(s,c,'魔聖母ディア');assignCharacter(s,d,'魔導王ガイナス');for(const p of Object.values(s.players))p.permanent={endurance:100,warrior_level:20,magic_level:20,spirit:20};s.players[d]!.damage=gameStats(s,d).endurance-3;
+ const lethal=takeCard(s,a,'a2-p07-r3c3'),attack=takeCard(s,a,'a2-p08-r1c1'),fate=takeCard(s,c,'a2-p02-r2c3'),fusen=takeCard(s,d,'a2-p01-r1c1'),dawn=takeCard(s,d,'a2-p01-r1c2');
+ s.players[d]!.hand=s.players[d]!.hand.filter(id=>id!==fusen&&id!==dawn);trimHand(s,a,lethal,attack);trimHand(s,c,fate);trimHand(s,d);
+ const ordinary=s.deck.find(id=>getAction(id)!.category!=='open')!;s.deck=[ordinary,fusen,dawn,...s.deck.filter(id=>id!==ordinary&&getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
+ function act(actorId:string,command:GameCommand,dice=Array(100).fill(1)){const input={actorId,command},e={...entropy(),dice},r=transition(s,input,e);if(!r.ok)throw Error(`S22_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('S22_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('S22_FIXTURE_CARDS');}
+ function until(done:()=>boolean){for(let n=0;n<300;n++){if(done())return;const w=s.windows?.at(-1);if(!w)throw Error('S22_FIXTURE_WINDOW');act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('S22_FIXTURE_LIMIT');}
+ for(const p of players)act(p.id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:lethal,targetIds:[d],dedicated:false});until(()=>!s.windows?.length);if(s.players[d]!.presence!=='dead')throw Error('S22_FIXTURE_DEATH');
+ for(let n=0;n<50;n++){const actor=s.seatOrder[s.turnSeat]!;if(s.phase==='turn-start'&&actor===a)break;if(s.phase==='turn-start')act(actor,{type:'START_TURN'});else if(s.phase==='draw')act(actor,{type:'CHOOSE_DRAW',draw:false});else if(s.phase==='action')act(actor,{type:'PASS_ACTION'});else if(s.phase==='withdrawal')act(actor,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment'){act(actor,{type:'END_TURN',discardIds:[]});until(()=>!s.windows?.length);}else throw Error('S22_FIXTURE_TURN');}
+ if(s.deck[0]!==fusen||s.deck[1]!==dawn)throw Error('S22_FIXTURE_DECK_PREFIX');act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[c],dedicated:false});until(()=>s.windows?.at(-1)?.kind==='declaration'&&s.windows.at(-1)!.participants[s.windows.at(-1)!.cursor]===c);
+ if(!choice)return s;const parent=s.windows!.at(-1)!.continuation.id;act(c,{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:parent});until(()=>s.windows?.at(-1)?.kind==='revival');return s;
+}

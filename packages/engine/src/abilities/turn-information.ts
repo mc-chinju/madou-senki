@@ -1,3 +1,4 @@
+import {enqueueLifecycle} from '../lifecycle/events.js';
 import {getAction,type ActionCard} from '@madou/catalog';
 import type {GameState} from '../state.js';
 import {canUseCharacterAbility,hasPendingFatal} from '../state.js';
@@ -18,7 +19,7 @@ export function isPrintedMagicTechnique(card:ActionCard|undefined):boolean{
  return stats?.school==='魔'||stats?.school===undefined&&Array.isArray(stats?.attributes)&&stats.attributes.includes('魔');
 }
 const PUBLIC_WINDOWS=new Set(['declaration','before-roll','after-roll','effect-level','damage','attack-abilities','hit-abilities','follower-entry-abilities','hit','follower-start']);
-function usable(s:GameState,actorId:string,id:string):boolean{const p=s.players[actorId];return !!p&&!s.outcome&&isActive(p)&&canUseCharacterAbility(p)&&!hasPendingFatal(s,actorId)&&ownsAbility(p,id);}
+function usable(s:GameState,actorId:string,id:string):boolean{const p=s.players[actorId];return !!p&&!s.outcome&&isActive(p)&&canUseCharacterAbility(p,s)&&!hasPendingFatal(s,actorId)&&ownsAbility(p,id);}
 function turnKey(s:GameState,actorId:string,id:string):string{return `own-turn-${s.turnNumber??0}:${actorId}:${id}`;}
 export function turnTargets(s:GameState,actorId:string,id:string):string[]|undefined{
  if(id===LANCASTER_DISCARD||id===ALSEIL_SHADOW)return;
@@ -77,7 +78,7 @@ export function resolveTurnPackage(s:GameState,f:AbilityFrame,dice:()=>number,no
  if(f.context.kind!=='turn-information')throw Error('INVALID_TURN_CONTEXT');
  const id=f.abilityId,live=!f.canceled&&valid(s,f);
  if(f.context.drawOpportunity){
-  (s.lifecycle??=[]).push({kind:'resume-phase',id:`resume-${f.id}`,phase:'action'},{kind:'draw',id:`draw-${f.id}`,actorId:f.actorId,target:s.players[f.actorId]!.hand.length+(live?2:1)});return true;
+  enqueueLifecycle(s,{kind:'resume-phase',rootEventIds:[f.eventId],id:`resume-${f.id}`,phase:'action'},{kind:'draw',rootEventIds:[f.eventId],id:`draw-${f.id}`,actorId:f.actorId,target:s.players[f.actorId]!.hand.length+(live?2:1)});return true;
  }
  if(!live)return true;
  const modifier=id===LESTER_INSPECT?-3:id===ALSEIL_SHADOW||id===UONOS_REVEAL?-1:id===STAR_INSPECT?0:undefined;

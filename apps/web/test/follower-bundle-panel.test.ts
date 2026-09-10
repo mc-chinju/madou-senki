@@ -23,6 +23,22 @@ test('each source owns a separate target radio group and dedication starts off',
   expect(first).toContain(`name="follower-bundle-target-${source.cardInstanceId}"`); expect(second).toContain('name="follower-bundle-target-a2-p18-r3c3"');
   expect(first).toContain('グリフォン（配置中）'); expect(first).toContain('専用効果を使う'); expect(first).not.toContain('checked');
 });
+test('each dedicated mode renders its own target-specific preview values', () => {
+  const render = (option: FollowerBundleSource) => renderToStaticMarkup(createElement(FollowerBundleSourceFields, {
+    option,
+    choice: { cardInstanceId: option.cardInstanceId, dedicated: option.dedicated, targetIds: [] },
+    dedicatedAvailable: true,
+    names,
+    disabled: false,
+    change: () => {},
+  }));
+  const ordinary = render({ ...source, dedicated: false, targetValues: [{ actorId: 'B', effectLevel: 5, damage: 9 }] });
+  const dedicated = render({ ...source, dedicated: true, targetValues: [{ actorId: 'B', effectLevel: 7, damage: 12 }] });
+  expect(ordinary).toContain('楓：効果Lv 5・ダメージ 9');
+  expect(ordinary).not.toContain('楓：効果Lv 7・ダメージ 12');
+  expect(dedicated).toContain('楓：効果Lv 7・ダメージ 12');
+  expect(dedicated).not.toContain('楓：効果Lv 5・ダメージ 9');
+});
 test('bundle summary preserves public technique values for preparing, failed and resolved sources', () => {
   const preparing = { ...source, targetIds: ['B'], stage: 'effect-level' as const,
     technique: { range: 'far', school: 'warrior', attributes: ['遠', '戦', '格'], useLevel: 5, effectLevel: 5, damage: null, hitCount: 3,

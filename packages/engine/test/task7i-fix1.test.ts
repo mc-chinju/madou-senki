@@ -94,6 +94,8 @@ describe('Task7i fix1 actual source classification and relative references', () 
         s = closeWindow(s, [2]);
         s = closeWindow(s);
         s = closeWindow(s);
+        // Physical Prayer disposal has its own window; close the actual parent effect boundary.
+        while(s.windows?.at(-1)?.kind!=='damage'||s.windows.at(-1)!.continuation.id!==actionId)s=pass(s);
         expect(s.actions![actionId]!.technique).toMatchObject({ effectLevel: 8, blockWarriorLimit: 8, reflectMagicLimit: 9 });
         s = finish(s);
     });

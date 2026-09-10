@@ -1,0 +1,77 @@
+{
+  "task": "R5 Task11 other173: two physical healing potions",
+  "status": "two-potion-clause-bindings-integrated-other171-remains-open",
+  "completedAt": "2026-09-09 09:54 JST",
+  "implementation": "No production changes. potion-physical.test.ts adds2 physical parameters×5 canonical bodies.",
+  "canonicalEvidence": [
+    "Both IDs use actual turn-card declaration and one actual d6 for all faces1..6, healing only own current damage. Accepted payment precedes effect, wrong actor/REST/repeated action reject unchanged, phase ends in hand adjustment.",
+    "Both orders of the two physical cards pay together, generate distinct saved rolls2 and5, heal total7, and discard both sources once; duplicated physical ID input rejects unchanged.",
+    "Initial damage0 or2 with die6 stops at0; other actor damage stays3.",
+    "Actual physical Fate cancels a single potion: no potion die, no healing, source remains paid/discards once. In a two-potion batch cancellation affects only the first; second retains its saved die5 and heals5.",
+    "Each input compares JSON continuation/220 unique cards. Result windows receive different dice6 while observed stored roll totals remain fixed."
+  ],
+  "testCorrection": "Numeric potion rolls at declaration resolution without before-roll. Initial helper supplied its prescribed die at the wrong boundary (6 tests failed); corrected helper feeds next numeric declaration and changes entropy only after saved result. Final17 pass.",
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p04-r2c3::semantic/timing/turn",
+      "a2-p04-r2c3::semantic/heal/self",
+      "a2-p04-r2c3::semantic/heal/d6",
+      "a2-p04-r2c3::semantic/use/multiple-copies",
+      "a2-p04-r3c1::semantic/timing/turn",
+      "a2-p04-r3c1::semantic/heal/self",
+      "a2-p04-r3c1::semantic/heal/d6",
+      "a2-p04-r3c1::semantic/use/multiple-copies"
+    ],
+    "mainProducerRebindings": [
+      "a2-p04-r2c3::main-producer",
+      "a2-p04-r3c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:98f4037c486941d2",
+      "t:4f0297c6ce4297b7",
+      "t:094d64380b5ac57d",
+      "t:b2a9dcf78195ff9d",
+      "t:aa17fb9586f0e862",
+      "t:753211f9be339821",
+      "t:a9c261aa0005e92d",
+      "t:49c35a4d6e6ce954",
+      "t:c94ad6277c5ecebf",
+      "t:dfdd95cc1bbff6e8"
+    ],
+    "rows": 12112,
+    "pending": 11330,
+    "implemented": 782,
+    "acceptedPromotions": 0,
+    "remaining": "Candidate-bound execution/acceptance receipts and shared/ruling dependencies pending."
+  },
+  "verification": {
+    "engine": {
+      "passed": 17,
+      "newCases": 10,
+      "files": [
+        "potion-physical.test.ts",
+        "turns.test.ts"
+      ],
+      "log": "/tmp/madou-potion-physical-engine.log"
+    },
+    "worker": {
+      "passed": 1,
+      "selected": "room-reclaim.test.ts actual potion batch",
+      "log": "/tmp/madou-potion-physical-do.log"
+    },
+    "browser": {
+      "passed": 1,
+      "selected": "reclaim.spec.ts potion batch reloads",
+      "log": "/tmp/madou-potion-physical-browser.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "/tmp/madou-potion-physical-types.log"
+    },
+    "validator": {
+      "valid": true,
+      "log": "/tmp/madou-potion-physical-ledger.log"
+    }
+  },
+  "remaining": "24/195 per-entry semantic/main bindings integrated, other171 remain. Next four basic attachments; full goal remains active."
+}

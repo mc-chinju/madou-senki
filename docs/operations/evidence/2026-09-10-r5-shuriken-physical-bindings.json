@@ -1,0 +1,184 @@
+{
+  "task": "R5 Task11 Other195 Shuriken physical binding",
+  "status": "shuriken-physical-bindings-integrated-other29-open",
+  "completedAt": "2026-09-10 07:44 JST",
+  "implementation": "黒流弓時に追加したBoardの資格確認が、サーバー全体判定ではなくcanSelectPrintedDedicatedという部分判定に接続されていた。このため旧登録方式の手裏剣専用が画面で無効となり、browser初回は2成功/3timeout後に原因を確認して停止（exit130、残9件未完走）。サーバーで使うcanSelectDedicatedを既存のまま公開exportし、Boardを同じ全体判定へ変更。停止後に残った当該試験workerd PID68274が8787番を保持し再試行が起動前に失敗したため、lsofで本repoのapps/workerプロセスと確認して当該PIDだけTERM終了。修正後の同じbrowser14全件と関連browser3（シン天地百撃斬、黒流弓誤所有者、黒翼天翔剣の専用詠唱必須）・型が成功。",
+  "canonicalEvidence": [
+    "手裏剣a2-p08-r2c3の21用途条項＋既存main証跡を対応。実初期deal/setup、Bの従者配置補充で破邪の石OPEN→詠唱上限2、Bの実CHANTを全手番を経て2回・Cの実CHANT1回を成立させ、詠唱領域の注入なしで命中対象を準備。通常遠戦忍反use/effect4・damage5、通常イダも専用自動選択なし、実メタルゴーレム6が防いで本体0・従者公開・詠唱保持。選択イダ専用はeffect6・1d6×5で、実メタル/砦を非公開のまま無視。全出目1〜6で5〜30を確認し、1回の数値ロールを1/2/全3対象へ共有、精神0/戦士0でも4回の使用チェックを省略するが数値ロールは必要。数値ロールはafter-rollから始まり、強制失敗不可。通常戦士3は精神6の不足1回判定、出目6成功/7失敗。実近距離進撃・公開同陣営拒否・混乱/沈黙下の印刷戦士専用・催眠/回復失敗の手番飛ばしも確認。対象ごとの命中時に全廃棄/不使用を1回選び、Bの実詠唱2枚をまとめて廃棄、Cは独立に1枚を残す選択が可能。選択前に相手の詠唱物理IDを全view/実UIへ漏らさず、部分payload・偽対象・別actor・時機外・再選択は原子拒否。実間合い1枚/見切るでBは詠唱2枚と従者を保持して回避、Cだけ被弾・廃棄可。実命運取消は数値ロール前に止め、命中選択なし・元札1回処分。通常反撃4対incoming3は5damageを返し、同値4対4は相殺して0、4対5は未払い拒否・イダ専用6なら返して命中後の詠唱廃棄も可能。実専用反撃の命運取消では元の4damageへ戻り対象詠唱保持。不使用/誤所有者/不正対象/攻撃以外のモード/誤時機は手札保持またはstate全view不変で拒否。Engine28/関連3/DO21各コマンド保存再起動再送/代表browser14実攻撃・反撃・ランダム実結果・対象別廃棄・reload/型/ledger成功。semantic21だけimplemented増、main1再binding、accepted0昇格。",
+    "Engine初回22成功/数値6失敗はnumericロールにもbefore-roll窓があるとした試験手順。beginRollのnumericは直ちにafter-rollへ進むことを確認し、出目をその窓が開く直前に与えて当該6件だけ再実行成功。初回型はContinuationのtargetIdを未絞込で参照した3エラーを修正し、以後2回成功。DOは直近の一括実行timeoutを踏まえ、同じ21ケースを重複なしの7件×3組として順番に実行、全組初回成功。これはtimeout原因の恒久解消を示すものではない。",
+    "黒流弓時に追加したBoardの資格確認が、サーバー全体判定ではなくcanSelectPrintedDedicatedという部分判定に接続されていた。このため旧登録方式の手裏剣専用が画面で無効となり、browser初回は2成功/3timeout後に原因を確認して停止（exit130、残9件未完走）。サーバーで使うcanSelectDedicatedを既存のまま公開exportし、Boardを同じ全体判定へ変更。停止後に残った当該試験workerd PID68274が8787番を保持し再試行が起動前に失敗したため、lsofで本repoのapps/workerプロセスと確認して当該PIDだけTERM終了。修正後の同じbrowser14全件と関連browser3（シン天地百撃斬、黒流弓誤所有者、黒翼天翔剣の専用詠唱必須）・型が成功。",
+    "Fixture preparation uses accepted initial Haja/CHANT/full-turn commands with deterministic JSON replay and220 unique physical cards. DO and UI begin at that actually prepared fixture state and cover postfixture saved commands/controls; they do not independently perform every preparation turn. UI14 are guard/ownerordinary/dedicated/all/keep/mixed/Fate/Maai/Evade/threecounterroutes/wrongowner/decline. Already-resolving-chant exclusion and third-party intervention before chant disposal plus source-target lifetime/other ability crossings remain unmeasured shared conditions. Existing related pending-fatal test is related evidence, not a new canonical owner-life receipt."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/shuriken-physical.test.ts",
+      "initial": {
+        "passed": 22,
+        "failed": 6,
+        "log": "/tmp/madou-shuriken-engine.log"
+      },
+      "fix": {
+        "command": "pnpm exec vitest run packages/engine/test/shuriken-physical.test.ts -t 'dedicated actual numeric'",
+        "passed": 6,
+        "log": "/tmp/madou-shuriken-engine-dice-fix.log"
+      },
+      "currentUniquePassed": 28
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/review-regressions.test.ts packages/engine/test/mental-received-defenses.test.ts -t 'Ida chant disposal|Ida.*Shuriken|Ida.*chant|Shuriken.*chant'",
+      "passed": 3,
+      "firstAttempt": true,
+      "log": "/tmp/madou-shuriken-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "uniquePassed": 21,
+      "batches": [
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-shuriken-physical.test.ts -t '^shuriken-(ordinary|guard|owner-ordinary|low|dedicated|subset|all) '",
+          "passed": 7,
+          "firstAttempt": true,
+          "log": "/tmp/madou-shuriken-do-1.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-shuriken-physical.test.ts -t '^shuriken-(near|fate|maai|evade|keep|mixed|suppressed) '",
+          "passed": 7,
+          "firstAttempt": true,
+          "log": "/tmp/madou-shuriken-do-2.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-shuriken-physical.test.ts -t '^shuriken-(stopped|silenced|wrong-owner|decline|counter-ordinary|counter-equal|counter-dedicated) '",
+          "passed": 7,
+          "firstAttempt": true,
+          "log": "/tmp/madou-shuriken-do-3.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/shuriken-physical.spec.ts",
+      "initial": {
+        "passed": 2,
+        "failed": 3,
+        "notCompleted": 9,
+        "exitCode": 130,
+        "log": "/tmp/madou-shuriken-browser.log"
+      },
+      "firstFixLaunch": {
+        "exitCode": 1,
+        "testsExecuted": 0,
+        "reason": "Port8787 retained by interrupted test workerd PID68274; verified with lsof and terminated only that process.",
+        "log": "/tmp/madou-shuriken-browser-fix.log"
+      },
+      "afterFix": {
+        "passed": 14,
+        "log": "/tmp/madou-shuriken-browser-fix-2.log"
+      }
+    },
+    "browserRelated": {
+      "command": "pnpm exec playwright test tests/e2e/card-zones.spec.ts tests/e2e/black-bow-physical.spec.ts tests/e2e/sky-wing-physical.spec.ts -g 'own character details|black-bow-wrong-owner |sky-wing-dedicated '",
+      "passed": 3,
+      "log": "/tmp/madou-shuriken-browser-related.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "initialExitCode": 2,
+      "initialLog": "/tmp/madou-shuriken-types.log",
+      "exitCode": 0,
+      "log": "/tmp/madou-shuriken-types-ui-fix.log",
+      "priorPasses": [
+        "/tmp/madou-shuriken-types-fix.log",
+        "/tmp/madou-shuriken-types-transport.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8860,
+        "implemented": 3252
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p08-r2c3::semantic/ordinary/school",
+      "a2-p08-r2c3::semantic/ordinary/range",
+      "a2-p08-r2c3::semantic/ordinary/use-level",
+      "a2-p08-r2c3::semantic/ordinary/base-effect-level",
+      "a2-p08-r2c3::semantic/ordinary/damage",
+      "a2-p08-r2c3::semantic/ordinary/attribute-0",
+      "a2-p08-r2c3::semantic/ordinary/attribute-1",
+      "a2-p08-r2c3::semantic/ordinary/attribute-2",
+      "a2-p08-r2c3::semantic/ordinary/attack-use",
+      "a2-p08-r2c3::semantic/ordinary/counter-capable",
+      "a2-p08-r2c3::semantic/dedicated/0/select-optional",
+      "a2-p08-r2c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p08-r2c3::semantic/dedicated/0/effect-replacement",
+      "a2-p08-r2c3::semantic/dedicated/0/damage-replacement",
+      "a2-p08-r2c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p08-r2c3::semantic/dedicated/0/chant-retain",
+      "a2-p08-r2c3::semantic/dedicated/0/target-subset",
+      "a2-p08-r2c3::semantic/dedicated/ignore-followers",
+      "a2-p08-r2c3::semantic/dedicated/hit-chant-discard-option",
+      "a2-p08-r2c3::semantic/dedicated/discard-all-chants",
+      "a2-p08-r2c3::semantic/dedicated/no-subset-chants"
+    ],
+    "mainProducerBindings": [
+      "a2-p08-r2c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:bf6694a06affe470",
+      "t:3be234b251c51ab5",
+      "t:32eb83d0e2df7525",
+      "t:856f705afc570131",
+      "t:0d815ce03ded534a",
+      "t:1f6f4f540dce72a6",
+      "t:d59d502e54e8ea4a",
+      "t:00d1f42da016627a",
+      "t:e8680af31da1ceb6",
+      "t:c56d1b70e5c946a8",
+      "t:b38e46f6fa046299",
+      "t:3b53460ed4f5a5ce",
+      "t:8195f3152b62f313",
+      "t:7de75f7047121409",
+      "t:271b61f637dfa1ad",
+      "t:f1f4995810a36f17",
+      "t:2fc78a5b21a08e7b",
+      "t:1dc0de3f2bf4a8c0",
+      "t:6ef71b20bc7d88e5",
+      "t:f97a7b8bca4075ba",
+      "t:9b9f4821e513c1c5",
+      "t:9f9063a1d3ac3480",
+      "t:b27eb16022527f50",
+      "t:151717b96bbf491d",
+      "t:840a59d8fa1f3541",
+      "t:9b3b75e6e33b3bf4",
+      "t:18485dc998f3aeed",
+      "t:efd9b0090ac00f3c"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 190
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 166
+    }
+  },
+  "remaining": "Other29, AppendixSword1 and shared/candidate receipts, strictA31 and whole-goal gates remain. Noacceptedpromotion."
+}

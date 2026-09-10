@@ -1,0 +1,109 @@
+{
+  "task": "R5 Task11 Dinon a2-p04-r1c3",
+  "status": "dinon-physical-bindings-integrated-other27-open",
+  "completedAt": "2026-09-10 04:49 JST",
+  "implementation": "No production change. Five semantic clauses and one pending main producer newly implemented with17 canonical cases.",
+  "canonicalEvidence": [
+    "Actualsetup/START/draw, optionaltargetownREVEAL. Hidden/public andselfactiveplayers offered. Ownmainphysicalsourcepaidtoresolution, notincludedineitherhand; afterinterventionwindowwholecurrentresidualhands exchangedatomically withoutrefill. Initialinventoryboundarycases: unequalcounts, sourceonly, emptytarget, bothempty and8-cardoverflowafterexchange. Selftargetkeepsownresidualhand andBhandunchanged. Target/sourceviewselfhandsreflectnewownership, otherC/Dplayersdonotexposehandfields. ActualFatecancelconsumessourceandmainwithoutswap, declinepreservesbothhands.",
+    "ActualsourceorrecipientPeace duringdeclaration changesitsresidualhand withonecardrefill. Snapshotafterrefill, finalswapusesnewhands, notdeclarationhands; sourceDinonexcluded. ActualpriorB/AKagura/MagicBook installations andfullturncycles, actualBiceWolfchant, setupplacedSoldier/FemaleGuard andactualBloodOPEN remainwithoriginalowner; noexchangeofOPEN/attachments/followers/chants/identity/damage/permanent. ActualreceivingAretains8untilowncurrentEND; nonactingBretains8throughAEND/ownSTART/drawdecline/mainpass, thenbothrequireexact3discardattheirownEND. Noautomaticexchange-onlyrefill.",
+    "BeforeSTART/draw/wrongseat/astrology/missing/multipletargetshape/pendingduplicate refuseexactstate/all4views. Engine17 usesJSONreexecution/220uniqueIDs; DO14 eachcommandsave/restart/replay; UI14 actualtargetselect/privatehands/Peace/cancel/reloads anddisabledENDuntil3cardsselected. Initialoversizehandsareboundaryinventoryarrangements, notclaimedactualprioroverflowproducers. Inactiveandlifetime targetcrossings unmeasured/sharedpending."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/dinon-physical.test.ts",
+      "initialPassed": 15,
+      "initialFailed": 2,
+      "initialLog": "/tmp/madou-dinon-engine.log",
+      "correction": "Fixture guessed p18r2c3 was not follower; replaced with known FemaleGuardp21r2c2. Peace refills its one paid card, preserving pre-Peace residualcount4 for source, not full5.",
+      "targetedRerun": {
+        "command": "pnpm exec vitest run packages/engine/test/dinon-physical.test.ts -t 'dinon-zones|dinon-source-refill'",
+        "passed": 2,
+        "log": "/tmp/madou-dinon-engine-fixes.log"
+      },
+      "ownershipAssertion": {
+        "command": "pnpm exec vitest run packages/engine/test/dinon-physical.test.ts -t 'actual physical source payment'",
+        "passed": 10,
+        "log": "/tmp/madou-dinon-engine-ownership.log",
+        "reason": "Explicit original B hand comparison for source selftarget, replacing tautological pre-resolution branch and checking B remainsunchanged afterward."
+      },
+      "uniqueCanonicalTotal": 17
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/turn-choice-cards.test.ts -t 'Dinon exchanges|canceled a2-p04-r1c3'",
+      "passed": 2,
+      "log": "/tmp/madou-dinon-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-dinon-physical.test.ts",
+      "passed": 14,
+      "log": "/tmp/madou-dinon-do.log",
+      "firstAttempt": true
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/dinon-physical.spec.ts",
+      "passed": 14,
+      "log": "/tmp/madou-dinon-browser.log",
+      "firstAttempt": true
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-dinon-types-final.log",
+      "priorPasses": [
+        "/tmp/madou-dinon-types.log",
+        "/tmp/madou-dinon-types-ui.log"
+      ],
+      "firstAttemptEach": true
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9150,
+        "implemented": 2962
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p04-r1c3::semantic/timing/turn",
+      "a2-p04-r1c3::semantic/exchange/one-player",
+      "a2-p04-r1c3::semantic/exchange/all-user-hand",
+      "a2-p04-r1c3::semantic/exchange/all-target-hand",
+      "a2-p04-r1c3::semantic/exchange/atomic-swap"
+    ],
+    "mainProducerBindings": [
+      "a2-p04-r1c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:a708ec5d61a5065d",
+      "t:8d2adb7cf5f6947f",
+      "t:59e1e4f1f4d7fb23",
+      "t:cc93f3337d235120",
+      "t:c05d13c4fb77e765",
+      "t:347cd78528dbe0b1",
+      "t:0201e52f1328c9e7",
+      "t:a281b3fc79be4796",
+      "t:ad277536f1a74f9d",
+      "t:f4068a1410744e27",
+      "t:54cde43bf60d9b50",
+      "t:806087c584085d73",
+      "t:474b298c1dfc1d91",
+      "t:3cc1e27fc9a36725",
+      "t:36e5273801529c85",
+      "t:289ff156e159b4ac",
+      "t:ee9a32692f5be316"
+    ]
+  },
+  "remaining": "168/195 semantic bindings integrated; other27 includes partialSingingShip1 andWingedFolk1 plus25othercards. Dinoninactives/lifetime targetcrosses, priorConversionGOODdeadLia andotherunmeasuredsharedcrossings remainpending. Candidate/shared receipts andwhole-goalgates open; noacceptedpromotion."
+}

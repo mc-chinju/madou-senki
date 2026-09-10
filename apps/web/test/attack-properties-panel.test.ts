@@ -21,7 +21,7 @@ test('shared attacker response shows each target independently and does not anno
   const value = progress(); value.responding = true; value.targetId = null; value.sharedAdvances = 1;
   value.targets.push({ ...value.targets[0]!, actorId: 'C', required: 2, submitted: 3, effective: 2, remaining: 0 });
   const html = render(value);
-  for (const text of ['葵さんの踏み込みの判断待ち', '今回の踏み込み1枚は各対象の間合いをそれぞれ打ち消します', '楓さん・2発目', '凛さん・2発目', '必要2枚・有効2枚・あと0枚', '回避はまだ確定していません']) expect(html).toContain(text);
+  for (const text of ['葵さんの踏み込みの判断待ち', '今回の踏み込み1枚は全対象で共有します', '楓さん・2発目', '凛さん・2発目', '必要2枚・有効2枚・あと0枚', '回避はまだ確定していません']) expect(html).toContain(text);
 });
 test('server progress after a completed exchange retains prior effective cards without reconstructing totals', () => {
   const value = progress(); value.targets[0] = { ...value.targets[0]!, carried: 2, submitted: 0, effective: 2, remaining: 1 };

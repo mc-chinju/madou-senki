@@ -1,0 +1,30 @@
+{
+  "task": "R6 S01 priority projection supplemental evidence",
+  "status": "partial-HTTP-and-full-scenario-binding-pending",
+  "recordedAt": "2026-09-10 13:51 JST",
+  "implementation": "Added one DO test to apps/worker/test/room-scenario-s01-s05.test.ts; existing tests unchanged. No production changes.",
+  "verified": [
+    "All four WebSocket snapshots show C priority before input.",
+    "D first reaction rejects; saved game/revision, roll attempts, CARD_DRAWN events and all four complete WebSocket snapshots remain identical.",
+    "Accepted C command uses exactly the revision from before D rejection.",
+    "Existing helper evicts DO and replays both rejection and accepted command with identical response and saved state; all220 unique physical cards."
+  ],
+  "correction": "Initial raw crypto call counter failed: room entropy() allocates dice/random arrays before transition validation. Replaced this over-broad expectation with the exact S01 no-roll/no-refill condition. No claim of zero entropy allocation.",
+  "verification": {
+    "worker": {
+      "passed": 1,
+      "log": "/tmp/madou-s01-priority-projections-fix.log",
+      "initialFailure": "/tmp/madou-s01-priority-projections.log"
+    },
+    "types": {
+      "exitCode": 0,
+      "log": "/tmp/madou-s01-priority-types-final.log"
+    }
+  },
+  "remaining": [
+    "S01 HTTP projection and explicit final scenario mapping still need evidence before checking plan item.",
+    "S02 child cancellation exact sequence and remaining R6 conditions remain open.",
+    "Singing Ship and Winged Folk not-earth-warrior clauses remain pending: existing targeted producer evidence finds no real earth-warrior attack; do not synthesize a hit and label it canonical."
+  ],
+  "processes": "All terminal; no live handles."
+}

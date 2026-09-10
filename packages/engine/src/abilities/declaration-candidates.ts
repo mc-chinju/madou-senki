@@ -56,7 +56,7 @@ export function previewDeclarationCandidate(candidate: DeclarationCandidate, sel
 }
 export function declarationCandidates(s: GameState, actorId: string): DeclarationCandidate[] {
     const p = s.players[actorId], w = s.windows?.at(-1);
-    if (!p || s.outcome || !isActive(p) || !canUseCharacterAbility(p))
+    if (!p || s.outcome || !isActive(p) || !canUseCharacterAbility(p,s))
         return [];
     if (!(Object.keys(DECLARATION_ABILITIES) as DeclarationAbilityId[]).some(id => ownsAbility(p, id)))
         return [];
@@ -89,7 +89,7 @@ export function declarationCandidates(s: GameState, actorId: string): Declaratio
             const group = incoming ?? (groupOption ? s.groups?.[groupOption.groupId] : undefined);
             const target = group?.targets.find(t => t.actorId === actorId);
             const candidate: DeclarationCandidate = { kind,
-                ...(incoming?{conditionalEffectAddition:conditionalTechniqueAdditions(s,{actorId,kind:'defense',technique:{...t,defense:'counter'},targetIds:[incoming.attackerId]} as import('../reactions/continuations.js').ActionFrame,incoming.attackerId).effect}:{}), choice: structuredClone(selection), sourceZone: resolved.fromFollowers ? 'followers' : resolved.fromHand ? 'hand' : 'chant', fromChant, technique: t, abilities,
+                ...(incoming?{conditionalEffectAddition:conditionalTechniqueAdditions(s,{actorId,kind:'defense',technique:{...t,defense:'counter'},canceled:false},incoming.attackerId).effect}:{}), choice: structuredClone(selection), sourceZone: resolved.fromFollowers ? 'followers' : resolved.fromHand ? 'hand' : 'chant', fromChant, technique: t, abilities,
                 targetIds: s.seatOrder.filter(id => id !== actorId && isActive(s.players[id]!) && !(s.players[id]!.revealed && s.players[id]!.faction === p.faction)),
                 nearTargetIds: s.seatOrder.filter(id => s.distances[actorId]?.[id] === 'near'),
                 ...(grant ? { grantTargetId: grant } : {}), ...(group ? { groupId: group.id, incomingTechnique: structuredClone(currentEffectiveTechnique(s, group, actorId)) } : {}),

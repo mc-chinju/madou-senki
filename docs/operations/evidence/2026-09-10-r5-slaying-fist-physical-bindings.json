@@ -1,0 +1,205 @@
+{
+  "task": "R5 Task11 Slaying Fist physical binding",
+  "completedAt": "2026-09-10 11:52 JST",
+  "implementation": "Added physical fixture, Engine/DO/browser tests and fixture registration. No production behavior change.",
+  "canonicalEvidence": [
+    "死鬼滅殺拳 a2-p10-r1c2 の18用途条項とmain証跡。実初期配置→APPROACH→ATTACKで近/戦/格/白、使用・効果Lv8、固定10、通常間合い1枚、単体・詠唱不可・印刷反撃不可。ジル通常は自動専用化せず、専用はnoChecksとガドューラ/ディア限定2倍。専用戦士0/精神0でも不足8回の判定なし。術者精神0/1/12と対象精神11に関係なく通常対象10。実ガドューラ/ディアへの通常10・専用20、公開済み/非公開とも同値。共通profile10と対象hit20を防御前に固定し、命中前は他者のviewにcharacterIdを出さず、命中で公開。水竜Lv7/HP4は通常対象6・専用対象16、メタルLv6/HP5は5、砦Lv3/HP2は8。実悪魔の黒・デスナイトの死は通常/専用ともattribute-destroyed、士気判定なし・HP軽減0・札1回処分。専用ガドューラ＋悪魔、専用ディア＋デスナイトは20を維持し、Cの別の黒属性従者を保持。実間合い/見切る/命運取消/不使用は名前付き対象0かつ正体非公開。白技禁止のガドューラ使用者を支払い前に拒否。通常戦士7/精神6の不足判定は合計6成功/7失敗。実混乱/沈黙・催眠手番停止・弓への防御拒否・不正owner/target/actor/timing・同陣営・不使用を確認。",
+    "Engine49・関連4・DO43・browser43は初回成功。DOは各コマンド保存→再起動→同一envelope再送、拒否時不変、220枚保存を確認。browserは実選択・接近・防御・取消・reloadと公開viewの対象hit値/人物公開を確認。型初回はE2Eのoptional techniqueへのアクセス1件TS2532。optional chainingへ修正し、E2E型検査を再実行して成功。root/worker/webの型検査は初回で通過。",
+    "コピー/反射・能力追加による反撃化・共有lifetime/回収の交差、AppendixSword1、strict A31、共有受入れと計画全体は未完。acceptedへの昇格なし。"
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/slaying-fist-physical.test.ts",
+      "passed": 49,
+      "log": "/tmp/madou-slaying-fist-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7b-techniques.test.ts -t '死鬼滅殺拳|keeps printed character damage multipliers local'",
+      "passed": 4,
+      "log": "/tmp/madou-slaying-fist-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "passed": 43,
+      "batches": [
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(ordinary|owner-ordinary|low|dedicated|far) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-1.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(same-faction|water|metal|lower|maai-one-ordinary) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-2.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(maai-one-dedicated|evade-ordinary|evade-dedicated|fate|suppressed) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-3.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(silenced|stopped|wrong-owner|decline|noncounter) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-4.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(black-ordinary|black-dedicated|dead-ordinary|dead-dedicated|black-maai) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-5.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(dead-evade|black-fate|black-decline|white-prohibited|gad-ordinary) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-6.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(gad-dedicated|dia-ordinary|dia-dedicated|gad-public|dia-public) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-7.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(gad-water|dia-water|gad-black|dia-dead|gad-maai) '",
+          "passed": 5,
+          "log": "/tmp/madou-slaying-fist-do-8.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-slaying-fist-physical.test.ts -t '^slaying-fist-(dia-evade|gad-fate|dia-decline) '",
+          "passed": 3,
+          "log": "/tmp/madou-slaying-fist-do-9.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/slaying-fist-physical.spec.ts",
+      "passed": 43,
+      "log": "/tmp/madou-slaying-fist-browser.log",
+      "execution": "Existing permitted local Playwright execution"
+    },
+    "types": {
+      "initial": {
+        "command": "pnpm typecheck",
+        "exitCode": 2,
+        "log": "/tmp/madou-slaying-fist-types.log",
+        "passedScopes": [
+          "root",
+          "worker",
+          "web"
+        ],
+        "failedScope": "E2E optional technique access TS2532"
+      },
+      "fixed": {
+        "command": "pnpm typecheck:e2e",
+        "exitCode": 0,
+        "log": "/tmp/madou-slaying-fist-types-ui.log"
+      }
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8629,
+        "implemented": 3483
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p10-r1c2::semantic/ordinary/school",
+      "a2-p10-r1c2::semantic/ordinary/range",
+      "a2-p10-r1c2::semantic/ordinary/use-level",
+      "a2-p10-r1c2::semantic/ordinary/base-effect-level",
+      "a2-p10-r1c2::semantic/ordinary/damage",
+      "a2-p10-r1c2::semantic/ordinary/attribute-0",
+      "a2-p10-r1c2::semantic/ordinary/attribute-1",
+      "a2-p10-r1c2::semantic/ordinary/attribute-2",
+      "a2-p10-r1c2::semantic/ordinary/attack-use",
+      "a2-p10-r1c2::semantic/dedicated/0/select-optional",
+      "a2-p10-r1c2::semantic/dedicated/0/eligible-owner/0",
+      "a2-p10-r1c2::semantic/dedicated/0/activation-check-waive",
+      "a2-p10-r1c2::semantic/dedicated/0/chant-retain",
+      "a2-p10-r1c2::semantic/ordinary/destroy-black",
+      "a2-p10-r1c2::semantic/ordinary/destroy-dead",
+      "a2-p10-r1c2::semantic/dedicated/double-gadyoora",
+      "a2-p10-r1c2::semantic/dedicated/double-dia",
+      "a2-p10-r1c2::semantic/dedicated/not-double-others"
+    ],
+    "mainProducerBindings": [
+      "a2-p10-r1c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:e455ae49e68c1c76",
+      "t:257907d6b1b8897c",
+      "t:b429feb8569e04b9",
+      "t:adb7ad2c125e1320",
+      "t:056feeff675b43f3",
+      "t:dcdb7d191016d269",
+      "t:4134c4d64fd082bc",
+      "t:d685fd758e7b0ad0",
+      "t:8cd07529144ad9a2",
+      "t:eb3debcada85699e",
+      "t:6f462d715256ea25",
+      "t:060bd9f0fda9deb3",
+      "t:2be64f0e27106544",
+      "t:c5009816da3cf1c3",
+      "t:1ddf0173dd4f02a1",
+      "t:2f0e119a6dfa342f",
+      "t:cdf81aecfa55139e",
+      "t:1bcdd247b5554777",
+      "t:337e265f9f77ab6d",
+      "t:a740d386f9891b27",
+      "t:00c025042d61a131",
+      "t:dcefb9ef9349c105",
+      "t:7e1f3fb7cbb2fe2a",
+      "t:691421c511bfaeb5",
+      "t:a316272a5b9ac995",
+      "t:3057d8716e9d72cb",
+      "t:b5d5677139709fb3",
+      "t:0de8c15b90c14adb",
+      "t:c1f0deac83513192",
+      "t:8ce49e702071b1bd",
+      "t:c9cfe3138ac6b921",
+      "t:0414dd69c0d8f5ed",
+      "t:fd39e4f01e3657fa",
+      "t:456ff66076816aca",
+      "t:9e76ed0d16981626",
+      "t:e120cdd03b4042d2",
+      "t:c26177e634211524",
+      "t:e835f141d0afdd13",
+      "t:f22c9e7034615aea",
+      "t:e874b65f67ae2a07",
+      "t:25c942fb06040ac8",
+      "t:88e6af272acdeef2",
+      "t:4d2b2ce440bc110b",
+      "t:369af141ad31b721",
+      "t:4aa4ead376dcdc71",
+      "t:b1b90e99238b6105",
+      "t:5608272a506c7f04",
+      "t:45d8531af1389bd4",
+      "t:e3aee7cb3cf28ed6"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 203
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 179
+    }
+  },
+  "remaining": "コピー/反射・能力追加による反撃化・共有lifetime/回収の交差、AppendixSword1、strict A31、共有受入れと計画全体は未完。acceptedへの昇格なし。"
+}

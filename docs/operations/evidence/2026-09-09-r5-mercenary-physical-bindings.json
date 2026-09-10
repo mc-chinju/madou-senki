@@ -1,0 +1,96 @@
+{
+  "task": "R5 Task11 other77: Mercenary physical card",
+  "status": "mercenary-physical-bindings-integrated-other76-open",
+  "completedAt": "2026-09-09 18:23 JST",
+  "implementation": "No production changes. Exact initial fixture with aligned private deal/character logs, Engine12, related3, DO8, browser5 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual Mercenary a2-p20-r1c1 begins in real initial setup with follower4 HP0 human. Actual initial placement preserves initial-life provenance, hides physical identity from other views, and rejects foreign/duplicate source. Actual own-turn arrangement, later full-turn reorder/removal, foreign/duplicate/over-capacity refusals preserve order and all-view invariants. Actual Bow3 blocks with Mercenary alive/body0; high Metal front protects hidden rear. Actual maai retains hidden source.",
+    "Actual Dia B approaches and grants Dwarf three damage6 hits at own warrior3/4/5. Frozen Mercenary defense4 HP0 applies to all three: lower3 leaves source alive/body0, equal4 destroys/body0, higher5 destroys and passes all18. Physical source is discarded once and no morale is introduced. Direct ordinary/dedicated ATTACK or CHANT from hand and field cannot invent permission.",
+    "Actual Dia c2-p06-r1c2-ab04 grants ordinary Mercenary from hand or field after real paid approach; far and forged dedication reject. Source reserves, leaves original zone, exposes near warrior use3/effect3/damage4/近戦剣 and deals4 before one discard. Actual Fate cancels grant ability and still spends Mercenary once, with no damage or hand/field return.",
+    "Actual All Army grants Mercenary from hand only after real near approach. Ordinary near warrior3 damage4/近戦剣/noChecks false uses own warrior2/3 for one/zero checks. Army and Mercenary enter resolution and discard once. Placed Mercenary is absent from hand-only Army options and rejects. Actual parent cancellation and force-failed use roll pay both cards and do no damage; neither returns to hand/field.",
+    "Every accepted Engine command JSON roundtrips and preserves220 unique physical IDs; refusal preserves complete state and all views. DO8 covers initial/turn placement, Dia hand/field grant, Army and their three cancellation cases, saving/evicting/replaying identical ACK/state and220 IDs after every command. Browser5 operates actual initial/own-turn placement, paid approach, Dia hand/field bundle and Army controls, then reloads across and after resolution to confirm retained defense source or exact attack damage4 and unique discard.",
+    "14 semantic clauses and main1 bind12 concrete test references. Candidate-bound receipts and wider shared crossings remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p20-r1c1::semantic/follower/printed-level",
+      "a2-p20-r1c1::semantic/follower/printed-hp",
+      "a2-p20-r1c1::semantic/placement/setup",
+      "a2-p20-r1c1::semantic/placement/own-action",
+      "a2-p20-r1c1::semantic/defense/front-order",
+      "a2-p20-r1c1::semantic/follower/attribute-0",
+      "a2-p20-r1c1::semantic/attack/grant-required",
+      "a2-p20-r1c1::semantic/attack/ordinary-hand-grant",
+      "a2-p20-r1c1::semantic/attack/discard-not-return",
+      "a2-p20-r1c1::semantic/attack/printed-level",
+      "a2-p20-r1c1::semantic/attack/printed-damage",
+      "a2-p20-r1c1::semantic/attack/attribute-0",
+      "a2-p20-r1c1::semantic/attack/attribute-1",
+      "a2-p20-r1c1::semantic/attack/attribute-2"
+    ],
+    "mainProducerRebindings": [
+      "a2-p20-r1c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:d50c7193777d3178",
+      "t:696cbf5e52a47505",
+      "t:77db9c090d599f66",
+      "t:16e8e52ff097d471",
+      "t:25faa31561ca92ab",
+      "t:f62a16ff41958c92",
+      "t:5bec1bec038b4cd1",
+      "t:b55871219d44b3b5",
+      "t:1d3c0a29afa5df9e",
+      "t:a4d26c986875f7f9",
+      "t:e2ab5d419dcaa296",
+      "t:e13f24269c609278"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/mercenary-physical.test.ts",
+      "passed": 12,
+      "log": "/tmp/madou-mercenary-physical-engine.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts packages/engine/test/heterogeneous-followers.test.ts -t 傭兵",
+      "passed": 3,
+      "skipped": 183,
+      "log": "/tmp/madou-mercenary-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-mercenary-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 8,
+      "log": "/tmp/madou-mercenary-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/mercenary-physical.spec.ts",
+      "passed": 5,
+      "log": "/tmp/madou-mercenary-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-mercenary-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9923,
+        "implemented": 2189
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "119/195 per-entry semantic/main bindings integrated; other76 and whole-goal gates open. No accepted promotion."
+}

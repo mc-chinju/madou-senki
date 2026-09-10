@@ -1,0 +1,54 @@
+{
+  "row": "S19#acceptance-correspondence",
+  "status": "implemented",
+  "handlers": [
+    "h:c7a3d4131028b1b3",
+    "h:df75f2754f44b135",
+    "h:4899ccbdeb411fed"
+  ],
+  "tests": [
+    "t:a64fb54df92a1516",
+    "t:e5262d24670d2078"
+  ],
+  "verification": {
+    "engine": {
+      "passed": 1,
+      "log": "/tmp/madou-s19-correspondence-engine.log"
+    },
+    "worker": {
+      "passed": 3,
+      "boundCases": 1,
+      "log": "/tmp/madou-s19-correspondence-do-final.log"
+    },
+    "browser": {
+      "passed": 1,
+      "log": "/tmp/madou-s19-correspondence-browser.log",
+      "note": "Existing dynamically generated title, execution evidence only; no new concrete AST binding."
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12178,
+      "statuses": {
+        "pending": 8353,
+        "implemented": 3825
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5259,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    },
+    "readiness": {
+      "valid": true,
+      "ready": false
+    }
+  },
+  "remaining": [
+    "Exact Gil [6,6] ordinary failure with chosen faith retains cancellation and suppresses doubles consequences. Current-candidate execution receipt, dependency acceptance and independent acceptance remain pending."
+  ],
+  "changes": "Ledger/evidence only. Runtime and test bodies unchanged; typecheck not rerun."
+}

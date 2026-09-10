@@ -1,0 +1,13 @@
+import {getAction} from '@madou/catalog';
+import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
+import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+export const riftPhysicalScenarios=['rift-physical-ordinary','rift-physical-dedicated','rift-physical-ordinary-low','rift-physical-dedicated-low'] as const;
+export type RiftPhysicalScenario=typeof riftPhysicalScenarios[number];
+export function isRiftPhysicalScenario(name:string):name is RiftPhysicalScenario{return riftPhysicalScenarios.some(x=>x===name);}
+export const RIFT='a2-p14-r2c2',DAWN='a2-p01-r1c2',WISH='a2-p04-r3c2',REVELATION='a2-p02-r1c2';
+export function makeRiftPhysicalScenario(name:RiftPhysicalScenario,players:{id:string;name:string}[],options:{level?:number;foreign?:boolean;guardian?:boolean}={}){
+ let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];const owners=[options.foreign?'大神官ジル':'白魔術師シェリム','黒騎士ガーウィン','邪祭ウーノス','魔導王ガイナス','魔聖母ディア','不死王ガドューラ'];for(const [i,p] of players.entries())assignCharacter(s,p.id,owners[i]!);for(const p of Object.values(s.players)){p.permanent={endurance:100,warrior_level:20,magic_level:20,spirit:20};p.permanent.spirit=20+(name.endsWith('-low')&&p.id!==a?0:6)-gameStats(s,p.id).spirit;}s.players[a]!.permanent!.magic_level=20+(options.level??7)-gameStats(s,a).magic_level;
+ const keep=[takeCard(s,a,RIFT),takeCard(s,a,WISH),takeCard(s,a,REVELATION),takeCard(s,a,'a2-p24-r1c2'),takeCard(s,b,'a2-p06-r1c1'),takeCard(s,b,'a2-p15-r3c1'),takeCard(s,d,'命運凶変')];const guard=takeCard(s,b,options.guardian?'守護者':'メタルゴーレム'),water=takeCard(s,c,'水竜');keep.push(guard,water);if(options.guardian)keep.push(takeCard(s,a,'必勝の祈り'));for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
+ function act(actorId:string,command:GameCommand){const input={actorId,command},e={...entropy(),dice:Array(100).fill(1)},r=transition(s,input,e);if(!r.ok)throw Error(`RIFT_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('RIFT_JSON');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('RIFT_IDS');}
+ for(const p of players){if(p.id===b)act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:guard});if(p.id===c)act(c,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:water});act(p.id,{type:'PASS_SETUP'});}act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
+}

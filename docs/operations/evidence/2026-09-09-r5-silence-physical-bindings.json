@@ -1,0 +1,107 @@
+{
+  "task": "R5 Task11 other99: Silence physical card",
+  "status": "silence-physical-bindings-integrated-other98-open",
+  "completedAt": "2026-09-09 16:27 JST",
+  "implementation": "No production changes. Engine14 case coverage, related2, DO3, browser3 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Silence a2-p18-r1c1 actual initial Shelim source and Aiel or Uonos target, actual initial followers. Magic/far/use6/effect6/null damage/魔精/nonCHANT/followerIgnore. Source magic5/6 requires one/zero use checks. Actual Metal6/Water7 remain exactly placed while Silence bypasses both, B body0. At target spirit6, initial minus2 threshold4 succeeds with2+2 and fails with2+3, creating one source-owned silenced state with modifiers[-2,-1]/nextCheck1.",
+    "Actual Guardian7 cancels follower ignore: effect6 blocks and Guardian retained; actual Prayer1 raises effect7, equal destroys Guardian but causes no resistance; actual Prayer2 effect8 destroys and reaches target resistance. No synthetic follower or prayer value changes.",
+    "Actual B prior Judgment CHANT and full intervening turns before Silence. Failed own recovery retains existing concealed chant. Actual hand Ice Arrow, new Dance CHANT, chanted Judgment attack, Ice Mirror magic defense and chanted Judgment counter all reject with SILENCED unchanged. Warrior bow attack remains legal and deals10 without clearing Silence. Actual Uonos Dragon Cult6 dedicated follower attack first proved legal before Silence; after Silence it rejects with SILENCED. Passive Metal still blocks real later Fire Arrow and followers/chants remain.",
+    "Actual initial failed resistance followed by B own recovery minus1: failure6+6 keeps same status ID and increments nextCheck; next own turn2+3 succeeds at threshold5 and removes it. Both recovery phases retain existing Judgment chant and damage0. Actual B then casts that retained chant for16 onto A.",
+    "Actual first Fire Arrow inflicts5 on B, then later legal Silence from opposing Shelim. Actual failed recovery followed by B potion healing clears damage to0 but preserves exactly the same Silence status. Source faction was corrected to GOOD so revealed EVIL Aiel remains a legal later target.",
+    "Actual revealed Aiel uses a real advance to approach Shelim; Ice Blade option exists and actual virtual attack deals3. In the other continuation from that legal approached state, actual Silence and failed recovery remove the Ice Blade option and reject DECLARE_VIRTUAL_BLADE while revealed identity, near distance and all effective stats remain unchanged. No blanket ability stat suppression inferred.",
+    "Actual ordinary use failure and actual D Fate cancellation pay source once but cause no resistance/status. Dedicated/multiple/self/empty/duplicate/missing target/wrong actor/turn form/CHANT refusals preserve complete state and all views. Every accepted Engine transition JSON roundtrips and220 unique physical IDs.",
+    "DO3 performs B actual prior Judgment CHANT/full turns then Silence: resist, actual D Fate force-fail and own recovery/reused retained chant, or actual D Fate cancellation. Every command saves, evicts and replays identical ACK/state with220 IDs. Browser3 performs those same live commands and real dice/reloads. Initial target spirit14 guarantees resistance success in resist world; recovery world spirit13 has actual Fate force-fail at initial check and guarantees subsequent minus1 recovery at threshold12.",
+    "Only10 semantic rows/main1 rebound. Shared F01 multiple-instance and wider crossing acceptance plus candidate-bound receipts remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p18-r1c1::semantic/ordinary/attribute-0",
+      "a2-p18-r1c1::semantic/ordinary/attribute-1",
+      "a2-p18-r1c1::semantic/ordinary/attribute-2",
+      "a2-p18-r1c1::semantic/ordinary/attack-use",
+      "a2-p18-r1c1::semantic/ordinary/ignore-followers",
+      "a2-p18-r1c1::semantic/ordinary/initial-minus-two",
+      "a2-p18-r1c1::semantic/ordinary/recovery-minus-one",
+      "a2-p18-r1c1::semantic/ordinary/magic-disabled",
+      "a2-p18-r1c1::semantic/ordinary/recovery-phase",
+      "a2-p18-r1c1::semantic/ordinary/no-hp-healing"
+    ],
+    "mainProducerRebindings": [
+      "a2-p18-r1c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:2079a865c3acc41e",
+      "t:f9bcc1fb1b3a5a2a",
+      "t:84e4467285ca61b8",
+      "t:52655948ba717594",
+      "t:0ac037fcb316dea2",
+      "t:23e3f9cc6177dd38",
+      "t:bd4c910c167b38d1",
+      "t:f580652d481fb1a7",
+      "t:137514549d2bba29",
+      "t:e02f37ec7987ccaa",
+      "t:e020c88624a709e4",
+      "t:802e8848b699fd69",
+      "t:406297d11dc3d5e0",
+      "t:fb080e1e7ae2db9f"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/silence-physical.test.ts",
+      "initialPassed": 11,
+      "initialFailed": 2,
+      "initialLog": "/tmp/madou-silence-physical-engine.log",
+      "finalPassed": 13,
+      "log": "/tmp/madou-silence-physical-engine-final.log",
+      "virtualAdded": {
+        "passed": 1,
+        "skipped": 13,
+        "log": "/tmp/madou-silence-physical-virtual.log"
+      },
+      "finalCaseCoverage": 14,
+      "note": "Water Dragon has no permission to act as a follower attack. Replaced with actual initial Uonos and Dragon Cult, proving eligible attack first then silence refusal. Healing world initially attacked revealed same-faction Aiel after Fire Arrow; changed initial source from EVIL Gaenas to GOOD Shelim, reran full targeted13 then new virtual1."
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/task7e-status-defenses.test.ts -t 'silenced'",
+      "passed": 2,
+      "skipped": 48,
+      "log": "/tmp/madou-silence-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-silence-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 3,
+      "log": "/tmp/madou-silence-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/silence-physical.spec.ts",
+      "passed": 3,
+      "log": "/tmp/madou-silence-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-silence-physical-types-complete.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 10214,
+        "implemented": 1898
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "97/195 per-entry semantic/main bindings integrated; other98 and whole-goal gates open. No accepted promotion."
+}

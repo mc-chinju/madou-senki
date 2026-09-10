@@ -72,13 +72,23 @@ export function makeConditionalScenario(name: ConditionalScenarioName, players: 
   if (attack) trimHand(game, a, attack, ...(conversion ? [conversion] : []));
   const dragon = spec.dragon ? takeCard(game, owner, '飛竜') : undefined;
   if (dragon) trimHand(game, owner, dragon);
+  if (spec.defending && !spec.dragon) {
+    const defense = takeCard(game, owner, '転移'); trimHand(game, owner, defense);
+  }
   if (spec.haja) {
     const haja = takeCard(game, owner, '賢者ハジャ');
     game.players[owner]!.hand = game.players[owner]!.hand.filter(id => id !== haja); game.players[owner]!.open.push(haja);
     trimHand(game, owner);
+    // Prior turns legally accumulated eight cards under the elected public capacity.
+    // Election starts OFF here to exercise delayed loss and normal END adjustment.
+    while (game.players[owner]!.hand.length < 8) game.players[owner]!.hand.push(game.deck.shift()!);
   }
+  const previewFollower = spec.truth || name === 'conditional-upa-attack' ? takeCard(game, a, spec.truth ? '飛竜' : 'グリフォン') : undefined;
+  const bundleFollower = name === 'conditional-upa-attack' ? takeCard(game, a, '炎竜') : undefined;
+  if (previewFollower) trimHand(game, a, previewFollower, ...(attack ? [attack] : []), ...(conversion ? [conversion] : []), ...(bundleFollower ? [bundleFollower] : []));
   if (spec.warrior) for (const other of [b, c, d]) game.distances[a]![other] = game.distances[other]![a] = 'near';
   for (const player of players) {
+    if (player.id === a && previewFollower) act(a, { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: previewFollower });
     if (player.id === owner && dragon) act(owner, { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: dragon });
     act(player.id, { type: 'PASS_SETUP' });
   }

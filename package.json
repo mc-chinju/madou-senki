@@ -14,10 +14,11 @@
     "typecheck": "tsc --noEmit && pnpm --filter @madou/worker typecheck && pnpm --filter @madou/web typecheck && pnpm typecheck:e2e",
     "typecheck:e2e": "tsc --noEmit -p tests/e2e/tsconfig.json",
     "test:e2e": "playwright test",
-    "build": "pnpm --filter @madou/web build && pnpm --filter @madou/worker build",
-    "verify:catalog": "python3 scripts/validate_second_edition.py",
+    "build": "pnpm verify:readiness && pnpm --filter @madou/web build && pnpm --filter @madou/worker build",
+    "verify:catalog": "python3 scripts/validate_second_edition.py && pnpm verify:readiness",
     "prepare:assets": "python3 scripts/prepare_assets.py",
-    "verify:assets": "python3 scripts/prepare_assets.py --verify"
+    "verify:assets": "python3 scripts/prepare_assets.py --verify",
+    "verify:readiness": "python3 scripts/generate_catalog_readiness.py --check"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

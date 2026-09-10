@@ -1,0 +1,171 @@
+{
+  "task": "R5 Task11 Other195 Ki Slash physical binding",
+  "status": "ki-slash-physical-bindings-integrated-other26-open",
+  "completedAt": "2026-09-10 08:44 JST",
+  "implementation": "Added canonical physical fixture and Engine/DO/browser acceptance paths; no application production changes.",
+  "canonicalEvidence": [
+    "気斬a2-p08-r3c3の18用途条項＋既存main証跡を対応。実初期deal/setup→実攻撃で通常遠・戦剣精忍use/effect6・ダメージ術者精神力、通常から従者無視。イダ専用はeffect7・精神力×2・使用チェック不要、単体/noCHANT/noCOUNTERを維持。通常イダは自動専用化せず選択可能。実術者精神6・対象精神11で参照者を区別し、数値0はnullへ変わらず通常/専用とも0damage、専用は戦士0/精神0でも不足6回の使用判定なし。通常戦士5/精神6は不足1回判定6成功/7失敗。T06は第三者Dの実「この世界に愛と平和を」で、通常防御前damage窓内または固定後attack-abilities窓内に術者A/対象Bの精神を12+恒久補正へ変える通常/専用8通りを検証。術者を固定前に変えた時だけ変更後の精神（専用は×2）を使い、固定後の術者変更と対象の前後変更はダメージを再計算しない。各介入でD補充・実札1回処分、親窓への復帰とreload/保存再起動再送を確認。実初期配置メタル/兵士は通常/専用とも無傷・非公開のまま。実進撃後の近距離使用、実Cアーネス公開後の同EVIL対象拒否、実D混乱/沈黙後も印刷戦士専用使用可・催眠回復失敗は手番を飛ばして未払いを確認。実間合い1枚で防ぎ0damage、精属性に使用禁止の実見切るは原子拒否・UI候補なしで12damage。実命運取消は気斬1回処分・判定/命中なし、存在しない使用判定への強制失敗は拒否。誤owner/actor/対象/重複/複数対象/時機/CHANT/REST/turncardを原子拒否し、不使用は札を保持。Engine25/関連5/DO23各コマンド保存再起動再送/browser23実操作・実ランダム判定・reload/型/ledger成功。semantic18だけimplemented増、main1再binding、accepted0昇格。",
+    "Engine初回23成功/2失敗。共通防御制限の精属性による見切る禁止をテストが見落としていたため、間合い使用可と見切る未払い拒否へ期待値を修正し、当該2件だけ再実行して成功。アプリ本体の変更なし。関連Engine5、DO重複なし5/5/5/4/4件、browser23は初回成功。型はfixture/Engine追加時とDO/UI登録後の2回成功。",
+    "Fixture preparation uses accepted initialsetup/follower/status/APPROACH commands with deterministic JSON replay and220 unique physical cards. DO/browser begin at the prepared own-action state; those preparation turns are not independently operated by browser. Actual attack and Peace interventions use DO/browser commands. Sharedsource-targetlifetime and nestedotherability/follower crossings remain unmeasured. Noacceptedpromotion."
+  ],
+  "validation": {
+    "engine": {
+      "currentUniquePassed": 25,
+      "runs": [
+        {
+          "command": "pnpm exec vitest run packages/engine/test/ki-slash-physical.test.ts",
+          "passed": 23,
+          "failed": 2,
+          "log": "/tmp/madou-ki-slash-engine.log"
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/ki-slash-physical.test.ts -t 'actual Maai avoids'",
+          "passed": 2,
+          "failed": 0,
+          "log": "/tmp/madou-ki-slash-engine-fix.log"
+        }
+      ]
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/techniques.test.ts -t '気斬|freezes spirit-based damage'",
+      "passed": 5,
+      "firstAttempt": true,
+      "log": "/tmp/madou-ki-slash-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "uniquePassed": 23,
+      "batches": [
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ki-slash-physical.test.ts -t '^ki-slash-(ordinary|guard|owner-ordinary|low|dedicated) '",
+          "passed": 5,
+          "failed": 0,
+          "log": "/tmp/madou-ki-slash-do-1.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ki-slash-physical.test.ts -t '^ki-slash-(near|same-faction|fate|maai|evade) '",
+          "passed": 5,
+          "failed": 0,
+          "log": "/tmp/madou-ki-slash-do-2.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ki-slash-physical.test.ts -t '^ki-slash-(suppressed|stopped|silenced|wrong-owner|decline) '",
+          "passed": 5,
+          "failed": 0,
+          "log": "/tmp/madou-ki-slash-do-3.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ki-slash-physical.test.ts -t '^ki-slash-(before-ordinary|after-ordinary|before-dedicated|after-dedicated) '",
+          "passed": 4,
+          "failed": 0,
+          "log": "/tmp/madou-ki-slash-do-4.log"
+        },
+        {
+          "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-ki-slash-physical.test.ts -t '^ki-slash-target-(before-ordinary|after-ordinary|before-dedicated|after-dedicated) '",
+          "passed": 4,
+          "failed": 0,
+          "log": "/tmp/madou-ki-slash-do-5.log"
+        }
+      ]
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/ki-slash-physical.spec.ts",
+      "passed": 23,
+      "failed": 0,
+      "firstAttempt": true,
+      "log": "/tmp/madou-ki-slash-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-ki-slash-types-transport.log",
+      "otherPasses": [
+        "/tmp/madou-ki-slash-types.log"
+      ]
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 8804,
+        "implemented": 3308
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p08-r3c3::semantic/ordinary/school",
+      "a2-p08-r3c3::semantic/ordinary/range",
+      "a2-p08-r3c3::semantic/ordinary/use-level",
+      "a2-p08-r3c3::semantic/ordinary/base-effect-level",
+      "a2-p08-r3c3::semantic/ordinary/damage",
+      "a2-p08-r3c3::semantic/ordinary/attribute-0",
+      "a2-p08-r3c3::semantic/ordinary/attribute-1",
+      "a2-p08-r3c3::semantic/ordinary/attribute-2",
+      "a2-p08-r3c3::semantic/ordinary/attribute-3",
+      "a2-p08-r3c3::semantic/ordinary/attack-use",
+      "a2-p08-r3c3::semantic/dedicated/0/select-optional",
+      "a2-p08-r3c3::semantic/dedicated/0/eligible-owner/0",
+      "a2-p08-r3c3::semantic/dedicated/0/effect-replacement",
+      "a2-p08-r3c3::semantic/dedicated/0/damage-replacement",
+      "a2-p08-r3c3::semantic/dedicated/0/activation-check-waive",
+      "a2-p08-r3c3::semantic/dedicated/0/chant-retain",
+      "a2-p08-r3c3::semantic/ordinary/ignore-followers",
+      "a2-p08-r3c3::semantic/dedicated/damage-spirit-times-two"
+    ],
+    "mainProducerBindings": [
+      "a2-p08-r3c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:db36ddbfdcf4f62f",
+      "t:f784bd4cb2aaace2",
+      "t:ac7bf2aeb75e4371",
+      "t:e10a15111561af66",
+      "t:d35e9708926815df",
+      "t:2dd5602bbbe480b7",
+      "t:e1f4d044e0b68585",
+      "t:50fbfd952edadcc7",
+      "t:96d0e0cb04f128e3",
+      "t:c5579dfc2d37c770",
+      "t:75a9cb69128d0613",
+      "t:39239015a6e5fe04",
+      "t:a9ca6c096b60441c",
+      "t:437c53d7bf390ac4",
+      "t:3d78134f83f75c56",
+      "t:e3aa0a86e61c2d04",
+      "t:bba258aae84f3e2a",
+      "t:eb3b24f612f50f46",
+      "t:24bbaecfe1e25783",
+      "t:9dbfc3cb7fc7919f",
+      "t:711e695736445ae2",
+      "t:7dde814f892ddb44",
+      "t:d050dd93e0e83b9c",
+      "t:4604c3a7aa6a66fb",
+      "t:93a91299dd3998f7"
+    ]
+  },
+  "progress": {
+    "all": {
+      "total": 220,
+      "implemented": 193
+    },
+    "appendixA": {
+      "total": 25,
+      "implemented": 24
+    },
+    "other": {
+      "total": 195,
+      "implemented": 169
+    }
+  },
+  "remaining": "Other26, AppendixSword1 and shared/candidate receipts, strictA31 and whole-goal gates remain. Noacceptedpromotion."
+}

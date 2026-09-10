@@ -1,0 +1,30 @@
+import {expect,it} from 'vitest';
+import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
+import {entropy} from './fixtures.js';
+import {makeAnnihilationAxeScenario} from '../../../apps/worker/test/fixtures/annihilation-axe-scenarios.js';
+const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p11-r3c3';
+const rows=[['annihilation-ordinary',true,false,12],['annihilation-dedicated',false,true,20],['annihilation-chanted-dedicated',true,true,20]] as const;
+function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
+function nextOwn(s:GameState){for(let n=0;n<100;n++){const id=s.seatOrder[s.turnSeat]!;if(s.windows?.length)s=pass(s);else if(s.phase==='action'){if(id==='A')return s;s=act(s,id,{type:'PASS_ACTION'});}else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!==card).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error('ANNIHILATION_TURN');}throw Error('ANNIHILATION_TURN_LIMIT');}
+function chant(s:GameState){s=act(s,'A',{type:'CHANT',cardInstanceId:card});expect(s.players.A!.chants).toEqual([{cardInstanceId:card,revealed:false}]);for(const id of ['B','C','D'])expect(viewFor(s,id).players.A!.chants).toEqual([{position:0,face:'back'}]);return nextOwn(s);}
+function attack(dedicated:boolean){return {type:'ATTACK' as const,cardInstanceId:card,targetIds:dedicated?['B','C']:['B'],dedicated};}
+function claim(s:GameState){for(let n=0;n<300;n++){const d=viewFor(s,'A').reclaim;if(s.windows?.at(-1)?.kind==='reclaim'&&d?.pendingActorId==='A'&&d.cardInstanceId===card){expect(d.claims.map(c=>c.right)).toContain('base');return act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims.find(c=>c.right==='base')!.claimId});}s=pass(s);}throw Error('ANNIHILATION_CLAIM');}
+it.each(rows)('%s actual chant=%s elected=%s has damage%s and exact printed profile without stacking', (scenario,chanted,dedicated,damage)=>{
+ for(const level of [6,7]){let s=makeAnnihilationAxeScenario(scenario,players,{level});if(chanted)s=chant(s);s=act(s,'A',attack(dedicated));const f=Object.values(s.actions!).find(a=>a.cardInstanceId===card)!;expect(f.technique).toMatchObject({school:'warrior',range:'far',useLevel:7,effectLevel:dedicated?8:7,damage,attributes:['戦','斧','詠'],chant:!dedicated,noChecks:dedicated,target:dedicated?'all':'one'});expect(f.technique.destroyFollowersAtOrBelow).toBeUndefined();expect(f.fromChant??false).toBe(chanted);expect(f.checkSpecs).toHaveLength(dedicated?0:7-level);s=finish(s);expect([s.players.B!.damage,s.players.C!.damage,s.players.D!.damage]).toEqual([damage,dedicated?damage:0,0]);expect(s.discard.filter(id=>id===card)).toHaveLength(1);expect(s.players.A!.chants).toEqual([]);}
+});
+it.each(rows)('%s actual chant=%s elected=%s Fate cancels damage%s then actual reclaim and later hand reuse has only20', (scenario,chanted,dedicated,_damage)=>{
+ let s=makeAnnihilationAxeScenario(scenario,players);if(chanted)s=chant(s);s=act(s,'A',attack(dedicated));const id=Object.values(s.actions!).find(a=>a.cardInstanceId===card)!.id;s=pass(s);s=pass(s);s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:'a2-p02-r2c3',mode:'cancel',targetActionId:id});s=finish(claim(s));expect([s.players.B!.damage,s.players.C!.damage]).toEqual([0,0]);expect(s.players.A!.chants).toEqual([]);expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(s.players.A!.reclaimUsage?.['滅殺斧']?.baseSpent).toBe(true);s=nextOwn(s);reject(s,'A',attack(false));s=finish(act(s,'A',attack(true)));expect([s.players.B!.damage,s.players.C!.damage]).toEqual([20,20]);expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+});
+it.each(rows)('%s actual chant=%s elected=%s one physical Evade prevents damage%s only for the defending target',(scenario,chanted,dedicated,damage)=>{
+ let s=makeAnnihilationAxeScenario(scenario,players);if(chanted)s=chant(s);s=until(act(s,'A',attack(dedicated)),'normal-defense');s=passReclaims(act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:'a2-p05-r3c1',dedicated:false}));s=finish(s);expect([s.players.B!.damage,s.players.C!.damage]).toEqual([0,dedicated?damage:0]);
+});
+it('Annihilation ordinary requires real chant even at sufficient level and rejects ordinary multiple targets or foreign dedicated owner',()=>{
+ let s=makeAnnihilationAxeScenario('annihilation-ordinary',players);reject(s,'A',attack(false));s=chant(s);reject(s,'A',{...attack(false),targetIds:['B','C']});const foreign=makeAnnihilationAxeScenario('annihilation-dedicated',players,{owner:'侍大将のシン'});reject(foreign,'A',attack(true));reject(s,'A',{...attack(true),techniqueVariant:'two-hit'});
+});
+it('Annihilation dedicated still takes actual Water Dragon HP and does not inherit the other axes fixed destruction',()=>{
+ let s=makeAnnihilationAxeScenario('annihilation-dedicated',players,{followers:true});const guard=s.players.B!.followers[0]!.cardInstanceId;s=finish(act(s,'A',{...attack(true),targetIds:['B']}));expect(s.players.B!.damage).toBe(16);expect(s.discard.filter(id=>id===guard)).toHaveLength(1);
+});
+it('Successful ordinary Annihilation use returns once and the reclaimed hand source requires chanting again',()=>{
+ let s=chant(makeAnnihilationAxeScenario('annihilation-ordinary',players));s=finish(claim(act(s,'A',attack(false))));expect(s.players.B!.damage).toBe(12);s=nextOwn(s);reject(s,'A',attack(false));s=chant(s);s=finish(act(s,'A',attack(false)));expect(s.players.B!.damage).toBe(24);expect(s.players.A!.chants).toEqual([]);expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+});

@@ -1,0 +1,126 @@
+{
+  "task": "R5 Task11 other80: Castle and Imp physical cards",
+  "status": "castle-imp-physical-bindings-integrated-other78-open",
+  "completedAt": "2026-09-09 18:13 JST",
+  "implementation": "No production changes. Exact initial fixture with consistent initial deal/character logs, Engine22 case coverage, related3, DO11, browser10 and full typecheck passed.",
+  "canonicalEvidence": [
+    "Actual Castle a2-p19-r3c1 level4 HP5 building and Imp a2-p19-r3c2 level4 HP0 black/flying. Actual initial placement and own-turn arrangement, foreign/duplicate/capacity refusals, later full-turn reorder/removal and hidden physical identity. Initial private draw/character records agree with the scripted initial deals and owners; these preconditions are set before any command. Actual Bow3 is blocked by both level4 followers; high Metal front preserves hidden rear. Actual maai retains hidden source.",
+    "Actual initial Dia B approaches and grants Dwarf three damage6 hits at own warrior3/4/5. Physical defense uses follower4 for both: lower3 leaves follower alive/body0, equal4 destroys/body0, higher5 destroys and applies CastleHP5 on each hit for body3 or ImpHP0 for body18. Castle has no attack bottom, including when both Castle and actual Army are held in hand; both cards reject invented direct/dedicated ATTACK and CHANT, and neither nonhuman card can be forged into Dia human sources.",
+    "Actual Imp defense against Shock4 damage5, MagicShock5 damage7 and EarthSplit6 damage8 freezes magic level5. Magic4 is blocked with Imp alive/body0; magic5 destroys Imp at equality/body0; magic6 destroys/body8 because HP0. Actual single Dia bundle of Dwarf warrior5 three hits plus DarkSaint magic5 one hit freezes Imp levels4/4/4/5 and outcomes lower/lower/lower/equal with HP0 on every hit, body18 and one physical discard. Conditional magic defense never raises the warrior defense in the same group.",
+    "Actual hand-only All Army permits ordinary Imp far magic use4/effect4/damage5/遠魔黒 with no dedicated waiver. Initial own magic3/4 gives one/zero checks; both initial far and actual paid approach near work. Imp in field is absent from Army hand options and rejects. Army and Imp reserve together and discard exactly once. Actual parent cancellation and force-failed use roll pay both without damage or hand/field return. Actual Mirror reflects ordinary Imp magic to A5/B0 after payment: spent Imp does not rejoin the defense column to block its reflected attack.",
+    "Every accepted Engine command JSON roundtrips and preserves220 unique physical IDs; rejection preserves complete state/all views. DO11 performs initial/turn placements, magic4/5/6, real mixed Dia bundle, Army, reflection and Army cancellation, saving/evicting/replaying identical ACK/state and220 IDs after every command. Browser10 uses actual setup/own-turn placement, actual spell selection, actual approach and mixed follower bundle, Army panel and Mirror defense, then reloads across resolution and confirms retained followers or unique discard and exact damage.",
+    "24 semantic clauses (Castle7/Imp17) and main2 bind22 concrete test references. Candidate-bound receipts and wider shared crossings remain pending; no accepted promotion."
+  ],
+  "ledger": {
+    "newAtomicRows": [
+      "a2-p19-r3c1::semantic/follower/printed-level",
+      "a2-p19-r3c1::semantic/follower/printed-hp",
+      "a2-p19-r3c1::semantic/placement/setup",
+      "a2-p19-r3c1::semantic/placement/own-action",
+      "a2-p19-r3c1::semantic/defense/front-order",
+      "a2-p19-r3c1::semantic/follower/attribute-0",
+      "a2-p19-r3c1::semantic/attack/no-bottom",
+      "a2-p19-r3c2::semantic/follower/printed-level",
+      "a2-p19-r3c2::semantic/follower/printed-hp",
+      "a2-p19-r3c2::semantic/placement/setup",
+      "a2-p19-r3c2::semantic/placement/own-action",
+      "a2-p19-r3c2::semantic/defense/front-order",
+      "a2-p19-r3c2::semantic/follower/attribute-0",
+      "a2-p19-r3c2::semantic/follower/attribute-1",
+      "a2-p19-r3c2::semantic/attack/grant-required",
+      "a2-p19-r3c2::semantic/attack/ordinary-hand-grant",
+      "a2-p19-r3c2::semantic/attack/discard-not-return",
+      "a2-p19-r3c2::semantic/attack/printed-level",
+      "a2-p19-r3c2::semantic/attack/printed-damage",
+      "a2-p19-r3c2::semantic/attack/attribute-0",
+      "a2-p19-r3c2::semantic/attack/attribute-1",
+      "a2-p19-r3c2::semantic/attack/attribute-2",
+      "a2-p19-r3c2::semantic/defense/magic-level",
+      "a2-p19-r3c2::semantic/defense/nonmagic-base"
+    ],
+    "mainProducerRebindings": [
+      "a2-p19-r3c1::main-producer",
+      "a2-p19-r3c2::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:3f6af9f49d9d28b4",
+      "t:ed6d1bdd050b8c81",
+      "t:0a1023b0e972c528",
+      "t:e155379f8ed349fe",
+      "t:2a833976e7dbdc42",
+      "t:9452b05ec8b98318",
+      "t:4828843935be8cdf",
+      "t:b229636659cec0b0",
+      "t:83ed713c46e976e8",
+      "t:f31562fdc816e5d5",
+      "t:17e8b0e81002a931",
+      "t:c2944c333faec692",
+      "t:ce6bccf67447e9f6",
+      "t:fabaf1f2cd2425ae",
+      "t:15b46a9521f2dec6",
+      "t:a6c777bf82833004",
+      "t:3e64c7403d030e52",
+      "t:604ba0fe92e2960c",
+      "t:5b08a041fdcf8fe3",
+      "t:5c3ef63f33bd66c2",
+      "t:85dac90f709f86e1",
+      "t:20bfacf7c72bc9cb"
+    ]
+  },
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/castle-imp-physical.test.ts",
+      "initialPassed": 18,
+      "initialFailed": 4,
+      "log": "/tmp/madou-castle-imp-physical-engine.log",
+      "focusedRetry": {
+        "command": "pnpm exec vitest run packages/engine/test/castle-imp-physical.test.ts -t 'castle-setup|Castle without bottom'",
+        "passed": 7,
+        "skipped": 15,
+        "log": "/tmp/madou-castle-imp-physical-castle.log"
+      },
+      "finalCaseCoverage": 22,
+      "note": "Initial scripted Castle relocation left B private initial CARD_DRAWN history claiming Castle. Aligned only this fixture initial CARD_DRAWN/CHARACTER_ASSIGNED records with final initial hands/characters before commands; no production visibility change. Strengthened Castle Army refusal by actually holding Castle and Army in hand, while Imp field remains ineligible. Independent interim Army refusal1 passed before log correction; /tmp/madou-castle-imp-physical-army-refusal.log"
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/physical-followers.test.ts -t '小悪魔|printed base stats for 城$|real final defense traverses 城 using'",
+      "passed": 3,
+      "skipped": 127,
+      "log": "/tmp/madou-castle-imp-physical-related.log"
+    },
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-castle-imp-physical.test.ts",
+      "cwd": "apps/worker",
+      "passed": 11,
+      "log": "/tmp/madou-castle-imp-physical-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/castle-imp-physical.spec.ts",
+      "passed": 10,
+      "log": "/tmp/madou-castle-imp-physical-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-castle-imp-physical-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9960,
+        "implemented": 2152
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "remaining": "117/195 per-entry semantic/main bindings integrated; other78 and whole-goal gates open. No accepted promotion."
+}

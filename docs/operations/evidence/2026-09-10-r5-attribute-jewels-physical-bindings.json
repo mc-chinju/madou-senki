@@ -1,0 +1,166 @@
+{
+  "task": "R5 Task11 Crown/Crystal a2-p03-r1c2/a2-p03-r1c3",
+  "status": "attribute-jewels-physical-bindings-integrated-other32-open",
+  "completedAt": "2026-09-10 04:07 JST",
+  "implementation": "No production change. Fourteen semantic clauses and two pending main producers newly implemented with44 canonical cases.",
+  "canonicalEvidence": [
+    "Actualselfinstallation declaration paysonephysicalcard withoutrefill, entersresolution thenpublicselfattachment andhand-adjustment consumingmain. Wrongseat/dedicated/anytime/pending/duplicate/extra-main rejectstate/all4views. ActualFatecancel source discarded,noattachment orbonus; decline keepshandcard. Fullturns retainattachment. ActualBow lethal4 afterinstallation showsattachment remains throughdeathgiftwindow and isdisposedexactlyonce withnormaldeathdisposal.",
+    "Eachcard producesactualearth/water/fire/wind/black/mental/dualblackmental/white/warrior attack. Crownonlyelementalmagic+1; Crystalonlyblack/mental+2 includingbothattributes once. OnlyuseLv/excess-levelcheckcount changes, printed effectlevel unchanged, otheractor magic andunconditionalmagic unchanged. Actualmagictraining at6 excludesconditionallevels so6fails strictequality. ActualBloodOPEN inENDrefill raisesunconditional6to7 andactualtraining8succeeds against7, preservingjewelandtrainingattachment.",
+    "ActualsetupFemaleGuardhuman andGriffinnonhuman defensive-morale, plusactualAllArmy fromhand attacking-morale. CurrentGOODCrown+1 orEVILCrystal+2 appliesonlyhuman. Wrongfaction andnonhuman havezero. ActualREVEAL andprintedCharm afterinstallation switchcurrentfaction inbothdirections, preserveattachment andenable/disablemorale bonus inactualsubsequentfollowerroll. Engine44 canonical JSONreexecution/220uniqueIDs, related13. DO26 everyacceptedcommand saves/restarts/replayssameACK; UI26 actualinstallation/Fate/attacks/AllArmy/training/ownthresholds/reload. Browserusesactualrandomsuccess/failure ratherthanfixedfaces."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/attribute-jewels-physical.test.ts",
+      "initialPassed": 10,
+      "initialFailed": 26,
+      "log": "/tmp/madou-attribute-jewels-engine.log",
+      "correction": "Tests incorrectlyexpectedanATTACK_DECLARED log andchoseSoldierwhichskipsmorale. Usephysicalsource-discard/printedeffectlevels andactualFemaleGuardmorale.",
+      "targetedRerun": {
+        "command": "pnpm exec vitest run packages/engine/test/attribute-jewels-physical.test.ts -t 'actual spell|actual human'",
+        "passed": 28,
+        "log": "/tmp/madou-attribute-jewels-engine-2.log"
+      },
+      "additional": [
+        {
+          "command": "pnpm exec vitest run packages/engine/test/attribute-jewels-physical.test.ts -t 'actual Blood|installed physical card'",
+          "passed": 4,
+          "log": "/tmp/madou-attribute-jewels-engine-boundaries.log"
+        },
+        {
+          "command": "pnpm exec vitest run packages/engine/test/attribute-jewels-physical.test.ts -t army",
+          "passed": 4,
+          "log": "/tmp/madou-attribute-jewels-engine-army.log"
+        }
+      ],
+      "uniqueCanonicalTotal": 44
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/early-turn-cards.test.ts -t 'attaches through|selected spell attributes|actual entry|attribute magic correction'",
+      "passed": 13,
+      "log": "/tmp/madou-attribute-jewels-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-attribute-jewels-physical.test.ts",
+      "passed": 22,
+      "log": "/tmp/madou-attribute-jewels-do.log",
+      "firstAttempt": true,
+      "additional": {
+        "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-attribute-jewels-physical.test.ts -t army",
+        "passed": 4,
+        "log": "/tmp/madou-attribute-jewels-do-army.log",
+        "firstAttempt": true
+      },
+      "uniquePassed": 26
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/attribute-jewels-physical.spec.ts",
+      "passed": 22,
+      "log": "/tmp/madou-attribute-jewels-browser.log",
+      "firstAttempt": true,
+      "additional": {
+        "command": "pnpm exec playwright test tests/e2e/attribute-jewels-physical.spec.ts -g army",
+        "passed": 4,
+        "log": "/tmp/madou-attribute-jewels-browser-army.log",
+        "firstAttempt": true
+      },
+      "uniquePassed": 26
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-attribute-jewels-types-army.log",
+      "priorPasses": [
+        "/tmp/madou-attribute-jewels-types.log",
+        "/tmp/madou-attribute-jewels-types-ui.log"
+      ],
+      "firstAttemptEach": true
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9192,
+        "implemented": 2920
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p03-r1c2::semantic/timing/turn",
+      "a2-p03-r1c2::semantic/magic/element-filter",
+      "a2-p03-r1c2::semantic/magic/level-bonus",
+      "a2-p03-r1c2::semantic/morale/faction-condition",
+      "a2-p03-r1c2::semantic/morale/human-condition",
+      "a2-p03-r1c2::semantic/morale/bonus",
+      "a2-p03-r1c2::semantic/zone/self-attachment",
+      "a2-p03-r1c3::semantic/timing/turn",
+      "a2-p03-r1c3::semantic/magic/element-filter",
+      "a2-p03-r1c3::semantic/magic/level-bonus",
+      "a2-p03-r1c3::semantic/morale/faction-condition",
+      "a2-p03-r1c3::semantic/morale/human-condition",
+      "a2-p03-r1c3::semantic/morale/bonus",
+      "a2-p03-r1c3::semantic/zone/self-attachment"
+    ],
+    "mainProducerBindings": [
+      "a2-p03-r1c2::main-producer",
+      "a2-p03-r1c3::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:3b85107445e2d9b8",
+      "t:6ee62d6af64dec56",
+      "t:f6477f30f34b4f9f",
+      "t:8e8831d658bcbfa5",
+      "t:aec77615359f0e4e",
+      "t:7bc29d081c6ff7b1",
+      "t:3464641c84522882",
+      "t:9f5075105944237a",
+      "t:c0b054215ca55835",
+      "t:d81eccb02f6a8f38",
+      "t:07b0e2c1da844d2f",
+      "t:675847e9058d21ce",
+      "t:f98a0cb3315c8c95",
+      "t:5530537adad76536",
+      "t:ad719633b891758a",
+      "t:a5a902ab1f56e944",
+      "t:ed5ff4f11595cf93",
+      "t:fc7ee94f3b0fc2db",
+      "t:2aa42d6a0b6acf8c",
+      "t:0136e897551954cc",
+      "t:e661d09b61facfe4",
+      "t:ed3720e734037385",
+      "t:70d82025fbc1c842",
+      "t:196925468d580bd2",
+      "t:9aca644aed9c4cf0",
+      "t:e5003497a1fba3d1",
+      "t:a5ffa4d026a97d8e",
+      "t:87b0d72ba671c2df",
+      "t:dc104fe8b5f39059",
+      "t:40b291e59f559435",
+      "t:74f707126a1cffbe",
+      "t:e5a0701d99b6c869",
+      "t:14d0c1e7000bd85b",
+      "t:774b900fb5c4f472",
+      "t:6b133144f4a315e2",
+      "t:84e0907a7aad5768",
+      "t:3a879edfaa6f9600",
+      "t:1040e54f6ab49adb",
+      "t:5ecb585b7e3f29c4",
+      "t:098457108bebd90f",
+      "t:ac61a8dc4e491694",
+      "t:a975715064ce404c",
+      "t:d2b6022ef44c9551",
+      "t:f2df54701cbb45bc"
+    ]
+  },
+  "remaining": "163/195 semantic bindings integrated; other32 includes partial SingingShip1 andWingedFolk1 plus30othercards. Previousdeath-giftunmeasuredcrossings, Hostageunresolved-timefactionchange, shared/candidate receipts andwhole-goalgates remainopen; noacceptedpromotion."
+}

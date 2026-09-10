@@ -1,0 +1,224 @@
+{
+  "scope": "Selected S30-S32 dependencies; S32 abstract arithmetic preserved",
+  "bindings": [
+    {
+      "scenario": "S30",
+      "obligation": {
+        "entryId": "ruling:G17",
+        "clauseKey": "semantic/otherworld-excludes-wish-revelation",
+        "source": [
+          "src:edcbfbbab05d42b2"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G17"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "異界にいる者の所有物を祈願・啓示の対象にできず、秘密情報を取得しない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:7fde400ccf988f25": {
+          "path": "packages/engine/src/effects/wish.ts",
+          "symbol": "wishOptions"
+        },
+        "h:a015d6c6d3f55b7e": {
+          "path": "packages/engine/src/effects/anytime-information.ts",
+          "symbol": "acceptInformationAnytime"
+        }
+      },
+      "tests": {
+        "t:aa29fec2beb3b8e1": {
+          "path": "apps/worker/test/room-scenario-s30.test.ts",
+          "suite": [],
+          "title": "S30 actual away owner stays private through both live wishes and Revelation refusals then returns with possessions after Dawn and restart",
+          "declarationSha256": "3cfb606d62de7022d317a55141db04bb4a7ea3abff583372ca9d43e63719b9cb",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "S30 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        },
+        "t:a63b91012218ac63": {
+          "path": "packages/engine/test/scenario-s30.test.ts",
+          "suite": [],
+          "title": "S30 actual rift excludes away possessions from both physical wishes and Revelation until actual acquired Dawn returns the same owner",
+          "declarationSha256": "a0ce30842f030f45b049527a199ed6681b6cca569bb9346a7678a22022e4caea",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S30 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        },
+        "t:20947b9c373c248d": {
+          "path": "tests/e2e/scenario-s30.spec.ts",
+          "suite": [],
+          "title": "S30 r6-s30-first excludes real away owner from Wish and Revelation and persists the chosen continuation",
+          "declarationSha256": "33b48a1b657a1e0faa6c0f30b16791f4925ef911b90091dcf669d0ce310dab50",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S30 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        },
+        "t:95e3736e06d137aa": {
+          "path": "tests/e2e/scenario-s30.spec.ts",
+          "suite": [],
+          "title": "S30 r6-s30-second excludes real away owner from Wish and Revelation and persists the chosen continuation",
+          "declarationSha256": "3292552b8b63a83a60ca885184c33c4f18b5844ec1676a656590255d1dabf475",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S30 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        }
+      }
+    },
+    {
+      "scenario": "S31",
+      "obligation": {
+        "entryId": "ruling:G01",
+        "clauseKey": "semantic/check-waiver-does-not-waive-chant",
+        "source": [
+          "src:7b0930ea9220efd7"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G01"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "チェック不要だけでは詠唱条件を免除しない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:13c81c13feeda134": {
+          "path": "packages/engine/src/combat/legality.ts",
+          "symbol": "resolveTechniqueSelection"
+        }
+      },
+      "tests": {
+        "t:33afde747ed3fc9b": {
+          "path": "packages/engine/test/task7b-techniques.test.ts",
+          "suite": [],
+          "title": "S31 actual dedicated noChecks rejects missing chant then resolves after legal chant",
+          "declarationSha256": "904da920d9a14f92199fc625a7fe2b43ed76a997a7d00b91d48e4a6c7261b98c",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S31 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        }
+      }
+    },
+    {
+      "scenario": "S32",
+      "obligation": {
+        "entryId": "ruling:G08",
+        "clauseKey": "semantic/add-before-multiply-round-once",
+        "source": [
+          "src:e49339adf6282bf5"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G08"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "加減算の後に倍率を乗算し、途中で丸めず最後に端数切捨てする。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:e30f1a5648564173": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "composeValue"
+        }
+      },
+      "tests": {
+        "t:089f104a611547e6": {
+          "path": "packages/engine/test/action-value-arithmetic.test.ts",
+          "suite": [
+            "G08 arithmetic helpers (compositions without a current canonical producer)"
+          ],
+          "title": "S32 abstract resolver composes $base / $floor / $add / $multipliers to $want",
+          "declarationSha256": "7ca3cd77235ee381959252863e2410a5bc899d93a0230b7ff1143903f299535b",
+          "parameters": {
+            "base": 5,
+            "floor": null,
+            "add": [
+              1
+            ],
+            "multipliers": [
+              2,
+              0.5
+            ],
+            "want": 6
+          },
+          "kind": "structural-resolver",
+          "bindingNote": "S32 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        },
+        "t:4611358efae537b7": {
+          "path": "packages/engine/test/action-value-arithmetic.test.ts",
+          "suite": [
+            "G08 arithmetic helpers (compositions without a current canonical producer)"
+          ],
+          "title": "S32 abstract resolver composes $base / $floor / $add / $multipliers to $want",
+          "declarationSha256": "7ca3cd77235ee381959252863e2410a5bc899d93a0230b7ff1143903f299535b",
+          "parameters": {
+            "base": 5,
+            "floor": null,
+            "add": [
+              0.5
+            ],
+            "multipliers": [
+              0.5,
+              2
+            ],
+            "want": 5
+          },
+          "kind": "structural-resolver",
+          "bindingNote": "S32 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        }
+      }
+    },
+    {
+      "scenario": "S32",
+      "obligation": {
+        "entryId": "ruling:G08",
+        "clauseKey": "semantic/null-damage-remains-null-under-addition",
+        "source": [
+          "src:e49339adf6282bf5"
+        ],
+        "rulingIds": [
+          "docs/rules/second-edition/rulings.md#G08"
+        ],
+        "kind": "scenario-boundary",
+        "meaning": "ダメージなしは数値0と区別し、加算によって数値ダメージを作らない。",
+        "dependsOn": [],
+        "coverageClass": "semantic",
+        "contextRefs": []
+      },
+      "handlers": {
+        "h:e30f1a5648564173": {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "composeValue"
+        }
+      },
+      "tests": {
+        "t:a6b36ac77ef4f532": {
+          "path": "packages/engine/test/action-value-arithmetic.test.ts",
+          "suite": [
+            "G08 arithmetic helpers (compositions without a current canonical producer)"
+          ],
+          "title": "S32 abstract resolver composes $base / $floor / $add / $multipliers to $want",
+          "declarationSha256": "7ca3cd77235ee381959252863e2410a5bc899d93a0230b7ff1143903f299535b",
+          "parameters": {
+            "base": null,
+            "floor": null,
+            "add": [
+              1
+            ],
+            "multipliers": [
+              2,
+              0.5
+            ],
+            "want": null
+          },
+          "kind": "structural-resolver",
+          "bindingNote": "S32 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
+        }
+      }
+    }
+  ]
+}

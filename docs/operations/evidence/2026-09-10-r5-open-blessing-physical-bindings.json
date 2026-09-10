@@ -1,0 +1,89 @@
+{
+  "task": "R5 Task11 OPEN Blessing a2-p01-r2c1",
+  "status": "open-blessing-physical-bindings-integrated-other47-open",
+  "completedAt": "2026-09-10 01:18 JST",
+  "implementation": "No production change.4 semantic clauses and main producer bind11 canonical transition cases.",
+  "canonicalEvidence": [
+    "Actual initialguardian placement and setup refill precede optional draw of OPEN Blessing. Only currentowner guardianlevel bonus1, followerlimit3 and morale1; other stats/otherplayers unchanged. Actual third guardian rejects beforeOPEN, succeeds afterOPEN; fourth rejects unchanged. Actual DiaDwarf6 threehits snapshot includes earlier Soldier/Stone and laterGriffin at3/6/6, hidden until reached.",
+    "Actual Griffin ordinary5 versus blessed6 against DiaDwarf6 triple6: spirit6/7 morale boundary uses exact totals6/7/8, passed ordinarylowerHP3 gives9, blessed equalblocks0, failure removesHP and gives18. One morale pergroup, physicalGriffin discardedonce. Separate real otherowner GroundDragon morale stillthreshold6 and fails7 even with AholdingBlessing.",
+    "Actual opponent Wish transfers publicOPEN once. Oldowner loses allthree bonuses immediately, newowner gains; originalthree guardians remain pending mandatory capacitychoice. Only originalowner sees or submits choice. Empty/foreign/irremovableDarkSaint choices reject unchanged. Excess Soldier discardedonce and survivingthird/Stone preserve order; DarkSaint cannot be selected. OPEN never reruns ontransfer.",
+    "Actual ArmyGriffin morale receivesbonus1 and succeeds7, while attack remainswarrior5 damage8 twice, notdefendingLv6. Actual lethalNightmare bypasses guardians, killsowner and disposes Blessing; allbonuses lost, no deadcapacitychoice. Engine11 cases everycommand JSONreexecution220uniqueIDs and rejectionallviews; DO7 save/restart/retry everycommand; UI7 realinitial/thirdplacement, morale pass/fail, privateWish capacity and irremovableexclusion, Army anddeath withreload. Negative adapter fixture spirit0 yields threshold1 impossible2d6pass. This is OPEN card Blessing, separate from Lia character Blessing ability. Shared/candidate receipts remainpending; no accepted promotion."
+  ],
+  "validation": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/open-blessing-physical.test.ts",
+      "passed": 10,
+      "log": "/tmp/madou-open-blessing-engine.log",
+      "ownerCommand": "pnpm exec vitest run packages/engine/test/open-blessing-physical.test.ts -t 'actual other owner'",
+      "ownerPassed": 1,
+      "ownerSkipped": 10,
+      "ownerLog": "/tmp/madou-open-blessing-engine-owner.log",
+      "uniqueCasesPassed": 11,
+      "note": "Corrected test title from misleading Bloodless to Blessing for unchanged five parameter cases. Added independent actual other-owner morale case."
+    },
+    "related": {
+      "command": "pnpm exec vitest run packages/engine/test/wish.test.ts packages/engine/test/physical-followers.test.ts packages/engine/test/all-army.test.ts -t 'Blessing|blessing|祝福|capacity loss'",
+      "passed": 3,
+      "skipped": 175,
+      "log": "/tmp/madou-open-blessing-related.log"
+    },
+    "worker": {
+      "cwd": "apps/worker",
+      "command": "WRANGLER_LOG_PATH=/tmp/madou-wrangler pnpm exec vitest run test/room-open-blessing-physical.test.ts",
+      "passed": 7,
+      "log": "/tmp/madou-open-blessing-do.log"
+    },
+    "browser": {
+      "command": "pnpm exec playwright test tests/e2e/open-blessing-physical.spec.ts",
+      "passed": 7,
+      "log": "/tmp/madou-open-blessing-browser.log"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "/tmp/madou-open-blessing-types.log"
+    },
+    "ledger": {
+      "valid": true,
+      "rows": 12112,
+      "statuses": {
+        "pending": 9295,
+        "implemented": 2817
+      },
+      "coverageClasses": {
+        "integrity": 6094,
+        "semantic": 5193,
+        "aggregate": 825
+      },
+      "sourceIntegrity": "valid",
+      "acceptanceRequired": false,
+      "semanticReview": "pending",
+      "note": "Structural evidence only; no gameplay acceptance inferred."
+    }
+  },
+  "ledgerBindings": {
+    "newAtomicRows": [
+      "a2-p01-r2c1::semantic/timing/open",
+      "a2-p01-r2c1::semantic/follower/all-owned-level-plus-one",
+      "a2-p01-r2c1::semantic/capacity/follower-plus-one",
+      "a2-p01-r2c1::semantic/check/morale-plus-one"
+    ],
+    "mainProducerRebindings": [
+      "a2-p01-r2c1::main-producer"
+    ],
+    "concreteTestRefs": [
+      "t:19ba08642d4c9802",
+      "t:ba74b347e6f451bc",
+      "t:e7def378314ae746",
+      "t:e07ebc5333ae09b3",
+      "t:0a19bd2d65b7c93a",
+      "t:ba1582ac0fa7347b",
+      "t:9ae71700a77936bc",
+      "t:a8f164a8b7418d00",
+      "t:1c07f2dab4d20507",
+      "t:d3b6188b06be36ab",
+      "t:382ada3de9d8ecda"
+    ]
+  },
+  "remaining": "148/195 fully integrated; other47 includes partial SingingShip1 and WingedFolk1 plus45 other cards. Strict shared/candidate receipts and whole-goal gates remain open."
+}

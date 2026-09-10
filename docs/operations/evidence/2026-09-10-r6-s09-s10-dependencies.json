@@ -1,0 +1,93 @@
+{
+  "scope": "Concrete S09/S10 counter dependencies; not full scenario source mapping or accepted candidate",
+  "dependencies": {
+    "S09": [
+      "a2-p08-r1c3#semantic/dedicated/0/effect-replacement",
+      "a2-p08-r1c3#semantic/dedicated/0/target-subset",
+      "a2-p11-r1c2#semantic/ordinary/use-level",
+      "a2-p11-r1c2#semantic/ordinary/base-effect-level",
+      "a2-p11-r1c2#semantic/ordinary/counter-capable",
+      "c2-p05-r2c1-ab03#sword-effect-plus-one",
+      "ruling:G13#semantic/equal-counter-cancels-both"
+    ],
+    "S10": [
+      "a2-p11-r1c2#semantic/ordinary/use-level",
+      "a2-p11-r1c2#semantic/ordinary/base-effect-level",
+      "a2-p11-r1c2#semantic/ordinary/range",
+      "a2-p11-r1c2#semantic/ordinary/counter-capable",
+      "a2-p05-r2c3#semantic/prayer/independent-d6",
+      "a2-p05-r2c3#semantic/prayer/effect-addition",
+      "ruling:G13#semantic/far-near-counter-blocks-without-return"
+    ]
+  },
+  "newImplementedClauses": [
+    {
+      "entryId": "ruling:G13",
+      "clauseKey": "semantic/equal-counter-cancels-both",
+      "scenario": "S09",
+      "tests": {
+        "t:69af5578442a2d40": {
+          "title": "S09 actual Asfelt level6 sword meets checked Garwin level6 counter and cancels only B hit with C intact",
+          "suite": [],
+          "declarationSha256": "0cbb0160996cce89f99add45add9e56b83bf96230d0ca65c0ff89d6e56d56c18",
+          "path": "packages/engine/test/scenario-s06-s10.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S09 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
+        },
+        "t:75c2366ee0f56323": {
+          "title": "S06-S10 %s real DO resumes every defense command and duplicate receipt without replaying costs or hits",
+          "suite": [],
+          "declarationSha256": "949bdd3ad393255538fc237fff4c06502d02307784caf11c925b1be2fe0864bd",
+          "path": "apps/worker/test/room-scenario-s06-s10.test.ts",
+          "parameters": "s09",
+          "kind": "worker-persistence",
+          "bindingNote": "S09 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
+        },
+        "t:0cf3ec419cb38529": {
+          "title": "S06-S10 s09 real defense continuation retains exact outcome across reload",
+          "suite": [],
+          "declarationSha256": "b291005d1fddbee7be0d7ed38694c92aad190de9a3473cf7e2e6c57e81d4008e",
+          "path": "tests/e2e/scenario-s06-s10.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S09 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
+        }
+      }
+    },
+    {
+      "entryId": "ruling:G13",
+      "clauseKey": "semantic/far-near-counter-blocks-without-return",
+      "scenario": "S10",
+      "tests": {
+        "t:26fd63b56c46c1df": {
+          "title": "S10 actual far level5 attack and near counter plus real prayer2 freeze at level7 and block without returned damage",
+          "suite": [],
+          "declarationSha256": "58c96cbd991e9b61fc8a0d93558b7508284e12ae6c085753e802a5ec853f3499",
+          "path": "packages/engine/test/scenario-s06-s10.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S10 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
+        },
+        "t:f346a55703e21912": {
+          "title": "S06-S10 %s real DO resumes every defense command and duplicate receipt without replaying costs or hits",
+          "suite": [],
+          "declarationSha256": "949bdd3ad393255538fc237fff4c06502d02307784caf11c925b1be2fe0864bd",
+          "path": "apps/worker/test/room-scenario-s06-s10.test.ts",
+          "parameters": "s10",
+          "kind": "worker-persistence",
+          "bindingNote": "S10 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
+        },
+        "t:109f870a8b65f751": {
+          "title": "S06-S10 s10 real defense continuation retains exact outcome across reload",
+          "suite": [],
+          "declarationSha256": "7b883f6b7678aa1f31bdd7b61b70e5c341e0f47f6b3c9b6a15ec6ac223d1c458",
+          "path": "tests/e2e/scenario-s06-s10.spec.ts",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "S10 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
+        }
+      }
+    }
+  ]
+}

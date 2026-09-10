@@ -1,5 +1,6 @@
+import {techniqueFor} from '@madou/engine';
 import type { GameCommand, TechniqueVariant } from '@madou/protocol';
-import { getAction } from '@madou/catalog';
+import { characters, getAction } from '@madou/catalog';
 
 export interface CardCommandInput {
   cardId?: string | undefined;
@@ -43,6 +44,7 @@ export function discardRequirement(handCount: number, handLimit: number, selecte
 }
 
 interface ReactionContext {
+  substitute?:boolean;
   faction?: string | undefined;
   limitedDefenses?: readonly ('teleport' | 'counter')[] | undefined;
   incomingAttributes?: readonly string[] | undefined;
@@ -60,7 +62,7 @@ const dedicatedCounterOwners: Readonly<Record<string, string>> = {
 
 export function eligibleReactionCards(choice: string, hand: readonly string[], chants: readonly string[], mode: CardCommandInput['reactionMode'] = 'cancel', context: ReactionContext = {}): string[] {
   if (context.statusKinds?.includes('stopped')) return [];
-  const source = choice === 'PLAY_DEFENSE' ? [...hand, ...chants] : [...hand];
+  const source = choice === 'PLAY_DEFENSE' && !context.substitute ? [...hand, ...chants] : [...hand];
   return source.filter(id => {
     const card = getAction(id); if (!card) return false;
     const printed = Array.isArray(card.printed_category) ? card.printed_category.join('/') : card.printed_category ?? '';
@@ -109,10 +111,13 @@ export function techniqueVariants(cardId: string | undefined, characterName: str
   return [];
 }
 
-export function eligibleChantCards(hand: readonly string[], characterName?: string, dedicated = false, silenced = false): string[] {
+export function eligibleChantCards(hand: readonly string[], characterName?: string, dedicated = false, silenced = false, faction?: string): string[] {
+  const restrictions=characters.find(c=>c.name===characterName)?.restrictions??[];
   return hand.filter(id => {
+    if(faction&&techniqueFor(id,characterName,dedicated)?.prohibitedFactions?.some(prohibited=>prohibited===faction))return false;
     const attributes = getAction(id)?.stats?.attributes;
     if (silenced && Array.isArray(attributes) && attributes.includes('魔')) return false;
+    if (Array.isArray(attributes)&&(['白','黒'] as const).some(attribute=>attributes.includes(attribute)&&restrictions.includes(`${attribute}技使用不可`))) return false;
     return (Array.isArray(attributes) && attributes.includes('詠')) || (dedicated && hasOptionalChant(id, characterName));
   });
 }

@@ -89,7 +89,7 @@ export function applyDeclarationEffects(base: Technique, effects: DeclarationEff
 
 export function availableDeclarationEffects(s: GameState, actorId: string, t: Technique, kind: DeclarationKind, fromChant: boolean) {
     const p = s.players[actorId]!;
-    if (!isActive(p) || !canUseCharacterAbility(p))
+    if (!isActive(p) || !canUseCharacterAbility(p,s))
         return [];
     return (Object.keys(DECLARATION_ABILITIES) as DeclarationAbilityId[]).flatMap(abilityId => {
         if (!ownsAbility(p, abilityId))

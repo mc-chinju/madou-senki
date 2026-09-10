@@ -207,7 +207,12 @@ it('DO restores ignore, earned private choice and transferred subset without rep
   expect(done.players.A!.hand.filter(id => id === beasts[1])).toHaveLength(1);
   expect(done.players.B!.followers).toEqual([{ cardInstanceId: beasts[0], revealed: false }]);
   expect(done.discard).not.toContain(beasts[1]); expect(viewFor(done, 'A').beastCapture).toBeNull();
-  expect(done.players.B!.damage).toBe(7); expect(done.phase).toBe('withdrawal');
+  expect(done.players.B!.damage).toBe(7);
+  expect(done.windows?.at(-1)?.kind).toBe('lifecycle-boundary');
+  expect(done.lifecycle?.at(-1)).toMatchObject({kind:'combat-reward',mode:'damage'});
+  const completed = await room.advance(game => !game.windows?.length);
+  expect(completed).toBeDefined(); await room.replay(completed!);
+  expect((await room.stored()).state.game!.phase).toBe('withdrawal');
 });
 it('DO captures before lethal target gifting and disposal, then replays old receipts after the saved result', async () => {
   const room = await savedRoom('beast-capture-lethal'); await room.use();
@@ -218,6 +223,10 @@ it('DO captures before lethal target gifting and disposal, then replays old rece
   expect(earned.players.B!.followers).toHaveLength(2); expect(earned.lifecycleDecision).toBeNull();
   const transfer = await room.send('A', { type: 'CHOOSE_BEAST_CAPTURE', groupId: choice.groupId, windowId: choice.windowId, cardInstanceIds: [beasts[0]!] });
   await room.replay(transfer);
+  const boundary = (await room.snapshotFor('B')).game!;
+  expect(boundary.outcome).toBeNull();
+  const deathReceipt = await room.advance(game => game.windows?.at(-1)?.kind === 'death-gift');
+  expect(deathReceipt).toBeDefined(); await room.replay(deathReceipt!);
   const death = (await room.snapshotFor('B')).game!;
   expect(death.activeWindow?.kind).toBe('death-gift'); expect(death.beastCapture).toBeNull();
   expect(death.self.followers.map(card => card.cardInstanceId)).toEqual([beasts[1]]);
