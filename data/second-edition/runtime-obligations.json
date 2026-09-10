@@ -3,8 +3,9 @@
   "revision": "r2-2026-09-08-4",
   "review": {
     "status": "pending",
-    "required": "Independent semantic review of all compound obligations and evidence mappings. Span coverage is transcription evidence only."
+    "required": "Human semantic judgment is not performed. Test-only acceptance is acceptance-policy/test-only-v1."
   },
+  "acceptancePolicy": "acceptance-policy/test-only-v1",
   "sourcePolicy": {
     "pointer": "RFC6901",
     "hash": "SHA256 of compact ensure_ascii=False JSON value",

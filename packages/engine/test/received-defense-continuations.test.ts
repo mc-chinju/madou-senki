@@ -1,9 +1,11 @@
 import {actionCards,characters} from '@madou/catalog';
 import {describe,it,expect} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
-import {act,ready,until,pass,finish,closeWindow} from './combat-helpers.js';
+import {act,ready,until,pass,finish,closeWindow as closeBoundary,passReclaims} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 const HALF='c2-p03-r1c1-ab02',LIA='c2-p03-r1c2-ab01',SHIELD='c2-p07-r1c1-ab01',GAINAS='c2-p05-r2c2-ab02';
+// Physical reaction disposal opens reclaim responses before its parent resumes.
+function closeWindow(s:GameState,dice:number[]=Array(30).fill(1)){return passReclaims(closeBoundary(s,dice));}
 function source(s:GameState,actor:string,id:string){return handCard(s,actor,actionCards.find(c=>c.id===id)!.name);}
 function incoming(owner='c2-p03-r1c1',card='a2-p12-r2c2',targets=['B']){
  let s=ready();character(s,'B',characters.find(c=>c.id===owner)!.name);
@@ -355,7 +357,7 @@ it.each(['stopped','ability-disabled'] as const)('helper transformed shield %s d
  s=finish(s);expect(s.players.A!.damage).toBe(12);
 });
 it('canonical Gainas two-target reflection consumes only his received hit and original C still lands',()=>{
- let s=incoming('c2-p05-r2c2','a2-p18-r1c3',['B','C']);s=checked(s,GAINAS);s=closeWindow(s);
+ let s=incoming('c2-p05-r2c2','a2-p18-r1c3',['B','C']);s=checked(s,GAINAS);expect(viewFor(s,'B').currentRoll).toMatchObject({modifier:-5,success:true});s=closeWindow(s);
  const parent=group(s);expect(parent.targets.map(t=>t.hits[0]!.defended)).toEqual([true,false]);
  expect(Object.values(s.groups!).at(-1)!.targets.map(t=>t.actorId)).toEqual(['A']);
  s=finish(s);expect([s.players.A!.damage,s.players.B!.damage,s.players.C!.damage]).toEqual([8,0,8]);

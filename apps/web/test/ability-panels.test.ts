@@ -71,7 +71,7 @@ test('numeric before-roll renders no reaction card action while retaining pass a
   const { ReactionPanel } = await import('../src/game/ReactionPanel.js');
   const renderReaction = (windowKind: 'before-roll' | 'after-roll', rollKind: 'numeric' | 'check') => {
     const view = { self: { id: 'A', characterId: 'c2-p04-r2c2', hand: ['a2-p02-r2c3', 'a2-p02-r1c3'], chants: [], followers: [] },
-      players: { A: { name: '葵', statuses: [] } }, activeWindow: { kind: windowKind, pendingActorId: 'A', reason: windowKind },
+      players: { A: { name: '葵', statuses: [] } }, activeWindow: { windowId: 'reaction-window', kind: windowKind, pendingActorId: 'A', reason: windowKind },
       currentRoll: { kind: rollKind }, currentAttack: null, lifecycleDecision: null, lifetimeDecision: null,
       reactionTargetRollId: 'roll-7', reactionTargetAbilityId: null, reactionTargetActionId: null,
       legalChoices: ['PASS', 'PLAY_REACTION'] } as unknown as PlayerView;
@@ -100,7 +100,7 @@ test('normal defense options do not borrow a declaration candidate from dedicate
   const view = {
     self: { id: 'B', characterId: 'c2-p01-r1c1', hand: [cardInstanceId], chants: [], followers: [] },
     players: { B: { name: '楓', statuses: [] } },
-    activeWindow: { kind: 'normal-defense', pendingActorId: 'B', reason: 'normal-defense' },
+    activeWindow: { windowId: 'defense-window', kind: 'normal-defense', pendingActorId: 'B', reason: 'normal-defense' },
     currentRoll: null,
     currentAttack: { technique: incomingTechnique, defenseRestrictions: { maaiProhibited: false, evadeProhibited: false, counterProhibited: false } },
     lifecycleDecision: null, lifetimeDecision: null, techniqueDecision: null,

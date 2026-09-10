@@ -9,9 +9,9 @@ import {character,handCard,entropy} from './fixtures.js';
 function closeWindow(s:GameState,dice:number[]=Array(30).fill(1)){return passReclaims(closeBoundary(s,dice));}
 const LESTER='c2-p03-r2c1-ab01',GAD='c2-p06-r1c1-ab01',DIA='c2-p06-r1c2-ab01';
 const sources=[LESTER,GAD,DIA];
-function incoming(ability=LESTER,card='a2-p18-r1c3',targets=['B','C']) {
+function incoming(ability=LESTER,card='a2-p18-r1c3',targets=['B','C'],attackerName='黒妖精のアーネス') {
  let s=ready();
- character(s,'A','黒妖精のアーネス');
+ character(s,'A',attackerName);
  character(s,'B',characters.find(c=>c.id===ability.slice(0,-5))!.name);
  character(s,'C','大神官ジル');
  character(s,'D','黒騎士ガーウィン');
@@ -139,13 +139,14 @@ it('actual Fate cancellation spends the entire Griffin target group; later group
  expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===LESTER)).toBe(true);
  reject(s,'B',{type:'USE_ABILITY',abilityId:LESTER,targetEventId:event},'INVALID_TARGET');
 });
-it.each(['first','second'])('actual Griffin cancels only unprocessed own hits when selected on %s hit',when=>{
- let s=ready();character(s,'A','獣使いのウパニシャット');character(s,'B','吟遊詩人のレスター');
+it.each([["c2-p03-r2c1-ab01", "first", false], ["c2-p03-r2c1-ab01", "first", true], ["c2-p03-r2c1-ab01", "second", false], ["c2-p03-r2c1-ab01", "second", true], ["c2-p06-r1c1-ab01", "first", false], ["c2-p06-r1c1-ab01", "first", true], ["c2-p06-r1c1-ab01", "second", false], ["c2-p06-r1c1-ab01", "second", true], ["c2-p06-r1c2-ab01", "first", false], ["c2-p06-r1c2-ab01", "first", true], ["c2-p06-r1c2-ab01", "second", false], ["c2-p06-r1c2-ab01", "second", true]] as const)('%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s',(id,when,ordinaryFailure)=>{
+ let s=ready();character(s,'A','獣使いのウパニシャット');character(s,'B',characters.find(c=>c.id===id.slice(0,-5))!.name);
  for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};
  const griffin=handCard(s,'A','グリフォン');
  s=until(act(s,'A',{type:'ATTACK',cardInstanceId:griffin,targetIds:['B'],dedicated:true}),'normal-defense');
  if(when==='second')s=pass(s);
- s=result(s,LESTER,[2,2]);s=finish(s);
+ if(ordinaryFailure)s.players.A!.permanent!.spirit=-20;
+ s=result(s,id,ordinaryFailure?[2,3]:[2,2]);s=finish(s);
  expect(s.players.B!.damage).toBe(when==='first'?0:8);
 });
 it.each([['active',false],['otherworld',false],['active',true]] as const)('attacker next-seat clock traverses %s / skipped %s without recovery', (presence,skip)=>{
@@ -173,10 +174,9 @@ it('actual force-failure persists across a reroll that removes doubles',()=>{
  expect(s.players.A!.statuses??[]).toEqual([]);expect(s.players.A!.faction).toBe('EVIL');
  s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(8);
 });
-it.each(['counter','mirror','majesty'])('actual %s returned attack cannot use mental defense',route=>{
- let s=incoming(LESTER,'a2-p12-r2c2',['B']);character(s,'A','吟遊詩人のレスター');
+it.each([["counter", "c2-p03-r2c1-ab01"], ["counter", "c2-p06-r1c1-ab01"], ["counter", "c2-p06-r1c2-ab01"], ["mirror", "c2-p03-r2c1-ab01"], ["mirror", "c2-p06-r1c1-ab01"], ["mirror", "c2-p06-r1c2-ab01"], ["majesty", "c2-p03-r2c1-ab01"], ["majesty", "c2-p06-r1c1-ab01"], ["majesty", "c2-p06-r1c2-ab01"]] as const)('actual %s returned attack cannot use mental defense %s',(route,id)=>{
+ let s=incoming(route==='majesty'?'c2-p05-r2c2-ab02':'c2-p03-r1c1-ab01','a2-p12-r2c2',['B'],characters.find(c=>c.id===id.slice(0,-5))!.name);
  if(route==='majesty'){
-  character(s,'B','魔導王ガイナス');
   s=use(s,'c2-p05-r2c2-ab02');s=closeWindow(s);s=closeWindow(s,[1,2]);s=closeWindow(s);
  }else{
   const defense=handCard(s,'B',route==='counter'?actionCards.find(c=>c.id==='a2-p10-r3c3')!.name:'神王界');
@@ -184,7 +184,7 @@ it.each(['counter','mirror','majesty'])('actual %s returned attack cannot use me
  }
  s=until(s,'normal-defense');
  expect(viewFor(s,'A').currentAttack!.attackerId).toBe('B');
- expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===LESTER)).toBe(false);
+ expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===id)).toBe(false);
  s=finish(s);
 });
 it.each(['stopped','ability-disabled','inactive','ownership'])('helper %s before final roll apply cancels all uncommitted clauses',change=>{
@@ -277,7 +277,7 @@ it('helper dead attacker seat expires the stop independently of defender and oth
  expect(s.turnSeat).toBe(1);
 });
 it('actual printed-counter-capable ordinary attack still offers all three mental packages',()=>{
- for(const id of sources){const s=incoming(id,'a2-p10-r3c3',['B']);expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===id)).toBe(true);}
+ for(const id of [LESTER,GAD,DIA]){const s=incoming(id,'a2-p10-r3c3',['B']);expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===id)).toBe(true);}
 });
 it('actual physical Royal Guard reflection cannot trigger mental defense',()=>{
  let s=incoming(LESTER,'a2-p09-r1c2',['B']);character(s,'A','吟遊詩人のレスター');

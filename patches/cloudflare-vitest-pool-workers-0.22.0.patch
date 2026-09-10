@@ -1,0 +1,24 @@
+--- a/dist/worker/lib/cloudflare/test-internal.mjs
++++ b/dist/worker/lib/cloudflare/test-internal.mjs
+@@ -304,14 +304,15 @@
+ */
+ function createProxyPrototypeClass(superClass, getUnknownPrototypeKey) {
+ 	function Class(...args) {
+-		Class.prototype = new Proxy(Class.prototype, { get(target, key, receiver) {
+-			const value = Reflect.get(target, key, receiver);
+-			if (value !== void 0) return value;
+-			if (typeof key === "symbol" || IGNORED_KEYS.includes(key)) return;
+-			return getUnknownPrototypeKey.call(receiver, key);
+-		} });
++
+ 		return Reflect.construct(superClass, args, Class);
+ 	}
++	Class.prototype = new Proxy(Class.prototype, { get(target, key, receiver) {
++		const value = Reflect.get(target, key, receiver);
++		if (value !== void 0) return value;
++		if (typeof key === "symbol" || IGNORED_KEYS.includes(key)) return;
++		return getUnknownPrototypeKey.call(receiver, key);
++	} });
+ 	Reflect.setPrototypeOf(Class.prototype, superClass.prototype);
+ 	Reflect.setPrototypeOf(Class, superClass);
+ 	return Class;

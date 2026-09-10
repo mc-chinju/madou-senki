@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 SCRIPT = Path(__file__).with_name('validate_runtime_coverage.py')
 spec = importlib.util.spec_from_file_location('coverage_validator', SCRIPT)
@@ -54,6 +55,19 @@ class CoverageValidation(unittest.TestCase):
         generator.write_text('skip_validation()')
         self.assertNotEqual(v.candidate_files(self.root), before)
 
+    def test_dependency_patch_edits_and_additions_stale_candidate(self):
+        patches = self.root / 'patches'
+        patches.mkdir()
+        patch = patches / 'dependency.patch'
+        patch.write_text('original fix')
+        before = v.candidate_files(self.root)
+        self.assertIn('patches/dependency.patch', before)
+        patch.write_text('changed fix')
+        self.assertNotEqual(v.candidate_files(self.root), before)
+        before = v.candidate_files(self.root)
+        (patches / 'second.patch').write_text('new fix')
+        self.assertNotEqual(v.candidate_files(self.root), before)
+
     def test_well_formed_pending_is_valid_without_claiming_completion(self):
         self.assertEqual(self.errors(), [])
 
@@ -92,11 +106,11 @@ class CoverageValidation(unittest.TestCase):
             source['quote'] = self.value[:2]
         self.assertTrue(any('uncovered span' in e for e in self.errors()))
 
-    def test_accepted_with_remaining_and_without_review_rejected(self):
+    def test_accepted_with_remaining_and_without_acceptance_rejected(self):
         self.ledger['rows'][0]['status'] = 'accepted'
         errors = self.errors()
         self.assertTrue(any('remaining' in e for e in errors))
-        self.assertTrue(any('review' in e for e in errors))
+        self.assertTrue(any('acceptance' in e for e in errors))
 
     def test_implemented_without_handler_or_missing_evidence_note_rejected(self):
         self.ledger['rows'][0].update(status='implemented', remaining=[])
@@ -160,10 +174,10 @@ class CoverageValidation(unittest.TestCase):
         self.assertTrue(any('unknown contextRefs' in e for e in errors))
         self.assertTrue(any('duplicate covers' in e for e in errors))
 
-    def test_full_gate_rejects_unreviewed_classification_and_pending_semantics(self):
+    def test_full_gate_rejects_pending_semantics_without_classification_reviewer(self):
         self.integrity_fixture()
         errors = v.validate(self.root, self.manifest, self.ledger, fixture=True, require_accepted=True)
-        self.assertTrue(any('classification review' in e for e in errors))
+        self.assertFalse(any('classification review' in e for e in errors))
         self.assertTrue(any('unaccepted semantic' in e for e in errors))
 
     def test_aggregate_cannot_close_without_atomic_mapping(self):
@@ -247,11 +261,11 @@ class CoverageValidation(unittest.TestCase):
                 self.save_receipt()
                 self.assertTrue(self.errors())
 
-    def test_truthy_review_or_wrong_manifest_digest_cannot_accept(self):
+    def test_truthy_acceptance_or_wrong_manifest_digest_cannot_accept(self):
         self.receipt_fixture()
-        self.manifest['review']['status'] = 'reviewed'
-        self.ledger['rows'][0].update(status='accepted', reviewEvidence=True)
-        self.assertTrue(any('review receipt' in e for e in self.errors()))
+        self.manifest['acceptancePolicy'] = v.ACCEPTANCE_POLICY
+        self.ledger['rows'][0].update(status='accepted', remaining=[], acceptanceEvidence=True)
+        self.assertTrue(any('acceptance' in e for e in self.errors()))
 
     def test_nonobject_row_and_duplicate_scenario_refs_rejected(self):
         self.ledger['rows'].append('invalid')
@@ -279,17 +293,12 @@ class CoverageValidation(unittest.TestCase):
         self.ledger['rows'][0]['handler'] = [17]
         self.assertTrue(any('invalid handler' in e for e in self.errors()))
 
-    def test_review_receipt_cannot_skip_unaccepted_inherited_obligation(self):
-        self.receipt_fixture()
-        self.manifest['review']['status'] = 'reviewed'
+    def test_acceptance_receipt_cannot_skip_unaccepted_inherited_obligation(self):
+        self.accepted_fixture()
         self.manifest['obligations'][0]['dependsOn'] = ['ability#bow-damage-independent-d6']
         self.receipt['manifestSha256'] = v.digest(self.manifest)
         self.save_receipt()
-        review = {'format': 'runtime-coverage-review/v2', 'verdict': 'accepted', 'reviewer': 'independent fixture',
-            'manifestSha256': v.digest(self.manifest), 'obligations': ['ability#bow-effect-d6']}
-        raw = json.dumps(review).encode()
-        (self.root / '.evidence/review.json').write_bytes(raw)
-        self.ledger['rows'][0].update(status='accepted', reviewEvidence={'path': '.evidence/review.json', 'sha256': hashlib.sha256(raw).hexdigest()})
+        self.save_acceptance()
         self.assertTrue(any('unaccepted dependency' in e for e in self.errors()))
 
     def ruling_fixture(self):
@@ -339,18 +348,24 @@ class CoverageValidation(unittest.TestCase):
 
     def accepted_fixture(self):
         self.receipt_fixture()
-        self.manifest['review']['status'] = 'reviewed'
+        self.manifest['acceptancePolicy'] = v.ACCEPTANCE_POLICY
         self.receipt['manifestSha256'] = v.digest(self.manifest)
         self.save_receipt()
+        self.save_acceptance()
+
+    def save_acceptance(self, extra=None):
         row = self.ledger['rows'][0]
+        row.update(status='accepted', remaining=[])
         fields = ('entryId', 'clauseKey', 'source', 'rulingIds', 'handler', 'tests', 'remaining', 'runEvidence')
         payload = {'row': {field: row.get(field) for field in fields}, 'obligation': self.manifest['obligations'][0], 'dependencies': {}}
-        review = {'format': 'runtime-coverage-review/v2', 'verdict': 'accepted', 'reviewer': 'independent fixture',
+        acceptance = {'format': v.ACCEPTANCE_POLICY, 'policy': v.ACCEPTANCE_POLICY,
             'manifestSha256': v.digest(self.manifest), 'obligations': ['ability#bow-effect-d6'],
             'rowDigests': {'ability#bow-effect-d6': hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()}}
-        raw = json.dumps(review).encode()
-        (self.root / '.evidence/review.json').write_bytes(raw)
-        row.update(status='accepted', reviewEvidence={'path': '.evidence/review.json', 'sha256': hashlib.sha256(raw).hexdigest()})
+        if extra:
+            acceptance.update(extra)
+        raw = json.dumps(acceptance).encode()
+        (self.root / '.evidence/acceptance.json').write_bytes(raw)
+        row['acceptanceEvidence'] = {'path': '.evidence/acceptance.json', 'sha256': hashlib.sha256(raw).hexdigest()}
 
     def complete_fixture(self):
         # One semantic effect, one integrity anchor, one independently mapped aggregate.
@@ -360,20 +375,8 @@ class CoverageValidation(unittest.TestCase):
         aggregate = copy.deepcopy(self.manifest['obligations'][-1])
         aggregate.update(clauseKey='ruling-paragraph/001', kind='ruling-paragraph', coverageClass='aggregate')
         self.manifest['obligations'].append(aggregate)
-        self.ledger['rows'].append(dict(aggregate, handler=[], tests=[], status='pending', remaining=['Mapping reviewed separately']))
+        self.ledger['rows'].append(dict(aggregate, handler=[], tests=[], status='pending', remaining=['Mapping checked mechanically']))
         self.accepted_fixture()
-        def save(name, payload):
-            raw = json.dumps(payload).encode()
-            path = '.evidence/' + name + '.json'
-            (self.root / path).write_bytes(raw)
-            return {'path': path, 'sha256': hashlib.sha256(raw).hexdigest()}
-        self.ledger['classificationReview'] = save('classification', {
-            'format': 'runtime-coverage-classification/v1', 'manifestSha256': v.digest(self.manifest),
-            'verdict': 'accepted', 'reviewer': 'independent fixture'})
-        self.ledger['rows'][-1]['mappingReview'] = save('mapping', {
-            'format': 'runtime-coverage-mapping/v1', 'manifestSha256': v.digest(self.manifest),
-            'verdict': 'accepted', 'reviewer': 'independent fixture', 'obligation': 'ability#ruling-paragraph/001',
-            'mappingDigest': v.canonical_digest(aggregate)})
 
     def test_complete_gate_never_requires_gameplay_acceptance_for_heading(self):
         self.complete_fixture()
@@ -385,12 +388,14 @@ class CoverageValidation(unittest.TestCase):
         for row in [self.manifest['obligations'][0], self.ledger['rows'][0]]:
             row.update(clauseKey='source/renamed', kind='source-field', coverageClass='integrity')
         errors = v.validate(self.root, self.manifest, self.ledger, fixture=True, require_accepted=True)
-        self.assertTrue(any('classification review' in e for e in errors))
+        self.assertTrue(any('non-semantic runtime status' in e for e in errors))
 
-    def test_forged_or_stale_aggregate_mapping_review_fails(self):
+    def test_forged_or_stale_aggregate_mapping_review_cannot_close_empty_covers(self):
         self.complete_fixture()
+        self.manifest['obligations'][-1]['covers'] = []
         self.ledger['rows'][-1]['mappingReview'] = True
-        self.assertTrue(any('mapping' in e for e in self.errors()))
+        errors = v.validate(self.root, self.manifest, self.ledger, fixture=True, require_accepted=True)
+        self.assertTrue(any('incomplete aggregate mapping' in e for e in errors))
 
     def test_removing_covered_atom_invalidates_independent_mapping(self):
         self.complete_fixture()
@@ -398,20 +403,20 @@ class CoverageValidation(unittest.TestCase):
         errors = v.validate(self.root, self.manifest, self.ledger, fixture=True, require_accepted=True)
         self.assertTrue(any('incomplete aggregate mapping' in e for e in errors))
 
-    def test_independent_review_receipt_accepts_only_reviewed_candidate(self):
+    def test_test_only_acceptance_receipt_accepts_only_bound_candidate(self):
         self.accepted_fixture()
         self.assertEqual(self.errors(), [])
         (self.root / 'fixture.ts').write_text('export function realHandler() { return 999; }')
         self.receipt['files']['fixture.ts'] = hashlib.sha256((self.root / 'fixture.ts').read_bytes()).hexdigest()
         self.save_receipt()
-        self.assertTrue(any('review receipt current row' in e for e in self.errors()))
+        self.assertTrue(any('acceptance receipt current row' in e for e in self.errors()))
 
-    def test_changed_test_mapping_invalidates_old_review_even_after_new_pass(self):
+    def test_changed_test_mapping_invalidates_old_acceptance_even_after_new_pass(self):
         self.accepted_fixture()
         self.ledger['rows'][0]['tests'][0]['parameters'] = ['earth', 3]
         self.receipt['cases'][0]['test'] = self.ledger['rows'][0]['tests'][0]
         self.save_receipt()
-        self.assertTrue(any('review receipt current row' in e for e in self.errors()))
+        self.assertTrue(any('acceptance receipt current row' in e for e in self.errors()))
 
     def test_changed_and_added_rulings_stale_bound_sources(self):
         path = self.ruling_fixture()
@@ -464,6 +469,80 @@ class CoverageValidation(unittest.TestCase):
         self.receipt['cases'].append(dict(self.receipt['cases'][0], result='failed'))
         self.save_receipt()
         self.assertTrue(any('duplicate run evidence case' in e for e in self.errors()))
+
+    def test_legacy_review_receipt_cannot_accept_under_test_only_policy(self):
+        self.receipt_fixture()
+        self.manifest['acceptancePolicy'] = 'acceptance-policy/test-only-v1'
+        self.receipt['manifestSha256'] = v.digest(self.manifest)
+        self.save_receipt()
+        row = self.ledger['rows'][0]
+        row.update(status='accepted', remaining=[])
+        review = {'format': 'runtime-coverage-review/v2', 'verdict': 'accepted', 'reviewer': 'independent fixture',
+            'manifestSha256': v.digest(self.manifest), 'obligations': ['ability#bow-effect-d6']}
+        raw = json.dumps(review).encode()
+        (self.root / '.evidence/review.json').write_bytes(raw)
+        row['acceptanceEvidence'] = {'path': '.evidence/review.json', 'sha256': hashlib.sha256(raw).hexdigest()}
+        self.assertTrue(any('test-only acceptance' in e for e in self.errors()))
+
+    def test_not_applicable_without_basis_is_rejected(self):
+        self.receipt_fixture()
+        self.ledger['rows'][0].update(status='notApplicable', remaining=[])
+        self.assertTrue(any('notApplicable' in e for e in self.errors()))
+
+    def test_not_applicable_stale_basis_is_rejected(self):
+        self.receipt_fixture()
+        self.ledger['rows'][0].update(status='notApplicable', remaining=[], notApplicable={
+            'reason': '到達不能',
+            'basis': {'kind': 'earth-warrior-technique-absence', 'matches': [{'id': 'forged'}],
+                      'edition': 'second-online-v0.1-provisional'},
+            'edition': 'second-online-v0.1-provisional', 'decidedOn': '2026-09-10', 'decidedBy': 'user',
+            'retainedTests': self.ledger['rows'][0]['tests']})
+        self.assertTrue(any('notApplicable basis' in e for e in self.errors()))
+
+    def test_valid_not_applicable_counts_for_require_accepted(self):
+        self.manifest['obligations'].pop()
+        self.ledger['rows'].pop()
+        self.receipt_fixture()
+        self.ledger['rows'][0].update(status='notApplicable', remaining=[], notApplicable={
+            'reason': '到達不能',
+            'basis': {'kind': 'earth-warrior-technique-absence', 'matches': [],
+                      'edition': 'second-online-v0.1-provisional'},
+            'edition': 'second-online-v0.1-provisional', 'decidedOn': '2026-09-10', 'decidedBy': 'user',
+            'retainedTests': self.ledger['rows'][0]['tests']})
+        # This fixture models receipt acceptance; real card queries have separate tests.
+        with patch.object(v, 'earth_warrior_technique_matches', return_value=[]):
+            self.assertEqual(self.errors(), [])
+            self.assertEqual(v.validate(self.root, self.manifest, self.ledger, fixture=True, require_accepted=True), [])
+
+    def test_card_filter_basis_is_recomputed_and_unknown_filters_rejected(self):
+        (self.root / 'data/second-edition/actions-empty.json').write_text('{"cards": []}')
+        row = {'tests': [], 'notApplicable': {
+            'reason': 'absent', 'edition': v.ADOPTED_EDITION, 'decidedOn': '2026-09-11',
+            'decidedBy': 'user', 'retainedTests': [], 'basis': {
+                'kind': 'card-data-filter', 'edition': v.ADOPTED_EDITION,
+                'query': {'dataset': 'actions', 'where': {'counter': True}}, 'matches': []}}}
+        self.assertEqual(v.not_applicable_errors(self.root, row, 'a#x', self.manifest), [])
+        row['notApplicable']['basis']['matches'] = ['forged']
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', self.manifest))
+        row['notApplicable']['basis']['matches'] = []
+        row['notApplicable']['basis']['query']['where'] = {'typo': 'x'}
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', self.manifest))
+
+    def test_adopted_ruling_basis_binds_known_ruling_and_file_hash(self):
+        evidence = self.root / '.evidence/ruling.json'
+        evidence.write_text('{}')
+        row = {'tests': [], 'notApplicable': {
+            'reason': 'unreachable', 'edition': v.ADOPTED_EDITION, 'decidedOn': '2026-09-11',
+            'decidedBy': 'user', 'retainedTests': [], 'basis': {
+                'kind': 'adopted-ruling', 'edition': v.ADOPTED_EDITION,
+                'rulingIds': ['rules.md#A31'], 'evidence': {
+                    'path': '.evidence/ruling.json', 'sha256': hashlib.sha256(evidence.read_bytes()).hexdigest()}}}}
+        manifest = {'obligations': [{'rulingIds': ['rules.md#A31']}]}
+        self.assertEqual(v.not_applicable_errors(self.root, row, 'a#x', manifest), [])
+        evidence.write_text('{"changed":true}')
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', manifest))
+        row['notApplicable']['basis']['rulingIds'] = ['unknown#A31']
+        self.assertTrue(v.not_applicable_errors(self.root, row, 'a#x', manifest))
 
 
 if __name__ == '__main__':

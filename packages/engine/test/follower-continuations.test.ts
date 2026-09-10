@@ -167,6 +167,14 @@ it('future heterogeneous reached earth warrior compares normally while earth mag
     s = finish(s);
     expect(s.players.B!.damage).toBe(8);
 });
+it('future Winged Folk consumer nullifies earth magic but compares earth warrior normally', () => {
+    let s = ready();
+    s.players.B!.permanent = { ...s.players.B!.permanent, spirit: 20 };
+    place(s, 'B', '有翼族');
+    s = heterogeneous(s, [8, 8], { 0: { school: 'magic', attributes: ['魔', '地'] }, 1: { school: 'warrior', attributes: ['戦', '地'] } });
+    s = finish(s);
+    expect(s.players.B!.damage).toBe(10);
+});
 it('reflection origin absence closes just the returned hit without retarget or losing remaining group', () => {
     let s = ready();
     place(s, 'B', '王立騎士団');

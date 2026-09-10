@@ -15,6 +15,11 @@ function maais(s:GameState,owner:string,count:number){const ids=s.deck.filter(id
 function selected(id=WIND,card?:string,targets=['B'],dedicated=false){let s=boundary(attack(id,card,targets,dedicated),id);s=use(s,id);return closeWindow(s);}
 
 describe('Task7q real canonical attack property packages',()=>{
+ it('Lancaster Wind is not offered for an actual magic attack',()=>{
+  const s=boundary(attack(WIND,'風矢'),WIND);
+  expect(main(s).technique.school).toBe('magic');
+  expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===WIND)).toBe(false);
+ });
  it.each([WIND,BOW])('select/decline/cancel/spent/late %s are explicit, private and atomic',id=>{
   for(const choice of ['select','decline','cancel']){
    let s=boundary(attack(id),id);const event=viewFor(s,'A').abilityOptions.find(o=>o.abilityId===id)!.targetEventId;

@@ -15,7 +15,7 @@ it('places concealed followers in order, refills and rejects capacity, repeats a
     expect(s.players.A!.hand).toHaveLength(5);
     expect(transition(s, { actorId: 'A', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: id } }, entropy()).ok).toBe(false);
   }
-  expect(s.players.A!.followers).toEqual([{ cardInstanceId: first, revealed: false }, { cardInstanceId: second, revealed: false }]);
+  expect(s.players.A!.followers).toEqual([{ cardInstanceId: first, revealed: false, placedById: 'A', placedLifeId: 'initial-life:A' }, { cardInstanceId: second, revealed: false, placedById: 'A', placedLifeId: 'initial-life:A' }]);
   expect(transition(s, { actorId: 'A', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: third } }, entropy())).toEqual({ ok: false, code: 'FOLLOWER_CAPACITY' });
   expect(allCardInstanceIds(s)).toHaveLength(220); expect(new Set(allCardInstanceIds(s)).size).toBe(220);
 });

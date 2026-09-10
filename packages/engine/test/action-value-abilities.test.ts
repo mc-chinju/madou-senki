@@ -24,6 +24,11 @@ describe('action-value cutoff, rolls and public projection',()=>{
  it('Fist native 2d6 and independent d6 survive whole-roll reroll and JSON replay',()=>{let s=until(attack('大神官ジル','狼牙'),'effect-level');const god=handCard(s,'B','神性介入');const fate=handCard(s,'A','命運凶変');s=use(s,FIST);s=until(s,'damage');expect(s.rolls?.some(r=>r.purpose==='ability-value')??false).toBe(false);s=closeWindow(s,[2,3]);const native=s.rolls!.at(-1)!.id;s=closeWindow(s,[4]);const bonus=s.rolls!.at(-1)!.id;expect(bonus).not.toBe(native);expect(s.rolls!.at(-1)).toMatchObject({formula:'d6',purpose:'ability-value',faces:[4]});rejected(s,'A',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'force-fail',targetRollId:bonus});s=priority(s,'B');s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:god,mode:'reroll',targetRollId:bonus});s=closeWindow(s,[6]);s=passReclaims(s);s=closeWindow(s);expect(s.rolls!.find(r=>r.id===native)).toMatchObject({faces:[2,3],total:5});expect(s.rolls!.find(r=>r.id===bonus)).toMatchObject({faces:[6],total:6,attempts:[{faces:[4]},{faces:[6]}]});expect(main(s).technique.damage).toBe(11);expect(Object.values(s.groups!)[0]!.targets[0]!.hits[0]!.damage).toBe(11);});
 });
 describe('printed eligibility and shared source semantics',()=>{
+ it('Uonos black magic package rejects actual nonblack magic',()=>{
+  const s=until(attack('邪祭ウーノス','白光'),'effect-level');
+  expect(main(s).technique.school).toBe('magic');expect(main(s).technique.attributes).not.toContain('黒');
+  expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===POWER)).toBe(false);
+ });
  it.each([
   ['小人のランバ','踏み込み／弓',0,false],['小人のランバ','黒翼飛翔剣',-4,true],['小人のランバ','死鬼旋風脚',5,false],
  ] as const)('Axe on %s %s retains declared qualification after warrior delta %s',(owner,card,delta,eligible)=>{let s=attack(owner,card);s.players.A!.permanent={warrior_level:delta};s=until(s,'damage');expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===AXE)).toBe(eligible);if(eligible){s=use(s,AXE);s=until(s,'attack-abilities');expect(main(s).technique.damage).toBe(14);}});

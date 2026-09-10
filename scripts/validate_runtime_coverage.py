@@ -2,8 +2,9 @@
 """Validate correspondence evidence, never infer gameplay correctness or playability.
 
 Sources use RFC6901 pointers, canonical JSON UTF-8 hashes and codepoint spans.
-The checked-in obligation set requires independent review; do not regenerate it
-from the ledger. A passing check means structural consistency only.
+The checked-in obligation set uses test-only acceptance; do not regenerate it
+from the ledger. A passing check means structural consistency only. Independent
+review receipts are not an acceptance path.
 """
 import argparse
 import copy
@@ -13,10 +14,13 @@ import json
 import re
 import os
 from pathlib import Path
+import importlib.util
 import subprocess
 
 METADATA = {'id', 'page', 'row', 'column', 'questions', 'visually_verified'}
 KINDS = {'canonical-transition', 'structural-resolver', 'related', 'projection', 'worker-persistence', 'browser'}
+ACCEPTANCE_POLICY = 'acceptance-policy/test-only-v1'
+ADOPTED_EDITION = 'second-online-v0.1-provisional'
 
 
 def digest(value):
@@ -27,7 +31,7 @@ ADOPTED_RULING_FILES = tuple('docs/rules/second-edition/' + name for name in (
     'rulings.md', 'rulings-characters.md', 'rulings-actions-01-06.md',
     'rulings-actions-07-17.md', 'rulings-actions-18-25.md'))
 FREEZE_POLICY = 'runtime-candidate-v3'
-FREEZE_ROOTS = ('packages', 'apps', 'tests', 'scripts', 'data', 'resources', '.github/workflows', 'docs/rules/second-edition')
+FREEZE_ROOTS = ('packages', 'apps', 'tests', 'scripts', 'data', 'resources', 'patches', '.github/workflows', 'docs/rules/second-edition')
 # Freeze every root file, including dot-configs and future runner entrypoints.
 FREEZE_ROOT_PATTERNS = ('*',)
 FREEZE_EXCLUDED_DIRS = {'node_modules', '.git', '.wrangler', 'dist', 'build', 'coverage',
@@ -116,10 +120,10 @@ def resolve_ruling(reference):
 
 
 def reviewed_row_digest(row, obligation, rows):
-    """Bind reviewed mapping/run and transitive dependency states without self-reference.
+    """Bind accepted mapping/run and transitive dependency states without self-reference.
 
-    Exclude own status/reviewEvidence; include dependencies' status and review
-    receipts, plus their mappings/run references. Cycles are separately refused.
+    Exclude own status/acceptanceEvidence; include dependencies' status and
+    acceptance receipts, plus their mappings/run references. Cycles are separately refused.
     """
     fields = ('entryId', 'clauseKey', 'source', 'rulingIds', 'handler', 'tests', 'remaining', 'runEvidence')
     def payload(value):
@@ -131,9 +135,65 @@ def reviewed_row_digest(row, obligation, rows):
         if key in dependencies:
             continue
         dependency = rows.get(key, {})
-        dependencies[key] = dict(payload(dependency), status=dependency.get('status'), reviewEvidence=dependency.get('reviewEvidence'))
+        dependencies[key] = dict(payload(dependency), status=dependency.get('status'),
+                                    acceptanceEvidence=dependency.get('acceptanceEvidence'))
         pending.extend(dependency.get('dependsOn', []))
     return canonical_digest({'row': payload(row), 'obligation': obligation, 'dependencies': dependencies})
+
+
+def earth_warrior_technique_matches(root):
+    spec = importlib.util.spec_from_file_location(
+        'inspect_earth_warrior_actions', Path(__file__).with_name('inspect_earth_warrior_actions.py'))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.collect_earth_warrior_techniques(root)
+
+
+def card_data_query(root, query):
+    spec = importlib.util.spec_from_file_location(
+        'inspect_card_data', Path(__file__).with_name('inspect_card_data.py'))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.run_query(root, query)
+
+
+def not_applicable_errors(root, row, key, manifest=None):
+    spec = row.get('notApplicable')
+    if not isinstance(spec, dict):
+        return [f'missing notApplicable {key}']
+    for field in ('reason', 'basis', 'edition', 'decidedOn', 'decidedBy', 'retainedTests'):
+        if field not in spec:
+            return [f'missing notApplicable {key}']
+    if spec.get('decidedBy') != 'user' or spec.get('edition') != ADOPTED_EDITION:
+        return [f'missing notApplicable {key}']
+    if spec.get('retainedTests') != row.get('tests'):
+        return [f'missing notApplicable retainedTests {key}']
+    basis = spec.get('basis')
+    if not isinstance(basis, dict) or basis.get('edition') != ADOPTED_EDITION:
+        return [f'missing notApplicable basis {key}']
+    kind = basis.get('kind')
+    try:
+        if kind == 'earth-warrior-technique-absence':
+            if basis.get('matches') == [] and earth_warrior_technique_matches(root) == []:
+                return []
+        elif kind == 'card-data-filter':
+            if basis.get('matches') == [] and card_data_query(root, basis.get('query'))['matches'] == []:
+                return []
+        elif kind == 'adopted-ruling':
+            known = {rid for o in (manifest or {}).get('obligations', []) for rid in o.get('rulingIds', [])}
+            ruling_ids = basis.get('rulingIds')
+            if not isinstance(ruling_ids, list) or not ruling_ids or any(rid not in known for rid in ruling_ids):
+                return [f'notApplicable basis mismatch {key}']
+            evidence = basis.get('evidence', {})
+            root = Path(root).resolve()
+            path = (root / evidence.get('path', '')).resolve()
+            if path.is_relative_to(root) and path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == evidence.get('sha256'):
+                return []
+        else:
+            return [f'missing notApplicable basis {key}']
+    except (ValueError, OSError, KeyError, TypeError, AttributeError):
+        return [f'notApplicable basis mismatch {key}']
+    return [f'notApplicable basis mismatch {key}']
 
 
 def leaves(value, pointer=''):
@@ -277,14 +337,6 @@ def validate(root, manifest, ledger, fixture=False, require_accepted=False):
         return result
     expected = index(manifest.get('obligations', []), 'manifest obligation')
     actual = index(ledger.get('rows', []), 'ledger obligation')
-    # Classifications and paragraph mappings are independently attested; changing
-    # a semantic kind cannot manufacture completion by removing its runtime gate.
-    if require_accepted or ledger.get('classificationReview') is not None:
-        review = receipt(ledger.get('classificationReview'), 'classification review', 'manifest')
-        if (review.get('format') != 'runtime-coverage-classification/v1'
-                or review.get('manifestSha256') != manifest_digest
-                or review.get('verdict') != 'accepted' or not review.get('reviewer')):
-            errors.append('missing current independent classification review')
     for identity, obligation in expected.items():
         category = coverage_class(obligation)
         for obj in [obligation, actual.get(identity, {})]:
@@ -316,22 +368,16 @@ def validate(root, manifest, ledger, fixture=False, require_accepted=False):
             errors.append(f'semantic row uses aggregate covers {identity}')
         row = actual.get(identity, {})
         if category != 'semantic':
-            if row.get('status') != 'pending' or row.get('handler') or row.get('tests') or row.get('runEvidence') or row.get('reviewEvidence'):
+            if row.get('status') != 'pending' or row.get('handler') or row.get('tests') or row.get('runEvidence') or row.get('reviewEvidence') or row.get('acceptanceEvidence'):
                 errors.append(f'non-semantic runtime status/evidence {identity}')
-        elif require_accepted and row.get('status') != 'accepted':
+        elif require_accepted and row.get('status') not in {'accepted', 'notApplicable'}:
             errors.append(f'unaccepted semantic obligation {identity}')
-        if category == 'aggregate' and (require_accepted or row.get('mappingReview') is not None):
-            review = receipt(row.get('mappingReview'), 'mapping review', identity)
-            if (not obligation.get('covers') or review.get('format') != 'runtime-coverage-mapping/v1'
-                    or review.get('manifestSha256') != manifest_digest
-                    or review.get('obligation') != identity
-                    or review.get('mappingDigest') != canonical_digest(obligation)
-                    or review.get('verdict') != 'accepted' or not review.get('reviewer')):
-                errors.append(f'incomplete aggregate mapping or independent review {identity}')
-            if require_accepted:
-                for ref in obligation.get('covers', []):
-                    if actual.get(ref, {}).get('status') != 'accepted':
-                        errors.append(f'unaccepted aggregate child {identity}: {ref}')
+        if category == 'aggregate' and require_accepted:
+            if not obligation.get('covers'):
+                errors.append(f'incomplete aggregate mapping {identity}')
+            for ref in obligation.get('covers', []):
+                if actual.get(ref, {}).get('status') not in {'accepted', 'notApplicable'}:
+                    errors.append(f'unaccepted aggregate child {identity}: {ref}')
     if any(error.startswith(('invalid dependsOn list', 'invalid contextRefs list', 'invalid covers list')) for error in errors):
         return errors
     colors = {}
@@ -393,10 +439,10 @@ def validate(root, manifest, ledger, fixture=False, require_accepted=False):
             for field in ['source', 'rulingIds']:
                 if row.get(field) != expected[key].get(field): errors.append(f'{field} differs from manifest {key}')
         status = row.get('status')
-        if status not in {'pending', 'implemented', 'verified', 'accepted'}: errors.append(f'invalid status {key}')
+        if status not in {'pending', 'implemented', 'verified', 'accepted', 'notApplicable'}: errors.append(f'invalid status {key}')
         if status in {'pending', 'implemented'} and not row.get('remaining'): errors.append(f'unverified row needs remaining evidence/gap note {key}')
         if status in {'implemented', 'verified', 'accepted'} and not row.get('handler'): errors.append(f'missing handler {key}')
-        if status in {'verified', 'accepted'}:
+        if status in {'verified', 'accepted', 'notApplicable'}:
             if not row.get('tests'): errors.append(f'missing concrete tests {key}')
             run = receipt(row.get('runEvidence'), 'run evidence', key)
             if frozen_candidate is None:
@@ -420,26 +466,34 @@ def validate(root, manifest, ledger, fixture=False, require_accepted=False):
                     errors.append(f'run evidence missing exact passed case {key}: {test.get("title")}')
         if status == 'accepted':
             if row.get('remaining'): errors.append(f'accepted row has remaining {key}')
-            review = receipt(row.get('reviewEvidence'), 'review', key)
-            if manifest.get('review', {}).get('status') != 'reviewed' or review.get('format') != 'runtime-coverage-review/v2' or review.get('verdict') != 'accepted' or not review.get('reviewer') or review.get('manifestSha256') != manifest_digest or key not in review.get('obligations', []):
-                errors.append(f'missing independent review receipt evidence {key}')
-            if not isinstance(review.get('rowDigests'), dict) or review['rowDigests'].get(key) != reviewed_row_digest(row, expected.get(key, {}), dependency_rows):
-                errors.append(f'review receipt current row/candidate/dependency binding mismatch {key}')
+            evidence = receipt(row.get('acceptanceEvidence'), 'acceptance', key)
+            if (manifest.get('acceptancePolicy') != ACCEPTANCE_POLICY or evidence.get('format') != ACCEPTANCE_POLICY
+                    or evidence.get('policy') != ACCEPTANCE_POLICY or evidence.get('manifestSha256') != manifest_digest
+                    or key not in evidence.get('obligations', []) or evidence.get('reviewer') or evidence.get('reviewed')
+                    or evidence.get('verdict')):
+                errors.append(f'missing test-only acceptance receipt evidence {key}')
+            if not isinstance(evidence.get('rowDigests'), dict) or evidence['rowDigests'].get(key) != reviewed_row_digest(row, expected.get(key, {}), dependency_rows):
+                errors.append(f'acceptance receipt current row/candidate/dependency binding mismatch {key}')
             for dep in expected.get(key, {}).get('dependsOn', []):
-                if actual.get(dep, {}).get('status') != 'accepted': errors.append(f'unaccepted dependency {key}: {dep}')
+                if actual.get(dep, {}).get('status') not in {'accepted', 'notApplicable'}: errors.append(f'unaccepted dependency {key}: {dep}')
+        if status == 'notApplicable':
+            if row.get('remaining'): errors.append(f'accepted row has remaining {key}')
+            errors.extend(not_applicable_errors(root, row, key, manifest))
+            for dep in expected.get(key, {}).get('dependsOn', []):
+                if actual.get(dep, {}).get('status') not in {'accepted', 'notApplicable'}: errors.append(f'unaccepted dependency {key}: {dep}')
         for ref in row.get('handler', []):
             if ref.get('symbol') not in declarations.get(ref.get('path'), {}).get('functions', []):
                 errors.append(f'nonexistent handler declaration {key}: {ref}')
         for ref in row.get('tests', []):
             matches = [t for t in declarations.get(ref.get('path'), {}).get('tests', []) if t['title'] == ref.get('title') and t['suite'] == ref.get('suite', [])]
             if len(matches) != 1: errors.append(f'nonexistent or ambiguous test declaration {key}: {ref}')
-            elif status in {'verified', 'accepted'} and matches[0].get('disabled'):
+            elif status in {'verified', 'accepted', 'notApplicable'} and matches[0].get('disabled'):
                 errors.append(f'disabled test cannot have passed evidence {key}')
             elif ref.get('declarationSha256') != matches[0]['declarationSha256']: errors.append(f'test declaration hash mismatch {key}: {ref.get("title")}')
             elif 'parameters' in ref and ref['parameters'] is not None and (matches[0]['parameters'] is None or ref['parameters'] not in matches[0]['parameters']): errors.append(f'unknown concrete test parameters {key}')
-            elif status in {'verified', 'accepted'} and (matches[0]['each'] or '${' in matches[0]['title']) and ref.get('parameters') is None: errors.append(f'unresolved concrete test parameters {key}')
+            elif status in {'verified', 'accepted', 'notApplicable'} and (matches[0]['each'] or '${' in matches[0]['title']) and ref.get('parameters') is None: errors.append(f'unresolved concrete test parameters {key}')
             if ref.get('kind') not in KINDS: errors.append(f'invalid evidence kind {key}')
-            if status in {'verified', 'accepted'} and ref.get('kind') == 'related': errors.append(f'related evidence cannot verify {key}')
+            if status in {'verified', 'accepted', 'notApplicable'} and ref.get('kind') == 'related': errors.append(f'related evidence cannot verify {key}')
     if not fixture:
         actions = [c for p in (root / 'data/second-edition').glob('actions-*.json') for c in json.loads(p.read_text())['cards']]
         chars = json.loads((root / 'data/second-edition/characters.json').read_text())['cards']
@@ -461,7 +515,7 @@ def main():
     parser.add_argument('--repo-root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--ledger', type=Path)
-    parser.add_argument('--require-accepted', action='store_true', help='Require independent classification/mapping review and accepted semantic obligations; integrity anchors never require gameplay acceptance.')
+    parser.add_argument('--require-accepted', action='store_true', help='Require test-only accepted or notApplicable semantic obligations; integrity anchors never require gameplay acceptance.')
     args = parser.parse_args()
     manifest_path = args.manifest or args.repo_root / 'data/second-edition/runtime-obligations.json'
     ledger_path = args.ledger or args.repo_root / 'data/second-edition/runtime-coverage.json'

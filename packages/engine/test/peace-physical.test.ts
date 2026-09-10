@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
-import {entropy} from './fixtures.js';
+import {character,entropy} from './fixtures.js';
 import {makePeacePhysicalScenario,type PeacePhysicalScenario} from '../../../apps/worker/test/fixtures/peace-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p02-r1c1';
 function until(s:GameState,done:(s:GameState)=>boolean,dice=[1,2]){for(let n=0;n<300;n++){if(done(s))return s;s=pass(s,dice);}throw Error('PEACE_WINDOW');}
@@ -24,3 +24,20 @@ it('actual Fate canceled Peace preserves immediate refill and original action ph
 it('actual EVIL owner cannot use Peace and leaving its card unplayed changes nothing',()=>{let s=makePeacePhysicalScenario('peace-evil',players);expect(option(s)).toBeUndefined();reject(s,'D',{type:'PLAY_ANYTIME_CARD',cardInstanceId:card,targetEventId:`idle-${s.turnNumber??0}-${s.revision}-${s.phase}`,targetId:'B'});const before=gameStats(s,'B');s=next(s,'B');expect(s.players.D!.hand).toContain(card);expect(gameStats(s,'B')).toEqual(before);});
 it('actual self foreign stale and malformed Peace choices reject unchanged full state and views',()=>{const s=makePeacePhysicalScenario('peace-next',players),event=option(s)!.targetEventId;for(const [actorId,targetId,targetEventId] of [['D','D',event],['C','B',event],['D','B','stale'],['D','missing',event]] as const)reject(s,actorId,{type:'PLAY_ANYTIME_CARD',cardInstanceId:card,targetEventId,targetId});reject(s,'D',{type:'PLAY_ANYTIME_CARD',cardInstanceId:card,targetEventId:event,targetId:'B',groupId:'foreign'});expect(s.players.D!.hand).toContain(card);});
 it('actual optional Peace decline preserves its card and unmodified target through the target action',()=>{let s=makePeacePhysicalScenario('peace-pass',players),base=gameStats(s,'B');expect(option(s)).toBeDefined();s=next(s,'B');s=act(s,'B',{type:'PASS_ACTION'});expect(gameStats(s,'B')).toEqual(base);expect(s.players.D!.hand).toContain(card);expect(viewFor(s,'C').peaceExpiries).toEqual([]);});
+
+it('actual Peace expires after the next own virtual blade attack',()=>{
+ let s=makePeacePhysicalScenario('peace-next',players);
+ character(s,'B','凍気のアイエル');s.players.B!.revealed=true;
+ s.distances.A!.B=s.distances.B!.A='near';
+ const base=gameStats(s,'B').spirit;
+ s=next(settle(play(s)),'B');
+ expect(viewFor(s,'C').peaceExpiries).toEqual([{targetId:'B',timing:'next-own-action'}]);
+ s=act(s,'B',{type:'DECLARE_VIRTUAL_BLADE',abilityId:'c2-p04-r1c1-ab02',targetIds:['A']});
+ expect(viewFor(s,'C').peaceExpiries).toEqual([{targetId:'B',timing:'current-action'}]);
+ expect(gameStats(s,'B').spirit).toBe(14);
+ s=settle(s);
+ expect(s.phase).toBe('withdrawal');
+ expect(gameStats(s,'B').spirit).toBe(base);
+ expect(viewFor(s,'C').peaceExpiries).toEqual([]);
+ expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+});

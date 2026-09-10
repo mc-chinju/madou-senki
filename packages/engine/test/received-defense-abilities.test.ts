@@ -14,6 +14,11 @@ function reject(s:GameState,actorId:string,command:unknown,code='ABILITY_DISABLE
 function group(s:GameState){return Object.values(s.groups!)[0]!;}
 
 describe('Task7r canonical received-defense packages',()=>{
+ it('Shelim effect5 is immune even when printed damage6 exceeds the damage threshold',()=>{
+  let s=incoming('c2-p01-r1c1',actionCards.find(c=>c.name==='白光')!.id);
+  expect(viewFor(s,'B').currentAttack!.technique).toMatchObject({effectLevel:5,damage:6});
+  s=apply(s,SHELIM);expect(s.groups).toEqual({});expect(s.players.B!.damage).toBe(0);
+ });
  it.each([[ROBE,BARRIER],[BARRIER,ROBE]])('Fury magic4 reserves and reevaluates in order %s %s',(first,second)=>{let s=incoming();expect(viewFor(s,'B').currentAttack!.technique.effectLevel).toBe(4);s=apply(s,first);expect(group(s).targets[0]!.hits[0]!.defended).toBe(false);expect(viewFor(s,'B').currentAttack!.technique.effectLevel).toBe(first===BARRIER?3:4);s=JSON.parse(JSON.stringify(s));s=apply(s,second);expect(s.groups).toEqual({});expect(s.players.B!.damage).toBe(0);});
  it.each([['a2-p14-r1c1',true],['a2-p14-r1c2',false]] as const)('WhiteSilver black5→4 only on actual black, source %s',(card,immune)=>{let s=incoming('c2-p02-r2c2',card);s=apply(s,ARMOR);if(!immune){expect(viewFor(s,'B').currentAttack!.technique.effectLevel).toBe(5);s=finish(s);}expect(s.players.B!.damage).toBe(immune?0:6);});
  it.each(['a2-p16-r1c1','a2-p15-r2c3'])('Shelim real high-effect low/null damage %s is immune before followers',card=>{let s=incoming('c2-p01-r1c1',card);expect(viewFor(s,'B').currentAttack!.technique.effectLevel).toBeGreaterThan(5);s=apply(s,SHELIM);expect(s.groups).toEqual({});expect(s.players.B!.damage).toBe(0);});
