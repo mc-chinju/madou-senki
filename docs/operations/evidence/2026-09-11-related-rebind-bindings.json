@@ -10071,6 +10071,573 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#beast-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "炎竜",
+            "兵士",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#hand-and-placed-sources",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "炎竜",
+            "兵士",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#arbitrary-finite-multiple-selection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "炎竜",
+            "兵士",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#no-morale",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "炎竜",
+            "兵士",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#independent-lower-techniques",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "炎竜",
+            "兵士",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        },
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "actual Upa reserves hand Griffin and placed Earth Dragon before cancellable grant and resolves distinct techniques in one group",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Each physical follower produces its own lower technique values and hit structure in the shared group."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#group-damage",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "炎竜",
+            "兵士",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        },
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "actual Upa reserves hand Griffin and placed Earth Dragon before cancellable grant and resolves distinct techniques in one group",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "One group includes Griffin two hits plus Earth Dragon; B takes24 while C takes8 at completion."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab03#warrior-beast-ignore",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "canonical Upa selects ignore, earns a private saved subset after damage, transfers exact physical source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior ignores physical beasts, deals7, and offers only the saved beast subset."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "ignore is optional, canceled once/group, late/spent/wrong-owner/wrong-school reject without hidden target eligibility",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Magic cannot elect ignore; declined or canceled ignore never captures."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab03#actually-ignored-tracking",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "blocked-front",
+          "kind": "canonical-transition",
+          "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "zero-body",
+          "kind": "canonical-transition",
+          "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "cancel-ignore",
+          "kind": "canonical-transition",
+          "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "normal-defense",
+          "kind": "canonical-transition",
+          "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "intrinsic general ignore alone earns nothing; selected overlapping ignore keeps entitlement with distinct provenance",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Intrinsic general ignore alone has no entitlement; explicitly selected overlap has distinct provenance."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab03#same-hit-positive-body-damage",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "actual C10 Griffin two warrior hits qualifies individually; mixed=%s magic does not",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "The saved qualifying indexes are exactly the two warrior hits, excluding mixed magic."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "actual C10 Griffin two warrior hits qualifies individually; mixed=%s magic does not",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "The saved qualifying indexes are exactly the two warrior hits, excluding mixed magic."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "actual mixed C10 unrelated magic damage cannot earn a beast traversed by defended warrior hits",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Unrelated magic damage does not grant capture when warrior hits were defended."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "blocked-front",
+          "kind": "canonical-transition",
+          "bindingNote": "Zero body damage cannot earn capture."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "zero-body",
+          "kind": "canonical-transition",
+          "bindingNote": "Zero body damage cannot earn capture."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "cancel-ignore",
+          "kind": "canonical-transition",
+          "bindingNote": "Zero body damage cannot earn capture."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "no acquisition when %s",
+          "parameters": "normal-defense",
+          "kind": "canonical-transition",
+          "bindingNote": "Zero body damage cannot earn capture."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab03#optional-subset-capture",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "canonical Upa selects ignore, earns a private saved subset after damage, transfers exact physical source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exactly one chosen beast transfers to hand; the unchosen physical follower remains."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "capture %s completes once without costs or refill",
+          "parameters": "empty",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty, pass and all choices complete once without payment or refill."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "capture %s completes once without costs or refill",
+          "parameters": "pass",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty, pass and all choices complete once without payment or refill."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "capture %s completes once without costs or refill",
+          "parameters": "all",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty, pass and all choices complete once without payment or refill."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "invalid capture commands reject unchanged atomically",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Forged, stale, duplicate and foreign capture commands reject unchanged."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab03#live-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "actual Upa C10 dedicated Griffin → Ida Shadow → Confusion disables source before later target snapshot",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Ida Shadow into Confusion disables Upa before later target snapshot and prevents acquisition."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "actual reflected child can kill original Upa and never grants postmortem acquisition",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Dead Upa cannot acquire after reflected lethal damage."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+          "parameters": "stopped",
+          "kind": "structural-resolver",
+          "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+          "parameters": "ability-disabled",
+          "kind": "structural-resolver",
+          "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+          "parameters": "transformed",
+          "kind": "structural-resolver",
+          "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+          "parameters": "moved",
+          "kind": "structural-resolver",
+          "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab03#before-death-disposal",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "actual lethal damage marks target pending then captures before death gift and disposal",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Capture occurs while target is pending-death before death-gift and disposal; captured source escapes disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#human-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "小人族",
+            "竜王教団",
+            "グリフォン",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#hand-and-placed-sources",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "小人族",
+            "竜王教団",
+            "グリフォン",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#finite-multiple-selection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "小人族",
+            "竜王教団",
+            "グリフォン",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#no-morale",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "小人族",
+            "竜王教団",
+            "グリフォン",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#independent-lower-techniques",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s selects three matching hand/placed sources without morale",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "小人族",
+            "竜王教団",
+            "グリフォン",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+        },
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "actual Dia normal Dwarf snapshots its own warrior and magic is an independent source",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Each physical follower produces its own lower technique values and hit structure in the shared group."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }

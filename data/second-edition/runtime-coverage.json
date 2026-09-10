@@ -175388,12 +175388,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:c40646643f8dfd70"
+        "t:056f5a4967b45ff4"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175413,12 +175412,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:c40646643f8dfd70"
+        "t:056f5a4967b45ff4"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175438,12 +175436,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:c40646643f8dfd70"
+        "t:056f5a4967b45ff4"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175463,12 +175460,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:c40646643f8dfd70"
+        "t:056f5a4967b45ff4"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175488,12 +175484,12 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:c40646643f8dfd70"
+        "t:056f5a4967b45ff4",
+        "t:9cf1c244376610d4"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175513,12 +175509,12 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:c40646643f8dfd70"
+        "t:056f5a4967b45ff4",
+        "t:5e71d194a023570a"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175540,12 +175536,12 @@
         "h:c0caa757f497344f"
       ],
       "tests": [
-        "t:10ba1a7608ce88b8"
+        "t:0057f64c23e461a8",
+        "t:3bf9af56bc9c4218"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175567,12 +175563,15 @@
         "h:c0caa757f497344f"
       ],
       "tests": [
-        "t:10ba1a7608ce88b8"
+        "t:85c226be5a25087b",
+        "t:b12767edf8e23048",
+        "t:3fbb886fc08dda21",
+        "t:e37cff3afd8ca005",
+        "t:e99f071d2ce71893"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175594,12 +175593,17 @@
         "h:c0caa757f497344f"
       ],
       "tests": [
-        "t:10ba1a7608ce88b8"
+        "t:2d59b699c32b0d25",
+        "t:b65d735049a1da24",
+        "t:1def83c2af1ff775",
+        "t:f7dfc52bc2921094",
+        "t:dd7d4f316f5e5036",
+        "t:69655f3eac12450d",
+        "t:d5a1a8600422b2cd"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175621,12 +175625,15 @@
         "h:c0caa757f497344f"
       ],
       "tests": [
-        "t:10ba1a7608ce88b8"
+        "t:7eadc1167070cf88",
+        "t:3ae2f7351606f3c4",
+        "t:f1f9d49883d01793",
+        "t:cdd4adb5ecaf0a74",
+        "t:dfab0b913b1d4fab"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175648,12 +175655,16 @@
         "h:c0caa757f497344f"
       ],
       "tests": [
-        "t:10ba1a7608ce88b8"
+        "t:1a03d3dcc48e959b",
+        "t:f35866c98a024095",
+        "t:6020e97737e5d30b",
+        "t:82168ef007412684",
+        "t:6abf7155fc3133fd",
+        "t:a30a036bc0aee3bb"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175675,12 +175686,11 @@
         "h:c0caa757f497344f"
       ],
       "tests": [
-        "t:10ba1a7608ce88b8"
+        "t:cc826951b7dd5642"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177170,12 +177180,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:168a4db0944a0f1a"
+        "t:86b1adfc3365e07d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177195,12 +177204,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:168a4db0944a0f1a"
+        "t:86b1adfc3365e07d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177220,12 +177228,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:168a4db0944a0f1a"
+        "t:86b1adfc3365e07d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177245,12 +177252,11 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:168a4db0944a0f1a"
+        "t:86b1adfc3365e07d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177270,12 +177276,12 @@
         "h:bc8ea83f623ffbb0"
       ],
       "tests": [
-        "t:168a4db0944a0f1a"
+        "t:86b1adfc3365e07d",
+        "t:45872640223a7511"
       ],
       "status": "implemented",
       "remaining": [
-        "n:5c6a37a69970e957",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -459390,6 +459396,299 @@
       "kind": "canonical-transition",
       "parameters": true,
       "bindingNote": "Both conceal true and false resolve healing; revealed state changes only when elected."
+    },
+    "t:056f5a4967b45ff4": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s selects three matching hand/placed sources without morale",
+      "declarationSha256": "8def70e8c741cad30474e3463c943c74f99f19c160fc26081dd16f080a1e50b0",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "炎竜",
+        "兵士",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+    },
+    "t:9cf1c244376610d4": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "actual Upa reserves hand Griffin and placed Earth Dragon before cancellable grant and resolves distinct techniques in one group",
+      "declarationSha256": "f12bf4c431dc65dae3c0b5e2cc4ce010105ba9ed3a9691419a3779455373fc34",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Each physical follower produces its own lower technique values and hit structure in the shared group."
+    },
+    "t:5e71d194a023570a": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "actual Upa reserves hand Griffin and placed Earth Dragon before cancellable grant and resolves distinct techniques in one group",
+      "declarationSha256": "f12bf4c431dc65dae3c0b5e2cc4ce010105ba9ed3a9691419a3779455373fc34",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "One group includes Griffin two hits plus Earth Dragon; B takes24 while C takes8 at completion."
+    },
+    "t:0057f64c23e461a8": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "canonical Upa selects ignore, earns a private saved subset after damage, transfers exact physical source",
+      "declarationSha256": "53558aa89910471667b33ae25e4dca654214fa6dabfc9c4a04b19901579753b5",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual warrior ignores physical beasts, deals7, and offers only the saved beast subset."
+    },
+    "t:3bf9af56bc9c4218": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "ignore is optional, canceled once/group, late/spent/wrong-owner/wrong-school reject without hidden target eligibility",
+      "declarationSha256": "21b44af572d893a7174f84003ea1bdf0638408905d44327b27a5e2f520f9ea7c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Magic cannot elect ignore; declined or canceled ignore never captures."
+    },
+    "t:85c226be5a25087b": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "blocked-front",
+      "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+    },
+    "t:b12767edf8e23048": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "zero-body",
+      "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+    },
+    "t:3fbb886fc08dda21": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "cancel-ignore",
+      "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+    },
+    "t:e37cff3afd8ca005": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "normal-defense",
+      "bindingNote": "Blocked traversal, zero body damage, canceled ignore and normal defense do not acquire."
+    },
+    "t:e99f071d2ce71893": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "intrinsic general ignore alone earns nothing; selected overlapping ignore keeps entitlement with distinct provenance",
+      "declarationSha256": "ac5d1ecd7f36a984ffcd88f7a0bef89992ad5dd1900c670b02d5c8ff4a7a447d",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Intrinsic general ignore alone has no entitlement; explicitly selected overlap has distinct provenance."
+    },
+    "t:2d59b699c32b0d25": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "actual C10 Griffin two warrior hits qualifies individually; mixed=%s magic does not",
+      "declarationSha256": "600f612626e6aab57f36da234a4688dd14736e83302645c72adfaa46cd3a11b5",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "The saved qualifying indexes are exactly the two warrior hits, excluding mixed magic."
+    },
+    "t:b65d735049a1da24": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "actual C10 Griffin two warrior hits qualifies individually; mixed=%s magic does not",
+      "declarationSha256": "600f612626e6aab57f36da234a4688dd14736e83302645c72adfaa46cd3a11b5",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "The saved qualifying indexes are exactly the two warrior hits, excluding mixed magic."
+    },
+    "t:1def83c2af1ff775": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "actual mixed C10 unrelated magic damage cannot earn a beast traversed by defended warrior hits",
+      "declarationSha256": "3f2d5990e8904b38ee450e9082f40f5fd60b1d9b13c8c4025f6f3c5094402d28",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Unrelated magic damage does not grant capture when warrior hits were defended."
+    },
+    "t:f7dfc52bc2921094": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "blocked-front",
+      "bindingNote": "Zero body damage cannot earn capture."
+    },
+    "t:dd7d4f316f5e5036": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "zero-body",
+      "bindingNote": "Zero body damage cannot earn capture."
+    },
+    "t:69655f3eac12450d": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "cancel-ignore",
+      "bindingNote": "Zero body damage cannot earn capture."
+    },
+    "t:d5a1a8600422b2cd": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "no acquisition when %s",
+      "declarationSha256": "47134e1f4f2f47979b424a86188b9c81ca8b60049c50b562595f1701b94d8569",
+      "kind": "canonical-transition",
+      "parameters": "normal-defense",
+      "bindingNote": "Zero body damage cannot earn capture."
+    },
+    "t:7eadc1167070cf88": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "canonical Upa selects ignore, earns a private saved subset after damage, transfers exact physical source",
+      "declarationSha256": "53558aa89910471667b33ae25e4dca654214fa6dabfc9c4a04b19901579753b5",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exactly one chosen beast transfers to hand; the unchosen physical follower remains."
+    },
+    "t:3ae2f7351606f3c4": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "capture %s completes once without costs or refill",
+      "declarationSha256": "f6b4bc66bd4188a8172c0209fc67a80e5f9651f2ba6f64595994b56a09c11a1c",
+      "kind": "canonical-transition",
+      "parameters": "empty",
+      "bindingNote": "Empty, pass and all choices complete once without payment or refill."
+    },
+    "t:f1f9d49883d01793": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "capture %s completes once without costs or refill",
+      "declarationSha256": "f6b4bc66bd4188a8172c0209fc67a80e5f9651f2ba6f64595994b56a09c11a1c",
+      "kind": "canonical-transition",
+      "parameters": "pass",
+      "bindingNote": "Empty, pass and all choices complete once without payment or refill."
+    },
+    "t:cdd4adb5ecaf0a74": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "capture %s completes once without costs or refill",
+      "declarationSha256": "f6b4bc66bd4188a8172c0209fc67a80e5f9651f2ba6f64595994b56a09c11a1c",
+      "kind": "canonical-transition",
+      "parameters": "all",
+      "bindingNote": "Empty, pass and all choices complete once without payment or refill."
+    },
+    "t:dfab0b913b1d4fab": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "invalid capture commands reject unchanged atomically",
+      "declarationSha256": "4f5e626b79314d62a9bdb5fca2c232df221db883b6bdfdb4c64b5350e0632279",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Forged, stale, duplicate and foreign capture commands reject unchanged."
+    },
+    "t:1a03d3dcc48e959b": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "actual Upa C10 dedicated Griffin → Ida Shadow → Confusion disables source before later target snapshot",
+      "declarationSha256": "c2a191dbe72c7b794aa367343feb265ccb54bcb35968584cf5f4b543c1ba568c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Ida Shadow into Confusion disables Upa before later target snapshot and prevents acquisition."
+    },
+    "t:f35866c98a024095": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "actual reflected child can kill original Upa and never grants postmortem acquisition",
+      "declarationSha256": "8477dfc4c512fbf39ecd1ab58a7d4256c5e579ec017b0339d1d1e80dc26eacca",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Dead Upa cannot acquire after reflected lethal damage."
+    },
+    "t:6020e97737e5d30b": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+      "declarationSha256": "2dab2a14df0b4246a901272b75af9db48739515bff3f2cc643abc8772c06d193",
+      "kind": "structural-resolver",
+      "parameters": "stopped",
+      "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+    },
+    "t:82168ef007412684": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+      "declarationSha256": "2dab2a14df0b4246a901272b75af9db48739515bff3f2cc643abc8772c06d193",
+      "kind": "structural-resolver",
+      "parameters": "ability-disabled",
+      "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+    },
+    "t:6abf7155fc3133fd": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+      "declarationSha256": "2dab2a14df0b4246a901272b75af9db48739515bff3f2cc643abc8772c06d193",
+      "kind": "structural-resolver",
+      "parameters": "transformed",
+      "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+    },
+    "t:a30a036bc0aee3bb": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "helper current capture resolution revalidation %s is atomic and cannot recreate physical cards",
+      "declarationSha256": "2dab2a14df0b4246a901272b75af9db48739515bff3f2cc643abc8772c06d193",
+      "kind": "structural-resolver",
+      "parameters": "moved",
+      "bindingNote": "Resolution revalidates stopped, disabled, changed owner identity and moved physical cards."
+    },
+    "t:cc826951b7dd5642": {
+      "path": "packages/engine/test/beast-empathy.test.ts",
+      "suite": [],
+      "title": "actual lethal damage marks target pending then captures before death gift and disposal",
+      "declarationSha256": "8ec582ad63dfc0087abf1745e8e3ca973c6b8e6cf31745c5c3cf94ffd710a193",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Capture occurs while target is pending-death before death-gift and disposal; captured source escapes disposal."
+    },
+    "t:86b1adfc3365e07d": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s selects three matching hand/placed sources without morale",
+      "declarationSha256": "8def70e8c741cad30474e3463c943c74f99f19c160fc26081dd16f080a1e50b0",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "小人族",
+        "竜王教団",
+        "グリフォン",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "Actual three-card selection reserves hand and placed matching sources, rejects the other attribute atomically, and resolves without any morale roll."
+    },
+    "t:45872640223a7511": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "actual Dia normal Dwarf snapshots its own warrior and magic is an independent source",
+      "declarationSha256": "6f6e705f3ead1e147ee90382a07de9a74f715c45a67e70ad9973b77b39bdd2de",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Each physical follower produces its own lower technique values and hit structure in the shared group."
     }
   },
   "remainingNotes": {
