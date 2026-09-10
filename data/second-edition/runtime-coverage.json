@@ -170490,12 +170490,15 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:5691932474489e99"
+        "t:b68e47dbb0a5478b",
+        "t:cc4a35ab6480a086",
+        "t:54bc7a96b1e7155e",
+        "t:364727ebe33269e2",
+        "t:d300cc649fb05e9a"
       ],
       "status": "implemented",
       "remaining": [
-        "n:88ba9c2dc2dc83d7",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170514,12 +170517,15 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:5691932474489e99"
+        "t:b68e47dbb0a5478b",
+        "t:cc4a35ab6480a086",
+        "t:54bc7a96b1e7155e",
+        "t:364727ebe33269e2",
+        "t:d300cc649fb05e9a"
       ],
       "status": "implemented",
       "remaining": [
-        "n:88ba9c2dc2dc83d7",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170538,12 +170544,13 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:5691932474489e99"
+        "t:b68e47dbb0a5478b",
+        "t:cc4a35ab6480a086",
+        "t:70376958c70377df"
       ],
       "status": "implemented",
       "remaining": [
-        "n:88ba9c2dc2dc83d7",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -170562,12 +170569,12 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:5691932474489e99"
+        "t:b68e47dbb0a5478b",
+        "t:cc4a35ab6480a086"
       ],
       "status": "implemented",
       "remaining": [
-        "n:88ba9c2dc2dc83d7",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171178,12 +171185,11 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:f7689961d6cb67b6"
+        "t:1b8ec0efad0654c2"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -171204,12 +171210,11 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:f7689961d6cb67b6"
+        "t:1b8ec0efad0654c2"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172539,12 +172544,11 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:245188a46ca04885"
+        "t:4e84a93b4dce6798"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172565,12 +172569,11 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:245188a46ca04885"
+        "t:4e84a93b4dce6798"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173442,12 +173445,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:3d9eca6a7805ab62"
+        "t:8b3fcee736423274",
+        "t:58f39d8e630e3f08"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173468,12 +173471,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:3d9eca6a7805ab62"
+        "t:8b3fcee736423274",
+        "t:58f39d8e630e3f08"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173844,12 +173847,14 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:268e621f69a6a5e6"
+        "t:a6a6df5b756cab43",
+        "t:073576ea670e73a4",
+        "t:c7faf7807603ec95",
+        "t:1ad89bfe42de30d6"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -173870,12 +173875,14 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:268e621f69a6a5e6"
+        "t:a6a6df5b756cab43",
+        "t:073576ea670e73a4",
+        "t:c7faf7807603ec95",
+        "t:1ad89bfe42de30d6"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174002,12 +174009,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:80341a2d381cc2d7"
+        "t:efa995d994a5932e",
+        "t:44ad3dbcf4d58b4b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174028,12 +174035,11 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:80341a2d381cc2d7"
+        "t:283b27fef01c7e31"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175210,12 +175216,11 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:8109489a7b53c49a"
+        "t:963f3e36605e2c6f"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175236,12 +175241,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:8109489a7b53c49a"
+        "t:963f3e36605e2c6f",
+        "t:52154e31fd3c2c13"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -175974,12 +175979,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:e52b72aa5f52c389"
+        "t:bf2ef164b6eade70",
+        "t:bb8f11e9653afe47"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176000,12 +176005,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:e52b72aa5f52c389"
+        "t:bf2ef164b6eade70",
+        "t:bb8f11e9653afe47"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176026,12 +176031,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:e52b72aa5f52c389"
+        "t:bf2ef164b6eade70",
+        "t:bb8f11e9653afe47"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176052,12 +176057,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:e52b72aa5f52c389"
+        "t:bf2ef164b6eade70",
+        "t:bb8f11e9653afe47"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176897,12 +176902,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:10a5fbca32025941"
+        "t:3c98150a88fea8ad",
+        "t:4d91e008846a6407"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -176923,12 +176928,12 @@
         "h:9b238803817bacd2"
       ],
       "tests": [
-        "t:10a5fbca32025941"
+        "t:3c98150a88fea8ad",
+        "t:4d91e008846a6407"
       ],
       "status": "implemented",
       "remaining": [
-        "n:7444f647c265143b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177845,12 +177850,12 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:b5d085d4d6adfc81"
+        "t:690b360df4be943c",
+        "t:430ddc9ebad380d9"
       ],
       "status": "implemented",
       "remaining": [
-        "n:88ba9c2dc2dc83d7",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177869,12 +177874,12 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:b5d085d4d6adfc81"
+        "t:690b360df4be943c",
+        "t:164d0b6041899926"
       ],
       "status": "implemented",
       "remaining": [
-        "n:88ba9c2dc2dc83d7",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177893,12 +177898,11 @@
         "h:06534947356d8eb0"
       ],
       "tests": [
-        "t:b5d085d4d6adfc81"
+        "t:690b360df4be943c"
       ],
       "status": "implemented",
       "remaining": [
-        "n:88ba9c2dc2dc83d7",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -454248,6 +454252,255 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual WhiteLight is magic without black attribute and offers no Uonos numerical package."
+    },
+    "t:b68e47dbb0a5478b": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [
+        "Task7t actual named source response declarations"
+      ],
+      "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+      "declarationSha256": "7baf0f871909c739130a5acedf0745ad911b457d7d3b1d3438e491c60c79a331",
+      "kind": "canonical-transition",
+      "parameters": "A",
+      "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+    },
+    "t:cc4a35ab6480a086": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [
+        "Task7t actual named source response declarations"
+      ],
+      "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+      "declarationSha256": "7baf0f871909c739130a5acedf0745ad911b457d7d3b1d3438e491c60c79a331",
+      "kind": "canonical-transition",
+      "parameters": "C",
+      "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+    },
+    "t:54bc7a96b1e7155e": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [],
+      "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+      "declarationSha256": "85d03e09d109156fa68438ddcf18dadc824b04fc464d2487c4e652fcace3cae5",
+      "kind": "canonical-transition",
+      "parameters": [
+        false,
+        true
+      ],
+      "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+    },
+    "t:364727ebe33269e2": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [],
+      "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+      "declarationSha256": "85d03e09d109156fa68438ddcf18dadc824b04fc464d2487c4e652fcace3cae5",
+      "kind": "canonical-transition",
+      "parameters": [
+        true,
+        false
+      ],
+      "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+    },
+    "t:d300cc649fb05e9a": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [],
+      "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+      "declarationSha256": "85d03e09d109156fa68438ddcf18dadc824b04fc464d2487c4e652fcace3cae5",
+      "kind": "canonical-transition",
+      "parameters": [
+        false,
+        false
+      ],
+      "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+    },
+    "t:70376958c70377df": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [],
+      "title": "actual Shin cannot respond to Majesty and LancelotII cannot respond to Shadow",
+      "declarationSha256": "3a9a61c65f4687c3635c5666be0f8ba660428b445cf7083c840849daf925b5f4",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Shin rejects a Majesty source and LancelotII rejects a Shadow source."
+    },
+    "t:1b8ec0efad0654c2": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Tia reserves hidden, becomes active only with public Lester, can turn OFF with finite attempts",
+      "declarationSha256": "018826cbe8a147f92d4695c3714f90e77f5bcd6fee6c6a37eb7e1d8c0de9e2c1",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Selected Tia remains at base with hidden Lester, increases exactly1 after reveal, and OFF restores base."
+    },
+    "t:4e84a93b4dce6798": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Lia saves a chosen public subset; hidden self still receives separate public Lance bonus",
+      "declarationSha256": "aa6657876b15ec138ed6642c85f0159dd85aed507c8e4d0e745192c86e12b492",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Hidden Lia receives public Lance +2 independently; only chosen public recipient gains +1 after Lia reveal and loses it on concealment."
+    },
+    "t:8b3fcee736423274": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+      "declarationSha256": "73563bdc837a0d56f6b90588c9bd5fc22a853e4df7b14c411347856d699e1da1",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Attack-check threshold is base+2 only when an actual public male recipient is present; hidden male and public female do not qualify."
+    },
+    "t:58f39d8e630e3f08": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+      "declarationSha256": "73563bdc837a0d56f6b90588c9bd5fc22a853e4df7b14c411347856d699e1da1",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Attack-check threshold is base+2 only when an actual public male recipient is present; hidden male and public female do not qualify."
+    },
+    "t:a6a6df5b756cab43": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+      "declarationSha256": "206df2afa70141b4c86f7b7537993b211b982b683357851bcf33552514d5a170",
+      "kind": "canonical-transition",
+      "parameters": "飛竜",
+      "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+    },
+    "t:073576ea670e73a4": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+      "declarationSha256": "206df2afa70141b4c86f7b7537993b211b982b683357851bcf33552514d5a170",
+      "kind": "canonical-transition",
+      "parameters": "地竜",
+      "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+    },
+    "t:c7faf7807603ec95": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+      "declarationSha256": "206df2afa70141b4c86f7b7537993b211b982b683357851bcf33552514d5a170",
+      "kind": "canonical-transition",
+      "parameters": "水竜",
+      "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+    },
+    "t:1ad89bfe42de30d6": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+      "declarationSha256": "206df2afa70141b4c86f7b7537993b211b982b683357851bcf33552514d5a170",
+      "kind": "canonical-transition",
+      "parameters": "竜王教団",
+      "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+    },
+    "t:efa995d994a5932e": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Truth selected personal spirit adds one only in %s and OFF removes it",
+      "declarationSha256": "9c9bbc7a9a36df6ab98a627f6a9b41b2a9cd24dda4cfd139cf62448b71cd3cb7",
+      "kind": "canonical-transition",
+      "parameters": "GOOD",
+      "bindingNote": "Selection increases personal spirit exactly1 in GOOD,0 in EVIL, and OFF removes it without requiring a named target."
+    },
+    "t:44ad3dbcf4d58b4b": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Truth selected personal spirit adds one only in %s and OFF removes it",
+      "declarationSha256": "9c9bbc7a9a36df6ab98a627f6a9b41b2a9cd24dda4cfd139cf62448b71cd3cb7",
+      "kind": "canonical-transition",
+      "parameters": "EVIL",
+      "bindingNote": "Selection increases personal spirit exactly1 in GOOD,0 in EVIL, and OFF removes it without requiring a named target."
+    },
+    "t:283b27fef01c7e31": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Truth freezes target-local effect/damage for the named public enemy only",
+      "declarationSha256": "4e12436f571da1561b81a96d746c8e9b2d981619eb54d3369a249825e1270ecd",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual public Gainas receives damage10 while other target receives8; both retain use6 and only Gainas effect becomes7."
+    },
+    "t:963f3e36605e2c6f": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Upa spirit belongs to actual attack checks and selected warrior damage adds before multipliers",
+      "declarationSha256": "e818b41aea3bb8114042ff61f0b97afe8fad537506bce15f322e7d7d984c1ac9",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Upa idle spirit remains base; actual attack-check threshold adds1 and selected warrior damage adds1."
+    },
+    "t:52154e31fd3c2c13": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Upa selected warrior addition precedes actual printed Gad damage multiplier; magic has no addition",
+      "declarationSha256": "f31c396e2e47bc170da51af712ee37574e7699bd9162fba002037f874ba5c71f",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Warrior8+1 is doubled to18 against Gad; magic stays4 without the addition."
+    },
+    "t:bf2ef164b6eade70": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Garwin requires EVIL plus public Lance, public=%s",
+      "declarationSha256": "739aceff542316c9d3101d3c59fb23077607123879331cd5ed1799a52d46f4f7",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+    },
+    "t:bb8f11e9653afe47": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Garwin requires EVIL plus public Lance, public=%s",
+      "declarationSha256": "739aceff542316c9d3101d3c59fb23077607123879331cd5ed1799a52d46f4f7",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+    },
+    "t:3c98150a88fea8ad": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dia selected public capacity is exactly seven without other capacity sources",
+      "declarationSha256": "505aff2f4dbfd9ea4cc774374ec0926201cfa73aab29549c0d3a3c9a2e4db600",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Without any capacity support the actual selected ability keeps hidden capacity5, reveals capacity7, and OFF restores5."
+    },
+    "t:4d91e008846a6407": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard",
+      "declarationSha256": "6188d0696a9b4d35869fe27a833b86e3a56e4d5b66186bf11a099bda38be48a4",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual END accepts capacity8 with Haja; OFF preserves held cards until later END requires capacity6 disposal."
+    },
+    "t:690b360df4be943c": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [
+        "Task7t actual named source response declarations"
+      ],
+      "title": "actual transformed LancelotII cancels revealed Majesty against his own attack before reflection",
+      "declarationSha256": "9e1094e5f053d5532e7a00321678bb76a873a462919f5191e6d2fec17e2c5e4c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual transformation grants Sorrow; it cancels revealed Majesty before any check or reflected child and preserves own incoming attack."
+    },
+    "t:430ddc9ebad380d9": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [],
+      "title": "actual hidden Gainas grants no Sorrow option",
+      "declarationSha256": "db0d2f7efb031c3749d96c6814aa2e237a6f614d911707202dae41570032b089",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Hidden Gainas grants no Sorrow option."
+    },
+    "t:164d0b6041899926": {
+      "path": "packages/engine/test/named-ability-responses.test.ts",
+      "suite": [],
+      "title": "actual transformed third-party LancelotII cannot cancel Majesty against another attacker",
+      "declarationSha256": "0987050c6fc57b54ad2929799c633ace4c4e0c3e4707de37b60ccd1fd695c134",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Transformed third-party LancelotII cannot cancel Majesty against another attacker and command rejects unchanged."
     }
   },
   "remainingNotes": {

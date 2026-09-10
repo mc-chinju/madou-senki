@@ -1041,6 +1041,728 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab05#public-self",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "A",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "C",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+          "parameters": [
+            false,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+          "parameters": [
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+          "parameters": [
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab05#public-Ida",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "A",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "C",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+          "parameters": [
+            false,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+          "parameters": [
+            true,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual reveal gates: Shin=%s Ida=%s grants no Mirror option",
+          "parameters": [
+            false,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "All missing Shin/Ida reveal combinations have no Mirror option."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab05#pending-shadow-clone",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "A",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "C",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual Shin cannot respond to Majesty and LancelotII cannot respond to Shadow",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Shin rejects a Majesty source and LancelotII rejects a Shadow source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c1-ab05#cancel-before-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "A",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "revealed Shin %s cancels current revealed Ida before checks and preserves incoming damage",
+          "parameters": "C",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self or third-party Shin cancels the current revealed Ida frame before any ability check and preserves original incoming damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab04#public-Lester-present",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Tia reserves hidden, becomes active only with public Lester, can turn OFF with finite attempts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected Tia remains at base with hidden Lester, increases exactly1 after reveal, and OFF restores base."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab04#self-spirit-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Tia reserves hidden, becomes active only with public Lester, can turn OFF with finite attempts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected Tia remains at base with hidden Lester, increases exactly1 after reveal, and OFF restores base."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab03#chosen-public-others-spirit-plus-one-with-public-lia",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Lia saves a chosen public subset; hidden self still receives separate public Lance bonus",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden Lia receives public Lance +2 independently; only chosen public recipient gains +1 after Lia reveal and loses it on concealment."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab03#public-lancelot-self-plus-two-independent-of-lia-reveal",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Lia saves a chosen public subset; hidden self still receives separate public Lance bonus",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden Lia receives public Lance +2 independently; only chosen public recipient gains +1 after Lia reveal and loses it on concealment."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#public-male-opponent",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Attack-check threshold is base+2 only when an actual public male recipient is present; hidden male and public female do not qualify."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Attack-check threshold is base+2 only when an actual public male recipient is present; hidden male and public female do not qualify."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#spirit-plus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Attack-check threshold is base+2 only when an actual public male recipient is present; hidden male and public female do not qualify."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Attack-check threshold is base+2 only when an actual public male recipient is present; hidden male and public female do not qualify."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab03#dragon-follower-filter",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "飛竜",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "地竜",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "水竜",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "竜王教団",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab03#morale-plus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "飛竜",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "地竜",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "水竜",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dragon morale applies only actual dragon descriptor at before-roll freeze: %s",
+          "parameters": "竜王教団",
+          "kind": "canonical-transition",
+          "bindingNote": "Printed dragon follower morale threshold gains2; Dragon Cult lacks the dragon descriptor and gains0."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#GOOD-spirit-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth selected personal spirit adds one only in %s and OFF removes it",
+          "parameters": "GOOD",
+          "kind": "canonical-transition",
+          "bindingNote": "Selection increases personal spirit exactly1 in GOOD,0 in EVIL, and OFF removes it without requiring a named target."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth selected personal spirit adds one only in %s and OFF removes it",
+          "parameters": "EVIL",
+          "kind": "canonical-transition",
+          "bindingNote": "Selection increases personal spirit exactly1 in GOOD,0 in EVIL, and OFF removes it without requiring a named target."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#same-target-damage-plus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth freezes target-local effect/damage for the named public enemy only",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public Gainas receives damage10 while other target receives8; both retain use6 and only Gainas effect becomes7."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab01#actual-attack-only-spirit-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Upa spirit belongs to actual attack checks and selected warrior damage adds before multipliers",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Upa idle spirit remains base; actual attack-check threshold adds1 and selected warrior damage adds1."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab01#warrior-technique-damage-plus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Upa spirit belongs to actual attack checks and selected warrior damage adds before multipliers",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Upa idle spirit remains base; actual attack-check threshold adds1 and selected warrior damage adds1."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Upa selected warrior addition precedes actual printed Gad damage multiplier; magic has no addition",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Warrior8+1 is doubled to18 against Gad; magic stays4 without the addition."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab05#own-EVIL",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab05#public-Lancelot-present",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab05#spirit-plus-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab05#live-duration",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Garwin requires EVIL plus public Lance, public=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Spirit adds2 only for EVIL with public Lance; hidden Lance or live change to GOOD removes the effect."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#public-source",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dia selected public capacity is exactly seven without other capacity sources",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Without any capacity support the actual selected ability keeps hidden capacity5, reveals capacity7, and OFF restores5."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual END accepts capacity8 with Haja; OFF preserves held cards until later END requires capacity6 disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#hand-capacity-seven",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dia selected public capacity is exactly seven without other capacity sources",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Without any capacity support the actual selected ability keeps hidden capacity5, reveals capacity7, and OFF restores5."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual END accepts capacity8 with Haja; OFF preserves held cards until later END requires capacity6 disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab02#public-Gainas-majesty",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "actual transformed LancelotII cancels revealed Majesty against his own attack before reflection",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation grants Sorrow; it cancels revealed Majesty before any check or reflected child and preserves own incoming attack."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual hidden Gainas grants no Sorrow option",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden Gainas grants no Sorrow option."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab02#own-target-only",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "actual transformed LancelotII cancels revealed Majesty against his own attack before reflection",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation grants Sorrow; it cancels revealed Majesty before any check or reflected child and preserves own incoming attack."
+        },
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [],
+          "title": "actual transformed third-party LancelotII cannot cancel Majesty against another attacker",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Transformed third-party LancelotII cannot cancel Majesty against another attacker and command rejects unchanged."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab02#cancel-reflection",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/named-ability-responses.test.ts",
+          "suite": [
+            "Task7t actual named source response declarations"
+          ],
+          "title": "actual transformed LancelotII cancels revealed Majesty against his own attack before reflection",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation grants Sorrow; it cancels revealed Majesty before any check or reflected child and preserves own incoming attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }

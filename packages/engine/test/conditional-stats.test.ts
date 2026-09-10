@@ -8,6 +8,18 @@ import {act,ready,finish,closeWindow,until,pass} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 const sources: {characterId:string;characterName:string;id:string;name:string}[]=JSON.parse(readFileSync(new URL('./fixtures/conditional-stat-sources.json',import.meta.url),'utf8'));
 const TIA='c2-p02-r1c1-ab04',LIA='c2-p03-r1c2-ab03',ARNES='c2-p03-r2c2-ab04',DRAGON='c2-p04-r1c2-ab03',TRUTH='c2-p04-r1c2-ab05',UPA='c2-p05-r1c2-ab01',GARWIN='c2-p05-r2c1-ab05',DIA='c2-p06-r1c2-ab02';
+it.each(['GOOD','EVIL'] as const)('Truth selected personal spirit adds one only in %s and OFF removes it',faction=>{
+ let s=owner('竜皇子アスフェルト');s.players.A!.faction=faction;
+ const base=viewFor(s,'A').self.stats.spirit;
+ s=finish(set(s,'A',TRUTH));expect(viewFor(s,'A').self.stats.spirit).toBe(base+(faction==='GOOD'?1:0));
+ s=set(s,'A',TRUTH,false);expect(viewFor(s,'A').self.stats.spirit).toBe(base);
+});
+it('Dia selected public capacity is exactly seven without other capacity sources',()=>{
+ let s=owner('魔聖母ディア');s=finish(set(s,'A',DIA));
+ expect(viewFor(s,'A').self.stats.handLimit).toBe(5);
+ s=act(s,'A',{type:'REVEAL_CHARACTER'});expect(viewFor(s,'A').self.stats.handLimit).toBe(7);
+ s=set(s,'A',DIA,false);expect(viewFor(s,'A').self.stats.handLimit).toBe(5);
+});
 function owner(name:string){const s=ready();character(s,'A',name);return s;}
 function setting(s:GameState,actor:string,id:string){return viewFor(s,actor).conditionalAbilities.find(x=>x.abilityId===id)!;}
 function set(s:GameState,actor:string,id:string,enabled=true,targets?:string[]){const o=setting(s,actor,id);return act(s,actor,{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:o.targetEventId,enabled,...(targets?{targetIds:targets}:{})});}
