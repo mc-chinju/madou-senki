@@ -7158,6 +7158,2299 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab02#own-turn",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "optional draw %s uses a single saved draw opportunity",
+          "parameters": "c2-p01-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-start (including actual LanceII transformation) offers replacement and draws exactly two cards."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s decline, invalid selection and canceled replacement retain ordinary draw",
+          "parameters": "c2-p01-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Foreign draw is rejected; declining and cancellation retain the single ordinary draw opportunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab02#draw-replaces-one-with-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "optional draw %s uses a single saved draw opportunity",
+          "parameters": "c2-p01-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-start (including actual LanceII transformation) offers replacement and draws exactly two cards."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s decline, invalid selection and canceled replacement retain ordinary draw",
+          "parameters": "c2-p01-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Foreign draw is rejected; declining and cancellation retain the single ordinary draw opportunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab03#own-turn-extra",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab03",
+            "B"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab03#selected-one-target",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Cham observes complete hidden followers privately, freezes and acknowledges without using main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected B alone produces a private frozen follower snapshot, then returns the main action."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Cham preserves entire two-card follower order and face flags without publishing uninspected identity",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact entire ordered follower snapshot remains private; all face flags are unchanged."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab03#private-complete-followers",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Cham observes complete hidden followers privately, freezes and acknowledges without using main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Selected B alone produces a private frozen follower snapshot, then returns the main action."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Cham preserves entire two-card follower order and face flags without publishing uninspected identity",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact entire ordered follower snapshot remains private; all face flags are unchanged."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab04#own-main-action",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "早駆けのランカスター",
+            "c2-p02-r2c1-ab04",
+            null
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "早駆けのランカスター",
+            "c2-p02-r2c1-ab04",
+            null
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab04#discard-all-hand-magic",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lancaster discards all printed magic techniques, and consumes main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "All printed magic technique cards leave the hand for discard and consume the main action."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lancaster classifies normal printed magic on p18 whose catalogue stores school in attributes only",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Includes every selected p18 magic technique whose school is represented in attributes."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lancaster empty discard still consumes main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Empty hand still consumes main action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#own-turn-extra",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab02",
+            "B"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#private-chant-snapshot",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lia inspects nearby chants then discards all seen or none",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact private nearby chant snapshot supports keeping all or discarding all seen cards."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Far and attack-phase uses are unavailable; hidden and public target constraints are explicit."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#optional-all-seen-discard",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lia inspects nearby chants then discards all seen or none",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact private nearby chant snapshot supports keeping all or discarding all seen cards."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Far and attack-phase uses are unavailable; hidden and public target constraints are explicit."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab03#own-turn-extra",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "B"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab03#spirit-minus-three",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s checks before private snapshot",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "character",
+            -3
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Ability check modifier is exact; private snapshot contains the complete hand or hidden identity and is absent for other viewers."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab03#concealed-target",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s checks before private snapshot",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "character",
+            -3
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Ability check modifier is exact; private snapshot contains the complete hand or hidden identity and is absent for other viewers."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Hidden-character target selection includes the actor; target availability is explicit."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab03#private-identity",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s checks before private snapshot",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "character",
+            -3
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Ability check modifier is exact; private snapshot contains the complete hand or hidden identity and is absent for other viewers."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab04#own-main-action",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab04",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab04",
+            "B"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab04#public-counterpart",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s swaps exact entire hands with public counterpart",
+          "parameters": [
+            "凍気のアイエル",
+            "爆炎のフレイアード",
+            "c2-p04-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The public named counterpart receives the exact full original hand and vice versa, consuming main action."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "whole twin hands allow %s without refill or OPEN",
+          "parameters": "empty",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty and unequal hands are exchanged exactly without refill or OPEN."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "whole twin hands allow %s without refill or OPEN",
+          "parameters": "unequal",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty and unequal hands are exchanged exactly without refill or OPEN."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "whole twin hands allow %s without refill or OPEN",
+          "parameters": "both-empty",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty and unequal hands are exchanged exactly without refill or OPEN."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "A hidden counterpart is unavailable for exchange."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab04#complete-hand-exchange",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s swaps exact entire hands with public counterpart",
+          "parameters": [
+            "凍気のアイエル",
+            "爆炎のフレイアード",
+            "c2-p04-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The public named counterpart receives the exact full original hand and vice versa, consuming main action."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "whole twin hands allow %s without refill or OPEN",
+          "parameters": "empty",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty and unequal hands are exchanged exactly without refill or OPEN."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "whole twin hands allow %s without refill or OPEN",
+          "parameters": "unequal",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty and unequal hands are exchanged exactly without refill or OPEN."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "whole twin hands allow %s without refill or OPEN",
+          "parameters": "both-empty",
+          "kind": "canonical-transition",
+          "bindingNote": "Empty and unequal hands are exchanged exactly without refill or OPEN."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab01#own-turn-extra",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab01",
+            null
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab01",
+            null
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab01#pre-TruePower-spirit-minus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Shadow uses pre-TruePower spirit and hides without erasing expiry",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Check uses pre-TruePower spirit minus one; concealment preserves bonus and original turn-end expiry."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab01#public-to-hidden",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Shadow uses pre-TruePower spirit and hides without erasing expiry",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Check uses pre-TruePower spirit minus one; concealment preserves bonus and original turn-end expiry."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab02#spirit-check",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s checks before private snapshot",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab02",
+            "hand",
+            0
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Ability check modifier is exact; private snapshot contains the complete hand or hidden identity and is absent for other viewers."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab02#private-whole-hand-snapshot",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s checks before private snapshot",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab02",
+            "hand",
+            0
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Ability check modifier is exact; private snapshot contains the complete hand or hidden identity and is absent for other viewers."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab02#optional-one-seen-discard",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Astrology rejects unseen card, duplicate/foreign/stale decision and accepts exactly one seen discard",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Only one originally seen card may be discarded; invalid or stale decisions are rejected."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab01#own-turn-extra",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "邪祭ウーノス",
+            "c2-p05-r1c1-ab01",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "邪祭ウーノス",
+            "c2-p05-r1c1-ab01",
+            "B"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab01#spirit-minus-one",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Uonos forces hidden Alseil public without granting voluntary TruePower",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "The exact spirit-minus-one check precedes forced reveal; voluntary-only TruePower is not granted."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab01#selected-character-reveal",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Uonos forces hidden Alseil public without granting voluntary TruePower",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "The exact spirit-minus-one check precedes forced reveal; voluntary-only TruePower is not granted."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Uonos may force its own hidden card public and cannot authorize a voluntary-only foreign benefit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Self selection reveals the chosen hidden character through the actual forced-reveal event."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab04#own-main-action",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s cancellation consumes exactly accepted attempt/main action",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab04",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Accepted ability consumes its attempt, and only main-action abilities enter hand adjustment."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s / %s ownership, own-turn, source availability and wrong/stale target are atomic",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab04",
+            "B"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Own-turn, legal phase, owner and source availability are validated atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab04#public-counterpart",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s swaps exact entire hands with public counterpart",
+          "parameters": [
+            "爆炎のフレイアード",
+            "凍気のアイエル",
+            "c2-p06-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The public named counterpart receives the exact full original hand and vice versa, consuming main action."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "A hidden counterpart is unavailable for exchange."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab04#complete-hand-exchange",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s swaps exact entire hands with public counterpart",
+          "parameters": [
+            "爆炎のフレイアード",
+            "凍気のアイエル",
+            "c2-p06-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "The public named counterpart receives the exact full original hand and vice versa, consuming main action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab03#own-turn",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "optional draw %s uses a single saved draw opportunity",
+          "parameters": "c2-p07-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-start (including actual LanceII transformation) offers replacement and draws exactly two cards."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s decline, invalid selection and canceled replacement retain ordinary draw",
+          "parameters": "c2-p07-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Foreign draw is rejected; declining and cancellation retain the single ordinary draw opportunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab03#draw-replaces-one-with-two",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "optional draw %s uses a single saved draw opportunity",
+          "parameters": "c2-p07-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn-start (including actual LanceII transformation) offers replacement and draws exactly two cards."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s decline, invalid selection and canceled replacement retain ordinary draw",
+          "parameters": "c2-p07-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Foreign draw is rejected; declining and cancellation retain the single ordinary draw opportunity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "common:G09#activation/explicit-optional-use",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/optional-activation-privacy.test.ts",
+          "suite": [],
+          "title": "G09 explicit optional critical use %s keeps unchosen identity and candidates private",
+          "declarationSha256": "a9f387ab7231990feda751db220f06dd269fee4fefd26fc563bfbafea16f2299",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
+        },
+        {
+          "path": "packages/engine/test/optional-activation-privacy.test.ts",
+          "suite": [],
+          "title": "G09 explicit optional critical use %s keeps unchosen identity and candidates private",
+          "declarationSha256": "a9f387ab7231990feda751db220f06dd269fee4fefd26fc563bfbafea16f2299",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
+        },
+        {
+          "path": "apps/worker/test/room-optional-activation-privacy.test.ts",
+          "suite": [],
+          "title": "G09 optional critical use %s survives eviction and replay without exposing identity",
+          "declarationSha256": "9dc5d5a1c793c9c8f2ad215d3eaba0fa6253e091d666ec4741aaad8a8fb56e6f",
+          "parameters": false,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
+        },
+        {
+          "path": "apps/worker/test/room-optional-activation-privacy.test.ts",
+          "suite": [],
+          "title": "G09 optional critical use %s survives eviction and replay without exposing identity",
+          "declarationSha256": "9dc5d5a1c793c9c8f2ad215d3eaba0fa6253e091d666ec4741aaad8a8fb56e6f",
+          "parameters": true,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
+        },
+        {
+          "path": "tests/e2e/optional-activation-privacy.spec.ts",
+          "suite": [],
+          "title": "G09 passing optional critical after reload preserves concealed identity and ordinary damage",
+          "declarationSha256": "2ee3f588a8538ffc77e3e702f9c7f127dc15e3e6d3dc2fda2b3caa1c09355409",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
+        },
+        {
+          "path": "tests/e2e/optional-activation-privacy.spec.ts",
+          "suite": [],
+          "title": "G09 explicitly using critical remains concealed through roll reload and resolution",
+          "declarationSha256": "817cf6b2460030086b0f66b12280d01c2b66ca3b790be058e693a9e783e7d225",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "voluntary reveal decline does not auto-activate and duplicate/stale reveal cannot retrigger",
+          "declarationSha256": "03d8147a7575a876f4ad90cf382bfc8486377f2dcea16be30c7a11ffe0b94f64",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "TruePower canceled benefit preserves actual public reveal and offers no free second activation",
+          "declarationSha256": "16001b6b6e210546d2118b93f676cf1a75ee881308137d1c4b14ae3343f40c12",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
+        },
+        {
+          "path": "packages/engine/test/turn-information-spirit.test.ts",
+          "suite": [],
+          "title": "new optional reveal benefit rejects foreign owner, stopped and disabled actors atomically",
+          "declarationSha256": "b3f38242c9594c7dd94bf32303ac5c5b40e337ef5ac32adf7baadb13b0f45aa4",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO TruePower survives eviction until the actual saved actor ends its turn, then stays expired",
+          "declarationSha256": "1cb1dbd3905716ef37f76c18adf79fc2f518500060fd27d7e70eccad34dad5b9",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 ordinary voluntary reveal declines TruePower across eviction and duplicate receipt",
+          "declarationSha256": "2834a83816547956caf833668fc46a140aeea5beb07300bc3df48b49fe909891",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "canceling voluntary TruePower leaves its identity public and its ordinary spirit unchanged",
+          "declarationSha256": "368a338e919d2c1cb79233ce8cd2b6963246fa1ed3c8eddc89079dc1d8c6502f",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 ordinary reveal leaves TruePower unchecked and inactive after reload",
+          "declarationSha256": "2bf3a42217c159465c865f29bb8810211b7e8aeb719d8a5166a96aab364a6fae",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "optional draw %s uses a single saved draw opportunity",
+          "declarationSha256": "76008d9cfa7d8a870fbfb82cb13e4cd70b1efdc233a7de19cb1e548e2731c458",
+          "parameters": "c2-p01-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "optional draw %s uses a single saved draw opportunity",
+          "declarationSha256": "76008d9cfa7d8a870fbfb82cb13e4cd70b1efdc233a7de19cb1e548e2731c458",
+          "parameters": "c2-p07-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Uonos actual forced Lia reveal retains actual LanceII mandatory producer and new Growth draw",
+          "declarationSha256": "4edcb06339c1c2696f39766309a57c64a706616b1fbf16d297364a53b34edfd9",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s decline, invalid selection and canceled replacement retain ordinary draw",
+          "declarationSha256": "0870dce1a7e6984b724683225195223e39debc3bd1227675e55753b7f2e34c24",
+          "parameters": "c2-p01-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "%s decline, invalid selection and canceled replacement retain ordinary draw",
+          "declarationSha256": "0870dce1a7e6984b724683225195223e39debc3bd1227675e55753b7f2e34c24",
+          "parameters": "c2-p07-r1c1-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s draw choice %s persists exactly once without automatic replacement",
+          "declarationSha256": "20b3df3d52ad4f3dd68ff6e4a6773893775125fcc1ce949750811061bbaac10e",
+          "parameters": [
+            "info-cham-draw",
+            "skip"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s draw choice %s persists exactly once without automatic replacement",
+          "declarationSha256": "20b3df3d52ad4f3dd68ff6e4a6773893775125fcc1ce949750811061bbaac10e",
+          "parameters": [
+            "info-cham-draw",
+            "ordinary"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s draw choice %s persists exactly once without automatic replacement",
+          "declarationSha256": "20b3df3d52ad4f3dd68ff6e4a6773893775125fcc1ce949750811061bbaac10e",
+          "parameters": [
+            "info-cham-draw",
+            "ability"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s draw choice %s persists exactly once without automatic replacement",
+          "declarationSha256": "20b3df3d52ad4f3dd68ff6e4a6773893775125fcc1ce949750811061bbaac10e",
+          "parameters": [
+            "info-lancelot-growth",
+            "skip"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s draw choice %s persists exactly once without automatic replacement",
+          "declarationSha256": "20b3df3d52ad4f3dd68ff6e4a6773893775125fcc1ce949750811061bbaac10e",
+          "parameters": [
+            "info-lancelot-growth",
+            "ordinary"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s draw choice %s persists exactly once without automatic replacement",
+          "declarationSha256": "20b3df3d52ad4f3dd68ff6e4a6773893775125fcc1ce949750811061bbaac10e",
+          "parameters": [
+            "info-lancelot-growth",
+            "ability"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 Cham ordinary draw leaves optional replacement unused and concealed after reload",
+          "declarationSha256": "ece1221d6dd8fee2ba220050c1ad53a3611cf6776951681bd7e9d4c9ca18c46f",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 transformed Lancelot ordinary draw leaves Growth unused after reload",
+          "declarationSha256": "754f4fc1a02d88a7236fc8b06021641640bba9d12fcec08c35a4929b583718dc",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-cham-followers",
+            "c2-p01-r2c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-lia-chants",
+            "c2-p03-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-lester-rumor",
+            "c2-p03-r2c1-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-alseil-hand",
+            "c2-p04-r2c1-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-lancaster-discard",
+            "c2-p02-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-aiel-twins",
+            "c2-p04-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-flaiard-twins",
+            "c2-p06-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-alseil-shadow",
+            "c2-p04-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/optional-information-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s can end the turn without using %s or exposing unchosen information",
+          "declarationSha256": "f6050b2e5e211ee90d2bbf50c26788b9dec70e0c1acb54a71d7759af09e386b1",
+          "parameters": [
+            "info-uonos-reveal",
+            "c2-p05-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-cham-followers",
+            "c2-p01-r2c2-ab03"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-lia-chants",
+            "c2-p03-r1c2-ab02"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-lester-rumor",
+            "c2-p03-r2c1-ab03"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-alseil-hand",
+            "c2-p04-r2c1-ab02"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-lancaster-discard",
+            "c2-p02-r2c1-ab04"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-aiel-twins",
+            "c2-p04-r1c1-ab04"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-flaiard-twins",
+            "c2-p06-r2c1-ab04"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-alseil-shadow",
+            "c2-p04-r2c1-ab01"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO G09 %s ends without electing %s across eviction and replay",
+          "declarationSha256": "65b5ad6c1200a35657623572d0f52804ed1cc537fafad939e8908b3ef84775b3",
+          "parameters": [
+            "info-uonos-reveal",
+            "c2-p05-r1c1-ab01"
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-cham-followers survives end-turn reload",
+          "declarationSha256": "b5ab813eac898fa5a6a24fb2b8e423b02f6334fcef533a2d3e69c879fd880c0f",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-lia-chants survives end-turn reload",
+          "declarationSha256": "9bd5ba51452c0733d0da4bca3bca89be93843f1ab89a41c3660fa1128094a2cd",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-lester-rumor survives end-turn reload",
+          "declarationSha256": "8a6ac39440718f9117052b78789b2c1e67b9080369ba52c7decf15bb17d37e2e",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-alseil-hand survives end-turn reload",
+          "declarationSha256": "04c3683e50dc9df34fdb0c4fd1ba67b0d1fd734591f26a5e0eed67a953b5bcb8",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-lancaster-discard survives end-turn reload",
+          "declarationSha256": "b5c40df27358a88d52a80af7771924b6357eaebd7faf048a52797ac76b22cf52",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-aiel-twins survives end-turn reload",
+          "declarationSha256": "39d18d05d401f34cf69262f3875b122b977cc5ae95427ab5b0bb250c7704593c",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-flaiard-twins survives end-turn reload",
+          "declarationSha256": "07cfe27b2b0e213507340dcf64f2d515a9cd47a1e2316a521bca16263a07d2f4",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-alseil-shadow survives end-turn reload",
+          "declarationSha256": "5a26ea4322818296e4a83c4edee9a5727c2330a412b0b7d833b3a177e9dafd3f",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "G09 decline information info-uonos-reveal survives end-turn reload",
+          "declarationSha256": "92f56bd91999d4e839ad62041d81e42b0e6c9b41b9b83ccd08b2dc02a9c75075",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Cham observes complete hidden followers privately, freezes and acknowledges without using main action",
+          "declarationSha256": "11f4f936e790c0e6fa7c0b8fb0cae6e874e818525b6718dc8d383c2344363b4e",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lia inspects nearby chants then discards all seen or none",
+          "declarationSha256": "669786908914c9efca0cb927665af3e3d4d8db941abb8199da1e7431968af3e3",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s checks before private snapshot",
+          "declarationSha256": "95a309cf07391c20bc973897d6e4c9165dd6276116c6343fc89ff2ecdb63ce89",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "character",
+            -3
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s checks before private snapshot",
+          "declarationSha256": "95a309cf07391c20bc973897d6e4c9165dd6276116c6343fc89ff2ecdb63ce89",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab02",
+            "hand",
+            0
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lancaster discards all printed magic techniques, and consumes main action",
+          "declarationSha256": "a26665cfeec353cd3a3aadc57a80afefcceb7ebf45a0f77249de67c5cc0d5c18",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s swaps exact entire hands with public counterpart",
+          "declarationSha256": "cb379a84a0f4ae336c4fdc6aecdb4aea8106d229f0af0394f81e23aa387057be",
+          "parameters": [
+            "凍気のアイエル",
+            "爆炎のフレイアード",
+            "c2-p04-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "%s swaps exact entire hands with public counterpart",
+          "declarationSha256": "cb379a84a0f4ae336c4fdc6aecdb4aea8106d229f0af0394f81e23aa387057be",
+          "parameters": [
+            "爆炎のフレイアード",
+            "凍気のアイエル",
+            "c2-p06-r2c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Shadow uses pre-TruePower spirit and hides without erasing expiry",
+          "declarationSha256": "b5a67e73461e4a909d80cc36b724a5b56ec68222d502d17770ada30f1f79984f",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Uonos forces hidden Alseil public without granting voluntary TruePower",
+          "declarationSha256": "1a58a8e56d5eaf587855d30f2796f224a9e3c77bf9531106687b220936b19318",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO $scenario restores private snapshots and replays discard exactly once after eviction",
+          "declarationSha256": "3aba610f6f9c650774fe03a0964cef847ba3b337d4d7ed1575105dca6445533b",
+          "parameters": {
+            "scenario": "info-alseil-hand",
+            "abilityId": "c2-p04-r2c1-ab02",
+            "choice": "discard-one"
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO $scenario restores private snapshots and replays discard exactly once after eviction",
+          "declarationSha256": "3aba610f6f9c650774fe03a0964cef847ba3b337d4d7ed1575105dca6445533b",
+          "parameters": {
+            "scenario": "info-lia-chants",
+            "abilityId": "c2-p03-r1c2-ab02",
+            "choice": "discard-all"
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-turn-information.test.ts",
+          "suite": [],
+          "title": "DO twins exchanges actual whole hands once across duplicate receipt and eviction",
+          "declarationSha256": "dec39cc9d51c77713b23c9d206f058354a2ee34e67d6c8ef710f7442bd62bf64",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "Lancaster discards actual printed magic while retaining a follower and warrior technique",
+          "declarationSha256": "767214fb058ec12e4fb89a9892bda09b060df8c8d3e44e72e06e0a43493081ec",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "Shadow conceals its actual public owner without spending the main action",
+          "declarationSha256": "451bd4f663d9910cf640a1695591262c5c5666d189774d5c798f2c17fae91e1f",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/turn-information.spec.ts",
+          "suite": [],
+          "title": "Uonos forced reveal publishes Alseil without its voluntary spirit benefit",
+          "declarationSha256": "a61601aae27da712b1938ffc0dd16d9da0540b4081d8f18d6e9676c6d2d37c07",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
+        },
+        {
+          "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+          "suite": [],
+          "title": "G09 hidden Lancelot elects transformation %s only after explicit choice",
+          "declarationSha256": "d73221faee98f77bb7657f35b4b9b992639bb907dc29d39d09e10d7047a1ce74",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+          "suite": [],
+          "title": "G09 hidden Lancelot elects transformation %s only after explicit choice",
+          "declarationSha256": "d73221faee98f77bb7657f35b4b9b992639bb907dc29d39d09e10d7047a1ce74",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+          "parameters": "ritual-basic",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+          "parameters": "ritual-subordinates",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+          "parameters": "ritual-conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+          "parameters": "ritual-both",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "apps/worker/test/room-lifecycle.test.ts",
+          "suite": [],
+          "title": "DO G09 hidden Lancelot transformation %s is explicit across eviction and replay",
+          "declarationSha256": "c0f1958e8fc4e56c89586c0a16886876ff124eff8a8ad6e6423b145f64f69018",
+          "parameters": false,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "apps/worker/test/room-lifecycle.test.ts",
+          "suite": [],
+          "title": "DO G09 hidden Lancelot transformation %s is explicit across eviction and replay",
+          "declarationSha256": "c0f1958e8fc4e56c89586c0a16886876ff124eff8a8ad6e6423b145f64f69018",
+          "parameters": true,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "tests/e2e/lifecycle.spec.ts",
+          "suite": [],
+          "title": "Lancelot can transform after passing the full Lia boundary without a raw reaction command",
+          "declarationSha256": "0b211cef61719971a3265e73dec9ee156228dba5b9ad91a61cb4cbd17997639c",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "tests/e2e/lifecycle.spec.ts",
+          "suite": [],
+          "title": "G09 hidden Lancelot declines transformation through turn end and reload",
+          "declarationSha256": "4db6a55627c322a1032dd3ad95a4fc112519148ea583518126e6a2b4166a09e3",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "tests/e2e/lifecycle.spec.ts",
+          "suite": [],
+          "title": "G09 hidden Lancelot explicitly transforms and publishes only after use",
+          "declarationSha256": "59058227b0e48b7a5cfd03701131d631d251fcdf51f21338d70450f6dbd2a337",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "canonical Upa selects ignore, earns a private saved subset after damage, transfers exact physical source",
+          "declarationSha256": "53558aa89910471667b33ae25e4dca654214fa6dabfc9c4a04b19901579753b5",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/beast-empathy.test.ts",
+          "suite": [],
+          "title": "ignore is optional, canceled once/group, late/spent/wrong-owner/wrong-school reject without hidden target eligibility",
+          "declarationSha256": "21b44af572d893a7174f84003ea1bdf0638408905d44327b27a5e2f520f9ea7c",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+          "declarationSha256": "62be0c777f750840cee3d00f41da0a7b7fe32e0383952f66f186eb981e90ee0e",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham projection provides her own finite choice only at the death decision",
+          "declarationSha256": "2aeacb95edc9efa89320a3209e1a424bf68e9750a94e3423d0a5909d69fcf0c6",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham decline leaves every residual card for actual ordinary death disposal",
+          "declarationSha256": "fab408c36e08c577cc5eb24e56b8590288959e73f77d328c543ee34c6aefb0b1",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "A moved Cham card cannot be chosen twice, and gift identity reaches only giver and recipient",
+          "declarationSha256": "20a2a91c3278eb442f48645198cf3a450c1d59f4ebede4dba39e8adfcdd9824b",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Tia reserves hidden, becomes active only with public Lester, can turn OFF with finite attempts",
+          "declarationSha256": "018826cbe8a147f92d4695c3714f90e77f5bcd6fee6c6a37eb7e1d8c0de9e2c1",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "hidden selections and target subset are private throughout declaration and saved state projection",
+          "declarationSha256": "3b5b77be06586c0343c2f434e3b80d75df71372fa5580207786d436ca0c77fe1",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love explicit aura waits for public Arnes and turns off independently",
+          "declarationSha256": "3c967b3568627d5dbcf588dbf0addd66c3e892b039a2d25d210cb87407051b27",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love actual substitution redirects one hit into Upa with no physical payment",
+          "declarationSha256": "c9e517c856fc83b563e2ac3335943ffbf5819f4f446a783d6c59427f939ec0e0",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Declining sad love leaves the original target and spends neither aura nor substitution",
+          "declarationSha256": "54185f5912aaefee03efe9125022897ac4b38a23f6e07d6b305523128836956d",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual ban declaration applies only after its cancellable window and accumulates designations",
+          "declarationSha256": "7f69f787a1d054f6a20321a726856aee242709dd8539aaf30ceb9db3f9e751f8",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "actual Upa reserves hand Griffin and placed Earth Dragon before cancellable grant and resolves distinct techniques in one group",
+          "declarationSha256": "f12bf4c431dc65dae3c0b5e2cc4ce010105ba9ed3a9691419a3779455373fc34",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "private source options and unchosen identities stay private; spent bundle has no hidden ability identifiers",
+          "declarationSha256": "0fc25514a40709a34f29bcef6d0c6bb58dae76a459946148616bcabef6e9caad",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated entry correspondence: explicit source-specific command creates election; privacy/decline claims only where directly asserted. Beast capture is a post-damage subset after elected standard USE_ABILITY, not an independent automatic activation. Existing fixtures include configured prerequisites. Updated beast test preserves nested reward/reclaim windows and verifies eventual physical disposal rather than premature action deletion."
+        },
+        {
+          "path": "packages/engine/test/optional-dedicated-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s remains unelected through actual turn end",
+          "declarationSha256": "fa36bfb137b959ce08d2dbad2293e121f42085baeefc05f8f08e7fe3d5b56d54",
+          "parameters": "suppression-hidden-ordinary",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
+        },
+        {
+          "path": "packages/engine/test/optional-dedicated-decline.test.ts",
+          "suite": [],
+          "title": "G09 %s remains unelected through actual turn end",
+          "declarationSha256": "fa36bfb137b959ce08d2dbad2293e121f42085baeefc05f8f08e7fe3d5b56d54",
+          "parameters": "follower-attack-griffin",
+          "kind": "canonical-transition",
+          "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
+        },
+        {
+          "path": "apps/worker/test/room-optional-dedicated-decline.test.ts",
+          "suite": [],
+          "title": "DO G09 %s declines dedicated use across turn end eviction and replay",
+          "declarationSha256": "446296d26add1c9e36e8fa8356e77760f58f71af243c95812656914e43a90ea7",
+          "parameters": "suppression-hidden-ordinary",
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
+        },
+        {
+          "path": "apps/worker/test/room-optional-dedicated-decline.test.ts",
+          "suite": [],
+          "title": "DO G09 %s declines dedicated use across turn end eviction and replay",
+          "declarationSha256": "446296d26add1c9e36e8fa8356e77760f58f71af243c95812656914e43a90ea7",
+          "parameters": "follower-attack-griffin",
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
+        },
+        {
+          "path": "tests/e2e/optional-dedicated-decline.spec.ts",
+          "suite": [],
+          "title": "G09 Vanmil ends without designating suppression after reload",
+          "declarationSha256": "6582f95ffa212a09a4a5a2c88a1d4bb93daf452805a9b21b79a521f2e0363e09",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
+        },
+        {
+          "path": "tests/e2e/optional-dedicated-decline.spec.ts",
+          "suite": [],
+          "title": "G09 hidden Upa ends without reserving follower attacks after reload",
+          "declarationSha256": "5392c39ea02819ba604018f92e302026c1bb64bcff1468c1669c0642ff044d31",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "suite": [],
+          "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+          "declarationSha256": "5f323c223a58d07ccad0f5ef6c38032901823b6d0cafbaf89f1b4a710af780f5",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-tia-public",
+            "abilityId": "c2-p02-r1c1-ab04",
+            "owner": "A",
+            "spirit": 1
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-lia-public",
+            "abilityId": "c2-p03-r1c2-ab03",
+            "owner": "A",
+            "spirit": 2
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-arnes-defense",
+            "abilityId": "c2-p03-r2c2-ab04",
+            "owner": "B",
+            "spirit": 2
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-asfelt-dragon",
+            "abilityId": "c2-p04-r1c2-ab03",
+            "owner": "B",
+            "spirit": 0
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-asfelt-truth",
+            "abilityId": "c2-p04-r1c2-ab05",
+            "owner": "A",
+            "spirit": 1
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-upa-attack",
+            "abilityId": "c2-p05-r1c2-ab01",
+            "owner": "A",
+            "spirit": 0
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-garwin-rival",
+            "abilityId": "c2-p05-r2c1-ab05",
+            "owner": "A",
+            "spirit": 2
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario ON persists, retries exactly once, and OFF removes its numeric contribution",
+          "declarationSha256": "91e6c30a0312e39260fadaf5106d2b5a61c7961bad127f2dc34a8706b8ef1de9",
+          "parameters": {
+            "scenario": "conditional-dia-public",
+            "abilityId": "c2-p06-r1c2-ab02",
+            "owner": "A",
+            "spirit": 0
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-tia-public",
+            "abilityId": "c2-p02-r1c1-ab04",
+            "owner": "A",
+            "spirit": 1
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-lia-public",
+            "abilityId": "c2-p03-r1c2-ab03",
+            "owner": "A",
+            "spirit": 2
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-arnes-defense",
+            "abilityId": "c2-p03-r2c2-ab04",
+            "owner": "B",
+            "spirit": 2
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-asfelt-dragon",
+            "abilityId": "c2-p04-r1c2-ab03",
+            "owner": "B",
+            "spirit": 0
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-asfelt-truth",
+            "abilityId": "c2-p04-r1c2-ab05",
+            "owner": "A",
+            "spirit": 1
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-upa-attack",
+            "abilityId": "c2-p05-r1c2-ab01",
+            "owner": "A",
+            "spirit": 0
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-garwin-rival",
+            "abilityId": "c2-p05-r2c1-ab05",
+            "owner": "A",
+            "spirit": 2
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-conditional-abilities.test.ts",
+          "suite": [],
+          "title": "DO $scenario non-use keeps the saved original stats and election OFF after eviction",
+          "declarationSha256": "d0c98a61bacc555cf06818890a8b25fe208834c29d1e644b6a291189bb8d0c04",
+          "parameters": {
+            "scenario": "conditional-dia-public",
+            "abilityId": "c2-p06-r1c2-ab02",
+            "owner": "A",
+            "spirit": 0
+          },
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love %s persists separate selection attempt and permanent reward through DO restarts",
+          "declarationSha256": "f4c6b3c0df218c3a2e81d3859d15cb93b1d0adc41d7e36d021890aa644bf3282",
+          "parameters": "aura",
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love %s persists separate selection attempt and permanent reward through DO restarts",
+          "declarationSha256": "f4c6b3c0df218c3a2e81d3859d15cb93b1d0adc41d7e36d021890aa644bf3282",
+          "parameters": "substitute",
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love %s persists separate selection attempt and permanent reward through DO restarts",
+          "declarationSha256": "f4c6b3c0df218c3a2e81d3859d15cb93b1d0adc41d7e36d021890aa644bf3282",
+          "parameters": "decline",
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love %s persists separate selection attempt and permanent reward through DO restarts",
+          "declarationSha256": "f4c6b3c0df218c3a2e81d3859d15cb93b1d0adc41d7e36d021890aa644bf3282",
+          "parameters": "cancel",
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love %s persists separate selection attempt and permanent reward through DO restarts",
+          "declarationSha256": "f4c6b3c0df218c3a2e81d3859d15cb93b1d0adc41d7e36d021890aa644bf3282",
+          "parameters": "reward",
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-beast-capture.test.ts",
+          "suite": [],
+          "title": "DO restores ignore, earned private choice and transferred subset without replaying a physical acquisition",
+          "declarationSha256": "3b1598087de80f086f3f774df7f79b5316ffcb9d430e67eecbe53bfceb08d222",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "apps/worker/test/room-follower-groups.test.ts",
+          "suite": [],
+          "title": "evicts after atomic reservation and between constituent preparation without replaying costs or leaking private options",
+          "declarationSha256": "4ca81bbe1761fa0d223b621db645f175f1eea77ad6c000dd75958bd8179b4b10",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "suite": [],
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "declarationSha256": "dae50f74447baf3a5cc720d555d51be938198df873935da2270feb415994e7ac",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/follower-groups.spec.ts",
+          "suite": [],
+          "title": "Upa explicitly orders two sources with separate targets and retains one follower snapshot after reload",
+          "declarationSha256": "1075c4d037606b6a9fa86fd19a38bfd53b0961b8d4b02dcd4c40640d50d4947e",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/beast-capture.spec.ts",
+          "suite": [],
+          "title": "Upa can decline beast ignore without revealing or acquiring the blocked rear",
+          "declarationSha256": "9f7f22930861ffacb56f461b10c2301a3e145f354f22b7b365581d933fcbaaf9",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/beast-capture.spec.ts",
+          "suite": [],
+          "title": "earned capture survives reload and offers only the owner an unchecked subset of actual beasts",
+          "declarationSha256": "8455cb450a335e28587caeab283f120ea467cf9aed6fd37ad02c38a076b527b1",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        },
+        {
+          "path": "tests/e2e/beast-capture.spec.ts",
+          "suite": [],
+          "title": "choosing ignore does not force acquisition when the saved capture decision is declined",
+          "declarationSha256": "de2b2142581a3915e70d5483335d3b060bef89394bec541026f623bac274d7a9",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }
