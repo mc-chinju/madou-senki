@@ -74,7 +74,7 @@
 - Modify: `docs/checkpoints/2026-09-08-implementation.md`
 - Modify: `docs/operations/decision-result-2026-09-10.md`（D5/D6の承認欄）
 
-- [ ] **Step 1: 完成計画の区切り表に M5 を追加し、M3 の「対人の通し対戦」を M5 へ移す**
+- [x] **Step 1: 完成計画の区切り表に M5 を追加し、M3 の「対人の通し対戦」を M5 へ移す**
 
 区切り表の M3 行を次に置換する:
 
@@ -84,13 +84,13 @@
 | M5: 対人検証（公開後） | 招待した参加者との通し対戦で R3 の理解・判断時間・操作数・例外裁定を記録 | Task6 |
 ```
 
-- [ ] **Step 2: R3 の未完2項目の直前に次の段落を挿入し、R7末尾の「対人の8人通し対戦を複数回行い…M3」を「自動試験の合格で M3。対人確認は M5」に書き換える**
+- [x] **Step 2: R3 の未完2項目の直前に次の段落を挿入し、R7末尾の「対人の8人通し対戦を複数回行い…M3」を「自動試験の合格で M3。対人確認は M5」に書き換える**
 
 ```markdown
 2026-09-11: ユーザー指示により、人による操作評価は production 公開後の M5 で実施する。以下2項目の完了条件は変更しない。自動試験で代替したとは記録しない。
 ```
 
-- [ ] **Step 3: playtest-guide.md に「公開後の記録手順」節を追加する**
+- [x] **Step 3: playtest-guide.md に「公開後の記録手順」節を追加する**
 
 ```markdown
 ## 公開後の対人記録（M5）
@@ -102,9 +102,9 @@
 5. 結果は `playtest-results.md` に日付・人数・候補hash付きで追記する。
 ```
 
-- [ ] **Step 4: checkpoint の「次」を本計画の Task A3 に更新し、decision-result の D5/D6 を「2026-09-11 ユーザー委任により本計画で決定」に更新する**
+- [x] **Step 4: checkpoint の「次」を本計画の Task A3 に更新し、decision-result の D5/D6 を「2026-09-11 ユーザー委任により本計画で決定」に更新する**
 
-- [ ] **Step 5: リンク確認とコミット**
+- [x] **Step 5: リンク確認とコミット**
 
 Run: `grep -n "M5" docs/superpowers/plans/2026-09-08-completion-plan.md docs/operations/playtest-guide.md`
 Expected: 両ファイルに M5 が現れる

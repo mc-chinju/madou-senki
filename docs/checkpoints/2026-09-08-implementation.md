@@ -1,7 +1,7 @@
 # 実装の再開メモ
 
 ## 現在の再開地点
-- 次: D1〜D4 の方針は採用済み。台帳の残作業（pending の試験登録・implemented の成功 run 束縛・D4c `notApplicable` の retainedTests 束縛）から再開する。pending 一括昇格と正式 START 迂回はしない。D5 対人と D6 公開は後回し。
+- 次: [公開走り切り計画](../superpowers/plans/2026-09-11-release-run.md) Task A3。release-run worktree / worktree-release-runで作業、タスクごとにコミット。A2文書同期済み。D5対人は公開後M5、D6は招待制公開。認証はTask D1。
 - 進捗: 用途条項218/220、Appendix A25/25、Other193/195（残2は D4c 到達不能。台帳は pending のまま）。全件accepted・計画全体の完了は未達。
 - 台帳: 判定は `python3 scripts/validate_runtime_coverage.py` に任せる。受け入れ方針は `acceptance-policy/test-only-v1`。
 
@@ -18,7 +18,7 @@
 - [実退出証跡](../operations/evidence/2026-09-10-r4-reclaim-exit.md)
 - R4 exact条件は `2026-09-08-r4-suppression-reclaim.md`。無制限は秘匿分岐の公開比較。公開後の使用は別行。
 - readiness は ready=false を維持。全accepted候補/実START/一戦/R8は未完。
-- R8 と対人 R3 は完成候補の後。Cloudflare ログインを今求めない。
+- 対人R3は公開後M5。R8はrelease-run Phase D、認証はTask D1。
 
 ## 必要なときだけ読む履歴
 - [整理前の全履歴](2026-09-10-implementation-history-105852.md)：内容をそのまま保存。通常の再開時には読む必要なし。
