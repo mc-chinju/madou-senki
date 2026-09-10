@@ -24,8 +24,9 @@ def build_acceptance_receipt(manifest, row_key, row, obligation, dependency_rows
         'obligations': [row_key],
         'rowDigests': {row_key: reviewed_row_digest(row, obligation, dependency_rows)},
         'command': run.get('command'),
-        'cases': run.get('cases'),
-        'files': run.get('files'),
+        # The row digest binds this immutable run path/hash. Cases and candidate
+        # files live once in the run receipt, not once per accepted obligation.
+        'runEvidence': row.get('runEvidence'),
         'freezePolicy': run.get('freezePolicy'),
     }
 

@@ -56,6 +56,21 @@ class PromoteTest(unittest.TestCase):
             self.assertEqual(json.loads(raw)['rowDigests'][key], reviewed_row_digest(row, obligations[key], rows))
         self.assertEqual(promote(self.root, self.run_path)['accepted'], 0)
 
+    def test_acceptance_receipts_reference_run_without_copying_its_payload(self):
+        # Thousands of unrelated cases must stay in the single hashed run file.
+        self.run['cases'] += [dict(test=dict(self.test_ref, title=f'other-{i}'), result='passed')
+                              for i in range(2000)]
+        self.write(self.run_path, self.run)
+        self.assertEqual(promote(self.root, self.run_path)['accepted'], 3)
+        ledger = json.loads(self.ledger_path.read_text())
+        for row in ledger['rows']:
+            raw = (self.root / row['acceptanceEvidence']['path']).read_bytes()
+            receipt = json.loads(raw)
+            self.assertEqual(receipt.get('runEvidence'), row['runEvidence'])
+            self.assertLess(len(raw), 2048)
+            self.assertNotIn('cases', receipt)
+            self.assertNotIn('files', receipt)
+
     def test_failed_missing_and_related_cases_do_not_promote(self):
         for cases in [[{'test': self.test_ref, 'result': 'failed'}], [],
                       [{'test': dict(self.test_ref, kind='related'), 'result': 'passed'}]]:
