@@ -172072,12 +172072,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:01e5cb20bbbfaf85"
+        "t:40a9ce88c2a1bbe4",
+        "t:186c837c75614bf0",
+        "t:9489ba0902a12165",
+        "t:fc7504e2636f61ac",
+        "t:605dc71238361ace"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172099,12 +172102,16 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:01e5cb20bbbfaf85"
+        "t:40a9ce88c2a1bbe4",
+        "t:186c837c75614bf0",
+        "t:9489ba0902a12165",
+        "t:fc7504e2636f61ac",
+        "t:605dc71238361ace",
+        "t:6b29a74221dfe22a"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172126,12 +172133,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:01e5cb20bbbfaf85"
+        "t:40a9ce88c2a1bbe4",
+        "t:186c837c75614bf0",
+        "t:9489ba0902a12165",
+        "t:fc7504e2636f61ac",
+        "t:605dc71238361ace"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172153,12 +172163,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:01e5cb20bbbfaf85"
+        "t:40a9ce88c2a1bbe4",
+        "t:186c837c75614bf0",
+        "t:9489ba0902a12165",
+        "t:fc7504e2636f61ac",
+        "t:605dc71238361ace"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -172180,12 +172193,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:01e5cb20bbbfaf85"
+        "t:40a9ce88c2a1bbe4",
+        "t:186c837c75614bf0",
+        "t:9489ba0902a12165",
+        "t:fc7504e2636f61ac",
+        "t:605dc71238361ace"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174393,12 +174409,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:4ac286b4a0effc13",
+        "t:ab4aa10c90960791",
+        "t:7b683d32c86ca481",
+        "t:c163bf79d7f53aff",
+        "t:2a9dc92eb41a5ec1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174420,12 +174439,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:4ac286b4a0effc13",
+        "t:ab4aa10c90960791",
+        "t:7b683d32c86ca481",
+        "t:c163bf79d7f53aff",
+        "t:2a9dc92eb41a5ec1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174447,12 +174469,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:4ac286b4a0effc13",
+        "t:ab4aa10c90960791",
+        "t:7b683d32c86ca481",
+        "t:c163bf79d7f53aff",
+        "t:2a9dc92eb41a5ec1"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -174474,12 +174499,16 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:4ac286b4a0effc13",
+        "t:ab4aa10c90960791",
+        "t:7b683d32c86ca481",
+        "t:c163bf79d7f53aff",
+        "t:2a9dc92eb41a5ec1",
+        "t:00c3c7f04818a4c3"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -177940,13 +177969,19 @@
         "C04"
       ],
       "handler": [
-        "h:475907210787661f",
-        "h:970127f54e25e021"
+        "h:791deb67290b756f",
+        "h:63b8bf1884da261a"
       ],
-      "tests": [],
+      "tests": [
+        "t:40a9ce88c2a1bbe4",
+        "t:186c837c75614bf0",
+        "t:9489ba0902a12165",
+        "t:fc7504e2636f61ac",
+        "t:605dc71238361ace"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:1530f9e455001013"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178374,12 +178409,15 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:255e6bbdb48f8d92",
+        "t:06f020fe1df91bb7",
+        "t:46dd9eee55442c1c",
+        "t:8beab0fe3723fa4b",
+        "t:d96188f3e487b160"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178401,12 +178439,11 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:255e6bbdb48f8d92"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178428,12 +178465,14 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:255e6bbdb48f8d92",
+        "t:f36664fbaf705cff",
+        "t:1e2bbb7d2fa7ee5b",
+        "t:2925f6b34e166a1b"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -178455,12 +178494,11 @@
         "h:1e1c5c88f8aeb50e"
       ],
       "tests": [
-        "t:b09ba2b9db683e91"
+        "t:255e6bbdb48f8d92"
       ],
       "status": "implemented",
       "remaining": [
-        "n:0682ae99070b0c2b",
-        "n:49a71723d6a1e3e6"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "ability-effect",
@@ -196090,10 +196128,12 @@
         "h:791deb67290b756f",
         "h:63b8bf1884da261a"
       ],
-      "tests": [],
+      "tests": [
+        "t:40a9ce88c2a1bbe4"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:0db4c9324436bb90"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "inheritance",
@@ -196113,10 +196153,12 @@
         "h:791deb67290b756f",
         "h:63b8bf1884da261a"
       ],
-      "tests": [],
+      "tests": [
+        "t:186c837c75614bf0"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:0db4c9324436bb90"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "inheritance",
@@ -196136,10 +196178,12 @@
         "h:791deb67290b756f",
         "h:63b8bf1884da261a"
       ],
-      "tests": [],
+      "tests": [
+        "t:9489ba0902a12165"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:0db4c9324436bb90"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "inheritance",
@@ -196159,10 +196203,12 @@
         "h:791deb67290b756f",
         "h:63b8bf1884da261a"
       ],
-      "tests": [],
+      "tests": [
+        "t:fc7504e2636f61ac"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:0db4c9324436bb90"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "inheritance",
@@ -196182,10 +196228,12 @@
         "h:791deb67290b756f",
         "h:63b8bf1884da261a"
       ],
-      "tests": [],
+      "tests": [
+        "t:605dc71238361ace"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:0db4c9324436bb90"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "inheritance",
@@ -459689,6 +459737,188 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Each physical follower produces its own lower technique values and hit structure in the shared group."
+    },
+    "t:40a9ce88c2a1bbe4": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual transformation retains ownership of %s and its spent history",
+      "declarationSha256": "f6f37cb597669c6ddcc157735eb3f56d765e1a3f48c648e7f2d945288b817f51",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c2-ab01",
+      "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+    },
+    "t:186c837c75614bf0": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual transformation retains ownership of %s and its spent history",
+      "declarationSha256": "f6f37cb597669c6ddcc157735eb3f56d765e1a3f48c648e7f2d945288b817f51",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c2-ab02",
+      "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+    },
+    "t:9489ba0902a12165": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual transformation retains ownership of %s and its spent history",
+      "declarationSha256": "f6f37cb597669c6ddcc157735eb3f56d765e1a3f48c648e7f2d945288b817f51",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c2-ab03",
+      "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+    },
+    "t:fc7504e2636f61ac": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual transformation retains ownership of %s and its spent history",
+      "declarationSha256": "f6f37cb597669c6ddcc157735eb3f56d765e1a3f48c648e7f2d945288b817f51",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c2-ab04",
+      "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+    },
+    "t:605dc71238361ace": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual transformation retains ownership of %s and its spent history",
+      "declarationSha256": "f6f37cb597669c6ddcc157735eb3f56d765e1a3f48c648e7f2d945288b817f51",
+      "kind": "canonical-transition",
+      "parameters": "c2-p02-r2c2-ab05",
+      "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+    },
+    "t:6b29a74221dfe22a": {
+      "path": "packages/engine/test/task7h-abilities.test.ts",
+      "suite": [
+        "Task7h real optional abilities"
+      ],
+      "title": "Lancelot accepted cancellation consumes once-game transformation attempt",
+      "declarationSha256": "c70f17851efab99571c7525851706e3f4fb76323869ff270ecad8afd69cffe47",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual cancellation leaves old identity and consumes the once-game transformation attempt."
+    },
+    "t:4ac286b4a0effc13": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "Arseil conspiracy requires the actual awakening window and remains optional",
+      "declarationSha256": "80723c1d90243eeb19205502989613057323c85a70da3849d6bb49a54230613c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Outside awakening the command is rejected atomically; passing the actual offered boundary leaves no personal victory."
+    },
+    "t:ab4aa10c90960791": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-basic",
+      "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+    },
+    "t:7b683d32c86ca481": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-subordinates",
+      "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+    },
+    "t:c163bf79d7f53aff": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-conspiracy",
+      "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+    },
+    "t:2a9dc92eb41a5ec1": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-both",
+      "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+    },
+    "t:00c3c7f04818a4c3": {
+      "path": "packages/engine/test/ritual-terminal.test.ts",
+      "suite": [],
+      "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+      "declarationSha256": "e5b68bc9ba7b3b255f114a1694084fd32a44dbbeda37b29b9985f4162af9c90e",
+      "kind": "canonical-transition",
+      "parameters": "conspiracy",
+      "bindingNote": "After actual conspiracy exit, another player chants and attacks Vanmil to finish the remaining game."
+    },
+    "t:255e6bbdb48f8d92": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual dead Yotsulm changes allegiance at awakening and retains it through FuSen revival",
+      "declarationSha256": "0fc75f73e3b5323a64b4f9a038495e1d5c1fa6de67ec437e2b19d5b3693e0759",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual death, awakening conversion and FuSen revival preserve the Vanmil faction, GOOD/EVIL extinction objective and Vanmil protection on both live and saved dead identity."
+    },
+    "t:06f020fe1df91bb7": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-basic",
+      "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+    },
+    "t:46dd9eee55442c1c": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-subordinates",
+      "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+    },
+    "t:8beab0fe3723fa4b": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-conspiracy",
+      "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+    },
+    "t:d96188f3e487b160": {
+      "path": "packages/engine/test/ritual-physical.test.ts",
+      "suite": [],
+      "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+      "declarationSha256": "e4d7925f2380e0f95bfcfac57dd0c27dc394014999c4c37eadcbb3e85bfaa000",
+      "kind": "canonical-transition",
+      "parameters": "ritual-both",
+      "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+    },
+    "t:f36664fbaf705cff": {
+      "path": "packages/engine/test/ritual-terminal.test.ts",
+      "suite": [],
+      "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+      "declarationSha256": "e5b68bc9ba7b3b255f114a1694084fd32a44dbbeda37b29b9985f4162af9c90e",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual Vanmil death excludes converted subordinates from winners and preserves earlier personal winners."
+    },
+    "t:1e2bbb7d2fa7ee5b": {
+      "path": "packages/engine/test/ritual-terminal.test.ts",
+      "suite": [],
+      "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+      "declarationSha256": "e5b68bc9ba7b3b255f114a1694084fd32a44dbbeda37b29b9985f4162af9c90e",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Actual Vanmil death excludes converted subordinates from winners and preserves earlier personal winners."
+    },
+    "t:2925f6b34e166a1b": {
+      "path": "packages/engine/test/ritual-terminal.test.ts",
+      "suite": [],
+      "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+      "declarationSha256": "e5b68bc9ba7b3b255f114a1694084fd32a44dbbeda37b29b9985f4162af9c90e",
+      "kind": "canonical-transition",
+      "parameters": "conspiracy",
+      "bindingNote": "Actual Vanmil death excludes converted subordinates from winners and preserves earlier personal winners."
     }
   },
   "remainingNotes": {

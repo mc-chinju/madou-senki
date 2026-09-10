@@ -931,7 +931,7 @@ Expected: `valid: true`、`implementedRelatedOnly` と `implementedNoTests` が 
 git add packages/engine/test data docs && git commit -m "test,data: related止まりの条項を具体試験へ再束縛する"
 ```
 
-B1部分実績: 244行の不足を解消（束縛246行、既存具体行2行の参照更新を含む）。related-only18/no-tests17が残る。直近の複数従者58/獣捕獲26試験、型、全台帳validator成功。全279行完了までは上記チェックを未完のまま維持する。
+B1部分実績: 263行の不足を解消（束縛265行、既存具体行2行の参照更新を含む）。related-only5/no-tests11が残る。直近の変身・復活7/儀式18/終局3試験、型、全台帳validator成功。全279行完了までは上記チェックを未完のまま維持する。
 
 ### Task B2: 所有技・所有従者の回収 784 行（データ駆動試験）
 

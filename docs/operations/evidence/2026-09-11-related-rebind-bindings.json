@@ -10638,6 +10638,742 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab05#public-Lia-present",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab04",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab05",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab05#optional-transform-LancelotII",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab04",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab05",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/task7h-abilities.test.ts",
+          "suite": [
+            "Task7h real optional abilities"
+          ],
+          "title": "Lancelot accepted cancellation consumes once-game transformation attempt",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation leaves old identity and consumes the once-game transformation attempt."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab05#retained-damage",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab04",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab05",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab05#retained-use-history",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab04",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab05",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab05#inherited-abilities",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab04",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab05",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab04#awakening-only",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "Arseil conspiracy requires the actual awakening window and remains optional",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Outside awakening the command is rejected atomically; passing the actual offered boundary leaves no personal victory."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-basic",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-subordinates",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-both",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab04#optional-personal-victory",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "Arseil conspiracy requires the actual awakening window and remains optional",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Outside awakening the command is rejected atomically; passing the actual offered boundary leaves no personal victory."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-basic",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-subordinates",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-both",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab04#exit",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "Arseil conspiracy requires the actual awakening window and remains optional",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Outside awakening the command is rejected atomically; passing the actual offered boundary leaves no personal victory."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-basic",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-subordinates",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-both",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab04#others-continue",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "Arseil conspiracy requires the actual awakening window and remains optional",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Outside awakening the command is rejected atomically; passing the actual offered boundary leaves no personal victory."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-basic",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-subordinates",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-both",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual awakening allows optional conspiracy; election exits Arseil with personal win and leaves the main game unresolved."
+        },
+        {
+          "path": "packages/engine/test/ritual-terminal.test.ts",
+          "suite": [],
+          "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+          "parameters": "conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "After actual conspiracy exit, another player chants and attacks Vanmil to finish the remaining game."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab01#inherit-former-abilities",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab04",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab05",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#faction-Vanmil",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual dead Yotsulm changes allegiance at awakening and retains it through FuSen revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual death, awakening conversion and FuSen revival preserve the Vanmil faction, GOOD/EVIL extinction objective and Vanmil protection on both live and saved dead identity."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-basic",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-subordinates",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+        },
+        {
+          "path": "packages/engine/test/ritual-physical.test.ts",
+          "suite": [],
+          "title": "%s actual Uonos main becomes public full-health Vanmil and preserves real prior possessions and use history before optional seat-ordered reactions",
+          "parameters": "ritual-both",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining and electing subordinates keep EVIL or change both exact characters to Vanmil respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#objective-nonVanmil",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual dead Yotsulm changes allegiance at awakening and retains it through FuSen revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual death, awakening conversion and FuSen revival preserve the Vanmil faction, GOOD/EVIL extinction objective and Vanmil protection on both live and saved dead identity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#defeat-Vanmil",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual dead Yotsulm changes allegiance at awakening and retains it through FuSen revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual death, awakening conversion and FuSen revival preserve the Vanmil faction, GOOD/EVIL extinction objective and Vanmil protection on both live and saved dead identity."
+        },
+        {
+          "path": "packages/engine/test/ritual-terminal.test.ts",
+          "suite": [],
+          "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Vanmil death excludes converted subordinates from winners and preserves earlier personal winners."
+        },
+        {
+          "path": "packages/engine/test/ritual-terminal.test.ts",
+          "suite": [],
+          "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Vanmil death excludes converted subordinates from winners and preserves earlier personal winners."
+        },
+        {
+          "path": "packages/engine/test/ritual-terminal.test.ts",
+          "suite": [],
+          "title": "actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s",
+          "parameters": "conspiracy",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Vanmil death excludes converted subordinates from winners and preserves earlier personal winners."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#dead-identity-revival-consistency",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual dead Yotsulm changes allegiance at awakening and retains it through FuSen revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual death, awakening conversion and FuSen revival preserve the Vanmil faction, GOOD/EVIL extinction objective and Vanmil protection on both live and saved dead identity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1#inherits/c2-p02-r2c2-ab01",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1#inherits/c2-p02-r2c2-ab02",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab02",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1#inherits/c2-p02-r2c2-ab03",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab03",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1#inherits/c2-p02-r2c2-ab04",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab04",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1#inherits/c2-p02-r2c2-ab05",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual transformation retains ownership of %s and its spent history",
+          "parameters": "c2-p02-r2c2-ab05",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual WhiteSword use precedes public Lia and elected transformation; damage4, prior accepted use history and each old ability ownership persist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }
