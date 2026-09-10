@@ -55,6 +55,19 @@ class CoverageValidation(unittest.TestCase):
         generator.write_text('skip_validation()')
         self.assertNotEqual(v.candidate_files(self.root), before)
 
+    def test_dependency_patch_edits_and_additions_stale_candidate(self):
+        patches = self.root / 'patches'
+        patches.mkdir()
+        patch = patches / 'dependency.patch'
+        patch.write_text('original fix')
+        before = v.candidate_files(self.root)
+        self.assertIn('patches/dependency.patch', before)
+        patch.write_text('changed fix')
+        self.assertNotEqual(v.candidate_files(self.root), before)
+        before = v.candidate_files(self.root)
+        (patches / 'second.patch').write_text('new fix')
+        self.assertNotEqual(v.candidate_files(self.root), before)
+
     def test_well_formed_pending_is_valid_without_claiming_completion(self):
         self.assertEqual(self.errors(), [])
 

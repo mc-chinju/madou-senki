@@ -4,3 +4,5 @@ packages:
 onlyBuiltDependencies:
   - esbuild
   - workerd
+patchedDependencies:
+  '@cloudflare/vitest-pool-workers@0.22.0': patches/cloudflare-vitest-pool-workers-0.22.0.patch

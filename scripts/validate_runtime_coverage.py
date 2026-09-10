@@ -31,7 +31,7 @@ ADOPTED_RULING_FILES = tuple('docs/rules/second-edition/' + name for name in (
     'rulings.md', 'rulings-characters.md', 'rulings-actions-01-06.md',
     'rulings-actions-07-17.md', 'rulings-actions-18-25.md'))
 FREEZE_POLICY = 'runtime-candidate-v3'
-FREEZE_ROOTS = ('packages', 'apps', 'tests', 'scripts', 'data', 'resources', '.github/workflows', 'docs/rules/second-edition')
+FREEZE_ROOTS = ('packages', 'apps', 'tests', 'scripts', 'data', 'resources', 'patches', '.github/workflows', 'docs/rules/second-edition')
 # Freeze every root file, including dot-configs and future runner entrypoints.
 FREEZE_ROOT_PATTERNS = ('*',)
 FREEZE_EXCLUDED_DIRS = {'node_modules', '.git', '.wrangler', 'dist', 'build', 'coverage',
