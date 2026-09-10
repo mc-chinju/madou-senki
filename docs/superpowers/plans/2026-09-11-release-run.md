@@ -943,7 +943,7 @@ B1完了: 279行の不足を解消（束縛281行、既存具体行2行の参照
 **Interfaces:**
 - 試験は `it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) opens base recovery and returns once', ...)` と `it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) opens base recovery and returns once', ...)`。`CASES` は `characters.json` から `[characterName, cardName, cardId]` を生成する `const` 配列（AST 抽出器が静的に読めるよう、ファイル内で JSON import した値を map した結果を `const` に入れる。抽出器は識別子経由の `each` 引数しか静的評価しないので、`const OWNED_TECHNIQUE_CASES = [...]` を **リテラル配列として** 生成する。生成は `scripts/build_owned_reclaim_bindings.py --emit-cases` で行い、出力を試験ファイルの先頭に貼る）。
 
-- [ ] **Step 1: 台帳の owned-reclaim 行の clauseKey 構造を確認する**
+- [x] **Step 1: 台帳の owned-reclaim 行の clauseKey 構造を確認する**
 
 ```bash
 python3 - <<'EOF'
@@ -956,7 +956,7 @@ EOF
 
 clauseKey の末尾（例: `base-right`, `one-per-game`, `reservation-until-root`）ごとに、試験内の assert を対応づける。末尾が5種類以下であることを前提に、1 `it` の中で全末尾を assert し、束縛時に `bindingNote` で assert 行を指す。6種類以上なら末尾ごとに `it.each` を分ける。
 
-- [ ] **Step 2: 失敗する試験を書く（1人物・1技だけの `CASES` で開始）**
+- [x] **Step 2: 失敗する試験を書く（1人物・1技だけの `CASES` で開始）**
 
 ```ts
 // packages/engine/test/owned-reclaim-matrix.test.ts
@@ -989,12 +989,12 @@ describe('owned technique base recovery', () => {
 
 `owned-reclaim-helpers.ts` は既存 `owned-reclaim.test.ts` の準備コードを関数化して作る（人物を実IDで着席、所有技を手札に置く fixture、攻撃または詠唱で捨て札へ送る操作、root 完了までのパス）。ヘルパーの関数名は上記の3つに固定する。既存試験のコードを読み、`CHOOSE_RECLAIM` の実際のコマンド形（`decisionId`/`claimId`/`choice`）と `reclaimReservations` の型に合わせて修正する。
 
-- [ ] **Step 3: 失敗を確認**
+- [x] **Step 3: 失敗を確認**
 
 Run: `pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts`
 Expected: ヘルパー未定義で失敗
 
-- [ ] **Step 4: ヘルパーを実装し、1件成功させる**
+- [x] **Step 4: ヘルパーを実装し、1件成功させる**
 
 Run: `pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts`
 Expected: 1件成功
@@ -1074,6 +1074,8 @@ Expected: `valid: true`、pending の owned-reclaim が 0
 ```bash
 git add packages/engine/test scripts data docs && git commit -m "test,data: 所有技・所有従者784件の通常回収をデータ駆動試験で束縛する"
 ```
+
+B2部分実績: Step1〜4完了。条項末尾は9種類（通常共通5、技の実使用1、従者の死亡/士気失敗除外/攻撃捨て札除外3）なので種類ごとに静的なit.eachを分ける。技125組・従者23組の物理札を生成器で展開済み。aliases.jsonの複数正規名と同名物理コピーを全て保持し、条項の数字indexを元のowned配列へ対応付ける。白輪3試験・生成器4試験・型・全台帳validator成功。全件試験と束縛適用は未完、784行はpendingを維持。生成器CLIは全件のAST宣言・tuple検証が通るまで束縛ファイルを書かない。
 
 ### Task B3: 原典例 S01〜S32 の source 行 210 件
 
