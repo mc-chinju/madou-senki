@@ -191,7 +191,10 @@ def main():
     if not reported:
         parser.error('no reported test cases')
     ledger = json.loads((root / 'data/second-edition/runtime-coverage.json').read_text())
-    refs = ledger.get('testCases', {})
+    registry = ledger.get('testCases', {})
+    active = {test_id for row in ledger.get('rows', []) for test_id in row.get('tests', [])
+              if isinstance(test_id, str)}
+    refs = {test_id: registry[test_id] for test_id in sorted(active)}
     indexed = {k: ref for k, ref in refs.items() if '%#' in ref['title']}
     indices = {}
     if indexed:

@@ -169795,7 +169795,7 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:78d06138a1b06b17",
+        "t:1a3717a234aecff7",
         "t:f35e4af445fb93e3"
       ],
       "status": "implemented",
@@ -169821,7 +169821,7 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:78d06138a1b06b17"
+        "t:1a3717a234aecff7"
       ],
       "status": "implemented",
       "remaining": [
@@ -170346,7 +170346,7 @@
       ],
       "tests": [
         "t:fa9c64d091f3b987",
-        "t:adecdcad12166452"
+        "t:7ee5bb2c0f257258"
       ],
       "status": "implemented",
       "remaining": [
@@ -171491,7 +171491,7 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:9333aaf9f2a829ef",
+        "t:2fc4ab6f782897ed",
         "t:3ca205f3ba46c1e6"
       ],
       "status": "implemented",
@@ -171517,7 +171517,7 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:9333aaf9f2a829ef"
+        "t:2fc4ab6f782897ed"
       ],
       "status": "implemented",
       "remaining": [
@@ -176397,8 +176397,8 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ed7df6c9a6be01af",
-        "t:9231b714c42ac952"
+        "t:dd03a238bce97126",
+        "t:38c5732e9fb2207b"
       ],
       "status": "implemented",
       "remaining": [
@@ -176423,8 +176423,8 @@
         "h:ac5ace4866fb9203"
       ],
       "tests": [
-        "t:ed7df6c9a6be01af",
-        "t:9231b714c42ac952"
+        "t:dd03a238bce97126",
+        "t:38c5732e9fb2207b"
       ],
       "status": "implemented",
       "remaining": [
@@ -460167,6 +460167,81 @@
       "kind": "structural-resolver",
       "parameters": true,
       "bindingNote": "Ordinary and dedicated WhiteLight reject before payment with every state/view unchanged even when abilities are disabled."
+    },
+    "t:1a3717a234aecff7": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s %s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "ebedeb0e078013931812b0c01da42feca2fe643f1df915c574fc7c56f34925f6",
+      "kind": "canonical-transition",
+      "parameters": [
+        "白魔術師シェリム",
+        "烈火",
+        "c2-p01-r1c1-ab03"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:7ee5bb2c0f257258": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s %s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "ebedeb0e078013931812b0c01da42feca2fe643f1df915c574fc7c56f34925f6",
+      "kind": "canonical-transition",
+      "parameters": [
+        "侍大将のシン",
+        "天地百撃斬",
+        "c2-p01-r2c1-ab02"
+      ],
+      "bindingNote": "Actual Shin uses the printed chanted sword from hand only after explicit waiver."
+    },
+    "t:2fc4ab6f782897ed": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s %s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "ebedeb0e078013931812b0c01da42feca2fe643f1df915c574fc7c56f34925f6",
+      "kind": "canonical-transition",
+      "parameters": [
+        "妖精王フューリー",
+        "烈火",
+        "c2-p02-r1c2-ab04"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:dd03a238bce97126": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s %s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "ebedeb0e078013931812b0c01da42feca2fe643f1df915c574fc7c56f34925f6",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "烈火",
+        "c2-p05-r2c2-ab03"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
+    },
+    "t:38c5732e9fb2207b": {
+      "path": "packages/engine/test/declaration-modifiers.test.ts",
+      "suite": [
+        "whole declaration packages"
+      ],
+      "title": "%s %s explicitly waives chant through a saved cancellable declaration",
+      "declarationSha256": "ebedeb0e078013931812b0c01da42feca2fe643f1df915c574fc7c56f34925f6",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔導王ガイナス",
+        "天地百撃斬",
+        "c2-p05-r2c2-ab03"
+      ],
+      "bindingNote": "Without election actual unchanted use rejects; selected owner/source completes the attack and disposes once with exact final effect7 or Fury8."
     }
   },
   "remainingNotes": {

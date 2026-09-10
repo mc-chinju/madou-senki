@@ -63,7 +63,7 @@ describe('whole declaration packages', () => {
         ['魔導王ガイナス', '烈火', 'c2-p05-r2c2-ab03'],
         ['魔導王ガイナス', '天地百撃斬', 'c2-p05-r2c2-ab03'],
         ['侍大将のシン', '天地百撃斬', SHIN_CHANT],
-    ])('%s explicitly waives chant through a saved cancellable declaration', (name, cardName, abilityId) => {
+    ])('%s %s explicitly waives chant through a saved cancellable declaration', (name, cardName, abilityId) => {
         const { s: initial, card } = setup(name!, cardName!);
         rejected(initial, { type: 'ATTACK', cardInstanceId: card, dedicated: false, targetIds: ['B'] }, 'CHANT_REQUIRED');
         let s = attack(initial, card, [abilityId!]);

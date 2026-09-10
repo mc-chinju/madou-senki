@@ -1,5 +1,7 @@
 import json
 import tempfile
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -79,6 +81,33 @@ class RuntimeRunTest(unittest.TestCase):
         self.assertEqual([r['status'] for r in rows], ['failed', 'failed', 'passed'])
         self.assertEqual(rows[-1]['path'], 'test/x.spec.ts')
         self.assertEqual(rows[-1]['ancestors'], ['s'])
+
+    def test_recording_ignores_orphaned_refs_after_rebinding(self):
+        from .validate_runtime_coverage import FREEZE_POLICY, candidate_files, digest
+        data = self.root / 'data/second-edition'
+        data.mkdir(parents=True)
+        manifest = {'obligations': []}
+        (data / 'runtime-obligations.json').write_text(json.dumps(manifest))
+        current = self.ref()
+        stale = dict(current, declarationSha256='old')
+        (data / 'runtime-coverage.json').write_text(json.dumps({
+            'rows': [{'tests': ['current']}], 'testCases': {'old': stale, 'current': current}}))
+        evidence = self.root / 'docs/evidence'
+        evidence.mkdir(parents=True)
+        snapshot = evidence / 'snapshot.json'
+        snapshot.write_text(json.dumps({'format': 'runtime-candidate-snapshot/v1',
+            'freezePolicy': FREEZE_POLICY, 'manifestSha256': digest(manifest),
+            'files': candidate_files(self.root), 'createdAt': '2026-09-11T00:00:00Z'}))
+        report = evidence / 'report.json'
+        report.write_text(json.dumps({'testResults': [{'name': str(self.root / current['path']),
+            'assertionResults': [{'ancestorTitles': ['s'], 'title': 'a does it', 'status': 'passed'}]}]}))
+        output = evidence / 'run.json'
+        result = subprocess.run([sys.executable, str(Path(__file__).with_name('record_runtime_run.py')),
+            '--root', str(self.root), '--snapshot', str(snapshot), '--vitest', str(report),
+            '--command', 'vitest', '--exit-code', '0', '--output', str(output)],
+            capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual([case['test'] for case in json.loads(output.read_text())['cases']], [current])
 
     def test_snapshot_rejects_changed_candidate_or_manifest(self):
         snapshot = {'files': {'a': 'old'}, 'manifestSha256': 'm'}
