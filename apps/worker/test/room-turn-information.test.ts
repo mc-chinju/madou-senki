@@ -275,3 +275,108 @@ it('DO TruePower survives eviction until the actual saved actor ends its turn, t
   const own = (await room.snapshotFor('A')).game!;
   expect(own.spiritExpiry).toBeNull(); expect(own.self.stats.spirit).toBe(base);
 }, 15000);
+
+it('DO G09 ordinary voluntary reveal declines TruePower across eviction and duplicate receipt', async () => {
+  const room = await savedRoom('info-alseil-truepower');
+  const abilityId = 'c2-p04-r2c1-ab03';
+  const before = (await room.stored()).state.game!;
+  const base = viewFor(before, 'A').self.stats.spirit;
+  expect(viewFor(before, 'A').revealAbilityOptions.some(option => option.abilityId === abilityId)).toBe(true);
+  for (const actor of ['B', 'C', 'D']) {
+    const other = (await room.snapshotFor(actor)).game!;
+    expect(JSON.stringify(other)).not.toContain('c2-p04-r2c1');
+    expect(other.revealAbilityOptions).toEqual([]);
+  }
+  const receipt = await room.send('A', { type: 'REVEAL_CHARACTER' });
+  await room.replay(receipt);
+  await room.until(state => !state.windows?.length);
+  await room.replay(receipt);
+  const done = (await room.stored()).state.game!;
+  expect(done.used).toEqual(before.used);
+  expect(Object.values(done.abilities ?? {}).some(frame => frame.abilityId === abilityId)).toBe(false);
+  expect(done.players.A!.revealed).toBe(true);
+  for (const actor of ['A', 'B', 'C', 'D']) {
+    const view = (await room.snapshotFor(actor)).game!;
+    expect(view.players.A!.characterId).toBe('c2-p04-r2c1');
+    expect(view.revealAbilityOptions).toEqual([]);
+  }
+  const own = (await room.snapshotFor('A')).game!;
+  expect(own.self.stats.spirit).toBe(base);
+  expect(own.spiritExpiry).toBeNull();
+}, 15000);
+
+it.each([
+  ['info-cham-draw', 'skip'], ['info-cham-draw', 'ordinary'], ['info-cham-draw', 'ability'],
+  ['info-lancelot-growth', 'skip'], ['info-lancelot-growth', 'ordinary'], ['info-lancelot-growth', 'ability'],
+] as const)('DO G09 %s draw choice %s persists exactly once without automatic replacement', async (scenario, choice) => {
+  const room = await savedRoom(scenario);
+  const before = (await room.stored()).state.game!;
+  const abilityId = scenario === 'info-cham-draw' ? 'c2-p01-r2c2-ab02' : 'c2-p07-r1c1-ab03';
+  expect(viewFor(before, 'A').drawAbilityOptions.some(option => option.abilityId === abilityId)).toBe(true);
+  async function privacy() {
+    for (const actor of ['B', 'C', 'D']) {
+      const view = (await room.snapshotFor(actor)).game!;
+      expect(view.drawAbilityOptions).toEqual([]);
+      if (scenario === 'info-cham-draw') {
+        expect(view.players.A).not.toHaveProperty('characterId');
+        expect(JSON.stringify(view)).not.toContain('c2-p01-r2c2');
+      }
+    }
+  }
+  await privacy();
+  const receipt = await room.send('A', { type: 'CHOOSE_DRAW', draw: choice !== 'skip', ...(choice === 'ability' ? { abilityId } : {}) });
+  await room.replay(receipt);
+  await privacy();
+  await room.until(state => !state.windows?.length);
+  await room.replay(receipt);
+  const done = (await room.stored()).state.game!;
+  expect(done.phase).toBe('action');
+  expect(done.players.A!.hand).toHaveLength(before.players.A!.hand.length + (choice === 'skip' ? 0 : choice === 'ordinary' ? 1 : 2));
+  expect(done.used?.filter(key => key.includes(abilityId)) ?? []).toHaveLength(choice === 'ability' ? 1 : 0);
+  if (choice !== 'ability') {
+    expect(done.used).toEqual(before.used);
+    expect(done.abilities).toEqual(before.abilities);
+  }
+  expect((await room.snapshotFor('A')).game!.drawAbilityOptions).toEqual([]);
+  await privacy();
+}, 15000);
+
+it.each([
+  ['info-cham-followers', 'c2-p01-r2c2-ab03'], ['info-lia-chants', 'c2-p03-r1c2-ab02'],
+  ['info-lester-rumor', 'c2-p03-r2c1-ab03'], ['info-alseil-hand', 'c2-p04-r2c1-ab02'],
+  ['info-lancaster-discard', 'c2-p02-r2c1-ab04'], ['info-aiel-twins', 'c2-p04-r1c1-ab04'],
+  ['info-flaiard-twins', 'c2-p06-r2c1-ab04'], ['info-alseil-shadow', 'c2-p04-r2c1-ab01'],
+  ['info-uonos-reveal', 'c2-p05-r1c1-ab01'],
+] as const)('DO G09 %s ends without electing %s across eviction and replay', async (scenario, abilityId) => {
+  const room = await savedRoom(scenario), before = (await room.stored()).state.game!;
+  expect(viewFor(before, 'A').abilityOptions.some(option => option.abilityId === abilityId)).toBe(true);
+  async function privacy() {
+    for (const actor of ['B', 'C', 'D']) {
+      const view = (await room.snapshotFor(actor)).game!;
+      expect(view.abilityOptions.some(option => option.abilityId === abilityId)).toBe(false);
+      expect(view.inspection).toBeNull();
+      if (!before.players.A!.revealed) expect(view.players.A).not.toHaveProperty('characterId');
+    }
+  }
+  await privacy();
+  const passed = await room.send('A', { type: 'PASS_ACTION' });
+  await room.replay(passed);
+  expect((await room.stored()).state.game!.players).toEqual(before.players);
+  await privacy();
+  const hand = before.players.A!.hand;
+  const excess = Math.max(0, hand.length - (await room.snapshotFor('A')).game!.self.stats.handLimit);
+  const discardIds = hand.slice(0, excess);
+  const ended = await room.send('A', { type: 'END_TURN', discardIds });
+  await room.replay(ended);
+  await room.replay(passed);
+  const done = (await room.stored()).state.game!;
+  expect(done.phase).toBe('turn-start');
+  expect(done.seatOrder[done.turnSeat]).toBe('B');
+  expect(done.used).toEqual(before.used);
+  expect(done.abilities).toEqual(before.abilities);
+  expect(done.inspections ?? []).toEqual(before.inspections ?? []);
+  for (const actor of ['B', 'C', 'D']) expect(done.players[actor]).toEqual(before.players[actor]);
+  expect(done.players.A!.hand).toEqual(hand.filter(id => !discardIds.includes(id)));
+  expect(done.players.A!.revealed).toBe(before.players.A!.revealed);
+  await privacy();
+}, 15000);

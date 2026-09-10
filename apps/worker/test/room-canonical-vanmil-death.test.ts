@@ -1,0 +1,19 @@
+import {reset,runInDurableObject} from 'cloudflare:test';
+import {afterEach,expect,it} from 'vitest';
+import {activeWindowRef,allCardInstanceIds,gameStats,viewFor,type GameCommand} from '@madou/engine';
+import {getAction,actionCards} from '@madou/catalog';
+import {openTestRoom} from './fixtures/recovery-room.js';
+import {entropy} from './fixtures/scenario-tools.js';
+import type {CanonicalRoom} from './fixtures/canonical-room.js';
+afterEach(async()=>{await reset();});
+it('R6 canonical Vanmil actual death saves accepted ban through pending death and commits one C13 result under every receipt replay',async()=>{
+ const room=await openTestRoom('canonical-vanmil-death');let seq=0;
+ const game=async()=>(await room.stored()).state.game!;
+ async function send(actorId:string,command:GameCommand){const before=await room.stored(),envelope={protocolVersion:1 as const,commandId:`vanmil-end-${seq++}`,expectedRevision:before.revision,...activeWindowRef(before.state.game!),command};await runInDurableObject(room.room,instance=>{(instance as CanonicalRoom).setNextEntropy(entropy());});const ack=await room.command(actorId,envelope);expect(ack).toMatchObject({type:'ack'});const saved=await room.stored(),ids=allCardInstanceIds(saved.state.game!);expect(new Set(ids).size).toBe(220);expect(ids.sort()).toEqual(actionCards.map(card=>card.id).sort());await room.restart();expect(await room.command(actorId,envelope)).toEqual(ack);expect(await room.stored()).toEqual(saved);for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game).toEqual(viewFor(saved.state.game!,id));return {actorId,envelope,ack};}
+ const o=viewFor(await game(),'A').abilityOptions.find(o=>o.abilityId==='c2-p07-r1c2-ab03')!;await send('A',{type:'USE_ABILITY',abilityId:o.abilityId,targetEventId:o.targetEventId,targetIds:['B']});
+ for(let n=0;n<100;n++){const s=await game(),id=s.seatOrder[s.turnSeat]!,w=s.windows?.at(-1);if(w)await send(w.participants[w.cursor]!,{type:'PASS'});else if(s.phase==='action'&&id==='D')break;else if(s.phase==='action')await send(id,{type:'PASS_ACTION'});else if(s.phase==='withdrawal')await send(id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')await send(id,{type:'END_TURN',discardIds:s.players[id]!.hand.slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});else if(s.phase==='turn-start')await send(id,{type:'START_TURN'});else if(s.phase==='draw')await send(id,{type:'CHOOSE_DRAW',draw:false});else throw Error('VANMIL_END_PHASE');}
+ const before=await game(),designations=structuredClone(before.suppressionDesignations),card=before.players.D!.hand.find(id=>getAction(id)!.name==='踏み込み／弓')!;expect(designations).toHaveLength(1);let last=await send('D',{type:'ATTACK',cardInstanceId:card,targetIds:['A'],dedicated:false}),pending=false;
+ for(let n=0;n<300;n++){const s=await game(),w=s.windows?.at(-1);if(!w)break;expect(s.outcome).toBeUndefined();expect(s.suppressionDesignations).toEqual(designations);if(s.players.A!.presence==='pending-death'){pending=true;for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game!.outcome).toBeNull();}last=await send(w.participants[w.cursor]!,{type:'PASS'});}
+ expect(pending).toBe(true);const saved=await room.stored(),done=saved.state.game!;expect(done.players.A!.presence).toBe('dead');expect(done.outcome).toMatchObject({reason:'vanmil-death',winnerIds:['B','C','D']});expect(done.windows??[]).toEqual([]);expect(done.resolution).toEqual([]);expect(done.reclaimReservations).toEqual([]);expect(done.events.filter(e=>e.type==='GAME_COMPLETED')).toHaveLength(1);expect(done.events.filter(e=>e.type==='PLAYER_REVIVED')).toEqual([]);expect(done.discard.filter(id=>id===card)).toHaveLength(1);
+ await room.restart();expect(await room.command(last.actorId,last.envelope)).toEqual(last.ack);expect(await room.stored()).toEqual(saved);for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game!.outcome).toEqual(done.outcome);
+});

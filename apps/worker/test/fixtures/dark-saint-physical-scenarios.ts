@@ -1,0 +1,17 @@
+import {getAction} from '@madou/catalog';
+import {createGame,gameStats} from '@madou/engine';
+import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+export const darkSaintPhysicalScenarios=['saint-setup','saint-turn','saint-magic5','saint-magic6','saint-magic7','saint-ignore','saint-decline','saint-guard','saint-army','saint-grant-hand','saint-grant-field','saint-destroy','saint-army-spirit'] as const;
+export type DarkSaintPhysicalScenario=typeof darkSaintPhysicalScenarios[number];
+export function isDarkSaintPhysicalScenario(name:string):name is DarkSaintPhysicalScenario{return(darkSaintPhysicalScenarios as readonly string[]).includes(name);}
+export function darkSaintPhysicalMode(name:DarkSaintPhysicalScenario){const attack=name.includes('-grant-')||name.includes('-army');return{card:'a2-p21-r2c1',name:'闇の聖女',level:5,hp:2,attributes:['人','黒','女'],attack,army:name.includes('-army'),grant:name.includes('-grant-'),destroy:name.endsWith('-destroy'),spirit:name.endsWith('-spirit'),magic:name.includes('-magic'),magicLevel:name.endsWith('5')?5:name.endsWith('6')?6:7,ignore:name.endsWith('-ignore')||name.endsWith('-guard'),decline:name.endsWith('-decline'),guard:name.endsWith('-guard'),initial:!attack&&!name.endsWith('-turn')||name.endsWith('-field')};}
+/** All scripts define initial characters and deals; placement and resolution use commands. */
+export function makeDarkSaintPhysicalScenario(name:DarkSaintPhysicalScenario,players:{id:string;name:string}[],options:{level?:number;magic?:number;owner?:string;attacker?:string;card?:string;mixed?:boolean}={}){
+ const m=darkSaintPhysicalMode(name),s=createGame(players,entropy(),{startingSeat:0}),[a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];
+ for(const [i,p] of players.entries())assignCharacter(s,p.id,[options.owner??(m.grant?'魔聖母ディア':'竜皇子アスフェルト'),options.attacker??(m.destroy?'占星術師のアルセイル':m.ignore||m.decline||options.level!==undefined?'魔聖母ディア':'白魔術師シェリム'),'凍気のアイエル','侍大将のシン'][i]!);
+ for(const p of Object.values(s.players)){p.permanent={endurance:100,warrior_level:20,magic_level:20,spirit:20};p.permanent.spirit=20+14-gameStats(s,p.id).spirit;}
+ if(options.level!==undefined)s.players[b]!.permanent!.warrior_level=20+options.level-gameStats(s,b).warrior_level;
+ if(options.magic!==undefined)s.players[a]!.permanent!.magic_level=20+options.magic-gameStats(s,a).magic_level;
+ const keep=[takeCard(s,a,options.card??m.card),takeCard(s,a,m.guard?'a2-p22-r3c3':m.spirit||options.card==='a2-p22-r1c1'?'a2-p18-r3c3':'a2-p22-r1c1'),takeCard(s,a,'a2-p24-r1c3'),takeCard(s,a,m.army?'a2-p05-r2c2':'a2-p23-r1c1'),takeCard(s,a,'a2-p07-r1c1'),takeCard(s,b,m.destroy?'a2-p13-r1c2':m.magic?m.magicLevel===5?'a2-p17-r2c2':'a2-p18-r1c3':'a2-p24-r1c2'),takeCard(s,b,'a2-p21-r2c3'),takeCard(s,b,'a2-p24-r2c1'),takeCard(s,b,options.mixed?'a2-p21-r1c3':m.magic&&m.magicLevel===7?'a2-p05-r2c3':'a2-p11-r1c3'),takeCard(s,b,m.spirit?'a2-p22-r1c1':'a2-p07-r1c2'),takeCard(s,d,'a2-p02-r2c3')];
+ for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];const cursors:Record<string,number>={};s.events=s.events.flatMap(e=>{if(e.type==='CHARACTER_ASSIGNED')return[{...e,characterId:s.players[e.actorId]!.characterId}];if(e.type!=='CARD_DRAWN')return[e];const i=cursors[e.actorId]??0;cursors[e.actorId]=i+1;const id=s.players[e.actorId]!.hand[i];return id?[{...e,cardInstanceId:id}]:[];});return s;
+}

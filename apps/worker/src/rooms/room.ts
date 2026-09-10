@@ -26,6 +26,15 @@ export class Room extends DurableObject<Env> {
     return { seated: !!current && Object.hasOwn(current.state.members, actorId) };
   }
 
+  protected commandEntropy(): Entropy { return entropy(); }
+
+  /** Internal RPC: routes supply the authenticated session, never a client actor header. */
+  gameSnapshot(actorId: string): { revision: number; game: RoomView['game'] } | null {
+    const current = this.current();
+    if (!current || !Object.hasOwn(current.state.members, actorId)) return null;
+    return { revision: current.revision, game: current.state.game ? viewFor(current.state.game, actorId) : null };
+  }
+
   async create(roomId: string, actor: Session, settings: RoomSettings): Promise<RoomMutationResult> {
     return this.mutateLobby(async () => {
       if (this.store.snapshot() || settings.rulesetId !== ruleset.id) return { ok: false, code: 'FORBIDDEN' };
@@ -157,7 +166,7 @@ export class Room extends DurableObject<Env> {
           if (window ? envelope.windowId !== window.windowId || envelope.windowRevision !== window.windowRevision : envelope.windowId !== undefined) {
             return error('STALE_WINDOW', envelope.commandId);
           }
-          const outcome = transition(game, { actorId, command: envelope.command }, entropy());
+          const outcome = transition(game, { actorId, command: envelope.command }, this.commandEntropy());
           if (!outcome.ok) return error('INVALID_ACTION', envelope.commandId);
           next = { ...current.state, game: outcome.state, status: outcome.state.outcome ? 'finished' : 'playing' };
           events = outcome.events.map(event => ({ kind: 'game', event }));
@@ -192,7 +201,7 @@ export class Room extends DurableObject<Env> {
           if (room.ownerId !== actorId) return { ok: false, code: 'FORBIDDEN' };
           if (Object.keys(room.members).length !== room.capacity || Object.values(room.members).some(m => !m.ready)) return { ok: false, code: 'NOT_READY' };
           try { assertPlayableCatalog(entries); } catch { return { ok: false, code: 'RULESET_NOT_READY' }; }
-          next.game = createGame(Object.values(room.members).map(({ id, name }) => ({ id, name })), entropy());
+          next.game = createGame(Object.values(room.members).map(({ id, name }) => ({ id, name })), this.commandEntropy());
           next.status = 'playing'; next.closeVotes = []; event = 'STARTED'; break;
         case 'UPDATE_SETTINGS':
           if (room.ownerId !== actorId) return { ok: false, code: 'FORBIDDEN' };

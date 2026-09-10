@@ -1,0 +1,12 @@
+import {reset} from 'cloudflare:test';
+import {afterEach,expect,it,vi} from 'vitest';
+import {activeWindowRef,allCardInstanceIds,type GameCommand} from '@madou/engine';
+import {openTestRoom} from './fixtures/recovery-room.js';
+import {leafDefenseMode} from './fixtures/leaf-defense-scenarios.js';
+afterEach(async()=>{vi.restoreAllMocks();await reset();});
+it.each([['leaf-ordinary',false],['leaf-ordinary',true],['leaf-dedicated',true],['leaf-three-ordinary',false],['leaf-three-ordinary',true],['leaf-three-dedicated',true]] as const)('%s failed enemy=%s saves each defense boundary and replays once',async(scenario,failed)=>{
+ let face=1;vi.spyOn(crypto,'getRandomValues').mockImplementation(<T extends ArrayBufferView|null>(array:T):T=>{if(array instanceof Uint32Array)array.fill(face-1);return array;});const m=leafDefenseMode(scenario),room=await openTestRoom(scenario);let seq=0;
+ async function send(actorId:string,command:GameCommand){const before=await room.stored(),envelope={protocolVersion:1 as const,commandId:`leaf-${seq++}`,expectedRevision:before.revision,...activeWindowRef(before.state.game!),command};const ack=await room.command(actorId,envelope);expect(ack).toMatchObject({type:'ack'});const saved=await room.stored(),ids=allCardInstanceIds(saved.state.game!);expect(ids).toHaveLength(220);expect(new Set(ids).size).toBe(220);await room.restart();expect(await room.command(actorId,envelope)).toEqual(ack);expect(await room.stored()).toEqual(saved);}
+ await send('B',{type:'PLAY_DEFENSE',cardInstanceId:m.card,dedicated:m.dedicated});for(let n=0;n<400;n++){const s=(await room.stored()).state.game!,w=s.windows?.at(-1);if(!w)break;expect(w.kind).not.toBe('ability-attack');const r=s.rolls?.at(-1);face=failed&&r?.purpose==='technique-check'&&r.rollerId==='A'&&r.stage==='before-roll'?6:1;await send(w.participants[w.cursor]!,{type:'PASS'});}
+ const done=(await room.stored()).state.game!,blocked=m.dedicated||failed;expect(done.windows??[]).toEqual([]);expect([done.players.A!.damage,done.players.B!.damage,done.players.C!.damage]).toEqual([0,m.three?(blocked?14:21):(blocked?0:5),m.three?21:0]);expect(done.discard.filter(id=>id===m.card)).toHaveLength(1);const rolls=(done.rolls??[]).filter(r=>r.purpose==='technique-check');expect(rolls).toEqual(m.dedicated?[]:[expect.objectContaining({rollerId:'A',threshold:5,modifier:-1,success:!failed,faces:failed?[6,6]:[1,1]})]);expect(done.phase).toBe('withdrawal');
+},15000);

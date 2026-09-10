@@ -41,7 +41,8 @@ function attackCard(game: GameState) {
   expect(action.kind).toBe('attack');
   return action.cardInstanceId;
 }
-function consumed(game: GameState, cardId: string) {
+function consumed(game: GameState, cardId: string | null) {
+  if(cardId===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
   expect(game.discard.filter(id => id === cardId)).toHaveLength(1);
   expect(game.players.A!.hand).not.toContain(cardId);
   expect(game.players.A!.chants.map(card => card.cardInstanceId)).not.toContain(cardId);

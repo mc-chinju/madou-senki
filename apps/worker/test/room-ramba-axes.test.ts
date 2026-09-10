@@ -1,0 +1,11 @@
+import {reset} from 'cloudflare:test';
+import {afterEach,expect,it,vi} from 'vitest';
+import {activeWindowRef,allCardInstanceIds,type GameCommand} from '@madou/engine';
+import {openTestRoom} from './fixtures/recovery-room.js';
+import {rambaAxeMode} from './fixtures/ramba-axes-scenarios.js';
+afterEach(async()=>{vi.restoreAllMocks();await reset();});
+it.each(['axe-strike-ordinary','axe-strike-dedicated','axe-mighty-ordinary','axe-mighty-dedicated','axe-death-ordinary','axe-death-dedicated'] as const)('%s saves actual threshold follower survival or destruction once across every eviction',async(scenario)=>{
+ vi.spyOn(crypto,'getRandomValues').mockImplementation(<T extends ArrayBufferView|null>(array:T):T=>{if(array instanceof Uint32Array)array.fill(0);return array;});const room=await openTestRoom(scenario);let seq=0;const m=rambaAxeMode(scenario),initial=(await room.stored()).state.game!,guard=initial.players.B!.followers[0]!.cardInstanceId;
+ async function send(actorId:string,command:GameCommand){const before=await room.stored(),envelope={protocolVersion:1 as const,commandId:`ramba-axes-${seq++}`,expectedRevision:before.revision,...activeWindowRef(before.state.game!),command};const ack=await room.command(actorId,envelope);expect(ack).toMatchObject({type:'ack'});const saved=await room.stored(),ids=allCardInstanceIds(saved.state.game!);expect(ids).toHaveLength(220);expect(new Set(ids).size).toBe(220);await room.restart();expect(await room.command(actorId,envelope)).toEqual(ack);expect(await room.stored()).toEqual(saved);}
+ await send('A',{type:'ATTACK',cardInstanceId:m.card,targetIds:m.far&&m.dedicated?['B','C']:['B'],dedicated:m.dedicated});for(let n=0;n<300;n++){const s=(await room.stored()).state.game!,w=s.windows?.at(-1);if(!w)break;await send(w.participants[w.cursor]!,{type:'PASS'});}const done=(await room.stored()).state.game!;expect([done.players.A!.damage,done.players.B!.damage,done.players.C!.damage]).toEqual([!m.dedicated&&m.limit===5?6:0,m.dedicated?m.damage:0,m.far&&m.dedicated?10:0]);expect(done.discard.filter(id=>id===m.card)).toHaveLength(1);expect(done.discard.filter(id=>id===guard)).toHaveLength(m.dedicated?1:0);expect(done.players.B!.followers.some(f=>f.cardInstanceId===guard)).toBe(!m.dedicated);expect(done.phase).toBe('withdrawal');
+});

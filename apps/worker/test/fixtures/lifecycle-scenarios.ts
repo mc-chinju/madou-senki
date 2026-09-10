@@ -1,7 +1,7 @@
 import { allCardInstanceIds, createGame, derivedStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 
-export const lifecycleScenarioNames = ['death-gift', 'lifecycle-finish', 'lifecycle-stalemate', 'fusen-revival', 'lifecycle-transform', 'ritual-transfer', 'ritual-use'] as const;
+export const lifecycleScenarioNames = ['death-gift', 'lifecycle-finish', 'lifecycle-stalemate', 'fusen-revival', 'lifecycle-transform', 'lifecycle-transform-hidden', 'ritual-transfer', 'ritual-use'] as const;
 export type LifecycleScenarioName = typeof lifecycleScenarioNames[number];
 export function isLifecycleScenario(name: string): name is LifecycleScenarioName {
   return (lifecycleScenarioNames as readonly string[]).includes(name);
@@ -45,9 +45,9 @@ export function makeLifecycleScenario(name: LifecycleScenarioName, players: { id
     return state;
   }
 
-  if (name === 'lifecycle-transform') {
+  if (name === 'lifecycle-transform' || name === 'lifecycle-transform-hidden') {
     assignCharacter(state, a, '聖騎士ランスロット'); assignCharacter(state, b, 'リーア姫');
-    state.players[a]!.revealed = true;
+    state.players[a]!.revealed = name === 'lifecycle-transform';
     takeCard(state, a, '踏み込み／弓');
     return state;
   }

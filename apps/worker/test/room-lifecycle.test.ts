@@ -97,3 +97,44 @@ it('restores a pending death gift without duplicate cost and keeps the transferr
   expect((await room.snapshotFor('C')).game!.self.hand).toContain(gift);
   expect(new Set(allCardInstanceIds(ended)).size).toBe(220);
 });
+
+it.each([false, true])('DO G09 hidden Lancelot transformation %s is explicit across eviction and replay', async use => {
+  const room = await openTestRoom('lifecycle-transform-hidden');
+  const initial = (await room.stored()).state.game!; let sequence = 0;
+  async function send(actor: string, command: ClientEnvelope['command']) {
+    const request = await envelope(room, `g09-transform-${sequence++}`, command);
+    const reply = await room.command(actor, request); expect(reply).toMatchObject({ type: 'ack' });
+    const saved = await room.stored(); await room.restart();
+    expect(await room.command(actor, request)).toEqual(reply); expect(await room.stored()).toEqual(saved);
+    expect(allCardInstanceIds(saved.state.game!)).toHaveLength(220);
+    expect(new Set(allCardInstanceIds(saved.state.game!)).size).toBe(220);
+  }
+  async function settle() {
+    for (let n = 0; n < 200; n++) {
+      const w = (await room.stored()).state.game!.windows?.at(-1); if (!w) return;
+      await send(w.participants[w.cursor]!, { type: 'PASS' });
+    }
+    throw Error('G09_TRANSFORM_WINDOW_LIMIT');
+  }
+  async function hidden() {
+    for (const actor of ['B', 'C', 'D']) {
+      const view = (await room.snapshotFor(actor)).game!;
+      expect(view.players.A).not.toHaveProperty('characterId');
+      expect(view.lifecycleAbilities).not.toContain('lancelot-transform');
+    }
+  }
+  await send('B', { type: 'REVEAL_CHARACTER' }); await settle();
+  expect((await room.snapshotFor('A')).game!.lifecycleAbilities).toContain('lancelot-transform');
+  await hidden();
+  if (use) { await send('A', { type: 'USE_LIFECYCLE_ABILITY', ability: 'lancelot-transform' }); await settle(); }
+  else {
+    await send('A', { type: 'PASS_ACTION' });
+    const own = (await room.snapshotFor('A')).game!.self;
+    await send('A', { type: 'END_TURN', discardIds: own.hand.slice(0, Math.max(0, own.hand.length - own.stats.handLimit)) });
+  }
+  const done = (await room.stored()).state.game!;
+  expect(done.players.A!.characterId).toBe(use ? 'c2-p07-r1c1' : 'c2-p02-r2c2');
+  expect(done.players.A!.revealed).toBe(use);
+  expect(done.used?.filter(key => key.includes('c2-p02-r2c2-ab05')) ?? []).toHaveLength(use ? 1 : 0);
+  if (!use) { expect(done.used).toEqual(initial.used); expect(done.abilities).toEqual(initial.abilities); await hidden(); }
+}, 15000);

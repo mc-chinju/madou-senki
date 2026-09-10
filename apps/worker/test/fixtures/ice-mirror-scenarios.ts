@@ -1,0 +1,13 @@
+import {getAction} from '@madou/catalog';
+import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
+import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+export type IceMirrorScenario='ice-mirror-magic'|'ice-mirror-warrior';
+export function isIceMirrorScenario(name:string):name is IceMirrorScenario{return name==='ice-mirror-magic'||name==='ice-mirror-warrior';}
+/** Initial allocations; actual setup/start and printed level6 attack. Aiel has magic5. */
+export function makeIceMirrorScenario(name:IceMirrorScenario,players:{id:string;name:string}[],attackOverride?:string,boostAttack=false){
+ let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];assignCharacter(s,a,'侍大将のシン');assignCharacter(s,b,'凍気のアイエル');assignCharacter(s,c,'大神官ジル');assignCharacter(s,d,'魔導王ガイナス');for(const p of Object.values(s.players))p.permanent={endurance:100,warrior_level:20,magic_level:20,spirit:20};s.players[b]!.permanent!.magic_level=20+5-gameStats(s,b).magic_level;s.players[b]!.permanent!.spirit=20+6-gameStats(s,b).spirit;
+ const attack=takeCard(s,a,attackOverride??(name==='ice-mirror-magic'?'炎舞':'a2-p10-r2c2')),ice=takeCard(s,b,'氷鏡'),prayer=takeCard(s,boostAttack?a:b,'必勝の祈り'),fate=takeCard(s,c,'命運凶変');trimHand(s,a,attack,...(boostAttack?[prayer]:[]));trimHand(s,b,ice,prayer);trimHand(s,c,fate);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
+ function act(actorId:string,command:GameCommand){const input={actorId,command},e=entropy(),r=transition(s,input,e);if(!r.ok)throw Error(`ICE_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('ICE_FIXTURE_JSON');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('ICE_FIXTURE_IDS');}
+ if(attackOverride==='a2-p10-r1c2')s.distances[a]![b]=s.distances[b]![a]='near';
+ let boosted=false;for(const p of players)act(p.id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[b],dedicated:false});for(let n=0;n<300;n++){const w=s.windows!.at(-1)!;if(w.kind==='normal-defense')return s;if(boostAttack&&!boosted&&w.kind==='effect-level'){act(a,{type:'PLAY_REACTION',cardInstanceId:prayer,mode:'effect-plus',targetActionId:w.continuation.id});boosted=true;}else act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('ICE_FIXTURE_WINDOW');
+}

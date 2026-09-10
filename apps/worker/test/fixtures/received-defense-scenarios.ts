@@ -1,7 +1,9 @@
+import {distanceReceivedSources} from './r5-distance-scenarios.js';
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 
 const sources = {
+  ...distanceReceivedSources,
   'received-fury': { defender: '妖精王フューリー', card: 'a2-p12-r2c2' },
   'received-silver-black': { defender: '聖騎士ランスロット', card: 'a2-p14-r1c1' },
   'received-silver-white': { defender: '聖騎士ランスロット', card: '白光' },

@@ -39,7 +39,8 @@ function physicalSource(game: GameState) {
   expect(source.kind).toBe('attack');
   return source.cardInstanceId;
 }
-function consumed(game: GameState, source: string) {
+function consumed(game: GameState, source: string | null) {
+  if(source===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
   expect(game.discard.filter(id => id === source)).toHaveLength(1);
   expect(game.players.A!.hand).not.toContain(source);
   expect(game.players.A!.chants.map(card => card.cardInstanceId)).not.toContain(source);

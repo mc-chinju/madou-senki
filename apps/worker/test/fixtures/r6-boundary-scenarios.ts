@@ -1,0 +1,12 @@
+import {allCardInstanceIds,createGame,transition,type GameCommand,type GameState} from '@madou/engine';
+import {getAction} from '@madou/catalog';
+import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+export function makeR6BoundaryScenario(players:{id:string;name:string}[],reflection=false):GameState{
+ let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];assignCharacter(s,a,reflection?'白魔術師シェリム':'侍大将のシン');assignCharacter(s,b,'黒騎士ガーウィン');assignCharacter(s,c,'大神官ジル');assignCharacter(s,d,'魔導王ガイナス');for(const p of Object.values(s.players))p.permanent={endurance:100,warrior_level:20,magic_level:20,spirit:20};
+ const attack=takeCard(s,a,reflection?'沈黙':'踏み込み／弓'),defense=takeCard(s,b,reflection?'転移':'見切る'),royal=reflection?null:takeCard(s,b,'王立騎士団'),mirror=reflection?takeCard(s,b,'ミラーシールド'):null,ice=reflection?takeCard(s,a,'氷鏡'):null,god=takeCard(s,c,'神性介入');trimHand(s,a,attack,...(ice?[ice]:[]));trimHand(s,b,defense,...(royal?[royal]:[]),...(mirror?[mirror]:[]));trimHand(s,c,god);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
+ function act(actorId:string,command:GameCommand){const input={actorId,command},e=entropy(),r=transition(s,input,e);if(!r.ok)throw Error(`S14_17_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('S14_17_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('S14_17_CARDS');}
+ function until(done:()=>boolean){for(let n=0;n<300;n++){if(done())return;const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('S14_17_WINDOW');}
+ act(a,{type:'PASS_SETUP'});if(royal)act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:royal});for(const id of [b,c,d])act(id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[b],dedicated:false});until(()=>s.windows?.at(-1)?.kind==='normal-defense');
+ if(!reflection){act(b,{type:'START_FOLLOWERS'});return s;}
+ act(b,{type:'PLAY_DEFENSE',cardInstanceId:mirror!,dedicated:false});until(()=>Object.keys(s.groups!).length===2&&s.windows?.at(-1)?.kind==='normal-defense');act(a,{type:'PLAY_DEFENSE',cardInstanceId:ice!,dedicated:false});until(()=>Object.keys(s.groups!).length===3&&s.windows?.at(-1)?.kind==='normal-defense');return s;
+}
