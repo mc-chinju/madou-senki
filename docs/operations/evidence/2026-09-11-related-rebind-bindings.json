@@ -11374,6 +11374,374 @@
       "remaining": [
         "Exact clause assertions bound; current candidate successful run remains."
       ]
+    },
+    {
+      "row": "c2-p02-r1c2#defeat/protected-Lia",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p02-r1c2",
+            "妖精王フューリー",
+            "Lia",
+            "リーア姫"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2#defeat/protected-Shelim",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p02-r1c2",
+            "妖精王フューリー",
+            "Shelim",
+            "白魔術師シェリム"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1#defeat/protected-Gainas",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p04-r1c1",
+            "凍気のアイエル",
+            "Gainas",
+            "魔導王ガイナス"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1#defeat/protected-Freiard",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p04-r1c1",
+            "凍気のアイエル",
+            "Freiard",
+            "爆炎のフレイアード"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2#defeat/protected-Gainas",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p04-r1c2",
+            "竜皇子アスフェルト",
+            "Gainas",
+            "魔導王ガイナス"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2#defeat/protected-Dia",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p04-r1c2",
+            "竜皇子アスフェルト",
+            "Dia",
+            "魔聖母ディア"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1#defeat/protected-Gainas",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p06-r2c1",
+            "爆炎のフレイアード",
+            "Gainas",
+            "魔導王ガイナス"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1#defeat/protected-Aiel",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "%s %s loses on actual protected-%s death",
+          "parameters": [
+            "c2-p06-r2c1",
+            "爆炎のフレイアード",
+            "Aiel",
+            "凍気のアイエル"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "S01#acceptance-correspondence",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 S02 S05 D first is rejected at C priority then C force-fail resets the parent and D rerolls successful-valued faces without clearing failure",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "D first rejects unchanged at C priority; C is accepted."
+        },
+        {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 rejected D at C priority preserves all WebSocket views and creates no roll attempt or replacement",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Rejected D preserves all WebSocket views, roll attempts and replacement count."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "S02#acceptance-correspondence",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S02 actual C reroll canceled by D resets the A B passed parent without changing its roll",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "C child cancellation restores parent cursor0 and clears A/B passes."
+        },
+        {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S02 DO child cancellation resets parent passes and rejects stale generation before accepting current A pass",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Old parent generation is rejected; current A pass is accepted."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "S03#acceptance-correspondence",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S03 B accepted God retains its paid replacement and used event after C Fate cancels it without a reroll or action refund",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "B paid God is canceled by C Fate; replacement, used event and action remain spent with no reroll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "S04#acceptance-correspondence",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Same roll changes entire 2d6 from2,3 to4,4 and keeps both attempts across JSON save."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "suite": [],
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual DO eviction immediately after saving4,4 and duplicate final PASS reuses saved response without entropy provider or third roll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "S05#acceptance-correspondence",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 S02 S05 D first is rejected at C priority then C force-fail resets the parent and D rerolls successful-valued faces without clearing failure",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Successful-valued2,3 is forced failed; successful-valued4,4 reroll retains forcedFailure and failure."
+        },
+        {
+          "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S01 S02 S05 DO rejects D first, accepts C at the unchanged revision, rejects old parent PASS generation and keeps forced failure after D reroll",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "DO keeps forced failure after the successful-valued D reroll."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "S06#acceptance-correspondence",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s06-s10.test.ts",
+          "suite": [],
+          "title": "S06 actual level6 is frozen at normal defense and late Shin Spirit spends no hand ability attempt or roll",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual level6 defense cutoff rejects late Spirit without hand, use-history, roll or state mutation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "S07#acceptance-correspondence",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s07-prayer.test.ts",
+          "suite": [],
+          "title": "S07 actual Lia prayer reserves once rejects same-action reuse and returns for a later independent attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual physical Prayer reserves once, rejects same-event reuse, returns on completion and is used on a later independent attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1#mandatory-white-tech-prohibition",
+      "handler": [],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "Gadyura mandatory white technique prohibition survives disabled=%s",
+          "parameters": false,
+          "kind": "structural-resolver",
+          "bindingNote": "Ordinary and dedicated WhiteLight reject before payment with every state/view unchanged even when abilities are disabled."
+        },
+        {
+          "path": "packages/engine/test/release-character-predicates.test.ts",
+          "suite": [],
+          "title": "Gadyura mandatory white technique prohibition survives disabled=%s",
+          "parameters": true,
+          "kind": "structural-resolver",
+          "bindingNote": "Ordinary and dedicated WhiteLight reject before payment with every state/view unchanged even when abilities are disabled."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact clause assertions bound; current candidate successful run remains."
+      ]
     }
   ]
 }

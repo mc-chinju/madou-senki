@@ -190177,10 +190177,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:b100e884e4895c74"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -190201,10 +190203,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:1d4e2c6c28a6d8ac"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -192625,10 +192629,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:fbc2f7c89fc5e66b"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -192649,10 +192655,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:65dce455e75b2243"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -192973,10 +192981,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:e443729664f416c9"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -192997,10 +193007,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:d8c49fdc5dced0f6"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -195361,10 +195373,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:58708e376503fb42"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -195385,10 +195399,12 @@
         "h:f5a8e637a4be7840",
         "h:9f58d96e1bb05890"
       ],
-      "tests": [],
+      "tests": [
+        "t:dcb1c824204114e1"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:33354649ede9f782"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "protection-predicate",
@@ -196338,12 +196354,12 @@
         "h:39ccdafd6f0acb91"
       ],
       "tests": [
-        "t:70ebd47cb6790595"
+        "t:f6607d9e97477990",
+        "t:0c75855b226fce85"
       ],
       "status": "implemented",
       "remaining": [
-        "n:271a08ef79d9c581",
-        "n:4717f265ba290713"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -196364,12 +196380,12 @@
         "h:af607a3701c67f84"
       ],
       "tests": [
-        "t:190e9fdfaf332080"
+        "t:842f8136101841c2",
+        "t:8aa399d9122cb6d0"
       ],
       "status": "implemented",
       "remaining": [
-        "n:4117e3f522f4dcb1",
-        "n:4717f265ba290713"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -196392,12 +196408,11 @@
         "h:b492cb2093f8cbcc"
       ],
       "tests": [
-        "t:87cf3be1ff578058"
+        "t:591d34f64f42ec56"
       ],
       "status": "implemented",
       "remaining": [
-        "n:579e8f8f51a73a22",
-        "n:4717f265ba290713"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -196419,12 +196434,12 @@
         "h:657e933033fd11b1"
       ],
       "tests": [
-        "t:235153a3f9cc161c"
+        "t:7145b84055e4e521",
+        "t:6a5fffbb93b3b5b3"
       ],
       "status": "implemented",
       "remaining": [
-        "n:1b93b5959eed2263",
-        "n:4717f265ba290713"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -196445,11 +196460,13 @@
         "h:cc0d78e6bf1dccd8",
         "h:b492cb2093f8cbcc"
       ],
-      "tests": [],
+      "tests": [
+        "t:741d26888e0da9ea",
+        "t:0d6886ce8e19beb5"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:e4b3cf418f49fdc9",
-        "n:4717f265ba290713"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -196472,11 +196489,12 @@
         "h:a4ebfc3f73da3728",
         "h:0041a333600d6627"
       ],
-      "tests": [],
+      "tests": [
+        "t:dc7049cb3b3f16c9"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:69492da9c26626f2",
-        "n:4717f265ba290713"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -196500,13 +196518,11 @@
         "h:66f357b675e03a33"
       ],
       "tests": [
-        "t:007f5171cd21e6af",
-        "t:2a6f833691cbd8a6"
+        "t:06532cffae2754d4"
       ],
       "status": "implemented",
       "remaining": [
-        "n:fa7c8add35dfa61f",
-        "n:4717f265ba290713"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -197343,10 +197359,13 @@
       "handler": [
         "h:c7da09ced166ef2e"
       ],
-      "tests": [],
+      "tests": [
+        "t:d5cb62a4b99adbf8",
+        "t:8184df1cfbeaa880"
+      ],
       "status": "implemented",
       "remaining": [
-        "n:49bd39f1d810c097"
+        "n:6d9fe79b4ce22f05"
       ],
       "gapKind": "evidence-missing",
       "kind": "mandatory-restriction",
@@ -459919,6 +459938,235 @@
       "kind": "canonical-transition",
       "parameters": "conspiracy",
       "bindingNote": "Actual Vanmil death excludes converted subordinates from winners and preserves earlier personal winners."
+    },
+    "t:b100e884e4895c74": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c2",
+        "妖精王フューリー",
+        "Lia",
+        "リーア姫"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:1d4e2c6c28a6d8ac": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r1c2",
+        "妖精王フューリー",
+        "Shelim",
+        "白魔術師シェリム"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:fbc2f7c89fc5e66b": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p04-r1c1",
+        "凍気のアイエル",
+        "Gainas",
+        "魔導王ガイナス"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:65dce455e75b2243": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p04-r1c1",
+        "凍気のアイエル",
+        "Freiard",
+        "爆炎のフレイアード"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:e443729664f416c9": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p04-r1c2",
+        "竜皇子アスフェルト",
+        "Gainas",
+        "魔導王ガイナス"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:d8c49fdc5dced0f6": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p04-r1c2",
+        "竜皇子アスフェルト",
+        "Dia",
+        "魔聖母ディア"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:58708e376503fb42": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r2c1",
+        "爆炎のフレイアード",
+        "Gainas",
+        "魔導王ガイナス"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:dcb1c824204114e1": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "%s %s loses on actual protected-%s death",
+      "declarationSha256": "67f409869460857f033fd7571a323019007a28fb09545adabfaa0e9e34bb4076",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r2c1",
+        "爆炎のフレイアード",
+        "Aiel",
+        "凍気のアイエル"
+      ],
+      "bindingNote": "Each exact protected character dies from an actual lethal attack and causes wandering; unrelated death leaves the protector active."
+    },
+    "t:f6607d9e97477990": {
+      "path": "packages/engine/test/scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S01 S02 S05 D first is rejected at C priority then C force-fail resets the parent and D rerolls successful-valued faces without clearing failure",
+      "declarationSha256": "f9170c940e9fff56f7d4115d1abce7586ab38cb0637acfed50919d7d913da090",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "D first rejects unchanged at C priority; C is accepted."
+    },
+    "t:0c75855b226fce85": {
+      "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S01 rejected D at C priority preserves all WebSocket views and creates no roll attempt or replacement",
+      "declarationSha256": "4204588168b81c5aed55679f78029744a0218363f7230510b4dcb5b1837437ca",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Rejected D preserves all WebSocket views, roll attempts and replacement count."
+    },
+    "t:842f8136101841c2": {
+      "path": "packages/engine/test/scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S02 actual C reroll canceled by D resets the A B passed parent without changing its roll",
+      "declarationSha256": "14d836014af4f05cc3592532ec6cd7be4a5737d08487cf09ae95bd06a999721e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "C child cancellation restores parent cursor0 and clears A/B passes."
+    },
+    "t:8aa399d9122cb6d0": {
+      "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S02 DO child cancellation resets parent passes and rejects stale generation before accepting current A pass",
+      "declarationSha256": "45ce8502e55cadd4a66de206d741906a41bc7500ffd77c3b328afa2322cbe074",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Old parent generation is rejected; current A pass is accepted."
+    },
+    "t:591d34f64f42ec56": {
+      "path": "packages/engine/test/scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S03 B accepted God retains its paid replacement and used event after C Fate cancels it without a reroll or action refund",
+      "declarationSha256": "a4e78dcf6f476faaa199d5bd61266163d64fd10570b8f53de8f02f1a8b9c8ee5",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "B paid God is canceled by C Fate; replacement, used event and action remain spent with no reroll."
+    },
+    "t:7145b84055e4e521": {
+      "path": "packages/engine/test/scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+      "declarationSha256": "e9a94f3caaf20707ee6bc5aa69f925b0855430c348e1d4b9331c34ca042f8922",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Same roll changes entire 2d6 from2,3 to4,4 and keeps both attempts across JSON save."
+    },
+    "t:6a5fffbb93b3b5b3": {
+      "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+      "suite": [],
+      "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+      "declarationSha256": "d9c39366277e4ccc2572843ab60f8b2d68c0dfc179d0900647e12d4dd738374a",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual DO eviction immediately after saving4,4 and duplicate final PASS reuses saved response without entropy provider or third roll."
+    },
+    "t:741d26888e0da9ea": {
+      "path": "packages/engine/test/scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S01 S02 S05 D first is rejected at C priority then C force-fail resets the parent and D rerolls successful-valued faces without clearing failure",
+      "declarationSha256": "f9170c940e9fff56f7d4115d1abce7586ab38cb0637acfed50919d7d913da090",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Successful-valued2,3 is forced failed; successful-valued4,4 reroll retains forcedFailure and failure."
+    },
+    "t:0d6886ce8e19beb5": {
+      "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S01 S02 S05 DO rejects D first, accepts C at the unchanged revision, rejects old parent PASS generation and keeps forced failure after D reroll",
+      "declarationSha256": "ead75fb49c302b0b21698f8695685c9fabda58cdd30594cbaa6e2b01a543ee63",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "DO keeps forced failure after the successful-valued D reroll."
+    },
+    "t:dc7049cb3b3f16c9": {
+      "path": "packages/engine/test/scenario-s06-s10.test.ts",
+      "suite": [],
+      "title": "S06 actual level6 is frozen at normal defense and late Shin Spirit spends no hand ability attempt or roll",
+      "declarationSha256": "50040156fb4341cdfd180d659ba9eb5ad3b8abb626f58782061f491bf69c152a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual level6 defense cutoff rejects late Spirit without hand, use-history, roll or state mutation."
+    },
+    "t:06532cffae2754d4": {
+      "path": "packages/engine/test/scenario-s07-prayer.test.ts",
+      "suite": [],
+      "title": "S07 actual Lia prayer reserves once rejects same-action reuse and returns for a later independent attack",
+      "declarationSha256": "fb79f24bdca60da3619aea9bbae098eb18db9ec7b24f6bcd98924662ad1875d2",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual physical Prayer reserves once, rejects same-event reuse, returns on completion and is used on a later independent attack."
+    },
+    "t:d5cb62a4b99adbf8": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "Gadyura mandatory white technique prohibition survives disabled=%s",
+      "declarationSha256": "9bc7d2b0f31579c99913d653a41be31991057aae93f78a8547307d105a0eccf4",
+      "kind": "structural-resolver",
+      "parameters": false,
+      "bindingNote": "Ordinary and dedicated WhiteLight reject before payment with every state/view unchanged even when abilities are disabled."
+    },
+    "t:8184df1cfbeaa880": {
+      "path": "packages/engine/test/release-character-predicates.test.ts",
+      "suite": [],
+      "title": "Gadyura mandatory white technique prohibition survives disabled=%s",
+      "declarationSha256": "9bc7d2b0f31579c99913d653a41be31991057aae93f78a8547307d105a0eccf4",
+      "kind": "structural-resolver",
+      "parameters": true,
+      "bindingNote": "Ordinary and dedicated WhiteLight reject before payment with every state/view unchanged even when abilities are disabled."
     }
   },
   "remainingNotes": {

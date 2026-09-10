@@ -896,7 +896,7 @@ git add scripts data docs && git commit -m "scripts,data: notApplicableのbasis�
 - Modify: 該当する `packages/engine/test/*.test.ts`（既存 canonical 試験の参照追加、または新規 it 追加）
 - Create: `docs/operations/evidence/2026-09-11-related-rebind-bindings.json`
 
-- [ ] **Step 1: 対象行を列挙し、条項ごとに「既存 canonical 試験に該当するものがあるか」を台帳の `testCases` から検索する**
+- [x] **Step 1: 対象行を列挙し、条項ごとに「既存 canonical 試験に該当するものがあるか」を台帳の `testCases` から検索する**
 
 ```bash
 python3 - <<'EOF'
@@ -911,27 +911,27 @@ for r in d['rows']:
 EOF
 ```
 
-- [ ] **Step 2: 同じ entryId の accepted 候補（canonical 試験を持つ implemented 行）が使っている試験ファイルを開き、条項を直接 assert している `it` があればそれを束縛する。無ければそのファイルに `it('<entryId> <clauseKey> ...', ...)` を追加し、条項の語（例: 効果Lv5以下、従者で受ける前）を具体値で assert する**
+- [x] **Step 2: 同じ entryId の accepted 候補（canonical 試験を持つ implemented 行）が使っている試験ファイルを開き、条項を直接 assert している `it` があればそれを束縛する。無ければそのファイルに `it('<entryId> <clauseKey> ...', ...)` を追加し、条項の語（例: 効果Lv5以下、従者で受ける前）を具体値で assert する**
 
 追加する試験は既存 fixture（`packages/engine/test/fixtures.ts` の作成関数）を使い、`transition` の戻り値 `ok` と状態差分を assert する。人物・カードは実IDを使い、能力の付け替えをしない。
 
-- [ ] **Step 3: 対象ファイルだけ実行**
+- [x] **Step 3: 対象ファイルだけ実行**
 
 Run: `pnpm exec vitest run <変更した test ファイル>`
 Expected: 全件成功
 
-- [ ] **Step 4: 束縛ファイルを書き、適用し、validator を通す**
+- [x] **Step 4: 束縛ファイルを書き、適用し、validator を通す**
 
 Run: `python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-related-rebind-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160 && python3 scripts/ledger_report.py`
 Expected: `valid: true`、`implementedRelatedOnly` と `implementedNoTests` が 0
 
-- [ ] **Step 5: コミット（ファイル群が多い場合は 50 行ごとに分けてコミット）**
+- [x] **Step 5: コミット（ファイル群が多い場合は 50 行ごとに分けてコミット）**
 
 ```bash
 git add packages/engine/test data docs && git commit -m "test,data: related止まりの条項を具体試験へ再束縛する"
 ```
 
-B1部分実績: 263行の不足を解消（束縛265行、既存具体行2行の参照更新を含む）。related-only5/no-tests11が残る。直近の変身・復活7/儀式18/終局3試験、型、全台帳validator成功。全279行完了までは上記チェックを未完のまま維持する。
+B1完了: 279行の不足を解消（束縛281行、既存具体行2行の参照更新を含む）。related-only0/no-tests0、implementedConcrete3829。直近の人物条件10/シナリオEngine10/DO6試験、型、全台帳validator成功。試験群ごとに検証・コミットし、成功runへの束縛とaccepted昇格はB8で行う。
 
 ### Task B2: 所有技・所有従者の回収 784 行（データ駆動試験）
 
