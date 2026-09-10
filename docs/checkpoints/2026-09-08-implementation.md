@@ -1,7 +1,7 @@
 # 実装の再開メモ
 
 ## 現在の再開地点
-- 次: [公開走り切り計画](../superpowers/plans/2026-09-11-release-run.md) Task A5。release-run worktree / worktree-release-runで作業、タスクごとにコミット。A2〜A4完了。A3集計4試験/A4記録7試験成功、実S01〜S05から13参照一致。候補snapshotはテスト前に作り実行後に検証。D5対人は公開後M5、D6は招待制公開。認証はTask D1。
+- 次: [公開走り切り計画](../superpowers/plans/2026-09-11-release-run.md) Task A6。release-run worktree / worktree-release-runで作業、タスクごとにコミット。A2〜A5完了。A3集計4試験/A4記録7試験成功、実S01〜S05から13参照一致。候補snapshotはテスト前に作り実行後に検証。D5対人は公開後M5、D6は招待制公開。認証はTask D1。
 - 進捗: 用途条項218/220、Appendix A25/25、Other193/195（残2は D4c 到達不能。台帳は pending のまま）。全件accepted・計画全体の完了は未達。
 - 台帳: 判定は `python3 scripts/validate_runtime_coverage.py` に任せる。受け入れ方針は `acceptance-policy/test-only-v1`。
 

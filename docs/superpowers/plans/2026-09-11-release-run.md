@@ -393,7 +393,7 @@ git add scripts/record_runtime_run.py scripts/test_record_runtime_run.py && git 
   ```
 - Produces: 台帳 `rows[]` の `handler` / `tests` / `status` / `remaining` を更新し、`handlers` / `testCases` / `remainingNotes` に参照を追加する。`declarationSha256` は AST 抽出結果から取る（束縛ファイルには書かない）。`status` は `implemented` か `notApplicable` のみ受け付け、`verified`/`accepted` は拒否する（昇格は Task A6）。
 
-- [ ] **Step 1: 失敗するテストを書く**
+- [x] **Step 1: 失敗するテストを書く**
 
 ```python
 # scripts/test_apply_ledger_bindings.py
@@ -428,12 +428,12 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-- [ ] **Step 2: 失敗を確認**
+- [x] **Step 2: 失敗を確認**
 
 Run: `python3 -m unittest scripts.test_apply_ledger_bindings`
 Expected: `ModuleNotFoundError`
 
-- [ ] **Step 3: 実装**
+- [x] **Step 3: 実装**
 
 ```python
 #!/usr/bin/env python3
@@ -518,12 +518,12 @@ if __name__ == '__main__':
 
 台帳の既存整形（インデント幅・末尾改行）は `git diff --stat` で行数が束縛数に見合うことを確認し、整形差分が全行に及ぶ場合は既存の書き出し方に合わせる。
 
-- [ ] **Step 4: 成功を確認し、既存台帳に空束縛で実行して差分がないことを確認**
+- [x] **Step 4: 成功を確認し、既存台帳に空束縛で実行して差分がないことを確認**
 
 Run: `python3 -m unittest scripts.test_apply_ledger_bindings && echo '{"bindings":[]}' > .cache/empty.json && python3 scripts/apply_ledger_bindings.py --bindings .cache/empty.json && git diff --stat data/`
 Expected: OK、`git diff --stat` が空（整形が変わる場合はここで書き出し形式を合わせる）
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add scripts/apply_ledger_bindings.py scripts/test_apply_ledger_bindings.py && git commit -m "scripts: 具体試験と処理関数の束縛を台帳へ適用する"
