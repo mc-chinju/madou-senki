@@ -1,9 +1,9 @@
 import {describe,expect,it} from 'vitest';
-import {actionCards} from '@madou/catalog';
-import {allCardInstanceIds,transition} from '../src/index.js';
-import {act} from './combat-helpers.js';
+import {actionCards,getAction} from '@madou/catalog';
+import {allCardInstanceIds,transition,gameStats,viewFor,techniqueFor} from '../src/index.js';
+import {act,pass} from './combat-helpers.js';
 import {eventPending} from '../src/reclaim.js';
-import {entropy} from './fixtures.js';
+import {entropy,handCard} from './fixtures.js';
 import {makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow,finishOwnedResolution as finish} from './owned-reclaim-helpers.js';
 
 const OWNED_TECHNIQUE_CASES: [string,string,string][] = [
@@ -635,6 +635,34 @@ const OWNED_TECHNIQUE_CASES: [string,string,string][] = [
 ];
 
 describe('owned technique base recovery',()=>{
+ it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) reserve-before-parent-release',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);
+  const choice=currentReclaimWindow(s,table.ownerId)!,claim=choice.claims.find(c=>c.right==='base')!;
+  const source=Object.values(s.actions!).find(a=>a.cardInstanceId===cardId)!;
+  expect(source).toBeDefined();
+  const nested=source.parentWindowId!==null;
+  const eventId=s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.eventId;
+  expect(eventPending(s,eventId)).toBe(true);
+  s=act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:claim.claimId});
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);
+  expect(s.resolution).not.toContain(cardId);expect(s.discard).not.toContain(cardId);
+  // A top-level use closes atomically; a response must remain reserved under its live parent.
+  expect(eventPending(s,eventId)).toBe(nested);
+  if(nested){
+   expect(s.reclaimReservations.filter(id=>id===cardId)).toHaveLength(1);
+   expect(s.players[table.ownerId]!.hand).not.toContain(cardId);
+   expect(s.reclaim![cardId]).toMatchObject({ownerId:table.ownerId,eventId,decisionId:choice.decisionId});
+  }else{
+   expect(s.reclaimReservations).not.toContain(cardId);
+   expect(s.players[table.ownerId]!.hand.filter(id=>id===cardId)).toHaveLength(1);
+  }
+  s=finish(JSON.parse(JSON.stringify(s)));
+  expect(eventPending(s,eventId)).toBe(false);
+  expect(s.reclaimReservations).not.toContain(cardId);expect(s.reclaim?.[cardId]).toBeUndefined();
+  expect(s.players[table.ownerId]!.hand.filter(id=>id===cardId)).toHaveLength(1);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) exhaustion-across-physical-copies',(owner,name,cardId)=>{
   const copies=actionCards.filter(c=>c.name===name).map(c=>c.id);
   expect(copies).toContain(cardId);
@@ -859,6 +887,69 @@ describe('owned follower base recovery',()=>{
   expect(s.reclaimReservations).not.toContain(cardId);expect(s.reclaim?.[cardId]).toBeUndefined();
   expect(s.players[table.ownerId]!.hand.filter(id=>id===cardId)).toHaveLength(1);
   expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) morale-failure-excluded',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=table.state;
+  const attack=handCard(s,'B','踏み込み／殴る');
+  s=act(s,table.ownerId,{type:'ARRANGE_FOLLOWERS',cardInstanceIds:[cardId]});
+  s=finish(act(s,table.ownerId,{type:'END_TURN',discardIds:s.players[table.ownerId]!.hand.slice(0,Math.max(0,s.players[table.ownerId]!.hand.length-gameStats(s,table.ownerId).handLimit))}));
+  s=finish(act(s,'B',{type:'START_TURN'}));s=finish(act(s,'B',{type:'CHOOSE_DRAW',draw:false}));
+  s=act(s,'B',{type:'ATTACK',cardInstanceId:attack,targetIds:[table.ownerId],dedicated:false});
+  for(let n=0;s.windows?.length&&n<400;n++)s=pass(s,Array(30).fill(6));
+  expect(s.windows).toEqual([]);
+  const morale=s.rolls?.filter(r=>r.purpose==='follower-morale'&&r.resume.kind==='follower'&&r.resume.cardInstanceId===cardId)??[];
+  // Printed checks are optional only through explicitly selected dedicated text; this run declines it.
+  if(getAction(cardId)!.printed_text.includes('チェックに失敗すると捨て札になる')){
+   expect(morale).toHaveLength(1);expect(morale[0]).toMatchObject({success:false,faces:[6,6],stage:'applied'});
+   expect(s.players[table.ownerId]!.followers.some(f=>f.cardInstanceId===cardId)).toBe(false);
+   expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  }else{
+   expect(morale).toHaveLength(0);
+   expect(s.players[table.ownerId]!.followers.some(f=>f.cardInstanceId===cardId)).toBe(true);
+  }
+  expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId)??[]).toEqual([]);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) attack-discard-not-follower-death',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=table.state;
+  const hasDirectAttack=!['天使','アルケミア城','闇の聖女'].includes(name)&&!(name==='王立騎士団'&&owner==='聖騎士ランスロット2');
+  if(!hasDirectAttack){
+   const before=JSON.stringify(s);
+   expect(transition(s,{actorId:table.ownerId,command:{type:'ATTACK',cardInstanceId:cardId,targetIds:['B'],dedicated:true}},entropy()).ok).toBe(false);
+   expect(JSON.stringify(s)).toBe(before);
+   handCard(s,table.ownerId,getAction('a2-p05-r2c2')!.name);
+   if(name==='アルケミア城'){
+    const saved=JSON.stringify(s);
+    expect(viewFor(s,table.ownerId).allArmyOptions.some(o=>o.followerCardInstanceId===cardId)).toBe(false);
+    expect(transition(s,{actorId:table.ownerId,command:{type:'PLAY_ALL_ARMY',cardInstanceId:'a2-p05-r2c2',followerCardInstanceId:cardId,targetIds:['B']}},entropy()).ok).toBe(false);
+    expect(JSON.stringify(s)).toBe(saved);
+    expect(s.reclaimDecisions?.some(d=>d.cardInstanceId===cardId)??false).toBe(false);
+    expect(s.players[table.ownerId]!.reclaimUsage?.[name]).toBeUndefined();return;
+   }
+   const option=viewFor(s,table.ownerId).allArmyOptions.find(o=>o.followerCardInstanceId===cardId)!;
+   expect(option).toBeDefined();
+   s=act(s,table.ownerId,{type:'PLAY_ALL_ARMY',cardInstanceId:'a2-p05-r2c2',followerCardInstanceId:cardId,targetIds:option.targetMode==='mandatory-all'?option.legalTargetIds:option.legalTargetIds.slice(0,1)});
+  }else{
+   const profile=techniqueFor(cardId,owner,true)!;expect(profile).toBeDefined();
+   s=act(s,table.ownerId,{type:'ATTACK',cardInstanceId:cardId,targetIds:profile.mandatoryAll?['B','C','D']:['B'],dedicated:true});
+  }
+  for(let n=0;n<400;n++){
+   const choice=currentReclaimWindow(s,table.ownerId);
+   if(choice?.cardInstanceId===cardId){
+    expect(choice.claims.some(c=>c.right==='base')).toBe(false);
+    expect(s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.source).toMatchObject({kind:'ordinary-disposition',trigger:'named-card-used',cardInstanceId:cardId});
+    break;
+   }
+   if(!s.windows?.length)throw Error('OWNED_FOLLOWER_ATTACK_NO_DISPOSITION');s=pass(s);
+  }
+  s=finish(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId&&d.source.kind==='ordinary-disposition'&&d.source.trigger==='named-card-used')).toHaveLength(1);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);
+  expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId&&d.source.kind==='ordinary-disposition'&&d.source.trigger==='follower-died')??[]).toEqual([]);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
  });
 
 });

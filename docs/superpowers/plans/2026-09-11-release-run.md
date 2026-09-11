@@ -1081,6 +1081,8 @@ B2部分実績: Step1〜4完了。条項末尾は9種類（通常共通5、技�
 
 2026-09-12 B2全物理札への展開: 技125組・従者23組の静的CASESを全件配置した。技は実使用・正規名1回・辞退・別コピー共通予算の4条項（500ケース）、従者は実死亡・正規名1回・辞退・別コピー共通予算・親未完了中の予約の5条項（115ケース）が成功。既存24件を含む全639件・型検査・生成器等8件・台帳validator成功。水晶球は実際に命運凶変で取り消された使用、復活は実死亡を起こす既存fixture、従者は配置→実詠唱→滅界による破壊で検証した。原作札の効果一般をこの回収試験だけで受け入れたとは扱わない。詳細とsource hashは [B2進捗証跡](../../operations/evidence/2026-09-12-b2-owned-matrix-progress.json)。残りは技の `retention-transform-revival` / `reserve-before-parent-release`、従者の `retention-transform-revival` / `morale-failure-excluded` / `attack-discard-not-follower-death`。束縛生成の事前検証は未実装のretention条項で停止することを確認済み。784行pending・accepted 0を維持。Step5〜8は未完了。
 
+2026-09-12 B2除外条件と返却境界: 士気失敗が従者死亡の回収窓を開く不具合を13ケースで再現し、採用裁定G11に沿って直接捨て札へ移すよう修正した。士気判定のない札を含む23組と、従者攻撃の捨て札を死亡扱いしない23組を検証した。攻撃手段のないアルケミア城は、直接攻撃・全軍突撃せよの両方が支払い前に拒否されることを確認。技125組には、通常使用の原子的な親完了と、実際の割り込み使用の親未完了中の予約をそれぞれassertする試験を追加した。現在の行列は786ケース。単体全実行は7,335/7,336成功で、士気失敗札がresolutionに残る旧期待値1件を修正。その後、現行行列786件とmulti-hit 6件の全792件が成功。Worker全2,537件・全対象型検査・生成器等8件・台帳validatorも成功。単体全体を一度にgreen再実行したとは扱わない。詳細は [B2除外条件進捗](../../operations/evidence/2026-09-12-b2-exclusions-progress.json)。残件は技125組・従者23組の `retention-transform-revival`。束縛gateはその未実装条項で停止し、784行pending・accepted 0・Step5〜8未完了を維持する。
+
 ### Task B3: 原典例 S01〜S32 の source 行 210 件
 
 **Files:**

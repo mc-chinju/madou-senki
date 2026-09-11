@@ -10,11 +10,11 @@ SUFFIXES = {
     'exhaustion-across-physical-copies': 'Every same-name physical copy shares the spent allowance; a different copy cannot create a second base claim.',
     'retention-transform-revival': 'The same saved name budget survives actual applicable identity transitions and death/revival.',
     'optional-decline': 'Declining a real recovery leaves the source discarded and does not spend its base allowance.',
-    'reserve-before-parent-release': 'Accepted recovery reserves the exact source while its parent is unresolved and returns it exactly once on completion.',
+    'reserve-before-parent-release': 'Recovery remains reserved under a live parent; a top-level use may close atomically. Parent completion returns the exact physical source once, including after save/restore.',
     'actual-use-disposition': 'An actual legal use of this physical owned source opens its recovery at disposition.',
     'actual-follower-death-only': 'Actual destruction of this placed physical follower opens its base recovery.',
-    'morale-failure-excluded': 'A morale failure removes this follower without a follower-death base recovery.',
-    'attack-discard-not-follower-death': 'Discarding this follower after its attack does not create a follower-death base allowance.',
+    'morale-failure-excluded': 'Printed morale checks, when present, can fail and discard this follower without any death recovery; followers without a printed check cannot enter that failure path.',
+    'attack-discard-not-follower-death': 'A permitted direct or All Army follower attack disposes its source without a death allowance; a source without any printed attack is rejected without payment or recovery.',
 }
 TEST_PATH = 'packages/engine/test/owned-reclaim-matrix.test.ts'
 
