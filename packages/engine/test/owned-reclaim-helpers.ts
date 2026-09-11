@@ -1,5 +1,5 @@
 import {getAction} from '@madou/catalog';
-import {gameStats,viewFor,type GameState} from '../src/index.js';
+import {gameStats,viewFor,techniqueFor,type GameState} from '../src/index.js';
 import {act,finish,pass,ready} from './combat-helpers.js';
 import {character} from './fixtures.js';
 
@@ -41,6 +41,10 @@ function nextOwnAction(table:OwnedReclaimTable,keep:string):GameState {
 
 export function playOwnedCardToDiscard(table:OwnedReclaimTable,cardId:string):GameState {
  let s=nextOwnAction(table,cardId);
+ if(techniqueFor(cardId)?.chant){
+  s=act(s,table.ownerId,{type:'CHANT',cardInstanceId:cardId});
+  s=nextOwnAction({...table,state:s},cardId);
+ }
  s=act(s,table.ownerId,{type:'ATTACK',cardInstanceId:cardId,targetIds:['B'],dedicated:false});
  for(let n=0;n<300;n++){
   const choice=currentReclaimWindow(s,table.ownerId);

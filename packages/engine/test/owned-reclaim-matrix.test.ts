@@ -4,7 +4,7 @@ import {act,finish} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
 import {makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow} from './owned-reclaim-helpers.js';
 
-const OWNED_TECHNIQUE_CASES: [string,string,string][] = [['白魔術師シェリム','白輪','a2-p14-r1c3']];
+const OWNED_TECHNIQUE_CASES: [string,string,string][] = [['白魔術師シェリム','白輪','a2-p14-r1c3'],['白魔術師シェリム','白光','a2-p14-r1c2'],['白魔術師シェリム','裂界','a2-p14-r2c2'],['白魔術師シェリム','天舞','a2-p14-r2c1']];
 
 describe('owned technique base recovery',()=>{
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) normalized-name-once-game',(owner,name,cardId)=>{
@@ -24,7 +24,7 @@ describe('owned technique base recovery',()=>{
   const table=makeOwnedReclaimTable(owner,cardId),s=playOwnedCardToDiscard(table,cardId),choice=currentReclaimWindow(s,table.ownerId)!;
   expect(choice.cardInstanceId).toBe(cardId);expect(choice.claims.some(c=>c.right==='base')).toBe(true);
   expect(s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.source).toMatchObject({kind:'ordinary-disposition',trigger:'technique-resolved',sourceActorId:table.ownerId,cardInstanceId:cardId});
-  expect(s.players.B!.damage).toBe(10);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.resolution).toContain(cardId);
+  expect(s.players.B!.damage).toBe(({白輪:10,白光:6,裂界:8,天舞:10} as Record<string,number>)[name]);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.resolution).toContain(cardId);
  });
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) optional-decline',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);const choice=currentReclaimWindow(s,table.ownerId)!;
