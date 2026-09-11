@@ -1079,6 +1079,8 @@ B2部分実績: Step1〜4完了。条項末尾は9種類（通常共通5、技�
 
 2026-09-12 B2再開記録: PR #3 が main にマージ済みで旧 worktree が無かったため、`2f4c036` から `/private/tmp/madou-release-run/release-run`（`worktree-release-run`）を作成した。白輪に白光・裂界・天舞を追加し、3条項×4枚の12ケースを実行。裂界・天舞はヘルパーが詠唱を省いて `CHANT_REQUIRED` となることを確認し、通常の `CHANT` と手番一巡によって解消した。所有回収・予約保持の既存試験を含む36ケース成功。通常攻撃終了時の回収は選択と同時に親も完了するため、この経路を「未完了の親の下での予約保持」の証拠にはしない。残る全物理札の経路、別コピー共通予算、実変身・死亡復活、親未完了中の予約、従者の3固有条項は未完了。B2の784行はpendingを維持し、束縛生成・適用・accepted昇格はまだ行っていない。
 
+2026-09-12 B2全物理札への展開: 技125組・従者23組の静的CASESを全件配置した。技は実使用・正規名1回・辞退・別コピー共通予算の4条項（500ケース）、従者は実死亡・正規名1回・辞退・別コピー共通予算・親未完了中の予約の5条項（115ケース）が成功。既存24件を含む全639件・型検査・生成器等8件・台帳validator成功。水晶球は実際に命運凶変で取り消された使用、復活は実死亡を起こす既存fixture、従者は配置→実詠唱→滅界による破壊で検証した。原作札の効果一般をこの回収試験だけで受け入れたとは扱わない。詳細とsource hashは [B2進捗証跡](../../operations/evidence/2026-09-12-b2-owned-matrix-progress.json)。残りは技の `retention-transform-revival` / `reserve-before-parent-release`、従者の `retention-transform-revival` / `morale-failure-excluded` / `attack-discard-not-follower-death`。束縛生成の事前検証は未実装のretention条項で停止することを確認済み。784行pending・accepted 0を維持。Step5〜8は未完了。
+
 ### Task B3: 原典例 S01〜S32 の source 行 210 件
 
 **Files:**
