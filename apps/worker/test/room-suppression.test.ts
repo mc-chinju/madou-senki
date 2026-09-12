@@ -16,6 +16,7 @@ async function send(room: Room, actor: string, id: string, command: GameCommand)
   const envelope = await request(room, id, command); const ack = await room.command(actor, envelope);
   expect(ack).toMatchObject({ type: 'ack' });
   const ids = allCardInstanceIds(await game(room)); expect(ids).toHaveLength(220); expect(new Set(ids).size).toBe(220);
+  const saved=await room.stored();await room.restart();expect(await room.command(actor,envelope)).toEqual(ack);expect(await room.stored()).toEqual(saved);
   return { actor, envelope, ack };
 }
 async function replay(room: Room, accepted: Awaited<ReturnType<typeof send>>) {
@@ -66,6 +67,9 @@ it('real ritual supplies Vanmil and actual multi-target ban survives declaration
   expect(room.initial.players.A!.abilityCharacterIds).not.toContain('c2-p05-r1c1');
   expect(room.initial.suppressionDesignations ?? []).toEqual([]);
   const initial = await room.stored(); await room.restart(); expect(await room.stored()).toEqual(initial);
+  expect(viewFor(await game(room),'A').abilityOptions.find(o=>o.abilityId===BAN)!.targetIds).toEqual(['A','B','C','D']);
+  await send(room,'C','reveal-public-exemption',{type:'REVEAL_CHARACTER'});await settle(room,'reveal-public');
+  expect(viewFor(await game(room),'A').abilityOptions.find(o=>o.abilityId===BAN)!.targetIds).toEqual(['A','B','D']);
   const declaration = await declare(room, 'A', 'ban', BAN, ['B', 'D']); await replay(room, declaration);
   expect((await game(room)).suppressionDesignations ?? []).toEqual([]);
   const result = await settle(room, 'ban-resolve'); expect(result).toBeDefined(); await replay(room, result!);

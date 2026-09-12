@@ -255483,7 +255483,7 @@
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:b0730700cea9f76c"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255516,11 +255516,13 @@
         "h:2429f56399a6e165"
       ],
       "tests": [
-        "t:b4c030d8cbc394c1"
+        "t:b4c030d8cbc394c1",
+        "t:92ddbe067c052add",
+        "t:e74952493c9ce8ca"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255779,8 +255781,8 @@
       "tests": [
         "t:f32c8ee0867e859c",
         "t:d4db28d368b061d7",
-        "t:dddfeaa4ddd3e123",
-        "t:c98fa13cb1cbf416"
+        "t:87295332a7128a8d",
+        "t:cc25018c450e2dfd"
       ],
       "status": "implemented",
       "remaining": [
@@ -256433,7 +256435,7 @@
         "t:15a5180e7980cd86",
         "t:3308eb40ed8faa8f",
         "t:74c770d6e202dbec",
-        "t:c2dbeaf5edac9ca4",
+        "t:ff3d505fd5c48c4e",
         "t:a94acbfcfebaf3f3",
         "t:5d283548a6bfa65a",
         "t:b6eb441ff5fdf16e",
@@ -256457,7 +256459,7 @@
         "t:f7b69bb32a076139",
         "t:1ed1c7720b8f7c0a",
         "t:ae77bb0e5cce4b90",
-        "t:7e5b7a44370d22f5",
+        "t:f4d262085823dd16",
         "t:b574855903b4b202",
         "t:4800c85c7624db61",
         "t:7d738ab35b3a563d",
@@ -256465,7 +256467,7 @@
       ],
       "status": "implemented",
       "remaining": [
-        "n:6d9fe79b4ce22f05"
+        "n:d7dedb60b238ec23"
       ],
       "relatedEvidence": {
         "handler": [
@@ -492739,6 +492741,114 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "All seats reload at normal defense and retain frozen level6 with no late Spirit offer; source hand stays unchanged and all seats reload after completion and retain damage5."
+    },
+    "t:ec30d638370a4629": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+      "declarationSha256": "4715c257617d7a2276bdad6daf505108256e20dc0a47d1ea29eb0303cae34e3a",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual saved/replayed multi-target designation exposes only private applicability for both hidden targets."
+    },
+    "t:11ddddc43393fd72": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "bacf93111accbea337b18d1684be45ccd8310c402a1b6b30cb323146057d23fc",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
+    },
+    "t:b803f0cc7e0da631": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+      "declarationSha256": "4715c257617d7a2276bdad6daf505108256e20dc0a47d1ea29eb0303cae34e3a",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual successful multi-target ban leaves phase action and PASS_ACTION available after saved resolution and all-seat browser reload."
+    },
+    "t:d878bd09415e0aff": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "bacf93111accbea337b18d1684be45ccd8310c402a1b6b30cb323146057d23fc",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual successful multi-target ban leaves phase action and PASS_ACTION available after saved resolution and all-seat browser reload."
+    },
+    "t:2455c75d29a936f4": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+      "declarationSha256": "4715c257617d7a2276bdad6daf505108256e20dc0a47d1ea29eb0303cae34e3a",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+    },
+    "t:de0fe104a12db005": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "bacf93111accbea337b18d1684be45ccd8310c402a1b6b30cb323146057d23fc",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+    },
+    "t:87295332a7128a8d": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+      "declarationSha256": "a87e521bbd74cc258f279dbc451d0912091beed69ffbeb61d58a1ba89f79cab1",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual saved/replayed multi-target designation exposes only private applicability for both hidden targets."
+    },
+    "t:cc25018c450e2dfd": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "b6d6b0eb8260c1b5d9d88809dc790424601ca30bfec49648069007a8f4831ea3",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
+    },
+    "t:92ddbe067c052add": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+      "declarationSha256": "a87e521bbd74cc258f279dbc451d0912091beed69ffbeb61d58a1ba89f79cab1",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+    },
+    "t:e74952493c9ce8ca": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "b6d6b0eb8260c1b5d9d88809dc790424601ca30bfec49648069007a8f4831ea3",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+    },
+    "t:ff3d505fd5c48c4e": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+      "declarationSha256": "a87e521bbd74cc258f279dbc451d0912091beed69ffbeb61d58a1ba89f79cab1",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+    },
+    "t:f4d262085823dd16": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "b6d6b0eb8260c1b5d9d88809dc790424601ca30bfec49648069007a8f4831ea3",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
     }
   },
   "remainingNotes": {
@@ -492894,7 +493004,9 @@
     "n:320391926c1913d0": "Exact clause assertions bound; frozen current-candidate run and acceptance remain.",
     "n:efdd56a8f778f9de": "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain.",
     "n:aab4e89734bfbcda": "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains.",
-    "n:8577efe79695c2f7": "Selected roll/value boundary and exact cases registered; full source/dependencies and current frozen candidate acceptance remain. No review performed."
+    "n:8577efe79695c2f7": "Selected roll/value boundary and exact cases registered; full source/dependencies and current frozen candidate acceptance remain. No review performed.",
+    "n:b0730700cea9f76c": "Actual unused main-action Worker/browser correspondence remains; existing ritual fixture already spent its action. Frozen acceptance remains.",
+    "n:d7dedb60b238ec23": "n:6d9fe79b4ce22f05"
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

@@ -1341,6 +1341,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: G08効果値確定後の気合拒否へ既存DO/browser試験を追加束縛。browserは全席reload後の効果Lv6・気合の選択肢なし・手札不変と完了時damage5を追加検証。Worker4試験・browser4試験・型チェック・台帳validator成功。不足23行（C16とC04）、Step2継続。詳細は [B7 G08進捗](../../operations/evidence/2026-09-12-b7-g08-progress.json)。
 
+2026-09-12 B7続行: C16公開情報だけの対象候補1行を追加束縛。既存複数対象禁止シナリオで非公開リーアを候補に含め、実正体公開後だけ除外することをDO毎操作保存再送とbrowser全席reloadで確認。儀式後は通常行動消費済みのためno-main-actionの束縛は保留。共有G09参照を更新し、Worker7試験・browser2試験・型チェック・台帳validator成功。不足22行、Step2継続。詳細は [B7 C16候補進捗](../../operations/evidence/2026-09-12-b7-c16-candidates-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

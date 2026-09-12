@@ -9,8 +9,8 @@
 | `S29#source/title` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `S04#acceptance-correspondence` | browser | canonical出目・browser全席reloadへ束縛 |
 | `c2-p07-r1c2-ab03#C16/public-own-opportunity-once` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
-| `c2-p07-r1c2-ab03#C16/no-main-action` | browser, worker-persistence | 直接assertion確認待ち |
-| `c2-p07-r1c2-ab03#C16/public-only-target-candidates` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p07-r1c2-ab03#C16/no-main-action` | browser, worker-persistence | 直接assertion確認待ち（儀式後fixtureは通常行動消費済み） |
+| `c2-p07-r1c2-ab03#C16/public-only-target-candidates` | browser, worker-persistence | 公開候補のDO/browser拡張へ束縛 |
 | `c2-p07-r1c2-ab03#C16/no-secret-target-rejection` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p07-r1c2-ab03#C16/reject-no-new-designation` | browser, worker-persistence | 直接assertion確認待ち |

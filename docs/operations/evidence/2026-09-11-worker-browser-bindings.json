@@ -781,6 +781,53 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/public-only-target-candidates",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

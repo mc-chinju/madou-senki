@@ -41,6 +41,12 @@ test('ritual-born Vanmil designates multiple public names, and Blessing survives
   try {
     const views = await observe(table); const [a, b, c] = table.sessions.map(session => session.id);
     const panel = table.pages[0]!.getByRole('region', { name: '能力の禁止と祝福' });
+    expect(views.get(a!)!.game!.abilityOptions.find(o=>o.abilityId===BAN)!.targetIds).toEqual(table.sessions.map(session=>session.id));
+    await expect(panel.getByRole('checkbox',{name:'凛',exact:true})).toBeVisible();
+    await click(table,views,table.pages[2]!.getByRole('button',{name:'正体を公開',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    for(const page of table.pages)await page.reload();
+    expect(views.get(a!)!.game!.abilityOptions.find(o=>o.abilityId===BAN)!.targetIds).toEqual(table.sessions.filter((_,i)=>i!==2).map(session=>session.id));
+    await expect(panel.getByRole('checkbox',{name:'凛',exact:true})).toHaveCount(0);
     await expect(panel.getByRole('button', { name: '神と人の差を使う', exact: true })).toBeDisabled();
     await panel.getByRole('checkbox', { name: '楓', exact: true }).check();
     await panel.getByRole('checkbox', { name: '蓮', exact: true }).check();
@@ -48,6 +54,7 @@ test('ritual-born Vanmil designates multiple public names, and Blessing survives
     await table.pages[0]!.reload();
     await expect(table.pages[0]!.getByRole('region', { name: '現在の行動' })).toContainText('神と人の差');
     await passUntil(table, views, game => !game.activeWindow);
+    for(const page of table.pages)await page.reload();
     await expect(panel).toContainText('楓：指定済み・適用状況は非公開');
     await expect(panel).toContainText('蓮：指定済み・適用状況は非公開');
     const targetPanel = table.pages[1]!.getByRole('region', { name: '能力の禁止と祝福' });
