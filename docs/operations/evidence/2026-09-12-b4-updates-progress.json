@@ -1,0 +1,43 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B4 conditional update and redundant election guards; not acceptance evidence",
+  "newlyImplementedClauses": 8,
+  "newTests": 8,
+  "bindingFileRows": 251,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/character-conditional-matrix.test.ts packages/engine/test/conditional-stats.test.ts --reporter=json --outputFile=/private/tmp/release-b4-updates-final.json",
+    "passed": 104,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit exit 0",
+    "Python character generator, binding application and report: 17 passed",
+    "Exact AST declarations and parameter tuples validated before binding output",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Actual Lia election selects B, then an actual phase transition permits updating to C. Fate cancels the update; B remains selected through JSON restore and the same opportunity cannot be retried.",
+    "For each of the other seven sources no target update exists. Redundant ON is rejected atomically, preserving both the existing election and attempt history. These cases do not claim to cancel an update that the source cannot declare.",
+    "The generator binds exact owner/source tuples and carries source-specific explanatory notes."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/character-conditional-matrix.test.ts": "6337d4dcb04546c4651af2222799aa01075e978721d6c00480fcdbc0cf1d5d66",
+    "scripts/build_character_bindings.py": "43ea6182527f5af4f70e59f43539f161cb80a5f8e9849aa846d339090e49d4d4",
+    "scripts/test_build_character_bindings.py": "c18f5b5a25607076173cdffbae9974c3a2d54886f4eef40b6f048c2272bada6f",
+    "docs/operations/evidence/2026-09-12-character-core-bindings.json": "53050ea2939761027351edcfcc3f2849f294b346f28251617d9c361e173387ac"
+  },
+  "characterPending": 88,
+  "semanticImplementedConcrete": 5072,
+  "semanticPending": 187,
+  "semanticAccepted": 0,
+  "fullB4Gate": "unimplemented character families: 88; first c2-p02-r1c1-ab04#condition-loss-suspends-keeps-selection",
+  "limitations": [
+    "Specific condition loss, frozen values, inheritance, C16 and other B4 ability clauses remain pending. Steps 3–5 remain incomplete.",
+    "No runtime behavior changed. Arranged unit scenarios are not formal START whole-games or frozen-candidate acceptance receipts.",
+    "No new Worker or browser run is claimed."
+  ]
+}

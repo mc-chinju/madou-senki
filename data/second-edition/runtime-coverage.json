@@ -232302,11 +232302,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:0d436fa2874fef03"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232482,11 +232488,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:564f17f508717671"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232662,11 +232674,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:2458c8bc08325c5c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232842,11 +232860,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:ae3de09925d1fac6"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233022,11 +233046,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:2167de2bae1678ed"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233202,11 +233232,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:807334a4c9a32bce"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233382,11 +233418,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:c18ab165dccd5c5d"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233562,11 +233604,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:590e666e8b4dce1a"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415360,8 +415408,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7114,
-      "implemented": 5064
+      "pending": 7106,
+      "implemented": 5072
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -487746,6 +487794,102 @@
         "c2-p06-r1c2-ab02"
       ],
       "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:0d436fa2874fef03": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab04"
+      ],
+      "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
+    },
+    "t:564f17f508717671": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab03"
+      ],
+      "bindingNote": "Actual Fate cancellation of Lia target update preserves prior selection and the spent opportunity across JSON restore; retry is rejected."
+    },
+    "t:2458c8bc08325c5c": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒妖精のアーネス",
+        "c2-p03-r2c2-ab04"
+      ],
+      "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
+    },
+    "t:ae3de09925d1fac6": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab03"
+      ],
+      "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
+    },
+    "t:2167de2bae1678ed": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab05"
+      ],
+      "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
+    },
+    "t:807334a4c9a32bce": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "c2-p05-r1c2-ab01"
+      ],
+      "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
+    },
+    "t:c18ab165dccd5c5d": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "c2-p05-r2c1-ab05"
+      ],
+      "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
+    },
+    "t:590e666e8b4dce1a": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s cancel-update-retains-prior-selection-and-attempt",
+      "declarationSha256": "1d2aa12c0e268bdf124756bbb557bf5cb7d7f78e895ff62fb0c17285ca80f353",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "c2-p06-r1c2-ab02"
+      ],
+      "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
     }
   },
   "remainingNotes": {

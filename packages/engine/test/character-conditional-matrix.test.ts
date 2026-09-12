@@ -94,3 +94,27 @@ it.each(CONDITIONAL_CASES)('%s %s absence-retains-death-clears',(name,id)=>{
  s=finish(act(s,'E',{type:'APPROACH',targetId:'A',cardInstanceId:advance}));
  s=killOwnedLifetimePlayer(s,'A');expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.conditionalSelections??[]).toEqual([]);
 });
+
+it.each(CONDITIONAL_CASES)('%s %s cancel-update-retains-prior-selection-and-attempt',(name,id)=>{
+ let s=ready();character(s,'A',name);s.players.B!.revealed=true;s.players.C!.revealed=true;
+ const fate=handCard(s,'D','命運凶変'),lia=id==='c2-p03-r1c2-ab03';
+ const setting=()=>viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
+ s=finish(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:true,...(lia?{targetIds:['B']}: {})}));
+ s=act(s,'A',{type:'PASS_ACTION'});
+ const prior=structuredClone(s.players.A!.conditionalSelections),used=structuredClone(s.used),event=setting().targetEventId!;
+ const command={type:'SET_CONDITIONAL_ABILITY' as const,abilityId:id,targetEventId:event,enabled:true,...(lia?{targetIds:['C']}: {})};
+ if(!lia){
+  // Only Lia has an updateable target set. Redundant ON is rejected without replacing the election or spending a new attempt.
+  expect(setting().canActivate).toBe(false);const before=JSON.stringify(s);
+  expect(transition(s,{actorId:'A',command},entropy()).ok).toBe(false);
+  expect(JSON.stringify(s)).toBe(before);expect(s.players.A!.conditionalSelections).toEqual(prior);expect(s.used).toEqual(used);
+  return;
+ }
+ s=act(s,'A',command);expect(s.players.A!.conditionalSelections).toEqual(prior);
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='D')s=pass(s);
+ s=finish(act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(s,'D').reactionTargetAbilityId!}));
+ s=JSON.parse(JSON.stringify(s));expect(s.players.A!.conditionalSelections).toEqual(prior);
+ expect(setting()).toMatchObject({enabled:true,selectedTargetIds:['B'],canActivate:false});
+ expect(s.used?.filter(key=>key===`${event}:A:${id}`)).toHaveLength(1);
+ const before=JSON.stringify(s);expect(transition(s,{actorId:'A',command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
+});

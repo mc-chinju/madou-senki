@@ -91,15 +91,18 @@ def received_defense_binding(row):
 def conditional_election_binding(row, cards):
     ids = {'c2-p02-r1c1-ab04','c2-p03-r1c2-ab03','c2-p03-r2c2-ab04','c2-p04-r1c2-ab03','c2-p04-r1c2-ab05','c2-p05-r1c2-ab01','c2-p05-r2c1-ab05','c2-p06-r1c2-ab02'}
     entry, clause = row['entryId'], row['clauseKey']
-    if entry not in ids or clause not in {'default-off-explicit-cancelable-election', 'absence-retains-death-clears'}:
+    if entry not in ids or clause not in {'default-off-explicit-cancelable-election', 'absence-retains-death-clears', 'cancel-update-retains-prior-selection-and-attempt'}:
         return None
+    update_note = ('Actual Fate cancellation of Lia target update preserves prior selection and the spent opportunity across JSON restore; retry is rejected.'
+                   if entry == 'c2-p03-r1c2-ab03' else
+                   'This source has no target update: redundant ON is rejected without changing the prior selection or attempt history.')
     return {'row': f'{entry}#{clause}',
             'handler': [{'path': 'packages/engine/src/abilities/conditional-selection.ts', 'symbol': symbol}
                         for symbol in ['transitionConditionalAbility', 'resolveConditionalAbility', 'cleanConditionalSelections']],
             'tests': [{'path': 'packages/engine/test/character-conditional-matrix.test.ts', 'suite': [],
                        'title': '%s %s ' + clause,
                        'parameters': [cards[entry.split('-ab')[0]]['name'], entry], 'kind': 'canonical-transition',
-                       'bindingNote': 'Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death.' if clause == 'absence-retains-death-clears' else 'Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules.'}],
+                       'bindingNote': update_note if clause == 'cancel-update-retains-prior-selection-and-attempt' else 'Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death.' if clause == 'absence-retains-death-clears' else 'Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules.'}],
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 

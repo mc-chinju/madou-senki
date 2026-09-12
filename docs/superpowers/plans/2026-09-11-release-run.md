@@ -1209,6 +1209,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4条件付き能力の選択・不在: 全8能力の初期OFF/実取消/新機会での明示ON/保存復帰/OFFと、実詠唱・裂界・命運凶変による異界移動→祈願でDawn取得→実帰還→実接近・所有者死亡時の選択消去を追加した。別の保存継続では保護対象を実際に殺して彷徨中の保持も確認し、保護対象なしの人物は他者死亡でも在席・選択を保持する。新規16試験、既存込み96試験、型検査、Python16件、台帳validator成功。未実装16行を解消、人物pending96、semantic具体的実装済み5,064、pending195、accepted0。全B4生成gateは残96行で停止。詳細は [B4条件付き能力進捗](../../operations/evidence/2026-09-12-b4-conditional-progress.json)。固有条件の消失・凍結値・継承などとStep3〜5は未完了。
 
+2026-09-12 B4条件付き能力の更新: 全8能力を追加検証。リーアはB指定からC指定への更新を実際の命運凶変で取り消し、旧指定と同機会の試行済み記録を保存復帰後も保持。他7能力は更新対象集合を持たないため、重複ONの原子的拒否で既存選択・履歴が変わらないことを検証し、存在しない更新取消を試験した扱いにはしていない。新規8試験、関連104試験、型検査、Python17件、台帳validator成功。人物pending88、semantic具体的実装済み5,072、pending187、accepted0。全B4生成gateは残88行で停止。詳細は [B4更新規則進捗](../../operations/evidence/2026-09-12-b4-updates-progress.json)。Step3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**

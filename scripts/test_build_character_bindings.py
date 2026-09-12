@@ -50,6 +50,15 @@ class CharacterBindingsTest(unittest.TestCase):
         result = build_bindings(ledger, cards)
         self.assertEqual(result[0]['tests'][0]['parameters'], ['有翼人のティア', 'c2-p02-r1c1-ab04'])
 
+    def test_conditional_update_binding_describes_source_specific_guard(self):
+        ledger = self.ledger('cancel-update-retains-prior-selection-and-attempt')
+        for entry, name in [('c2-p03-r1c2', 'リーア姫'), ('c2-p02-r1c1', '有翼人のティア')]:
+            ledger['rows'][0]['entryId'] = entry + ('-ab03' if name == 'リーア姫' else '-ab04')
+            result = build_bindings(ledger, [{'id': entry, 'name': name, 'defeat_condition': 'なし'}])
+            test = result[0]['tests'][0]
+            self.assertEqual(test['parameters'], [name, ledger['rows'][0]['entryId']])
+            self.assertIn('Fate cancellation' if name == 'リーア姫' else 'redundant ON', test['bindingNote'])
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)
