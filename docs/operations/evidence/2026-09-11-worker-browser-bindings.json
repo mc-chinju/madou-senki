@@ -1732,6 +1732,49 @@
       "remaining": [
         "Actual two-hit Griffin selected/canceled/follower-start cases cover saved per-hit attempts and next-hit renewal. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+          "kind": "structural-resolver",
+          "parameters": "source-identity",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-identity.test.ts",
+          "title": "structural Lia identity loss projects an expired lease and cleans it on a real command through eviction and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
+        },
+        {
+          "path": "tests/e2e/blessing-identity.spec.ts",
+          "title": "structural Lia identity loss keeps the target suppressed through reload and a real action",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Structural identity boundary covered in Engine/DO/browser; frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

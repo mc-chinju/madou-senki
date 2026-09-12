@@ -11,8 +11,8 @@ export default defineConfig({
   workers: 1,
   timeout: 45000,
   expect: { timeout: 10000 },
-  use: { ...devices['Desktop Chrome'], baseURL: origin, trace: 'retain-on-failure', screenshot: 'only-on-failure',
-    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE } : {} },
+  use: { ...devices['Desktop Chrome'], channel: 'chromium', baseURL: origin,
+    trace: 'retain-on-failure', screenshot: 'only-on-failure' },
   webServer: {
     command: `pnpm --filter @madou/web build && pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --local --config test/wrangler.e2e.jsonc --persist-to ../../.cache/e2e-state && pnpm --filter @madou/worker exec wrangler dev --config test/wrangler.e2e.jsonc --port ${port} --persist-to ../../.cache/e2e-state`,
     url: origin,

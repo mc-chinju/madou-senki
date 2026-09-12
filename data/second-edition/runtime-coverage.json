@@ -256288,11 +256288,13 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:97c637049cfbf38a"
+        "t:97c637049cfbf38a",
+        "t:cdd34f352e71455c",
+        "t:e7a50bdc8331d67e"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:75feb5580dd84abb"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493414,6 +493416,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
+    },
+    "t:cdd34f352e71455c": {
+      "path": "apps/worker/test/room-blessing-identity.test.ts",
+      "suite": [],
+      "title": "structural Lia identity loss projects an expired lease and cleans it on a real command through eviction and replay",
+      "declarationSha256": "08a8c487e46de20c570937e736d97b3a03bba15a35649bb7fd8546e50da0c52b",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
+    },
+    "t:e7a50bdc8331d67e": {
+      "path": "tests/e2e/blessing-identity.spec.ts",
+      "suite": [],
+      "title": "structural Lia identity loss keeps the target suppressed through reload and a real action",
+      "declarationSha256": "c05856a6b3c7effe41109e43eb56a24ebb9cd843ab2773c0a42398d896a53947",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
     }
   },
   "remainingNotes": {
@@ -493585,7 +493605,8 @@
     "n:7936a3a29ccd02e9": "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains.",
     "n:e8552bec0195d2e8": "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains.",
     "n:b8cde6ba3e63d573": "Actual confusion and hypnosis persist through subsequent successful Blessing, saved command replay and browser reload. Frozen-candidate acceptance remains.",
-    "n:0ea34b158237548a": "Actual two-hit Griffin selected/canceled/follower-start cases cover saved per-hit attempts and next-hit renewal. Frozen-candidate acceptance remains."
+    "n:0ea34b158237548a": "Actual two-hit Griffin selected/canceled/follower-start cases cover saved per-hit attempts and next-hit renewal. Frozen-candidate acceptance remains.",
+    "n:75feb5580dd84abb": "Structural identity boundary covered in Engine/DO/browser; frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

@@ -1,6 +1,6 @@
 # 公開走り切り Implementation Plan
 
-> **ユーザー依頼による一時停止（2026-09-12）:** 新項目へ進まない。別セッションでユーザーが明示的に再開するまで作業を停止する。引き継ぎは [release-run-handoff-2026-09-12.md](../../operations/release-run-handoff-2026-09-12.md)。目標達成・blockedではない。対象本スレッドのgoalも正式なapp-server APIで `paused` に変更し、保存状態を確認済み。
+> **再開（2026-09-12）:** ユーザーの明示的なgoal指示により本セッションでM4まで再開。現在の登録済みworktreeは `/Users/chinju/git/madou-senki-worktree-release-run`、ブランチは `worktree-release-run`。旧スレッドのgoalは変更しない。停止時点の記録は [release-run-handoff-2026-09-12.md](../../operations/release-run-handoff-2026-09-12.md) を維持する。B7残4条項から継続する。
 
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. サブエージェント・独立レビュー・自己レビューはユーザー指定により禁止。受け入れは [試験受け入れ方針](../../operations/acceptance-policy.md) `acceptance-policy/test-only-v1`。
@@ -1373,6 +1373,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 2026-09-12 B7続行: C16 祝福がヴァンミール由来の禁止だけを解除する1行を追加束縛。実禁止→錯乱/催眠の実攻撃→後続手番の祝福で、別原因の能力禁止・停止が残ることを確認。Worker毎操作保存再送・全席投影比較と共通能力ゲート、browser全席reload・保存状態読取りを検証した。Worker2試験・browser2試験・型チェック・台帳validator成功。不足5行、Step2継続。詳細は [B7祝福と状態異常進捗](../../operations/evidence/2026-09-12-b7-blessing-status-progress.json)。
 
 2026-09-12 B7続行: C04 各対象・各ヒット一度と従者開始後の選択禁止1行を追加束縛。実グリフォン2ヒットで巨神の使用/取消後は次ヒットに新機会、従者開始後は解決終了まで選択不可を確認。Worker毎操作保存再送・全席投影と旧機会拒否、browser全席reloadを検証した。Worker3試験・browser3試験・型チェック・台帳validator成功。不足4行、Step2継続。詳細は [B7グリフォン防御進捗](../../operations/evidence/2026-09-12-b7-griffin-defense-progress.json)。
+
+2026-09-12 再開後B7: リーア人物同一性喪失1行を構造的保存境界として追加束縛。実禁止・祝福成立後の人物だけをfixtureで変更し、同じ生世代の旧leaseを保存。DO全席投影と実PASS_ACTIONによる失効・保存再送、browser全席reloadで禁止復帰とlease消滅を確認。通常変身経路の成功ではない。Engine既存35件、Worker1件、browser1件、型検査・台帳validator成功。対応版Chromium 153.0.8010.12の新headlessを採用。不足3行、Step2継続。詳細は [人物同一性境界の証跡](../../operations/evidence/2026-09-12-b7-identity-progress.json)。
 
 ### Task B8: 候補固定・全実行・昇格・readiness
 

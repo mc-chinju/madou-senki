@@ -30,7 +30,7 @@
 | `c2-p03-r1c2-ab04#C16/lease-survives-target-absence` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/lease-expires-G15-death-entry` | browser, worker-persistence | 実祝福・致死攻撃・廃棄前失効のDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease` | browser, worker-persistence | 実死亡・復活・新生再祝福のDO/browserへ束縛 |
-| `c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease` | browser, worker-persistence | 実禁止・祝福後の人物変更を構造的保存境界としてDO再送・browser全席reloadへ束縛（通常変身経路ではない） |
 | `c2-p03-r1c2-ab04#C16/source-life-generation-saved` | browser, worker-persistence | 実死亡・復活・新生再祝福のDO/browserへ束縛 |
 | `common:C04#C04/once-target-hit-before-followers` | browser, worker-persistence | 実2ヒットの使用/取消・従者開始をDO保存再送・browser全席reloadへ束縛 |
 | `common:C04#C04/cancel-consumes-attempt` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |

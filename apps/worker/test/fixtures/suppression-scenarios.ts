@@ -1,7 +1,7 @@
-import { allCardInstanceIds, createGame, gameStats, transition, type GameCommand, type GameState } from '@madou/engine';
+import { allCardInstanceIds, createGame, gameStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 
-export const suppressionScenarioNames = ['suppression-blessing-confusion', 'suppression-blessing-hypnosis', 'suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
+export const suppressionScenarioNames = ['suppression-identity-boundary', 'suppression-blessing-confusion', 'suppression-blessing-hypnosis', 'suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
 export type SuppressionScenarioName = typeof suppressionScenarioNames[number];
 export function isSuppressionScenario(name: string): name is SuppressionScenarioName {
   return suppressionScenarioNames.some(value => value === name);
@@ -10,6 +10,7 @@ export function isSuppressionScenario(name: string): name is SuppressionScenario
  * Ritual, transformation, turn progression and all suppression/lease effects use real commands.
  * No suppression designation, lease, ability frame or resolved roll is injected. */
 export function makeSuppressionScenario(name: SuppressionScenarioName, players: { id: string; name: string }[]): GameState {
+  if (name === 'suppression-identity-boundary') return makeIdentityBoundary(players);
   if (players.length !== 4) throw Error('SUPPRESSION_FIXTURE_FOUR_SEATS');
   let game = createGame(players, entropy(), { startingSeat: 0 });
   const [a, b, c, d] = players.map(player => player.id) as [string, string, string, string];
@@ -57,4 +58,47 @@ export function makeSuppressionScenario(name: SuppressionScenarioName, players: 
     if(game.phase!=='action'||game.seatOrder[game.turnSeat]!==a)throw Error('SUPPRESSION_FIXTURE_NEXT_ACTION');
   }
   return game;
+}
+
+/** Structural saved-state boundary, NOT a reachable Lia transformation.
+ * Ban, blessing, reveals and turn progression are actual commands. Only the final
+ * character replacement is injected; the original lease/life are left untouched
+ * so the DO must project and clean the stale lease itself. */
+function makeIdentityBoundary(players: {id: string; name: string}[]): GameState {
+  let state = makeSuppressionScenario('suppression-blessing', players);
+  const [a,b,c] = players.map(p => p.id) as [string,string,string,string];
+  function act(actorId: string, command: GameCommand) {
+    const result = transition(state, {actorId, command}, entropy());
+    if (!result.ok) throw Error(`IDENTITY_BOUNDARY_${command.type}_${result.code}`);
+    state = result.state;
+  }
+  function finish() {
+    for (let n=0;n<300;n++) {
+      const w=state.windows?.at(-1); if (!w) return;
+      act(w.participants[w.cursor]!, {type:'PASS'});
+    }
+    throw Error('IDENTITY_BOUNDARY_WINDOW_LIMIT');
+  }
+  for (const id of [b,c]) { act(id,{type:'REVEAL_CHARACTER'}); finish(); }
+  const ban=viewFor(state,a).abilityOptions.find(o=>o.abilityId==='c2-p07-r1c2-ab03')!;
+  act(a,{type:'USE_ABILITY',abilityId:ban.abilityId,targetEventId:ban.targetEventId,targetIds:[b]}); finish();
+  for (let n=0;n<100;n++) {
+    if (state.windows?.length) {finish();continue;}
+    const id=state.seatOrder[state.turnSeat]!;
+    if (state.phase==='action'&&id===c) break;
+    if (state.phase==='turn-start') act(id,{type:'START_TURN'});
+    else if(state.phase==='draw') act(id,{type:'CHOOSE_DRAW',draw:false});
+    else if(state.phase==='action') act(id,{type:'PASS_ACTION'});
+    else if(state.phase==='withdrawal') act(id,{type:'PASS_WITHDRAWAL'});
+    else if(state.phase==='hand-adjustment') act(id,{type:'END_TURN',discardIds:state.players[id]!.hand.slice(0,Math.max(0,state.players[id]!.hand.length-gameStats(state,id).handLimit))});
+    else throw Error('IDENTITY_BOUNDARY_PHASE');
+  }
+  const blessing=viewFor(state,c).abilityOptions.find(o=>o.abilityId==='c2-p03-r1c2-ab04')!;
+  act(c,{type:'USE_ABILITY',abilityId:blessing.abilityId,targetEventId:blessing.targetEventId,targetId:b}); finish();
+  if(state.blessingLeases?.length!==1 || viewFor(state,b).suppressionTargets[0]?.applicability!=='relieved') throw Error('IDENTITY_BOUNDARY_NO_REAL_LEASE');
+  const life=state.players[c]!.lifeId;
+  // Deliberate structural input, not a lifecycle command or an asserted game route.
+  assignCharacter(state,c,'大神官ジル');
+  if(state.players[c]!.lifeId!==life || state.blessingLeases.length!==1) throw Error('IDENTITY_BOUNDARY_CHANGED_LIFE_OR_LEASE');
+  return state;
 }
