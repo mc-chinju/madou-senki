@@ -200621,11 +200621,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:5e23f49da5e50038"
+      ],
+      "tests": [
+        "t:dff2bbb860c87dd8",
+        "t:e68f31f16056235c",
+        "t:88560f1083dac78d",
+        "t:3807cb9567782f55"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:fcacd5cfed252041"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "kind": "mandatory-restriction",
@@ -200640,11 +200647,20 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8189a62889c6bb50"
+      ],
+      "tests": [
+        "t:493d805945317896",
+        "t:5d565639029d594a",
+        "t:b1168a2e44737798",
+        "t:9d5fea1093d30c7e",
+        "t:dc84bd3917bc3d96",
+        "t:6cf900caa2a416e5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:fcacd5cfed252041"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "kind": "mandatory-restriction",
@@ -200659,11 +200675,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:6922b6138634e637"
+      ],
+      "tests": [
+        "t:9fb50ff83e515511",
+        "t:e7a5f99feb39f4fd",
+        "t:12042198af5aff1d"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:fcacd5cfed252041"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "kind": "mandatory-restriction",
@@ -200678,11 +200700,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:6922b6138634e637"
+      ],
+      "tests": [
+        "t:d8841ce9f6f00d25",
+        "t:36989b217cc89385",
+        "t:5db32a86a915a582"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:fcacd5cfed252041"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "kind": "mandatory-restriction",
@@ -231290,11 +231318,16 @@
         "C02"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3"
+      ],
+      "tests": [
+        "t:f80696b71ae247f5",
+        "t:d8b4471d65c2c830"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231319,11 +231352,16 @@
         "C02"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3"
+      ],
+      "tests": [
+        "t:f80696b71ae247f5",
+        "t:d8b4471d65c2c830"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231450,11 +231488,16 @@
         "C13"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:6aa01e5dba62d35a"
+      ],
+      "tests": [
+        "t:0f00bc5114d2af66",
+        "t:2ee46c57e0915ee6"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231480,11 +231523,16 @@
         "C13"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:6aa01e5dba62d35a"
+      ],
+      "tests": [
+        "t:0f00bc5114d2af66",
+        "t:2ee46c57e0915ee6"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231594,11 +231642,18 @@
         "C04"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f71d1d43f246211b"
+      ],
+      "tests": [
+        "t:00cf99402145e63c",
+        "t:c96d793566d000e6",
+        "t:4c47f555e5e55b58",
+        "t:c7ad54a61fdfe477"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231624,11 +231679,18 @@
         "C04"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f71d1d43f246211b"
+      ],
+      "tests": [
+        "t:00cf99402145e63c",
+        "t:c96d793566d000e6",
+        "t:4c47f555e5e55b58",
+        "t:c7ad54a61fdfe477"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256548,11 +256610,17 @@
         "C04"
       ],
       "kind": "shared-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:e22fbbea6e1fae64"
+      ],
+      "tests": [
+        "t:1c8f4c80ac7cec7e",
+        "t:ecf97a9a49ec2a8e",
+        "t:7a249f4632295361"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256588,11 +256656,15 @@
         "C04"
       ],
       "kind": "shared-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c677089324e6da0f"
+      ],
+      "tests": [
+        "t:1c8f4c80ac7cec7e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256628,11 +256700,15 @@
         "C04"
       ],
       "kind": "shared-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c37286eb311c0ea4"
+      ],
+      "tests": [
+        "t:b9c4adfdcc83ef8e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -416322,8 +416398,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6934,
-      "implemented": 5244
+      "pending": 6921,
+      "implemented": 5257
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417697,6 +417773,14 @@
     "h:fab5e1cfb249fa51": {
       "path": "packages/engine/src/lifecycle/advance.ts",
       "symbol": "expireSourceTurn"
+    },
+    "h:c677089324e6da0f": {
+      "path": "packages/engine/src/abilities/received-defense.ts",
+      "symbol": "receiveAttempt"
+    },
+    "h:c37286eb311c0ea4": {
+      "path": "packages/engine/src/abilities/received-defense.ts",
+      "symbol": "receivedTechnique"
     }
   },
   "testCases": {
@@ -491556,6 +491640,280 @@
         "c2-p06-r1c2-ab01"
       ],
       "bindingNote": "Actual public Gadyoora cancels the declared named mental defense before any ability check, and the original attack still resolves eight damage."
+    },
+    "t:dff2bbb860c87dd8": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "Actual Cham %s yields %i under real suppression=%s",
+      "declarationSha256": "db0c3418511b501d36692ba77fd013e27fa3b67b687ab4f8109599bc8719b45b",
+      "kind": "canonical-transition",
+      "parameters": [
+        "手裏剣",
+        2,
+        false
+      ],
+      "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+    },
+    "t:e68f31f16056235c": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "Actual Cham %s yields %i under real suppression=%s",
+      "declarationSha256": "db0c3418511b501d36692ba77fd013e27fa3b67b687ab4f8109599bc8719b45b",
+      "kind": "canonical-transition",
+      "parameters": [
+        "手裏剣",
+        2,
+        true
+      ],
+      "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+    },
+    "t:88560f1083dac78d": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "Actual Cham %s yields %i under real suppression=%s",
+      "declarationSha256": "db0c3418511b501d36692ba77fd013e27fa3b67b687ab4f8109599bc8719b45b",
+      "kind": "canonical-transition",
+      "parameters": [
+        "妖獣",
+        5,
+        false
+      ],
+      "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+    },
+    "t:3807cb9567782f55": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "Actual Cham %s yields %i under real suppression=%s",
+      "declarationSha256": "db0c3418511b501d36692ba77fd013e27fa3b67b687ab4f8109599bc8719b45b",
+      "kind": "canonical-transition",
+      "parameters": [
+        "妖獣",
+        5,
+        true
+      ],
+      "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+    },
+    "t:493d805945317896": {
+      "path": "packages/engine/test/mandatory-restrictions.test.ts",
+      "suite": [],
+      "title": "Fury rejects the actual black magic before payment or entropy consumption",
+      "declarationSha256": "01f6cacca3ca14a5d59560026e06dfa66c18c622c73cd4c060f8585034afe9fb",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+    },
+    "t:5d565639029d594a": {
+      "path": "packages/engine/test/mandatory-restrictions.test.ts",
+      "suite": [],
+      "title": "Fury rejects actual black counter in a real incoming attack window",
+      "declarationSha256": "98b65614095650ad8d07780b947b419206c1134d02c2755fd1a45bfc0e1b6034",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+    },
+    "t:b1168a2e44737798": {
+      "path": "packages/engine/test/mandatory-restrictions.test.ts",
+      "suite": [],
+      "title": "Actual Vanmil suppression does not lift Fury mandatory black-counter restriction",
+      "declarationSha256": "9f0001f50068c6da00bea7e226adc765f8b9aed7b1fe8778b950a9d9faeeb86a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+    },
+    "t:9d5fea1093d30c7e": {
+      "path": "packages/engine/test/mandatory-restrictions.test.ts",
+      "suite": [],
+      "title": "A nonblack actual sword with black in its name remains legal for Fury",
+      "declarationSha256": "e34879457ad14295a309c9bdaae0a9151f67dd3b69c0e3ad1d53b4494b74f4fe",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+    },
+    "t:dc84bd3917bc3d96": {
+      "path": "packages/engine/test/mandatory-restrictions.test.ts",
+      "suite": [],
+      "title": "Fury cannot put actual black %s into chants",
+      "declarationSha256": "b52645d2cc8d5c22e39f4c067da48bfb95875d69f74ad7c310a034a3344ae6e8",
+      "kind": "canonical-transition",
+      "parameters": "呪殺",
+      "bindingNote": "Actual black chant rejected before payment."
+    },
+    "t:6cf900caa2a416e5": {
+      "path": "packages/engine/test/mandatory-restrictions.test.ts",
+      "suite": [],
+      "title": "Fury cannot put actual black %s into chants",
+      "declarationSha256": "b52645d2cc8d5c22e39f4c067da48bfb95875d69f74ad7c310a034a3344ae6e8",
+      "kind": "canonical-transition",
+      "parameters": "血流",
+      "bindingNote": "Actual black chant rejected before payment."
+    },
+    "t:9fb50ff83e515511": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "%s mandatory conversion resistance survives actual Vanmil suppression",
+      "declarationSha256": "eef9878429a7320fb1049b841c7c6681ef8169a3107cc0ea2808980add239eb5",
+      "kind": "canonical-transition",
+      "parameters": "竜皇子アスフェルト",
+      "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+    },
+    "t:e7a5f99feb39f4fd": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "%s real death and no-check converting resurrection retain mandatory resistance",
+      "declarationSha256": "ea6551d922df97d931f04fd55b79f3c1cbc55d959217aaaed4e0d18c5c836850",
+      "kind": "canonical-transition",
+      "parameters": "竜皇子アスフェルト",
+      "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+    },
+    "t:12042198af5aff1d": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "%s ordinary mental defense has no conversion bonus and conceals base and allegiance",
+      "declarationSha256": "5001ee80edcada212eaa6d132fb43c9cc4e35a82d4528593cd842ac88d797bb3",
+      "kind": "canonical-transition",
+      "parameters": "竜皇子アスフェルト",
+      "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+    },
+    "t:d8841ce9f6f00d25": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "%s mandatory conversion resistance survives actual Vanmil suppression",
+      "declarationSha256": "eef9878429a7320fb1049b841c7c6681ef8169a3107cc0ea2808980add239eb5",
+      "kind": "canonical-transition",
+      "parameters": "黒騎士ガーウィン",
+      "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+    },
+    "t:36989b217cc89385": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "%s real death and no-check converting resurrection retain mandatory resistance",
+      "declarationSha256": "ea6551d922df97d931f04fd55b79f3c1cbc55d959217aaaed4e0d18c5c836850",
+      "kind": "canonical-transition",
+      "parameters": "黒騎士ガーウィン",
+      "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+    },
+    "t:5db32a86a915a582": {
+      "path": "packages/engine/test/mandatory-fields.test.ts",
+      "suite": [],
+      "title": "%s ordinary mental defense has no conversion bonus and conceals base and allegiance",
+      "declarationSha256": "5001ee80edcada212eaa6d132fb43c9cc4e35a82d4528593cd842ac88d797bb3",
+      "kind": "canonical-transition",
+      "parameters": "黒騎士ガーウィン",
+      "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+    },
+    "t:f80696b71ae247f5": {
+      "path": "packages/engine/test/turn-information-abilities.test.ts",
+      "suite": [],
+      "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+      "declarationSha256": "0aed45e9bf199745fdbe93999b3846b25657f63d8184640968e7dff4ad850780",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Lia has no far target option and no option during actual own attack."
+    },
+    "t:d8b4471d65c2c830": {
+      "path": "packages/engine/test/turn-information-abilities.test.ts",
+      "suite": [
+        "Task7x exact whole original packages"
+      ],
+      "title": "Lia inspects nearby chants then discards all seen or none",
+      "declarationSha256": "2c4a17e4a162897362f178b0266f4494a6978601183d2f3f1d7a99e25c4f96fb",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual near inspection identifies selected target chants and all-or-none disposal."
+    },
+    "t:0f00bc5114d2af66": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+      "declarationSha256": "54ddc74be08b2fc44cd3f58a8c9e78896726281848da33a5b7797e8a8ff17530",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+    },
+    "t:2ee46c57e0915ee6": {
+      "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "suite": [],
+      "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+      "declarationSha256": "54ddc74be08b2fc44cd3f58a8c9e78896726281848da33a5b7797e8a8ff17530",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+    },
+    "t:00cf99402145e63c": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "actual transformed shield compares incoming five plus %s to warrior six",
+      "declarationSha256": "b12e8048bb62bdad82bba0dc246df46b1a0b6e24f64da3c692dd913425e3692b",
+      "kind": "canonical-transition",
+      "parameters": 1,
+      "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+    },
+    "t:c96d793566d000e6": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "actual transformed shield compares incoming five plus %s to warrior six",
+      "declarationSha256": "b12e8048bb62bdad82bba0dc246df46b1a0b6e24f64da3c692dd913425e3692b",
+      "kind": "canonical-transition",
+      "parameters": 2,
+      "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+    },
+    "t:4c47f555e5e55b58": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+      "declarationSha256": "7d26e8a9a799ed45a9ebea00bf26de81f3139eac33d41defa022c1b4cde82e49",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+    },
+    "t:c7ad54a61fdfe477": {
+      "path": "packages/engine/test/received-defense-continuations.test.ts",
+      "suite": [],
+      "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+      "declarationSha256": "7d26e8a9a799ed45a9ebea00bf26de81f3139eac33d41defa022c1b4cde82e49",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+    },
+    "t:1c8f4c80ac7cec7e": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+      "declarationSha256": "38b0caf6aff785bd85eb3091a7d2039a1e48f3d2e38bc02eab38b9d71b117200",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+    },
+    "t:ecf97a9a49ec2a8e": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+      "declarationSha256": "ee6ccc3fa8a961e76147d3d9bd065b63977f9a18c480ad42fc9768ea20f04f0d",
+      "kind": "canonical-transition",
+      "parameters": "select",
+      "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+    },
+    "t:7a249f4632295361": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [],
+      "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+      "declarationSha256": "ee6ccc3fa8a961e76147d3d9bd065b63977f9a18c480ad42fc9768ea20f04f0d",
+      "kind": "canonical-transition",
+      "parameters": "cancel",
+      "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+    },
+    "t:b9c4adfdcc83ef8e": {
+      "path": "packages/engine/test/received-defense-abilities.test.ts",
+      "suite": [
+        "Task7r canonical received-defense packages"
+      ],
+      "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+      "declarationSha256": "49443337d8a353392758911bdf93443b0cd3296de5a635d761c9d4f496acbeaf",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual source action stays unchanged, B effect becomes five while C stays six; damage eight each."
     }
   },
   "remainingNotes": {

@@ -3156,6 +3156,523 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p01-r2c2#mandatory-warrior-damage-half",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "damagePreview"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "手裏剣",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "手裏剣",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "妖獣",
+            5,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "妖獣",
+            5,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2#mandatory-black-tech-prohibition",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/printed-restrictions.ts",
+          "symbol": "printedTechniqueAllowed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury rejects the actual black magic before payment or entropy consumption",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury rejects actual black counter in a real incoming attack window",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Actual Vanmil suppression does not lift Fury mandatory black-counter restriction",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "A nonblack actual sword with black in its name remains legal for Fury",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury cannot put actual black %s into chants",
+          "parameters": "呪殺",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black chant rejected before payment."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury cannot put actual black %s into chants",
+          "parameters": "血流",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black chant rejected before payment."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2#mandatory-allegiance-check-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/rolls/advance.ts",
+          "symbol": "closeBeforeRoll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s mandatory conversion resistance survives actual Vanmil suppression",
+          "parameters": "竜皇子アスフェルト",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s real death and no-check converting resurrection retain mandatory resistance",
+          "parameters": "竜皇子アスフェルト",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s ordinary mental defense has no conversion bonus and conceals base and allegiance",
+          "parameters": "竜皇子アスフェルト",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1#mandatory-allegiance-check-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/rolls/advance.ts",
+          "symbol": "closeBeforeRoll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s mandatory conversion resistance survives actual Vanmil suppression",
+          "parameters": "黒騎士ガーウィン",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s real death and no-check converting resurrection retain mandatory resistance",
+          "parameters": "黒騎士ガーウィン",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s ordinary mental defense has no conversion bonus and conceals base and allegiance",
+          "parameters": "黒騎士ガーウィン",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#outside-own-attack-only",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lia has no far target option and no option during actual own attack."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lia inspects nearby chants then discards all seen or none",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near inspection identifies selected target chants and all-or-none disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#near-selected-target",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lia has no far target option and no option during actual own attack."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lia inspects nearby chants then discards all seen or none",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near inspection identifies selected target chants and all-or-none disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#optional-Dia-conversion",
+      "handler": [
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "resolveLifecycleAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#optional-Yotsurm-conversion",
+      "handler": [
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "resolveLifecycleAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "evaluateReceivedReservations"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 1,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 2,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab01#successful-check-threshold-hit-immunity",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "evaluateReceivedReservations"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 1,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 2,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "common:C04#C04/once-target-hit-before-followers",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedDefenseOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "common:C04#C04/cancel-consumes-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receiveAttempt"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "common:C04#C04/target-local-not-source-global",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedTechnique"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source action stays unchanged, B effect becomes five while C stays six; damage eight each."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

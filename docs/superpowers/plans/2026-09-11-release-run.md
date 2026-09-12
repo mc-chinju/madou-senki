@@ -1239,7 +1239,7 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 - Modify: 該当 `packages/engine/test/*.test.ts`
 - Create: `docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json`
 
-- [ ] **Step 1: `python3 scripts/ledger_report.py` の pending 内訳を出し、行ごとに (a) 既存 canonical 試験を束縛、(b) 試験追加、(c) `notApplicable`（A7 手順・ユーザー承認済み D4 の範囲内のみ）に分類した一覧を `docs/operations/evidence/2026-09-11-remaining-clauses.md` に書く。D4 以外を `notApplicable` にしない**
+- [x] **Step 1: `python3 scripts/ledger_report.py` の pending 内訳を出し、行ごとに (a) 既存 canonical 試験を束縛、(b) 試験追加、(c) `notApplicable`（A7 手順・ユーザー承認済み D4 の範囲内のみ）に分類した一覧を `docs/operations/evidence/2026-09-11-remaining-clauses.md` に書く。D4 以外を `notApplicable` にしない**
 
 - [ ] **Step 2: (b) の試験を追加し実行、(a)(b) の束縛を適用**
 
@@ -1269,6 +1269,8 @@ git add packages data docs && git commit -m "test,data: 残る個別条項を束
 2026-09-12 B5剣・風と斬: アスフェルト6条項を束縛。新規3ケースで実転移による防御対象を斬から除外（0/24損害）し、剣/風の実攻撃が従者破壊能力を選べることを確認。間合いの実支払履歴、多段の発別適用、初期配置兵士のHP控除前の倍加は既存試験へ対応付け（null剣の算術のみ構造試験）。対象83試験、型検査、台帳validator成功。具体的実装済み5,230、semantic pending29、accepted0。B5束縛計70行、残通常27行とD4c 2行。詳細は [B5剣・斬進捗](../../operations/evidence/2026-09-12-b5-sword-progress.json)。Step1〜3は未完了。
 
 2026-09-12 B5精神防御: レスター/ガドューラ/ディアのゾロ目取消・停止・期限9条項と、ガーウィンの指定3能力保護/ガドューラの指定2能力取消を束縛。新規3ケースで実席順一周まで停止保持、攻撃者席到来時の無判定解除と行動再開を確認。実グリフォンの未処理発取消、他対象継続、保護の通常判定結果保持は既存試験へ対応付け。対象246試験、型検査、台帳validator成功。具体的実装済み5,244、semantic pending15、accepted0。B5束縛計84行、残通常13行とD4c 2行。詳細は [B5精神防御進捗](../../operations/evidence/2026-09-12-b5-mental-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5通常条項完了: 最後の通常13条項を束縛。新規4ケースで実覚醒の改心選択/辞退（ディア・ヨーツルム）と実変身後の盾の戦士Lv6に対する効果6/7境界を確認。強制制限・リーア近距離/自攻撃外・C04は既存実試験へ対応付け。対象210試験に加えてB5全束縛先20ファイル818試験、型検査、台帳validator成功。全99行の分類完了としてStep1を完了。通常97行は具体的実装済みで、残るD4c 2行はA7補足どおりB8直前に適用し、その時点でStep2〜3のpending0条件を閉じる。具体的実装済み5,257、semantic pending2（action-effect）、accepted0。詳細は [B5通常条項全体検証](../../operations/evidence/2026-09-12-b5-ordinary-complete-progress.json)。次はB6。
 
 ### Task B6: D2 無制限回収の秘匿比較と D3 同一席2権利の束縛
 
