@@ -232178,11 +232178,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:d78424f9ba85e704"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232234,11 +232240,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:c2e4416b35fe8290"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232346,11 +232358,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:27388110c06341ef"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232402,11 +232420,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:b8cb68a6324bf76f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232514,11 +232538,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:9a3080ad694e8b64"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232570,11 +232600,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:61b433156ce14e2b"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232682,11 +232718,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:3d9a9b35fc63659e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232738,11 +232780,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:e391278ecbb72d4a"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232850,11 +232898,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:fceccb10e534a9da"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232906,11 +232960,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:ad01a6bafc403efd"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233018,11 +233078,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:bbfeec7d1eea9c3c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233074,11 +233140,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:8b615340ad03b23e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233186,11 +233258,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:eea59c5863e2ee23"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233242,11 +233320,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:35600547ee229724"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233354,11 +233438,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:98dc1e836fd7bdf2"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233410,11 +233500,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:2af2f49960fed3f8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415264,8 +415360,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7130,
-      "implemented": 5048
+      "pending": 7114,
+      "implemented": 5064
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416539,6 +416635,10 @@
     "h:3e7b6e2931bc19a9": {
       "path": "packages/engine/src/abilities/sad-love.ts",
       "symbol": "resolveSadLove"
+    },
+    "h:0e58d880e08ce682": {
+      "path": "packages/engine/src/abilities/conditional-selection.ts",
+      "symbol": "cleanConditionalSelections"
     }
   },
   "testCases": {
@@ -487358,6 +487458,294 @@
       "kind": "canonical-transition",
       "parameters": "c2-p06-r1c2-ab01",
       "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:d78424f9ba85e704": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab04"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:6db0808d8bc08ac7": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab04"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:27388110c06341ef": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab03"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:778a31c793d9e1a4": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab03"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:9a3080ad694e8b64": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒妖精のアーネス",
+        "c2-p03-r2c2-ab04"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:c85dd7fb2afafef3": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒妖精のアーネス",
+        "c2-p03-r2c2-ab04"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:3d9a9b35fc63659e": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab03"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:725adedeb507392a": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab03"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:fceccb10e534a9da": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab05"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:b2448ed5d50e468b": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab05"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:bbfeec7d1eea9c3c": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "c2-p05-r1c2-ab01"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:75064758d125f8e8": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "c2-p05-r1c2-ab01"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:eea59c5863e2ee23": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "c2-p05-r2c1-ab05"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:91dbcae17ab55c2a": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "c2-p05-r2c1-ab05"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:98dc1e836fd7bdf2": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s default-off-explicit-cancelable-election",
+      "declarationSha256": "3e184d00e16e8430c9b714bf0022b6ae0af2a1df0579df5d3a495d2634d3ac87",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "c2-p06-r1c2-ab02"
+      ],
+      "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+    },
+    "t:f233bbf0a5e79fa4": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "f70a13108c3a94187cbd7c16672de4aa66cb9438812740edb5432608e425f6ab",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "c2-p06-r1c2-ab02"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return, and actual approach/lethal attack clears election on death."
+    },
+    "t:c2e4416b35fe8290": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab04"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:b8cb68a6324bf76f": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab03"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:61b433156ce14e2b": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒妖精のアーネス",
+        "c2-p03-r2c2-ab04"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:e391278ecbb72d4a": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab03"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:ad01a6bafc403efd": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab05"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:8b615340ad03b23e": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "c2-p05-r1c2-ab01"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:35600547ee229724": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "c2-p05-r2c1-ab05"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+    },
+    "t:2af2f49960fed3f8": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s absence-retains-death-clears",
+      "declarationSha256": "23ce6c58d6285a2a2697e85478ab6e8010da4a6f813eefaeab6839227e63523c",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "c2-p06-r1c2-ab02"
+      ],
+      "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
     }
   },
   "remainingNotes": {

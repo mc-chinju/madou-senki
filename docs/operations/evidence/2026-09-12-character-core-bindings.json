@@ -710,6 +710,550 @@
       ]
     },
     {
+      "row": "c2-p02-r1c1-ab04#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab04#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab03#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab03#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "黒妖精のアーネス",
+            "c2-p03-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "黒妖精のアーネス",
+            "c2-p03-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab03#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab03#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab03"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab05"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab05"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab01#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "c2-p05-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab01#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "c2-p05-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab05#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "c2-p05-r2c1-ab05"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab05#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "c2-p05-r2c1-ab05"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#default-off-explicit-cancelable-election",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s default-off-explicit-cancelable-election",
+          "parameters": [
+            "魔聖母ディア",
+            "c2-p06-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#absence-retains-death-clears",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s absence-retains-death-clears",
+          "parameters": [
+            "魔聖母ディア",
+            "c2-p06-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p03-r2c1-ab01#once-group-target-before-followers",
       "handler": [
         {

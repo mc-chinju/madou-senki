@@ -1207,6 +1207,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4精神系防御・身代わり: 精神系3能力の実取消→同一2発群の再宣言拒否→後続の合法な別席攻撃での回復、同陣営攻撃者、従者開始後の拒否を能力別に追加。固定陣営は攻撃宣言前の人物設定から検証し、既存の悲しき愛の実身代わり/防御制限試験にも対応付けた。新規11試験、対象計94試験、全対象型検査、Python15件、台帳validator成功。未実装15行を解消し既存2行を再束縛、束縛ファイル計227行。人物pending112、semantic具体的実装済み5,048、pending211、accepted0。全B4生成gateは残112行で停止。詳細は [B4精神系防御進捗](../../operations/evidence/2026-09-12-b4-mental-progress.json)。Step3〜5は未完了。
 
+2026-09-12 B4条件付き能力の選択・不在: 全8能力の初期OFF/実取消/新機会での明示ON/保存復帰/OFFと、実詠唱・裂界・命運凶変による異界移動→祈願でDawn取得→実帰還→実接近・所有者死亡時の選択消去を追加した。別の保存継続では保護対象を実際に殺して彷徨中の保持も確認し、保護対象なしの人物は他者死亡でも在席・選択を保持する。新規16試験、既存込み96試験、型検査、Python16件、台帳validator成功。未実装16行を解消、人物pending96、semantic具体的実装済み5,064、pending195、accepted0。全B4生成gateは残96行で停止。詳細は [B4条件付き能力進捗](../../operations/evidence/2026-09-12-b4-conditional-progress.json)。固有条件の消失・凍結値・継承などとStep3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**

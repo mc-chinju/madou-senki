@@ -1,0 +1,96 @@
+import type {ConditionalAbilityId} from '@madou/protocol';
+import {expect,it} from 'vitest';
+import {getAction} from '@madou/catalog';
+import {makeOwnedReclaimTable,nextOwnAction,killOwnedLifetimePlayer} from './owned-reclaim-helpers.js';
+import {transition,viewFor} from '../src/index.js';
+import {act,finish,pass,ready,until} from './combat-helpers.js';
+import {character,entropy,handCard} from './fixtures.js';
+const CONDITIONAL_CASES: [string,ConditionalAbilityId][] = [
+  [
+    "有翼人のティア",
+    "c2-p02-r1c1-ab04"
+  ],
+  [
+    "リーア姫",
+    "c2-p03-r1c2-ab03"
+  ],
+  [
+    "黒妖精のアーネス",
+    "c2-p03-r2c2-ab04"
+  ],
+  [
+    "竜皇子アスフェルト",
+    "c2-p04-r1c2-ab03"
+  ],
+  [
+    "竜皇子アスフェルト",
+    "c2-p04-r1c2-ab05"
+  ],
+  [
+    "獣使いのウパニシャット",
+    "c2-p05-r1c2-ab01"
+  ],
+  [
+    "黒騎士ガーウィン",
+    "c2-p05-r2c1-ab05"
+  ],
+  [
+    "魔聖母ディア",
+    "c2-p06-r1c2-ab02"
+  ]
+];
+it.each(CONDITIONAL_CASES)('%s %s default-off-explicit-cancelable-election',(name,id)=>{
+ let s=ready();character(s,'A',name);const fate=handCard(s,'B','命運凶変');
+ const setting=()=>viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
+ expect(setting()).toMatchObject({enabled:false,active:false,canActivate:true});
+ const before=structuredClone(s.players.A!.conditionalSelections??[]),stats=viewFor(s,'A').self.stats;
+ const command={type:'SET_CONDITIONAL_ABILITY' as const,abilityId:id,targetEventId:setting().targetEventId!,enabled:true,...(id==='c2-p03-r1c2-ab03'?{targetIds:[]}: {})};
+ s=act(s,'A',command);expect(s.players.A!.conditionalSelections??[]).toEqual(before);
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='B')s=pass(s);
+ s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(s,'B').reactionTargetAbilityId!}));
+ expect(setting()).toMatchObject({enabled:false,active:false,canActivate:false});expect(viewFor(s,'A').self.stats).toEqual(stats);
+ const saved=JSON.stringify(s);expect(transition(s,{actorId:'A',command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(saved);
+ s=act(s,'A',{type:'PASS_ACTION'});expect(setting().canActivate).toBe(true);
+ s=finish(act(s,'A',{...command,targetEventId:setting().targetEventId}));
+ s=JSON.parse(JSON.stringify(s));expect(setting()).toMatchObject({enabled:true,active:true,canActivate:false,canDeactivate:true});
+ expect(s.players.A!.conditionalSelections).toContainEqual({abilityId:id,sourceCharacterId:id.split('-ab')[0],targetIds:[]});
+ s=act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:false});
+ expect(setting()).toMatchObject({enabled:false,active:false,canActivate:false});
+});
+
+it.each(CONDITIONAL_CASES)('%s %s absence-retains-death-clears',(name,id)=>{
+ const table=makeOwnedReclaimTable(name,'a2-p23-r1c2',[],true);let s=table.state;
+ s.players.B!.permanent={...s.players.B!.permanent,magic_level:20,spirit:20};
+ const rift=handCard(s,'B','裂界'),fate=handCard(s,'F','命運凶変'),advance=handCard(s,'E','踏み込み／弓');
+ const dawn='a2-p01-r1c2';s.deck=s.deck.filter(c=>c!==dawn);s.discard=s.discard.filter(c=>c!==dawn);
+ for(const p of Object.values(s.players)){p.hand=p.hand.filter(c=>c!==dawn);p.open=p.open.filter(c=>c!==dawn);}s.deck.push(dawn);
+ const setting=()=>viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
+ s=finish(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:true,...(id==='c2-p03-r1c2-ab03'?{targetIds:[]}: {})}));
+ const saved=structuredClone(s.players.A!.conditionalSelections);expect(saved).toHaveLength(1);
+ s=nextOwnAction({state:s,ownerId:'B'},rift);s=act(s,'B',{type:'CHANT',cardInstanceId:rift});s=nextOwnAction({state:s,ownerId:'B'},rift);
+ s=act(s,'B',{type:'ATTACK',cardInstanceId:rift,targetIds:['A'],dedicated:false});
+ let forced=false;
+ for(let n=0;n<500&&s.windows?.length;n++){
+  const w=s.windows.at(-1)!,roll=s.rolls?.find(r=>r.id===w.continuation.id);
+  if(!forced&&w.kind==='after-roll'&&roll?.purpose==='status-resistance'&&roll.rollerId==='A'&&w.participants[w.cursor]==='F'){
+   s=act(s,'F',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'force-fail',targetRollId:roll.id});forced=true;
+  }else s=pass(s);
+ }
+ expect(forced).toBe(true);expect(s.players.A!.presence).toBe('otherworld');expect(s.players.A!.conditionalSelections).toEqual(saved);
+ expect(setting()).toMatchObject({enabled:true,active:false});s=JSON.parse(JSON.stringify(s));
+ const wish=s.players.F!.hand.find(c=>getAction(c)!.name==='祈願')!;
+ s=nextOwnAction({state:s,ownerId:'F'},wish);s=until(act(s,'F',{type:'PLAY_TURN_CARD',cardInstanceId:wish,mode:'wish'}),'wish');
+ s=finish(act(s,'F',{type:'CHOOSE_WISH',decisionId:viewFor(s,'F').wish!.decisionId,source:{kind:'deck',cardName:getAction(dawn)!.name}}));
+ expect(s.players.A!.presence).toBe('active');expect(s.players.A!.conditionalSelections).toEqual(saved);expect(setting().enabled).toBe(true);
+ const protectedSeat=s.seatOrder.find(seat=>seat!=='A'&&s.players.A!.protection?.characterIds.includes(s.players[seat]!.characterId));
+ const otherTarget=protectedSeat??'D';
+ let absent=nextOwnAction({state:JSON.parse(JSON.stringify(s)),ownerId:'E'},advance);
+ absent=finish(act(absent,'E',{type:'APPROACH',targetId:otherTarget,cardInstanceId:advance}));
+ absent=killOwnedLifetimePlayer(absent,otherTarget);
+ expect(absent.players[otherTarget]!.presence).toBe('dead');
+ expect(absent.players.A!.presence).toBe(protectedSeat?'wandering':'active');
+ expect(absent.players.A!.conditionalSelections).toEqual(saved);
+ s=nextOwnAction({state:s,ownerId:'E'},advance);
+ s=finish(act(s,'E',{type:'APPROACH',targetId:'A',cardInstanceId:advance}));
+ s=killOwnedLifetimePlayer(s,'A');expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.conditionalSelections??[]).toEqual([]);
+});

@@ -43,6 +43,13 @@ class CharacterBindingsTest(unittest.TestCase):
         self.assertEqual(result[0]['tests'][0]['parameters'], 'c2-p06-r1c1-ab01')
         self.assertIn('Fate cancellation', result[0]['tests'][0]['title'])
 
+    def test_conditional_election_requires_exact_owner_tuple(self):
+        ledger = self.ledger('default-off-explicit-cancelable-election')
+        ledger['rows'][0]['entryId'] = 'c2-p02-r1c1-ab04'
+        cards = [{'id': 'c2-p02-r1c1', 'name': '有翼人のティア', 'defeat_condition': 'なし'}]
+        result = build_bindings(ledger, cards)
+        self.assertEqual(result[0]['tests'][0]['parameters'], ['有翼人のティア', 'c2-p02-r1c1-ab04'])
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)
