@@ -1091,20 +1091,22 @@ B2部分実績: Step1〜4完了。条項末尾は9種類（通常共通5、技�
 - Read: `docs/operations/evidence/2026-09-10-r6-candidate-run.json`（122 参照）、`docs/operations/evidence/2026-09-10-r6-scenario-source-index.json`
 - Create: `docs/operations/evidence/2026-09-11-scenario-source-bindings.json`（生成: `scripts/build_scenario_bindings.py`）
 
-- [ ] **Step 1: シナリオIDごとに r6 candidate run の試験参照を集め、`S01#source/title`, `source/rulings/N`, `source/given`, `source/when`, `source/then` の各行に、そのシナリオの `canonical-transition` 試験を全て束縛する生成スクリプトを書く**
+- [x] **Step 1: シナリオIDごとに r6 candidate run の試験参照を集め、`S01#source/title`, `source/rulings/N`, `source/given`, `source/when`, `source/then` の各行に、そのシナリオの `canonical-transition` 試験を全て束縛する生成スクリプトを書く**
 
 `scenario-source-index.json` に S→試験の対応がある場合はそれを唯一の入力にする。無い場合は run の `cases[].test.title` が `S01` のような ID で始まるものを対応づける。1シナリオに試験が 1 件も無い場合は列挙して止める（その S は R6 計画の該当項目を再実行して試験を追加する）。
 
-- [ ] **Step 2: 適用し validator を通す**
+- [x] **Step 2: 適用し validator を通す**
 
 Run: `python3 scripts/build_scenario_bindings.py --bindings docs/operations/evidence/2026-09-11-scenario-source-bindings.json && python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-scenario-source-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160`
 Expected: `valid: true`、pending の scenario-source が 0
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add scripts data docs && git commit -m "data: 原典例S01〜S32のsource条項を実行済みシナリオ試験へ束縛する"
 ```
+
+2026-09-12 B3完了: 既存R6の唯一の対応表から210行を束縛した。S13/S32はR6で明記された抽象解決器、S23は初期ゾーン配置を固定した境界試験のため、元のstructural-resolver分類を維持する（canonicalへの付け替え・架空の札組合せ追加なし）。その他はcanonical-transitionを必須とし、全32例・各tuple・現行ASTを生成時に照合。対象Engine21ファイル496件、Python18件、台帳validator valid:true。scenario-source pending 0、具体的実装済み4,823、semantic pending 436、accepted 0。詳細は [B3完了進捗証跡](../../operations/evidence/2026-09-12-b3-complete-progress.json)。過去のrun hashを現候補の受入証跡には再利用せず、B8の候補版受入を残す。
 
 ### Task B4: 人物条項（目的・敗北・陣営・制限・継承・C16ほか）約 260 行
 
