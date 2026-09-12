@@ -375358,12 +375358,11 @@
       ],
       "kind": "action-effect",
       "handler": [],
-      "tests": [],
-      "status": "pending",
-      "remaining": [
-        "F22 excludes earth warrior attacks. Existing follower-continuations synthetic heterogeneous consumer test passes, but no actual earth-warrior producer was found in targeted printed attack attributes or modifier paths. Follower earth attributes (Wood/Stone/Dwarf/Metal) do not transfer to their attack bottom. Leave pending; do not invent a technique or claim canonical full-path coverage."
+      "tests": [
+        "t:f8ef56602d5a12fb"
       ],
-      "gapKind": "evidence-missing",
+      "status": "notApplicable",
+      "remaining": [],
       "relatedEvidence": {
         "handler": [
           "h:9301e66571893e12",
@@ -375383,7 +375382,29 @@
         ],
         "disposition": "family inspection only; atomic correspondence not established"
       },
-      "coverageClass": "semantic"
+      "coverageClass": "semantic",
+      "notApplicable": {
+        "reason": "現行2ndに地属性かつ戦士技の実カードが存在せず、従者本体属性を攻撃属性へ移す採用裁定もない。",
+        "basis": {
+          "kind": "earth-warrior-technique-absence",
+          "edition": "second-online-v0.1-provisional",
+          "matches": []
+        },
+        "edition": "second-online-v0.1-provisional",
+        "decidedOn": "2026-09-10",
+        "decidedBy": "user",
+        "retainedTests": [
+          {
+            "path": "packages/engine/test/follower-continuations.test.ts",
+            "suite": [],
+            "title": "future heterogeneous reached earth warrior compares normally while earth magic is nullified",
+            "declarationSha256": "32245edbaf141bc3a75a08dae06be0256d80e2a233b0bf79070c797e1aab8524",
+            "kind": "structural-resolver",
+            "parameters": null,
+            "bindingNote": "合成consumer入力で地魔法だけ無効化し、地戦士は通常比較になることをdamage assertionで確認。実producerの証明ではない。"
+          }
+        ]
+      }
     },
     {
       "entryId": "a2-p20-r2c1",
@@ -383209,12 +383230,11 @@
       ],
       "kind": "action-effect",
       "handler": [],
-      "tests": [],
-      "status": "pending",
-      "remaining": [
-        "n:f38efb2ebb6d94e7"
+      "tests": [
+        "t:a62713b11941203e"
       ],
-      "gapKind": "evidence-missing",
+      "status": "notApplicable",
+      "remaining": [],
       "relatedEvidence": {
         "handler": [
           "h:9301e66571893e12",
@@ -383234,7 +383254,29 @@
         ],
         "disposition": "family inspection only; atomic correspondence not established"
       },
-      "coverageClass": "semantic"
+      "coverageClass": "semantic",
+      "notApplicable": {
+        "reason": "現行2ndに地属性かつ戦士技の実カードが存在せず、従者本体属性を攻撃属性へ移す採用裁定もない。",
+        "basis": {
+          "kind": "earth-warrior-technique-absence",
+          "edition": "second-online-v0.1-provisional",
+          "matches": []
+        },
+        "edition": "second-online-v0.1-provisional",
+        "decidedOn": "2026-09-10",
+        "decidedBy": "user",
+        "retainedTests": [
+          {
+            "path": "packages/engine/test/follower-continuations.test.ts",
+            "suite": [],
+            "title": "future Winged Folk consumer nullifies earth magic but compares earth warrior normally",
+            "declarationSha256": "d391d0d03628b7b992197400882c58029fbf487af5fa7aed994b7afc297dd840",
+            "kind": "structural-resolver",
+            "parameters": null,
+            "bindingNote": "合成consumer入力で地魔法だけ無効化し、地戦士は通常比較になることをdamage assertionで確認。実producerの証明ではない。"
+          }
+        ]
+      }
     },
     {
       "entryId": "a2-p21-r1c3",
@@ -416512,8 +416554,9 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6921,
-      "implemented": 5257
+      "pending": 6919,
+      "implemented": 5257,
+      "notApplicable": 2
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -493634,6 +493677,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+    },
+    "t:f8ef56602d5a12fb": {
+      "path": "packages/engine/test/follower-continuations.test.ts",
+      "suite": [],
+      "title": "future heterogeneous reached earth warrior compares normally while earth magic is nullified",
+      "declarationSha256": "32245edbaf141bc3a75a08dae06be0256d80e2a233b0bf79070c797e1aab8524",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "合成consumer入力で地魔法だけ無効化し、地戦士は通常比較になることをdamage assertionで確認。実producerの証明ではない。"
+    },
+    "t:a62713b11941203e": {
+      "path": "packages/engine/test/follower-continuations.test.ts",
+      "suite": [],
+      "title": "future Winged Folk consumer nullifies earth magic but compares earth warrior normally",
+      "declarationSha256": "d391d0d03628b7b992197400882c58029fbf487af5fa7aed994b7afc297dd840",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "合成consumer入力で地魔法だけ無効化し、地戦士は通常比較になることをdamage assertionで確認。実producerの証明ではない。"
     }
   },
   "remainingNotes": {

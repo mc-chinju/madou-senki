@@ -1415,6 +1415,8 @@ Worker の vitest 設定が `--outputFile` の相対パスを `apps/worker` 基�
 Run: `git status --porcelain | wc -l` → 0 を確認し `bash scripts/run_candidate.sh docs/operations/evidence/2026-09-11-candidate-run.json 2>&1 | tee .cache/run/candidate.log`
 Expected: 終了0。失敗があれば原因を直し、直したファイルを含む候補で **最初から** 再実行する（run は候補 hash に束縛されるため部分再実行は使えない）。
 
+2026-09-12: 初回全実行は失敗。Engine/Web 7,963成功・1失敗、Worker 2,551成功・7失敗。スリープ記録と失敗時刻が重なり、変更なしの対象再実行はEngine2件・Worker175件成功。Browserは159成功・1失敗時点で修正のため中断（残り未受け入れ）。獣取得後の回収・lifecycle回答を画面から進める手順を追加し、対象Browser8件が成功。詳細は [初回失敗記録](../../operations/evidence/2026-09-12-b8-initial-failure.json)。候補全再実行と昇格は未完了。再実行は `caffeinate -i` で実行中のアイドルスリープを抑える。蓋閉じによるスリープを防ぐものとは扱わない。
+
 - [ ] **Step 3: 昇格**
 
 Run: `python3 scripts/promote_ledger.py --run docs/operations/evidence/2026-09-11-candidate-run.json && python3 scripts/validate_runtime_coverage.py --require-accepted | cut -c1-200`

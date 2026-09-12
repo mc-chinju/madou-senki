@@ -140,6 +140,8 @@ test('lethal capture restores before the victim can gift and disposes only the r
     await table.pages[0]!.reload(); const panel = table.pages[0]!.getByRole('complementary', { name: '獣の取得' });
     await panel.getByRole('checkbox', { name: /グリフォン/ }).check(); const revision = views.get(a)!.revision;
     await panel.getByRole('button', { name: '選んだ獣を手札に加える' }).click(); await expect.poll(() => views.get(a)?.revision).toBeGreaterThan(revision);
+    // Resolve the remaining reclaim/lifecycle responses before the victim's gift window.
+    await passUntil(table, views, game => game.activeWindow?.kind === 'death-gift', 500);
     await table.pages[1]!.reload(); const gift = table.pages[1]!.getByRole('complementary', { name: '死亡時の贈与' });
     await expect(gift).toBeVisible(); expect(views.get(b)!.game!.self.followers.map(card => card.cardInstanceId)).toEqual([wyvern]);
     await gift.getByRole('combobox', { name: '死亡時に使うカード' }).selectOption('a2-p02-r3c3');
