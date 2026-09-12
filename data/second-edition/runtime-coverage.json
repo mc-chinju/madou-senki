@@ -173912,12 +173912,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff"
+      ],
+      "tests": [
+        "t:388bc8244ffb40e1",
+        "t:596f007dd47c3e2a"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -173932,12 +173937,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:9ca3b5fe48c313a6",
+        "t:273e3892ee63f9a5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -173952,12 +173961,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:9ca3b5fe48c313a6",
+        "t:273e3892ee63f9a5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -173972,12 +173985,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:62cb245e55893aae",
+        "t:966ba04fa4ba5121"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -173992,12 +174010,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:2429f56399a6e165",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:46d5116af08f9f78"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179679,12 +179701,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:9ca3b5fe48c313a6",
+        "t:273e3892ee63f9a5",
+        "t:ffe9dea5947ea7e5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179699,12 +179726,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:79856e2bd46b7acf",
+        "h:513875d76b6ea400"
+      ],
+      "tests": [
+        "t:ad1d9bf806ba2173",
+        "t:a5415e310ca367df"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179719,12 +179751,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:79856e2bd46b7acf",
+        "h:513875d76b6ea400"
+      ],
+      "tests": [
+        "t:612c374f9b61adcf",
+        "t:a5415e310ca367df"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179739,12 +179776,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:9ca3b5fe48c313a6",
+        "t:273e3892ee63f9a5",
+        "t:ae2482a69d0e7734",
+        "t:1a42e9880913b85e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:35daaa09e17e91d9",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -416130,8 +416173,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6972,
-      "implemented": 5206
+      "pending": 6963,
+      "implemented": 5215
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417481,6 +417524,10 @@
     "h:b7b33f259c001ebb": {
       "path": "packages/engine/src/abilities/distance.ts",
       "symbol": "maaiAdvanceLimit"
+    },
+    "h:513875d76b6ea400": {
+      "path": "packages/engine/src/abilities/suppression-state.ts",
+      "symbol": "publicSuppressionTargets"
     }
   },
   "testCases": {
@@ -490653,6 +490700,139 @@
       "kind": "canonical-transition",
       "parameters": true,
       "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+    },
+    "t:388bc8244ffb40e1": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab04",
+        "C"
+      ],
+      "bindingNote": "Actual cancellation spends the own-turn attempt, serialized replay is rejected and real next own turn restores the extra option."
+    },
+    "t:596f007dd47c3e2a": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab04",
+        "C"
+      ],
+      "bindingNote": "Actual ability frame takes no own action; a following actual attack damages the target and advances to withdrawal."
+    },
+    "t:9ca3b5fe48c313a6": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+      "declarationSha256": "267dd3723719b72bb1cfb4e4841720a62b3b656127defa16fa7e5a4d75cc0c3e",
+      "kind": "canonical-transition",
+      "parameters": [
+        1,
+        2,
+        true
+      ],
+      "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+    },
+    "t:273e3892ee63f9a5": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+      "declarationSha256": "267dd3723719b72bb1cfb4e4841720a62b3b656127defa16fa7e5a4d75cc0c3e",
+      "kind": "canonical-transition",
+      "parameters": [
+        1,
+        3,
+        false
+      ],
+      "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+    },
+    "t:62cb245e55893aae": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 actual own-turn Blessing expires on the source lethal attack before disposal",
+      "declarationSha256": "935661813a080a14849dc1e2c2fb9ceb2d4dbef8ab4fa46237d269aa569ca33c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Real own-turn Blessing persists until a real lethal attack places Lia in pending death; leases clear before her hand disposal and Vanmil suppression returns."
+    },
+    "t:966ba04fa4ba5121": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence",
+      "declarationSha256": "cebb450e116b362a07a383c1c3b070f5039fa1fdd9dd8a37ff990cfe55df52b2",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Isolated turn and presence mutation demonstrate that temporary source absence retains the relief."
+    },
+    "t:46d5116af08f9f78": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural preexisting unrelated ban survives an actual successful Blessing",
+      "declarationSha256": "eb4a64ccf3e8219541fa8d1db986538a6c93b9cce3ecad2a02045605be374b0a",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicitly seeded unrelated ability-disabled status is present before successful Blessing and remains identical afterwards; Vanmil gate clears but ability use remains disabled."
+    },
+    "t:ffe9dea5947ea7e5": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+      "declarationSha256": "b61cfb5ec773cb0d94c419c3ed04fcda86a5760b5c1b4fc96701f91dc27eb551",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual optional designation rejects empty/duplicate/missing targets without spending attempt and allows a later real main attack."
+    },
+    "t:ad1d9bf806ba2173": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+      "declarationSha256": "57508651075b62735a910173d702026fdf5a0af99e42a15a5ef1b6195b6bdcfd",
+      "kind": "structural-resolver",
+      "parameters": "リーア姫",
+      "bindingNote": "Paired identity fixture: hidden exempt target retains identical outsider transcript through real designation but is not suppressed; ordinary identity is suppressed."
+    },
+    "t:a5415e310ca367df": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+      "declarationSha256": "d16faa3b85170daa879e7ffd7eda6c1ce26d56bdf9822bce04242f413e0c11f7",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicit public/hidden identity boundary omits revealed Lia and Lancelot II while allowing hidden target."
+    },
+    "t:612c374f9b61adcf": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+      "declarationSha256": "57508651075b62735a910173d702026fdf5a0af99e42a15a5ef1b6195b6bdcfd",
+      "kind": "structural-resolver",
+      "parameters": "聖騎士ランスロット2",
+      "bindingNote": "Paired identity fixture: hidden exempt target retains identical outsider transcript through real designation but is not suppressed; ordinary identity is suppressed."
+    },
+    "t:ae2482a69d0e7734": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural death entry and resetup of %s retain the established designation",
+      "declarationSha256": "d5d91da7770a8b3fc903d842af438800beabd59da7ebb8fd5c4d1a85e77a8826",
+      "kind": "structural-resolver",
+      "parameters": "A",
+      "bindingNote": "Actual ban followed by explicit lifecycle boundary calls retains the complete designation and suppression through source or target death and resetup."
+    },
+    "t:1a42e9880913b85e": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural death entry and resetup of %s retain the established designation",
+      "declarationSha256": "d5d91da7770a8b3fc903d842af438800beabd59da7ebb8fd5c4d1a85e77a8826",
+      "kind": "structural-resolver",
+      "parameters": "B",
+      "bindingNote": "Actual ban followed by explicit lifecycle boundary calls retains the complete designation and suppression through source or target death and resetup."
     }
   },
   "remainingNotes": {

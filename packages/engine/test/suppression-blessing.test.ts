@@ -379,3 +379,26 @@ it('C16 actual own-turn Blessing expires on the source lethal attack before disp
  expect(s.players.C!.presence).toBe('pending-death');expect(s.players.C!.hand.length).toBeGreaterThan(0);
  expect(s.blessingLeases).toEqual([]);expect(vanmilSuppressed(s,'B')).toBe(true);
 });
+
+it.each([[1,2,true],[1,3,false]] as const)('C16 actual Blessing faces %s %s success=%s releases only the selected designation',(a,b,success)=>{
+ let s=setup();s.players.C!.permanent={spirit:8-gameStats(s,'C').spirit};
+ expect(gameStats(s,'C').spirit).toBe(8);expect(s.suppressionDesignations??[]).toEqual([]);
+ s=finish(use(s,'A',BAN,['B','D']));const saved=structuredClone(s.suppressionDesignations);
+ expect(saved).toHaveLength(2);for(const targetId of ['B','D'])expect(saved).toContainEqual(expect.objectContaining({sourceActorId:'A',sourceCharacterId:'c2-p07-r1c2',sourceAbilityId:BAN,targetId}));
+ expect(canUseCharacterAbility(s.players.C!,s)).toBe(true);s=actionFor(s,'C');
+ const option=viewFor(s,'C').abilityOptions.find(o=>o.abilityId===BLESS)!;expect(option.targetIds).toEqual(['B','D']);
+ rejected(s,'C',{type:'USE_ABILITY',abilityId:BLESS,targetEventId:option.targetEventId,targetIds:['B','D']});
+ s=closeWindow(use(s,'C',BLESS,['B']));s=closeWindow(s,[a,b]);s=finish(s);
+ expect(s.rolls!.at(-1)).toMatchObject({rollerId:'C',modifier:-5,faces:[a,b],success});
+ expect(canUseCharacterAbility(s.players.B!,s)).toBe(success);expect(canUseCharacterAbility(s.players.D!,s)).toBe(false);
+ expect(s.blessingLeases?.map(l=>l.targetId)??[]).toEqual(success?['B']:[]);
+ expect(JSON.parse(JSON.stringify(s)).suppressionDesignations).toEqual(saved);expect(s.phase).toBe('action');
+ expect(viewFor(s,'C').abilityOptions.some(o=>o.abilityId===BLESS)).toBe(false);
+});
+it('C16 structural preexisting unrelated ban survives an actual successful Blessing',()=>{
+ let s=setup();const unrelated={id:'structural-other-ban',kind:'ability-disabled' as const,modifiers:[0],nextCheck:0};
+ s=finish(use(s,'A',BAN,['B']));s=actionFor(s,'C');s.players.B!.statuses=[unrelated];const before=structuredClone(s.players.B!.statuses);
+ expect(before).toEqual([unrelated]);expect(canUseCharacterAbility(s.players.B!,s)).toBe(false);
+ s=finish(use(s,'C',BLESS,['B']));expect(s.rolls!.at(-1)).toMatchObject({success:true,modifier:-5});
+ expect(vanmilSuppressed(s,'B')).toBe(false);expect(s.players.B!.statuses).toEqual(before);expect(canUseCharacterAbility(s.players.B!,s)).toBe(false);
+});

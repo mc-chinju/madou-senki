@@ -1,0 +1,40 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B5 Lia Blessing and Vanmil suppression clauses; not acceptance evidence",
+  "newlyImplementedClauses": 9,
+  "newTests": 3,
+  "bindingFileRows": 55,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/suppression-blessing.test.ts packages/engine/test/character-turn-extras.test.ts --reporter=json --outputFile=/private/tmp/release-b5-suppression.json",
+    "passed": 57,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit passed",
+    "Binding application validates exact AST declarations and parameter tuples",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Actual own-turn Blessing at spirit eight succeeds at sum three and fails at four. The real multiple-target ban preserves provenance; only the selected target is relieved and a multiple-target Blessing input is rejected atomically.",
+    "Existing real extra-action cancellation, next-turn renewal, following main attack and lethal source attack bind once-per-own-turn and living-source duration.",
+    "Explicit structural fixtures cover unrelated preexisting ability-disable status, hidden/public exemption identity, temporary absence and death/resetup provenance; these are not represented as end-to-end canonical setup."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c",
+    "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d",
+    "docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json": "335626a2127f871242e54016bb66a22953dc775bde6bf056d3db8b16c630760a",
+    "docs/operations/evidence/2026-09-11-remaining-clauses.md": "d8c08a78d4506efbb8df1392ecb352da777b9ef81af986458644bb22bd3f89dc"
+  },
+  "semanticImplementedConcrete": 5215,
+  "semanticPending": 44,
+  "semanticAccepted": 0,
+  "limitations": [
+    "No runtime implementation changes; new tests strengthen printed-clause boundaries.",
+    "B5 Steps1–3 remain incomplete: 42 ordinary clauses and two deferred D4c rows remain.",
+    "No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}

@@ -1752,6 +1752,361 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#own-turn-extra-once",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab04",
+            "C"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation spends the own-turn attempt, serialized replay is rejected and real next own turn restores the extra option."
+        },
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab04",
+            "C"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ability frame takes no own action; a following actual attack damages the target and advances to withdrawal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#spirit-minus-five",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#lia-alive-duration",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual own-turn Blessing expires on the source lethal attack before disposal",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real own-turn Blessing persists until a real lethal attack places Lia in pending death; leases clear before her hand disposal and Vanmil suppression returns."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Isolated turn and presence mutation demonstrate that temporary source absence retains the relief."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#other-ban-causes-retained",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural preexisting unrelated ban survives an actual successful Blessing",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Explicitly seeded unrelated ability-disabled status is present before successful Blessing and remains identical afterwards; Vanmil gate clears but ability use remains disabled."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#optional-selected-multiple-bans",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual optional designation rejects empty/duplicate/missing targets without spending attempt and allows a later real main attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#exclude-Lia",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "publicSuppressionTargets"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "リーア姫",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired identity fixture: hidden exempt target retains identical outsider transcript through real designation but is not suppressed; ordinary identity is suppressed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Explicit public/hidden identity boundary omits revealed Lia and Lancelot II while allowing hidden target."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#exclude-LancelotII",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "publicSuppressionTargets"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "聖騎士ランスロット2",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired identity fixture: hidden exempt target retains identical outsider transcript through real designation but is not suppressed; ordinary identity is suppressed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Explicit public/hidden identity boundary omits revealed Lia and Lancelot II while allowing hidden target."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#durable-source-provenance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "parameters": "A",
+          "kind": "structural-resolver",
+          "bindingNote": "Actual ban followed by explicit lifecycle boundary calls retains the complete designation and suppression through source or target death and resetup."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "parameters": "B",
+          "kind": "structural-resolver",
+          "bindingNote": "Actual ban followed by explicit lifecycle boundary calls retains the complete designation and suppression through source or target death and resetup."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

@@ -18,11 +18,11 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p02-r2c1-ab03#original-attacker` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
 | `c2-p02-r2c1-ab03#returned-counter-only` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
 | `c2-p02-r2c1-ab03#maai-uncancelable-by-advance` | b（追加済み） | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
-| `c2-p03-r1c2-ab04#own-turn-extra-once` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r1c2-ab04#spirit-minus-five` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r1c2-ab04#lia-alive-duration` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r1c2-ab04#other-ban-causes-retained` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab04#own-turn-extra-once` | a | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
+| `c2-p03-r1c2-ab04#spirit-minus-five` | b（追加済み） | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
+| `c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release` | b（追加済み） | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
+| `c2-p03-r1c2-ab04#lia-alive-duration` | a | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
+| `c2-p03-r1c2-ab04#other-ban-causes-retained` | b（追加済み） | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
 | `c2-p04-r1c1-ab02#public-source` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p04-r1c1-ab02#one-extra-maai` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p04-r1c1-ab02#no-physical-source-cost` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
@@ -53,10 +53,10 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p06-r2c2-ab04#permanent-warrior-plus-two` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r2c2-ab04#permanent-magic-plus-two` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r2c2-ab04#once-per-victim` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
-| `c2-p07-r1c2-ab03#optional-selected-multiple-bans` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p07-r1c2-ab03#exclude-Lia` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p07-r1c2-ab03#exclude-LancelotII` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p07-r1c2-ab03#durable-source-provenance` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c2-ab03#optional-selected-multiple-bans` | b（追加済み） | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
+| `c2-p07-r1c2-ab03#exclude-Lia` | a | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
+| `c2-p07-r1c2-ab03#exclude-LancelotII` | a | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
+| `c2-p07-r1c2-ab03#durable-source-provenance` | b（追加済み） | suppression-blessing / character-turn-extras の直接試験へ束縛。実手番・複数指定・単一解除と精神8−5境界を確認。別原因禁止、秘匿例外、死亡/再登場境界の構造試験は明記。 |
 | `c2-p01-r2c2#mandatory-warrior-damage-half` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p02-r1c2#mandatory-black-tech-prohibition` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p04-r1c2#mandatory-allegiance-check-plus-two` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
