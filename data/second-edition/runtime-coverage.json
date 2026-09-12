@@ -234131,11 +234131,15 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:ec61fb86598d39e3"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234159,11 +234163,17 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:28fcd34efe66629a",
+        "t:e8158a3f345c63dd",
+        "t:fb68d11641ed4daf"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234187,11 +234197,15 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:0ea6d03b88712dde"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234215,11 +234229,17 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91",
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1"
+      ],
+      "tests": [
+        "t:d8de55cb9290f2d5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234239,11 +234259,20 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91",
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1"
+      ],
+      "tests": [
+        "t:e990fc165653b22d",
+        "t:7d7c04ac1749653b",
+        "t:a98b9f2550d2f711",
+        "t:878b1dfd47cbc56f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234263,11 +234292,17 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91",
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1"
+      ],
+      "tests": [
+        "t:c27ae642894e18b0"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234991,11 +235026,18 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91",
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1"
+      ],
+      "tests": [
+        "t:35b64f3368d1a383",
+        "t:8956c0242fb3e3b8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235015,11 +235057,19 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91",
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1"
+      ],
+      "tests": [
+        "t:ca2480c8494c048f",
+        "t:09b5e46d1b3c4094",
+        "t:563ad341d659dff3"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235039,11 +235089,19 @@
         "C09"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:39ccdafd6f0acb91",
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1"
+      ],
+      "tests": [
+        "t:15ddfb2a2c7ecc9c",
+        "t:f589e24a608e1578",
+        "t:62bb09b8c87c66c5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415408,8 +415466,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7106,
-      "implemented": 5072
+      "pending": 7097,
+      "implemented": 5081
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416687,6 +416745,14 @@
     "h:0e58d880e08ce682": {
       "path": "packages/engine/src/abilities/conditional-selection.ts",
       "symbol": "cleanConditionalSelections"
+    },
+    "h:36524194ba5449c8": {
+      "path": "packages/engine/src/abilities/shadow-jump.ts",
+      "symbol": "resolveShadowJump"
+    },
+    "h:122e9d8aad5397d1": {
+      "path": "packages/engine/src/abilities/shadow-jump.ts",
+      "symbol": "payShadowJump"
     }
   },
   "testCases": {
@@ -487890,6 +487956,202 @@
         "c2-p06-r1c2-ab02"
       ],
       "bindingNote": "This source has no target update: redundant ON is rejected without changing the prior selection or attempt history."
+    },
+    "t:ec61fb86598d39e3": {
+      "path": "packages/engine/test/shadow-card-physical.test.ts",
+      "suite": [],
+      "title": "%s actual received physical attack preserves fixed defense5 null damage and independent optional printed Ida child",
+      "declarationSha256": "e8a046ccdd448124a7eb0063a785f365bb93a4dab4f9fcfa26f0ce8d66289f20",
+      "kind": "canonical-transition",
+      "parameters": "shadow-card-dedicated",
+      "bindingNote": "child-no-extra-turn: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:28fcd34efe66629a": {
+      "path": "packages/engine/test/shadow-card-physical.test.ts",
+      "suite": [],
+      "title": "actual prepared IceWolf across own end and intervening turns is available to the grant while unchanted and far near-sword sources are refused",
+      "declarationSha256": "948828b03b6520ec89edfa2ec2564d6cf46c1d4077fac6f36e946cb1501ca1e5",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:e8158a3f345c63dd": {
+      "path": "packages/engine/test/shadow-card-physical.test.ts",
+      "suite": [],
+      "title": "actual non-counter child independently pays warrior4 use check %s plus %s success=%s",
+      "declarationSha256": "bd9901d22fcb9c268e8bd9c4a766fe23ab039c5f9b41fb1e642ed4d436e5e0f2",
+      "kind": "canonical-transition",
+      "parameters": [
+        3,
+        3,
+        true
+      ],
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:fb68d11641ed4daf": {
+      "path": "packages/engine/test/shadow-card-physical.test.ts",
+      "suite": [],
+      "title": "actual non-counter child independently pays warrior4 use check %s plus %s success=%s",
+      "declarationSha256": "bd9901d22fcb9c268e8bd9c4a766fe23ab039c5f9b41fb1e642ed4d436e5e0f2",
+      "kind": "canonical-transition",
+      "parameters": [
+        3,
+        4,
+        false
+      ],
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:0ea6d03b88712dde": {
+      "path": "packages/engine/test/shadow-card-physical.test.ts",
+      "suite": [],
+      "title": "%s actual received physical attack preserves fixed defense5 null damage and independent optional printed Ida child",
+      "declarationSha256": "e8a046ccdd448124a7eb0063a785f365bb93a4dab4f9fcfa26f0ce8d66289f20",
+      "kind": "canonical-transition",
+      "parameters": "shadow-card-dedicated",
+      "bindingNote": "child-no-extra-approach-withdrawal: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:d8de55cb9290f2d5": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump paid child rejects approach withdrawal and extra turns while preserving the parent turn",
+      "declarationSha256": "427fcbbb81f324b9b2eff58596f80f18ea81a08b29a86d9dd60ba369e97f7ff9",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "child-no-extra-turn: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:e990fc165653b22d": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump child keeps ordinary %s eligibility without spending its card",
+      "declarationSha256": "4dc36821864e6ed181ad68d6b23e5d81e702c987a89521f8ba99c613dcd6f289",
+      "kind": "canonical-transition",
+      "parameters": "far",
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:7d7c04ac1749653b": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump child keeps ordinary %s eligibility without spending its card",
+      "declarationSha256": "4dc36821864e6ed181ad68d6b23e5d81e702c987a89521f8ba99c613dcd6f289",
+      "kind": "canonical-transition",
+      "parameters": "chant",
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:497347e94dbbe400": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Actual initial follower cannot absorb the shadow child and maai is rejected without payment",
+      "declarationSha256": "e14d3c3d703bb4db135328fc605d85236e04f80f185214135c7086bc58b3ce12",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:c27ae642894e18b0": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump paid child rejects approach withdrawal and extra turns while preserving the parent turn",
+      "declarationSha256": "427fcbbb81f324b9b2eff58596f80f18ea81a08b29a86d9dd60ba369e97f7ff9",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "child-no-extra-approach-withdrawal: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:35b64f3368d1a383": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump cost rejects stale, foreign and non-advance payment before mutation; repeated payment is refused",
+      "declarationSha256": "f882210b78085c079c6f7b019ba1f07b0cf9dca3fe4c024a51965ce807952f0c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "advance-is-exact-one-discard: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:8956c0242fb3e3b8": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Actual cancellation of the paid child never restores the original hit or refunds its advance",
+      "declarationSha256": "3b382199e4f04820052d14979360a27d2869627a94efebc25e8a350cab64ffb3",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "advance-is-exact-one-discard: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:ca2480c8494c048f": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "cost",
+      "bindingNote": "advance-not-marker: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:09b5e46d1b3c4094": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "advance-not-marker: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:563ad341d659dff3": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "child",
+      "bindingNote": "advance-not-marker: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:15ddfb2a2c7ecc9c": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "cost",
+      "bindingNote": "declining-child-retains-successful-defense: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:f589e24a608e1578": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "declining-child-retains-successful-defense: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:62bb09b8c87c66c5": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "child",
+      "bindingNote": "declining-child-retains-successful-defense: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:a98b9f2550d2f711": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump child independently checks excess magic level at %s plus %s success=%s",
+      "declarationSha256": "59f50115b482d60ac33317ed483db10853b1c914bdc10bfbd83d2c4fb1f01599",
+      "kind": "canonical-transition",
+      "parameters": [
+        3,
+        4,
+        true
+      ],
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:878b1dfd47cbc56f": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump child independently checks excess magic level at %s plus %s success=%s",
+      "declarationSha256": "59f50115b482d60ac33317ed483db10853b1c914bdc10bfbd83d2c4fb1f01599",
+      "kind": "canonical-transition",
+      "parameters": [
+        4,
+        4,
+        false
+      ],
+      "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
     }
   },
   "remainingNotes": {

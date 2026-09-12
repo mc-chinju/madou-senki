@@ -106,6 +106,40 @@ def conditional_election_binding(row, cards):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def shadow_child_binding(row):
+    entry, clause = row['entryId'], row['clauseKey']
+    refs = []
+    if entry == 'c2-p04-r2c2-ab01':
+        path = 'packages/engine/test/shadow-card-physical.test.ts'
+        if clause in {'child-no-extra-turn', 'child-no-extra-approach-withdrawal'}:
+            refs = [('%s actual received physical attack preserves fixed defense5 null damage and independent optional printed Ida child', 'shadow-card-dedicated')]
+        elif clause == 'child-normal-range-chant-use-level':
+            refs = [('actual prepared IceWolf across own end and intervening turns is available to the grant while unchanted and far near-sword sources are refused', None),
+                    ('actual non-counter child independently pays warrior4 use check %s plus %s success=%s', [3, 3, True]),
+                    ('actual non-counter child independently pays warrior4 use check %s plus %s success=%s', [3, 4, False])]
+    elif entry == 'c2-p06-r2c2-ab01':
+        path = 'packages/engine/test/shadow-jump.test.ts'
+        if clause in {'child-no-extra-turn', 'child-no-extra-approach-withdrawal'}:
+            refs = [('Shadow jump paid child rejects approach withdrawal and extra turns while preserving the parent turn', None)]
+        elif clause == 'child-normal-range-chant-use-level':
+            refs = [('Shadow jump child keeps ordinary %s eligibility without spending its card', v) for v in ['far', 'chant']]
+            refs += [('Shadow jump child independently checks excess magic level at %s plus %s success=%s', v) for v in [[3, 4, True], [4, 4, False]]]
+        elif clause == 'advance-is-exact-one-discard':
+            refs = [('Shadow jump cost rejects stale, foreign and non-advance payment before mutation; repeated payment is refused', None),
+                    ('Actual cancellation of the paid child never restores the original hit or refunds its advance', None)]
+        elif clause in {'advance-not-marker', 'declining-child-retains-successful-defense'}:
+            refs = [('Shadow jump self-check has no enemy check and defense survives declining %s', v) for v in ['cost', 'attack', 'child']]
+    if not refs:
+        return None
+    handlers = [{'path': 'packages/engine/src/combat/attack.ts', 'symbol': 'transitionCombat'}]
+    if entry == 'c2-p06-r2c2-ab01':
+        handlers += [{'path': 'packages/engine/src/abilities/shadow-jump.ts', 'symbol': v} for v in ['resolveShadowJump', 'payShadowJump']]
+    return {'row': f'{entry}#{clause}', 'handler': handlers,
+            'tests': [{'path': path, 'suite': [], 'title': title, 'parameters': params, 'kind': 'canonical-transition',
+                       'bindingNote': f'{clause}: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause.'} for title, params in refs],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -114,7 +148,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row)
         if extra:
             bindings.append(extra)
             continue

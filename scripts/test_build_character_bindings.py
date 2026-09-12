@@ -59,6 +59,16 @@ class CharacterBindingsTest(unittest.TestCase):
             self.assertEqual(test['parameters'], [name, ledger['rows'][0]['entryId']])
             self.assertIn('Fate cancellation' if name == 'リーア姫' else 'redundant ON', test['bindingNote'])
 
+    def test_shadow_children_bind_actual_source_specific_transitions(self):
+        for entry in ['c2-p04-r2c2-ab01', 'c2-p06-r2c2-ab01']:
+            ledger = self.ledger('child-normal-range-chant-use-level')
+            ledger['rows'][0]['entryId'] = entry
+            result = build_bindings(ledger, self.cards)
+            tests = result[0]['tests']
+            self.assertGreaterEqual(len(tests), 3)
+            self.assertTrue(all(t['kind'] == 'canonical-transition' for t in tests))
+            self.assertTrue(all(('shadow-card' if entry == 'c2-p04-r2c2-ab01' else 'shadow-jump') in t['path'] for t in tests))
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

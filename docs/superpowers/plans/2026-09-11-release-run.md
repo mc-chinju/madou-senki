@@ -1211,6 +1211,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4条件付き能力の更新: 全8能力を追加検証。リーアはB指定からC指定への更新を実際の命運凶変で取り消し、旧指定と同機会の試行済み記録を保存復帰後も保持。他7能力は更新対象集合を持たないため、重複ONの原子的拒否で既存選択・履歴が変わらないことを検証し、存在しない更新取消を試験した扱いにはしていない。新規8試験、関連104試験、型検査、Python17件、台帳validator成功。人物pending88、semantic具体的実装済み5,072、pending187、accepted0。全B4生成gateは残88行で停止。詳細は [B4更新規則進捗](../../operations/evidence/2026-09-12-b4-updates-progress.json)。Step3〜5は未完了。
 
+2026-09-12 B4影系子攻撃: イダの影分身3行・ヨーツルムの影跳び6行を実親子攻撃へ束縛。既存の専用影分身による射程・準備済み詠唱・使用判定と、新規5試験による影跳びの射程/詠唱拒否、接近/離脱/手番開始終了拒否、魔法使用レベル判定の成功失敗境界を確認した。支払1枚・移動マーカーなし・子辞退後の防御保持も実取消/辞退試験で確認。関連45試験、型検査、Python18件、台帳validator成功。人物pending79、semantic具体的実装済み5,081、pending178、accepted0。全B4生成gateは残79行で停止。詳細は [B4影系子攻撃進捗](../../operations/evidence/2026-09-12-b4-shadow-progress.json)。Step3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**

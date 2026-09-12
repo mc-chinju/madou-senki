@@ -1990,6 +1990,357 @@
       ]
     },
     {
+      "row": "c2-p04-r2c2-ab01#child-no-extra-turn",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-card-physical.test.ts",
+          "suite": [],
+          "title": "%s actual received physical attack preserves fixed defense5 null damage and independent optional printed Ida child",
+          "parameters": "shadow-card-dedicated",
+          "kind": "canonical-transition",
+          "bindingNote": "child-no-extra-turn: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab01#child-normal-range-chant-use-level",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-card-physical.test.ts",
+          "suite": [],
+          "title": "actual prepared IceWolf across own end and intervening turns is available to the grant while unchanted and far near-sword sources are refused",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-card-physical.test.ts",
+          "suite": [],
+          "title": "actual non-counter child independently pays warrior4 use check %s plus %s success=%s",
+          "parameters": [
+            3,
+            3,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-card-physical.test.ts",
+          "suite": [],
+          "title": "actual non-counter child independently pays warrior4 use check %s plus %s success=%s",
+          "parameters": [
+            3,
+            4,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c2-ab01#child-no-extra-approach-withdrawal",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-card-physical.test.ts",
+          "suite": [],
+          "title": "%s actual received physical attack preserves fixed defense5 null damage and independent optional printed Ida child",
+          "parameters": "shadow-card-dedicated",
+          "kind": "canonical-transition",
+          "bindingNote": "child-no-extra-approach-withdrawal: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#child-no-extra-turn",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump paid child rejects approach withdrawal and extra turns while preserving the parent turn",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "child-no-extra-turn: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#child-normal-range-chant-use-level",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump child keeps ordinary %s eligibility without spending its card",
+          "parameters": "far",
+          "kind": "canonical-transition",
+          "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump child keeps ordinary %s eligibility without spending its card",
+          "parameters": "chant",
+          "kind": "canonical-transition",
+          "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump child independently checks excess magic level at %s plus %s success=%s",
+          "parameters": [
+            3,
+            4,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump child independently checks excess magic level at %s plus %s success=%s",
+          "parameters": [
+            4,
+            4,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#child-no-extra-approach-withdrawal",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump paid child rejects approach withdrawal and extra turns while preserving the parent turn",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "child-no-extra-approach-withdrawal: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#advance-is-exact-one-discard",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump cost rejects stale, foreign and non-advance payment before mutation; repeated payment is refused",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "advance-is-exact-one-discard: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Actual cancellation of the paid child never restores the original hit or refunds its advance",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "advance-is-exact-one-discard: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#advance-not-marker",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "cost",
+          "kind": "canonical-transition",
+          "bindingNote": "advance-not-marker: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "advance-not-marker: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "child",
+          "kind": "canonical-transition",
+          "bindingNote": "advance-not-marker: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#declining-child-retains-successful-defense",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "cost",
+          "kind": "canonical-transition",
+          "bindingNote": "declining-child-retains-successful-defense: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "declining-child-retains-successful-defense: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "child",
+          "kind": "canonical-transition",
+          "bindingNote": "declining-child-retains-successful-defense: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p05-r1c2-ab05#substitution-before-final-hit",
       "handler": [
         {
