@@ -255558,11 +255558,13 @@
       ],
       "tests": [
         "t:f32c8ee0867e859c",
-        "t:d4db28d368b061d7"
+        "t:d4db28d368b061d7",
+        "t:f116adba9f4704c4",
+        "t:219f14987876e45a"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:52e34ff77d890df9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255744,11 +255746,13 @@
       ],
       "tests": [
         "t:f32c8ee0867e859c",
-        "t:d4db28d368b061d7"
+        "t:d4db28d368b061d7",
+        "t:f116adba9f4704c4",
+        "t:219f14987876e45a"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:52e34ff77d890df9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -492944,6 +492948,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+    },
+    "t:f116adba9f4704c4": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "hidden Lia and hidden ordinary target have the same outside WS and ACK transcripts before and after ban",
+      "declarationSha256": "2b4c2582d0d65f052c79606d85733c6c027a6b4f4ea37a942fc9705b8e972f46",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Paired hidden ordinary/Lia targets accept identical declarations and every response with equal outside WS views/ACKs; every accepted command now survives restart/replay, while target-local applicability differs."
+    },
+    "t:219f14987876e45a": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "hidden exempt and ordinary ban targets keep identical outside browser transcripts through all-seat reload",
+      "declarationSha256": "873f335cfae2c7ee38d6167672610e308012d04fbe7cfb66a8358e6c4479809f",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Two actual browser tables compare complete outside game views after every accepted UI command and all-seat reload, normalizing only independently assigned player IDs; target-local suppressed/exempt states differ while outside views remain equal."
     }
   },
   "remainingNotes": {
@@ -493103,7 +493125,8 @@
     "n:b0730700cea9f76c": "Actual unused main-action Worker/browser correspondence remains; existing ritual fixture already spent its action. Frozen acceptance remains.",
     "n:d7dedb60b238ec23": "n:6d9fe79b4ce22f05",
     "n:df2c8d6cd035ae42": "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains.",
-    "n:26415580933c852e": "n:d7dedb60b238ec23"
+    "n:26415580933c852e": "n:d7dedb60b238ec23",
+    "n:52e34ff77d890df9": "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

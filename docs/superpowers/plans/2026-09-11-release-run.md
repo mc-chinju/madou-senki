@@ -1347,6 +1347,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16祝福の指定済み公開状態候補1行を追加束縛。既存DO成功/失敗ケースに候補B限定と未指定Aの拒否・再送不変を追加し、browser全席reload後の選択肢が指定済みB/Dだけであることを確認。共有G09参照更新、Worker8試験・browser3試験・型チェック・台帳validator成功。不足20行、Step2継続。詳細は [B7祝福候補進捗](../../operations/evidence/2026-09-12-b7-blessing-candidates-progress.json)。
 
+2026-09-12 B7続行: C16非公開対象による拒否なし・非公開免除対象の同一宣言transcriptの2行を追加束縛。既存DO比較に対応する2卓browser比較を追加し、通常シン/非公開リーアへ実宣言・各応答後の外部3席完全ビューが同一（独立player IDだけ正規化）、全8席reload後も同一で本人の適用だけ異なることを確認。Worker8試験・browser1試験・型チェック・台帳validator成功。不足18行、Step2継続。詳細は [B7非公開対象進捗](../../operations/evidence/2026-09-12-b7-hidden-target-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

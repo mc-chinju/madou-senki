@@ -926,6 +926,116 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-secret-target-rejection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "リーア姫",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "聖騎士ランスロット2",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "hidden Lia and hidden ordinary target have the same outside WS and ACK transcripts before and after ban",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired hidden ordinary/Lia targets accept identical declarations and every response with equal outside WS views/ACKs; every accepted command now survives restart/replay, while target-local applicability differs."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "hidden exempt and ordinary ban targets keep identical outside browser transcripts through all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two actual browser tables compare complete outside game views after every accepted UI command and all-seat reload, normalizing only independently assigned player IDs; target-local suppressed/exempt states differ while outside views remain equal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "リーア姫",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "聖騎士ランスロット2",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "hidden Lia and hidden ordinary target have the same outside WS and ACK transcripts before and after ban",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired hidden ordinary/Lia targets accept identical declarations and every response with equal outside WS views/ACKs; every accepted command now survives restart/replay, while target-local applicability differs."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "hidden exempt and ordinary ban targets keep identical outside browser transcripts through all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two actual browser tables compare complete outside game views after every accepted UI command and all-seat reload, normalizing only independently assigned player IDs; target-local suppressed/exempt states differ while outside views remain equal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

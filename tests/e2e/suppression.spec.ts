@@ -1,5 +1,5 @@
 import { expect, test, type Locator } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture, windowPassButtonName } from './helpers.js';
 
 const BAN = 'c2-p07-r1c2-ab03', BLESS = 'c2-p03-r1c2-ab04';
 type Table = Awaited<ReturnType<typeof tableFixture>>;
@@ -122,4 +122,41 @@ test('Vanmil can still end his unused main action after actual next-turn ban and
     await click(table,views,page.getByRole('button',{name:'行動を終える',exact:true}));
     for(const [seat,p] of table.pages.entries()){await p.reload();expect(views.get(table.sessions[seat]!.id)!.game!.phase).toBe('hand-adjustment');}
   }finally{await table.close();}
+});
+
+test('hidden exempt and ordinary ban targets keep identical outside browser transcripts through all-seat reload',async({browser,request})=>{
+  test.setTimeout(90000);
+  const ordinary=await tableFixture(browser,request,'suppression-hidden-ordinary');
+  const exempt=await tableFixture(browser,request,'suppression-hidden-lia');
+  try{
+    const tables=[ordinary,exempt],views=await Promise.all(tables.map(table=>observe(table)));
+    function normalized(table:Table,value:unknown):unknown{
+      const replace=(text:string)=>table.sessions.reduce((s,p,i)=>s.replaceAll(p.id,`seat-${i}`),text);
+      if(typeof value==='string')return replace(value);
+      if(Array.isArray(value))return value.map(v=>normalized(table,v));
+      if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[replace(k),normalized(table,v)]));
+      return value;
+    }
+    function same(){for(const seat of [0,2,3])expect(normalized(exempt,views[1]!.get(exempt.sessions[seat]!.id)!.game)).toEqual(normalized(ordinary,views[0]!.get(ordinary.sessions[seat]!.id)!.game));}
+    same();
+    for(const [index,table] of tables.entries()){
+      const panel=table.pages[0]!.getByRole('region',{name:'能力の禁止と祝福'});
+      await panel.getByRole('checkbox',{name:'楓',exact:true}).check();await click(table,views[index]!,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));
+    }
+    same();
+    for(let n=0;n<150;n++){
+      const g=views[0]!.get(ordinary.sessions[0]!.id)!.game!;if(!g.activeWindow)break;
+      const seat=ordinary.sessions.findIndex(p=>p.id===g.activeWindow!.pendingActorId);
+      for(const [index,table] of tables.entries())await click(table,views[index]!,table.pages[seat]!.getByRole('button',{name:windowPassButtonName}));
+      same();
+    }
+    for(const [index,table] of tables.entries()){
+      expect(views[index]!.get(table.sessions[0]!.id)!.game!.activeWindow).toBeNull();
+      for(const page of table.pages)await page.reload();
+    }
+    same();
+    expect(views[0]!.get(ordinary.sessions[1]!.id)!.game!.suppressionTargets[0]!.applicability).toBe('suppressed');
+    expect(views[1]!.get(exempt.sessions[1]!.id)!.game!.suppressionTargets[0]!.applicability).toBe('exempt');
+    for(const table of tables)await expect(table.pages[0]!.getByRole('region',{name:'能力の禁止と祝福'})).toContainText('楓：指定済み・適用状況は非公開');
+  }finally{await Promise.all([ordinary.close(),exempt.close()]);}
 });
