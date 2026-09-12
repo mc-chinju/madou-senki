@@ -494,6 +494,53 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "ruling:G11#semantic/actual-placed-follower-death-recovery",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "commitReclaim"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Only actual follower death offers ordinary follower recovery",
+          "suite": [],
+          "path": "packages/engine/test/owned-reclaim.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+        },
+        {
+          "path": "apps/worker/test/room-ordinary-follower-death.test.ts",
+          "title": "Actual placed follower death restores ordinary recovery once through every DO restart and replay",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placed Sharia death offers the base right; every DO command is saved/restarted/replayed with all-seat projection checks; reservation becomes one hand card and baseSpent remains true.",
+          "suite": [],
+          "parameters": null
+        },
+        {
+          "path": "tests/e2e/ordinary-follower-death.spec.ts",
+          "title": "Actual placed follower ordinary recovery returns once after all-seat browser reload",
+          "kind": "browser",
+          "bindingNote": "Actual follower death offers base recovery via the UI; pending/reserved/completed reloads and final all-seat reload assert exactly one physical return to its owner.",
+          "suite": [],
+          "parameters": null
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

@@ -1333,6 +1333,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: G11の仮想刃・仮想親衛隊の物理回収禁止とS29保存則の3行を追加束縛。既存browser試験を固定名にし、全席reload後の手札・回収予約等のassertionを追加。Worker13試験・browser5試験・型チェック・台帳validator成功。不足30行、Step2継続。詳細は [B7仮想カード進捗](../../operations/evidence/2026-09-12-b7-virtual-progress.json)。
 
+2026-09-12 B7続行: G11の配置済み従者死亡時の通常回収へDO/browser試験を追加束縛。既存の名前指定死亡回収は無制限能力権で通常権と異なるため、シャリアの実配置・攻撃・死亡・正体公開から通常回収するfixtureを追加。Worker毎操作保存再送1試験・browser全席reload1試験・型チェック・台帳validator成功。不足29行、Step2継続。詳細は [B7従者回収進捗](../../operations/evidence/2026-09-12-b7-follower-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

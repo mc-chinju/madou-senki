@@ -42,4 +42,4 @@
 | `ruling:G11#semantic/distance-use-public-disposition-without-owned-right` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `ruling:G11#semantic/actual-turn-technique-public-opportunity` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `ruling:G11#semantic/actual-anytime-owned-recovery` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
-| `ruling:G11#semantic/actual-placed-follower-death-recovery` | browser, worker-persistence | 直接assertion確認待ち |
+| `ruling:G11#semantic/actual-placed-follower-death-recovery` | browser, worker-persistence | 通常回収のDO保存再送・browser全席reloadを追加束縛 |

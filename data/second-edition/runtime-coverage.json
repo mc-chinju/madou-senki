@@ -414592,16 +414592,18 @@
       "kind": "reclaim-source",
       "coverageClass": "semantic",
       "handler": [
-        "h:097d1cb728f724aa",
-        "h:e0e62a694d897112",
-        "h:c05134350cafc68f"
+        "h:cac13743d2374251",
+        "h:203ea27cd5332cb9",
+        "h:e0f59e0f9bc552e6"
       ],
       "tests": [
-        "t:b1450be705d53c13"
+        "t:460a402a5ff9a112",
+        "t:e5bbe59c2ba1e3e8",
+        "t:6d3a9be6ba6df684"
       ],
       "status": "implemented",
       "remaining": [
-        "Existing actual source and explicit selection evidence registered. Entire producer coverage and current frozen candidate acceptance remain. No review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -492555,6 +492557,42 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+    },
+    "t:460a402a5ff9a112": {
+      "path": "packages/engine/test/owned-reclaim.test.ts",
+      "suite": [],
+      "title": "Only actual follower death offers ordinary follower recovery",
+      "declarationSha256": "2c09603a79830288fb37c41c84b8c2f8a6a6a110a6486140f3fc85b2cd2d8771",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+    },
+    "t:038f00c8803ac104": {
+      "path": "apps/worker/test/room-ordinary-follower-death.test.ts",
+      "suite": [],
+      "title": "Actual placed follower death restores ordinary recovery once through every DO restart and replay",
+      "declarationSha256": "394234159f6b7d30b11940c5708dd150239443ed046af216cc0bc7fe36c107b0",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual placed Sharia death offers the base right; every DO command is saved/restarted/replayed with all-seat projection checks; reservation becomes one hand card and baseSpent remains true."
+    },
+    "t:6d3a9be6ba6df684": {
+      "path": "tests/e2e/ordinary-follower-death.spec.ts",
+      "suite": [],
+      "title": "Actual placed follower ordinary recovery returns once after all-seat browser reload",
+      "declarationSha256": "b001d42599d0e2830f1889a1262db75afd28128b504e2380c712e278b3039d28",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual follower death offers base recovery via the UI; pending/reserved/completed reloads and final all-seat reload assert exactly one physical return to its owner."
+    },
+    "t:e5bbe59c2ba1e3e8": {
+      "path": "apps/worker/test/room-ordinary-follower-death.test.ts",
+      "suite": [],
+      "title": "Actual placed follower death restores ordinary recovery once through every DO restart and replay",
+      "declarationSha256": "584dcf5b866fb5a80de1e69c58f29eca26f660be3207606e56abaabcb22b41d7",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual placed Sharia death offers the base right; every DO command is saved/restarted/replayed with all-seat projection checks; reservation becomes one hand card and baseSpent remains true."
     }
   },
   "remainingNotes": {
