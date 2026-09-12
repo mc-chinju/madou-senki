@@ -139,6 +139,14 @@ class CharacterBindingsTest(unittest.TestCase):
         self.assertEqual(result[0]['tests'][0]['kind'], 'structural-resolver')
         self.assertIn('condition loss', result[0]['tests'][0]['title'])
 
+    def test_frozen_spirit_binds_exact_bonus_and_dia_binds_hand_continuation(self):
+        ledger = self.ledger('frozen-values-no-rewind')
+        ledger['rows'][0]['entryId'] = 'c2-p02-r1c1-ab04'
+        result = build_bindings(ledger, [{'id':'c2-p02-r1c1','name':'有翼人のティア','defeat_condition':'なし'}])
+        self.assertEqual(result[0]['tests'][0]['parameters'], ['有翼人のティア','c2-p02-r1c1-ab04',1])
+        ledger['rows'][0]['entryId'] = 'c2-p06-r1c2-ab02'
+        self.assertIn('END', build_bindings(ledger, self.cards)[0]['tests'][0]['title'])
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

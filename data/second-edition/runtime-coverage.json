@@ -232347,11 +232347,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:2c11e69ac206342d"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232544,11 +232548,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:6625726236f68de5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232741,11 +232749,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:e7a6a7a2b7a75fcd"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232938,11 +232950,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:066aa626287c1f95"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233135,11 +233151,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:564e377a0de77b00",
+        "t:e6ef9ef26b070109",
+        "t:b33e2f015037a197"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233332,11 +233354,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:e9aee98dee5f0272",
+        "t:4288c5b9870dce93"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233529,11 +233556,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:afd897f3e776a711"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233726,11 +233757,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8"
+      ],
+      "tests": [
+        "t:43909b0e51d3015f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415845,8 +415880,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7026,
-      "implemented": 5152
+      "pending": 7018,
+      "implemented": 5160
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -489336,6 +489371,129 @@
         "c2-p06-r1c2-ab02"
       ],
       "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:2c11e69ac206342d": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s actual OFF preserves frozen check with bonus %s",
+      "declarationSha256": "5676dfa305a775f2ad65e5bf6d0be2cf4cfc193d563e71bc9a0e787ade1c489d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab04",
+        1
+      ],
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:6625726236f68de5": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s actual OFF preserves frozen check with bonus %s",
+      "declarationSha256": "5676dfa305a775f2ad65e5bf6d0be2cf4cfc193d563e71bc9a0e787ade1c489d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab03",
+        2
+      ],
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:e7a6a7a2b7a75fcd": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s actual OFF preserves frozen check with bonus %s",
+      "declarationSha256": "5676dfa305a775f2ad65e5bf6d0be2cf4cfc193d563e71bc9a0e787ade1c489d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒妖精のアーネス",
+        "c2-p03-r2c2-ab04",
+        2
+      ],
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:066aa626287c1f95": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dragon source disabled within before-roll loses +2; post-freeze OFF never rewrites roll",
+      "declarationSha256": "a4b561aa3a268c90fcaed2135acc7555903ec23e7986275991408b4f01518609",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:564e377a0de77b00": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s actual OFF preserves frozen check with bonus %s",
+      "declarationSha256": "5676dfa305a775f2ad65e5bf6d0be2cf4cfc193d563e71bc9a0e787ade1c489d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab05",
+        1
+      ],
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:e6ef9ef26b070109": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Truth effect and damage freeze independently, without changing used level",
+      "declarationSha256": "af497d02be3cb1bb0a4db5bf0aae8754861fb8913f6dcfd27b86a0725e5bb397",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:b33e2f015037a197": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Truth frozen multi-hit numbers survive later OFF and target concealment",
+      "declarationSha256": "59560f28142940c96385de8cb8f905d9580297c0b67dc695a7846ee9e912cc0b",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:e9aee98dee5f0272": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s actual OFF preserves frozen check with bonus %s",
+      "declarationSha256": "5676dfa305a775f2ad65e5bf6d0be2cf4cfc193d563e71bc9a0e787ade1c489d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "c2-p05-r1c2-ab01",
+        1
+      ],
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:4288c5b9870dce93": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "Upa actual OFF leaves already frozen warrior damage unchanged",
+      "declarationSha256": "f4687679e65e6f9b121db9b777d515fcacacffe7066fdc7511d986c384f557e3",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:afd897f3e776a711": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s actual OFF preserves frozen check with bonus %s",
+      "declarationSha256": "5676dfa305a775f2ad65e5bf6d0be2cf4cfc193d563e71bc9a0e787ade1c489d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "c2-p05-r2c1-ab05",
+        2
+      ],
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:43909b0e51d3015f": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard",
+      "declarationSha256": "6188d0696a9b4d35869fe27a833b86e3a56e4d5b66186bf11a099bda38be48a4",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
     }
   },
   "remainingNotes": {

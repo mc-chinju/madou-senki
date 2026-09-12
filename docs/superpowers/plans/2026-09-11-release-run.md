@@ -1185,17 +1185,17 @@ describe('allegiance', () => {
 
 `makeSeatedTable`/`killCharacter`/`settleLifecycle` が `fixtures.ts` に無い場合は、`r6-extinction-scenario.ts` の `act(...)` 手順を関数化して `fixtures.ts` に追加する（既存 export を壊さない）。陣営の許可集合は `objectives.ts` の `replaceAllegiance` 内にある `fixed` 表（11人物）が正本なので、これを `export function allowedFactions(characterId): Faction[]`（表に無い人物は3陣営）として切り出し、`replaceAllegiance` はそれを呼ぶ形にする。試験は `allegiance_text`（例「白の護り手：常にGOOD」）と `allowedFactions` の一致も assert し、表の写し間違いを検出する。
 
-- [ ] **Step 3: 実行し、条項の残り（restrictions / inheritance / C16 / 8件ずつある条件付き能力の共通条項）は同じファイルに `describe` を追加して 26 人物分を assert する**
+- [x] **Step 3: 実行し、条項の残り（restrictions / inheritance / C16 / 8件ずつある条件付き能力の共通条項）は同じファイルに `describe` を追加して 26 人物分を assert する**
 
 Run: `pnpm exec vitest run packages/engine/test/character-clauses.test.ts`
 Expected: 全件成功
 
-- [ ] **Step 4: 束縛ファイルを生成（`scripts/build_character_bindings.py`、B2 と同じ構造で clauseKey の先頭語→describe/title の対応表を持つ）し適用**
+- [x] **Step 4: 束縛ファイルを生成（`scripts/build_character_bindings.py`、B2 と同じ構造で clauseKey の先頭語→describe/title の対応表を持つ）し適用**
 
 Run: `python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-character-clauses-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160`
 Expected: `valid: true`、pending の character-semantic が 0
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add packages/engine data scripts docs && git commit -m "test,data: 人物26名の目的・敗北・陣営・制限・継承条項を束縛する"
@@ -1230,6 +1230,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 2026-09-12 B4条件付き能力の継承境界: 8能力を実際に選択した後、継承元を保持した人物変更・保存復帰・cleanupで能力ID/元人物ID/対象指定が残り、継承元を除去すると選択と候補が消える新規8試験へ束縛。これらの人物にランスロット2への印刷変身はないため、全8行を明示的なstructural-resolverとした。関連114試験、型検査、Python26件、台帳validator成功。人物pending16、semantic具体的実装済み5,144、pending115、accepted0。残りは8能力の条件消失/凍結値で、全B4生成gateは残16行で停止。詳細は [B4継承境界進捗](../../operations/evidence/2026-09-12-b4-inheritance-progress.json)。Step3〜5は未完了。
 
 2026-09-12 B4条件消失: 全8能力を実選択後、能力固有の公開人物/陣営/攻撃文脈/竜従者士気文脈/自身公開の条件を外し、加算だけが0となって選択が残り、保存復帰後の条件回復で再選択なしに加算が戻る新規8試験へ束縛。竜は実攻撃から発生した士気判定を使うが条件変更は直接境界操作なので全8行をstructural-resolverとした。関連122試験、型検査、Python27件、台帳validator成功。人物pending8、semantic具体的実装済み5,152、pending107、accepted0。全B4生成gateは残る凍結値8行で停止。詳細は [B4条件消失進捗](../../operations/evidence/2026-09-12-b4-condition-loss-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4完了: 最後の凍結値8条項を束縛。新規7試験で6能力の実判定確定→実OFF後の閾値/結果保持と、ウパの実損害確定後OFFでも8損害が解決されることを確認。竜士気/真実の効果・損害/ディアEND保持の既存試験も対応付け。部分指定なしの全生成339行が成功し、計画名の character-clauses-bindings.json を適用。全束縛先13ファイル639試験、型検査、Python28件、台帳validator成功でcharacter-semantic pending0。B4 Step3〜5を完了。semantic具体的実装済み5,160、pending99、accepted0で、候補版受入は未完了。詳細は [B4全体検証記録](../../operations/evidence/2026-09-12-b4-complete-progress.json)。次はB5。
 
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 

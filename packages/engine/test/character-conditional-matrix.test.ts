@@ -7,7 +7,7 @@ import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
 import {makeOwnedReclaimTable,nextOwnAction,killOwnedLifetimePlayer} from './owned-reclaim-helpers.js';
 import {transition,viewFor} from '../src/index.js';
-import {act,finish,pass,ready,until} from './combat-helpers.js';
+import {act,finish,pass,ready,until,closeWindow} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const CONDITIONAL_CASES: [string,ConditionalAbilityId][] = [
   [
@@ -159,4 +159,38 @@ it.each(CONDITIONAL_CASES)('%s %s structural condition loss suspends addition wi
  cleanConditionalSelections(s);expect(additions()).toEqual({spirit:0,handLimit:0,moraleBonus:0});expect(s.players.A!.conditionalSelections).toEqual(saved);
  s=JSON.parse(JSON.stringify(s));context=originalContext;s.players.A!.revealed=true;s.players.B!.revealed=true;if(id==='c2-p04-r1c2-ab05')s.players.A!.faction='GOOD';
  expect(additions()).toEqual(expected);expect(s.players.A!.conditionalSelections).toEqual(saved);
+});
+const FROZEN_SPIRIT_CASES: [string,ConditionalAbilityId,number][] = [
+ ['有翼人のティア','c2-p02-r1c1-ab04',1],['リーア姫','c2-p03-r1c2-ab03',2],
+ ['黒妖精のアーネス','c2-p03-r2c2-ab04',2],['竜皇子アスフェルト','c2-p04-r1c2-ab05',1],
+ ['獣使いのウパニシャット','c2-p05-r1c2-ab01',1],['黒騎士ガーウィン','c2-p05-r2c1-ab05',2],
+];
+it.each(FROZEN_SPIRIT_CASES)('%s %s actual OFF preserves frozen check with bonus %s',(name,id,bonus)=>{
+ let s=ready();character(s,'A',name);character(s,'B',id==='c2-p02-r1c1-ab04'?'吟遊詩人のレスター':'聖騎士ランスロット');s.players.B!.revealed=true;
+ s.players.A!.permanent={magic_level:-10};if(id==='c2-p04-r1c2-ab05')s.players.A!.faction='GOOD';
+ character(s,'C',s.players.A!.faction==='GOOD'?'黒騎士ガーウィン':'侍大将のシン');s.players.C!.revealed=true;
+ const attack=handCard(s,'A','風矢'),setting=()=>viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
+ s=finish(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:true,...(id==='c2-p03-r1c2-ab03'?{targetIds:[]}: {})}));
+ s=until(act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['C'],dedicated:false}),'before-roll');
+ s=closeWindow(s,[2,2]);const rollId=s.rolls!.at(-1)!.id;
+ const roll=()=>s.rolls!.find(r=>r.id===rollId)!;
+ expect(roll()).toMatchObject({purpose:'excess-level',rollerId:'A',faces:[2,2],success:true});
+ expect(conditionalStatAdditions(s,s.players.A!,{kind:'roll',id:rollId}).spirit).toBe(bonus);
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
+ const frozen=structuredClone(roll());s=act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:false});
+ s=JSON.parse(JSON.stringify(s));expect(roll()).toEqual(frozen);expect(setting().enabled).toBe(false);
+ expect(conditionalStatAdditions(s,s.players.A!,{kind:'roll',id:rollId}).spirit).toBe(0);
+ s=finish(s);expect(s.rolls!.find(r=>r.id===rollId)!.threshold).toBe(frozen.threshold);
+});
+it('Upa actual OFF leaves already frozen warrior damage unchanged',()=>{
+ let s=ready();character(s,'A','獣使いのウパニシャット');s.players.A!.permanent={warrior_level:20};
+ const attack=handCard(s,'A','黒翼飛翔剣'),id='c2-p05-r1c2-ab01' as const;
+ const setting=()=>viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
+ s=finish(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:true}));
+ s=until(act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false}),'attack-abilities');
+ const groupId=Object.keys(s.groups!)[0]!,saved=structuredClone(s.groups![groupId]!.targets[0]!.hits);
+ expect(saved.map(h=>h.damage)).toEqual([8]);
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
+ s=act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:false});
+ expect(s.groups![groupId]!.targets[0]!.hits).toEqual(saved);s=finish(s);expect(s.players.B!.damage).toBe(8);
 });

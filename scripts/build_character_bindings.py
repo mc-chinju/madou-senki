@@ -309,6 +309,34 @@ def c16_lifetime_binding(row):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def frozen_conditional_binding(row, cards):
+    entry = row['entryId']
+    if row['clauseKey'] != 'frozen-values-no-rewind':
+        return None
+    matrix = 'packages/engine/test/character-conditional-matrix.test.ts'
+    stats = 'packages/engine/test/conditional-stats.test.ts'
+    bonuses = {'c2-p02-r1c1-ab04':1,'c2-p03-r1c2-ab03':2,'c2-p03-r2c2-ab04':2,'c2-p04-r1c2-ab05':1,'c2-p05-r1c2-ab01':1,'c2-p05-r2c1-ab05':2}
+    refs = []
+    if entry in bonuses:
+        refs = [(matrix, '%s %s actual OFF preserves frozen check with bonus %s', [cards[entry.split('-ab')[0]]['name'],entry,bonuses[entry]], 'canonical-transition')]
+    elif entry == 'c2-p04-r1c2-ab03':
+        refs = [(stats, 'Dragon source disabled within before-roll loses +2; post-freeze OFF never rewrites roll', None, 'canonical-transition')]
+    elif entry == 'c2-p06-r1c2-ab02':
+        refs = [(stats, 'actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard', None, 'canonical-transition')]
+    else:
+        return None
+    if entry == 'c2-p05-r1c2-ab01':
+        refs += [(matrix, 'Upa actual OFF leaves already frozen warrior damage unchanged', None, 'canonical-transition')]
+    if entry == 'c2-p04-r1c2-ab05':
+        refs += [(stats, 'Truth effect and damage freeze independently, without changing used level', None, 'canonical-transition'),
+                 (stats, 'Truth frozen multi-hit numbers survive later OFF and target concealment', None, 'structural-resolver')]
+    return {'row': f'{entry}#frozen-values-no-rewind',
+            'handler': [{'path':'packages/engine/src/abilities/conditional-selection.ts','symbol':'transitionConditionalAbility'}],
+            'tests': [{'path':path,'suite':[],'title':title,'parameters':params,'kind':kind,
+                       'bindingNote':'Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural.'} for path,title,params,kind in refs],
+            'status':'implemented','remaining':['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -317,7 +345,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row) or lancelot_transform_binding(row) or c16_designation_binding(row) or c16_lifetime_binding(row)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row) or lancelot_transform_binding(row) or c16_designation_binding(row) or c16_lifetime_binding(row) or frozen_conditional_binding(row, by_id)
         if extra:
             bindings.append(extra)
             continue
