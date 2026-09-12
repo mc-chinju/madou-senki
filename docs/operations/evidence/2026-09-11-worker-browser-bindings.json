@@ -1036,6 +1036,100 @@
       "remaining": [
         "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/reject-no-new-designation",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a fresh attack window cannot retry a no-new-target designation",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new Blessing response opportunity rejects existing B-only declaration without durable mutation through restart/replay; accepted D-only declaration preserves the exact prior B record and produces B/D designations."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new response opportunity after Blessing rejects submitted B-only selection with INVALID_ACTION and unchanged public game/revision after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/designations-accumulate",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a fresh attack window cannot retry a no-new-target designation",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new Blessing response opportunity rejects existing B-only declaration without durable mutation through restart/replay; accepted D-only declaration preserves the exact prior B record and produces B/D designations."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new response opportunity after Blessing rejects submitted B-only selection with INVALID_ACTION and unchanged public game/revision after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

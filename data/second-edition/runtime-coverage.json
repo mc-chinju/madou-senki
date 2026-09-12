@@ -255634,11 +255634,13 @@
         "h:2429f56399a6e165"
       ],
       "tests": [
-        "t:e518f9781d383613"
+        "t:e518f9781d383613",
+        "t:b8a60fe58cd5833a",
+        "t:e562e5d342d6d8b7"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255671,11 +255673,13 @@
         "h:2429f56399a6e165"
       ],
       "tests": [
-        "t:e518f9781d383613"
+        "t:e518f9781d383613",
+        "t:b8a60fe58cd5833a",
+        "t:e562e5d342d6d8b7"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -492966,6 +492970,33 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Two actual browser tables compare complete outside game views after every accepted UI command and all-seat reload, normalizing only independently assigned player IDs; target-local suppressed/exempt states differ while outside views remain equal."
+    },
+    "t:b8a60fe58cd5833a": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+      "declarationSha256": "ac66016c75562f5043ffb68720adad50d2b3ca7482e28bf0d2f3b355fecc1cbe",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual new Blessing response opportunity rejects existing B-only declaration without durable mutation through restart/replay; accepted D-only declaration preserves the exact prior B record and produces B/D designations."
+    },
+    "t:ca41d4321572eed1": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload",
+      "declarationSha256": "9081e14394d7746b0b2ceddfedbe26b09d1a5db2196098f06058ae8a20ab2576",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual new response opportunity after Blessing keeps B-only submit disabled after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
+    },
+    "t:e562e5d342d6d8b7": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload",
+      "declarationSha256": "96351ab903ae367f96a7c17feb48e7d5aaf69321a8427c66572b9be493686d67",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual new response opportunity after Blessing rejects submitted B-only selection with INVALID_ACTION and unchanged public game/revision after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
     }
   },
   "remainingNotes": {

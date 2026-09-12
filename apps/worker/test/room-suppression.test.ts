@@ -123,8 +123,13 @@ it('public exempt, stale opportunity, fake target and repeated no-change ban rej
   // No-change cannot succeed even if forged with the current offered event; refusal remains atomic.
   const before = await room.stored(); const current = viewFor(before.state.game!, 'A').abilityOptions.find(value => value.abilityId === BAN);
   expect(current).toBeDefined();
-  expect(await room.command('A', await request(room, 'repeat-ban', { type: 'USE_ABILITY', abilityId: BAN, targetIds: ['B'], targetEventId: current?.targetEventId ?? option.targetEventId }))).toMatchObject({ type: 'error' });
-  expect(await room.stored()).toEqual(before);
+  const repeated=await request(room,'repeat-ban',{type:'USE_ABILITY',abilityId:BAN,targetIds:['B'],targetEventId:current!.targetEventId});
+  const rejection=await room.command('A',repeated);expect(rejection).toMatchObject({type:'error'});expect(await room.stored()).toEqual(before);
+  await room.restart();expect(await room.command('A',repeated)).toEqual(rejection);expect(await room.stored()).toEqual(before);
+  const first=structuredClone(before.state.game!.suppressionDesignations![0]!);
+  const added=await declare(room,'A','add-new-target',BAN,['D']);await settle(room,'add-new-settle');await replay(room,added);
+  expect((await game(room)).suppressionDesignations?.map(d=>d.targetId)).toEqual(['B','D']);
+  expect((await game(room)).suppressionDesignations![0]).toEqual(first);
 });
 
 it('canceled actual ban retains payment and attempt through eviction without making a designation', async () => {

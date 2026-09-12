@@ -160,3 +160,23 @@ test('hidden exempt and ordinary ban targets keep identical outside browser tran
     for(const table of tables)await expect(table.pages[0]!.getByRole('region',{name:'能力の禁止と祝福'})).toContainText('楓：指定済み・適用状況は非公開');
   }finally{await Promise.all([ordinary.close(),exempt.close()]);}
 });
+
+test('a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload',async({browser,request})=>{
+  test.setTimeout(90000);
+  const table=await tableFixture(browser,request,'suppression-blessing');
+  try{
+    const errors:string[]=[];table.pages[0]!.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
+    const views=await observe(table),a=table.sessions[0]!.id,b=table.sessions[1]!.id,d=table.sessions[3]!.id,panel=table.pages[0]!.getByRole('region',{name:'能力の禁止と祝福'});
+    await panel.getByRole('checkbox',{name:'楓',exact:true}).check();await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    await toLiaTurn(table,views);
+    const blessing=table.pages[2]!.getByRole('region',{name:'能力の禁止と祝福'});
+    await blessing.getByLabel('祝福する対象').selectOption(b);await click(table,views,blessing.getByRole('button',{name:'祝福を使う',exact:true}));
+    await passUntil(table,views,g=>g.activeWindow?.pendingActorId===a&&g.abilityOptions.some(o=>o.abilityId===BAN));
+    for(const page of table.pages)await page.reload();
+    await panel.getByRole('checkbox',{name:'楓',exact:true}).check();const before=structuredClone(views.get(a)!);await panel.getByRole('button',{name:'神と人の差を使う',exact:true}).click();await expect.poll(()=>errors).toEqual(['INVALID_ACTION']);expect(views.get(a)!.revision).toBe(before.revision);expect(views.get(a)!.game).toEqual(before.game);
+    await panel.getByRole('checkbox',{name:'楓',exact:true}).uncheck();await panel.getByRole('checkbox',{name:'蓮',exact:true}).check();
+    await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    for(const [seat,page] of table.pages.entries()){await page.reload();expect(views.get(table.sessions[seat]!.id)!.game!.suppressionTargets.map(target=>target.targetId)).toEqual([b,d]);}
+    await expect(panel).toContainText('楓：指定済み');await expect(panel).toContainText('蓮：指定済み');
+  }finally{await table.close();}
+});
