@@ -1,7 +1,7 @@
 import { allCardInstanceIds, createGame, gameStats, transition, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 
-export const suppressionScenarioNames = ['suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
+export const suppressionScenarioNames = ['suppression-blessing-confusion', 'suppression-blessing-hypnosis', 'suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
 export type SuppressionScenarioName = typeof suppressionScenarioNames[number];
 export function isSuppressionScenario(name: string): name is SuppressionScenarioName {
   return suppressionScenarioNames.some(value => value === name);
@@ -13,7 +13,7 @@ export function makeSuppressionScenario(name: SuppressionScenarioName, players: 
   if (players.length !== 4) throw Error('SUPPRESSION_FIXTURE_FOUR_SEATS');
   let game = createGame(players, entropy(), { startingSeat: 0 });
   const [a, b, c, d] = players.map(player => player.id) as [string, string, string, string];
-  const blessing = name === 'suppression-blessing-paired' || name === 'suppression-blessing-exempt' || name === 'suppression-blessing-death' || name === 'suppression-blessing' || name === 'suppression-blessing-fail';
+  const blessing = name === 'suppression-blessing-confusion' || name === 'suppression-blessing-hypnosis' || name === 'suppression-blessing-paired' || name === 'suppression-blessing-exempt' || name === 'suppression-blessing-death' || name === 'suppression-blessing' || name === 'suppression-blessing-fail';
   assignCharacter(game, a, '邪祭ウーノス');
   assignCharacter(game, b, name === 'suppression-hidden-lia' ? 'リーア姫' : name === 'suppression-blessing-exempt' ? '聖騎士ランスロット2' : '侍大将のシン');
   assignCharacter(game, c, blessing ? 'リーア姫' : '大神官ジル');
@@ -23,7 +23,9 @@ export function makeSuppressionScenario(name: SuppressionScenarioName, players: 
   const fate = takeCard(game, d, '命運凶変');
   const lethal=name==='suppression-blessing-death';const bow=lethal?takeCard(game,a,'踏み込み／弓'):undefined;
   if(lethal)game.players[c]!.damage=gameStats(game,c).endurance-1;
-  trimHand(game, a, ritual,...(bow?[bow]:[])); trimHand(game, d, fate);
+  const statusCard=name==='suppression-blessing-confusion'?takeCard(game,d,'錯乱'):name==='suppression-blessing-hypnosis'?takeCard(game,d,'催眠'):undefined;
+  if(statusCard){game.players[b]!.permanent={...game.players[b]!.permanent,spirit:-20};game.players[d]!.permanent={...game.players[d]!.permanent,magic_level:20,spirit:20};}
+  trimHand(game, a, ritual,...(bow?[bow]:[])); trimHand(game, d, fate,...(statusCard?[statusCard]:[]));
   function act(actorId: string, command: GameCommand) {
     const result = transition(game, { actorId, command }, entropy());
     if (!result.ok) throw Error(`SUPPRESSION_FIXTURE_${command.type}_${result.code}`);

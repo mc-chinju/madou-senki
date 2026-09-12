@@ -24,7 +24,7 @@
 | `c2-p03-r1c2-ab04#C16/designated-public-state-candidates` | browser, worker-persistence | 指定済み候補・未指定拒否をDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/exempt-target-same-check-and-lease` | browser, worker-persistence | 通常・免除対象の実祝福をDO保存再送・browser全席reloadの対比較へ束縛 |
 | `c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban` | browser, worker-persistence | 通常・免除対象の実祝福をDO保存再送・browser全席reloadの対比較へ束縛 |
-| `c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released` | browser, worker-persistence | 実錯乱・催眠を残す祝福のDO保存再送・browser全席reloadへ束縛 |
 | `c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease` | browser, worker-persistence | 実祝福後の次手番再指定でも解除維持をDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/lease-survives-target-absence` | browser, worker-persistence | 直接assertion確認待ち |

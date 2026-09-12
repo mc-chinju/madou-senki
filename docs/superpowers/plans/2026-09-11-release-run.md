@@ -1367,6 +1367,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16 非公開免除対象にも同じ祝福判定・解除記録を残し、成功応答で従前の実効禁止を明かさない2行を追加束縛。正体だけ異なる2卓の実禁止→祝福で、Worker ACK/全外部席表示、browser各回答後表示を比較。判定・試行消費・未消費の通常行動・保存解除記録と全席reloadを確認した。Worker1試験・browser1試験・型チェック・台帳validator成功。不足6行、Step2継続。詳細は [B7祝福の秘密情報進捗](../../operations/evidence/2026-09-12-b7-blessing-privacy-progress.json)。
 
+2026-09-12 B7続行: C16 祝福がヴァンミール由来の禁止だけを解除する1行を追加束縛。実禁止→錯乱/催眠の実攻撃→後続手番の祝福で、別原因の能力禁止・停止が残ることを確認。Worker毎操作保存再送・全席投影比較と共通能力ゲート、browser全席reload・保存状態読取りを検証した。Worker2試験・browser2試験・型チェック・台帳validator成功。不足5行、Step2継続。詳細は [B7祝福と状態異常進捗](../../operations/evidence/2026-09-12-b7-blessing-status-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

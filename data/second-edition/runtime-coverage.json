@@ -256060,11 +256060,15 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:034cea4739167897"
+        "t:034cea4739167897",
+        "t:bbe6e23fff3813cd",
+        "t:6bf9e532613dbca0",
+        "t:90cc2686143de8b4",
+        "t:9f75e2626862f2d9"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:b8cde6ba3e63d573"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493224,6 +493228,78 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Two UI tables differ only in hidden target identity. Outsider game projections match after each blessing response; all-seat reload retains exact check and spent attempt. Read-only local inspection verifies equal saved leases. Only session IDs are normalized."
+    },
+    "t:0012a99a4ad44084": {
+      "path": "apps/worker/test/room-blessing-status.test.ts",
+      "suite": [],
+      "title": "actual %s remains after Blessing releases only Vanmil through every saved command",
+      "declarationSha256": "de2f6cda818d788e6075833f3a0822240ce6e4836bcc55ea5fee6c5e338368e8",
+      "kind": "worker-persistence",
+      "parameters": "confusion",
+      "bindingNote": "Actual ban and status attack precede successful Blessing. Every command is saved/restarted/replayed with all-seat projection equality; exact unrelated status persists, Vanmil is relieved, common ability gate remains closed."
+    },
+    "t:400e4e97a3c04529": {
+      "path": "tests/e2e/blessing-status.spec.ts",
+      "suite": [],
+      "title": "actual confusion remains after Blessing across all-seat reload",
+      "declarationSha256": "159ca255e50fa47d973bf7ea1825405e58b6f44395d465173fff13b2986ba1b1",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
+    },
+    "t:6ba17d452f131cfc": {
+      "path": "apps/worker/test/room-blessing-status.test.ts",
+      "suite": [],
+      "title": "actual %s remains after Blessing releases only Vanmil through every saved command",
+      "declarationSha256": "de2f6cda818d788e6075833f3a0822240ce6e4836bcc55ea5fee6c5e338368e8",
+      "kind": "worker-persistence",
+      "parameters": "hypnosis",
+      "bindingNote": "Actual ban and status attack precede successful Blessing. Every command is saved/restarted/replayed with all-seat projection equality; exact unrelated status persists, Vanmil is relieved, common ability gate remains closed."
+    },
+    "t:9f4e4bf8a05fbf41": {
+      "path": "tests/e2e/blessing-status.spec.ts",
+      "suite": [],
+      "title": "actual hypnosis remains after Blessing across all-seat reload",
+      "declarationSha256": "fa2f416af57151fefea8e62f672acc03f8f985efee89757906b1248896874c7c",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
+    },
+    "t:bbe6e23fff3813cd": {
+      "path": "apps/worker/test/room-blessing-status.test.ts",
+      "suite": [],
+      "title": "actual %s remains after Blessing releases only Vanmil through every saved command",
+      "declarationSha256": "03b0db3e3e5e6f95af8550616acfd6cd7360addbfb97c45c08efd054b41e34b8",
+      "kind": "worker-persistence",
+      "parameters": "confusion",
+      "bindingNote": "Actual ban and status attack precede successful Blessing. Every command is saved/restarted/replayed with all-seat projection equality; exact unrelated status persists, Vanmil is relieved, common ability gate remains closed."
+    },
+    "t:6bf9e532613dbca0": {
+      "path": "tests/e2e/blessing-status.spec.ts",
+      "suite": [],
+      "title": "actual confusion remains after Blessing across all-seat reload",
+      "declarationSha256": "51ae6d8f14643b77f9d97e288719844bcfd7b27daa2f0e0400a4deb79195a9af",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
+    },
+    "t:90cc2686143de8b4": {
+      "path": "apps/worker/test/room-blessing-status.test.ts",
+      "suite": [],
+      "title": "actual %s remains after Blessing releases only Vanmil through every saved command",
+      "declarationSha256": "03b0db3e3e5e6f95af8550616acfd6cd7360addbfb97c45c08efd054b41e34b8",
+      "kind": "worker-persistence",
+      "parameters": "hypnosis",
+      "bindingNote": "Actual ban and status attack precede successful Blessing. Every command is saved/restarted/replayed with all-seat projection equality; exact unrelated status persists, Vanmil is relieved, common ability gate remains closed."
+    },
+    "t:9f75e2626862f2d9": {
+      "path": "tests/e2e/blessing-status.spec.ts",
+      "suite": [],
+      "title": "actual hypnosis remains after Blessing across all-seat reload",
+      "declarationSha256": "20b3a2b40c0ead013f0bf05ba0ea5d6a349256510042d666a23a82dfb6dc833b",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
     }
   },
   "remainingNotes": {
@@ -493393,7 +493469,8 @@
     "n:a32d21ba4e375d0f": "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:0123e6c2897a9897": "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:7936a3a29ccd02e9": "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains.",
-    "n:e8552bec0195d2e8": "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains."
+    "n:e8552bec0195d2e8": "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains.",
+    "n:b8cde6ba3e63d573": "Actual confusion and hypnosis persist through subsequent successful Blessing, saved command replay and browser reload. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {
