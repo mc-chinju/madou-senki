@@ -1310,6 +1310,100 @@
       "remaining": [
         "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing expires at G15 death entry and cannot revive with its old life",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-lia-life.test.ts",
+          "title": "R6 canonical living Vanmil and Lia death revival renew only the new life Blessing through every DO restart and receipt replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual source death clears the lease; actual revival changes lifeId without restoring the old lease. New actual blessing stores the new source lifeId and restores only its effect through every-command eviction/replay and all-seat projections."
+        },
+        {
+          "path": "tests/e2e/canonical-lia-life.spec.ts",
+          "title": "actual Lia revival keeps the old Blessing expired until a new-life blessing across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban/blessing/death/revival/re-setup retains beneficiary prohibition after revival and all-seat reload; only a newly declared blessing restores relief, again checked after all-seat reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/source-life-generation-saved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+          "kind": "structural-resolver",
+          "parameters": "source-generation",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing candidates use designated public state after actual turn advance",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-lia-life.test.ts",
+          "title": "R6 canonical living Vanmil and Lia death revival renew only the new life Blessing through every DO restart and receipt replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual source death clears the lease; actual revival changes lifeId without restoring the old lease. New actual blessing stores the new source lifeId and restores only its effect through every-command eviction/replay and all-seat projections."
+        },
+        {
+          "path": "tests/e2e/canonical-lia-life.spec.ts",
+          "title": "actual Lia revival keeps the old Blessing expired until a new-life blessing across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban/blessing/death/revival/re-setup retains beneficiary prohibition after revival and all-seat reload; only a newly declared blessing restores relief, again checked after all-seat reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

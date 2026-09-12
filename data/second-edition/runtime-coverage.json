@@ -256238,11 +256238,13 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:67e0462439067b36"
+        "t:67e0462439067b36",
+        "t:d92762451e313154",
+        "t:a884a4c7909d2705"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:a32d21ba4e375d0f"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256311,11 +256313,13 @@
       ],
       "tests": [
         "t:0f1b3d86e74515a4",
-        "t:23ec94ca680479c6"
+        "t:23ec94ca680479c6",
+        "t:d92762451e313154",
+        "t:a884a4c7909d2705"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:a32d21ba4e375d0f"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493140,6 +493144,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual UI blessing and later lethal bow attack reach source pending-death; all seats reload before disposal, source still has hand and beneficiary B again displays ability prohibition."
+    },
+    "t:d92762451e313154": {
+      "path": "apps/worker/test/room-canonical-lia-life.test.ts",
+      "suite": [],
+      "title": "R6 canonical living Vanmil and Lia death revival renew only the new life Blessing through every DO restart and receipt replay",
+      "declarationSha256": "264da2e4c3fdbaaac89744d0536de507b8d4ef0c7cd04ae8499f4481e6a7879f",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual source death clears the lease; actual revival changes lifeId without restoring the old lease. New actual blessing stores the new source lifeId and restores only its effect through every-command eviction/replay and all-seat projections."
+    },
+    "t:a884a4c7909d2705": {
+      "path": "tests/e2e/canonical-lia-life.spec.ts",
+      "suite": [],
+      "title": "actual Lia revival keeps the old Blessing expired until a new-life blessing across all-seat reload",
+      "declarationSha256": "e56a0b1f6b18fb85513ee40062a03b7a23e2b3fc73de3b6034f9133485e41d5e",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI ban/blessing/death/revival/re-setup retains beneficiary prohibition after revival and all-seat reload; only a newly declared blessing restores relief, again checked after all-seat reload."
     }
   },
   "remainingNotes": {
@@ -493305,7 +493327,8 @@
     "n:530ea25298533107": "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains.",
     "n:4569ff472504a4fc": "Existing Engine assertions retained and actual redesignation Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:59f7eb9ff8205e65": "n:26415580933c852e",
-    "n:643c7fd6aa68212d": "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains."
+    "n:643c7fd6aa68212d": "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains.",
+    "n:a32d21ba4e375d0f": "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

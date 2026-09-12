@@ -29,9 +29,9 @@
 | `c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease` | browser, worker-persistence | 実祝福後の次手番再指定でも解除維持をDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/lease-survives-target-absence` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/lease-expires-G15-death-entry` | browser, worker-persistence | 実祝福・致死攻撃・廃棄前失効のDO/browserへ束縛 |
-| `c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease` | browser, worker-persistence | 実死亡・復活・新生再祝福のDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease` | browser, worker-persistence | 直接assertion確認待ち |
-| `c2-p03-r1c2-ab04#C16/source-life-generation-saved` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p03-r1c2-ab04#C16/source-life-generation-saved` | browser, worker-persistence | 実死亡・復活・新生再祝福のDO/browserへ束縛 |
 | `common:C04#C04/once-target-hit-before-followers` | browser, worker-persistence | 直接assertion確認待ち |
 | `common:C04#C04/cancel-consumes-attempt` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `common:C04#C04/target-local-not-source-global` | browser, worker-persistence | 既存試験をDO保存再送・browser全席reloadへ拡張して束縛 |

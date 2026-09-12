@@ -1359,6 +1359,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16祝福元のG15死亡入口失効1行を追加束縛。残HP1と弓を用意したfixtureで実禁止・祝福・次手番致死攻撃を行い、pending-deathで手札廃棄前に祝福消滅・対象禁止復帰をDO毎操作再送/browser全席reloadで確認。Worker10試験・browser1試験・型チェック・台帳validator成功。不足12行、復活条項は別途継続。詳細は [B7祝福死亡進捗](../../operations/evidence/2026-09-12-b7-blessing-death-progress.json)。
 
+2026-09-12 B7続行: C16復活で旧祝福が戻らない・発生元の生世代保存の2行を追加束縛。既存canonical-lia-life DOケースに対応するbrowserを追加し、実死亡→復活→再配置後も対象禁止が残り、新生での再祝福だけ解除することを全席reloadで確認。DOは新lifeIdと保存sourceLifeIdを確認。Worker1試験・browser1試験・型チェック・台帳validator成功。不足10行、Step2継続。詳細は [B7祝福復活進捗](../../operations/evidence/2026-09-12-b7-blessing-revival-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**
