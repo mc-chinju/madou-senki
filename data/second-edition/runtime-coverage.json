@@ -254800,11 +254800,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:5aa2177cb93aa42f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -254831,11 +254837,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:865829a766a55d54"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -254862,11 +254874,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:b4c030d8cbc394c1"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -254893,11 +254911,18 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:f32c8ee0867e859c",
+        "t:d4db28d368b061d7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -254924,11 +254949,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:865829a766a55d54"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -254955,11 +254986,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:e518f9781d383613"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -254986,11 +255023,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:e518f9781d383613"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255017,11 +255060,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:2041ef2ea7f4f35a"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255048,11 +255097,18 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:f32c8ee0867e859c",
+        "t:d4db28d368b061d7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255079,11 +255135,18 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff",
+        "h:2429f56399a6e165"
+      ],
+      "tests": [
+        "t:f32c8ee0867e859c",
+        "t:d4db28d368b061d7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415620,8 +415683,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7066,
-      "implemented": 5112
+      "pending": 7056,
+      "implemented": 5122
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416915,6 +416978,10 @@
     "h:8d58fd9e39c60ccc": {
       "path": "packages/engine/src/setup.ts",
       "symbol": "refillInitialHand"
+    },
+    "h:2429f56399a6e165": {
+      "path": "packages/engine/src/abilities/suppression.ts",
+      "symbol": "resolveSuppression"
     }
   },
   "testCases": {
@@ -488727,6 +488794,69 @@
       "kind": "structural-resolver",
       "parameters": null,
       "bindingNote": "Actual transformation followed by direct Lia reveal-state change; no legal Lia concealment producer is invented."
+    },
+    "t:5aa2177cb93aa42f": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 real turn advance offers Vanmil only his public reaction and spends it once",
+      "declarationSha256": "b9dce5a3641a96dd8a6b228bba71a114921f8c0e5ffc6effc96a4e7cf9593181",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+    },
+    "t:865829a766a55d54": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+      "declarationSha256": "b61cfb5ec773cb0d94c419c3ed04fcda86a5760b5c1b4fc96701f91dc27eb551",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+    },
+    "t:b4c030d8cbc394c1": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+      "declarationSha256": "d16faa3b85170daa879e7ffd7eda6c1ce26d56bdf9822bce04242f413e0c11f7",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+    },
+    "t:f32c8ee0867e859c": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+      "declarationSha256": "57508651075b62735a910173d702026fdf5a0af99e42a15a5ef1b6195b6bdcfd",
+      "kind": "structural-resolver",
+      "parameters": "リーア姫",
+      "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+    },
+    "t:d4db28d368b061d7": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+      "declarationSha256": "57508651075b62735a910173d702026fdf5a0af99e42a15a5ef1b6195b6bdcfd",
+      "kind": "structural-resolver",
+      "parameters": "聖騎士ランスロット2",
+      "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+    },
+    "t:e518f9781d383613": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 a fresh attack window cannot retry a no-new-target designation",
+      "declarationSha256": "18831369b25d186a16bbd0eb2bc2ecc9f5c5bf33fff43fb0c5b346cd043c0021",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+    },
+    "t:2041ef2ea7f4f35a": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 self-designation prevents subsequent ability use and never adds a public disabled status",
+      "declarationSha256": "e1d259105de20a7f3591b293fb1f2d040867dd6aba270b344709bad215ef84ca",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
     }
   },
   "remainingNotes": {

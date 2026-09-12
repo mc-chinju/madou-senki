@@ -315,3 +315,31 @@ it('C16 actual ban after the use-check freeze preserves the saved threshold whil
   s=finish(s);
   expect(s.rolls!.find(r=>r.id===frozen.id)).toMatchObject({stage:'applied',threshold:frozen.threshold,faces:frozen.faces,success:frozen.success});
 });
+it('C16 invalid target lists do not spend the attempt and valid designation preserves main action',()=>{
+ let s=setup();s=finish(act(s,'C',{type:'REVEAL_CHARACTER'}));
+ const attack=handCard(s,'A','踏み込み／弓');
+ const option=viewFor(s,'A').abilityOptions.find(o=>o.abilityId===BAN)!;
+ expect(option.targetIds).toEqual(expect.arrayContaining(['A','B','D']));expect(option.targetIds).not.toContain('C');
+ for(const targetIds of [[],['B','B'],['missing']]){
+  rejected(s,'A',{type:'USE_ABILITY',abilityId:BAN,targetEventId:option.targetEventId,targetIds});
+  expect(viewFor(s,'A').abilityOptions.find(o=>o.abilityId===BAN)?.targetEventId).toBe(option.targetEventId);
+ }
+ s=finish(use(s,'A',BAN,['B']));expect(s.phase).toBe('action');
+ expect(s.suppressionDesignations!.map(d=>d.targetId)).toEqual(['B']);
+ s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['D'],dedicated:false});
+ expect(Object.values(s.actions!).some(a=>a.cardInstanceId===attack)).toBe(true);s=finish(s);
+ expect(s.phase).toBe('withdrawal');
+});
+it('C16 real turn advance offers Vanmil only his public reaction and spends it once',()=>{
+ let s=setup();const attack=handCard(s,'B','踏み込み／弓'),fate=handCard(s,'D','命運凶変');
+ s=actionFor(s,'B');expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===BAN)).toBe(false);
+ s=act(s,'B',{type:'ATTACK',cardInstanceId:attack,targetIds:['D'],dedicated:false});
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
+ const event=viewFor(s,'A').abilityOptions.find(o=>o.abilityId===BAN)!.targetEventId;
+ s=use(s,'A',BAN,['B']);
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='D')s=pass(s);
+ s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(s,'D').reactionTargetAbilityId!});
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
+ s=JSON.parse(JSON.stringify(s));expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===BAN&&o.targetEventId===event)).toBe(false);
+ rejected(s,'A',{type:'USE_ABILITY',abilityId:BAN,targetEventId:event,targetIds:['B']});s=finish(s);
+});

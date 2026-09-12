@@ -109,6 +109,13 @@ class CharacterBindingsTest(unittest.TestCase):
         ledger['rows'][0]['clauseKey'] = 'no-revert-on-Lia-hide'
         self.assertEqual(build_bindings(ledger, self.cards)[0]['tests'][0]['kind'], 'structural-resolver')
 
+    def test_c16_hidden_identity_pair_keeps_both_structural_cases(self):
+        ledger = self.ledger('C16/hidden-exempt-designation-same-transcript')
+        ledger['rows'][0]['entryId'] = 'c2-p07-r1c2-ab03'
+        result = build_bindings(ledger, self.cards)
+        self.assertEqual([t['parameters'] for t in result[0]['tests']], ['リーア姫', '聖騎士ランスロット2'])
+        self.assertTrue(all(t['kind'] == 'structural-resolver' for t in result[0]['tests']))
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

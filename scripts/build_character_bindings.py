@@ -230,6 +230,35 @@ def lancelot_transform_binding(row):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def c16_designation_binding(row):
+    entry, clause = row['entryId'], row['clauseKey']
+    if entry != 'c2-p07-r1c2-ab03':
+        return None
+    refs = []
+    if clause in {'C16/no-secret-target-rejection', 'C16/hidden-exempt-designation-same-transcript', 'C16/hidden-target-uniform-public-view'}:
+        refs = [('C16 hidden %s produces the same targeting transcript as an ordinary identity', name, 'structural-resolver') for name in ['リーア姫', '聖騎士ランスロット2']]
+    elif clause == 'C16/public-only-target-candidates':
+        refs = [('C16 public exemptions are excluded but hidden exemptions remain selectable', None, 'structural-resolver')]
+    else:
+        titles = {
+            'C16/public-own-opportunity-once': 'C16 real turn advance offers Vanmil only his public reaction and spends it once',
+            'C16/no-main-action': 'C16 invalid target lists do not spend the attempt and valid designation preserves main action',
+            'C16/reject-empty-duplicate-nonexistent': 'C16 invalid target lists do not spend the attempt and valid designation preserves main action',
+            'C16/reject-no-new-designation': 'C16 a fresh attack window cannot retry a no-new-target designation',
+            'C16/designations-accumulate': 'C16 a fresh attack window cannot retry a no-new-target designation',
+            'C16/self-target-ban-blocks-further-declaration': 'C16 self-designation prevents subsequent ability use and never adds a public disabled status',
+        }
+        if clause in titles:
+            refs = [(titles[clause], None, 'canonical-transition')]
+    if not refs:
+        return None
+    return {'row': f'{entry}#{clause}',
+            'handler': [{'path': 'packages/engine/src/abilities/suppression.ts', 'symbol': symbol} for symbol in ['suppressionOptions', 'transitionSuppression', 'resolveSuppression']],
+            'tests': [{'path': 'packages/engine/test/suppression-blessing.test.ts', 'suite': [], 'title': title, 'parameters': param, 'kind': kind,
+                       'bindingNote': 'Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation.' if kind == 'structural-resolver' else 'Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule.'} for title, param, kind in refs],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -238,7 +267,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row) or lancelot_transform_binding(row)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row) or lancelot_transform_binding(row) or c16_designation_binding(row)
         if extra:
             bindings.append(extra)
             continue

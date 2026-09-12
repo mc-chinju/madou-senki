@@ -9590,6 +9590,340 @@
       "remaining": [
         "Exact clause assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/public-own-opportunity-once",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 real turn advance offers Vanmil only his public reaction and spends it once",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-main-action",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/public-only-target-candidates",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-secret-target-rejection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "リーア姫",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "聖騎士ランスロット2",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/reject-no-new-designation",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a fresh attack window cannot retry a no-new-target designation",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/designations-accumulate",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a fresh attack window cannot retry a no-new-target designation",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 self-designation prevents subsequent ability use and never adds a public disabled status",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "リーア姫",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "聖騎士ランスロット2",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/hidden-target-uniform-public-view",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "リーア姫",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "聖騎士ランスロット2",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

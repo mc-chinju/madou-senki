@@ -1223,6 +1223,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4ランスロット変身: 残2条項を新規3試験に束縛。実成功/実取消の両方で1回の試行記録を保存復帰・フェーズ変更後も保持し再宣言を拒否。実変身後にリーアの公開状態を直接変更しても人物/継承能力が戻らない境界はstructural-resolverとし、合法な非公開化操作を作り出さない。対象5試験、型検査、Python23件、台帳validator成功。人物pending48、semantic具体的実装済み5,112、pending147、accepted0。全B4生成gateは残48行で停止。詳細は [B4変身進捗](../../operations/evidence/2026-09-12-b4-transform-progress.json)。Step3〜5は未完了。
 
+2026-09-12 B4 C16指定: ヴァンミールの指定/公開機会10条項を束縛。新規2試験で空・重複・不存在の原子的拒否と試行権保持、有効指定後の実通常攻撃、実他者手番での公開応答限定・実取消後の再試行拒否を確認。既存の新規なし拒否/累積/自己指定と非公開人物の比較試験を対応付け、公開候補・秘密情報非依存の4行はstructural-resolverを保持。対象24試験、型検査、Python24件、台帳validator成功。人物pending38、semantic具体的実装済み5,122、pending137、accepted0。全B4生成gateは残38行で停止。詳細は [B4 C16指定進捗](../../operations/evidence/2026-09-12-b4-c16-designations-progress.json)。C16の寿命・祝福および条件付き能力とStep3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**
