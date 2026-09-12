@@ -1,6 +1,6 @@
 # 公開走り切り Implementation Plan
 
-> **ユーザー依頼による一時停止（2026-09-12）:** 新項目へ進まない。別セッションでユーザーが明示的に再開するまで作業を停止する。引き継ぎは [release-run-handoff-2026-09-12.md](../../operations/release-run-handoff-2026-09-12.md)。目標達成・blockedではない。goal管理APIにpaused操作がないため、画面側の一時停止は別途必要。
+> **ユーザー依頼による一時停止（2026-09-12）:** 新項目へ進まない。別セッションでユーザーが明示的に再開するまで作業を停止する。引き継ぎは [release-run-handoff-2026-09-12.md](../../operations/release-run-handoff-2026-09-12.md)。目標達成・blockedではない。対象本スレッドのgoalも正式なapp-server APIで `paused` に変更し、保存状態を確認済み。
 
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. サブエージェント・独立レビュー・自己レビューはユーザー指定により禁止。受け入れは [試験受け入れ方針](../../operations/acceptance-policy.md) `acceptance-policy/test-only-v1`。
