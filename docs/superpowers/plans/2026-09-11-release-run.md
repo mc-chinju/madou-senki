@@ -1324,7 +1324,7 @@ R4/R5/R6 計画で「Worker毎操作保存再送・browser全席reload」を要�
 
 - [x] **Step 1: 台帳で `kind` に `worker-persistence` と `browser` を持たない semantic 行のうち、manifest の `source` テキストに「保存」「再接続」「投影」「画面」「reload」を含む行を列挙する**
 
-- [ ] **Step 2: 対応する既存 `apps/worker/test/room-*.test.ts` と `tests/e2e/*.spec.ts` の試験を束縛する（新規試験は、既存のDO/browser fixtureに該当シナリオが無い場合だけ追加する）。適用・validator・コミット**
+- [x] **Step 2: 対応する既存 `apps/worker/test/room-*.test.ts` と `tests/e2e/*.spec.ts` の試験を束縛する（新規試験は、既存のDO/browser fixtureに該当シナリオが無い場合だけ追加する）。適用・validator・コミット**
 
 ```bash
 git add apps tests data docs && git commit -m "data: 保存・投影・画面条項へWorker/browser試験を追加束縛する"
@@ -1375,6 +1375,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 2026-09-12 B7続行: C04 各対象・各ヒット一度と従者開始後の選択禁止1行を追加束縛。実グリフォン2ヒットで巨神の使用/取消後は次ヒットに新機会、従者開始後は解決終了まで選択不可を確認。Worker毎操作保存再送・全席投影と旧機会拒否、browser全席reloadを検証した。Worker3試験・browser3試験・型チェック・台帳validator成功。不足4行、Step2継続。詳細は [B7グリフォン防御進捗](../../operations/evidence/2026-09-12-b7-griffin-defense-progress.json)。
 
 2026-09-12 再開後B7: リーア人物同一性喪失1行を構造的保存境界として追加束縛。実禁止・祝福成立後の人物だけをfixtureで変更し、同じ生世代の旧leaseを保存。DO全席投影と実PASS_ACTIONによる失効・保存再送、browser全席reloadで禁止復帰とlease消滅を確認。通常変身経路の成功ではない。Engine既存35件、Worker1件、browser1件、型検査・台帳validator成功。対応版Chromium 153.0.8010.12の新headlessを採用。不足3行、Step2継続。詳細は [人物同一性境界の証跡](../../operations/evidence/2026-09-12-b7-identity-progress.json)。
+
+2026-09-12 B7完了: 残3行に実錯乱/催眠/裂界7ケースと構造的流浪保存境界3ケースを追加。実禁止・祝福成立後の指定/lease/生世代維持をDO毎操作保存再送とbrowser全席reloadで確認。流浪の発生経路を実コマンドと偽らず、境界入力と明記。人物同一性回帰を含むWorker11件・browser11件、型検査・台帳validator成功。初期39行の不足0、Step2完了。semantic pending2はB8凍結直前まで維持。詳細は [B7完了証跡](../../operations/evidence/2026-09-12-b7-complete-progress.json)。
 
 ### Task B8: 候補固定・全実行・昇格・readiness
 

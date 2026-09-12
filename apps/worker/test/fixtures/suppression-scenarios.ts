@@ -1,7 +1,8 @@
+import {clearDistances} from '../../../../packages/engine/src/lifecycle/advance.js';
 import { allCardInstanceIds, createGame, gameStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 
-export const suppressionScenarioNames = ['suppression-identity-boundary', 'suppression-blessing-confusion', 'suppression-blessing-hypnosis', 'suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
+export const suppressionScenarioNames = ['suppression-wandering-ban', 'suppression-wandering-source', 'suppression-wandering-target', 'suppression-persist-ban-confusion', 'suppression-persist-ban-hypnosis', 'suppression-persist-ban-otherworld', 'suppression-persist-source-confusion', 'suppression-persist-source-hypnosis', 'suppression-persist-source-otherworld', 'suppression-persist-target-otherworld', 'suppression-identity-boundary', 'suppression-blessing-confusion', 'suppression-blessing-hypnosis', 'suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
 export type SuppressionScenarioName = typeof suppressionScenarioNames[number];
 export function isSuppressionScenario(name: string): name is SuppressionScenarioName {
   return suppressionScenarioNames.some(value => value === name);
@@ -10,6 +11,8 @@ export function isSuppressionScenario(name: string): name is SuppressionScenario
  * Ritual, transformation, turn progression and all suppression/lease effects use real commands.
  * No suppression designation, lease, ability frame or resolved roll is injected. */
 export function makeSuppressionScenario(name: SuppressionScenarioName, players: { id: string; name: string }[]): GameState {
+  if (name.startsWith('suppression-wandering-')) return makeWanderingBoundary(name, players);
+  if (name.startsWith('suppression-persist-')) return makePersistenceScenario(name, players);
   if (name === 'suppression-identity-boundary') return makeIdentityBoundary(players);
   if (players.length !== 4) throw Error('SUPPRESSION_FIXTURE_FOUR_SEATS');
   let game = createGame(players, entropy(), { startingSeat: 0 });
@@ -101,4 +104,59 @@ function makeIdentityBoundary(players: {id: string; name: string}[]): GameState 
   assignCharacter(state,c,'大神官ジル');
   if(state.players[c]!.lifeId!==life || state.blessingLeases.length!==1) throw Error('IDENTITY_BOUNDARY_CHANGED_LIFE_OR_LEASE');
   return state;
+}
+
+/** Initial card/stat arrangements only. All designation, lease and chant effects
+ * are produced by commands. The persisted test starts before the hostile attack. */
+function makePersistenceScenario(name: string, players: {id:string;name:string}[]): GameState {
+  let s=makeSuppressionScenario('suppression-blessing',players);
+  const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];
+  for(const id of [a,b,c]) {
+    const p=s.players[id]!;p.permanent={...p.permanent,endurance:100};
+    p.permanent.spirit=(p.permanent.spirit??0)+8-gameStats(s,id).spirit;
+  }
+  s.players[d]!.permanent={...s.players[d]!.permanent,magic_level:20,spirit:20,endurance:100};
+  const card=takeCard(s,d,name.endsWith('otherworld')?'裂界':name.endsWith('confusion')?'錯乱':'催眠');
+  trimHand(s,d,card);
+  function act(actorId:string,command:GameCommand) {
+    const r=transition(s,{actorId,command},entropy());if(!r.ok)throw Error(`PERSIST_FIXTURE_${command.type}_${r.code}`);s=r.state;
+    const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('PERSIST_FIXTURE_CARDS');
+  }
+  function finish(){for(let n=0;n<300;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('PERSIST_FIXTURE_WINDOW');}
+  function own(target:string){for(let n=0;n<150;n++){
+    if(s.windows?.length){finish();continue;}const id=s.seatOrder[s.turnSeat]!;
+    if(s.phase==='action'&&id===target)return;
+    if(s.phase==='turn-start')act(id,{type:'START_TURN'});
+    else if(s.phase==='draw')act(id,{type:'CHOOSE_DRAW',draw:false});
+    else if(s.phase==='action')act(id,{type:'PASS_ACTION'});
+    else if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});
+    else if(s.phase==='hand-adjustment')act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!==card).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});
+    else throw Error('PERSIST_FIXTURE_PHASE');
+  }throw Error('PERSIST_FIXTURE_TURN');}
+  for(const id of [b,c]){act(id,{type:'REVEAL_CHARACTER'});finish();}
+  let option=viewFor(s,a).abilityOptions.find(o=>o.abilityId==='c2-p07-r1c2-ab03')!;
+  act(a,{type:'USE_ABILITY',abilityId:option.abilityId,targetEventId:option.targetEventId,targetIds:[b]});finish();
+  if(!name.includes('-ban-')){
+    own(c);option=viewFor(s,c).abilityOptions.find(o=>o.abilityId==='c2-p03-r1c2-ab04')!;
+    act(c,{type:'USE_ABILITY',abilityId:option.abilityId,targetEventId:option.targetEventId,targetId:b});finish();
+    if(s.blessingLeases?.length!==1)throw Error('PERSIST_FIXTURE_BLESSING');
+  }
+  own(d);
+  if(name.endsWith('otherworld')){act(d,{type:'CHANT',cardInstanceId:card});own(d);}
+  return s;
+}
+
+/** Structural wandering snapshot. Does not claim an actual protection-death
+ * producer. Real Ban/Blessing precedes the arranged absence; identity, life,
+ * designation and lease remain untouched. Wandering card zones/distances follow
+ * the storage shape of settleProtection. The next command may legitimately
+ * return the participant because no dead protector is injected. */
+function makeWanderingBoundary(name:string,players:{id:string;name:string}[]):GameState{
+  const role=name.slice('suppression-wandering-'.length);
+  const s=makePersistenceScenario(`suppression-persist-${role}-confusion`,players);
+  const target=players[role==='ban'?0:role==='source'?2:1]!.id,p=s.players[target]!;
+  s.deck.push(...p.hand,...p.chants.map(c=>c.cardInstanceId),...p.followers.map(c=>c.cardInstanceId));
+  p.hand=[];p.chants=[];p.followers=[];p.presence='wandering';clearDistances(s,target);
+  const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('WANDERING_BOUNDARY_CARDS');
+  return s;
 }

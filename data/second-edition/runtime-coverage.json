@@ -255832,11 +255832,19 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:e21777aaf5f251ca"
+        "t:e21777aaf5f251ca",
+        "t:fe0f2b44d50ee41c",
+        "t:b405d33deb228d9c",
+        "t:d589fb75a635a097",
+        "t:95935bbc6bb5490b",
+        "t:3af31f6df861532e",
+        "t:c4dd9a1e7aa0dd85",
+        "t:bb37e4817073f041",
+        "t:6c47b2324496cd2d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:fdff6613353ada7a"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256101,11 +256109,19 @@
       ],
       "tests": [
         "t:034cea4739167897",
-        "t:af190f52f793f11f"
+        "t:af190f52f793f11f",
+        "t:4cb406b5b11bea3e",
+        "t:f84552377254a9af",
+        "t:fa4b9c4b4af8067c",
+        "t:35f2c7455987a8f9",
+        "t:530496cd0d25f664",
+        "t:5cb757caed779fa9",
+        "t:5b177a426df3cc42",
+        "t:000c0bda28950c10"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:fdff6613353ada7a"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256176,11 +256192,15 @@
       ],
       "tests": [
         "t:f583be28a788bbeb",
-        "t:a1d3eaece1141cee"
+        "t:a1d3eaece1141cee",
+        "t:1c8464fe31ea6a63",
+        "t:80fc15926ba820cf",
+        "t:2c567f5faf2c9cf0",
+        "t:2d85de33a8c9d8e3"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:fdff6613353ada7a"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493434,6 +493454,186 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
+    },
+    "t:fe0f2b44d50ee41c": {
+      "path": "apps/worker/test/room-suppression-persistence.test.ts",
+      "suite": [],
+      "title": "%s retains established effects through actual hostile attack, eviction and replay",
+      "declarationSha256": "3cb8a24ff13d7fd7aa299e7622e74e80bbe149dbd47f4691b1a2d10266d35842",
+      "kind": "worker-persistence",
+      "parameters": "suppression-persist-ban-confusion",
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+    },
+    "t:b405d33deb228d9c": {
+      "path": "tests/e2e/suppression-persistence.spec.ts",
+      "suite": [],
+      "title": "actual confusion on Vanmil retains his ban after all-seat reload",
+      "declarationSha256": "075de5d0bb5d5cf32cb834f6ed17fdb3abe60741f00ad5a32b2d8ae37a7d8b83",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+    },
+    "t:d589fb75a635a097": {
+      "path": "apps/worker/test/room-suppression-persistence.test.ts",
+      "suite": [],
+      "title": "%s retains established effects through actual hostile attack, eviction and replay",
+      "declarationSha256": "3cb8a24ff13d7fd7aa299e7622e74e80bbe149dbd47f4691b1a2d10266d35842",
+      "kind": "worker-persistence",
+      "parameters": "suppression-persist-ban-hypnosis",
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+    },
+    "t:95935bbc6bb5490b": {
+      "path": "tests/e2e/suppression-persistence.spec.ts",
+      "suite": [],
+      "title": "actual hypnosis on Vanmil retains his ban after all-seat reload",
+      "declarationSha256": "c3e20e61e890f957f7e98a90c01f38f4a574169b8f6416baf5609df06a44ee1d",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+    },
+    "t:3af31f6df861532e": {
+      "path": "apps/worker/test/room-suppression-persistence.test.ts",
+      "suite": [],
+      "title": "%s retains established effects through actual hostile attack, eviction and replay",
+      "declarationSha256": "3cb8a24ff13d7fd7aa299e7622e74e80bbe149dbd47f4691b1a2d10266d35842",
+      "kind": "worker-persistence",
+      "parameters": "suppression-persist-ban-otherworld",
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+    },
+    "t:c4dd9a1e7aa0dd85": {
+      "path": "tests/e2e/suppression-persistence.spec.ts",
+      "suite": [],
+      "title": "actual Rift sends Vanmil away without removing his ban after all-seat reload",
+      "declarationSha256": "7e5df5f1f5bdfd97ce92c12dca997ba4c3e15f686886178f88b64b8f2980e700",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+    },
+    "t:bb37e4817073f041": {
+      "path": "apps/worker/test/room-suppression-wandering.test.ts",
+      "suite": [],
+      "title": "%s retains the established effect at a structural saved boundary and the next real command",
+      "declarationSha256": "fe5ac9d4be7fa658639213329b6af107b600f0ddda7df80c2a083c239e9fbad5",
+      "kind": "worker-persistence",
+      "parameters": "suppression-wandering-ban",
+      "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+    },
+    "t:6c47b2324496cd2d": {
+      "path": "tests/e2e/suppression-wandering.spec.ts",
+      "suite": [],
+      "title": "structural wandering Vanmil keeps his established ban across reload and a real command",
+      "declarationSha256": "f06fc2da64fa3c21ecca65de123f5b76a0ff2c955f5e4cc02dfdc2d80520496b",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+    },
+    "t:4cb406b5b11bea3e": {
+      "path": "apps/worker/test/room-suppression-persistence.test.ts",
+      "suite": [],
+      "title": "%s retains established effects through actual hostile attack, eviction and replay",
+      "declarationSha256": "3cb8a24ff13d7fd7aa299e7622e74e80bbe149dbd47f4691b1a2d10266d35842",
+      "kind": "worker-persistence",
+      "parameters": "suppression-persist-source-confusion",
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+    },
+    "t:f84552377254a9af": {
+      "path": "tests/e2e/suppression-persistence.spec.ts",
+      "suite": [],
+      "title": "actual confusion on Lia retains her lease after all-seat reload",
+      "declarationSha256": "eeabb3bd45ebc39cd8b5a9c8a16a74c7d66abe7239b886619532a7adf9c249b5",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+    },
+    "t:fa4b9c4b4af8067c": {
+      "path": "apps/worker/test/room-suppression-persistence.test.ts",
+      "suite": [],
+      "title": "%s retains established effects through actual hostile attack, eviction and replay",
+      "declarationSha256": "3cb8a24ff13d7fd7aa299e7622e74e80bbe149dbd47f4691b1a2d10266d35842",
+      "kind": "worker-persistence",
+      "parameters": "suppression-persist-source-hypnosis",
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+    },
+    "t:35f2c7455987a8f9": {
+      "path": "tests/e2e/suppression-persistence.spec.ts",
+      "suite": [],
+      "title": "actual hypnosis on Lia retains her lease after all-seat reload",
+      "declarationSha256": "b3d2151eca3a501f5b7851e4dcac10aaac648cf1ddd32d9b07ee6eaf8a016475",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+    },
+    "t:530496cd0d25f664": {
+      "path": "apps/worker/test/room-suppression-persistence.test.ts",
+      "suite": [],
+      "title": "%s retains established effects through actual hostile attack, eviction and replay",
+      "declarationSha256": "3cb8a24ff13d7fd7aa299e7622e74e80bbe149dbd47f4691b1a2d10266d35842",
+      "kind": "worker-persistence",
+      "parameters": "suppression-persist-source-otherworld",
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+    },
+    "t:5cb757caed779fa9": {
+      "path": "tests/e2e/suppression-persistence.spec.ts",
+      "suite": [],
+      "title": "actual Rift sends Lia away without removing her lease after all-seat reload",
+      "declarationSha256": "c5b71c7c2769a5cfccc9f2bd7da728c5d0c7b4765ab1fff5a4d9fb2f29052af0",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+    },
+    "t:5b177a426df3cc42": {
+      "path": "apps/worker/test/room-suppression-wandering.test.ts",
+      "suite": [],
+      "title": "%s retains the established effect at a structural saved boundary and the next real command",
+      "declarationSha256": "fe5ac9d4be7fa658639213329b6af107b600f0ddda7df80c2a083c239e9fbad5",
+      "kind": "worker-persistence",
+      "parameters": "suppression-wandering-source",
+      "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+    },
+    "t:000c0bda28950c10": {
+      "path": "tests/e2e/suppression-wandering.spec.ts",
+      "suite": [],
+      "title": "structural wandering Lia keeps her established lease across reload and a real command",
+      "declarationSha256": "5b5f210785a5bf86218313d1595257ffbb8a3adca4890cae61e0d853adc6d798",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+    },
+    "t:1c8464fe31ea6a63": {
+      "path": "apps/worker/test/room-suppression-persistence.test.ts",
+      "suite": [],
+      "title": "%s retains established effects through actual hostile attack, eviction and replay",
+      "declarationSha256": "3cb8a24ff13d7fd7aa299e7622e74e80bbe149dbd47f4691b1a2d10266d35842",
+      "kind": "worker-persistence",
+      "parameters": "suppression-persist-target-otherworld",
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+    },
+    "t:80fc15926ba820cf": {
+      "path": "tests/e2e/suppression-persistence.spec.ts",
+      "suite": [],
+      "title": "actual Rift sends the blessed target away without removing its lease after all-seat reload",
+      "declarationSha256": "4e97e8403c87de267f63f6a9292562d9591771a86f26c3849e8185eabd61544a",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+    },
+    "t:2c567f5faf2c9cf0": {
+      "path": "apps/worker/test/room-suppression-wandering.test.ts",
+      "suite": [],
+      "title": "%s retains the established effect at a structural saved boundary and the next real command",
+      "declarationSha256": "fe5ac9d4be7fa658639213329b6af107b600f0ddda7df80c2a083c239e9fbad5",
+      "kind": "worker-persistence",
+      "parameters": "suppression-wandering-target",
+      "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+    },
+    "t:2d85de33a8c9d8e3": {
+      "path": "tests/e2e/suppression-wandering.spec.ts",
+      "suite": [],
+      "title": "structural wandering target keeps its established lease across reload and a real command",
+      "declarationSha256": "f478be54657508cf8ae4b140c8cc453365f2ae77c51ce71b3bff8a78ad559b3a",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
     }
   },
   "remainingNotes": {
@@ -493606,7 +493806,8 @@
     "n:e8552bec0195d2e8": "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains.",
     "n:b8cde6ba3e63d573": "Actual confusion and hypnosis persist through subsequent successful Blessing, saved command replay and browser reload. Frozen-candidate acceptance remains.",
     "n:0ea34b158237548a": "Actual two-hit Griffin selected/canceled/follower-start cases cover saved per-hit attempts and next-hit renewal. Frozen-candidate acceptance remains.",
-    "n:75feb5580dd84abb": "Structural identity boundary covered in Engine/DO/browser; frozen-candidate acceptance remains."
+    "n:75feb5580dd84abb": "Structural identity boundary covered in Engine/DO/browser; frozen-candidate acceptance remains.",
+    "n:fdff6613353ada7a": "Actual suppression/otherworld and structural wandering covered; frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

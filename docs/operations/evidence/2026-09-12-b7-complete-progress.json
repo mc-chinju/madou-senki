@@ -1,0 +1,65 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 complete bindings, not candidate acceptance",
+  "previousMissingRows": 3,
+  "newlyBoundRows": [
+    "c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence",
+    "c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence",
+    "c2-p03-r1c2-ab04#C16/lease-survives-target-absence"
+  ],
+  "remainingMissingRows": 0,
+  "changes": [
+    "Seven cases use real attacks after real ritual, Ban and Blessing: confusion/hypnosis disable or stop the source; Rift sends Vanmil/Lia/target to otherworld. Initial cards/stats are arranged; effects are not injected.",
+    "Every Worker command compares all-seat projections and 220-card conservation through eviction/replay; browser performs attack/choices and reloads all seats. Exact designation and lease records are preserved.",
+    "Three wandering fixtures are explicit structural saved boundaries, not actual protection-death routes. Card zones and distances follow wandering shape; life and identity are preserved. Views, next real PASS_ACTION and persisted replay retain effects.",
+    "Final run includes identity boundary regression on current shared fixture."
+  ],
+  "runs": {
+    "worker": {
+      "passed": 11,
+      "failed": 0,
+      "exitCode": 0,
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-suppression-persistence.test.ts test/room-suppression-wandering.test.ts test/room-blessing-identity.test.ts --reporter=json",
+      "cwd": "apps/worker"
+    },
+    "browser": {
+      "passed": 11,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0,
+      "command": "PLAYWRIGHT_BROWSERS_PATH=/private/tmp/madou-playwright PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/suppression-persistence.spec.ts tests/e2e/suppression-wandering.spec.ts tests/e2e/blessing-identity.spec.ts --reporter=json",
+      "browser": "Google Chrome for Testing 153.0.8010.12",
+      "channel": "chromium",
+      "headless": true
+    },
+    "typecheck": {
+      "commands": [
+        "pnpm exec tsc --noEmit",
+        "pnpm typecheck:e2e",
+        "pnpm --filter @madou/worker typecheck"
+      ],
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "runtime validator valid true",
+    "all 39 B7 inventory rows now contain Worker/browser bindings",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/fixtures/e2e-worker.ts": "1ee7c2fd0a93c44e32187c9a94f04273ccf3133e3ae6bac026d9a1b77b2b20c0",
+    "apps/worker/test/fixtures/suppression-scenarios.ts": "835901b40f9e478451b68954dfd0fc7948d77d0452ea1be9ec52f42a2196336f",
+    "apps/worker/test/room-suppression-persistence.test.ts": "75c373dacddb055cb89a66ca023844491df0568d230b37d31ff7f1161f8f488a",
+    "apps/worker/test/room-suppression-wandering.test.ts": "ce4d04eebf35a70213e20820e2b4210877d430d07f1ad7bf930439515796d4ea",
+    "tests/e2e/suppression-persistence.spec.ts": "3d80b2394948c54b29f9438eb4b35b0449ccfff1cfb628b98997860ab7d2c880",
+    "tests/e2e/suppression-wandering.spec.ts": "e8b631492140cac87fda0c8b7f5b90fec80749a6c4983f7cd48516e3a071acb9",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "7f75f2fe024a7ba7fddaa74e8a8ccdbe3f2c97454ef1bb7189df12e6056550bb",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "5dd43e328a4051ce914ec265d2731ef3fc5c0f2af66806043a4c996cc4d5fb50"
+  },
+  "limitations": [
+    "Wandering is structural coverage; no ordinary producer or notApplicable decision is claimed.",
+    "B8 not yet run. Semantic pending2 retained until B8 freeze; accepted/verified zero.",
+    "First browser attempt failed fixture argument discovery; fixed destructuring before successful runs."
+  ]
+}
