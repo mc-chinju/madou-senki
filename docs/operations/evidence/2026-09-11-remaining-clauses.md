@@ -40,12 +40,12 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p06-r1c2-ab03#no-numeric-instant-death-no-heal` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r2c1-ab02#public-source` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p06-r2c1-ab02#no-physical-source-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c2-ab01#self-spirit-minus-two` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c2-ab01#own-incoming-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c2-ab01#optional-advance-discard` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c2-ab01#optional-original-attacker-child` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c2-ab01#child-follower-ignore` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c2-ab01#child-maai-prohibited` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab01#self-spirit-minus-two` | b（追加済み） | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
+| `c2-p06-r2c2-ab01#own-incoming-cancel` | b（追加済み） | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
+| `c2-p06-r2c2-ab01#optional-advance-discard` | a | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
+| `c2-p06-r2c2-ab01#optional-original-attacker-child` | b（追加済み） | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
+| `c2-p06-r2c2-ab01#child-follower-ignore` | a | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
+| `c2-p06-r2c2-ab01#child-maai-prohibited` | a | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
 | `c2-p06-r2c2-ab04#own-kill-provenance` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r2c2-ab04#victim-predeath-spirit-eight` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r2c2-ab04#surviving-source` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |

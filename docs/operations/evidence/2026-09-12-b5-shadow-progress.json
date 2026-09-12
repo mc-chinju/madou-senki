@@ -1,0 +1,38 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B5 Shadow Jump printed effects; not acceptance evidence",
+  "newlyImplementedClauses": 6,
+  "newTests": 3,
+  "bindingFileRows": 17,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/shadow-jump.test.ts --reporter=json --outputFile=/private/tmp/release-b5-shadow.json",
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit exit 0",
+    "Binding application validates exact AST declarations and parameter tuples",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Actual spirit-seven self roll proves threshold five, with five success and six failure changing received damage from zero to four.",
+    "Actual child rejects another live target without payment, then successfully attacks the original attacker only.",
+    "Exact existing actual decline/payment/initial follower/maai tests bind optional advance, optional child, follower ignore and maai prohibition."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/shadow-jump.test.ts": "52c5971ac0274838174210b18b242143ff196e35cae477c1d960e16ca71202ee",
+    "docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json": "53ed3547d840fa1515af8ccc2c481547d984d40f656beb7632dcc3df1e7fce74",
+    "docs/operations/evidence/2026-09-11-remaining-clauses.md": "a07b3f9a4401a3c384f9dc628e50f17eb583aece44d3b3e0aa53a694b1606914"
+  },
+  "semanticImplementedConcrete": 5177,
+  "semanticPending": 82,
+  "semanticAccepted": 0,
+  "limitations": [
+    "B5 Steps1–3 remain incomplete: 80 ordinary clauses require inspection/implementation and two D4c rows remain deferred until B8.",
+    "No runtime behavior changed. No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}

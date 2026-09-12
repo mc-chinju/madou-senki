@@ -323,6 +323,256 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#self-spirit-minus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            2,
+            3,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self roll threshold is 7-2=5; totals five/six succeed/fail respectively."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            3,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self roll threshold is 7-2=5; totals five/six succeed/fail respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#own-incoming-cancel",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            2,
+            3,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            3,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump cancellation before the self-check leaves the actual incoming hit live",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#optional-advance-discard",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "cost",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump cost rejects stale, foreign and non-advance payment before mutation; repeated payment is refused",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#optional-original-attacker-child",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "Paid child may be declined; wrong live target is rejected atomically and original attacker alone receives the child damage."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump paid child accepts only the original attacker and rejects another live target atomically",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Paid child may be declined; wrong live target is rejected atomically and original attacker alone receives the child damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#child-follower-ignore",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Actual initial follower cannot absorb the shadow child and maai is rejected without payment",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "An actual initially placed Soldier cannot absorb child damage and remains in its column."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#child-maai-prohibited",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Actual initial follower cannot absorb the shadow child and maai is rejected without payment",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual child defense view omits maai; submitting it is rejected without consuming the held card."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

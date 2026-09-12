@@ -178707,12 +178707,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1",
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:7dde41511dea277b",
+        "t:ce9e7ee9dd01132b"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1f865a3487529095",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178727,12 +178733,19 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1",
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:d6554dfb9b72f0b4",
+        "t:0d72c056c98c216d",
+        "t:2006304601058b81"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1f865a3487529095",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178747,12 +178760,19 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1",
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:1e07c9cc1d9a8c86",
+        "t:0e7ba4da90b46df6",
+        "t:4b72e124713cc3c0"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1f865a3487529095",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178767,12 +178787,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1",
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:25d2e0c205227e34",
+        "t:3c6afb406f1769f6"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1f865a3487529095",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178787,12 +178813,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1",
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:24f40b51fde23e14"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1f865a3487529095",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178807,12 +178838,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:36524194ba5449c8",
+        "h:122e9d8aad5397d1",
+        "h:39ccdafd6f0acb91"
+      ],
+      "tests": [
+        "t:4180b77dd4b6a56d"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1f865a3487529095",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -415927,8 +415963,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7007,
-      "implemented": 5171
+      "pending": 7001,
+      "implemented": 5177
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -489674,6 +489710,130 @@
         "c2-p06-r2c2-ab04"
       ],
       "bindingNote": "once-per-victim: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:7dde41511dea277b": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+      "declarationSha256": "1f217384d2660f4e97a1f22aff56cb0fc60abc88f587094f204ec04fa4cdd0d9",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        3,
+        true
+      ],
+      "bindingNote": "Actual self roll threshold is 7-2=5; totals five/six succeed/fail respectively."
+    },
+    "t:ce9e7ee9dd01132b": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+      "declarationSha256": "1f217384d2660f4e97a1f22aff56cb0fc60abc88f587094f204ec04fa4cdd0d9",
+      "kind": "canonical-transition",
+      "parameters": [
+        3,
+        3,
+        false
+      ],
+      "bindingNote": "Actual self roll threshold is 7-2=5; totals five/six succeed/fail respectively."
+    },
+    "t:d6554dfb9b72f0b4": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+      "declarationSha256": "1f217384d2660f4e97a1f22aff56cb0fc60abc88f587094f204ec04fa4cdd0d9",
+      "kind": "canonical-transition",
+      "parameters": [
+        2,
+        3,
+        true
+      ],
+      "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+    },
+    "t:0d72c056c98c216d": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+      "declarationSha256": "1f217384d2660f4e97a1f22aff56cb0fc60abc88f587094f204ec04fa4cdd0d9",
+      "kind": "canonical-transition",
+      "parameters": [
+        3,
+        3,
+        false
+      ],
+      "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+    },
+    "t:2006304601058b81": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump cancellation before the self-check leaves the actual incoming hit live",
+      "declarationSha256": "e9fb7e595f618e94d927ea6d8ac16c67fb291b2554bdfcb94bd5494a757c732a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+    },
+    "t:1e07c9cc1d9a8c86": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "cost",
+      "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+    },
+    "t:0e7ba4da90b46df6": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+    },
+    "t:4b72e124713cc3c0": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump cost rejects stale, foreign and non-advance payment before mutation; repeated payment is refused",
+      "declarationSha256": "f882210b78085c079c6f7b019ba1f07b0cf9dca3fe4c024a51965ce807952f0c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+    },
+    "t:25d2e0c205227e34": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+      "declarationSha256": "9a02ec8b34dfe9b7d4629f98a2d70b18fd241889f3abe23a098ed0fa0eff631b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "Paid child may be declined; wrong live target is rejected atomically and original attacker alone receives the child damage."
+    },
+    "t:3c6afb406f1769f6": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Shadow jump paid child accepts only the original attacker and rejects another live target atomically",
+      "declarationSha256": "bc8aef857a2ed56a276de6f094a3e82e7016f9a9b119f14d33a7a773e2aed922",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Paid child may be declined; wrong live target is rejected atomically and original attacker alone receives the child damage."
+    },
+    "t:24f40b51fde23e14": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Actual initial follower cannot absorb the shadow child and maai is rejected without payment",
+      "declarationSha256": "e14d3c3d703bb4db135328fc605d85236e04f80f185214135c7086bc58b3ce12",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "An actual initially placed Soldier cannot absorb child damage and remains in its column."
+    },
+    "t:4180b77dd4b6a56d": {
+      "path": "packages/engine/test/shadow-jump.test.ts",
+      "suite": [],
+      "title": "Actual initial follower cannot absorb the shadow child and maai is rejected without payment",
+      "declarationSha256": "e14d3c3d703bb4db135328fc605d85236e04f80f185214135c7086bc58b3ce12",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual child defense view omits maai; submitting it is rejected without consuming the held card."
     }
   },
   "remainingNotes": {

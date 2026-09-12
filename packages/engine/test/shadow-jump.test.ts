@@ -73,3 +73,18 @@ it.each([[3,4,true],[4,4,false]] as const)('Shadow jump child independently chec
  for(const id of [advance,child])expect(s.discard.filter(c=>c===id)).toHaveLength(1);
  expect(s.phase).toBe('withdrawal');expect(s.turnSeat).toBe(0);
 });
+it.each([[2,3,true],[3,3,false]] as const)('Shadow jump self spirit seven minus two boundary %s plus %s success=%s',(x,y,success)=>{
+ let {s}=incoming('黒翼飛翔剣',true,0);s=until(use(s),'before-roll');s=closeWindow(s,[x,y]);
+ expect(s.rolls!.at(-1)).toMatchObject({purpose:'ability-check',rollerId:'B',modifier:-2,threshold:5,total:x+y,success});
+ s=finish(s);expect(s.players.B!.damage).toBe(success?0:4);expect(s.players.A!.damage).toBe(0);
+ expect(s.rolls!.filter(r=>r.purpose==='ability-check')).toHaveLength(1);
+});
+it('Shadow jump paid child accepts only the original attacker and rejects another live target atomically',()=>{
+ let {s,advance,child}=incoming();s=until(use(s),'shadow-jump-cost');
+ s=until(act(s,'B',{type:'PAY_SHADOW_JUMP',abilityEventId:Object.values(s.abilities!)[0]!.id,advanceCardInstanceId:advance}),'ability-attack');
+ const before=JSON.stringify(s);
+ expect(transition(s,{actorId:'B',command:{type:'ATTACK',cardInstanceId:child,targetIds:['C'],dedicated:false}},entropy()).ok).toBe(false);
+ expect(JSON.stringify(s)).toBe(before);expect(s.players.B!.hand).toContain(child);
+ s=finish(act(s,'B',{type:'ATTACK',cardInstanceId:child,targetIds:['A'],dedicated:false}));
+ expect([s.players.A!.damage,s.players.B!.damage,s.players.C!.damage]).toEqual([7,0,0]);
+});
