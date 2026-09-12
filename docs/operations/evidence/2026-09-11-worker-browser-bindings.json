@@ -541,6 +541,86 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "common:C04#C04/target-local-not-source-global",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedTechnique"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual source action stays unchanged, B effect becomes five while C stays six; damage eight each."
+        },
+        {
+          "path": "apps/worker/test/room-received-defenses.test.ts",
+          "title": "a shared two-target technique reduces only Arnes incoming value and never its damage or original declaration",
+          "kind": "worker-persistence",
+          "bindingNote": "Existing scenario converted from direct Engine calls to real DO commands; every command restarts/replays and compares all-seat views. Only B receives level5, C retains level6, original action stays level6 and damage remains8.",
+          "suite": [],
+          "parameters": null
+        },
+        {
+          "path": "tests/e2e/received-defenses.spec.ts",
+          "title": "a shared attack displays each received value independently after reduction and reload",
+          "kind": "browser",
+          "bindingNote": "All seats reload after reduction and at completion; UI shows B level5/C level6, original action remains level6/damage8, and both receive damage8.",
+          "suite": [],
+          "parameters": null
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/followers.ts",
+          "symbol": "resolveFollowerSnapshot"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s11-s13.test.ts",
+          "suite": [],
+          "title": "S13 abstract Lv5 damage6 three-hit resolver with front Lv3 HP2 yields four each and destroys one physical follower once",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "S13 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        {
+          "path": "apps/worker/test/room-recovery.test.ts",
+          "title": "resumes shared multi-target hit progress and preserves simultaneous follower HP on every hit",
+          "kind": "worker-persistence",
+          "bindingNote": "Each command restarts/replays through three shared hits; the follower reduces B total to18 while C receives21, dies once and all220 card IDs remain unique.",
+          "suite": [],
+          "parameters": null
+        },
+        {
+          "path": "tests/e2e/combat.spec.ts",
+          "title": "eight browsers finish three shared hits and preserve follower reduction on every hit",
+          "kind": "browser",
+          "bindingNote": "Eight-seat UI resolves all three hits; every seat reloads before and after resolution and sees B18/C21 with the destroyed follower absent.",
+          "suite": [],
+          "parameters": null
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

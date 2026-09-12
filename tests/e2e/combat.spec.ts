@@ -53,6 +53,7 @@ test('eight browsers select a target by keyboard and resolve one complete normal
     await target.focus(); await attacker.keyboard.press('Space'); await expect(target).toBeChecked();
     await attacker.getByRole('button', { name: '攻撃を確認して実行', exact: true }).click();
     await expect.poll(() => views.get(table.sessions[0]!.id)?.game?.activeWindow?.kind).toBe('declaration');
+    for(const page of table.pages)await page.reload();
     const result = await passToWithdrawal(table, views, info);
     expect(result.players[table.sessions[1]!.id]!.damage).toBe(4);
     await expect(attacker.getByRole('button', { name: '離脱しない', exact: true })).toBeEnabled();
@@ -81,6 +82,7 @@ test('six browsers resolve a third-party cancellation and its immediate OPEN ref
     hold = false; for (const forward of held.splice(0)) forward();
     await expect.poll(() => views.get(table.sessions[2]!.id)?.game?.self.hand.includes('a2-p02-r2c3')).toBe(false);
     await expect(retained).toBeFocused();
+    for(const page of table.pages)await page.reload();
     const result = await passToWithdrawal(table, views, info);
     expect(result.players[table.sessions[1]!.id]!.damage).toBe(0);
     expect(result.players[table.sessions[2]!.id]!.open).toContain('a2-p01-r2c1');
@@ -96,10 +98,12 @@ test('eight browsers finish three shared hits and preserve follower reduction on
   const table = await tableFixture(browser, request, 'multi-target-multi-hit', 8);
   try {
     const views = await watch(table);
+    for(const page of table.pages)await page.reload();
     const result = await passToWithdrawal(table, views, info);
     expect(result.players[table.sessions[1]!.id]!.damage).toBe(18);
     expect(result.players[table.sessions[2]!.id]!.damage).toBe(21);
     expect(result.players[table.sessions[1]!.id]!.followers).toEqual([]);
+    for(const [seat,page] of table.pages.entries()){await page.reload();const g=views.get(table.sessions[seat]!.id)!.game!;expect(g.players[table.sessions[1]!.id]!.damage).toBe(18);expect(g.players[table.sessions[2]!.id]!.damage).toBe(21);expect(g.players[table.sessions[1]!.id]!.followers).toEqual([]);}
   } finally { await table.close(); }
 });
 

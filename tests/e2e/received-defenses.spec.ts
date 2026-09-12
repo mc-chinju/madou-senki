@@ -107,11 +107,13 @@ test('a shared attack displays each received value independently after reduction
   try {
     const views = await observe(table); const b = table.sessions[1]!.id; const c = table.sessions[2]!.id; const attackCard = originalAttackCard(table, views);
     await click(table, views, 1, '闇の結界を使う'); await passUntil(table, views, state => state.activeWindow?.kind === 'normal-defense', 500);
-    await table.pages[1]!.reload();
+    for(const page of table.pages)await page.reload();
+    for(const session of table.sessions)expect(views.get(session.id)!.game!.currentAction).toMatchObject({technique:{effectLevel:6,damage:8}});
     await expect(incoming(table).getByRole('listitem').filter({ hasText: '楓さん・1発目' })).toContainText('効果Lv 5 / ダメージ 8');
     await expect(incoming(table).getByRole('listitem').filter({ hasText: '凛さん・1発目' })).toContainText('効果Lv 6 / ダメージ 8');
     await click(table, views, 1, 'パス'); expect(game(table, views).currentAttack!.targetId).toBe(c); expect(game(table, views).currentAttack!.technique.effectLevel).toBe(6);
     const done = await passUntil(table, views, state => !state.activeWindow, 500); expect(done.players[b]!.damage).toBe(8); expect(done.players[c]!.damage).toBe(8); expectConsumedAttack(done, attackCard);
+    for(const [seat,page] of table.pages.entries()){await page.reload();const g=views.get(table.sessions[seat]!.id)!.game!;expect(g.players[b]!.damage).toBe(8);expect(g.players[c]!.damage).toBe(8);expectConsumedAttack(g,attackCard);}
   } finally { await table.close(); }
 });
 for (const entry of [

@@ -1335,6 +1335,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: G11の配置済み従者死亡時の通常回収へDO/browser試験を追加束縛。既存の名前指定死亡回収は無制限能力権で通常権と異なるため、シャリアの実配置・攻撃・死亡・正体公開から通常回収するfixtureを追加。Worker毎操作保存再送1試験・browser全席reload1試験・型チェック・台帳validator成功。不足29行、Step2継続。詳細は [B7従者回収進捗](../../operations/evidence/2026-09-12-b7-follower-progress.json)。
 
+2026-09-12 B7続行: C04対象限定軽減とG14同時各発の従者HP軽減の2行を追加束縛。既存共有攻撃試験をEngine直接呼出しからDO毎操作保存再送へ移し、browser全席reloadを追加。既存3発試験も毎操作保存再送・8席reloadへ拡張。Worker計22試験・browser計2試験・型チェック・台帳validator成功。不足27行、Step2継続。詳細は [B7軽減条項進捗](../../operations/evidence/2026-09-12-b7-defense-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

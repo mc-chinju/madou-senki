@@ -256712,11 +256712,13 @@
         "h:c37286eb311c0ea4"
       ],
       "tests": [
-        "t:b9c4adfdcc83ef8e"
+        "t:b9c4adfdcc83ef8e",
+        "t:b9d6e07598d0eb62",
+        "t:02757fc4fc379424"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -413335,14 +413337,16 @@
       "kind": "simultaneous-defense",
       "coverageClass": "semantic",
       "handler": [
-        "h:98f992ab60eab6d9"
+        "h:347885961710a67d"
       ],
       "tests": [
-        "t:168ba7d581c5b2ea"
+        "t:103ab10d57b958a4",
+        "t:660c75e210d2ffc6",
+        "t:20209cb95f80e086"
       ],
       "status": "implemented",
       "remaining": [
-        "Reachable implementation and exact scoped tests registered; current frozen-candidate/full clause acceptance remains. S13 is structural arithmetic evidence only. No independent review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -492593,6 +492597,51 @@
       "kind": "worker-persistence",
       "parameters": null,
       "bindingNote": "Actual placed Sharia death offers the base right; every DO command is saved/restarted/replayed with all-seat projection checks; reservation becomes one hand card and baseSpent remains true."
+    },
+    "t:b9d6e07598d0eb62": {
+      "path": "apps/worker/test/room-received-defenses.test.ts",
+      "suite": [],
+      "title": "a shared two-target technique reduces only Arnes incoming value and never its damage or original declaration",
+      "declarationSha256": "ba18e4e4098bc90efdd1fe66510d018b7444a3a6ab1fa958cebd530d316a3c16",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Existing scenario converted from direct Engine calls to real DO commands; every command restarts/replays and compares all-seat views. Only B receives level5, C retains level6, original action stays level6 and damage remains8."
+    },
+    "t:02757fc4fc379424": {
+      "path": "tests/e2e/received-defenses.spec.ts",
+      "suite": [],
+      "title": "a shared attack displays each received value independently after reduction and reload",
+      "declarationSha256": "d0615b56a69a4caf890c916fc82df36ca2de605a03bd194d6a860eae156893ce",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "All seats reload after reduction and at completion; UI shows B level5/C level6, original action remains level6/damage8, and both receive damage8."
+    },
+    "t:103ab10d57b958a4": {
+      "path": "packages/engine/test/scenario-s11-s13.test.ts",
+      "suite": [],
+      "title": "S13 abstract Lv5 damage6 three-hit resolver with front Lv3 HP2 yields four each and destroys one physical follower once",
+      "declarationSha256": "55250d0e52eec3d780f422513b137c0d00e500f021443bfeee76d805e08f05c9",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "S13 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+    },
+    "t:660c75e210d2ffc6": {
+      "path": "apps/worker/test/room-recovery.test.ts",
+      "suite": [],
+      "title": "resumes shared multi-target hit progress and preserves simultaneous follower HP on every hit",
+      "declarationSha256": "8d2e20f29b259d1a0985d7562d0ceb3bddb9f113a7e80062356cd09916c5d860",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Each command restarts/replays through three shared hits; the follower reduces B total to18 while C receives21, dies once and all220 card IDs remain unique."
+    },
+    "t:20209cb95f80e086": {
+      "path": "tests/e2e/combat.spec.ts",
+      "suite": [],
+      "title": "eight browsers finish three shared hits and preserve follower reduction on every hit",
+      "declarationSha256": "a09f9da6b6e2306b5681f1d7b124215e63ac73289c08f691257794b318c03976",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Eight-seat UI resolves all three hits; every seat reloads before and after resolution and sees B18/C21 with the destroyed follower absent."
     }
   },
   "remainingNotes": {

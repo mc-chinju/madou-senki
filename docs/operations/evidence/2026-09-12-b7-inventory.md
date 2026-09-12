@@ -34,8 +34,8 @@
 | `c2-p03-r1c2-ab04#C16/source-life-generation-saved` | browser, worker-persistence | 直接assertion確認待ち |
 | `common:C04#C04/once-target-hit-before-followers` | browser, worker-persistence | 直接assertion確認待ち |
 | `common:C04#C04/cancel-consumes-attempt` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
-| `common:C04#C04/target-local-not-source-global` | browser, worker-persistence | 直接assertion確認待ち |
-| `ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit` | browser, worker-persistence | 直接assertion確認待ち |
+| `common:C04#C04/target-local-not-source-global` | browser, worker-persistence | 既存試験をDO保存再送・browser全席reloadへ拡張して束縛 |
+| `ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit` | browser, worker-persistence | 既存試験をDO保存再送・browser全席reloadへ拡張して束縛 |
 | `ruling:G08#semantic/frozen-effect-rejects-late-spirit` | browser, worker-persistence | 直接assertion確認待ち |
 | `ruling:G11#semantic/virtual-blades-no-physical-recovery` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `ruling:G11#semantic/virtual-guard-no-physical-recovery` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
