@@ -1267,6 +1267,49 @@
       "remaining": [
         "Existing Engine assertions retained and actual redesignation Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/lease-expires-G15-death-entry",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual own-turn Blessing expires on the source lethal attack before disposal",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "actual lethal attack expires Blessing at source death entry before disposal through DO restart and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual ban and successful blessing precede actual turn progression and lethal bow attack. At source pending-death while hand still exists, lease is empty and B is suppressed; every command and final all-seat snapshot survive eviction/replay."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "Blessing expires at actual source death entry before disposal across all-seat browser reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI blessing and later lethal bow attack reach source pending-death; all seats reload before disposal, source still has hand and beneficiary B again displays ability prohibition."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

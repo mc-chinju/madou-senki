@@ -232,3 +232,24 @@ test('empty duplicate and nonexistent ban target lists reject in the browser con
     expect(views.get(a)!.game!.suppressionTargets.map(t=>t.targetId)).toEqual([b]);
   }finally{await table.close();}
 });
+
+test('Blessing expires at actual source death entry before disposal across all-seat browser reload',async({browser,request})=>{
+  test.setTimeout(90000);
+  const table=await tableFixture(browser,request,'suppression-blessing-death');
+  try{
+    const views=await observe(table),a=table.sessions[0]!.id,b=table.sessions[1]!.id,c=table.sessions[2]!.id,page=table.pages[0]!,panel=page.getByRole('region',{name:'能力の禁止と祝福'});
+    await panel.getByRole('checkbox',{name:'楓',exact:true}).check();await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    await toLiaTurn(table,views);const blessing=table.pages[2]!.getByRole('region',{name:'能力の禁止と祝福'});
+    await blessing.getByLabel('祝福する対象').selectOption(b);await click(table,views,blessing.getByRole('button',{name:'祝福を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    expect(views.get(b)!.game!.suppressionTargets[0]!.applicability).toBe('relieved');
+    await toLiaTurn(table,views,[2,3],0);
+    await page.getByRole('region',{name:'自分の手札'}).getByRole('button',{name:'踏み込み／弓',exact:true}).click();
+    await page.getByRole('region',{name:'参加者の公開状態'}).getByRole('article').filter({has:page.getByRole('heading',{name:'凛',exact:true})}).getByRole('checkbox',{name:'対象に選ぶ'}).check();
+    await click(table,views,page.getByRole('button',{name:'攻撃を確認して実行',exact:true}));
+    await passUntil(table,views,g=>g.players[c]!.presence==='pending-death',400);
+    for(const [seat,p] of table.pages.entries()){await p.reload();expect(views.get(table.sessions[seat]!.id)!.game!.players[c]!.presence).toBe('pending-death');}
+    expect(views.get(c)!.game!.self.hand.length).toBeGreaterThan(0);
+    expect(views.get(b)!.game!.suppressionTargets[0]!.applicability).toBe('suppressed');
+    await expect(table.pages[1]!.getByRole('region',{name:'能力の禁止と祝福'})).toContainText('特殊能力を使用できません');
+  }finally{await table.close();}
+});

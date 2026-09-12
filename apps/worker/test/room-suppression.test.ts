@@ -1,3 +1,4 @@
+import {getAction} from '@madou/catalog';
 import { reset } from 'cloudflare:test';
 import { afterEach, expect, it } from 'vitest';
 import { activeWindowRef, allCardInstanceIds, viewFor, type GameState } from '@madou/engine';
@@ -198,4 +199,19 @@ it('actual self-ban prevents a new declaration on the next own turn after every 
   const forged=await request(room,'self-banned-retry',{type:'USE_ABILITY',abilityId:BAN,targetIds:['B'],targetEventId:'forged-new-opportunity'}),rejection=await room.command('A',forged);
   expect(rejection).toMatchObject({type:'error'});expect(await room.stored()).toEqual(before);await room.restart();expect(await room.command('A',forged)).toEqual(rejection);expect(await room.stored()).toEqual(before);
   for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game!.suppressionTargets).toEqual([{targetId:'A',designated:true,applicability:'suppressed'}]);
+});
+
+it('actual lethal attack expires Blessing at source death entry before disposal through DO restart and replay',async()=>{
+  const room=await openTestRoom('suppression-blessing-death');
+  await declare(room,'A','death-ban',BAN,['B']);await settle(room,'death-ban-settle');await toLiaTurn(room);
+  await declare(room,'C','death-blessing',BLESS,['B']);await settle(room,'death-blessing-settle');
+  const lease=structuredClone((await game(room)).blessingLeases![0]!);expect(lease).toBeDefined();expect(viewFor(await game(room),'B').suppressionTargets[0]!.applicability).toBe('relieved');
+  await toLiaTurn(room,['C','D'],'A');
+  const state=await game(room),bow=state.players.A!.hand.find(id=>getAction(id)?.name==='踏み込み／弓')!;expect(bow).toBeDefined();
+  await send(room,'A','kill-blessing-source',{type:'ATTACK',cardInstanceId:bow,targetIds:['C'],dedicated:false});
+  await until(room,s=>s.players.C!.presence==='pending-death','death-entry');
+  const dead=await game(room);expect(dead.players.C!.hand.length).toBeGreaterThan(0);expect(dead.blessingLeases).toEqual([]);expect(dead.players.C!.lifeId).not.toBe(lease.sourceLifeId);
+  expect(viewFor(dead,'B').suppressionTargets[0]!.applicability).toBe('suppressed');
+  const stored=await room.stored();await room.restart();expect(await room.stored()).toEqual(stored);
+  for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game).toEqual(viewFor(dead,id));
 });

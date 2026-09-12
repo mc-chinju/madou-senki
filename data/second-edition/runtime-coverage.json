@@ -256200,11 +256200,13 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:5cc4a6c13f4500e8"
+        "t:5cc4a6c13f4500e8",
+        "t:bd8d90ed1ad5cc1e",
+        "t:4754f43124278799"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:643c7fd6aa68212d"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493120,6 +493122,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+    },
+    "t:bd8d90ed1ad5cc1e": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "actual lethal attack expires Blessing at source death entry before disposal through DO restart and replay",
+      "declarationSha256": "a28d11ca5e664284a93297e3654dfeaebc37e628411f93fcc534262f69b96a4c",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual ban and successful blessing precede actual turn progression and lethal bow attack. At source pending-death while hand still exists, lease is empty and B is suppressed; every command and final all-seat snapshot survive eviction/replay."
+    },
+    "t:4754f43124278799": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "Blessing expires at actual source death entry before disposal across all-seat browser reload",
+      "declarationSha256": "a92ab4fed32f57c96274a6e9265ebf00b34e015f5fa89c27c6dc83bc1095cbf1",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI blessing and later lethal bow attack reach source pending-death; all seats reload before disposal, source still has hand and beneficiary B again displays ability prohibition."
     }
   },
   "remainingNotes": {
@@ -493284,7 +493304,8 @@
     "n:6c7ddc512035a05a": "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:530ea25298533107": "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains.",
     "n:4569ff472504a4fc": "Existing Engine assertions retained and actual redesignation Worker/browser assertions added. Frozen-candidate acceptance remains.",
-    "n:59f7eb9ff8205e65": "n:26415580933c852e"
+    "n:59f7eb9ff8205e65": "n:26415580933c852e",
+    "n:643c7fd6aa68212d": "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {
