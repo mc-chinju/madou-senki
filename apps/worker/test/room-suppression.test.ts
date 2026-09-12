@@ -159,6 +159,14 @@ it.each(['suppression-blessing', 'suppression-blessing-fail'] as const)('%s pers
   expect((await game(room)).blessingLeases?.length ?? 0).toBe(success ? 1 : 0);
   expect(viewFor(await game(room), 'C').abilityOptions.some(value => value.abilityId === BLESS)).toBe(false);
   expect(viewFor(await game(room), 'C').legalChoices).toContain('PASS_ACTION');
+  if(success){
+    const lease=structuredClone((await game(room)).blessingLeases![0]!);
+    await toLiaTurn(room,['C','D'],'A');
+    const again=await declare(room,'A','redesignate-relieved',BAN,['A','B']);await settle(room,'redesignate-settle');await replay(room,again);
+    expect((await game(room)).blessingLeases).toEqual([lease]);
+    expect(viewFor(await game(room),'B').suppressionTargets.find(t=>t.targetId==='B')!.applicability).toBe('relieved');
+    expect(viewFor(await game(room),'A').suppressionTargets.find(t=>t.targetId==='A')!.applicability).toBe('suppressed');
+  }
 });
 
 it('canceling Blessing returns neither the own-turn attempt nor a lease after DO reload', async () => {

@@ -1224,6 +1224,49 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a new declaration containing an already relieved target never cancels its living Blessing",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "suppression-blessing",
+          "bindingNote": "Actual successful blessing record remains byte-for-byte equal after turn advance and accepted A/B redesignation; B stays relieved while newly self-designated A becomes suppressed, across every-command restart/replay."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual blessing resolves before the next Vanmil turn; accepted A/B redesignation and all-seat reload leave B relieved while A is suppressed, including the visible relief text."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual redesignation Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

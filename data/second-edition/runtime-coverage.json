@@ -255520,7 +255520,7 @@
       "tests": [
         "t:b4c030d8cbc394c1",
         "t:92ddbe067c052add",
-        "t:2653a40c506d86e7"
+        "t:58968558bce5efe5"
       ],
       "status": "implemented",
       "remaining": [
@@ -255796,7 +255796,7 @@
         "t:f32c8ee0867e859c",
         "t:d4db28d368b061d7",
         "t:87295332a7128a8d",
-        "t:a642b7687f35a70f"
+        "t:6c2b33dd823c4e5b"
       ],
       "status": "implemented",
       "remaining": [
@@ -255942,9 +255942,9 @@
       ],
       "tests": [
         "t:23ec94ca680479c6",
-        "t:f751ffc347b99085",
-        "t:149f071749036842",
-        "t:2e34384c96b46023"
+        "t:27a68e5718667bc3",
+        "t:f70e25a5a9c155e3",
+        "t:e8602ede6fa3deee"
       ],
       "status": "implemented",
       "remaining": [
@@ -256125,11 +256125,13 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:af190f52f793f11f"
+        "t:af190f52f793f11f",
+        "t:c0d59a46ddaec5d0",
+        "t:ec156976a175f08d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:4569ff472504a4fc"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256476,7 +256478,7 @@
         "t:f7b69bb32a076139",
         "t:1ed1c7720b8f7c0a",
         "t:ae77bb0e5cce4b90",
-        "t:a71fde3119e265cd",
+        "t:99ddb9e3670164d1",
         "t:b574855903b4b202",
         "t:4800c85c7624db61",
         "t:7d738ab35b3a563d",
@@ -256484,7 +256486,7 @@
       ],
       "status": "implemented",
       "remaining": [
-        "n:26415580933c852e"
+        "n:59f7eb9ff8205e65"
       ],
       "relatedEvidence": {
         "handler": [
@@ -493046,6 +493048,78 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual authenticated browser WebSocket rejects empty/duplicate lists as INVALID_COMMAND and nonexistent target as INVALID_ACTION; stored game and every seat view remain identical after each reload, then valid B selection succeeds."
+    },
+    "t:6c2b33dd823c4e5b": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "268fc6eb87a07f4fad12832ea873c803b062fe8ee9642e91d6853f317a320b31",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
+    },
+    "t:58968558bce5efe5": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "268fc6eb87a07f4fad12832ea873c803b062fe8ee9642e91d6853f317a320b31",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+    },
+    "t:27a68e5718667bc3": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+      "declarationSha256": "55a9f03c478ea25fb95eb10f082c9b4f67b20fbf33b39b05a5351efc98f6b1ea",
+      "kind": "worker-persistence",
+      "parameters": "suppression-blessing",
+      "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+    },
+    "t:f70e25a5a9c155e3": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+      "declarationSha256": "55a9f03c478ea25fb95eb10f082c9b4f67b20fbf33b39b05a5351efc98f6b1ea",
+      "kind": "worker-persistence",
+      "parameters": "suppression-blessing-fail",
+      "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+    },
+    "t:e8602ede6fa3deee": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "268fc6eb87a07f4fad12832ea873c803b062fe8ee9642e91d6853f317a320b31",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "After actual B/D designation and Lia turn progression, all seats reload and the actual select contains only the two designated players, then B blessing resolves."
+    },
+    "t:c0d59a46ddaec5d0": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+      "declarationSha256": "55a9f03c478ea25fb95eb10f082c9b4f67b20fbf33b39b05a5351efc98f6b1ea",
+      "kind": "worker-persistence",
+      "parameters": "suppression-blessing",
+      "bindingNote": "Actual successful blessing record remains byte-for-byte equal after turn advance and accepted A/B redesignation; B stays relieved while newly self-designated A becomes suppressed, across every-command restart/replay."
+    },
+    "t:ec156976a175f08d": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "268fc6eb87a07f4fad12832ea873c803b062fe8ee9642e91d6853f317a320b31",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual blessing resolves before the next Vanmil turn; accepted A/B redesignation and all-seat reload leave B relieved while A is suppressed, including the visible relief text."
+    },
+    "t:99ddb9e3670164d1": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "268fc6eb87a07f4fad12832ea873c803b062fe8ee9642e91d6853f317a320b31",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
     }
   },
   "remainingNotes": {
@@ -493208,7 +493282,9 @@
     "n:26415580933c852e": "n:d7dedb60b238ec23",
     "n:52e34ff77d890df9": "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:6c7ddc512035a05a": "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains.",
-    "n:530ea25298533107": "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains."
+    "n:530ea25298533107": "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains.",
+    "n:4569ff472504a4fc": "Existing Engine assertions retained and actual redesignation Worker/browser assertions added. Frozen-candidate acceptance remains.",
+    "n:59f7eb9ff8205e65": "n:26415580933c852e"
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

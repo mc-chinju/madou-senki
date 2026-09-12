@@ -26,7 +26,7 @@
 | `c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence` | browser, worker-persistence | 直接assertion確認待ち |
-| `c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease` | browser, worker-persistence | 実祝福後の次手番再指定でも解除維持をDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/lease-survives-target-absence` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/lease-expires-G15-death-entry` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease` | browser, worker-persistence | 直接assertion確認待ち |

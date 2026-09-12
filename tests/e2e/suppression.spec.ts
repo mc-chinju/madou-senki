@@ -83,6 +83,14 @@ test('ritual-born Vanmil designates multiple public names, and Blessing survives
     const path = testInfo.outputPath('suppression.png');
     await table.pages[1]!.screenshot({ path, fullPage: true });
     await testInfo.attach('suppression after Blessing', { path, contentType: 'image/png' });
+    await toLiaTurn(table,views,[2,3],0);
+    await panel.getByRole('checkbox',{name:'葵',exact:true}).check();await panel.getByRole('checkbox',{name:'楓',exact:true}).check();
+    await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    for(const page of table.pages)await page.reload();
+    expect(views.get(b!)!.game!.suppressionTargets.find(t=>t.targetId===b)!.applicability).toBe('relieved');
+    expect(views.get(a!)!.game!.suppressionTargets.find(t=>t.targetId===a)!.applicability).toBe('suppressed');
+    await expect(targetPanel).toContainText('ヴァンミール由来の禁止は解除されています');
+
   } finally { await table.close(); }
 });
 
