@@ -140,6 +140,32 @@ def shadow_child_binding(row):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def follower_bundle_binding(row):
+    entry, clause = row['entryId'], row['clauseKey']
+    cases = {'c2-p05-r1c2-ab02': ['獣使いのウパニシャット', 'グリフォン', '地竜', 'c2-p05-r1c2-ab02'],
+             'c2-p06-r1c2-ab04': ['魔聖母ディア', '兵士', '竜王教団', 'c2-p06-r1c2-ab04']}
+    if entry not in cases:
+        return None
+    prefix = '%s %s %s %s '
+    refs = []
+    if clause in {'hand-source-eligible', 'placed-source-eligible', 'declare-source-order-targets-dedication', 'parent-cancel-spends-all-sources-action'}:
+        refs = [(prefix + 'freezes ordered hand and placed declarations before parent cancellation', cases[entry])]
+    elif clause == 'child-failure-only-own-source':
+        refs = [(prefix + suffix, cases[entry]) for suffix in ['child cancellation preserves the later source', 'morale waiver retains failed use check and later source']]
+    elif clause == 'no-morale-does-not-waive-use-check':
+        refs = [(prefix + 'morale waiver retains failed use check and later source', cases[entry])]
+    elif clause == 'one-group-independent-values-not-sum':
+        refs = [(prefix + 'keeps independent values in one defense group', cases[entry])]
+    if not refs:
+        return None
+    return {'row': f'{entry}#{clause}',
+            'handler': [{'path': 'packages/engine/src/combat/follower-bundles.ts', 'symbol': 'transitionFollowerBundle'},
+                        {'path': 'packages/engine/src/combat/attack.ts', 'symbol': 'continueFollowerBundle'}],
+            'tests': [{'path': 'packages/engine/test/heterogeneous-followers.test.ts', 'suite': [], 'title': title, 'parameters': params,
+                       'kind': 'canonical-transition', 'bindingNote': f'{clause}: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions.'} for title, params in refs],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -148,7 +174,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row)
         if extra:
             bindings.append(extra)
             continue

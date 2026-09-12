@@ -1213,6 +1213,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4影系子攻撃: イダの影分身3行・ヨーツルムの影跳び6行を実親子攻撃へ束縛。既存の専用影分身による射程・準備済み詠唱・使用判定と、新規5試験による影跳びの射程/詠唱拒否、接近/離脱/手番開始終了拒否、魔法使用レベル判定の成功失敗境界を確認した。支払1枚・移動マーカーなし・子辞退後の防御保持も実取消/辞退試験で確認。関連45試験、型検査、Python18件、台帳validator成功。人物pending79、semantic具体的実装済み5,081、pending178、accepted0。全B4生成gateは残79行で停止。詳細は [B4影系子攻撃進捗](../../operations/evidence/2026-09-12-b4-shadow-progress.json)。Step3〜5は未完了。
 
+2026-09-12 B4複数従者ソース: ウパニシャットとディアの各7条項、計14行を新規8試験へ束縛。手札/配置済みソースを宣言順・対象・専用指定付きで確保し、実親取消で全消費と行動消費を確認。実子取消と使用判定失敗では後続ソースが解決され、士気免除でも使用判定は残る。単一防御群の各ヒットの使用/効果レベル・損害が個別値を保持する。関連189試験、型検査、Python19件、台帳validator成功。人物pending65、semantic具体的実装済み5,095、pending164、accepted0。両人物の踏み込み共有範囲・従者防御snapshotの計4行は未実装。全B4生成gateは残65行で停止。詳細は [B4従者ソース進捗](../../operations/evidence/2026-09-12-b4-bundles-progress.json)。Step3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**

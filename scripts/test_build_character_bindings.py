@@ -69,6 +69,16 @@ class CharacterBindingsTest(unittest.TestCase):
             self.assertTrue(all(t['kind'] == 'canonical-transition' for t in tests))
             self.assertTrue(all(('shadow-card' if entry == 'c2-p04-r2c2-ab01' else 'shadow-jump') in t['path'] for t in tests))
 
+    def test_follower_bundle_binds_each_owners_failed_use_check(self):
+        for entry in ['c2-p05-r1c2-ab02', 'c2-p06-r1c2-ab04']:
+            ledger = self.ledger('no-morale-does-not-waive-use-check')
+            ledger['rows'][0]['entryId'] = entry
+            result = build_bindings(ledger, self.cards)
+            test = result[0]['tests'][0]
+            self.assertEqual(test['parameters'][-1], entry)
+            self.assertIn('failed use check', test['title'])
+            self.assertEqual(test['kind'], 'canonical-transition')
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

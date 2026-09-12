@@ -234322,11 +234322,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:f031449d170302dd"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234349,11 +234354,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:9f560d0e7a998a18"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234376,11 +234386,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:0499672a814ea18f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234403,11 +234418,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:a1a087531ab0660c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234430,11 +234450,17 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:7e2056c80b39ed16",
+        "t:a5cdb35e348d34d2"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234457,11 +234483,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:da6e843acff85653"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234538,11 +234569,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:ce2b4f27232c5541"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234565,11 +234601,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:ca1983beb9982406"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234592,11 +234633,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:67548b1f7ecf5130"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234619,11 +234665,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:414b15cfe120813e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234646,11 +234697,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:3220779836560c0c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234673,11 +234729,17 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:941b8a10a41e5b81",
+        "t:4916ad5e4de15ab4"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234700,11 +234762,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:944df6d5a730a007"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234781,11 +234848,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:2bb87685912b2b1f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415466,8 +415538,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7097,
-      "implemented": 5081
+      "pending": 7083,
+      "implemented": 5095
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -488152,6 +488224,248 @@
         false
       ],
       "bindingNote": "child-normal-range-chant-use-level: exact printed source and actual parent/child transitions; ordinary eligibility, payment, or return assertions specific to this clause."
+    },
+    "t:f031449d170302dd": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "hand-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:9f560d0e7a998a18": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "placed-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:0499672a814ea18f": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "declare-source-order-targets-dedication: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:a1a087531ab0660c": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "parent-cancel-spends-all-sources-action: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:7e2056c80b39ed16": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s child cancellation preserves the later source",
+      "declarationSha256": "747e804c957a74f55f8dbe3417ca720254ee01e8c928e5e02669f7b5145f13ca",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:a5cdb35e348d34d2": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s morale waiver retains failed use check and later source",
+      "declarationSha256": "72be5ce6091f379c45604f63c924758b69c810436345d5fffe8fd09825cbef76",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:0f6868eba6ab15da": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "actual Upa reserves hand Griffin and placed Earth Dragon before cancellable grant and resolves distinct techniques in one group",
+      "declarationSha256": "f12bf4c431dc65dae3c0b5e2cc4ce010105ba9ed3a9691419a3779455373fc34",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:ce2b4f27232c5541": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s morale waiver retains failed use check and later source",
+      "declarationSha256": "72be5ce6091f379c45604f63c924758b69c810436345d5fffe8fd09825cbef76",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "no-morale-does-not-waive-use-check: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:ca1983beb9982406": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "hand-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:67548b1f7ecf5130": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "placed-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:414b15cfe120813e": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "declare-source-order-targets-dedication: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:3220779836560c0c": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+      "declarationSha256": "b216975a0c62e6e035e6231e229c55e1fe45068766979b2450f3f0d4e33d866a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "parent-cancel-spends-all-sources-action: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:941b8a10a41e5b81": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s child cancellation preserves the later source",
+      "declarationSha256": "747e804c957a74f55f8dbe3417ca720254ee01e8c928e5e02669f7b5145f13ca",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:4916ad5e4de15ab4": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s morale waiver retains failed use check and later source",
+      "declarationSha256": "72be5ce6091f379c45604f63c924758b69c810436345d5fffe8fd09825cbef76",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:2e4429e78f1b89ec": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "actual Dia normal Dwarf snapshots its own warrior and magic is an independent source",
+      "declarationSha256": "6f6e705f3ead1e147ee90382a07de9a74f715c45a67e70ad9973b77b39bdd2de",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:2bb87685912b2b1f": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s morale waiver retains failed use check and later source",
+      "declarationSha256": "72be5ce6091f379c45604f63c924758b69c810436345d5fffe8fd09825cbef76",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "no-morale-does-not-waive-use-check: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:da6e843acff85653": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s keeps independent values in one defense group",
+      "declarationSha256": "6e437aa055d368617b8961ecb111ab2ce93b655566e510cbebdb135ff734fafe",
+      "kind": "canonical-transition",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "グリフォン",
+        "地竜",
+        "c2-p05-r1c2-ab02"
+      ],
+      "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:944df6d5a730a007": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s %s %s %s keeps independent values in one defense group",
+      "declarationSha256": "6e437aa055d368617b8961ecb111ab2ce93b655566e510cbebdb135ff734fafe",
+      "kind": "canonical-transition",
+      "parameters": [
+        "魔聖母ディア",
+        "兵士",
+        "竜王教団",
+        "c2-p06-r1c2-ab04"
+      ],
+      "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
     }
   },
   "remainingNotes": {

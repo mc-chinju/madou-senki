@@ -2208,6 +2208,480 @@
       ]
     },
     {
+      "row": "c2-p05-r1c2-ab02#hand-source-eligible",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "hand-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#placed-source-eligible",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "placed-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#declare-source-order-targets-dedication",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "declare-source-order-targets-dedication: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#parent-cancel-spends-all-sources-action",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "parent-cancel-spends-all-sources-action: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#child-failure-only-own-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s child cancellation preserves the later source",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        },
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s morale waiver retains failed use check and later source",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#one-group-independent-values-not-sum",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s keeps independent values in one defense group",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#no-morale-does-not-waive-use-check",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s morale waiver retains failed use check and later source",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "グリフォン",
+            "地竜",
+            "c2-p05-r1c2-ab02"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "no-morale-does-not-waive-use-check: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#hand-source-eligible",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "hand-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#placed-source-eligible",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "placed-source-eligible: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#declare-source-order-targets-dedication",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "declare-source-order-targets-dedication: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#parent-cancel-spends-all-sources-action",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s freezes ordered hand and placed declarations before parent cancellation",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "parent-cancel-spends-all-sources-action: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#child-failure-only-own-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s child cancellation preserves the later source",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        },
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s morale waiver retains failed use check and later source",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "child-failure-only-own-source: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#one-group-independent-values-not-sum",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s keeps independent values in one defense group",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#no-morale-does-not-waive-use-check",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s %s %s %s morale waiver retains failed use check and later source",
+          "parameters": [
+            "魔聖母ディア",
+            "兵士",
+            "竜王教団",
+            "c2-p06-r1c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "no-morale-does-not-waive-use-check: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p06-r2c2-ab01#advance-is-exact-one-discard",
       "handler": [
         {

@@ -91,3 +91,55 @@ it.each([
  s=finish(s);expect(s.resolution).toEqual([]);
  if(allowed)expect(s.discard).toEqual(expect.arrayContaining([beast,parry]));
 });
+
+const B4_BUNDLES = [
+ ['獣使いのウパニシャット','グリフォン','地竜','c2-p05-r1c2-ab02'],
+ ['魔聖母ディア','兵士','竜王教団','c2-p06-r1c2-ab04'],
+] as const;
+it.each(B4_BUNDLES)('%s %s %s %s freezes ordered hand and placed declarations before parent cancellation',(owner,first,second,abilityId)=>{
+ let s=setup(owner);const a=source(s,first),b=source(s,second,true),cancel=handCard(s,'A','命運凶変');
+ const choices=[{cardInstanceId:b,dedicated:false,targetIds:owner==='魔聖母ディア'?['C']:['B','C','D']},{cardInstanceId:a,dedicated:owner!=='魔聖母ディア',targetIds:['B']}];
+ s=act(s,'A',command(s,choices));
+ const bundle=Object.values(s.followerBundles!)[0]!;expect(bundle.abilityId).toBe(abilityId);
+ expect(bundle.actionIds.map(id=>{const a=s.actions![id]!;return {cardInstanceId:a.cardInstanceId,dedicated:a.followerDedicated,targetIds:a.targetIds,sourceZone:a.sourceZone};})).toEqual(choices.map((c,i)=>({...c,sourceZone:i===0?'followers':'hand'})));
+ expect(s.resolution).toEqual(expect.arrayContaining([a,b]));expect(s.players.A!.hand).not.toContain(a);expect(s.players.A!.followers).toEqual([]);
+ s=JSON.parse(JSON.stringify(s));const ability=Object.values(s.abilities!)[0]!;
+ s=finish(act(s,'A',{type:'PLAY_REACTION',cardInstanceId:cancel,mode:'cancel-ability',targetAbilityId:ability.id}));
+ for(const id of [a,b])expect(s.discard.filter(c=>c===id)).toHaveLength(1);
+ for(const id of ['B','C','D'])expect(s.players[id]!.damage).toBe(0);
+ expect(s.phase).toBe('withdrawal');expect(s.turnSeat).toBe(0);expect(s.resolution).toEqual([]);expect(s.followerBundles).toEqual({});
+});
+it.each(B4_BUNDLES)('%s %s %s %s child cancellation preserves the later source',(owner,first,second,_abilityId)=>{
+ let s=setup(owner);const a=source(s,first),b=source(s,second,true),cancel=handCard(s,'A','命運凶変');
+ const choices=[{cardInstanceId:a,dedicated:false,targetIds:['B']},{cardInstanceId:b,dedicated:false,targetIds:owner==='魔聖母ディア'?['B']:['B','C','D']}];
+ s=closeWindow(act(s,'A',command(s,choices)));
+ const child=Object.values(s.actions!).find(c=>c.cardInstanceId===a)!;
+ s=act(s,'A',{type:'PLAY_REACTION',cardInstanceId:cancel,mode:'cancel',targetActionId:child.id});
+ s=until(s,'normal-defense');const groups=Object.values(s.groups!);expect(groups).toHaveLength(1);
+ expect(groups[0]!.targets[0]!.hits).toHaveLength(1);
+ expect(groups[0]!.targets[0]!.hits[0]!.damage).toBe(owner==='魔聖母ディア'?2:8);
+ s=finish(s);expect(s.players.B!.damage).toBe(owner==='魔聖母ディア'?2:8);
+ for(const id of [a,b])expect(s.discard.filter(c=>c===id)).toHaveLength(1);
+ expect(s.resolution).toEqual([]);expect(s.phase).toBe('withdrawal');
+});
+it.each(B4_BUNDLES)('%s %s %s %s morale waiver retains failed use check and later source',(owner,first,second,_abilityId)=>{
+ let s=setup(owner);s.players.A!.permanent={warrior_level:-10};
+ const a=source(s,first),b=source(s,second,true);
+ s=act(s,'A',command(s,[{cardInstanceId:a,dedicated:false,targetIds:['B']},{cardInstanceId:b,dedicated:false,targetIds:owner==='魔聖母ディア'?['B']:['B','C','D']}]));
+ const child=Object.values(s.actions!).find(c=>c.cardInstanceId===a)!;
+ expect(child.technique.noChecks).toBe(false);expect(child.checks.length).toBeGreaterThan(0);
+ s=until(s,'before-roll');s=closeWindow(s,[6,6]);expect(s.rolls!.at(-1)).toMatchObject({purpose:'excess-level',rollerId:'A',success:false});
+ s=finish(s);expect(s.rolls!.filter(r=>r.purpose==='follower-morale')).toEqual([]);
+ expect(s.players.B!.damage).toBe(owner==='魔聖母ディア'?2:8);
+ for(const id of [a,b])expect(s.discard.filter(c=>c===id)).toHaveLength(1);
+ expect(s.phase).toBe('withdrawal');expect(s.resolution).toEqual([]);
+});
+it.each(B4_BUNDLES)('%s %s %s %s keeps independent values in one defense group',(owner,first,second,_abilityId)=>{
+ let s=setup(owner);s.players.B!.permanent={endurance:100};const a=source(s,first),b=source(s,second,true);
+ s=until(act(s,'A',command(s,[{cardInstanceId:a,dedicated:false,targetIds:['B']},{cardInstanceId:b,dedicated:false,targetIds:owner==='魔聖母ディア'?['B']:['B','C','D']}])),'normal-defense');
+ const groups=Object.values(s.groups!);expect(groups).toHaveLength(1);
+ const hits=groups[0]!.targets.find(t=>t.actorId==='B')!.hits;
+ expect(hits.map(h=>[h.technique!.useLevel,h.technique!.effectLevel,h.damage])).toEqual(owner==='魔聖母ディア'?[[1,1,1],[6,6,2]]:[[5,5,8],[5,5,8],[6,6,8]]);
+ s=finish(s);expect(s.players.B!.damage).toBe(owner==='魔聖母ディア'?3:24);
+ expect(s.groups).toEqual({});expect(s.resolution).toEqual([]);
+});
