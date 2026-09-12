@@ -4,7 +4,7 @@ import {allCardInstanceIds,transition,gameStats,viewFor,techniqueFor} from '../s
 import {act,pass} from './combat-helpers.js';
 import {eventPending} from '../src/reclaim.js';
 import {entropy,handCard} from './fixtures.js';
-import {makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow,finishOwnedResolution as finish} from './owned-reclaim-helpers.js';
+import {nextOwnAction,killOwnedLifetimePlayer,reviveOwnedLifetimePlayer,makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow,finishOwnedResolution as finish} from './owned-reclaim-helpers.js';
 
 const OWNED_TECHNIQUE_CASES: [string,string,string][] = [
   [
@@ -635,6 +635,34 @@ const OWNED_TECHNIQUE_CASES: [string,string,string][] = [
 ];
 
 describe('owned technique base recovery',()=>{
+ it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) retention-transform-revival',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId,[],true);
+  if(name==='復活')table.state=killOwnedLifetimePlayer(table.state,'B');
+  let s=playOwnedCardToDiscard(table,cardId);
+  const choice=currentReclaimWindow(s,'A')!,base=choice.claims.find(c=>c.right==='base')!;
+  s=finish(act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:base.claimId}));
+  const history=structuredClone(s.players.A!.reclaimUsage),life=s.players.A!.lifeId;
+  expect(history?.[name]?.baseSpent).toBe(true);
+  if(owner==='聖騎士ランスロット'){
+   if(!s.players.C!.revealed)s=finish(act(s,'C',{type:'REVEAL_CHARACTER'}));
+   s=finish(act(s,'A',{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'}));
+   expect(s.players.A!.characterId).toBe('c2-p07-r1c1');expect(s.players.A!.reclaimUsage).toEqual(history);
+  }
+  if(owner==='邪祭ウーノス'){
+   // A separate command continuation covers the identity change without replacing the ordinary revival case.
+   let transformed=nextOwnAction({state:JSON.parse(JSON.stringify(s)),ownerId:'A'},cardId);
+   transformed=finish(act(transformed,'A',{type:'USE_REVIVAL_RITUAL'}));
+   expect(transformed.players.A!.characterId).toBe('c2-p07-r1c2');expect(transformed.players.A!.reclaimUsage).toEqual(history);
+  }
+  s=killOwnedLifetimePlayer(s,'A');
+  expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.reclaimUsage).toEqual(history);
+  if(owner==='破壊神ヴァンミール'){expect(s.outcome).toBeTruthy();return;}
+  expect(s.outcome).toBeFalsy();
+  s=reviveOwnedLifetimePlayer(JSON.parse(JSON.stringify(s)),'A');
+  expect(s.players.A!.presence).toBe('active');expect(s.players.A!.lifeId).not.toBe(life);
+  expect(s.players.A!.reclaimUsage).toEqual(history);
+ },20000);
+
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) reserve-before-parent-release',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);
   const choice=currentReclaimWindow(s,table.ownerId)!,claim=choice.claims.find(c=>c.right==='base')!;
@@ -828,6 +856,34 @@ const OWNED_FOLLOWER_CASES: [string,string,string][] = [
 ];
 
 describe('owned follower base recovery',()=>{
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) retention-transform-revival',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId,[],true);
+  if(name==='復活')table.state=killOwnedLifetimePlayer(table.state,'B');
+  let s=playOwnedCardToDiscard(table,cardId);
+  const choice=currentReclaimWindow(s,'A')!,base=choice.claims.find(c=>c.right==='base')!;
+  s=finish(act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:base.claimId}));
+  const history=structuredClone(s.players.A!.reclaimUsage),life=s.players.A!.lifeId;
+  expect(history?.[name]?.baseSpent).toBe(true);
+  if(owner==='聖騎士ランスロット'){
+   if(!s.players.C!.revealed)s=finish(act(s,'C',{type:'REVEAL_CHARACTER'}));
+   s=finish(act(s,'A',{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'}));
+   expect(s.players.A!.characterId).toBe('c2-p07-r1c1');expect(s.players.A!.reclaimUsage).toEqual(history);
+  }
+  if(owner==='邪祭ウーノス'){
+   // A separate command continuation covers the identity change without replacing the ordinary revival case.
+   let transformed=nextOwnAction({state:JSON.parse(JSON.stringify(s)),ownerId:'A'},cardId);
+   transformed=finish(act(transformed,'A',{type:'USE_REVIVAL_RITUAL'}));
+   expect(transformed.players.A!.characterId).toBe('c2-p07-r1c2');expect(transformed.players.A!.reclaimUsage).toEqual(history);
+  }
+  s=killOwnedLifetimePlayer(s,'A');
+  expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.reclaimUsage).toEqual(history);
+  if(owner==='破壊神ヴァンミール'){expect(s.outcome).toBeTruthy();return;}
+  expect(s.outcome).toBeFalsy();
+  s=reviveOwnedLifetimePlayer(JSON.parse(JSON.stringify(s)),'A');
+  expect(s.players.A!.presence).toBe('active');expect(s.players.A!.lifeId).not.toBe(life);
+  expect(s.players.A!.reclaimUsage).toEqual(history);
+ },20000);
+
  it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) exhaustion-across-physical-copies',(owner,name,cardId)=>{
   const copies=actionCards.filter(c=>c.name===name).map(c=>c.id);
   expect(copies).toContain(cardId);

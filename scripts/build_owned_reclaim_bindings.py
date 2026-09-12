@@ -8,7 +8,7 @@ from pathlib import Path
 SUFFIXES = {
     'normalized-name-once-game': 'A chosen base recovery spends the canonical-name allowance and a later use cannot claim it again.',
     'exhaustion-across-physical-copies': 'Every same-name physical copy shares the spent allowance; a different copy cannot create a second base claim.',
-    'retention-transform-revival': 'The same saved name budget survives actual applicable identity transitions and death/revival.',
+    'retention-transform-revival': 'The saved name budget survives actual Lancelot/Uno transformations where applicable and actual death/revival; Vanmil death instead verifies the required terminal outcome with history intact.',
     'optional-decline': 'Declining a real recovery leaves the source discarded and does not spend its base allowance.',
     'reserve-before-parent-release': 'Recovery remains reserved under a live parent; a top-level use may close atomically. Parent completion returns the exact physical source once, including after save/restore.',
     'actual-use-disposition': 'An actual legal use of this physical owned source opens its recovery at disposition.',

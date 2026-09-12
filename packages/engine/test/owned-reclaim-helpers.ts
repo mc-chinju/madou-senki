@@ -1,16 +1,17 @@
 import {getAction} from '@madou/catalog';
-import {gameStats,viewFor,techniqueFor,type GameState} from '../src/index.js';
+import {createGame,gameStats,viewFor,techniqueFor,type GameState} from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
-import {character,handCard} from './fixtures.js';
+import {character,handCard,entropy} from './fixtures.js';
 import {makeResurrectionPhysicalScenario} from '../../../apps/worker/test/fixtures/resurrection-physical-scenarios.js';
 import {legalAttackTargets} from '../src/combat/legality.js';
 
 export interface OwnedReclaimTable {state:GameState;ownerId:string}
 
-export function makeOwnedReclaimTable(owner:string,cardId:string,additionalIds:string[]=[] ):OwnedReclaimTable {
- if(getAction(cardId)?.name==='復活')return {state:makeResurrectionPhysicalScenario('resurrection-ordinary',['A','B','C','D'].map(id=>({id,name:id})),{owner}),ownerId:'A'};
+export function makeOwnedReclaimTable(owner:string,cardId:string,additionalIds:string[]=[],lifetime=false ):OwnedReclaimTable {
+ if(!lifetime&&getAction(cardId)?.name==='復活')return {state:makeResurrectionPhysicalScenario('resurrection-ordinary',['A','B','C','D'].map(id=>({id,name:id})),{owner}),ownerId:'A'};
  if(!getAction(cardId))throw Error('UNKNOWN_OWNED_CARD');
- const s=ready();character(s,'A',owner);character(s,'C','リーア姫');character(s,'D','魔導王ガイナス');
+ let s:GameState;
+ if(lifetime){s=createGame(['A','B','C','D','E','F'].map(id=>({id,name:id})),entropy(),{startingSeat:0});for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});}else s=ready();character(s,'A',owner);character(s,'C','リーア姫');character(s,'D','魔導王ガイナス');
  character(s,'B',s.players.A!.faction==='GOOD'?'魔導王ガイナス':'白魔術師シェリム');
  const profile=techniqueFor(cardId);
  const name=getAction(cardId)!.name;
@@ -28,7 +29,19 @@ export function makeOwnedReclaimTable(owner:string,cardId:string,additionalIds:s
  }
  // Keep repeated-use scenarios alive; recovery behavior is independent of endurance.
  for(const p of Object.values(s.players))p.permanent={...p.permanent,endurance:100};
- for(const id of ['B','C','D']){s.distances.A![id]='near';s.distances[id]!.A='near';}
+ if(lifetime){
+  character(s,'E',s.players.A!.faction==='GOOD'?'餓狼ヨーツルム':'大神官ジル');character(s,'F','破壊神ヴァンミール');
+  s.players.E!.permanent={endurance:100,spirit:100,magic_level:100};
+  handCard(s,'E',s.players.A!.faction==='GOOD'?'餓狼':'気破');handCard(s,'F','祈願');
+  if(owner==='邪祭ウーノス')handCard(s,'A',getAction('a2-p05-r1c1')!.name);
+  // Fix OPEN placement before play; revival is later triggered by a real wish.
+  const open='a2-p01-r1c1';for(const p of Object.values(s.players)){p.hand=p.hand.filter(id=>id!==open);p.open=p.open.filter(id=>id!==open);}
+  s.discard=s.discard.filter(id=>id!==open);s.deck=s.deck.filter(id=>id!==open);s.deck.push(open);
+  s.distances.E!.B=s.distances.B!.E='near';
+  if(name==='おまえはだまされている')character(s,'C','リーア姫');
+  s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
+ }
+ for(const id of s.seatOrder.filter(id=>id!=='A')){s.distances.A![id]='near';s.distances[id]!.A='near';}
  return {state:s,ownerId:'A'};
 }
 
@@ -38,9 +51,9 @@ export function currentReclaimWindow(s:GameState,ownerId:string){
  return choice?.pendingActorId===ownerId?choice:null;
 }
 
-function nextOwnAction(table:OwnedReclaimTable,keep:string):GameState {
+export function nextOwnAction(table:OwnedReclaimTable,keep:string):GameState {
  let s=table.state;
- for(let n=0;n<80;n++){
+ for(let n=0;n<300;n++){
   if(s.outcome)throw Error('OWNED_GAME_COMPLETE');
   if(s.windows?.length){s=pass(s);continue;}
   const actor=s.seatOrder[s.turnSeat]!;
@@ -49,7 +62,7 @@ function nextOwnAction(table:OwnedReclaimTable,keep:string):GameState {
   else if(s.phase==='withdrawal')s=act(s,actor,{type:'PASS_WITHDRAWAL'});
   else if(s.phase==='hand-adjustment'){
    const hand=s.players[actor]!.hand,count=Math.max(0,hand.length-gameStats(s,actor).handLimit);
-   s=finish(act(s,actor,{type:'END_TURN',discardIds:hand.filter(id=>getAction(id)!.name!==getAction(keep)!.name&&!['氷矢','凍流','狼牙','剛戦斧','呪歌','白輪','白光','命運凶変','滅界'].includes(getAction(id)!.name)).slice(0,count)}));
+   s=finish(act(s,actor,{type:'END_TURN',discardIds:hand.filter(id=>getAction(id)!.name!==getAction(keep)!.name&&!['氷矢','凍流','狼牙','剛戦斧','呪歌','白輪','白光','命運凶変','滅界','気破','餓狼','祈願',getAction('a2-p05-r1c1')!.name].includes(getAction(id)!.name)).slice(0,count)}));
   }else if(s.phase==='turn-start')s=act(s,actor,{type:'START_TURN'});
   else if(s.phase==='draw')s=act(s,actor,{type:'CHOOSE_DRAW',draw:false});
   else throw Error(`OWNED_PHASE_${s.phase}`);
@@ -138,4 +151,31 @@ export function finishOwnedResolution(s:GameState):GameState {
   s=base?act(s,'B',{type:'CHOOSE_RECLAIM',decisionId:choice!.decisionId,choice:'take',claimId:base.claimId}):pass(s);
  }
  throw Error('OWNED_FINISH_LIMIT');
+}
+
+/** Lethal attack support is arranged before the first reclaim; no post-use fixture mutation. */
+export function killOwnedLifetimePlayer(s:GameState,targetId:string):GameState {
+ const card=s.players.E!.hand.find(id=>['気破','餓狼'].includes(getAction(id)!.name))!;
+ s=nextOwnAction({state:s,ownerId:'E'},card);
+ if(techniqueFor(card)?.chant){s=act(s,'E',{type:'CHANT',cardInstanceId:card});s=nextOwnAction({state:s,ownerId:'E'},card);}
+ s=act(s,'E',{type:'ATTACK',cardInstanceId:card,targetIds:[targetId],dedicated:getAction(card)!.name==='気破'});
+ for(let n=0;n<500;n++){
+  if(!s.windows?.length)return s;
+  const choice=currentReclaimWindow(s,'E'),base=choice?.claims.find(c=>c.right==='base');
+  s=base?act(s,'E',{type:'CHOOSE_RECLAIM',decisionId:choice!.decisionId,choice:'take',claimId:base.claimId}):pass(s);
+ }
+ throw Error('OWNED_DEATH_LIMIT');
+}
+export function reviveOwnedLifetimePlayer(s:GameState,targetId:string):GameState {
+ const wish=s.players.F!.hand.find(id=>getAction(id)!.name==='祈願')!;
+ s=nextOwnAction({state:s,ownerId:'F'},wish);
+ s=until(act(s,'F',{type:'PLAY_TURN_CARD',cardInstanceId:wish,mode:'wish'}),'wish');
+ s=act(s,'F',{type:'CHOOSE_WISH',decisionId:viewFor(s,'F').wish!.decisionId,source:{kind:'deck',cardName:getAction('a2-p01-r1c1')!.name}});
+ for(let n=0;n<500;n++){
+  const w=s.windows?.at(-1);if(!w)return s;
+  if(w.kind==='revival'&&w.participants[w.cursor]===targetId)s=act(s,targetId,{type:'CHOOSE_REVIVAL',revive:true});
+  else if(w.kind==='re-setup')s=act(s,w.participants[w.cursor]!,{type:'PASS_SETUP'});
+  else s=pass(s);
+ }
+ throw Error('OWNED_REVIVAL_LIMIT');
 }

@@ -999,7 +999,7 @@ Expected: ヘルパー未定義で失敗
 Run: `pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts`
 Expected: 1件成功
 
-- [ ] **Step 5: `scripts/build_owned_reclaim_bindings.py` を書き、全 `CASES` リテラルと束縛ファイルを生成する**
+- [x] **Step 5: `scripts/build_owned_reclaim_bindings.py` を書き、全 `CASES` リテラルと束縛ファイルを生成する**
 
 ```python
 #!/usr/bin/env python3
@@ -1059,17 +1059,17 @@ if __name__ == '__main__':
 
 `row['entryId']` と `clauseKey` から人物・カード名を復元する規則は Step 1 の出力で確認し、上記の `split` を実データに合わせる。`offerReclaim` が `reclaim.ts` の export 名であることを `grep -n "export function offerReclaim" packages/engine/src/reclaim.ts` で確認する。
 
-- [ ] **Step 6: `--emit-cases` の出力を試験ファイルの `CASES` に置き換え、所有従者の `describe('owned follower base recovery')` を同じ形で追加して全件実行**
+- [x] **Step 6: `--emit-cases` の出力を試験ファイルの `CASES` に置き換え、所有従者の `describe('owned follower base recovery')` を同じ形で追加して全件実行**
 
 Run: `pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts`
 Expected: 784 件成功。失敗するカードは個別に原因を調べ、engine 側の不具合なら修正し関連 suite（`owned-reclaim.test.ts`, `reclaim-reservations.test.ts`, `reuse-abilities.test.ts`）を再実行する。カード固有の合法経路がない（例: 従者が特定条件でしか置けない）場合はその行を Task A7 の `notApplicable` 手順で扱い、理由に経路不在の根拠を書く。
 
-- [ ] **Step 7: 束縛を適用**
+- [x] **Step 7: 束縛を適用**
 
 Run: `python3 scripts/build_owned_reclaim_bindings.py --bindings docs/operations/evidence/2026-09-11-owned-reclaim-bindings.json && python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-owned-reclaim-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160`
 Expected: `valid: true`、pending の owned-reclaim が 0
 
-- [ ] **Step 8: コミット**
+- [x] **Step 8: コミット**
 
 ```bash
 git add packages/engine/test scripts data docs && git commit -m "test,data: 所有技・所有従者784件の通常回収をデータ駆動試験で束縛する"
@@ -1082,6 +1082,8 @@ B2部分実績: Step1〜4完了。条項末尾は9種類（通常共通5、技�
 2026-09-12 B2全物理札への展開: 技125組・従者23組の静的CASESを全件配置した。技は実使用・正規名1回・辞退・別コピー共通予算の4条項（500ケース）、従者は実死亡・正規名1回・辞退・別コピー共通予算・親未完了中の予約の5条項（115ケース）が成功。既存24件を含む全639件・型検査・生成器等8件・台帳validator成功。水晶球は実際に命運凶変で取り消された使用、復活は実死亡を起こす既存fixture、従者は配置→実詠唱→滅界による破壊で検証した。原作札の効果一般をこの回収試験だけで受け入れたとは扱わない。詳細とsource hashは [B2進捗証跡](../../operations/evidence/2026-09-12-b2-owned-matrix-progress.json)。残りは技の `retention-transform-revival` / `reserve-before-parent-release`、従者の `retention-transform-revival` / `morale-failure-excluded` / `attack-discard-not-follower-death`。束縛生成の事前検証は未実装のretention条項で停止することを確認済み。784行pending・accepted 0を維持。Step5〜8は未完了。
 
 2026-09-12 B2除外条件と返却境界: 士気失敗が従者死亡の回収窓を開く不具合を13ケースで再現し、採用裁定G11に沿って直接捨て札へ移すよう修正した。士気判定のない札を含む23組と、従者攻撃の捨て札を死亡扱いしない23組を検証した。攻撃手段のないアルケミア城は、直接攻撃・全軍突撃せよの両方が支払い前に拒否されることを確認。技125組には、通常使用の原子的な親完了と、実際の割り込み使用の親未完了中の予約をそれぞれassertする試験を追加した。現在の行列は786ケース。単体全実行は7,335/7,336成功で、士気失敗札がresolutionに残る旧期待値1件を修正。その後、現行行列786件とmulti-hit 6件の全792件が成功。Worker全2,537件・全対象型検査・生成器等8件・台帳validatorも成功。単体全体を一度にgreen再実行したとは扱わない。詳細は [B2除外条件進捗](../../operations/evidence/2026-09-12-b2-exclusions-progress.json)。残件は技125組・従者23組の `retention-transform-revival`。束縛gateはその未実装条項で停止し、784行pending・accepted 0・Step5〜8未完了を維持する。
+
+2026-09-12 B2完了: 残る技125組・従者23組で実死亡と復活後の回収履歴保持を検証し、変身可能なランスロット・ウーノスは実コマンドによる変身も確認した。ヴァンミールは死亡による終局と履歴保持を検証。行列934件と関連117件の全1,051件が成功し、束縛生成・適用784行・台帳validator valid:true。owned-reclaim pendingは0、具体的実装済み4,613、acceptedは0。詳細は [B2完了進捗証跡](../../operations/evidence/2026-09-12-b2-complete-progress.json)。候補版での受入はB8に残す。
 
 ### Task B3: 原典例 S01〜S32 の source 行 210 件
 
