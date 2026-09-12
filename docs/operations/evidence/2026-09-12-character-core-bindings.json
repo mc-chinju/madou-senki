@@ -2413,6 +2413,60 @@
       ]
     },
     {
+      "row": "c2-p05-r1c2-ab02#shared-advance-only-same-source-hit-index",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s shared advance stops at the next source hit index",
+          "parameters": "獣使いのウパニシャット",
+          "kind": "canonical-transition",
+          "bindingNote": "shared-advance-only-same-source-hit-index: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab02#one-target-follower-snapshot-across-sources",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s shares one target follower snapshot and morale across source hits",
+          "parameters": "獣使いのウパニシャット",
+          "kind": "canonical-transition",
+          "bindingNote": "one-target-follower-snapshot-across-sources: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p05-r1c2-ab02#no-morale-does-not-waive-use-check",
       "handler": [
         {
@@ -2642,6 +2696,60 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#shared-advance-only-same-source-hit-index",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s shared advance stops at the next source hit index",
+          "parameters": "魔聖母ディア",
+          "kind": "canonical-transition",
+          "bindingNote": "shared-advance-only-same-source-hit-index: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab04#one-target-follower-snapshot-across-sources",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/follower-bundles.ts",
+          "symbol": "transitionFollowerBundle"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "continueFollowerBundle"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/heterogeneous-followers.test.ts",
+          "suite": [],
+          "title": "%s shares one target follower snapshot and morale across source hits",
+          "parameters": "魔聖母ディア",
+          "kind": "canonical-transition",
+          "bindingNote": "one-target-follower-snapshot-across-sources: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
         }
       ],
       "status": "implemented",

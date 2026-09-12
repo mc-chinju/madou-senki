@@ -234515,11 +234515,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:75b486f2924459ef"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234542,11 +234547,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:96c358e76405efbd"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234794,11 +234804,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:e54409782e377044"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234821,11 +234836,16 @@
         "C10"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:8cc84355fae61321",
+        "h:bc8ea83f623ffbb0"
+      ],
+      "tests": [
+        "t:f6fbb1e3f443f00f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415538,8 +415558,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7083,
-      "implemented": 5095
+      "pending": 7079,
+      "implemented": 5099
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -488466,6 +488486,60 @@
         "c2-p06-r1c2-ab04"
       ],
       "bindingNote": "one-group-independent-values-not-sum: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:75b486f2924459ef": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s shared advance stops at the next source hit index",
+      "declarationSha256": "4dfe941906028cd3c519de340d4ead1f9baf4630d124be843b70aaf54abe8e96",
+      "kind": "canonical-transition",
+      "parameters": "獣使いのウパニシャット",
+      "bindingNote": "shared-advance-only-same-source-hit-index: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:aa649cbf754c8da1": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s shares one target follower snapshot and morale across source hits",
+      "declarationSha256": "da3ee48ace7c9f0debc3b0059372c4d915361807a4c0058f6545ebfc4bae9a18",
+      "kind": "canonical-transition",
+      "parameters": "獣使いのウパニシャット",
+      "bindingNote": "one-target-follower-snapshot-across-sources: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:e54409782e377044": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s shared advance stops at the next source hit index",
+      "declarationSha256": "4dfe941906028cd3c519de340d4ead1f9baf4630d124be843b70aaf54abe8e96",
+      "kind": "canonical-transition",
+      "parameters": "魔聖母ディア",
+      "bindingNote": "shared-advance-only-same-source-hit-index: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:107180c675f9964d": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s shares one target follower snapshot and morale across source hits",
+      "declarationSha256": "da3ee48ace7c9f0debc3b0059372c4d915361807a4c0058f6545ebfc4bae9a18",
+      "kind": "canonical-transition",
+      "parameters": "魔聖母ディア",
+      "bindingNote": "one-target-follower-snapshot-across-sources: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:96c358e76405efbd": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s shares one target follower snapshot and morale across source hits",
+      "declarationSha256": "0aa80f53beac8db33d44f4d05a32be94634080647d93378cbbf3fe9605a74ac3",
+      "kind": "canonical-transition",
+      "parameters": "獣使いのウパニシャット",
+      "bindingNote": "one-target-follower-snapshot-across-sources: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:f6fbb1e3f443f00f": {
+      "path": "packages/engine/test/heterogeneous-followers.test.ts",
+      "suite": [],
+      "title": "%s shares one target follower snapshot and morale across source hits",
+      "declarationSha256": "0aa80f53beac8db33d44f4d05a32be94634080647d93378cbbf3fe9605a74ac3",
+      "kind": "canonical-transition",
+      "parameters": "魔聖母ディア",
+      "bindingNote": "one-target-follower-snapshot-across-sources: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
     }
   },
   "remainingNotes": {

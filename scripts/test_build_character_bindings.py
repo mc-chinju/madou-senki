@@ -79,6 +79,15 @@ class CharacterBindingsTest(unittest.TestCase):
             self.assertIn('failed use check', test['title'])
             self.assertEqual(test['kind'], 'canonical-transition')
 
+    def test_follower_boundaries_bind_both_exact_owner_scalar_cases(self):
+        for entry, owner in [('c2-p05-r1c2-ab02', '獣使いのウパニシャット'), ('c2-p06-r1c2-ab04', '魔聖母ディア')]:
+            for clause in ['shared-advance-only-same-source-hit-index', 'one-target-follower-snapshot-across-sources']:
+                ledger = self.ledger(clause)
+                ledger['rows'][0]['entryId'] = entry
+                result = build_bindings(ledger, self.cards)
+                self.assertEqual(result[0]['tests'][0]['parameters'], owner)
+                self.assertEqual(result[0]['tests'][0]['kind'], 'canonical-transition')
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

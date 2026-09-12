@@ -154,6 +154,10 @@ def follower_bundle_binding(row):
         refs = [(prefix + suffix, cases[entry]) for suffix in ['child cancellation preserves the later source', 'morale waiver retains failed use check and later source']]
     elif clause == 'no-morale-does-not-waive-use-check':
         refs = [(prefix + 'morale waiver retains failed use check and later source', cases[entry])]
+    elif clause == 'shared-advance-only-same-source-hit-index':
+        refs = [('%s shared advance stops at the next source hit index', cases[entry][0])]
+    elif clause == 'one-target-follower-snapshot-across-sources':
+        refs = [('%s shares one target follower snapshot and morale across source hits', cases[entry][0])]
     elif clause == 'one-group-independent-values-not-sum':
         refs = [(prefix + 'keeps independent values in one defense group', cases[entry])]
     if not refs:

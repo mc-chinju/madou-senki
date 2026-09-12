@@ -143,3 +143,34 @@ it.each(B4_BUNDLES)('%s %s %s %s keeps independent values in one defense group',
  s=finish(s);expect(s.players.B!.damage).toBe(owner==='魔聖母ディア'?3:24);
  expect(s.groups).toEqual({});expect(s.resolution).toEqual([]);
 });
+it.each(['獣使いのウパニシャット','魔聖母ディア'] as const)('%s shared advance stops at the next source hit index',owner=>{
+ let s=setup(owner);for(const p of Object.values(s.players))p.permanent={endurance:100};
+ const firstSource=source(s,owner==='魔聖母ディア'?'有翼族':'炎竜'),lastSource=source(s,owner==='魔聖母ディア'?'竜王教団':'水竜');
+ const [first,second,later]=handCards(s,['B','C','B'],'間合い／休息');const advance=handCard(s,'A','踏み込み／殴る');
+ s=until(act(s,'A',command(s,[{cardInstanceId:firstSource,dedicated:false,targetIds:['B','C','D']},{cardInstanceId:lastSource,dedicated:false,targetIds:owner==='魔聖母ディア'?['B']:['B','C','D']}])),'normal-defense');
+ s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:first}));s=passReclaims(act(s,'C',{type:'PLAY_MAAI',cardInstanceId:second}));s=closeWindow(s);
+ expect(s.windows!.at(-1)!.kind).toBe('defense-advance');s=passReclaims(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advance}));
+ s=closeWindow(s);s=closeWindow(s);s=until(s,'normal-defense');expect(viewFor(s,'A').currentAttack).toMatchObject({hitIndex:1,targetId:'B'});
+ const group=Object.values(s.groups!)[0]!;expect(group.maai!.advances).toEqual([]);
+ for(const id of ['B','C'])expect(group.targets.find(t=>t.actorId===id)!.hits[0]!.defended).toBe(false);
+ s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:later}));s=finish(s);
+ expect(s.players.B!.damage).toBe(12); // The later source's maai is not canceled by the earlier advance.
+ for(const id of [first,second,later,advance])expect(s.discard.filter(c=>c===id)).toHaveLength(1);
+ expect(s.phase).toBe('withdrawal');expect(s.resolution).toEqual([]);
+});
+it.each(['獣使いのウパニシャット','魔聖母ディア'] as const)('%s shares one target follower snapshot and morale across source hits',owner=>{
+ let s=setup(owner);s.players.B!.permanent={endurance:100};
+ const first=source(s,owner==='魔聖母ディア'?'黒騎士団':'グリフォン'),second=source(s,owner==='魔聖母ディア'?'女神官のシャリア':'地竜');
+ const follower=source(s,'女性親衛隊',true,'B');
+ s=until(act(s,'A',command(s,[{cardInstanceId:first,dedicated:false,targetIds:['B']},{cardInstanceId:second,dedicated:false,targetIds:owner==='魔聖母ディア'?['B']:['B','C','D']}])),'follower-start');
+ const groupId=Object.values(s.groups!)[0]!.id;
+ expect(s.groups![groupId]!.targets[0]!.followerSnapshot).toEqual([follower]);
+ s=until(s,'hit');const target=s.groups![groupId]!.targets[0]!;
+ expect(target.followerSnapshot).toEqual([follower]);expect(target.followerDefense).toHaveLength(1);
+ const defense=target.followerDefense![0]!;expect(defense.source).toBe('physical');if(defense.source!=='physical')throw Error('EXPECTED_PHYSICAL');expect(defense.cardInstanceId).toBe(follower);
+ expect(defense.levels).toHaveLength(owner==='魔聖母ディア'?2:3);
+ expect(defense.hits.map(h=>h.hitIndex)).toEqual(owner==='魔聖母ディア'?[0,1]:[0,1,2]);
+ expect(s.rolls!.filter(r=>r.purpose==='follower-morale'&&r.rollerId==='B')).toHaveLength(1);
+ s=finish(s);expect(s.players.B!.followers).toEqual([]);expect(s.discard.filter(c=>c===follower)).toHaveLength(1);
+ expect(s.resolution).toEqual([]);
+});
