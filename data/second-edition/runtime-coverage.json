@@ -234900,11 +234900,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e"
+      ],
+      "tests": [
+        "t:11fb1c647813e7b8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234928,11 +234932,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e"
+      ],
+      "tests": [
+        "t:f4ecc8230b0858f0"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234956,11 +234964,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:8d58fd9e39c60ccc"
+      ],
+      "tests": [
+        "t:ee1928431417419e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234984,11 +234997,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e"
+      ],
+      "tests": [
+        "t:f85149f0839fb7a3"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235012,11 +235029,15 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e"
+      ],
+      "tests": [
+        "t:c3fc1dfab367ee58"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415588,8 +415609,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7073,
-      "implemented": 5105
+      "pending": 7068,
+      "implemented": 5110
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416879,6 +416900,10 @@
     "h:85f703956f6409df": {
       "path": "packages/engine/src/abilities/combat-reward-state.ts",
       "symbol": "queueCombatRewards"
+    },
+    "h:8d58fd9e39c60ccc": {
+      "path": "packages/engine/src/setup.ts",
+      "symbol": "refillInitialHand"
     }
   },
   "testCases": {
@@ -488619,6 +488644,51 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+    },
+    "t:11fb1c647813e7b8": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Lia explicit recipient list does not add a later actually revealed character",
+      "declarationSha256": "c2e44ccd6a8799da58e0d96965a1c2ba04c4eef4b6b67676e1eefb9ea11dd5ea",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence."
+    },
+    "t:f4ecc8230b0858f0": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Lia saves a chosen public subset; hidden self still receives separate public Lance bonus",
+      "declarationSha256": "aa6657876b15ec138ed6642c85f0159dd85aed507c8e4d0e745192c86e12b492",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Direct arranged recipient suppression or Haja OPEN arithmetic; structural classification retained."
+    },
+    "t:ee1928431417419e": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dia initial five cards do not grow when public capacity is elected",
+      "declarationSha256": "a20ab29ec4715bfc25a6fc2724cf2c99f97e2ab61a4001576db69038e446bfc6",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence."
+    },
+    "t:f85149f0839fb7a3": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Dia reserves +2 capacity, requires public source and retains Haja addition",
+      "declarationSha256": "7b8c772c0ca605abd0fc07a3d22cd5343858230b9dbadeeef4816bcc1e6ca9b0",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Direct arranged recipient suppression or Haja OPEN arithmetic; structural classification retained."
+    },
+    "t:c3fc1dfab367ee58": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard",
+      "declarationSha256": "6188d0696a9b4d35869fe27a833b86e3a56e4d5b66186bf11a099bda38be48a4",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence."
     }
   },
   "remainingNotes": {

@@ -95,6 +95,12 @@ class CharacterBindingsTest(unittest.TestCase):
             result = build_bindings(ledger, self.cards)
             self.assertEqual(result[0]['tests'][0]['kind'], kind)
 
+    def test_lia_recipient_suppression_keeps_structural_evidence(self):
+        ledger = self.ledger('recipient-suppression-does-not-remove-gift')
+        ledger['rows'][0]['entryId'] = 'c2-p03-r1c2-ab03'
+        result = build_bindings(ledger, self.cards)
+        self.assertEqual(result[0]['tests'][0]['kind'], 'structural-resolver')
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

@@ -2790,6 +2790,125 @@
       ]
     },
     {
+      "row": "c2-p03-r1c2-ab03#target-set-explicit-no-auto-add",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Lia explicit recipient list does not add a later actually revealed character",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab03#recipient-suppression-does-not-remove-gift",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Lia saves a chosen public subset; hidden self still receives separate public Lance bonus",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Direct arranged recipient suppression or Haja OPEN arithmetic; structural classification retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#initial-hand-five",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/setup.ts",
+          "symbol": "refillInitialHand"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dia initial five cards do not grow when public capacity is elected",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#capacity-add-two-plus-Haja",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Dia reserves +2 capacity, requires public source and retains Haja addition",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Direct arranged recipient suppression or Haja OPEN arithmetic; structural classification retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#capacity-loss-adjust-end-turn",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p06-r2c2-ab01#advance-is-exact-one-discard",
       "handler": [
         {

@@ -195,6 +195,27 @@ def hunger_binding(row):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def lia_dia_binding(row):
+    key = (row['entryId'], row['clauseKey'])
+    refs = {
+        ('c2-p03-r1c2-ab03', 'target-set-explicit-no-auto-add'): ('Lia explicit recipient list does not add a later actually revealed character', 'canonical-transition'),
+        ('c2-p03-r1c2-ab03', 'recipient-suppression-does-not-remove-gift'): ('Lia saves a chosen public subset; hidden self still receives separate public Lance bonus', 'structural-resolver'),
+        ('c2-p06-r1c2-ab02', 'initial-hand-five'): ('Dia initial five cards do not grow when public capacity is elected', 'canonical-transition'),
+        ('c2-p06-r1c2-ab02', 'capacity-add-two-plus-Haja'): ('Dia reserves +2 capacity, requires public source and retains Haja addition', 'structural-resolver'),
+        ('c2-p06-r1c2-ab02', 'capacity-loss-adjust-end-turn'): ('actual Dia END uses selected public capacity plus Haja; late OFF waits for normal END discard', 'canonical-transition'),
+    }
+    if key not in refs:
+        return None
+    title, kind = refs[key]
+    handlers = [{'path': 'packages/engine/src/abilities/conditional-stats.ts', 'symbol': 'conditionalStatAdditions'}]
+    if key[1] == 'initial-hand-five':
+        handlers += [{'path': 'packages/engine/src/setup.ts', 'symbol': 'refillInitialHand'}]
+    return {'row': '#'.join(key), 'handler': handlers,
+            'tests': [{'path': 'packages/engine/test/conditional-stats.test.ts', 'suite': [], 'title': title, 'parameters': None, 'kind': kind,
+                       'bindingNote': 'Direct arranged recipient suppression or Haja OPEN arithmetic; structural classification retained.' if kind == 'structural-resolver' else 'Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence.'}],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -203,7 +224,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row)
         if extra:
             bindings.append(extra)
             continue

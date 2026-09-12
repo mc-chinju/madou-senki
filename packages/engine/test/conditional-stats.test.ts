@@ -2,7 +2,7 @@ import {cleanConditionalSelections} from '../src/abilities/conditional-selection
 import {it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';
 import {getCharacter} from '@madou/catalog';
-import {viewFor,transition,type GameState} from '../src/index.js';
+import {createGame,viewFor,transition,type GameState} from '../src/index.js';
 import {ABILITIES} from '../src/abilities/frames.js';
 import {act,ready,finish,closeWindow,until,pass} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
@@ -104,4 +104,26 @@ it.each([[false,6],[true,6],[true,5]] as const)('Truth counter uses actual named
  expect(returned.technique).toMatchObject({useLevel:5,effectLevel:6,damage:7});
  expect(returned.targets[0]!.hits[0]!.damage).toBe(7);
  s=finish(s);expect(s.players.A!.damage).toBe(7);expect(s.players.B!.damage).toBe(0);
+});
+it('Lia explicit recipient list does not add a later actually revealed character',()=>{
+ let s=owner('リーア姫');s=act(s,'B',{type:'REVEAL_CHARACTER'});
+ const beforeB=viewFor(s,'B').self.stats.spirit,beforeC=viewFor(s,'C').self.stats.spirit;
+ s=finish(set(s,'A',LIA,true,['B']));s=finish(act(s,'A',{type:'REVEAL_CHARACTER'}));
+ expect(viewFor(s,'B').self.stats.spirit).toBe(beforeB+1);expect(viewFor(s,'C').self.stats.spirit).toBe(beforeC);
+ s=finish(act(s,'C',{type:'REVEAL_CHARACTER'}));s=JSON.parse(JSON.stringify(s));
+ expect(setting(s,'A',LIA).selectedTargetIds).toEqual(['B']);expect(viewFor(s,'C').self.stats.spirit).toBe(beforeC);
+ expect(viewFor(s,'B').self.stats.spirit).toBe(beforeB+1);
+});
+it('Dia initial five cards do not grow when public capacity is elected',()=>{
+ let selected:GameState|undefined;
+ for(let seed=1;seed<=100;seed++){
+  const candidate=createGame(['A','B','C','D'].map(id=>({id,name:id})),{...entropy(),random:Array.from({length:2000},(_,i)=>((i*193+seed*17)%997)/997)},{startingSeat:0});
+  if(Object.values(candidate.players).some(p=>p.characterId==='c2-p06-r1c2'&&p.hand.length===5&&p.open.length===0)){selected=candidate;break;}
+ }
+ expect(selected).toBeDefined();let s=selected!;const actor=Object.values(s.players).find(p=>p.characterId==='c2-p06-r1c2')!.id;
+ expect(s.players[actor]!.hand).toHaveLength(5);const hand=[...s.players[actor]!.hand];
+ for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});
+ s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});
+ s=finish(set(s,actor,DIA));s=act(s,actor,{type:'REVEAL_CHARACTER'});
+ expect(viewFor(s,actor).self.stats.handLimit).toBe(7);expect(s.players[actor]!.hand).toEqual(hand);
 });
