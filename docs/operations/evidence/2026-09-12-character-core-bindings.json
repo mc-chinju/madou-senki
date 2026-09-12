@@ -3032,6 +3032,168 @@
       ]
     },
     {
+      "row": "c2-p06-r2c2-ab04#kill-attack-provenance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleDamage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#kill-counter-provenance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleDamage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "counter",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#kill-reflection-provenance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleDamage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "reflection",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#exclude-wandering",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleDamage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-reward-boundaries.test.ts",
+          "suite": [],
+          "title": "Structural settlement excludes wandering victims and self damage from kill rewards",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Direct settlement boundary with arranged presence/cause; not a fabricated legal attack on a wandering target or an actual self-damage producer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#exclude-other-killer",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleDamage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "An actual kill by another actor grants no hunger to the observing Yotsurm",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#exclude-self-damage-cause",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "settleDamage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-reward-boundaries.test.ts",
+          "suite": [],
+          "title": "Structural settlement excludes wandering victims and self damage from kill rewards",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Direct settlement boundary with arranged presence/cause; not a fabricated legal attack on a wandering target or an actual self-damage producer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p01-r1c1#objective/extinction-EVIL",
       "handler": [
         {

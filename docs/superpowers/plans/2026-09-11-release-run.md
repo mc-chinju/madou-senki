@@ -1217,6 +1217,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4従者ソース境界: 両人物の残4条項を新規4試験へ束縛。最初のソースでB/Cの間合いを1枚の踏み込みで取消し、次ソースでは踏み込み一覧が空となりBの新たな間合いが有効であることを実損害まで確認。女性親衛隊の単一防御snapshotに全ソースのhit indexと個別レベルが保存され、実士気判定が1回だけ行われることも検証。対象70試験、型検査、Python20件、台帳validator成功。従者能力18条項の束縛が揃った。人物pending61、semantic具体的実装済み5,099、pending160、accepted0。全B4生成gateは残61行で停止。詳細は [B4従者ソース境界進捗](../../operations/evidence/2026-09-12-b4-bundle-boundaries-progress.json)。Step3〜5は未完了。
 
+2026-09-12 B4撃破報酬: ヨーツルムの6条項を束縛。実攻撃・実反撃・実氷鏡反射による精神8の対象死亡で、報酬の加害者/対象/原因カード/実損害を確認し、保存復帰後に1回だけ回復・戦士/魔法成長する新規3試験を追加。他者撃破の既存実試験と、彷徨/自傷除外の直接settleDamage試験を併用。後者2行はstructural-resolverとして明示し、実遷移へ昇格させない。対象26試験、型検査、Python21件、台帳validator成功。人物pending55、semantic具体的実装済み5,105、pending154、accepted0。全B4生成gateは残55行で停止。詳細は [B4撃破報酬進捗](../../operations/evidence/2026-09-12-b4-hunger-progress.json)。Step3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**

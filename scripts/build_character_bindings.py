@@ -170,6 +170,31 @@ def follower_bundle_binding(row):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def hunger_binding(row):
+    entry, clause = row['entryId'], row['clauseKey']
+    if entry != 'c2-p06-r2c2-ab04':
+        return None
+    path = 'packages/engine/test/combat-rewards.test.ts'
+    kind, params = 'canonical-transition', None
+    if clause in {'kill-attack-provenance', 'kill-counter-provenance', 'kill-reflection-provenance'}:
+        title = 'Yotsurm hunger preserves actual %s killing source through death'
+        params = clause.split('-')[1]
+    elif clause == 'exclude-other-killer':
+        title = 'An actual kill by another actor grants no hunger to the observing Yotsurm'
+    elif clause in {'exclude-wandering', 'exclude-self-damage-cause'}:
+        path = 'packages/engine/test/combat-reward-boundaries.test.ts'
+        title = 'Structural settlement excludes wandering victims and self damage from kill rewards'
+        kind = 'structural-resolver'
+    else:
+        return None
+    return {'row': f'{entry}#{clause}',
+            'handler': [{'path': 'packages/engine/src/abilities/combat-reward-state.ts', 'symbol': 'queueCombatRewards'},
+                        {'path': 'packages/engine/src/lifecycle/advance.ts', 'symbol': 'settleDamage'}],
+            'tests': [{'path': path, 'suite': [], 'title': title, 'parameters': params, 'kind': kind,
+                       'bindingNote': 'Direct settlement boundary with arranged presence/cause; not a fabricated legal attack on a wandering target or an actual self-damage producer.' if kind == 'structural-resolver' else 'Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer.'}],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -178,7 +203,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row)
         if extra:
             bindings.append(extra)
             continue

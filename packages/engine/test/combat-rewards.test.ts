@@ -31,3 +31,21 @@ for(const name of ['魔聖母ディア','餓狼ヨーツルム'])it(`${name} act
 it('An actual kill by another actor grants no hunger to the observing Yotsurm',()=>{let s=combatSetup('侍大将のシン');character(s,'C','餓狼ヨーツルム');s.players.C!.damage=8;s.players.B!.damage=gameStats(s,'B').endurance-3;const card=handCard(s,'A','黒翼飛翔剣');s=absent(act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false}),HUNGER,'C');expect(s.players.C!.damage).toBe(8);expect(s.players.C!.combatRewardIds).toBeUndefined();});
 it('Predeath spirit seven cannot become eligible when death actually removes its until-death drain',()=>{let s=source('餓狼ヨーツルム',7);s.players.B!.statuses=[{id:'prior-drain',kind:'stat-drain',timing:'until-death',amount:1}];s.players.B!.permanent!.spirit=(s.players.B!.permanent!.spirit??0)+1;expect(gameStats(s,'B').spirit).toBe(7);s=absent(s,HUNGER);expect(s.players.B!.presence).toBe('dead');expect(gameStats(s,'B').spirit).toBe(8);expect(s.players.A!.combatRewardIds).toBeUndefined();});
 it('Actual Ice Mirror makes surviving Yotsurm the killer of the original attacker',()=>{let s=combatSetup('侍大将のシン');character(s,'B','餓狼ヨーツルム');s.players.A!.damage=gameStats(s,'A').endurance-3;s.players.A!.permanent!.spirit=(s.players.A!.permanent!.spirit??0)+8-gameStats(s,'A').spirit;s.players.B!.damage=8;const attack=handCard(s,'A','地槍'),mirror=handCard(s,'B',getAction('a2-p12-r3c2')!.name);s=until(act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false}),'normal-defense');s=opportunity(act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:mirror,dedicated:false}),HUNGER,'B');expect(s.players.A!.presence).toBe('dead');s=finish(use(s,HUNGER,'B'));expect(s.players.B!.damage).toBe(0);expect(s.players.B!.combatRewardIds).toHaveLength(1);});
+it.each(['attack','counter','reflection'] as const)('Yotsurm hunger preserves actual %s killing source through death',mode=>{
+ let s=combatSetup(mode==='attack'?'餓狼ヨーツルム':'侍大将のシン');
+ const owner=mode==='attack'?'A':'B',victim=mode==='attack'?'B':'A';
+ if(owner==='B')character(s,'B','餓狼ヨーツルム');
+ s.players[owner]!.damage=8;s.players[victim]!.damage=gameStats(s,victim).endurance-3;
+ s.players[victim]!.permanent!.spirit=(s.players[victim]!.permanent!.spirit??0)+8-gameStats(s,victim).spirit;
+ const incoming=handCard(s,'A',mode==='reflection'?'地槍':'踏み込み／弓');
+ const response=mode==='attack'?undefined:handCard(s,'B',getAction(mode==='counter'?'a2-p08-r2c3':'a2-p12-r3c2')!.name);
+ const before=gameStats(s,owner);
+ s=act(s,'A',{type:'ATTACK',cardInstanceId:incoming,targetIds:['B'],dedicated:false});
+ if(response){s=until(s,'normal-defense');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:response,dedicated:false});}
+ s=opportunity(s,HUNGER,owner);expect(s.players[victim]!.presence).toBe('dead');
+ const reward=s.lifecycle!.find(t=>t.kind==='combat-reward'&&t.mode==='kill'&&t.actorId===owner)!;
+ expect(reward).toMatchObject({actorId:owner,targetId:victim,targetSpirit:8,amount:3,sourceCardInstanceId:mode==='counter'?response:incoming});
+ s=JSON.parse(JSON.stringify(s));s=finish(use(s,HUNGER,owner));
+ expect(s.players[owner]!.combatRewardIds).toHaveLength(1);expect(s.players[owner]!.damage).toBe(0);
+ expect(gameStats(s,owner)).toMatchObject({warrior_level:before.warrior_level+2,magic_level:before.magic_level+2});
+});

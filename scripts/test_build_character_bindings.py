@@ -88,6 +88,13 @@ class CharacterBindingsTest(unittest.TestCase):
                 self.assertEqual(result[0]['tests'][0]['parameters'], owner)
                 self.assertEqual(result[0]['tests'][0]['kind'], 'canonical-transition')
 
+    def test_hunger_keeps_structural_exclusions_distinct_from_real_kills(self):
+        for clause, kind in [('kill-counter-provenance', 'canonical-transition'), ('exclude-wandering', 'structural-resolver'), ('exclude-self-damage-cause', 'structural-resolver')]:
+            ledger = self.ledger(clause)
+            ledger['rows'][0]['entryId'] = 'c2-p06-r2c2-ab04'
+            result = build_bindings(ledger, self.cards)
+            self.assertEqual(result[0]['tests'][0]['kind'], kind)
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

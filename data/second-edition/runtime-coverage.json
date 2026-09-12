@@ -235305,11 +235305,16 @@
         "C12"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:85f703956f6409df",
+        "h:c0837c03929edbbf"
+      ],
+      "tests": [
+        "t:afe458e8f9de3c9f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235329,11 +235334,16 @@
         "C12"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:85f703956f6409df",
+        "h:c0837c03929edbbf"
+      ],
+      "tests": [
+        "t:1c2b0c0e654b71ed"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235353,11 +235363,16 @@
         "C12"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:85f703956f6409df",
+        "h:c0837c03929edbbf"
+      ],
+      "tests": [
+        "t:021633c86f0a08ad"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235377,11 +235392,16 @@
         "C12"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:85f703956f6409df",
+        "h:c0837c03929edbbf"
+      ],
+      "tests": [
+        "t:c317ebea05188654"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235401,11 +235421,16 @@
         "C12"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:85f703956f6409df",
+        "h:c0837c03929edbbf"
+      ],
+      "tests": [
+        "t:dbf526a01b3bc8f0"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235425,11 +235450,16 @@
         "C12"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:85f703956f6409df",
+        "h:c0837c03929edbbf"
+      ],
+      "tests": [
+        "t:c317ebea05188654"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415558,8 +415588,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7079,
-      "implemented": 5099
+      "pending": 7073,
+      "implemented": 5105
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416845,6 +416875,10 @@
     "h:122e9d8aad5397d1": {
       "path": "packages/engine/src/abilities/shadow-jump.ts",
       "symbol": "payShadowJump"
+    },
+    "h:85f703956f6409df": {
+      "path": "packages/engine/src/abilities/combat-reward-state.ts",
+      "symbol": "queueCombatRewards"
     }
   },
   "testCases": {
@@ -488540,6 +488574,51 @@
       "kind": "canonical-transition",
       "parameters": "魔聖母ディア",
       "bindingNote": "one-target-follower-snapshot-across-sources: actual exact-owner follower bundle with physical sources, preserved declaration metadata, independent resolution or cancellation assertions."
+    },
+    "t:afe458e8f9de3c9f": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+    },
+    "t:1c2b0c0e654b71ed": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "counter",
+      "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+    },
+    "t:021633c86f0a08ad": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "reflection",
+      "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
+    },
+    "t:c317ebea05188654": {
+      "path": "packages/engine/test/combat-reward-boundaries.test.ts",
+      "suite": [],
+      "title": "Structural settlement excludes wandering victims and self damage from kill rewards",
+      "declarationSha256": "6d54cd82c23b9de52c89251fab406a0399863a9828b6e12d303fe61c91faa29e",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Direct settlement boundary with arranged presence/cause; not a fabricated legal attack on a wandering target or an actual self-damage producer."
+    },
+    "t:dbf526a01b3bc8f0": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "An actual kill by another actor grants no hunger to the observing Yotsurm",
+      "declarationSha256": "4f9095ce03c074644e08ec358f5312bf9ad0a1671b79bfa7495233dfb8481fb0",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual attack/response/death transitions verify exact killer and source, or exclude an observing non-killer."
     }
   },
   "remainingNotes": {
