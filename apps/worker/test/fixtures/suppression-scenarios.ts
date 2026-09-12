@@ -1,7 +1,7 @@
 import { allCardInstanceIds, createGame, gameStats, transition, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 
-export const suppressionScenarioNames = ['suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
+export const suppressionScenarioNames = ['suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
 export type SuppressionScenarioName = typeof suppressionScenarioNames[number];
 export function isSuppressionScenario(name: string): name is SuppressionScenarioName {
   return suppressionScenarioNames.some(value => value === name);
@@ -13,9 +13,9 @@ export function makeSuppressionScenario(name: SuppressionScenarioName, players: 
   if (players.length !== 4) throw Error('SUPPRESSION_FIXTURE_FOUR_SEATS');
   let game = createGame(players, entropy(), { startingSeat: 0 });
   const [a, b, c, d] = players.map(player => player.id) as [string, string, string, string];
-  const blessing = name === 'suppression-blessing-death' || name === 'suppression-blessing' || name === 'suppression-blessing-fail';
+  const blessing = name === 'suppression-blessing-paired' || name === 'suppression-blessing-exempt' || name === 'suppression-blessing-death' || name === 'suppression-blessing' || name === 'suppression-blessing-fail';
   assignCharacter(game, a, '邪祭ウーノス');
-  assignCharacter(game, b, name === 'suppression-hidden-lia' ? 'リーア姫' : '侍大将のシン');
+  assignCharacter(game, b, name === 'suppression-hidden-lia' ? 'リーア姫' : name === 'suppression-blessing-exempt' ? '聖騎士ランスロット2' : '侍大将のシン');
   assignCharacter(game, c, blessing ? 'リーア姫' : '大神官ジル');
   assignCharacter(game, d, '占星術師のアルセイル');
   if (blessing) game.players[c]!.permanent = { ...game.players[c]!.permanent, spirit: name === 'suppression-blessing-fail' ? -10 : 20 };

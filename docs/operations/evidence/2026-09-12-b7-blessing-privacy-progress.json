@@ -1,0 +1,56 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 C16 exempt Blessing and no prior-ban disclosure; not acceptance evidence",
+  "previousMissingRows": 8,
+  "newlyBoundRows": [
+    "c2-p03-r1c2-ab04#C16/exempt-target-same-check-and-lease",
+    "c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban"
+  ],
+  "remainingMissingRows": 6,
+  "changes": [
+    "Added paired initial character fixtures differing only in concealed Shin versus Lancelot2; no ban, lease or resolved roll is injected.",
+    "Worker compares actual ban and blessing envelopes, ACKs and all outsider views with every-command save/restart/replay; exact checks, leases, attempt consumption and unused main action asserted.",
+    "Browser compares outsider projections after every blessing response; all-seat reload at check and completion plus read-only canonical inspection prove equal saved leases. Session IDs alone are normalized.",
+    "Equal test timestamps and dice remove independent run time/randomness as confounders; fixed time/dice branch is confined to the two new test fixtures.",
+    "During test construction corrected independent CARD_DRAWN timestamps and use of currentRoll projection property."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-blessing-privacy.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 1,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/blessing-privacy.spec.ts --reporter=json",
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked bindings retain existing Engine paired fixture",
+    "Runtime coverage validator valid true",
+    "Remaining B7 rows independently counted as 6",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/fixtures/suppression-scenarios.ts": "4040d322349992a2ed3ed72fb1173fe8655f0d704f2b54428f820f013da1f73a",
+    "apps/worker/test/fixtures/e2e-worker.ts": "4bae1eec44619f75fe708936b02f58fd34465499ab71d7281a2457bac87bc364",
+    "apps/worker/test/room-blessing-privacy.test.ts": "68547a6f08c8f995dd11908e40d830cb16f5e330639f77682c220420e66c3714",
+    "tests/e2e/blessing-privacy.spec.ts": "892b7d2186ef2e709a74c4cf7c96dba9cd4e0e9f955bf206be19d9fd170927bb",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "baad53221013304478658a82cece78720a61c739e599f4d5d45a49bfe9a4b350",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "0cc1f24ee360db7cf302a3246edd0aebbc33b47f669808031a605b0a0974e3ac"
+  },
+  "limitations": [
+    "No production runtime change.",
+    "B7 Step2 remains incomplete; frozen acceptance and formal START games remain. Accepted and verified remain zero."
+  ]
+}

@@ -1498,6 +1498,92 @@
       "remaining": [
         "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/exempt-target-same-check-and-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing on a concealed inert designation has the same outsider transcript",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-privacy.test.ts",
+          "title": "actual exempt and ordinary Blessing share saved checks leases attempts and outside transcripts",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired actual ban and blessing use equal entropy; every blessing command ACK and all outsider snapshots match through save/restart/replay. Equal actual roll and lease, consumed attempt and unused main action are asserted."
+        },
+        {
+          "path": "tests/e2e/blessing-privacy.spec.ts",
+          "title": "actual exempt and ordinary Blessing share checks attempts and outside transcripts across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two UI tables differ only in hidden target identity. Outsider game projections match after each blessing response; all-seat reload retains exact check and spent attempt. Read-only local inspection verifies equal saved leases. Only session IDs are normalized."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing on a concealed inert designation has the same outsider transcript",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-privacy.test.ts",
+          "title": "actual exempt and ordinary Blessing share saved checks leases attempts and outside transcripts",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired actual ban and blessing use equal entropy; every blessing command ACK and all outsider snapshots match through save/restart/replay. Equal actual roll and lease, consumed attempt and unused main action are asserted."
+        },
+        {
+          "path": "tests/e2e/blessing-privacy.spec.ts",
+          "title": "actual exempt and ordinary Blessing share checks attempts and outside transcripts across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two UI tables differ only in hidden target identity. Outsider game projections match after each blessing response; all-seat reload retains exact check and spent attempt. Read-only local inspection verifies equal saved leases. Only session IDs are normalized."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

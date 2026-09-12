@@ -1365,6 +1365,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16 禁止対象の死亡・復活後も指定を維持する1行を追加束縛。既存DO実遷移へ死亡・新life時の指定一致と毎操作再接続の全席表示比較を追加し、browserでも実禁止→致死攻撃→死亡→復活を操作。各境界で指定維持と全席reload前後一致を確認した。Worker3試験・browser1試験・型チェック・台帳validator成功。不足8行、Step2継続。詳細は [B7禁止対象復活進捗](../../operations/evidence/2026-09-12-b7-target-revival-progress.json)。
 
+2026-09-12 B7続行: C16 非公開免除対象にも同じ祝福判定・解除記録を残し、成功応答で従前の実効禁止を明かさない2行を追加束縛。正体だけ異なる2卓の実禁止→祝福で、Worker ACK/全外部席表示、browser各回答後表示を比較。判定・試行消費・未消費の通常行動・保存解除記録と全席reloadを確認した。Worker1試験・browser1試験・型チェック・台帳validator成功。不足6行、Step2継続。詳細は [B7祝福の秘密情報進捗](../../operations/evidence/2026-09-12-b7-blessing-privacy-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

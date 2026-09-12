@@ -169,6 +169,7 @@ export class BrowserFixtureRoom extends Room {
     const fixture = this.ctx.storage.sql.exec<{ scenario: string }>('SELECT scenario FROM browser_fixture_entropy WHERE singleton = 1').toArray()[0];
     if(fixture?.scenario==='canonical-S04')return {...entropy,dice:Array(100).fill(4) as number[]};
     if(fixture?.scenario==='ritual-otherworld'||fixture?.scenario==='ritual-disabled'||fixture?.scenario==='ritual-stopped')return {...entropy,dice:Array(100).fill(6) as number[]};
+    if(fixture?.scenario==='suppression-blessing-paired'||fixture?.scenario==='suppression-blessing-exempt')return {...entropy,now:1000,dice:Array(100).fill(1) as number[]};
     return (fixture?.scenario === 'lia-prayer-revival' || fixture?.scenario === 'fury-royal-reflection' || fixture?.scenario === 'shared-a09-self' || fixture?.scenario === 'canonical-lia-life' || fixture?.scenario === 'canonical-vanmil-death') ? { ...entropy, dice: Array(100).fill(1) as number[] } : entropy;
   }
   async seedScenario(name: ScenarioName) {

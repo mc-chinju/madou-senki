@@ -255984,11 +255984,13 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:1b2c92a5b4d724f5"
+        "t:1b2c92a5b4d724f5",
+        "t:557cda818259f5ab",
+        "t:a9a846e95c0956f8"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:e8552bec0195d2e8"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256020,11 +256022,13 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:1b2c92a5b4d724f5"
+        "t:1b2c92a5b4d724f5",
+        "t:557cda818259f5ab",
+        "t:a9a846e95c0956f8"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:e8552bec0195d2e8"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493202,6 +493206,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual UI ban, lethal attack and revival retain designation through pending death, death and re-setup. Each stage checks all-seat reload equality while allowing death to reveal identity."
+    },
+    "t:557cda818259f5ab": {
+      "path": "apps/worker/test/room-blessing-privacy.test.ts",
+      "suite": [],
+      "title": "actual exempt and ordinary Blessing share saved checks leases attempts and outside transcripts",
+      "declarationSha256": "ff5e3d199287d8b3aabed51ac1260fafb1180f5f83a0961bc12ccbdf897ff0b3",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Paired actual ban and blessing use equal entropy; every blessing command ACK and all outsider snapshots match through save/restart/replay. Equal actual roll and lease, consumed attempt and unused main action are asserted."
+    },
+    "t:a9a846e95c0956f8": {
+      "path": "tests/e2e/blessing-privacy.spec.ts",
+      "suite": [],
+      "title": "actual exempt and ordinary Blessing share checks attempts and outside transcripts across all-seat reload",
+      "declarationSha256": "e543ab0e6cf215c7bedc30847eb35171e30e151660190eb70eeb1aabe30a3a7c",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Two UI tables differ only in hidden target identity. Outsider game projections match after each blessing response; all-seat reload retains exact check and spent attempt. Read-only local inspection verifies equal saved leases. Only session IDs are normalized."
     }
   },
   "remainingNotes": {
@@ -493370,7 +493392,8 @@
     "n:643c7fd6aa68212d": "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:a32d21ba4e375d0f": "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:0123e6c2897a9897": "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains.",
-    "n:7936a3a29ccd02e9": "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains."
+    "n:7936a3a29ccd02e9": "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains.",
+    "n:e8552bec0195d2e8": "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {
