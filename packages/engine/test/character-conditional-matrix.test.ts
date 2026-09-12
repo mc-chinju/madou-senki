@@ -1,3 +1,5 @@
+import {conditionalStatAdditions} from '../src/abilities/conditional-stats.js';
+import type {StatProvenance} from '../src/abilities/stat-context.js';
 import {cleanConditionalSelections} from '../src/abilities/conditional-selection.js';
 import {ownsAbility} from '../src/abilities/ownership.js';
 import type {ConditionalAbilityId} from '@madou/protocol';
@@ -134,4 +136,27 @@ it.each(CONDITIONAL_CASES)('%s %s structural inherited ownership retains exact s
  s.players.A!.abilityCharacterIds=['c2-p07-r1c1'];cleanConditionalSelections(s);
  expect(ownsAbility(s.players.A!,id)).toBe(false);expect(s.players.A!.conditionalSelections).toEqual([]);
  expect(viewFor(s,'A').conditionalAbilities.some(o=>o.abilityId===id)).toBe(false);
+});
+it.each(CONDITIONAL_CASES)('%s %s structural condition loss suspends addition without erasing election',(name,id)=>{
+ let s=ready();character(s,'A',name);character(s,'B',id==='c2-p02-r1c1-ab04'?'吟遊詩人のレスター':'聖騎士ランスロット');
+ s.players.A!.revealed=true;s.players.B!.revealed=true;
+ if(id==='c2-p04-r1c2-ab05')s.players.A!.faction='GOOD';
+ const dragon=id==='c2-p04-r1c2-ab03';let attack:string|undefined;
+ if(dragon){s.players.B!.permanent={magic_level:20};const follower=handCard(s,'A','飛竜');s.players.A!.hand=s.players.A!.hand.filter(c=>c!==follower);s.players.A!.followers.push({cardInstanceId:follower,revealed:false});attack=handCard(s,'B','風矢');s.turnSeat=1;}
+ const option=viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
+ s=finish(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:option.targetEventId,enabled:true,...(id==='c2-p03-r1c2-ab03'?{targetIds:['B']}: {})}));
+ let context:StatProvenance={kind:'combat',attackerId:'A',targetIds:['B']};
+ if(dragon){s=until(act(s,'B',{type:'ATTACK',cardInstanceId:attack!,targetIds:['A'],dedicated:false}),'before-roll');expect(s.rolls!.at(-1)!.purpose).toBe('follower-morale');context={kind:'roll',id:s.rolls!.at(-1)!.id};}
+ const saved=structuredClone(s.players.A!.conditionalSelections),originalContext=context;
+ const additions=()=>conditionalStatAdditions(s,s.players.A!,context);
+ const expected={spirit:dragon||id==='c2-p06-r1c2-ab02'?0:['c2-p03-r1c2-ab03','c2-p03-r2c2-ab04','c2-p05-r2c1-ab05'].includes(id)?2:1,handLimit:id==='c2-p06-r1c2-ab02'?2:0,moraleBonus:dragon?2:0};
+ expect(additions()).toEqual(expected);
+ // Explicit resolver boundaries: no fabricated concealment, allegiance change or combat producer.
+ if(dragon||id==='c2-p05-r1c2-ab01')context={kind:'none'};
+ else if(id==='c2-p06-r1c2-ab02')s.players.A!.revealed=false;
+ else if(id==='c2-p04-r1c2-ab05')s.players.A!.faction='EVIL';
+ else s.players.B!.revealed=false;
+ cleanConditionalSelections(s);expect(additions()).toEqual({spirit:0,handLimit:0,moraleBonus:0});expect(s.players.A!.conditionalSelections).toEqual(saved);
+ s=JSON.parse(JSON.stringify(s));context=originalContext;s.players.A!.revealed=true;s.players.B!.revealed=true;if(id==='c2-p04-r1c2-ab05')s.players.A!.faction='GOOD';
+ expect(additions()).toEqual(expected);expect(s.players.A!.conditionalSelections).toEqual(saved);
 });

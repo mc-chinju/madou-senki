@@ -744,6 +744,36 @@
       ]
     },
     {
+      "row": "c2-p02-r1c1-ab04#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab04"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p02-r1c1-ab04#absence-retains-death-clears",
       "handler": [
         {
@@ -872,6 +902,36 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab03#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab03"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
         }
       ],
       "status": "implemented",
@@ -1016,6 +1076,36 @@
       ]
     },
     {
+      "row": "c2-p03-r2c2-ab04#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "黒妖精のアーネス",
+            "c2-p03-r2c2-ab04"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p03-r2c2-ab04#absence-retains-death-clears",
       "handler": [
         {
@@ -1144,6 +1234,36 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab03#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab03"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
         }
       ],
       "status": "implemented",
@@ -1288,6 +1408,36 @@
       ]
     },
     {
+      "row": "c2-p04-r1c2-ab05#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab05"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p04-r1c2-ab05#absence-retains-death-clears",
       "handler": [
         {
@@ -1416,6 +1566,36 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab01#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "c2-p05-r1c2-ab01"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
         }
       ],
       "status": "implemented",
@@ -1560,6 +1740,36 @@
       ]
     },
     {
+      "row": "c2-p05-r2c1-ab05#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "c2-p05-r2c1-ab05"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p05-r2c1-ab05#absence-retains-death-clears",
       "handler": [
         {
@@ -1688,6 +1898,36 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Exact source defaults OFF; actual Fate cancellation spends its opportunity without installation; real phase advance permits explicit selection; JSON restore and explicit OFF preserve eligibility rules."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#condition-loss-suspends-keeps-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural condition loss suspends addition without erasing election",
+          "parameters": [
+            "魔聖母ディア",
+            "c2-p06-r1c2-ab02"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
         }
       ],
       "status": "implemented",

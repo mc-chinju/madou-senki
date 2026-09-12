@@ -91,8 +91,17 @@ def received_defense_binding(row):
 def conditional_election_binding(row, cards):
     ids = {'c2-p02-r1c1-ab04','c2-p03-r1c2-ab03','c2-p03-r2c2-ab04','c2-p04-r1c2-ab03','c2-p04-r1c2-ab05','c2-p05-r1c2-ab01','c2-p05-r2c1-ab05','c2-p06-r1c2-ab02'}
     entry, clause = row['entryId'], row['clauseKey']
-    if entry not in ids or clause not in {'default-off-explicit-cancelable-election', 'absence-retains-death-clears', 'cancel-update-retains-prior-selection-and-attempt', 'transform-inheritance-preserves-source-selection'}:
+    if entry not in ids or clause not in {'default-off-explicit-cancelable-election', 'absence-retains-death-clears', 'cancel-update-retains-prior-selection-and-attempt', 'transform-inheritance-preserves-source-selection', 'condition-loss-suspends-keeps-selection'}:
         return None
+    if clause == 'condition-loss-suspends-keeps-selection':
+        return {'row': f'{entry}#{clause}',
+                'handler': [{'path': 'packages/engine/src/abilities/conditional-stats.ts', 'symbol': 'conditionalStatAdditions'},
+                            {'path': 'packages/engine/src/abilities/conditional-selection.ts', 'symbol': 'cleanConditionalSelections'}],
+                'tests': [{'path': 'packages/engine/test/character-conditional-matrix.test.ts', 'suite': [],
+                           'title': '%s %s structural condition loss suspends addition without erasing election',
+                           'parameters': [cards[entry.split('-ab')[0]]['name'], entry], 'kind': 'structural-resolver',
+                           'bindingNote': 'Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer.'}],
+                'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
     inherited = clause == 'transform-inheritance-preserves-source-selection'
     update_note = ('Actual Fate cancellation of Lia target update preserves prior selection and the spent opportunity across JSON restore; retry is rejected.'
                    if entry == 'c2-p03-r1c2-ab03' else

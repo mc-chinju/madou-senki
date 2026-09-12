@@ -232212,11 +232212,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:00de220dfd1f4434"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232404,11 +232409,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:fa7e44b13cf05431"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232596,11 +232606,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:fb8078dc297b9bf8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232788,11 +232803,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:2fbde751e1b70ffe"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232980,11 +233000,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:7ceea15effe61422"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233172,11 +233197,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:f4ee9b595f954fa8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233364,11 +233394,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:ded6716032321603"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233556,11 +233591,16 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:9ac3669b4e9b50ad"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415805,8 +415845,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7034,
-      "implemented": 5144
+      "pending": 7026,
+      "implemented": 5152
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -489200,6 +489240,102 @@
         "c2-p06-r1c2-ab02"
       ],
       "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:00de220dfd1f4434": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab04"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:fa7e44b13cf05431": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab03"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:fb8078dc297b9bf8": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "黒妖精のアーネス",
+        "c2-p03-r2c2-ab04"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:2fbde751e1b70ffe": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab03"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:7ceea15effe61422": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab05"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:f4ee9b595f954fa8": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "c2-p05-r1c2-ab01"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:ded6716032321603": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "c2-p05-r2c1-ab05"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
+    },
+    "t:9ac3669b4e9b50ad": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural condition loss suspends addition without erasing election",
+      "declarationSha256": "e4b5308a5817eb4f2a8aa6890f4bc8f39695fceeca71e13cadc9e83792bc5f98",
+      "kind": "structural-resolver",
+      "parameters": [
+        "魔聖母ディア",
+        "c2-p06-r1c2-ab02"
+      ],
+      "bindingNote": "Actual election then source-specific public/faction/combat-context boundary: exact addition disappears while selection persists and resumes after JSON restore. Dragon uses an actual follower-morale roll context. Condition removal is direct, not a claimed legal concealment or allegiance producer."
     }
   },
   "remainingNotes": {

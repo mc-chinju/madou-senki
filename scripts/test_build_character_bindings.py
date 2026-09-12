@@ -132,6 +132,13 @@ class CharacterBindingsTest(unittest.TestCase):
         self.assertEqual(result[0]['tests'][0]['kind'], 'structural-resolver')
         self.assertEqual(result[0]['tests'][0]['parameters'], ['有翼人のティア','c2-p02-r1c1-ab04'])
 
+    def test_condition_loss_uses_explicit_structural_boundary(self):
+        ledger = self.ledger('condition-loss-suspends-keeps-selection')
+        ledger['rows'][0]['entryId'] = 'c2-p04-r1c2-ab03'
+        result = build_bindings(ledger, [{'id':'c2-p04-r1c2','name':'竜皇子アスフェルト','defeat_condition':'なし'}])
+        self.assertEqual(result[0]['tests'][0]['kind'], 'structural-resolver')
+        self.assertIn('condition loss', result[0]['tests'][0]['title'])
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

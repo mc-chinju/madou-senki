@@ -1229,6 +1229,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4条件付き能力の継承境界: 8能力を実際に選択した後、継承元を保持した人物変更・保存復帰・cleanupで能力ID/元人物ID/対象指定が残り、継承元を除去すると選択と候補が消える新規8試験へ束縛。これらの人物にランスロット2への印刷変身はないため、全8行を明示的なstructural-resolverとした。関連114試験、型検査、Python26件、台帳validator成功。人物pending16、semantic具体的実装済み5,144、pending115、accepted0。残りは8能力の条件消失/凍結値で、全B4生成gateは残16行で停止。詳細は [B4継承境界進捗](../../operations/evidence/2026-09-12-b4-inheritance-progress.json)。Step3〜5は未完了。
 
+2026-09-12 B4条件消失: 全8能力を実選択後、能力固有の公開人物/陣営/攻撃文脈/竜従者士気文脈/自身公開の条件を外し、加算だけが0となって選択が残り、保存復帰後の条件回復で再選択なしに加算が戻る新規8試験へ束縛。竜は実攻撃から発生した士気判定を使うが条件変更は直接境界操作なので全8行をstructural-resolverとした。関連122試験、型検査、Python27件、台帳validator成功。人物pending8、semantic具体的実装済み5,152、pending107、accepted0。全B4生成gateは残る凍結値8行で停止。詳細は [B4条件消失進捗](../../operations/evidence/2026-09-12-b4-condition-loss-progress.json)。Step3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**
