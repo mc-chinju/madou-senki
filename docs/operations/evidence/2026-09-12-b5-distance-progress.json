@@ -1,0 +1,39 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B5 Cham and Tia distance and Lancaster returned-counter clauses; not acceptance evidence",
+  "newlyImplementedClauses": 7,
+  "newTests": 2,
+  "bindingFileRows": 46,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/r5-distance.test.ts --reporter=json --outputFile=/private/tmp/release-b5-distance.json",
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit passed",
+    "Binding application validates exact AST declarations and parameter tuples",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Actual Cham and Tia approach, withdrawal and battle maai distinguish one versus exactly two additional advances; canceled Cham election retains one physical maai payment.",
+    "Tia actual earth magic choice is compared with decline/cancellation and real warrior attack; warrior-earth school exclusion is explicitly structural.",
+    "Actual Lancaster attack receives a real counter: election prevents every advance opportunity and forged advance submission, while the declined control allows one advance and counter damage. Both cases spend exactly one maai."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/r5-distance.test.ts": "f1dbefd105c69c8e48feee6a3f945905df241157482fa491d52f98893947a9fa",
+    "docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json": "04cd267abd04c5fdf135c6669e33c4076cf35986ce8549e8336ac0168515003f",
+    "docs/operations/evidence/2026-09-11-remaining-clauses.md": "71628d3672a55258f4c5fb981154c9e0b575e4d483a5c32fcb812457108e38bf"
+  },
+  "semanticImplementedConcrete": 5206,
+  "semanticPending": 53,
+  "semanticAccepted": 0,
+  "limitations": [
+    "Existing runtime code is unchanged; two new transition cases strengthen advance prevention.",
+    "B5 Steps1–3 remain incomplete: 51 ordinary clauses and two deferred D4c rows remain.",
+    "No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}

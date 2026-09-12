@@ -1473,6 +1473,285 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab01#one-maai-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "beginMaaiAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Canceled maai ability retains the physical payment and needs only one advance",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Cham election moves one selected maai to resolution, cancellation retains it in discard exactly once and one advance restores the hit."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab01#two-advances-required",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "beginMaaiAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "distanceAdvanceFactor"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected maai survives one advance and fails after exactly two",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack: one paid advance leaves zero damage, exactly two restore four damage with unchanged global distance."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected approach response needs two additional advances",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual approach needs two additional paid advances after elected maai."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s can attach its optional maai to initial withdrawal",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual withdrawal with elected maai remains far after one advance and becomes near after two."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab01#maai-requires-two-advances",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "beginMaaiAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "distanceAdvanceFactor"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected maai survives one advance and fails after exactly two",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack: one paid advance leaves zero damage, exactly two restore four damage with unchanged global distance."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected approach response needs two additional advances",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual approach needs two additional paid advances after elected maai."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s can attach its optional maai to initial withdrawal",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual withdrawal with elected maai remains far after one advance and becomes near after two."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab01#earth-magic-immunity",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "resolveReceivedDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+          "parameters": "decline",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia flight does not offer earth immunity for a real ordinary warrior attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior attack offers no immunity and resolves seven damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia earth predicate excludes a structural warrior-earth source",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Structural warrior plus earth attribute does not satisfy magic-school predicate."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab03#original-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster can elect uncancelable maai only against an actual returned counter to his attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lancaster initiates actual attack and receives actual counter: option present and zero damage. Ordinary incoming attack offers no ability and forged election fails atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab03#returned-counter-only",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster can elect uncancelable maai only against an actual returned counter to his attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lancaster initiates actual attack and receives actual counter: option present and zero damage. Ordinary incoming attack offers no ability and forged election fails atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab03#maai-uncancelable-by-advance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceLimit"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

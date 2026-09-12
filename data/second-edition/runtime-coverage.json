@@ -171769,12 +171769,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:bf291dd249a61b1a",
+        "h:b9ef620b80f017ad"
+      ],
+      "tests": [
+        "t:192899bef2cca418"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:02b2cd4aaade73f6",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -171789,12 +171793,19 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:bf291dd249a61b1a",
+        "h:b9ef620b80f017ad",
+        "h:cce082b12982d75e"
+      ],
+      "tests": [
+        "t:27cfcda2b1041346",
+        "t:13a279ba54a6d383",
+        "t:d4a54c89847cdd22"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:02b2cd4aaade73f6",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -172179,12 +172190,20 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:e22fbbea6e1fae64",
+        "h:1c62690300de9a4a"
+      ],
+      "tests": [
+        "t:c462b43ad635d175",
+        "t:712bbd65981480ae",
+        "t:87d47fef5a9a1e19",
+        "t:a45d92276b4f2be9",
+        "t:65f01868e97e8a55"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:02b2cd4aaade73f6",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -172199,12 +172218,19 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:bf291dd249a61b1a",
+        "h:b9ef620b80f017ad",
+        "h:cce082b12982d75e"
+      ],
+      "tests": [
+        "t:d9577cb6c75b09ec",
+        "t:424af9561018b985",
+        "t:a52479b99c5454a7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:02b2cd4aaade73f6",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -172824,12 +172850,15 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:90e35b8bb047f87b"
+      ],
+      "tests": [
+        "t:c42c027c30de3520"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:02b2cd4aaade73f6",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -172844,12 +172873,15 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:90e35b8bb047f87b"
+      ],
+      "tests": [
+        "t:c42c027c30de3520"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:02b2cd4aaade73f6",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -172864,12 +172896,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:b9ef620b80f017ad",
+        "h:b7b33f259c001ebb"
+      ],
+      "tests": [
+        "t:2589c49ec683d579",
+        "t:3ad1f7c4d2a67db8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:02b2cd4aaade73f6",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -416093,8 +416130,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6979,
-      "implemented": 5199
+      "pending": 6972,
+      "implemented": 5206
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417424,6 +417461,26 @@
     "h:2777164a208f2ca3": {
       "path": "packages/engine/src/abilities/sad-love-state.ts",
       "symbol": "rewardSadLove"
+    },
+    "h:bf291dd249a61b1a": {
+      "path": "packages/engine/src/abilities/distance.ts",
+      "symbol": "beginMaaiAbility"
+    },
+    "h:b9ef620b80f017ad": {
+      "path": "packages/engine/src/abilities/distance.ts",
+      "symbol": "maaiAdvanceFactor"
+    },
+    "h:cce082b12982d75e": {
+      "path": "packages/engine/src/abilities/distance.ts",
+      "symbol": "distanceAdvanceFactor"
+    },
+    "h:90e35b8bb047f87b": {
+      "path": "packages/engine/src/abilities/distance.ts",
+      "symbol": "maaiAbilityOptions"
+    },
+    "h:b7b33f259c001ebb": {
+      "path": "packages/engine/src/abilities/distance.ts",
+      "symbol": "maaiAdvanceLimit"
     }
   },
   "testCases": {
@@ -490425,6 +490482,177 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual multi-hit attack kills Arnes and Upa together; Arnes one spirit and reward ID persist through actual revival."
+    },
+    "t:192899bef2cca418": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Canceled maai ability retains the physical payment and needs only one advance",
+      "declarationSha256": "b114a26a1ae9219ecce2e53724125cceadca3f676c5511a93d8e3770d868b240",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Cham election moves one selected maai to resolution, cancellation retains it in discard exactly once and one advance restores the hit."
+    },
+    "t:27cfcda2b1041346": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "%s elected maai survives one advance and fails after exactly two",
+      "declarationSha256": "5eab94389b8810a00733a9c9a8d663d79f523b2fd03eaea7153a9839dc14c7c5",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小妖精のチャム",
+        "c2-p01-r2c2-ab01"
+      ],
+      "bindingNote": "Actual attack: one paid advance leaves zero damage, exactly two restore four damage with unchanged global distance."
+    },
+    "t:13a279ba54a6d383": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "%s elected approach response needs two additional advances",
+      "declarationSha256": "28a926781b1dd41ab732c0bf12fa8da325589b6ee35abfd8be4cf575fddccc32",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小妖精のチャム",
+        "c2-p01-r2c2-ab01"
+      ],
+      "bindingNote": "Actual approach needs two additional paid advances after elected maai."
+    },
+    "t:d4a54c89847cdd22": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "%s can attach its optional maai to initial withdrawal",
+      "declarationSha256": "6909f5368698a1c53cecda6f80149dfc6932d5aae8a6e1e60a678ee6bff8ae6d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小妖精のチャム",
+        "c2-p01-r2c2-ab01"
+      ],
+      "bindingNote": "Actual withdrawal with elected maai remains far after one advance and becomes near after two."
+    },
+    "t:d9577cb6c75b09ec": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "%s elected maai survives one advance and fails after exactly two",
+      "declarationSha256": "5eab94389b8810a00733a9c9a8d663d79f523b2fd03eaea7153a9839dc14c7c5",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab01"
+      ],
+      "bindingNote": "Actual attack: one paid advance leaves zero damage, exactly two restore four damage with unchanged global distance."
+    },
+    "t:424af9561018b985": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "%s elected approach response needs two additional advances",
+      "declarationSha256": "28a926781b1dd41ab732c0bf12fa8da325589b6ee35abfd8be4cf575fddccc32",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab01"
+      ],
+      "bindingNote": "Actual approach needs two additional paid advances after elected maai."
+    },
+    "t:a52479b99c5454a7": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "%s can attach its optional maai to initial withdrawal",
+      "declarationSha256": "6909f5368698a1c53cecda6f80149dfc6932d5aae8a6e1e60a678ee6bff8ae6d",
+      "kind": "canonical-transition",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab01"
+      ],
+      "bindingNote": "Actual withdrawal with elected maai remains far after one advance and becomes near after two."
+    },
+    "t:c462b43ad635d175": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+      "declarationSha256": "20ab90ab3d1b956eca4458774f39dc049e331c857163e358e33fd74d4dfa6866",
+      "kind": "canonical-transition",
+      "parameters": "select",
+      "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+    },
+    "t:712bbd65981480ae": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+      "declarationSha256": "20ab90ab3d1b956eca4458774f39dc049e331c857163e358e33fd74d4dfa6866",
+      "kind": "canonical-transition",
+      "parameters": "decline",
+      "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+    },
+    "t:87d47fef5a9a1e19": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+      "declarationSha256": "20ab90ab3d1b956eca4458774f39dc049e331c857163e358e33fd74d4dfa6866",
+      "kind": "canonical-transition",
+      "parameters": "cancel",
+      "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+    },
+    "t:a45d92276b4f2be9": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Tia flight does not offer earth immunity for a real ordinary warrior attack",
+      "declarationSha256": "4877164c04ce7cff71edcb8f2e0bcb8e723f3c2ac3c128da52ab6d433dcdf947",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual warrior attack offers no immunity and resolves seven damage."
+    },
+    "t:65f01868e97e8a55": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Tia earth predicate excludes a structural warrior-earth source",
+      "declarationSha256": "00b585d780685e25c5821d56b6614dcbf4ee1772f48006cd68c6b650eb5dac93",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Structural warrior plus earth attribute does not satisfy magic-school predicate."
+    },
+    "t:c42c027c30de3520": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Lancaster can elect uncancelable maai only against an actual returned counter to his attack",
+      "declarationSha256": "20a45fed55e2f233861c74f78b3b65c4d7f16f9f9e7478e402e7a787e059af16",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Lancaster initiates actual attack and receives actual counter: option present and zero damage. Ordinary incoming attack offers no ability and forged election fails atomically."
+    },
+    "t:dc0e5f4c71c99225": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+      "declarationSha256": "8eca738a2ae419e4aa4f42f6ddbfd6fac4d049c058235bd64ae203a1fc59bd01",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+    },
+    "t:5e5668652be98e20": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+      "declarationSha256": "8eca738a2ae419e4aa4f42f6ddbfd6fac4d049c058235bd64ae203a1fc59bd01",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+    },
+    "t:2589c49ec683d579": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+      "declarationSha256": "91f4dfc3d9af0b2e2f56dd6c1953e54bdb307264e3e4b1e7d11968289340f41c",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+    },
+    "t:3ad1f7c4d2a67db8": {
+      "path": "packages/engine/test/r5-distance.test.ts",
+      "suite": [],
+      "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+      "declarationSha256": "91f4dfc3d9af0b2e2f56dd6c1953e54bdb307264e3e4b1e7d11968289340f41c",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
     }
   },
   "remainingNotes": {

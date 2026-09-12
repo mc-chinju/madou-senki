@@ -8,16 +8,16 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 
 | 行 | 分類 | 対応 |
 |---|---|---|
-| `c2-p01-r2c2-ab01#one-maai-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p01-r2c2-ab01#two-advances-required` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p01-r2c2-ab01#one-maai-cost` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
+| `c2-p01-r2c2-ab01#two-advances-required` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
 | `c2-p01-r2c2-ab05#own-death` | a | cham-death-gift.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
 | `c2-p01-r2c2-ab05#selected-eligible-recipient` | a | cham-death-gift.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
 | `c2-p01-r2c2-ab05#no-physical-gift-cost` | a | cham-death-gift.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
-| `c2-p02-r1c1-ab01#earth-magic-immunity` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p02-r1c1-ab01#maai-requires-two-advances` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p02-r2c1-ab03#original-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p02-r2c1-ab03#returned-counter-only` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p02-r2c1-ab03#maai-uncancelable-by-advance` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c1-ab01#earth-magic-immunity` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
+| `c2-p02-r1c1-ab01#maai-requires-two-advances` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
+| `c2-p02-r2c1-ab03#original-attacker` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
+| `c2-p02-r2c1-ab03#returned-counter-only` | a | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
+| `c2-p02-r2c1-ab03#maai-uncancelable-by-advance` | b（追加済み） | r5-distance.test.ts の実間合い/踏み込み/反撃試験へ束縛。地魔法の学校除外境界のみ明記した構造試験。ランカスターの選択/辞退と実踏み込み拒否2ケースを追加。 |
 | `c2-p03-r1c2-ab04#own-turn-extra-once` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p03-r1c2-ab04#spirit-minus-five` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
