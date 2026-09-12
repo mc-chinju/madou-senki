@@ -414090,21 +414090,22 @@
       "kind": "reclaim-budget",
       "coverageClass": "semantic",
       "handler": [
-        "h:c05134350cafc68f",
-        "h:c1cf9974115950e8"
+        "h:e0f59e0f9bc552e6",
+        "h:8390d92596709362"
       ],
       "tests": [
-        "t:7de42a8ccabdf0ca",
-        "t:ff26012715d784ff",
-        "t:0f02bab8144850b0",
-        "t:e9d46b9e959730ae",
-        "t:34d6d668b86010ea",
-        "t:90c1e1a30386b566",
-        "t:e4b76faca1a04503"
+        "t:3a1b5effca498313",
+        "t:6fba1f0af7584e3e",
+        "t:b523105efab68ce8",
+        "t:da3731ec60d61df8",
+        "t:1eaa8a79fb715315",
+        "t:40be25997439b1ff",
+        "t:42b1027a9a951d11",
+        "t:83266c0c02a64500"
       ],
       "status": "implemented",
       "remaining": [
-        "Selected actual budget/cancellation cases and handlers registered. Full source/current frozen candidate acceptance remain. No review performed."
+        "n:efdd56a8f778f9de"
       ]
     },
     {
@@ -414169,22 +414170,23 @@
       "kind": "reclaim-budget",
       "coverageClass": "semantic",
       "handler": [
-        "h:743c7e6e1cbf71ad",
-        "h:c1cf9974115950e8",
-        "h:cda4645a919e1dd3",
-        "h:4911703f221e0fd7"
+        "h:2b789d54c3691736",
+        "h:8390d92596709362",
+        "h:91308f527b64fb30",
+        "h:a88b85ae5798055c"
       ],
       "tests": [
-        "t:f6be344f3bc2eeb9",
-        "t:d5c65699469eba8d",
-        "t:b702fca88e551f35",
-        "t:49c70316eaf3cbdb",
-        "t:fe8076ee6b422ffc",
-        "t:a279c97ddd3dce8f"
+        "t:a8ca665a7d27aa89",
+        "t:ff4e5836c037c703",
+        "t:d057a836c4b5db46",
+        "t:baf316a9eb0d6d30",
+        "t:7d05935fac2da42a",
+        "t:c4ea36295f018153",
+        "t:83266c0c02a64500"
       ],
       "status": "implemented",
       "remaining": [
-        "Six real cancellation/save-load retry cases registered. Full source/current frozen candidate acceptance remain. No review performed."
+        "n:efdd56a8f778f9de"
       ]
     },
     {
@@ -414199,18 +414201,20 @@
       "kind": "reclaim-response",
       "coverageClass": "semantic",
       "handler": [
-        "h:097d1cb728f724aa",
-        "h:5a534d0d305983e9"
+        "h:cac13743d2374251",
+        "h:2d9572f423eb0ec8"
       ],
       "tests": [
-        "t:68533981f35ded27",
-        "t:b600a8f89aff75a5",
-        "t:098fddb8e7754fd6",
-        "t:e329bee30980e664"
+        "t:2de9bf0d52afe3af",
+        "t:18692421a19140a9",
+        "t:318cf3d7344ea46a",
+        "t:2daaae95fd5a5b14",
+        "t:2eb026e51d919fc3",
+        "t:83266c0c02a64500"
       ],
       "status": "implemented",
       "remaining": [
-        "Four actual source-seat/save-load/reveal cases registered. Public absence, child reactions and disconnected participants are separate conditions. Full source/current frozen candidate acceptance remain. No review performed."
+        "n:efdd56a8f778f9de"
       ]
     },
     {
@@ -414417,17 +414421,23 @@
       "kind": "reclaim-response",
       "coverageClass": "semantic",
       "handler": [
-        "h:c05134350cafc68f",
-        "h:0000116e708887cf",
-        "h:743c7e6e1cbf71ad"
+        "h:e0f59e0f9bc552e6",
+        "h:a923bdf4a5100137",
+        "h:2b789d54c3691736"
       ],
       "tests": [
-        "t:55012a20bbd6951b",
-        "t:a0f4d7c7ed1ce68d"
+        "t:1173d4cbf16a8efc",
+        "t:97cff25b18098b5c",
+        "t:e848557c7c80973c",
+        "t:b39488f067961db5",
+        "t:37b719724a9a5e0a",
+        "t:f035fb6d71c5b3d6",
+        "t:44bdb8e5d167b6a4",
+        "t:7f0692861270040d"
       ],
       "status": "implemented",
       "remaining": [
-        "Concrete ownership or same-seat exclusive choice evidence registered. Separate independent claimants, full source and frozen candidate acceptance remain. No review performed."
+        "n:efdd56a8f778f9de"
       ]
     },
     {
@@ -417781,6 +417791,14 @@
     "h:c37286eb311c0ea4": {
       "path": "packages/engine/src/abilities/received-defense.ts",
       "symbol": "receivedTechnique"
+    },
+    "h:2d9572f423eb0ec8": {
+      "path": "packages/engine/src/reclaim.ts",
+      "symbol": "syncReclaimWindow"
+    },
+    "h:a923bdf4a5100137": {
+      "path": "packages/engine/src/reclaim.ts",
+      "symbol": "closeReclaim"
     }
   },
   "testCases": {
@@ -491914,6 +491932,291 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual source action stays unchanged, B effect becomes five while C stays six; damage eight each."
+    },
+    "t:2de9bf0d52afe3af": {
+      "path": "packages/engine/test/reclaim-privacy.test.ts",
+      "suite": [],
+      "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+      "declarationSha256": "19dced465f8c6ede0b6b7bd3d9cd6269524f43670e64e23d625b25d7ff11f623",
+      "kind": "canonical-transition",
+      "parameters": "A",
+      "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+    },
+    "t:18692421a19140a9": {
+      "path": "packages/engine/test/reclaim-privacy.test.ts",
+      "suite": [],
+      "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+      "declarationSha256": "19dced465f8c6ede0b6b7bd3d9cd6269524f43670e64e23d625b25d7ff11f623",
+      "kind": "canonical-transition",
+      "parameters": "B",
+      "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+    },
+    "t:318cf3d7344ea46a": {
+      "path": "packages/engine/test/reclaim-privacy.test.ts",
+      "suite": [],
+      "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+      "declarationSha256": "19dced465f8c6ede0b6b7bd3d9cd6269524f43670e64e23d625b25d7ff11f623",
+      "kind": "canonical-transition",
+      "parameters": "C",
+      "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+    },
+    "t:2daaae95fd5a5b14": {
+      "path": "packages/engine/test/reclaim-privacy.test.ts",
+      "suite": [],
+      "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+      "declarationSha256": "19dced465f8c6ede0b6b7bd3d9cd6269524f43670e64e23d625b25d7ff11f623",
+      "kind": "canonical-transition",
+      "parameters": "D",
+      "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+    },
+    "t:2eb026e51d919fc3": {
+      "path": "packages/engine/test/reclaim-reservations.test.ts",
+      "suite": [],
+      "title": "Hidden zero base extra and unlimited worlds share public all-pass transcripts for both printed sources",
+      "declarationSha256": "e0e0413978abd6bbf0a5a1146664019ac0e6654604f0600590031713e209e2de",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "D2: both real printed sources are compared in all four hidden-right worlds without invented grants; complete non-owner views, revisions, event IDs, events, four explicit seats and final discard agree."
+    },
+    "t:83266c0c02a64500": {
+      "path": "packages/engine/test/reclaim-reservations.test.ts",
+      "suite": [],
+      "title": "Revealed Lester unlimited answer retains cursor, answers once and leaves an unused base slot intact",
+      "declarationSha256": "146e010909a1120212cb03da03befe380d8bd4771d5907c7911413ab4321c2f5",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "D2 public branch: actual reveal retains the original clockwise slot, one unlimited attempt returns one card, duplicate choice rejects atomically, and base stays unspent."
+    },
+    "t:3a1b5effca498313": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "S24 unlimited recovery leaves base slot intact and is finite per event",
+      "declarationSha256": "d05ccfd9abc85b10d94fdd1d2f63403eb38e6bfdd49d40ef55b4a6a893ee601b",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+    },
+    "t:6fba1f0af7584e3e": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s saves and resumes one recovery declaration",
+      "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab04",
+        "破山剣",
+        "unlimited"
+      ],
+      "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+    },
+    "t:b523105efab68ce8": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s saves and resumes one recovery declaration",
+      "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p03-r2c1-ab04",
+        "魔詩",
+        "unlimited"
+      ],
+      "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+    },
+    "t:da3731ec60d61df8": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s saves and resumes one recovery declaration",
+      "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p04-r1c2-ab04",
+        "歌う船",
+        "unlimited"
+      ],
+      "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+    },
+    "t:1eaa8a79fb715315": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s saves and resumes one recovery declaration",
+      "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c2-ab04",
+        "グリフォン",
+        "unlimited"
+      ],
+      "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+    },
+    "t:40be25997439b1ff": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s saves and resumes one recovery declaration",
+      "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab04",
+        "スケルトン",
+        "unlimited"
+      ],
+      "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+    },
+    "t:42b1027a9a951d11": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s saves and resumes one recovery declaration",
+      "declarationSha256": "3ef5f9e1999527f523d5aa2fa3eab14fbd2a646e63e3a8028c094ba02868b94e",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r2c2-ab03",
+        "狼牙",
+        "unlimited"
+      ],
+      "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+    },
+    "t:a8ca665a7d27aa89": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+      "declarationSha256": "f20aee995debacdc694a3cb34060daf9eb1649c9c52dcb87ce337c6b9ea51f41",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p02-r2c2-ab04",
+        "破山剣"
+      ],
+      "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+    },
+    "t:ff4e5836c037c703": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+      "declarationSha256": "f20aee995debacdc694a3cb34060daf9eb1649c9c52dcb87ce337c6b9ea51f41",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p03-r2c1-ab04",
+        "魔詩"
+      ],
+      "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+    },
+    "t:d057a836c4b5db46": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+      "declarationSha256": "f20aee995debacdc694a3cb34060daf9eb1649c9c52dcb87ce337c6b9ea51f41",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p04-r1c2-ab04",
+        "歌う船"
+      ],
+      "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+    },
+    "t:baf316a9eb0d6d30": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+      "declarationSha256": "f20aee995debacdc694a3cb34060daf9eb1649c9c52dcb87ce337c6b9ea51f41",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r1c2-ab04",
+        "グリフォン"
+      ],
+      "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+    },
+    "t:7d05935fac2da42a": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+      "declarationSha256": "f20aee995debacdc694a3cb34060daf9eb1649c9c52dcb87ce337c6b9ea51f41",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab04",
+        "スケルトン"
+      ],
+      "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+    },
+    "t:c4ea36295f018153": {
+      "path": "packages/engine/test/reuse-abilities.test.ts",
+      "suite": [],
+      "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+      "declarationSha256": "f20aee995debacdc694a3cb34060daf9eb1649c9c52dcb87ce337c6b9ea51f41",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r2c2-ab03",
+        "狼牙"
+      ],
+      "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+    },
+    "t:1173d4cbf16a8efc": {
+      "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+      "suite": [],
+      "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+      "declarationSha256": "0ec9d85562d229ed6853ec738eb127961838c752f6e0116f88ef555310abe50b",
+      "kind": "canonical-transition",
+      "parameters": "base",
+      "bindingNote": "Actual physical use and accepted/rejected recovery commands. Foreign-name case run in owned-reclaim 12 passed; existing same-seat Courage cases covered by beneficiary-decline 118-passed related run. Distinct independent claimants are not asserted."
+    },
+    "t:97cff25b18098b5c": {
+      "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+      "suite": [],
+      "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+      "declarationSha256": "0ec9d85562d229ed6853ec738eb127961838c752f6e0116f88ef555310abe50b",
+      "kind": "canonical-transition",
+      "parameters": "printed",
+      "bindingNote": "Actual physical use and accepted/rejected recovery commands. Foreign-name case run in owned-reclaim 12 passed; existing same-seat Courage cases covered by beneficiary-decline 118-passed related run. Distinct independent claimants are not asserted."
+    },
+    "t:e848557c7c80973c": {
+      "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+      "suite": [],
+      "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+      "declarationSha256": "0ec9d85562d229ed6853ec738eb127961838c752f6e0116f88ef555310abe50b",
+      "kind": "canonical-transition",
+      "parameters": "base",
+      "bindingNote": "D3 actual base/printed alternatives: chosen right returns once, stale competing claim rejects unchanged, base consumed only on base choice."
+    },
+    "t:b39488f067961db5": {
+      "path": "apps/worker/test/room-lester-two-rights.test.ts",
+      "suite": [],
+      "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+      "declarationSha256": "25a4ae4aafb77174d3e14947a97b51f7d7f22cc912e1305186b77be1565abd25",
+      "kind": "worker-persistence",
+      "parameters": "base",
+      "bindingNote": "D3 actual same-seat choice, every-command restart/replay, all-seat projection and stale competing claim rejection."
+    },
+    "t:37b719724a9a5e0a": {
+      "path": "tests/e2e/lester-two-rights.spec.ts",
+      "suite": [],
+      "title": "Actual Lester Courage base selection survives browser reload and returns once",
+      "declarationSha256": "81b1847b35992ccac061a0c67bb3fda44a9b58a6ac330ddf4db4d1eda37b9f11",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "D3 browser real reveal/choice, reload at intermediate and final stages, and one returned card with correct budget/check count."
+    },
+    "t:f035fb6d71c5b3d6": {
+      "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+      "suite": [],
+      "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+      "declarationSha256": "0ec9d85562d229ed6853ec738eb127961838c752f6e0116f88ef555310abe50b",
+      "kind": "canonical-transition",
+      "parameters": "printed",
+      "bindingNote": "D3 actual base/printed alternatives: chosen right returns once, stale competing claim rejects unchanged, base consumed only on base choice."
+    },
+    "t:44bdb8e5d167b6a4": {
+      "path": "apps/worker/test/room-lester-two-rights.test.ts",
+      "suite": [],
+      "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+      "declarationSha256": "25a4ae4aafb77174d3e14947a97b51f7d7f22cc912e1305186b77be1565abd25",
+      "kind": "worker-persistence",
+      "parameters": "printed",
+      "bindingNote": "D3 actual same-seat choice, every-command restart/replay, all-seat projection and stale competing claim rejection."
+    },
+    "t:7f0692861270040d": {
+      "path": "tests/e2e/lester-two-rights.spec.ts",
+      "suite": [],
+      "title": "Actual Lester Courage printed selection survives browser reload and returns once",
+      "declarationSha256": "1714a4d1352c3657f0a208429c95b4f045e0d72d2cf77895afc7adfe60e46d84",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "D3 browser real reveal/choice, reload at intermediate and final stages, and one returned card with correct budget/check count."
     }
   },
   "remainingNotes": {
@@ -492066,7 +492369,8 @@
     "n:6d9fe79b4ce22f05": "Exact clause assertions bound; current candidate successful run remains.",
     "n:88c79cddce919acd": "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion.",
     "n:c7195cc2c3c2f7e9": "Exact source assertions bound; frozen current-candidate run and acceptance remain.",
-    "n:320391926c1913d0": "Exact clause assertions bound; frozen current-candidate run and acceptance remain."
+    "n:320391926c1913d0": "Exact clause assertions bound; frozen current-candidate run and acceptance remain.",
+    "n:efdd56a8f778f9de": "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

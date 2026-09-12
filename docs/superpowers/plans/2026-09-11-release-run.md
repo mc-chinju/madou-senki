@@ -1305,13 +1305,15 @@ it('Unlimited right used after reveal answers in seat order, once per event, and
 Run: `pnpm exec vitest run packages/engine/test/reclaim-reservations.test.ts`
 Expected: 全件成功
 
-- [ ] **Step 3: R4計画の該当2行（D2/D3 で文言を修正済み）に対応する台帳行を特定し、上記2件とレスター同一席の既存3件（Engine/DO/browser）を束縛して適用、コミット**
+- [x] **Step 3: R4計画の該当2行（D2/D3 で文言を修正済み）に対応する台帳行を特定し、上記2件とレスター同一席の既存3件（Engine/DO/browser）を束縛して適用、コミット**
 
 ```bash
 git add packages data docs && git commit -m "test,data: 無制限回収の秘匿比較と同一席2権利を台帳へ束縛する"
 ```
 
 2026-09-12 B6試験追加: D2の2試験を reclaim-reservations に追加。単一実カードで追加/無制限の双方を持つ人物組合せがないため、各4世界で弓と魔詩の実使用をそれぞれ比較（架空の能力継承なし）。カードごとに非所有者全投影・revision・event ID・イベント・4席PASS・最終捨て札が一致。実レスター公開でcursor保持、無制限選択1回、重複拒否、通常枠未消費と1枚回収を確認。対象14試験、型検査、台帳validator成功。runtime変更不要。Step1〜2完了、Step3の台帳行対応付けと既存Engine/DO/browser束縛は継続中。詳細は [B6秘匿試験進捗](../../operations/evidence/2026-09-12-b6-privacy-progress.json)。
+
+2026-09-12 B6完了: D2はG11の公開時計回り回答/公開時席維持・無制限通常枠保持・同機会再試行禁止、D3はG11の同一席競合終了へ対応付け、既存束縛を保った4行のファイルを適用。追加Engine2試験と既存レスターbase/printedのEngine/Worker/browserを束縛。Engine42、Worker2、browser2、型検査、台帳validator成功。既存bunが8787を占有していたため、E2EにPLAYWRIGHT_PORT設定（既定8787）を追加し18787で確認。ChromiumのMachポート制約は承認済みローカル実行で解消。Step3完了。詳細は [B6全体検証](../../operations/evidence/2026-09-12-b6-complete-progress.json)。候補受入ではなく、次はB7。
 
 ### Task B7: Worker / browser 側の必要束縛
 
