@@ -76,19 +76,19 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p06-r2c1-ab02#virtual-fire-attribute` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p06-r2c1-ab02#virtual-level-four` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p06-r2c1-ab02#virtual-damage-five` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
-| `c2-p02-r1c2-ab04#earth-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p02-r1c2-ab04#wind-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p02-r1c2-ab04#water-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p02-r1c2-ab04#fire-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c2-ab04#earth-magic-eligibility` | b（追加済み） | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
+| `c2-p02-r1c2-ab04#wind-magic-eligibility` | b（追加済み） | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
+| `c2-p02-r1c2-ab04#water-magic-eligibility` | b（追加済み） | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
+| `c2-p02-r1c2-ab04#fire-magic-eligibility` | b（追加済み） | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
 | `c2-p04-r1c2-ab01#sword-attack-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p04-r1c2-ab01#wind-attack-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r2c2-ab04#actual-attacking-role` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r2c2-ab04#actual-defending-role` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r2c2-ab04#actual-attacking-role` | a | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
+| `c2-p03-r2c2-ab04#actual-defending-role` | a | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
 | `c2-p03-r1c2-ab02#outside-own-attack-only` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p03-r1c2-ab02#near-selected-target` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c2-ab05#GOOD-required-for-attack-bonus` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c2-ab05#public-Gainas-target-effect-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c2-ab05#public-Uonos-target-effect-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab05#GOOD-required-for-attack-bonus` | a | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
+| `c2-p04-r1c2-ab05#public-Gainas-target-effect-plus-one` | a | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
+| `c2-p04-r1c2-ab05#public-Uonos-target-effect-plus-one` | a | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
 | `c2-p07-r1c2-ab04#optional-Dia-conversion` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p07-r1c2-ab04#optional-Yotsurm-conversion` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |

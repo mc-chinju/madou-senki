@@ -230955,11 +230955,16 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61847cbeabc7b30d"
+      ],
+      "tests": [
+        "t:6b7d210bf7ec79d8",
+        "t:ab6f6670dccf279c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -230985,11 +230990,16 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61847cbeabc7b30d"
+      ],
+      "tests": [
+        "t:2b24723f47d80f36",
+        "t:ab6f6670dccf279c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231015,11 +231025,16 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61847cbeabc7b30d"
+      ],
+      "tests": [
+        "t:4e2039fb05e11ebe",
+        "t:ab6f6670dccf279c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231045,11 +231060,16 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61847cbeabc7b30d"
+      ],
+      "tests": [
+        "t:c4f2ba1a2d2ac5ad",
+        "t:ab6f6670dccf279c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231135,11 +231155,16 @@
         "C15"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e"
+      ],
+      "tests": [
+        "t:f05d6359afdef3cf",
+        "t:962d5df606a17364"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231165,11 +231190,16 @@
         "C15"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fca24df44b4cfb0e"
+      ],
+      "tests": [
+        "t:fe530d59e8fcca31",
+        "t:4a5501a9a94bbd74"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231253,11 +231283,15 @@
         "C15"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:9b238803817bacd2"
+      ],
+      "tests": [
+        "t:9298552a5ffcfced"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231283,11 +231317,15 @@
         "C15"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:9b238803817bacd2"
+      ],
+      "tests": [
+        "t:924ff6d111a2bfa5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231313,11 +231351,15 @@
         "C15"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:9b238803817bacd2"
+      ],
+      "tests": [
+        "t:9298552a5ffcfced"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -416173,8 +416215,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6963,
-      "implemented": 5215
+      "pending": 6954,
+      "implemented": 5224
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -490833,6 +490875,121 @@
       "kind": "structural-resolver",
       "parameters": "B",
       "bindingNote": "Actual ban followed by explicit lifecycle boundary calls retains the complete designation and suppression through source or target death and resetup."
+    },
+    "t:6b7d210bf7ec79d8": {
+      "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+      "suite": [],
+      "title": "Fury actual %s %s magic level %s permits the elemental election",
+      "declarationSha256": "8b6354f3672dca2aae4fed6349060315734a7bf7ca9e83026e14796fb8e8a25a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "地槍",
+        "地",
+        4
+      ],
+      "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+    },
+    "t:ab6f6670dccf279c": {
+      "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+      "suite": [],
+      "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+      "declarationSha256": "b3c480a7692cdbd074bfba301ca3b581d6c099fe85173e76f4aa2217885a1a62",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+    },
+    "t:2b24723f47d80f36": {
+      "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+      "suite": [],
+      "title": "Fury actual %s %s magic level %s permits the elemental election",
+      "declarationSha256": "8b6354f3672dca2aae4fed6349060315734a7bf7ca9e83026e14796fb8e8a25a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "風矢",
+        "風",
+        4
+      ],
+      "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+    },
+    "t:4e2039fb05e11ebe": {
+      "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+      "suite": [],
+      "title": "Fury actual %s %s magic level %s permits the elemental election",
+      "declarationSha256": "8b6354f3672dca2aae4fed6349060315734a7bf7ca9e83026e14796fb8e8a25a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "氷矢",
+        "水",
+        4
+      ],
+      "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+    },
+    "t:c4f2ba1a2d2ac5ad": {
+      "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+      "suite": [],
+      "title": "Fury actual %s %s magic level %s permits the elemental election",
+      "declarationSha256": "8b6354f3672dca2aae4fed6349060315734a7bf7ca9e83026e14796fb8e8a25a",
+      "kind": "canonical-transition",
+      "parameters": [
+        "炎矢",
+        "炎",
+        4
+      ],
+      "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+    },
+    "t:f05d6359afdef3cf": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+      "declarationSha256": "73563bdc837a0d56f6b90588c9bd5fc22a853e4df7b14c411347856d699e1da1",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+    },
+    "t:962d5df606a17364": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+      "declarationSha256": "73563bdc837a0d56f6b90588c9bd5fc22a853e4df7b14c411347856d699e1da1",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+    },
+    "t:fe530d59e8fcca31": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Arnes defending check refers only actual attacker public male=%s",
+      "declarationSha256": "50c2e061c6d3d4f691d0b0106f6ec46c3374a82cf803ec175d79273bfc25d05c",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+    },
+    "t:4a5501a9a94bbd74": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Arnes defending check refers only actual attacker public male=%s",
+      "declarationSha256": "50c2e061c6d3d4f691d0b0106f6ec46c3374a82cf803ec175d79273bfc25d05c",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+    },
+    "t:9298552a5ffcfced": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Truth numeric addition preserves actual null damage and requires GOOD/public named target",
+      "declarationSha256": "3ab0dbe7285620185d23ccf9ae7bc163f29de3f5c8dd531f738ec557083d4088",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Uonos-target attack crosses GOOD/EVIL and public/hidden combinations; effect gets one only for GOOD plus public named target and null damage remains null."
+    },
+    "t:924ff6d111a2bfa5": {
+      "path": "packages/engine/test/conditional-stats.test.ts",
+      "suite": [],
+      "title": "Truth freezes target-local effect/damage for the named public enemy only",
+      "declarationSha256": "4e12436f571da1561b81a96d746c8e9b2d981619eb54d3369a249825e1270ecd",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Real multi-target attack adds one effect and two damage to public Gainas only; unrelated target retains base six effect and eight damage. Both actual damages are asserted."
     }
   },
   "remainingNotes": {

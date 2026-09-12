@@ -245,3 +245,14 @@ it('selected Beast check waiver includes a composed native activation check but 
     declared = until(declared, 'normal-defense');
     expect((declared.rolls ?? []).filter(r => r.purpose === 'activation' || r.purpose === 'excess-level')).toHaveLength(0);
 });
+
+it.each([['地槍','地',4],['風矢','風',4],['氷矢','水',4],['炎矢','炎',4]] as const)('Fury actual %s %s magic level %s permits the elemental election',(name,attribute,level)=>{
+ for(const selected of [false,true]){
+  let s=ready();character(s,'A','妖精王フューリー');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};
+  const card=handCard(s,'A',name);const candidate=viewFor(s,'A').declarationCandidates.find(c=>c.choice.cardInstanceId===card&&!c.choice.dedicated)!;
+  expect(candidate.abilities.some(a=>a.abilityId===FURY)).toBe(true);
+  s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false,declarationAbilityIds:selected?[FURY]:[]});s=until(s,'normal-defense');
+  expect(Object.values(s.groups!)[0]!.technique).toMatchObject({school:'magic',attributes:expect.arrayContaining([attribute]),useLevel:level,effectLevel:level+(selected?1:0)});
+  s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ }
+});

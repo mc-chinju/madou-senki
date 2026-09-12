@@ -2107,6 +2107,277 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#earth-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "地槍",
+            "地",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#wind-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "風矢",
+            "風",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#water-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "氷矢",
+            "水",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#fire-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "炎矢",
+            "炎",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#actual-attacking-role",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#actual-defending-role",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes defending check refers only actual attacker public male=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes defending check refers only actual attacker public male=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#GOOD-required-for-attack-bonus",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalTechniqueAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth numeric addition preserves actual null damage and requires GOOD/public named target",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos-target attack crosses GOOD/EVIL and public/hidden combinations; effect gets one only for GOOD plus public named target and null damage remains null."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#public-Uonos-target-effect-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalTechniqueAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth numeric addition preserves actual null damage and requires GOOD/public named target",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos-target attack crosses GOOD/EVIL and public/hidden combinations; effect gets one only for GOOD plus public named target and null damage remains null."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#public-Gainas-target-effect-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalTechniqueAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth freezes target-local effect/damage for the named public enemy only",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real multi-target attack adds one effect and two damage to public Gainas only; unrelated target retains base six effect and eight damage. Both actual damages are asserted."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }
