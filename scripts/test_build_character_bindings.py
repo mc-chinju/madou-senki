@@ -101,6 +101,14 @@ class CharacterBindingsTest(unittest.TestCase):
         result = build_bindings(ledger, self.cards)
         self.assertEqual(result[0]['tests'][0]['kind'], 'structural-resolver')
 
+    def test_transform_binds_both_attempt_outcomes_and_explicit_hide_boundary(self):
+        ledger = self.ledger('once-game-transform')
+        ledger['rows'][0]['entryId'] = 'c2-p02-r2c2-ab05'
+        result = build_bindings(ledger, self.cards)
+        self.assertEqual([t['parameters'] for t in result[0]['tests']], [False, True])
+        ledger['rows'][0]['clauseKey'] = 'no-revert-on-Lia-hide'
+        self.assertEqual(build_bindings(ledger, self.cards)[0]['tests'][0]['kind'], 'structural-resolver')
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

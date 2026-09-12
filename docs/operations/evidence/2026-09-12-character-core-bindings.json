@@ -3313,6 +3313,68 @@
       ]
     },
     {
+      "row": "c2-p02-r2c2-ab05#once-game-transform",
+      "handler": [
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "availableLifecycleAbilities"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "resolveLifecycleAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+          "suite": [],
+          "title": "Lancelot transformation attempt stays spent after actual cancellation=%s and phase change",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation success or Fate cancellation retains one attempt across phase change and JSON restore; retry rejected."
+        },
+        {
+          "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+          "suite": [],
+          "title": "Lancelot transformation attempt stays spent after actual cancellation=%s and phase change",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual transformation success or Fate cancellation retains one attempt across phase change and JSON restore; retry rejected."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c2-ab05#no-revert-on-Lia-hide",
+      "handler": [
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "availableLifecycleAbilities"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "resolveLifecycleAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+          "suite": [],
+          "title": "Structural Lia concealment after actual Lancelot transformation does not revert identity or inherited abilities",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Actual transformation followed by direct Lia reveal-state change; no legal Lia concealment producer is invented."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p01-r1c1#objective/extinction-EVIL",
       "handler": [
         {

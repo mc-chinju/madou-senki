@@ -216,6 +216,20 @@ def lia_dia_binding(row):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def lancelot_transform_binding(row):
+    entry, clause = row['entryId'], row['clauseKey']
+    if entry != 'c2-p02-r2c2-ab05' or clause not in {'once-game-transform', 'no-revert-on-Lia-hide'}:
+        return None
+    once = clause == 'once-game-transform'
+    return {'row': f'{entry}#{clause}',
+            'handler': [{'path': 'packages/engine/src/lifecycle/commands.ts', 'symbol': symbol} for symbol in ['availableLifecycleAbilities', 'resolveLifecycleAbility']],
+            'tests': [{'path': 'packages/engine/test/optional-lifecycle-transform.test.ts', 'suite': [],
+                       'title': 'Lancelot transformation attempt stays spent after actual cancellation=%s and phase change' if once else 'Structural Lia concealment after actual Lancelot transformation does not revert identity or inherited abilities',
+                       'parameters': param, 'kind': 'canonical-transition' if once else 'structural-resolver',
+                       'bindingNote': 'Actual transformation success or Fate cancellation retains one attempt across phase change and JSON restore; retry rejected.' if once else 'Actual transformation followed by direct Lia reveal-state change; no legal Lia concealment producer is invented.'} for param in ([False, True] if once else [None])],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -224,7 +238,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row) or lancelot_transform_binding(row)
         if extra:
             bindings.append(extra)
             continue

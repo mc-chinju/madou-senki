@@ -235500,11 +235500,17 @@
         "C13"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fb39aebb997b02e1",
+        "h:6aa01e5dba62d35a"
+      ],
+      "tests": [
+        "t:4412ed77b3b54d08",
+        "t:f3d4269cfa07e449"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -235528,11 +235534,16 @@
         "C13"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:fb39aebb997b02e1",
+        "h:6aa01e5dba62d35a"
+      ],
+      "tests": [
+        "t:cea471163ab2ef31"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415609,8 +415620,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7068,
-      "implemented": 5110
+      "pending": 7066,
+      "implemented": 5112
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -488689,6 +488700,33 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual source-specific selection/reveal or END transition; initial hand test uses real assigned Dia creation, END test uses arranged Haja and hand before its turn sequence."
+    },
+    "t:4412ed77b3b54d08": {
+      "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+      "suite": [],
+      "title": "Lancelot transformation attempt stays spent after actual cancellation=%s and phase change",
+      "declarationSha256": "052d87101f4d880ceb0e59d90e664651a61d3d6e9e75dcd14f9ea31541600333",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual transformation success or Fate cancellation retains one attempt across phase change and JSON restore; retry rejected."
+    },
+    "t:f3d4269cfa07e449": {
+      "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+      "suite": [],
+      "title": "Lancelot transformation attempt stays spent after actual cancellation=%s and phase change",
+      "declarationSha256": "052d87101f4d880ceb0e59d90e664651a61d3d6e9e75dcd14f9ea31541600333",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Actual transformation success or Fate cancellation retains one attempt across phase change and JSON restore; retry rejected."
+    },
+    "t:cea471163ab2ef31": {
+      "path": "packages/engine/test/optional-lifecycle-transform.test.ts",
+      "suite": [],
+      "title": "Structural Lia concealment after actual Lancelot transformation does not revert identity or inherited abilities",
+      "declarationSha256": "daa1f4701e4c552f6df0e509f26b28a397b25d74d057c9f7b7d91a0bbd9e8b17",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Actual transformation followed by direct Lia reveal-state change; no legal Lia concealment producer is invented."
     }
   },
   "remainingNotes": {
