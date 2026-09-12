@@ -1115,7 +1115,7 @@ git add scripts data docs && git commit -m "data: 原典例S01〜S32のsource条
 - Read: `packages/engine/src/lifecycle/objectives.ts`（`factionObjective`, `initialProtection`, `protectedDead`, `replaceAllegiance`, `currentDefeatCondition`）、`apps/worker/test/fixtures/r6-extinction-scenario.ts`（全滅による終了の作り方）
 - Create: `docs/operations/evidence/2026-09-11-character-clauses-bindings.json`
 
-- [ ] **Step 1: 対象行の clauseKey 一覧を取り、末尾ごとに assert を決める**
+- [x] **Step 1: 対象行の clauseKey 一覧を取り、末尾ごとに assert を決める**
 
 ```bash
 python3 - <<'EOF'
@@ -1126,7 +1126,7 @@ print(collections.Counter(r['clauseKey'] .split('/')[0]+'/'+r['clauseKey'].split
 EOF
 ```
 
-- [ ] **Step 2: 26人物の `it.each` を書く。各 `it` は1条項群に対応させる**
+- [x] **Step 2: 26人物の `it.each` を書く。各 `it` は1条項群に対応させる**
 
 ```ts
 // packages/engine/test/character-clauses.test.ts
@@ -1200,6 +1200,8 @@ Expected: `valid: true`、pending の character-semantic が 0
 ```bash
 git add packages/engine data scripts docs && git commit -m "test,data: 人物26名の目的・敗北・陣営・制限・継承条項を束縛する"
 ```
+
+2026-09-12 B4基本条項: 印刷陣営・目的・敗北・追加継承なし・空の所有リスト・追加制限なしの187行を束縛した。行列216件＋関連140件の356件、全対象型検査、Python22件、台帳validator valid:true。26人物の実全滅勝利、保護対象27組の実死亡→彷徨→最終敗北、空所有12件の実回収窓を確認。陣営の既存fixed表はallowedFactionsへ切り出し、返却配列の変更で表が変わらないことも検証。残る人物能力150行はpendingで、全B4生成gateもその未実装行で停止。明示的な --core-only だけを適用した。具体的実装済み5,010、semantic pending249、accepted0。計画例の即時敗北・原文表示完全一致は採用せず、現行の彷徨処理と正規化された保護対象を検証している。詳細は [B4基本条項進捗](../../operations/evidence/2026-09-12-b4-basic-progress.json)。Step3〜5と候補版受入は未完了。
 
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 

@@ -1,0 +1,656 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B4 basic character clauses; 150 ability clauses remain; not acceptance evidence",
+  "runtimeChange": "Extract the existing mandatory faction allow-list into allowedFactions; replaceAllegiance retains its existing allowed-set behavior and callers cannot mutate the returned list.",
+  "red": {
+    "report": "/private/tmp/release-b4-allegiance-red.json",
+    "passed": 52,
+    "failed": 26,
+    "failure": "allowedFactions missing before extraction"
+  },
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/character-clauses.test.ts packages/engine/test/task7f-lifecycle.test.ts packages/engine/test/conversion-physical.test.ts packages/engine/test/mental-received-defenses.test.ts packages/engine/test/ritual-history.test.ts packages/engine/test/release-lifecycle-bindings.test.ts --maxWorkers=4 --reporter=json --outputFile=/private/tmp/release-b4-basic-final.json",
+    "exitCode": 0,
+    "passed": 356,
+    "failed": 0,
+    "skipped": 0,
+    "newMatrixTests": 216
+  },
+  "checks": [
+    "pnpm typecheck: engine, worker, web and e2e exit 0",
+    "Python character/scenario/owned generators, binding application, and ledger report: 22 passed",
+    "AST declaration and all literal parameter tuples validated before binding output",
+    "validator valid true (structural only)",
+    "git diff --check exit 0"
+  ],
+  "coverage": [
+    "26 actual extinction victories; ordinary chanted Rift or Gadula dedicated warrior source according to printed white-technique prohibition.",
+    "27 independently printed protected-character pairs: real attack death, wandering without immediate outcome, later final enemy victory and owner loss. Every command checks JSON replay and all 220 physical cards.",
+    "Printed faction allow-list and mandatory behavior under disabled optional abilities, using structural-resolver evidence without claiming a canonical conversion for every combination.",
+    "24 characters without an additional inheritance source reject every other printed ability ID.",
+    "12 empty owned-list cases exercise actual use or follower destruction and cannot take base reclaim.",
+    "23 characters without printed restrictions retain only technique faction restrictions and deliver ordinary warrior damage without additional character reduction."
+  ],
+  "bindingsApplied": 187,
+  "semanticImplementedConcrete": 5010,
+  "semanticPending": 249,
+  "characterPending": 150,
+  "semanticAccepted": 0,
+  "fullB4Gate": "unimplemented character families: 150; first c2-p04-r2c1-ab02#own-turn-extra",
+  "remainingRows": [
+    {
+      "entryId": "c2-p04-r2c1-ab02",
+      "clauseKey": "own-turn-extra"
+    },
+    {
+      "entryId": "c2-p04-r2c1-ab02",
+      "clauseKey": "selected-one-target"
+    },
+    {
+      "entryId": "c2-p01-r2c2-ab03",
+      "clauseKey": "own-turn-once-attempt"
+    },
+    {
+      "entryId": "c2-p01-r2c2-ab03",
+      "clauseKey": "main-action-preserved"
+    },
+    {
+      "entryId": "c2-p01-r2c2-ab03",
+      "clauseKey": "public-priority-no-private-choice-interrupt"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab02",
+      "clauseKey": "own-turn-once-attempt"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab02",
+      "clauseKey": "main-action-preserved"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab02",
+      "clauseKey": "public-priority-no-private-choice-interrupt"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "own-turn-once-attempt"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "main-action-preserved"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "public-priority-no-private-choice-interrupt"
+    },
+    {
+      "entryId": "c2-p03-r2c1-ab03",
+      "clauseKey": "own-turn-once-attempt"
+    },
+    {
+      "entryId": "c2-p03-r2c1-ab03",
+      "clauseKey": "main-action-preserved"
+    },
+    {
+      "entryId": "c2-p03-r2c1-ab03",
+      "clauseKey": "public-priority-no-private-choice-interrupt"
+    },
+    {
+      "entryId": "c2-p04-r2c1-ab01",
+      "clauseKey": "own-turn-once-attempt"
+    },
+    {
+      "entryId": "c2-p04-r2c1-ab01",
+      "clauseKey": "main-action-preserved"
+    },
+    {
+      "entryId": "c2-p04-r2c1-ab01",
+      "clauseKey": "public-priority-no-private-choice-interrupt"
+    },
+    {
+      "entryId": "c2-p04-r2c1-ab02",
+      "clauseKey": "own-turn-once-attempt"
+    },
+    {
+      "entryId": "c2-p04-r2c1-ab02",
+      "clauseKey": "main-action-preserved"
+    },
+    {
+      "entryId": "c2-p04-r2c1-ab02",
+      "clauseKey": "public-priority-no-private-choice-interrupt"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab01",
+      "clauseKey": "own-turn-once-attempt"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab01",
+      "clauseKey": "main-action-preserved"
+    },
+    {
+      "entryId": "c2-p05-r1c1-ab01",
+      "clauseKey": "public-priority-no-private-choice-interrupt"
+    },
+    {
+      "entryId": "c2-p02-r1c1-ab04",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p02-r1c1-ab04",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p02-r1c1-ab04",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p02-r1c1-ab04",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p02-r1c1-ab04",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p02-r1c1-ab04",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p03-r2c2-ab04",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p03-r2c2-ab04",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p03-r2c2-ab04",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p03-r2c2-ab04",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p03-r2c2-ab04",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p03-r2c2-ab04",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab03",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab03",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab03",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab03",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab03",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab03",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab05",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab05",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab05",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab05",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab05",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p04-r1c2-ab05",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab01",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab01",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab01",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab01",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab01",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab01",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p05-r2c1-ab05",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p05-r2c1-ab05",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p05-r2c1-ab05",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p05-r2c1-ab05",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p05-r2c1-ab05",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p05-r2c1-ab05",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "default-off-explicit-cancelable-election"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "condition-loss-suspends-keeps-selection"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "absence-retains-death-clears"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "transform-inheritance-preserves-source-selection"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "cancel-update-retains-prior-selection-and-attempt"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "frozen-values-no-rewind"
+    },
+    {
+      "entryId": "c2-p03-r2c1-ab01",
+      "clauseKey": "canceled-attempt-stays-spent"
+    },
+    {
+      "entryId": "c2-p03-r2c1-ab01",
+      "clauseKey": "same-faction-attacker-not-excluded"
+    },
+    {
+      "entryId": "c2-p03-r2c1-ab01",
+      "clauseKey": "fixed-faction-keeps-objective-and-protection"
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab01",
+      "clauseKey": "once-group-target-before-followers"
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab01",
+      "clauseKey": "canceled-attempt-stays-spent"
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab01",
+      "clauseKey": "other-target-declared-hits-survive"
+    },
+    {
+      "entryId": "c2-p06-r1c1-ab01",
+      "clauseKey": "same-faction-attacker-not-excluded"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab01",
+      "clauseKey": "once-group-target-before-followers"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab01",
+      "clauseKey": "canceled-attempt-stays-spent"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab01",
+      "clauseKey": "other-target-declared-hits-survive"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab01",
+      "clauseKey": "same-faction-attacker-not-excluded"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab01",
+      "clauseKey": "fixed-faction-keeps-objective-and-protection"
+    },
+    {
+      "entryId": "c2-p04-r2c2-ab01",
+      "clauseKey": "child-no-extra-turn"
+    },
+    {
+      "entryId": "c2-p04-r2c2-ab01",
+      "clauseKey": "child-normal-range-chant-use-level"
+    },
+    {
+      "entryId": "c2-p04-r2c2-ab01",
+      "clauseKey": "child-no-extra-approach-withdrawal"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab01",
+      "clauseKey": "child-no-extra-turn"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab01",
+      "clauseKey": "child-normal-range-chant-use-level"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab01",
+      "clauseKey": "child-no-extra-approach-withdrawal"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "hand-source-eligible"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "placed-source-eligible"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "declare-source-order-targets-dedication"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "parent-cancel-spends-all-sources-action"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "child-failure-only-own-source"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "one-group-independent-values-not-sum"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "shared-advance-only-same-source-hit-index"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "one-target-follower-snapshot-across-sources"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab02",
+      "clauseKey": "no-morale-does-not-waive-use-check"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "hand-source-eligible"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "placed-source-eligible"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "declare-source-order-targets-dedication"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "parent-cancel-spends-all-sources-action"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "child-failure-only-own-source"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "one-group-independent-values-not-sum"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "shared-advance-only-same-source-hit-index"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "one-target-follower-snapshot-across-sources"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab04",
+      "clauseKey": "no-morale-does-not-waive-use-check"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "target-set-explicit-no-auto-add"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab03",
+      "clauseKey": "recipient-suppression-does-not-remove-gift"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "initial-hand-five"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "capacity-add-two-plus-Haja"
+    },
+    {
+      "entryId": "c2-p06-r1c2-ab02",
+      "clauseKey": "capacity-loss-adjust-end-turn"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab01",
+      "clauseKey": "advance-is-exact-one-discard"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab01",
+      "clauseKey": "advance-not-marker"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab01",
+      "clauseKey": "declining-child-retains-successful-defense"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab05",
+      "clauseKey": "substitution-before-final-hit"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab05",
+      "clauseKey": "substitution-no-follower-normal-defense"
+    },
+    {
+      "entryId": "c2-p05-r1c2-ab05",
+      "clauseKey": "substitution-no-repeat-same-hit"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab04",
+      "clauseKey": "kill-attack-provenance"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab04",
+      "clauseKey": "kill-counter-provenance"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab04",
+      "clauseKey": "kill-reflection-provenance"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab04",
+      "clauseKey": "exclude-wandering"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab04",
+      "clauseKey": "exclude-other-killer"
+    },
+    {
+      "entryId": "c2-p06-r2c2-ab04",
+      "clauseKey": "exclude-self-damage-cause"
+    },
+    {
+      "entryId": "c2-p02-r2c2-ab05",
+      "clauseKey": "once-game-transform"
+    },
+    {
+      "entryId": "c2-p02-r2c2-ab05",
+      "clauseKey": "no-revert-on-Lia-hide"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/public-own-opportunity-once"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/no-main-action"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/public-only-target-candidates"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/no-secret-target-rejection"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/reject-empty-duplicate-nonexistent"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/reject-no-new-designation"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/designations-accumulate"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/self-target-ban-blocks-further-declaration"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/hidden-exempt-designation-same-transcript"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/hidden-target-uniform-public-view"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/established-ban-survives-source-suppression-absence"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/target-death-revival-retains-designation"
+    },
+    {
+      "entryId": "c2-p07-r1c2-ab03",
+      "clauseKey": "C16/no-early-ban-removal-in-G15"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/designated-public-state-candidates"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/exempt-target-same-check-and-lease"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/success-does-not-disclose-prior-ban"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/only-Vanmil-ban-released"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/lease-survives-Lia-suppression-absence"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/redesignation-does-not-break-live-lease"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/lease-survives-target-absence"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/lease-expires-G15-death-entry"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/revival-does-not-restore-lease"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/loss-of-Lia-identity-expires-lease"
+    },
+    {
+      "entryId": "c2-p03-r1c2-ab04",
+      "clauseKey": "C16/source-life-generation-saved"
+    }
+  ],
+  "sourceSha256": {
+    "packages/engine/src/lifecycle/objectives.ts": "88c8d6f06a0dcdc538bd293dfa1e83c94822327ea5cf5c6a38eb21ba90a88081",
+    "packages/engine/test/character-clauses.test.ts": "c40bcd3135abb06cb6cde02bbdf2846e5f6f651a7a8a6529f5b7276263dadd9a",
+    "scripts/build_character_bindings.py": "8d66c043c38fe8dba5f86cfb960e511180c1f151180f2164ab516e1328994fc8",
+    "scripts/test_build_character_bindings.py": "c9bd82e4d7d2572d2982f0bdf49a172bce66d41bd890c72df7f7580b9c8ab723",
+    "docs/operations/evidence/2026-09-12-character-core-bindings.json": "9baa733aa9505fe03e68e78b62bd325f509a70d473de21bc7fc140aba5fbd7f5"
+  },
+  "limitations": [
+    "B4 remains incomplete until the 150 ability clauses are bound. Full generation deliberately fails; this file records explicit --core-only progress.",
+    "The plan examples immediate final loss and verbatim defeat description are not the runtime rules: protected death first causes wandering, and the displayed description normalizes the protected names. Tests verify the actual lifecycle and normalized protected set.",
+    "These are deterministic arranged scenarios, not the formal START whole-match proof required later.",
+    "No frozen-candidate acceptance or new broad Worker/browser run is claimed."
+  ]
+}
