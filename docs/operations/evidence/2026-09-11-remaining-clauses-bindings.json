@@ -573,6 +573,645 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#public-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#one-extra-maai",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s privately offers only the owned source and requires the printed maai count",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Ice one/two actual maai payments result in three/zero body damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#no-physical-source-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s Fate cancellation consumes the attack without creating a virtual discard",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#public-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#no-physical-source-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s Fate cancellation consumes the attack without creating a virtual discard",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-near-range",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-magic-school",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual technique school equals magic."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-water-attribute",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attributes equal magic and water."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-level-four",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual use and effect levels both equal four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-damage-three",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual target takes exactly three body damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-near-range",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-magic-school",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual technique school equals magic."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-fire-attribute",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attributes equal magic and fire."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-level-four",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual use and effect levels both equal four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-damage-five",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual target takes exactly five body damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

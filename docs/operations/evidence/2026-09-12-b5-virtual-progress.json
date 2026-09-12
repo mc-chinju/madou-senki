@@ -1,0 +1,38 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B5 Ice and Flame virtual blade profiles; not acceptance evidence",
+  "newlyImplementedClauses": 15,
+  "newTests": 0,
+  "bindingFileRows": 32,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/virtual-blades.test.ts --reporter=json --outputFile=/private/tmp/release-b5-virtual.json",
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "Binding application validates exact AST declarations and parameter tuples",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Both actual virtual declarations resolve one group with near/magic/level-four profiles and exact water-three or fire-five damage.",
+    "Success and Fate cancellation consume the attack without creating a physical source discard or reducing the source hand.",
+    "Initial hidden/far/foreign/forged cases reject atomically. Actual one/two maai responses verify Ice requires an extra physical response."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/virtual-blades.test.ts": "8316766dea4041f0fe76b50721658be9d3e42b12d416084bc46b3ec888fb5791",
+    "docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json": "f157130c68d5a57b7cf1dfc1f04e9538c844aaaa25e6662d5fa784b2f2395213",
+    "docs/operations/evidence/2026-09-11-remaining-clauses.md": "e3b5590bd9c8c29eb91bad81f7a7e1fb3e08401beea82af56518e62a78c486ae"
+  },
+  "semanticImplementedConcrete": 5192,
+  "semanticPending": 67,
+  "semanticAccepted": 0,
+  "limitations": [
+    "Data/docs-only binding change; no new code or type-check claim. Existing exact tests were rerun.",
+    "B5 Steps1–3 remain incomplete: 65 ordinary clauses and two deferred D4c rows remain.",
+    "No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}

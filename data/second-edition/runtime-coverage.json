@@ -174814,12 +174814,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:98f173559b90be50",
+        "t:12c1e28500c45d80"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1d759edddf27ac0b",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -174834,12 +174840,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:625037df4d73a2b0"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1d759edddf27ac0b",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -174854,12 +174865,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:b41587ae1752f049",
+        "t:c5cd9d1479700d92"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1d759edddf27ac0b",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178560,12 +178577,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:850b45c4d5e6a357",
+        "t:f64a2e2b228acffa"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1d759edddf27ac0b",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178580,12 +178603,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:5213235f97948f93",
+        "t:186225e63a421430"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:1d759edddf27ac0b",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -230505,11 +230534,18 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:cd5f63a16a7e3e25",
+        "t:6bceb62116d8a9ee"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230529,11 +230565,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:6ff079ea18c49068"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230553,11 +230595,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:b3c2a67415515ff5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230577,11 +230625,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:25902bb63280ce07"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230601,11 +230655,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:e03bafc923871ee0"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230625,11 +230685,18 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:8f7a64cfc0374349",
+        "t:8ebcb0b29a968316"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230649,11 +230716,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:233bfe09b9f36410"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230673,11 +230746,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:d355ce576ba798a7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230697,11 +230776,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:47f8bf2fb6abb5e2"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -230721,11 +230806,17 @@
         "C05"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:03501ee9f3e19ef2",
+        "h:2931c91b3d27b135",
+        "h:ff501a3ae475ac3e"
+      ],
+      "tests": [
+        "t:f822f1f2644f52ec"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:4dd8d4f2f6e73be1"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
@@ -415963,8 +416054,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7001,
-      "implemented": 5177
+      "pending": 6986,
+      "implemented": 5192
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417274,6 +417365,18 @@
     "h:29edd992a6b99735": {
       "path": "packages/engine/src/abilities/combat-rewards.ts",
       "symbol": "resolveCombatReward"
+    },
+    "h:03501ee9f3e19ef2": {
+      "path": "packages/engine/src/abilities/virtual-blades.ts",
+      "symbol": "virtualBladeTechnique"
+    },
+    "h:2931c91b3d27b135": {
+      "path": "packages/engine/src/abilities/virtual-blades.ts",
+      "symbol": "acceptVirtualBlade"
+    },
+    "h:ff501a3ae475ac3e": {
+      "path": "packages/engine/src/abilities/virtual-blades.ts",
+      "symbol": "resolveVirtualBlade"
     }
   },
   "testCases": {
@@ -489834,6 +489937,321 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual child defense view omits maai; submitting it is rejected without consuming the held card."
+    },
+    "t:98f173559b90be50": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+    },
+    "t:12c1e28500c45d80": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+      "declarationSha256": "ef82fd86240ebd3f46b0c277c7c1fd2f4864e1f13b800f75d7d6109ad9846902",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+    },
+    "t:625037df4d73a2b0": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s privately offers only the owned source and requires the printed maai count",
+      "declarationSha256": "0ad0fd9575a1df4bf649ef2196b8bbc264429ed23c47fba8dd96ec93af2eee27",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Ice one/two actual maai payments result in three/zero body damage."
+    },
+    "t:b41587ae1752f049": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+    },
+    "t:c5cd9d1479700d92": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s Fate cancellation consumes the attack without creating a virtual discard",
+      "declarationSha256": "8e66f5ee50550c4c4a9a7cc6b20f9f66a8954cfcd7baf3eb9eb14932e3f99fb8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+    },
+    "t:850b45c4d5e6a357": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+    },
+    "t:f64a2e2b228acffa": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+      "declarationSha256": "ef82fd86240ebd3f46b0c277c7c1fd2f4864e1f13b800f75d7d6109ad9846902",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+    },
+    "t:5213235f97948f93": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+    },
+    "t:186225e63a421430": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s Fate cancellation consumes the attack without creating a virtual discard",
+      "declarationSha256": "8e66f5ee50550c4c4a9a7cc6b20f9f66a8954cfcd7baf3eb9eb14932e3f99fb8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+    },
+    "t:cd5f63a16a7e3e25": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Actual near profile and atomic far-target rejection."
+    },
+    "t:6bceb62116d8a9ee": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+      "declarationSha256": "ef82fd86240ebd3f46b0c277c7c1fd2f4864e1f13b800f75d7d6109ad9846902",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Actual near profile and atomic far-target rejection."
+    },
+    "t:6ff079ea18c49068": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Actual technique school equals magic."
+    },
+    "t:b3c2a67415515ff5": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Actual attributes equal magic and water."
+    },
+    "t:25902bb63280ce07": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Actual use and effect levels both equal four."
+    },
+    "t:e03bafc923871ee0": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Actual target takes exactly three body damage."
+    },
+    "t:8f7a64cfc0374349": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Actual near profile and atomic far-target rejection."
+    },
+    "t:8ebcb0b29a968316": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+      "declarationSha256": "ef82fd86240ebd3f46b0c277c7c1fd2f4864e1f13b800f75d7d6109ad9846902",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Actual near profile and atomic far-target rejection."
+    },
+    "t:233bfe09b9f36410": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Actual technique school equals magic."
+    },
+    "t:d355ce576ba798a7": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Actual attributes equal magic and fire."
+    },
+    "t:47f8bf2fb6abb5e2": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Actual use and effect levels both equal four."
+    },
+    "t:f822f1f2644f52ec": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Actual target takes exactly five body damage."
     }
   },
   "remainingNotes": {

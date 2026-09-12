@@ -23,9 +23,9 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p03-r1c2-ab04#lia-alive-duration` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p03-r1c2-ab04#other-ban-causes-retained` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#public-source` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#one-extra-maai` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#no-physical-source-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#public-source` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p04-r1c1-ab02#one-extra-maai` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p04-r1c1-ab02#no-physical-source-cost` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p04-r1c2-ab02#sword-attack` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p04-r1c2-ab02#actual-zero-maai-payments` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p04-r1c2-ab02#hit-required` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
@@ -38,8 +38,8 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p06-r1c2-ab03#remaining-endurance-cap` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r1c2-ab03#heal-source` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r1c2-ab03#no-numeric-instant-death-no-heal` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
-| `c2-p06-r2c1-ab02#public-source` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c1-ab02#no-physical-source-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c1-ab02#public-source` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p06-r2c1-ab02#no-physical-source-cost` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p06-r2c2-ab01#self-spirit-minus-two` | b（追加済み） | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
 | `c2-p06-r2c2-ab01#own-incoming-cancel` | b（追加済み） | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
 | `c2-p06-r2c2-ab01#optional-advance-discard` | a | shadow-jump.test.ts の実判定・支払・子攻撃assertionへ束縛（境界3試験を追加）。 |
@@ -66,16 +66,16 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p05-r2c1-ab02#Lester-doubles-protection` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p06-r1c1-ab02#Dia-named-defense-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p06-r1c1-ab02#Lester-named-defense-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#virtual-near-range` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#virtual-magic-school` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#virtual-water-attribute` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#virtual-level-four` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c1-ab02#virtual-damage-three` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c1-ab02#virtual-near-range` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c1-ab02#virtual-magic-school` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c1-ab02#virtual-fire-attribute` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c1-ab02#virtual-level-four` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r2c1-ab02#virtual-damage-five` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#virtual-near-range` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p04-r1c1-ab02#virtual-magic-school` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p04-r1c1-ab02#virtual-water-attribute` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p04-r1c1-ab02#virtual-level-four` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p04-r1c1-ab02#virtual-damage-three` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p06-r2c1-ab02#virtual-near-range` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p06-r2c1-ab02#virtual-magic-school` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p06-r2c1-ab02#virtual-fire-attribute` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p06-r2c1-ab02#virtual-level-four` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
+| `c2-p06-r2c1-ab02#virtual-damage-five` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p02-r1c2-ab04#earth-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p02-r1c2-ab04#wind-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p02-r1c2-ab04#water-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |

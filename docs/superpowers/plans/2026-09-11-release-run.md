@@ -1256,6 +1256,8 @@ git add packages data docs && git commit -m "test,data: 残る個別条項を束
 
 2026-09-12 B5影跳び: 6条項を追加束縛。新規3試験で精神7−2の成功/失敗境界と、子攻撃の別在席対象への原子的拒否→元攻撃者への実攻撃を確認。実辞退・費用・初期配置従者無視・間合い拒否の既存試験も対応付け。対象19試験、型検査、台帳validator成功。具体的実装済み5,177、semantic pending82、accepted0。B5束縛計17行、残通常80行とD4c 2行。詳細は [B5影跳び進捗](../../operations/evidence/2026-09-12-b5-shadow-progress.json)。Step1〜3は未完了。
 
+2026-09-12 B5仮想攻撃: アイエル/フレイアード15条項を既存の実宣言・損害処理・取消・間合い枚数・原子的拒否試験へ束縛。射程近/魔法/使用効果4/水3損害・炎5損害、カード不要、公開条件、アイエル追加間合いを能力別tupleで確認。対象15試験、台帳validator成功。コード変更なし。具体的実装済み5,192、semantic pending67、accepted0。B5束縛計32行、残通常65行とD4c 2行。詳細は [B5仮想攻撃進捗](../../operations/evidence/2026-09-12-b5-virtual-progress.json)。Step1〜3は未完了。
+
 ### Task B6: D2 無制限回収の秘匿比較と D3 同一席2権利の束縛
 
 **Files:**
