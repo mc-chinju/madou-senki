@@ -1386,7 +1386,7 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 - Modify: `data/second-edition/runtime-coverage.json`、`packages/catalog/src/selected/readiness.json`
 - Create: `scripts/run_candidate.sh`
 
-- [ ] **Step 1: 全実行スクリプトを書く**
+- [x] **Step 1: 全実行スクリプトを書く**
 
 ```bash
 #!/usr/bin/env bash
@@ -1405,6 +1405,8 @@ python3 scripts/record_runtime_run.py \
   --exit-code "$STATUS" --output "${1:-docs/operations/evidence/$(date +%F)-candidate-run.json}"
 exit "$STATUS"
 ```
+
+2026-09-12: `scripts/run_candidate.sh` を実装。clean作業木を確認し、D4適用→凍結→全Engine/Web・Worker・browser→run記録を直列実行する。Vitestは同時実行を2 workerに制限し、全件対象を維持。記録失敗も終了1以上で伝播する。現在のブラウザは `PLAYWRIGHT_BROWSERS_PATH=/private/tmp/madou-playwright`、競合回避は `PLAYWRIGHT_PORT=18787` を使う。両envをスクリプト起動に渡す。2nd原本2点は作者配布ページから再取得し、resources/manifest.jsonのSHA-256と照合後に246画像を再生成・検査した。`.serena/` はローカルLSP設定としてgitignoreに追加し、ファイルは維持した。
 
 Worker の vitest 設定が `--outputFile` の相対パスを `apps/worker` 基準で解決することを確認する（`apps/worker/package.json` の test スクリプトと `vitest.config` を見る）。Playwright の JSON reporter は stdout に出るので上記のようにリダイレクトする。
 
