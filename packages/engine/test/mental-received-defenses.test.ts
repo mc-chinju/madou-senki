@@ -466,3 +466,13 @@ it.each(sources)('%s is available before follower start and rejects a late decla
  reject(s,'B',{type:'USE_ABILITY',abilityId:ability,targetEventId:option.targetEventId},'ABILITY_DISABLED');
  s=finish(s);expect(s.players.C!.damage).toBeGreaterThan(0);
 });
+
+it.each(['c2-p03-r2c1-ab01','c2-p06-r1c1-ab01','c2-p06-r1c2-ab01'] as const)('%s actual attacker seat arrival expires only its mental stop without a recovery roll',id=>{
+ let s=finish(result(incoming(id),id,[2,2]));
+ expect(s.players.A!.statuses).toEqual([expect.objectContaining({kind:'stopped',timing:'next-own-seat',sourceAbilityId:id,expiresOnActorId:'A'})]);
+ const rolls=s.rolls!.length;s=act(s,'A',{type:'PASS_WITHDRAWAL'});expect(s.turnSeat).toBe(1);
+ for(const actor of ['B','C']){s=turn(s,actor);expect(s.players.A!.statuses).toHaveLength(1);}
+ s=turn(s,'D');expect(s.turnSeat).toBe(0);expect(s.phase).toBe('turn-start');expect(s.players.A!.statuses).toEqual([]);
+ expect(s.rolls!.length).toBe(rolls);expect(s.rolls!.filter(r=>r.purpose==='status-recovery')).toEqual([]);
+ s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});expect(s.phase).toBe('action');
+});

@@ -61,11 +61,11 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p02-r1c2#mandatory-black-tech-prohibition` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p04-r1c2#mandatory-allegiance-check-plus-two` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p05-r2c1#mandatory-allegiance-check-plus-two` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p05-r2c1-ab02#Dia-doubles-protection` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p05-r2c1-ab02#Gadyoora-doubles-protection` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p05-r2c1-ab02#Lester-doubles-protection` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c1-ab02#Dia-named-defense-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c1-ab02#Lester-named-defense-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r2c1-ab02#Dia-doubles-protection` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p05-r2c1-ab02#Gadyoora-doubles-protection` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p05-r2c1-ab02#Lester-doubles-protection` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c1-ab02#Dia-named-defense-cancel` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c1-ab02#Lester-named-defense-cancel` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
 | `c2-p04-r1c1-ab02#virtual-near-range` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p04-r1c1-ab02#virtual-magic-school` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p04-r1c1-ab02#virtual-water-attribute` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
@@ -93,15 +93,15 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p07-r1c2-ab04#optional-Yotsurm-conversion` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p07-r1c1-ab01#successful-check-threshold-hit-immunity` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r2c1-ab01#doubles-stop-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p03-r2c1-ab01#stop-expires-next-seat-arrival` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c1-ab01#doubles-stop-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c1-ab01#stop-expires-next-seat-arrival` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c2-ab01#doubles-stop-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p06-r1c2-ab01#stop-expires-next-seat-arrival` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p03-r2c1-ab01#doubles-stop-attacker` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p03-r2c1-ab01#stop-expires-next-seat-arrival` | b（追加済み） | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c1-ab01#doubles-stop-attacker` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c1-ab01#stop-expires-next-seat-arrival` | b（追加済み） | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c2-ab01#doubles-stop-attacker` | a | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
+| `c2-p06-r1c2-ab01#stop-expires-next-seat-arrival` | b（追加済み） | mental-received-defenses / mental-protection の能力別実試験へ束縛。実多段の未処理発取消・停止、指定能力への保護/取消と、実席順一周による期限3ケースを確認。 |
 | `common:C04#C04/once-target-hit-before-followers` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `common:C04#C04/cancel-consumes-attempt` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `common:C04#C04/target-local-not-source-global` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |

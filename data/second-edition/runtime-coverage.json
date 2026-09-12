@@ -230431,11 +230431,19 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:cbe7ee270ca646b2",
+        "h:4aa355aaf289cb7f"
+      ],
+      "tests": [
+        "t:28bb8513eb71c5ca",
+        "t:67659f55447674dc",
+        "t:dcefb45c4a407eb8",
+        "t:9658a06ee6b23754"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -230460,11 +230468,19 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:cbe7ee270ca646b2",
+        "h:4aa355aaf289cb7f"
+      ],
+      "tests": [
+        "t:6bc651a6c58c71da",
+        "t:aecfec317a082bae",
+        "t:721e16e8f8eace03",
+        "t:e8f302993807f08a"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -230489,11 +230505,19 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:cbe7ee270ca646b2",
+        "h:4aa355aaf289cb7f"
+      ],
+      "tests": [
+        "t:5b978df8d15ef162",
+        "t:da792b9d6bc89974",
+        "t:bf9d181b249a7ddc",
+        "t:383298a395edbd2e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -230518,11 +230542,15 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:06534947356d8eb0"
+      ],
+      "tests": [
+        "t:0bf5f2a4d608bd7a"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -230547,11 +230575,15 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:06534947356d8eb0"
+      ],
+      "tests": [
+        "t:e234128c4921482d"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231622,11 +231654,16 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:cb1fa2de0ebb4adc",
+        "t:2eed3d1e40815486"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231651,11 +231688,15 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:aadbaa8a19b4f495"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231680,11 +231721,16 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343",
+        "h:fab5e1cfb249fa51"
+      ],
+      "tests": [
+        "t:8b5cc075da68459f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231709,11 +231755,16 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:afe61a1eaf3c0acf",
+        "t:7913e6424e435190"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231738,11 +231789,15 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:4d65e65d44a72e77"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231767,11 +231822,16 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343",
+        "h:fab5e1cfb249fa51"
+      ],
+      "tests": [
+        "t:5bddc21ebefd1d67"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231796,11 +231856,16 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:e55c607255251815",
+        "t:40cd895cdf51d5e8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231825,11 +231890,15 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:cac934e4cac98b35"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231854,11 +231923,16 @@
         "C03"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0b8130e5db46d343",
+        "h:fab5e1cfb249fa51"
+      ],
+      "tests": [
+        "t:f253ecbe987c78fe"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -416248,8 +416322,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6948,
-      "implemented": 5230
+      "pending": 6934,
+      "implemented": 5244
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417619,6 +417693,10 @@
     "h:f8caa06b3a3fdd3d": {
       "path": "packages/engine/src/abilities/follower-destruction.ts",
       "symbol": "destructionAbilityOptions"
+    },
+    "h:fab5e1cfb249fa51": {
+      "path": "packages/engine/src/lifecycle/advance.ts",
+      "symbol": "expireSourceTurn"
     }
   },
   "testCases": {
@@ -491148,6 +491226,336 @@
         "風"
       ],
       "bindingNote": "Actual sword or wind attack contains required attribute and accepts the destruction package; public attack exposes level-six destruction and damage resolves."
+    },
+    "t:cb1fa2de0ebb4adc": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p03-r2c1-ab01",
+        "first",
+        false
+      ],
+      "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+    },
+    "t:2eed3d1e40815486": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p03-r2c1-ab01",
+        "second",
+        false
+      ],
+      "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+    },
+    "t:aadbaa8a19b4f495": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s successful doubles cancel and save separate attacker seat clock",
+      "declarationSha256": "f11f0b9cd46c0f0e47423630e82b6894d077edf54aa8b1d2472c30d9f065dae9",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+    },
+    "t:8b5cc075da68459f": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+      "declarationSha256": "e29266abc556d9712c5d8188412a41ea88399ef839f9d63343148cf508a3a873",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+    },
+    "t:afe61a1eaf3c0acf": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab01",
+        "first",
+        false
+      ],
+      "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+    },
+    "t:7913e6424e435190": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab01",
+        "second",
+        false
+      ],
+      "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+    },
+    "t:4d65e65d44a72e77": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s successful doubles cancel and save separate attacker seat clock",
+      "declarationSha256": "f11f0b9cd46c0f0e47423630e82b6894d077edf54aa8b1d2472c30d9f065dae9",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+    },
+    "t:5bddc21ebefd1d67": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+      "declarationSha256": "e29266abc556d9712c5d8188412a41ea88399ef839f9d63343148cf508a3a873",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+    },
+    "t:e55c607255251815": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c2-ab01",
+        "first",
+        false
+      ],
+      "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+    },
+    "t:40cd895cdf51d5e8": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+      "declarationSha256": "437eb4bc7e9f656d3024457c067c15e905e7962146c39a8b7d441f6b770525ee",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c2-ab01",
+        "second",
+        false
+      ],
+      "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+    },
+    "t:cac934e4cac98b35": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s successful doubles cancel and save separate attacker seat clock",
+      "declarationSha256": "f11f0b9cd46c0f0e47423630e82b6894d077edf54aa8b1d2472c30d9f065dae9",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+    },
+    "t:f253ecbe987c78fe": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+      "declarationSha256": "e29266abc556d9712c5d8188412a41ea88399ef839f9d63343148cf508a3a873",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+    },
+    "t:5b978df8d15ef162": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p03-r2c1-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:da792b9d6bc89974": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p03-r2c1-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:bf9d181b249a7ddc": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p03-r2c1-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:383298a395edbd2e": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p03-r2c1-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:6bc651a6c58c71da": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c1-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:aecfec317a082bae": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c1-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:721e16e8f8eace03": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c1-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:e8f302993807f08a": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c1-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:28bb8513eb71c5ca": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c2-ab01",
+        2,
+        true
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:67659f55447674dc": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c2-ab01",
+        2,
+        false
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:dcefb45c4a407eb8": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c2-ab01",
+        6,
+        true
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:9658a06ee6b23754": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s protects %s %i doubles / ordinary success %s",
+      "declarationSha256": "74c284c9688b1f57b5972de3e21d48fe30d438b2dcd6bce7b3ccf2afedc842dc",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p05-r2c1-ab02",
+        "c2-p06-r1c2-ab01",
+        6,
+        false
+      ],
+      "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+    },
+    "t:e234128c4921482d": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab02",
+        "c2-p03-r2c1-ab01"
+      ],
+      "bindingNote": "Actual public Gadyoora cancels the declared named mental defense before any ability check, and the original attack still resolves eight damage."
+    },
+    "t:0bf5f2a4d608bd7a": {
+      "path": "packages/engine/test/mental-protection.test.ts",
+      "suite": [],
+      "title": "%s cancels designated pending mental source %s",
+      "declarationSha256": "8cd0c783b3a315360656979946dbe558a59788db65d178f39d8c423464cac859",
+      "kind": "canonical-transition",
+      "parameters": [
+        "c2-p06-r1c1-ab02",
+        "c2-p06-r1c2-ab01"
+      ],
+      "bindingNote": "Actual public Gadyoora cancels the declared named mental defense before any ability check, and the original attack still resolves eight damage."
     }
   },
   "remainingNotes": {

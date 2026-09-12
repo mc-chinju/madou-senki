@@ -2618,6 +2618,544 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p03-r2c1-ab01",
+            "first",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p03-r2c1-ab01",
+            "second",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#doubles-stop-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#stop-expires-next-seat-arrival",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "expireSourceTurn"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c1-ab01",
+            "first",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c1-ab01",
+            "second",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#doubles-stop-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#stop-expires-next-seat-arrival",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "expireSourceTurn"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c2-ab01",
+            "first",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c2-ab01",
+            "second",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#doubles-stop-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#stop-expires-next-seat-arrival",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "expireSourceTurn"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab02#Lester-doubles-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "resolveMentalProtection"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "hasMentalDoubleGuard"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "resolveMentalProtection"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "hasMentalDoubleGuard"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab02#Dia-doubles-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "resolveMentalProtection"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "hasMentalDoubleGuard"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab02#Lester-named-defense-cancel",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/named-responses.ts",
+          "symbol": "resolveNamedResponse"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p06-r1c1-ab02",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public Gadyoora cancels the declared named mental defense before any ability check, and the original attack still resolves eight damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab02#Dia-named-defense-cancel",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/named-responses.ts",
+          "symbol": "resolveNamedResponse"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p06-r1c1-ab02",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public Gadyoora cancels the declared named mental defense before any ability check, and the original attack still resolves eight damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }
