@@ -1,0 +1,31 @@
+{
+  "kind": "partial-test-progress",
+  "scope": "B6 D2 additional Engine privacy tests; D2/D3 bindings remain",
+  "date": "2026-09-12",
+  "newTests": 2,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/reclaim-reservations.test.ts --reporter=json --outputFile=/private/tmp/release-b6-privacy.json",
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit passed",
+    "Runtime coverage validator valid true",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Four hidden initial worlds use ordinary printed characters and spent owned budgets, never injected ownership. Each world executes both bow and Magic Poem independently; no single printed source has both extra and unlimited owners.",
+    "For each source the exact public views of B/C/D, revisions, event IDs, events and four explicit reclaim passes agree; final discard arrays agree.",
+    "Actual Lester reveals in place, elects unlimited once, rejects duplicate choice atomically, returns one physical Magic Poem and retains an unspent base slot."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/reclaim-reservations.test.ts": "7262d7d2ab61c7ff466d6ec1ea9c297422772791f648e065ca3018f241db9a92"
+  },
+  "limitations": [
+    "B6 Step3 mapping to source obligations and binding of existing Engine/Worker/browser same-seat cases remains.",
+    "Worker/browser cases were inspected but not rerun in this increment.",
+    "No frozen-candidate acceptance or new semantic promotion is claimed."
+  ]
+}

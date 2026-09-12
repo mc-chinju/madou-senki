@@ -1279,7 +1279,7 @@ git add packages data docs && git commit -m "test,data: 残る個別条項を束
 - Read: `apps/worker/test/fixtures/shared-reclaim-scenarios.ts`、`docs/operations/evidence/2026-09-09-r5-shared-reclaim.json`
 - Create: `docs/operations/evidence/2026-09-11-r4-d2-d3-bindings.json`
 
-- [ ] **Step 1: 失敗する試験を書く**
+- [x] **Step 1: 失敗する試験を書く**
 
 ```ts
 it('All-pass zero base extra and unlimited worlds with a hidden right holder share one public transcript', () => {
@@ -1300,7 +1300,7 @@ it('Unlimited right used after reveal answers in seat order, once per event, and
 
 `runSharedReclaimWorld` は既存の paired-world 試験が使うヘルパー名に合わせる（`reclaim-reservations.test.ts` の該当 `it` を開いて実名に置換する）。無制限権の所持者は R4計画B2 の一覧（例: 公開レスターの月の竪琴・魔詩・呪歌）から、fixture に既にいる人物を使う。
 
-- [ ] **Step 2: 失敗→実装（runtime変更が不要なら試験のみ）→成功**
+- [x] **Step 2: 失敗→実装（runtime変更が不要なら試験のみ）→成功**
 
 Run: `pnpm exec vitest run packages/engine/test/reclaim-reservations.test.ts`
 Expected: 全件成功
@@ -1310,6 +1310,8 @@ Expected: 全件成功
 ```bash
 git add packages data docs && git commit -m "test,data: 無制限回収の秘匿比較と同一席2権利を台帳へ束縛する"
 ```
+
+2026-09-12 B6試験追加: D2の2試験を reclaim-reservations に追加。単一実カードで追加/無制限の双方を持つ人物組合せがないため、各4世界で弓と魔詩の実使用をそれぞれ比較（架空の能力継承なし）。カードごとに非所有者全投影・revision・event ID・イベント・4席PASS・最終捨て札が一致。実レスター公開でcursor保持、無制限選択1回、重複拒否、通常枠未消費と1枚回収を確認。対象14試験、型検査、台帳validator成功。runtime変更不要。Step1〜2完了、Step3の台帳行対応付けと既存Engine/DO/browser束縛は継続中。詳細は [B6秘匿試験進捗](../../operations/evidence/2026-09-12-b6-privacy-progress.json)。
 
 ### Task B7: Worker / browser 側の必要束縛
 
