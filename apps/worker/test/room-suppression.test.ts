@@ -40,8 +40,8 @@ async function declare(room: Room, actor: string, id: string, abilityId: typeof 
   return send(room, actor, id, { type: 'USE_ABILITY', abilityId, targetEventId: option!.targetEventId,
     ...(abilityId === BAN ? { targetIds: targets } : { targetId: targets[0]! }) });
 }
-async function toLiaTurn(room: Room) {
-  for (const actor of ['A', 'B']) {
+async function toLiaTurn(room: Room, actors=['A','B'], next='C') {
+  for (const actor of actors) {
     let state = await game(room);
     if (state.phase === 'turn-start') { await send(room, actor, `start-${actor}`, { type: 'START_TURN' }); await settle(room, `start-pass-${actor}`); await send(room, actor, `draw-${actor}`, { type: 'CHOOSE_DRAW', draw: false }); await settle(room, `draw-pass-${actor}`); }
     state = await game(room);
@@ -51,8 +51,8 @@ async function toLiaTurn(room: Room) {
     await send(room, actor, `end-${actor}`, { type: 'END_TURN', discardIds: state.players[actor]!.hand.slice(0, Math.max(0, state.players[actor]!.hand.length - 5)) });
     await settle(room, `end-pass-${actor}`);
   }
-  await send(room, 'C', 'start-C', { type: 'START_TURN' }); await settle(room, 'start-pass-C');
-  await send(room, 'C', 'draw-C', { type: 'CHOOSE_DRAW', draw: false }); await settle(room, 'draw-pass-C');
+  await send(room, next, `start-${next}`, { type: 'START_TURN' }); await settle(room, `start-pass-${next}`);
+  await send(room, next, `draw-${next}`, { type: 'CHOOSE_DRAW', draw: false }); await settle(room, `draw-pass-${next}`);
 }
 async function cancelWithFate(room: Room, prefix: string) {
   await until(room, state => state.windows?.at(-1)?.participants[state.windows!.at(-1)!.cursor] === 'D', `${prefix}-to-D`);
@@ -179,4 +179,16 @@ it('actual next-turn Vanmil ban preserves the unused main action through every r
   expect((await game(room)).suppressionDesignations?.map(d=>d.targetId)).toEqual(['B']);
   expect((await game(room)).phase).toBe('action');expect(viewFor(await game(room),'A').legalChoices).toContain('PASS_ACTION');
   await send(room,'A','end-retained-action',{type:'PASS_ACTION'});expect((await game(room)).phase).toBe('hand-adjustment');
+});
+
+it('actual self-ban prevents a new declaration on the next own turn after every DO restart and replay',async()=>{
+  const room=await openTestRoom('suppression-next-action');
+  const self=await declare(room,'A','self-ban',BAN,['A']);await settle(room,'self-ban-settle');await replay(room,self);
+  await toLiaTurn(room,['A','B','C','D'],'A');
+  const before=await room.stored();expect(before.state.game!.phase).toBe('action');
+  expect(before.state.game!.suppressionDesignations?.map(d=>d.targetId)).toEqual(['A']);
+  expect(viewFor(before.state.game!,'A').abilityOptions.some(o=>o.abilityId===BAN)).toBe(false);
+  const forged=await request(room,'self-banned-retry',{type:'USE_ABILITY',abilityId:BAN,targetIds:['B'],targetEventId:'forged-new-opportunity'}),rejection=await room.command('A',forged);
+  expect(rejection).toMatchObject({type:'error'});expect(await room.stored()).toEqual(before);await room.restart();expect(await room.command('A',forged)).toEqual(rejection);expect(await room.stored()).toEqual(before);
+  for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game!.suppressionTargets).toEqual([{targetId:'A',designated:true,applicability:'suppressed'}]);
 });

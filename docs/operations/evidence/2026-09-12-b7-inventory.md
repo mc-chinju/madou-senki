@@ -15,7 +15,7 @@
 | `c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p07-r1c2-ab03#C16/reject-no-new-designation` | browser, worker-persistence | 新機会の同一指定拒否・追加指定累積をDO/browserへ束縛 |
 | `c2-p07-r1c2-ab03#C16/designations-accumulate` | browser, worker-persistence | 新機会の同一指定拒否・追加指定累積をDO/browserへ束縛 |
-| `c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration` | browser, worker-persistence | 自己指定から実一巡後の宣言不可をDO/browserへ束縛 |
 | `c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript` | browser, worker-persistence | 非公開免除/通常対象のDO・browser逐操作比較へ束縛 |
 | `c2-p07-r1c2-ab03#C16/hidden-target-uniform-public-view` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence` | browser, worker-persistence | 直接assertion確認待ち |

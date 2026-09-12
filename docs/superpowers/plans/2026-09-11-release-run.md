@@ -1351,6 +1351,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16同一指定のみの拒否・指定累積の2行を追加束縛。実祝福の新回答機会でBのみ再指定を拒否・状態不変、Dのみ追加して元B指定を保持する既存DOケースを拡張し、同操作のbrowser全席reloadを追加。Worker8試験・browser1試験・型チェック・台帳validator成功。不足16行、Step2継続。詳細は [B7指定累積進捗](../../operations/evidence/2026-09-12-b7-designation-progress.json)。
 
+2026-09-12 B7続行: C16自己指定後の追加宣言不可1行を追加束縛。既存fixtureから実自己指定・四席一巡後の新しい自手番へ進み、DOで宣言拒否・保存再送不変、browser全席reloadで自己禁止とボタン不在を確認。共有手番進行helperの既存ケースも含めWorker9試験・browser6試験・型チェック・台帳validator成功。不足15行、Step2継続。詳細は [B7自己指定進捗](../../operations/evidence/2026-09-12-b7-self-ban-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

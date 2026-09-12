@@ -255712,11 +255712,13 @@
         "h:2429f56399a6e165"
       ],
       "tests": [
-        "t:2041ef2ea7f4f35a"
+        "t:2041ef2ea7f4f35a",
+        "t:96b7d1e10b5a6bb0",
+        "t:6d1b265b6a8feef8"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:6c7ddc512035a05a"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -492997,6 +492999,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual new response opportunity after Blessing rejects submitted B-only selection with INVALID_ACTION and unchanged public game/revision after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
+    },
+    "t:96b7d1e10b5a6bb0": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "actual self-ban prevents a new declaration on the next own turn after every DO restart and replay",
+      "declarationSha256": "334a1155021e2e87524c42726e59f0eaa705852cbe1d126409f2b51f33a4727f",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual self-ban and full subsequent turn cycle use saved/replayed commands; next own action has no ban offer, forged retry is atomically rejected through eviction and all seats show source suppression."
+    },
+    "t:6d1b265b6a8feef8": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "self-designated Vanmil stays unable to declare on his next turn across all-seat browser reload",
+      "declarationSha256": "bb84c332a9e4a9f0452e61cbe203f1a7a96c6c23023f5e24611e525065b7803e",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual self-target selection and four-seat turn cycle reach a fresh own action; all seats reload with source designated/suppressed and the source has no ban option/button."
     }
   },
   "remainingNotes": {
@@ -493157,7 +493177,8 @@
     "n:d7dedb60b238ec23": "n:6d9fe79b4ce22f05",
     "n:df2c8d6cd035ae42": "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains.",
     "n:26415580933c852e": "n:d7dedb60b238ec23",
-    "n:52e34ff77d890df9": "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains."
+    "n:52e34ff77d890df9": "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains.",
+    "n:6c7ddc512035a05a": "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

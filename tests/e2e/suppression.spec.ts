@@ -9,9 +9,9 @@ async function click(table: Table, views: Views, button: Locator) {
   await button.click();
   await expect.poll(() => views.get(owner)?.revision).toBeGreaterThan(revision);
 }
-async function toLiaTurn(table: Table, views: Views) {
+async function toLiaTurn(table: Table, views: Views, indices=[0,1], next=2) {
   const owner = table.sessions[0]!.id;
-  for (const index of [0, 1]) {
+  for (const index of indices) {
     const page = table.pages[index]!;
     const button = (name: string) => page.getByRole('button', { name, exact: true });
     if (views.get(owner)!.game!.phase === 'turn-start') {
@@ -29,9 +29,9 @@ async function toLiaTurn(table: Table, views: Views) {
     await click(table, views, button(`選んだ${required}枚を捨てて手番を終える`));
     await passUntil(table, views, game => !game.activeWindow);
   }
-  await click(table, views, table.pages[2]!.getByRole('button', { name: '手番を始める', exact: true }));
+  await click(table, views, table.pages[next]!.getByRole('button', { name: '手番を始める', exact: true }));
   await passUntil(table, views, game => !game.activeWindow);
-  await click(table, views, table.pages[2]!.getByRole('button', { name: 'カードを引かない', exact: true }));
+  await click(table, views, table.pages[next]!.getByRole('button', { name: 'カードを引かない', exact: true }));
   await passUntil(table, views, game => !game.activeWindow);
 }
 
@@ -178,5 +178,21 @@ test('a new ban opportunity rejects unchanged selection and adds a target withou
     await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
     for(const [seat,page] of table.pages.entries()){await page.reload();expect(views.get(table.sessions[seat]!.id)!.game!.suppressionTargets.map(target=>target.targetId)).toEqual([b,d]);}
     await expect(panel).toContainText('楓：指定済み');await expect(panel).toContainText('蓮：指定済み');
+  }finally{await table.close();}
+});
+
+test('self-designated Vanmil stays unable to declare on his next turn across all-seat browser reload',async({browser,request})=>{
+  test.setTimeout(90000);
+  const table=await tableFixture(browser,request,'suppression-next-action');
+  try{
+    const views=await observe(table),a=table.sessions[0]!.id,panel=table.pages[0]!.getByRole('region',{name:'能力の禁止と祝福'});
+    await panel.getByRole('checkbox',{name:'葵',exact:true}).check();await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    await toLiaTurn(table,views,[0,1,2,3],0);
+    for(const [seat,page] of table.pages.entries()){
+      await page.reload();const g=views.get(table.sessions[seat]!.id)!.game!;expect(g.phase).toBe('action');expect(g.suppressionTargets).toEqual([{targetId:a,designated:true,applicability:'suppressed'}]);
+    }
+    expect(views.get(a)!.game!.abilityOptions.some(o=>o.abilityId===BAN)).toBe(false);
+    await expect(panel.getByRole('button',{name:'神と人の差を使う',exact:true})).toHaveCount(0);
+    await expect(panel).toContainText('葵：指定済み・特殊能力を使用できません');
   }finally{await table.close();}
 });

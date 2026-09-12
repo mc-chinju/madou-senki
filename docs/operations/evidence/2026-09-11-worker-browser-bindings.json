@@ -1130,6 +1130,53 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 self-designation prevents subsequent ability use and never adds a public disabled status",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "actual self-ban prevents a new declaration on the next own turn after every DO restart and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual self-ban and full subsequent turn cycle use saved/replayed commands; next own action has no ban offer, forged retry is atomically rejected through eviction and all seats show source suppression."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "self-designated Vanmil stays unable to declare on his next turn across all-seat browser reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual self-target selection and four-seat turn cycle reach a fresh own action; all seats reload with source designated/suppressed and the source has no ban option/button."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }
