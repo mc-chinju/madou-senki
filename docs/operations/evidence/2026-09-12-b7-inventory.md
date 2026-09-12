@@ -32,7 +32,7 @@
 | `c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease` | browser, worker-persistence | 実死亡・復活・新生再祝福のDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/source-life-generation-saved` | browser, worker-persistence | 実死亡・復活・新生再祝福のDO/browserへ束縛 |
-| `common:C04#C04/once-target-hit-before-followers` | browser, worker-persistence | 直接assertion確認待ち |
+| `common:C04#C04/once-target-hit-before-followers` | browser, worker-persistence | 実2ヒットの使用/取消・従者開始をDO保存再送・browser全席reloadへ束縛 |
 | `common:C04#C04/cancel-consumes-attempt` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `common:C04#C04/target-local-not-source-global` | browser, worker-persistence | 既存試験をDO保存再送・browser全席reloadへ拡張して束縛 |
 | `ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit` | browser, worker-persistence | 既存試験をDO保存再送・browser全席reloadへ拡張して束縛 |

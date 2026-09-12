@@ -1369,6 +1369,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16 祝福がヴァンミール由来の禁止だけを解除する1行を追加束縛。実禁止→錯乱/催眠の実攻撃→後続手番の祝福で、別原因の能力禁止・停止が残ることを確認。Worker毎操作保存再送・全席投影比較と共通能力ゲート、browser全席reload・保存状態読取りを検証した。Worker2試験・browser2試験・型チェック・台帳validator成功。不足5行、Step2継続。詳細は [B7祝福と状態異常進捗](../../operations/evidence/2026-09-12-b7-blessing-status-progress.json)。
 
+2026-09-12 B7続行: C04 各対象・各ヒット一度と従者開始後の選択禁止1行を追加束縛。実グリフォン2ヒットで巨神の使用/取消後は次ヒットに新機会、従者開始後は解決終了まで選択不可を確認。Worker毎操作保存再送・全席投影と旧機会拒否、browser全席reloadを検証した。Worker3試験・browser3試験・型チェック・台帳validator成功。不足4行、Step2継続。詳細は [B7グリフォン防御進捗](../../operations/evidence/2026-09-12-b7-griffin-defense-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

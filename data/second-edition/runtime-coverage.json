@@ -256666,11 +256666,17 @@
       "tests": [
         "t:1c8f4c80ac7cec7e",
         "t:ecf97a9a49ec2a8e",
-        "t:7a249f4632295361"
+        "t:7a249f4632295361",
+        "t:bb9805533b5d3b27",
+        "t:1bfbfafa56058f12",
+        "t:27ff915d1705d565",
+        "t:4e2dcb66c7d33147",
+        "t:db8b9ef161292386",
+        "t:a4705d13fb8423e2"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:0ea34b158237548a"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493300,6 +493306,114 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
+    },
+    "t:7d36f06d506de8d6": {
+      "path": "apps/worker/test/room-griffin-defense.test.ts",
+      "suite": [],
+      "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+      "declarationSha256": "ece382a810dd510da0e74ff31ba915b84fc3be1aa2c0a398daeed4545af84b3f",
+      "kind": "worker-persistence",
+      "parameters": "select",
+      "bindingNote": "Actual dedicated Griffin creates two hits. Every command saves/restarts/replays with all-seat projection comparison. Canceled/late first-hit input and stale next-hit reference reject without durable mutation; next hit offers a fresh Giant attempt."
+    },
+    "t:fda0891755603b94": {
+      "path": "tests/e2e/griffin-defense.spec.ts",
+      "suite": [],
+      "title": "actual Griffin selected first Giant allows one fresh second-hit attempt across all-seat reload",
+      "declarationSha256": "eeb1a51aecaae00d4563a9bc02f74066909abc3b3cb3207f66cc352cef4d33ec",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. First-hit option stays spent/closed and a new event offers Giant on the second hit."
+    },
+    "t:d52d47edee804260": {
+      "path": "apps/worker/test/room-griffin-defense.test.ts",
+      "suite": [],
+      "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+      "declarationSha256": "ece382a810dd510da0e74ff31ba915b84fc3be1aa2c0a398daeed4545af84b3f",
+      "kind": "worker-persistence",
+      "parameters": "cancel",
+      "bindingNote": "Actual dedicated Griffin creates two hits. Every command saves/restarts/replays with all-seat projection comparison. Canceled/late first-hit input and stale next-hit reference reject without durable mutation; next hit offers a fresh Giant attempt."
+    },
+    "t:f057f9e68ca08897": {
+      "path": "tests/e2e/griffin-defense.spec.ts",
+      "suite": [],
+      "title": "actual Griffin canceled first Giant remains spent until next hit across all-seat reload",
+      "declarationSha256": "239626c9417cc6c87158ce2173e8dd46e7f9b6b605d34d3ce47c29baa031e1d7",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. First-hit option stays spent/closed and a new event offers Giant on the second hit."
+    },
+    "t:6720d62c3d963834": {
+      "path": "apps/worker/test/room-griffin-defense.test.ts",
+      "suite": [],
+      "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+      "declarationSha256": "ece382a810dd510da0e74ff31ba915b84fc3be1aa2c0a398daeed4545af84b3f",
+      "kind": "worker-persistence",
+      "parameters": "late",
+      "bindingNote": "Actual dedicated Griffin creates two hits. Every command saves/restarts/replays with all-seat projection comparison. Canceled/late first-hit input and stale next-hit reference reject without durable mutation; next hit offers a fresh Giant attempt."
+    },
+    "t:bf2fc31a37158918": {
+      "path": "tests/e2e/griffin-defense.spec.ts",
+      "suite": [],
+      "title": "actual Griffin follower entry closes Giant choice until next hit across all-seat reload",
+      "declarationSha256": "127cd2412def38e4eeaf78f66717ab2b9f3eb9bbeda06737d77cbc68b6dfbafc",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. First-hit option stays spent/closed and a new event offers Giant on the second hit."
+    },
+    "t:bb9805533b5d3b27": {
+      "path": "apps/worker/test/room-griffin-defense.test.ts",
+      "suite": [],
+      "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+      "declarationSha256": "9f5045a1498865f9899a87093fdd76965cfeea09d64b43d01d9897d5eee58b04",
+      "kind": "worker-persistence",
+      "parameters": "select",
+      "bindingNote": "Actual dedicated Griffin creates two hits. Every command saves/restarts/replays with all-seat projection comparison. Canceled/late first-hit input and stale next-hit reference reject without durable mutation; next hit offers a fresh Giant attempt."
+    },
+    "t:1bfbfafa56058f12": {
+      "path": "tests/e2e/griffin-defense.spec.ts",
+      "suite": [],
+      "title": "actual Griffin selected first Giant allows one fresh second-hit attempt across all-seat reload",
+      "declarationSha256": "eeb1a51aecaae00d4563a9bc02f74066909abc3b3cb3207f66cc352cef4d33ec",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
+    },
+    "t:27ff915d1705d565": {
+      "path": "apps/worker/test/room-griffin-defense.test.ts",
+      "suite": [],
+      "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+      "declarationSha256": "9f5045a1498865f9899a87093fdd76965cfeea09d64b43d01d9897d5eee58b04",
+      "kind": "worker-persistence",
+      "parameters": "cancel",
+      "bindingNote": "Actual dedicated Griffin creates two hits. Every command saves/restarts/replays with all-seat projection comparison. Canceled/late first-hit input and stale next-hit reference reject without durable mutation; next hit offers a fresh Giant attempt."
+    },
+    "t:4e2dcb66c7d33147": {
+      "path": "tests/e2e/griffin-defense.spec.ts",
+      "suite": [],
+      "title": "actual Griffin canceled first Giant remains spent until next hit across all-seat reload",
+      "declarationSha256": "239626c9417cc6c87158ce2173e8dd46e7f9b6b605d34d3ce47c29baa031e1d7",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
+    },
+    "t:db8b9ef161292386": {
+      "path": "apps/worker/test/room-griffin-defense.test.ts",
+      "suite": [],
+      "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+      "declarationSha256": "9f5045a1498865f9899a87093fdd76965cfeea09d64b43d01d9897d5eee58b04",
+      "kind": "worker-persistence",
+      "parameters": "late",
+      "bindingNote": "Actual dedicated Griffin reaches follower start. Every command saves/restarts/replays with all-seat projections; late Giant rejects without durable mutation and no new Giant option appears through completion."
+    },
+    "t:a4705d13fb8423e2": {
+      "path": "tests/e2e/griffin-defense.spec.ts",
+      "suite": [],
+      "title": "actual Griffin follower entry closes Giant choice through completion across all-seat reload",
+      "declarationSha256": "63e1be6da852aff10cb2aff0b8688dd066063192c3bf9c9bbe1b2f4d477d3687",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
     }
   },
   "remainingNotes": {
@@ -493470,7 +493584,8 @@
     "n:0123e6c2897a9897": "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:7936a3a29ccd02e9": "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains.",
     "n:e8552bec0195d2e8": "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains.",
-    "n:b8cde6ba3e63d573": "Actual confusion and hypnosis persist through subsequent successful Blessing, saved command replay and browser reload. Frozen-candidate acceptance remains."
+    "n:b8cde6ba3e63d573": "Actual confusion and hypnosis persist through subsequent successful Blessing, saved command replay and browser reload. Frozen-candidate acceptance remains.",
+    "n:0ea34b158237548a": "Actual two-hit Griffin selected/canceled/follower-start cases cover saved per-hit attempts and next-hit renewal. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {
