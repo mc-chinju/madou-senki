@@ -178293,12 +178293,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:589720a37fddbce1"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:7d9d1868fd8bb899",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178313,12 +178317,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:35b9d33631562300"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:7d9d1868fd8bb899",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178333,12 +178341,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:1bc64abf6b259f21"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:7d9d1868fd8bb899",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178353,12 +178365,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:7b502fc2e6525d27"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:7d9d1868fd8bb899",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -178997,12 +179013,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:53d0edb3d7a1e930",
+        "t:1b808d2e74716a9f",
+        "t:9d794348c92a61aa"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:c09f4586e6506839",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179017,12 +179039,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:544ba7217d092e02",
+        "t:4914f2c39005114e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:c09f4586e6506839",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179037,12 +179064,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:cd156ff04dd4f3c4"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:c09f4586e6506839",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179057,12 +179088,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:0d8c73378a6bae89"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:c09f4586e6506839",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179077,12 +179112,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:be78c62d06e77527"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:c09f4586e6506839",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179097,12 +179136,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:7fde32282d567756"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:c09f4586e6506839",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -179117,12 +179160,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:29edd992a6b99735",
+        "h:85f703956f6409df"
+      ],
+      "tests": [
+        "t:fa1e4186cd874df1"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:c09f4586e6506839",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -415880,8 +415927,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7018,
-      "implemented": 5160
+      "pending": 7007,
+      "implemented": 5171
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417187,6 +417234,10 @@
     "h:79856e2bd46b7acf": {
       "path": "packages/engine/src/abilities/suppression-state.ts",
       "symbol": "vanmilSuppressed"
+    },
+    "h:29edd992a6b99735": {
+      "path": "packages/engine/src/abilities/combat-rewards.ts",
+      "symbol": "resolveCombatReward"
     }
   },
   "testCases": {
@@ -489494,6 +489545,135 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Source-specific committed check, effect/damage or END hand continuation survives subsequent source selection changes. Direct target concealment is explicitly structural."
+    },
+    "t:589720a37fddbce1": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Dia absorbs only nine body damage after the actual initial Soldier takes one",
+      "declarationSha256": "0d1a0f17eb971649abd1b87f1dc676e61577ec6009d63c87aade1710f874c859",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "actual-post-follower-body-damage: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:35b9d33631562300": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Dia absorbs actual body ten only up to remaining three",
+      "declarationSha256": "70653c50555f4ee454c1eccff49484c04f79ecc01c892ec6ada6ae9ef960b857",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "remaining-endurance-cap: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:1bc64abf6b259f21": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Actual physical Ice Mirror credits numeric absorption to its reflecting Dia",
+      "declarationSha256": "4cb0a7cbac41c8a9101a8390f9ee42a186887f64850a4b94af67bef64ca73010",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "heal-source: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:7b502fc2e6525d27": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Pure instant death offers no numeric absorption while the printed soul-drain rider still heals",
+      "declarationSha256": "fc02823a7bc37af8b8d6f1f76724bcc818d1e5513deea7b70d69514cc7936ea9",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "no-numeric-instant-death-no-heal: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:53d0edb3d7a1e930": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:1b808d2e74716a9f": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "counter",
+      "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:9d794348c92a61aa": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "reflection",
+      "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:544ba7217d092e02": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "victim-predeath-spirit-eight: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:4914f2c39005114e": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Spirit seven death never offers hunger",
+      "declarationSha256": "67ff4cccc276b824f13e0b2e9c94ceaa253d330194c981e9964682b6d7c6e3cc",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "victim-predeath-spirit-eight: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:cd156ff04dd4f3c4": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "%s actual chanted destruction kills its source simultaneously and grants no reward",
+      "declarationSha256": "5043dbb08177926d23b60cb222a36974c517e82a222c9d904a7325f58a0b5513",
+      "kind": "canonical-transition",
+      "parameters": "餓狼ヨーツルム",
+      "bindingNote": "surviving-source: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:0d8c73378a6bae89": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "full-heal: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:be78c62d06e77527": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "permanent-warrior-plus-two: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:7fde32282d567756": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "Yotsurm hunger preserves actual %s killing source through death",
+      "declarationSha256": "b2287fa7729cf2216b67d337d0408dfb6f48eb1f38a0465518514e159726703b",
+      "kind": "canonical-transition",
+      "parameters": "attack",
+      "bindingNote": "permanent-magic-plus-two: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+    },
+    "t:fa1e4186cd874df1": {
+      "path": "packages/engine/test/combat-rewards.test.ts",
+      "suite": [],
+      "title": "%s %s actual chanted three-hit kill and later distinct kill reward once each",
+      "declarationSha256": "bae752abef185748f352c5dd7c48deb7029b3fce0a7cc6d411363a462b829021",
+      "kind": "canonical-transition",
+      "parameters": [
+        "餓狼ヨーツルム",
+        "c2-p06-r2c2-ab04"
+      ],
+      "bindingNote": "once-per-victim: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
     }
   },
   "remainingNotes": {

@@ -1,0 +1,328 @@
+{
+  "bindings": [
+    {
+      "row": "c2-p06-r1c2-ab03#actual-post-follower-body-damage",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Dia absorbs only nine body damage after the actual initial Soldier takes one",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "actual-post-follower-body-damage: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab03#remaining-endurance-cap",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Dia absorbs actual body ten only up to remaining three",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "remaining-endurance-cap: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab03#heal-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Actual physical Ice Mirror credits numeric absorption to its reflecting Dia",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "heal-source: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab03#no-numeric-instant-death-no-heal",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Pure instant death offers no numeric absorption while the printed soul-drain rider still heals",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "no-numeric-instant-death-no-heal: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#own-kill-provenance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        },
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "counter",
+          "kind": "canonical-transition",
+          "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        },
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "reflection",
+          "kind": "canonical-transition",
+          "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#victim-predeath-spirit-eight",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "victim-predeath-spirit-eight: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        },
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Spirit seven death never offers hunger",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "victim-predeath-spirit-eight: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#surviving-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "%s actual chanted destruction kills its source simultaneously and grants no reward",
+          "parameters": "餓狼ヨーツルム",
+          "kind": "canonical-transition",
+          "bindingNote": "surviving-source: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#full-heal",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "full-heal: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#permanent-warrior-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "permanent-warrior-plus-two: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#permanent-magic-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "permanent-magic-plus-two: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#once-per-victim",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "%s %s actual chanted three-hit kill and later distinct kill reward once each",
+          "parameters": [
+            "餓狼ヨーツルム",
+            "c2-p06-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "once-per-victim: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    }
+  ]
+}

@@ -1252,6 +1252,8 @@ Expected: `valid: true`、semantic の pending が 0、`implementedRelatedOnly` 
 git add packages data docs && git commit -m "test,data: 残る個別条項を束縛し、semantic pendingを解消する"
 ```
 
+2026-09-12 B5開始: 開始時99行の暫定分類一覧を作成し、確認済みの撃破報酬/吸収回復11行を束縛。既存2宣言を静的it.eachへ変換し、4ケースをASTで識別可能にした。対象24試験、型検査、台帳validator成功。具体的実装済み5,171、semantic pending88、accepted0。残86行は直接assertionの確認/追加対象、D4c 2行はA7補足に従いB8直前までpending。分類のbは暫定でStep1〜3は未完了。詳細は [B5報酬進捗](../../operations/evidence/2026-09-12-b5-rewards-progress.json)。
+
 ### Task B6: D2 無制限回収の秘匿比較と D3 同一席2権利の束縛
 
 **Files:**

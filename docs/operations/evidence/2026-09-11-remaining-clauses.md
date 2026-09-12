@@ -1,0 +1,109 @@
+# B5 残条項の分類
+
+暫定分類。Step1は全行の直接試験を確認するまで未完了。
+
+開始時点: semantic pending 99行。a=既存の直接試験へ束縛、b=直接assertionの追加・補強（既存試験の十分性を確認できた行はaへ更新）、c=承認済みD4。
+
+D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外は適用外にしない。
+
+| 行 | 分類 | 対応 |
+|---|---|---|
+| `c2-p01-r2c2-ab01#one-maai-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p01-r2c2-ab01#two-advances-required` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p01-r2c2-ab05#own-death` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p01-r2c2-ab05#selected-eligible-recipient` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p01-r2c2-ab05#no-physical-gift-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c1-ab01#earth-magic-immunity` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c1-ab01#maai-requires-two-advances` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r2c1-ab03#original-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r2c1-ab03#returned-counter-only` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r2c1-ab03#maai-uncancelable-by-advance` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab04#own-turn-extra-once` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab04#spirit-minus-five` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab04#lia-alive-duration` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab04#other-ban-causes-retained` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#public-source` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#one-extra-maai` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#no-physical-source-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab02#sword-attack` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab02#actual-zero-maai-payments` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab02#hit-required` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab02#damage-double` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r1c2-ab05#public-Arnes-self-spirit-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r1c2-ab05#once-game-Arnes-substitution` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r1c2-ab05#concurrent-death-retention` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c2-ab03#actual-post-follower-body-damage` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r1c2-ab03#remaining-endurance-cap` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r1c2-ab03#heal-source` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r1c2-ab03#no-numeric-instant-death-no-heal` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r2c1-ab02#public-source` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c1-ab02#no-physical-source-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab01#self-spirit-minus-two` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab01#own-incoming-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab01#optional-advance-discard` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab01#optional-original-attacker-child` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab01#child-follower-ignore` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab01#child-maai-prohibited` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c2-ab04#own-kill-provenance` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r2c2-ab04#victim-predeath-spirit-eight` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r2c2-ab04#surviving-source` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r2c2-ab04#full-heal` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r2c2-ab04#permanent-warrior-plus-two` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r2c2-ab04#permanent-magic-plus-two` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p06-r2c2-ab04#once-per-victim` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
+| `c2-p07-r1c2-ab03#optional-selected-multiple-bans` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c2-ab03#exclude-Lia` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c2-ab03#exclude-LancelotII` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c2-ab03#durable-source-provenance` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p01-r2c2#mandatory-warrior-damage-half` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c2#mandatory-black-tech-prohibition` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2#mandatory-allegiance-check-plus-two` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r2c1#mandatory-allegiance-check-plus-two` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r2c1-ab02#Dia-doubles-protection` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r2c1-ab02#Gadyoora-doubles-protection` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r2c1-ab02#Lester-doubles-protection` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c1-ab02#Dia-named-defense-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c1-ab02#Lester-named-defense-cancel` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#virtual-near-range` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#virtual-magic-school` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#virtual-water-attribute` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#virtual-level-four` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c1-ab02#virtual-damage-three` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c1-ab02#virtual-near-range` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c1-ab02#virtual-magic-school` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c1-ab02#virtual-fire-attribute` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c1-ab02#virtual-level-four` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r2c1-ab02#virtual-damage-five` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c2-ab04#earth-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c2-ab04#wind-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c2-ab04#water-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p02-r1c2-ab04#fire-magic-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab01#sword-attack-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab01#wind-attack-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r2c2-ab04#actual-attacking-role` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r2c2-ab04#actual-defending-role` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab02#outside-own-attack-only` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r1c2-ab02#near-selected-target` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab05#GOOD-required-for-attack-bonus` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab05#public-Gainas-target-effect-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab05#public-Uonos-target-effect-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c2-ab04#optional-Dia-conversion` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c2-ab04#optional-Yotsurm-conversion` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p07-r1c1-ab01#successful-check-threshold-hit-immunity` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r2c1-ab01#doubles-stop-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p03-r2c1-ab01#stop-expires-next-seat-arrival` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c1-ab01#doubles-stop-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c1-ab01#stop-expires-next-seat-arrival` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c2-ab01#doubles-stop-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p06-r1c2-ab01#stop-expires-next-seat-arrival` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `common:C04#C04/once-target-hit-before-followers` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `common:C04#C04/cancel-consumes-attempt` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `common:C04#C04/target-local-not-source-global` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `a2-p20-r2c1#semantic/defense/not-earth-warrior` | c | D4c: d4-not-applicable-bindings.jsonに判断済み。B8直前適用。 |
+| `a2-p21-r1c3#semantic/defense/not-earth-warrior` | c | D4c: d4-not-applicable-bindings.jsonに判断済み。B8直前適用。 |
