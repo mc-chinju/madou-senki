@@ -1439,6 +1439,8 @@ git add data packages/catalog docs scripts && git commit -m "data: 候補を固�
 
 2026-09-12 B8第2回全実行は最後まで終了し、Engine 7,964成功・Worker 2,558成功、browser 2,155成功/9失敗/skip 0/flaky 0。browserの所要時間は約4時間8分。失敗は固定ポート2件、回収応答や入れ子の割り込み完了待ち5件、成功分岐を検証するfixtureの乱数設定2件。全失敗の修正案は別環境で個別検証済みで、終了後に本作業木へ適用した。変更されたsemantic束縛4行を更新し、関連browser 55件成功、baseURL設定確認追加後の2件再実行と全型検査も成功。notApplicable 2行は成功した現在候補runが未成立のためvalidatorが拒否しており、昇格・readinessは未完了。詳細は [第2回実行と修正の証跡](../../operations/evidence/2026-09-12-b8-second-progress.json)。
 
+2026-09-13 B8第3回全実行は終了0、Engine 7,964・Worker 2,558・browser 2,164件すべて成功（skip/flaky 0）。昇格は4,633 acceptedに留まり、Vitestタイトル整形の相違と旧related参照3種が原因と判明。整形を実際のVitest表示へ修正し、10条項の旧参照を既存の具体的試験に整理。診断照合はactive 6,536参照／distinct 6,461一致／未一致0。変更後候補の受け入れは未成立のため全semanticをimplemented 5,257／notApplicable 2へ戻し、第4回全実行で再検証する。旧原本と部分昇格receiptは `/private/tmp/madou-b8-third-success/` に保存。詳細は [束縛修正記録](../../operations/evidence/2026-09-13-b8-binding-resolution.json)。
+
 ## Phase C: 正式開始と一戦（R7）
 
 ### Task C1: 合法手ボット（Engine）

@@ -6,7 +6,7 @@
     "pnpm --filter @madou/worker exec vitest run --maxWorkers=2",
     "pnpm exec playwright test"
   ],
-  "exitCode": 1,
+  "exitCode": 0,
   "manifestSha256": "eaa06a2427a3541ba6b51aacec96fcbaac8265253dc1192a9501166e804a4f1b",
   "freezePolicy": "runtime-candidate-v3",
   "files": {
@@ -444,7 +444,7 @@
     "apps/worker/test/fixtures/dragon-king-physical-scenarios.ts": "05d3dc47b79e55626ffc433a654ad24dfe6d6ab6c442236b0f7d204eef9faa18",
     "apps/worker/test/fixtures/dragon-spear-scenarios.ts": "a6e82b43145f57c52f083ed43b2857627132fccd6da138f45a5bea53ac665954",
     "apps/worker/test/fixtures/dwarf-physical-scenarios.ts": "e9f0c01b188e61dde22faafe75237aca830601b4a133f536a4e7103c2333cf17",
-    "apps/worker/test/fixtures/e2e-worker.ts": "1ee7c2fd0a93c44e32187c9a94f04273ccf3133e3ae6bac026d9a1b77b2b20c0",
+    "apps/worker/test/fixtures/e2e-worker.ts": "2e0c46d74bd268285396ef2394cea73b0fd84d3138fad68f58f889e8bea05a7b",
     "apps/worker/test/fixtures/earth-magic-scenarios.ts": "05e65b7fe8b77b6306a3f8f9b4b68ca274f2dbb2625a28f56d2fa484bf39fd57",
     "apps/worker/test/fixtures/evade-physical-scenarios.ts": "56015fab46b73ac7da7d533da76f83e6d222731f3b94caa66c7f7d6e87befaf2",
     "apps/worker/test/fixtures/faction-castles-physical-scenarios.ts": "e194dfa23b2f2c8c8e0eff62d8642360b9a1cc9d30e7aa614fe510a31f40f300",
@@ -1277,7 +1277,7 @@
     "scripts/promote_ledger.py": "894e0e0d7530a576019b02c8e402b9a21befd65b60e619890ddd2160e9f69837",
     "scripts/record_runtime_run.py": "f9f8efe0c52edb097e88f5feb7fd50d40df8671cb68326c14dbcdf889beee91d",
     "scripts/requirements-assets.txt": "afef94cb54188a888fb6b5b25f2997dc269414d0f5523f00b734ed9b0e3020ad",
-    "scripts/run_candidate.sh": "db716f1c452fb9cba8e324699daf2f3c166cd139c8f4b60f709cdb5cb5ed5967",
+    "scripts/run_candidate.sh": "ac0ba3c05d93e263ac11cf7ac289420ac74ec525a5550e2e55c0aed5820876be",
     "scripts/runtime_coverage_ast.cjs": "91193824eac68a0e2ad049c82bacdb786a66c52cf2ea3a65cf513ff7765558b3",
     "scripts/test_apply_ledger_bindings.py": "ff0bbfcb03bb6bf3d28c8e26d153f6a55d229c354754cc78428186a7652c7baa",
     "scripts/test_build_character_bindings.py": "06985db800c2d2c3fab6ed170117c4f3d1d59f5df6ffc5fa53b70cb3ff60b310",
@@ -1355,7 +1355,7 @@
     "tests/e2e/flame-dragon-physical.spec.ts": "1c41bf3d541fbbf3ae77ce4c0a69d3354866f20cb9dcc45f12b71de0615082a1",
     "tests/e2e/follower-attacks.spec.ts": "db02ef8c1b346aa80347f23f5e3439e1efa120f09d57abf114692537c54035c6",
     "tests/e2e/follower-destruction.spec.ts": "bc79c1608749e65491da4f3e1d9fa225bf7b0c60e72556e8d2c824a0cdc835ac",
-    "tests/e2e/follower-entry.spec.ts": "d1804cfc6b0545a5e159e8bafd7059c0e307dead3ee0964b48002be1a5975636",
+    "tests/e2e/follower-entry.spec.ts": "a484fff55d8277fcdf3489aafb06eb7d556e00d846c3b67fbda130268a31c664",
     "tests/e2e/follower-groups.spec.ts": "a0aa2b81e1baf888c281f776fa5a8e454cda89be8f321f971ed7a72396e92f1c",
     "tests/e2e/followers.spec.ts": "905c8d2973e4a674aefafe0e8a4ff2c10211de69a5e3f31f5fff83a11ab5d156",
     "tests/e2e/fury-bow.spec.ts": "e110494b3251ecc45c69e332d0f306370dd65cbfbd62f66d642fbc8c85c659db",
@@ -1376,7 +1376,7 @@
     "tests/e2e/ice-magic.spec.ts": "4803c31c7079e446b7d58614e6afb97228dd098788cf6371b07ef72388882b23",
     "tests/e2e/ice-mirror.spec.ts": "1610b37771f5905c3ede73613d0e402465a25c35722e09710898c763dd79e22f",
     "tests/e2e/ice-wolf.spec.ts": "909e2fdc55f366dac609cae46ae7c29635a87d933092778c9bd5f282720fbdc2",
-    "tests/e2e/invite-game.spec.ts": "2d42ddf5064de7eb6aaaae879d809be206f7579ff27756f243c0eaff1b389d6c",
+    "tests/e2e/invite-game.spec.ts": "c8768813ecfd7f50bfb4ca4c428147c7c98bf3703082d65a84ab7706fd80932f",
     "tests/e2e/judgment-physical.spec.ts": "0e2dc62a527f54ee7bfd9ef5456a36c99b62dd2bc020f3ba09501d80315b4f26",
     "tests/e2e/keil-physical.spec.ts": "1e50f865f1168efb0916c00dbd23b54447b5886326104cdb6e925456e754ab52",
     "tests/e2e/ki-burst-physical.spec.ts": "119e22b851ef351b13ed653f72b4ec78a344c3c4faba2fe3dc8d2774feebb42f",
@@ -1387,17 +1387,17 @@
     "tests/e2e/lester-two-rights.spec.ts": "e5755f74fd8bd3d716631aabe17d76631cd3dc1da798125ff82a245908287dbf",
     "tests/e2e/lia-prayer.spec.ts": "392994a5fb1f9a05ef24753e87a07043cc074cf86ba3d5df898860fed5346087",
     "tests/e2e/lifecycle.spec.ts": "22c360e507444322a5b0d4b7abb4a8e75be508235a2cce8de590720bba956689",
-    "tests/e2e/lifetime-techniques.spec.ts": "f886166c6d27fdbb05cb7f1936feec385877f7b7a7ba76698d39618f295f778c",
+    "tests/e2e/lifetime-techniques.spec.ts": "ab8d863bb7b257f887e1b6ed077028e45da9519832f12fe5d402ff1bfc95e881",
     "tests/e2e/light-bow-physical.spec.ts": "ce59101c71e9e87398974e8117b0655e1a1dce679dd4bb562d330bc42fec0ab2",
     "tests/e2e/light-king-physical.spec.ts": "3c46d8e671bbf61e06b8a2f745e6102b44b6abaebc681b6c4fc28dc2d7e37b32",
     "tests/e2e/maai-other-physical.spec.ts": "6d594fa61435077d4b72e005a61937915d2f43bd40cd83ff692fe1f3d1f1a535",
     "tests/e2e/mad-king-physical.spec.ts": "930513e3c3408e6ba673a24852bacda2e4ef1180ce6f06051b36a03467c31a2b",
-    "tests/e2e/magic-choices.spec.ts": "51fbd29ca2d0b66c6e8d76f5b26e242368fb67d0e545c57d242356cf0c1b9a26",
+    "tests/e2e/magic-choices.spec.ts": "f8a987ac921613709a787da1005ca257f80f4d94e010c655fb1a6a97101b714d",
     "tests/e2e/mandatory-fields.spec.ts": "2935ca7a4c86aef4c52d8b407ac8d6e090dbf88c2f1559f4fbd506f44aee6afe",
     "tests/e2e/mandatory-restrictions.spec.ts": "033ba142741c18d45f350748b59e5c4243f22274965c428033f5e04c3b88e678",
     "tests/e2e/mekai-physical.spec.ts": "c15e9053827f4322ccece7794ab0eb2def5f4318ed308ad1c0b94a8154e95fd1",
-    "tests/e2e/mental-defenses.spec.ts": "00593400cf99577fb70c15447a096009619fd27c638e631249659c4b22297df3",
-    "tests/e2e/mental-protection.spec.ts": "50cf9c8ddab6174051e26bf08199e4f00e3182f74421a01cb44059fdd7598653",
+    "tests/e2e/mental-defenses.spec.ts": "dad78efd8c57fa7b8a1ea621b4ca44673b3fa235332ee8cac6915d0d582275ee",
+    "tests/e2e/mental-protection.spec.ts": "842c9de8e6b9b46635fc40f9f8c553adff57d78a403ecdd8f5a0a370061bf830",
     "tests/e2e/mercenary-physical.spec.ts": "dc79d363e1f52c09a61a4493c251da1a2a644a4e91793223d79f7e3527ddbae8",
     "tests/e2e/metal-golem-physical.spec.ts": "38ea9dc879852eb7f8a8ffb0234a56454583223ac611701552c3f42601323abd",
     "tests/e2e/mother-truth-physical.spec.ts": "751e786fe466bcef20511e5f1545b152623bbf8f86d6b8f3429cf28ac7d90d62",
@@ -1450,7 +1450,7 @@
     "tests/e2e/royal-knights-physical.spec.ts": "f8156318f1221f46dabf480c5d9df16a7403c5689e5e64dc5b8efd60a284ee7d",
     "tests/e2e/sad-love.spec.ts": "4589a6efaaaa5dd7b7fd6dec5be89c60d9d528439fd1fd9f51d37fb29d8d5fdf",
     "tests/e2e/scenario-reveal-boundary.spec.ts": "af25b418f9f7110c0b0a6dc31d4f9339d2eedd08bbcd80d8250fa93481f5d2dc",
-    "tests/e2e/scenario-s01-http.spec.ts": "81c798bdfe7723f0894bcb5a27410097433325e8a7b9739297ab0f17770676c3",
+    "tests/e2e/scenario-s01-http.spec.ts": "04aa90e5f301747fabf42ddb701b73176a20b5e4bc0af31e7dd7f1824f5ccc4f",
     "tests/e2e/scenario-s01-s05.spec.ts": "90618f0a6bb7e16eb33bf3117e9567d429163df887193265b70f9e95c4d148ac",
     "tests/e2e/scenario-s06-s10.spec.ts": "2fd19926a5affd8ed9f6264cf776be916106339f4a756775cdf509d5f77e93d5",
     "tests/e2e/scenario-s07-prayer.spec.ts": "dd727fd820930fa7e2d949617b90e43ed0e51e4f4a2db5064c0d08f56018df40",
@@ -5659,21 +5659,6 @@
     },
     {
       "test": {
-        "path": "packages/engine/test/follower-entry-abilities.test.ts",
-        "suite": [
-          "Task7m virtual guard lifetime and restrictions"
-        ],
-        "title": "a frozen guard continues after later disable and never appears in physical attack/transfer inventories",
-        "declarationSha256": "08b9912eb6f8c0c312fdda6aa9b164ad3b39503686a432663e6f1f7dcc1b7176",
-        "parameters": null,
-        "kind": "canonical-transition",
-        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
-      },
-      "result": "passed",
-      "reportedTitle": "a frozen guard continues after later disable and never appears in physical attack/transfer inventories"
-    },
-    {
-      "test": {
         "path": "apps/worker/test/room-turn-information.test.ts",
         "suite": [],
         "title": "DO G09 %s ends without electing %s across eviction and replay",
@@ -9251,6 +9236,19 @@
     },
     {
       "test": {
+        "path": "apps/worker/test/room-follower-entry.test.ts",
+        "suite": [],
+        "title": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards",
+        "declarationSha256": "bb8696ec489a22867372f875000ef3e045cc5629666f623451fb0c62329f50b6",
+        "kind": "worker-persistence",
+        "parameters": null,
+        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards"
+    },
+    {
+      "test": {
         "suite": [],
         "title": "%s actual chant and physical star bow retain restrictions and destruction union",
         "declarationSha256": "73d5bf6d085f209691e11117f9d6656f23815151ac360dabd3e787cb07f53d8f",
@@ -9918,21 +9916,6 @@
       },
       "result": "passed",
       "reportedTitle": "actual caster spirit boundary dedicated=true spirit1 preserves fixed six independent of either spirit"
-    },
-    {
-      "test": {
-        "path": "packages/engine/test/follower-entry-abilities.test.ts",
-        "suite": [
-          "Task7m virtual guard lifetime and restrictions"
-        ],
-        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
-        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
-        "kind": "canonical-transition",
-        "parameters": false,
-        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=false"
     },
     {
       "test": {
@@ -18598,6 +18581,21 @@
     },
     {
       "test": {
+        "path": "packages/engine/test/follower-entry-abilities.test.ts",
+        "suite": [
+          "Task7m virtual guard lifetime and restrictions"
+        ],
+        "title": "actual reflected child group can generate a fresh Arnes guard and parent snapshot never reopens entry",
+        "declarationSha256": "4c74ec664fe901f10d4f415df65af8982476edf12c974d6e6f27b40f031f375a",
+        "kind": "canonical-transition",
+        "parameters": null,
+        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
+      },
+      "result": "passed",
+      "reportedTitle": "actual reflected child group can generate a fresh Arnes guard and parent snapshot never reopens entry"
+    },
+    {
+      "test": {
         "suite": [],
         "title": "actual foreign waiver rejects and Alseil explicit destruction bypasses Lia Guardian ignore cancellation",
         "declarationSha256": "8e14b2280a96fdc677f1bb8e9e518bba0f56705de1724bc80f57d3f3f7e2299d",
@@ -20076,21 +20074,6 @@
     },
     {
       "test": {
-        "path": "packages/engine/test/follower-entry-abilities.test.ts",
-        "suite": [
-          "Task7m virtual guard lifetime and restrictions"
-        ],
-        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
-        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
-        "parameters": true,
-        "kind": "canonical-transition",
-        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=true"
-    },
-    {
-      "test": {
         "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
         "suite": [
           "owned technique base recovery"
@@ -20922,19 +20905,6 @@
     },
     {
       "test": {
-        "path": "tests/e2e/follower-entry.spec.ts",
-        "suite": [],
-        "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
-        "declarationSha256": "5d89d63a72db114e740562186ca2fc754aa75a7f90bf86633f62dac66f37905a",
-        "parameters": null,
-        "kind": "browser",
-        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card"
-    },
-    {
-      "test": {
         "suite": [],
         "title": "%s actual repeated own-turn recovery retains selected modifiers and only success restores turn",
         "declarationSha256": "07422d6e239d693d097336d13315ccbe2ecf40166f4829866f6058b166ce9259",
@@ -21331,21 +21301,6 @@
       },
       "result": "passed",
       "reportedTitle": "ice-arrow-dedicated cannot use magic after actual Silence and real subsequent turns"
-    },
-    {
-      "test": {
-        "path": "packages/engine/test/follower-entry-abilities.test.ts",
-        "suite": [
-          "Task7m virtual guard lifetime and restrictions"
-        ],
-        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
-        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
-        "parameters": false,
-        "kind": "canonical-transition",
-        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=false"
     },
     {
       "test": {
@@ -30825,6 +30780,21 @@
     },
     {
       "test": {
+        "path": "packages/engine/test/follower-entry-abilities.test.ts",
+        "suite": [
+          "Task7m virtual guard lifetime and restrictions"
+        ],
+        "title": "a frozen guard continues after later disable and never appears in physical attack/transfer inventories",
+        "declarationSha256": "08b9912eb6f8c0c312fdda6aa9b164ad3b39503686a432663e6f1f7dcc1b7176",
+        "kind": "canonical-transition",
+        "parameters": null,
+        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
+      },
+      "result": "passed",
+      "reportedTitle": "a frozen guard continues after later disable and never appears in physical attack/transfer inventories"
+    },
+    {
+      "test": {
         "suite": [],
         "title": "actual foreign owner cannot select the Dwarf Ramba defensive package",
         "declarationSha256": "d38fd65ced21b7fd7713039d2702ad4048a3b7946cef9449efceda8a6c7987af",
@@ -33528,6 +33498,21 @@
     },
     {
       "test": {
+        "path": "packages/engine/test/follower-entry-abilities.test.ts",
+        "suite": [
+          "Task7m virtual guard lifetime and restrictions"
+        ],
+        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
+        "kind": "canonical-transition",
+        "parameters": true,
+        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=true"
+    },
+    {
+      "test": {
         "path": "packages/engine/test/scenario-s30.test.ts",
         "suite": [],
         "title": "S30 actual rift excludes away possessions from both physical wishes and Revelation until actual acquired Dawn returns the same owner",
@@ -34286,6 +34271,19 @@
       },
       "result": "passed",
       "reportedTitle": "blood-flow-evade-ordinary actual defense prevents target resistance and independent extra damage"
+    },
+    {
+      "test": {
+        "path": "tests/e2e/follower-entry.spec.ts",
+        "suite": [],
+        "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
+        "declarationSha256": "5d89d63a72db114e740562186ca2fc754aa75a7f90bf86633f62dac66f37905a",
+        "kind": "browser",
+        "parameters": null,
+        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card"
     },
     {
       "test": {
@@ -35983,6 +35981,21 @@
       },
       "result": "passed",
       "reportedTitle": "ground-dragon-magic-low actual EarthSplit6 Shelim Ring7 Prayer8 compares magic defense7 with HP6 and ordinary morale"
+    },
+    {
+      "test": {
+        "path": "packages/engine/test/follower-entry-abilities.test.ts",
+        "suite": [
+          "Task7m virtual guard lifetime and restrictions"
+        ],
+        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
+        "kind": "canonical-transition",
+        "parameters": false,
+        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=false"
     },
     {
       "test": {
@@ -43112,21 +43125,6 @@
       },
       "result": "passed",
       "reportedTitle": "白魔術師シェリム owned technique 白光 (a2-p14-r1c2) normalized-name-once-game"
-    },
-    {
-      "test": {
-        "path": "packages/engine/test/follower-entry-abilities.test.ts",
-        "suite": [
-          "Task7m actual additional coverage"
-        ],
-        "title": "guard regenerates with distinct identity only in a genuinely later attack after actual intervening turns",
-        "declarationSha256": "d26b0478c75f0b3ddb10924fb6b6045a042ae4afdc233ec4ee29661fb7b37192",
-        "parameters": null,
-        "kind": "canonical-transition",
-        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
-      },
-      "result": "passed",
-      "reportedTitle": "guard regenerates with distinct identity only in a genuinely later attack after actual intervening turns"
     },
     {
       "test": {
@@ -54018,6 +54016,19 @@
     },
     {
       "test": {
+        "path": "apps/worker/test/room-follower-entry.test.ts",
+        "suite": [],
+        "title": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards",
+        "declarationSha256": "bb8696ec489a22867372f875000ef3e045cc5629666f623451fb0c62329f50b6",
+        "kind": "worker-persistence",
+        "parameters": null,
+        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards"
+    },
+    {
+      "test": {
         "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
         "suite": [
           "owned technique base recovery"
@@ -58173,6 +58184,21 @@
       },
       "result": "passed",
       "reportedTitle": "リーア姫 owned follower 守護者 (a2-p22-r3c3) attack-discard-not-follower-death"
+    },
+    {
+      "test": {
+        "path": "packages/engine/test/follower-entry-abilities.test.ts",
+        "suite": [
+          "Task7m virtual guard lifetime and restrictions"
+        ],
+        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
+        "kind": "canonical-transition",
+        "parameters": false,
+        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=false"
     },
     {
       "test": {
@@ -66590,21 +66616,6 @@
     },
     {
       "test": {
-        "path": "packages/engine/test/follower-entry-abilities.test.ts",
-        "suite": [
-          "Task7m virtual guard lifetime and restrictions"
-        ],
-        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
-        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
-        "kind": "canonical-transition",
-        "parameters": true,
-        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=true"
-    },
-    {
-      "test": {
         "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
         "suite": [
           "owned follower base recovery"
@@ -68253,6 +68264,21 @@
       },
       "result": "passed",
       "reportedTitle": "S01 S02 S05 D first is rejected at C priority then C force-fail resets the parent and D rerolls successful-valued faces without clearing failure"
+    },
+    {
+      "test": {
+        "path": "packages/engine/test/follower-entry-abilities.test.ts",
+        "suite": [
+          "Task7m actual additional coverage"
+        ],
+        "title": "guard regenerates with distinct identity only in a genuinely later attack after actual intervening turns",
+        "declarationSha256": "d26b0478c75f0b3ddb10924fb6b6045a042ae4afdc233ec4ee29661fb7b37192",
+        "kind": "canonical-transition",
+        "parameters": null,
+        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
+      },
+      "result": "passed",
+      "reportedTitle": "guard regenerates with distinct identity only in a genuinely later attack after actual intervening turns"
     },
     {
       "test": {
@@ -70239,19 +70265,6 @@
       },
       "result": "passed",
       "reportedTitle": "a2-p06-r1c3 actual Black Wing requires a second distinct MAAI while stopping after one still takes the pending hit"
-    },
-    {
-      "test": {
-        "path": "apps/worker/test/room-follower-entry.test.ts",
-        "suite": [],
-        "title": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards",
-        "declarationSha256": "bb8696ec489a22867372f875000ef3e045cc5629666f623451fb0c62329f50b6",
-        "kind": "worker-persistence",
-        "parameters": null,
-        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards"
     },
     {
       "test": {
@@ -72686,6 +72699,19 @@
     },
     {
       "test": {
+        "path": "tests/e2e/follower-entry.spec.ts",
+        "suite": [],
+        "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
+        "declarationSha256": "5d89d63a72db114e740562186ca2fc754aa75a7f90bf86633f62dac66f37905a",
+        "kind": "browser",
+        "parameters": null,
+        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card"
+    },
+    {
+      "test": {
         "suite": [],
         "title": "%s actual avoided cancelled or unused source leaves black and dead followers untouched",
         "declarationSha256": "9f58216f0bbf9d32aaf1e8ad7ce698ef8dfa9c4ee78d2066fc3108f1087b38e1",
@@ -73711,21 +73737,6 @@
       },
       "result": "passed",
       "reportedTitle": "Named death zombie cancel stays discarded after browser reload"
-    },
-    {
-      "test": {
-        "path": "packages/engine/test/follower-entry-abilities.test.ts",
-        "suite": [
-          "Task7m virtual guard lifetime and restrictions"
-        ],
-        "title": "actual reflected child group can generate a fresh Arnes guard and parent snapshot never reopens entry",
-        "declarationSha256": "4c74ec664fe901f10d4f415df65af8982476edf12c974d6e6f27b40f031f375a",
-        "parameters": null,
-        "kind": "canonical-transition",
-        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
-      },
-      "result": "passed",
-      "reportedTitle": "actual reflected child group can generate a fresh Arnes guard and parent snapshot never reopens entry"
     },
     {
       "test": {
@@ -80254,6 +80265,21 @@
     },
     {
       "test": {
+        "path": "packages/engine/test/follower-entry-abilities.test.ts",
+        "suite": [
+          "Task7m virtual guard lifetime and restrictions"
+        ],
+        "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+        "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
+        "kind": "canonical-transition",
+        "parameters": true,
+        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
+      },
+      "result": "passed",
+      "reportedTitle": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=true"
+    },
+    {
+      "test": {
         "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
         "suite": [
           "owned technique base recovery"
@@ -80535,19 +80561,6 @@
       },
       "result": "passed",
       "reportedTitle": "Lia inspects nearby chants then discards all seen or none"
-    },
-    {
-      "test": {
-        "path": "apps/worker/test/room-follower-entry.test.ts",
-        "suite": [],
-        "title": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards",
-        "declarationSha256": "bb8696ec489a22867372f875000ef3e045cc5629666f623451fb0c62329f50b6",
-        "parameters": null,
-        "kind": "worker-persistence",
-        "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards"
     },
     {
       "test": {
@@ -95321,19 +95334,6 @@
     },
     {
       "test": {
-        "path": "tests/e2e/follower-entry.spec.ts",
-        "suite": [],
-        "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
-        "declarationSha256": "5d89d63a72db114e740562186ca2fc754aa75a7f90bf86633f62dac66f37905a",
-        "kind": "browser",
-        "parameters": null,
-        "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
-      },
-      "result": "passed",
-      "reportedTitle": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card"
-    },
-    {
-      "test": {
         "path": "tests/e2e/scenario-s18.spec.ts",
         "suite": [],
         "title": "S18 actual Lester use retains the three-hit parent before resistance and between targets on reload",
@@ -95346,6 +95346,6 @@
       "reportedTitle": "S18 actual Lester use retains the three-hit parent before resistance and between targets on reload"
     }
   ],
-  "snapshotCreatedAt": "2026-09-12T10:40:06.981817+00:00",
+  "snapshotCreatedAt": "2026-09-12T15:07:10.659120+00:00",
   "scope": "6345 matched references; 0 unsuccessful"
 }
