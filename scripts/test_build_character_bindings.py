@@ -28,6 +28,14 @@ class CharacterBindingsTest(unittest.TestCase):
         self.assertEqual(bindings[0]['status'], 'implemented')
         self.assertNotIn('runEvidence', bindings[0])
 
+    def test_extra_ability_keeps_exact_owner_and_target_tuple(self):
+        ledger = self.ledger('main-action-preserved')
+        ledger['rows'][0]['entryId'] = 'c2-p04-r2c1-ab02'
+        cards = [{'id': 'c2-p04-r2c1', 'name': '占星術師のアルセイル', 'defeat_condition': 'なし'}]
+        result = build_bindings(ledger, cards)
+        self.assertEqual(result[0]['tests'][0]['parameters'], ['占星術師のアルセイル', 'c2-p04-r2c1-ab02', 'B'])
+        self.assertEqual(result[0]['tests'][0]['kind'], 'canonical-transition')
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

@@ -230115,11 +230115,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:45c3e6fbb4f1345d"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -230142,11 +230147,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:70eb07089da18f75"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231505,11 +231515,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:d3acf40192b7f117"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231532,11 +231547,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:6299f076ec8c97d7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231559,11 +231579,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:6a1b0ff288218508"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231586,11 +231611,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:3afbf32a8d38c037"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231613,11 +231643,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:254b5fde6f3418ad"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231640,11 +231675,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:4679f5e7071101d4"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231667,11 +231707,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff"
+      ],
+      "tests": [
+        "t:d3d16ca92d3b2a5c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231691,11 +231736,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff"
+      ],
+      "tests": [
+        "t:dbd580ff30e277b9"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231715,11 +231765,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:d19d7ea6b24281b6",
+        "h:c7ed766766eb65ff"
+      ],
+      "tests": [
+        "t:32caafcfc3ab91a9"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231739,11 +231794,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:7bf8f47a68561b3f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231766,11 +231826,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:863136d9f1423cbc"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231793,11 +231858,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:e1550302f0187a89"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231820,11 +231890,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:a552def28e4d1cf1"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231847,11 +231922,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:2653046a6f43e24b"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231874,11 +231954,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:237e502b0a24fe50"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231901,11 +231986,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:e64d39cb5cc9f86b"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231928,11 +232018,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:28dc818b11f2d821"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231955,11 +232050,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:19d8596c25fa61db"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231982,11 +232082,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:ae0d5a5a179328d8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232009,11 +232114,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:6bb7430a16075fd4"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232036,11 +232146,16 @@
         "C02"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:c9c21cb995a24eb3",
+        "h:5ee3abea5ce4bed4"
+      ],
+      "tests": [
+        "t:24ef9abf02323789"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415059,8 +415174,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7168,
-      "implemented": 5010
+      "pending": 7145,
+      "implemented": 5033
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416314,6 +416429,10 @@
     "h:06f48d9dfb6e1722": {
       "path": "packages/engine/src/reclaim-names.ts",
       "symbol": "canonicalOwnedNames"
+    },
+    "h:d19d7ea6b24281b6": {
+      "path": "packages/engine/src/abilities/suppression.ts",
+      "symbol": "suppressionOptions"
     }
   },
   "testCases": {
@@ -486530,6 +486649,405 @@
         "follower"
       ],
       "bindingNote": "owned_followers/empty-no-base-entitlement: exact printed-character assertions; evidence kind retained; current-candidate acceptance remains."
+    },
+    "t:6dfef2e8ae865c6d": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab02",
+        "B"
+      ],
+      "bindingNote": "own-turn-extra: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:70eb07089da18f75": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "Astrology selects exactly one declared player and rejects a multiple-player input atomically",
+      "declarationSha256": "196c6561c29c3aee4484428a4759fee710d6bfd272ff4eaface03956cb40e3ff",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "selected-one-target: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:d319c9120a7095fc": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小妖精のチャム",
+        "c2-p01-r2c2-ab03",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:6299f076ec8c97d7": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小妖精のチャム",
+        "c2-p01-r2c2-ab03",
+        "B"
+      ],
+      "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:6a1b0ff288218508": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+      "declarationSha256": "29a8bb89e0fd864b14ade6e0f08c7d204aeb39e152d74a145cb4932b594a25b8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小妖精のチャム",
+        "c2-p01-r2c2-ab03",
+        "B"
+      ],
+      "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:7db12e6d4532631b": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab02",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:254b5fde6f3418ad": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab02",
+        "B"
+      ],
+      "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:4679f5e7071101d4": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+      "declarationSha256": "29a8bb89e0fd864b14ade6e0f08c7d204aeb39e152d74a145cb4932b594a25b8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab02",
+        "B"
+      ],
+      "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:709e7597616ef6dc": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab04",
+        "C"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:dbd580ff30e277b9": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab04",
+        "C"
+      ],
+      "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:32caafcfc3ab91a9": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+      "declarationSha256": "29a8bb89e0fd864b14ade6e0f08c7d204aeb39e152d74a145cb4932b594a25b8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab04",
+        "C"
+      ],
+      "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:61a6ff5e353094e8": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "吟遊詩人のレスター",
+        "c2-p03-r2c1-ab03",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:863136d9f1423cbc": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "吟遊詩人のレスター",
+        "c2-p03-r2c1-ab03",
+        "B"
+      ],
+      "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:e1550302f0187a89": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+      "declarationSha256": "29a8bb89e0fd864b14ade6e0f08c7d204aeb39e152d74a145cb4932b594a25b8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "吟遊詩人のレスター",
+        "c2-p03-r2c1-ab03",
+        "B"
+      ],
+      "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:48df1dbfa275cc0b": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab01",
+        null
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:2653046a6f43e24b": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab01",
+        null
+      ],
+      "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:237e502b0a24fe50": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+      "declarationSha256": "29a8bb89e0fd864b14ade6e0f08c7d204aeb39e152d74a145cb4932b594a25b8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab01",
+        null
+      ],
+      "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:e7e2ac272b52128f": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab02",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:28dc818b11f2d821": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab02",
+        "B"
+      ],
+      "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:19d8596c25fa61db": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+      "declarationSha256": "29a8bb89e0fd864b14ade6e0f08c7d204aeb39e152d74a145cb4932b594a25b8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab02",
+        "B"
+      ],
+      "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:ca857830ff7ae8f5": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "16335acec3e4cac4d4c26797e4453a63074d2c982c18a9532fcf0d13ff46d2ad",
+      "kind": "canonical-transition",
+      "parameters": [
+        "邪祭ウーノス",
+        "c2-p05-r1c1-ab01",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:6bb7430a16075fd4": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s main-action-preserved",
+      "declarationSha256": "800dc077abfc723f1fcd2dcab2c9c316152e43dcde1f9705dad0cb12ff3d8ea1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "邪祭ウーノス",
+        "c2-p05-r1c1-ab01",
+        "B"
+      ],
+      "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:24ef9abf02323789": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+      "declarationSha256": "29a8bb89e0fd864b14ade6e0f08c7d204aeb39e152d74a145cb4932b594a25b8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "邪祭ウーノス",
+        "c2-p05-r1c1-ab01",
+        "B"
+      ],
+      "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:45c3e6fbb4f1345d": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab02",
+        "B"
+      ],
+      "bindingNote": "own-turn-extra: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:d3acf40192b7f117": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "小妖精のチャム",
+        "c2-p01-r2c2-ab03",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:3afbf32a8d38c037": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab02",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:d3d16ca92d3b2a5c": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab04",
+        "C"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:7bf8f47a68561b3f": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "吟遊詩人のレスター",
+        "c2-p03-r2c1-ab03",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:a552def28e4d1cf1": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab01",
+        null
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:e64d39cb5cc9f86b": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "占星術師のアルセイル",
+        "c2-p04-r2c1-ab02",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:ae0d5a5a179328d8": {
+      "path": "packages/engine/test/character-turn-extras.test.ts",
+      "suite": [],
+      "title": "%s %s target %s own-turn-once-attempt",
+      "declarationSha256": "148b885035dc16b45890b90e7ffccbf2026f871d2bd241bbd38395555a4f0a47",
+      "kind": "canonical-transition",
+      "parameters": [
+        "邪祭ウーノス",
+        "c2-p05-r1c1-ab01",
+        "B"
+      ],
+      "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
     }
   },
   "remainingNotes": {

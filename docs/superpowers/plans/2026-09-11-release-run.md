@@ -1203,6 +1203,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4基本条項: 印刷陣営・目的・敗北・追加継承なし・空の所有リスト・追加制限なしの187行を束縛した。行列216件＋関連140件の356件、全対象型検査、Python22件、台帳validator valid:true。26人物の実全滅勝利、保護対象27組の実死亡→彷徨→最終敗北、空所有12件の実回収窓を確認。陣営の既存fixed表はallowedFactionsへ切り出し、返却配列の変更で表が変わらないことも検証。残る人物能力150行はpendingで、全B4生成gateもその未実装行で停止。明示的な --core-only だけを適用した。具体的実装済み5,010、semantic pending249、accepted0。計画例の即時敗北・原文表示完全一致は採用せず、現行の彷徨処理と正規化された保護対象を検証している。詳細は [B4基本条項進捗](../../operations/evidence/2026-09-12-b4-basic-progress.json)。Step3〜5と候補版受入は未完了。
 
+2026-09-12 B4手番内追加能力: 7能力の試行回数・通常行動保持・公開優先権/非公開選択中の拒否と占星の単一対象を、新規22試験で検証して23行を追加束縛。実取消後のフェーズ変更・JSON保存復帰でも同じ手番の権利は戻らず、実際の次手番で回復する。祝福の指定は実際のヴァンミール宣言で作り、神出鬼没は戦闘除外を守る公開窓で検証。関連含む147試験、全対象型検査、Python14件、台帳validator成功。人物束縛計210行、人物pending127、semantic具体的実装済み5,033、pending226、accepted0。全B4生成gateは残127条項で停止する。詳細は [B4追加能力進捗](../../operations/evidence/2026-09-12-b4-extras-progress.json)。Step3〜5は引き続き未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**

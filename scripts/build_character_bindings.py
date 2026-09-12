@@ -25,6 +25,33 @@ def protected_cases(cards):
     return result
 
 
+EXTRA_IDS = {'c2-p01-r2c2-ab03', 'c2-p03-r1c2-ab02', 'c2-p03-r1c2-ab04', 'c2-p03-r2c1-ab03', 'c2-p04-r2c1-ab02', 'c2-p04-r2c1-ab01', 'c2-p05-r1c1-ab01'}
+EXTRA_SUFFIXES = {'own-turn-once-attempt', 'main-action-preserved', 'public-priority-no-private-choice-interrupt'}
+
+
+def extra_binding(row, cards):
+    entry, clause = row['entryId'], row['clauseKey']
+    if entry not in EXTRA_IDS or clause not in EXTRA_SUFFIXES | {'own-turn-extra', 'selected-one-target'}:
+        return None
+    card = cards[entry.split('-ab')[0]]
+    target = None if entry == 'c2-p04-r2c1-ab01' else 'C' if entry == 'c2-p03-r1c2-ab04' else 'B'
+    parameters = [card['name'], entry, target]
+    title = '%s %s target %s ' + ('own-turn-once-attempt' if clause == 'own-turn-extra' else clause)
+    if clause == 'selected-one-target':
+        if entry != 'c2-p04-r2c1-ab02':
+            raise ValueError('unexpected single-target extra clause')
+        title = 'Astrology selects exactly one declared player and rejects a multiple-player input atomically'
+        parameters = None
+    suppression = entry == 'c2-p03-r1c2-ab04'
+    path = 'packages/engine/src/abilities/' + ('suppression.ts' if suppression else 'turn-information.ts')
+    symbols = ['suppressionOptions', 'transitionSuppression'] if suppression else ['turnAbilityOptions', 'transitionTurnPackage']
+    return {'row': f'{entry}#{clause}', 'handler': [{'path': path, 'symbol': symbol} for symbol in symbols],
+            'tests': [{'path': 'packages/engine/test/character-turn-extras.test.ts', 'suite': [],
+                       'title': title, 'parameters': parameters, 'kind': 'canonical-transition',
+                       'bindingNote': f'{clause}: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source.'}],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -32,6 +59,10 @@ def build_bindings(ledger, cards, core_only=False):
     unfinished = []
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
+            continue
+        extra = extra_binding(row, by_id)
+        if extra:
+            bindings.append(extra)
             continue
         clause = row['clauseKey']
         if not clause.startswith(('allegiance/', 'objective/', 'defeat/')) and clause not in {'inheritance/no-additional-source','restrictions/no-printed-restriction','owned_techniques/empty-no-base-entitlement','owned_followers/empty-no-base-entitlement'}:

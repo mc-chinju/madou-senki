@@ -1,6 +1,715 @@
 {
   "bindings": [
     {
+      "row": "c2-p04-r2c1-ab02#own-turn-extra",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-extra: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab02#selected-one-target",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "Astrology selects exactly one declared player and rejects a multiple-player input atomically",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "selected-one-target: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab03#own-turn-once-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab03#main-action-preserved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab03#public-priority-no-private-choice-interrupt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#own-turn-once-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#main-action-preserved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#public-priority-no-private-choice-interrupt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#own-turn-once-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab04",
+            "C"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#main-action-preserved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab04",
+            "C"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#public-priority-no-private-choice-interrupt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab04",
+            "C"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab03#own-turn-once-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab03#main-action-preserved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab03#public-priority-no-private-choice-interrupt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+          "parameters": [
+            "吟遊詩人のレスター",
+            "c2-p03-r2c1-ab03",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab01#own-turn-once-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab01",
+            null
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab01#main-action-preserved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab01",
+            null
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab01#public-priority-no-private-choice-interrupt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab01",
+            null
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab02#own-turn-once-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab02#main-action-preserved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r2c1-ab02#public-priority-no-private-choice-interrupt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+          "parameters": [
+            "占星術師のアルセイル",
+            "c2-p04-r2c1-ab02",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab01#own-turn-once-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "邪祭ウーノス",
+            "c2-p05-r1c1-ab01",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab01#main-action-preserved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "邪祭ウーノス",
+            "c2-p05-r1c1-ab01",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "main-action-preserved: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c1-ab01#public-priority-no-private-choice-interrupt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "transitionTurnPackage"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s public-priority-no-private-choice-interrupt",
+          "parameters": [
+            "邪祭ウーノス",
+            "c2-p05-r1c1-ab01",
+            "B"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "public-priority-no-private-choice-interrupt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p01-r1c1#objective/extinction-EVIL",
       "handler": [
         {
