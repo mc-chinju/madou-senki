@@ -778,6 +778,40 @@
       ]
     },
     {
+      "row": "c2-p02-r1c1-ab04#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab04"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p02-r1c1-ab04#cancel-update-retains-prior-selection-and-attempt",
       "handler": [
         {
@@ -872,6 +906,40 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab03#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab03"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
         }
       ],
       "status": "implemented",
@@ -982,6 +1050,40 @@
       ]
     },
     {
+      "row": "c2-p03-r2c2-ab04#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "黒妖精のアーネス",
+            "c2-p03-r2c2-ab04"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p03-r2c2-ab04#cancel-update-retains-prior-selection-and-attempt",
       "handler": [
         {
@@ -1076,6 +1178,40 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab03#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab03"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
         }
       ],
       "status": "implemented",
@@ -1186,6 +1322,40 @@
       ]
     },
     {
+      "row": "c2-p04-r1c2-ab05#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab05"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p04-r1c2-ab05#cancel-update-retains-prior-selection-and-attempt",
       "handler": [
         {
@@ -1280,6 +1450,40 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab01#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "c2-p05-r1c2-ab01"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
         }
       ],
       "status": "implemented",
@@ -1390,6 +1594,40 @@
       ]
     },
     {
+      "row": "c2-p05-r2c1-ab05#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "黒騎士ガーウィン",
+            "c2-p05-r2c1-ab05"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p05-r2c1-ab05#cancel-update-retains-prior-selection-and-attempt",
       "handler": [
         {
@@ -1484,6 +1722,40 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Actual Rift and forced failed resistance enter otherworld, actual Wish opens Dawn to return; actual protected death preserves election while wandering (or unrelated death leaves an unprotected owner active); actual approach/lethal attack clears election on owner death."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab02#transform-inheritance-preserves-source-selection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "transitionConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "resolveConditionalAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/conditional-selection.ts",
+          "symbol": "cleanConditionalSelections"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-conditional-matrix.test.ts",
+          "suite": [],
+          "title": "%s %s structural inherited ownership retains exact source election",
+          "parameters": [
+            "魔聖母ディア",
+            "c2-p06-r1c2-ab02"
+          ],
+          "kind": "structural-resolver",
+          "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
         }
       ],
       "status": "implemented",

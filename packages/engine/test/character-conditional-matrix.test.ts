@@ -1,3 +1,5 @@
+import {cleanConditionalSelections} from '../src/abilities/conditional-selection.js';
+import {ownsAbility} from '../src/abilities/ownership.js';
 import type {ConditionalAbilityId} from '@madou/protocol';
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
@@ -117,4 +119,19 @@ it.each(CONDITIONAL_CASES)('%s %s cancel-update-retains-prior-selection-and-atte
  expect(setting()).toMatchObject({enabled:true,selectedTargetIds:['B'],canActivate:false});
  expect(s.used?.filter(key=>key===`${event}:A:${id}`)).toHaveLength(1);
  const before=JSON.stringify(s);expect(transition(s,{actorId:'A',command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
+});
+it.each(CONDITIONAL_CASES)('%s %s structural inherited ownership retains exact source election',(name,id)=>{
+ let s=ready();character(s,'A',name);s.players.B!.revealed=true;
+ const setting=()=>viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
+ s=finish(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:true,...(id==='c2-p03-r1c2-ab03'?{targetIds:['B']}: {})}));
+ const elected=structuredClone(s.players.A!.conditionalSelections),source=id.split('-ab')[0]!;
+ expect(elected).toEqual([{abilityId:id,sourceCharacterId:source,targetIds:id==='c2-p03-r1c2-ab03'?['B']:[]}]);
+ // These sources have no printed transformation into Lancelot II. This is a direct ownership/cleanup boundary.
+ s.players.A!.characterId='c2-p07-r1c1';s.players.A!.abilityCharacterIds=[source,'c2-p07-r1c1'];
+ s=JSON.parse(JSON.stringify(s));cleanConditionalSelections(s);
+ expect(ownsAbility(s.players.A!,id)).toBe(true);expect(s.players.A!.conditionalSelections).toEqual(elected);
+ expect(setting()).toMatchObject({enabled:true,selectedTargetIds:id==='c2-p03-r1c2-ab03'?['B']:[]});
+ s.players.A!.abilityCharacterIds=['c2-p07-r1c1'];cleanConditionalSelections(s);
+ expect(ownsAbility(s.players.A!,id)).toBe(false);expect(s.players.A!.conditionalSelections).toEqual([]);
+ expect(viewFor(s,'A').conditionalAbilities.some(o=>o.abilityId===id)).toBe(false);
 });

@@ -232274,11 +232274,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:873710bff1f06fd1"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232460,11 +232466,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:cd233936e82c87c3"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232646,11 +232658,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:c77862885c936bfd"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -232832,11 +232850,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:213fe301fcf29432"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233018,11 +233042,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:3d7f1fb8116ac518"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233204,11 +233234,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:c03638366aed2af9"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233390,11 +233426,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:8ed77b85bcc4bfc7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233576,11 +233618,17 @@
         "C15"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8454a6ea246c5c8",
+        "h:b09f2e486597b621",
+        "h:0e58d880e08ce682"
+      ],
+      "tests": [
+        "t:d4a349f69d2d04cd"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415757,8 +415805,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7042,
-      "implemented": 5136
+      "pending": 7034,
+      "implemented": 5144
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -489056,6 +489104,102 @@
       "kind": "structural-resolver",
       "parameters": "source-generation",
       "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:873710bff1f06fd1": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "有翼人のティア",
+        "c2-p02-r1c1-ab04"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:cd233936e82c87c3": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "リーア姫",
+        "c2-p03-r1c2-ab03"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:c77862885c936bfd": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "黒妖精のアーネス",
+        "c2-p03-r2c2-ab04"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:213fe301fcf29432": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab03"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:3d7f1fb8116ac518": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab05"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:c03638366aed2af9": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "獣使いのウパニシャット",
+        "c2-p05-r1c2-ab01"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:8ed77b85bcc4bfc7": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "黒騎士ガーウィン",
+        "c2-p05-r2c1-ab05"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
+    },
+    "t:d4a349f69d2d04cd": {
+      "path": "packages/engine/test/character-conditional-matrix.test.ts",
+      "suite": [],
+      "title": "%s %s structural inherited ownership retains exact source election",
+      "declarationSha256": "a4d65c5a0de1e14742af70a1c05172e0b3ce955cd99a191115a53139a4d407c5",
+      "kind": "structural-resolver",
+      "parameters": [
+        "魔聖母ディア",
+        "c2-p06-r1c2-ab02"
+      ],
+      "bindingNote": "Actual election followed by direct inherited ownership and identity boundary; no printed transformation into Lancelot II is claimed. Exact source and targets persist only while ownership remains."
     }
   },
   "remainingNotes": {

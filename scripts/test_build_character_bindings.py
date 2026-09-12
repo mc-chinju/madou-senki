@@ -125,6 +125,13 @@ class CharacterBindingsTest(unittest.TestCase):
         self.assertEqual(test['kind'], 'structural-resolver')
         self.assertEqual(test['parameters'], 'source-identity')
 
+    def test_conditional_inheritance_never_claims_a_printed_transformation(self):
+        ledger = self.ledger('transform-inheritance-preserves-source-selection')
+        ledger['rows'][0]['entryId'] = 'c2-p02-r1c1-ab04'
+        result = build_bindings(ledger, [{'id':'c2-p02-r1c1','name':'有翼人のティア','defeat_condition':'なし'}])
+        self.assertEqual(result[0]['tests'][0]['kind'], 'structural-resolver')
+        self.assertEqual(result[0]['tests'][0]['parameters'], ['有翼人のティア','c2-p02-r1c1-ab04'])
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

@@ -1,0 +1,43 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B4 eight conditional source inherited ownership boundaries; not acceptance evidence",
+  "newlyImplementedClauses": 8,
+  "newTests": 8,
+  "bindingFileRows": 323,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/character-conditional-matrix.test.ts packages/engine/test/conditional-stats.test.ts --reporter=json --outputFile=/private/tmp/release-b4-inheritance.json",
+    "passed": 114,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit exit 0",
+    "Python character generator, binding application and report: 26 passed",
+    "Exact AST declarations and parameters validated before binding output",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Each exact source is elected through its actual command, with Lia explicitly targeting B.",
+    "Direct inherited ownership and current-identity change preserve sourceCharacterId, abilityId and target list through JSON restore and cleanup.",
+    "Removing the inherited source removes both the election and available source setting. All eight bindings are structural-resolver, without claiming a printed transformation for these owners."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/character-conditional-matrix.test.ts": "0d65fe084fcc32da9d23668bee186bb2649e53fa84b539ca6a099d695cd99366",
+    "scripts/build_character_bindings.py": "68d811226144bc8dad56460c78c7e297a756507bdbd94363b0f911d56e020006",
+    "scripts/test_build_character_bindings.py": "8e4466a0bb02c8a50e5dfff97cf5acece1b368909323112a8f5bcd83df89079b",
+    "docs/operations/evidence/2026-09-12-character-core-bindings.json": "8c50965aa6f9cafd5defd39e7783ab95b2c8d0d2a2bf151775739ca853d71bd3"
+  },
+  "characterPending": 16,
+  "semanticImplementedConcrete": 5144,
+  "semanticPending": 115,
+  "semanticAccepted": 0,
+  "fullB4Gate": "unimplemented character families: 16; first c2-p02-r1c1-ab04#condition-loss-suspends-keeps-selection",
+  "limitations": [
+    "These are explicit ownership/cleanup boundaries. The tested owners do not have a printed transformation into Lancelot II; no such legal transformation is claimed.",
+    "B4 Steps 3–5 remain incomplete; condition loss and frozen values remain for each of eight sources.",
+    "No runtime behavior changed. No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}
