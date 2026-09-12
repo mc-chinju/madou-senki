@@ -1212,6 +1212,267 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab05#own-death",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "transitionChamGift"
+        },
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "resolveChamGift"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual lethal attack enters own pending-death; only Cham receives the finite gift decision before disposal."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham projection provides her own finite choice only at the death decision",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual lethal attack enters own pending-death; only Cham receives the finite gift decision before disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab05#selected-eligible-recipient",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "transitionChamGift"
+        },
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "resolveChamGift"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham projection provides her own finite choice only at the death decision",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham rejects foreign actor, foreign hand, resolution source, self target and expired decision",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab05#no-physical-gift-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "transitionChamGift"
+        },
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "resolveChamGift"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Only the transferred residual card leaves Cham hand, without a paid source, resolution entry or refill."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#public-Arnes-self-spirit-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love explicit aura waits for public Arnes and turns off independently",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual aura gives no bonus with hidden Arnes, then actual reveal adds one own spirit and OFF removes it."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#once-game-Arnes-substitution",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love actual substitution redirects one hit into Upa with no physical payment",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Canceled substitution spends the once-game attempt and leaves the hit with Arnes",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love grants Arnes permanent spirit only after the attributable actual death",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "An unrelated actual Upa death does not grant the substitution reward",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#concurrent-death-retention",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual multi-hit attack kills Arnes and Upa together; Arnes one spirit and reward ID persist through actual revival."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

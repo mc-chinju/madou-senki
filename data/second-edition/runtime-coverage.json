@@ -172063,12 +172063,17 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:555518682b4de8c2",
+        "h:78614c44c1baec96"
+      ],
+      "tests": [
+        "t:b383fcb106189176",
+        "t:fc55c259e9c9eb55"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:d1ad46f5eb1d0f76",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -172124,12 +172129,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:555518682b4de8c2",
+        "h:78614c44c1baec96"
+      ],
+      "tests": [
+        "t:b45374cd67e1e137",
+        "t:adc3a47b33b6fe9f",
+        "t:ea03d29cc753b1d9"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:d1ad46f5eb1d0f76",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -172144,12 +172155,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:555518682b4de8c2",
+        "h:78614c44c1baec96"
+      ],
+      "tests": [
+        "t:10a37f06befe7a6d"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:d1ad46f5eb1d0f76",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -176987,12 +177002,17 @@
       "rulingIds": [
         "C15"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:84adc9b316e3235b",
+        "h:3e7b6e2931bc19a9",
+        "h:2777164a208f2ca3"
+      ],
+      "tests": [
+        "t:2d91061c20b120f4"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:daae0f46d43a70d3",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -177007,12 +177027,19 @@
       "rulingIds": [
         "C15"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:84adc9b316e3235b",
+        "h:3e7b6e2931bc19a9",
+        "h:2777164a208f2ca3"
+      ],
+      "tests": [
+        "t:2c565f9b239a01cb",
+        "t:85e95748916c50cb",
+        "t:61f21fa1e4ad3413"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:daae0f46d43a70d3",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -177027,12 +177054,19 @@
       "rulingIds": [
         "C15"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:84adc9b316e3235b",
+        "h:3e7b6e2931bc19a9",
+        "h:2777164a208f2ca3"
+      ],
+      "tests": [
+        "t:9ad76a17fb9e201e",
+        "t:d753aa74dd930f7e",
+        "t:457c4cbda54f012b"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:daae0f46d43a70d3",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -177047,12 +177081,17 @@
       "rulingIds": [
         "C15"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:84adc9b316e3235b",
+        "h:3e7b6e2931bc19a9",
+        "h:2777164a208f2ca3"
+      ],
+      "tests": [
+        "t:307f537cf449577f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:daae0f46d43a70d3",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -416054,8 +416093,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6986,
-      "implemented": 5192
+      "pending": 6979,
+      "implemented": 5199
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417377,6 +417416,14 @@
     "h:ff501a3ae475ac3e": {
       "path": "packages/engine/src/abilities/virtual-blades.ts",
       "symbol": "resolveVirtualBlade"
+    },
+    "h:78614c44c1baec96": {
+      "path": "packages/engine/src/abilities/cham-death-gift.ts",
+      "symbol": "resolveChamGift"
+    },
+    "h:2777164a208f2ca3": {
+      "path": "packages/engine/src/abilities/sad-love-state.ts",
+      "symbol": "rewardSadLove"
     }
   },
   "testCases": {
@@ -490252,6 +490299,132 @@
         1
       ],
       "bindingNote": "Actual target takes exactly five body damage."
+    },
+    "t:b383fcb106189176": {
+      "path": "packages/engine/test/cham-death-gift.test.ts",
+      "suite": [],
+      "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+      "declarationSha256": "62be0c777f750840cee3d00f41da0a7b7fe32e0383952f66f186eb981e90ee0e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual lethal attack enters own pending-death; only Cham receives the finite gift decision before disposal."
+    },
+    "t:fc55c259e9c9eb55": {
+      "path": "packages/engine/test/cham-death-gift.test.ts",
+      "suite": [],
+      "title": "Cham projection provides her own finite choice only at the death decision",
+      "declarationSha256": "2aeacb95edc9efa89320a3209e1a424bf68e9750a94e3423d0a5909d69fcf0c6",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual lethal attack enters own pending-death; only Cham receives the finite gift decision before disposal."
+    },
+    "t:b45374cd67e1e137": {
+      "path": "packages/engine/test/cham-death-gift.test.ts",
+      "suite": [],
+      "title": "Cham projection provides her own finite choice only at the death decision",
+      "declarationSha256": "2aeacb95edc9efa89320a3209e1a424bf68e9750a94e3423d0a5909d69fcf0c6",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+    },
+    "t:adc3a47b33b6fe9f": {
+      "path": "packages/engine/test/cham-death-gift.test.ts",
+      "suite": [],
+      "title": "Cham rejects foreign actor, foreign hand, resolution source, self target and expired decision",
+      "declarationSha256": "585c281598ded099c3a946d3b55dac8e83e698d29769a6628f9d6d5612023fed",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+    },
+    "t:ea03d29cc753b1d9": {
+      "path": "packages/engine/test/cham-death-gift.test.ts",
+      "suite": [],
+      "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+      "declarationSha256": "62be0c777f750840cee3d00f41da0a7b7fe32e0383952f66f186eb981e90ee0e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+    },
+    "t:10a37f06befe7a6d": {
+      "path": "packages/engine/test/cham-death-gift.test.ts",
+      "suite": [],
+      "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+      "declarationSha256": "62be0c777f750840cee3d00f41da0a7b7fe32e0383952f66f186eb981e90ee0e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Only the transferred residual card leaves Cham hand, without a paid source, resolution entry or refill."
+    },
+    "t:2d91061c20b120f4": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Sad love explicit aura waits for public Arnes and turns off independently",
+      "declarationSha256": "3c967b3568627d5dbcf588dbf0addd66c3e892b039a2d25d210cb87407051b27",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual aura gives no bonus with hidden Arnes, then actual reveal adds one own spirit and OFF removes it."
+    },
+    "t:2c565f9b239a01cb": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Sad love actual substitution redirects one hit into Upa with no physical payment",
+      "declarationSha256": "c9e517c856fc83b563e2ac3335943ffbf5819f4f446a783d6c59427f939ec0e0",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+    },
+    "t:85e95748916c50cb": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Canceled substitution spends the once-game attempt and leaves the hit with Arnes",
+      "declarationSha256": "9e76da224f3a1d98a99fa90cfb8dab3a5ee9fe607ab261985e9add5d0c868f0a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+    },
+    "t:61f21fa1e4ad3413": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+      "declarationSha256": "767ac8f72a23d55864d3b4acc7d13f83806614290adb5a9f41fa89806578d3ba",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+    },
+    "t:9ad76a17fb9e201e": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Sad love grants Arnes permanent spirit only after the attributable actual death",
+      "declarationSha256": "d53cae6c9f96fe14b2c77f5399099dae834f0dbd38e5d53ca0dd7c25341a67c8",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+    },
+    "t:d753aa74dd930f7e": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "An unrelated actual Upa death does not grant the substitution reward",
+      "declarationSha256": "f9b3598c499f8cb9c6679f834639821c05b0ad8b724051a6bb1ce484b3b66300",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+    },
+    "t:457c4cbda54f012b": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+      "declarationSha256": "767ac8f72a23d55864d3b4acc7d13f83806614290adb5a9f41fa89806578d3ba",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+    },
+    "t:307f537cf449577f": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+      "declarationSha256": "767ac8f72a23d55864d3b4acc7d13f83806614290adb5a9f41fa89806578d3ba",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual multi-hit attack kills Arnes and Upa together; Arnes one spirit and reward ID persist through actual revival."
     }
   },
   "remainingNotes": {

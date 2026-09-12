@@ -1258,6 +1258,8 @@ git add packages data docs && git commit -m "test,data: 残る個別条項を束
 
 2026-09-12 B5仮想攻撃: アイエル/フレイアード15条項を既存の実宣言・損害処理・取消・間合い枚数・原子的拒否試験へ束縛。射程近/魔法/使用効果4/水3損害・炎5損害、カード不要、公開条件、アイエル追加間合いを能力別tupleで確認。対象15試験、台帳validator成功。コード変更なし。具体的実装済み5,192、semantic pending67、accepted0。B5束縛計32行、残通常65行とD4c 2行。詳細は [B5仮想攻撃進捗](../../operations/evidence/2026-09-12-b5-virtual-progress.json)。Step1〜3は未完了。
 
+2026-09-12 B5死亡時能力・悲しき愛: チャム3行とウパ4行を実試験へ束縛。実死亡時の本人限定選択/適格対象/追加カード不要、実公開アーネスへの精神加算、実身代わり・取消の一回制限、実同時死亡→復活後の精神報酬・使用済み保持を確認。対象27試験、台帳validator成功。コード変更なし。具体的実装済み5,199、semantic pending60、accepted0。B5束縛計39行、残通常58行とD4c 2行。詳細は [B5死亡時能力進捗](../../operations/evidence/2026-09-12-b5-death-gifts-progress.json)。Step1〜3は未完了。
+
 ### Task B6: D2 無制限回収の秘匿比較と D3 同一席2権利の束縛
 
 **Files:**

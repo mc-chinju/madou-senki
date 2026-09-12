@@ -10,9 +10,9 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 |---|---|---|
 | `c2-p01-r2c2-ab01#one-maai-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p01-r2c2-ab01#two-advances-required` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p01-r2c2-ab05#own-death` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p01-r2c2-ab05#selected-eligible-recipient` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p01-r2c2-ab05#no-physical-gift-cost` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p01-r2c2-ab05#own-death` | a | cham-death-gift.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
+| `c2-p01-r2c2-ab05#selected-eligible-recipient` | a | cham-death-gift.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
+| `c2-p01-r2c2-ab05#no-physical-gift-cost` | a | cham-death-gift.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
 | `c2-p02-r1c1-ab01#earth-magic-immunity` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p02-r1c1-ab01#maai-requires-two-advances` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p02-r2c1-ab03#original-attacker` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
@@ -30,10 +30,10 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p04-r1c2-ab02#actual-zero-maai-payments` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p04-r1c2-ab02#hit-required` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
 | `c2-p04-r1c2-ab02#damage-double` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p05-r1c2-ab05#public-Arnes-self-spirit-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p05-r1c2-ab05#once-game-Arnes-substitution` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p05-r1c2-ab05#concurrent-death-retention` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p05-r1c2-ab05#public-Arnes-self-spirit-plus-one` | a | sad-love.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
+| `c2-p05-r1c2-ab05#once-game-Arnes-substitution` | a | sad-love.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
+| `c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one` | a | sad-love.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
+| `c2-p05-r1c2-ab05#concurrent-death-retention` | a | sad-love.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
 | `c2-p06-r1c2-ab03#actual-post-follower-body-damage` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r1c2-ab03#remaining-endurance-cap` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
 | `c2-p06-r1c2-ab03#heal-source` | a | combat-rewards.test.ts の行別対応は remaining-clauses-bindings.json。動的タイトル2宣言を静的it.eachへ変換。 |
