@@ -1,5 +1,8 @@
 # 公開走り切り Implementation Plan
 
+> **ユーザー依頼による一時停止（2026-09-12）:** 新項目へ進まない。別セッションでユーザーが明示的に再開するまで作業を停止する。引き継ぎは [release-run-handoff-2026-09-12.md](../../operations/release-run-handoff-2026-09-12.md)。目標達成・blockedではない。goal管理APIにpaused操作がないため、画面側の一時停止は別途必要。
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. サブエージェント・独立レビュー・自己レビューはユーザー指定により禁止。受け入れは [試験受け入れ方針](../../operations/acceptance-policy.md) `acceptance-policy/test-only-v1`。
 
 **Goal:** 台帳のsemantic条項5,259件を試験受け入れで全件accepted/notApplicableにし、正式STARTからの一戦を自動試験で通し、Cloudflareのstaging→productionへ招待制で公開する。対人での操作評価は公開後に行う。
