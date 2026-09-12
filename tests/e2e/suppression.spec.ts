@@ -65,6 +65,9 @@ test('ritual-born Vanmil designates multiple public names, and Blessing survives
     await toLiaTurn(table, views);
     const blessing = table.pages[2]!.getByRole('region', { name: '能力の禁止と祝福' });
     await expect(blessing).toContainText('精神力−5');
+    for(const page of table.pages)await page.reload();
+    expect(views.get(c!)!.game!.abilityOptions.find(o=>o.abilityId===BLESS)!.targetIds).toEqual([b!,table.sessions[3]!.id]);
+    await expect(blessing.getByLabel('祝福する対象').getByRole('option')).toHaveText(['対象を選択','楓','蓮']);
     await blessing.getByLabel('祝福する対象').selectOption(b!);
     await click(table, views, blessing.getByRole('button', { name: '祝福を使う', exact: true }));
     const rolled = await passUntil(table, views, game => game.currentRoll?.stage === 'after-roll' && game.currentRoll.purpose === 'ability-check');

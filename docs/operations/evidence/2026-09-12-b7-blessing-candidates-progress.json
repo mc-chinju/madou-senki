@@ -1,0 +1,54 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 C16 blessing designated-public-state candidates; not acceptance evidence",
+  "previousMissingRows": 21,
+  "newlyBoundRows": [
+    "c2-p03-r1c2-ab04#C16/designated-public-state-candidates"
+  ],
+  "remainingMissingRows": 20,
+  "changes": [
+    "Extended existing successful/failed blessing DO scenarios to assert only designated B is offered and undesignated A is rejected without durable mutation, including restarted duplicate rejection.",
+    "Extended existing multi-target browser scenario to reload all seats on Lia turn and assert the real select lists only designated B and D.",
+    "Refreshed the shared G09 explicit-optional-use browser declaration reference."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-suppression.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 8,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/suppression.spec.ts --reporter=json",
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked binding retains prior Engine test",
+    "Runtime coverage validator valid true",
+    "Remaining B7 rows independently counted as20",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/room-suppression.test.ts": "1124bc8edbaceee325ab7d7cf450db57ea5e08054895ecbbf2ba4f6345412122",
+    "tests/e2e/suppression.spec.ts": "553d2c2e236502045a6276b5f2141c88521bcc3c4ba3bb2c440bc8b9506477c8",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "3c92ea8a78ee85d7b231abeb932aa519108413a92cf23af43e31b7fb92cc2acc",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "88fe55e45ae0080b589e10e3b85472c9caa42c25e988e6106ddfed9e908d8aac"
+  },
+  "testCorrection": [
+    "Matched select placeholder assertion to existing UI text 対象を選択 after inspecting SuppressionPanel.tsx."
+  ],
+  "limitations": [
+    "No new scenario or production runtime change.",
+    "B7 Step2 remains incomplete; frozen acceptance and formal START games remain. Accepted and verified remain zero."
+  ]
+}

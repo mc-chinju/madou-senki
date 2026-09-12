@@ -141,6 +141,9 @@ it('canceled actual ban retains payment and attempt through eviction without mak
 it.each(['suppression-blessing', 'suppression-blessing-fail'] as const)('%s persists actual spirit-minus-five roll and spends the attempt on either result', async scenario => {
   const room = await openTestRoom(scenario);
   await declare(room, 'A', 'pre-blessing-ban', BAN, ['B']); await settle(room, 'pre-blessing-pass'); await toLiaTurn(room);
+  const offered=viewFor(await game(room),'C').abilityOptions.find(o=>o.abilityId===BLESS)!;expect(offered.targetIds).toEqual(['B']);
+  const beforeInvalid=await room.stored(),invalid=await request(room,'blessing-undesignated',{type:'USE_ABILITY',abilityId:BLESS,targetId:'A',targetEventId:offered.targetEventId});
+  const rejected=await room.command('C',invalid);expect(rejected).toMatchObject({type:'error'});expect(await room.stored()).toEqual(beforeInvalid);await room.restart();expect(await room.command('C',invalid)).toEqual(rejected);expect(await room.stored()).toEqual(beforeInvalid);
   const declaration = await declare(room, 'C', 'blessing', BLESS, ['B']); await replay(room, declaration);
   const resultCommand = await until(room, state => state.rolls?.some(roll => roll.rollerId === 'C' && roll.stage === 'after-roll') ?? false, 'bless-to-roll');
   expect(resultCommand).toBeDefined(); await replay(room, resultCommand!);

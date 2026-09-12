@@ -875,6 +875,57 @@
       "remaining": [
         "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/designated-public-state-candidates",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing candidates use designated public state after actual turn advance",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "suppression-blessing",
+          "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "suppression-blessing-fail",
+          "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "After actual B/D designation and Lia turn progression, all seats reload and the actual select contains only the two designated players, then B blessing resolves."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

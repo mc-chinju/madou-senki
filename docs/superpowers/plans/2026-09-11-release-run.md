@@ -1345,6 +1345,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16禁止が通常行動を消費しない条項を追加束縛。儀式後から実コマンドで一巡し、次の自分のactionで禁止を宣言・解決してもPASS_ACTIONが受理されるDO/browserケースを追加。Worker毎操作保存再送・browser全席reloadを含む既存全体8/3試験、型チェック、台帳validator成功。不足21行、Step2継続。詳細は [B7通常行動進捗](../../operations/evidence/2026-09-12-b7-main-action-progress.json)。
 
+2026-09-12 B7続行: C16祝福の指定済み公開状態候補1行を追加束縛。既存DO成功/失敗ケースに候補B限定と未指定Aの拒否・再送不変を追加し、browser全席reload後の選択肢が指定済みB/Dだけであることを確認。共有G09参照更新、Worker8試験・browser3試験・型チェック・台帳validator成功。不足20行、Step2継続。詳細は [B7祝福候補進捗](../../operations/evidence/2026-09-12-b7-blessing-candidates-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

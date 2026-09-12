@@ -255520,7 +255520,7 @@
       "tests": [
         "t:b4c030d8cbc394c1",
         "t:92ddbe067c052add",
-        "t:e74952493c9ce8ca"
+        "t:2653a40c506d86e7"
       ],
       "status": "implemented",
       "remaining": [
@@ -255784,7 +255784,7 @@
         "t:f32c8ee0867e859c",
         "t:d4db28d368b061d7",
         "t:87295332a7128a8d",
-        "t:cc25018c450e2dfd"
+        "t:a642b7687f35a70f"
       ],
       "status": "implemented",
       "remaining": [
@@ -255929,11 +255929,14 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:23ec94ca680479c6"
+        "t:23ec94ca680479c6",
+        "t:f751ffc347b99085",
+        "t:149f071749036842",
+        "t:2e34384c96b46023"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256461,7 +256464,7 @@
         "t:f7b69bb32a076139",
         "t:1ed1c7720b8f7c0a",
         "t:ae77bb0e5cce4b90",
-        "t:f4d262085823dd16",
+        "t:a71fde3119e265cd",
         "t:b574855903b4b202",
         "t:4800c85c7624db61",
         "t:7d738ab35b3a563d",
@@ -256469,7 +256472,7 @@
       ],
       "status": "implemented",
       "remaining": [
-        "n:d7dedb60b238ec23"
+        "n:26415580933c852e"
       ],
       "relatedEvidence": {
         "handler": [
@@ -492887,6 +492890,60 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Fresh next-turn ban leaves the normal action available after all-seat reload; clicking end action succeeds and all seats reload into hand adjustment."
+    },
+    "t:a642b7687f35a70f": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "5bf6e819831fb0eafdf690f5a534aa1fbb437ea927aa8c79de89fbda3d72e312",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
+    },
+    "t:2653a40c506d86e7": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "5bf6e819831fb0eafdf690f5a534aa1fbb437ea927aa8c79de89fbda3d72e312",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+    },
+    "t:f751ffc347b99085": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+      "declarationSha256": "b24e6bf8ca96f2c0ee64e25aa398c565b9fa19f6a3f5181dee1bb2c8ac020b35",
+      "kind": "worker-persistence",
+      "parameters": "suppression-blessing",
+      "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+    },
+    "t:149f071749036842": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+      "declarationSha256": "b24e6bf8ca96f2c0ee64e25aa398c565b9fa19f6a3f5181dee1bb2c8ac020b35",
+      "kind": "worker-persistence",
+      "parameters": "suppression-blessing-fail",
+      "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+    },
+    "t:2e34384c96b46023": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "5bf6e819831fb0eafdf690f5a534aa1fbb437ea927aa8c79de89fbda3d72e312",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "After actual B/D designation and Lia turn progression, all seats reload and the actual select contains only the two designated players, then B blessing resolves."
+    },
+    "t:a71fde3119e265cd": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "5bf6e819831fb0eafdf690f5a534aa1fbb437ea927aa8c79de89fbda3d72e312",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
     }
   },
   "remainingNotes": {
@@ -493045,7 +493102,8 @@
     "n:8577efe79695c2f7": "Selected roll/value boundary and exact cases registered; full source/dependencies and current frozen candidate acceptance remain. No review performed.",
     "n:b0730700cea9f76c": "Actual unused main-action Worker/browser correspondence remains; existing ritual fixture already spent its action. Frozen acceptance remains.",
     "n:d7dedb60b238ec23": "n:6d9fe79b4ce22f05",
-    "n:df2c8d6cd035ae42": "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains."
+    "n:df2c8d6cd035ae42": "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains.",
+    "n:26415580933c852e": "n:d7dedb60b238ec23"
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {
