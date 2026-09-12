@@ -26,10 +26,10 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p04-r1c1-ab02#public-source` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p04-r1c1-ab02#one-extra-maai` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
 | `c2-p04-r1c1-ab02#no-physical-source-cost` | a | virtual-blades.test.ts の能力別tupleへ束縛。実宣言/損害/費用/間合い枚数または原子的拒否を確認。 |
-| `c2-p04-r1c2-ab02#sword-attack` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c2-ab02#actual-zero-maai-payments` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c2-ab02#hit-required` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c2-ab02#damage-double` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab02#sword-attack` | a | zan / follower-destruction-abilities の直接試験へ束縛。実転移対象の除外と剣/風適格3ケースを追加。実支払済み間合い・多段履歴・従者HP控除前倍加を確認。null剣だけ構造試験と明記。 |
+| `c2-p04-r1c2-ab02#actual-zero-maai-payments` | a | zan / follower-destruction-abilities の直接試験へ束縛。実転移対象の除外と剣/風適格3ケースを追加。実支払済み間合い・多段履歴・従者HP控除前倍加を確認。null剣だけ構造試験と明記。 |
+| `c2-p04-r1c2-ab02#hit-required` | b（追加済み） | zan / follower-destruction-abilities の直接試験へ束縛。実転移対象の除外と剣/風適格3ケースを追加。実支払済み間合い・多段履歴・従者HP控除前倍加を確認。null剣だけ構造試験と明記。 |
+| `c2-p04-r1c2-ab02#damage-double` | a | zan / follower-destruction-abilities の直接試験へ束縛。実転移対象の除外と剣/風適格3ケースを追加。実支払済み間合い・多段履歴・従者HP控除前倍加を確認。null剣だけ構造試験と明記。 |
 | `c2-p05-r1c2-ab05#public-Arnes-self-spirit-plus-one` | a | sad-love.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
 | `c2-p05-r1c2-ab05#once-game-Arnes-substitution` | a | sad-love.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
 | `c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one` | a | sad-love.test.ts の実死亡/選択/身代わり/復活に対する直接assertionへ束縛。 |
@@ -80,8 +80,8 @@ D4cの2行はA7補足に従いB8のsnapshot前に恒久適用する。D4以外�
 | `c2-p02-r1c2-ab04#wind-magic-eligibility` | b（追加済み） | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
 | `c2-p02-r1c2-ab04#water-magic-eligibility` | b（追加済み） | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
 | `c2-p02-r1c2-ab04#fire-magic-eligibility` | b（追加済み） | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
-| `c2-p04-r1c2-ab01#sword-attack-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
-| `c2-p04-r1c2-ab01#wind-attack-eligibility` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |
+| `c2-p04-r1c2-ab01#sword-attack-eligibility` | b（追加済み） | zan / follower-destruction-abilities の直接試験へ束縛。実転移対象の除外と剣/風適格3ケースを追加。実支払済み間合い・多段履歴・従者HP控除前倍加を確認。null剣だけ構造試験と明記。 |
+| `c2-p04-r1c2-ab01#wind-attack-eligibility` | b（追加済み） | zan / follower-destruction-abilities の直接試験へ束縛。実転移対象の除外と剣/風適格3ケースを追加。実支払済み間合い・多段履歴・従者HP控除前倍加を確認。null剣だけ構造試験と明記。 |
 | `c2-p03-r2c2-ab04#actual-attacking-role` | a | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
 | `c2-p03-r2c2-ab04#actual-defending-role` | a | declaration-modifier-sources / conditional-stats の実攻撃・防御試験へ束縛。地風水炎の選択/辞退4ケースを追加し、実攻防役割とGOOD・公開された指定人物条件を確認。 |
 | `c2-p03-r1c2-ab02#outside-own-attack-only` | b | この条項の直接assertionを確認・追加/補強する。現時点では関連試験の存在だけで束縛しない。 |

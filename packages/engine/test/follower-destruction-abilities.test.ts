@@ -139,3 +139,9 @@ it('WhiteSword on actual Gadyoora copies already doubled damage once into Royal 
 it('WhiteSword dedicated all-target sword applies one frozen multiplier only to its Gadyoora target',()=>{
  let s=ready();character(s,'A','聖騎士ランスロット');character(s,'B','不死王ガドューラ');const source=handCard(s,'A','光竜破山剣');s.players.A!.hand=s.players.A!.hand.filter(x=>x!==source);s.players.A!.chants.push({cardInstanceId:source,revealed:false});s=act(s,'A',{type:'ATTACK',cardInstanceId:source,targetIds:['B','C'],dedicated:true});s=until(s,'damage');s=use(s,WHITE);s=until(s,'attack-abilities');expect(group(s).technique.damage).toBe(5);expect(group(s).targets.map(t=>t.hits[0]!.damage)).toEqual([10,5]);suppress(s);s=finish(s);expect(s.players.B!.damage).toBe(10);expect(s.players.C!.damage).toBe(5);
 });
+
+it.each([['黒翼飛翔剣','剣'],['風矢','風']] as const)('Asfelt actual %s with %s attribute enables the destruction package',(name,attribute)=>{
+ let s=until(start('竜皇子アスフェルト',name),'attack-abilities');expect(group(s).technique.attributes).toContain(attribute);
+ s=use(s,WIND);s=until(s,'normal-defense');
+ expect(viewFor(s,'B').currentAttack!.technique.destructionEffects).toContain('従者Lv6以下を破壊');s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);
+});

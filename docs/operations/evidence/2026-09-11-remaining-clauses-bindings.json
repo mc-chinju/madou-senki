@@ -2378,6 +2378,246 @@
       "remaining": [
         "Exact source assertions bound; frozen current-candidate run and acceptance remain."
       ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#sword-attack",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "zanOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "resolveZan"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "decline",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Non-sword has no Zan offer and a structural null sword preserves null arithmetic",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Actual nonsword offers no Zan and resolves four damage; separate explicitly structural null-sword arithmetic preserves null."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#actual-zero-maai-payments",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "zanOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "A real maai canceled by a real advance still prevents Zan for that hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual physical maai remains submitted history after actual advance cancellation: Zan is absent and forged use rejected atomically, damage remains five."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual chanted two-hit sword preserves canceled first-hit maai while doubling the independent second hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real chant and two-hit attack retains first hit paid-maai history and doubles only second hit: seven plus fourteen damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#hit-required",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "zanOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "freezeZan"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Zan skips the target that actually teleported while doubling the remaining undefended sword hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual teleport sets first target defended; follower-entry election belongs only to the remaining target and final damage is zero versus twenty-four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#damage-double",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "freezeZan"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "decline",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Zan doubles before the actual initially placed Soldier subtracts its HP",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real initial Soldier placement and sword attack: five doubles to ten before Soldier HP one is deducted, leaving nine body damage and discarding Soldier once."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab01#sword-attack-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "destructionAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "resolveDestructionAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "Asfelt actual %s with %s attribute enables the destruction package",
+          "parameters": [
+            "黒翼飛翔剣",
+            "剣"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword or wind attack contains required attribute and accepts the destruction package; public attack exposes level-six destruction and damage resolves."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "狼牙"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual neither-sword-nor-wind martial source offers no package and forged selection is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab01#wind-attack-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "destructionAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "resolveDestructionAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "Asfelt actual %s with %s attribute enables the destruction package",
+          "parameters": [
+            "風矢",
+            "風"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword or wind attack contains required attribute and accepts the destruction package; public attack exposes level-six destruction and damage resolves."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "狼牙"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual neither-sword-nor-wind martial source offers no package and forged selection is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
     }
   ]
 }

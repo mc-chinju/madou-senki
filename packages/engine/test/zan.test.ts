@@ -32,3 +32,13 @@ it('Zan doubles before the actual initially placed Soldier subtracts its HP',()=
  let s=freshGame();character(s,'A','竜皇子アスフェルト');character(s,'B','黒騎士ガーウィン');for(const p of Object.values(s.players))p.permanent={spirit:20,endurance:100};const sword=handCard(s,'A','破砕剣'),soldier=handCard(s,'B','兵士');for(const actor of s.seatOrder){if(actor==='B')s=act(s,actor,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier});s=act(s,actor,{type:'PASS_SETUP'});}s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'follower-entry-abilities');s=finish(use(s));expect(s.players.B!.damage).toBe(9);expect(s.discard.filter(id=>id===soldier)).toHaveLength(1);
 });
 it('Explicit abstract composition adds before both multipliers and rounds once',()=>{expect(composeValue(5,null,[1],[2,0.5])).toBe(6);});
+
+it('Zan skips the target that actually teleported while doubling the remaining undefended sword hit',()=>{
+ let s=ready();character(s,'A','竜皇子アスフェルト');for(const p of Object.values(s.players))p.permanent={spirit:20,endurance:100};
+ const sword=handCard(s,'A','風斬剣'),teleport=handCard(s,'B','転移');
+ s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B','C'],dedicated:true}),'normal-defense');
+ s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:teleport,dedicated:false});s=until(s,'follower-entry-abilities');
+ const g=Object.values(s.groups!)[0]!;expect(g.targets.find(t=>t.actorId==='B')!.hits[0]!.defended).toBe(true);
+ expect(s.windows!.at(-1)!.continuation).toMatchObject({targetId:'C'});s=finish(use(s));
+ expect([s.players.B!.damage,s.players.C!.damage]).toEqual([0,24]);expect(s.discard.filter(id=>id===teleport)).toHaveLength(1);
+});

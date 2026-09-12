@@ -175136,12 +175136,19 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0e6cefa27275bee0",
+        "h:e337e5dcd6157753"
+      ],
+      "tests": [
+        "t:83334833de1a726d",
+        "t:8086fcd7e7ee131c",
+        "t:6cf5350b5f37c7f8",
+        "t:4a99036b122573df"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:9828701be94a49f1",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -175156,12 +175163,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0e6cefa27275bee0"
+      ],
+      "tests": [
+        "t:a2ff59b3fc601f63",
+        "t:ba2ba63fa3e6e42b"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:9828701be94a49f1",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -175176,12 +175187,16 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:0e6cefa27275bee0",
+        "h:b5f47eb2fcb294f9"
+      ],
+      "tests": [
+        "t:bd106f2309baf3da"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:9828701be94a49f1",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -175196,12 +175211,18 @@
       "rulingIds": [
         "C01"
       ],
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:b5f47eb2fcb294f9"
+      ],
+      "tests": [
+        "t:83334833de1a726d",
+        "t:8086fcd7e7ee131c",
+        "t:6cf5350b5f37c7f8",
+        "t:e5ee0bf6ba9ea1f9"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:9828701be94a49f1",
-        "n:49a71723d6a1e3e6"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "implementation-missing",
       "kind": "ability-effect",
@@ -231095,11 +231116,17 @@
         "C06"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8caa06b3a3fdd3d",
+        "h:158a160b51a78f37"
+      ],
+      "tests": [
+        "t:6751fce4d110cf20",
+        "t:2d5f350bdd137f53"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -231125,11 +231152,17 @@
         "C06"
       ],
       "kind": "ability-effect",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:f8caa06b3a3fdd3d",
+        "h:158a160b51a78f37"
+      ],
+      "tests": [
+        "t:e7cb557142b67e01",
+        "t:2d5f350bdd137f53"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -416215,8 +416248,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 6954,
-      "implemented": 5224
+      "pending": 6948,
+      "implemented": 5230
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -417570,6 +417603,22 @@
     "h:513875d76b6ea400": {
       "path": "packages/engine/src/abilities/suppression-state.ts",
       "symbol": "publicSuppressionTargets"
+    },
+    "h:0e6cefa27275bee0": {
+      "path": "packages/engine/src/abilities/zan.ts",
+      "symbol": "zanOptions"
+    },
+    "h:e337e5dcd6157753": {
+      "path": "packages/engine/src/abilities/zan.ts",
+      "symbol": "resolveZan"
+    },
+    "h:b5f47eb2fcb294f9": {
+      "path": "packages/engine/src/abilities/zan.ts",
+      "symbol": "freezeZan"
+    },
+    "h:f8caa06b3a3fdd3d": {
+      "path": "packages/engine/src/abilities/follower-destruction.ts",
+      "symbol": "destructionAbilityOptions"
     }
   },
   "testCases": {
@@ -490990,6 +491039,115 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Real multi-target attack adds one effect and two damage to public Gainas only; unrelated target retains base six effect and eight damage. Both actual damages are asserted."
+    },
+    "t:83334833de1a726d": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+      "declarationSha256": "8208d6fa98b8cbd2cf0a42de2a7caf75768d7941c9c0194aa07ce4f85d39a7b5",
+      "kind": "canonical-transition",
+      "parameters": "select",
+      "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+    },
+    "t:8086fcd7e7ee131c": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+      "declarationSha256": "8208d6fa98b8cbd2cf0a42de2a7caf75768d7941c9c0194aa07ce4f85d39a7b5",
+      "kind": "canonical-transition",
+      "parameters": "decline",
+      "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+    },
+    "t:6cf5350b5f37c7f8": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+      "declarationSha256": "8208d6fa98b8cbd2cf0a42de2a7caf75768d7941c9c0194aa07ce4f85d39a7b5",
+      "kind": "canonical-transition",
+      "parameters": "cancel",
+      "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+    },
+    "t:4a99036b122573df": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "Non-sword has no Zan offer and a structural null sword preserves null arithmetic",
+      "declarationSha256": "42b7a0f8888435db95d4489899781a683c9d1739a71c6f975ed58a0dc4a9ebe6",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Actual nonsword offers no Zan and resolves four damage; separate explicitly structural null-sword arithmetic preserves null."
+    },
+    "t:a2ff59b3fc601f63": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "A real maai canceled by a real advance still prevents Zan for that hit",
+      "declarationSha256": "9afe72f1f7a7b6faa663d2c54a6f219d5762b6816abdec6defee87b8f84513fe",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual physical maai remains submitted history after actual advance cancellation: Zan is absent and forged use rejected atomically, damage remains five."
+    },
+    "t:ba2ba63fa3e6e42b": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "Actual chanted two-hit sword preserves canceled first-hit maai while doubling the independent second hit",
+      "declarationSha256": "5a05a7e75016dcc87a019797be6e04e91bf42312df593b2725f2dfe1a359d0bd",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Real chant and two-hit attack retains first hit paid-maai history and doubles only second hit: seven plus fourteen damage."
+    },
+    "t:bd106f2309baf3da": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "Zan skips the target that actually teleported while doubling the remaining undefended sword hit",
+      "declarationSha256": "b2fa05335f6f49a30d7320b3024e45025e78a75871aa7dc52f85b76661a0f0e8",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual teleport sets first target defended; follower-entry election belongs only to the remaining target and final damage is zero versus twenty-four."
+    },
+    "t:e5ee0bf6ba9ea1f9": {
+      "path": "packages/engine/test/zan.test.ts",
+      "suite": [],
+      "title": "Zan doubles before the actual initially placed Soldier subtracts its HP",
+      "declarationSha256": "a3c35a21794ebfc3c9942557fd5e40adb2ffafcf4ec3021ba0bc21805fa593e1",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Real initial Soldier placement and sword attack: five doubles to ten before Soldier HP one is deducted, leaving nine body damage and discarding Soldier once."
+    },
+    "t:6751fce4d110cf20": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "Asfelt actual %s with %s attribute enables the destruction package",
+      "declarationSha256": "a33fec9bd051477044cc86a3fb9c8fc9873c42bf70c4f7f7f69681d4b3545b37",
+      "kind": "canonical-transition",
+      "parameters": [
+        "黒翼飛翔剣",
+        "剣"
+      ],
+      "bindingNote": "Actual sword or wind attack contains required attribute and accepts the destruction package; public attack exposes level-six destruction and damage resolves."
+    },
+    "t:2d5f350bdd137f53": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+      "declarationSha256": "d56dd55c3d6a1cf44d15590071a7ac994a235ae3e89c2505e5fb5dd179c10435",
+      "kind": "canonical-transition",
+      "parameters": [
+        "竜皇子アスフェルト",
+        "c2-p04-r1c2-ab01",
+        "狼牙"
+      ],
+      "bindingNote": "Actual neither-sword-nor-wind martial source offers no package and forged selection is rejected atomically."
+    },
+    "t:e7cb557142b67e01": {
+      "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+      "suite": [],
+      "title": "Asfelt actual %s with %s attribute enables the destruction package",
+      "declarationSha256": "a33fec9bd051477044cc86a3fb9c8fc9873c42bf70c4f7f7f69681d4b3545b37",
+      "kind": "canonical-transition",
+      "parameters": [
+        "風矢",
+        "風"
+      ],
+      "bindingNote": "Actual sword or wind attack contains required attribute and accepts the destruction package; public attack exposes level-six destruction and damage resolves."
     }
   },
   "remainingNotes": {

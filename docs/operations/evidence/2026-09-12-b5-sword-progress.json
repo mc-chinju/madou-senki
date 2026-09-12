@@ -1,0 +1,40 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B5 Asfelt sword and wind eligibility and Zan conditions; not acceptance evidence",
+  "newlyImplementedClauses": 6,
+  "newTests": 3,
+  "bindingFileRows": 70,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/zan.test.ts packages/engine/test/follower-destruction-abilities.test.ts --reporter=json --outputFile=/private/tmp/release-b5-sword.json",
+    "passed": 83,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit passed",
+    "Binding application validates exact AST declarations and parameter tuples",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Actual teleport defends the first target of a multi-target sword; Zan is elected on the remaining target and damages resolve zero and twenty-four.",
+    "Actual sword and wind attacks each permit the destruction package; a neither-sword-nor-wind attack rejects it.",
+    "Existing real maai canceled by advance still excludes Zan, actual chanted two-hit history remains hit-local, and doubling precedes actual initial Soldier HP deduction. The null-sword arithmetic boundary is explicitly structural."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/zan.test.ts": "d52ea5f77460991295533bd3f231b0f9d46f1f069355a66c72ff4fff8a7fa6af",
+    "packages/engine/test/follower-destruction-abilities.test.ts": "4aeeb74d03440938d22efa2afc96afed8e120760eca03e810c2128177b066f9f",
+    "docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json": "352e4e07f72c260285b6dd4dfd88a4c1d6da7ce5c4af734db7f2c0ac2b9d5901",
+    "docs/operations/evidence/2026-09-11-remaining-clauses.md": "9b5144a190458e3ae856a5619272afc61c92ba8bb076dea2a4feb28cdd71c430"
+  },
+  "semanticImplementedConcrete": 5230,
+  "semanticPending": 29,
+  "semanticAccepted": 0,
+  "limitations": [
+    "No runtime implementation changes; three new transition cases strengthen hit and attribute eligibility.",
+    "B5 Steps1–3 remain incomplete: 27 ordinary clauses and two deferred D4c rows remain.",
+    "No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}
