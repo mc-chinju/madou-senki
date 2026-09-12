@@ -259,6 +259,46 @@ def c16_designation_binding(row):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def c16_lifetime_binding(row):
+    entry, clause = row['entryId'], row['clauseKey']
+    refs = []
+    structural = 'structural-resolver'
+    boundary = 'C16 structural Blessing lifetime boundary %s preserves only a living matching source'
+    if entry == 'c2-p07-r1c2-ab03':
+        if clause == 'C16/established-ban-survives-source-suppression-absence':
+            refs = [('C16 bans persist while Vanmil is stopped or absent; mandatory non-ability rules remain separate', None, structural)]
+        elif clause in {'C16/target-death-revival-retains-designation', 'C16/no-early-ban-removal-in-G15'}:
+            refs = [('C16 structural death entry and resetup of %s retain the established designation', v, structural) for v in (['B'] if clause.endswith('retains-designation') else ['A', 'B'])]
+    elif entry == 'c2-p03-r1c2-ab04':
+        if clause == 'C16/designated-public-state-candidates':
+            refs = [('C16 Blessing candidates use designated public state after actual turn advance', None, 'canonical-transition')]
+        elif clause in {'C16/exempt-target-same-check-and-lease', 'C16/success-does-not-disclose-prior-ban'}:
+            refs = [('C16 Blessing on a concealed inert designation has the same outsider transcript', None, structural)]
+        elif clause == 'C16/only-Vanmil-ban-released':
+            refs = [('C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence', None, structural)]
+        elif clause == 'C16/lease-survives-Lia-suppression-absence':
+            refs = [(t, None, structural) for t in ['C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence', 'C16 a new declaration containing an already relieved target never cancels its living Blessing']]
+        elif clause == 'C16/redesignation-does-not-break-live-lease':
+            refs = [('C16 a new declaration containing an already relieved target never cancels its living Blessing', None, structural)]
+        elif clause == 'C16/lease-survives-target-absence':
+            refs = [(boundary, v, structural) for v in ['target-otherworld', 'target-wandering']]
+        elif clause == 'C16/lease-expires-G15-death-entry':
+            refs = [('C16 actual own-turn Blessing expires on the source lethal attack before disposal', None, 'canonical-transition')]
+        elif clause == 'C16/revival-does-not-restore-lease':
+            refs = [('C16 Blessing expires at G15 death entry and cannot revive with its old life', None, structural)]
+        elif clause == 'C16/loss-of-Lia-identity-expires-lease':
+            refs = [(boundary, 'source-identity', structural)]
+        elif clause == 'C16/source-life-generation-saved':
+            refs = [(boundary, 'source-generation', structural), ('C16 Blessing candidates use designated public state after actual turn advance', None, 'canonical-transition')]
+    if not refs:
+        return None
+    return {'row': f'{entry}#{clause}',
+            'handler': [{'path': 'packages/engine/src/abilities/suppression-state.ts', 'symbol': symbol} for symbol in ['cleanBlessingLeases', 'vanmilSuppressed']],
+            'tests': [{'path': 'packages/engine/test/suppression-blessing.test.ts', 'suite': [], 'title': title, 'parameters': param, 'kind': kind,
+                       'bindingNote': 'Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed.' if kind == structural else 'Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal.'} for title, param, kind in refs],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -267,7 +307,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row) or lancelot_transform_binding(row) or c16_designation_binding(row)
+        extra = extra_binding(row, by_id) or received_defense_binding(row) or conditional_election_binding(row, by_id) or shadow_child_binding(row) or follower_bundle_binding(row) or hunger_binding(row) or lia_dia_binding(row) or lancelot_transform_binding(row) or c16_designation_binding(row) or c16_lifetime_binding(row)
         if extra:
             bindings.append(extra)
             continue

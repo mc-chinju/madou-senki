@@ -1,3 +1,4 @@
+import {cleanBlessingLeases,vanmilSuppressed} from '../src/abilities/suppression-state.js';
 import {expect, it} from 'vitest';
 import {transition, viewFor, gameStats, type GameState} from '../src/index.js';
 import {canUseCharacterAbility} from '../src/state.js';
@@ -342,4 +343,39 @@ it('C16 real turn advance offers Vanmil only his public reaction and spends it o
  while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
  s=JSON.parse(JSON.stringify(s));expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===BAN&&o.targetEventId===event)).toBe(false);
  rejected(s,'A',{type:'USE_ABILITY',abilityId:BAN,targetEventId:event,targetIds:['B']});s=finish(s);
+});
+it.each(['A','B'] as const)('C16 structural death entry and resetup of %s retain the established designation',victim=>{
+ const s=closeWindow(use(setup(),'A',BAN,['B']));const saved=structuredClone(s.suppressionDesignations);
+ settleDamage(s,[{targetId:victim,damage:999,eventId:'c16-death-boundary',sourceActorId:'D',cause:'attack'}],1000);
+ expect(s.players[victim]!.presence).toBe('pending-death');expect(s.suppressionDesignations).toEqual(saved);
+ expect(vanmilSuppressed(s,'B')).toBe(true);
+ beginResetup(s,s.players[victim]!,1001,true);
+ expect(s.suppressionDesignations).toEqual(saved);expect(vanmilSuppressed(s,'B')).toBe(true);
+});
+it.each(['source-identity','source-generation','target-otherworld','target-wandering'] as const)('C16 structural Blessing lifetime boundary %s preserves only a living matching source',boundary=>{
+ const s=blessed();const saved=structuredClone(s.blessingLeases);
+ expect(saved).toHaveLength(1);expect(saved![0]).toMatchObject({sourceActorId:'C',sourceCharacterId:'c2-p03-r1c2',sourceLifeId:s.players.C!.lifeId??'initial-life:C',targetId:'B'});
+ if(boundary==='source-identity')character(s,'C','侍大将のシン');
+ else if(boundary==='source-generation')s.players.C!.lifeId='structural-next-life:C';
+ else s.players.B!.presence=boundary==='target-otherworld'?'otherworld':'wandering';
+ const restored=JSON.parse(JSON.stringify(s)) as GameState;cleanBlessingLeases(restored);
+ const expires=boundary.startsWith('source-');
+ expect(restored.blessingLeases).toEqual(expires?[]:saved);expect(vanmilSuppressed(restored,'B')).toBe(expires);
+});
+it('C16 Blessing candidates use designated public state after actual turn advance',()=>{
+ let s=setup();s=finish(use(s,'A',BAN,['B']));s=actionFor(s,'C');
+ const option=viewFor(s,'C').abilityOptions.find(o=>o.abilityId===BLESS)!;
+ expect(option.targetIds).toEqual(['B']);
+ rejected(s,'C',{type:'USE_ABILITY',abilityId:BLESS,targetEventId:option.targetEventId,targetId:'D'});
+ s=finish(use(s,'C',BLESS,['B']));expect(s.phase).toBe('action');
+ expect(s.blessingLeases![0]).toMatchObject({sourceActorId:'C',targetId:'B',sourceLifeId:s.players.C!.lifeId??'initial-life:C'});
+});
+it('C16 actual own-turn Blessing expires on the source lethal attack before disposal',()=>{
+ let s=setup();s.players.C!.damage=gameStats(s,'C').endurance-1;const attack=handCard(s,'A','踏み込み／弓');
+ s=finish(use(s,'A',BAN,['B']));s=actionFor(s,'C');s=finish(use(s,'C',BLESS,['B']));
+ expect(s.blessingLeases).toHaveLength(1);s=actionFor(s,'A');
+ s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['C'],dedicated:false});
+ for(let n=0;n<200&&s.players.C!.presence!=='pending-death';n++)s=pass(s);
+ expect(s.players.C!.presence).toBe('pending-death');expect(s.players.C!.hand.length).toBeGreaterThan(0);
+ expect(s.blessingLeases).toEqual([]);expect(vanmilSuppressed(s,'B')).toBe(true);
 });

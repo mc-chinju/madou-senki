@@ -255173,11 +255173,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:e21777aaf5f251ca"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255204,11 +255209,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:01668ce774990517"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255235,11 +255245,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:8e2303d83aa0f49e",
+        "t:01668ce774990517"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255266,11 +255282,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:23ec94ca680479c6"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255297,11 +255318,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:1b2c92a5b4d724f5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255328,11 +255354,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:1b2c92a5b4d724f5"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255359,11 +255390,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:034cea4739167897"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255390,11 +255426,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:034cea4739167897",
+        "t:af190f52f793f11f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255421,11 +255463,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:af190f52f793f11f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255452,11 +255499,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:f583be28a788bbeb",
+        "t:a1d3eaece1141cee"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255483,11 +255536,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:5cc4a6c13f4500e8"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255514,11 +255572,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:67e0462439067b36"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255545,11 +255608,16 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:97c637049cfbf38a"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255576,11 +255644,17 @@
         "C16"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:4741e847cb885be6",
+        "h:79856e2bd46b7acf"
+      ],
+      "tests": [
+        "t:0f1b3d86e74515a4",
+        "t:23ec94ca680479c6"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415683,8 +415757,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7056,
-      "implemented": 5122
+      "pending": 7042,
+      "implemented": 5136
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416982,6 +417056,14 @@
     "h:2429f56399a6e165": {
       "path": "packages/engine/src/abilities/suppression.ts",
       "symbol": "resolveSuppression"
+    },
+    "h:4741e847cb885be6": {
+      "path": "packages/engine/src/abilities/suppression-state.ts",
+      "symbol": "cleanBlessingLeases"
+    },
+    "h:79856e2bd46b7acf": {
+      "path": "packages/engine/src/abilities/suppression-state.ts",
+      "symbol": "vanmilSuppressed"
     }
   },
   "testCases": {
@@ -488857,6 +488939,123 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+    },
+    "t:e21777aaf5f251ca": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 bans persist while Vanmil is stopped or absent; mandatory non-ability rules remain separate",
+      "declarationSha256": "8f067492442cd6cf82a328202a8506de53aeafdb9aa12442aacd198a82ed842d",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:01668ce774990517": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural death entry and resetup of %s retain the established designation",
+      "declarationSha256": "d5d91da7770a8b3fc903d842af438800beabd59da7ebb8fd5c4d1a85e77a8826",
+      "kind": "structural-resolver",
+      "parameters": "B",
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:8e2303d83aa0f49e": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural death entry and resetup of %s retain the established designation",
+      "declarationSha256": "d5d91da7770a8b3fc903d842af438800beabd59da7ebb8fd5c4d1a85e77a8826",
+      "kind": "structural-resolver",
+      "parameters": "A",
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:23ec94ca680479c6": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 Blessing candidates use designated public state after actual turn advance",
+      "declarationSha256": "27bf354a9f00c50602f68a27adc599b9ef4146d69faac0c3d9563eca12bb0003",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+    },
+    "t:1b2c92a5b4d724f5": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 Blessing on a concealed inert designation has the same outsider transcript",
+      "declarationSha256": "a98ef2d6bc803109b9e59b8c3c171d503603a2e4e7450520cf6b0dd5eb09a808",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:034cea4739167897": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence",
+      "declarationSha256": "cebb450e116b362a07a383c1c3b070f5039fa1fdd9dd8a37ff990cfe55df52b2",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:af190f52f793f11f": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 a new declaration containing an already relieved target never cancels its living Blessing",
+      "declarationSha256": "3399d2981c3d7523efc46df08159bd24b771a05c13cc1cade4b5b2dd593682f0",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:f583be28a788bbeb": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+      "declarationSha256": "f1597620c63f2e6b860d7c3215fec2b658963d6e5f985689ba381921fdbb8119",
+      "kind": "structural-resolver",
+      "parameters": "target-otherworld",
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:a1d3eaece1141cee": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+      "declarationSha256": "f1597620c63f2e6b860d7c3215fec2b658963d6e5f985689ba381921fdbb8119",
+      "kind": "structural-resolver",
+      "parameters": "target-wandering",
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:5cc4a6c13f4500e8": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 actual own-turn Blessing expires on the source lethal attack before disposal",
+      "declarationSha256": "935661813a080a14849dc1e2c2fb9ceb2d4dbef8ab4fa46237d269aa569ca33c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+    },
+    "t:67e0462439067b36": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 Blessing expires at G15 death entry and cannot revive with its old life",
+      "declarationSha256": "e784d5f6ac47f5ededb3fbf57a74c6e737fce84a4475018181b7cc4c3e1f111d",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:97c637049cfbf38a": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+      "declarationSha256": "f1597620c63f2e6b860d7c3215fec2b658963d6e5f985689ba381921fdbb8119",
+      "kind": "structural-resolver",
+      "parameters": "source-identity",
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+    },
+    "t:0f1b3d86e74515a4": {
+      "path": "packages/engine/test/suppression-blessing.test.ts",
+      "suite": [],
+      "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+      "declarationSha256": "f1597620c63f2e6b860d7c3215fec2b658963d6e5f985689ba381921fdbb8119",
+      "kind": "structural-resolver",
+      "parameters": "source-generation",
+      "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
     }
   },
   "remainingNotes": {

@@ -116,6 +116,15 @@ class CharacterBindingsTest(unittest.TestCase):
         self.assertEqual([t['parameters'] for t in result[0]['tests']], ['リーア姫', '聖騎士ランスロット2'])
         self.assertTrue(all(t['kind'] == 'structural-resolver' for t in result[0]['tests']))
 
+    def test_c16_lifetime_keeps_boundary_and_actual_death_evidence_distinct(self):
+        ledger = self.ledger('C16/lease-expires-G15-death-entry')
+        ledger['rows'][0]['entryId'] = 'c2-p03-r1c2-ab04'
+        self.assertEqual(build_bindings(ledger, self.cards)[0]['tests'][0]['kind'], 'canonical-transition')
+        ledger['rows'][0]['clauseKey'] = 'C16/loss-of-Lia-identity-expires-lease'
+        test = build_bindings(ledger, self.cards)[0]['tests'][0]
+        self.assertEqual(test['kind'], 'structural-resolver')
+        self.assertEqual(test['parameters'], 'source-identity')
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)
