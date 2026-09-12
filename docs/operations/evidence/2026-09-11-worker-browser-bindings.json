@@ -1455,6 +1455,49 @@
       "remaining": [
         "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/target-death-revival-retains-designation",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "kind": "structural-resolver",
+          "parameters": "B",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-r6-combinations.test.ts",
+          "title": "R6 DO preserves frozen value then designation through actual death revival and a new-life rejected modifier",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual ban, lethal attack and revival retain the exact designation at death and new life; every command saves, restarts, replays and compares all-seat views."
+        },
+        {
+          "path": "tests/e2e/banned-target-revival.spec.ts",
+          "title": "actual banned target death and revival retain designation across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban, lethal attack and revival retain designation through pending death, death and re-setup. Each stage checks all-seat reload equality while allowing death to reveal identity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

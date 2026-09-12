@@ -1363,6 +1363,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16 G15で禁止を早期解除しない条項1行を追加束縛。既存canonical-vanmil-death DO試験にbrowser操作を対応させ、実禁止→致死攻撃→pending-deathの全席reloadで指定維持・対象禁止・結果未確定、最終reloadでC13結果を確認。Worker1試験・browser1試験・型チェック・台帳validator成功。不足9行、Step2継続。詳細は [B7ヴァンミール死亡進捗](../../operations/evidence/2026-09-12-b7-vanmil-death-progress.json)。
 
+2026-09-12 B7続行: C16 禁止対象の死亡・復活後も指定を維持する1行を追加束縛。既存DO実遷移へ死亡・新life時の指定一致と毎操作再接続の全席表示比較を追加し、browserでも実禁止→致死攻撃→死亡→復活を操作。各境界で指定維持と全席reload前後一致を確認した。Worker3試験・browser1試験・型チェック・台帳validator成功。不足8行、Step2継続。詳細は [B7禁止対象復活進捗](../../operations/evidence/2026-09-12-b7-target-revival-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

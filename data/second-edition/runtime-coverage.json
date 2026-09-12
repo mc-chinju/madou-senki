@@ -255868,11 +255868,13 @@
         "h:79856e2bd46b7acf"
       ],
       "tests": [
-        "t:01668ce774990517"
+        "t:01668ce774990517",
+        "t:2e64fb0cd43e2b58",
+        "t:7c27eb741a6b2257"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:7936a3a29ccd02e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493182,6 +493184,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual UI ban and lethal attack reach Vanmil pending-death; all-seat reload preserves exact per-seat designation views and target suppression with no premature outcome, then final reload confirms death completion result."
+    },
+    "t:2e64fb0cd43e2b58": {
+      "path": "apps/worker/test/room-r6-combinations.test.ts",
+      "suite": [],
+      "title": "R6 DO preserves frozen value then designation through actual death revival and a new-life rejected modifier",
+      "declarationSha256": "408583d9ac5a0d9a16279bb3e901af7938de357f9645b6d3a38748ca88de8169",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual ban, lethal attack and revival retain the exact designation at death and new life; every command saves, restarts, replays and compares all-seat views."
+    },
+    "t:7c27eb741a6b2257": {
+      "path": "tests/e2e/banned-target-revival.spec.ts",
+      "suite": [],
+      "title": "actual banned target death and revival retain designation across all-seat reload",
+      "declarationSha256": "42dfe52d822f679ddd641c10055d1e9e634dd1318ade1488ac7aa0b3e01b88e0",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI ban, lethal attack and revival retain designation through pending death, death and re-setup. Each stage checks all-seat reload equality while allowing death to reveal identity."
     }
   },
   "remainingNotes": {
@@ -493349,7 +493369,8 @@
     "n:59f7eb9ff8205e65": "n:26415580933c852e",
     "n:643c7fd6aa68212d": "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:a32d21ba4e375d0f": "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains.",
-    "n:0123e6c2897a9897": "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains."
+    "n:0123e6c2897a9897": "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains.",
+    "n:7936a3a29ccd02e9": "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {
