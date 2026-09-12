@@ -1337,6 +1337,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C04対象限定軽減とG14同時各発の従者HP軽減の2行を追加束縛。既存共有攻撃試験をEngine直接呼出しからDO毎操作保存再送へ移し、browser全席reloadを追加。既存3発試験も毎操作保存再送・8席reloadへ拡張。Worker計22試験・browser計2試験・型チェック・台帳validator成功。不足27行、Step2継続。詳細は [B7軽減条項進捗](../../operations/evidence/2026-09-12-b7-defense-progress.json)。
 
+2026-09-12 B7続行: S04のsource/title・source/when・acceptance-correspondenceの3行を追加束縛。既存canonical fixtureで2,3→4,4の丸ごと振り直し・同一roll ID・履歴をbrowser全席reloadで検証し、DOは毎操作保存再送へ拡張。共有試験を参照するG07の宣言ハッシュも再束縛。Worker1試験・browser4試験・型チェック・台帳validator成功。不足24行、Step2継続。詳細は [B7 S04進捗](../../operations/evidence/2026-09-12-b7-s04-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

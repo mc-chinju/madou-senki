@@ -621,6 +621,123 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "S04#source/title",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/advance.ts",
+          "symbol": "roll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "S04 source/title: exact R6 indexed canonical-transition assertions. Actual whole 2d6 reroll 2,3 to 4,4, stable roll ID; canonical provider called once, receipt replay after eviction does not consume again. Concrete Task1 binding; no accepted promotion or review claim."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Real reroll replaces both faces with4,4, keeps roll identity/history; every command survives eviction/replay without another entropy request, including final pending-provider probe."
+        },
+        {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "S04#source/when",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/advance.ts",
+          "symbol": "roll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "S04 source/when: exact R6 indexed canonical-transition assertions. Actual whole 2d6 reroll 2,3 to 4,4, stable roll ID; canonical provider called once, receipt replay after eviction does not consume again. Concrete Task1 binding; no accepted promotion or review claim."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Real reroll replaces both faces with4,4, keeps roll identity/history; every command survives eviction/replay without another entropy request, including final pending-provider probe."
+        },
+        {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "S04#acceptance-correspondence",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/advance.ts",
+          "symbol": "roll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Same roll changes entire 2d6 from2,3 to4,4 and keeps both attempts across JSON save."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "suite": [],
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "kind": "worker-persistence",
+          "parameters": null,
+          "bindingNote": "Actual DO eviction immediately after saving4,4 and duplicate final PASS reuses saved response without entropy provider or third roll."
+        },
+        {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

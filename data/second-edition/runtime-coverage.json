@@ -166032,11 +166032,13 @@
         "h:657e933033fd11b1"
       ],
       "tests": [
-        "t:cba7afaf2738a726"
+        "t:cba7afaf2738a726",
+        "t:dd0bf171088b5b2b",
+        "t:7abbf04b837b6c62"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-source",
@@ -166128,11 +166130,13 @@
         "h:657e933033fd11b1"
       ],
       "tests": [
-        "t:e8a2f27790e01fa2"
+        "t:e8a2f27790e01fa2",
+        "t:dd0bf171088b5b2b",
+        "t:7abbf04b837b6c62"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-source",
@@ -199778,11 +199782,12 @@
       ],
       "tests": [
         "t:7145b84055e4e521",
-        "t:6a5fffbb93b3b5b3"
+        "t:a102b80b5b43e7cf",
+        "t:7abbf04b837b6c62"
       ],
       "status": "implemented",
       "remaining": [
-        "n:6d9fe79b4ce22f05"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-correspondence",
@@ -413873,18 +413878,18 @@
       "kind": "roll-value-boundary",
       "coverageClass": "semantic",
       "handler": [
-        "h:1e543f95b8705cc9",
-        "h:e3b6bb1aa10a271b"
+        "h:b492cb2093f8cbcc",
+        "h:cc0d78e6bf1dccd8"
       ],
       "tests": [
-        "t:12c903156c68e687",
-        "t:be904c34c43bcb86",
-        "t:11ce1081763cc708",
-        "t:e576534611a9fab6"
+        "t:d0c1b048a3ecefa7",
+        "t:a406add2c5c3778f",
+        "t:2340960ba7ab1e3c",
+        "t:42ac54f11a4f4aba"
       ],
       "status": "implemented",
       "remaining": [
-        "Selected roll/value boundary and exact cases registered; full source/dependencies and current frozen candidate acceptance remain. No review performed."
+        "n:8577efe79695c2f7"
       ]
     },
     {
@@ -492642,6 +492647,69 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Eight-seat UI resolves all three hits; every seat reloads before and after resolution and sees B18/C21 with the destroyed follower absent."
+    },
+    "t:dd0bf171088b5b2b": {
+      "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+      "suite": [],
+      "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+      "declarationSha256": "ea065082465e2738a5388b836c47f8d9d55f3ef0874b66fe2720202936d73019",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Real reroll replaces both faces with4,4, keeps roll identity/history; every command survives eviction/replay without another entropy request, including final pending-provider probe."
+    },
+    "t:7abbf04b837b6c62": {
+      "path": "tests/e2e/scenario-s01-s05.spec.ts",
+      "suite": [],
+      "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+      "declarationSha256": "22a892032e85c1dfe57b4957379d214f41be5c676362afda9b709fcca561b33b",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
+    },
+    "t:a102b80b5b43e7cf": {
+      "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+      "suite": [],
+      "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+      "declarationSha256": "ea065082465e2738a5388b836c47f8d9d55f3ef0874b66fe2720202936d73019",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual DO eviction immediately after saving4,4 and duplicate final PASS reuses saved response without entropy provider or third roll."
+    },
+    "t:d0c1b048a3ecefa7": {
+      "path": "packages/engine/test/scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+      "declarationSha256": "e9a94f3caaf20707ee6bc5aa69f925b0855430c348e1d4b9331c34ca042f8922",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+    },
+    "t:a406add2c5c3778f": {
+      "path": "apps/worker/test/room-scenario-s01-s05.test.ts",
+      "suite": [],
+      "title": "S04 DO disconnects directly after saving 4,4 and duplicate command cannot create a third attempt even with changed entropy",
+      "declarationSha256": "9e35b3ab2148aebdbdb3ec2a70099fad2256383aaa5cbeec46fb2eb8586e5db6",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+    },
+    "t:2340960ba7ab1e3c": {
+      "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+      "suite": [],
+      "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+      "declarationSha256": "ea065082465e2738a5388b836c47f8d9d55f3ef0874b66fe2720202936d73019",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+    },
+    "t:42ac54f11a4f4aba": {
+      "path": "tests/e2e/scenario-s01-s05.spec.ts",
+      "suite": [],
+      "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+      "declarationSha256": "22a892032e85c1dfe57b4957379d214f41be5c676362afda9b709fcca561b33b",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
     }
   },
   "remainingNotes": {
@@ -492796,7 +492864,8 @@
     "n:c7195cc2c3c2f7e9": "Exact source assertions bound; frozen current-candidate run and acceptance remain.",
     "n:320391926c1913d0": "Exact clause assertions bound; frozen current-candidate run and acceptance remain.",
     "n:efdd56a8f778f9de": "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain.",
-    "n:aab4e89734bfbcda": "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+    "n:aab4e89734bfbcda": "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains.",
+    "n:8577efe79695c2f7": "Selected roll/value boundary and exact cases registered; full source/dependencies and current frozen candidate acceptance remain. No review performed."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

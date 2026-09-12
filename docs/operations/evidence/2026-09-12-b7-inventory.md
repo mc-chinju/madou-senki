@@ -4,10 +4,10 @@
 
 | 条項 | 開始時不足 | 状態 |
 |---|---|---|
-| `S04#source/title` | browser, worker-persistence | 直接assertion確認待ち |
-| `S04#source/when` | browser, worker-persistence | 直接assertion確認待ち |
+| `S04#source/title` | browser, worker-persistence | canonical出目・毎操作DO再送・browser全席reloadへ束縛 |
+| `S04#source/when` | browser, worker-persistence | canonical出目・毎操作DO再送・browser全席reloadへ束縛 |
 | `S29#source/title` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
-| `S04#acceptance-correspondence` | browser | 直接assertion確認待ち |
+| `S04#acceptance-correspondence` | browser | canonical出目・browser全席reloadへ束縛 |
 | `c2-p07-r1c2-ab03#C16/public-own-opportunity-once` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `c2-p07-r1c2-ab03#C16/no-main-action` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p07-r1c2-ab03#C16/public-only-target-candidates` | browser, worker-persistence | 直接assertion確認待ち |

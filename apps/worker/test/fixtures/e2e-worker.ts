@@ -167,6 +167,7 @@ export class BrowserFixtureRoom extends Room {
     const exists = this.ctx.storage.sql.exec<{ name: string }>("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'browser_fixture_entropy'").toArray().length > 0;
     if (!exists) return entropy;
     const fixture = this.ctx.storage.sql.exec<{ scenario: string }>('SELECT scenario FROM browser_fixture_entropy WHERE singleton = 1').toArray()[0];
+    if(fixture?.scenario==='canonical-S04')return {...entropy,dice:Array(100).fill(4) as number[]};
     if(fixture?.scenario==='ritual-otherworld'||fixture?.scenario==='ritual-disabled'||fixture?.scenario==='ritual-stopped')return {...entropy,dice:Array(100).fill(6) as number[]};
     return (fixture?.scenario === 'lia-prayer-revival' || fixture?.scenario === 'fury-royal-reflection' || fixture?.scenario === 'shared-a09-self') ? { ...entropy, dice: Array(100).fill(1) as number[] } : entropy;
   }
