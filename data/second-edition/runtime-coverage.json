@@ -414504,15 +414504,17 @@
       "kind": "reclaim-source",
       "coverageClass": "semantic",
       "handler": [
-        "h:097d1cb728f724aa",
-        "h:e0e62a694d897112"
+        "h:cac13743d2374251",
+        "h:203ea27cd5332cb9"
       ],
       "tests": [
-        "t:09cca23cc334b2c3"
+        "t:5b9081f081115c2a",
+        "t:da37399b6485eb18",
+        "t:f0a37b9776fa4aa1"
       ],
       "status": "implemented",
       "remaining": [
-        "Exact source disposition cases registered. Other source producers, full paragraph and frozen candidate acceptance remain. No review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -414527,15 +414529,17 @@
       "kind": "reclaim-source",
       "coverageClass": "semantic",
       "handler": [
-        "h:097d1cb728f724aa",
-        "h:e0e62a694d897112"
+        "h:cac13743d2374251",
+        "h:203ea27cd5332cb9"
       ],
       "tests": [
-        "t:30f3662d00c4c02e"
+        "t:ef77a64817439d64",
+        "t:9a3e2667563cabb9",
+        "t:3b3ace9a37671267"
       ],
       "status": "implemented",
       "remaining": [
-        "Existing actual source and explicit selection evidence registered. Entire producer coverage and current frozen candidate acceptance remain. No review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -414550,16 +414554,18 @@
       "kind": "reclaim-source",
       "coverageClass": "semantic",
       "handler": [
-        "h:097d1cb728f724aa",
-        "h:e0e62a694d897112",
-        "h:c05134350cafc68f"
+        "h:cac13743d2374251",
+        "h:203ea27cd5332cb9",
+        "h:e0f59e0f9bc552e6"
       ],
       "tests": [
-        "t:680c7819f802b25c"
+        "t:b703e0dd65c4f8fe",
+        "t:9e16865e2654fbf2",
+        "t:e7d7d1a89e6661f0"
       ],
       "status": "implemented",
       "remaining": [
-        "Existing actual source and explicit selection evidence registered. Entire producer coverage and current frozen candidate acceptance remain. No review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -492277,6 +492283,87 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Browser cancels real barrier then reloads: neither spent barrier nor ineffective robe can be chosen; final original damage four."
+    },
+    "t:5b9081f081115c2a": {
+      "path": "packages/engine/test/distance-reclaim.test.ts",
+      "suite": [],
+      "title": "contested approach saves one all-seat source disposition at a time before resuming the action",
+      "declarationSha256": "10d2cd49abfbb777ade062b990c9c99ce123848f116662cce7df6fc91ce1dbcc",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+    },
+    "t:da37399b6485eb18": {
+      "path": "apps/worker/test/room-reclaim.test.ts",
+      "suite": [],
+      "title": "distance payments preserve payer and mode across DO reload without spending owned recovery",
+      "declarationSha256": "6aaaf823e4ba341aaedccb31f2a756db1f0c72187dc334882b4731df3c56ca4d",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual approach and distance payments retain payer/mode through restart, leave owned usage unspent, and expose only decline before the browser reload resumes the action."
+    },
+    "t:f0a37b9776fa4aa1": {
+      "path": "tests/e2e/reclaim.spec.ts",
+      "suite": [],
+      "title": "distance source responses survive reload and return to the action controls",
+      "declarationSha256": "03f787efc172528e85e1053f53d28842407a090a1771331581199e761330f1c4",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual approach and distance payments retain payer/mode through restart, leave owned usage unspent, and expose only decline before the browser reload resumes the action."
+    },
+    "t:ef77a64817439d64": {
+      "path": "packages/engine/test/reclaim-privacy.test.ts",
+      "suite": [],
+      "title": "Hidden owned versus unowned name has the same empty-or-private opportunity envelope",
+      "declarationSha256": "7614ba4f08e0e077b0ecf7acb30cc72e9b0d35c7a95ce31990e0b21777cdbdf2",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+    },
+    "t:9a3e2667563cabb9": {
+      "path": "apps/worker/test/room-reclaim.test.ts",
+      "suite": [],
+      "title": "zero-right and owned worlds retain the same all-seat schedule through disconnect and explicit passes",
+      "declarationSha256": "2f740a8285ba09ccac95f35d95f078285cc31ebc9e57c6155b74fb3ca502f2be",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual healing source produces the same all-seat schedule in owned and unowned worlds through DO replay; browser reload preserves an unowned public opportunity until explicit decline."
+    },
+    "t:3b3ace9a37671267": {
+      "path": "tests/e2e/reclaim.spec.ts",
+      "suite": [],
+      "title": "an unowned recovery response waits through reload and advances only after explicit decline",
+      "declarationSha256": "0613f408d40babb8d1634afc25c5ebcbc291bb83de7144b2dc7305813ddeaa7c",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual healing source produces the same all-seat schedule in owned and unowned worlds through DO replay; browser reload preserves an unowned public opportunity until explicit decline."
+    },
+    "t:b703e0dd65c4f8fe": {
+      "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+      "suite": [],
+      "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+      "declarationSha256": "0ec9d85562d229ed6853ec738eb127961838c752f6e0116f88ef555310abe50b",
+      "kind": "canonical-transition",
+      "parameters": "base",
+      "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+    },
+    "t:9e16865e2654fbf2": {
+      "path": "apps/worker/test/room-lester-two-rights.test.ts",
+      "suite": [],
+      "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+      "declarationSha256": "25a4ae4aafb77174d3e14947a97b51f7d7f22cc912e1305186b77be1565abd25",
+      "kind": "worker-persistence",
+      "parameters": "base",
+      "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
+    },
+    "t:e7d7d1a89e6661f0": {
+      "path": "tests/e2e/lester-two-rights.spec.ts",
+      "suite": [],
+      "title": "Actual Lester Courage base selection survives browser reload and returns once",
+      "declarationSha256": "81b1847b35992ccac061a0c67bb3fda44a9b58a6ac330ddf4db4d1eda37b9f11",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
     }
   },
   "remainingNotes": {

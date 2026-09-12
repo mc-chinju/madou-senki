@@ -142,6 +142,139 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "ruling:G11#semantic/distance-use-public-disposition-without-owned-right",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        }
+      ],
+      "tests": [
+        {
+          "title": "contested approach saves one all-seat source disposition at a time before resuming the action",
+          "suite": [],
+          "path": "packages/engine/test/distance-reclaim.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+        },
+        {
+          "path": "apps/worker/test/room-reclaim.test.ts",
+          "suite": [],
+          "title": "distance payments preserve payer and mode across DO reload without spending owned recovery",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual approach and distance payments retain payer/mode through restart, leave owned usage unspent, and expose only decline before the browser reload resumes the action."
+        },
+        {
+          "path": "tests/e2e/reclaim.spec.ts",
+          "suite": [],
+          "title": "distance source responses survive reload and return to the action controls",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual approach and distance payments retain payer/mode through restart, leave owned usage unspent, and expose only decline before the browser reload resumes the action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/actual-turn-technique-public-opportunity",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Hidden owned versus unowned name has the same empty-or-private opportunity envelope",
+          "suite": [],
+          "path": "packages/engine/test/reclaim-privacy.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+        },
+        {
+          "path": "apps/worker/test/room-reclaim.test.ts",
+          "suite": [],
+          "title": "zero-right and owned worlds retain the same all-seat schedule through disconnect and explicit passes",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual healing source produces the same all-seat schedule in owned and unowned worlds through DO replay; browser reload preserves an unowned public opportunity until explicit decline."
+        },
+        {
+          "path": "tests/e2e/reclaim.spec.ts",
+          "suite": [],
+          "title": "an unowned recovery response waits through reload and advances only after explicit decline",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual healing source produces the same all-seat schedule in owned and unowned worlds through DO replay; browser reload preserves an unowned public opportunity until explicit decline."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/actual-anytime-owned-recovery",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "commitReclaim"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+          "suite": [],
+          "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+          "parameters": "base",
+          "kind": "canonical-transition",
+          "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+        },
+        {
+          "path": "apps/worker/test/room-lester-two-rights.test.ts",
+          "suite": [],
+          "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+          "parameters": "base",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
+        },
+        {
+          "path": "tests/e2e/lester-two-rights.spec.ts",
+          "suite": [],
+          "title": "Actual Lester Courage base selection survives browser reload and returns once",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

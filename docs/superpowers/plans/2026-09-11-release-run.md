@@ -1329,6 +1329,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7開始: source参照をmanifestのquoteまで解決し、指定語を含みWorker/browserの片方以上を欠くsemantic39行を [初期一覧](../../operations/evidence/2026-09-12-b7-inventory.md)（JSONに元文・不足種別）へ列挙、Step1完了。禁止の同機会再試行、非公開対象表示、C04取消済み再試行禁止の3行に実DO保存再送とbrowser操作/reloadを追加束縛。Worker対象2ファイル24試験（Engine直接呼出しも含むため、worker-persistence束縛は実DOケースだけ）、browser対象3試験、台帳validator成功。残36行でStep2は継続。コード変更なし。詳細は [B7初回進捗](../../operations/evidence/2026-09-12-b7-first-progress.json)。
 
+2026-09-12 B7続行: G11の間合い使用時の公開処分機会、手番の術の公開回収機会、任意時点カードの所持回収の3行へ既存DO/browser試験を追加束縛。Worker41試験・browser3試験・台帳validator成功。不足33行、Step2継続。コード変更なし。詳細は [B7回収条項進捗](../../operations/evidence/2026-09-12-b7-reclaim-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**
