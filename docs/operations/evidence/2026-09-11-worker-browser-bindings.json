@@ -738,6 +738,49 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "ruling:G08#semantic/frozen-effect-rejects-late-spirit",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "actionModifierOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "validActionModifier"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s06-s10.test.ts",
+          "suite": [],
+          "title": "S06 actual level6 is frozen at normal defense and late Shin Spirit spends no hand ability attempt or roll",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S06 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        },
+        {
+          "path": "apps/worker/test/room-scenario-s06-s10.test.ts",
+          "title": "S06-S10 %s real DO resumes every defense command and duplicate receipt without replaying costs or hits",
+          "kind": "worker-persistence",
+          "parameters": "s06",
+          "bindingNote": "At frozen level6, actual late Shin Spirit command is rejected without state/revision/hand/usage changes; every command and rejection is restarted/replayed before exact damage5 completion.",
+          "suite": []
+        },
+        {
+          "path": "tests/e2e/scenario-s06-s10.spec.ts",
+          "title": "S06-S10 s06 real defense continuation retains exact outcome across reload",
+          "kind": "browser",
+          "parameters": null,
+          "bindingNote": "All seats reload at normal defense and retain frozen level6 with no late Spirit offer; source hand stays unchanged and all seats reload after completion and retain damage5.",
+          "suite": []
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

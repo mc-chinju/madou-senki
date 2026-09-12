@@ -1,0 +1,51 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 G08 frozen effect rejects late Spirit; not acceptance evidence",
+  "previousMissingRows": 24,
+  "newlyBoundRows": [
+    "ruling:G08#semantic/frozen-effect-rejects-late-spirit"
+  ],
+  "remainingMissingRows": 23,
+  "changes": [
+    "Bound existing DO s06 late Spirit rejection with complete saved state/revision equality and command replay.",
+    "Extended existing s06 browser branch with all-seat reload before and after completion, frozen effect6 and absent late Spirit option, unchanged source hand and damage5."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-scenario-s06-s10.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 4,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/scenario-s06-s10.spec.ts --reporter=json",
+      "passed": 4,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked binding preserves prior Engine evidence",
+    "Runtime coverage validator valid true",
+    "Remaining B7 rows independently counted as23",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "tests/e2e/scenario-s06-s10.spec.ts": "2fd19926a5affd8ed9f6264cf776be916106339f4a756775cdf509d5f77e93d5",
+    "apps/worker/test/room-scenario-s06-s10.test.ts": "e936a91ccae0192d22ef61e53c778c2924899436928c8fe282ca344e2174d61e",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "9456b7b3531434f93520324d92212b70dd36e8939751c4589fbca58d71cdf523",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "cfab8a3542e90b56bad8227c73f956d9d1b98c54df40f1748726160472526ccc"
+  },
+  "limitations": [
+    "B7 Step2 incomplete: C16 suppression/blessing clauses and C04 per-hit opportunity remain.",
+    "Existing scenarios only; no production runtime change.",
+    "Frozen-candidate acceptance and formal START games remain. Accepted and verified remain zero."
+  ]
+}

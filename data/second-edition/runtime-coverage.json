@@ -413929,15 +413929,17 @@
       "kind": "roll-value-boundary",
       "coverageClass": "semantic",
       "handler": [
-        "h:91be5a2c7a752cd3",
-        "h:c91dd0b92485dbc9"
+        "h:578afa90f2a6c25a",
+        "h:a4ebfc3f73da3728"
       ],
       "tests": [
-        "t:8858110663aae524"
+        "t:c94036ed5bfa7e0b",
+        "t:369be2a9e25d9b79",
+        "t:964feabf6f48fdb6"
       ],
       "status": "implemented",
       "remaining": [
-        "Selected roll/value boundary and exact cases registered; full source/dependencies and current frozen candidate acceptance remain. No review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -492710,6 +492712,33 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+    },
+    "t:c94036ed5bfa7e0b": {
+      "path": "packages/engine/test/scenario-s06-s10.test.ts",
+      "suite": [],
+      "title": "S06 actual level6 is frozen at normal defense and late Shin Spirit spends no hand ability attempt or roll",
+      "declarationSha256": "50040156fb4341cdfd180d659ba9eb5ad3b8abb626f58782061f491bf69c152a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "S06 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+    },
+    "t:369be2a9e25d9b79": {
+      "path": "apps/worker/test/room-scenario-s06-s10.test.ts",
+      "suite": [],
+      "title": "S06-S10 %s real DO resumes every defense command and duplicate receipt without replaying costs or hits",
+      "declarationSha256": "949bdd3ad393255538fc237fff4c06502d02307784caf11c925b1be2fe0864bd",
+      "kind": "worker-persistence",
+      "parameters": "s06",
+      "bindingNote": "At frozen level6, actual late Shin Spirit command is rejected without state/revision/hand/usage changes; every command and rejection is restarted/replayed before exact damage5 completion."
+    },
+    "t:964feabf6f48fdb6": {
+      "path": "tests/e2e/scenario-s06-s10.spec.ts",
+      "suite": [],
+      "title": "S06-S10 s06 real defense continuation retains exact outcome across reload",
+      "declarationSha256": "a37217c1b5dfc9375320ca221464abedd5258f02e36a7e81d4ec28c63dcb638f",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "All seats reload at normal defense and retain frozen level6 with no late Spirit offer; source hand stays unchanged and all seats reload after completion and retain damage5."
     }
   },
   "remainingNotes": {
