@@ -20,7 +20,7 @@
 | `c2-p07-r1c2-ab03#C16/hidden-target-uniform-public-view` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p07-r1c2-ab03#C16/target-death-revival-retains-designation` | browser, worker-persistence | 直接assertion確認待ち |
-| `c2-p07-r1c2-ab03#C16/no-early-ban-removal-in-G15` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p07-r1c2-ab03#C16/no-early-ban-removal-in-G15` | browser, worker-persistence | 実ヴァンミール死亡入口の指定維持をDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/designated-public-state-candidates` | browser, worker-persistence | 指定済み候補・未指定拒否をDO/browserへ束縛 |
 | `c2-p03-r1c2-ab04#C16/exempt-target-same-check-and-lease` | browser, worker-persistence | 直接assertion確認待ち |
 | `c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban` | browser, worker-persistence | 直接assertion確認待ち |

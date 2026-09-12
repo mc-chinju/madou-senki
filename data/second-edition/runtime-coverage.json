@@ -255905,11 +255905,13 @@
       ],
       "tests": [
         "t:8e2303d83aa0f49e",
-        "t:01668ce774990517"
+        "t:01668ce774990517",
+        "t:c072f0347f16dec4",
+        "t:f5e57f308c63e655"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:0123e6c2897a9897"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -493162,6 +493164,24 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual UI ban/blessing/death/revival/re-setup retains beneficiary prohibition after revival and all-seat reload; only a newly declared blessing restores relief, again checked after all-seat reload."
+    },
+    "t:c072f0347f16dec4": {
+      "path": "apps/worker/test/room-canonical-vanmil-death.test.ts",
+      "suite": [],
+      "title": "R6 canonical Vanmil actual death saves accepted ban through pending death and commits one C13 result under every receipt replay",
+      "declarationSha256": "9a6c9ca0b6ab105401c442d12ebf3a7c7b307d4051ffda8f45db423789d44c63",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual established ban remains identical through all lethal-attack/death windows; pending death has no outcome, then one C13 result is committed under every-command save/restart/replay."
+    },
+    "t:f5e57f308c63e655": {
+      "path": "tests/e2e/canonical-vanmil-death.spec.ts",
+      "suite": [],
+      "title": "actual Vanmil death keeps established ban through pending death and all-seat reload",
+      "declarationSha256": "114482100ad4a21f9c3649980b444346f1fbe91c67c6a9d1fe31e56b2b0a1d16",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual UI ban and lethal attack reach Vanmil pending-death; all-seat reload preserves exact per-seat designation views and target suppression with no premature outcome, then final reload confirms death completion result."
     }
   },
   "remainingNotes": {
@@ -493328,7 +493348,8 @@
     "n:4569ff472504a4fc": "Existing Engine assertions retained and actual redesignation Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:59f7eb9ff8205e65": "n:26415580933c852e",
     "n:643c7fd6aa68212d": "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains.",
-    "n:a32d21ba4e375d0f": "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains."
+    "n:a32d21ba4e375d0f": "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains.",
+    "n:0123e6c2897a9897": "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

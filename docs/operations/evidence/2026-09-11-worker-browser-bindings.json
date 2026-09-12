@@ -1404,6 +1404,57 @@
       "remaining": [
         "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-early-ban-removal-in-G15",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "kind": "structural-resolver",
+          "parameters": "A",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "kind": "structural-resolver",
+          "parameters": "B",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-vanmil-death.test.ts",
+          "title": "R6 canonical Vanmil actual death saves accepted ban through pending death and commits one C13 result under every receipt replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual established ban remains identical through all lethal-attack/death windows; pending death has no outcome, then one C13 result is committed under every-command save/restart/replay."
+        },
+        {
+          "path": "tests/e2e/canonical-vanmil-death.spec.ts",
+          "title": "actual Vanmil death keeps established ban through pending death and all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban and lethal attack reach Vanmil pending-death; all-seat reload preserves exact per-seat designation views and target suppression with no premature outcome, then final reload confirms death completion result."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }
