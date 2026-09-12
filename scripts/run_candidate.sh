@@ -12,7 +12,7 @@ python3 scripts/record_runtime_run.py --freeze-output .cache/run/snapshot.json
 run_status=0
 pnpm exec vitest run --maxWorkers=2 --reporter=json --outputFile=.cache/run/unit.json || run_status=1
 WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm --filter @madou/worker exec vitest run --maxWorkers=2 --reporter=json --outputFile=../../.cache/run/worker.json || run_status=1
-pnpm exec playwright test --reporter=json > .cache/run/browser.json || run_status=1
+PLAYWRIGHT_JSON_OUTPUT_FILE="$PWD/.cache/run/browser.json" pnpm exec playwright test --reporter=line,json || run_status=1
 python3 scripts/record_runtime_run.py \
   --snapshot .cache/run/snapshot.json --vitest .cache/run/unit.json --vitest .cache/run/worker.json --playwright .cache/run/browser.json \
   --command 'pnpm exec vitest run --maxWorkers=2' \

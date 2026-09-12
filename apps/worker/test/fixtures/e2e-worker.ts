@@ -171,6 +171,8 @@ export class BrowserFixtureRoom extends Room {
       const roll=this.current()?.state.game?.rolls?.at(-1);
       return {...entropy,dice:Array(100).fill(roll?.stage==='before-roll'&&roll.purpose==='status-resistance'?6:1) as number[]};
     }
+    // These physical scenarios assert the successful teleport branch, as do their Worker tests.
+    if(fixture && isCloseEarthPhysicalScenario(fixture.scenario)) return {...entropy,dice:Array(100).fill(1) as number[]};
     if(fixture?.scenario==='canonical-S04')return {...entropy,dice:Array(100).fill(4) as number[]};
     if(fixture?.scenario==='ritual-otherworld'||fixture?.scenario==='ritual-disabled'||fixture?.scenario==='ritual-stopped')return {...entropy,dice:Array(100).fill(6) as number[]};
     if(fixture?.scenario==='suppression-blessing-paired'||fixture?.scenario==='suppression-blessing-exempt')return {...entropy,now:1000,dice:Array(100).fill(1) as number[]};

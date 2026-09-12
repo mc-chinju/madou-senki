@@ -248,7 +248,7 @@ test('a real divine reroll keeps forced failure but derives stopping from the fi
     const source = originalSource(table, views);
     const before = structuredClone(game(table, views).self);
     const rollId = game(table, views).currentRoll!.rollId;
-    await passUntil(table, views, state => state.activeWindow?.pendingActorId === table.sessions[3]!.id, 500);
+    await passUntil(table, views, state => state.activeWindow?.kind === 'after-roll' && state.currentRoll?.rollId === rollId && state.activeWindow.pendingActorId === table.sessions[3]!.id, 500);
     const decision = table.pages[3]!.getByRole('complementary', { name: '現在の判断' });
     await decision.getByRole('combobox', { name: '割り込み効果', exact: true }).selectOption('reroll');
     await decision.getByRole('combobox', { name: '使うカード', exact: true }).selectOption('a2-p02-r1c3');

@@ -111,6 +111,8 @@ test('Tia chooses a separate advance for each target and virtual guard still can
     await passUntil(table, views, game => entry(game, a, b), 400);
     await expect(table.pages[0]!.getByRole('button', { name: '奇襲を使う', exact: true })).toBeDisabled();
     await table.pages[0]!.getByLabel('消費する踏み込み').selectOption('a2-p23-r1c2'); await useAbility(table, views, 0, '奇襲');
+    // The paid advance opens reclaim responses before the ability declaration.
+    await passUntil(table, views, game => game.currentAction?.source === 'ability' && game.currentAction.abilityId === 'c2-p02-r1c1-ab02', 400);
     await table.pages[0]!.reload(); await expect(table.pages[0]!.getByRole('region', { name: '現在の行動' })).toContainText('奇襲');
     expect(views.get(a)!.game!.self.hand).not.toContain('a2-p23-r1c2');
     await passUntil(table, views, game => entry(game, b, b), 400); await useAbility(table, views, 1, '女性親衛隊');

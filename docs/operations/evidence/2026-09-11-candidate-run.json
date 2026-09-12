@@ -1306,7 +1306,7 @@
     "tests/e2e/banned-target-revival.spec.ts": "1f4dcfcb201ed1be3a4fcd9abc9be74cb86487937fbe3f5586223355397b74b8",
     "tests/e2e/barrier-physical.spec.ts": "4776cdef2fbe05e823f236069c273d9d975b2066c5a09eb1981e13c409ea5192",
     "tests/e2e/basic-attachments.spec.ts": "6198e37262f78ff64d4ea0535c2fc0cf3fc8292b264e303b08058de04fea4d25",
-    "tests/e2e/beast-capture.spec.ts": "cd29ed54456f9fdb414a974512ef85c681baa658ad2a50aa17988f3ce51e539a",
+    "tests/e2e/beast-capture.spec.ts": "94b50fb8c2a5236d246097b2c840400cc54bbe70ae1799b5264b492470ee3591",
     "tests/e2e/beast-king-physical.spec.ts": "7401120602c82bf899d5eb7767563a81327251c64dce9bf556f6a5ef01290ce1",
     "tests/e2e/black-bow-physical.spec.ts": "3c7434e26148c0caf2152af10c8d79aac1ffabee10e55b3a199883b6452f5f82",
     "tests/e2e/black-break-physical.spec.ts": "15d3fc3268c45dca4a46bf0760e540cd6e31b80d79652564143c310cd3a6ff2e",
@@ -1540,7 +1540,7 @@
         "parameters": null,
         "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "structural wandering Lia keeps her established lease across reload and a real command"
     },
     {
@@ -2186,7 +2186,7 @@
         "kind": "browser",
         "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 hidden Upa ends without reserving follower attacks after reload"
     },
     {
@@ -2247,7 +2247,7 @@
         "kind": "browser",
         "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death Zombie returns once across browser reloads"
     },
     {
@@ -2409,7 +2409,7 @@
         "parameters": null,
         "bindingNote": "All seats reload after reduction and at completion; UI shows B level5/C level6, original action remains level6/damage8, and both receive damage8."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "a shared attack displays each received value independently after reduction and reload"
     },
     {
@@ -4890,7 +4890,7 @@
         "kind": "browser",
         "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death Griffon returns once across browser reloads"
     },
     {
@@ -5043,7 +5043,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S17 reflection hides unavailable defense and permits legal continuation across reload"
     },
     {
@@ -5837,7 +5837,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death griffin decline stays discarded after browser reload"
     },
     {
@@ -6005,7 +6005,7 @@
         "parameters": null,
         "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 ordinary reveal leaves TruePower unchecked and inactive after reload"
     },
     {
@@ -6325,7 +6325,7 @@
         "kind": "browser",
         "bindingNote": "S09 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S06-S10 s09 real defense continuation retains exact outcome across reload"
     },
     {
@@ -6673,7 +6673,7 @@
         "kind": "browser",
         "bindingNote": "S25/C11 Cham gift: actual pending-death choice moves one residual hand card; decline/cancel preserve it for death disposal. Engine both-order cases reject reusing the moved gift and printed-first additionally rejects the consumed printed source. Worker/Browser four cases combine GOOD/EVIL physical gift with Cham ability in both orders, retaining private recipient-only identity. Structural invalidation tests are labeled in their titles; initial damage/ownership fixture setup is not formal START evidence."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-good-ability-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -7002,7 +7002,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death skeleton decline stays discarded after browser reload"
     },
     {
@@ -7262,7 +7262,7 @@
         "parameters": null,
         "bindingNote": "Fresh next-turn ban leaves the normal action available after all-seat reload; clicking end action succeeds and all seats reload into hand adjustment."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Vanmil can still end his unused main action after actual next-turn ban and all-seat reload"
     },
     {
@@ -7452,7 +7452,7 @@
         "kind": "browser",
         "bindingNote": "S10 real counter comparison, current declaration after S09 correction. Successful scoped logs in 2026-09-10-r6-s09-real-counter.md; no complete frozen-candidate receipt or accepted promotion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S06-S10 s10 real defense continuation retains exact outcome across reload"
     },
     {
@@ -7612,7 +7612,7 @@
         "kind": "browser",
         "bindingNote": "S02 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S02 canceled C intervention returns parent priority to A across reload"
     },
     {
@@ -7724,7 +7724,7 @@
         "parameters": null,
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-cham-followers survives end-turn reload"
     },
     {
@@ -9246,7 +9246,7 @@
         "kind": "browser",
         "bindingNote": "S22 real reaction refill and suspended revival choice resumes original parent; S23 explicitly arranged structural deck1/discard2 boundary uses actual book draw3 and excludes resolving book. No whole-match reachability claim for S23."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S22 r6-s22 completes two OPEN in one refill and reloads the original declaration"
     },
     {
@@ -10772,7 +10772,7 @@
         "parameters": null,
         "bindingNote": "G09 voluntary reveal is distinct from electing TruePower. Declining does not create its effect; selecting requires a valid owned reveal option; cancellation retains public identity. Worker uses real DO eviction/replay. Browser and DO decline cases also assert private identity/options before the deliberate reveal. Suppressed actor Engine cases use configured statuses, not real attack producers."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "canceling voluntary TruePower leaves its identity public and its ordinary spirit unchanged"
     },
     {
@@ -11402,7 +11402,7 @@
         "kind": "browser",
         "bindingNote": "Actual Lancelot dedicated counter and ordinary CHOOSE_RECLAIM followed by protected Lia death: reservation stays outside deck/hand until parent completion and returns once to the same living owner after wandering. This does not prove exit or a second same-name use."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual protected death returns the reserved counter once to its wandering owner after browser reloads"
     },
     {
@@ -11632,7 +11632,7 @@
         "parameters": null,
         "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Griffin selected first Giant allows one fresh second-hit attempt across all-seat reload"
     },
     {
@@ -12091,7 +12091,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-good-printed-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -12130,7 +12130,7 @@
         "parameters": null,
         "bindingNote": "Actual browser cancellation leaves no designation and no repeat option at original opportunity after reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Fate cancels a multiple-target declaration without returning that public opportunity"
     },
     {
@@ -13013,7 +13013,7 @@
         "parameters": null,
         "bindingNote": "Eight-seat UI resolves all three hits; every seat reloads before and after resolution and sees B18/C21 with the destroyed follower absent."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "eight browsers finish three shared hits and preserve follower reduction on every hit"
     },
     {
@@ -13165,7 +13165,7 @@
         "kind": "browser",
         "bindingNote": "S30 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S30 r6-s30-first excludes real away owner from Wish and Revelation and persists the chosen continuation"
     },
     {
@@ -13575,7 +13575,7 @@
         "parameters": null,
         "bindingNote": "Two actual browser tables compare complete outside game views after every accepted UI command and all-seat reload, normalizing only independently assigned player IDs; target-local suppressed/exempt states differ while outside views remain equal."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "hidden exempt and ordinary ban targets keep identical outside browser transcripts through all-seat reload"
     },
     {
@@ -14528,7 +14528,7 @@
         "kind": "browser",
         "bindingNote": "Actual ritual-to-death trajectory. Four seats without subordinates or six seats with elected subordinates and opposing factions retained; actual dedicated Dragon Spear chant/full turns/lethal attack; pending-death has no outcome, final non-Vanmil winners only. Engine JSON replay, DO every receipt eviction/replay, or browser controls/reloads according to layer. No prior individual-win or previously dead/wandering winner claim."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual elected subordinates lose after ritual and Vanmil death across six browser reloads"
     },
     {
@@ -14715,7 +14715,7 @@
         "kind": "browser",
         "bindingNote": "Six-seat actual ritual, no subordinate election. Actual dedicated chanted Dragon Spear kills E Gaina and causes protected F Arseil to wander; C explicitly base-recovers the same physical spear, chants again through full turns and kills Vanmil. Active B/C/D, dead E and wandering F win; death/wandering persist. Engine JSON replay, DO every receipt eviction/replay, or browser controls and reloads according to layer."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual dead Gaina and wandering Arseil win after ritual terminal across six browser reloads"
     },
     {
@@ -15538,7 +15538,7 @@
         "parameters": null,
         "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Lancelot can transform after passing the full Lia boundary without a raw reaction command"
     },
     {
@@ -15603,7 +15603,7 @@
         "parameters": null,
         "bindingNote": "R6 Task3 literal condition binding. S18 UI live-roll case is supplemented by exact ordinary-failure continuation. S21 cross-room browser comparison normalizes only session IDs to seats; HTTP equals WS without normalization in each room."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S20 exact saved minus3 minus2 failure and minus1 success resumes refill then a real normal draw and turn"
     },
     {
@@ -15983,7 +15983,7 @@
         "kind": "browser",
         "bindingNote": "Actual paid Fate reaction self-canceled by revealed Arseil, base recovery reservation, successful Uonos ritual/Vanmil awakening and conspiracy exit. Reserved Fate discards once after exit with spent history retained; no refund or return."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Arseil exit after reserved self-canceled Fate survives browser reloads and discards once"
     },
     {
@@ -17214,7 +17214,7 @@
         "kind": "browser",
         "bindingNote": "Corrected S09 uses actual Garwin Swordmaster with ordinary Mountain Breaker counter, use check retained, frozen effect6 versus6; B hit canceled, C12 intact, no return hit. Previous parry route is separate card evidence."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S06-S10 s09 real defense continuation retains exact outcome across reload"
     },
     {
@@ -17496,7 +17496,7 @@
         "kind": "browser",
         "bindingNote": "S22 real reaction refill and suspended revival choice resumes original parent; S23 explicitly arranged structural deck1/discard2 boundary uses actual book draw3 and excludes resolving book. No whole-match reachability claim for S23."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S23 reload preserves exact three-card draw while natural exhaustion excludes the resolving book"
     },
     {
@@ -17824,7 +17824,7 @@
         "kind": "browser",
         "bindingNote": "Actual Lia dedicated prayer reservation survives Rift otherworld transition and returns once after the parent. Supplemental owner-absence branch only; no proof of subsequent reuse, wandering, exit or death/revival."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Rift banishment keeps the owners prayer reserved across reload then returns it once while absent"
     },
     {
@@ -18218,7 +18218,7 @@
         "parameters": null,
         "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "structural wandering target keeps its established lease across reload and a real command"
     },
     {
@@ -18802,7 +18802,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S24 reclaim-unlimited chooses recovery printed=true and reloads its declaration"
     },
     {
@@ -18954,7 +18954,7 @@
         "kind": "browser",
         "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S26 r6-s26-return restores protected wanderer with five fresh cards and a newly placed follower"
     },
     {
@@ -19170,7 +19170,7 @@
         "kind": "browser",
         "bindingNote": "Actual Fury Royal Knights reflect a Fairy warrior bow without new Fury effect/damage dice; original numeric rolls survive. Engine/Worker use 1 and 5; browser uses 1 and 1. Canonical reflection exclusion only; other numeric and counter obligations remain."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Fury Royal Knights bow reflection survives browser reload without new bonus dice"
     },
     {
@@ -19712,7 +19712,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S24 reclaim-extra chooses recovery printed=true and reloads its declaration"
     },
     {
@@ -19802,7 +19802,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "canonical-S15-after reveal timing and numeric zero remain correct after reload"
     },
     {
@@ -20206,7 +20206,7 @@
         "parameters": null,
         "bindingNote": "G09 dedicated non-use: ritual-born public Vanmil may end without a suppression designation; concealed Upa may end without reserving a placed Griffin bundle. Engine/DO retain exact ability/use/designation/bundle state and check normal end-turn refill separately. DO evicts/replays each command; browser reloads both seats. Does not claim unexecuted Blessing use or every follower permission."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 Vanmil ends without designating suppression after reload"
     },
     {
@@ -20795,7 +20795,7 @@
         "parameters": null,
         "bindingNote": "Selected guard identity and all three HP reductions survive reload; all seats reload at completion and show no virtual card in hand/discard or pending recovery reservation."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card"
     },
     {
@@ -20930,7 +20930,7 @@
         "kind": "browser",
         "bindingNote": "C07 group lifetime: one frozen virtual guard covers all three actual Dia Dwarf hits and disappears from current defense after completion. Engine additionally covers a later actual attack with distinct source identity and reflected child entry; later-disable case uses structural status injection. DO saves/reloads selected snapshot and replays activation after completion without duplicate cards. Browser explicitly selects and reloads the guard. Not formal START or independent acceptance evidence."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card"
     },
     {
@@ -21031,7 +21031,7 @@
         "parameters": null,
         "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual hypnosis on Lia retains her lease after all-seat reload"
     },
     {
@@ -21577,7 +21577,7 @@
         "parameters": null,
         "bindingNote": "D3 browser real reveal/choice, reload at intermediate and final stages, and one returned card with correct budget/check count."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Lester Courage base selection survives browser reload and returns once"
     },
     {
@@ -21682,7 +21682,7 @@
         "kind": "browser",
         "bindingNote": "S08 actual failed teleport then different normal Flash Spear counter before follower start, old teleport refused and A5/B0. Existing three-layer historical evidence, not all defense/greater-counter routes or current candidate acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S06-S10 s08 real defense continuation retains exact outcome across reload"
     },
     {
@@ -22165,7 +22165,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "canonical-S16 reveal timing and numeric zero remain correct after reload"
     },
     {
@@ -22459,7 +22459,7 @@
         "kind": "browser",
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-flaiard-twins survives end-turn reload"
     },
     {
@@ -23038,7 +23038,7 @@
         "parameters": null,
         "bindingNote": "Actual healing source produces the same all-seat schedule in owned and unowned worlds through DO replay; browser reload preserves an unowned public opportunity until explicit decline."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "an unowned recovery response waits through reload and advances only after explicit decline"
     },
     {
@@ -23107,7 +23107,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-evil-ability-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -23236,7 +23236,7 @@
         "parameters": null,
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-lia-chants survives end-turn reload"
     },
     {
@@ -23400,7 +23400,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death ship decline stays discarded after browser reload"
     },
     {
@@ -23646,7 +23646,7 @@
         "kind": "browser",
         "bindingNote": "S15 exact existing boundary cases. Historical execution only; current full candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "canonical-S15-before reveal timing and numeric zero remain correct after reload"
     },
     {
@@ -24830,7 +24830,7 @@
         "kind": "browser",
         "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death Flying Dragon returns once across browser reloads"
     },
     {
@@ -24910,7 +24910,7 @@
         "parameters": null,
         "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Lancaster discards actual printed magic while retaining a follower and warrior technique"
     },
     {
@@ -25212,7 +25212,7 @@
         "kind": "browser",
         "bindingNote": "S22 real reaction refill and suspended revival choice resumes original parent; S23 explicitly arranged structural deck1/discard2 boundary uses actual book draw3 and excludes resolving book. No whole-match reachability claim for S23."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S22 r6-s22-choice completes two OPEN in one refill and reloads the original declaration"
     },
     {
@@ -25307,7 +25307,7 @@
         "kind": "browser",
         "bindingNote": "S25/C11 Cham gift: actual pending-death choice moves one residual hand card; decline/cancel preserve it for death disposal. Engine both-order cases reject reusing the moved gift and printed-first additionally rejects the consumed printed source. Worker/Browser four cases combine GOOD/EVIL physical gift with Cham ability in both orders, retaining private recipient-only identity. Structural invalidation tests are labeled in their titles; initial damage/ownership fixture setup is not formal START evidence."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-evil-printed-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -25687,7 +25687,7 @@
         "parameters": null,
         "bindingNote": "S04 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S01-S05 reroll retains priority paid cards and roll continuation across reload"
     },
     {
@@ -26186,7 +26186,7 @@
         "kind": "browser",
         "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 Cham ordinary draw leaves optional replacement unused and concealed after reload"
     },
     {
@@ -26298,7 +26298,7 @@
         "kind": "browser",
         "bindingNote": "S25/C11 Cham gift: actual pending-death choice moves one residual hand card; decline/cancel preserve it for death disposal. Engine both-order cases reject reusing the moved gift and printed-first additionally rejects the consumed printed source. Worker/Browser four cases combine GOOD/EVIL physical gift with Cham ability in both orders, retaining private recipient-only identity. Structural invalidation tests are labeled in their titles; initial damage/ownership fixture setup is not formal START evidence."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-good-printed-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -26503,7 +26503,7 @@
         "kind": "browser",
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-alseil-shadow survives end-turn reload"
     },
     {
@@ -26516,7 +26516,7 @@
         "kind": "browser",
         "bindingNote": "S20 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S20 exact saved minus3 minus2 failure and minus1 success resumes refill then a real normal draw and turn"
     },
     {
@@ -27188,7 +27188,7 @@
         "kind": "browser",
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-lester-rumor survives end-turn reload"
     },
     {
@@ -27201,7 +27201,7 @@
         "kind": "browser",
         "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 passing optional critical after reload preserves concealed identity and ordinary damage"
     },
     {
@@ -27231,7 +27231,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death ship cancel stays discarded after browser reload"
     },
     {
@@ -27578,7 +27578,7 @@
         "parameters": null,
         "bindingNote": "Actual UI blessing and later lethal bow attack reach source pending-death; all seats reload before disposal, source still has hand and beneficiary B again displays ability prohibition."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Blessing expires at actual source death entry before disposal across all-seat browser reload"
     },
     {
@@ -27686,7 +27686,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-evil-printed-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -29065,7 +29065,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death wight ban stays discarded after browser reload"
     },
     {
@@ -29788,7 +29788,7 @@
         "parameters": null,
         "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Griffin canceled first Giant remains spent until next hit across all-seat reload"
     },
     {
@@ -30302,7 +30302,7 @@
         "parameters": null,
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-uonos-reveal survives end-turn reload"
     },
     {
@@ -30431,7 +30431,7 @@
         "kind": "browser",
         "bindingNote": "S05 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S01-S05 force retains priority paid cards and roll continuation across reload"
     },
     {
@@ -31910,7 +31910,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S09 specified physical counter preserves target-local outcome across reload"
     },
     {
@@ -32098,7 +32098,7 @@
         "parameters": false,
         "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 explicit optional critical use false keeps unchosen identity and candidates private"
     },
     {
@@ -32241,7 +32241,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death wight decline stays discarded after browser reload"
     },
     {
@@ -33056,7 +33056,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death knight ban stays discarded after browser reload"
     },
     {
@@ -33620,7 +33620,7 @@
         "parameters": null,
         "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll"
     },
     {
@@ -34027,7 +34027,7 @@
         "parameters": null,
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-aiel-twins survives end-turn reload"
     },
     {
@@ -34468,7 +34468,7 @@
         "parameters": null,
         "bindingNote": "G09 optional draw: Cham and actual transformed Lancelot offer an elected two-card replacement. Worker covers skip/ordinary/selected with DO eviction and receipt replay; browser covers unchecked ordinary draw through reload. Third-party identity secrecy is asserted for concealed Cham only; transformed Lancelot is public. Engine direct draw fixtures configure phase; the separate Uonos route proves actual Growth production."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 transformed Lancelot ordinary draw leaves Growth unused after reload"
     },
     {
@@ -35234,7 +35234,7 @@
         "parameters": null,
         "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Rift sends Lia away without removing her lease after all-seat reload"
     },
     {
@@ -35278,7 +35278,7 @@
         "kind": "browser",
         "bindingNote": "S18 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S18 saved actual ordinary failure resumes at C with B three hits canceled and no attacker stop"
     },
     {
@@ -35338,7 +35338,7 @@
         "kind": "browser",
         "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death Wight returns once across browser reloads"
     },
     {
@@ -36073,7 +36073,7 @@
         "kind": "browser",
         "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 hidden Lancelot declines transformation through turn end and reload"
     },
     {
@@ -36781,7 +36781,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death dragon cancel stays discarded after browser reload"
     },
     {
@@ -36920,7 +36920,7 @@
         "kind": "browser",
         "bindingNote": "Actual ritual full-health Vanmil, ordinary chanted Rift hits for8 and failed real resistance sends Vanmil to otherworld. No Vanmil death or terminal after resolution and subsequent turn cycle; same presence/possessions after saves. Engine JSON replay, DO every command eviction/replay or browser controls/reloads. Browser fixture dice fixed6, no production rule change. Does not manufacture unsupported Vanmil wandering/individual-exit states."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual ritual Vanmil otherworld absence remains nonterminal after browser reloads and later turns"
     },
     {
@@ -37008,7 +37008,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S11 shared advance actual maai buttons preserve payment and final scope across reload"
     },
     {
@@ -38059,7 +38059,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death dragon ban stays discarded after browser reload"
     },
     {
@@ -38625,7 +38625,7 @@
         "parameters": null,
         "bindingNote": "S26 actual protected death -> wandering -> resurrection -> fresh setup/follower -> original turn; S27 actual final two-player simultaneous death, no outcome at first disposal, final all-dead draw. No injected dead/wandering state."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S27 actual chanted destruction of the last two people reloads simultaneous death and final all-dead draw"
     },
     {
@@ -40514,7 +40514,7 @@
         "kind": "browser",
         "bindingNote": "R4-C direct clause correspondence. Structural source substitutions are not canonical producers. Existing historical run: 2026-09-09-r4-fury-bow.json; current full candidate execution/acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Fury keeps two visible bow rolls and hidden source through two-client refresh and reroll"
     },
     {
@@ -41052,7 +41052,7 @@
         "parameters": null,
         "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual confusion remains after Blessing across all-seat reload"
     },
     {
@@ -41127,7 +41127,7 @@
         "parameters": null,
         "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll"
     },
     {
@@ -41140,7 +41140,7 @@
         "parameters": null,
         "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "structural wandering Vanmil keeps his established ban across reload and a real command"
     },
     {
@@ -41256,7 +41256,7 @@
         "parameters": null,
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-lancaster-discard survives end-turn reload"
     },
     {
@@ -41458,7 +41458,7 @@
         "parameters": null,
         "bindingNote": "Actual self-target selection and four-seat turn cycle reach a fresh own action; all seats reload with source designated/suppressed and the source has no ban option/button."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "self-designated Vanmil stays unable to declare on his next turn across all-seat browser reload"
     },
     {
@@ -41484,7 +41484,7 @@
         "parameters": null,
         "bindingNote": "Actual follower death offers base recovery via the UI; pending/reserved/completed reloads and final all-seat reload assert exactly one physical return to its owner."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual placed follower ordinary recovery returns once after all-seat browser reload"
     },
     {
@@ -41711,7 +41711,7 @@
         "parameters": null,
         "bindingNote": "S30 actual Rift -> both physical Wishes and Revelation reject otherworld target without changing state/views -> actual acquired Dawn restores same life and possessions. Browser covers both wish stages separately."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S30 r6-s30-second excludes real away owner from Wish and Revelation and persists the chosen continuation"
     },
     {
@@ -41884,7 +41884,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S14 follower start hides unavailable defense and permits legal continuation across reload"
     },
     {
@@ -42046,7 +42046,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death knight cancel stays discarded after browser reload"
     },
     {
@@ -42309,7 +42309,7 @@
         "parameters": null,
         "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Uonos forced reveal publishes Alseil without its voluntary spirit benefit"
     },
     {
@@ -42756,7 +42756,7 @@
         "kind": "browser",
         "bindingNote": "Actual Confusion on Uonos and failed own-turn recovery retain ability-disabled. Physical ritual remains usable and transforms/heals without clearing the disabling status. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Confusion disables Uonos abilities but physical ritual still transforms after reload"
     },
     {
@@ -42850,7 +42850,7 @@
         "parameters": null,
         "bindingNote": "S30 actual Rift -> both physical Wishes and Revelation reject otherworld target without changing state/views -> actual acquired Dawn restores same life and possessions. Browser covers both wish stages separately."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S30 r6-s30-first excludes real away owner from Wish and Revelation and persists the chosen continuation"
     },
     {
@@ -43462,7 +43462,7 @@
         "kind": "browser",
         "bindingNote": "S21 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S21 White Light5 damage6 alternate hidden worlds match HTTP and WS before hit and disclose no unused ability in DOM"
     },
     {
@@ -45371,7 +45371,7 @@
         "kind": "browser",
         "bindingNote": "S12 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S12 three hits actual maai buttons preserve payment and final scope across reload"
     },
     {
@@ -45682,7 +45682,7 @@
         "kind": "browser",
         "bindingNote": "S14 exact existing boundary cases. Historical execution only; current full candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S14 follower start hides unavailable defense and permits legal continuation across reload"
     },
     {
@@ -46518,7 +46518,7 @@
         "parameters": null,
         "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S01-S05 reroll retains priority paid cards and roll continuation across reload"
     },
     {
@@ -47004,7 +47004,7 @@
         "kind": "browser",
         "bindingNote": "S15 exact existing boundary cases. Historical execution only; current full candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "canonical-S15-after reveal timing and numeric zero remain correct after reload"
     },
     {
@@ -47159,7 +47159,7 @@
         "kind": "browser",
         "bindingNote": "S07 actual Lia prayer path: parent reservation, same-action rejection, later independent reuse. Historical successful run only; not general physical-card or current frozen-candidate acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S07 Lia reuses the same returned prayer on a later independent attack across browser reloads"
     },
     {
@@ -47768,7 +47768,7 @@
         "parameters": null,
         "bindingNote": "Actual authenticated browser WebSocket rejects empty/duplicate lists as INVALID_COMMAND and nonexistent target as INVALID_ACTION; stored game and every seat view remain identical after each reload, then valid B selection succeeds."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "empty duplicate and nonexistent ban target lists reject in the browser connection without spending the opportunity"
     },
     {
@@ -47794,7 +47794,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-good-ability-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -48032,7 +48032,7 @@
         "parameters": null,
         "bindingNote": "D3 browser real reveal/choice, reload at intermediate and final stages, and one returned card with correct budget/check count."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Lester Courage printed selection survives browser reload and returns once"
     },
     {
@@ -48255,7 +48255,7 @@
         "parameters": null,
         "bindingNote": "G09 nine turn-information packages: an available option is not elected; PASS_ACTION then actual END_TURN reaches the next seat without inspection, swap, concealment, or forced reveal. Engine/DO assert unchanged ability and usage history. Worker replays both receipts after eviction. Browser reloads through both phases. Identity secrecy applies only while initially hidden; Shadow owner was already public. Normal excess-hand discards remain permitted."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 decline information info-alseil-hand survives end-turn reload"
     },
     {
@@ -48394,7 +48394,7 @@
         "kind": "browser",
         "bindingNote": "S25/C11 Cham gift: actual pending-death choice moves one residual hand card; decline/cancel preserve it for death disposal. Engine both-order cases reject reusing the moved gift and printed-first additionally rejects the consumed printed source. Worker/Browser four cases combine GOOD/EVIL physical gift with Cham ability in both orders, retaining private recipient-only identity. Structural invalidation tests are labeled in their titles; initial damage/ownership fixture setup is not formal START evidence."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S25 death-gift-evil-ability-first actual death gift selectors privacy and independent abilities survive reload"
     },
     {
@@ -48601,7 +48601,7 @@
         "kind": "browser",
         "bindingNote": "G09 optional activation: actual Ida bow hit opportunity, explicit critical versus PASS, concealed identity and effect outcome. Engine checks no-use history/roll and forged actor; Worker checks each command eviction and exact replay; browser checks reload and public projection. Does not establish every optional family or suppression semantics."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 explicitly using critical remains concealed through roll reload and resolution"
     },
     {
@@ -48805,7 +48805,7 @@
         "parameters": null,
         "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Rift sends the blessed target away without removing its lease after all-seat reload"
     },
     {
@@ -48831,7 +48831,7 @@
         "kind": "browser",
         "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death Death Knight returns once across browser reloads"
     },
     {
@@ -49176,7 +49176,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S24 reclaim-extra chooses recovery printed=false and reloads its declaration"
     },
     {
@@ -50114,7 +50114,7 @@
         "kind": "browser",
         "bindingNote": "S22 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S22 r6-s22 completes two OPEN in one refill and reloads the original declaration"
     },
     {
@@ -50562,7 +50562,7 @@
         "kind": "browser",
         "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Lester Courage base selection survives browser reload and returns once"
     },
     {
@@ -51024,7 +51024,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S10 specified physical counter preserves target-local outcome across reload"
     },
     {
@@ -51692,7 +51692,7 @@
         "parameters": null,
         "bindingNote": "S26 actual protected death -> wandering -> resurrection -> fresh setup/follower -> original turn; S27 actual final two-player simultaneous death, no outcome at first disposal, final all-dead draw. No injected dead/wandering state."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S26 r6-s26-revive restores protected wanderer with five fresh cards and a newly placed follower"
     },
     {
@@ -52501,7 +52501,7 @@
         "kind": "browser",
         "bindingNote": "Actual successful Courage check, saved beneficiary decline and remaining public suffix. Engine covers same/different checker and PASS/decline, Worker eviction and ACK replay, browser recipient/final-seat reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "successful Courage decline after reload keeps the final public response visible"
     },
     {
@@ -54276,7 +54276,7 @@
         "kind": "browser",
         "bindingNote": "Actual six-seat ritual, elected subordinates, F Arseil reveal and conspiracy victory/exit, later actual dedicated chant and lethal Dragon Spear against Vanmil. F individual win remains before and after terminal; winner IDs contain F exactly once. Engine JSON replay, DO every receipt eviction/replay or browser controls/reloads. F remains non-Vanmil; no synthetic faction change of an exited actor and no dead/wandering-winner proof."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Arseil conspiracy personal victory survives later ritual terminal and all browser reloads"
     },
     {
@@ -54384,7 +54384,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death wight cancel stays discarded after browser reload"
     },
     {
@@ -55119,7 +55119,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death skeleton cancel stays discarded after browser reload"
     },
     {
@@ -55171,7 +55171,7 @@
         "kind": "browser",
         "bindingNote": "S18 exact existing scenario assertions only; historical execution retained. No full clause or current candidate acceptance inferred."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S18 actual Lester use retains the three-hit parent before resistance and between targets on reload"
     },
     {
@@ -55774,7 +55774,7 @@
         "parameters": null,
         "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual hypnosis on Vanmil retains his ban after all-seat reload"
     },
     {
@@ -55924,7 +55924,7 @@
         "kind": "browser",
         "bindingNote": "S30 existing exact cases; S32 arithmetic only, not physical producer. Historical execution retained; current candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S30 r6-s30-second excludes real away owner from Wish and Revelation and persists the chosen continuation"
     },
     {
@@ -56057,7 +56057,7 @@
         "parameters": null,
         "bindingNote": "All seats reload at normal defense and retain frozen level6 with no late Spirit offer; source hand stays unchanged and all seats reload after completion and retain damage5."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S06-S10 s06 real defense continuation retains exact outcome across reload"
     },
     {
@@ -56435,7 +56435,7 @@
         "parameters": null,
         "bindingNote": "S26 actual protected death -> wandering -> resurrection -> fresh setup/follower -> original turn; S27 actual final two-player simultaneous death, no outcome at first disposal, final all-dead draw. No injected dead/wandering state."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S26 r6-s26-return restores protected wanderer with five fresh cards and a newly placed follower"
     },
     {
@@ -57357,7 +57357,7 @@
         "parameters": null,
         "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll"
     },
     {
@@ -59382,7 +59382,7 @@
         "parameters": null,
         "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual hypnosis remains after Blessing across all-seat reload"
     },
     {
@@ -59447,7 +59447,7 @@
         "parameters": null,
         "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "virtual-blade-fire cancel=true declares from UI and survives refresh without a physical source"
     },
     {
@@ -60121,7 +60121,7 @@
         "kind": "browser",
         "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death Singing Ship returns once across browser reloads"
     },
     {
@@ -60565,7 +60565,7 @@
         "kind": "browser",
         "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "G09 hidden Lancelot explicitly transforms and publishes only after use"
     },
     {
@@ -60655,7 +60655,7 @@
         "kind": "browser",
         "bindingNote": "S01 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S01-S05 force retains priority paid cards and roll continuation across reload"
     },
     {
@@ -60668,7 +60668,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death knight decline stays discarded after browser reload"
     },
     {
@@ -61230,7 +61230,7 @@
         "parameters": null,
         "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Griffin follower entry closes Giant choice through completion across all-seat reload"
     },
     {
@@ -61531,7 +61531,7 @@
         "parameters": null,
         "bindingNote": "G09 lifecycle election: hidden Lancelot may pass the Lia boundary and end turn without transformation/history/reveal, or explicitly elect transformation. New hidden fixture changes only initial visibility. Existing physical ritual covers Vanmil subordinates and Arseil conspiracy independently elected/declined in seat order; these ritual cases do not assert hidden identity. Worker hidden-Lancelot cases evict/replay every command; browser reloads decisions and final views."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Lancelot can transform after passing the full Lia boundary without a raw reaction command"
     },
     {
@@ -61666,7 +61666,7 @@
         "kind": "browser",
         "bindingNote": "S22 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S22 r6-s22-choice completes two OPEN in one refill and reloads the original declaration"
     },
     {
@@ -62160,7 +62160,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death zombie decline stays discarded after browser reload"
     },
     {
@@ -63152,7 +63152,7 @@
         "parameters": null,
         "bindingNote": "Actual UI ban/blessing/death/revival/re-setup retains beneficiary prohibition after revival and all-seat reload; only a newly declared blessing restores relief, again checked after all-seat reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Lia revival keeps the old Blessing expired until a new-life blessing across all-seat reload"
     },
     {
@@ -63217,7 +63217,7 @@
         "kind": "browser",
         "bindingNote": "Actual placement and attack fixture stops before follower death. Worker/browser then resolve actual death, unlimited declaration, saved reservation and one return; Worker also replays ACK after eviction and completion."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death Skeleton returns once across browser reloads"
     },
     {
@@ -63573,7 +63573,7 @@
         "parameters": null,
         "bindingNote": "Two UI tables differ only in hidden target identity. Outsider game projections match after each blessing response; all-seat reload retains exact check and spent attempt. Read-only local inspection verifies equal saved leases. Only session IDs are normalized."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual exempt and ordinary Blessing share checks attempts and outside transcripts across all-seat reload"
     },
     {
@@ -64110,7 +64110,7 @@
         "kind": "browser",
         "bindingNote": "S11 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S11 shared advance actual maai buttons preserve payment and final scope across reload"
     },
     {
@@ -64188,7 +64188,7 @@
         "kind": "browser",
         "bindingNote": "S27 exact existing outcome assertions; historical run retained, no full clause/current candidate acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S27 actual chanted destruction of the last two people reloads simultaneous death and final all-dead draw"
     },
     {
@@ -64333,7 +64333,7 @@
         "kind": "browser",
         "bindingNote": "Actual ritual-to-death trajectory. Four seats without subordinates or six seats with elected subordinates and opposing factions retained; actual dedicated Dragon Spear chant/full turns/lethal attack; pending-death has no outcome, final non-Vanmil winners only. Engine JSON replay, DO every receipt eviction/replay, or browser controls/reloads according to layer. No prior individual-win or previously dead/wandering winner claim."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual ritual and later chanted Dragon Spear show one Vanmil terminal result after browser reloads"
     },
     {
@@ -66190,7 +66190,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S12 three hits actual maai buttons preserve payment and final scope across reload"
     },
     {
@@ -66380,7 +66380,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death ship ban stays discarded after browser reload"
     },
     {
@@ -67540,7 +67540,7 @@
         "parameters": null,
         "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual confusion on Vanmil retains his ban after all-seat reload"
     },
     {
@@ -68110,7 +68110,7 @@
         "parameters": null,
         "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Upa explicitly orders two sources with separate targets and retains one follower snapshot after reload"
     },
     {
@@ -69088,7 +69088,7 @@
         "kind": "browser",
         "bindingNote": "Browser performs actual approach, Curse chant/attack/base recovery and ritual, then reloads every participant and asserts distances and projected possessions. Private baseSpent/lifeId are not exposed in PlayerView and are covered by Engine/DO, not claimed as directly inspected browser fields."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual approach and once-per-game Curse recovery precede ritual with distance and possessions retained after reload"
     },
     {
@@ -69690,7 +69690,7 @@
         "kind": "browser",
         "bindingNote": "S26 exact existing scenario boundary; historical execution retained, no current candidate or full clause acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S26 r6-s26-revive restores protected wanderer with five fresh cards and a newly placed follower"
     },
     {
@@ -69761,7 +69761,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death griffin ban stays discarded after browser reload"
     },
     {
@@ -73017,7 +73017,7 @@
         "parameters": null,
         "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "virtual-blade-fire cancel=false declares from UI and survives refresh without a physical source"
     },
     {
@@ -73473,7 +73473,7 @@
         "parameters": null,
         "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Rift sends Vanmil away without removing his ban after all-seat reload"
     },
     {
@@ -73709,7 +73709,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death zombie cancel stays discarded after browser reload"
     },
     {
@@ -73750,7 +73750,7 @@
         "parameters": null,
         "bindingNote": "R6 Task3 literal condition binding. S18 UI live-roll case is supplemented by exact ordinary-failure continuation. S21 cross-room browser comparison normalizes only session IDs to seats; HTTP equals WS without normalization in each room."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S18 saved actual ordinary failure resumes at C with B three hits canceled and no attacker stop"
     },
     {
@@ -74077,7 +74077,7 @@
         "parameters": null,
         "bindingNote": "S24 base versus independent printed reuse budget; S25 four actual GOOD/EVIL ability/printed gift orderings, private transfer and saved continuation. Exact cross-gift duplicate refusal is additionally bound in Engine."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S24 reclaim-unlimited chooses recovery printed=false and reloads its declaration"
     },
     {
@@ -76268,7 +76268,7 @@
         "parameters": null,
         "bindingNote": "R6 Task3 literal condition binding. S18 UI live-roll case is supplemented by exact ordinary-failure continuation. S21 cross-room browser comparison normalizes only session IDs to seats; HTTP equals WS without normalization in each room."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S21 White Light5 damage6 alternate hidden worlds match HTTP and WS before hit and disclose no unused ability in DOM"
     },
     {
@@ -79479,7 +79479,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S06-S10 s08 real defense continuation retains exact outcome across reload"
     },
     {
@@ -80110,7 +80110,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death zombie ban stays discarded after browser reload"
     },
     {
@@ -82402,7 +82402,7 @@
         "parameters": null,
         "bindingNote": "Browser cancels real barrier then reloads: neither spent barrier nor ineffective robe can be chosen; final original damage four."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "a canceled reduction after reload cannot activate the reserved robe or be retried"
     },
     {
@@ -82428,7 +82428,7 @@
         "parameters": null,
         "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Uonos performs the ritual, selects subordinates and Arseil wins individually while play continues"
     },
     {
@@ -82791,7 +82791,7 @@
         "parameters": null,
         "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "virtual-blade-ice cancel=false declares from UI and survives refresh without a physical source"
     },
     {
@@ -83845,7 +83845,7 @@
         "kind": "browser",
         "bindingNote": "S03 exact existing boundary cases; historical execution retained, full source/current candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S01-S05 cancel retains priority paid cards and roll continuation across reload"
     },
     {
@@ -85144,7 +85144,7 @@
         "kind": "browser",
         "bindingNote": "Actual Lester Courage offers base and printed in one seat. Selected right returns once; base is spent only on base choice, printed check only on printed choice. This does not prove decline-to-next-right or distinct claimants."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Lester Courage printed selection survives browser reload and returns once"
     },
     {
@@ -85459,7 +85459,7 @@
         "parameters": null,
         "bindingNote": "Actual new response opportunity after Blessing rejects submitted B-only selection with INVALID_ACTION and unchanged public game/revision after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload"
     },
     {
@@ -86343,7 +86343,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death skeleton ban stays discarded after browser reload"
     },
     {
@@ -86436,7 +86436,7 @@
         "parameters": null,
         "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "structural Lia identity loss keeps the target suppressed through reload and a real action"
     },
     {
@@ -86573,7 +86573,7 @@
         "parameters": null,
         "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Actual Lester Courage base selection survives browser reload and returns once"
     },
     {
@@ -86817,7 +86817,7 @@
         "parameters": null,
         "bindingNote": "After actual B/D designation and Lia turn progression, all seats reload and the actual select contains only the two designated players, then B blessing resolves."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll"
     },
     {
@@ -88125,7 +88125,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death dragon decline stays discarded after browser reload"
     },
     {
@@ -88170,7 +88170,7 @@
         "parameters": null,
         "bindingNote": "Actual blessing resolves before the next Vanmil turn; accepted A/B redesignation and all-seat reload leave B relieved while A is suppressed, including the visible relief text."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll"
     },
     {
@@ -88523,7 +88523,7 @@
         "kind": "browser",
         "bindingNote": "Actual Hypnosis on Uonos and failed own-turn recovery skip the whole turn to B. Ritual remains in hand; Engine rejects WRONG_PHASE, Worker maps to INVALID_ACTION, browser exposes no ritual control. Engine JSON replay, DO every command eviction/receipt replay or browser controls/reloads according to layer. No direct status injection."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Hypnosis skips Uonos main action and retains unused ritual after reload"
     },
     {
@@ -88692,7 +88692,7 @@
         "kind": "browser",
         "bindingNote": "Actual follower death then explicit decline, real Fate cancel or real Vanmil ban. Worker eviction and ACK replay; browser owner/respondent reloads. Target stays discarded once, no accepted take. Scenario hand and character are initial fixture inputs."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Named death griffin cancel stays discarded after browser reload"
     },
     {
@@ -89586,7 +89586,7 @@
         "parameters": null,
         "bindingNote": "Actual approach and distance payments retain payer/mode through restart, leave owned usage unspent, and expose only decline before the browser reload resumes the action."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "distance source responses survive reload and return to the action controls"
     },
     {
@@ -89599,7 +89599,7 @@
         "kind": "browser",
         "bindingNote": "S16 exact existing boundary cases. Historical execution only; current full candidate acceptance remains."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "canonical-S16 reveal timing and numeric zero remain correct after reload"
     },
     {
@@ -90624,7 +90624,7 @@
         "parameters": null,
         "bindingNote": "G09 elected turn-information packages: explicit USE_ABILITY precedes inspection, discard, hand swap, concealment, or forced reveal. Engine covers nine package IDs using configured prerequisites; selected Worker declarations use real DO eviction/receipt replay for Lia/Alseil inspection and Aiel swap. Browser declarations cover Lancaster, Shadow, and Uonos controls. This mapping complements the separate nine-family decline matrix; it does not prove complete per-ability acceptance."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Shadow conceals its actual public owner without spending the main action"
     },
     {
@@ -90916,7 +90916,7 @@
         "kind": "browser",
         "bindingNote": "S23 existing exact scenario boundary. Historical run retained; full source/current candidate acceptance not inferred."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S23 reload preserves exact three-card draw while natural exhaustion excludes the resolving book"
     },
     {
@@ -91091,7 +91091,7 @@
         "parameters": null,
         "bindingNote": "R6 Task2 transport: physical command continuation with persistence/reload. Exact numeric randomness is covered by Engine/DO; browser S10 verifies physical prayer flow without fixed prayer die."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "canonical-S15-before reveal timing and numeric zero remain correct after reload"
     },
     {
@@ -91670,7 +91670,7 @@
         "parameters": null,
         "bindingNote": "Actual UI ban and lethal attack reach Vanmil pending-death; all-seat reload preserves exact per-seat designation views and target suppression with no premature outcome, then final reload confirms death completion result."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual Vanmil death keeps established ban through pending death and all-seat reload"
     },
     {
@@ -92630,7 +92630,7 @@
         "parameters": null,
         "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "actual confusion on Lia retains her lease after all-seat reload"
     },
     {
@@ -93993,7 +93993,7 @@
         "kind": "browser",
         "bindingNote": "Actual same-root multi-target death, Lia prayer reservation, death-gift cancellation refill and FuSen revival preserve the old ownerLifeId and discard once after the root; no post-revival inheritance. Browser and Worker use controlled test entropy for the revival-success branch."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "Same-root death and revival retain the old prayer reservation across browser reload and discard it once"
     },
     {
@@ -94980,7 +94980,7 @@
         "parameters": null,
         "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "virtual-blade-ice cancel=true declares from UI and survives refresh without a physical source"
     },
     {
@@ -95329,7 +95329,7 @@
         "parameters": null,
         "bindingNote": "S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card"
     },
     {
@@ -95342,10 +95342,10 @@
         "parameters": null,
         "bindingNote": "R6 Task3 literal condition binding. S18 UI live-roll case is supplemented by exact ordinary-failure continuation. S21 cross-room browser comparison normalizes only session IDs to seats; HTTP equals WS without normalization in each room."
       },
-      "result": "failed",
+      "result": "passed",
       "reportedTitle": "S18 actual Lester use retains the three-hit parent before resistance and between targets on reload"
     }
   ],
-  "snapshotCreatedAt": "2026-09-12T09:15:53.990735+00:00",
-  "scope": "6345 matched references; 183 unsuccessful"
+  "snapshotCreatedAt": "2026-09-12T10:40:06.981817+00:00",
+  "scope": "6345 matched references; 0 unsuccessful"
 }

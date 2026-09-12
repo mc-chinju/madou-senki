@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('four independent guests join by invitation, ready, reach the guarded start and resume a local setup fixture', async ({ browser, request }) => {
-  const contexts = await Promise.all(Array.from({ length: 4 }, () => browser.newContext({ baseURL: 'http://localhost:8787' })));
+test('four independent guests join by invitation, ready, reach the guarded start and resume a local setup fixture', async ({ browser, request, baseURL }) => {
+  if (!baseURL) throw new Error('Playwright baseURL must be configured');
+  const contexts = await Promise.all(Array.from({ length: 4 }, () => browser.newContext({ baseURL })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));
   try {
     for (const [index, page] of pages.entries()) {

@@ -31,7 +31,9 @@ test('Uonos chooses revival and allegiance explicitly then resumes after re-setu
     await passUntil(table, views, game => game.lifecycleDecision?.kind === 're-setup');
     await table.pages[1]!.reload();
     await table.pages[1]!.getByRole('button', { name: '従者の配置を終える', exact: true }).click();
-    await expect.poll(() => views.get(a)?.game?.activeWindow).toBeNull();
+    await expect.poll(() => views.get(a)?.game?.lifecycleDecision?.kind).not.toBe('re-setup');
+    await passUntil(table, views, game => !game.activeWindow);
+    expect(views.get(a)!.game!.activeWindow).toBeNull();
     expect(views.get(b)!.game!.self.faction).toBe('EVIL');
     expect(views.get(b)!.game!.self.hand).toHaveLength(5);
     expect(views.get(a)!.game!.phase).toBe('hand-adjustment');

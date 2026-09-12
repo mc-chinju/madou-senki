@@ -1437,6 +1437,8 @@ git add data packages/catalog docs scripts && git commit -m "data: 候補を固�
 
 ---
 
+2026-09-12 B8第2回全実行は最後まで終了し、Engine 7,964成功・Worker 2,558成功、browser 2,155成功/9失敗/skip 0/flaky 0。browserの所要時間は約4時間8分。失敗は固定ポート2件、回収応答や入れ子の割り込み完了待ち5件、成功分岐を検証するfixtureの乱数設定2件。全失敗の修正案は別環境で個別検証済みで、終了後に本作業木へ適用した。変更されたsemantic束縛4行を更新し、関連browser 55件成功、baseURL設定確認追加後の2件再実行と全型検査も成功。notApplicable 2行は成功した現在候補runが未成立のためvalidatorが拒否しており、昇格・readinessは未完了。詳細は [第2回実行と修正の証跡](../../operations/evidence/2026-09-12-b8-second-progress.json)。
+
 ## Phase C: 正式開始と一戦（R7）
 
 ### Task C1: 合法手ボット（Engine）
