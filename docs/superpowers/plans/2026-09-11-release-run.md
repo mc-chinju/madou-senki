@@ -1331,6 +1331,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: G11の間合い使用時の公開処分機会、手番の術の公開回収機会、任意時点カードの所持回収の3行へ既存DO/browser試験を追加束縛。Worker41試験・browser3試験・台帳validator成功。不足33行、Step2継続。コード変更なし。詳細は [B7回収条項進捗](../../operations/evidence/2026-09-12-b7-reclaim-progress.json)。
 
+2026-09-12 B7続行: G11の仮想刃・仮想親衛隊の物理回収禁止とS29保存則の3行を追加束縛。既存browser試験を固定名にし、全席reload後の手札・回収予約等のassertionを追加。Worker13試験・browser5試験・型チェック・台帳validator成功。不足30行、Step2継続。詳細は [B7仮想カード進捗](../../operations/evidence/2026-09-12-b7-virtual-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**

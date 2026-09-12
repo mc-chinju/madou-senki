@@ -6,7 +6,7 @@
 |---|---|---|
 | `S04#source/title` | browser, worker-persistence | 直接assertion確認待ち |
 | `S04#source/when` | browser, worker-persistence | 直接assertion確認待ち |
-| `S29#source/title` | browser, worker-persistence | 直接assertion確認待ち |
+| `S29#source/title` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `S04#acceptance-correspondence` | browser | 直接assertion確認待ち |
 | `c2-p07-r1c2-ab03#C16/public-own-opportunity-once` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `c2-p07-r1c2-ab03#C16/no-main-action` | browser, worker-persistence | 直接assertion確認待ち |
@@ -37,8 +37,8 @@
 | `common:C04#C04/target-local-not-source-global` | browser, worker-persistence | 直接assertion確認待ち |
 | `ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit` | browser, worker-persistence | 直接assertion確認待ち |
 | `ruling:G08#semantic/frozen-effect-rejects-late-spirit` | browser, worker-persistence | 直接assertion確認待ち |
-| `ruling:G11#semantic/virtual-blades-no-physical-recovery` | browser, worker-persistence | 直接assertion確認待ち |
-| `ruling:G11#semantic/virtual-guard-no-physical-recovery` | browser, worker-persistence | 直接assertion確認待ち |
+| `ruling:G11#semantic/virtual-blades-no-physical-recovery` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
+| `ruling:G11#semantic/virtual-guard-no-physical-recovery` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `ruling:G11#semantic/distance-use-public-disposition-without-owned-right` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `ruling:G11#semantic/actual-turn-technique-public-opportunity` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |
 | `ruling:G11#semantic/actual-anytime-owned-recovery` | browser, worker-persistence | 既存DO保存再送・browser操作/reloadへ追加束縛 |

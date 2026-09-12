@@ -23,6 +23,7 @@ async function verifyGuard(browser:Browser,request:APIRequestContext,selected:bo
   const table = await tableFixture(browser, request, 'entry-arnes');
   try {
     const views = await observe(table); const a = table.sessions[0]!.id; const b = table.sessions[1]!.id;
+    let virtualId:string|undefined;
     await passUntil(table, views, game => entry(game, b, b), 400);
     const panel = table.pages[1]!.getByRole('region', { name: '従者防御の準備' });
     await expect(panel).toContainText('通常防御へは戻れません');
@@ -32,7 +33,7 @@ async function verifyGuard(browser:Browser,request:APIRequestContext,selected:bo
     const frozen = await passUntil(table, views, game => game.activeWindow?.kind === 'follower-start', 400);
     expect(frozen.players[b]!.followers).toHaveLength(0);
     if (selected) {
-      const guard = frozen.virtualFollowerDefense[0]!;
+      const guard = frozen.virtualFollowerDefense[0]!; virtualId=guard.sourceId;
       expect(guard).toMatchObject({ source: 'virtual', targetId: b, levels: [4, 4, 4], hp: 1, moraleRequired: false });
       expect(JSON.stringify(views.get(a)!.game)).not.toContain('c2-p03-r2c2');
       await table.pages[1]!.reload(); await expect(panel).toContainText('物理の札は増えません');
@@ -44,6 +45,7 @@ async function verifyGuard(browser:Browser,request:APIRequestContext,selected:bo
     const done = await passUntil(table, views, game => !game.activeWindow, 400);
     expect(done.players[b]!.damage).toBe(selected ? 15 : 18); expect(done.virtualFollowerDefense).toEqual([]);
     expect(done.players[b]!.followers).toEqual([]);
+    if(selected){expect(virtualId).toBeTruthy();for(const [seat,page] of table.pages.entries()){await page.reload();const own=views.get(table.sessions[seat]!.id)!.game!;expect(own.self.hand).not.toContain(virtualId);expect(own.discard).not.toContain(virtualId);expect(own.reservedCards).toEqual([]);expect(own.reclaim).toBeNull();}}
   } finally { await table.close(); }
 }
 test('Arnes explicitly declines virtual defense for three real hits',async({browser,request})=>{await verifyGuard(browser,request,false);});

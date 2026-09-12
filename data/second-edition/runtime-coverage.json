@@ -170176,11 +170176,13 @@
       ],
       "tests": [
         "t:d9ebd7952a05e613",
-        "t:388ad1ccf2bac291"
+        "t:388ad1ccf2bac291",
+        "t:6279bac194b0ac9a",
+        "t:35184e3134ce8b90"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "kind": "scenario-source",
@@ -414458,15 +414460,23 @@
       "kind": "reclaim-source",
       "coverageClass": "semantic",
       "handler": [
-        "h:86114290c2a3628d"
+        "h:2931c91b3d27b135"
       ],
       "tests": [
-        "t:abd2caefd75ad10d",
-        "t:ed87a83de5971198"
+        "t:0245bfdf8603f057",
+        "t:9f6019c056fbac1c",
+        "t:57fd405c71137c29",
+        "t:de5adb565d8fa0f8",
+        "t:7e0e93787b472f0c",
+        "t:ff18027488c5af59",
+        "t:094e225201334b59",
+        "t:c3819b0531217421",
+        "t:07d072b3968e0bf3",
+        "t:9f92305610118954"
       ],
       "status": "implemented",
       "remaining": [
-        "Exact source disposition cases registered. Other source producers, full paragraph and frozen candidate acceptance remain. No review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -414481,15 +414491,17 @@
       "kind": "reclaim-source",
       "coverageClass": "semantic",
       "handler": [
-        "h:de49b81966388e25",
-        "h:98f992ab60eab6d9"
+        "h:d35398a500204650",
+        "h:347885961710a67d"
       ],
       "tests": [
-        "t:b33ca29fd7f7fcd7"
+        "t:ecf0647ad74e6d33",
+        "t:6279bac194b0ac9a",
+        "t:35184e3134ce8b90"
       ],
       "status": "implemented",
       "remaining": [
-        "Exact source disposition cases registered. Other source producers, full paragraph and frozen candidate acceptance remain. No review performed."
+        "n:aab4e89734bfbcda"
       ]
     },
     {
@@ -492364,6 +492376,185 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
+    },
+    "t:0245bfdf8603f057": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "凍気のアイエル",
+        "c2-p04-r1c1-ab02",
+        "水",
+        3,
+        2
+      ],
+      "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+    },
+    "t:9f6019c056fbac1c": {
+      "path": "packages/engine/test/virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+      "declarationSha256": "cb6e6e63b6a94c58d4e3385415762d5a2e0520152e83b1edd17c14b4d8ed70f7",
+      "kind": "canonical-transition",
+      "parameters": [
+        "爆炎のフレイアード",
+        "c2-p06-r2c1-ab02",
+        "炎",
+        5,
+        1
+      ],
+      "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+    },
+    "t:57fd405c71137c29": {
+      "path": "apps/worker/test/room-virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+      "declarationSha256": "5da0cad9286181f11ad94b5adea3f2a643ef11a138b2c9355d87d77fb2a0523b",
+      "kind": "worker-persistence",
+      "parameters": [
+        "virtual-blade-ice",
+        false
+      ],
+      "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+    },
+    "t:9727a9b1b8296a0f": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-ice cancel=false declares from UI and survives refresh without a physical source",
+      "declarationSha256": "bd23590c6d232d5a523cd2e9e03cbbbc1172ef3e9549b3bd0541191fd7a935b6",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and no recovery reservation remains after all-seat reload."
+    },
+    "t:7e0e93787b472f0c": {
+      "path": "apps/worker/test/room-virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+      "declarationSha256": "5da0cad9286181f11ad94b5adea3f2a643ef11a138b2c9355d87d77fb2a0523b",
+      "kind": "worker-persistence",
+      "parameters": [
+        "virtual-blade-ice",
+        true
+      ],
+      "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+    },
+    "t:2de07883f309bc8b": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-ice cancel=true declares from UI and survives refresh without a physical source",
+      "declarationSha256": "3016ae7e86f7a8d3476c88823dcc2ee4939ad07c8d82f1edeb5f4b33fc05752d",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and no recovery reservation remains after all-seat reload."
+    },
+    "t:094e225201334b59": {
+      "path": "apps/worker/test/room-virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+      "declarationSha256": "5da0cad9286181f11ad94b5adea3f2a643ef11a138b2c9355d87d77fb2a0523b",
+      "kind": "worker-persistence",
+      "parameters": [
+        "virtual-blade-fire",
+        false
+      ],
+      "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+    },
+    "t:df10bf19b3773d01": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-fire cancel=false declares from UI and survives refresh without a physical source",
+      "declarationSha256": "2cba1accb5c78a0dea870ca72603e5ea7ca7b878a43716e7b6e4ad6d6754a829",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and no recovery reservation remains after all-seat reload."
+    },
+    "t:07d072b3968e0bf3": {
+      "path": "apps/worker/test/room-virtual-blades.test.ts",
+      "suite": [],
+      "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+      "declarationSha256": "5da0cad9286181f11ad94b5adea3f2a643ef11a138b2c9355d87d77fb2a0523b",
+      "kind": "worker-persistence",
+      "parameters": [
+        "virtual-blade-fire",
+        true
+      ],
+      "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+    },
+    "t:afc937fc00209c60": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-fire cancel=true declares from UI and survives refresh without a physical source",
+      "declarationSha256": "7b587e9dd24264cbf8d3ec136e953666bf642db16997d00fc79ba8630b4a5404",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and no recovery reservation remains after all-seat reload."
+    },
+    "t:ecf0647ad74e6d33": {
+      "path": "packages/engine/test/follower-entry-abilities.test.ts",
+      "suite": [
+        "Task7m virtual guard lifetime and restrictions"
+      ],
+      "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+      "declarationSha256": "5cfdade3a75d6e90f90f1be2e3b1596e6511ec79b41962b67ed048e749fee203",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+    },
+    "t:6279bac194b0ac9a": {
+      "path": "apps/worker/test/room-follower-entry.test.ts",
+      "suite": [],
+      "title": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards",
+      "declarationSha256": "bb8696ec489a22867372f875000ef3e045cc5629666f623451fb0c62329f50b6",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual selected guard persists across DO eviction/replay; final 220-card conservation, absent physical virtual ID and absent recovery decision are asserted."
+    },
+    "t:35184e3134ce8b90": {
+      "path": "tests/e2e/follower-entry.spec.ts",
+      "suite": [],
+      "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
+      "declarationSha256": "5d89d63a72db114e740562186ca2fc754aa75a7f90bf86633f62dac66f37905a",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Selected guard identity and all three HP reductions survive reload; all seats reload at completion and show no virtual card in hand/discard or pending recovery reservation."
+    },
+    "t:de5adb565d8fa0f8": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-ice cancel=false declares from UI and survives refresh without a physical source",
+      "declarationSha256": "bd23590c6d232d5a523cd2e9e03cbbbc1172ef3e9549b3bd0541191fd7a935b6",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+    },
+    "t:ff18027488c5af59": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-ice cancel=true declares from UI and survives refresh without a physical source",
+      "declarationSha256": "3016ae7e86f7a8d3476c88823dcc2ee4939ad07c8d82f1edeb5f4b33fc05752d",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+    },
+    "t:c3819b0531217421": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-fire cancel=false declares from UI and survives refresh without a physical source",
+      "declarationSha256": "2cba1accb5c78a0dea870ca72603e5ea7ca7b878a43716e7b6e4ad6d6754a829",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+    },
+    "t:9f92305610118954": {
+      "path": "tests/e2e/virtual-blades.spec.ts",
+      "suite": [],
+      "title": "virtual-blade-fire cancel=true declares from UI and survives refresh without a physical source",
+      "declarationSha256": "7b587e9dd24264cbf8d3ec136e953666bf642db16997d00fc79ba8630b4a5404",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
     }
   },
   "remainingNotes": {
