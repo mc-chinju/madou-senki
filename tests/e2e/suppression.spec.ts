@@ -105,3 +105,18 @@ test('Fate cancels a multiple-target declaration without returning that public o
     expect(views.get(d)!.game!.self.hand).not.toContain('a2-p02-r2c3');
   } finally { await table.close(); }
 });
+
+test('Vanmil can still end his unused main action after actual next-turn ban and all-seat reload',async({browser,request})=>{
+  const table=await tableFixture(browser,request,'suppression-next-action');
+  try{
+    const views=await observe(table),a=table.sessions[0]!.id,b=table.sessions[1]!.id,page=table.pages[0]!;
+    expect(views.get(a)!.game!.phase).toBe('action');
+    const panel=page.getByRole('region',{name:'能力の禁止と祝福'});
+    await panel.getByRole('checkbox',{name:'楓',exact:true}).check();await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));
+    await passUntil(table,views,g=>!g.activeWindow);
+    for(const [seat,p] of table.pages.entries()){await p.reload();const g=views.get(table.sessions[seat]!.id)!.game!;expect(g.phase).toBe('action');expect(g.suppressionTargets.map(d=>d.targetId)).toEqual([b]);}
+    expect(views.get(a)!.game!.legalChoices).toContain('PASS_ACTION');
+    await click(table,views,page.getByRole('button',{name:'行動を終える',exact:true}));
+    for(const [seat,p] of table.pages.entries()){await p.reload();expect(views.get(table.sessions[seat]!.id)!.game!.phase).toBe('hand-adjustment');}
+  }finally{await table.close();}
+});

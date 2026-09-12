@@ -255479,11 +255479,13 @@
         "h:2429f56399a6e165"
       ],
       "tests": [
-        "t:865829a766a55d54"
+        "t:865829a766a55d54",
+        "t:3defeb5d3f668e5b",
+        "t:0fb6d7fdd5903edc"
       ],
       "status": "implemented",
       "remaining": [
-        "n:b0730700cea9f76c"
+        "n:df2c8d6cd035ae42"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -492849,6 +492851,42 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "G09 dedicated transport: exact selected declaration checks its own ON/OFF, non-use, cancellation, or earned capture subset through real room commands/reload. Worker entries actually evict and replay saved receipts. Conditional non-use tests establish retained OFF after eviction, not a completed full turn. Follower Worker case stops at constituent preparation; browser case completes the group. This supports shared optional-entry correspondence, not complete per-ability acceptance."
+    },
+    "t:4e5682a3dd77c44d": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "actual next-turn Vanmil ban preserves the unused main action through every restart and replay",
+      "declarationSha256": "e986af286814fd7b1be3a8fb65bd72a3de06502a286129d0ad419fc845baf1f6",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual ritual and full turn cycle reach a fresh action; successful ban retains action and PASS_ACTION, which is then accepted through save/restart/replay."
+    },
+    "t:9ecbb4115dc60524": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "Vanmil can still end his unused main action after actual next-turn ban and all-seat reload",
+      "declarationSha256": "e3d592f311bbd5a7ad619340433669b6d92f449056849c66e81f70aa32c20551",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Fresh next-turn ban leaves the normal action available after all-seat reload; clicking end action succeeds and all seats reload into withdrawal."
+    },
+    "t:3defeb5d3f668e5b": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "actual next-turn Vanmil ban preserves the unused main action through every restart and replay",
+      "declarationSha256": "9e7f29b00463aab7ce76e6b194501ab1f527cffbb11517efdb83b2de1595a656",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual ritual and full turn cycle reach a fresh action; successful ban retains action and PASS_ACTION, which is then accepted through save/restart/replay."
+    },
+    "t:0fb6d7fdd5903edc": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "Vanmil can still end his unused main action after actual next-turn ban and all-seat reload",
+      "declarationSha256": "5f025070110985fa3bcaeaab2c80ea0664b6f82cd13256e771bf009d05bc7636",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Fresh next-turn ban leaves the normal action available after all-seat reload; clicking end action succeeds and all seats reload into hand adjustment."
     }
   },
   "remainingNotes": {
@@ -493006,7 +493044,8 @@
     "n:aab4e89734bfbcda": "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains.",
     "n:8577efe79695c2f7": "Selected roll/value boundary and exact cases registered; full source/dependencies and current frozen candidate acceptance remain. No review performed.",
     "n:b0730700cea9f76c": "Actual unused main-action Worker/browser correspondence remains; existing ritual fixture already spent its action. Frozen acceptance remains.",
-    "n:d7dedb60b238ec23": "n:6d9fe79b4ce22f05"
+    "n:d7dedb60b238ec23": "n:6d9fe79b4ce22f05",
+    "n:df2c8d6cd035ae42": "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

@@ -828,6 +828,53 @@
       "remaining": [
         "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-main-action",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "actual next-turn Vanmil ban preserves the unused main action through every restart and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual ritual and full turn cycle reach a fresh action; successful ban retains action and PASS_ACTION, which is then accepted through save/restart/replay."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "Vanmil can still end his unused main action after actual next-turn ban and all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Fresh next-turn ban leaves the normal action available after all-seat reload; clicking end action succeeds and all seats reload into hand adjustment."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

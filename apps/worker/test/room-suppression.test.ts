@@ -163,3 +163,12 @@ it('canceling Blessing returns neither the own-turn attempt nor a lease after DO
   expect((await game(room)).rolls?.some(roll => roll.rollerId === 'C') ?? false).toBe(false);
   expect(viewFor(await game(room), 'C').abilityOptions.some(value => value.abilityId === BLESS)).toBe(false);
 });
+
+it('actual next-turn Vanmil ban preserves the unused main action through every restart and replay',async()=>{
+  const room=await openTestRoom('suppression-next-action');
+  expect((await game(room)).phase).toBe('action');expect(viewFor(await game(room),'A').legalChoices).toContain('PASS_ACTION');
+  const receipt=await declare(room,'A','next-turn-ban',BAN,['B']);await settle(room,'next-turn-ban-settle');await replay(room,receipt);
+  expect((await game(room)).suppressionDesignations?.map(d=>d.targetId)).toEqual(['B']);
+  expect((await game(room)).phase).toBe('action');expect(viewFor(await game(room),'A').legalChoices).toContain('PASS_ACTION');
+  await send(room,'A','end-retained-action',{type:'PASS_ACTION'});expect((await game(room)).phase).toBe('hand-adjustment');
+});

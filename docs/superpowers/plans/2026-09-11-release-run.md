@@ -1343,6 +1343,8 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 
 2026-09-12 B7続行: C16公開情報だけの対象候補1行を追加束縛。既存複数対象禁止シナリオで非公開リーアを候補に含め、実正体公開後だけ除外することをDO毎操作保存再送とbrowser全席reloadで確認。儀式後は通常行動消費済みのためno-main-actionの束縛は保留。共有G09参照を更新し、Worker7試験・browser2試験・型チェック・台帳validator成功。不足22行、Step2継続。詳細は [B7 C16候補進捗](../../operations/evidence/2026-09-12-b7-c16-candidates-progress.json)。
 
+2026-09-12 B7続行: C16禁止が通常行動を消費しない条項を追加束縛。儀式後から実コマンドで一巡し、次の自分のactionで禁止を宣言・解決してもPASS_ACTIONが受理されるDO/browserケースを追加。Worker毎操作保存再送・browser全席reloadを含む既存全体8/3試験、型チェック、台帳validator成功。不足21行、Step2継続。詳細は [B7通常行動進捗](../../operations/evidence/2026-09-12-b7-main-action-progress.json)。
+
 ### Task B8: 候補固定・全実行・昇格・readiness
 
 **Files:**
