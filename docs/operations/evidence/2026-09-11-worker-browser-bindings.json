@@ -1177,6 +1177,53 @@
       "remaining": [
         "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains."
       ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Empty, duplicate and nonexistent target lists reject without stored mutation, including restart/replayed rejection; a valid declaration remains accepted afterward."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "empty duplicate and nonexistent ban target lists reject in the browser connection without spending the opportunity",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual authenticated browser WebSocket rejects empty/duplicate lists as INVALID_COMMAND and nonexistent target as INVALID_ACTION; stored game and every seat view remain identical after each reload, then valid B selection succeeds."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains."
+      ]
     }
   ]
 }

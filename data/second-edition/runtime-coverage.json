@@ -255597,11 +255597,13 @@
         "h:2429f56399a6e165"
       ],
       "tests": [
-        "t:865829a766a55d54"
+        "t:865829a766a55d54",
+        "t:9fa4d79747ee87a6",
+        "t:7e533d0b883eb549"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:530ea25298533107"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255635,7 +255637,7 @@
       ],
       "tests": [
         "t:e518f9781d383613",
-        "t:b8a60fe58cd5833a",
+        "t:3f8545981ac6261a",
         "t:e562e5d342d6d8b7"
       ],
       "status": "implemented",
@@ -255674,7 +255676,7 @@
       ],
       "tests": [
         "t:e518f9781d383613",
-        "t:b8a60fe58cd5833a",
+        "t:3f8545981ac6261a",
         "t:e562e5d342d6d8b7"
       ],
       "status": "implemented",
@@ -493017,6 +493019,33 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "Actual self-target selection and four-seat turn cycle reach a fresh own action; all seats reload with source designated/suppressed and the source has no ban option/button."
+    },
+    "t:3f8545981ac6261a": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+      "declarationSha256": "1eb057a31c3b83bb7961115ab5a0c026051160672e3309b4cfb446cded7c538e",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual new Blessing response opportunity rejects existing B-only declaration without durable mutation through restart/replay; accepted D-only declaration preserves the exact prior B record and produces B/D designations."
+    },
+    "t:9fa4d79747ee87a6": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+      "declarationSha256": "1eb057a31c3b83bb7961115ab5a0c026051160672e3309b4cfb446cded7c538e",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Empty, duplicate and nonexistent target lists reject without stored mutation, including restart/replayed rejection; a valid declaration remains accepted afterward."
+    },
+    "t:7e533d0b883eb549": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "empty duplicate and nonexistent ban target lists reject in the browser connection without spending the opportunity",
+      "declarationSha256": "0e621951220686f3d7a38f19f7aeb821b72bbe9a2dd29c895c556b46adc56d8f",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual authenticated browser WebSocket rejects empty/duplicate lists as INVALID_COMMAND and nonexistent target as INVALID_ACTION; stored game and every seat view remain identical after each reload, then valid B selection succeeds."
     }
   },
   "remainingNotes": {
@@ -493178,7 +493207,8 @@
     "n:df2c8d6cd035ae42": "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains.",
     "n:26415580933c852e": "n:d7dedb60b238ec23",
     "n:52e34ff77d890df9": "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains.",
-    "n:6c7ddc512035a05a": "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains."
+    "n:6c7ddc512035a05a": "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains.",
+    "n:530ea25298533107": "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

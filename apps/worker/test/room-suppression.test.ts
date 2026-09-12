@@ -110,10 +110,9 @@ it('public exempt, stale opportunity, fake target and repeated no-change ban rej
   const beforeStale = await room.stored();
   expect(await room.command('A', staleRevision)).toMatchObject({ type: 'error', code: 'STALE_REVISION' });
   expect(await room.stored()).toEqual(beforeStale);
-  for (const [id, targetIds, targetEventId] of [['public-exempt', ['C'], option.targetEventId], ['fake', ['missing'], option.targetEventId], ['stale-event', ['B'], 'old-opportunity']] as const) {
+  for (const [id, targetIds, targetEventId] of [['empty', [], option.targetEventId], ['duplicate', ['B','B'], option.targetEventId], ['public-exempt', ['C'], option.targetEventId], ['fake', ['missing'], option.targetEventId], ['stale-event', ['B'], 'old-opportunity']] as const) {
     const before = await room.stored();
-    expect(await room.command('A', await request(room, id, { type: 'USE_ABILITY', abilityId: BAN, targetIds: [...targetIds], targetEventId }))).toMatchObject({ type: 'error' });
-    expect(await room.stored()).toEqual(before);
+    const invalid=await request(room,id,{type:'USE_ABILITY',abilityId:BAN,targetIds:[...targetIds],targetEventId}),rejected=await room.command('A',invalid);expect(rejected).toMatchObject({type:'error'});expect(await room.stored()).toEqual(before);await room.restart();expect(await room.command('A',invalid)).toEqual(rejected);expect(await room.stored()).toEqual(before);
   }
   await declare(room, 'A', 'ban-once', BAN, ['B']); await settle(room, 'once-pass');
   // A receives a genuinely new public response opportunity in C's Blessing declaration.

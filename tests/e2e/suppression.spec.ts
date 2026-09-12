@@ -196,3 +196,31 @@ test('self-designated Vanmil stays unable to declare on his next turn across all
     await expect(panel).toContainText('葵：指定済み・特殊能力を使用できません');
   }finally{await table.close();}
 });
+
+test('empty duplicate and nonexistent ban target lists reject in the browser connection without spending the opportunity',async({browser,request})=>{
+  test.setTimeout(90000);
+  const table=await tableFixture(browser,request,'suppression-next-action');
+  try{
+    const views=await observe(table),a=table.sessions[0]!.id,b=table.sessions[1]!.id;
+    const originals=table.sessions.map(session=>structuredClone(views.get(session.id)!.game!));
+    const stored=await(await request.get(`/__test/rooms/${table.roomId}/game`)).json();
+    for(const [index,targetIds] of [[],[b,b],['missing-target']].entries()){
+      const rejected=await table.pages[0]!.evaluate(async({roomId,targetIds,index})=>{
+        const url=new URL(`/api/rooms/${roomId}/ws`,location.origin);url.protocol='ws:';
+        return new Promise<{type:string;code:string}>((resolve,reject)=>{
+          const socket=new WebSocket(url);let sent=false;const timer=setTimeout(()=>{socket.close();reject(Error('INVALID_BAN_TIMEOUT'));},10000);
+          socket.addEventListener('message',event=>{const message=JSON.parse(String(event.data));
+            if(!sent&&message.type==='snapshot'&&message.view.readOnly===false){sent=true;const option=message.view.game.abilityOptions.find((o:{abilityId:string})=>o.abilityId==='c2-p07-r1c2-ab03');socket.send(JSON.stringify({protocolVersion:1,commandId:`invalid-ban-${index}`,expectedRevision:message.revision,command:{type:'USE_ABILITY',abilityId:option.abilityId,targetEventId:option.targetEventId,targetIds}}));}
+            else if(sent&&message.type==='error'){clearTimeout(timer);socket.close();resolve(message);}
+          });
+        });
+      },{roomId:table.roomId,targetIds,index});
+      expect(rejected.type).toBe('error');expect(rejected.code).toBe(index<2?'INVALID_COMMAND':'INVALID_ACTION');
+      expect(await(await request.get(`/__test/rooms/${table.roomId}/game`)).json()).toEqual(stored);
+      for(const [seat,page] of table.pages.entries()){await page.reload();expect(views.get(table.sessions[seat]!.id)!.game).toEqual(originals[seat]);}
+    }
+    const panel=table.pages[0]!.getByRole('region',{name:'能力の禁止と祝福'});
+    await panel.getByRole('checkbox',{name:'楓',exact:true}).check();await click(table,views,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));await passUntil(table,views,g=>!g.activeWindow);
+    expect(views.get(a)!.game!.suppressionTargets.map(t=>t.targetId)).toEqual([b]);
+  }finally{await table.close();}
+});

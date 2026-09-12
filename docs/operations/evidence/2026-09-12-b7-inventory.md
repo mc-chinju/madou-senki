@@ -12,7 +12,7 @@
 | `c2-p07-r1c2-ab03#C16/no-main-action` | browser, worker-persistence | 実一巡後の通常行動未使用場面をDO/browserへ束縛 |
 | `c2-p07-r1c2-ab03#C16/public-only-target-candidates` | browser, worker-persistence | 公開候補のDO/browser拡張へ束縛 |
 | `c2-p07-r1c2-ab03#C16/no-secret-target-rejection` | browser, worker-persistence | 非公開免除/通常対象のDO・browser逐操作比較へ束縛 |
-| `c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent` | browser, worker-persistence | 直接assertion確認待ち |
+| `c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent` | browser, worker-persistence | 空・重複・不存在の実WS拒否と全席reloadへ束縛 |
 | `c2-p07-r1c2-ab03#C16/reject-no-new-designation` | browser, worker-persistence | 新機会の同一指定拒否・追加指定累積をDO/browserへ束縛 |
 | `c2-p07-r1c2-ab03#C16/designations-accumulate` | browser, worker-persistence | 新機会の同一指定拒否・追加指定累積をDO/browserへ束縛 |
 | `c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration` | browser, worker-persistence | 自己指定から実一巡後の宣言不可をDO/browserへ束縛 |
