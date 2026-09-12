@@ -1,0 +1,45 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 inventory and first three persistence/browser bindings; not acceptance evidence",
+  "initialMissingRows": 39,
+  "newlyBoundRows": 3,
+  "remainingMissingRows": 36,
+  "newTests": 0,
+  "runs": {
+    "workerFiles": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-suppression.test.ts test/room-received-defenses.test.ts",
+      "cwd": "apps/worker",
+      "passed": 24,
+      "failed": 0,
+      "exitCode": 0,
+      "note": "These files mix direct Engine tests and actual DO tests. Only actual DO save/restart/replay cases were added as worker-persistence bindings."
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/suppression.spec.ts tests/e2e/received-defenses.spec.ts --grep 'ritual-born Vanmil|Fate cancels a multiple-target|a canceled reduction after reload' --reporter=json",
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked binding application retains prior Engine evidence",
+    "Runtime coverage validator valid true",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "b1d6914ee5ffde60f0d25088763e0d96c79d87115f4e1570a2893fdb02775e8b",
+    "docs/operations/evidence/2026-09-12-b7-inventory.json": "20949a034802bb5aa920a722da5f724679e73f434d47f341c05806f5a1d143bc",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "d4aab69db8deb567271b5fc56a94e6acc4c2da02d0e2ce3bd7127c2c35ec267c",
+    "apps/worker/test/room-suppression.test.ts": "d7c6d8401054c11d08931a697223658541a354ea260d10468a922b8499d1e539",
+    "apps/worker/test/room-received-defenses.test.ts": "de6c66831c0cfb7003d372ed9a1442f33cdffbc4aa957cc2a3a5b96dbce69e8e",
+    "tests/e2e/suppression.spec.ts": "bbe40040a62a6013722affc6c9acaa49a44f73f88cad2923a57df49885b11b63",
+    "tests/e2e/received-defenses.spec.ts": "9b9fad2fcf01b0b83a55b764215a348d88d7480d6f32870a9b124ca8104cf58f"
+  },
+  "limitations": [
+    "B7 Step1 enumeration complete; Step2 remains incomplete with 36 candidate rows needing direct assertion correspondence.",
+    "No runtime or test code changed; no new typecheck claim.",
+    "Keyword matches are a candidate list, not proof of test coverage. Frozen acceptance and B8 remain."
+  ]
+}

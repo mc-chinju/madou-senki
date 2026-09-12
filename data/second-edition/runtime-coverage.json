@@ -255433,11 +255433,13 @@
         "h:2429f56399a6e165"
       ],
       "tests": [
-        "t:5aa2177cb93aa42f"
+        "t:5aa2177cb93aa42f",
+        "t:91b93920ecc5b8f5",
+        "t:1dd9f51c3868b065"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -255769,11 +255771,13 @@
       ],
       "tests": [
         "t:f32c8ee0867e859c",
-        "t:d4db28d368b061d7"
+        "t:d4db28d368b061d7",
+        "t:dddfeaa4ddd3e123",
+        "t:c98fa13cb1cbf416"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -256660,11 +256664,13 @@
         "h:c677089324e6da0f"
       ],
       "tests": [
-        "t:1c8f4c80ac7cec7e"
+        "t:1c8f4c80ac7cec7e",
+        "t:38403b4c34bbe422",
+        "t:dd2ea5c2f861b8fa"
       ],
       "status": "implemented",
       "remaining": [
-        "n:c7195cc2c3c2f7e9"
+        "n:aab4e89734bfbcda"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -492217,6 +492223,60 @@
       "kind": "browser",
       "parameters": null,
       "bindingNote": "D3 browser real reveal/choice, reload at intermediate and final stages, and one returned card with correct budget/check count."
+    },
+    "t:91b93920ecc5b8f5": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "canceled actual ban retains payment and attempt through eviction without making a designation",
+      "declarationSha256": "a0e130aa636a566fcffe422a77f39278fb7b3e676ee077f6398c78d1e5cb5ef2",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual ban cancellation survives result replay/eviction and removes the same opportunity."
+    },
+    "t:1dd9f51c3868b065": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "Fate cancels a multiple-target declaration without returning that public opportunity",
+      "declarationSha256": "6a24c863d3902d569e804c904792f544329b7a3e913d058f1cadc374d3a1fc4b",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Actual browser cancellation leaves no designation and no repeat option at original opportunity after reload."
+    },
+    "t:dddfeaa4ddd3e123": {
+      "path": "apps/worker/test/room-suppression.test.ts",
+      "suite": [],
+      "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+      "declarationSha256": "5f323c223a58d07ccad0f5ef6c38032901823b6d0cafbaf89f1b4a710af780f5",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual saved/replayed multi-target designation exposes only private applicability for both hidden targets."
+    },
+    "t:c98fa13cb1cbf416": {
+      "path": "tests/e2e/suppression.spec.ts",
+      "suite": [],
+      "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+      "declarationSha256": "dae50f74447baf3a5cc720d555d51be938198df873935da2270feb415994e7ac",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
+    },
+    "t:38403b4c34bbe422": {
+      "path": "apps/worker/test/room-received-defenses.test.ts",
+      "suite": [],
+      "title": "DO cancellation receipt restores a spent barrier with its prior robe reservation intact",
+      "declarationSha256": "36997024b123772796a0f731aba526c9bd343618881f61a3085a0f9deafdf173",
+      "kind": "worker-persistence",
+      "parameters": null,
+      "bindingNote": "Actual DO receipt replay and restart preserve spent barrier after cancellation, and final original damage is four."
+    },
+    "t:dd2ea5c2f861b8fa": {
+      "path": "tests/e2e/received-defenses.spec.ts",
+      "suite": [],
+      "title": "a canceled reduction after reload cannot activate the reserved robe or be retried",
+      "declarationSha256": "721a1e2d75f75c3e056c1654f719839d788ba111f1c00cb4c25b8eb9bf51b1ba",
+      "kind": "browser",
+      "parameters": null,
+      "bindingNote": "Browser cancels real barrier then reloads: neither spent barrier nor ineffective robe can be chosen; final original damage four."
     }
   },
   "remainingNotes": {
@@ -492370,7 +492430,8 @@
     "n:88c79cddce919acd": "Small Angel17 semantic clauses bind actual setup/turn placement, printed4HP0 white/flying, conditional magic5 and per-source mixed defense, Army ordinary hand bottom3damage4white with ownmagic2/3 checks, real near approach, cancellation/failure/Mirror, nonhuman/direct/field/Gadyura refusals. Candidate receipts and wider shared crossings remain pending; no accepted promotion.",
     "n:c7195cc2c3c2f7e9": "Exact source assertions bound; frozen current-candidate run and acceptance remain.",
     "n:320391926c1913d0": "Exact clause assertions bound; frozen current-candidate run and acceptance remain.",
-    "n:efdd56a8f778f9de": "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain."
+    "n:efdd56a8f778f9de": "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain.",
+    "n:aab4e89734bfbcda": "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

@@ -1,0 +1,147 @@
+{
+  "bindings": [
+    {
+      "row": "c2-p07-r1c2-ab03#C16/public-own-opportunity-once",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 real turn advance offers Vanmil only his public reaction and spends it once",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "suite": [],
+          "title": "canceled actual ban retains payment and attempt through eviction without making a designation",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual ban cancellation survives result replay/eviction and removes the same opportunity."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "suite": [],
+          "title": "Fate cancels a multiple-target declaration without returning that public opportunity",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual browser cancellation leaves no designation and no repeat option at original opportunity after reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/hidden-target-uniform-public-view",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "リーア姫",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "聖騎士ランスロット2",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "suite": [],
+          "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual saved/replayed multi-target designation exposes only private applicability for both hidden targets."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "suite": [],
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "common:C04#C04/cancel-consumes-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receiveAttempt"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+        },
+        {
+          "path": "apps/worker/test/room-received-defenses.test.ts",
+          "suite": [],
+          "title": "DO cancellation receipt restores a spent barrier with its prior robe reservation intact",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual DO receipt replay and restart preserve spent barrier after cancellation, and final original damage is four."
+        },
+        {
+          "path": "tests/e2e/received-defenses.spec.ts",
+          "suite": [],
+          "title": "a canceled reduction after reload cannot activate the reserved robe or be retried",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Browser cancels real barrier then reloads: neither spent barrier nor ineffective robe can be chosen; final original damage four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    }
+  ]
+}

@@ -1319,13 +1319,15 @@ git add packages data docs && git commit -m "test,data: 無制限回収の秘匿
 
 R4/R5/R6 計画で「Worker毎操作保存再送・browser全席reload」を要求する条項のうち、台帳行が Engine 試験だけを持つものに `worker-persistence` / `browser` 試験を追加束縛する。
 
-- [ ] **Step 1: 台帳で `kind` に `worker-persistence` と `browser` を持たない semantic 行のうち、manifest の `source` テキストに「保存」「再接続」「投影」「画面」「reload」を含む行を列挙する**
+- [x] **Step 1: 台帳で `kind` に `worker-persistence` と `browser` を持たない semantic 行のうち、manifest の `source` テキストに「保存」「再接続」「投影」「画面」「reload」を含む行を列挙する**
 
 - [ ] **Step 2: 対応する既存 `apps/worker/test/room-*.test.ts` と `tests/e2e/*.spec.ts` の試験を束縛する（新規試験は、既存のDO/browser fixtureに該当シナリオが無い場合だけ追加する）。適用・validator・コミット**
 
 ```bash
 git add apps tests data docs && git commit -m "data: 保存・投影・画面条項へWorker/browser試験を追加束縛する"
 ```
+
+2026-09-12 B7開始: source参照をmanifestのquoteまで解決し、指定語を含みWorker/browserの片方以上を欠くsemantic39行を [初期一覧](../../operations/evidence/2026-09-12-b7-inventory.md)（JSONに元文・不足種別）へ列挙、Step1完了。禁止の同機会再試行、非公開対象表示、C04取消済み再試行禁止の3行に実DO保存再送とbrowser操作/reloadを追加束縛。Worker対象2ファイル24試験（Engine直接呼出しも含むため、worker-persistence束縛は実DOケースだけ）、browser対象3試験、台帳validator成功。残36行でStep2は継続。コード変更なし。詳細は [B7初回進捗](../../operations/evidence/2026-09-12-b7-first-progress.json)。
 
 ### Task B8: 候補固定・全実行・昇格・readiness
 
