@@ -52,6 +52,42 @@ def extra_binding(row, cards):
             'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
 
 
+def received_defense_binding(row):
+    entry, clause = row['entryId'], row['clauseKey']
+    mental = {'c2-p03-r2c1-ab01', 'c2-p06-r1c1-ab01', 'c2-p06-r1c2-ab01'}
+    titles = {
+        'canceled-attempt-stays-spent': '%s actual Fate cancellation spends the entire Griffin target group; later group is fresh',
+        'same-faction-attacker-not-excluded': '%s accepts an actually declared same-faction attacker without exclusion',
+        'once-group-target-before-followers': '%s is available before follower start and rejects a late declaration',
+        'other-target-declared-hits-survive': '%s successful doubles cancel and save separate attacker seat clock',
+        'fixed-faction-keeps-objective-and-protection': '%s fixed initial faction retains objective and protection after a real declaration',
+    }
+    if entry in mental and clause in titles:
+        path = 'packages/engine/test/mental-received-defenses.test.ts'
+        refs = [(titles[clause], entry, ['C03 complete mental received defenses'] if clause == 'other-target-declared-hits-survive' else [])]
+        if clause == 'once-group-target-before-followers':
+            refs.append((titles['canceled-attempt-stays-spent'], entry, []))
+        handler = 'packages/engine/src/abilities/mental-defense.ts'
+        symbols = ['mentalDefenseOptions', 'mentalDefenseAttempt', 'resolveMentalDefense']
+    elif entry == 'c2-p05-r1c2-ab05' and clause in {'substitution-before-final-hit','substitution-no-follower-normal-defense','substitution-no-repeat-same-hit'}:
+        path = 'packages/engine/test/sad-love.test.ts'
+        names = {
+            'substitution-before-final-hit': ['Sad love actual substitution redirects one hit into Upa with no physical payment', 'Substitution rejects wrong target, wrong hit, foreign actor and late finalized source immutably'],
+            'substitution-no-follower-normal-defense': ['Substitution retains A13 restrictions and permits a real hand counter'],
+            'substitution-no-repeat-same-hit': ['Substitution retains A13 restrictions and permits a real hand counter', 'Canceled substitution spends the once-game attempt and leaves the hit with Arnes'],
+        }
+        refs = [(title, None, []) for title in names[clause]]
+        handler = 'packages/engine/src/abilities/sad-love.ts'
+        symbols = ['sadLoveView', 'transitionSadLove', 'resolveSadLove']
+    else:
+        return None
+    return {'row': f'{entry}#{clause}', 'handler': [{'path': handler, 'symbol': symbol} for symbol in symbols],
+            'tests': [{'path': path, 'suite': suite, 'title': title, 'parameters': parameters, 'kind': 'canonical-transition',
+                       'bindingNote': f'{clause}: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference.'}
+                      for title, parameters, suite in refs],
+            'status': 'implemented', 'remaining': ['Exact source assertions bound; frozen current-candidate run and acceptance remain.']}
+
+
 def build_bindings(ledger, cards, core_only=False):
     by_id = {c['id']: c for c in cards}
     protections = protected_cases(cards)
@@ -60,7 +96,7 @@ def build_bindings(ledger, cards, core_only=False):
     for row in ledger['rows']:
         if row.get('kind') != 'character-semantic' or row.get('coverageClass') != 'semantic':
             continue
-        extra = extra_binding(row, by_id)
+        extra = extra_binding(row, by_id) or received_defense_binding(row)
         if extra:
             bindings.append(extra)
             continue

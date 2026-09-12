@@ -710,6 +710,579 @@
       ]
     },
     {
+      "row": "c2-p03-r2c1-ab01#once-group-target-before-followers",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s is available before follower start and rejects a late declaration",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#canceled-attempt-stays-spent",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "canceled-attempt-stays-spent: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#other-target-declared-hits-survive",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "other-target-declared-hits-survive: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#same-faction-attacker-not-excluded",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s accepts an actually declared same-faction attacker without exclusion",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "same-faction-attacker-not-excluded: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#fixed-faction-keeps-objective-and-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s fixed initial faction retains objective and protection after a real declaration",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "fixed-faction-keeps-objective-and-protection: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#once-group-target-before-followers",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s is available before follower start and rejects a late declaration",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#canceled-attempt-stays-spent",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "canceled-attempt-stays-spent: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#other-target-declared-hits-survive",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "other-target-declared-hits-survive: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#same-faction-attacker-not-excluded",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s accepts an actually declared same-faction attacker without exclusion",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "same-faction-attacker-not-excluded: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#once-group-target-before-followers",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s is available before follower start and rejects a late declaration",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#canceled-attempt-stays-spent",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "canceled-attempt-stays-spent: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#other-target-declared-hits-survive",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "other-target-declared-hits-survive: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#same-faction-attacker-not-excluded",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s accepts an actually declared same-faction attacker without exclusion",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "same-faction-attacker-not-excluded: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#fixed-faction-keeps-objective-and-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "mentalDefenseAttempt"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s fixed initial faction retains objective and protection after a real declaration",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "fixed-faction-keeps-objective-and-protection: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#substitution-before-final-hit",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "sadLoveView"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love actual substitution redirects one hit into Upa with no physical payment",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "substitution-before-final-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Substitution rejects wrong target, wrong hit, foreign actor and late finalized source immutably",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "substitution-before-final-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#substitution-no-follower-normal-defense",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "sadLoveView"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Substitution retains A13 restrictions and permits a real hand counter",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "substitution-no-follower-normal-defense: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#substitution-no-repeat-same-hit",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "sadLoveView"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Substitution retains A13 restrictions and permits a real hand counter",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "substitution-no-repeat-same-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Canceled substitution spends the once-game attempt and leaves the hit with Arnes",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "substitution-no-repeat-same-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
       "row": "c2-p01-r1c1#objective/extinction-EVIL",
       "handler": [
         {

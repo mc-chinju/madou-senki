@@ -1205,6 +1205,8 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 
 2026-09-12 B4手番内追加能力: 7能力の試行回数・通常行動保持・公開優先権/非公開選択中の拒否と占星の単一対象を、新規22試験で検証して23行を追加束縛。実取消後のフェーズ変更・JSON保存復帰でも同じ手番の権利は戻らず、実際の次手番で回復する。祝福の指定は実際のヴァンミール宣言で作り、神出鬼没は戦闘除外を守る公開窓で検証。関連含む147試験、全対象型検査、Python14件、台帳validator成功。人物束縛計210行、人物pending127、semantic具体的実装済み5,033、pending226、accepted0。全B4生成gateは残127条項で停止する。詳細は [B4追加能力進捗](../../operations/evidence/2026-09-12-b4-extras-progress.json)。Step3〜5は引き続き未完了。
 
+2026-09-12 B4精神系防御・身代わり: 精神系3能力の実取消→同一2発群の再宣言拒否→後続の合法な別席攻撃での回復、同陣営攻撃者、従者開始後の拒否を能力別に追加。固定陣営は攻撃宣言前の人物設定から検証し、既存の悲しき愛の実身代わり/防御制限試験にも対応付けた。新規11試験、対象計94試験、全対象型検査、Python15件、台帳validator成功。未実装15行を解消し既存2行を再束縛、束縛ファイル計227行。人物pending112、semantic具体的実装済み5,048、pending211、accepted0。全B4生成gateは残112行で停止。詳細は [B4精神系防御進捗](../../operations/evidence/2026-09-12-b4-mental-progress.json)。Step3〜5は未完了。
+
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
 **Files:**

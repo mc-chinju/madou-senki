@@ -36,6 +36,13 @@ class CharacterBindingsTest(unittest.TestCase):
         self.assertEqual(result[0]['tests'][0]['parameters'], ['占星術師のアルセイル', 'c2-p04-r2c1-ab02', 'B'])
         self.assertEqual(result[0]['tests'][0]['kind'], 'canonical-transition')
 
+    def test_mental_defense_binds_its_own_scalar_case(self):
+        ledger = self.ledger('canceled-attempt-stays-spent')
+        ledger['rows'][0]['entryId'] = 'c2-p06-r1c1-ab01'
+        result = build_bindings(ledger, self.cards)
+        self.assertEqual(result[0]['tests'][0]['parameters'], 'c2-p06-r1c1-ab01')
+        self.assertIn('Fate cancellation', result[0]['tests'][0]['title'])
+
     def test_unknown_clause_inside_a_supported_family_fails_closed(self):
         with self.assertRaisesRegex(ValueError, 'unknown'):
             build_bindings(self.ledger('objective/unknown'), self.cards, core_only=True)

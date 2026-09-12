@@ -233523,19 +233523,17 @@
       ],
       "kind": "character-semantic",
       "handler": [
-        "h:803100475da1fed1",
-        "h:491c731b389169d2"
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
       ],
       "tests": [
-        "t:cd0909e47d018896",
-        "t:9f06413614fd07c9",
-        "t:94018177aa9dae95",
-        "t:5cc8ee61ae2384e7"
+        "t:329bfedb9e13bf06",
+        "t:5dfd8dfcb63327de"
       ],
       "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7",
-        "S18-S20 correspondence: exact scenario cases registered; untested boundaries and current frozen candidate/full clause acceptance remain. No review performed."
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233558,11 +233556,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:afb7cfa2e964bbb4"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233586,18 +233590,16 @@
       ],
       "kind": "character-semantic",
       "handler": [
-        "h:4899ccbdeb411fed"
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
       ],
       "tests": [
-        "t:cd0909e47d018896",
-        "t:9f06413614fd07c9",
-        "t:94018177aa9dae95",
-        "t:5cc8ee61ae2384e7"
+        "t:122c4fcb62876a9d"
       ],
       "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7",
-        "S18-S20 correspondence: exact scenario cases registered; untested boundaries and current frozen candidate/full clause acceptance remain. No review performed."
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233620,11 +233622,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:a8075e7cc5df3985"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233647,11 +233655,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:2a85bab1e1d60b9c"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233674,11 +233688,18 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:39818b26e287fd7d",
+        "t:42985c5ceabe04d2"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233701,11 +233722,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:dabde9ef6b61541e"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233728,11 +233755,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:bb93e397f8ded7e1"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233755,11 +233788,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:5c156b01ceebd73f"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233782,11 +233821,18 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:8a1b2e377b931ab9",
+        "t:9fccbcb308e62c66"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233809,11 +233855,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:2f5008c3e20e2b20"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233836,11 +233888,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:daa3b6d295f91168"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233863,11 +233921,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:741ae2b6c23bee93"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -233890,11 +233954,17 @@
         "C03"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:61872d083b46d95b",
+        "h:bb14a658fbbd1106",
+        "h:0b8130e5db46d343"
+      ],
+      "tests": [
+        "t:ae4139bb822803b7"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234849,11 +234919,18 @@
         "C11"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:e95e65a11e7aaa0c",
+        "h:84adc9b316e3235b",
+        "h:3e7b6e2931bc19a9"
+      ],
+      "tests": [
+        "t:a402d7cc3bf668b8",
+        "t:7ad79f7904095565"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234873,11 +234950,17 @@
         "C11"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:e95e65a11e7aaa0c",
+        "h:84adc9b316e3235b",
+        "h:3e7b6e2931bc19a9"
+      ],
+      "tests": [
+        "t:bf94be7e7d89f5a9"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -234897,11 +234980,18 @@
         "C11"
       ],
       "kind": "character-semantic",
-      "handler": [],
-      "tests": [],
-      "status": "pending",
+      "handler": [
+        "h:e95e65a11e7aaa0c",
+        "h:84adc9b316e3235b",
+        "h:3e7b6e2931bc19a9"
+      ],
+      "tests": [
+        "t:7bd814479e0129da",
+        "t:3721c3efc33bd44b"
+      ],
+      "status": "implemented",
       "remaining": [
-        "n:f38efb2ebb6d94e7"
+        "n:c7195cc2c3c2f7e9"
       ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
@@ -415174,8 +415264,8 @@
     "independentSemanticReview": "source patches integrated; integration re-review and runtime correspondence pending",
     "rows": 12178,
     "statuses": {
-      "pending": 7145,
-      "implemented": 5033
+      "pending": 7130,
+      "implemented": 5048
     },
     "adoptedRulingSections": 205,
     "adoptedRulingBlocks": 1576,
@@ -416433,6 +416523,22 @@
     "h:d19d7ea6b24281b6": {
       "path": "packages/engine/src/abilities/suppression.ts",
       "symbol": "suppressionOptions"
+    },
+    "h:61872d083b46d95b": {
+      "path": "packages/engine/src/abilities/mental-defense.ts",
+      "symbol": "mentalDefenseOptions"
+    },
+    "h:bb14a658fbbd1106": {
+      "path": "packages/engine/src/abilities/mental-defense.ts",
+      "symbol": "mentalDefenseAttempt"
+    },
+    "h:e95e65a11e7aaa0c": {
+      "path": "packages/engine/src/abilities/sad-love.ts",
+      "symbol": "sadLoveView"
+    },
+    "h:3e7b6e2931bc19a9": {
+      "path": "packages/engine/src/abilities/sad-love.ts",
+      "symbol": "resolveSadLove"
     }
   },
   "testCases": {
@@ -487048,6 +487154,210 @@
         "B"
       ],
       "bindingNote": "own-turn-once-attempt: actual own-turn extra commands, cancellation/retry, preserved main attack, or public/private window eligibility for this exact source."
+    },
+    "t:329bfedb9e13bf06": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s is available before follower start and rejects a late declaration",
+      "declarationSha256": "50083c5144b8fcbbff2339ab8b1ea9474cad4943863616435013e55aa2d3176b",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:afb7cfa2e964bbb4": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+      "declarationSha256": "b29f30a5548569f9a6021fbc9b6e385af4cbe93149c584941cbee13a79769ee4",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "canceled-attempt-stays-spent: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:122c4fcb62876a9d": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s successful doubles cancel and save separate attacker seat clock",
+      "declarationSha256": "f11f0b9cd46c0f0e47423630e82b6894d077edf54aa8b1d2472c30d9f065dae9",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "other-target-declared-hits-survive: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:a8075e7cc5df3985": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s accepts an actually declared same-faction attacker without exclusion",
+      "declarationSha256": "d1856f373ed4b2d494c9583634ee2f01ea8b9df2139761c0ef5be2292f009e10",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "same-faction-attacker-not-excluded: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:2a85bab1e1d60b9c": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s fixed initial faction retains objective and protection after a real declaration",
+      "declarationSha256": "19eda5557fdcb3e6a1ce44204bb5953a3a81422b94eece58dd9e57d0a7af2bc7",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "fixed-faction-keeps-objective-and-protection: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:39818b26e287fd7d": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s is available before follower start and rejects a late declaration",
+      "declarationSha256": "50083c5144b8fcbbff2339ab8b1ea9474cad4943863616435013e55aa2d3176b",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:dabde9ef6b61541e": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+      "declarationSha256": "b29f30a5548569f9a6021fbc9b6e385af4cbe93149c584941cbee13a79769ee4",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "canceled-attempt-stays-spent: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:bb93e397f8ded7e1": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s successful doubles cancel and save separate attacker seat clock",
+      "declarationSha256": "f11f0b9cd46c0f0e47423630e82b6894d077edf54aa8b1d2472c30d9f065dae9",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "other-target-declared-hits-survive: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:5c156b01ceebd73f": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s accepts an actually declared same-faction attacker without exclusion",
+      "declarationSha256": "d1856f373ed4b2d494c9583634ee2f01ea8b9df2139761c0ef5be2292f009e10",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "same-faction-attacker-not-excluded: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:8a1b2e377b931ab9": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s is available before follower start and rejects a late declaration",
+      "declarationSha256": "50083c5144b8fcbbff2339ab8b1ea9474cad4943863616435013e55aa2d3176b",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:2f5008c3e20e2b20": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+      "declarationSha256": "b29f30a5548569f9a6021fbc9b6e385af4cbe93149c584941cbee13a79769ee4",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "canceled-attempt-stays-spent: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:daa3b6d295f91168": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [
+        "C03 complete mental received defenses"
+      ],
+      "title": "%s successful doubles cancel and save separate attacker seat clock",
+      "declarationSha256": "f11f0b9cd46c0f0e47423630e82b6894d077edf54aa8b1d2472c30d9f065dae9",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "other-target-declared-hits-survive: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:741ae2b6c23bee93": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s accepts an actually declared same-faction attacker without exclusion",
+      "declarationSha256": "d1856f373ed4b2d494c9583634ee2f01ea8b9df2139761c0ef5be2292f009e10",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "same-faction-attacker-not-excluded: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:ae4139bb822803b7": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s fixed initial faction retains objective and protection after a real declaration",
+      "declarationSha256": "19eda5557fdcb3e6a1ce44204bb5953a3a81422b94eece58dd9e57d0a7af2bc7",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "fixed-faction-keeps-objective-and-protection: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:a402d7cc3bf668b8": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Sad love actual substitution redirects one hit into Upa with no physical payment",
+      "declarationSha256": "c9e517c856fc83b563e2ac3335943ffbf5819f4f446a783d6c59427f939ec0e0",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "substitution-before-final-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:7ad79f7904095565": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Substitution rejects wrong target, wrong hit, foreign actor and late finalized source immutably",
+      "declarationSha256": "9c05b0dd6ce6699a19705f69650286d56fd1b086dd57a08014b7e824de287a62",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "substitution-before-final-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:bf94be7e7d89f5a9": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Substitution retains A13 restrictions and permits a real hand counter",
+      "declarationSha256": "e8e8d0ae4748320c3cde5d881b5e13db416d2d3f626e560dd66f368c39071892",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "substitution-no-follower-normal-defense: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:7bd814479e0129da": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Substitution retains A13 restrictions and permits a real hand counter",
+      "declarationSha256": "e8e8d0ae4748320c3cde5d881b5e13db416d2d3f626e560dd66f368c39071892",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "substitution-no-repeat-same-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:3721c3efc33bd44b": {
+      "path": "packages/engine/test/sad-love.test.ts",
+      "suite": [],
+      "title": "Canceled substitution spends the once-game attempt and leaves the hit with Arnes",
+      "declarationSha256": "9e76da224f3a1d98a99fa90cfb8dab3a5ee9fe607ab261985e9add5d0c868f0a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "substitution-no-repeat-same-hit: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:5dfd8dfcb63327de": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+      "declarationSha256": "b29f30a5548569f9a6021fbc9b6e385af4cbe93149c584941cbee13a79769ee4",
+      "kind": "canonical-transition",
+      "parameters": "c2-p03-r2c1-ab01",
+      "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:42985c5ceabe04d2": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+      "declarationSha256": "b29f30a5548569f9a6021fbc9b6e385af4cbe93149c584941cbee13a79769ee4",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c1-ab01",
+      "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
+    },
+    "t:9fccbcb308e62c66": {
+      "path": "packages/engine/test/mental-received-defenses.test.ts",
+      "suite": [],
+      "title": "%s actual Fate cancellation spends the entire Griffin target group; later group is fresh",
+      "declarationSha256": "b29f30a5548569f9a6021fbc9b6e385af4cbe93149c584941cbee13a79769ee4",
+      "kind": "canonical-transition",
+      "parameters": "c2-p06-r1c2-ab01",
+      "bindingNote": "once-group-target-before-followers: actual declared attack and exact source-specific defense/substitution assertions; not a related-only package reference."
     }
   },
   "remainingNotes": {

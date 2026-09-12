@@ -9,7 +9,7 @@ import {character,handCard,entropy} from './fixtures.js';
 function closeWindow(s:GameState,dice:number[]=Array(30).fill(1)){return passReclaims(closeBoundary(s,dice));}
 const LESTER='c2-p03-r2c1-ab01',GAD='c2-p06-r1c1-ab01',DIA='c2-p06-r1c2-ab01';
 const sources=[LESTER,GAD,DIA];
-function incoming(ability=LESTER,card='a2-p18-r1c3',targets=['B','C'],attackerName='黒妖精のアーネス') {
+function incoming(ability=LESTER,card='a2-p18-r1c3',targets=['B','C'],attackerName='黒妖精のアーネス',withFollower=false) {
  let s=ready();
  character(s,'A',attackerName);
  character(s,'B',characters.find(c=>c.id===ability.slice(0,-5))!.name);
@@ -17,6 +17,7 @@ function incoming(ability=LESTER,card='a2-p18-r1c3',targets=['B','C'],attackerNa
  character(s,'D','黒騎士ガーウィン');
  for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20,magic_level:20,warrior_level:20};
  for(const id of ['B','C','D'])s.distances.A![id]=s.distances[id]!.A='near';
+ if(withFollower){const follower=handCard(s,'B','兵士');s.players.B!.hand=s.players.B!.hand.filter(id=>id!==follower);s.players.B!.followers.push({cardInstanceId:follower,revealed:false});}
  const cardInstanceId=handCard(s,'A',actionCards.find(c=>c.id===card)!.name);
  s=act(s,'A',{type:'ATTACK',cardInstanceId,targetIds:targets,dedicated:false});
  return until(s,'normal-defense');
@@ -106,6 +107,14 @@ it.each([LESTER,DIA])('%s fixed-faction block retains old objective and protecti
  expect(s.players.A!.statuses![0]!.kind).toBe('stopped');
  expect(group(s).targets[0]!.hits[0]!.defended).toBe(true);
 });
+it.each([LESTER,DIA])('%s fixed initial faction retains objective and protection after a real declaration',id=>{
+ let s=incoming(id,'a2-p18-r1c3',['B','C'],id===LESTER?'魔導王ガイナス':'侍大将のシン');
+ const before=structuredClone(s.players.A!);
+ s=result(s,id,[6,6]);
+ expect(s.players.A!).toMatchObject({faction:before.faction,objective:before.objective,currentObjective:before.currentObjective,protection:before.protection});
+ expect(s.players.A!.statuses![0]!.kind).toBe('stopped');
+ expect(group(s).targets[0]!.hits[0]!.defended).toBe(true);
+});
 it('Lester same-faction allowed conversion still replaces the old protection',()=>{
  let s=incoming(LESTER);character(s,'A','大神官ジル');
  s.players.A!.protection={characterIds:['c2-p05-r2c2']}; // alternate pre-existing replacement, not a source activation
@@ -138,6 +147,26 @@ it('actual Fate cancellation spends the entire Griffin target group; later group
  const sword=handCard(s,'A','白光');s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'normal-defense');
  expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===LESTER)).toBe(true);
  reject(s,'B',{type:'USE_ABILITY',abilityId:LESTER,targetEventId:event},'INVALID_TARGET');
+});
+it.each(sources)('%s actual Fate cancellation spends the entire Griffin target group; later group is fresh',ability=>{
+ let s=ready();character(s,'A','獣使いのウパニシャット');character(s,'B',characters.find(c=>c.id===ability.slice(0,-5))!.name);character(s,'D',ability===LESTER?'魔導王ガイナス':'リーア姫');
+ for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};
+ const griffin=handCard(s,'A','グリフォン'),fate=handCard(s,'C','命運凶変'),sword=handCard(s,'D','白光');
+ s=until(act(s,'A',{type:'ATTACK',cardInstanceId:griffin,targetIds:['B'],dedicated:true}),'normal-defense');
+ const event=viewFor(s,'B').abilityOptions.find(o=>o.abilityId===ability)!.targetEventId;
+ s=use(s,ability);s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(s,'C').reactionTargetAbilityId!});
+ s=closeWindow(s);s=closeWindow(s);
+ expect(s.rolls??[]).toEqual([]);
+ reject(s,'B',{type:'USE_ABILITY',abilityId:ability,targetEventId:event},'ABILITY_DISABLED');
+ s=pass(s);expect(viewFor(s,'B').currentAttack!.hitIndex).toBe(1);
+ expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===ability)).toBe(false);
+ s=finish(s);expect(s.players.B!.damage).toBe(16);
+ s=act(s,'A',{type:'PASS_WITHDRAWAL'});s=act(s,'A',{type:'END_TURN',discardIds:s.players.A!.hand.filter(id=>id!==sword).slice(0,Math.max(0,s.players.A!.hand.length-5))});
+ for(const id of ['B','C'])s=turn(s,id);
+ s=act(s,'D',{type:'START_TURN'});s=act(s,'D',{type:'CHOOSE_DRAW',draw:false});
+ s=until(act(s,'D',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'normal-defense');
+ expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===ability)).toBe(true);
+ reject(s,'B',{type:'USE_ABILITY',abilityId:ability,targetEventId:event},'INVALID_TARGET');
 });
 it.each([["c2-p03-r2c1-ab01", "first", false], ["c2-p03-r2c1-ab01", "first", true], ["c2-p03-r2c1-ab01", "second", false], ["c2-p03-r2c1-ab01", "second", true], ["c2-p06-r1c1-ab01", "first", false], ["c2-p06-r1c1-ab01", "first", true], ["c2-p06-r1c1-ab01", "second", false], ["c2-p06-r1c1-ab01", "second", true], ["c2-p06-r1c2-ab01", "first", false], ["c2-p06-r1c2-ab01", "first", true], ["c2-p06-r1c2-ab01", "second", false], ["c2-p06-r1c2-ab01", "second", true]] as const)('%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s',(id,when,ordinaryFailure)=>{
  let s=ready();character(s,'A','獣使いのウパニシャット');character(s,'B',characters.find(c=>c.id===id.slice(0,-5))!.name);
@@ -421,4 +450,19 @@ it('fix I1 helper old saved on-hit window with fatal intent hides and atomically
  expect(s.windows!.at(-1)!.kind).toBe('death-gift');
  expect(s.players.C!.damage).toBe(5);
  expect(s.players.C!.chants).toEqual([{cardInstanceId:chant,revealed:false}]);
+});
+
+
+it.each(sources)('%s accepts an actually declared same-faction attacker without exclusion',ability=>{
+ let s=incoming(ability,'a2-p18-r1c3',['B','C'],ability===LESTER?'大神官ジル':'黒妖精のアーネス');
+ expect(s.players.A!.faction).toBe(s.players.B!.faction);
+ s=rolled(s,ability,[1,2]);expect(s.rolls!.at(-1)).toMatchObject({purpose:'ability-check',rollerId:'A',success:true});
+ s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);expect(s.players.C!.damage).toBeGreaterThan(0);
+});
+it.each(sources)('%s is available before follower start and rejects a late declaration',ability=>{
+ let s=incoming(ability,'a2-p18-r1c3',['B','C'],'黒妖精のアーネス',true);
+ const option=viewFor(s,'B').abilityOptions.find(o=>o.abilityId===ability)!;expect(option).toBeDefined();
+ s=until(s,'follower-start');expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===ability)).toBe(false);
+ reject(s,'B',{type:'USE_ABILITY',abilityId:ability,targetEventId:option.targetEventId},'ABILITY_DISABLED');
+ s=finish(s);expect(s.players.C!.damage).toBeGreaterThan(0);
 });
