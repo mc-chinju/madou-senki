@@ -202482,7 +202482,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ]
     },
     {
       "entryId": "ruling:F03",
@@ -202497,7 +202499,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ]
     },
     {
       "entryId": "ruling:F03",
@@ -202692,7 +202696,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c2#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c2#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c2#semantic/ordinary/self-magic-only"
+      ]
     },
     {
       "entryId": "ruling:F05",
@@ -202707,7 +202715,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c2#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c2#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c2#semantic/ordinary/self-magic-only"
+      ]
     },
     {
       "entryId": "ruling:F05",
@@ -202767,7 +202779,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c3#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c3#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c3#semantic/ordinary/self-magic-only"
+      ]
     },
     {
       "entryId": "ruling:F06",
@@ -202782,7 +202798,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c3#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c3#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c3#semantic/ordinary/self-magic-only"
+      ]
     },
     {
       "entryId": "ruling:F06",

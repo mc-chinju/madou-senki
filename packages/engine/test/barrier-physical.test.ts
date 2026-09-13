@@ -28,3 +28,17 @@ it.each(rows)('%s physical %s refuses warrior actual counter prohibition invente
 it.each(rows)('%s physical %s optional decline and actual follower start retain the unspent source',(scenario,card)=>{
  for(const followers of [false,true]){let s=makeBarrierPhysicalScenario(scenario,players);if(followers){s=act(s,'B',{type:'START_FOLLOWERS'});reject(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:card,dedicated:false});}s=finish(s);expect(s.players.B!.damage).toBe(5);expect(s.players.B!.hand).toContain(card);expect(s.discard).not.toContain(card);}
 });
+
+it.each(rows)('%s structural three-hit input lets physical %s cancel only first own hit after reconstruction',(scenario,card)=>{
+ let s=makeBarrierPhysicalScenario(scenario,players,{mode:'multiple',level:6});
+ const group=Object.values(s.groups!)[0]!;
+ // Explicit resolver input: this does not claim Ice Arrow produces three hits.
+ for(const target of group.targets)target.hits=Array.from({length:3},()=>structuredClone(target.hits[0]!));
+ s=JSON.parse(JSON.stringify(s)) as GameState;
+ s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:card,dedicated:false});
+ s=JSON.parse(JSON.stringify(s)) as GameState;
+ s=finish(s);
+ expect([s.players.A!.damage,s.players.B!.damage,s.players.C!.damage]).toEqual([0,12,18]);
+ expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ expect(s.resolution).not.toContain(card);
+});

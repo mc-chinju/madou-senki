@@ -355130,14 +355130,17 @@
         "h:55260a5ac6cde718"
       ],
       "tests": [
-        "t:cc8540a90e63f79c",
-        "t:1b24bdc3b3de345d",
-        "t:81cf8d42648c9ee4",
-        "t:64089bc3385c968a",
-        "t:b2c5af4b89e147fc"
+        "t:d1257eaa125f53eb",
+        "t:072371badf5ff383",
+        "t:64a0162b2828907f",
+        "t:ca50d9f364c73371",
+        "t:12ad929ab0274342",
+        "t:672bc787f921350c"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:56671865b4daa658"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -355543,14 +355546,17 @@
         "h:55260a5ac6cde718"
       ],
       "tests": [
-        "t:b5b444c8f01e1f6a",
-        "t:33a07d56c34f17d6",
-        "t:0125e5acda10e395",
-        "t:b72344f75dc0f827",
-        "t:c17baa02931a5c49"
+        "t:17794360df1a5dfc",
+        "t:50092595c23011dd",
+        "t:db6e099b89ea3fbc",
+        "t:b9a816c3c39bf1a9",
+        "t:da24af7376d6ded8",
+        "t:1062ec8d6a16eb52"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:56671865b4daa658"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -484098,6 +484104,150 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual reveal of Arness excludes same-faction C before payment even with Griffin multi-target composition; B/D receive two hits each and C remains undamaged."
+    },
+    "t:d1257eaa125f53eb": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s copies received magic6 with one missing-level check or no check at magic6",
+      "declarationSha256": "dc11ddbbbb402283dd9cca0e08e4480cf637d0af6d565292ba37abdd24b2d8c5",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-1",
+        "a2-p18-r2c2"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:072371badf5ff383": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s cancels only its own hit in an actual two-target dedicated Ice Arrow",
+      "declarationSha256": "ba9ef4679eb7b7a917e3b1cf60536d8820dd8336df5bec829e9f294e118116f8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-1",
+        "a2-p18-r2c2"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:64a0162b2828907f": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s real Prayer changes effect only and never adds a new use check or returned attack",
+      "declarationSha256": "968d0e7f01666c426141c7379ddc559373b37ba318ad2c2eaa41c0b154bb3677",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-1",
+        "a2-p18-r2c2"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:ca50d9f364c73371": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s actual Fate cancellation keeps payment and original magic damage",
+      "declarationSha256": "1e96eb5731e57739813247433b95edd4712a0ffaa728ca252b7028c4c0e9f0c2",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-1",
+        "a2-p18-r2c2"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:12ad929ab0274342": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s optional decline and actual follower start retain the unspent source",
+      "declarationSha256": "bf80d40b67bc7dbfe7ab24ca409c3c3f31ac07e4b3c584eae3b5b4c58ab92bc1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-1",
+        "a2-p18-r2c2"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:672bc787f921350c": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s structural three-hit input lets physical %s cancel only first own hit after reconstruction",
+      "declarationSha256": "00bb90bb12545e9c460ff714995c47a3bc6e05ef42536f0b44e69674333a02bc",
+      "kind": "structural-resolver",
+      "parameters": [
+        "barrier-physical-1",
+        "a2-p18-r2c2"
+      ],
+      "bindingNote": "Explicit three-hit resolver input on both targets, JSON restoration before and after physical defense declaration. One own hit cancelled, remaining own two and all other three resolve. Not a physical multi-hit producer claim."
+    },
+    "t:17794360df1a5dfc": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s copies received magic6 with one missing-level check or no check at magic6",
+      "declarationSha256": "dc11ddbbbb402283dd9cca0e08e4480cf637d0af6d565292ba37abdd24b2d8c5",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-2",
+        "a2-p18-r2c3"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:50092595c23011dd": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s cancels only its own hit in an actual two-target dedicated Ice Arrow",
+      "declarationSha256": "ba9ef4679eb7b7a917e3b1cf60536d8820dd8336df5bec829e9f294e118116f8",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-2",
+        "a2-p18-r2c3"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:db6e099b89ea3fbc": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s real Prayer changes effect only and never adds a new use check or returned attack",
+      "declarationSha256": "968d0e7f01666c426141c7379ddc559373b37ba318ad2c2eaa41c0b154bb3677",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-2",
+        "a2-p18-r2c3"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:b9a816c3c39bf1a9": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s actual Fate cancellation keeps payment and original magic damage",
+      "declarationSha256": "1e96eb5731e57739813247433b95edd4712a0ffaa728ca252b7028c4c0e9f0c2",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-2",
+        "a2-p18-r2c3"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:da24af7376d6ded8": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s physical %s optional decline and actual follower start retain the unspent source",
+      "declarationSha256": "bf80d40b67bc7dbfe7ab24ca409c3c3f31ac07e4b3c584eae3b5b4c58ab92bc1",
+      "kind": "canonical-transition",
+      "parameters": [
+        "barrier-physical-2",
+        "a2-p18-r2c3"
+      ],
+      "bindingNote": "Exact physical barrier ID. Actual source declarations, received magic-level check, distinct-copy retry, Prayer/Fate, two-target own-hit cancellation and refusal/decline. Every accepted act checks JSON/220; rejected commands preserve full state/all views. Printed range dash is not an extra runtime attribute."
+    },
+    "t:1062ec8d6a16eb52": {
+      "path": "packages/engine/test/barrier-physical.test.ts",
+      "suite": [],
+      "title": "%s structural three-hit input lets physical %s cancel only first own hit after reconstruction",
+      "declarationSha256": "00bb90bb12545e9c460ff714995c47a3bc6e05ef42536f0b44e69674333a02bc",
+      "kind": "structural-resolver",
+      "parameters": [
+        "barrier-physical-2",
+        "a2-p18-r2c3"
+      ],
+      "bindingNote": "Explicit three-hit resolver input on both targets, JSON restoration before and after physical defense declaration. One own hit cancelled, remaining own two and all other three resolve. Not a physical multi-hit producer claim."
     }
   },
   "remainingNotes": {

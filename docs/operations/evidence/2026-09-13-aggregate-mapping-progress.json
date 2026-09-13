@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 748,
-  "excluded": "Current candidate is not accepted; full verification and 748 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 742,
+  "excluded": "Current candidate is not accepted; full verification and 742 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -1132,6 +1132,64 @@
         "packages/engine/test/lester-songs-physical.test.ts": "945f2f3aa3522c5d62e75cd15279f83c76e699619309cb0a4e7f6f0c7840d76b"
       },
       "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F05#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r2c2#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c2#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c2#semantic/ordinary/self-magic-only"
+      ],
+      "basis": "Physical failed use stays paid with same-card retry refused; follower-start closes defense. Actual two-target case plus explicit three-hit resolver input preserves remaining own hits and all other targets through JSON reconstruction. Structural input is not a physical producer claim."
+    },
+    {
+      "identity": "ruling:F05#ruling-paragraph/004",
+      "covers": [
+        "a2-p18-r2c2#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c2#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c2#semantic/ordinary/self-magic-only"
+      ],
+      "basis": "Physical failed use stays paid with same-card retry refused; follower-start closes defense. Actual two-target case plus explicit three-hit resolver input preserves remaining own hits and all other targets through JSON reconstruction. Structural input is not a physical producer claim."
+    },
+    {
+      "identity": "ruling:F06#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r2c3#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c3#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c3#semantic/ordinary/self-magic-only"
+      ],
+      "basis": "Physical failed use stays paid with same-card retry refused; follower-start closes defense. Actual two-target case plus explicit three-hit resolver input preserves remaining own hits and all other targets through JSON reconstruction. Structural input is not a physical producer claim."
+    },
+    {
+      "identity": "ruling:F06#ruling-paragraph/004",
+      "covers": [
+        "a2-p18-r2c3#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c3#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c3#semantic/ordinary/self-magic-only"
+      ],
+      "basis": "Physical failed use stays paid with same-card retry refused; follower-start closes defense. Actual two-target case plus explicit three-hit resolver input preserves remaining own hits and all other targets through JSON reconstruction. Structural input is not a physical producer claim."
+    },
+    {
+      "identity": "ruling:F03#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ],
+      "basis": "Actual Earth declares B, C or both, rejects empty/over-cap and revealed ally targets without payment. Question and answer refer to the same target-cardinality clause.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F03#ruling-paragraph/004",
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ],
+      "basis": "Actual Earth declares B, C or both, rejects empty/over-cap and revealed ally targets without payment. Question and answer refer to the same target-cardinality clause.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae"
+      },
+      "matchedPassingBindings": 5
     }
   ],
   "skyWingValidation": {
@@ -1160,5 +1218,16 @@
     "compositeReclaim": "Actual base reclaim returns only Sword; Bow discarded, separate physical-use records, Sword normalized budget spent and stale claim rejected. Bound to existing owned-technique name/use clauses.",
     "compositeReflection": "Actual Gainas reflection preserves warrior level6/damage14/attributes and both reserved physical sources; serialized continuation returns damage to owner, records one original use and one disposal of each source.",
     "expandedTargetRestriction": "Real C reveal makes same-faction target illegal before payment; alternative B/D selected targets each take two composed hits."
+  },
+  "barrierValidation": {
+    "passed": 16,
+    "failed": 0,
+    "exitCode": 0,
+    "typecheckExitCode": 0,
+    "reportSha256": "a45b2f39779d8cbf7181cc4cf1f72bbd4692bfef6c0797aac127a1ca468601cf",
+    "sourceSha256": {
+      "packages/engine/test/barrier-physical.test.ts": "36f6365a4cb425f75711e3d5013551f5322b29ffb992e01852ba0a37f984342f",
+      "docs/operations/evidence/2026-09-13-barrier-aggregate-bindings.json": "fcdac53a0ab3d2267c20f39b4a7a15c691ef75c294279105b0ac497984b409ea"
+    }
   }
 }
