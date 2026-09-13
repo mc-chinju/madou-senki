@@ -35,7 +35,7 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 529,
+  "remainingAggregateMappings": 497,
   "excluded": "Current candidate is not accepted; full verification and 688 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
@@ -4497,6 +4497,502 @@
         "tests/e2e/follower-entry.spec.ts": "a484fff55d8277fcdf3489aafb06eb7d556e00d846c3b67fbda130268a31c664"
       },
       "matchedPassingBindings": 90
+    },
+    {
+      "identity": "ruling:G01#ruling-paragraph/002",
+      "covers": [
+        "ruling:G01#semantic/check-waiver-does-not-waive-chant"
+      ],
+      "basis": "Actual check-waiver does not omit chant. Dedicated-only and forced-restriction remainder of this paragraph stays with those specific card bindings; this maps the printed check/chant split. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/task7b-techniques.test.ts": "9e7ec4ddafada8a67cd94076646770302f2dab811d50ea888ce835a7dafb4f23"
+      },
+      "matchedPassingBindings": 1
+    },
+    {
+      "identity": "ruling:G03#ruling-paragraph/003",
+      "covers": [
+        "ruling:G03#semantic/accept-only-current-priority",
+        "ruling:G03#semantic/intervention-resets-parent-pass-generation"
+      ],
+      "basis": "Actual current-priority acceptance only; an intervening state-changing action clears the pass generation and restarts from the parent origin. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s01-s05.test.ts": "913d1e74807ef6f7854cd1bf921d6caf576502425d3e06012cb8e5e29b3d249e",
+        "packages/engine/test/scenario-s01-s05.test.ts": "5cdb346b40d5693a8d6664c99a14211f1e430dcb92c3484fd81852c4df2a5bf6",
+        "tests/e2e/scenario-s01-s05.spec.ts": "90618f0a6bb7e16eb33bf3117e9567d429163df887193265b70f9e95c4d148ac"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:G04#ruling-paragraph/009",
+      "covers": [
+        "ruling:G04#semantic/normal-defense-before-follower-start",
+        "ruling:G04#semantic/normal-defense-closed-after-followers"
+      ],
+      "basis": "Actual normal defense remains available until follower start; after followers begin, that target cannot return to normal defense. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s06-s10.test.ts": "e936a91ccae0192d22ef61e53c778c2924899436928c8fe282ca344e2174d61e",
+        "apps/worker/test/room-scenario-s14-s17.test.ts": "77a8161a2bce1579d2745d3beb354d57992ab6e8861c11d6f04208c2ae8aebbe",
+        "packages/engine/test/scenario-s06-s10.test.ts": "063ebc448a2c61e42b8a3b1f8865cbefb2190fe306e477d1827a60e562e546e3",
+        "packages/engine/test/scenario-s14-s17.test.ts": "1a985339c5a74d3ea832227f59022b836f900390c0399f6c3226d6a6211ca975",
+        "tests/e2e/scenario-s06-s10.spec.ts": "2fd19926a5affd8ed9f6264cf776be916106339f4a756775cdf509d5f77e93d5",
+        "tests/e2e/scenario-s14-s17.spec.ts": "8b89a1d8d469543fd4f4c0c6c9e52add7c40ea61c520c3c4227875fe227b66ef"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:G04#ruling-paragraph/010",
+      "covers": [
+        "ruling:G04#semantic/normal-defense-before-follower-start",
+        "ruling:G04#semantic/normal-defense-closed-after-followers"
+      ],
+      "basis": "Actual follower-start freezes the follower snapshot after the last normal-defense opportunity. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s06-s10.test.ts": "e936a91ccae0192d22ef61e53c778c2924899436928c8fe282ca344e2174d61e",
+        "apps/worker/test/room-scenario-s14-s17.test.ts": "77a8161a2bce1579d2745d3beb354d57992ab6e8861c11d6f04208c2ae8aebbe",
+        "packages/engine/test/scenario-s06-s10.test.ts": "063ebc448a2c61e42b8a3b1f8865cbefb2190fe306e477d1827a60e562e546e3",
+        "packages/engine/test/scenario-s14-s17.test.ts": "1a985339c5a74d3ea832227f59022b836f900390c0399f6c3226d6a6211ca975",
+        "tests/e2e/scenario-s06-s10.spec.ts": "2fd19926a5affd8ed9f6264cf776be916106339f4a756775cdf509d5f77e93d5",
+        "tests/e2e/scenario-s14-s17.spec.ts": "8b89a1d8d469543fd4f4c0c6c9e52add7c40ea61c520c3c4227875fe227b66ef"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:G04#ruling-paragraph/014",
+      "covers": [
+        "ruling:G04#semantic/allied-reveal-follower-boundary"
+      ],
+      "basis": "Actual allied reveal after follower start cannot unwind an incoming allied attack. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-reveal-boundary.test.ts": "112c35f5b4e0c5a059025f3de2bb850435764d3b9ff0e587cc25019a6b3fe933",
+        "packages/engine/test/scenario-s15-reveal.test.ts": "4b48069eb012c28837c3bceb2774abd3e3e77929070d5be93219ab6f4d9ae3ab",
+        "tests/e2e/scenario-reveal-boundary.spec.ts": "af25b418f9f7110c0b0a6dc31d4f9339d2eedd08bbcd80d8250fa93481f5d2dc"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:G05#ruling-paragraph/003",
+      "covers": [
+        "ruling:G05#semantic/canceled-anytime-keeps-payment-and-refill"
+      ],
+      "basis": "Actual anytime payment and OPEN refill remain after cancellation. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s01-s05.test.ts": "913d1e74807ef6f7854cd1bf921d6caf576502425d3e06012cb8e5e29b3d249e",
+        "packages/engine/test/scenario-s01-s05.test.ts": "5cdb346b40d5693a8d6664c99a14211f1e430dcb92c3484fd81852c4df2a5bf6",
+        "tests/e2e/scenario-s01-s05.spec.ts": "90618f0a6bb7e16eb33bf3117e9567d429163df887193265b70f9e95c4d148ac"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G06#ruling-paragraph/002",
+      "covers": [
+        "ruling:G06#semantic/physical-card-once-per-event",
+        "ruling:G06#semantic/recovery-after-parent-event"
+      ],
+      "basis": "Actual same physical card or ability is once per target event; recovery waits for the parent event. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-s07-prayer.test.ts": "9048ace940a535d1fed429d0e0afab63a854ff7ddf5594cd7c4e811fad562384",
+        "packages/engine/test/reactions.test.ts": "6780f88e50133206ed5f0b7c285f72e16df0532e084518583a02da9cf33e0a7c",
+        "packages/engine/test/reclaim-reservations.test.ts": "7262d7d2ab61c7ff466d6ec1ea9c297422772791f648e065ca3018f241db9a92",
+        "packages/engine/test/scenario-s07-prayer.test.ts": "2f04883a5ed648ab5cdfb347965cfe9d45ee121fd57f7cd0dc73f97bc3df920a",
+        "packages/engine/test/task7d-rolls.test.ts": "8dad2919260aa7b64e7bbf97a6ab5f26b3d572b889120a732bf2e312ca62a630",
+        "tests/e2e/scenario-s07-prayer.spec.ts": "dd727fd820930fa7e2d949617b90e43ed0e51e4f4a2db5064c0d08f56018df40"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:G06#ruling-paragraph/003",
+      "covers": [
+        "ruling:G06#semantic/different-physical-defense-allowed",
+        "ruling:G06#semantic/physical-card-reuse-later-attack"
+      ],
+      "basis": "Actual different physical defense cards remain legal; the same card may be used on a later attack. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-s07-prayer.test.ts": "9048ace940a535d1fed429d0e0afab63a854ff7ddf5594cd7c4e811fad562384",
+        "apps/worker/test/room-scenario-s06-s10.test.ts": "e936a91ccae0192d22ef61e53c778c2924899436928c8fe282ca344e2174d61e",
+        "packages/engine/test/reuse-abilities.test.ts": "92e2fe54ed88f16a2c9584fc1a8c863bdbff91f917b41d268a60bf15b5aaa2be",
+        "packages/engine/test/scenario-s06-s10.test.ts": "063ebc448a2c61e42b8a3b1f8865cbefb2190fe306e477d1827a60e562e546e3",
+        "packages/engine/test/scenario-s07-prayer.test.ts": "2f04883a5ed648ab5cdfb347965cfe9d45ee121fd57f7cd0dc73f97bc3df920a",
+        "tests/e2e/scenario-s06-s10.spec.ts": "2fd19926a5affd8ed9f6264cf776be916106339f4a756775cdf509d5f77e93d5",
+        "tests/e2e/scenario-s07-prayer.spec.ts": "dd727fd820930fa7e2d949617b90e43ed0e51e4f4a2db5064c0d08f56018df40"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:G07#ruling-paragraph/002",
+      "covers": [
+        "ruling:G07#semantic/whole-two-dice-reroll-same-identity"
+      ],
+      "basis": "Actual divine intervention rerolls the whole 2d6 identity. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-canonical-scenarios.test.ts": "7a932ad9b4c48e4e0e31735eae539322163841776f85e088edcf52044a1948e2",
+        "apps/worker/test/room-scenario-s01-s05.test.ts": "913d1e74807ef6f7854cd1bf921d6caf576502425d3e06012cb8e5e29b3d249e",
+        "packages/engine/test/scenario-s01-s05.test.ts": "5cdb346b40d5693a8d6664c99a14211f1e430dcb92c3484fd81852c4df2a5bf6",
+        "tests/e2e/scenario-s01-s05.spec.ts": "90618f0a6bb7e16eb33bf3117e9567d429163df887193265b70f9e95c4d148ac"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:G07#ruling-paragraph/003",
+      "covers": [
+        "ruling:G07#semantic/forced-failure-survives-reroll"
+      ],
+      "basis": "Actual Fate forced-failure survives a later reroll of the same roll. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s01-s05.test.ts": "913d1e74807ef6f7854cd1bf921d6caf576502425d3e06012cb8e5e29b3d249e",
+        "packages/engine/test/scenario-s01-s05.test.ts": "5cdb346b40d5693a8d6664c99a14211f1e430dcb92c3484fd81852c4df2a5bf6",
+        "tests/e2e/scenario-s01-s05.spec.ts": "90618f0a6bb7e16eb33bf3117e9567d429163df887193265b70f9e95c4d148ac"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G08#ruling-paragraph/002",
+      "covers": [
+        "ruling:G08#semantic/add-before-multiply-round-once",
+        "ruling:G08#semantic/null-damage-remains-null-under-addition"
+      ],
+      "basis": "Actual composition adds before multiply and rounds once; null damage stays null under addition. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/action-value-arithmetic.test.ts": "e84a25ba0063b15dc457f198d4890a50f48ee2a10050c53a46f5d79117cf79aa"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G08#ruling-paragraph/003",
+      "covers": [
+        "ruling:G08#semantic/frozen-effect-rejects-late-spirit"
+      ],
+      "basis": "Actual frozen attack-side values reject a late spirit change. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s06-s10.test.ts": "e936a91ccae0192d22ef61e53c778c2924899436928c8fe282ca344e2174d61e",
+        "packages/engine/test/scenario-s06-s10.test.ts": "063ebc448a2c61e42b8a3b1f8865cbefb2190fe306e477d1827a60e562e546e3",
+        "tests/e2e/scenario-s06-s10.spec.ts": "2fd19926a5affd8ed9f6264cf776be916106339f4a756775cdf509d5f77e93d5"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G09#ruling-paragraph/002",
+      "covers": [
+        "ruling:G09#semantic/hidden-unused-ability-private-before-hit",
+        "ruling:G09#semantic/unused-shelim-barrier-not-applied"
+      ],
+      "basis": "Actual unused Shelim barrier is not applied; a hidden unused ability stays private before hit. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-s21-secrecy.test.ts": "db2b65c3c259ec642d02256e8774b35c2118fcaf2ca0fe341bc3ae89e574eb58",
+        "packages/engine/test/r6-scenarios.test.ts": "35bcd19babbd17d535e3a7ee7b4beb070fefa211c96ad6626db717ab222c0a46",
+        "tests/e2e/scenario-s21-secrecy.spec.ts": "e87e78363a9662559ef695ac3c4bbea50340cd9a99fa76205bc83a5ac1fcdf21"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:G10#ruling-paragraph/003",
+      "covers": [
+        "ruling:G10#semantic/open-refill-resumes-after-child"
+      ],
+      "basis": "Actual OPEN refill resumes after the child OPEN resolution. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-r6-scenarios.test.ts": "e3899f186df3b0fedee551f338a303f67503b0725ff40651db1d4895397bea62",
+        "packages/engine/test/r6-scenarios.test.ts": "35bcd19babbd17d535e3a7ee7b4beb070fefa211c96ad6626db717ab222c0a46",
+        "tests/e2e/r6-scenarios.spec.ts": "202dc80661e6849533e26fffec3886573b3f2493df4f95cc0e7f7ed65802fa98"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:G11#ruling-paragraph/003",
+      "covers": [
+        "ruling:G11#semantic/exhaustion-shuffles-discard-excludes-resolution"
+      ],
+      "basis": "Actual deck exhaustion shuffles discard excluding cards still in resolution. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-r6-scenarios.test.ts": "e3899f186df3b0fedee551f338a303f67503b0725ff40651db1d4895397bea62",
+        "packages/engine/test/r6-scenarios.test.ts": "35bcd19babbd17d535e3a7ee7b4beb070fefa211c96ad6626db717ab222c0a46",
+        "tests/e2e/r6-scenarios.spec.ts": "202dc80661e6849533e26fffec3886573b3f2493df4f95cc0e7f7ed65802fa98"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G11#ruling-paragraph/004",
+      "covers": [
+        "ruling:G11#semantic/base-reclaim-shared-by-name",
+        "ruling:G11#semantic/named-followers-recover-after-actual-death",
+        "ruling:G11#semantic/named-reuse-excludes-failed-morale",
+        "ruling:G11#semantic/owned-extra-follower-requires-actual-death"
+      ],
+      "basis": "Actual named base reclaim is once per name; morale failure is not death; follower attack discard is not follower death; extra follower reclaim requires actual death. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-named-follower-death.test.ts": "63942842b937ed1af3e93421e563b44789957af9cd9c451124bfbe5430efa8a6",
+        "packages/engine/test/owned-reclaim.test.ts": "80d8b734e9903dfa7c61f90c59e797a4d5ca281a45770edd3dd04fc0c20dc12b",
+        "packages/engine/test/reuse-abilities.test.ts": "92e2fe54ed88f16a2c9584fc1a8c863bdbff91f917b41d268a60bf15b5aaa2be",
+        "tests/e2e/named-follower-death.spec.ts": "43c787d019c9dfa1629f6ad277cb25ec47e52aec58e3e6fdeb3c2722d1b7c529"
+      },
+      "matchedPassingBindings": 24
+    },
+    {
+      "identity": "ruling:G11#ruling-paragraph/007",
+      "covers": [
+        "ruling:G11#semantic/base-and-extra-separate-name-budgets",
+        "ruling:G11#semantic/base-reclaim-survives-ability-ban",
+        "ruling:G11#semantic/canceled-extra-spends-attempt-and-budget",
+        "ruling:G11#semantic/unlimited-no-retry-same-response",
+        "ruling:G11#semantic/unlimited-preserves-base-budget"
+      ],
+      "basis": "Actual base and extra name budgets are separate; unlimited preserves the base budget; canceled extra still spends the attempt; base reclaim survives ability ban; unlimited cannot retry the same response. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/reclaim-live-suppression.test.ts": "7b1e31146abfc0915d2186a9171aab78a9a638d8b7ea3d6309be3143e0b05307",
+        "packages/engine/test/reclaim-reservations.test.ts": "7262d7d2ab61c7ff466d6ec1ea9c297422772791f648e065ca3018f241db9a92",
+        "packages/engine/test/reuse-abilities.test.ts": "92e2fe54ed88f16a2c9584fc1a8c863bdbff91f917b41d268a60bf15b5aaa2be"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:G11#ruling-paragraph/008",
+      "covers": [
+        "ruling:G11#semantic/named-followers-recover-after-actual-death",
+        "ruling:G11#semantic/named-reuse-excludes-failed-morale",
+        "ruling:G11#semantic/named-reuse-excludes-voluntary-discard",
+        "ruling:G11#semantic/owned-extra-follower-requires-actual-death"
+      ],
+      "basis": "Actual named reuse excludes voluntary discard and failed morale; extra/named follower recovery waits for actual death. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-named-follower-death.test.ts": "63942842b937ed1af3e93421e563b44789957af9cd9c451124bfbe5430efa8a6",
+        "packages/engine/test/reuse-abilities.test.ts": "92e2fe54ed88f16a2c9584fc1a8c863bdbff91f917b41d268a60bf15b5aaa2be",
+        "tests/e2e/named-follower-death.spec.ts": "43c787d019c9dfa1629f6ad277cb25ec47e52aec58e3e6fdeb3c2722d1b7c529"
+      },
+      "matchedPassingBindings": 29
+    },
+    {
+      "identity": "ruling:G11#ruling-paragraph/009",
+      "covers": [
+        "ruling:G11#semantic/actual-anytime-owned-recovery",
+        "ruling:G11#semantic/actual-placed-follower-death-recovery",
+        "ruling:G11#semantic/actual-turn-technique-public-opportunity",
+        "ruling:G11#semantic/distance-use-public-disposition-without-owned-right",
+        "ruling:G11#semantic/virtual-blades-no-physical-recovery",
+        "ruling:G11#semantic/virtual-guard-no-physical-recovery"
+      ],
+      "basis": "Actual used techniques and placed follower deaths open public recovery; distance-only uses dispose without owned-technique right; virtual blades/guard create no physical recovery. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-follower-entry.test.ts": "1a24d7ef39f0396b2738d2ab37a4516cd3b918840a45f6e89e17cd6b7077e204",
+        "apps/worker/test/room-lester-two-rights.test.ts": "638acb37771c4a9fbc2b1dbec683695461a9f6255dba1617ffed3c780122cc8d",
+        "apps/worker/test/room-ordinary-follower-death.test.ts": "ce60cf9f7bf83ea192662d48e97a98ac711338af0824877e86daa6934ac51436",
+        "apps/worker/test/room-reclaim.test.ts": "a6f40d4d9fcd7858c8fd4b385fe1c5cf78d5f334b9f00794b04840834745055c",
+        "apps/worker/test/room-virtual-blades.test.ts": "428c1ab6db9aaa6f2972686438bfe7e56ba548528b658da3f3cf0474656bc1b6",
+        "packages/engine/test/distance-reclaim.test.ts": "2c44a2c576f9e9d64323a95643a59d90081a7db8fa4ecfe55abc642408860c69",
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218",
+        "packages/engine/test/owned-reclaim.test.ts": "80d8b734e9903dfa7c61f90c59e797a4d5ca281a45770edd3dd04fc0c20dc12b",
+        "packages/engine/test/printed-reclaim-adapters.test.ts": "1b3d213b4e250bce09d9f5871cb65e580537eb6103de7593f8095d998359f192",
+        "packages/engine/test/reclaim-privacy.test.ts": "4c03c9b616fde7ffd3ce4e3efbb456590e3b0e09a6199e4221b42dae0cd2fa9b",
+        "packages/engine/test/virtual-blades.test.ts": "8316766dea4041f0fe76b50721658be9d3e42b12d416084bc46b3ec888fb5791",
+        "tests/e2e/follower-entry.spec.ts": "a484fff55d8277fcdf3489aafb06eb7d556e00d846c3b67fbda130268a31c664",
+        "tests/e2e/lester-two-rights.spec.ts": "e5755f74fd8bd3d716631aabe17d76631cd3dc1da798125ff82a245908287dbf",
+        "tests/e2e/ordinary-follower-death.spec.ts": "a92bb0dbf5cb0f74895d2068be2c574baef085ddfb1133a4dca3f8960bc6bca1",
+        "tests/e2e/reclaim.spec.ts": "3ae07f678d16af4eb2b48b82c64fe026e2e813fdbf6e461746676886f6659f45",
+        "tests/e2e/virtual-blades.spec.ts": "f1304dbb83a250799db2553cccfcf9f6bf5928173bb9e7e32dc8c7a26b2c613c"
+      },
+      "matchedPassingBindings": 25
+    },
+    {
+      "identity": "ruling:G11#ruling-paragraph/010",
+      "covers": [
+        "ruling:G11#semantic/actual-death-excluded-from-public-responses",
+        "ruling:G11#semantic/actual-exit-excluded-from-public-responses",
+        "ruling:G11#semantic/actual-otherworld-excluded-from-public-responses",
+        "ruling:G11#semantic/actual-wandering-excluded-from-public-responses",
+        "ruling:G11#semantic/beneficiary-decline-resumes-public-suffix",
+        "ruling:G11#semantic/disconnect-alarm-preserves-explicit-replies",
+        "ruling:G11#semantic/failed-child-check-preserves-answered-prefix",
+        "ruling:G11#semantic/first-take-closes-other-same-seat-right",
+        "ruling:G11#semantic/foreign-used-name-does-not-grant-owned-right",
+        "ruling:G11#semantic/source-clockwise-order-preserved-on-reveal"
+      ],
+      "basis": "Actual clockwise public recovery order is preserved on reveal; answered prefix survives a failed child check; beneficiary decline resumes the public suffix; otherworld/death/wandering/exit seats are excluded; disconnect does not auto-pass; first take closes rivals; a foreign used name does not grant the owned right. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-lester-two-rights.test.ts": "638acb37771c4a9fbc2b1dbec683695461a9f6255dba1617ffed3c780122cc8d",
+        "apps/worker/test/room-reclaim-disconnect.test.ts": "bf50174bfb1fdcfd0f637120a2cb31024f05ced8dc2a6d1ae33fdfa4b217f94b",
+        "apps/worker/test/room-reclaim.test.ts": "a6f40d4d9fcd7858c8fd4b385fe1c5cf78d5f334b9f00794b04840834745055c",
+        "packages/engine/test/owned-reclaim.test.ts": "80d8b734e9903dfa7c61f90c59e797a4d5ca281a45770edd3dd04fc0c20dc12b",
+        "packages/engine/test/printed-reclaim-adapters.test.ts": "1b3d213b4e250bce09d9f5871cb65e580537eb6103de7593f8095d998359f192",
+        "packages/engine/test/reclaim-owner-death.test.ts": "21591b213ca4ac7ed997e8effe87ef73edeadfcf4c3a7eac2262005073eb6dae",
+        "packages/engine/test/reclaim-owner-exit.test.ts": "a2206d618505fac6aaf604967abc920717448e775b44b14cc99c61a1a377aec4",
+        "packages/engine/test/reclaim-owner-otherworld.test.ts": "a3b965bcb53ef1902a980ec1b812175b3f1cff6ad46abe4489752d93025afc0d",
+        "packages/engine/test/reclaim-owner-wandering.test.ts": "fa1a6d90356f858544942fbc6d147974e3ac2da4a0753a27bbbda1dcfdf8357b",
+        "packages/engine/test/reclaim-privacy.test.ts": "4c03c9b616fde7ffd3ce4e3efbb456590e3b0e09a6199e4221b42dae0cd2fa9b",
+        "packages/engine/test/reclaim-reservations.test.ts": "7262d7d2ab61c7ff466d6ec1ea9c297422772791f648e065ca3018f241db9a92",
+        "tests/e2e/lester-two-rights.spec.ts": "e5755f74fd8bd3d716631aabe17d76631cd3dc1da798125ff82a245908287dbf",
+        "tests/e2e/reclaim.spec.ts": "3ae07f678d16af4eb2b48b82c64fe026e2e813fdbf6e461746676886f6659f45"
+      },
+      "matchedPassingBindings": 27
+    },
+    {
+      "identity": "ruling:G11#ruling-paragraph/012",
+      "covers": [
+        "ruling:G11#semantic/exited-owner-reservation-discarded",
+        "ruling:G11#semantic/reservation-waits-for-root-children",
+        "ruling:G11#semantic/revival-does-not-inherit-old-life-reservation",
+        "ruling:G11#semantic/same-life-otherworld-reservation-returns",
+        "ruling:G11#semantic/same-life-wandering-reservation-returns"
+      ],
+      "basis": "Actual reservation waits for root children; same-life otherworld/wandering still returns at parent end; revival does not inherit the old-life reservation; an exited owner discards it. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-reclaim-owner-exit.test.ts": "0a40e2b3b5b8d03fdcd911696dc55888ea72a4ad738c486a9335072067696379",
+        "apps/worker/test/room-reclaim-owner-otherworld.test.ts": "492717da0486a603e09657e27204e6c51249a9653fe2b52037fe92163af6d46a",
+        "apps/worker/test/room-reclaim-owner-revival.test.ts": "8da7d1a41df738312b1cf63f1b7b63ca110117ecc352f48386efac520d44cb75",
+        "apps/worker/test/room-reclaim-owner-wandering.test.ts": "edf78e6a0585e5d3f43a04774facb85fcae0f7fa5444cf0fa19c8b77c5abd0d0",
+        "packages/engine/test/reclaim-owner-exit.test.ts": "a2206d618505fac6aaf604967abc920717448e775b44b14cc99c61a1a377aec4",
+        "packages/engine/test/reclaim-owner-otherworld.test.ts": "a3b965bcb53ef1902a980ec1b812175b3f1cff6ad46abe4489752d93025afc0d",
+        "packages/engine/test/reclaim-owner-revival.test.ts": "881681d489f78b7b6ff281ec7a93409b48b664c8342c47bc9d081f792727bf87",
+        "packages/engine/test/reclaim-owner-wandering.test.ts": "fa1a6d90356f858544942fbc6d147974e3ac2da4a0753a27bbbda1dcfdf8357b",
+        "tests/e2e/reclaim-owner-exit.spec.ts": "b17082d4d2743ed394eeba58efe5dc793e7bf43b9bd82515b3ef12117dc7f986",
+        "tests/e2e/reclaim-owner-otherworld.spec.ts": "4758e9eb0ddb3b5896808b9ef33217a6b322642350698db6f2bbcb097fc07e1d",
+        "tests/e2e/reclaim-owner-revival.spec.ts": "42c17c47a550e4a1cd6790c375fef9d01ff3a222f844335827ebba0afea00ae2",
+        "tests/e2e/reclaim-owner-wandering.spec.ts": "53b8b657f6eaae7ef9287b015eac1b61424e5a5a829e398b47126a5ca0afa227"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:G12#ruling-paragraph/002",
+      "covers": [
+        "ruling:G12#semantic/defense-exchange-preserves-distance"
+      ],
+      "basis": "Actual defense exchange preserves pair distance (no third-seat transfer). Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s11-s12.test.ts": "36204806eb58c35b7e1d3e54db5c6d8e3db3eafaed99599551771b184aa9eadf",
+        "packages/engine/test/scenario-s11-s13.test.ts": "73f573563406b17e165b84909ec60d99545a1655612afd75304e37c108de7da7",
+        "tests/e2e/scenario-s11-s12.spec.ts": "b1d57a38198d26d96e4bc72bca6bfbe19e6ffe15e1e1484b7c0871a645391896"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G12#ruling-paragraph/003",
+      "covers": [
+        "ruling:G12#semantic/defense-exchange-preserves-distance",
+        "ruling:G12#semantic/one-advance-cancels-each-target-maai"
+      ],
+      "basis": "Actual one advance cancels each target Maai in the shared step without changing lasting distance. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s11-s12.test.ts": "36204806eb58c35b7e1d3e54db5c6d8e3db3eafaed99599551771b184aa9eadf",
+        "packages/engine/test/scenario-s11-s13.test.ts": "73f573563406b17e165b84909ec60d99545a1655612afd75304e37c108de7da7",
+        "tests/e2e/scenario-s11-s12.spec.ts": "b1d57a38198d26d96e4bc72bca6bfbe19e6ffe15e1e1484b7c0871a645391896"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G13#ruling-paragraph/002",
+      "covers": [
+        "ruling:G13#semantic/equal-counter-cancels-both",
+        "ruling:G13#semantic/far-near-counter-blocks-without-return",
+        "ruling:G13#semantic/higher-counter-replaces-hit-in-range"
+      ],
+      "basis": "Actual higher counter replaces the hit in range; equal cancels both; far-vs-near counters block without return. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s06-s10.test.ts": "e936a91ccae0192d22ef61e53c778c2924899436928c8fe282ca344e2174d61e",
+        "packages/engine/test/scenario-s06-s10.test.ts": "063ebc448a2c61e42b8a3b1f8865cbefb2190fe306e477d1827a60e562e546e3",
+        "tests/e2e/scenario-s06-s10.spec.ts": "2fd19926a5affd8ed9f6264cf776be916106339f4a756775cdf509d5f77e93d5"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:G13#ruling-paragraph/004",
+      "covers": [
+        "ruling:G13#semantic/physical-reflector-once-per-lineage"
+      ],
+      "basis": "Actual same physical reflector acts once per hit lineage. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/scenario-s14-s17.test.ts": "1a985339c5a74d3ea832227f59022b836f900390c0399f6c3226d6a6211ca975"
+      },
+      "matchedPassingBindings": 1
+    },
+    {
+      "identity": "ruling:G14#ruling-paragraph/002",
+      "covers": [
+        "ruling:G14#semantic/maai-applies-to-current-hit-only"
+      ],
+      "basis": "Actual Maai applies to the current hit only. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s11-s12.test.ts": "36204806eb58c35b7e1d3e54db5c6d8e3db3eafaed99599551771b184aa9eadf",
+        "packages/engine/test/scenario-s11-s13.test.ts": "73f573563406b17e165b84909ec60d99545a1655612afd75304e37c108de7da7",
+        "tests/e2e/scenario-s11-s12.spec.ts": "b1d57a38198d26d96e4bc72bca6bfbe19e6ffe15e1e1484b7c0871a645391896"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:G14#ruling-paragraph/003",
+      "covers": [
+        "ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit"
+      ],
+      "basis": "Actual follower HP reduces each remaining simultaneous hit from the frozen snapshot. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-recovery.test.ts": "49ed66e5a0d15d8a1c6f954052af746e11fa90352bd19a73e7ddc7d9149daa98",
+        "packages/engine/test/scenario-s11-s13.test.ts": "73f573563406b17e165b84909ec60d99545a1655612afd75304e37c108de7da7",
+        "tests/e2e/combat.spec.ts": "29c98bfdb431261958c8cd4445105ad04be4978320fbd310a2e43542fa5c1273"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G15#ruling-paragraph/002",
+      "covers": [
+        "ruling:G15#semantic/zero-damage-hit-reveals"
+      ],
+      "basis": "Actual zero-damage hits still reveal the body. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-reveal-boundary.test.ts": "112c35f5b4e0c5a059025f3de2bb850435764d3b9ff0e587cc25019a6b3fe933",
+        "packages/engine/test/scenario-s16-zero.test.ts": "bfb941cc4a3b1a445fbffa0d27c81daef3371b49b3c3cb9dcd883f46b02d8c76",
+        "tests/e2e/scenario-reveal-boundary.spec.ts": "af25b418f9f7110c0b0a6dc31d4f9339d2eedd08bbcd80d8250fa93481f5d2dc"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G15#ruling-paragraph/004",
+      "covers": [
+        "ruling:G15#semantic/simultaneous-extinction-draw-after-settlement"
+      ],
+      "basis": "Actual simultaneous extinction is drawn only after settlement. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s27.test.ts": "12cbed3e7972bc3ce79c127b9192e0485f48a56399f4b941f453e2c653c7478b",
+        "packages/engine/test/r6-scenarios.test.ts": "35bcd19babbd17d535e3a7ee7b4beb070fefa211c96ad6626db717ab222c0a46",
+        "tests/e2e/scenario-s27.spec.ts": "ddb823f3d4a8ab2d9d92c0e68ec5349b0a15b1bf6fa41f914ea887c3e2c00802"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:G16#ruling-paragraph/003",
+      "covers": [
+        "ruling:G16#semantic/protected-revival-resets-wanderer-setup",
+        "ruling:G16#semantic/wandering-hand-followers-return-to-deck"
+      ],
+      "basis": "Actual wandering returns hand and followers to the deck; protected revival resets wanderer setup. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s26.test.ts": "2d5a130a73ad2b097d2690577e5c058f3677b3140291162047a77a77301a6f8d",
+        "packages/engine/test/scenario-s26.test.ts": "43cbe127bc3c8b6dc877c0e388e103b848c427846ae63b4d35c09c010cddd06c",
+        "tests/e2e/scenario-s26.spec.ts": "8c48114f637ab761a6e407aeec252f07dedc1e9e0f70403978fc80425a36cabe"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:G16#ruling-paragraph/005",
+      "covers": [
+        "ruling:G16#semantic/lancelot-transform-retains-damage-and-abilities",
+        "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities"
+      ],
+      "basis": "Actual Lancelot II retains damage and abilities; Vanmil heals without old abilities. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/ritual-physical.test.ts": "6a1864e9afcb4df4e400d91dd5ca3e38cd5f5fbce86e3a4c0b7daf9c3921cc0f",
+        "packages/engine/test/task7f-lifecycle.test.ts": "84927fd3490781a74295c2f291efb7f94006f9befaf05defece6c296db8915ea"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:G17#ruling-paragraph/003",
+      "covers": [
+        "ruling:G17#semantic/otherworld-excludes-wish-revelation"
+      ],
+      "basis": "Actual otherworld excludes wish revelation. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-scenario-s30.test.ts": "f3fcd81cdb5213aeea64a6566ec64c058d52008f35213d5969f50e0787331f57",
+        "packages/engine/test/scenario-s30.test.ts": "b60040d07b101aa4c9613f544927468ac45e56f4f65fa8f194ea396a1d658e48",
+        "tests/e2e/scenario-s30.spec.ts": "3e1d4f5f2863a86b1a0edd13ac6907735b54d0f0f2cf5741f8eaa239f7612759"
+      },
+      "matchedPassingBindings": 4
     }
   ],
   "skyWingValidation": {

@@ -184088,7 +184088,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G01#semantic/check-waiver-does-not-waive-chant"
+      ]
     },
     {
       "entryId": "ruling:G01",
@@ -184193,7 +184195,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G03#semantic/accept-only-current-priority",
+        "ruling:G03#semantic/intervention-resets-parent-pass-generation"
+      ]
     },
     {
       "entryId": "ruling:G03",
@@ -184343,7 +184348,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G04#semantic/normal-defense-before-follower-start",
+        "ruling:G04#semantic/normal-defense-closed-after-followers"
+      ]
     },
     {
       "entryId": "ruling:G04",
@@ -184358,7 +184366,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G04#semantic/normal-defense-before-follower-start",
+        "ruling:G04#semantic/normal-defense-closed-after-followers"
+      ]
     },
     {
       "entryId": "ruling:G04",
@@ -184418,7 +184429,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G04#semantic/allied-reveal-follower-boundary"
+      ]
     },
     {
       "entryId": "ruling:G05",
@@ -184463,7 +184476,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G05#semantic/canceled-anytime-keeps-payment-and-refill"
+      ]
     },
     {
       "entryId": "ruling:G05",
@@ -184508,7 +184523,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G06#semantic/physical-card-once-per-event",
+        "ruling:G06#semantic/recovery-after-parent-event"
+      ]
     },
     {
       "entryId": "ruling:G06",
@@ -184523,7 +184541,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G06#semantic/different-physical-defense-allowed",
+        "ruling:G06#semantic/physical-card-reuse-later-attack"
+      ]
     },
     {
       "entryId": "ruling:G07",
@@ -184553,7 +184574,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G07#semantic/whole-two-dice-reroll-same-identity"
+      ]
     },
     {
       "entryId": "ruling:G07",
@@ -184568,7 +184591,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G07#semantic/forced-failure-survives-reroll"
+      ]
     },
     {
       "entryId": "ruling:G07",
@@ -184613,7 +184638,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G08#semantic/add-before-multiply-round-once",
+        "ruling:G08#semantic/null-damage-remains-null-under-addition"
+      ]
     },
     {
       "entryId": "ruling:G08",
@@ -184628,7 +184656,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G08#semantic/frozen-effect-rejects-late-spirit"
+      ]
     },
     {
       "entryId": "ruling:G08",
@@ -184673,7 +184703,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G09#semantic/hidden-unused-ability-private-before-hit",
+        "ruling:G09#semantic/unused-shelim-barrier-not-applied"
+      ]
     },
     {
       "entryId": "ruling:G09",
@@ -184733,7 +184766,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G10#semantic/open-refill-resumes-after-child"
+      ]
     },
     {
       "entryId": "ruling:G11",
@@ -184778,7 +184813,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G11#semantic/exhaustion-shuffles-discard-excludes-resolution"
+      ]
     },
     {
       "entryId": "ruling:G11",
@@ -184793,7 +184830,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G11#semantic/base-reclaim-shared-by-name",
+        "ruling:G11#semantic/named-followers-recover-after-actual-death",
+        "ruling:G11#semantic/named-reuse-excludes-failed-morale",
+        "ruling:G11#semantic/owned-extra-follower-requires-actual-death"
+      ]
     },
     {
       "entryId": "ruling:G12",
@@ -184823,7 +184865,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G12#semantic/defense-exchange-preserves-distance"
+      ]
     },
     {
       "entryId": "ruling:G12",
@@ -184838,7 +184882,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G12#semantic/defense-exchange-preserves-distance",
+        "ruling:G12#semantic/one-advance-cancels-each-target-maai"
+      ]
     },
     {
       "entryId": "ruling:G12",
@@ -184883,7 +184930,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G13#semantic/equal-counter-cancels-both",
+        "ruling:G13#semantic/far-near-counter-blocks-without-return",
+        "ruling:G13#semantic/higher-counter-replaces-hit-in-range"
+      ]
     },
     {
       "entryId": "ruling:G13",
@@ -184913,7 +184964,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G13#semantic/physical-reflector-once-per-lineage"
+      ]
     },
     {
       "entryId": "ruling:G14",
@@ -184943,7 +184996,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G14#semantic/maai-applies-to-current-hit-only"
+      ]
     },
     {
       "entryId": "ruling:G14",
@@ -184958,7 +185013,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit"
+      ]
     },
     {
       "entryId": "ruling:G14",
@@ -185003,7 +185060,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G15#semantic/zero-damage-hit-reveals"
+      ]
     },
     {
       "entryId": "ruling:G15",
@@ -185033,7 +185092,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G15#semantic/simultaneous-extinction-draw-after-settlement"
+      ]
     },
     {
       "entryId": "ruling:G15",
@@ -185123,7 +185184,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G16#semantic/protected-revival-resets-wanderer-setup",
+        "ruling:G16#semantic/wandering-hand-followers-return-to-deck"
+      ]
     },
     {
       "entryId": "ruling:G16",
@@ -185153,7 +185217,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G16#semantic/lancelot-transform-retains-damage-and-abilities",
+        "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities"
+      ]
     },
     {
       "entryId": "ruling:G17",
@@ -185198,7 +185265,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G17#semantic/otherworld-excludes-wish-revelation"
+      ]
     },
     {
       "entryId": "ruling:G17",
@@ -330584,7 +330653,13 @@
       "dependsOn": [],
       "semanticReview": "pending independent atomic mapping",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G11#semantic/base-and-extra-separate-name-budgets",
+        "ruling:G11#semantic/base-reclaim-survives-ability-ban",
+        "ruling:G11#semantic/canceled-extra-spends-attempt-and-budget",
+        "ruling:G11#semantic/unlimited-no-retry-same-response",
+        "ruling:G11#semantic/unlimited-preserves-base-budget"
+      ]
     },
     {
       "entryId": "ruling:G11",
@@ -330599,7 +330674,12 @@
       "dependsOn": [],
       "semanticReview": "pending independent atomic mapping",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G11#semantic/named-followers-recover-after-actual-death",
+        "ruling:G11#semantic/named-reuse-excludes-failed-morale",
+        "ruling:G11#semantic/named-reuse-excludes-voluntary-discard",
+        "ruling:G11#semantic/owned-extra-follower-requires-actual-death"
+      ]
     },
     {
       "entryId": "ruling:G11",
@@ -330614,7 +330694,14 @@
       "dependsOn": [],
       "semanticReview": "pending independent atomic mapping",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G11#semantic/actual-anytime-owned-recovery",
+        "ruling:G11#semantic/actual-placed-follower-death-recovery",
+        "ruling:G11#semantic/actual-turn-technique-public-opportunity",
+        "ruling:G11#semantic/distance-use-public-disposition-without-owned-right",
+        "ruling:G11#semantic/virtual-blades-no-physical-recovery",
+        "ruling:G11#semantic/virtual-guard-no-physical-recovery"
+      ]
     },
     {
       "entryId": "ruling:G11",
@@ -330629,7 +330716,18 @@
       "dependsOn": [],
       "semanticReview": "pending independent atomic mapping",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G11#semantic/actual-death-excluded-from-public-responses",
+        "ruling:G11#semantic/actual-exit-excluded-from-public-responses",
+        "ruling:G11#semantic/actual-otherworld-excluded-from-public-responses",
+        "ruling:G11#semantic/actual-wandering-excluded-from-public-responses",
+        "ruling:G11#semantic/beneficiary-decline-resumes-public-suffix",
+        "ruling:G11#semantic/disconnect-alarm-preserves-explicit-replies",
+        "ruling:G11#semantic/failed-child-check-preserves-answered-prefix",
+        "ruling:G11#semantic/first-take-closes-other-same-seat-right",
+        "ruling:G11#semantic/foreign-used-name-does-not-grant-owned-right",
+        "ruling:G11#semantic/source-clockwise-order-preserved-on-reveal"
+      ]
     },
     {
       "entryId": "ruling:G11",
@@ -330659,7 +330757,13 @@
       "dependsOn": [],
       "semanticReview": "pending independent atomic mapping",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "ruling:G11#semantic/exited-owner-reservation-discarded",
+        "ruling:G11#semantic/reservation-waits-for-root-children",
+        "ruling:G11#semantic/revival-does-not-inherit-old-life-reservation",
+        "ruling:G11#semantic/same-life-otherworld-reservation-returns",
+        "ruling:G11#semantic/same-life-wandering-reservation-returns"
+      ]
     },
     {
       "entryId": "ruling:C11",
