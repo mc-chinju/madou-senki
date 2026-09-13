@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 813,
-  "excluded": "Explicit structural scopes retained. Current candidate is not accepted; 813 aggregate mappings remain.",
+  "remainingAggregateMappings": 812,
+  "excluded": "Structural preparation retains its classification; current candidate is not accepted and 812 mappings remain.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -186,6 +186,20 @@
         "a2-p09-r1c1#semantic/dedicated/inherit-source-effects"
       ],
       "basis": "Actual one physical warrior co-source selection and level limit, separate paid cards, inherited components with unchanged composite levels, and null damage source preservation."
+    },
+    {
+      "identity": "ruling:T07#ruling-paragraph/005",
+      "covers": [
+        "a2-p09-r1c1#semantic/dedicated/0/chant-retain",
+        "a2-p09-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r1c1#semantic/dedicated/co-source-level-limit",
+        "a2-p09-r1c1#semantic/dedicated/co-source-one",
+        "a2-p09-r1c1#semantic/dedicated/co-source-warrior-only",
+        "a2-p09-r1c1#semantic/dedicated/inherit-source-effects",
+        "a2-p09-r1c1#semantic/dedicated/no-level-sum",
+        "a2-p09-r1c1#semantic/dedicated/optional-co-source"
+      ],
+      "basis": "Existing physical level/one-source/dedicated owner/near-range/chant/activation-check cases plus explicit prepared Blood GOOD/EVIL boundary. Structural preparation is not a claim of CHANT or faction-change production."
     }
   ],
   "skyWingValidation": {
@@ -200,16 +214,16 @@
     }
   },
   "beastKingValidation": {
-    "passed": 32,
+    "passed": 34,
     "failed": 0,
     "exitCode": 0,
     "typecheckExitCode": 0,
-    "reportSha256": "19a481a032f22381d1d0dcb4240cea2996ffa5840f46d2c168862382b0bec6c5",
+    "reportSha256": "086045bb20e61eebb3919f0b61f261580cef50989ae89eb44ce3b28ab17ec128",
     "sourceSha256": {
-      "packages/engine/test/beast-king-physical.test.ts": "a9595cd5938e378c165c04dc3e782fa8dfc14c162f3c27da71cfae590cbfad70",
-      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "f2144c903156768f01c6c6a172d90947219f434edb4d33d94be5e4266c0c14c1"
+      "packages/engine/test/beast-king-physical.test.ts": "61fb98ab7e303ab2ab2a638a6355b0168598537b91868ef8393d814174d28aec",
+      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "ae5ca61dc71f74c5024724f6fd33250945d69b33e08223e8670124cc9d9283f6"
     },
     "initialExpectationCorrection": "New test initially assumed +2; printed Beast Nature says warrior damage +1. Expected composites corrected to 15/11; no implementation change.",
-    "remaining": "T07/T08 paragraph/005 broader restrictions, shared target effects and per-source reclaim still require complete mapping."
+    "remaining": "T08 paragraph/005 broader composite target effects and per-source reclaim still require complete mapping."
   }
 }

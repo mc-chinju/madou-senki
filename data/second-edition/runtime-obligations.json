@@ -196956,7 +196956,16 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r1c1#semantic/dedicated/0/chant-retain",
+        "a2-p09-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r1c1#semantic/dedicated/co-source-level-limit",
+        "a2-p09-r1c1#semantic/dedicated/co-source-one",
+        "a2-p09-r1c1#semantic/dedicated/co-source-warrior-only",
+        "a2-p09-r1c1#semantic/dedicated/inherit-source-effects",
+        "a2-p09-r1c1#semantic/dedicated/no-level-sum",
+        "a2-p09-r1c1#semantic/dedicated/optional-co-source"
+      ]
     },
     {
       "entryId": "ruling:T07",

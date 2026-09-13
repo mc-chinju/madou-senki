@@ -2,6 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
+import {takeCard} from '../../../apps/worker/test/fixtures/scenario-tools.js';
 import {makeBeastKingPhysical,beastKingCard as CARD,beastKingMode} from '../../../apps/worker/test/fixtures/beast-king-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice=Array(30).fill(1)){for(let n=0;n<800;n++){if(done(s))return s;s=pass(s,dice);}throw Error('BEAST_KING_LIMIT');}
@@ -10,6 +11,26 @@ function source(s:GameState){return Object.values(s.actions!).find(a=>a.cardInst
 function group(s:GameState){return Object.values(s.groups!).find(g=>g.actionId===source(s).id)!;}
 function cmd(dedicated=true,co?:string,targetIds=['B'],coDedicated=false){return {type:'ATTACK',cardInstanceId:CARD,targetIds,dedicated,...(co?{coSource:{cardInstanceId:co,dedicated:coDedicated}}:{})};}
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
+it.each(['GOOD','EVIL'] as const)('structural prepared Blood co-source retains its faction prohibition for %s',faction=>{
+ let s=makeBeastKingPhysical('beast-king-dedicated',players);
+ const co='a2-p09-r2c3';takeCard(s,'A',co);
+ // Isolate the inherited prohibition using an explicit prepared-state boundary.
+ s.players.A!.hand=s.players.A!.hand.filter(id=>id!==co);
+ s.players.A!.chants.push({cardInstanceId:co,revealed:false});
+ s.players.A!.faction=faction;
+ s.players.A!.permanent!.warrior_level!+=8-gameStats(s,'A').warrior_level;
+ expect(gameStats(s,'A').warrior_level).toBe(8);
+ if(faction==='GOOD'){
+  reject(s,'A',cmd(true,co));
+  expect(s.players.A!.chants.map(c=>c.cardInstanceId)).toContain(co);
+  expect(s.players.A!.hand).toContain(CARD);
+ }else{
+  s=until(act(s,'A',cmd(true,co)),s=>s.windows?.at(-1)?.kind==='attack-abilities');
+  expect(group(s).technique).toMatchObject({useLevel:6,effectLevel:6,damage:20,chant:true});
+  expect(s.players.A!.chants).toEqual([]);
+  expect(s.resolution).toEqual(expect.arrayContaining([CARD,co]));
+ }
+});
 it.each([['beast-king-bow',15],['beast-king-null',11]] as const)('%s elected Upa addition applies once to the composite and preserves a null source with result %s',(name,damage)=>{
  let s=makeBeastKingPhysical(name,players);
  const ability=viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId==='c2-p05-r1c2-ab01')!;

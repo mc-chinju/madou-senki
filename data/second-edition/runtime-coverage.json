@@ -282309,7 +282309,9 @@
         "t:3aff6876eb9ff0ac",
         "t:5121f1b4644d90b0",
         "t:f454f3514392a5d0",
-        "t:4b6ab6700d406d4c"
+        "t:4b6ab6700d406d4c",
+        "t:969b84e14ca4dcee",
+        "t:abfeaa0bac144bc7"
       ],
       "status": "implemented",
       "remaining": [
@@ -484042,6 +484044,24 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+    },
+    "t:969b84e14ca4dcee": {
+      "path": "packages/engine/test/beast-king-physical.test.ts",
+      "suite": [],
+      "title": "structural prepared Blood co-source retains its faction prohibition for %s",
+      "declarationSha256": "cb1c8c258964e414601e3eb9e6f599a41d5cf830db0c90a298fe65fe0c4a0422",
+      "kind": "structural-resolver",
+      "parameters": "GOOD",
+      "bindingNote": "Prepared Blood chant, sufficient warrior level and explicit faction boundary isolate inherited GOOD prohibition; GOOD rejects without payment, EVIL pays both cards at composite level six. Does not claim the preparatory CHANT or faction-change producer."
+    },
+    "t:abfeaa0bac144bc7": {
+      "path": "packages/engine/test/beast-king-physical.test.ts",
+      "suite": [],
+      "title": "structural prepared Blood co-source retains its faction prohibition for %s",
+      "declarationSha256": "cb1c8c258964e414601e3eb9e6f599a41d5cf830db0c90a298fe65fe0c4a0422",
+      "kind": "structural-resolver",
+      "parameters": "EVIL",
+      "bindingNote": "Prepared Blood chant, sufficient warrior level and explicit faction boundary isolate inherited GOOD prohibition; GOOD rejects without payment, EVIL pays both cards at composite level six. Does not claim the preparatory CHANT or faction-change producer."
     }
   },
   "remainingNotes": {
