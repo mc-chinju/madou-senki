@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 796,
-  "excluded": "Current candidate is not accepted; full verification and 796 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 788,
+  "excluded": "Current candidate is not accepted; full verification and 788 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -441,6 +441,116 @@
       "unchangedTestSources": {
         "packages/engine/test/white-dragon-physical.test.ts": "5e8d9fd60675479fb7ca83eab47c57ba85d4ebb56c4f8245d2e1bd49c8ff27ed",
         "packages/engine/test/release-lifecycle-bindings.test.ts": "b37da9094e2462cd8f75dc031b30524e4613120589c313b6761373562af8642e"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:T21#ruling-paragraph/004",
+      "covers": [
+        "a2-p11-r2c2#semantic/dedicated/0/chant-retain",
+        "a2-p11-r2c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r2c2#semantic/dedicated/1/chant-waive",
+        "a2-p11-r2c2#semantic/dedicated/1/damage-replacement",
+        "a2-p11-r2c2#semantic/dedicated/1/eligible-owner/0",
+        "a2-p11-r2c2#semantic/dedicated/variants-not-stack"
+      ],
+      "basis": "Actual elected first package shares one 4d6+1 roll, later package deals twenty-five without chant, and first package rejects unprepared use. Supplemental transformed-owner package election remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/white-dragon-physical.test.ts": "5e8d9fd60675479fb7ca83eab47c57ba85d4ebb56c4f8245d2e1bd49c8ff27ed"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:T22#ruling-paragraph/004",
+      "covers": [
+        "a2-p12-r1c3#semantic/defense/cancel-warrior",
+        "a2-p12-r1c3#semantic/defense/incoming-effect-requirement",
+        "a2-p12-r1c3#semantic/defense/no-magic",
+        "a2-p12-r1c3#semantic/defense/self-warrior-only"
+      ],
+      "basis": "Actual incoming warrior effect three sets use three, warrior two/three requires one/zero checks, magic and foreign recipient reject, and actual multi-hit attack loses only one hit. Supplemental post-declaration incoming-level mutation remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/parry-physical.test.ts": "c19524a57d93ab1441188d6de9dbbde600bc91644b2036c031db03e2adb6bbdd",
+        "packages/engine/test/scenario-s06-s10.test.ts": "063ebc448a2c61e42b8a3b1f8865cbefb2190fe306e477d1827a60e562e546e3"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:T23#ruling-paragraph/004",
+      "covers": [
+        "a2-p12-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p12-r2c3#semantic/dedicated/follower-ignore-threshold",
+        "a2-p12-r2c3#semantic/dedicated/hit-follower-ignore"
+      ],
+      "basis": "Actual Aiel target-local optional follower bypass at follower entry, relative effect-level boundaries and normal-defense avoidance preceding the choice.",
+      "unchangedTestSources": {
+        "packages/engine/test/ice-magic-physical.test.ts": "565fc0aecd24efe6ffe648b70dc310180fd9d58421f4d95a42802a14a710965a"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:T23#ruling-paragraph/005",
+      "covers": [
+        "a2-p12-r2c3#semantic/dedicated/follower-ignore-threshold",
+        "a2-p12-r2c3#semantic/dedicated/hit-follower-ignore"
+      ],
+      "basis": "Actual Water Dragon above/equal/below final effect with Prayer, independent C decline, rejected duplicate/foreign choice, actual Maai/Evade suppress B choice, and successful bypass followed by actual reclaim and later decline demonstrates expiry.",
+      "unchangedTestSources": {
+        "packages/engine/test/ice-magic-physical.test.ts": "565fc0aecd24efe6ffe648b70dc310180fd9d58421f4d95a42802a14a710965a"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:T24#ruling-paragraph/004",
+      "covers": [
+        "a2-p12-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p12-r3c2#semantic/dedicated/block-warrior-at-effect",
+        "a2-p12-r3c2#semantic/dedicated/retain-magic-reflection",
+        "a2-p12-r3c2#semantic/ordinary/no-warrior",
+        "a2-p12-r3c2#semantic/ordinary/reflect-magic-at-effect"
+      ],
+      "basis": "Actual magic reflection versus warrior block, ordinary warrior refusal, relative limit increased by Prayer and above-limit rejection. Supplemental single-hit reflection lineage remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/ice-mirror-physical.test.ts": "1bd9a571ba924330669de80dbb33117b1216f13e6bc1bfdb5d96615e8ce66b3d"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:T25#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r1c1#semantic/dedicated/destroy-relative-effect",
+        "a2-p13-r1c1#semantic/ordinary/destroy-fixed-five"
+      ],
+      "basis": "Actual initial followers and elected profile distinguish fixed five from final-effect destruction thresholds.",
+      "unchangedTestSources": {
+        "packages/engine/test/ice-wolf-physical.test.ts": "6e2b05a2b2dd0653c3df4ce60a0a113d36820fbca50b2c73d0a43e433addcdf7"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:T25#ruling-paragraph/005",
+      "covers": [
+        "a2-p13-r1c1#semantic/dedicated/destroy-relative-effect",
+        "a2-p13-r1c1#semantic/ordinary/destroy-fixed-five"
+      ],
+      "basis": "Actual Royal Knights/Metal Golem/blessed Water Dragon and Prayer boundary cases keep ordinary fixed five unchanged when effect rises; dedicated final-effect threshold destroys eligible followers before HP.",
+      "unchangedTestSources": {
+        "packages/engine/test/ice-wolf-physical.test.ts": "6e2b05a2b2dd0653c3df4ce60a0a113d36820fbca50b2c73d0a43e433addcdf7"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:T26#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r1c2#semantic/dedicated/destroy-followers",
+        "a2-p13-r1c2#semantic/ordinary/disable-until-success",
+        "a2-p13-r1c2#semantic/ordinary/not-stop"
+      ],
+      "basis": "Actual Alseil destroys target Water Dragon and Fort while preserving other followers; failed recovery preserves ability-disabled status but allows draw/action and a physical turn card, then successful recovery restores abilities. Broader stat/history supplemental paragraph remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/alseil-status-physical.test.ts": "fd39d244811567d584e55a6517b9a6a19593c930b6032997f9f6410fd374ea13"
       },
       "matchedPassingBindings": 10
     }

@@ -198315,7 +198315,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r2c2#semantic/dedicated/0/chant-retain",
+        "a2-p11-r2c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r2c2#semantic/dedicated/1/chant-waive",
+        "a2-p11-r2c2#semantic/dedicated/1/damage-replacement",
+        "a2-p11-r2c2#semantic/dedicated/1/eligible-owner/0",
+        "a2-p11-r2c2#semantic/dedicated/variants-not-stack"
+      ]
     },
     {
       "entryId": "ruling:T21",
@@ -198405,7 +198413,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p12-r1c3#semantic/defense/cancel-warrior",
+        "a2-p12-r1c3#semantic/defense/incoming-effect-requirement",
+        "a2-p12-r1c3#semantic/defense/no-magic",
+        "a2-p12-r1c3#semantic/defense/self-warrior-only"
+      ]
     },
     {
       "entryId": "ruling:T22",
@@ -198495,7 +198508,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p12-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p12-r2c3#semantic/dedicated/follower-ignore-threshold",
+        "a2-p12-r2c3#semantic/dedicated/hit-follower-ignore"
+      ]
     },
     {
       "entryId": "ruling:T23",
@@ -198510,7 +198527,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p12-r2c3#semantic/dedicated/follower-ignore-threshold",
+        "a2-p12-r2c3#semantic/dedicated/hit-follower-ignore"
+      ]
     },
     {
       "entryId": "ruling:T23",
@@ -198585,7 +198605,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p12-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p12-r3c2#semantic/dedicated/block-warrior-at-effect",
+        "a2-p12-r3c2#semantic/dedicated/retain-magic-reflection",
+        "a2-p12-r3c2#semantic/ordinary/no-warrior",
+        "a2-p12-r3c2#semantic/ordinary/reflect-magic-at-effect"
+      ]
     },
     {
       "entryId": "ruling:T24",
@@ -198675,7 +198701,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r1c1#semantic/dedicated/destroy-relative-effect",
+        "a2-p13-r1c1#semantic/ordinary/destroy-fixed-five"
+      ]
     },
     {
       "entryId": "ruling:T25",
@@ -198690,7 +198719,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r1c1#semantic/dedicated/destroy-relative-effect",
+        "a2-p13-r1c1#semantic/ordinary/destroy-fixed-five"
+      ]
     },
     {
       "entryId": "ruling:T25",
@@ -198765,7 +198797,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r1c2#semantic/dedicated/destroy-followers",
+        "a2-p13-r1c2#semantic/ordinary/disable-until-success",
+        "a2-p13-r1c2#semantic/ordinary/not-stop"
+      ]
     },
     {
       "entryId": "ruling:T26",
