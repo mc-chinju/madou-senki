@@ -368933,15 +368933,22 @@
         "h:347885961710a67d",
         "h:b79b002e013aed75",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:df812caa57169ab9",
-        "t:67485405e666f444",
-        "t:48d23ea5b5a6101c"
+        "t:922f5d5dbbe9abcd",
+        "t:ce83862b12a16404",
+        "t:fa50828a081d2027",
+        "t:99496bdf60760364",
+        "t:bd6e69d4e48f33c0",
+        "t:545a1c59ed4fb1f3",
+        "t:f86785db5dec59ea",
+        "t:d51cca9e2f31601a"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:50d54e3b96891ae3"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -368982,14 +368989,21 @@
         "h:347885961710a67d",
         "h:b79b002e013aed75",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:df812caa57169ab9",
-        "t:67485405e666f444"
+        "t:922f5d5dbbe9abcd",
+        "t:ce83862b12a16404",
+        "t:99496bdf60760364",
+        "t:bd6e69d4e48f33c0",
+        "t:545a1c59ed4fb1f3",
+        "t:f86785db5dec59ea",
+        "t:d51cca9e2f31601a"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:50d54e3b96891ae3"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -369030,14 +369044,21 @@
         "h:347885961710a67d",
         "h:b79b002e013aed75",
         "h:4a5147bd56500dca",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:df812caa57169ab9",
-        "t:67485405e666f444"
+        "t:922f5d5dbbe9abcd",
+        "t:ce83862b12a16404",
+        "t:99496bdf60760364",
+        "t:bd6e69d4e48f33c0",
+        "t:545a1c59ed4fb1f3",
+        "t:f86785db5dec59ea",
+        "t:d51cca9e2f31601a"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:50d54e3b96891ae3"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -484705,6 +484726,93 @@
         "GOOD"
       ],
       "bindingNote": "Explicit structural heterogeneous two-hit input pauses on Royal Knights reflection; direct faction mutation and Blessing removal cause physical castle removal, while frozen levels6/6 persist after JSON reconstruction and block remaining hit. Does not claim a physical in-defense conversion producer; existing actual conversion tests retained."
+    },
+    "t:922f5d5dbbe9abcd": {
+      "path": "packages/engine/test/griffin-physical.test.ts",
+      "suite": [],
+      "title": "actual reached Griffin morale %s rolls spirit once for all three higher Dwarf hits with no HP on failure",
+      "declarationSha256": "502546773ea0b1fdba8bed60b29ccbd49863fc61d6a82179558da699dd1368df",
+      "kind": "canonical-transition",
+      "parameters": "pass",
+      "bindingNote": "Exact Griffin a2-p20-r3c1 starts in setup. Actual placement/order/privacy and Dwarf4/5/6 triple-hit defense5 HP3 air/beast. Ordinary reached morale spirit+0 once per group, pass/fail and repeat later group, hidden unvisited rear. Actual explicit Upanishat defense package at spirit0 waives morale; automatic waiver is not assumed. Actual Upa dedicated hand/field at warrior0 selects all7 nonempty subsets, two8-damage hits each; actual first-hit maai and BlackKnights HP5 each, Mirror cancels only first hit. Actual Upa ordinary beast bundle hand/field retains use check, non-Upa Army hand-only retains morale and use5 checks at own4/5. Parent/child/ability cancellation and morale/use failure pay once. Accepted JSON/220 and rejected state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:ce83862b12a16404": {
+      "path": "packages/engine/test/griffin-physical.test.ts",
+      "suite": [],
+      "title": "actual reached Griffin morale %s rolls spirit once for all three higher Dwarf hits with no HP on failure",
+      "declarationSha256": "502546773ea0b1fdba8bed60b29ccbd49863fc61d6a82179558da699dd1368df",
+      "kind": "canonical-transition",
+      "parameters": "fail",
+      "bindingNote": "Exact Griffin a2-p20-r3c1 starts in setup. Actual placement/order/privacy and Dwarf4/5/6 triple-hit defense5 HP3 air/beast. Ordinary reached morale spirit+0 once per group, pass/fail and repeat later group, hidden unvisited rear. Actual explicit Upanishat defense package at spirit0 waives morale; automatic waiver is not assumed. Actual Upa dedicated hand/field at warrior0 selects all7 nonempty subsets, two8-damage hits each; actual first-hit maai and BlackKnights HP5 each, Mirror cancels only first hit. Actual Upa ordinary beast bundle hand/field retains use check, non-Upa Army hand-only retains morale and use5 checks at own4/5. Parent/child/ability cancellation and morale/use failure pay once. Accepted JSON/220 and rejected state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:fa50828a081d2027": {
+      "path": "packages/engine/test/griffin-physical.test.ts",
+      "suite": [],
+      "title": "actual Griffin does not roll before reaching its position but surviving non-Upa Griffin rolls anew for the next group",
+      "declarationSha256": "41ec7102dd2f487ceaafd64b0c7f9b8df635bb9566ece60ce341c85616dfc67a",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact Griffin a2-p20-r3c1 starts in setup. Actual placement/order/privacy and Dwarf4/5/6 triple-hit defense5 HP3 air/beast. Ordinary reached morale spirit+0 once per group, pass/fail and repeat later group, hidden unvisited rear. Actual explicit Upanishat defense package at spirit0 waives morale; automatic waiver is not assumed. Actual Upa dedicated hand/field at warrior0 selects all7 nonempty subsets, two8-damage hits each; actual first-hit maai and BlackKnights HP5 each, Mirror cancels only first hit. Actual Upa ordinary beast bundle hand/field retains use check, non-Upa Army hand-only retains morale and use5 checks at own4/5. Parent/child/ability cancellation and morale/use failure pay once. Accepted JSON/220 and rejected state/all-view invariants. Candidate receipts/shared crossings remain pending."
+    },
+    "t:99496bdf60760364": {
+      "path": "packages/engine/test/griffin-morale-aggregate.test.ts",
+      "suite": [],
+      "title": "actual Griffin morale Blessing=%s total=%s retains physical source until resolution after reconstruction",
+      "declarationSha256": "eba5e13370cade32aa1f14c3ec733d06a44bc1c7bc571a278103de91109c78db",
+      "kind": "canonical-transition",
+      "parameters": [
+        false,
+        6
+      ],
+      "bindingNote": "Actual OPEN Blessing draw versus no draw changes morale6/7 and follower level5/6 independently. Actual Dia Dwarf three hits with explicit dice6/7/8 prove pass/fail boundary, retained physical Griffin and zero body damage at roll-result window, JSON reconstruction, per-hit HP3 or0 and correct outcomes, then exactly one discard and one morale roll. No synthetic technique or morale modifier."
+    },
+    "t:bd6e69d4e48f33c0": {
+      "path": "packages/engine/test/griffin-morale-aggregate.test.ts",
+      "suite": [],
+      "title": "actual Griffin morale Blessing=%s total=%s retains physical source until resolution after reconstruction",
+      "declarationSha256": "eba5e13370cade32aa1f14c3ec733d06a44bc1c7bc571a278103de91109c78db",
+      "kind": "canonical-transition",
+      "parameters": [
+        true,
+        6
+      ],
+      "bindingNote": "Actual OPEN Blessing draw versus no draw changes morale6/7 and follower level5/6 independently. Actual Dia Dwarf three hits with explicit dice6/7/8 prove pass/fail boundary, retained physical Griffin and zero body damage at roll-result window, JSON reconstruction, per-hit HP3 or0 and correct outcomes, then exactly one discard and one morale roll. No synthetic technique or morale modifier."
+    },
+    "t:545a1c59ed4fb1f3": {
+      "path": "packages/engine/test/griffin-morale-aggregate.test.ts",
+      "suite": [],
+      "title": "actual Griffin morale Blessing=%s total=%s retains physical source until resolution after reconstruction",
+      "declarationSha256": "eba5e13370cade32aa1f14c3ec733d06a44bc1c7bc571a278103de91109c78db",
+      "kind": "canonical-transition",
+      "parameters": [
+        false,
+        7
+      ],
+      "bindingNote": "Actual OPEN Blessing draw versus no draw changes morale6/7 and follower level5/6 independently. Actual Dia Dwarf three hits with explicit dice6/7/8 prove pass/fail boundary, retained physical Griffin and zero body damage at roll-result window, JSON reconstruction, per-hit HP3 or0 and correct outcomes, then exactly one discard and one morale roll. No synthetic technique or morale modifier."
+    },
+    "t:f86785db5dec59ea": {
+      "path": "packages/engine/test/griffin-morale-aggregate.test.ts",
+      "suite": [],
+      "title": "actual Griffin morale Blessing=%s total=%s retains physical source until resolution after reconstruction",
+      "declarationSha256": "eba5e13370cade32aa1f14c3ec733d06a44bc1c7bc571a278103de91109c78db",
+      "kind": "canonical-transition",
+      "parameters": [
+        true,
+        7
+      ],
+      "bindingNote": "Actual OPEN Blessing draw versus no draw changes morale6/7 and follower level5/6 independently. Actual Dia Dwarf three hits with explicit dice6/7/8 prove pass/fail boundary, retained physical Griffin and zero body damage at roll-result window, JSON reconstruction, per-hit HP3 or0 and correct outcomes, then exactly one discard and one morale roll. No synthetic technique or morale modifier."
+    },
+    "t:d51cca9e2f31601a": {
+      "path": "packages/engine/test/griffin-morale-aggregate.test.ts",
+      "suite": [],
+      "title": "actual Griffin morale Blessing=%s total=%s retains physical source until resolution after reconstruction",
+      "declarationSha256": "eba5e13370cade32aa1f14c3ec733d06a44bc1c7bc571a278103de91109c78db",
+      "kind": "canonical-transition",
+      "parameters": [
+        true,
+        8
+      ],
+      "bindingNote": "Actual OPEN Blessing draw versus no draw changes morale6/7 and follower level5/6 independently. Actual Dia Dwarf three hits with explicit dice6/7/8 prove pass/fail boundary, retained physical Griffin and zero body damage at roll-result window, JSON reconstruction, per-hit HP3 or0 and correct outcomes, then exactly one discard and one morale roll. No synthetic technique or morale modifier."
     }
   },
   "remainingNotes": {
@@ -484885,7 +484993,8 @@
     "n:f3f2f5037c6ad5b6": "Await successful complete candidate run after aggregate mapping changes.",
     "n:56671865b4daa658": "Await complete candidate run after aggregate mapping changes.",
     "n:25d56f2fc4d08b47": "Await complete candidate acceptance after aggregate mapping.",
-    "n:3794c190a13918f5": "Current candidate requires full verification and acceptance; structural frozen-defense test is not a physical conversion producer."
+    "n:3794c190a13918f5": "Current candidate requires full verification and acceptance; structural frozen-defense test is not a physical conversion producer.",
+    "n:50d54e3b96891ae3": "Current candidate requires full verification and acceptance."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 692,
-  "excluded": "Current candidate is not accepted; full verification and 692 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 691,
+  "excluded": "Current candidate is not accepted; full verification and 691 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -2047,6 +2047,18 @@
       ],
       "basis": "Existing physical faction-castle tests cover public conversion, incompatible setup/own-action refusal, hidden hand retention, canceled conversion, next attack with castle absent, and Alseil level6 without faction exemption. New explicitly structural frozen-defense test for this exact castle pauses heterogeneous hits on reflection, changes faction and removes Blessing, verifies castle discarded once with levels6/6 preserved and body damage0 after JSON reconstruction. Direct state mutation is not a physical conversion producer. New focused tests pass; candidate still requires full verification.",
       "validation": "castleFrozenValidation"
+    },
+    {
+      "identity": "ruling:F25#ruling-paragraph/004",
+      "covers": [
+        "a2-p20-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p20-r3c1#semantic/follower/printed-hp",
+        "a2-p20-r3c1#semantic/morale/failure-discard",
+        "a2-p20-r3c1#semantic/morale/receive-trigger",
+        "a2-p20-r3c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Griffin checks morale once across three higher Dwarf hits, no roll before reaching rear, fresh roll next group, and explicit Upanishat waiver at spirit0. New actual OPEN Blessing draw/no-draw cases independently verify level5/6 and morale6/7 with totals6/7/8: at roll-result window physical Griffin remains placed, not discarded and body damage0; after JSON reconstruction all three hits share success/failure with HP3 or0, final discard exactly once and one morale roll. Griffin has no printed reflection; no reflection ability invented. Full candidate acceptance remains pending.",
+      "validation": "griffinMoraleValidation"
     }
   ],
   "skyWingValidation": {
@@ -2132,5 +2144,21 @@
       "docs/operations/evidence/2026-09-13-castle-aggregate-bindings.json": "10070ddc416f4e417cca612bf3afe6f8cf0820452433b3f1296396a979838f13"
     },
     "scope": "New structural frozen snapshots only; original physical conversion test source remains unchanged from fourth run. Full candidate acceptance pending."
+  },
+  "griffinMoraleValidation": {
+    "testReport": {
+      "path": "/private/tmp/madou-griffin-morale-aggregate.json",
+      "passed": 5,
+      "failed": 0,
+      "exitCode": 0,
+      "sha256": "39b6fc3379c00f4d0f1df44b41991e5a8ad47b608314dede63dac3af02cdf8c7"
+    },
+    "typecheckExitCode": 0,
+    "sourceSha256": {
+      "packages/engine/test/griffin-morale-aggregate.test.ts": "0be19b7a6ab1e2ea9f2ec5bc470b0afb069fc97320188708115be5f867590893",
+      "packages/engine/test/griffin-physical.test.ts": "5bfd4189b922c0c4ec93ba890213e7b1a04712746b24b80a4730ce918afee010",
+      "docs/operations/evidence/2026-09-13-griffin-aggregate-bindings.json": "906f6c411d9e1e346a723bd50106649109900eee4d65fcac2c0cc7d14ef2b033"
+    },
+    "scope": "Five new actual transition cases; current full candidate not accepted."
   }
 }
