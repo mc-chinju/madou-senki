@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 821,
-  "excluded": "No physical producer is claimed for structural maximum/target/hit inputs. Complete candidate acceptance and 821 aggregate mappings remain.",
+  "remainingAggregateMappings": 815,
+  "excluded": "Structural inputs retain their explicit classification. Previous-run checks establish unchanged test evidence only, not acceptance of the changed manifest. Complete candidate verification and 815 mappings remain.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -68,6 +68,101 @@
         "a2-p08-r1c2#semantic/dedicated/post-hit-advance-choice"
       ],
       "basis": "Actual payment and all-seat response window; explicit structural pending-hit/target and integer multiplier inputs, defended/finalized exclusions and repeated-payment rejection. Physical Sword is warrior with integer damage/multipliers; no artificial magic conversion or rounding path claimed."
+    },
+    {
+      "identity": "ruling:T03#ruling-paragraph/004",
+      "covers": [
+        "a2-p08-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r2c3#semantic/dedicated/discard-all-chants",
+        "a2-p08-r2c3#semantic/dedicated/hit-chant-discard-option",
+        "a2-p08-r2c3#semantic/dedicated/no-subset-chants"
+      ],
+      "basis": "Actual prepared target chants, optional Ida on-hit all-discard and refusal of partial lists; the separate timing/intervention paragraph remains pending.",
+      "unchangedTestSources": {
+        "packages/engine/test/shuriken-physical.test.ts": "31fe04c1750f010621087fc449f409b383499ce1f3c2df4037dcd204b3615b7e"
+      },
+      "matchedPassingBindings": 47
+    },
+    {
+      "identity": "ruling:T04#ruling-paragraph/004",
+      "covers": [
+        "a2-p08-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c1#semantic/dedicated/lethal-not-auto-success",
+        "a2-p08-r3c1#semantic/dedicated/lethal-on-hit",
+        "a2-p08-r3c1#semantic/dedicated/lethal-two-attempts"
+      ],
+      "basis": "Actual zero/one/two optional attempts, numeric consecutive pairs double damage and equal pairs mark instant death; owner damage stays zero. Broader simultaneous lifecycle paragraph remains pending.",
+      "unchangedTestSources": {
+        "packages/engine/test/ura-sword-physical.test.ts": "8165cdec5c5fabb22bec67411e867cf904ce3125da9959f58f31f3ecb6338171"
+      },
+      "matchedPassingBindings": 47
+    },
+    {
+      "identity": "ruling:T05#ruling-paragraph/004",
+      "covers": [
+        "a2-p08-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c2#semantic/dedicated/counter-opportunity",
+        "a2-p08-r3c2#semantic/dedicated/other-auto-fail",
+        "a2-p08-r3c2#semantic/dedicated/shin-exception",
+        "a2-p08-r3c2#semantic/ordinary/attacker-spirit-minus-one",
+        "a2-p08-r3c2#semantic/ordinary/check-failure-cancel",
+        "a2-p08-r3c2#semantic/ordinary/ignore-incoming-level",
+        "a2-p08-r3c2#semantic/ordinary/shin-auto-success"
+      ],
+      "basis": "Actual lower/equal/higher incoming levels, enemy resistance, automatic non-Shin failure and distinct optional child.",
+      "unchangedTestSources": {
+        "packages/engine/test/shadow-card-physical.test.ts": "309a83d9598b039c8d3410007afaa5c9ac6110e911c909213366d77a203743bb"
+      },
+      "matchedPassingBindings": 91
+    },
+    {
+      "identity": "ruling:T05#ruling-paragraph/005",
+      "covers": [
+        "a2-p08-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c2#semantic/dedicated/counter-opportunity",
+        "a2-p08-r3c2#semantic/dedicated/other-auto-fail",
+        "a2-p08-r3c2#semantic/dedicated/shin-exception",
+        "a2-p08-r3c2#semantic/ordinary/attacker-spirit-minus-one",
+        "a2-p08-r3c2#semantic/ordinary/check-failure-cancel",
+        "a2-p08-r3c2#semantic/ordinary/counter-capable",
+        "a2-p08-r3c2#semantic/ordinary/damage",
+        "a2-p08-r3c2#semantic/ordinary/defense-only",
+        "a2-p08-r3c2#semantic/ordinary/ignore-incoming-level",
+        "a2-p08-r3c2#semantic/ordinary/shin-auto-success"
+      ],
+      "basis": "Actual target-only child with separate paid card/use check; prepared IceWolf allowed, unprepared/far sources refused, no approach/withdrawal, Shin exception and counter-prohibited rejection.",
+      "unchangedTestSources": {
+        "packages/engine/test/shadow-card-physical.test.ts": "309a83d9598b039c8d3410007afaa5c9ac6110e911c909213366d77a203743bb"
+      },
+      "matchedPassingBindings": 127
+    },
+    {
+      "identity": "ruling:T06#ruling-paragraph/004",
+      "covers": [
+        "a2-p08-r3c3#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c3#semantic/dedicated/damage-spirit-times-two",
+        "a2-p08-r3c3#semantic/ordinary/damage"
+      ],
+      "basis": "Actual caster spirit six versus target eleven gives six/twelve for ordinary/Ida dedicated modes.",
+      "unchangedTestSources": {
+        "packages/engine/test/ki-slash-physical.test.ts": "df950f088bdad8aa7da1e81d4597492edf44a5e2415a92abd61a4508b2021ac3"
+      },
+      "matchedPassingBindings": 63
+    },
+    {
+      "identity": "ruling:T06#ruling-paragraph/005",
+      "covers": [
+        "a2-p08-r3c3#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c3#semantic/dedicated/damage-spirit-times-two",
+        "a2-p08-r3c3#semantic/ordinary/damage"
+      ],
+      "basis": "Actual third-party Peace alters caster or target spirit before/after the damage boundary; source value freezes at the boundary and dedicated doubles that value.",
+      "unchangedTestSources": {
+        "packages/engine/test/ki-slash-physical.test.ts": "df950f088bdad8aa7da1e81d4597492edf44a5e2415a92abd61a4508b2021ac3"
+      },
+      "matchedPassingBindings": 63
     }
   ],
   "skyWingValidation": {

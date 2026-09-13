@@ -196531,7 +196531,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r2c3#semantic/dedicated/discard-all-chants",
+        "a2-p08-r2c3#semantic/dedicated/hit-chant-discard-option",
+        "a2-p08-r2c3#semantic/dedicated/no-subset-chants"
+      ]
     },
     {
       "entryId": "ruling:T03",
@@ -196621,7 +196626,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c1#semantic/dedicated/lethal-not-auto-success",
+        "a2-p08-r3c1#semantic/dedicated/lethal-on-hit",
+        "a2-p08-r3c1#semantic/dedicated/lethal-two-attempts"
+      ]
     },
     {
       "entryId": "ruling:T04",
@@ -196711,7 +196721,16 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c2#semantic/dedicated/counter-opportunity",
+        "a2-p08-r3c2#semantic/dedicated/other-auto-fail",
+        "a2-p08-r3c2#semantic/dedicated/shin-exception",
+        "a2-p08-r3c2#semantic/ordinary/attacker-spirit-minus-one",
+        "a2-p08-r3c2#semantic/ordinary/check-failure-cancel",
+        "a2-p08-r3c2#semantic/ordinary/ignore-incoming-level",
+        "a2-p08-r3c2#semantic/ordinary/shin-auto-success"
+      ]
     },
     {
       "entryId": "ruling:T05",
@@ -196726,7 +196745,19 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c2#semantic/dedicated/counter-opportunity",
+        "a2-p08-r3c2#semantic/dedicated/other-auto-fail",
+        "a2-p08-r3c2#semantic/dedicated/shin-exception",
+        "a2-p08-r3c2#semantic/ordinary/attacker-spirit-minus-one",
+        "a2-p08-r3c2#semantic/ordinary/check-failure-cancel",
+        "a2-p08-r3c2#semantic/ordinary/counter-capable",
+        "a2-p08-r3c2#semantic/ordinary/damage",
+        "a2-p08-r3c2#semantic/ordinary/defense-only",
+        "a2-p08-r3c2#semantic/ordinary/ignore-incoming-level",
+        "a2-p08-r3c2#semantic/ordinary/shin-auto-success"
+      ]
     },
     {
       "entryId": "ruling:T05",
@@ -196801,7 +196832,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r3c3#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c3#semantic/dedicated/damage-spirit-times-two",
+        "a2-p08-r3c3#semantic/ordinary/damage"
+      ]
     },
     {
       "entryId": "ruling:T06",
@@ -196816,7 +196852,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r3c3#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c3#semantic/dedicated/damage-spirit-times-two",
+        "a2-p08-r3c3#semantic/ordinary/damage"
+      ]
     },
     {
       "entryId": "ruling:T06",
