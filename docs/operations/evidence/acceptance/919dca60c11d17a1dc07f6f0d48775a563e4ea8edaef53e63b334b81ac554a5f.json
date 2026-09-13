@@ -1,0 +1,17 @@
+{
+  "format": "acceptance-policy/test-only-v1",
+  "policy": "acceptance-policy/test-only-v1",
+  "manifestSha256": "faa6b3d7880088f19fc8b956161b0bf683943da347c32cd03e9e06611dd87041",
+  "obligations": [
+    "a2-p09-r3c2#semantic/ordinary/attribute-2"
+  ],
+  "rowDigests": {
+    "a2-p09-r3c2#semantic/ordinary/attribute-2": "1f2914b06969e6cbe5ec607d2b50333c54d07bcc3c5eccaecaaa4f37c6bec3bb"
+  },
+  "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
+  "runEvidence": {
+    "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
+    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+  },
+  "freezePolicy": "runtime-candidate-v3"
+}

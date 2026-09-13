@@ -1,0 +1,17 @@
+{
+  "format": "acceptance-policy/test-only-v1",
+  "policy": "acceptance-policy/test-only-v1",
+  "manifestSha256": "faa6b3d7880088f19fc8b956161b0bf683943da347c32cd03e9e06611dd87041",
+  "obligations": [
+    "c2-p04-r1c1#owned_techniques/3/exhaustion-across-physical-copies"
+  ],
+  "rowDigests": {
+    "c2-p04-r1c1#owned_techniques/3/exhaustion-across-physical-copies": "4a1072350b7c54b32ae53ab3fe5b8c1bf174119ef260665581fb53be7ac741d7"
+  },
+  "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
+  "runEvidence": {
+    "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
+    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+  },
+  "freezePolicy": "runtime-candidate-v3"
+}
