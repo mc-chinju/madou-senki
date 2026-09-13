@@ -197146,7 +197146,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r1c3#semantic/dedicated/0/activation-check-waive",
+        "a2-p09-r1c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r1c3#semantic/dedicated/double-check",
+        "a2-p09-r1c3#semantic/dedicated/double-on-success",
+        "a2-p09-r1c3#semantic/dedicated/retain-rider-check"
+      ]
     },
     {
       "entryId": "ruling:T09",
@@ -197236,7 +197242,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost",
+        "a2-p09-r2c1#semantic/dedicated/effect-per-advance"
+      ]
     },
     {
       "entryId": "ruling:T10",
@@ -197251,7 +197261,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost",
+        "a2-p09-r2c1#semantic/dedicated/effect-per-advance",
+        "a2-p09-r2c1#semantic/dedicated/no-cost-damage-bonus"
+      ]
     },
     {
       "entryId": "ruling:T10",
@@ -197326,7 +197340,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r2c2#semantic/dedicated/extra-maai-d6",
+        "a2-p09-r2c2#semantic/dedicated/hit-skip-next-own-turn",
+        "a2-p09-r2c2#semantic/dedicated/hit-target-roll-2d6",
+        "a2-p09-r2c2#semantic/dedicated/maai-one-plus-roll",
+        "a2-p09-r2c2#semantic/dedicated/roll-at-most-six",
+        "a2-p09-r2c2#semantic/dedicated/roll-seven-up-triples"
+      ]
     },
     {
       "entryId": "ruling:T11",
@@ -197416,7 +197438,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r3c1#semantic/dedicated/failure-instant-death",
+        "a2-p09-r3c1#semantic/dedicated/hit-optional-check",
+        "a2-p09-r3c1#semantic/dedicated/target-minus-two"
+      ]
     },
     {
       "entryId": "ruling:T12",
@@ -197506,7 +197533,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p10-r1c3#semantic/ordinary/d6-hit-count",
+        "a2-p10-r1c3#semantic/ordinary/non-shin-precheck",
+        "a2-p10-r1c3#semantic/ordinary/per-hit-counter",
+        "a2-p10-r1c3#semantic/ordinary/per-hit-maai",
+        "a2-p10-r1c3#semantic/ordinary/precheck-before-use"
+      ]
     },
     {
       "entryId": "ruling:T13",

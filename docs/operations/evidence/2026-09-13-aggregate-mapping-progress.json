@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 811,
-  "excluded": "Current candidate is not accepted; full verification and 811 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 805,
+  "excluded": "Current candidate is not accepted; full verification and 805 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -217,6 +217,94 @@
         "c2-p05-r1c2#owned_techniques/0/reserve-before-parent-release"
       ],
       "basis": "Concrete composite formula/null/modifier, shared numeric roll, real multi-target/multi-hit, inherited restrictions/destruction, counter/reflection, cancellation and separate reclaim cases; shared owned-technique lifetime/budget clauses retained. Explicit prepared Blood boundary remains structural."
+    },
+    {
+      "identity": "ruling:T09#ruling-paragraph/004",
+      "covers": [
+        "a2-p09-r1c3#semantic/dedicated/0/activation-check-waive",
+        "a2-p09-r1c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r1c3#semantic/dedicated/double-check",
+        "a2-p09-r1c3#semantic/dedicated/double-on-success",
+        "a2-p09-r1c3#semantic/dedicated/retain-rider-check"
+      ],
+      "basis": "Actual optional Garwin declaration, retained spirit-six success/failure despite warrior-zero waiver, doubled damage and single rider roll. All-target/all-hit supplemental paragraph remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/black-dragon-physical.test.ts": "c5bf0c766450b29548b14739b73a83f259bdf8246befd36f11f252f92cc699fe"
+      },
+      "matchedPassingBindings": 23
+    },
+    {
+      "identity": "ruling:T10#ruling-paragraph/004",
+      "covers": [
+        "a2-p09-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost",
+        "a2-p09-r2c1#semantic/dedicated/effect-per-advance"
+      ],
+      "basis": "Actual dedicated declaration pays zero/one/two/four physical advances and fixes effect level to seven plus count.",
+      "unchangedTestSources": {
+        "packages/engine/test/void-sword-physical.test.ts": "0ac1eaf190497e95c1a609d7fd2a9f6b5ebb448e8b27dd8769e7053be8a8ab42"
+      },
+      "matchedPassingBindings": 23
+    },
+    {
+      "identity": "ruling:T10#ruling-paragraph/005",
+      "covers": [
+        "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost",
+        "a2-p09-r2c1#semantic/dedicated/effect-per-advance",
+        "a2-p09-r2c1#semantic/dedicated/no-cost-damage-bonus"
+      ],
+      "basis": "Actual fixed declaration payment, cost disposal, no distance formation, rejected reuse versus separately paid Maai cancellation, rejected late payment, and Fate cancellation without cost refund. Dedicated activation has no usage checks.",
+      "unchangedTestSources": {
+        "packages/engine/test/void-sword-physical.test.ts": "0ac1eaf190497e95c1a609d7fd2a9f6b5ebb448e8b27dd8769e7053be8a8ab42"
+      },
+      "matchedPassingBindings": 22
+    },
+    {
+      "identity": "ruling:T11#ruling-paragraph/004",
+      "covers": [
+        "a2-p09-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r2c2#semantic/dedicated/extra-maai-d6",
+        "a2-p09-r2c2#semantic/dedicated/hit-skip-next-own-turn",
+        "a2-p09-r2c2#semantic/dedicated/hit-target-roll-2d6",
+        "a2-p09-r2c2#semantic/dedicated/maai-one-plus-roll",
+        "a2-p09-r2c2#semantic/dedicated/roll-at-most-six",
+        "a2-p09-r2c2#semantic/dedicated/roll-seven-up-triples"
+      ],
+      "basis": "Actual Gainas declaration, all six numeric faces, target spirit-zero/twelve fixed-six resistance boundaries, normal/tripled body damage, next-turn skip and later normal turn. Supplemental repeated-hit/cast coalescing remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/dragon-king-physical.test.ts": "459a3e64769939b9edd0f9a68ebfb9bd4e30bb684e156e7bf5d664f18629c1b7"
+      },
+      "matchedPassingBindings": 30
+    },
+    {
+      "identity": "ruling:T12#ruling-paragraph/004",
+      "covers": [
+        "a2-p09-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r3c1#semantic/dedicated/failure-instant-death",
+        "a2-p09-r3c1#semantic/dedicated/hit-optional-check",
+        "a2-p09-r3c1#semantic/dedicated/target-minus-two"
+      ],
+      "basis": "Actual prepared Gad dedicated attack, per-target optional request/decline, spirit-minus-two threshold, success body damage and failure death. Broader intervention/death-batch paragraph remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/scythe-physical.test.ts": "72508c9a9c6b7322a246f5384a76d01c5a2e0e0cc3f6d822223500ed0f4e4def"
+      },
+      "matchedPassingBindings": 18
+    },
+    {
+      "identity": "ruling:T13#ruling-paragraph/004",
+      "covers": [
+        "a2-p10-r1c3#semantic/ordinary/d6-hit-count",
+        "a2-p10-r1c3#semantic/ordinary/non-shin-precheck",
+        "a2-p10-r1c3#semantic/ordinary/per-hit-counter",
+        "a2-p10-r1c3#semantic/ordinary/per-hit-maai",
+        "a2-p10-r1c3#semantic/ordinary/precheck-before-use"
+      ],
+      "basis": "Actual shared d6 count, non-Shin spirit-minus-two preceding use check and failure disposal, individual paid Maai and parry defenses leave other hits/targets intact. Supplemental retroactive reaction restrictions remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/hundred-slash-physical.test.ts": "2a1bff91d8ada4d37f52885f252c3ac282fe164592bcb03f1e21678bc6cbc38e",
+        "packages/engine/test/r6-combined-death.test.ts": "c51bdf27c4f5c0c61742caa94620b854524df65673cc2380b2edb15b39e77105"
+      },
+      "matchedPassingBindings": 23
     }
   ],
   "skyWingValidation": {
