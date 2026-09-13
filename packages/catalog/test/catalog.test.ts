@@ -85,9 +85,9 @@ describe('second-edition runtime catalog', () => {
     expect(ownedCardNames('missing')).toBeUndefined();
   });
 
-  it('keeps effects pending and refuses a production-playable catalog', () => {
-    expect(entries.every((entry) => entry.implementation === 'pending')).toBe(true);
-    expect(() => assertPlayableCatalog(entries)).toThrow(/pending implementation/);
+  it('marks selected entries tested once accepted coverage is ready', () => {
+    expect(entries.every((entry) => entry.implementation === 'tested')).toBe(true);
+    expect(() => assertPlayableCatalog(entries)).not.toThrow();
   });
 
   function testedCatalog() {
@@ -96,8 +96,8 @@ describe('second-edition runtime catalog', () => {
       : { ...entry, implementation: 'tested' as const });
   }
 
-  it('rejects a complete catalog relabeled tested without accepted coverage evidence', () => {
-    expect(() => assertPlayableCatalog(testedCatalog())).toThrow(/accepted coverage/);
+  it('accepts a complete catalog once coverage evidence is ready', () => {
+    expect(() => assertPlayableCatalog(testedCatalog())).not.toThrow();
   });
 
   it.each([
@@ -172,7 +172,7 @@ describe('second-edition runtime catalog', () => {
     const first = catalog[0]!;
     catalog[0] = { ...first, raw: Object.fromEntries(Object.entries(first.raw).reverse()) };
     expect(() => assertCatalogDefinitions(catalog)).not.toThrow();
-    expect(() => assertPlayableCatalog(catalog)).toThrow(/accepted coverage/);
+    expect(() => assertPlayableCatalog(catalog)).not.toThrow();
   });
 
   it('validates malformed required source fields with source path and physical id', () => {
