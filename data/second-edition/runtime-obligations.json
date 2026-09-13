@@ -185458,7 +185458,25 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r2c2-ab03#main-action-preserved",
+        "c2-p01-r2c2-ab03#own-turn-extra",
+        "c2-p01-r2c2-ab03#own-turn-once-attempt",
+        "c2-p03-r1c2-ab02#main-action-preserved",
+        "c2-p03-r1c2-ab02#own-turn-extra",
+        "c2-p03-r1c2-ab02#own-turn-once-attempt",
+        "c2-p03-r1c2-ab04#main-action-preserved",
+        "c2-p03-r1c2-ab04#own-turn-extra-once",
+        "c2-p03-r1c2-ab04#own-turn-once-attempt",
+        "c2-p03-r2c1-ab03#own-turn-extra",
+        "c2-p03-r2c1-ab03#own-turn-once-attempt",
+        "c2-p04-r2c1-ab01#own-turn-extra",
+        "c2-p04-r2c1-ab01#own-turn-once-attempt",
+        "c2-p04-r2c1-ab02#own-turn-extra",
+        "c2-p04-r2c1-ab02#own-turn-once-attempt",
+        "c2-p05-r1c1-ab01#own-turn-extra",
+        "c2-p05-r1c1-ab01#own-turn-once-attempt"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185473,7 +185491,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released",
+        "c2-p03-r1c2-ab04#lia-alive-duration",
+        "c2-p03-r1c2-ab04#other-ban-causes-retained",
+        "c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185503,7 +185526,28 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r2c2-ab03#main-action-preserved",
+        "c2-p01-r2c2-ab03#own-turn-extra",
+        "c2-p01-r2c2-ab03#own-turn-once-attempt",
+        "c2-p01-r2c2-ab03#public-priority-no-private-choice-interrupt",
+        "c2-p03-r1c2-ab02#main-action-preserved",
+        "c2-p03-r1c2-ab02#outside-own-attack-only",
+        "c2-p03-r1c2-ab02#own-turn-extra",
+        "c2-p03-r1c2-ab02#own-turn-once-attempt",
+        "c2-p03-r1c2-ab02#public-priority-no-private-choice-interrupt",
+        "c2-p03-r1c2-ab04#main-action-preserved",
+        "c2-p03-r1c2-ab04#own-turn-extra-once",
+        "c2-p03-r1c2-ab04#own-turn-once-attempt",
+        "c2-p03-r2c1-ab03#own-turn-extra",
+        "c2-p03-r2c1-ab03#own-turn-once-attempt",
+        "c2-p04-r2c1-ab01#own-turn-extra",
+        "c2-p04-r2c1-ab01#own-turn-once-attempt",
+        "c2-p04-r2c1-ab02#own-turn-extra",
+        "c2-p04-r2c1-ab02#own-turn-once-attempt",
+        "c2-p05-r1c1-ab01#own-turn-extra",
+        "c2-p05-r1c1-ab01#own-turn-once-attempt"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185518,7 +185562,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r2c2-ab03#private-complete-followers",
+        "c2-p03-r1c2-ab02#optional-all-seen-discard",
+        "c2-p03-r1c2-ab02#private-chant-snapshot",
+        "c2-p03-r2c1-ab03#concealed-target",
+        "c2-p03-r2c1-ab03#private-identity",
+        "c2-p04-r2c1-ab02#optional-one-seen-discard",
+        "c2-p04-r2c1-ab02#private-whole-hand-snapshot"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185533,7 +185585,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab03#concealed-target",
+        "c2-p05-r1c1-ab01#selected-character-reveal"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185548,7 +185603,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r2c2-ab03#private-complete-followers",
+        "c2-p03-r1c2-ab02#optional-all-seen-discard",
+        "c2-p03-r1c2-ab02#private-chant-snapshot",
+        "c2-p03-r2c1-ab03#concealed-target",
+        "c2-p03-r2c1-ab03#private-identity",
+        "c2-p04-r2c1-ab02#optional-one-seen-discard",
+        "c2-p04-r2c1-ab02#private-whole-hand-snapshot"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185563,7 +185626,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p02-r2c1-ab04#discard-all-hand-magic",
+        "c2-p02-r2c1-ab04#own-main-action",
+        "c2-p04-r1c1-ab04#complete-hand-exchange",
+        "c2-p04-r1c1-ab04#own-main-action",
+        "c2-p04-r1c1-ab04#public-counterpart"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185578,7 +185647,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p04-r1c1-ab04#complete-hand-exchange",
+        "c2-p04-r1c1-ab04#own-main-action",
+        "c2-p04-r1c1-ab04#public-counterpart"
+      ]
     },
     {
       "entryId": "ruling:C02",
@@ -185593,7 +185666,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r2c2-ab02#draw-replaces-one-with-two",
+        "c2-p01-r2c2-ab02#own-turn",
+        "c2-p07-r1c1-ab03#draw-replaces-one-with-two",
+        "c2-p07-r1c1-ab03#own-turn"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185623,7 +185701,17 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab01#once-group-target-before-followers",
+        "c2-p03-r2c1-ab01#ordinary-incoming-only",
+        "c2-p03-r2c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c1-ab01#once-group-target-before-followers",
+        "c2-p06-r1c1-ab01#ordinary-incoming-only",
+        "c2-p06-r1c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c2-ab01#once-group-target-before-followers",
+        "c2-p06-r1c2-ab01#ordinary-incoming-only",
+        "c2-p06-r1c2-ab01#other-target-declared-hits-survive"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185638,7 +185726,32 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r1c2-ab04#Dia-doubles-protection",
+        "c2-p01-r1c2-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p01-r2c1-ab04#Dia-doubles-protection",
+        "c2-p01-r2c1-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r2c1-ab04#Lester-doubles-protection",
+        "c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p03-r2c1-ab01#doubles-stop-attacker",
+        "c2-p03-r2c1-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p03-r2c1-ab01#sixes-faction-copy",
+        "c2-p03-r2c1-ab01#sixes-objective-EVIL",
+        "c2-p03-r2c1-ab01#sixes-protection-Lia",
+        "c2-p05-r2c1-ab02#Dia-doubles-protection",
+        "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+        "c2-p05-r2c1-ab02#Lester-doubles-protection",
+        "c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c1-ab01#doubles-stop-attacker",
+        "c2-p06-r1c1-ab01#sixes-pending-fatal-intent-after-other-target-hits",
+        "c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c2-ab01#doubles-stop-attacker",
+        "c2-p06-r1c2-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p06-r1c2-ab01#replace-protection-Dia",
+        "c2-p06-r1c2-ab01#sixes-faction-copy",
+        "c2-p06-r1c2-ab01#snapshot-Dia-enemy-factions"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185653,7 +185766,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p02-r1c1-ab03#charm-cancel",
+        "c2-p02-r1c1-ab03#own-attack",
+        "c2-p02-r1c1-ab03#public-Dia",
+        "c2-p05-r1c1-ab03#own-attack",
+        "c2-p05-r1c1-ab03#poem-cancel",
+        "c2-p05-r1c1-ab03#public-Lester"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185683,7 +185803,20 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab01#canceled-attempt-stays-spent",
+        "c2-p03-r2c1-ab01#once-group-target-before-followers",
+        "c2-p03-r2c1-ab01#ordinary-incoming-only",
+        "c2-p03-r2c1-ab01#same-faction-attacker-not-excluded",
+        "c2-p06-r1c1-ab01#canceled-attempt-stays-spent",
+        "c2-p06-r1c1-ab01#once-group-target-before-followers",
+        "c2-p06-r1c1-ab01#ordinary-incoming-only",
+        "c2-p06-r1c1-ab01#same-faction-attacker-not-excluded",
+        "c2-p06-r1c2-ab01#canceled-attempt-stays-spent",
+        "c2-p06-r1c2-ab01#once-group-target-before-followers",
+        "c2-p06-r1c2-ab01#ordinary-incoming-only",
+        "c2-p06-r1c2-ab01#same-faction-attacker-not-excluded"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185698,7 +185831,23 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab01#attacker-spirit-minus-one",
+        "c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p03-r2c1-ab01#doubles-stop-attacker",
+        "c2-p03-r2c1-ab01#failure-cancels-own-target-all-hits",
+        "c2-p03-r2c1-ab01#stop-expires-next-seat-arrival",
+        "c2-p06-r1c1-ab01#attacker-spirit-minus-one",
+        "c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c1-ab01#doubles-stop-attacker",
+        "c2-p06-r1c1-ab01#failure-own-target-all-hits-cancel",
+        "c2-p06-r1c1-ab01#stop-expires-next-seat-arrival",
+        "c2-p06-r1c2-ab01#attacker-spirit-minus-one",
+        "c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c2-ab01#doubles-stop-attacker",
+        "c2-p06-r1c2-ab01#failure-own-target-all-hits-cancel",
+        "c2-p06-r1c2-ab01#stop-expires-next-seat-arrival"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185713,7 +185862,16 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p03-r2c1-ab01#sixes-faction-copy",
+        "c2-p03-r2c1-ab01#sixes-objective-EVIL",
+        "c2-p03-r2c1-ab01#sixes-protection-Lia",
+        "c2-p06-r1c2-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p06-r1c2-ab01#replace-protection-Dia",
+        "c2-p06-r1c2-ab01#sixes-faction-copy",
+        "c2-p06-r1c2-ab01#snapshot-Dia-enemy-factions"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185728,7 +185886,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c1-ab01#sixes-pending-fatal-intent-after-other-target-hits",
+        "c2-p06-r1c2-ab01#other-target-declared-hits-survive"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185788,7 +185951,17 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r1c2-ab04#Dia-doubles-protection",
+        "c2-p01-r1c2-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p01-r2c1-ab04#Dia-doubles-protection",
+        "c2-p01-r2c1-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r2c1-ab04#Lester-doubles-protection",
+        "c2-p05-r2c1-ab02#Dia-doubles-protection",
+        "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+        "c2-p05-r2c1-ab02#Lester-doubles-protection"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185803,7 +185976,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p02-r1c1-ab03#charm-cancel",
+        "c2-p02-r1c1-ab03#own-attack",
+        "c2-p02-r1c1-ab03#public-Dia",
+        "c2-p05-r1c1-ab03#own-attack",
+        "c2-p05-r1c1-ab03#poem-cancel",
+        "c2-p05-r1c1-ab03#public-Lester"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185818,7 +185998,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p05-r2c1-ab02#mental-technique-stop-prevention"
+      ]
     },
     {
       "entryId": "ruling:C03",
@@ -185833,7 +186015,18 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p01-r1c2-ab04#Dia-doubles-protection",
+        "c2-p01-r1c2-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p01-r2c1-ab04#Dia-doubles-protection",
+        "c2-p01-r2c1-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r2c1-ab04#Lester-doubles-protection",
+        "c2-p05-r2c1-ab02#Dia-doubles-protection",
+        "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+        "c2-p05-r2c1-ab02#Lester-doubles-protection",
+        "c2-p05-r2c1-ab02#mental-technique-stop-prevention"
+      ]
     },
     {
       "entryId": "ruling:C04",
@@ -186493,7 +186686,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p02-r1c1-ab02#all-followers-ignore",
+        "c2-p02-r1c1-ab02#enemy-follower-entry",
+        "c2-p02-r1c1-ab02#one-advance-discard",
+        "c2-p02-r1c1-ab02#public-source"
+      ]
     },
     {
       "entryId": "ruling:C06",
@@ -186508,7 +186706,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p02-r1c1-ab02#enemy-follower-entry",
+        "c2-p03-r2c2-ab02#optional-virtual-source"
+      ]
     },
     {
       "entryId": "ruling:C07",
@@ -186538,7 +186739,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c2-ab02#front-position",
+        "c2-p03-r2c2-ab02#group-lifetime",
+        "c2-p03-r2c2-ab02#no-physical-card",
+        "c2-p03-r2c2-ab02#optional-virtual-source",
+        "c2-p03-r2c2-ab02#virtual-hp-one"
+      ]
     },
     {
       "entryId": "ruling:C07",
@@ -186553,7 +186760,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation"
+      ]
     },
     {
       "entryId": "ruling:C07",
@@ -186568,7 +186777,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c2-ab02#virtual-base-level-four",
+        "c2-p03-r2c2-ab02#virtual-hp-one"
+      ]
     },
     {
       "entryId": "ruling:C07",
@@ -186583,7 +186795,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab02#independent-subset-one-use",
+        "c2-p03-r2c1-ab02#physical-human-invalidation",
+        "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation",
+        "c2-p03-r2c1-ab02#usage-level-vs-magic-spirit-conversion"
+      ]
     },
     {
       "entryId": "ruling:C07",
@@ -186598,7 +186815,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab02#physical-human-invalidation"
+      ]
     },
     {
       "entryId": "ruling:C07",
@@ -186613,7 +186832,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r2c1-ab02#independent-subset-one-use"
+      ]
     },
     {
       "entryId": "ruling:C08",
@@ -187423,7 +187644,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released",
+        "c2-p03-r1c2-ab04#other-ban-causes-retained",
+        "c2-p07-r1c2-ab03#optional-selected-multiple-bans"
+      ]
     },
     {
       "entryId": "ruling:C16",
@@ -187438,7 +187663,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/no-main-action",
+        "c2-p07-r1c2-ab03#C16/public-own-opportunity-once",
+        "c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration"
+      ]
     },
     {
       "entryId": "ruling:C16",
@@ -187453,7 +187682,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/designations-accumulate",
+        "c2-p07-r1c2-ab03#C16/no-secret-target-rejection",
+        "c2-p07-r1c2-ab03#C16/public-only-target-candidates",
+        "c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent",
+        "c2-p07-r1c2-ab03#C16/reject-no-new-designation",
+        "c2-p07-r1c2-ab03#exclude-LancelotII",
+        "c2-p07-r1c2-ab03#exclude-Lia"
+      ]
     },
     {
       "entryId": "ruling:C16",
@@ -187468,7 +187705,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript",
+        "c2-p07-r1c2-ab03#C16/hidden-target-uniform-public-view"
+      ]
     },
     {
       "entryId": "ruling:C16",
@@ -187483,7 +187723,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence",
+        "c2-p07-r1c2-ab03#C16/no-early-ban-removal-in-G15",
+        "c2-p07-r1c2-ab03#C16/target-death-revival-retains-designation"
+      ]
     },
     {
       "entryId": "ruling:C16",
@@ -187498,7 +187742,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/designated-public-state-candidates",
+        "c2-p03-r1c2-ab04#C16/exempt-target-same-check-and-lease",
+        "c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban",
+        "c2-p03-r1c2-ab04#own-turn-extra-once",
+        "c2-p03-r1c2-ab04#spirit-minus-five"
+      ]
     },
     {
       "entryId": "ruling:C16",
@@ -187513,7 +187763,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/lease-expires-G15-death-entry",
+        "c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence",
+        "c2-p03-r1c2-ab04#C16/lease-survives-target-absence",
+        "c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease",
+        "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released",
+        "c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease",
+        "c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease"
+      ]
     },
     {
       "entryId": "ruling:rulings-actions-01-06:common",
@@ -202356,7 +202614,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/initial-minus-two",
+        "a2-p18-r1c1#semantic/ordinary/recovery-minus-one"
+      ]
     },
     {
       "entryId": "ruling:F01",
@@ -202371,7 +202632,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/initial-minus-two",
+        "a2-p18-r1c1#semantic/ordinary/recovery-minus-one"
+      ]
     },
     {
       "entryId": "ruling:F01",
@@ -202386,7 +202650,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/initial-minus-two",
+        "a2-p18-r1c1#semantic/ordinary/magic-disabled",
+        "a2-p18-r1c1#semantic/ordinary/recovery-minus-one",
+        "a2-p18-r1c1#semantic/ordinary/recovery-phase"
+      ]
     },
     {
       "entryId": "ruling:F01",
@@ -202401,7 +202670,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/magic-disabled"
+      ]
     },
     {
       "entryId": "ruling:F01",
@@ -202416,7 +202687,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/magic-disabled",
+        "a2-p18-r1c1#semantic/ordinary/no-hp-healing",
+        "a2-p18-r1c1#semantic/ordinary/recovery-phase"
+      ]
     },
     {
       "entryId": "ruling:F01",
@@ -202461,7 +202736,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c2#semantic/ordinary/no-counter",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four"
+      ]
     },
     {
       "entryId": "ruling:F02",
@@ -202476,7 +202754,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c2#semantic/ordinary/no-counter",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four"
+      ]
     },
     {
       "entryId": "ruling:F02",
@@ -202491,7 +202772,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c2#semantic/ordinary/no-counter",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four"
+      ]
     },
     {
       "entryId": "ruling:F02",
@@ -202536,7 +202820,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/eight-per-target",
+        "a2-p18-r1c3#semantic/ordinary/independent-defenses",
+        "a2-p18-r1c3#semantic/ordinary/independent-followers",
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ]
     },
     {
       "entryId": "ruling:F03",
@@ -202585,7 +202874,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/independent-defenses",
+        "a2-p18-r1c3#semantic/ordinary/independent-followers",
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ]
     },
     {
       "entryId": "ruling:F03",
@@ -202600,7 +202893,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/independent-defenses",
+        "a2-p18-r1c3#semantic/ordinary/independent-followers",
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ]
     },
     {
       "entryId": "ruling:F03",
@@ -202645,7 +202942,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/base-damage-distinct",
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death",
+        "a2-p18-r2c1#semantic/ordinary/hit-spirit-check"
+      ]
     },
     {
       "entryId": "ruling:F04",
@@ -202660,7 +202961,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/base-damage-distinct",
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death",
+        "a2-p18-r2c1#semantic/ordinary/hit-spirit-check"
+      ]
     },
     {
       "entryId": "ruling:F04",
@@ -202675,7 +202980,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/base-damage-distinct",
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death",
+        "a2-p18-r2c1#semantic/ordinary/hit-spirit-check"
+      ]
     },
     {
       "entryId": "ruling:F04",
@@ -202690,7 +202999,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death"
+      ]
     },
     {
       "entryId": "ruling:F04",
@@ -202705,7 +203016,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death"
+      ]
     },
     {
       "entryId": "ruling:F04",
@@ -202750,7 +203063,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c2#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c2#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c2#semantic/ordinary/self-magic-only"
+      ]
     },
     {
       "entryId": "ruling:F05",
@@ -202833,7 +203150,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p18-r2c3#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c3#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c3#semantic/ordinary/self-magic-only"
+      ]
     },
     {
       "entryId": "ruling:F06",
@@ -204063,7 +204384,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r1c2#semantic/dedicated/double-damage",
+        "a2-p20-r1c2#semantic/dedicated/effect-plus-one",
+        "ruling:G08#semantic/add-before-multiply-round-once"
+      ]
     },
     {
       "entryId": "ruling:F20",
@@ -204078,7 +204403,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r1c2#semantic/dedicated/double-damage",
+        "a2-p20-r1c2#semantic/dedicated/effect-plus-one",
+        "a2-p20-r1c2#semantic/follower/printed-hp",
+        "a2-p20-r1c2#semantic/follower/printed-level",
+        "ruling:G08#semantic/add-before-multiply-round-once"
+      ]
     },
     {
       "entryId": "ruling:F20",

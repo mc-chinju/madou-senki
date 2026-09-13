@@ -35,7 +35,7 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 497,
+  "remainingAggregateMappings": 442,
   "excluded": "Current candidate is not accepted; full verification and 688 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
@@ -4993,6 +4993,849 @@
         "tests/e2e/scenario-s30.spec.ts": "3e1d4f5f2863a86b1a0edd13ac6907735b54d0f0f2cf5741f8eaa239f7612759"
       },
       "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F01#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/initial-minus-two",
+        "a2-p18-r1c1#semantic/ordinary/recovery-minus-one"
+      ],
+      "basis": "Status paragraph only; bound to the first silence question. Actual hit resistance uses modifier-2: faces2+2 succeed with no status and zero damage past both followers; 2+3 fails and stores source-owned silence. Own-turn recovery rolls modifier-1 until success. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/silence-physical.test.ts": "09f40575add38104c68cfd1611bd2631257f56f4fd7ebac9adb40daa8eba5190"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F01#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/initial-minus-two",
+        "a2-p18-r1c1#semantic/ordinary/recovery-minus-one"
+      ],
+      "basis": "Actual first resistance is modifier-2 at hit; recovery is modifier-1 on each later own-turn start until success. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/silence-physical.test.ts": "09f40575add38104c68cfd1611bd2631257f56f4fd7ebac9adb40daa8eba5190"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F01#ruling-paragraph/004",
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/initial-minus-two",
+        "a2-p18-r1c1#semantic/ordinary/magic-disabled",
+        "a2-p18-r1c1#semantic/ordinary/recovery-minus-one",
+        "a2-p18-r1c1#semantic/ordinary/recovery-phase"
+      ],
+      "basis": "Actual hit resistance modifier-2: success never attaches silence, failure stores one source-owned silence. Own-turn recovery uses modifier-1 until success, keeps original chants, and only then permits the retained chant attack. Failed recovery keeps magic attack, new CHANT, and existing CHANT prohibited. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/silence-physical.test.ts": "09f40575add38104c68cfd1611bd2631257f56f4fd7ebac9adb40daa8eba5190"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:F01#ruling-paragraph/005",
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/magic-disabled"
+      ],
+      "basis": "Actual silence rejects magic attack, new CHANT, existing CHANT attack, magic follower attack, magic defense, and chanted counter, while warrior attack, potion healing, and passive followers remain. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/silence-physical.test.ts": "09f40575add38104c68cfd1611bd2631257f56f4fd7ebac9adb40daa8eba5190"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F01#ruling-paragraph/006",
+      "covers": [
+        "a2-p18-r1c1#semantic/ordinary/magic-disabled",
+        "a2-p18-r1c1#semantic/ordinary/no-hp-healing",
+        "a2-p18-r1c1#semantic/ordinary/recovery-phase"
+      ],
+      "basis": "Actual silence rejects magic attack, new CHANT, existing CHANT attack, magic follower attack, magic defense, chanted counter, and Aiel Ice Blade, while warrior attack remains legal, existing chants are retained until recovery succeeds, potion healing restores HP without removing silence, and passive followers still absorb. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/silence-physical.test.ts": "09f40575add38104c68cfd1611bd2631257f56f4fd7ebac9adb40daa8eba5190"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F02#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r1c2#semantic/ordinary/no-counter",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four"
+      ],
+      "basis": "Status paragraph only; bound to the counter-ban versus Royal Knights question. Actual Dragon rejects counter/defense cards and does not reflect at printed effect6. Counter-prohibited Gadyura still reflects the reached local hit. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae",
+        "packages/engine/test/royal-knights-physical.test.ts": "93e6fe161ff7205b87d09211f99c726a8719d801afd5aaf1de361acab9cdd598"
+      },
+      "matchedPassingBindings": 16
+    },
+    {
+      "identity": "ruling:F02#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r1c2#semantic/ordinary/no-counter",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four"
+      ],
+      "basis": "Actual Dragon counterProhibited rejects physical defense, chanted counter, and Mirror; Royal Knights still reflect a counter-prohibited Gadyura local hit. Printed Dragon effect6 does not meet the fixed4 reflection limit. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae",
+        "packages/engine/test/royal-knights-physical.test.ts": "93e6fe161ff7205b87d09211f99c726a8719d801afd5aaf1de361acab9cdd598"
+      },
+      "matchedPassingBindings": 16
+    },
+    {
+      "identity": "ruling:F02#ruling-paragraph/004",
+      "covers": [
+        "a2-p18-r1c2#semantic/ordinary/no-counter",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four"
+      ],
+      "basis": "Actual counter prohibition blocks using a card as a counter, not follower reflection: Gadyura still reflects. Printed Dragon effect6 is not reflected; magic4 reflects and magic5 does not. Reduced-Dragon-to-4 reflection is not claimed here. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae",
+        "packages/engine/test/royal-knights-physical.test.ts": "93e6fe161ff7205b87d09211f99c726a8719d801afd5aaf1de361acab9cdd598"
+      },
+      "matchedPassingBindings": 16
+    },
+    {
+      "identity": "ruling:F03#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/eight-per-target",
+        "a2-p18-r1c3#semantic/ordinary/independent-defenses",
+        "a2-p18-r1c3#semantic/ordinary/independent-followers",
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ],
+      "basis": "Status paragraph only; bound to printed Earth Magic two-target and independent-resolution clauses. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:F03#ruling-paragraph/005",
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/independent-defenses",
+        "a2-p18-r1c3#semantic/ordinary/independent-followers",
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ],
+      "basis": "Actual Earth Magic fixes the declared one-or-two-target set, shares base damage 8, completes every normal-defense window before followers, and rejects mid-resolution retargeting. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:F03#ruling-paragraph/006",
+      "covers": [
+        "a2-p18-r1c3#semantic/ordinary/independent-defenses",
+        "a2-p18-r1c3#semantic/ordinary/independent-followers",
+        "a2-p18-r1c3#semantic/ordinary/two-targets"
+      ],
+      "basis": "Actual declaration stores the target set; Teleport/Evade/Maai protect only B while C still resolves; all normal defenses finish before follower defense; a later retarget command is rejected. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:F04#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/base-damage-distinct",
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death",
+        "a2-p18-r2c1#semantic/ordinary/hit-spirit-check"
+      ],
+      "basis": "Status paragraph only; bound to the Petrify order question. Actual body hit stores one resistance before applying damage; failure records petrification death with damage5 in one death-batch. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/petrify-physical.test.ts": "dcb038892fdf29b35b57a4dfddf154af40dc22d96df38b6aeeb08817729935e2"
+      },
+      "matchedPassingBindings": 14
+    },
+    {
+      "identity": "ruling:F04#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/base-damage-distinct",
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death",
+        "a2-p18-r2c1#semantic/ordinary/hit-spirit-check"
+      ],
+      "basis": "Actual Petrify resistance occurs on a reached body hit before damage: after before-roll, presence is still active with damage0; closing the check then stores one damage-and-stone-death batch. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/petrify-physical.test.ts": "dcb038892fdf29b35b57a4dfddf154af40dc22d96df38b6aeeb08817729935e2"
+      },
+      "matchedPassingBindings": 14
+    },
+    {
+      "identity": "ruling:F04#ruling-paragraph/004",
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/base-damage-distinct",
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death",
+        "a2-p18-r2c1#semantic/ordinary/hit-spirit-check"
+      ],
+      "basis": "Actual reached Petrify rolls spirit0 once; success keeps body damage5 and no death; failure stores damage5 plus instantDeath cause petrification in one G15 batch. Earth-null or equal Guardian prevents the body hit and therefore the check; Metal absorbing numeric damage still leaves the resistance/death. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/petrify-physical.test.ts": "dcb038892fdf29b35b57a4dfddf154af40dc22d96df38b6aeeb08817729935e2"
+      },
+      "matchedPassingBindings": 14
+    },
+    {
+      "identity": "ruling:F04#ruling-paragraph/005",
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death"
+      ],
+      "basis": "Actual stone death remains eligible for ordinary chanted Resurrection: three use checks, restored active presence, damage0, empty statuses, and a fresh five-card setup. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/petrify-physical.test.ts": "dcb038892fdf29b35b57a4dfddf154af40dc22d96df38b6aeeb08817729935e2"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F04#ruling-paragraph/006",
+      "covers": [
+        "a2-p18-r2c1#semantic/ordinary/failure-stone-death"
+      ],
+      "basis": "Actual petrification death cause does not forbid ordinary Resurrection; revival clears statuses including any leftover stone state and deals a new five-card setup. Separate revival-forbidden effects are not claimed here. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/petrify-physical.test.ts": "dcb038892fdf29b35b57a4dfddf154af40dc22d96df38b6aeeb08817729935e2"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F05#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r2c2#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c2#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c2#semantic/ordinary/self-magic-only"
+      ],
+      "basis": "Status paragraph only; bound to the same Light Barrier cancel/use-check clauses as the first question. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/barrier-physical.test.ts": "36f6365a4cb425f75711e3d5013551f5322b29ffb992e01852ba0a37f984342f"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F06#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r2c3#semantic/ordinary/cancel-magic",
+        "a2-p18-r2c3#semantic/ordinary/insufficient-use-check",
+        "a2-p18-r2c3#semantic/ordinary/self-magic-only"
+      ],
+      "basis": "Status paragraph only; bound to the same Dark Barrier cancel/use-check clauses as the first question. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/barrier-physical.test.ts": "36f6365a4cb425f75711e3d5013551f5322b29ffb992e01852ba0a37f984342f"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F20#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r1c2#semantic/dedicated/double-damage",
+        "a2-p20-r1c2#semantic/dedicated/effect-plus-one",
+        "ruling:G08#semantic/add-before-multiply-round-once"
+      ],
+      "basis": "Actual named Garwin dedicated Black Knights: Sword Master addition precedes doubling so effect6 damage14; Prayer3 raises only effect to 9 and leaves damage14. Shared G08 add-then-multiply-round-once is the same composition. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/knight-orders-physical.test.ts": "211e85481729371c9e6fdaa21a70e9a6c84f692a6388c1460577d8201aefd880",
+        "packages/engine/test/action-value-arithmetic.test.ts": "e84a25ba0063b15dc457f198d4890a50f48ee2a10050c53a46f5d79117cf79aa"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F20#ruling-paragraph/004",
+      "covers": [
+        "a2-p20-r1c2#semantic/dedicated/double-damage",
+        "a2-p20-r1c2#semantic/dedicated/effect-plus-one",
+        "a2-p20-r1c2#semantic/follower/printed-hp",
+        "a2-p20-r1c2#semantic/follower/printed-level",
+        "ruling:G08#semantic/add-before-multiply-round-once"
+      ],
+      "basis": "Actual dedicated Black Knights are printed effect4+1 and damage5 doubled to 10, or with Sword Master (5+2)*2=14; Prayer adds effect only. Defender printed level4 HP5 are unchanged by the attack package. Late re-election of the addition after freeze is not claimed beyond G08 frozen-effect tests already mapped elsewhere. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/knight-orders-physical.test.ts": "211e85481729371c9e6fdaa21a70e9a6c84f692a6388c1460577d8201aefd880",
+        "packages/engine/test/action-value-arithmetic.test.ts": "e84a25ba0063b15dc457f198d4890a50f48ee2a10050c53a46f5d79117cf79aa"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/002",
+      "covers": [
+        "c2-p01-r2c2-ab03#main-action-preserved",
+        "c2-p01-r2c2-ab03#own-turn-extra",
+        "c2-p01-r2c2-ab03#own-turn-once-attempt",
+        "c2-p03-r1c2-ab02#main-action-preserved",
+        "c2-p03-r1c2-ab02#own-turn-extra",
+        "c2-p03-r1c2-ab02#own-turn-once-attempt",
+        "c2-p03-r1c2-ab04#main-action-preserved",
+        "c2-p03-r1c2-ab04#own-turn-extra-once",
+        "c2-p03-r1c2-ab04#own-turn-once-attempt",
+        "c2-p03-r2c1-ab03#own-turn-extra",
+        "c2-p03-r2c1-ab03#own-turn-once-attempt",
+        "c2-p04-r2c1-ab01#own-turn-extra",
+        "c2-p04-r2c1-ab01#own-turn-once-attempt",
+        "c2-p04-r2c1-ab02#own-turn-extra",
+        "c2-p04-r2c1-ab02#own-turn-once-attempt",
+        "c2-p05-r1c1-ab01#own-turn-extra",
+        "c2-p05-r1c1-ab01#own-turn-once-attempt"
+      ],
+      "basis": "Actual Lia/Lester/Alseil/Uonos/Cham extras are own-turn extra actions: one attempt, main action preserved, off-turn/stopped/disabled rejected. Dedicated death/anytime timings stay with those abilities. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 23
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/003",
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released",
+        "c2-p03-r1c2-ab04#lia-alive-duration",
+        "c2-p03-r1c2-ab04#other-ban-causes-retained",
+        "c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release"
+      ],
+      "basis": "Actual Blessing is one successful own-turn extra that releases only the selected Vanmil designation while Lia lives; unrelated bans remain. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d",
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/005",
+      "covers": [
+        "c2-p01-r2c2-ab03#main-action-preserved",
+        "c2-p01-r2c2-ab03#own-turn-extra",
+        "c2-p01-r2c2-ab03#own-turn-once-attempt",
+        "c2-p01-r2c2-ab03#public-priority-no-private-choice-interrupt",
+        "c2-p03-r1c2-ab02#main-action-preserved",
+        "c2-p03-r1c2-ab02#outside-own-attack-only",
+        "c2-p03-r1c2-ab02#own-turn-extra",
+        "c2-p03-r1c2-ab02#own-turn-once-attempt",
+        "c2-p03-r1c2-ab02#public-priority-no-private-choice-interrupt",
+        "c2-p03-r1c2-ab04#main-action-preserved",
+        "c2-p03-r1c2-ab04#own-turn-extra-once",
+        "c2-p03-r1c2-ab04#own-turn-once-attempt",
+        "c2-p03-r2c1-ab03#own-turn-extra",
+        "c2-p03-r2c1-ab03#own-turn-once-attempt",
+        "c2-p04-r2c1-ab01#own-turn-extra",
+        "c2-p04-r2c1-ab01#own-turn-once-attempt",
+        "c2-p04-r2c1-ab02#own-turn-extra",
+        "c2-p04-r2c1-ab02#own-turn-once-attempt",
+        "c2-p05-r1c1-ab01#own-turn-extra",
+        "c2-p05-r1c1-ab01#own-turn-once-attempt"
+      ],
+      "basis": "Actual extras remain own-turn once without spending the main action; public reaction priority can host them during own attack, but Lia 神出鬼没 is excluded during own attack and extras never enter foreign private choices. Cancellation still consumes the attempt. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 27
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/006",
+      "covers": [
+        "c2-p01-r2c2-ab03#private-complete-followers",
+        "c2-p03-r1c2-ab02#optional-all-seen-discard",
+        "c2-p03-r1c2-ab02#private-chant-snapshot",
+        "c2-p03-r2c1-ab03#concealed-target",
+        "c2-p03-r2c1-ab03#private-identity",
+        "c2-p04-r2c1-ab02#optional-one-seen-discard",
+        "c2-p04-r2c1-ab02#private-whole-hand-snapshot"
+      ],
+      "basis": "Actual Cham privately sees the complete follower column; Lester privately sees a concealed identity; Alseil privately sees the whole hand then optional one seen discard; Lia inspects nearby chants then all-or-none discard. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/007",
+      "covers": [
+        "c2-p03-r2c1-ab03#concealed-target",
+        "c2-p05-r1c1-ab01#selected-character-reveal"
+      ],
+      "basis": "Actual Lester/Uonos target lists include self; Uonos may force its own hidden card public and that forced reveal is not a voluntary True-Power authorization. Twin exchange still requires an actual public counterpart. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/008",
+      "covers": [
+        "c2-p01-r2c2-ab03#private-complete-followers",
+        "c2-p03-r1c2-ab02#optional-all-seen-discard",
+        "c2-p03-r1c2-ab02#private-chant-snapshot",
+        "c2-p03-r2c1-ab03#concealed-target",
+        "c2-p03-r2c1-ab03#private-identity",
+        "c2-p04-r2c1-ab02#optional-one-seen-discard",
+        "c2-p04-r2c1-ab02#private-whole-hand-snapshot"
+      ],
+      "basis": "Actual inspection stays private to the user, freezes the seen snapshot through intervening reveal/transform, discards only still-present original cards, and returns to the parent window. Empty snapshots finish without disclosing replacements. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/009",
+      "covers": [
+        "c2-p02-r2c1-ab04#discard-all-hand-magic",
+        "c2-p02-r2c1-ab04#own-main-action",
+        "c2-p04-r1c1-ab04#complete-hand-exchange",
+        "c2-p04-r1c1-ab04#own-main-action",
+        "c2-p04-r1c1-ab04#public-counterpart"
+      ],
+      "basis": "Actual Lancaster and twin declarations spend the main action at accept; cancellation never refunds it. Lancaster discards every normal-hand printed magic including p18 cards whose school lives only in attributes; empty discard still spends the action. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/010",
+      "covers": [
+        "c2-p04-r1c1-ab04#complete-hand-exchange",
+        "c2-p04-r1c1-ab04#own-main-action",
+        "c2-p04-r1c1-ab04#public-counterpart"
+      ],
+      "basis": "Actual twin exchange requires a public counterpart at declaration and revalidates publicity/identity/death before swapping whole hands, including empty or unequal hands, without refill or OPEN. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:C02#ruling-paragraph/011",
+      "covers": [
+        "c2-p01-r2c2-ab02#draw-replaces-one-with-two",
+        "c2-p01-r2c2-ab02#own-turn",
+        "c2-p07-r1c1-ab03#draw-replaces-one-with-two",
+        "c2-p07-r1c1-ab03#own-turn"
+      ],
+      "basis": "Actual Cham なになに and LancelotII 成長 replace the ordinary one-card draw with two when explicitly selected; decline/invalid/canceled replacement keeps the ordinary one card and does not open a second draw. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:C16#ruling-paragraph/002",
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released",
+        "c2-p03-r1c2-ab04#other-ban-causes-retained",
+        "c2-p07-r1c2-ab03#optional-selected-multiple-bans"
+      ],
+      "basis": "Actual 神と人の差 stores selected public designations; Blessing releases only Vanmil-sourced bans and leaves unrelated bans. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:C16#ruling-paragraph/003",
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/no-main-action",
+        "c2-p07-r1c2-ab03#C16/public-own-opportunity-once",
+        "c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration"
+      ],
+      "basis": "Actual designation is a public own opportunity, spends no main action, once per window; self-target then blocks further declaration. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:C16#ruling-paragraph/004",
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/designations-accumulate",
+        "c2-p07-r1c2-ab03#C16/no-secret-target-rejection",
+        "c2-p07-r1c2-ab03#C16/public-only-target-candidates",
+        "c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent",
+        "c2-p07-r1c2-ab03#C16/reject-no-new-designation",
+        "c2-p07-r1c2-ab03#exclude-LancelotII",
+        "c2-p07-r1c2-ab03#exclude-Lia"
+      ],
+      "basis": "Actual candidates are public participants minus public Lia and LancelotII; hidden identity never changes accept/reject transcripts; empty/duplicate/nonexistent and no-new-designation lists are rejected; designations accumulate. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c"
+      },
+      "matchedPassingBindings": 16
+    },
+    {
+      "identity": "ruling:C16#ruling-paragraph/005",
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript",
+        "c2-p07-r1c2-ab03#C16/hidden-target-uniform-public-view"
+      ],
+      "basis": "Actual hidden exempt targets keep the same outsider transcript and a uniform public designated-but-private view. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:C16#ruling-paragraph/006",
+      "covers": [
+        "c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence",
+        "c2-p07-r1c2-ab03#C16/no-early-ban-removal-in-G15",
+        "c2-p07-r1c2-ab03#C16/target-death-revival-retains-designation"
+      ],
+      "basis": "Actual established bans survive source suppression/absence, target death/revival, and are not removed early in G15. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c"
+      },
+      "matchedPassingBindings": 15
+    },
+    {
+      "identity": "ruling:C16#ruling-paragraph/007",
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/designated-public-state-candidates",
+        "c2-p03-r1c2-ab04#C16/exempt-target-same-check-and-lease",
+        "c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban",
+        "c2-p03-r1c2-ab04#own-turn-extra-once",
+        "c2-p03-r1c2-ab04#spirit-minus-five"
+      ],
+      "basis": "Actual Blessing stays an own-turn extra with spirit-5; candidates use designated public state; concealed inert designations share the check/lease path without disclosing a prior ban. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c",
+        "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+        "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:C16#ruling-paragraph/008",
+      "covers": [
+        "c2-p03-r1c2-ab04#C16/lease-expires-G15-death-entry",
+        "c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence",
+        "c2-p03-r1c2-ab04#C16/lease-survives-target-absence",
+        "c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease",
+        "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released",
+        "c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease",
+        "c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease"
+      ],
+      "basis": "Actual successful Blessing releases only Vanmil; the lease survives Lia suppression/absence, target absence, and redesignation, then expires at G15 death entry and does not return with revival or lost Lia identity. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c"
+      },
+      "matchedPassingBindings": 31
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/002",
+      "covers": [
+        "c2-p03-r2c1-ab01#once-group-target-before-followers",
+        "c2-p03-r2c1-ab01#ordinary-incoming-only",
+        "c2-p03-r2c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c1-ab01#once-group-target-before-followers",
+        "c2-p06-r1c1-ab01#ordinary-incoming-only",
+        "c2-p06-r1c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c2-ab01#once-group-target-before-followers",
+        "c2-p06-r1c2-ab01#ordinary-incoming-only",
+        "c2-p06-r1c2-ab01#other-target-declared-hits-survive"
+      ],
+      "basis": "Actual poem/charm/terror are once per incoming ordinary group before followers; returned counter/Mirror/Majesty/Royal reflection cannot use them; own-target cancellation leaves other declared targets. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/003",
+      "covers": [
+        "c2-p01-r1c2-ab04#Dia-doubles-protection",
+        "c2-p01-r1c2-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p01-r2c1-ab04#Dia-doubles-protection",
+        "c2-p01-r2c1-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r2c1-ab04#Lester-doubles-protection",
+        "c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p03-r2c1-ab01#doubles-stop-attacker",
+        "c2-p03-r2c1-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p03-r2c1-ab01#sixes-faction-copy",
+        "c2-p03-r2c1-ab01#sixes-objective-EVIL",
+        "c2-p03-r2c1-ab01#sixes-protection-Lia",
+        "c2-p05-r2c1-ab02#Dia-doubles-protection",
+        "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+        "c2-p05-r2c1-ab02#Lester-doubles-protection",
+        "c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c1-ab01#doubles-stop-attacker",
+        "c2-p06-r1c1-ab01#sixes-pending-fatal-intent-after-other-target-hits",
+        "c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c2-ab01#doubles-stop-attacker",
+        "c2-p06-r1c2-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p06-r1c2-ab01#replace-protection-Dia",
+        "c2-p06-r1c2-ab01#sixes-faction-copy",
+        "c2-p06-r1c2-ab01#snapshot-Dia-enemy-factions"
+      ],
+      "basis": "Actual sixes still cancel unresolved own hits and stop the attacker; poem replaces objective/protection, Dia snapshots enemy factions, Gadyoora stores pending fatal intent; fixed-faction conversion keeps old objective/protection. Doubles-protection abilities strip only the doubles extras. Shisha warrior-hit doubles death is not claimed here. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 52
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/004",
+      "covers": [
+        "c2-p02-r1c1-ab03#charm-cancel",
+        "c2-p02-r1c1-ab03#own-attack",
+        "c2-p02-r1c1-ab03#public-Dia",
+        "c2-p05-r1c1-ab03#own-attack",
+        "c2-p05-r1c1-ab03#poem-cancel",
+        "c2-p05-r1c1-ab03#public-Lester"
+      ],
+      "basis": "Actual Tia charm-cancel requires own attack plus public Dia; Uonos poem-cancel requires own attack plus public Lester. Hidden identity is not auto-revealed to satisfy those conditions. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 16
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/006",
+      "covers": [
+        "c2-p03-r2c1-ab01#canceled-attempt-stays-spent",
+        "c2-p03-r2c1-ab01#once-group-target-before-followers",
+        "c2-p03-r2c1-ab01#ordinary-incoming-only",
+        "c2-p03-r2c1-ab01#same-faction-attacker-not-excluded",
+        "c2-p06-r1c1-ab01#canceled-attempt-stays-spent",
+        "c2-p06-r1c1-ab01#once-group-target-before-followers",
+        "c2-p06-r1c1-ab01#ordinary-incoming-only",
+        "c2-p06-r1c1-ab01#same-faction-attacker-not-excluded",
+        "c2-p06-r1c2-ab01#canceled-attempt-stays-spent",
+        "c2-p06-r1c2-ab01#once-group-target-before-followers",
+        "c2-p06-r1c2-ab01#ordinary-incoming-only",
+        "c2-p06-r1c2-ab01#same-faction-attacker-not-excluded"
+      ],
+      "basis": "Actual election is before follower start, once per group; same-faction attackers are not excluded; returned attacks are rejected; canceled attempts stay spent. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 24
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/007",
+      "covers": [
+        "c2-p03-r2c1-ab01#attacker-spirit-minus-one",
+        "c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p03-r2c1-ab01#doubles-stop-attacker",
+        "c2-p03-r2c1-ab01#failure-cancels-own-target-all-hits",
+        "c2-p03-r2c1-ab01#stop-expires-next-seat-arrival",
+        "c2-p06-r1c1-ab01#attacker-spirit-minus-one",
+        "c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c1-ab01#doubles-stop-attacker",
+        "c2-p06-r1c1-ab01#failure-own-target-all-hits-cancel",
+        "c2-p06-r1c1-ab01#stop-expires-next-seat-arrival",
+        "c2-p06-r1c2-ab01#attacker-spirit-minus-one",
+        "c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits",
+        "c2-p06-r1c2-ab01#doubles-stop-attacker",
+        "c2-p06-r1c2-ab01#failure-own-target-all-hits-cancel",
+        "c2-p06-r1c2-ab01#stop-expires-next-seat-arrival"
+      ],
+      "basis": "Actual attacker spirit-1 check: ordinary failure cancels only the helper's unresolved hits; doubles cancel those hits and stop until the attacker's next seat arrival without a recovery roll. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 26
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/008",
+      "covers": [
+        "c2-p03-r2c1-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p03-r2c1-ab01#sixes-faction-copy",
+        "c2-p03-r2c1-ab01#sixes-objective-EVIL",
+        "c2-p03-r2c1-ab01#sixes-protection-Lia",
+        "c2-p06-r1c2-ab01#fixed-faction-keeps-objective-and-protection",
+        "c2-p06-r1c2-ab01#replace-protection-Dia",
+        "c2-p06-r1c2-ab01#sixes-faction-copy",
+        "c2-p06-r1c2-ab01#snapshot-Dia-enemy-factions"
+      ],
+      "basis": "Actual sixes convert poem to EVIL-extinction with Lia-only protection, Dia snapshots non-Dia enemy factions without later follow, and fixed-faction blocks conversion while retaining cancel/stop. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/009",
+      "covers": [
+        "c2-p03-r2c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c1-ab01#other-target-declared-hits-survive",
+        "c2-p06-r1c1-ab01#sixes-pending-fatal-intent-after-other-target-hits",
+        "c2-p06-r1c2-ab01#other-target-declared-hits-survive"
+      ],
+      "basis": "Actual Gadyoora sixes store pending fatal intent after other-target hits continue; own unresolved hits still cancel. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/013",
+      "covers": [
+        "c2-p01-r1c2-ab04#Dia-doubles-protection",
+        "c2-p01-r1c2-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p01-r2c1-ab04#Dia-doubles-protection",
+        "c2-p01-r2c1-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r2c1-ab04#Lester-doubles-protection",
+        "c2-p05-r2c1-ab02#Dia-doubles-protection",
+        "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+        "c2-p05-r2c1-ab02#Lester-doubles-protection"
+      ],
+      "basis": "Actual Jil/Shin/Garwin doubles-protection abilities cancel only the doubles extras of poem/charm/terror. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 37
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/014",
+      "covers": [
+        "c2-p02-r1c1-ab03#charm-cancel",
+        "c2-p02-r1c1-ab03#own-attack",
+        "c2-p02-r1c1-ab03#public-Dia",
+        "c2-p05-r1c1-ab03#own-attack",
+        "c2-p05-r1c1-ab03#poem-cancel",
+        "c2-p05-r1c1-ab03#public-Lester"
+      ],
+      "basis": "Actual specified-ability cancels are elected during the named source declaration: Tia vs public Dia charm, Uonos vs public Lester poem, both only on own attack. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 16
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/015",
+      "covers": [
+        "c2-p05-r2c1-ab02#mental-technique-stop-prevention"
+      ],
+      "basis": "Actual 執念 mental-technique stop prevention is a separate elective reservation and does not auto-apply from doubles-protection. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 2
+    },
+    {
+      "identity": "ruling:C03#ruling-paragraph/016",
+      "covers": [
+        "c2-p01-r1c2-ab04#Dia-doubles-protection",
+        "c2-p01-r1c2-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r1c2-ab04#Lester-doubles-protection",
+        "c2-p01-r2c1-ab04#Dia-doubles-protection",
+        "c2-p01-r2c1-ab04#Gadyoora-doubles-protection",
+        "c2-p01-r2c1-ab04#Lester-doubles-protection",
+        "c2-p05-r2c1-ab02#Dia-doubles-protection",
+        "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+        "c2-p05-r2c1-ab02#Lester-doubles-protection",
+        "c2-p05-r2c1-ab02#mental-technique-stop-prevention"
+      ],
+      "basis": "Actual doubles-protection and stop-prevention are separate elective uses of 執念; unused packages are not auto-applied. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84"
+      },
+      "matchedPassingBindings": 39
+    },
+    {
+      "identity": "ruling:C06#ruling-paragraph/002",
+      "covers": [
+        "c2-p02-r1c1-ab02#all-followers-ignore",
+        "c2-p02-r1c1-ab02#enemy-follower-entry",
+        "c2-p02-r1c1-ab02#one-advance-discard",
+        "c2-p02-r1c1-ab02#public-source"
+      ],
+      "basis": "Actual Tia 奇襲 at enemy follower-entry, with a public source, spends one advance and attaches ignore to that target's simultaneous hits. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:C06#ruling-paragraph/003",
+      "covers": [
+        "c2-p02-r1c1-ab02#enemy-follower-entry",
+        "c2-p03-r2c2-ab02#optional-virtual-source"
+      ],
+      "basis": "Actual follower-entry ability window is after normal defense and before the follower set is frozen; Tia ambush and Arnes virtual-guard election share that window. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:C07#ruling-paragraph/002",
+      "covers": [
+        "c2-p03-r2c2-ab02#front-position",
+        "c2-p03-r2c2-ab02#group-lifetime",
+        "c2-p03-r2c2-ab02#no-physical-card",
+        "c2-p03-r2c2-ab02#optional-virtual-source",
+        "c2-p03-r2c2-ab02#virtual-hp-one"
+      ],
+      "basis": "Actual Arnes optional virtual guard is elected before final follower defense, sits at front, has no physical card, lasts the group, and applies HP1 on every snapshot hit. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:C07#ruling-paragraph/003",
+      "covers": [
+        "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation"
+      ],
+      "basis": "Actual Lester illusion can invalidate a public Arnes virtual-guard ability so the virtual follower is not generated. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 2
+    },
+    {
+      "identity": "ruling:C07#ruling-paragraph/004",
+      "covers": [
+        "c2-p03-r2c2-ab02#virtual-base-level-four",
+        "c2-p03-r2c2-ab02#virtual-hp-one"
+      ],
+      "basis": "Actual virtual guard is printed base level4 HP1; general follower level modifiers are not excluded. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:C07#ruling-paragraph/005",
+      "covers": [
+        "c2-p03-r2c1-ab02#independent-subset-one-use",
+        "c2-p03-r2c1-ab02#physical-human-invalidation",
+        "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation",
+        "c2-p03-r2c1-ab02#usage-level-vs-magic-spirit-conversion"
+      ],
+      "basis": "Actual Lester illusion elects one independent subset per use: spirit conversion, physical-human invalidation, or public-Arnes virtual-guard invalidation. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:C07#ruling-paragraph/006",
+      "covers": [
+        "c2-p03-r2c1-ab02#physical-human-invalidation"
+      ],
+      "basis": "Actual physical-human invalidation disables that follower's effects for the attack without destruction/morale; it is not ordinary ignore. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 1
+    },
+    {
+      "identity": "ruling:C07#ruling-paragraph/007",
+      "covers": [
+        "c2-p03-r2c1-ab02#independent-subset-one-use"
+      ],
+      "basis": "Status/commentary paragraph only; bound to the independent one-use subset election that keeps printed cans and Arnes publicity as separate choices. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 2
     }
   ],
   "skyWingValidation": {
