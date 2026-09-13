@@ -198892,7 +198892,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/ordinary/no-fire",
+        "a2-p13-r2c2#semantic/ordinary/no-wind"
+      ]
     },
     {
       "entryId": "ruling:T27",
@@ -198907,7 +198912,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/dedicated/no-shin-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-fire-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-wind-exception"
+      ]
     },
     {
       "entryId": "ruling:T27",
@@ -198982,7 +198992,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c2#semantic/ordinary/counter-capable",
+        "a2-p13-r2c2#semantic/ordinary/damage",
+        "a2-p13-r2c2#semantic/ordinary/defense-only",
+        "a2-p13-r2c2#semantic/ordinary/range"
+      ]
     },
     {
       "entryId": "ruling:T28",
@@ -198997,7 +199012,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/ordinary/damage",
+        "a2-p13-r2c2#semantic/ordinary/defense-only",
+        "a2-p13-r2c2#semantic/ordinary/failure-cancel",
+        "a2-p13-r2c2#semantic/ordinary/range"
+      ]
     },
     {
       "entryId": "ruling:T28",
@@ -199072,7 +199093,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c3#semantic/ordinary/damage",
+        "a2-p13-r2c3#semantic/ordinary/self-cost-on-failure",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction",
+        "a2-p13-r2c3#semantic/ordinary/self-ten"
+      ]
     },
     {
       "entryId": "ruling:T29",
@@ -199162,7 +199188,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c3#semantic/dedicated/no-self-damage",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction"
+      ]
     },
     {
       "entryId": "ruling:T30",
@@ -199177,7 +199207,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c3#semantic/dedicated/0/select-optional",
+        "a2-p13-r2c3#semantic/dedicated/no-self-damage",
+        "a2-p13-r2c3#semantic/ordinary/damage",
+        "a2-p13-r2c3#semantic/ordinary/destroy-all-followers",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction",
+        "a2-p13-r2c3#semantic/ordinary/self-ten"
+      ]
     },
     {
       "entryId": "ruling:T30",
@@ -199342,7 +199379,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r3c1#semantic/dedicated/convert-only-changeable",
+        "a2-p13-r3c1#semantic/dedicated/copy-faction",
+        "a2-p13-r3c1#semantic/dedicated/copy-objective",
+        "a2-p13-r3c1#semantic/dedicated/optional-convert"
+      ]
     },
     {
       "entryId": "ruling:T32",

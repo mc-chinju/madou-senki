@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 788,
-  "excluded": "Current candidate is not accepted; full verification and 788 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 780,
+  "excluded": "Current candidate is not accepted; full verification and 780 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -553,6 +553,121 @@
         "packages/engine/test/alseil-status-physical.test.ts": "fd39d244811567d584e55a6517b9a6a19593c930b6032997f9f6410fd374ea13"
       },
       "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:T27#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/ordinary/no-fire",
+        "a2-p13-r2c2#semantic/ordinary/no-wind"
+      ],
+      "basis": "Actual fire/wind defense rejection and Ida automatic attack failure; own usage checks remain required.",
+      "unchangedTestSources": {
+        "packages/engine/test/leaf-defense-physical.test.ts": "4809b7bd97dde790c9b753404ca06f6ba0ef998105b6ea6f5c4d78b14db2defa"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:T27#ruling-paragraph/005",
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/dedicated/no-shin-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-fire-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-wind-exception"
+      ],
+      "basis": "Actual ordinary/dedicated fire and wind refusal before payment, automatic negation without attacker resistance, and real Shin warrior attack has no exception.",
+      "unchangedTestSources": {
+        "packages/engine/test/leaf-defense-physical.test.ts": "4809b7bd97dde790c9b753404ca06f6ba0ef998105b6ea6f5c4d78b14db2defa"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:T28#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r2c2#semantic/ordinary/counter-capable",
+        "a2-p13-r2c2#semantic/ordinary/damage",
+        "a2-p13-r2c2#semantic/ordinary/defense-only",
+        "a2-p13-r2c2#semantic/ordinary/range"
+      ],
+      "basis": "Actual profile carries counter attribute with no range/damage, refuses own attack, and resolves without an extra attack window.",
+      "unchangedTestSources": {
+        "packages/engine/test/leaf-defense-physical.test.ts": "4809b7bd97dde790c9b753404ca06f6ba0ef998105b6ea6f5c4d78b14db2defa"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:T28#ruling-paragraph/005",
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/ordinary/damage",
+        "a2-p13-r2c2#semantic/ordinary/defense-only",
+        "a2-p13-r2c2#semantic/ordinary/failure-cancel",
+        "a2-p13-r2c2#semantic/ordinary/range"
+      ],
+      "basis": "Actual three-hit two-target Shin attack loses only first B hit (B14/C21), all resolution windows reject an ability-attack expectation, defender causes no return damage and own-turn source attack is rejected.",
+      "unchangedTestSources": {
+        "packages/engine/test/leaf-defense-physical.test.ts": "4809b7bd97dde790c9b753404ca06f6ba0ef998105b6ea6f5c4d78b14db2defa"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T29#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r2c3#semantic/ordinary/damage",
+        "a2-p13-r2c3#semantic/ordinary/self-cost-on-failure",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction",
+        "a2-p13-r2c3#semantic/ordinary/self-ten"
+      ],
+      "basis": "Actual chanted twenty-damage attack destroys both follower columns and pays self ten; failed use check and Fate cancellation retain self cost while preserving target followers. Broader intervention and lifecycle supplemental paragraph remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/mekai-physical.test.ts": "b827fc1852d803e0387d92617bb404ec129621f42af11dd64a766056c3983fa4"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T30#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c3#semantic/dedicated/no-self-damage",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction"
+      ],
+      "basis": "Actual ritual transformation to Vanmil followed by dedicated cast omits self ten while destroying own followers.",
+      "unchangedTestSources": {
+        "packages/engine/test/mekai-physical.test.ts": "b827fc1852d803e0387d92617bb404ec129621f42af11dd64a766056c3983fa4"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:T30#ruling-paragraph/005",
+      "covers": [
+        "a2-p13-r2c3#semantic/dedicated/0/select-optional",
+        "a2-p13-r2c3#semantic/dedicated/no-self-damage",
+        "a2-p13-r2c3#semantic/ordinary/damage",
+        "a2-p13-r2c3#semantic/ordinary/destroy-all-followers",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction",
+        "a2-p13-r2c3#semantic/ordinary/self-ten"
+      ],
+      "basis": "Actual transformed Vanmil elects ordinary or dedicated after chant; both retain target twenty and follower destruction, only dedicated removes self ten. Cancellation/failure retain own follower destruction in both modes.",
+      "unchangedTestSources": {
+        "packages/engine/test/mekai-physical.test.ts": "b827fc1852d803e0387d92617bb404ec129621f42af11dd64a766056c3983fa4"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T32#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r3c1#semantic/dedicated/convert-only-changeable",
+        "a2-p13-r3c1#semantic/dedicated/copy-faction",
+        "a2-p13-r3c1#semantic/dedicated/copy-objective",
+        "a2-p13-r3c1#semantic/dedicated/optional-convert"
+      ],
+      "basis": "Actual Uonos optional conversion after real deaths copies current faction/objective package for flexible identities; fixed GOOD/EVIL identities reject conversion while unchanged-faction resurrection remains legal. Supplemental complete roster and conditional Vanmil allegiance boundaries remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/resurrection-physical.test.ts": "93f6a499d5981c311ed41f584a858d73cf07d8e6862d9636bf8cc71ab64639d3"
+      },
+      "matchedPassingBindings": 30
     }
   ],
   "skyWingValidation": {
