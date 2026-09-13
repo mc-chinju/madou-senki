@@ -199289,7 +199289,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r3c1#semantic/dedicated/revive-multiple",
+        "a2-p13-r3c1#semantic/ordinary/revive-one",
+        "ruling:G16#semantic/protected-revival-resets-wanderer-setup",
+        "ruling:G16#semantic/wandering-hand-followers-return-to-deck"
+      ]
     },
     {
       "entryId": "ruling:T31",
@@ -199475,7 +199480,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r3c3#semantic/dedicated/optional-hit-stop",
+        "a2-p13-r3c3#semantic/dedicated/stop-duration-d6"
+      ]
     },
     {
       "entryId": "ruling:T33",
@@ -199565,7 +199574,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p14-r1c1#semantic/ordinary/destroy-level-six",
+        "a2-p14-r1c1#semantic/ordinary/exclude-dead-followers",
+        "a2-p14-r1c1#semantic/ordinary/gadyoora-immune"
+      ]
     },
     {
       "entryId": "ruling:T34",
@@ -199580,7 +199593,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p14-r1c1#semantic/ordinary/destroy-level-six",
+        "a2-p14-r1c1#semantic/ordinary/exclude-dead-followers",
+        "a2-p14-r1c1#semantic/ordinary/gadyoora-immune"
+      ]
     },
     {
       "entryId": "ruling:T34",
@@ -199655,7 +199672,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p14-r2c2#semantic/ordinary/until-dawn",
+        "a2-p14-r2c2#semantic/otherworld/keep-followers",
+        "a2-p14-r2c2#semantic/otherworld/keep-hand",
+        "a2-p14-r2c2#semantic/otherworld/no-influence",
+        "a2-p14-r2c2#semantic/otherworld/no-revelation",
+        "a2-p14-r2c2#semantic/otherworld/no-wish"
+      ]
     },
     {
       "entryId": "ruling:T35",
@@ -199745,7 +199769,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p14-r2c3#semantic/dedicated/0/activation-check-waive",
+        "a2-p14-r2c3#semantic/dedicated/0/chant-retain",
+        "a2-p14-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p14-r2c3#semantic/dedicated/0/eligible-owner/1",
+        "a2-p14-r2c3#semantic/ordinary/chant-required",
+        "a2-p14-r2c3#semantic/ordinary/counter-and-chant",
+        "a2-p14-r2c3#semantic/ordinary/counter-capable"
+      ]
     },
     {
       "entryId": "ruling:T36",
@@ -199835,7 +199867,18 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p14-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p14-r3c1#semantic/dedicated/near-target",
+        "a2-p14-r3c1#semantic/dedicated/one-other",
+        "a2-p14-r3c1#semantic/dedicated/target-heal-all",
+        "a2-p14-r3c1#semantic/ordinary/self-heal-all",
+        "a2-p14-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p14-r3c2#semantic/dedicated/near-target",
+        "a2-p14-r3c2#semantic/dedicated/one-other",
+        "a2-p14-r3c2#semantic/dedicated/target-heal-all",
+        "a2-p14-r3c2#semantic/ordinary/self-heal-all"
+      ]
     },
     {
       "entryId": "ruling:T37",

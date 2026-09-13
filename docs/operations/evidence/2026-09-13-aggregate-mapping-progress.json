@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 780,
-  "excluded": "Current candidate is not accepted; full verification and 780 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 773,
+  "excluded": "Current candidate is not accepted; full verification and 773 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -668,6 +668,116 @@
         "packages/engine/test/resurrection-physical.test.ts": "93f6a499d5981c311ed41f584a858d73cf07d8e6862d9636bf8cc71ab64639d3"
       },
       "matchedPassingBindings": 30
+    },
+    {
+      "identity": "ruling:T31#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r3c1#semantic/dedicated/revive-multiple",
+        "a2-p13-r3c1#semantic/ordinary/revive-one",
+        "ruling:G16#semantic/protected-revival-resets-wanderer-setup",
+        "ruling:G16#semantic/wandering-hand-followers-return-to-deck"
+      ],
+      "basis": "Actual resurrection rebuilds chosen dead players; S26 actual protected death, wandering, resurrection and sequential fresh-hand/follower re-setup preserve card conservation and suspended turn. Supplemental lifetime histories remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/resurrection-physical.test.ts": "93f6a499d5981c311ed41f584a858d73cf07d8e6862d9636bf8cc71ab64639d3",
+        "tests/e2e/scenario-s26.spec.ts": "8c48114f637ab761a6e407aeec252f07dedc1e9e0f70403978fc80425a36cabe",
+        "apps/worker/test/room-scenario-s26.test.ts": "2d5a130a73ad2b097d2690577e5c058f3677b3140291162047a77a77301a6f8d",
+        "packages/engine/test/scenario-s26.test.ts": "43cbe127bc3c8b6dc877c0e388e103b848c427846ae63b4d35c09c010cddd06c"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T33#ruling-paragraph/004",
+      "covers": [
+        "a2-p13-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r3c3#semantic/dedicated/optional-hit-stop",
+        "a2-p13-r3c3#semantic/dedicated/stop-duration-d6"
+      ],
+      "basis": "Actual optional post-hit stop creates one shared numeric duration and no spirit resistance; actual three subsequent own turns consume the duration. Supplemental overlapping counters and other skip causes remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/prison-physical.test.ts": "531f8d1e19a1fed2f0275506de8725138bd92c2e8eef2076655398cf79307dbf"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:T34#ruling-paragraph/004",
+      "covers": [
+        "a2-p14-r1c1#semantic/ordinary/destroy-level-six",
+        "a2-p14-r1c1#semantic/ordinary/exclude-dead-followers",
+        "a2-p14-r1c1#semantic/ordinary/gadyoora-immune"
+      ],
+      "basis": "Actual fixed-six follower destruction, dead Skeleton/Wight exemptions and personal Gadyura immunity.",
+      "unchangedTestSources": {
+        "packages/engine/test/plague-physical.test.ts": "9ddb97f68f1f8968ca39b563fa5b3402b6c9e0022772eb8bca3da01c066ffccf"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T34#ruling-paragraph/005",
+      "covers": [
+        "a2-p14-r1c1#semantic/ordinary/destroy-level-six",
+        "a2-p14-r1c1#semantic/ordinary/exclude-dead-followers",
+        "a2-p14-r1c1#semantic/ordinary/gadyoora-immune"
+      ],
+      "basis": "Actual hidden/revealed Gadyura loses eligible followers while body, hand and status remain unchanged; real reflected Plague also destroys source follower without personal damage.",
+      "unchangedTestSources": {
+        "packages/engine/test/plague-physical.test.ts": "9ddb97f68f1f8968ca39b563fa5b3402b6c9e0022772eb8bca3da01c066ffccf"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T35#ruling-paragraph/004",
+      "covers": [
+        "a2-p14-r2c2#semantic/ordinary/until-dawn",
+        "a2-p14-r2c2#semantic/otherworld/keep-followers",
+        "a2-p14-r2c2#semantic/otherworld/keep-hand",
+        "a2-p14-r2c2#semantic/otherworld/no-influence",
+        "a2-p14-r2c2#semantic/otherworld/no-revelation",
+        "a2-p14-r2c2#semantic/otherworld/no-wish"
+      ],
+      "basis": "Actual Rift preserves hands/followers/chants through turns, rejects outside Revelation/Wish/approach, and actual Dawn acquisition returns all affected players. Supplemental return timing/status/victory details remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/rift-physical.test.ts": "eea19a366582e8f592306d7b30795db140c4e399010f838798fe0e0a4c3eb3bb",
+        "packages/engine/test/scenario-s30.test.ts": "b60040d07b101aa4c9613f544927468ac45e56f4f65fa8f194ea396a1d658e48"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:T36#ruling-paragraph/004",
+      "covers": [
+        "a2-p14-r2c3#semantic/dedicated/0/activation-check-waive",
+        "a2-p14-r2c3#semantic/dedicated/0/chant-retain",
+        "a2-p14-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p14-r2c3#semantic/dedicated/0/eligible-owner/1",
+        "a2-p14-r2c3#semantic/ordinary/chant-required",
+        "a2-p14-r2c3#semantic/ordinary/counter-and-chant",
+        "a2-p14-r2c3#semantic/ordinary/counter-capable"
+      ],
+      "basis": "Actual Jill/Uonos ordinary/dedicated CHANT and later counter, unprepared counter rejection and dedicated check waiver. Supplemental independently supplied chant exemption remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/judgment-physical.test.ts": "f1f685f350c6a2ce7c452a0bb965599bf6d2d4af8a2f03339ea230b9c2c0a751"
+      },
+      "matchedPassingBindings": 30
+    },
+    {
+      "identity": "ruling:T37#ruling-paragraph/004",
+      "covers": [
+        "a2-p14-r3c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p14-r3c1#semantic/dedicated/near-target",
+        "a2-p14-r3c1#semantic/dedicated/one-other",
+        "a2-p14-r3c1#semantic/dedicated/target-heal-all",
+        "a2-p14-r3c1#semantic/ordinary/self-heal-all",
+        "a2-p14-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p14-r3c2#semantic/dedicated/near-target",
+        "a2-p14-r3c2#semantic/dedicated/one-other",
+        "a2-p14-r3c2#semantic/dedicated/target-heal-all",
+        "a2-p14-r3c2#semantic/ordinary/self-heal-all"
+      ],
+      "basis": "Both physical copies heal self or one actually approached other target exclusively, reject multiple/far targets and retain usage checks. Supplemental target loss and live maximum change remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/healing-physical.test.ts": "8dde662f6f228f4b4664a4889ffb92a4214f4fba40587eede7a307291d6f1532"
+      },
+      "matchedPassingBindings": 16
     }
   ],
   "skyWingValidation": {
