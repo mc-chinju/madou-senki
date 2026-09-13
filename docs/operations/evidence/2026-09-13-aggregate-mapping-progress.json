@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 815,
-  "excluded": "Structural inputs retain their explicit classification. Previous-run checks establish unchanged test evidence only, not acceptance of the changed manifest. Complete candidate verification and 815 mappings remain.",
+  "remainingAggregateMappings": 813,
+  "excluded": "Explicit structural scopes retained. Current candidate is not accepted; 813 aggregate mappings remain.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -163,6 +163,29 @@
         "packages/engine/test/ki-slash-physical.test.ts": "df950f088bdad8aa7da1e81d4597492edf44a5e2415a92abd61a4508b2021ac3"
       },
       "matchedPassingBindings": 63
+    },
+    {
+      "identity": "ruling:T07#ruling-paragraph/004",
+      "covers": [
+        "a2-p09-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r1c1#semantic/dedicated/add-source-damage",
+        "a2-p09-r1c1#semantic/dedicated/co-source-level-limit",
+        "a2-p09-r1c1#semantic/dedicated/co-source-one",
+        "a2-p09-r1c1#semantic/dedicated/co-source-warrior-only",
+        "a2-p09-r1c1#semantic/dedicated/inherit-source-effects",
+        "a2-p09-r1c1#semantic/dedicated/no-level-sum",
+        "a2-p09-r1c1#semantic/dedicated/optional-co-source"
+      ],
+      "basis": "Actual one physical warrior co-source selection and level limit, separate paid cards, inherited components with unchanged composite levels, and null damage source preservation."
+    },
+    {
+      "identity": "ruling:T08#ruling-paragraph/004",
+      "covers": [
+        "a2-p09-r1c1#semantic/dedicated/add-source-damage",
+        "a2-p09-r1c1#semantic/dedicated/co-source-one",
+        "a2-p09-r1c1#semantic/dedicated/inherit-source-effects"
+      ],
+      "basis": "Actual one physical warrior co-source selection and level limit, separate paid cards, inherited components with unchanged composite levels, and null damage source preservation."
     }
   ],
   "skyWingValidation": {
@@ -175,5 +198,18 @@
       "packages/engine/test/sky-wing-physical.test.ts": "53b2150dfb6d7690446d5b99782e07b212d48cba1adc6bee00ea37e6e9c29b07",
       "docs/operations/evidence/2026-09-13-sky-wing-aggregate-bindings.json": "411e1beba202dd72af897080e8f3bb3af85a4fdaf36d90e69b45ba6200e7af8e"
     }
+  },
+  "beastKingValidation": {
+    "passed": 32,
+    "failed": 0,
+    "exitCode": 0,
+    "typecheckExitCode": 0,
+    "reportSha256": "19a481a032f22381d1d0dcb4240cea2996ffa5840f46d2c168862382b0bec6c5",
+    "sourceSha256": {
+      "packages/engine/test/beast-king-physical.test.ts": "a9595cd5938e378c165c04dc3e782fa8dfc14c162f3c27da71cfae590cbfad70",
+      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "f2144c903156768f01c6c6a172d90947219f434edb4d33d94be5e4266c0c14c1"
+    },
+    "initialExpectationCorrection": "New test initially assumed +2; printed Beast Nature says warrior damage +1. Expected composites corrected to 15/11; no implementation change.",
+    "remaining": "T07/T08 paragraph/005 broader restrictions, shared target effects and per-source reclaim still require complete mapping."
   }
 }

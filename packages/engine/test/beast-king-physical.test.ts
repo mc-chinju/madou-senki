@@ -10,6 +10,19 @@ function source(s:GameState){return Object.values(s.actions!).find(a=>a.cardInst
 function group(s:GameState){return Object.values(s.groups!).find(g=>g.actionId===source(s).id)!;}
 function cmd(dedicated=true,co?:string,targetIds=['B'],coDedicated=false){return {type:'ATTACK',cardInstanceId:CARD,targetIds,dedicated,...(co?{coSource:{cardInstanceId:co,dedicated:coDedicated}}:{})};}
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
+it.each([['beast-king-bow',15],['beast-king-null',11]] as const)('%s elected Upa addition applies once to the composite and preserves a null source with result %s',(name,damage)=>{
+ let s=makeBeastKingPhysical(name,players);
+ const ability=viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId==='c2-p05-r1c2-ab01')!;
+ expect(ability.canActivate).toBe(true);
+ s=settle(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:ability.abilityId,targetEventId:ability.targetEventId!,enabled:true}));
+ const co=beastKingMode(name).co!;
+ s=until(act(s,'A',cmd(true,co)),s=>s.windows?.at(-1)?.kind==='attack-abilities');
+ if(name==='beast-king-null')expect(source(s).coSource!.technique.damage).toBeNull();
+ expect(group(s).technique).toMatchObject({useLevel:6,effectLevel:6,damage});
+ expect(group(s).targets[0]!.hits[0]!.damage).toBe(damage);
+ s=settle(s);expect(s.players.B!.damage).toBe(damage);
+ for(const card of [CARD,co])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+});
 it.each(['beast-king-ordinary','beast-king-guard','beast-king-owner-ordinary','beast-king-dedicated','beast-king-nonbeast','beast-king-near','beast-king-same-faction','beast-king-suppressed','beast-king-silenced'] as const)('%s actual optional standalone sword retains use6 damage10 and destroys only beast followers',name=>{
  let s=makeBeastKingPhysical(name,players);const m=beastKingMode(name),hand=[...s.players.A!.hand],deck=[...s.deck],rolls=s.rolls?.length??0;if(m.suffix==='same-faction')reject(s,'A',cmd(true,undefined,['C']));if(m.near)expect(s.distances.A!.B).toBe('near');reject(s,'A',cmd(m.dedicated,undefined,['B','C']));reject(s,'A',{type:'CHANT',cardInstanceId:CARD,dedicated:m.dedicated});s=act(s,'A',cmd(m.dedicated));expect(s.players.A!.hand).toEqual(hand.filter(id=>id!==CARD));expect(s.deck).toEqual(deck);s=until(s,s=>s.windows?.at(-1)?.kind==='attack-abilities');expect(group(s).technique).toMatchObject({school:'warrior',range:'far',useLevel:6,effectLevel:6,damage:10,attributes:['戦','剣','獣'],target:'one',chant:false,counter:false,noChecks:m.dedicated,followerIgnore:false});if(m.dedicated)expect(group(s).technique.destroyFollowerAttributes).toEqual(['獣']);s=settle(s);expect(s.players.B!.damage).toBe(m.guard&&(!m.dedicated||m.suffix==='nonbeast')?0:10);expect(s.players.C!.damage).toBe(0);if(m.guard&&m.dedicated&&m.suffix!=='nonbeast'){expect(s.players.B!.followers).toEqual([]);expect(s.discard).toContain('a2-p23-r1c1');}else if(m.guard){expect(s.players.B!.followers).toHaveLength(1);expect(s.players.B!.followers[0]!.revealed).toBe(true);}expect(s.rolls?.length??0).toBe(rolls+(m.guard&&(!m.dedicated||m.suffix==='nonbeast')?1:0));expect(s.discard.filter(id=>id===CARD)).toHaveLength(1);expect(s.phase).toBe('withdrawal');
 });
