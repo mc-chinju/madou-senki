@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 702,
-  "excluded": "Current candidate is not accepted; full verification and 702 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 694,
+  "excluded": "Current candidate is not accepted; full verification and 694 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -1928,6 +1928,108 @@
         "packages/engine/test/stone-golem-physical.test.ts": "1bf44dbc5838b794cc9770574244a101034fc26ed3316ad699fd9d750e052e5b"
       },
       "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:F25#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p20-r3c1#semantic/follower/printed-hp",
+        "a2-p20-r3c1#semantic/morale/failure-discard",
+        "a2-p20-r3c1#semantic/morale/receive-trigger",
+        "a2-p20-r3c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Griffin against three higher Dwarf hits checks spirit6 with faces2+4 success versus3+4 failure once per group; all HP reductions are3 or0 and body damage9 or18 with one final discard. Hidden unreached rear does not roll, surviving non-Upa Griffin rolls anew next group, and explicitly elected Upanishat at spirit0 waives morale while retaining HP. Full supplemental paragraph remains pending its ability-modifier and physical-discard-timing boundaries. Fourth-run bound cases and sources unchanged; current candidate not accepted.",
+      "unchangedTestSources": {
+        "packages/engine/test/griffin-physical.test.ts": "5bfd4189b922c0c4ec93ba890213e7b1a04712746b24b80a4730ce918afee010"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F25#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p20-r3c1#semantic/follower/printed-hp",
+        "a2-p20-r3c1#semantic/morale/failure-discard",
+        "a2-p20-r3c1#semantic/morale/receive-trigger",
+        "a2-p20-r3c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Griffin against three higher Dwarf hits checks spirit6 with faces2+4 success versus3+4 failure once per group; all HP reductions are3 or0 and body damage9 or18 with one final discard. Hidden unreached rear does not roll, surviving non-Upa Griffin rolls anew next group, and explicitly elected Upanishat at spirit0 waives morale while retaining HP. Full supplemental paragraph remains pending its ability-modifier and physical-discard-timing boundaries. Fourth-run bound cases and sources unchanged; current candidate not accepted.",
+      "unchangedTestSources": {
+        "packages/engine/test/griffin-physical.test.ts": "5bfd4189b922c0c4ec93ba890213e7b1a04712746b24b80a4730ce918afee010"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F25#ruling-paragraph/005",
+      "covers": [
+        "a2-p20-r3c1#semantic/attack/hit-count",
+        "a2-p20-r3c1#semantic/attack/not-lumped-damage",
+        "a2-p20-r3c1#semantic/attack/per-hit-defense",
+        "a2-p20-r3c1#semantic/dedicated/any-subset-targets"
+      ],
+      "basis": "Actual hand/field elected Griffin fixes every one of the seven nonempty opponent subsets to two damage8 hits per selected target; ordinary beast grant and Army retain one target with two hits. Actual first-hit Maai and Mirror affect only that hit; physical Black Knights HP5 reduces each remaining hit in the follower snapshot, with a single discard and other target damage16 unchanged. No synthetic target split or lumped damage substituted. Bound passed cases and sources unchanged from fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/griffin-physical.test.ts": "5bfd4189b922c0c4ec93ba890213e7b1a04712746b24b80a4730ce918afee010"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:F25#ruling-paragraph/006",
+      "covers": [
+        "a2-p20-r3c1#semantic/attack/hit-count",
+        "a2-p20-r3c1#semantic/attack/not-lumped-damage",
+        "a2-p20-r3c1#semantic/attack/per-hit-defense",
+        "a2-p20-r3c1#semantic/dedicated/any-subset-targets"
+      ],
+      "basis": "Actual hand/field elected Griffin fixes every one of the seven nonempty opponent subsets to two damage8 hits per selected target; ordinary beast grant and Army retain one target with two hits. Actual first-hit Maai and Mirror affect only that hit; physical Black Knights HP5 reduces each remaining hit in the follower snapshot, with a single discard and other target damage16 unchanged. No synthetic target split or lumped damage substituted. Bound passed cases and sources unchanged from fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/griffin-physical.test.ts": "5bfd4189b922c0c4ec93ba890213e7b1a04712746b24b80a4730ce918afee010"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:F26#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r3c2#semantic/placement/good-only"
+      ],
+      "basis": "Actual setup and own-action faction restriction permit hand possession; actual public conversion removes placed incompatible castle publicly once and preserves unplaced hidden hand card, canceled conversion preserves faction and hidden castle, next Bow attack reaches body. Alseil level6 does not grant placement after conversion to GOOD. This maps source-status and maintenance question only; full answer with frozen simultaneous snapshot remains pending. Bound passing cases and sources match fourth run; candidate acceptance still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/faction-castles-physical.test.ts": "e66454b8777e427ea4ff884f3eb3749d4d13ce4b2809a7c8f28bd609c4892a3a"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:F26#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r3c2#semantic/placement/good-only"
+      ],
+      "basis": "Actual setup and own-action faction restriction permit hand possession; actual public conversion removes placed incompatible castle publicly once and preserves unplaced hidden hand card, canceled conversion preserves faction and hidden castle, next Bow attack reaches body. Alseil level6 does not grant placement after conversion to GOOD. This maps source-status and maintenance question only; full answer with frozen simultaneous snapshot remains pending. Bound passing cases and sources match fourth run; candidate acceptance still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/faction-castles-physical.test.ts": "e66454b8777e427ea4ff884f3eb3749d4d13ce4b2809a7c8f28bd609c4892a3a"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:F27#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r3c3#semantic/placement/evil-only"
+      ],
+      "basis": "Actual setup and own-action faction restriction permit hand possession; actual public conversion removes placed incompatible castle publicly once and preserves unplaced hidden hand card, canceled conversion preserves faction and hidden castle, next Bow attack reaches body. Alseil level6 does not grant placement after conversion to GOOD. This maps source-status and maintenance question only; full answer with frozen simultaneous snapshot remains pending. Bound passing cases and sources match fourth run; candidate acceptance still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/faction-castles-physical.test.ts": "e66454b8777e427ea4ff884f3eb3749d4d13ce4b2809a7c8f28bd609c4892a3a"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F27#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r3c3#semantic/placement/evil-only"
+      ],
+      "basis": "Actual setup and own-action faction restriction permit hand possession; actual public conversion removes placed incompatible castle publicly once and preserves unplaced hidden hand card, canceled conversion preserves faction and hidden castle, next Bow attack reaches body. Alseil level6 does not grant placement after conversion to GOOD. This maps source-status and maintenance question only; full answer with frozen simultaneous snapshot remains pending. Bound passing cases and sources match fourth run; candidate acceptance still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/faction-castles-physical.test.ts": "e66454b8777e427ea4ff884f3eb3749d4d13ce4b2809a7c8f28bd609c4892a3a"
+      },
+      "matchedPassingBindings": 4
     }
   ],
   "skyWingValidation": {

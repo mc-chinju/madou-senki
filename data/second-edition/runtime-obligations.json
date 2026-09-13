@@ -204418,7 +204418,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p20-r3c1#semantic/follower/printed-hp",
+        "a2-p20-r3c1#semantic/morale/failure-discard",
+        "a2-p20-r3c1#semantic/morale/receive-trigger",
+        "a2-p20-r3c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F25",
@@ -204433,7 +204439,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p20-r3c1#semantic/follower/printed-hp",
+        "a2-p20-r3c1#semantic/morale/failure-discard",
+        "a2-p20-r3c1#semantic/morale/receive-trigger",
+        "a2-p20-r3c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F25",
@@ -204463,7 +204475,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c1#semantic/attack/hit-count",
+        "a2-p20-r3c1#semantic/attack/not-lumped-damage",
+        "a2-p20-r3c1#semantic/attack/per-hit-defense",
+        "a2-p20-r3c1#semantic/dedicated/any-subset-targets"
+      ]
     },
     {
       "entryId": "ruling:F25",
@@ -204478,7 +204495,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c1#semantic/attack/hit-count",
+        "a2-p20-r3c1#semantic/attack/not-lumped-damage",
+        "a2-p20-r3c1#semantic/attack/per-hit-defense",
+        "a2-p20-r3c1#semantic/dedicated/any-subset-targets"
+      ]
     },
     {
       "entryId": "ruling:F25",
@@ -204523,7 +204545,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c2#semantic/placement/good-only"
+      ]
     },
     {
       "entryId": "ruling:F26",
@@ -204538,7 +204562,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c2#semantic/placement/good-only"
+      ]
     },
     {
       "entryId": "ruling:F26",
@@ -204598,7 +204624,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c3#semantic/placement/evil-only"
+      ]
     },
     {
       "entryId": "ruling:F27",
@@ -204613,7 +204641,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r3c3#semantic/placement/evil-only"
+      ]
     },
     {
       "entryId": "ruling:F27",
