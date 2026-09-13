@@ -197059,7 +197059,19 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r1c1#semantic/dedicated/add-source-damage",
+        "a2-p09-r1c1#semantic/dedicated/co-source-one",
+        "a2-p09-r1c1#semantic/dedicated/destroy-beasts",
+        "a2-p09-r1c1#semantic/dedicated/inherit-source-effects",
+        "a2-p09-r1c1#semantic/dedicated/no-level-sum",
+        "a2-p09-r1c1#semantic/ordinary/damage",
+        "c2-p05-r1c2#owned_techniques/0/actual-use-disposition",
+        "c2-p05-r1c2#owned_techniques/0/exhaustion-across-physical-copies",
+        "c2-p05-r1c2#owned_techniques/0/normalized-name-once-game",
+        "c2-p05-r1c2#owned_techniques/0/optional-decline",
+        "c2-p05-r1c2#owned_techniques/0/reserve-before-parent-release"
+      ]
     },
     {
       "entryId": "ruling:T08",

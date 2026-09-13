@@ -341,6 +341,14 @@
           "parameters": null,
           "kind": "canonical-transition",
           "bindingNote": "Actual Gainas checked reflection of Sword+Bow keeps composed warrior6 damage14 and attributes, reserved physical sources, one final discard/use each; JSON restoration before resolution."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual Griffin composite target expansion still excludes a revealed same-faction seat",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual reveal of Arness excludes same-faction C before payment even with Griffin multi-target composition; B/D receive two hits each and C remains undamaged."
         }
       ],
       "remaining": [

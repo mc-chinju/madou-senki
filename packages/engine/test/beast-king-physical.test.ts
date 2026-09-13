@@ -11,6 +11,21 @@ function source(s:GameState){return Object.values(s.actions!).find(a=>a.cardInst
 function group(s:GameState){return Object.values(s.groups!).find(g=>g.actionId===source(s).id)!;}
 function cmd(dedicated=true,co?:string,targetIds=['B'],coDedicated=false){return {type:'ATTACK',cardInstanceId:CARD,targetIds,dedicated,...(co?{coSource:{cardInstanceId:co,dedicated:coDedicated}}:{})};}
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
+it('actual Griffin composite target expansion still excludes a revealed same-faction seat',()=>{
+ let s=makeBeastKingPhysical('beast-king-placed-griffin',players);
+ s=settle(act(s,'C',{type:'REVEAL_CHARACTER'}));
+ expect(s.players.C!.faction).toBe(s.players.A!.faction);
+ const co='a2-p20-r3c1';
+ reject(s,'A',cmd(true,co,['B','C'],true));
+ expect(s.players.A!.followers.map(f=>f.cardInstanceId)).toContain(co);
+ expect(s.players.A!.hand).toContain(CARD);
+ s=until(act(s,'A',cmd(true,co,['B','D'],true)),s=>s.windows?.at(-1)?.kind==='attack-abilities');
+ expect(group(s).targets.map(t=>t.actorId)).toEqual(['B','D']);
+ expect(group(s).targets.map(t=>t.hits.map(h=>h.damage))).toEqual([[18,18],[18,18]]);
+ s=settle(s);
+ expect([s.players.B!.damage,s.players.C!.damage,s.players.D!.damage]).toEqual([36,0,36]);
+ for(const card of [CARD,co])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+});
 it('actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved',()=>{
  let s=makeBeastKingPhysical('beast-king-bow',players);
  assignCharacter(s,'B','魔導王ガイナス');assignCharacter(s,'D','侍大将のシン');

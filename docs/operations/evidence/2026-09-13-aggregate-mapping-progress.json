@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 812,
-  "excluded": "Structural preparation retains its classification; current candidate is not accepted and 812 mappings remain.",
+  "remainingAggregateMappings": 811,
+  "excluded": "Current candidate is not accepted; full verification and 811 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -200,6 +200,23 @@
         "a2-p09-r1c1#semantic/dedicated/optional-co-source"
       ],
       "basis": "Existing physical level/one-source/dedicated owner/near-range/chant/activation-check cases plus explicit prepared Blood GOOD/EVIL boundary. Structural preparation is not a claim of CHANT or faction-change production."
+    },
+    {
+      "identity": "ruling:T08#ruling-paragraph/005",
+      "covers": [
+        "a2-p09-r1c1#semantic/dedicated/add-source-damage",
+        "a2-p09-r1c1#semantic/dedicated/co-source-one",
+        "a2-p09-r1c1#semantic/dedicated/destroy-beasts",
+        "a2-p09-r1c1#semantic/dedicated/inherit-source-effects",
+        "a2-p09-r1c1#semantic/dedicated/no-level-sum",
+        "a2-p09-r1c1#semantic/ordinary/damage",
+        "c2-p05-r1c2#owned_techniques/0/actual-use-disposition",
+        "c2-p05-r1c2#owned_techniques/0/exhaustion-across-physical-copies",
+        "c2-p05-r1c2#owned_techniques/0/normalized-name-once-game",
+        "c2-p05-r1c2#owned_techniques/0/optional-decline",
+        "c2-p05-r1c2#owned_techniques/0/reserve-before-parent-release"
+      ],
+      "basis": "Concrete composite formula/null/modifier, shared numeric roll, real multi-target/multi-hit, inherited restrictions/destruction, counter/reflection, cancellation and separate reclaim cases; shared owned-technique lifetime/budget clauses retained. Explicit prepared Blood boundary remains structural."
     }
   ],
   "skyWingValidation": {
@@ -214,18 +231,19 @@
     }
   },
   "beastKingValidation": {
-    "passed": 36,
+    "passed": 37,
     "failed": 0,
     "exitCode": 0,
     "typecheckExitCode": 0,
-    "reportSha256": "dbfb243270affb1093546ed4bf3a90a3dd422cafec7c03e6902e24a35b45c037",
+    "reportSha256": "943be169618ea0bfdd1a864711488a0b606f3f303f8dc1d9f539b7121b4987d5",
     "sourceSha256": {
-      "packages/engine/test/beast-king-physical.test.ts": "418948c0792c3d34e4eda46cd7c5ea8bffec20c5f1f3be07ea2815eeabf59a8a",
-      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "b17eeede005ed20bff29bfea3ca53709b8fcb306ad2b30ea1c55d3f0bc7e221f"
+      "packages/engine/test/beast-king-physical.test.ts": "8ba434c5d49ad811a13bf755abdd9d6f6d2aa37000040d43f7bf06c74f775517",
+      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "a18d3aef23042778aecd166211816974e8735b9c29d5cd79e66ba7e122c33a08"
     },
     "initialExpectationCorrection": "New test initially assumed +2; printed Beast Nature says warrior damage +1. Expected composites corrected to 15/11; no implementation change.",
-    "remaining": "T08 paragraph/005 still needs a complete condition-to-proof mapping including shared target constraints; aggregate count remains 812.",
+    "remaining": "T07/T08 paragraph mappings complete; acceptance requires full changed-candidate run.",
     "compositeReclaim": "Actual base reclaim returns only Sword; Bow discarded, separate physical-use records, Sword normalized budget spent and stale claim rejected. Bound to existing owned-technique name/use clauses.",
-    "compositeReflection": "Actual Gainas reflection preserves warrior level6/damage14/attributes and both reserved physical sources; serialized continuation returns damage to owner, records one original use and one disposal of each source."
+    "compositeReflection": "Actual Gainas reflection preserves warrior level6/damage14/attributes and both reserved physical sources; serialized continuation returns damage to owner, records one original use and one disposal of each source.",
+    "expandedTargetRestriction": "Real C reveal makes same-faction target illegal before payment; alternative B/D selected targets each take two composed hits."
   }
 }
