@@ -35,7 +35,7 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 601,
+  "remainingAggregateMappings": 529,
   "excluded": "Current candidate is not accepted; full verification and 688 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
@@ -3323,6 +3323,1180 @@
         "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5"
       },
       "matchedPassingBindings": 20
+    },
+    {
+      "identity": "ruling:F47#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r1c2#semantic/advance/cancel-maai",
+        "a2-p23-r1c2#semantic/advance/near-approach",
+        "a2-p23-r1c2#semantic/advance/no-double-cost",
+        "a2-p23-r1c2#semantic/mode/0/select",
+        "a2-p23-r1c2#semantic/mode/1/select",
+        "a2-p23-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F47#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r1c2#semantic/advance/cancel-maai",
+        "a2-p23-r1c2#semantic/advance/near-approach",
+        "a2-p23-r1c2#semantic/advance/no-double-cost",
+        "a2-p23-r1c2#semantic/mode/0/select",
+        "a2-p23-r1c2#semantic/mode/1/select",
+        "a2-p23-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F47#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r1c2#semantic/advance/cancel-maai",
+        "a2-p23-r1c2#semantic/advance/near-approach",
+        "a2-p23-r1c2#semantic/advance/no-double-cost",
+        "a2-p23-r1c2#semantic/mode/0/select",
+        "a2-p23-r1c2#semantic/mode/1/select",
+        "a2-p23-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F48#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r1c3#semantic/advance/cancel-maai",
+        "a2-p23-r1c3#semantic/advance/near-approach",
+        "a2-p23-r1c3#semantic/advance/no-double-cost",
+        "a2-p23-r1c3#semantic/mode/0/select",
+        "a2-p23-r1c3#semantic/mode/1/select",
+        "a2-p23-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F48#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r1c3#semantic/advance/cancel-maai",
+        "a2-p23-r1c3#semantic/advance/near-approach",
+        "a2-p23-r1c3#semantic/advance/no-double-cost",
+        "a2-p23-r1c3#semantic/mode/0/select",
+        "a2-p23-r1c3#semantic/mode/1/select",
+        "a2-p23-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F48#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r1c3#semantic/advance/cancel-maai",
+        "a2-p23-r1c3#semantic/advance/near-approach",
+        "a2-p23-r1c3#semantic/advance/no-double-cost",
+        "a2-p23-r1c3#semantic/mode/0/select",
+        "a2-p23-r1c3#semantic/mode/1/select",
+        "a2-p23-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F49#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r2c1#semantic/advance/cancel-maai",
+        "a2-p23-r2c1#semantic/advance/near-approach",
+        "a2-p23-r2c1#semantic/advance/no-double-cost",
+        "a2-p23-r2c1#semantic/mode/0/select",
+        "a2-p23-r2c1#semantic/mode/1/select",
+        "a2-p23-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F49#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r2c1#semantic/advance/cancel-maai",
+        "a2-p23-r2c1#semantic/advance/near-approach",
+        "a2-p23-r2c1#semantic/advance/no-double-cost",
+        "a2-p23-r2c1#semantic/mode/0/select",
+        "a2-p23-r2c1#semantic/mode/1/select",
+        "a2-p23-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F49#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r2c1#semantic/advance/cancel-maai",
+        "a2-p23-r2c1#semantic/advance/near-approach",
+        "a2-p23-r2c1#semantic/advance/no-double-cost",
+        "a2-p23-r2c1#semantic/mode/0/select",
+        "a2-p23-r2c1#semantic/mode/1/select",
+        "a2-p23-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F50#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r2c2#semantic/advance/cancel-maai",
+        "a2-p23-r2c2#semantic/advance/near-approach",
+        "a2-p23-r2c2#semantic/advance/no-double-cost",
+        "a2-p23-r2c2#semantic/mode/0/select",
+        "a2-p23-r2c2#semantic/mode/1/select",
+        "a2-p23-r2c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F50#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r2c2#semantic/advance/cancel-maai",
+        "a2-p23-r2c2#semantic/advance/near-approach",
+        "a2-p23-r2c2#semantic/advance/no-double-cost",
+        "a2-p23-r2c2#semantic/mode/0/select",
+        "a2-p23-r2c2#semantic/mode/1/select",
+        "a2-p23-r2c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F50#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r2c2#semantic/advance/cancel-maai",
+        "a2-p23-r2c2#semantic/advance/near-approach",
+        "a2-p23-r2c2#semantic/advance/no-double-cost",
+        "a2-p23-r2c2#semantic/mode/0/select",
+        "a2-p23-r2c2#semantic/mode/1/select",
+        "a2-p23-r2c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F51#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r2c3#semantic/advance/cancel-maai",
+        "a2-p23-r2c3#semantic/advance/near-approach",
+        "a2-p23-r2c3#semantic/advance/no-double-cost",
+        "a2-p23-r2c3#semantic/mode/0/select",
+        "a2-p23-r2c3#semantic/mode/1/select",
+        "a2-p23-r2c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F51#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r2c3#semantic/advance/cancel-maai",
+        "a2-p23-r2c3#semantic/advance/near-approach",
+        "a2-p23-r2c3#semantic/advance/no-double-cost",
+        "a2-p23-r2c3#semantic/mode/0/select",
+        "a2-p23-r2c3#semantic/mode/1/select",
+        "a2-p23-r2c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F51#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r2c3#semantic/advance/cancel-maai",
+        "a2-p23-r2c3#semantic/advance/near-approach",
+        "a2-p23-r2c3#semantic/advance/no-double-cost",
+        "a2-p23-r2c3#semantic/mode/0/select",
+        "a2-p23-r2c3#semantic/mode/1/select",
+        "a2-p23-r2c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F52#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r3c1#semantic/advance/cancel-maai",
+        "a2-p23-r3c1#semantic/advance/near-approach",
+        "a2-p23-r3c1#semantic/advance/no-double-cost",
+        "a2-p23-r3c1#semantic/mode/0/select",
+        "a2-p23-r3c1#semantic/mode/1/select",
+        "a2-p23-r3c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F52#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r3c1#semantic/advance/cancel-maai",
+        "a2-p23-r3c1#semantic/advance/near-approach",
+        "a2-p23-r3c1#semantic/advance/no-double-cost",
+        "a2-p23-r3c1#semantic/mode/0/select",
+        "a2-p23-r3c1#semantic/mode/1/select",
+        "a2-p23-r3c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F52#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r3c1#semantic/advance/cancel-maai",
+        "a2-p23-r3c1#semantic/advance/near-approach",
+        "a2-p23-r3c1#semantic/advance/no-double-cost",
+        "a2-p23-r3c1#semantic/mode/0/select",
+        "a2-p23-r3c1#semantic/mode/1/select",
+        "a2-p23-r3c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F53#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r3c2#semantic/advance/cancel-maai",
+        "a2-p23-r3c2#semantic/advance/near-approach",
+        "a2-p23-r3c2#semantic/advance/no-double-cost",
+        "a2-p23-r3c2#semantic/mode/0/select",
+        "a2-p23-r3c2#semantic/mode/1/select",
+        "a2-p23-r3c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F53#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r3c2#semantic/advance/cancel-maai",
+        "a2-p23-r3c2#semantic/advance/near-approach",
+        "a2-p23-r3c2#semantic/advance/no-double-cost",
+        "a2-p23-r3c2#semantic/mode/0/select",
+        "a2-p23-r3c2#semantic/mode/1/select",
+        "a2-p23-r3c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F53#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r3c2#semantic/advance/cancel-maai",
+        "a2-p23-r3c2#semantic/advance/near-approach",
+        "a2-p23-r3c2#semantic/advance/no-double-cost",
+        "a2-p23-r3c2#semantic/mode/0/select",
+        "a2-p23-r3c2#semantic/mode/1/select",
+        "a2-p23-r3c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F54#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r3c3#semantic/advance/cancel-maai",
+        "a2-p23-r3c3#semantic/advance/near-approach",
+        "a2-p23-r3c3#semantic/advance/no-double-cost",
+        "a2-p23-r3c3#semantic/mode/0/select",
+        "a2-p23-r3c3#semantic/mode/1/select",
+        "a2-p23-r3c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F54#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r3c3#semantic/advance/cancel-maai",
+        "a2-p23-r3c3#semantic/advance/near-approach",
+        "a2-p23-r3c3#semantic/advance/no-double-cost",
+        "a2-p23-r3c3#semantic/mode/0/select",
+        "a2-p23-r3c3#semantic/mode/1/select",
+        "a2-p23-r3c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F54#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r3c3#semantic/advance/cancel-maai",
+        "a2-p23-r3c3#semantic/advance/near-approach",
+        "a2-p23-r3c3#semantic/advance/no-double-cost",
+        "a2-p23-r3c3#semantic/mode/0/select",
+        "a2-p23-r3c3#semantic/mode/1/select",
+        "a2-p23-r3c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F55#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r1c1#semantic/advance/cancel-maai",
+        "a2-p24-r1c1#semantic/advance/near-approach",
+        "a2-p24-r1c1#semantic/advance/no-double-cost",
+        "a2-p24-r1c1#semantic/mode/0/select",
+        "a2-p24-r1c1#semantic/mode/1/select",
+        "a2-p24-r1c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F55#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r1c1#semantic/advance/cancel-maai",
+        "a2-p24-r1c1#semantic/advance/near-approach",
+        "a2-p24-r1c1#semantic/advance/no-double-cost",
+        "a2-p24-r1c1#semantic/mode/0/select",
+        "a2-p24-r1c1#semantic/mode/1/select",
+        "a2-p24-r1c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F55#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r1c1#semantic/advance/cancel-maai",
+        "a2-p24-r1c1#semantic/advance/near-approach",
+        "a2-p24-r1c1#semantic/advance/no-double-cost",
+        "a2-p24-r1c1#semantic/mode/0/select",
+        "a2-p24-r1c1#semantic/mode/1/select",
+        "a2-p24-r1c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F56#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r1c2#semantic/advance/cancel-maai",
+        "a2-p24-r1c2#semantic/advance/near-approach",
+        "a2-p24-r1c2#semantic/advance/no-double-cost",
+        "a2-p24-r1c2#semantic/mode/0/select",
+        "a2-p24-r1c2#semantic/mode/1/select",
+        "a2-p24-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F56#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r1c2#semantic/advance/cancel-maai",
+        "a2-p24-r1c2#semantic/advance/near-approach",
+        "a2-p24-r1c2#semantic/advance/no-double-cost",
+        "a2-p24-r1c2#semantic/mode/0/select",
+        "a2-p24-r1c2#semantic/mode/1/select",
+        "a2-p24-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F56#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r1c2#semantic/advance/cancel-maai",
+        "a2-p24-r1c2#semantic/advance/near-approach",
+        "a2-p24-r1c2#semantic/advance/no-double-cost",
+        "a2-p24-r1c2#semantic/mode/0/select",
+        "a2-p24-r1c2#semantic/mode/1/select",
+        "a2-p24-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F57#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r1c3#semantic/advance/cancel-maai",
+        "a2-p24-r1c3#semantic/advance/near-approach",
+        "a2-p24-r1c3#semantic/advance/no-double-cost",
+        "a2-p24-r1c3#semantic/mode/0/select",
+        "a2-p24-r1c3#semantic/mode/1/select",
+        "a2-p24-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F57#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r1c3#semantic/advance/cancel-maai",
+        "a2-p24-r1c3#semantic/advance/near-approach",
+        "a2-p24-r1c3#semantic/advance/no-double-cost",
+        "a2-p24-r1c3#semantic/mode/0/select",
+        "a2-p24-r1c3#semantic/mode/1/select",
+        "a2-p24-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F57#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r1c3#semantic/advance/cancel-maai",
+        "a2-p24-r1c3#semantic/advance/near-approach",
+        "a2-p24-r1c3#semantic/advance/no-double-cost",
+        "a2-p24-r1c3#semantic/mode/0/select",
+        "a2-p24-r1c3#semantic/mode/1/select",
+        "a2-p24-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F58#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r2c1#semantic/advance/cancel-maai",
+        "a2-p24-r2c1#semantic/advance/near-approach",
+        "a2-p24-r2c1#semantic/advance/no-double-cost",
+        "a2-p24-r2c1#semantic/mode/0/select",
+        "a2-p24-r2c1#semantic/mode/1/select",
+        "a2-p24-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F58#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r2c1#semantic/advance/cancel-maai",
+        "a2-p24-r2c1#semantic/advance/near-approach",
+        "a2-p24-r2c1#semantic/advance/no-double-cost",
+        "a2-p24-r2c1#semantic/mode/0/select",
+        "a2-p24-r2c1#semantic/mode/1/select",
+        "a2-p24-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F58#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r2c1#semantic/advance/cancel-maai",
+        "a2-p24-r2c1#semantic/advance/near-approach",
+        "a2-p24-r2c1#semantic/advance/no-double-cost",
+        "a2-p24-r2c1#semantic/mode/0/select",
+        "a2-p24-r2c1#semantic/mode/1/select",
+        "a2-p24-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F59#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r2c2#semantic/advance/cancel-maai",
+        "a2-p24-r2c2#semantic/advance/near-approach",
+        "a2-p24-r2c2#semantic/advance/no-double-cost",
+        "a2-p24-r2c2#semantic/mode/0/select",
+        "a2-p24-r2c2#semantic/mode/1/select",
+        "a2-p24-r2c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F59#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r2c2#semantic/advance/cancel-maai",
+        "a2-p24-r2c2#semantic/advance/near-approach",
+        "a2-p24-r2c2#semantic/advance/no-double-cost",
+        "a2-p24-r2c2#semantic/mode/0/select",
+        "a2-p24-r2c2#semantic/mode/1/select",
+        "a2-p24-r2c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F59#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r2c2#semantic/advance/cancel-maai",
+        "a2-p24-r2c2#semantic/advance/near-approach",
+        "a2-p24-r2c2#semantic/advance/no-double-cost",
+        "a2-p24-r2c2#semantic/mode/0/select",
+        "a2-p24-r2c2#semantic/mode/1/select",
+        "a2-p24-r2c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F60#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r2c3#semantic/advance/cancel-maai",
+        "a2-p24-r2c3#semantic/advance/near-approach",
+        "a2-p24-r2c3#semantic/advance/no-double-cost",
+        "a2-p24-r2c3#semantic/mode/0/select",
+        "a2-p24-r2c3#semantic/mode/1/select",
+        "a2-p24-r2c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F60#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r2c3#semantic/advance/cancel-maai",
+        "a2-p24-r2c3#semantic/advance/near-approach",
+        "a2-p24-r2c3#semantic/advance/no-double-cost",
+        "a2-p24-r2c3#semantic/mode/0/select",
+        "a2-p24-r2c3#semantic/mode/1/select",
+        "a2-p24-r2c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F60#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r2c3#semantic/advance/cancel-maai",
+        "a2-p24-r2c3#semantic/advance/near-approach",
+        "a2-p24-r2c3#semantic/advance/no-double-cost",
+        "a2-p24-r2c3#semantic/mode/0/select",
+        "a2-p24-r2c3#semantic/mode/1/select",
+        "a2-p24-r2c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F61#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r3c1#semantic/advance/cancel-maai",
+        "a2-p24-r3c1#semantic/advance/near-approach",
+        "a2-p24-r3c1#semantic/advance/no-double-cost",
+        "a2-p24-r3c1#semantic/mode/0/select",
+        "a2-p24-r3c1#semantic/mode/1/select",
+        "a2-p24-r3c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F61#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r3c1#semantic/advance/cancel-maai",
+        "a2-p24-r3c1#semantic/advance/near-approach",
+        "a2-p24-r3c1#semantic/advance/no-double-cost",
+        "a2-p24-r3c1#semantic/mode/0/select",
+        "a2-p24-r3c1#semantic/mode/1/select",
+        "a2-p24-r3c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F61#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r3c1#semantic/advance/cancel-maai",
+        "a2-p24-r3c1#semantic/advance/near-approach",
+        "a2-p24-r3c1#semantic/advance/no-double-cost",
+        "a2-p24-r3c1#semantic/mode/0/select",
+        "a2-p24-r3c1#semantic/mode/1/select",
+        "a2-p24-r3c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F62#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r3c2#semantic/advance/cancel-maai",
+        "a2-p24-r3c2#semantic/advance/near-approach",
+        "a2-p24-r3c2#semantic/advance/no-double-cost",
+        "a2-p24-r3c2#semantic/mode/0/select",
+        "a2-p24-r3c2#semantic/mode/1/select",
+        "a2-p24-r3c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F62#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r3c2#semantic/advance/cancel-maai",
+        "a2-p24-r3c2#semantic/advance/near-approach",
+        "a2-p24-r3c2#semantic/advance/no-double-cost",
+        "a2-p24-r3c2#semantic/mode/0/select",
+        "a2-p24-r3c2#semantic/mode/1/select",
+        "a2-p24-r3c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F62#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r3c2#semantic/advance/cancel-maai",
+        "a2-p24-r3c2#semantic/advance/near-approach",
+        "a2-p24-r3c2#semantic/advance/no-double-cost",
+        "a2-p24-r3c2#semantic/mode/0/select",
+        "a2-p24-r3c2#semantic/mode/1/select",
+        "a2-p24-r3c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F63#ruling-paragraph/002",
+      "covers": [
+        "a2-p24-r3c3#semantic/advance/cancel-maai",
+        "a2-p24-r3c3#semantic/advance/near-approach",
+        "a2-p24-r3c3#semantic/advance/no-double-cost",
+        "a2-p24-r3c3#semantic/mode/0/select",
+        "a2-p24-r3c3#semantic/mode/1/select",
+        "a2-p24-r3c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F63#ruling-paragraph/003",
+      "covers": [
+        "a2-p24-r3c3#semantic/advance/cancel-maai",
+        "a2-p24-r3c3#semantic/advance/near-approach",
+        "a2-p24-r3c3#semantic/advance/no-double-cost",
+        "a2-p24-r3c3#semantic/mode/0/select",
+        "a2-p24-r3c3#semantic/mode/1/select",
+        "a2-p24-r3c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F63#ruling-paragraph/004",
+      "covers": [
+        "a2-p24-r3c3#semantic/advance/cancel-maai",
+        "a2-p24-r3c3#semantic/advance/near-approach",
+        "a2-p24-r3c3#semantic/advance/no-double-cost",
+        "a2-p24-r3c3#semantic/mode/0/select",
+        "a2-p24-r3c3#semantic/mode/1/select",
+        "a2-p24-r3c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F64#ruling-paragraph/002",
+      "covers": [
+        "a2-p25-r1c1#semantic/advance/cancel-maai",
+        "a2-p25-r1c1#semantic/advance/near-approach",
+        "a2-p25-r1c1#semantic/advance/no-double-cost",
+        "a2-p25-r1c1#semantic/mode/0/select",
+        "a2-p25-r1c1#semantic/mode/1/select",
+        "a2-p25-r1c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F64#ruling-paragraph/003",
+      "covers": [
+        "a2-p25-r1c1#semantic/advance/cancel-maai",
+        "a2-p25-r1c1#semantic/advance/near-approach",
+        "a2-p25-r1c1#semantic/advance/no-double-cost",
+        "a2-p25-r1c1#semantic/mode/0/select",
+        "a2-p25-r1c1#semantic/mode/1/select",
+        "a2-p25-r1c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F64#ruling-paragraph/004",
+      "covers": [
+        "a2-p25-r1c1#semantic/advance/cancel-maai",
+        "a2-p25-r1c1#semantic/advance/near-approach",
+        "a2-p25-r1c1#semantic/advance/no-double-cost",
+        "a2-p25-r1c1#semantic/mode/0/select",
+        "a2-p25-r1c1#semantic/mode/1/select",
+        "a2-p25-r1c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F65#ruling-paragraph/002",
+      "covers": [
+        "a2-p25-r1c2#semantic/advance/cancel-maai",
+        "a2-p25-r1c2#semantic/advance/near-approach",
+        "a2-p25-r1c2#semantic/advance/no-double-cost",
+        "a2-p25-r1c2#semantic/mode/0/select",
+        "a2-p25-r1c2#semantic/mode/1/select",
+        "a2-p25-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F65#ruling-paragraph/003",
+      "covers": [
+        "a2-p25-r1c2#semantic/advance/cancel-maai",
+        "a2-p25-r1c2#semantic/advance/near-approach",
+        "a2-p25-r1c2#semantic/advance/no-double-cost",
+        "a2-p25-r1c2#semantic/mode/0/select",
+        "a2-p25-r1c2#semantic/mode/1/select",
+        "a2-p25-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F65#ruling-paragraph/004",
+      "covers": [
+        "a2-p25-r1c2#semantic/advance/cancel-maai",
+        "a2-p25-r1c2#semantic/advance/near-approach",
+        "a2-p25-r1c2#semantic/advance/no-double-cost",
+        "a2-p25-r1c2#semantic/mode/0/select",
+        "a2-p25-r1c2#semantic/mode/1/select",
+        "a2-p25-r1c2#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-remaining-physical.test.ts": "11e8367d0a6f75a59c2174559987d45d6b768bcd851f612e0cd1efe5d244a39f"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F66#ruling-paragraph/002",
+      "covers": [
+        "a2-p25-r1c3#semantic/advance/cancel-maai",
+        "a2-p25-r1c3#semantic/advance/near-approach",
+        "a2-p25-r1c3#semantic/advance/no-double-cost",
+        "a2-p25-r1c3#semantic/mode/0/select",
+        "a2-p25-r1c3#semantic/mode/1/select",
+        "a2-p25-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F66#ruling-paragraph/003",
+      "covers": [
+        "a2-p25-r1c3#semantic/advance/cancel-maai",
+        "a2-p25-r1c3#semantic/advance/near-approach",
+        "a2-p25-r1c3#semantic/advance/no-double-cost",
+        "a2-p25-r1c3#semantic/mode/0/select",
+        "a2-p25-r1c3#semantic/mode/1/select",
+        "a2-p25-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F66#ruling-paragraph/004",
+      "covers": [
+        "a2-p25-r1c3#semantic/advance/cancel-maai",
+        "a2-p25-r1c3#semantic/advance/near-approach",
+        "a2-p25-r1c3#semantic/advance/no-double-cost",
+        "a2-p25-r1c3#semantic/mode/0/select",
+        "a2-p25-r1c3#semantic/mode/1/select",
+        "a2-p25-r1c3#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F67#ruling-paragraph/002",
+      "covers": [
+        "a2-p25-r2c1#semantic/advance/cancel-maai",
+        "a2-p25-r2c1#semantic/advance/near-approach",
+        "a2-p25-r2c1#semantic/advance/no-double-cost",
+        "a2-p25-r2c1#semantic/mode/0/select",
+        "a2-p25-r2c1#semantic/mode/1/select",
+        "a2-p25-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F67#ruling-paragraph/003",
+      "covers": [
+        "a2-p25-r2c1#semantic/advance/cancel-maai",
+        "a2-p25-r2c1#semantic/advance/near-approach",
+        "a2-p25-r2c1#semantic/advance/no-double-cost",
+        "a2-p25-r2c1#semantic/mode/0/select",
+        "a2-p25-r2c1#semantic/mode/1/select",
+        "a2-p25-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F67#ruling-paragraph/004",
+      "covers": [
+        "a2-p25-r2c1#semantic/advance/cancel-maai",
+        "a2-p25-r2c1#semantic/advance/near-approach",
+        "a2-p25-r2c1#semantic/advance/no-double-cost",
+        "a2-p25-r2c1#semantic/mode/0/select",
+        "a2-p25-r2c1#semantic/mode/1/select",
+        "a2-p25-r2c1#semantic/mode/exclusive"
+      ],
+      "basis": "Actual physical source is exclusive: attack uses printed warrior values without changing distances, approach becomes one near A-B marker with no damage and cannot be reused to attack or approach C, and combat advance cancels actual Maai with one payment and no movement. Spent copies cannot be resubmitted. Pair-local markers do not transfer to a third seat. Shared multi-target distance sequencing remains with the common distance ruling; this binding is the per-card exclusive/advance evidence. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/advance-physical-modes.test.ts": "32b64fd823c2e279834831d57b68857abbdd8ad3bbff5f93733750d1cbe40d5d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/002",
+      "covers": [
+        "a2-p21-r2c2#semantic/dedicated/arnes-cancel-ignore",
+        "c2-p03-r2c2-ab02#optional-virtual-source",
+        "c2-p03-r2c2-ab02#virtual-base-level-four",
+        "c2-p03-r2c2-ab02#virtual-female-attribute",
+        "c2-p03-r2c2-ab02#virtual-hp-one",
+        "c2-p03-r2c2-ab02#virtual-human-attribute"
+      ],
+      "basis": "Status names Arnes virtual Female Guard versus physical a2-p21-r2c2 and Lester/Vanmil suppression. Actual optional Arnes freeze is Lv4 HP1 morale-free virtual, distinct from physical Lv5 HP4. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218",
+        "packages/engine/test/female-guard-physical.test.ts": "4d3643098e8d441da52d14da9b99965d17ec7ab65e220469fee3400ee35bf31c"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/003",
+      "covers": [
+        "c2-p03-r2c2-ab02#front-position",
+        "c2-p03-r2c2-ab02#no-physical-card",
+        "c2-p03-r2c2-ab02#optional-virtual-source",
+        "c2-p03-r2c2-ab02#virtual-base-level-four",
+        "c2-p03-r2c2-ab02#virtual-female-attribute",
+        "c2-p03-r2c2-ab02#virtual-hp-one",
+        "c2-p03-r2c2-ab02#virtual-human-attribute"
+      ],
+      "basis": "Actual hidden Arnes with no cost freezes one front virtual source Lv4 HP1 human/female, morale-free, distinct from physical Female Guard. Decline generates none. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218",
+        "packages/engine/test/female-guard-physical.test.ts": "4d3643098e8d441da52d14da9b99965d17ec7ab65e220469fee3400ee35bf31c"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/004",
+      "covers": [
+        "c2-p03-r2c2-ab02#group-lifetime",
+        "c2-p03-r2c2-ab02#virtual-hp-one"
+      ],
+      "basis": "Actual Dia Dwarf three hits with Blessing on/off apply HP1 from the same one virtual guard to every hit; later disable does not remove the frozen reduction. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/005",
+      "covers": [
+        "c2-p03-r2c2-ab02#group-lifetime"
+      ],
+      "basis": "Actual S29 three-hit group uses one virtual snapshot for all hits and does not regenerate inside the group; frozen guard continues after later disable. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/006",
+      "covers": [
+        "c2-p03-r2c1-ab02#physical-human-invalidation",
+        "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation",
+        "c2-p03-r2c2-ab02#group-lifetime"
+      ],
+      "basis": "Actual public Arnes identity at snapshot (revealed true/false) suppresses virtual generation and never erases physical women's guard. A frozen guard continues after later disable. Physical Lester human invalidation suppresses physical column cancellation separately. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/007",
+      "covers": [
+        "c2-p03-r2c2-ab02#no-physical-card",
+        "ruling:G11#semantic/virtual-guard-no-physical-recovery"
+      ],
+      "basis": "Actual virtual guard never appears in physical attack, placement, bundle, hand or follower inventories and produces no physical discard. G11 virtual-guard-no-physical-recovery is retained. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/008",
+      "covers": [
+        "a2-p21-r2c2#semantic/dedicated/arnes-cancel-ignore",
+        "c2-p03-r2c2-ab02#cancel-ignore"
+      ],
+      "basis": "Actual selected virtual-only guard protects the whole column from ignore; physical Arnes Female Guard independently cancels generic or sky ignore for its owner. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218",
+        "packages/engine/test/female-guard-physical.test.ts": "4d3643098e8d441da52d14da9b99965d17ec7ab65e220469fee3400ee35bf31c"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/010",
+      "covers": [
+        "a2-p19-r2c1#semantic/revival/destruction-exception",
+        "a2-p19-r2c1#semantic/revival/effect-threshold",
+        "a2-p20-r2c3#semantic/defense/no-spirit",
+        "a2-p20-r3c1#semantic/morale/failure-discard",
+        "a2-p20-r3c1#semantic/morale/receive-trigger",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four",
+        "a2-p21-r3c3#semantic/attack/damage-independent-d6",
+        "a2-p21-r3c3#semantic/attack/effect-d6",
+        "a2-p22-r1c1#semantic/defense/no-spirit",
+        "a2-p22-r3c3#semantic/defense/cancel-ignore-ordinary",
+        "a2-p23-r1c1#semantic/attack/stop",
+        "a2-p23-r1c1#semantic/attack/stop-until-next-own-turn",
+        "c2-p03-r2c2-ab02#group-lifetime",
+        "c2-p03-r2c2-ab02#virtual-hp-one"
+      ],
+      "basis": "Worked examples only, not additional rules: Skeleton revival cap and mixed destruction; Griffin one morale per group; Royal Knights reflect at effect<=4; Stone/Metal spirit pass without HP; Guardian whole-column ignore cancel; Fairy independent level/damage dice; Water stop until source seat; Arnes virtual HP1 on every hit of one snapshot. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-follower-entry.test.ts": "1a24d7ef39f0396b2738d2ab37a4516cd3b918840a45f6e89e17cd6b7077e204",
+        "packages/engine/test/fairy-folk-physical.test.ts": "35d97ad8d4fa7004626b6c2a4210a054642dad0dbc24d84a5ebe64d025959b60",
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218",
+        "packages/engine/test/griffin-morale-aggregate.test.ts": "0be19b7a6ab1e2ea9f2ec5bc470b0afb069fc97320188708115be5f867590893",
+        "packages/engine/test/griffin-physical.test.ts": "5bfd4189b922c0c4ec93ba890213e7b1a04712746b24b80a4730ce918afee010",
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b",
+        "packages/engine/test/metal-golem-physical.test.ts": "95e8f2ab39f8a5fa6dcaeb08fe52ed69c1c58655ca6fb2f89fcd755ab025cf76",
+        "packages/engine/test/royal-knights-physical.test.ts": "93e6fe161ff7205b87d09211f99c726a8719d801afd5aaf1de361acab9cdd598",
+        "packages/engine/test/skeleton-physical.test.ts": "8765d421837c832d7eb1696e4826a74d927b87722749948b2e24888894a04ce0",
+        "packages/engine/test/stone-golem-physical.test.ts": "1bf44dbc5838b794cc9770574244a101034fc26ed3316ad699fd9d750e052e5b",
+        "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5",
+        "tests/e2e/follower-entry.spec.ts": "a484fff55d8277fcdf3489aafb06eb7d556e00d846c3b67fbda130268a31c664"
+      },
+      "matchedPassingBindings": 90
+    },
+    {
+      "identity": "ruling:F68#ruling-paragraph/011",
+      "covers": [
+        "a2-p19-r2c1#semantic/revival/destruction-exception",
+        "a2-p19-r2c1#semantic/revival/effect-threshold",
+        "a2-p20-r2c3#semantic/defense/no-spirit",
+        "a2-p20-r3c1#semantic/morale/failure-discard",
+        "a2-p20-r3c1#semantic/morale/receive-trigger",
+        "a2-p21-r1c2#semantic/defense/reflect-fixed-four",
+        "a2-p21-r3c3#semantic/attack/damage-independent-d6",
+        "a2-p21-r3c3#semantic/attack/effect-d6",
+        "a2-p22-r1c1#semantic/defense/no-spirit",
+        "a2-p22-r3c3#semantic/defense/cancel-ignore-ordinary",
+        "a2-p23-r1c1#semantic/attack/stop",
+        "a2-p23-r1c1#semantic/attack/stop-until-next-own-turn",
+        "c2-p03-r2c2-ab02#group-lifetime",
+        "c2-p03-r2c2-ab02#virtual-hp-one"
+      ],
+      "basis": "Worked examples only, not additional rules: Skeleton revival cap and mixed destruction; Griffin one morale per group; Royal Knights reflect at effect<=4; Stone/Metal spirit pass without HP; Guardian whole-column ignore cancel; Fairy independent level/damage dice; Water stop until source seat; Arnes virtual HP1 on every hit of one snapshot. Bound cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "apps/worker/test/room-follower-entry.test.ts": "1a24d7ef39f0396b2738d2ab37a4516cd3b918840a45f6e89e17cd6b7077e204",
+        "packages/engine/test/fairy-folk-physical.test.ts": "35d97ad8d4fa7004626b6c2a4210a054642dad0dbc24d84a5ebe64d025959b60",
+        "packages/engine/test/follower-entry-abilities.test.ts": "9fcbd48bab6b1fcbc175e898c9cf9f9cd520518c0b86c7325dbfc8b74192b218",
+        "packages/engine/test/griffin-morale-aggregate.test.ts": "0be19b7a6ab1e2ea9f2ec5bc470b0afb069fc97320188708115be5f867590893",
+        "packages/engine/test/griffin-physical.test.ts": "5bfd4189b922c0c4ec93ba890213e7b1a04712746b24b80a4730ce918afee010",
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b",
+        "packages/engine/test/metal-golem-physical.test.ts": "95e8f2ab39f8a5fa6dcaeb08fe52ed69c1c58655ca6fb2f89fcd755ab025cf76",
+        "packages/engine/test/royal-knights-physical.test.ts": "93e6fe161ff7205b87d09211f99c726a8719d801afd5aaf1de361acab9cdd598",
+        "packages/engine/test/skeleton-physical.test.ts": "8765d421837c832d7eb1696e4826a74d927b87722749948b2e24888894a04ce0",
+        "packages/engine/test/stone-golem-physical.test.ts": "1bf44dbc5838b794cc9770574244a101034fc26ed3316ad699fd9d750e052e5b",
+        "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5",
+        "tests/e2e/follower-entry.spec.ts": "a484fff55d8277fcdf3489aafb06eb7d556e00d846c3b67fbda130268a31c664"
+      },
+      "matchedPassingBindings": 90
     }
   ],
   "skyWingValidation": {
