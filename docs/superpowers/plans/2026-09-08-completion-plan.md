@@ -192,10 +192,10 @@ R6の現在候補の122具体参照は[統合実行証跡](../../operations/evid
 
 **Interfaces:** 検証済み台帳からカタログの `implementation` を決め、既存 `assertPlayableCatalog(entries)` を維持する。正式STARTは通常の認証済みルームコマンドを通す。
 
-- [ ] pending・条項欠落・不正なtested指定を拒否するカタログ試験を先に書き、全件acceptedの候補だけが通るように接続する。文字列を一括でtestedへ変更しない。 判定接続と拒否検証は[readiness証跡](../../operations/evidence/2026-09-10-r7-catalog-readiness.json)へ保存。実際の全件accepted候補が未成立のため、この項目は未完。
-- [ ] 卓主・必要人数・全員準備・同時START・古いrevision・途中参加拒否を通常APIで検証する。テスト用状態投入を使わず、招待→準備→正式STARTを通す。
-- [ ] 4/6/8/10の独立セッションで本人への投影と開始を確認し、固定条件の一戦を勝敗まで終える。途中全員切断、未ACK再送、終了後再読込、合意終了も確認する。
-- [ ] 完成候補を固定して全検査を一度通す。失敗は原因・修正・影響範囲を記録し、必要な関連検査を再実行する。未実施や失敗を一括成功と報告しない。
+- [x] pending・条項欠落・不正なtested指定を拒否するカタログ試験を先に書き、全件acceptedの候補だけが通るように接続する。文字列を一括でtestedへ変更しない。判定接続と拒否検証は[readiness証跡](../../operations/evidence/2026-09-10-r7-catalog-readiness.json)。受け入れ済み候補は `packages/catalog/src/selected/readiness.json` の `ready: true` と `packages/catalog/test/catalog.test.ts` の playable 検査。
+- [x] 卓主・必要人数・全員準備・同時START・古いrevision・途中参加拒否を通常APIで検証する。テスト用状態投入を使わず、招待→準備→正式STARTを通す。[lobby.test.ts](../../../apps/worker/test/lobby.test.ts) の `R7 %i authenticated seats keep rejected concurrent START and stale readiness from creating a game` と `R7 %i seats start a real game through the normal START command when readiness is ready`（4/6/8/10）。
+- [x] 4/6/8/10の独立セッションで本人への投影と開始を確認し、固定条件の一戦を勝敗まで終える。途中全員切断、未ACK再送、終了後再読込、合意終了も確認する。[full-game.spec.ts](../../../tests/e2e/full-game.spec.ts) と [failure-recovery.spec.ts](../../../tests/e2e/failure-recovery.spec.ts)。
+- [ ] 完成候補を固定して全検査を一度通す。失敗は原因・修正・影響範囲を記録し、必要な関連検査を再実行する。未実施や失敗を一括成功と報告しない。C5 の B8 再実行が残る。
 
 ```bash
 pnpm verify:catalog

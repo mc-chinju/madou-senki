@@ -1417,17 +1417,17 @@ Expected: 終了0。失敗があれば原因を直し、直したファイルを
 
 2026-09-12: 初回全実行は失敗。Engine/Web 7,963成功・1失敗、Worker 2,551成功・7失敗。スリープ記録と失敗時刻が重なり、変更なしの対象再実行はEngine2件・Worker175件成功。Browserは159成功・1失敗時点で修正のため中断（残り未受け入れ）。獣取得後の回収・lifecycle回答を画面から進める手順を追加し、対象Browser8件が成功。詳細は [初回失敗記録](../../operations/evidence/2026-09-12-b8-initial-failure.json)。候補全再実行と昇格は未完了。再実行は `caffeinate -i` で実行中のアイドルスリープを抑える。蓋閉じによるスリープを防ぐものとは扱わない。
 
-- [ ] **Step 3: 昇格**
+- [x] **Step 3: 昇格**
 
 Run: `python3 scripts/promote_ledger.py --run docs/operations/evidence/2026-09-11-candidate-run.json && python3 scripts/validate_runtime_coverage.py --require-accepted | cut -c1-200`
 Expected: `valid: true`、`acceptanceRequired: true`。失敗行が出た場合はその行の `tests` が run の `cases` にあるか（タイトル整形・パラメータ）を確認し、束縛を直してから run を再実行する。
 
-- [ ] **Step 4: readiness 再生成と catalog 検査**
+- [x] **Step 4: readiness 再生成と catalog 検査**
 
 Run: `python3 scripts/generate_catalog_readiness.py && python3 scripts/generate_catalog_readiness.py --check --require-ready && pnpm verify:catalog`
 Expected: `{"valid": true, "ready": true}`、catalog 検査成功
 
-- [ ] **Step 5: コミット（M2'）**
+- [x] **Step 5: コミット（M2'）**
 
 ```bash
 git add data packages/catalog docs scripts && git commit -m "data: 候補を固定し全条項をacceptedへ昇格、readiness ready=true"
@@ -1459,7 +1459,7 @@ git add data packages/catalog docs scripts && git commit -m "data: 候補を固�
 - `choose(view: PlayerView, seed: number): Command` — 決定的方針: (1) 必須選択があればその先頭、(2) 自手番の action 段階で敵に届く攻撃があれば最大ダメージの技、(3) 回答窓は pass 系、(4) それ以外は手番終了。`seed` は同点時のタイブレークにのみ使う。
 - `playToOutcome(state: GameState, entropy: Entropy, seed: number, maxSteps = 5000): {state: GameState; steps: number}` — 各席の view に対し `choose` を適用し `transition` を回す。`outcome` が付くか `maxSteps` で止まる。ボットが選んだコマンドが `INVALID_ACTION` になった場合はその view と command を例外に含めて止める（列挙器の不備は隠さない）。
 
-- [ ] **Step 1: 失敗する試験を書く**
+- [x] **Step 1: 失敗する試験を書く**
 
 ```ts
 // packages/engine/test/bot-legal-commands.test.ts
@@ -1500,21 +1500,21 @@ describe('deterministic play', () => {
 
 `seededEntropy` が `fixtures.ts` に無い場合は、`Entropy` 型（`apps/worker/src/rooms/room.ts` の `entropy()` を参照）を満たす決定的PRNG（mulberry32）で追加する。`playOneStep` は `playToOutcome` の1周分を export した関数。220 枚の保存 assert は物理カードの実領域（手札・捨て札・山札・設置・予約）に合わせて修正する（`packages/engine/test` の既存 220 枚検査を流用する）。
 
-- [ ] **Step 2: 失敗を確認**
+- [x] **Step 2: 失敗を確認**
 
 Run: `pnpm exec vitest run packages/engine/test/bot-legal-commands.test.ts`
 Expected: モジュール未定義で失敗
 
-- [ ] **Step 3: `legal-commands.ts` を実装する**
+- [x] **Step 3: `legal-commands.ts` を実装する**
 
 view の各 option 配列をそのまま Command に写す。判断の必要な箇所（対象選択・カード選択）は option が既に列挙している候補を1つずつ Command 化する。view に無い情報（他人の手札・伏せ人物）は絶対に使わない。`transition` が拒否するコマンドを列挙した場合は Step 1 の試験が失敗するので、拒否理由（`code`）から列挙条件を絞る。
 
-- [ ] **Step 4: `policy.ts` と `playToOutcome` を実装し、試験を成功させる**
+- [x] **Step 4: `policy.ts` と `playToOutcome` を実装し、試験を成功させる**
 
 Run: `pnpm exec vitest run packages/engine/test/bot-legal-commands.test.ts`
 Expected: 全件成功。`maxSteps` に達する場合は方針を「攻撃可能なら必ず攻撃」に寄せ、それでも終わらない席数があれば、その状態列を `docs/operations/evidence/2026-09-11-bot-stalemate.json` に保存して原因（合法手の循環か、終了判定の不足か）を切り分ける。終了判定の不足はルール実装の不具合なので engine を直し、R6 の終了判定試験を再実行する。
 
-- [ ] **Step 5: 型検査とコミット**
+- [x] **Step 5: 型検査とコミット**
 
 Run: `pnpm typecheck`
 
@@ -1529,7 +1529,7 @@ git add packages/engine && git commit -m "engine: 本人投影だけから合法
 - Modify: `apps/worker/test/lobby.test.ts`（既存 R7 4/6/8/10 START 試験に「seed 設定後の正式 START が `RULESET_NOT_READY` ではなく成功する」ケースを追加）
 - Read: `apps/worker/src/rooms/room.ts` 200〜205 行（START gate）
 
-- [ ] **Step 1: 失敗する試験を書く（lobby.test.ts）**
+- [x] **Step 1: 失敗する試験を書く（lobby.test.ts）**
 
 ```ts
 it.each([4, 6, 8, 10])('R7 %i seats start a real game through the normal START command when readiness is ready', async count => {
@@ -1549,7 +1549,7 @@ it.each([4, 6, 8, 10])('R7 %i seats start a real game through the normal START c
 
 `createRoomWithSeats` 等は lobby.test.ts の既存ヘルパー名に合わせる。この試験は Task B8 で `readiness.ready=true` になって初めて成功する。それまでは `RULESET_NOT_READY` で失敗するのが正しいので、B8 完了後に実行する。
 
-- [ ] **Step 2: e2e-worker に seed エンドポイントを追加**
+- [x] **Step 2: e2e-worker に seed エンドポイントを追加**
 
 ```ts
 // e2e-worker.ts の __test ルート分岐に追加
@@ -1563,7 +1563,7 @@ if (match[2] === 'entropy' && request.method === 'POST') {
 
 `commandEntropy()` は seed テーブルがあれば `calls` を進めながら mulberry32 で `dice` / `shuffle` を生成する（`Entropy` 型の全フィールドを埋める）。正規表現 `(scenario|game)` に `entropy` を加える。本番エントリポイント（`apps/worker/src/index.ts`）には export しない。
 
-- [ ] **Step 3: Worker 試験を実行しコミット**
+- [x] **Step 3: Worker 試験を実行しコミット**
 
 Run: `pnpm --filter @madou/worker exec vitest run test/lobby.test.ts`
 Expected: readiness 未成立の間は新規ケースだけ `RULESET_NOT_READY` で失敗し、他は成功。B8 後に全件成功。
@@ -1582,7 +1582,7 @@ git add apps/worker && git commit -m "worker(test): e2e卓のentropyをseedで�
 - `bot-client.ts`: `class BotClient { constructor(baseURL: string, cookie: string, roomId: string); connect(): Promise<void>; view(): PlayerView | null; send(command: Command): Promise<{ok: boolean; code?: string}>; close(): void }`。Node の `WebSocket`（Playwright の `request` コンテキストから Cookie を取り出して接続）で、サーバー投影を受信し `expectedRevision` と `commandId`（UUID）を自動で付ける。
 - 席は Playwright のブラウザコンテキストでログイン・参加・準備完了・START までを **画面操作** で行い、その後の対局は `BotClient` が同じ Cookie で WS から進める。ブラウザ側は各席 1 ページを開いたままにし、対局終了後に全席 reload して結果表示を確認する。
 
-- [ ] **Step 1: 失敗する試験を書く**
+- [x] **Step 1: 失敗する試験を書く**
 
 ```ts
 import {test, expect} from '@playwright/test';
@@ -1628,12 +1628,12 @@ for (const count of [4, 6, 8, 10]) {
 
 `view.canAct`（自席が今送れる状態か）と `view.outcome` は `PlayerView` の実フィールド名に合わせる。「対戦結果」の role/name は `apps/web/src/game` の終了表示コンポーネントの実装に合わせ、無ければ `Board.tsx` に `role="status" aria-label="対戦結果"` の表示を追加する（勝者名と自席の結果を出す）。
 
-- [ ] **Step 2: `bot-client.ts` を実装し、試験を実行**
+- [x] **Step 2: `bot-client.ts` を実装し、試験を実行**
 
 Run: `pnpm exec playwright test tests/e2e/full-game.spec.ts`
 Expected: 4 件成功。合計時間を記録する。
 
-- [ ] **Step 3: 型検査（e2e tsconfig）とコミット**
+- [x] **Step 3: 型検査（e2e tsconfig）とコミット**
 
 Run: `pnpm typecheck:e2e`
 
@@ -1647,7 +1647,7 @@ git add tests apps/web && git commit -m "e2e: 正式STARTからの4/6/8/10席の
 - Create: `tests/e2e/failure-recovery.spec.ts`
 - Read: `tests/e2e/reconnect.spec.ts`（既存の切断復帰の書き方）、`apps/worker/test/room-lifecycle.test.ts`（合意終了 `CLOSE` 系コマンド名）
 
-- [ ] **Step 1: 失敗する試験を書く（4席・seed 固定・50手進めた状態から）**
+- [x] **Step 1: 失敗する試験を書く（4席・seed 固定・50手進めた状態から）**
 
 ```ts
 test('all seats disconnect mid-game, the table survives, and an unacknowledged command is not applied twice', async ({browser, request}) => {
@@ -1661,7 +1661,7 @@ test('all seats disconnect mid-game, the table survives, and an unacknowledged c
 
 コメントの各段階を実コードにする。`commandId` の再送は `BotClient.send(command, {commandId})` で指定できるようにする（Task C3 の `send` にオプション引数を追加）。
 
-- [ ] **Step 2: 実行・コミット**
+- [x] **Step 2: 実行・コミット**
 
 Run: `pnpm exec playwright test tests/e2e/failure-recovery.spec.ts`
 Expected: 成功
@@ -1672,7 +1672,7 @@ git add tests && git commit -m "e2e: 全員切断・未ACK再送・終了後再�
 
 ### Task C5: R7 候補の固定と全検査（M3'）
 
-- [ ] **Step 1: 完成計画 R7 の4項目を、上記の証跡（lobby.test.ts の R7 ケース、full-game.spec.ts、failure-recovery.spec.ts）へのリンク付きで `[x]` にする。C1〜C4 で追加した試験のうち台帳の semantic 条項に対応するもの（正式START・全員切断・再送）は束縛ファイル `docs/operations/evidence/2026-09-11-r7-bindings.json` で束縛する**
+- [x] **Step 1: 完成計画 R7 の4項目を、上記の証跡（lobby.test.ts の R7 ケース、full-game.spec.ts、failure-recovery.spec.ts）へのリンク付きで `[x]` にする。C1〜C4 で追加した試験のうち台帳の semantic 条項に対応するもの（正式START・全員切断・再送）は束縛ファイル `docs/operations/evidence/2026-09-11-r7-bindings.json` で束縛する。対応する semantic 行は無く `bindings` は空。第4項目（全検査）は Step 2 の B8 再実行が残る。**
 
 - [ ] **Step 2: Task B8 の Step 2〜5 を再実行する（候補が変わったため）**
 

@@ -1,0 +1,51 @@
+{
+  "scope": "C5 Step 1: bind only existing semantic ledger rows that the new R7 tests actually assert. Formal START, all-seat disconnect, and unacked resend do not have matching coverageClass=semantic rows.",
+  "tests": {
+    "catalog": {
+      "path": "packages/catalog/test/catalog.test.ts",
+      "titles": [
+        "marks selected entries tested once accepted coverage is ready",
+        "accepts a complete catalog once coverage evidence is ready"
+      ]
+    },
+    "lobby": {
+      "path": "apps/worker/test/lobby.test.ts",
+      "titles": [
+        "R7 %i authenticated seats keep rejected concurrent START and stale readiness from creating a game",
+        "R7 %i seats start a real game through the normal START command when readiness is ready"
+      ],
+      "parameters": [4, 6, 8, 10]
+    },
+    "fullGame": {
+      "path": "tests/e2e/full-game.spec.ts",
+      "title": "%i seats start through the normal API and play to an outcome with fixed entropy",
+      "parameters": [4, 6, 8, 10]
+    },
+    "failureRecovery": {
+      "path": "tests/e2e/failure-recovery.spec.ts",
+      "title": "all seats disconnect mid-game, the table survives, and an unacknowledged command is not applied twice"
+    }
+  },
+  "inspection": {
+    "rulingG03DisconnectNotPass": {
+      "sourceId": "src:2bc3bde10c0e0d5c",
+      "ledger": "ruling:G03#ruling-paragraph/004",
+      "coverageClass": "aggregate",
+      "semanticRows": "none; G03 semantic rows are accept-only-current-priority and intervention-resets-parent-pass-generation"
+    },
+    "rulingG07ResendDoesNotReroll": {
+      "sourceId": "src:7351531768050539",
+      "ledger": "ruling:G07#ruling-paragraph/004",
+      "coverageClass": "aggregate",
+      "semanticRows": "none; G07 semantic rows are whole-two-dice-reroll-same-identity and forced-failure-survives-reroll"
+    },
+    "rulingG18AllDisconnectPreservesWindow": {
+      "sourceId": "src:947f4a9e9258f18b",
+      "ledger": "ruling:G18#ruling-paragraph/003",
+      "coverageClass": "aggregate",
+      "semanticRows": "none"
+    },
+    "formalStart": "Catalog readiness and lobby START are operational gates, not printed-card semantic clauses. Existing accepted rows were not rebound."
+  },
+  "bindings": []
+}
