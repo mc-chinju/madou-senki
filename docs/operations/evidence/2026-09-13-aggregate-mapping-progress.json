@@ -35,7 +35,7 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 634,
+  "remainingAggregateMappings": 601,
   "excluded": "Current candidate is not accepted; full verification and 688 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
@@ -2799,9 +2799,9 @@
         "a2-p22-r1c3#semantic/morale/receive-trigger",
         "a2-p22-r1c3#semantic/morale/spirit-modifier"
       ],
-      "basis": "Actual reached Guardian at spirit6 with printed -1 shares one morale result across Dwarf8 hits with HP0. Hidden unreached rear stays hidden; a surviving source checks again only for a later group. Explicit Lia waiver preserves Guardian7 HP0 against Dwarf7 without morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "basis": "Actual reached Palace Guard at spirit6 rolls once for three Dwarf7 hits; success applies HP4 per hit, failure uses no HP, discards once and shares the result. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Lia package at spirit0 waives morale and leaves printed6 HP4; omitted selection keeps morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
       "unchangedTestSources": {
-        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+        "packages/engine/test/palace-guard-physical.test.ts": "f38f6c9b98619c8ab177c4bf743de3637252973a13966a857bc69d28247dd868"
       },
       "matchedPassingBindings": 21
     },
@@ -2814,9 +2814,9 @@
         "a2-p22-r1c3#semantic/morale/receive-trigger",
         "a2-p22-r1c3#semantic/morale/spirit-modifier"
       ],
-      "basis": "Actual reached Guardian at spirit6 with printed -1 shares one morale result across Dwarf8 hits with HP0. Hidden unreached rear stays hidden; a surviving source checks again only for a later group. Explicit Lia waiver preserves Guardian7 HP0 against Dwarf7 without morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "basis": "Actual reached Palace Guard at spirit6 rolls once for three Dwarf7 hits; success applies HP4 per hit, failure uses no HP, discards once and shares the result. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Lia package at spirit0 waives morale and leaves printed6 HP4; omitted selection keeps morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
       "unchangedTestSources": {
-        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+        "packages/engine/test/palace-guard-physical.test.ts": "f38f6c9b98619c8ab177c4bf743de3637252973a13966a857bc69d28247dd868"
       },
       "matchedPassingBindings": 21
     },
@@ -2829,9 +2829,9 @@
         "a2-p22-r1c3#semantic/morale/receive-trigger",
         "a2-p22-r1c3#semantic/morale/spirit-modifier"
       ],
-      "basis": "Actual reached Guardian at spirit6 with printed -1 shares one morale result across Dwarf8 hits with HP0. Hidden unreached rear stays hidden; a surviving source checks again only for a later group. Explicit Lia waiver preserves Guardian7 HP0 against Dwarf7 without morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "basis": "Actual reached Palace Guard at spirit6 rolls once for three Dwarf7 hits; success applies HP4 per hit, failure uses no HP, discards once and shares the result. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Lia package at spirit0 waives morale and leaves printed6 HP4; omitted selection keeps morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
       "unchangedTestSources": {
-        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+        "packages/engine/test/palace-guard-physical.test.ts": "f38f6c9b98619c8ab177c4bf743de3637252973a13966a857bc69d28247dd868"
       },
       "matchedPassingBindings": 21
     },
@@ -2844,9 +2844,9 @@
         "a2-p22-r1c3#semantic/morale/failure-discard",
         "a2-p22-r1c3#semantic/morale/receive-trigger"
       ],
-      "basis": "Actual ordinary Guardian, after morale or Lia waiver, protects its whole column from generic or sky-attribute ignore; decline leaves ignore intact. Front Guardian cancels sky ignore for following Griffin. Alseil explicit destruction bypasses cancellation; Lester human invalidation does not disable this printed ordinary effect. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "basis": "Actual ordinary Palace Guard, after morale, protects its whole column from generic or sky-attribute ignore only for its owner; decline leaves ignore intact. Front Palace Guard protects following sky Griffin from Tia attribute ignore. Foreign owners cannot select the Lia package; explicit destruction still removes the source. Lester human invalidation disables this physical cancellation so Wight Army bypasses it and front Metal. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
       "unchangedTestSources": {
-        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+        "packages/engine/test/palace-guard-physical.test.ts": "f38f6c9b98619c8ab177c4bf743de3637252973a13966a857bc69d28247dd868"
       },
       "matchedPassingBindings": 22
     },
@@ -2859,11 +2859,470 @@
         "a2-p22-r1c3#semantic/morale/failure-discard",
         "a2-p22-r1c3#semantic/morale/receive-trigger"
       ],
-      "basis": "Actual ordinary Guardian, after morale or Lia waiver, protects its whole column from generic or sky-attribute ignore; decline leaves ignore intact. Front Guardian cancels sky ignore for following Griffin. Alseil explicit destruction bypasses cancellation; Lester human invalidation does not disable this printed ordinary effect. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "basis": "Actual ordinary Palace Guard, after morale, protects its whole column from generic or sky-attribute ignore only for its owner; decline leaves ignore intact. Front Palace Guard protects following sky Griffin from Tia attribute ignore. Foreign owners cannot select the Lia package; explicit destruction still removes the source. Lester human invalidation disables this physical cancellation so Wight Army bypasses it and front Metal. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/palace-guard-physical.test.ts": "f38f6c9b98619c8ab177c4bf743de3637252973a13966a857bc69d28247dd868"
+      },
+      "matchedPassingBindings": 22
+    },
+    {
+      "identity": "ruling:F40#ruling-paragraph/002",
+      "covers": [
+        "a2-p22-r2c1#semantic/dedicated/lia-morale-waiver",
+        "a2-p22-r2c1#semantic/dedicated/shelim-morale-waiver",
+        "a2-p22-r2c1#semantic/follower/printed-hp",
+        "a2-p22-r2c1#semantic/morale/failure-discard",
+        "a2-p22-r2c1#semantic/morale/receive-trigger",
+        "a2-p22-r2c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Angel at spirit6 rolls unmodified morale once for all Dwarf7 hits with HP0; failure discards without HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Shelim or Lia defensive choice at spirit0 waives only morale and preserves nonmagic6 HP0 and magic defense7; foreign owners cannot elect it. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/angel-physical.test.ts": "395ac4dfd84938cfe3d26c2b01cf0dfa921a2dc1cb6092e194645fab3be4a7e9"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:F40#ruling-paragraph/003",
+      "covers": [
+        "a2-p22-r2c1#semantic/dedicated/lia-morale-waiver",
+        "a2-p22-r2c1#semantic/dedicated/shelim-morale-waiver",
+        "a2-p22-r2c1#semantic/follower/printed-hp",
+        "a2-p22-r2c1#semantic/morale/failure-discard",
+        "a2-p22-r2c1#semantic/morale/receive-trigger",
+        "a2-p22-r2c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Angel at spirit6 rolls unmodified morale once for all Dwarf7 hits with HP0; failure discards without HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Shelim or Lia defensive choice at spirit0 waives only morale and preserves nonmagic6 HP0 and magic defense7; foreign owners cannot elect it. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/angel-physical.test.ts": "395ac4dfd84938cfe3d26c2b01cf0dfa921a2dc1cb6092e194645fab3be4a7e9"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:F40#ruling-paragraph/004",
+      "covers": [
+        "a2-p22-r2c1#semantic/dedicated/lia-morale-waiver",
+        "a2-p22-r2c1#semantic/dedicated/shelim-morale-waiver",
+        "a2-p22-r2c1#semantic/follower/printed-hp",
+        "a2-p22-r2c1#semantic/morale/failure-discard",
+        "a2-p22-r2c1#semantic/morale/receive-trigger",
+        "a2-p22-r2c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Angel at spirit6 rolls unmodified morale once for all Dwarf7 hits with HP0; failure discards without HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Shelim or Lia defensive choice at spirit0 waives only morale and preserves nonmagic6 HP0 and magic defense7; foreign owners cannot elect it. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/angel-physical.test.ts": "395ac4dfd84938cfe3d26c2b01cf0dfa921a2dc1cb6092e194645fab3be4a7e9"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:F41#ruling-paragraph/002",
+      "covers": [
+        "a2-p22-r2c2#semantic/follower/printed-hp",
+        "a2-p22-r2c2#semantic/morale/failure-discard",
+        "a2-p22-r2c2#semantic/morale/receive-trigger",
+        "a2-p22-r2c2#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Flame Dragon at spirit6 shares one morale result across Dwarf7 hits and clamps HP7 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/flame-dragon-physical.test.ts": "a887ca0be55c710e90613ae7ca4544b8430a3f4f8a13583562a4155fa0bcd7ab"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F41#ruling-paragraph/003",
+      "covers": [
+        "a2-p22-r2c2#semantic/follower/printed-hp",
+        "a2-p22-r2c2#semantic/morale/failure-discard",
+        "a2-p22-r2c2#semantic/morale/receive-trigger",
+        "a2-p22-r2c2#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Flame Dragon at spirit6 shares one morale result across Dwarf7 hits and clamps HP7 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/flame-dragon-physical.test.ts": "a887ca0be55c710e90613ae7ca4544b8430a3f4f8a13583562a4155fa0bcd7ab"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F41#ruling-paragraph/004",
+      "covers": [
+        "a2-p22-r2c2#semantic/follower/printed-hp",
+        "a2-p22-r2c2#semantic/morale/failure-discard",
+        "a2-p22-r2c2#semantic/morale/receive-trigger",
+        "a2-p22-r2c2#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Flame Dragon at spirit6 shares one morale result across Dwarf7 hits and clamps HP7 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/flame-dragon-physical.test.ts": "a887ca0be55c710e90613ae7ca4544b8430a3f4f8a13583562a4155fa0bcd7ab"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F42#ruling-paragraph/002",
+      "covers": [
+        "a2-p22-r2c3#semantic/follower/printed-hp",
+        "a2-p22-r2c3#semantic/morale/failure-discard",
+        "a2-p22-r2c3#semantic/morale/receive-trigger",
+        "a2-p22-r2c3#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Ground Dragon at spirit6 shares one morale result across Dwarf7 hits and clamps HP6 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/ground-dragon-physical.test.ts": "c385921e8a4ec5e0d9fc69859c2125a931267005b7b61c4f81eefd57cf1bb1f8"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F42#ruling-paragraph/003",
+      "covers": [
+        "a2-p22-r2c3#semantic/follower/printed-hp",
+        "a2-p22-r2c3#semantic/morale/failure-discard",
+        "a2-p22-r2c3#semantic/morale/receive-trigger",
+        "a2-p22-r2c3#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Ground Dragon at spirit6 shares one morale result across Dwarf7 hits and clamps HP6 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/ground-dragon-physical.test.ts": "c385921e8a4ec5e0d9fc69859c2125a931267005b7b61c4f81eefd57cf1bb1f8"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F42#ruling-paragraph/004",
+      "covers": [
+        "a2-p22-r2c3#semantic/follower/printed-hp",
+        "a2-p22-r2c3#semantic/morale/failure-discard",
+        "a2-p22-r2c3#semantic/morale/receive-trigger",
+        "a2-p22-r2c3#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Ground Dragon at spirit6 shares one morale result across Dwarf7 hits and clamps HP6 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/ground-dragon-physical.test.ts": "c385921e8a4ec5e0d9fc69859c2125a931267005b7b61c4f81eefd57cf1bb1f8"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:F42#ruling-paragraph/005",
+      "covers": [
+        "a2-p22-r2c3#semantic/attack/destroy-nonsky",
+        "a2-p22-r2c3#semantic/attack/retain-sky",
+        "a2-p22-r2c3#semantic/defense/front-order"
+      ],
+      "basis": "Actual Ground Dragon destroys only reached nonsky followers before level comparison with no defender HP; flying is distinct from sky and is not auto-read as sky. High sky front or local Maai/Mirror removes the local hit before nonsky destruction and leaves a hidden column intact. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/ground-dragon-physical.test.ts": "c385921e8a4ec5e0d9fc69859c2125a931267005b7b61c4f81eefd57cf1bb1f8"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:F42#ruling-paragraph/006",
+      "covers": [
+        "a2-p22-r2c3#semantic/attack/destroy-nonsky",
+        "a2-p22-r2c3#semantic/attack/retain-sky",
+        "a2-p22-r2c3#semantic/defense/front-order"
+      ],
+      "basis": "Actual Ground Dragon destroys only reached nonsky followers before level comparison with no defender HP; flying is distinct from sky and is not auto-read as sky. High sky front or local Maai/Mirror removes the local hit before nonsky destruction and leaves a hidden column intact. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/ground-dragon-physical.test.ts": "c385921e8a4ec5e0d9fc69859c2125a931267005b7b61c4f81eefd57cf1bb1f8"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:F43#ruling-paragraph/002",
+      "covers": [
+        "a2-p22-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c1#semantic/follower/printed-hp",
+        "a2-p22-r3c1#semantic/morale/failure-discard",
+        "a2-p22-r3c1#semantic/morale/receive-trigger",
+        "a2-p22-r3c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Wyvern at spirit6 shares one morale result across Dwarf7 hits and clamps HP5 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Asfelt waiver at spirit0 preserves nonwind6 HP5 and changes only morale; foreign Upa cannot select it. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/wyvern-physical.test.ts": "6cd2234937df01a656a9109ea039b92051f94d6746638c93aa9ee4e87bb398c1"
+      },
+      "matchedPassingBindings": 24
+    },
+    {
+      "identity": "ruling:F43#ruling-paragraph/003",
+      "covers": [
+        "a2-p22-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c1#semantic/follower/printed-hp",
+        "a2-p22-r3c1#semantic/morale/failure-discard",
+        "a2-p22-r3c1#semantic/morale/receive-trigger",
+        "a2-p22-r3c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Wyvern at spirit6 shares one morale result across Dwarf7 hits and clamps HP5 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Asfelt waiver at spirit0 preserves nonwind6 HP5 and changes only morale; foreign Upa cannot select it. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/wyvern-physical.test.ts": "6cd2234937df01a656a9109ea039b92051f94d6746638c93aa9ee4e87bb398c1"
+      },
+      "matchedPassingBindings": 24
+    },
+    {
+      "identity": "ruling:F43#ruling-paragraph/004",
+      "covers": [
+        "a2-p22-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c1#semantic/follower/printed-hp",
+        "a2-p22-r3c1#semantic/morale/failure-discard",
+        "a2-p22-r3c1#semantic/morale/receive-trigger",
+        "a2-p22-r3c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Wyvern at spirit6 shares one morale result across Dwarf7 hits and clamps HP5 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Explicit Asfelt waiver at spirit0 preserves nonwind6 HP5 and changes only morale; foreign Upa cannot select it. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/wyvern-physical.test.ts": "6cd2234937df01a656a9109ea039b92051f94d6746638c93aa9ee4e87bb398c1"
+      },
+      "matchedPassingBindings": 24
+    },
+    {
+      "identity": "ruling:F44#ruling-paragraph/002",
+      "covers": [
+        "a2-p22-r3c2#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c2#semantic/follower/printed-hp",
+        "a2-p22-r3c2#semantic/morale/failure-discard",
+        "a2-p22-r3c2#semantic/morale/receive-trigger",
+        "a2-p22-r3c2#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Death Knight at spirit6 with printed -2 shares one morale result across Dwarf8 hits with HP0. Explicit Gad waiver at spirit0 retains level7 HP0 revival7; omitted selection keeps morale. Hidden unreached rear never rolls; a surviving revived source rechecks only a later group. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-knight-physical.test.ts": "52e5d6995e5098c2732235713d700ea21cb9a04e91e4fa8768c6b51f667b22d3"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:F44#ruling-paragraph/003",
+      "covers": [
+        "a2-p22-r3c2#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c2#semantic/follower/printed-hp",
+        "a2-p22-r3c2#semantic/morale/failure-discard",
+        "a2-p22-r3c2#semantic/morale/receive-trigger",
+        "a2-p22-r3c2#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Death Knight at spirit6 with printed -2 shares one morale result across Dwarf8 hits with HP0. Explicit Gad waiver at spirit0 retains level7 HP0 revival7; omitted selection keeps morale. Hidden unreached rear never rolls; a surviving revived source rechecks only a later group. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-knight-physical.test.ts": "52e5d6995e5098c2732235713d700ea21cb9a04e91e4fa8768c6b51f667b22d3"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:F44#ruling-paragraph/004",
+      "covers": [
+        "a2-p22-r3c2#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c2#semantic/follower/printed-hp",
+        "a2-p22-r3c2#semantic/morale/failure-discard",
+        "a2-p22-r3c2#semantic/morale/receive-trigger",
+        "a2-p22-r3c2#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Death Knight at spirit6 with printed -2 shares one morale result across Dwarf8 hits with HP0. Explicit Gad waiver at spirit0 retains level7 HP0 revival7; omitted selection keeps morale. Hidden unreached rear never rolls; a surviving revived source rechecks only a later group. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-knight-physical.test.ts": "52e5d6995e5098c2732235713d700ea21cb9a04e91e4fa8768c6b51f667b22d3"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:F44#ruling-paragraph/005",
+      "covers": [
+        "a2-p22-r3c2#semantic/revival/destruction-exception",
+        "a2-p22-r3c2#semantic/revival/effect-threshold"
+      ],
+      "basis": "Actual Death Knight equal7 revival preserves original front or rear position and does not reenter the same group. Mixed Dia groups forbid revival when any destroying hit exceeds7 in first or last position. Explicit white-light or destroy-dead prevention forbids revival even at or below7 without HP or morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-knight-physical.test.ts": "52e5d6995e5098c2732235713d700ea21cb9a04e91e4fa8768c6b51f667b22d3"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F44#ruling-paragraph/006",
+      "covers": [
+        "a2-p22-r3c2#semantic/revival/destruction-exception",
+        "a2-p22-r3c2#semantic/revival/effect-threshold"
+      ],
+      "basis": "Actual Death Knight equal7 revival preserves original front or rear position and does not reenter the same group. Mixed Dia groups forbid revival when any destroying hit exceeds7 in first or last position. Explicit white-light or destroy-dead prevention forbids revival even at or below7 without HP or morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-knight-physical.test.ts": "52e5d6995e5098c2732235713d700ea21cb9a04e91e4fa8768c6b51f667b22d3"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F44#ruling-paragraph/007",
+      "covers": [
+        "a2-p22-r3c2#semantic/attack/extra-maai-one"
+      ],
+      "basis": "Actual Gad Death Knight attack requires an atomic two-card Maai payment before opening an attempt; one shared advance consumes the paid bundle. The attack surcharge never applies to approach distance payments, and a bundled distance payload rejects without payment. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-knight-physical.test.ts": "52e5d6995e5098c2732235713d700ea21cb9a04e91e4fa8768c6b51f667b22d3"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:F44#ruling-paragraph/008",
+      "covers": [
+        "a2-p22-r3c2#semantic/attack/extra-maai-one"
+      ],
+      "basis": "Actual Gad Death Knight attack requires an atomic two-card Maai payment before opening an attempt; one shared advance consumes the paid bundle. The attack surcharge never applies to approach distance payments, and a bundled distance payload rejects without payment. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-knight-physical.test.ts": "52e5d6995e5098c2732235713d700ea21cb9a04e91e4fa8768c6b51f667b22d3"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:F45#ruling-paragraph/002",
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/follower/printed-hp",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger",
+        "a2-p22-r3c3#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Guardian at spirit6 with printed -1 shares one morale result across Dwarf8 hits with HP0. Hidden unreached rear stays hidden; a surviving source checks again only for a later group. Explicit Lia waiver preserves Guardian7 HP0 against Dwarf7 without morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
       "unchangedTestSources": {
         "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
       },
       "matchedPassingBindings": 22
+    },
+    {
+      "identity": "ruling:F45#ruling-paragraph/003",
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/follower/printed-hp",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger",
+        "a2-p22-r3c3#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Guardian at spirit6 with printed -1 shares one morale result across Dwarf8 hits with HP0. Hidden unreached rear stays hidden; a surviving source checks again only for a later group. Explicit Lia waiver preserves Guardian7 HP0 against Dwarf7 without morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+      },
+      "matchedPassingBindings": 22
+    },
+    {
+      "identity": "ruling:F45#ruling-paragraph/004",
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/follower/printed-hp",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger",
+        "a2-p22-r3c3#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Guardian at spirit6 with printed -1 shares one morale result across Dwarf8 hits with HP0. Hidden unreached rear stays hidden; a surviving source checks again only for a later group. Explicit Lia waiver preserves Guardian7 HP0 against Dwarf7 without morale. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+      },
+      "matchedPassingBindings": 22
+    },
+    {
+      "identity": "ruling:F45#ruling-paragraph/005",
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/defense/cancel-ignore-ordinary",
+        "a2-p22-r3c3#semantic/defense/front-order",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger"
+      ],
+      "basis": "Actual ordinary Guardian, after morale or Lia waiver, protects its whole column from generic or sky-attribute ignore; decline leaves ignore intact. Front Guardian cancels sky ignore for following Griffin. Alseil explicit destruction bypasses cancellation; Lester human invalidation does not disable this printed ordinary effect. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+      },
+      "matchedPassingBindings": 24
+    },
+    {
+      "identity": "ruling:F45#ruling-paragraph/006",
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/defense/cancel-ignore-ordinary",
+        "a2-p22-r3c3#semantic/defense/front-order",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger"
+      ],
+      "basis": "Actual ordinary Guardian, after morale or Lia waiver, protects its whole column from generic or sky-attribute ignore; decline leaves ignore intact. Front Guardian cancels sky ignore for following Griffin. Alseil explicit destruction bypasses cancellation; Lester human invalidation does not disable this printed ordinary effect. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+      },
+      "matchedPassingBindings": 24
+    },
+    {
+      "identity": "ruling:F45#ruling-paragraph/007",
+      "covers": [
+        "a2-p22-r3c3#semantic/attack/all-targets",
+        "a2-p22-r3c3#semantic/attack/no-maai"
+      ],
+      "basis": "Actual Guardian no-maai attack still allows Evade or Mirror and ordinary approach withdrawal; mandatory all remains legal after approach. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F45#ruling-paragraph/008",
+      "covers": [
+        "a2-p22-r3c3#semantic/attack/all-targets",
+        "a2-p22-r3c3#semantic/attack/no-maai"
+      ],
+      "basis": "Actual Guardian no-maai attack still allows Evade or Mirror and ordinary approach withdrawal; mandatory all remains legal after approach. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/guardian-physical.test.ts": "15b032aa5f2cde076a915034106d88d88d800feaf51bc90d3aaa4a6d3d36d63b"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F46#ruling-paragraph/002",
+      "covers": [
+        "a2-p23-r1c1#semantic/follower/printed-hp",
+        "a2-p23-r1c1#semantic/morale/failure-discard",
+        "a2-p23-r1c1#semantic/morale/receive-trigger",
+        "a2-p23-r1c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Water Dragon at spirit6 shares one morale result across Dwarf8 hits and applies HP4 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:F46#ruling-paragraph/003",
+      "covers": [
+        "a2-p23-r1c1#semantic/follower/printed-hp",
+        "a2-p23-r1c1#semantic/morale/failure-discard",
+        "a2-p23-r1c1#semantic/morale/receive-trigger",
+        "a2-p23-r1c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Water Dragon at spirit6 shares one morale result across Dwarf8 hits and applies HP4 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:F46#ruling-paragraph/004",
+      "covers": [
+        "a2-p23-r1c1#semantic/follower/printed-hp",
+        "a2-p23-r1c1#semantic/morale/failure-discard",
+        "a2-p23-r1c1#semantic/morale/receive-trigger",
+        "a2-p23-r1c1#semantic/morale/spirit-modifier"
+      ],
+      "basis": "Actual reached Water Dragon at spirit6 shares one morale result across Dwarf8 hits and applies HP4 on success; failure uses no HP. Hidden unreached rear never rolls; a surviving source rolls again next group. Asfelt and Upa cannot elect an unprinted morale waiver. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:F46#ruling-paragraph/005",
+      "covers": [
+        "a2-p23-r1c1#semantic/attack/stop",
+        "a2-p23-r1c1#semantic/attack/stop-until-next-own-turn"
+      ],
+      "basis": "Actual Water Dragon body hits stop all recipients without resistance until the source seat arrives before recovery. Follower blocking or HP-only reduction distinguishes whether the body was hit; local Maai/Mirror prevents that recipient stop. Dragon King skip, reflected death and protector death still expire Water stop when the inactive source seat arrives; unrelated Nightmare stop survives. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5"
+      },
+      "matchedPassingBindings": 20
+    },
+    {
+      "identity": "ruling:F46#ruling-paragraph/006",
+      "covers": [
+        "a2-p23-r1c1#semantic/attack/stop",
+        "a2-p23-r1c1#semantic/attack/stop-until-next-own-turn"
+      ],
+      "basis": "Actual Water Dragon body hits stop all recipients without resistance until the source seat arrives before recovery. Follower blocking or HP-only reduction distinguishes whether the body was hit; local Maai/Mirror prevents that recipient stop. Dragon King skip, reflected death and protector death still expire Water stop when the inactive source seat arrives; unrelated Nightmare stop survives. Bound cases and sources match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/water-dragon-physical.test.ts": "16c237bc242a0948c5828db8893a105c9f27cf469818ce8233bcddd912201ab5"
+      },
+      "matchedPassingBindings": 20
     }
   ],
   "skyWingValidation": {

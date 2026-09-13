@@ -206229,7 +206229,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c1#semantic/dedicated/lia-morale-waiver",
+        "a2-p22-r2c1#semantic/dedicated/shelim-morale-waiver",
+        "a2-p22-r2c1#semantic/follower/printed-hp",
+        "a2-p22-r2c1#semantic/morale/failure-discard",
+        "a2-p22-r2c1#semantic/morale/receive-trigger",
+        "a2-p22-r2c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F40",
@@ -206244,7 +206251,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c1#semantic/dedicated/lia-morale-waiver",
+        "a2-p22-r2c1#semantic/dedicated/shelim-morale-waiver",
+        "a2-p22-r2c1#semantic/follower/printed-hp",
+        "a2-p22-r2c1#semantic/morale/failure-discard",
+        "a2-p22-r2c1#semantic/morale/receive-trigger",
+        "a2-p22-r2c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F40",
@@ -206259,7 +206273,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c1#semantic/dedicated/lia-morale-waiver",
+        "a2-p22-r2c1#semantic/dedicated/shelim-morale-waiver",
+        "a2-p22-r2c1#semantic/follower/printed-hp",
+        "a2-p22-r2c1#semantic/morale/failure-discard",
+        "a2-p22-r2c1#semantic/morale/receive-trigger",
+        "a2-p22-r2c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F40",
@@ -206304,7 +206325,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c2#semantic/follower/printed-hp",
+        "a2-p22-r2c2#semantic/morale/failure-discard",
+        "a2-p22-r2c2#semantic/morale/receive-trigger",
+        "a2-p22-r2c2#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F41",
@@ -206319,7 +206345,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c2#semantic/follower/printed-hp",
+        "a2-p22-r2c2#semantic/morale/failure-discard",
+        "a2-p22-r2c2#semantic/morale/receive-trigger",
+        "a2-p22-r2c2#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F41",
@@ -206334,7 +206365,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c2#semantic/follower/printed-hp",
+        "a2-p22-r2c2#semantic/morale/failure-discard",
+        "a2-p22-r2c2#semantic/morale/receive-trigger",
+        "a2-p22-r2c2#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F41",
@@ -206379,7 +206415,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c3#semantic/follower/printed-hp",
+        "a2-p22-r2c3#semantic/morale/failure-discard",
+        "a2-p22-r2c3#semantic/morale/receive-trigger",
+        "a2-p22-r2c3#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F42",
@@ -206394,7 +206435,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c3#semantic/follower/printed-hp",
+        "a2-p22-r2c3#semantic/morale/failure-discard",
+        "a2-p22-r2c3#semantic/morale/receive-trigger",
+        "a2-p22-r2c3#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F42",
@@ -206409,7 +206455,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c3#semantic/follower/printed-hp",
+        "a2-p22-r2c3#semantic/morale/failure-discard",
+        "a2-p22-r2c3#semantic/morale/receive-trigger",
+        "a2-p22-r2c3#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F42",
@@ -206424,7 +206475,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c3#semantic/attack/destroy-nonsky",
+        "a2-p22-r2c3#semantic/attack/retain-sky",
+        "a2-p22-r2c3#semantic/defense/front-order"
+      ]
     },
     {
       "entryId": "ruling:F42",
@@ -206439,7 +206494,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r2c3#semantic/attack/destroy-nonsky",
+        "a2-p22-r2c3#semantic/attack/retain-sky",
+        "a2-p22-r2c3#semantic/defense/front-order"
+      ]
     },
     {
       "entryId": "ruling:F42",
@@ -206484,7 +206543,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c1#semantic/follower/printed-hp",
+        "a2-p22-r3c1#semantic/morale/failure-discard",
+        "a2-p22-r3c1#semantic/morale/receive-trigger",
+        "a2-p22-r3c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F43",
@@ -206499,7 +206564,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c1#semantic/follower/printed-hp",
+        "a2-p22-r3c1#semantic/morale/failure-discard",
+        "a2-p22-r3c1#semantic/morale/receive-trigger",
+        "a2-p22-r3c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F43",
@@ -206514,7 +206585,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c1#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c1#semantic/follower/printed-hp",
+        "a2-p22-r3c1#semantic/morale/failure-discard",
+        "a2-p22-r3c1#semantic/morale/receive-trigger",
+        "a2-p22-r3c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F43",
@@ -206559,7 +206636,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c2#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c2#semantic/follower/printed-hp",
+        "a2-p22-r3c2#semantic/morale/failure-discard",
+        "a2-p22-r3c2#semantic/morale/receive-trigger",
+        "a2-p22-r3c2#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F44",
@@ -206574,7 +206657,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c2#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c2#semantic/follower/printed-hp",
+        "a2-p22-r3c2#semantic/morale/failure-discard",
+        "a2-p22-r3c2#semantic/morale/receive-trigger",
+        "a2-p22-r3c2#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F44",
@@ -206589,7 +206678,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c2#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c2#semantic/follower/printed-hp",
+        "a2-p22-r3c2#semantic/morale/failure-discard",
+        "a2-p22-r3c2#semantic/morale/receive-trigger",
+        "a2-p22-r3c2#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F44",
@@ -206604,7 +206699,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c2#semantic/revival/destruction-exception",
+        "a2-p22-r3c2#semantic/revival/effect-threshold"
+      ]
     },
     {
       "entryId": "ruling:F44",
@@ -206619,7 +206717,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c2#semantic/revival/destruction-exception",
+        "a2-p22-r3c2#semantic/revival/effect-threshold"
+      ]
     },
     {
       "entryId": "ruling:F44",
@@ -206634,7 +206735,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c2#semantic/attack/extra-maai-one"
+      ]
     },
     {
       "entryId": "ruling:F44",
@@ -206649,7 +206752,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c2#semantic/attack/extra-maai-one"
+      ]
     },
     {
       "entryId": "ruling:F44",
@@ -206694,7 +206799,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/follower/printed-hp",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger",
+        "a2-p22-r3c3#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F45",
@@ -206709,7 +206820,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/follower/printed-hp",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger",
+        "a2-p22-r3c3#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F45",
@@ -206724,7 +206841,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/follower/printed-hp",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger",
+        "a2-p22-r3c3#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F45",
@@ -206739,7 +206862,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/defense/cancel-ignore-ordinary",
+        "a2-p22-r3c3#semantic/defense/front-order",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger"
+      ]
     },
     {
       "entryId": "ruling:F45",
@@ -206754,7 +206883,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c3#semantic/dedicated/morale-waiver",
+        "a2-p22-r3c3#semantic/defense/cancel-ignore-ordinary",
+        "a2-p22-r3c3#semantic/defense/front-order",
+        "a2-p22-r3c3#semantic/morale/failure-discard",
+        "a2-p22-r3c3#semantic/morale/receive-trigger"
+      ]
     },
     {
       "entryId": "ruling:F45",
@@ -206769,7 +206904,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c3#semantic/attack/all-targets",
+        "a2-p22-r3c3#semantic/attack/no-maai"
+      ]
     },
     {
       "entryId": "ruling:F45",
@@ -206784,7 +206922,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p22-r3c3#semantic/attack/all-targets",
+        "a2-p22-r3c3#semantic/attack/no-maai"
+      ]
     },
     {
       "entryId": "ruling:F45",
@@ -206829,7 +206970,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p23-r1c1#semantic/follower/printed-hp",
+        "a2-p23-r1c1#semantic/morale/failure-discard",
+        "a2-p23-r1c1#semantic/morale/receive-trigger",
+        "a2-p23-r1c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F46",
@@ -206844,7 +206990,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p23-r1c1#semantic/follower/printed-hp",
+        "a2-p23-r1c1#semantic/morale/failure-discard",
+        "a2-p23-r1c1#semantic/morale/receive-trigger",
+        "a2-p23-r1c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F46",
@@ -206859,7 +207010,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p23-r1c1#semantic/follower/printed-hp",
+        "a2-p23-r1c1#semantic/morale/failure-discard",
+        "a2-p23-r1c1#semantic/morale/receive-trigger",
+        "a2-p23-r1c1#semantic/morale/spirit-modifier"
+      ]
     },
     {
       "entryId": "ruling:F46",
@@ -206874,7 +207030,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p23-r1c1#semantic/attack/stop",
+        "a2-p23-r1c1#semantic/attack/stop-until-next-own-turn"
+      ]
     },
     {
       "entryId": "ruling:F46",
@@ -206889,7 +207048,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p23-r1c1#semantic/attack/stop",
+        "a2-p23-r1c1#semantic/attack/stop-until-next-own-turn"
+      ]
     },
     {
       "entryId": "ruling:F46",
