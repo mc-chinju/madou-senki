@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 710,
-  "excluded": "Current candidate is not accepted; full verification and 710 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 702,
+  "excluded": "Current candidate is not accepted; full verification and 702 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -1803,6 +1803,131 @@
         "packages/engine/test/knight-orders-physical.test.ts": "211e85481729371c9e6fdaa21a70e9a6c84f692a6388c1460577d8201aefd880"
       },
       "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F22#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r2c1#semantic/defense/earth-magic-null",
+        "a2-p20-r2c1#semantic/defense/front-order"
+      ],
+      "basis": "Actual Earth Spear at the reached Singing Ship nullifies only owner A (A damage 0, other target C damage 9); a high front prevents reaching hidden Ship; actual paid Tia surprise bypasses Ship and leaves owner damage 6. Earth-warrior exclusion is explicitly structural heterogeneous consumer evidence (magic nullified, warrior compares with HP, body damage 8), not a printed mixed-attack producer. The printed Ship descriptor has no morale requirement: followerFor defaults moraleRequired=false and its rule only enables earthMagicNullify; physical tests assert zero morale rolls. Thus the paragraph conditional for morale-required followers does not introduce morale for this card. All bound cases passed in fourth run with unchanged test sources; candidate acceptance remains pending.",
+      "unchangedTestSources": {
+        "packages/engine/test/singing-ship-physical.test.ts": "ed489e9cf989ba1747ca2a1b6fdd9a7312281ea1ab8046ddb322f64eb7926db5"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F22#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r2c1#semantic/defense/earth-magic-null",
+        "a2-p20-r2c1#semantic/defense/front-order"
+      ],
+      "basis": "Actual Earth Spear at the reached Singing Ship nullifies only owner A (A damage 0, other target C damage 9); a high front prevents reaching hidden Ship; actual paid Tia surprise bypasses Ship and leaves owner damage 6. Earth-warrior exclusion is explicitly structural heterogeneous consumer evidence (magic nullified, warrior compares with HP, body damage 8), not a printed mixed-attack producer. The printed Ship descriptor has no morale requirement: followerFor defaults moraleRequired=false and its rule only enables earthMagicNullify; physical tests assert zero morale rolls. Thus the paragraph conditional for morale-required followers does not introduce morale for this card. All bound cases passed in fourth run with unchanged test sources; candidate acceptance remains pending.",
+      "unchangedTestSources": {
+        "packages/engine/test/singing-ship-physical.test.ts": "ed489e9cf989ba1747ca2a1b6fdd9a7312281ea1ab8046ddb322f64eb7926db5"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F22#ruling-paragraph/004",
+      "covers": [
+        "a2-p20-r2c1#semantic/defense/earth-magic-null",
+        "a2-p20-r2c1#semantic/defense/front-order",
+        "a2-p20-r2c1#semantic/defense/not-earth-warrior"
+      ],
+      "basis": "Actual Earth Spear at the reached Singing Ship nullifies only owner A (A damage 0, other target C damage 9); a high front prevents reaching hidden Ship; actual paid Tia surprise bypasses Ship and leaves owner damage 6. Earth-warrior exclusion is explicitly structural heterogeneous consumer evidence (magic nullified, warrior compares with HP, body damage 8), not a printed mixed-attack producer. The printed Ship descriptor has no morale requirement: followerFor defaults moraleRequired=false and its rule only enables earthMagicNullify; physical tests assert zero morale rolls. Thus the paragraph conditional for morale-required followers does not introduce morale for this card. All bound cases passed in fourth run with unchanged test sources; candidate acceptance remains pending.",
+      "unchangedTestSources": {
+        "packages/engine/test/singing-ship-physical.test.ts": "ed489e9cf989ba1747ca2a1b6fdd9a7312281ea1ab8046ddb322f64eb7926db5",
+        "packages/engine/test/follower-continuations.test.ts": "376ce8ca8ec849c9478a5d89adea3ccad93443df3956d898959cd218615c57b5"
+      },
+      "matchedPassingBindings": 7
+    },
+    {
+      "identity": "ruling:F23#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r2c2#semantic/attack/attribute-0",
+        "a2-p20-r2c2#semantic/attack/attribute-1",
+        "a2-p20-r2c2#semantic/attack/attribute-2",
+        "a2-p20-r2c2#semantic/attack/discard-not-return",
+        "a2-p20-r2c2#semantic/attack/grant-required",
+        "a2-p20-r2c2#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r2c2#semantic/attack/printed-damage",
+        "a2-p20-r2c2#semantic/attack/printed-level",
+        "a2-p20-r2c2#semantic/defense/front-order",
+        "a2-p20-r2c2#semantic/defense/magic-level",
+        "a2-p20-r2c2#semantic/defense/nonmagic-base",
+        "a2-p20-r2c2#semantic/follower/attribute-0",
+        "a2-p20-r2c2#semantic/follower/attribute-1",
+        "a2-p20-r2c2#semantic/follower/printed-hp",
+        "a2-p20-r2c2#semantic/follower/printed-level",
+        "a2-p20-r2c2#semantic/placement/own-action",
+        "a2-p20-r2c2#semantic/placement/setup"
+      ],
+      "basis": "Inspected actual Small Angel setup/own-action placement, hidden front/rear order, printed level4 HP0 white/flying, warrior Dwarf three-hit boundaries, magic4/5/6 against conditional5 and actual mixed Dia warrior/magic constituent levels. Direct/foreign dedicated and Dia human-only grants reject; hand-only Army retains magic3 checks, far/near damage4 and printed attributes, disposal on parent/child cancellation or failed use, reflected damage after source payment; Gadyura white-use restriction also rejects. Physical tests assert no morale rolls, with no invented exemption. All bound test sources and cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/small-angel-physical.test.ts": "6dca02f4ddaa309d918f0dac2ade1689acb022947b472fb74f35b0475dcbcc09"
+      },
+      "matchedPassingBindings": 18
+    },
+    {
+      "identity": "ruling:F23#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r2c2#semantic/attack/attribute-0",
+        "a2-p20-r2c2#semantic/attack/attribute-1",
+        "a2-p20-r2c2#semantic/attack/attribute-2",
+        "a2-p20-r2c2#semantic/attack/discard-not-return",
+        "a2-p20-r2c2#semantic/attack/grant-required",
+        "a2-p20-r2c2#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r2c2#semantic/attack/printed-damage",
+        "a2-p20-r2c2#semantic/attack/printed-level",
+        "a2-p20-r2c2#semantic/defense/front-order",
+        "a2-p20-r2c2#semantic/defense/magic-level",
+        "a2-p20-r2c2#semantic/defense/nonmagic-base",
+        "a2-p20-r2c2#semantic/follower/attribute-0",
+        "a2-p20-r2c2#semantic/follower/attribute-1",
+        "a2-p20-r2c2#semantic/follower/printed-hp",
+        "a2-p20-r2c2#semantic/follower/printed-level",
+        "a2-p20-r2c2#semantic/placement/own-action",
+        "a2-p20-r2c2#semantic/placement/setup"
+      ],
+      "basis": "Inspected actual Small Angel setup/own-action placement, hidden front/rear order, printed level4 HP0 white/flying, warrior Dwarf three-hit boundaries, magic4/5/6 against conditional5 and actual mixed Dia warrior/magic constituent levels. Direct/foreign dedicated and Dia human-only grants reject; hand-only Army retains magic3 checks, far/near damage4 and printed attributes, disposal on parent/child cancellation or failed use, reflected damage after source payment; Gadyura white-use restriction also rejects. Physical tests assert no morale rolls, with no invented exemption. All bound test sources and cases match the passed fourth run; candidate full verification remains required.",
+      "unchangedTestSources": {
+        "packages/engine/test/small-angel-physical.test.ts": "6dca02f4ddaa309d918f0dac2ade1689acb022947b472fb74f35b0475dcbcc09"
+      },
+      "matchedPassingBindings": 18
+    },
+    {
+      "identity": "ruling:F24#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r2c3#semantic/defense/no-spirit"
+      ],
+      "basis": "Actual mental Beast level4 passes Stone Golem level5 with hpReduction0, defeated=false and hidden Stone remaining undiscarded; body takes full5 without rear, or rear Soldier reduces to4 and is discarded. Actual dedicated Alseil mental Mirror Seal explicitly destroys Stone (level-destroyed, hpReduction0, exactly one discard) despite spirit passage. This binds both normal passage and explicit-destruction exception with physical transitions; source-status paragraph is only its provisional anchor. All bound cases and test sources unchanged from passed fourth run; no candidate acceptance claimed.",
+      "unchangedTestSources": {
+        "packages/engine/test/stone-golem-physical.test.ts": "1bf44dbc5838b794cc9770574244a101034fc26ed3316ad699fd9d750e052e5b"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:F24#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r2c3#semantic/defense/no-spirit"
+      ],
+      "basis": "Actual mental Beast level4 passes Stone Golem level5 with hpReduction0, defeated=false and hidden Stone remaining undiscarded; body takes full5 without rear, or rear Soldier reduces to4 and is discarded. Actual dedicated Alseil mental Mirror Seal explicitly destroys Stone (level-destroyed, hpReduction0, exactly one discard) despite spirit passage. This binds both normal passage and explicit-destruction exception with physical transitions; source-status paragraph is only its provisional anchor. All bound cases and test sources unchanged from passed fourth run; no candidate acceptance claimed.",
+      "unchangedTestSources": {
+        "packages/engine/test/stone-golem-physical.test.ts": "1bf44dbc5838b794cc9770574244a101034fc26ed3316ad699fd9d750e052e5b"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:F24#ruling-paragraph/004",
+      "covers": [
+        "a2-p20-r2c3#semantic/defense/no-spirit"
+      ],
+      "basis": "Actual mental Beast level4 passes Stone Golem level5 with hpReduction0, defeated=false and hidden Stone remaining undiscarded; body takes full5 without rear, or rear Soldier reduces to4 and is discarded. Actual dedicated Alseil mental Mirror Seal explicitly destroys Stone (level-destroyed, hpReduction0, exactly one discard) despite spirit passage. This binds both normal passage and explicit-destruction exception with physical transitions; source-status paragraph is only its provisional anchor. All bound cases and test sources unchanged from passed fourth run; no candidate acceptance claimed.",
+      "unchangedTestSources": {
+        "packages/engine/test/stone-golem-physical.test.ts": "1bf44dbc5838b794cc9770574244a101034fc26ed3316ad699fd9d750e052e5b"
+      },
+      "matchedPassingBindings": 3
     }
   ],
   "skyWingValidation": {
@@ -1863,6 +1988,14 @@
         "packages/engine/src/combat/followers.ts": "b300b617d375a36679f84d1be8c57e173a493ceb0f534512fa6a553c0ede022d",
         "data/second-edition/actions-18-25.json": "2ab85090291f612315f9ec2b09e21e54b3e5e25187d28d4e96b63e9ba3102863"
       }
+    }
+  },
+  "singingShipMoraleApplicability": {
+    "basis": "F22 conditional morale wording applies only when required. Printed Singing Ship has earthMagicNullify but no moraleRequired override; followerFor default false. Existing physical tests assert zero follower-morale rolls. No new exemption or semantic notApplicable status is introduced.",
+    "sourceSha256": {
+      "packages/engine/src/effects/follower-descriptors.ts": "8f79bf8db4ff04866e380b5916d1852714c566386e1aa8ee12dce77c56d6dfd7",
+      "packages/engine/src/combat/followers.ts": "b300b617d375a36679f84d1be8c57e173a493ceb0f534512fa6a553c0ede022d",
+      "data/second-edition/actions-18-25.json": "2ab85090291f612315f9ec2b09e21e54b3e5e25187d28d4e96b63e9ba3102863"
     }
   }
 }
