@@ -11,6 +11,24 @@ function source(s:GameState){return Object.values(s.actions!).find(a=>a.cardInst
 function group(s:GameState){return Object.values(s.groups!).find(g=>g.actionId===source(s).id)!;}
 function cmd(dedicated=true,co?:string,targetIds=['B'],coDedicated=false){return {type:'ATTACK',cardInstanceId:CARD,targetIds,dedicated,...(co?{coSource:{cardInstanceId:co,dedicated:coDedicated}}:{})};}
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
+it('actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded',()=>{
+ let s=makeBeastKingPhysical('beast-king-bow',players);
+ const co=beastKingMode('beast-king-bow').co!;
+ s=act(s,'A',cmd(true,co));
+ const event=source(s).eventId;
+ s=until(s,s=>{const r=viewFor(s,'A').reclaim;return r?.cardInstanceId===CARD&&r.claims.some(c=>c.right==='base');});
+ const decision=viewFor(s,'A').reclaim!,claim=decision.claims.find(c=>c.right==='base')!;
+ s=settle(act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:decision.decisionId,choice:'take',claimId:claim.claimId}));
+ expect(s.players.B!.damage).toBe(14);
+ expect(s.players.A!.hand.filter(id=>id===CARD)).toHaveLength(1);
+ expect(s.players.A!.hand).not.toContain(co);
+ expect(s.discard.filter(id=>id===co)).toHaveLength(1);
+ expect(s.discard).not.toContain(CARD);
+ expect(s.players.A!.reclaimUsage?.['獣王剣']?.baseSpent).toBe(true);
+ expect(s.players.A!.reclaimUsage?.['踏み込み／弓']).toBeUndefined();
+ expect(s.used).toEqual(expect.arrayContaining([`${event}:A:${CARD}`,`${event}:A:${co}`]));
+ reject(s,'A',{type:'CHOOSE_RECLAIM',decisionId:decision.decisionId,choice:'take',claimId:claim.claimId});
+});
 it.each(['GOOD','EVIL'] as const)('structural prepared Blood co-source retains its faction prohibition for %s',faction=>{
  let s=makeBeastKingPhysical('beast-king-dedicated',players);
  const co='a2-p09-r2c3';takeCard(s,'A',co);

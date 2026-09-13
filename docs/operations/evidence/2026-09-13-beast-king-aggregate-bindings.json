@@ -330,6 +330,70 @@
       "remaining": [
         "Await complete candidate acceptance after aggregate mapping."
       ]
+    },
+    {
+      "row": "c2-p05-r1c2#owned_techniques/0/normalized-name-once-game",
+      "status": "implemented",
+      "tests": [
+        {
+          "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
+          "suite": [
+            "owned technique base recovery"
+          ],
+          "title": "%s owned technique %s (%s) normalized-name-once-game",
+          "declarationSha256": "f3fa550df88c4c2153fbac0607a5ba97764a0e85760d87ab234f6d426020bfe9",
+          "kind": "canonical-transition",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "獣王剣",
+            "a2-p09-r1c1"
+          ],
+          "bindingNote": "A chosen base recovery spends the canonical-name allowance and a later use cannot claim it again."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-source attack and explicit base claim recover Sword only; Bow stays discarded, only Sword normalized budget is spent, both physical uses recorded and repeated claim rejected."
+        }
+      ],
+      "remaining": [
+        "Await complete candidate acceptance after aggregate mapping."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2#owned_techniques/0/actual-use-disposition",
+      "status": "implemented",
+      "tests": [
+        {
+          "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
+          "suite": [
+            "owned technique base recovery"
+          ],
+          "title": "%s owned technique %s (%s) actual-use-disposition",
+          "declarationSha256": "df71bd796718e73f7e6e6e8f42fccec27a879cbdd2a0cf59f4288ca126e37b52",
+          "kind": "canonical-transition",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "獣王剣",
+            "a2-p09-r1c1"
+          ],
+          "bindingNote": "An actual legal use of this physical owned source opens its recovery at disposition."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-source attack and explicit base claim recover Sword only; Bow stays discarded, only Sword normalized budget is spent, both physical uses recorded and repeated claim rejected."
+        }
+      ],
+      "remaining": [
+        "Await complete candidate acceptance after aggregate mapping."
+      ]
     }
   ]
 }

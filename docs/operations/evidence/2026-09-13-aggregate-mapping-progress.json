@@ -214,16 +214,17 @@
     }
   },
   "beastKingValidation": {
-    "passed": 34,
+    "passed": 35,
     "failed": 0,
     "exitCode": 0,
     "typecheckExitCode": 0,
-    "reportSha256": "086045bb20e61eebb3919f0b61f261580cef50989ae89eb44ce3b28ab17ec128",
+    "reportSha256": "2114be8c7d0f4e28e56f2a5ab0a72792377aa7a4e9f2ac2f5da873cf3963fd86",
     "sourceSha256": {
-      "packages/engine/test/beast-king-physical.test.ts": "61fb98ab7e303ab2ab2a638a6355b0168598537b91868ef8393d814174d28aec",
-      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "ae5ca61dc71f74c5024724f6fd33250945d69b33e08223e8670124cc9d9283f6"
+      "packages/engine/test/beast-king-physical.test.ts": "afaaab37a3b58b35d6e0804304aee8aed85f9d4af9b4133b4719d9d92304484e",
+      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "73b2528ac5f2f543298187fdf9ea98cad64dda2b9d4fbfd222a6d36893f34a26"
     },
     "initialExpectationCorrection": "New test initially assumed +2; printed Beast Nature says warrior damage +1. Expected composites corrected to 15/11; no implementation change.",
-    "remaining": "T08 paragraph/005 broader composite target effects and per-source reclaim still require complete mapping."
+    "remaining": "T08 paragraph/005 reflection and complete target/effect mapping remain; aggregate count unchanged at 812.",
+    "compositeReclaim": "Actual base reclaim returns only Sword; Bow discarded, separate physical-use records, Sword normalized budget spent and stale claim rejected. Bound to existing owned-technique name/use clauses."
   }
 }

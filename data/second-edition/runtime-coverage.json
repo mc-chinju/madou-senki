@@ -194668,10 +194668,13 @@
         "h:e0f59e0f9bc552e6"
       ],
       "tests": [
-        "t:a8d02e08949feae9"
+        "t:a8d02e08949feae9",
+        "t:87a72b51b9b09afd"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:25d56f2fc4d08b47"
+      ],
       "gapKind": "implementation-missing",
       "kind": "owned-reclaim",
       "coverageClass": "semantic"
@@ -245795,10 +245798,13 @@
         "h:e0f59e0f9bc552e6"
       ],
       "tests": [
-        "t:04f1735983da6d5c"
+        "t:04f1735983da6d5c",
+        "t:87a72b51b9b09afd"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:25d56f2fc4d08b47"
+      ],
       "gapKind": "implementation-missing",
       "relatedEvidence": {
         "handler": [],
@@ -484062,6 +484068,15 @@
       "kind": "structural-resolver",
       "parameters": "EVIL",
       "bindingNote": "Prepared Blood chant, sufficient warrior level and explicit faction boundary isolate inherited GOOD prohibition; GOOD rejects without payment, EVIL pays both cards at composite level six. Does not claim the preparatory CHANT or faction-change producer."
+    },
+    "t:87a72b51b9b09afd": {
+      "path": "packages/engine/test/beast-king-physical.test.ts",
+      "suite": [],
+      "title": "actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded",
+      "declarationSha256": "86d610ed50383e2ab4b16e134304b776b70a30234d3b4dc3de0cd92201dc0a72",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual two-source attack and explicit base claim recover Sword only; Bow stays discarded, only Sword normalized budget is spent, both physical uses recorded and repeated claim rejected."
     }
   },
   "remainingNotes": {
