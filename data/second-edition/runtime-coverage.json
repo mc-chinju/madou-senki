@@ -371562,21 +371562,25 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:b79b002e013aed75",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:448b377c58bb4add",
-        "t:bc3a11598aff1a96",
-        "t:9863f8e3b13800ce",
-        "t:af98696adfd5f5d6",
-        "t:ccaa56b5a28eb8e0",
-        "t:4ce30e9f2abbf215",
-        "t:6079b5beacfe9c10",
-        "t:032783b0a18d007c",
-        "t:234c06a756750ea3"
+        "t:819400012fc4d567",
+        "t:25eea8304cbecd0e",
+        "t:eba845678744402f",
+        "t:0387ee72c5ee2fd0",
+        "t:aea209a04095f258",
+        "t:fa9791666920b69e",
+        "t:a90493c7655225d3",
+        "t:ac7dbce16ea9b862",
+        "t:e655ff859741e86e",
+        "t:34d1873f00aa4124",
+        "t:0e3697898e270ba8"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:35d8638caee0fdba"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -371616,18 +371620,22 @@
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
         "h:b79b002e013aed75",
-        "h:6ddc5bc7c658e461"
+        "h:a07f3f4f85423feb"
       ],
       "tests": [
-        "t:1068ffa1bc7eaf2d",
-        "t:9b4839b1d06d8067",
-        "t:f9c45037922448a4",
-        "t:ccaa56b5a28eb8e0",
-        "t:4ce30e9f2abbf215",
-        "t:6079b5beacfe9c10"
+        "t:b07cc993f59bb1ca",
+        "t:22511f373cab400c",
+        "t:5692d0ff54c72b05",
+        "t:aea209a04095f258",
+        "t:fa9791666920b69e",
+        "t:a90493c7655225d3",
+        "t:34d1873f00aa4124",
+        "t:0e3697898e270ba8"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:35d8638caee0fdba"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -484813,6 +484821,132 @@
         8
       ],
       "bindingNote": "Actual OPEN Blessing draw versus no draw changes morale6/7 and follower level5/6 independently. Actual Dia Dwarf three hits with explicit dice6/7/8 prove pass/fail boundary, retained physical Griffin and zero body damage at roll-result window, JSON reconstruction, per-hit HP3 or0 and correct outcomes, then exactly one discard and one morale roll. No synthetic technique or morale modifier."
+    },
+    "t:819400012fc4d567": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Dwarf three hits level%i freezes Wight5 HP0 and applies group-end revival threshold6",
+      "declarationSha256": "b4a6177936ef467b37bc9d76a9c4e6c486ba90bd5193ff536dbf44c5c9c2500a",
+      "kind": "canonical-transition",
+      "parameters": 4,
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:25eea8304cbecd0e": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Dwarf three hits level%i freezes Wight5 HP0 and applies group-end revival threshold6",
+      "declarationSha256": "b4a6177936ef467b37bc9d76a9c4e6c486ba90bd5193ff536dbf44c5c9c2500a",
+      "kind": "canonical-transition",
+      "parameters": 5,
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:eba845678744402f": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Dwarf three hits level%i freezes Wight5 HP0 and applies group-end revival threshold6",
+      "declarationSha256": "b4a6177936ef467b37bc9d76a9c4e6c486ba90bd5193ff536dbf44c5c9c2500a",
+      "kind": "canonical-transition",
+      "parameters": 6,
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:0387ee72c5ee2fd0": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Dwarf three hits level%i freezes Wight5 HP0 and applies group-end revival threshold6",
+      "declarationSha256": "b4a6177936ef467b37bc9d76a9c4e6c486ba90bd5193ff536dbf44c5c9c2500a",
+      "kind": "canonical-transition",
+      "parameters": 7,
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:aea209a04095f258": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual mixed Dia group %s determines Wight revival across every constituent",
+      "declarationSha256": "5b2786d9e8312d4fe1028285cf99240d956e6fb9ccf4a6c533f98fd4abc9b816",
+      "kind": "canonical-transition",
+      "parameters": "safe",
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:fa9791666920b69e": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual mixed Dia group %s determines Wight revival across every constituent",
+      "declarationSha256": "5b2786d9e8312d4fe1028285cf99240d956e6fb9ccf4a6c533f98fd4abc9b816",
+      "kind": "canonical-transition",
+      "parameters": "over-last",
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:a90493c7655225d3": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual mixed Dia group %s determines Wight revival across every constituent",
+      "declarationSha256": "5b2786d9e8312d4fe1028285cf99240d956e6fb9ccf4a6c533f98fd4abc9b816",
+      "kind": "canonical-transition",
+      "parameters": "over-first",
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:ac7dbce16ea9b862": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Wight revival keeps original %s position and no same-group reentry before later Bow group",
+      "declarationSha256": "caa8d558d5ebe8155f8fe7b4e278ac93a295c2668a3d43dba235dcd208c6e5f1",
+      "kind": "canonical-transition",
+      "parameters": "front",
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:e655ff859741e86e": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Wight revival keeps original %s position and no same-group reentry before later Bow group",
+      "declarationSha256": "caa8d558d5ebe8155f8fe7b4e278ac93a295c2668a3d43dba235dcd208c6e5f1",
+      "kind": "canonical-transition",
+      "parameters": "rear",
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:34d1873f00aa4124": {
+      "path": "packages/engine/test/wight-revival-aggregate.test.ts",
+      "suite": [],
+      "title": "structural destruction at hit%i prevents revival while every other saved hit keeps follower HP",
+      "declarationSha256": "5577b1cdd158e8723ad5c1e9aead38c6483a146848ef45d999623b34acc31f24",
+      "kind": "structural-resolver",
+      "parameters": 0,
+      "bindingNote": "Actual safe Dia Dwarf/Palace Guard four-hit group then explicitly modifies only first or last hit to destroy dead followers. JSON reconstruction preserves group-wide revival prohibition, HP0 for all four hits, body26 and one Wight discard. Structural destruction input is not a physical mixed-destruction producer."
+    },
+    "t:0e3697898e270ba8": {
+      "path": "packages/engine/test/wight-revival-aggregate.test.ts",
+      "suite": [],
+      "title": "structural destruction at hit%i prevents revival while every other saved hit keeps follower HP",
+      "declarationSha256": "5577b1cdd158e8723ad5c1e9aead38c6483a146848ef45d999623b34acc31f24",
+      "kind": "structural-resolver",
+      "parameters": 3,
+      "bindingNote": "Actual safe Dia Dwarf/Palace Guard four-hit group then explicitly modifies only first or last hit to destroy dead followers. JSON reconstruction preserves group-wide revival prohibition, HP0 for all four hits, body26 and one Wight discard. Structural destruction input is not a physical mixed-destruction producer."
+    },
+    "t:b07cc993f59bb1ca": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual White Light5 destroys dead Wight without HP or revival even within printed cap",
+      "declarationSha256": "4d777c3e38ea4a44e51dfeee4aff3218d788bd3884c9aa2d14055b05a6335e32",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:22511f373cab400c": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Wight placement initial=%s and own-action order removal preserve private physical source",
+      "declarationSha256": "9de1f3ad0a0710e44c57752b8b8a744e437b171880be97f78d06ac78f2307fa5",
+      "kind": "canonical-transition",
+      "parameters": false,
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
+    },
+    "t:5692d0ff54c72b05": {
+      "path": "packages/engine/test/wight-physical.test.ts",
+      "suite": [],
+      "title": "actual Wight placement initial=%s and own-action order removal preserve private physical source",
+      "declarationSha256": "9de1f3ad0a0710e44c57752b8b8a744e437b171880be97f78d06ac78f2307fa5",
+      "kind": "canonical-transition",
+      "parameters": true,
+      "bindingNote": "Exact Wight a2-p21-r1c1 starts in setup with aligned private initial logs. Actual placement/order/removal/privacy; follower5 HP0 dead with Dwarf4/5/6/7 triple hits and group-end revival cap6, original position and no same-group reentry, mixed Dwarf6+RoyalGuard6 or Dwarf7+RoyalGuard6 in both orders, actual WhiteLight5 explicit dead destruction. Actual Gadyura hand/field far warrior4damage5, warrior0 noChecks all7 subsets; ordinary Army near bottom retains checks and ALSO ignores followers via actual AllArmy extra parser. Physical Metal bypasses without HP/reveal; actual Guardian cancels ignore for whole column after one morale. Mirror legal ordinary AND dedicated; actual near/maai, parent/child/use failure, dedicated Fate and no-refund. Accepted JSON/220 and rejected state/all-view equality. No production change required; wider shared/candidate receipts remain pending."
     }
   },
   "remainingNotes": {
@@ -484994,7 +485128,8 @@
     "n:56671865b4daa658": "Await complete candidate run after aggregate mapping changes.",
     "n:25d56f2fc4d08b47": "Await complete candidate acceptance after aggregate mapping.",
     "n:3794c190a13918f5": "Current candidate requires full verification and acceptance; structural frozen-defense test is not a physical conversion producer.",
-    "n:50d54e3b96891ae3": "Current candidate requires full verification and acceptance."
+    "n:50d54e3b96891ae3": "Current candidate requires full verification and acceptance.",
+    "n:35d8638caee0fdba": "Current candidate requires full verification and acceptance; structural destruction input is not physical producer evidence."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

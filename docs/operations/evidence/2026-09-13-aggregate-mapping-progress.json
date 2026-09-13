@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 691,
-  "excluded": "Current candidate is not accepted; full verification and 691 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 688,
+  "excluded": "Current candidate is not accepted; full verification and 688 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -2059,6 +2059,32 @@
       ],
       "basis": "Actual reached Griffin checks morale once across three higher Dwarf hits, no roll before reaching rear, fresh roll next group, and explicit Upanishat waiver at spirit0. New actual OPEN Blessing draw/no-draw cases independently verify level5/6 and morale6/7 with totals6/7/8: at roll-result window physical Griffin remains placed, not discarded and body damage0; after JSON reconstruction all three hits share success/failure with HP3 or0, final discard exactly once and one morale roll. Griffin has no printed reflection; no reflection ability invented. Full candidate acceptance remains pending.",
       "validation": "griffinMoraleValidation"
+    },
+    {
+      "identity": "ruling:F28#ruling-paragraph/002",
+      "covers": [
+        "a2-p21-r1c1#semantic/revival/effect-threshold"
+      ],
+      "basis": "Actual Wight Lv5 HP0 against Dwarf hits4/5/6/7, original placement order and later group, safe/over-cap mixed Dia constituent orders, White Light dead destruction, voluntary removal and spent attack disposal. New structural first/last destruction within safe four-hit group prevents all revival after JSON reconstruction; not a physical mixed-destruction producer. Wight descriptor has revivalLimit6 only and default moraleRequired=false; existing actual tests assert zero morale rolls, so conditional morale-failure text does not invent a morale requirement. Retained test bindings and source hashes match passed fourth run; two new structural cases pass; full current candidate verification remains pending.",
+      "validation": "wightRevivalValidation"
+    },
+    {
+      "identity": "ruling:F28#ruling-paragraph/003",
+      "covers": [
+        "a2-p21-r1c1#semantic/revival/effect-threshold"
+      ],
+      "basis": "Actual Wight Lv5 HP0 against Dwarf hits4/5/6/7, original placement order and later group, safe/over-cap mixed Dia constituent orders, White Light dead destruction, voluntary removal and spent attack disposal. New structural first/last destruction within safe four-hit group prevents all revival after JSON reconstruction; not a physical mixed-destruction producer. Wight descriptor has revivalLimit6 only and default moraleRequired=false; existing actual tests assert zero morale rolls, so conditional morale-failure text does not invent a morale requirement. Retained test bindings and source hashes match passed fourth run; two new structural cases pass; full current candidate verification remains pending.",
+      "validation": "wightRevivalValidation"
+    },
+    {
+      "identity": "ruling:F28#ruling-paragraph/004",
+      "covers": [
+        "a2-p21-r1c1#semantic/attack/discard-not-return",
+        "a2-p21-r1c1#semantic/revival/destruction-exception",
+        "a2-p21-r1c1#semantic/revival/effect-threshold"
+      ],
+      "basis": "Actual Wight Lv5 HP0 against Dwarf hits4/5/6/7, original placement order and later group, safe/over-cap mixed Dia constituent orders, White Light dead destruction, voluntary removal and spent attack disposal. New structural first/last destruction within safe four-hit group prevents all revival after JSON reconstruction; not a physical mixed-destruction producer. Wight descriptor has revivalLimit6 only and default moraleRequired=false; existing actual tests assert zero morale rolls, so conditional morale-failure text does not invent a morale requirement. Retained test bindings and source hashes match passed fourth run; two new structural cases pass; full current candidate verification remains pending.",
+      "validation": "wightRevivalValidation"
     }
   ],
   "skyWingValidation": {
@@ -2160,5 +2186,21 @@
       "docs/operations/evidence/2026-09-13-griffin-aggregate-bindings.json": "906f6c411d9e1e346a723bd50106649109900eee4d65fcac2c0cc7d14ef2b033"
     },
     "scope": "Five new actual transition cases; current full candidate not accepted."
+  },
+  "wightRevivalValidation": {
+    "testReport": {
+      "path": "/private/tmp/madou-wight-revival-aggregate.json",
+      "passed": 2,
+      "failed": 0,
+      "exitCode": 0,
+      "sha256": "99e1ff48268ab27ee0771e12f28c997e0b870bfd2215a69f38f96169c1bfa7a1"
+    },
+    "typecheckExitCode": 0,
+    "sourceSha256": {
+      "packages/engine/test/wight-revival-aggregate.test.ts": "4f0a54aeb376fecb87ff47e9c797af19a017fc2dc789a9693d8d37693e094091",
+      "packages/engine/test/wight-physical.test.ts": "be92725ba7911733af2c580841dc27a9013557f65729738a108b8e6a4ea56328",
+      "packages/engine/src/effects/follower-descriptors.ts": "8f79bf8db4ff04866e380b5916d1852714c566386e1aa8ee12dce77c56d6dfd7",
+      "docs/operations/evidence/2026-09-13-wight-aggregate-bindings.json": "5fcddfaf9c5dbf5b73c30f5a375d3d554a6f24c386109f9dca0566ccb6dd36c8"
+    }
   }
 }

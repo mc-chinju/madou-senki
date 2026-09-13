@@ -204714,7 +204714,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p21-r1c1#semantic/revival/effect-threshold"
+      ]
     },
     {
       "entryId": "ruling:F28",
@@ -204729,7 +204731,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p21-r1c1#semantic/revival/effect-threshold"
+      ]
     },
     {
       "entryId": "ruling:F28",
@@ -204744,7 +204748,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p21-r1c1#semantic/attack/discard-not-return",
+        "a2-p21-r1c1#semantic/revival/destruction-exception",
+        "a2-p21-r1c1#semantic/revival/effect-threshold"
+      ]
     },
     {
       "entryId": "ruling:F28",
