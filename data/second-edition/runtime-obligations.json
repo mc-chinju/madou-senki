@@ -199968,7 +199968,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p15-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p15-r2c1#semantic/dedicated/0/target-all",
+        "a2-p15-r2c1#semantic/ordinary/up-to-four"
+      ]
     },
     {
       "entryId": "ruling:T38",
@@ -200058,7 +200062,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p15-r2c3#semantic/ordinary/failure-magic-minus-one",
+        "a2-p15-r2c3#semantic/ordinary/failure-spirit-minus-one",
+        "a2-p15-r2c3#semantic/ordinary/failure-warrior-minus-one",
+        "a2-p15-r2c3#semantic/ordinary/target-minus-one"
+      ]
     },
     {
       "entryId": "ruling:T39",
@@ -200148,7 +200157,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p15-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p15-r2c3#semantic/dedicated/full-self-heal",
+        "a2-p15-r2c3#semantic/dedicated/optional-instant-death",
+        "a2-p15-r2c3#semantic/dedicated/target-check",
+        "a2-p15-r2c3#semantic/ordinary/target-minus-one"
+      ]
     },
     {
       "entryId": "ruling:T40",
@@ -200238,7 +200253,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p15-r3c1#semantic/ordinary/first-failure-stop",
+        "a2-p15-r3c1#semantic/ordinary/first-minus-one",
+        "a2-p15-r3c1#semantic/ordinary/next-own-turn-check",
+        "a2-p15-r3c1#semantic/ordinary/second-failure-death",
+        "a2-p15-r3c1#semantic/ordinary/second-minus-one"
+      ]
     },
     {
       "entryId": "ruling:T41",
@@ -200328,7 +200349,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p16-r2c2#semantic/ordinary/live-magic-times-two"
+      ]
     },
     {
       "entryId": "ruling:T42",
@@ -200418,7 +200441,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p16-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p16-r3c3#semantic/dedicated/counter-after-substitution",
+        "a2-p16-r3c3#semantic/dedicated/substitute-all",
+        "a2-p16-r3c3#semantic/dedicated/substitute-check-minus-three",
+        "a2-p16-r3c3#semantic/dedicated/substitute-other-attacks"
+      ]
     },
     {
       "entryId": "ruling:T43",

@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 773,
-  "excluded": "Current candidate is not accepted; full verification and 773 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 767,
+  "excluded": "Current candidate is not accepted; full verification and 767 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -778,6 +778,89 @@
         "packages/engine/test/healing-physical.test.ts": "8dde662f6f228f4b4664a4889ffb92a4214f4fba40587eede7a307291d6f1532"
       },
       "matchedPassingBindings": 16
+    },
+    {
+      "identity": "ruling:T38#ruling-paragraph/004",
+      "covers": [
+        "a2-p15-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p15-r2c1#semantic/dedicated/0/target-all",
+        "a2-p15-r2c1#semantic/ordinary/up-to-four"
+      ],
+      "basis": "Actual six-seat game accepts four ordinary targets and five dedicated targets, with nonempty declaration and untouched ordinary fifth target. Supplemental same-faction/otherworld exclusions remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/storm-magic-physical.test.ts": "cc77b39db91adc6f816c4b087b125b5d936d267f4119b7a0335de1ca8dd17649"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:T39#ruling-paragraph/004",
+      "covers": [
+        "a2-p15-r2c3#semantic/ordinary/failure-magic-minus-one",
+        "a2-p15-r2c3#semantic/ordinary/failure-spirit-minus-one",
+        "a2-p15-r2c3#semantic/ordinary/failure-warrior-minus-one",
+        "a2-p15-r2c3#semantic/ordinary/target-minus-one"
+      ],
+      "basis": "Actual spirit-minus-one resistance and failed drain lower warrior/magic/spirit together; repeated physical reclaim/reuse reaches zero, death clears and real resurrection restores base values. Supplemental transformation and frozen action values remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/dia-lifetime-physical.test.ts": "b8f401e9e2441075449e434354b4c3af392e317d6cada6d55a89b6623af6ff3c"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:T40#ruling-paragraph/004",
+      "covers": [
+        "a2-p15-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p15-r2c3#semantic/dedicated/full-self-heal",
+        "a2-p15-r2c3#semantic/dedicated/optional-instant-death",
+        "a2-p15-r2c3#semantic/dedicated/target-check",
+        "a2-p15-r2c3#semantic/ordinary/target-minus-one"
+      ],
+      "basis": "Actual wounded Dia chooses death or normal drain after failed target resistance; selected death occurs before full heal, declined targets drain without death or heal. Supplemental simultaneous source death and prevented death conditions remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/dia-lifetime-physical.test.ts": "b8f401e9e2441075449e434354b4c3af392e317d6cada6d55a89b6623af6ff3c"
+      },
+      "matchedPassingBindings": 21
+    },
+    {
+      "identity": "ruling:T41#ruling-paragraph/004",
+      "covers": [
+        "a2-p15-r3c1#semantic/ordinary/first-failure-stop",
+        "a2-p15-r3c1#semantic/ordinary/first-minus-one",
+        "a2-p15-r3c1#semantic/ordinary/next-own-turn-check",
+        "a2-p15-r3c1#semantic/ordinary/second-failure-death",
+        "a2-p15-r3c1#semantic/ordinary/second-minus-one"
+      ],
+      "basis": "Actual failed initial resistance creates stopped deadline; next own recovery checks once and failure kills before draw while success removes the whole state. Supplemental skipped turn and selective removal remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/dia-lifetime-physical.test.ts": "b8f401e9e2441075449e434354b4c3af392e317d6cada6d55a89b6623af6ff3c"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:T42#ruling-paragraph/004",
+      "covers": [
+        "a2-p16-r2c2#semantic/ordinary/live-magic-times-two"
+      ],
+      "basis": "Actual caster magic three/six/nine produces six/twelve/eighteen despite fixed use six and Prayer effect seven; selected targets share damage before follower HP. Supplemental post-boundary source-stat changes remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/yotsurm-magic-physical.test.ts": "a86b9b4150f47a7891a2bacbbee50220a2856b05444fefceb2cfd899b5cff2d9"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:T43#ruling-paragraph/004",
+      "covers": [
+        "a2-p16-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p16-r3c3#semantic/dedicated/counter-after-substitution",
+        "a2-p16-r3c3#semantic/dedicated/substitute-all",
+        "a2-p16-r3c3#semantic/dedicated/substitute-check-minus-three",
+        "a2-p16-r3c3#semantic/dedicated/substitute-other-attacks"
+      ],
+      "basis": "Actual Lia spirit-six minus-three success/failure boundaries, saved all-other-hit selection, multi-hit group cancellation on success with one return and original self-target preserved. Supplemental complete frozen-set restrictions remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/light-king-physical.test.ts": "2e185d2c388d090433c9b538bccd6340b92d93c0a0ddc7dc17296aeb15c02cfd"
+      },
+      "matchedPassingBindings": 17
     }
   ],
   "skyWingValidation": {
