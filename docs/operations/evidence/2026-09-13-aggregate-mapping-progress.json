@@ -214,17 +214,18 @@
     }
   },
   "beastKingValidation": {
-    "passed": 35,
+    "passed": 36,
     "failed": 0,
     "exitCode": 0,
     "typecheckExitCode": 0,
-    "reportSha256": "2114be8c7d0f4e28e56f2a5ab0a72792377aa7a4e9f2ac2f5da873cf3963fd86",
+    "reportSha256": "dbfb243270affb1093546ed4bf3a90a3dd422cafec7c03e6902e24a35b45c037",
     "sourceSha256": {
-      "packages/engine/test/beast-king-physical.test.ts": "afaaab37a3b58b35d6e0804304aee8aed85f9d4af9b4133b4719d9d92304484e",
-      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "73b2528ac5f2f543298187fdf9ea98cad64dda2b9d4fbfd222a6d36893f34a26"
+      "packages/engine/test/beast-king-physical.test.ts": "418948c0792c3d34e4eda46cd7c5ea8bffec20c5f1f3be07ea2815eeabf59a8a",
+      "docs/operations/evidence/2026-09-13-beast-king-aggregate-bindings.json": "b17eeede005ed20bff29bfea3ca53709b8fcb306ad2b30ea1c55d3f0bc7e221f"
     },
     "initialExpectationCorrection": "New test initially assumed +2; printed Beast Nature says warrior damage +1. Expected composites corrected to 15/11; no implementation change.",
-    "remaining": "T08 paragraph/005 reflection and complete target/effect mapping remain; aggregate count unchanged at 812.",
-    "compositeReclaim": "Actual base reclaim returns only Sword; Bow discarded, separate physical-use records, Sword normalized budget spent and stale claim rejected. Bound to existing owned-technique name/use clauses."
+    "remaining": "T08 paragraph/005 still needs a complete condition-to-proof mapping including shared target constraints; aggregate count remains 812.",
+    "compositeReclaim": "Actual base reclaim returns only Sword; Bow discarded, separate physical-use records, Sword normalized budget spent and stale claim rejected. Bound to existing owned-technique name/use clauses.",
+    "compositeReflection": "Actual Gainas reflection preserves warrior level6/damage14/attributes and both reserved physical sources; serialized continuation returns damage to owner, records one original use and one disposal of each source."
   }
 }

@@ -282254,7 +282254,8 @@
         "t:efc07eb75409c43c",
         "t:bbedd1f08dd4d660",
         "t:f454f3514392a5d0",
-        "t:4b6ab6700d406d4c"
+        "t:4b6ab6700d406d4c",
+        "t:929de7c50d24d595"
       ],
       "status": "implemented",
       "remaining": [
@@ -282317,7 +282318,8 @@
         "t:f454f3514392a5d0",
         "t:4b6ab6700d406d4c",
         "t:969b84e14ca4dcee",
-        "t:abfeaa0bac144bc7"
+        "t:abfeaa0bac144bc7",
+        "t:929de7c50d24d595"
       ],
       "status": "implemented",
       "remaining": [
@@ -484077,6 +484079,15 @@
       "kind": "canonical-transition",
       "parameters": null,
       "bindingNote": "Actual two-source attack and explicit base claim recover Sword only; Bow stays discarded, only Sword normalized budget is spent, both physical uses recorded and repeated claim rejected."
+    },
+    "t:929de7c50d24d595": {
+      "path": "packages/engine/test/beast-king-physical.test.ts",
+      "suite": [],
+      "title": "actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved",
+      "declarationSha256": "7607bf5fd9bae164c2cf946fd9e15ab915526c89078aa7c026bdbda64ba23d3e",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual Gainas checked reflection of Sword+Bow keeps composed warrior6 damage14 and attributes, reserved physical sources, one final discard/use each; JSON restoration before resolution."
     }
   },
   "remainingNotes": {

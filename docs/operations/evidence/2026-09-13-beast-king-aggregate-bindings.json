@@ -129,6 +129,14 @@
           ],
           "kind": "canonical-transition",
           "bindingNote": "Actual elected Beast Nature adds the printed +1 once to a two-card composite; null co-source remains null and base ten becomes eleven, Bow composite fourteen becomes fifteen."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Gainas checked reflection of Sword+Bow keeps composed warrior6 damage14 and attributes, reserved physical sources, one final discard/use each; JSON restoration before resolution."
         }
       ],
       "remaining": [
@@ -325,6 +333,14 @@
           "parameters": "EVIL",
           "kind": "structural-resolver",
           "bindingNote": "Prepared Blood chant, sufficient warrior level and explicit faction boundary isolate inherited GOOD prohibition; GOOD rejects without payment, EVIL pays both cards at composite level six. Does not claim the preparatory CHANT or faction-change producer."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Gainas checked reflection of Sword+Bow keeps composed warrior6 damage14 and attributes, reserved physical sources, one final discard/use each; JSON restoration before resolution."
         }
       ],
       "remaining": [

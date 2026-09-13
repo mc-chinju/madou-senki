@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {takeCard} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard} from '../../../apps/worker/test/fixtures/scenario-tools.js';
 import {makeBeastKingPhysical,beastKingCard as CARD,beastKingMode} from '../../../apps/worker/test/fixtures/beast-king-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice=Array(30).fill(1)){for(let n=0;n<800;n++){if(done(s))return s;s=pass(s,dice);}throw Error('BEAST_KING_LIMIT');}
@@ -11,6 +11,29 @@ function source(s:GameState){return Object.values(s.actions!).find(a=>a.cardInst
 function group(s:GameState){return Object.values(s.groups!).find(g=>g.actionId===source(s).id)!;}
 function cmd(dedicated=true,co?:string,targetIds=['B'],coDedicated=false){return {type:'ATTACK',cardInstanceId:CARD,targetIds,dedicated,...(co?{coSource:{cardInstanceId:co,dedicated:coDedicated}}:{})};}
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
+it('actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved',()=>{
+ let s=makeBeastKingPhysical('beast-king-bow',players);
+ assignCharacter(s,'B','魔導王ガイナス');assignCharacter(s,'D','侍大将のシン');
+ s.players.B!.permanent!.spirit=20;
+ const co=beastKingMode('beast-king-bow').co!;
+ s=until(act(s,'A',cmd(true,co)),s=>s.windows?.at(-1)?.kind==='normal-defense');
+ const parentId=group(s).id,event=source(s).eventId;
+ const option=viewFor(s,'B').abilityOptions.find(o=>o.abilityId==='c2-p05-r2c2-ab02')!;
+ expect(option).toBeDefined();
+ s=act(s,'B',{type:'USE_ABILITY',abilityId:option.abilityId,targetEventId:option.targetEventId});
+ s=until(s,s=>Object.values(s.groups??{}).some(g=>g.attackerId==='B'));
+ const reflected=Object.values(s.groups!).find(g=>g.attackerId==='B')!;
+ expect(reflected.technique).toMatchObject({school:'warrior',effectLevel:6,damage:14,attributes:expect.arrayContaining(['戦','剣','獣'])});
+ expect(reflected.targets[0]!.actorId).toBe('A');
+ expect(reflected.targets[0]!.hits[0]!.damage).toBe(14);
+ expect(s.groups![parentId]!.sourceCardInstanceIds).toEqual([CARD,co]);
+ expect(s.resolution).toEqual(expect.arrayContaining([CARD,co]));
+ s=settle(JSON.parse(JSON.stringify(s)));
+ expect(s.players.A!.damage).toBe(14);expect(s.players.B!.damage).toBe(0);
+ for(const card of [CARD,co])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ expect(s.used!.filter(id=>id.endsWith(`:${CARD}`))).toEqual([`${event}:A:${CARD}`]);
+ expect(s.used!.filter(id=>id.endsWith(`:${co}`))).toEqual([`${event}:A:${co}`]);
+});
 it('actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded',()=>{
  let s=makeBeastKingPhysical('beast-king-bow',players);
  const co=beastKingMode('beast-king-bow').co!;
