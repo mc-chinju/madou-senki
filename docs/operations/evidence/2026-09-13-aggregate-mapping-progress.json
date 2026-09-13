@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 715,
-  "excluded": "Current candidate is not accepted; full verification and 715 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 710,
+  "excluded": "Current candidate is not accepted; full verification and 710 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -1681,6 +1681,128 @@
         "a2-p19-r3c3#semantic/revival/effect-threshold"
       ],
       "basis": "Actual inclusive revival limits across three Dwarf hits, original front/rear slot and later attack, mixed over-limit group in both orders, direct removal and paid attack disposal, explicit destruction within limit and structural first/last destructive hit preserve other HP. These two printed descriptors never require morale, and actual threshold tests assert no morale rolls; morale failure is a conditional shared exception with no current producer for these cards, not an accepted successful printed route. No semantic notApplicable status added."
+    },
+    {
+      "identity": "ruling:F19#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r1c1#semantic/attack/attribute-0",
+        "a2-p20-r1c1#semantic/attack/attribute-1",
+        "a2-p20-r1c1#semantic/attack/attribute-2",
+        "a2-p20-r1c1#semantic/attack/discard-not-return",
+        "a2-p20-r1c1#semantic/attack/grant-required",
+        "a2-p20-r1c1#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c1#semantic/attack/printed-damage",
+        "a2-p20-r1c1#semantic/attack/printed-level",
+        "a2-p20-r1c1#semantic/defense/front-order",
+        "a2-p20-r1c1#semantic/follower/attribute-0",
+        "a2-p20-r1c1#semantic/follower/printed-hp",
+        "a2-p20-r1c1#semantic/follower/printed-level",
+        "a2-p20-r1c1#semantic/placement/own-action",
+        "a2-p20-r1c1#semantic/placement/setup"
+      ],
+      "basis": "Provisional source anchor and printed-card/common-processing paragraph: inspected physical setup, own-action arrangement/removal, hidden front-order defense, actual Dwarf three-hit higher/equal/lower boundaries, zero morale rolls, Maai exclusion, rejection of ungranted direct attack, hand-only ordinary Army use checks and spent-source disposal. Mercenary additionally exercises Dia hand/field grant and cancellation; Holy Knights exercises named-owner hand/field election, retained use checks, inherited Lancelot2 and cancellation without refund. No permission or morale exemption beyond the printed descriptor is introduced. Test sources and bound passing cases are unchanged from the fourth run; current candidate still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/mercenary-physical.test.ts": "2c8056334ccb501301674b0ace36823ba3053c5d299c3a43a74bee090e3b0419"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:F19#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r1c1#semantic/attack/attribute-0",
+        "a2-p20-r1c1#semantic/attack/attribute-1",
+        "a2-p20-r1c1#semantic/attack/attribute-2",
+        "a2-p20-r1c1#semantic/attack/discard-not-return",
+        "a2-p20-r1c1#semantic/attack/grant-required",
+        "a2-p20-r1c1#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c1#semantic/attack/printed-damage",
+        "a2-p20-r1c1#semantic/attack/printed-level",
+        "a2-p20-r1c1#semantic/defense/front-order",
+        "a2-p20-r1c1#semantic/follower/attribute-0",
+        "a2-p20-r1c1#semantic/follower/printed-hp",
+        "a2-p20-r1c1#semantic/follower/printed-level",
+        "a2-p20-r1c1#semantic/placement/own-action",
+        "a2-p20-r1c1#semantic/placement/setup"
+      ],
+      "basis": "Provisional source anchor and printed-card/common-processing paragraph: inspected physical setup, own-action arrangement/removal, hidden front-order defense, actual Dwarf three-hit higher/equal/lower boundaries, zero morale rolls, Maai exclusion, rejection of ungranted direct attack, hand-only ordinary Army use checks and spent-source disposal. Mercenary additionally exercises Dia hand/field grant and cancellation; Holy Knights exercises named-owner hand/field election, retained use checks, inherited Lancelot2 and cancellation without refund. No permission or morale exemption beyond the printed descriptor is introduced. Test sources and bound passing cases are unchanged from the fourth run; current candidate still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/mercenary-physical.test.ts": "2c8056334ccb501301674b0ace36823ba3053c5d299c3a43a74bee090e3b0419"
+      },
+      "matchedPassingBindings": 12
+    },
+    {
+      "identity": "ruling:F21#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r1c3#semantic/attack/attribute-0",
+        "a2-p20-r1c3#semantic/attack/attribute-1",
+        "a2-p20-r1c3#semantic/attack/attribute-2",
+        "a2-p20-r1c3#semantic/attack/attribute-3",
+        "a2-p20-r1c3#semantic/attack/discard-not-return",
+        "a2-p20-r1c3#semantic/attack/grant-required",
+        "a2-p20-r1c3#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c3#semantic/attack/printed-damage",
+        "a2-p20-r1c3#semantic/attack/printed-level",
+        "a2-p20-r1c3#semantic/dedicated/from-hand",
+        "a2-p20-r1c3#semantic/dedicated/from-placement",
+        "a2-p20-r1c3#semantic/dedicated/owner-filter",
+        "a2-p20-r1c3#semantic/dedicated/use-check",
+        "a2-p20-r1c3#semantic/defense/front-order",
+        "a2-p20-r1c3#semantic/follower/attribute-0",
+        "a2-p20-r1c3#semantic/follower/attribute-1",
+        "a2-p20-r1c3#semantic/follower/printed-hp",
+        "a2-p20-r1c3#semantic/follower/printed-level",
+        "a2-p20-r1c3#semantic/placement/own-action",
+        "a2-p20-r1c3#semantic/placement/setup"
+      ],
+      "basis": "Provisional source anchor and printed-card/common-processing paragraph: inspected physical setup, own-action arrangement/removal, hidden front-order defense, actual Dwarf three-hit higher/equal/lower boundaries, zero morale rolls, Maai exclusion, rejection of ungranted direct attack, hand-only ordinary Army use checks and spent-source disposal. Mercenary additionally exercises Dia hand/field grant and cancellation; Holy Knights exercises named-owner hand/field election, retained use checks, inherited Lancelot2 and cancellation without refund. No permission or morale exemption beyond the printed descriptor is introduced. Test sources and bound passing cases are unchanged from the fourth run; current candidate still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/knight-orders-physical.test.ts": "211e85481729371c9e6fdaa21a70e9a6c84f692a6388c1460577d8201aefd880"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:F21#ruling-paragraph/003",
+      "covers": [
+        "a2-p20-r1c3#semantic/attack/attribute-0",
+        "a2-p20-r1c3#semantic/attack/attribute-1",
+        "a2-p20-r1c3#semantic/attack/attribute-2",
+        "a2-p20-r1c3#semantic/attack/attribute-3",
+        "a2-p20-r1c3#semantic/attack/discard-not-return",
+        "a2-p20-r1c3#semantic/attack/grant-required",
+        "a2-p20-r1c3#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c3#semantic/attack/printed-damage",
+        "a2-p20-r1c3#semantic/attack/printed-level",
+        "a2-p20-r1c3#semantic/dedicated/from-hand",
+        "a2-p20-r1c3#semantic/dedicated/from-placement",
+        "a2-p20-r1c3#semantic/dedicated/owner-filter",
+        "a2-p20-r1c3#semantic/dedicated/use-check",
+        "a2-p20-r1c3#semantic/defense/front-order",
+        "a2-p20-r1c3#semantic/follower/attribute-0",
+        "a2-p20-r1c3#semantic/follower/attribute-1",
+        "a2-p20-r1c3#semantic/follower/printed-hp",
+        "a2-p20-r1c3#semantic/follower/printed-level",
+        "a2-p20-r1c3#semantic/placement/own-action",
+        "a2-p20-r1c3#semantic/placement/setup"
+      ],
+      "basis": "Provisional source anchor and printed-card/common-processing paragraph: inspected physical setup, own-action arrangement/removal, hidden front-order defense, actual Dwarf three-hit higher/equal/lower boundaries, zero morale rolls, Maai exclusion, rejection of ungranted direct attack, hand-only ordinary Army use checks and spent-source disposal. Mercenary additionally exercises Dia hand/field grant and cancellation; Holy Knights exercises named-owner hand/field election, retained use checks, inherited Lancelot2 and cancellation without refund. No permission or morale exemption beyond the printed descriptor is introduced. Test sources and bound passing cases are unchanged from the fourth run; current candidate still requires full verification.",
+      "unchangedTestSources": {
+        "packages/engine/test/knight-orders-physical.test.ts": "211e85481729371c9e6fdaa21a70e9a6c84f692a6388c1460577d8201aefd880"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:F20#ruling-paragraph/002",
+      "covers": [
+        "a2-p20-r1c2#semantic/dedicated/double-damage",
+        "a2-p20-r1c2#semantic/dedicated/effect-plus-one",
+        "a2-p20-r1c2#semantic/follower/printed-hp",
+        "a2-p20-r1c2#semantic/follower/printed-level"
+      ],
+      "basis": "Provisional source-status anchor only: actual Black Knights defense retains printed level 4 and HP 5, while elected attack has effect level 5 and damage 10; actual Sword Master addition produces damage 14 before defense. The separate full composition/timing answer remains unmapped pending its additional boundaries. Bound passing cases and test sources are unchanged from the fourth run.",
+      "unchangedTestSources": {
+        "packages/engine/test/knight-orders-physical.test.ts": "211e85481729371c9e6fdaa21a70e9a6c84f692a6388c1460577d8201aefd880"
+      },
+      "matchedPassingBindings": 5
     }
   ],
   "skyWingValidation": {

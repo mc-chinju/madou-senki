@@ -203884,7 +203884,22 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r1c1#semantic/attack/attribute-0",
+        "a2-p20-r1c1#semantic/attack/attribute-1",
+        "a2-p20-r1c1#semantic/attack/attribute-2",
+        "a2-p20-r1c1#semantic/attack/discard-not-return",
+        "a2-p20-r1c1#semantic/attack/grant-required",
+        "a2-p20-r1c1#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c1#semantic/attack/printed-damage",
+        "a2-p20-r1c1#semantic/attack/printed-level",
+        "a2-p20-r1c1#semantic/defense/front-order",
+        "a2-p20-r1c1#semantic/follower/attribute-0",
+        "a2-p20-r1c1#semantic/follower/printed-hp",
+        "a2-p20-r1c1#semantic/follower/printed-level",
+        "a2-p20-r1c1#semantic/placement/own-action",
+        "a2-p20-r1c1#semantic/placement/setup"
+      ]
     },
     {
       "entryId": "ruling:F19",
@@ -203899,7 +203914,22 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r1c1#semantic/attack/attribute-0",
+        "a2-p20-r1c1#semantic/attack/attribute-1",
+        "a2-p20-r1c1#semantic/attack/attribute-2",
+        "a2-p20-r1c1#semantic/attack/discard-not-return",
+        "a2-p20-r1c1#semantic/attack/grant-required",
+        "a2-p20-r1c1#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c1#semantic/attack/printed-damage",
+        "a2-p20-r1c1#semantic/attack/printed-level",
+        "a2-p20-r1c1#semantic/defense/front-order",
+        "a2-p20-r1c1#semantic/follower/attribute-0",
+        "a2-p20-r1c1#semantic/follower/printed-hp",
+        "a2-p20-r1c1#semantic/follower/printed-level",
+        "a2-p20-r1c1#semantic/placement/own-action",
+        "a2-p20-r1c1#semantic/placement/setup"
+      ]
     },
     {
       "entryId": "ruling:F19",
@@ -203944,7 +203974,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r1c2#semantic/dedicated/double-damage",
+        "a2-p20-r1c2#semantic/dedicated/effect-plus-one",
+        "a2-p20-r1c2#semantic/follower/printed-hp",
+        "a2-p20-r1c2#semantic/follower/printed-level"
+      ]
     },
     {
       "entryId": "ruling:F20",
@@ -204019,7 +204054,28 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r1c3#semantic/attack/attribute-0",
+        "a2-p20-r1c3#semantic/attack/attribute-1",
+        "a2-p20-r1c3#semantic/attack/attribute-2",
+        "a2-p20-r1c3#semantic/attack/attribute-3",
+        "a2-p20-r1c3#semantic/attack/discard-not-return",
+        "a2-p20-r1c3#semantic/attack/grant-required",
+        "a2-p20-r1c3#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c3#semantic/attack/printed-damage",
+        "a2-p20-r1c3#semantic/attack/printed-level",
+        "a2-p20-r1c3#semantic/dedicated/from-hand",
+        "a2-p20-r1c3#semantic/dedicated/from-placement",
+        "a2-p20-r1c3#semantic/dedicated/owner-filter",
+        "a2-p20-r1c3#semantic/dedicated/use-check",
+        "a2-p20-r1c3#semantic/defense/front-order",
+        "a2-p20-r1c3#semantic/follower/attribute-0",
+        "a2-p20-r1c3#semantic/follower/attribute-1",
+        "a2-p20-r1c3#semantic/follower/printed-hp",
+        "a2-p20-r1c3#semantic/follower/printed-level",
+        "a2-p20-r1c3#semantic/placement/own-action",
+        "a2-p20-r1c3#semantic/placement/setup"
+      ]
     },
     {
       "entryId": "ruling:F21",
@@ -204034,7 +204090,28 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p20-r1c3#semantic/attack/attribute-0",
+        "a2-p20-r1c3#semantic/attack/attribute-1",
+        "a2-p20-r1c3#semantic/attack/attribute-2",
+        "a2-p20-r1c3#semantic/attack/attribute-3",
+        "a2-p20-r1c3#semantic/attack/discard-not-return",
+        "a2-p20-r1c3#semantic/attack/grant-required",
+        "a2-p20-r1c3#semantic/attack/ordinary-hand-grant",
+        "a2-p20-r1c3#semantic/attack/printed-damage",
+        "a2-p20-r1c3#semantic/attack/printed-level",
+        "a2-p20-r1c3#semantic/dedicated/from-hand",
+        "a2-p20-r1c3#semantic/dedicated/from-placement",
+        "a2-p20-r1c3#semantic/dedicated/owner-filter",
+        "a2-p20-r1c3#semantic/dedicated/use-check",
+        "a2-p20-r1c3#semantic/defense/front-order",
+        "a2-p20-r1c3#semantic/follower/attribute-0",
+        "a2-p20-r1c3#semantic/follower/attribute-1",
+        "a2-p20-r1c3#semantic/follower/printed-hp",
+        "a2-p20-r1c3#semantic/follower/printed-level",
+        "a2-p20-r1c3#semantic/placement/own-action",
+        "a2-p20-r1c3#semantic/placement/setup"
+      ]
     },
     {
       "entryId": "ruling:F21",
