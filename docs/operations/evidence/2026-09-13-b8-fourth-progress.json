@@ -1,0 +1,72 @@
+{
+  "recordedAt": "2026-09-13T00:00:56.916166+00:00",
+  "candidateCommit": "cfcd49a",
+  "suiteExitCode": 0,
+  "acceptanceStatus": "promotion-complete; strict validation failed on 825 missing aggregate covers; readiness not generated",
+  "reports": {
+    ".cache/run/snapshot.json": {
+      "sha256": "8219155f1af05709ee4fcd1ebd99fa9ce7b3bd95a538aae0b82d7c3ec4bb346e"
+    },
+    ".cache/run/unit.json": {
+      "sha256": "f58584b1d4ac96b183ad91efcedf5c9460414f1e8b38184893675371f45a3a99"
+    },
+    ".cache/run/worker.json": {
+      "sha256": "a86222c4a5f0e9055687d492c1e437ffc885bc91fc8dbb4d577ab0d536ca1744"
+    },
+    ".cache/run/browser.json": {
+      "sha256": "642f89b70bb9882e61224f453042ef1d7008b1c3e993a88278c008a09979bcf8"
+    },
+    "docs/operations/evidence/2026-09-11-candidate-run.json": {
+      "sha256": "be9cdc58cdddad377683b7223bb0457788399fbe270c0b1e19272db6caaa913d"
+    }
+  },
+  "unit": {
+    "numPassedTests": 7964,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true,
+    "startTime": 1789241963203
+  },
+  "worker": {
+    "numPassedTests": 2558,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true,
+    "startTime": 1789242150004
+  },
+  "browser": {
+    "startTime": "2026-09-12T19:50:58.495Z",
+    "duration": 14898911.438000001,
+    "expected": 2164,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "matchedCases": 6461,
+  "promotion": {
+    "verified": 5257,
+    "accepted": 5257,
+    "notApplicable": 2
+  },
+  "semanticStatuses": {
+    "accepted": 5257,
+    "notApplicable": 2
+  },
+  "strictValidation": {
+    "exitCode": 1,
+    "errorCount": 825,
+    "errorCategory": "incomplete aggregate mapping",
+    "outputSha256": "ee24fe33d3660dfa8f750507221ae813bc8474f2333f39aba8b76b26f54ced66",
+    "sameSourceCandidateCounts": {
+      "1": 19,
+      "0": 770,
+      "2": 8,
+      "4": 2,
+      "3": 15,
+      "24": 7,
+      "5": 2,
+      "6": 1,
+      "10": 1
+    }
+  }
+}

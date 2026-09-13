@@ -196289,7 +196289,32 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p07-r1c1#semantic/rest/multiple-physical",
+        "a2-p07-r1c1#semantic/rest/self-heal-one",
+        "a2-p07-r1c1#semantic/rest/sum-count",
+        "a2-p07-r1c2#semantic/rest/multiple-physical",
+        "a2-p07-r1c2#semantic/rest/self-heal-one",
+        "a2-p07-r1c2#semantic/rest/sum-count",
+        "a2-p07-r1c3#semantic/rest/multiple-physical",
+        "a2-p07-r1c3#semantic/rest/self-heal-one",
+        "a2-p07-r1c3#semantic/rest/sum-count",
+        "a2-p07-r2c1#semantic/rest/multiple-physical",
+        "a2-p07-r2c1#semantic/rest/self-heal-one",
+        "a2-p07-r2c1#semantic/rest/sum-count",
+        "a2-p07-r2c2#semantic/rest/multiple-physical",
+        "a2-p07-r2c2#semantic/rest/self-heal-one",
+        "a2-p07-r2c2#semantic/rest/sum-count",
+        "a2-p07-r2c3#semantic/rest/multiple-physical",
+        "a2-p07-r2c3#semantic/rest/self-heal-one",
+        "a2-p07-r2c3#semantic/rest/sum-count",
+        "a2-p07-r3c1#semantic/rest/multiple-physical",
+        "a2-p07-r3c1#semantic/rest/self-heal-one",
+        "a2-p07-r3c1#semantic/rest/sum-count",
+        "a2-p07-r3c2#semantic/rest/multiple-physical",
+        "a2-p07-r3c2#semantic/rest/self-heal-one",
+        "a2-p07-r3c2#semantic/rest/sum-count"
+      ]
     },
     {
       "entryId": "ruling:T01",
@@ -196304,7 +196329,32 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p07-r1c1#semantic/rest/multiple-physical",
+        "a2-p07-r1c1#semantic/rest/self-heal-one",
+        "a2-p07-r1c1#semantic/rest/sum-count",
+        "a2-p07-r1c2#semantic/rest/multiple-physical",
+        "a2-p07-r1c2#semantic/rest/self-heal-one",
+        "a2-p07-r1c2#semantic/rest/sum-count",
+        "a2-p07-r1c3#semantic/rest/multiple-physical",
+        "a2-p07-r1c3#semantic/rest/self-heal-one",
+        "a2-p07-r1c3#semantic/rest/sum-count",
+        "a2-p07-r2c1#semantic/rest/multiple-physical",
+        "a2-p07-r2c1#semantic/rest/self-heal-one",
+        "a2-p07-r2c1#semantic/rest/sum-count",
+        "a2-p07-r2c2#semantic/rest/multiple-physical",
+        "a2-p07-r2c2#semantic/rest/self-heal-one",
+        "a2-p07-r2c2#semantic/rest/sum-count",
+        "a2-p07-r2c3#semantic/rest/multiple-physical",
+        "a2-p07-r2c3#semantic/rest/self-heal-one",
+        "a2-p07-r2c3#semantic/rest/sum-count",
+        "a2-p07-r3c1#semantic/rest/multiple-physical",
+        "a2-p07-r3c1#semantic/rest/self-heal-one",
+        "a2-p07-r3c1#semantic/rest/sum-count",
+        "a2-p07-r3c2#semantic/rest/multiple-physical",
+        "a2-p07-r3c2#semantic/rest/self-heal-one",
+        "a2-p07-r3c2#semantic/rest/sum-count"
+      ]
     },
     {
       "entryId": "ruling:T01",
@@ -196379,7 +196429,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r1c2#semantic/dedicated/damage-five-per-cost",
+        "a2-p08-r1c2#semantic/dedicated/physical-advance-cost",
+        "a2-p08-r1c2#semantic/dedicated/post-hit-advance-choice",
+        "a2-p08-r1c2#semantic/ordinary/damage"
+      ]
     },
     {
       "entryId": "ruling:T02",

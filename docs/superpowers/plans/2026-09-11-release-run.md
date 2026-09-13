@@ -1410,7 +1410,7 @@ exit "$STATUS"
 
 Worker の vitest 設定が `--outputFile` の相対パスを `apps/worker` 基準で解決することを確認する（`apps/worker/package.json` の test スクリプトと `vitest.config` を見る）。Playwright の JSON reporter は stdout に出るので上記のようにリダイレクトする。
 
-- [ ] **Step 2: 作業木が clean であることを確認して全実行（所要時間は長い。`run_in_background` で回し、ログを `.cache/run/candidate.log` に残す）**
+- [x] **Step 2: 作業木が clean であることを確認して全実行（所要時間は長い。`run_in_background` で回し、ログを `.cache/run/candidate.log` に残す）**
 
 Run: `git status --porcelain | wc -l` → 0 を確認し `bash scripts/run_candidate.sh docs/operations/evidence/2026-09-11-candidate-run.json 2>&1 | tee .cache/run/candidate.log`
 Expected: 終了0。失敗があれば原因を直し、直したファイルを含む候補で **最初から** 再実行する（run は候補 hash に束縛されるため部分再実行は使えない）。
@@ -1442,6 +1442,10 @@ git add data packages/catalog docs scripts && git commit -m "data: 候補を固�
 2026-09-13 B8第3回全実行は終了0、Engine 7,964・Worker 2,558・browser 2,164件すべて成功（skip/flaky 0）。昇格は4,633 acceptedに留まり、Vitestタイトル整形の相違と旧related参照3種が原因と判明。整形を実際のVitest表示へ修正し、10条項の旧参照を既存の具体的試験に整理。診断照合はactive 6,536参照／distinct 6,461一致／未一致0。変更後候補の受け入れは未成立のため全semanticをimplemented 5,257／notApplicable 2へ戻し、第4回全実行で再検証する。旧原本と部分昇格receiptは `/private/tmp/madou-b8-third-success/` に保存。詳細は [束縛修正記録](../../operations/evidence/2026-09-13-b8-binding-resolution.json)。
 
 ## Phase C: 正式開始と一戦（R7）
+
+2026-09-13 B8第4回全実行は終了0、Engine/Web 7,964・Worker 2,558・browser 2,164件すべて成功（skip/flaky 0）。runの参照6,461件一致、失敗0。昇格も終了0でsemantic 5,257 accepted／2 notApplicableとなった。厳格validatorは終了1でaggregate 825行すべてのcovers未設定を報告。semantic自体の未受け入れエラーは0だが、集約元段落から具体条項への対応が必要であり、readinessは未生成。aggregateのpending状態を維持しながらmanifestのcoversを完成させ、変更後候補の全検証をやり直す。B8全体は未完了。詳細は [第4回進捗](../../operations/evidence/2026-09-13-b8-fourth-progress.json)。
+
+2026-09-13 集約対応開始: T01休息の2段落とT02黒翼天翔剣の印刷条件1段落を既存semantic条項へ対応付けた。休息の上限超過・支払札非返却・構造的最大値変更・死亡予定境界の12件、型検査が成功。aggregate未対応822件。候補変更によりsemanticの現在状態はimplemented 5,257／notApplicable 2へ戻し、第4回受け入れ証跡を `/private/tmp/madou-b8-fourth-success/` に保管。詳細は [集約対応進捗](../../operations/evidence/2026-09-13-aggregate-mapping-progress.json)。
 
 ### Task C1: 合法手ボット（Engine）
 

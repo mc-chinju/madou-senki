@@ -1,0 +1,67 @@
+{
+  "scope": "ruling:T01#ruling-paragraph/004 and /005; concrete REST plus explicitly structural maximum-change boundaries",
+  "source": [
+    "src:0793c3e8a9b23c2d"
+  ],
+  "covers": [
+    "a2-p07-r1c1#semantic/rest/multiple-physical",
+    "a2-p07-r1c1#semantic/rest/self-heal-one",
+    "a2-p07-r1c1#semantic/rest/sum-count",
+    "a2-p07-r1c2#semantic/rest/multiple-physical",
+    "a2-p07-r1c2#semantic/rest/self-heal-one",
+    "a2-p07-r1c2#semantic/rest/sum-count",
+    "a2-p07-r1c3#semantic/rest/multiple-physical",
+    "a2-p07-r1c3#semantic/rest/self-heal-one",
+    "a2-p07-r1c3#semantic/rest/sum-count",
+    "a2-p07-r2c1#semantic/rest/multiple-physical",
+    "a2-p07-r2c1#semantic/rest/self-heal-one",
+    "a2-p07-r2c1#semantic/rest/sum-count",
+    "a2-p07-r2c2#semantic/rest/multiple-physical",
+    "a2-p07-r2c2#semantic/rest/self-heal-one",
+    "a2-p07-r2c2#semantic/rest/sum-count",
+    "a2-p07-r2c3#semantic/rest/multiple-physical",
+    "a2-p07-r2c3#semantic/rest/self-heal-one",
+    "a2-p07-r2c3#semantic/rest/sum-count",
+    "a2-p07-r3c1#semantic/rest/multiple-physical",
+    "a2-p07-r3c1#semantic/rest/self-heal-one",
+    "a2-p07-r3c1#semantic/rest/sum-count",
+    "a2-p07-r3c2#semantic/rest/multiple-physical",
+    "a2-p07-r3c2#semantic/rest/self-heal-one",
+    "a2-p07-r3c2#semantic/rest/sum-count"
+  ],
+  "testReport": {
+    "path": "/private/tmp/madou-rest-cap.json",
+    "passed": 12,
+    "exitCode": 0,
+    "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
+  },
+  "remainingAggregateMappings": 822,
+  "excluded": "No production ability producer is claimed for structural maximum-endurance changes. Complete candidate acceptance and 822 aggregate mappings remain.",
+  "sourceSha256": {
+    "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
+    "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
+  },
+  "typecheckExitCode": 0,
+  "additionalBoundaryChecks": [
+    "+5/-5 maximum change preserves accumulated damage; JSON reconstruction resolves REST against the live maximum without excess healing or refund.",
+    "Zero/negative current endurance at maximum reduction queues pending-death with paid REST still in resolution."
+  ],
+  "additionalMappings": [
+    {
+      "identity": "ruling:T02#ruling-paragraph/004",
+      "covers": [
+        "a2-p08-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r1c2#semantic/dedicated/damage-five-per-cost",
+        "a2-p08-r1c2#semantic/dedicated/physical-advance-cost",
+        "a2-p08-r1c2#semantic/dedicated/post-hit-advance-choice",
+        "a2-p08-r1c2#semantic/ordinary/damage"
+      ],
+      "basis": "Existing physical CHANT and hit-advance tests assert ordinary/dedicated damage before defense, Arness ownership, payment after hit and 5 damage per paid card; test source unchanged from fourth run. Candidate acceptance still requires a new full run."
+    }
+  ],
+  "pendingT02Paragraph005": [
+    "Bind existing structural finalized-target/multiplier case with its actual proof classification.",
+    "Confirm shared unresolved targets/hits, rounding and legal intervention after payment; do not treat mere source/section association as full paragraph coverage."
+  ]
+}
