@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 805,
-  "excluded": "Current candidate is not accepted; full verification and 805 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 796,
+  "excluded": "Current candidate is not accepted; full verification and 796 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -305,6 +305,144 @@
         "packages/engine/test/r6-combined-death.test.ts": "c51bdf27c4f5c0c61742caa94620b854524df65673cc2380b2edb15b39e77105"
       },
       "matchedPassingBindings": 23
+    },
+    {
+      "identity": "ruling:T14#ruling-paragraph/004",
+      "covers": [
+        "a2-p10-r2c1#semantic/dedicated/0/activation-check-waive",
+        "a2-p10-r2c1#semantic/dedicated/0/chant-retain",
+        "a2-p10-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p10-r2c1#semantic/dedicated/counter-use",
+        "a2-p10-r2c1#semantic/ordinary/chant-required",
+        "a2-p10-r2c1#semantic/ordinary/non-shin-precheck"
+      ],
+      "basis": "Actual prepared Shin counter and rejected unprepared counter, zero usage checks for dedicated mode, non-Shin spirit-minus-two precheck before ordinary use checks. Supplemental independent chant-waiver ability interaction remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/blast-sword-physical.test.ts": "b8dca0cd68b94d8f0c64235b54352bbf2e5f488976874cf7b00df48fe121c5a9"
+      },
+      "matchedPassingBindings": 31
+    },
+    {
+      "identity": "ruling:T15#ruling-paragraph/004",
+      "covers": [
+        "a2-p10-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p10-r3c2#semantic/dedicated/seven-per-hit",
+        "a2-p10-r3c2#semantic/dedicated/two-hits-optional"
+      ],
+      "basis": "Actual Lancaster one/two-hit declarations, separate seven-damage hits and rejection of split targets or invented three-hit variant. Supplemental independent multi-target expansion remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/wolf-lance-physical.test.ts": "251bd5685f4fac44f394ebd2af509a74256508c0b14da3a647df4c469faeb804"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:T16#ruling-paragraph/004",
+      "covers": [
+        "a2-p10-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p10-r3c3#semantic/dedicated/counter-spirit-check",
+        "a2-p10-r3c3#semantic/dedicated/no-ordinary-ignore",
+        "a2-p10-r3c3#semantic/dedicated/return-ignore-followers",
+        "a2-p10-r3c3#semantic/dedicated/success-cancel",
+        "a2-p10-r3c3#semantic/dedicated/success-counter"
+      ],
+      "basis": "Actual dedicated counter spirit success/failure, incoming hit cancellation and own seven-damage return bypassing Water Dragon while root attack does not. Unlimited incoming level is separately identified as supplemental, not a printed claim.",
+      "unchangedTestSources": {
+        "packages/engine/test/spear-mountain-physical.test.ts": "ecf8c566edb9c30c9555fc92b2316a35a23019ff0be0ff493bf3022d4e91e49b"
+      },
+      "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:T17#ruling-paragraph/004",
+      "covers": [
+        "a2-p11-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c1#semantic/dedicated/chant-double",
+        "a2-p11-r1c1#semantic/dedicated/nonchant-no-double",
+        "a2-p11-r1c1#semantic/dedicated/optional-chant"
+      ],
+      "basis": "Actual Lancaster optional CHANT and later dedicated attack gives thirty versus fifteen without chant; ordinary election gives ten.",
+      "unchangedTestSources": {
+        "packages/engine/test/dragon-spear-physical.test.ts": "6320973fd21d047dc2b0fe2f76909f87fadf5f2b9ba5f68c3a18c474e718a817"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:T17#ruling-paragraph/005",
+      "covers": [
+        "a2-p11-r1c1#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c1#semantic/dedicated/0/select-optional",
+        "a2-p11-r1c1#semantic/dedicated/chant-double",
+        "a2-p11-r1c1#semantic/dedicated/nonchant-no-double",
+        "a2-p11-r1c1#semantic/dedicated/optional-chant",
+        "a2-p11-r1c1#semantic/ordinary/damage"
+      ],
+      "basis": "Actual physical hidden chant persists through turns; declaration selects ordinary ten or dedicated fifteen doubled only from chant. Fate cancellation and successful use both clear chant; actual reclaim and later reuse have no revived double.",
+      "unchangedTestSources": {
+        "packages/engine/test/dragon-spear-physical.test.ts": "6320973fd21d047dc2b0fe2f76909f87fadf5f2b9ba5f68c3a18c474e718a817"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:T18#ruling-paragraph/004",
+      "covers": [
+        "a2-p11-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r1c2#semantic/dedicated/counter-check-waiver-context"
+      ],
+      "basis": "Actual dedicated counter has effect six/damage seven and zero usage checks; selected root attack separately retains use checks.",
+      "unchangedTestSources": {
+        "packages/engine/test/spear-mountain-physical.test.ts": "ecf8c566edb9c30c9555fc92b2316a35a23019ff0be0ff493bf3022d4e91e49b"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:T18#ruling-paragraph/005",
+      "covers": [
+        "a2-p11-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c2#semantic/dedicated/counter-check-waiver-context",
+        "a2-p11-r1c2#semantic/ordinary/counter-capable",
+        "a2-p11-r1c2#semantic/ordinary/use-level"
+      ],
+      "basis": "Actual root attacks compare warrior four/five against use five with dedicated effect six/damage seven. Dedicated counters omit usage check while ordinary counters remain available; initial Lancelot II retains root use checks.",
+      "unchangedTestSources": {
+        "packages/engine/test/spear-mountain-physical.test.ts": "ecf8c566edb9c30c9555fc92b2316a35a23019ff0be0ff493bf3022d4e91e49b"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T19#ruling-paragraph/004",
+      "covers": [
+        "a2-p11-r1c3#semantic/dedicated/magic-reflect-offset-two",
+        "a2-p11-r1c3#semantic/dedicated/warrior-block-offset-one",
+        "a2-p11-r1c3#semantic/defense/relative-not-fixed",
+        "a2-p11-r1c3#semantic/ordinary/magic-reflect-offset-one",
+        "a2-p11-r1c3#semantic/ordinary/warrior-block-offset-zero"
+      ],
+      "basis": "Actual magic and warrior attacks at/below/above printed relative limits, selected dedicated offsets, and Prayer effect-level change. Broader per-hit reflection lineage supplemental paragraph remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/reflect-limit-physical.test.ts": "ecc39acf0609f1ea91f7d8bf06714173543b6af70eae3d576184ff1ad1526e9d"
+      },
+      "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:T20#ruling-paragraph/004",
+      "covers": [
+        "a2-p11-r2c1#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r2c1#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r2c1#semantic/dedicated/1/damage-replacement",
+        "a2-p11-r2c1#semantic/dedicated/1/effect-replacement",
+        "a2-p11-r2c1#semantic/dedicated/1/eligible-owner/0",
+        "a2-p11-r2c1#semantic/dedicated/variants-not-stack",
+        "c2-p02-r2c2-ab05#inherited-abilities"
+      ],
+      "basis": "Actual attacks elect separate first/second printed packages. Actual public Lia and lifecycle transformation retain each old ability and spent history. Dedicated package inheritance is a separate supplemental interpretation, not inferred from printed ability inheritance.",
+      "unchangedTestSources": {
+        "packages/engine/test/white-dragon-physical.test.ts": "5e8d9fd60675479fb7ca83eab47c57ba85d4ebb56c4f8245d2e1bd49c8ff27ed",
+        "packages/engine/test/release-lifecycle-bindings.test.ts": "b37da9094e2462cd8f75dc031b30524e4613120589c313b6761373562af8642e"
+      },
+      "matchedPassingBindings": 10
     }
   ],
   "skyWingValidation": {

@@ -197629,7 +197629,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p10-r2c1#semantic/dedicated/0/activation-check-waive",
+        "a2-p10-r2c1#semantic/dedicated/0/chant-retain",
+        "a2-p10-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p10-r2c1#semantic/dedicated/counter-use",
+        "a2-p10-r2c1#semantic/ordinary/chant-required",
+        "a2-p10-r2c1#semantic/ordinary/non-shin-precheck"
+      ]
     },
     {
       "entryId": "ruling:T14",
@@ -197719,7 +197726,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p10-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p10-r3c2#semantic/dedicated/seven-per-hit",
+        "a2-p10-r3c2#semantic/dedicated/two-hits-optional"
+      ]
     },
     {
       "entryId": "ruling:T15",
@@ -197809,7 +197820,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p10-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p10-r3c3#semantic/dedicated/counter-spirit-check",
+        "a2-p10-r3c3#semantic/dedicated/no-ordinary-ignore",
+        "a2-p10-r3c3#semantic/dedicated/return-ignore-followers",
+        "a2-p10-r3c3#semantic/dedicated/success-cancel",
+        "a2-p10-r3c3#semantic/dedicated/success-counter"
+      ]
     },
     {
       "entryId": "ruling:T16",
@@ -197899,7 +197917,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c1#semantic/dedicated/chant-double",
+        "a2-p11-r1c1#semantic/dedicated/nonchant-no-double",
+        "a2-p11-r1c1#semantic/dedicated/optional-chant"
+      ]
     },
     {
       "entryId": "ruling:T17",
@@ -197914,7 +197937,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r1c1#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c1#semantic/dedicated/0/select-optional",
+        "a2-p11-r1c1#semantic/dedicated/chant-double",
+        "a2-p11-r1c1#semantic/dedicated/nonchant-no-double",
+        "a2-p11-r1c1#semantic/dedicated/optional-chant",
+        "a2-p11-r1c1#semantic/ordinary/damage"
+      ]
     },
     {
       "entryId": "ruling:T17",
@@ -197989,7 +198019,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r1c2#semantic/dedicated/counter-check-waiver-context"
+      ]
     },
     {
       "entryId": "ruling:T18",
@@ -198004,7 +198038,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c2#semantic/dedicated/counter-check-waiver-context",
+        "a2-p11-r1c2#semantic/ordinary/counter-capable",
+        "a2-p11-r1c2#semantic/ordinary/use-level"
+      ]
     },
     {
       "entryId": "ruling:T18",
@@ -198079,7 +198120,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r1c3#semantic/dedicated/magic-reflect-offset-two",
+        "a2-p11-r1c3#semantic/dedicated/warrior-block-offset-one",
+        "a2-p11-r1c3#semantic/defense/relative-not-fixed",
+        "a2-p11-r1c3#semantic/ordinary/magic-reflect-offset-one",
+        "a2-p11-r1c3#semantic/ordinary/warrior-block-offset-zero"
+      ]
     },
     {
       "entryId": "ruling:T19",
@@ -198169,7 +198216,16 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r2c1#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r2c1#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r2c1#semantic/dedicated/1/damage-replacement",
+        "a2-p11-r2c1#semantic/dedicated/1/effect-replacement",
+        "a2-p11-r2c1#semantic/dedicated/1/eligible-owner/0",
+        "a2-p11-r2c1#semantic/dedicated/variants-not-stack",
+        "c2-p02-r2c2-ab05#inherited-abilities"
+      ]
     },
     {
       "entryId": "ruling:T20",
