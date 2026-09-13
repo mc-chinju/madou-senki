@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 742,
-  "excluded": "Current candidate is not accepted; full verification and 742 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 730,
+  "excluded": "Current candidate is not accepted; full verification and 730 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -1190,6 +1190,238 @@
         "packages/engine/test/close-earth-physical.test.ts": "493e7a1d557a2886894112cfa60f40220d8e039eefd4a5c260c234515c00eeae"
       },
       "matchedPassingBindings": 5
+    },
+    {
+      "identity": "ruling:F07#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r3c1#semantic/attack/no-bottom",
+        "a2-p18-r3c1#semantic/defense/front-order",
+        "a2-p18-r3c1#semantic/follower/attribute-0",
+        "a2-p18-r3c1#semantic/follower/attribute-1",
+        "a2-p18-r3c1#semantic/follower/printed-hp",
+        "a2-p18-r3c1#semantic/follower/printed-level",
+        "a2-p18-r3c1#semantic/placement/own-action",
+        "a2-p18-r3c1#semantic/placement/setup"
+      ],
+      "basis": "Provisional adoption/source-page status anchor for this exact physical card; no independent gameplay exception is added. Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F07#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r3c1#semantic/attack/no-bottom",
+        "a2-p18-r3c1#semantic/defense/front-order",
+        "a2-p18-r3c1#semantic/follower/attribute-0",
+        "a2-p18-r3c1#semantic/follower/attribute-1",
+        "a2-p18-r3c1#semantic/follower/printed-hp",
+        "a2-p18-r3c1#semantic/follower/printed-level",
+        "a2-p18-r3c1#semantic/placement/own-action",
+        "a2-p18-r3c1#semantic/placement/setup"
+      ],
+      "basis": "Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F08#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r3c2#semantic/attack/no-bottom",
+        "a2-p18-r3c2#semantic/defense/front-order",
+        "a2-p18-r3c2#semantic/follower/attribute-0",
+        "a2-p18-r3c2#semantic/follower/printed-hp",
+        "a2-p18-r3c2#semantic/follower/printed-level",
+        "a2-p18-r3c2#semantic/placement/own-action",
+        "a2-p18-r3c2#semantic/placement/setup"
+      ],
+      "basis": "Provisional adoption/source-page status anchor for this exact physical card; no independent gameplay exception is added. Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F08#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r3c2#semantic/attack/no-bottom",
+        "a2-p18-r3c2#semantic/defense/front-order",
+        "a2-p18-r3c2#semantic/follower/attribute-0",
+        "a2-p18-r3c2#semantic/follower/printed-hp",
+        "a2-p18-r3c2#semantic/follower/printed-level",
+        "a2-p18-r3c2#semantic/placement/own-action",
+        "a2-p18-r3c2#semantic/placement/setup"
+      ],
+      "basis": "Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F09#ruling-paragraph/002",
+      "covers": [
+        "a2-p18-r3c3#semantic/attack/attribute-0",
+        "a2-p18-r3c3#semantic/attack/attribute-1",
+        "a2-p18-r3c3#semantic/attack/discard-not-return",
+        "a2-p18-r3c3#semantic/attack/grant-required",
+        "a2-p18-r3c3#semantic/attack/ordinary-hand-grant",
+        "a2-p18-r3c3#semantic/attack/printed-damage",
+        "a2-p18-r3c3#semantic/attack/printed-level",
+        "a2-p18-r3c3#semantic/defense/front-order",
+        "a2-p18-r3c3#semantic/follower/attribute-0",
+        "a2-p18-r3c3#semantic/follower/printed-hp",
+        "a2-p18-r3c3#semantic/follower/printed-level",
+        "a2-p18-r3c3#semantic/placement/own-action",
+        "a2-p18-r3c3#semantic/placement/setup"
+      ],
+      "basis": "Provisional adoption/source-page status anchor for this exact physical card; no independent gameplay exception is added. Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F09#ruling-paragraph/003",
+      "covers": [
+        "a2-p18-r3c3#semantic/attack/attribute-0",
+        "a2-p18-r3c3#semantic/attack/attribute-1",
+        "a2-p18-r3c3#semantic/attack/discard-not-return",
+        "a2-p18-r3c3#semantic/attack/grant-required",
+        "a2-p18-r3c3#semantic/attack/ordinary-hand-grant",
+        "a2-p18-r3c3#semantic/attack/printed-damage",
+        "a2-p18-r3c3#semantic/attack/printed-level",
+        "a2-p18-r3c3#semantic/defense/front-order",
+        "a2-p18-r3c3#semantic/follower/attribute-0",
+        "a2-p18-r3c3#semantic/follower/printed-hp",
+        "a2-p18-r3c3#semantic/follower/printed-level",
+        "a2-p18-r3c3#semantic/placement/own-action",
+        "a2-p18-r3c3#semantic/placement/setup"
+      ],
+      "basis": "Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F10#ruling-paragraph/002",
+      "covers": [
+        "a2-p19-r1c1#semantic/attack/no-bottom",
+        "a2-p19-r1c1#semantic/defense/front-order",
+        "a2-p19-r1c1#semantic/follower/attribute-0",
+        "a2-p19-r1c1#semantic/follower/printed-hp",
+        "a2-p19-r1c1#semantic/follower/printed-level",
+        "a2-p19-r1c1#semantic/placement/own-action",
+        "a2-p19-r1c1#semantic/placement/setup"
+      ],
+      "basis": "Provisional adoption/source-page status anchor for this exact physical card; no independent gameplay exception is added. Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F10#ruling-paragraph/003",
+      "covers": [
+        "a2-p19-r1c1#semantic/attack/no-bottom",
+        "a2-p19-r1c1#semantic/defense/front-order",
+        "a2-p19-r1c1#semantic/follower/attribute-0",
+        "a2-p19-r1c1#semantic/follower/printed-hp",
+        "a2-p19-r1c1#semantic/follower/printed-level",
+        "a2-p19-r1c1#semantic/placement/own-action",
+        "a2-p19-r1c1#semantic/placement/setup"
+      ],
+      "basis": "Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/common-followers-physical.test.ts": "ab681259a25aa7f0a7c1a228b8ea9870b7558f46f0a33aae2b485464a7353012"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F11#ruling-paragraph/002",
+      "covers": [
+        "a2-p19-r1c2#semantic/attack/attribute-0",
+        "a2-p19-r1c2#semantic/attack/attribute-1",
+        "a2-p19-r1c2#semantic/attack/discard-not-return",
+        "a2-p19-r1c2#semantic/attack/grant-required",
+        "a2-p19-r1c2#semantic/attack/ordinary-hand-grant",
+        "a2-p19-r1c2#semantic/attack/printed-damage",
+        "a2-p19-r1c2#semantic/attack/printed-level",
+        "a2-p19-r1c2#semantic/defense/front-order",
+        "a2-p19-r1c2#semantic/follower/attribute-0",
+        "a2-p19-r1c2#semantic/follower/attribute-1",
+        "a2-p19-r1c2#semantic/follower/printed-hp",
+        "a2-p19-r1c2#semantic/follower/printed-level",
+        "a2-p19-r1c2#semantic/placement/own-action",
+        "a2-p19-r1c2#semantic/placement/setup"
+      ],
+      "basis": "Provisional adoption/source-page status anchor for this exact physical card; no independent gameplay exception is added. Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/orc-fort-physical.test.ts": "bbac77e4bf903c0cf79dd5580c50f7b9eb06241fe8b6db50ca76474f640fce7b"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F11#ruling-paragraph/003",
+      "covers": [
+        "a2-p19-r1c2#semantic/attack/attribute-0",
+        "a2-p19-r1c2#semantic/attack/attribute-1",
+        "a2-p19-r1c2#semantic/attack/discard-not-return",
+        "a2-p19-r1c2#semantic/attack/grant-required",
+        "a2-p19-r1c2#semantic/attack/ordinary-hand-grant",
+        "a2-p19-r1c2#semantic/attack/printed-damage",
+        "a2-p19-r1c2#semantic/attack/printed-level",
+        "a2-p19-r1c2#semantic/defense/front-order",
+        "a2-p19-r1c2#semantic/follower/attribute-0",
+        "a2-p19-r1c2#semantic/follower/attribute-1",
+        "a2-p19-r1c2#semantic/follower/printed-hp",
+        "a2-p19-r1c2#semantic/follower/printed-level",
+        "a2-p19-r1c2#semantic/placement/own-action",
+        "a2-p19-r1c2#semantic/placement/setup"
+      ],
+      "basis": "Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/orc-fort-physical.test.ts": "bbac77e4bf903c0cf79dd5580c50f7b9eb06241fe8b6db50ca76474f640fce7b"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:F12#ruling-paragraph/002",
+      "covers": [
+        "a2-p19-r1c3#semantic/attack/no-bottom",
+        "a2-p19-r1c3#semantic/defense/front-order",
+        "a2-p19-r1c3#semantic/follower/attribute-0",
+        "a2-p19-r1c3#semantic/follower/printed-hp",
+        "a2-p19-r1c3#semantic/follower/printed-level",
+        "a2-p19-r1c3#semantic/placement/own-action",
+        "a2-p19-r1c3#semantic/placement/setup"
+      ],
+      "basis": "Provisional adoption/source-page status anchor for this exact physical card; no independent gameplay exception is added. Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/orc-fort-physical.test.ts": "bbac77e4bf903c0cf79dd5580c50f7b9eb06241fe8b6db50ca76474f640fce7b"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F12#ruling-paragraph/003",
+      "covers": [
+        "a2-p19-r1c3#semantic/attack/no-bottom",
+        "a2-p19-r1c3#semantic/defense/front-order",
+        "a2-p19-r1c3#semantic/follower/attribute-0",
+        "a2-p19-r1c3#semantic/follower/printed-hp",
+        "a2-p19-r1c3#semantic/follower/printed-level",
+        "a2-p19-r1c3#semantic/placement/own-action",
+        "a2-p19-r1c3#semantic/placement/setup"
+      ],
+      "basis": "Exact printed follower level/HP/attributes, real setup and own-action arrangement, front-first snapshot, three actual granted Dwarf hits across lower/equal/higher levels, and no invented direct attack or chant. Soldier/Orc attack requires actual Dia grant and pays/discards physical source on success or cancellation; cards without bottoms are excluded from grant. Applies the shared procedure only where this card participates; no reflection or new numeric formula inferred.",
+      "unchangedTestSources": {
+        "packages/engine/test/orc-fort-physical.test.ts": "bbac77e4bf903c0cf79dd5580c50f7b9eb06241fe8b6db50ca76474f640fce7b"
+      },
+      "matchedPassingBindings": 6
     }
   ],
   "skyWingValidation": {
