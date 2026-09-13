@@ -200537,7 +200537,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p16-r3c3#semantic/dedicated/counter-after-substitution",
+        "a2-p16-r3c3#semantic/dedicated/substitute-other-attacks",
+        "a2-p16-r3c3#semantic/ordinary/counter-not-root-attack"
+      ]
     },
     {
       "entryId": "ruling:T44",
@@ -200627,7 +200631,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p17-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c1#semantic/dedicated/disable-followers"
+      ]
     },
     {
       "entryId": "ruling:T45",
@@ -200642,7 +200649,9 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p17-r1c1#semantic/dedicated/disable-followers"
+      ]
     },
     {
       "entryId": "ruling:T45",
@@ -200717,7 +200726,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p17-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c2#semantic/dedicated/no-counter"
+      ]
     },
     {
       "entryId": "ruling:T46",
@@ -200807,7 +200819,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p17-r1c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c3#semantic/dedicated/gadyoora-check",
+        "a2-p17-r1c3#semantic/dedicated/gadyoora-failure-damage",
+        "a2-p17-r1c3#semantic/dedicated/no-counter"
+      ]
     },
     {
       "entryId": "ruling:T47",
@@ -200897,7 +200914,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p17-r3c2#semantic/ordinary/no-warrior",
+        "a2-p17-r3c2#semantic/ordinary/reflect-magic-fixed-six"
+      ]
     },
     {
       "entryId": "ruling:T48",
@@ -200987,7 +201007,13 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p17-r3c3#semantic/transfer/become-own-follower",
+        "a2-p17-r3c3#semantic/transfer/exactly-one",
+        "a2-p17-r3c3#semantic/transfer/no-consent",
+        "a2-p17-r3c3#semantic/transfer/other-placed-only",
+        "a2-p17-r3c3#semantic/transfer/remove-original"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201242,7 +201268,19 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c2#semantic/dedicated/counter-opportunity",
+        "a2-p08-r3c2#semantic/dedicated/other-auto-fail",
+        "a2-p08-r3c2#semantic/dedicated/shin-exception",
+        "a2-p08-r3c2#semantic/ordinary/attacker-spirit-minus-one",
+        "a2-p08-r3c2#semantic/ordinary/check-failure-cancel",
+        "a2-p08-r3c2#semantic/ordinary/counter-capable",
+        "a2-p08-r3c2#semantic/ordinary/damage",
+        "a2-p08-r3c2#semantic/ordinary/defense-only",
+        "a2-p08-r3c2#semantic/ordinary/ignore-incoming-level",
+        "a2-p08-r3c2#semantic/ordinary/shin-auto-success"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201257,7 +201295,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r3c3#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c3#semantic/dedicated/damage-spirit-times-two",
+        "a2-p08-r3c3#semantic/ordinary/damage"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201317,7 +201360,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p09-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost",
+        "a2-p09-r2c1#semantic/dedicated/effect-per-advance",
+        "a2-p09-r2c1#semantic/dedicated/no-cost-damage-bonus"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201422,7 +201470,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r1c1#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c1#semantic/dedicated/0/select-optional",
+        "a2-p11-r1c1#semantic/dedicated/chant-double",
+        "a2-p11-r1c1#semantic/dedicated/nonchant-no-double",
+        "a2-p11-r1c1#semantic/dedicated/optional-chant",
+        "a2-p11-r1c1#semantic/ordinary/damage"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201437,7 +201493,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p11-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c2#semantic/dedicated/counter-check-waiver-context",
+        "a2-p11-r1c2#semantic/ordinary/counter-capable",
+        "a2-p11-r1c2#semantic/ordinary/use-level"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201512,7 +201575,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p12-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p12-r2c3#semantic/dedicated/follower-ignore-threshold",
+        "a2-p12-r2c3#semantic/dedicated/hit-follower-ignore"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201542,7 +201609,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r1c1#semantic/dedicated/destroy-relative-effect",
+        "a2-p13-r1c1#semantic/ordinary/destroy-fixed-five"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201572,7 +201642,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/dedicated/no-shin-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-fire-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-wind-exception",
+        "a2-p13-r2c2#semantic/ordinary/no-fire",
+        "a2-p13-r2c2#semantic/ordinary/no-wind"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201587,7 +201665,14 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/ordinary/counter-capable",
+        "a2-p13-r2c2#semantic/ordinary/damage",
+        "a2-p13-r2c2#semantic/ordinary/defense-only",
+        "a2-p13-r2c2#semantic/ordinary/failure-cancel",
+        "a2-p13-r2c2#semantic/ordinary/range"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201617,7 +201702,15 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p13-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c3#semantic/dedicated/0/select-optional",
+        "a2-p13-r2c3#semantic/dedicated/no-self-damage",
+        "a2-p13-r2c3#semantic/ordinary/damage",
+        "a2-p13-r2c3#semantic/ordinary/destroy-all-followers",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction",
+        "a2-p13-r2c3#semantic/ordinary/self-ten"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201677,7 +201770,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p14-r1c1#semantic/ordinary/destroy-level-six",
+        "a2-p14-r1c1#semantic/ordinary/exclude-dead-followers",
+        "a2-p14-r1c1#semantic/ordinary/gadyoora-immune"
+      ]
     },
     {
       "entryId": "ruling:T49",
@@ -201857,7 +201954,10 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p17-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c1#semantic/dedicated/disable-followers"
+      ]
     },
     {
       "entryId": "ruling:T49",

@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 767,
-  "excluded": "Current candidate is not accepted; full verification and 767 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 748,
+  "excluded": "Current candidate is not accepted; full verification and 748 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -861,6 +861,277 @@
         "packages/engine/test/light-king-physical.test.ts": "2e185d2c388d090433c9b538bccd6340b92d93c0a0ddc7dc17296aeb15c02cfd"
       },
       "matchedPassingBindings": 17
+    },
+    {
+      "identity": "ruling:T44#ruling-paragraph/004",
+      "covers": [
+        "a2-p16-r3c3#semantic/dedicated/counter-after-substitution",
+        "a2-p16-r3c3#semantic/dedicated/substitute-other-attacks",
+        "a2-p16-r3c3#semantic/ordinary/counter-not-root-attack"
+      ],
+      "basis": "Actual ordinary no-range defense returns no attack; actual Lia successful whole-group substitution creates one own-technique return. Supplemental lineage and mixed prohibited sets remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/light-king-physical.test.ts": "2e185d2c388d090433c9b538bccd6340b92d93c0a0ddc7dc17296aeb15c02cfd"
+      },
+      "matchedPassingBindings": 18
+    },
+    {
+      "identity": "ruling:T45#ruling-paragraph/004",
+      "covers": [
+        "a2-p17-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c1#semantic/dedicated/disable-followers"
+      ],
+      "basis": "Actual Lester dedicated Poem bypasses placed Metal and Soldier without destroying them.",
+      "unchangedTestSources": {
+        "packages/engine/test/lester-songs-physical.test.ts": "945f2f3aa3522c5d62e75cd15279f83c76e699619309cb0a4e7f6f0c7840d76b"
+      },
+      "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:T45#ruling-paragraph/005",
+      "covers": [
+        "a2-p17-r1c1#semantic/dedicated/disable-followers"
+      ],
+      "basis": "Actual dedicated Poem leaves both followers; on later real turn Fire Arrow is blocked by the retained follower, proving no persistent disable or destruction.",
+      "unchangedTestSources": {
+        "packages/engine/test/lester-songs-physical.test.ts": "945f2f3aa3522c5d62e75cd15279f83c76e699619309cb0a4e7f6f0c7840d76b"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:T46#ruling-paragraph/004",
+      "covers": [
+        "a2-p17-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c2#semantic/dedicated/no-counter"
+      ],
+      "basis": "Actual dedicated Chant Song rejects physical Mirror Shield, Ice Mirror and previously chanted Judgment, while ordinary counterpart accepts the same sources.",
+      "unchangedTestSources": {
+        "packages/engine/test/lester-songs-physical.test.ts": "945f2f3aa3522c5d62e75cd15279f83c76e699619309cb0a4e7f6f0c7840d76b"
+      },
+      "matchedPassingBindings": 8
+    },
+    {
+      "identity": "ruling:T47#ruling-paragraph/004",
+      "covers": [
+        "a2-p17-r1c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c3#semantic/dedicated/gadyoora-check",
+        "a2-p17-r1c3#semantic/dedicated/gadyoora-failure-damage",
+        "a2-p17-r1c3#semantic/dedicated/no-counter"
+      ],
+      "basis": "Actual dedicated Death Song rejects counter sources; Gadyura own spirit-six plus-zero success/failure boundary gives zero/twenty-one after normal defense and leaves C unchanged. Supplemental per-group multi-hit reuse remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/death-song-physical.test.ts": "456e0d05cf91ce985da27a981b973261434f1516522733102d7817c2bdba65df"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T48#ruling-paragraph/004",
+      "covers": [
+        "a2-p17-r3c2#semantic/ordinary/no-warrior",
+        "a2-p17-r3c2#semantic/ordinary/reflect-magic-fixed-six"
+      ],
+      "basis": "Actual God Realm magic boundary tests and Prayer preserve fixed six, warrior attacks refuse. Supplemental reflection lineage remains unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/reflect-limit-physical.test.ts": "ecc39acf0609f1ea91f7d8bf06714173543b6af70eae3d576184ff1ad1526e9d"
+      },
+      "matchedPassingBindings": 3
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/004",
+      "covers": [
+        "a2-p17-r3c3#semantic/transfer/become-own-follower",
+        "a2-p17-r3c3#semantic/transfer/exactly-one",
+        "a2-p17-r3c3#semantic/transfer/no-consent",
+        "a2-p17-r3c3#semantic/transfer/other-placed-only",
+        "a2-p17-r3c3#semantic/transfer/remove-original"
+      ],
+      "basis": "Actual placed donor follower moves once to recipient without consent; full two-slot recipient must pay a removable replacement and invalid third-position/source requests reject. Supplemental moved target and expanded capacity boundaries remain unmapped.",
+      "unchangedTestSources": {
+        "packages/engine/test/gate-physical.test.ts": "df9f40a5698796482495d442ed868c60d0ac47be1fba355a322ffc8e92e435a1"
+      },
+      "matchedPassingBindings": 15
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/021",
+      "covers": [
+        "a2-p08-r3c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c2#semantic/dedicated/counter-opportunity",
+        "a2-p08-r3c2#semantic/dedicated/other-auto-fail",
+        "a2-p08-r3c2#semantic/dedicated/shin-exception",
+        "a2-p08-r3c2#semantic/ordinary/attacker-spirit-minus-one",
+        "a2-p08-r3c2#semantic/ordinary/check-failure-cancel",
+        "a2-p08-r3c2#semantic/ordinary/counter-capable",
+        "a2-p08-r3c2#semantic/ordinary/damage",
+        "a2-p08-r3c2#semantic/ordinary/defense-only",
+        "a2-p08-r3c2#semantic/ordinary/ignore-incoming-level",
+        "a2-p08-r3c2#semantic/ordinary/shin-auto-success"
+      ],
+      "basis": "Exact card/question index row points to T05; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/shadow-card-physical.test.ts": "309a83d9598b039c8d3410007afaa5c9ac6110e911c909213366d77a203743bb"
+      },
+      "matchedPassingBindings": 29
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/022",
+      "covers": [
+        "a2-p08-r3c3#semantic/dedicated/0/damage-replacement",
+        "a2-p08-r3c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p08-r3c3#semantic/dedicated/damage-spirit-times-two",
+        "a2-p08-r3c3#semantic/ordinary/damage"
+      ],
+      "basis": "Exact card/question index row points to T06; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/ki-slash-physical.test.ts": "df950f088bdad8aa7da1e81d4597492edf44a5e2415a92abd61a4508b2021ac3"
+      },
+      "matchedPassingBindings": 19
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/026",
+      "covers": [
+        "a2-p09-r2c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost",
+        "a2-p09-r2c1#semantic/dedicated/effect-per-advance",
+        "a2-p09-r2c1#semantic/dedicated/no-cost-damage-bonus"
+      ],
+      "basis": "Exact card/question index row points to T10; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/void-sword-physical.test.ts": "0ac1eaf190497e95c1a609d7fd2a9f6b5ebb448e8b27dd8769e7053be8a8ab42"
+      },
+      "matchedPassingBindings": 23
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/033",
+      "covers": [
+        "a2-p11-r1c1#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c1#semantic/dedicated/0/select-optional",
+        "a2-p11-r1c1#semantic/dedicated/chant-double",
+        "a2-p11-r1c1#semantic/dedicated/nonchant-no-double",
+        "a2-p11-r1c1#semantic/dedicated/optional-chant",
+        "a2-p11-r1c1#semantic/ordinary/damage"
+      ],
+      "basis": "Exact card/question index row points to T17; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/dragon-spear-physical.test.ts": "6320973fd21d047dc2b0fe2f76909f87fadf5f2b9ba5f68c3a18c474e718a817"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/034",
+      "covers": [
+        "a2-p11-r1c2#semantic/dedicated/0/damage-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/effect-replacement",
+        "a2-p11-r1c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p11-r1c2#semantic/dedicated/counter-check-waiver-context",
+        "a2-p11-r1c2#semantic/ordinary/counter-capable",
+        "a2-p11-r1c2#semantic/ordinary/use-level"
+      ],
+      "basis": "Exact card/question index row points to T18; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/spear-mountain-physical.test.ts": "ecf8c566edb9c30c9555fc92b2316a35a23019ff0be0ff493bf3022d4e91e49b"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/039",
+      "covers": [
+        "a2-p12-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p12-r2c3#semantic/dedicated/follower-ignore-threshold",
+        "a2-p12-r2c3#semantic/dedicated/hit-follower-ignore"
+      ],
+      "basis": "Exact card/question index row points to T23; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/ice-magic-physical.test.ts": "565fc0aecd24efe6ffe648b70dc310180fd9d58421f4d95a42802a14a710965a"
+      },
+      "matchedPassingBindings": 11
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/041",
+      "covers": [
+        "a2-p13-r1c1#semantic/dedicated/destroy-relative-effect",
+        "a2-p13-r1c1#semantic/ordinary/destroy-fixed-five"
+      ],
+      "basis": "Exact card/question index row points to T25; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/ice-wolf-physical.test.ts": "6e2b05a2b2dd0653c3df4ce60a0a113d36820fbca50b2c73d0a43e433addcdf7"
+      },
+      "matchedPassingBindings": 9
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/043",
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/dedicated/no-shin-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-fire-exception",
+        "a2-p13-r2c2#semantic/dedicated/retain-wind-exception",
+        "a2-p13-r2c2#semantic/ordinary/no-fire",
+        "a2-p13-r2c2#semantic/ordinary/no-wind"
+      ],
+      "basis": "Exact card/question index row points to T27; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/leaf-defense-physical.test.ts": "4809b7bd97dde790c9b753404ca06f6ba0ef998105b6ea6f5c4d78b14db2defa"
+      },
+      "matchedPassingBindings": 10
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/044",
+      "covers": [
+        "a2-p13-r2c2#semantic/dedicated/automatic-failure",
+        "a2-p13-r2c2#semantic/ordinary/counter-capable",
+        "a2-p13-r2c2#semantic/ordinary/damage",
+        "a2-p13-r2c2#semantic/ordinary/defense-only",
+        "a2-p13-r2c2#semantic/ordinary/failure-cancel",
+        "a2-p13-r2c2#semantic/ordinary/range"
+      ],
+      "basis": "Exact card/question index row points to T28; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/leaf-defense-physical.test.ts": "4809b7bd97dde790c9b753404ca06f6ba0ef998105b6ea6f5c4d78b14db2defa"
+      },
+      "matchedPassingBindings": 15
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/046",
+      "covers": [
+        "a2-p13-r2c3#semantic/dedicated/0/eligible-owner/0",
+        "a2-p13-r2c3#semantic/dedicated/0/select-optional",
+        "a2-p13-r2c3#semantic/dedicated/no-self-damage",
+        "a2-p13-r2c3#semantic/ordinary/damage",
+        "a2-p13-r2c3#semantic/ordinary/destroy-all-followers",
+        "a2-p13-r2c3#semantic/ordinary/self-follower-destruction",
+        "a2-p13-r2c3#semantic/ordinary/self-ten"
+      ],
+      "basis": "Exact card/question index row points to T30; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/mekai-physical.test.ts": "b827fc1852d803e0387d92617bb404ec129621f42af11dd64a766056c3983fa4"
+      },
+      "matchedPassingBindings": 15
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/050",
+      "covers": [
+        "a2-p14-r1c1#semantic/ordinary/destroy-level-six",
+        "a2-p14-r1c1#semantic/ordinary/exclude-dead-followers",
+        "a2-p14-r1c1#semantic/ordinary/gadyoora-immune"
+      ],
+      "basis": "Exact card/question index row points to T34; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/plague-physical.test.ts": "9ddb97f68f1f8968ca39b563fa5b3402b6c9e0022772eb8bca3da01c066ffccf"
+      },
+      "matchedPassingBindings": 13
+    },
+    {
+      "identity": "ruling:T49#ruling-paragraph/062",
+      "covers": [
+        "a2-p17-r1c1#semantic/dedicated/0/eligible-owner/0",
+        "a2-p17-r1c1#semantic/dedicated/disable-followers"
+      ],
+      "basis": "Exact card/question index row points to T45; flattened union of the already mapped printed and supplemental paragraphs, preserving their concrete semantic proof rather than adding a new gameplay rule.",
+      "unchangedTestSources": {
+        "packages/engine/test/lester-songs-physical.test.ts": "945f2f3aa3522c5d62e75cd15279f83c76e699619309cb0a4e7f6f0c7840d76b"
+      },
+      "matchedPassingBindings": 6
     }
   ],
   "skyWingValidation": {
