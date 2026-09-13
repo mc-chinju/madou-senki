@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 721,
-  "excluded": "Current candidate is not accepted; full verification and 721 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 719,
+  "excluded": "Current candidate is not accepted; full verification and 719 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -1607,6 +1607,24 @@
         "packages/engine/test/border-wood-physical.test.ts": "54d4c6449b071a91b4c0c2f95d21324c2be1d27c1b98cb49060b7b50a2d1fcff"
       },
       "matchedPassingBindings": 6
+    },
+    {
+      "identity": "ruling:F13#ruling-paragraph/003",
+      "covers": [
+        "a2-p19-r2c1#semantic/defense/front-order",
+        "a2-p19-r2c1#semantic/follower/printed-hp",
+        "a2-p19-r2c1#semantic/revival/effect-threshold"
+      ],
+      "basis": "Question of inclusive threshold, restoration timing/position and HP passage: existing actual Dwarf level boundaries, front/rear placement and later Bow, mixed over-limit group plus explicit mixed-destruction structural inputs; complete changed files passed in undeadValidation. Full answer paragraph remains pending."
+    },
+    {
+      "identity": "ruling:F18#ruling-paragraph/003",
+      "covers": [
+        "a2-p19-r3c3#semantic/defense/front-order",
+        "a2-p19-r3c3#semantic/follower/printed-hp",
+        "a2-p19-r3c3#semantic/revival/effect-threshold"
+      ],
+      "basis": "Question of inclusive threshold, restoration timing/position and HP passage: existing actual Dwarf level boundaries, front/rear placement and later Bow, mixed over-limit group plus explicit mixed-destruction structural inputs; complete changed files passed in undeadValidation. Full answer paragraph remains pending."
     }
   ],
   "skyWingValidation": {
@@ -1646,5 +1664,19 @@
       "packages/engine/test/barrier-physical.test.ts": "36f6365a4cb425f75711e3d5013551f5322b29ffb992e01852ba0a37f984342f",
       "docs/operations/evidence/2026-09-13-barrier-aggregate-bindings.json": "fcdac53a0ab3d2267c20f39b4a7a15c691ef75c294279105b0ac497984b409ea"
     }
+  },
+  "undeadValidation": {
+    "passed": 56,
+    "failed": 0,
+    "exitCode": 0,
+    "typecheckExitCode": 0,
+    "reportSha256": "6703ccb00000d11dd59dbedb645bd65bfe96664ad1f6022833780d0b222dabef",
+    "sourceSha256": {
+      "packages/engine/test/skeleton-physical.test.ts": "8765d421837c832d7eb1696e4826a74d927b87722749948b2e24888894a04ce0",
+      "packages/engine/test/zombie-physical.test.ts": "39f0c265b8fb948910fbb438f84daf15dc6e46e4bea6197c14b3fea04fcbda1d",
+      "docs/operations/evidence/2026-09-13-undead-aggregate-bindings.json": "fa433c9f3f379be247d5f2db34ece61be37fe4a1c3e4e78084a4ca87219e35bd"
+    },
+    "scope": "Explicit first/last destroy-dead mixed-hit resolver input, original non-destructive HP preserved, JSON reconstruction, revival forbidden and one disposal. No physical mixed-destruction producer claim.",
+    "remaining": "F13/F18 answer paragraphs still require morale-failure applicability/proof confirmation."
   }
 }

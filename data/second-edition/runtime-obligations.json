@@ -203346,7 +203346,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p19-r2c1#semantic/defense/front-order",
+        "a2-p19-r2c1#semantic/follower/printed-hp",
+        "a2-p19-r2c1#semantic/revival/effect-threshold"
+      ]
     },
     {
       "entryId": "ruling:F13",
@@ -203780,7 +203784,11 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p19-r3c3#semantic/defense/front-order",
+        "a2-p19-r3c3#semantic/follower/printed-hp",
+        "a2-p19-r3c3#semantic/revival/effect-threshold"
+      ]
     },
     {
       "entryId": "ruling:F18",
