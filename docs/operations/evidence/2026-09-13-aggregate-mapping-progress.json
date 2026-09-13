@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 822,
-  "excluded": "No production ability producer is claimed for structural maximum-endurance changes. Complete candidate acceptance and 822 aggregate mappings remain.",
+  "remainingAggregateMappings": 821,
+  "excluded": "No physical producer is claimed for structural maximum/target/hit inputs. Complete candidate acceptance and 821 aggregate mappings remain.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -58,10 +58,27 @@
         "a2-p08-r1c2#semantic/ordinary/damage"
       ],
       "basis": "Existing physical CHANT and hit-advance tests assert ordinary/dedicated damage before defense, Arness ownership, payment after hit and 5 damage per paid card; test source unchanged from fourth run. Candidate acceptance still requires a new full run."
+    },
+    {
+      "identity": "ruling:T02#ruling-paragraph/005",
+      "covers": [
+        "a2-p08-r1c2#semantic/dedicated/damage-five-per-cost",
+        "a2-p08-r1c2#semantic/dedicated/not-defense-advance-payment",
+        "a2-p08-r1c2#semantic/dedicated/physical-advance-cost",
+        "a2-p08-r1c2#semantic/dedicated/post-hit-advance-choice"
+      ],
+      "basis": "Actual payment and all-seat response window; explicit structural pending-hit/target and integer multiplier inputs, defended/finalized exclusions and repeated-payment rejection. Physical Sword is warrior with integer damage/multipliers; no artificial magic conversion or rounding path claimed."
     }
   ],
-  "pendingT02Paragraph005": [
-    "Bind existing structural finalized-target/multiplier case with its actual proof classification.",
-    "Confirm shared unresolved targets/hits, rounding and legal intervention after payment; do not treat mere source/section association as full paragraph coverage."
-  ]
+  "skyWingValidation": {
+    "passed": 23,
+    "failed": 0,
+    "exitCode": 0,
+    "typecheckExitCode": 0,
+    "reportSha256": "3d5a3b39ccfcf620981929a6d12e3debc9100be9068b56ee2ceb16f52690ecbe",
+    "sourceSha256": {
+      "packages/engine/test/sky-wing-physical.test.ts": "53b2150dfb6d7690446d5b99782e07b212d48cba1adc6bee00ea37e6e9c29b07",
+      "docs/operations/evidence/2026-09-13-sky-wing-aggregate-bindings.json": "411e1beba202dd72af897080e8f3bb3af85a4fdaf36d90e69b45ba6200e7af8e"
+    }
+  }
 }

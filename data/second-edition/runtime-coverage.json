@@ -274520,30 +274520,33 @@
       "kind": "dedicated-use",
       "handler": [
         "h:288390222c9678cc",
-        "h:c5c317d635fd953f",
+        "h:9dce921b0e95e6f5",
         "h:39ccdafd6f0acb91",
-        "h:258d945fa1122c8b",
+        "h:4f1f5e48a5df3416",
         "h:e6e192d6a27171be",
         "h:5f3002fba4ad8a14"
       ],
       "tests": [
-        "t:9564b71de03de0bd",
-        "t:2ef25f259727a92a",
-        "t:9f653dbddf641dff",
-        "t:e30e1148a5d5d4f0",
-        "t:776beb745195ad05",
-        "t:4ff23bde556a3d15",
-        "t:f71f5642b608b76c",
-        "t:26d4e38242e3b747",
-        "t:421c51fa47de00f4",
-        "t:b488f4896ed20c6b",
-        "t:52204a970b57c8f6",
-        "t:72bfa8e6d30e4f25",
-        "t:14ad7a8b9c3a043f",
-        "t:4b815c1ea535eca4"
+        "t:d2a27d10bd6bdaf5",
+        "t:dd39556252331bfa",
+        "t:876ccc0e889b6a55",
+        "t:4b425742d556239c",
+        "t:ad5df5848efe5c63",
+        "t:e246ca2f56329ecf",
+        "t:b9a1cdf8980358cc",
+        "t:0167d097b577caa6",
+        "t:520c8ac89b7ba072",
+        "t:8110e35b82d460ed",
+        "t:c1f979e6c520dbff",
+        "t:d683dff5275d004b",
+        "t:4b3b6c686e26007e",
+        "t:1d7d00880e234a6c",
+        "t:90629d9f61a53399"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:56671865b4daa658"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -274575,20 +274578,23 @@
       "kind": "dedicated-use",
       "handler": [
         "h:288390222c9678cc",
-        "h:c5c317d635fd953f",
+        "h:9dce921b0e95e6f5",
         "h:39ccdafd6f0acb91",
-        "h:258d945fa1122c8b",
+        "h:4f1f5e48a5df3416",
         "h:e6e192d6a27171be",
         "h:5f3002fba4ad8a14"
       ],
       "tests": [
-        "t:26d4e38242e3b747",
-        "t:421c51fa47de00f4",
-        "t:b488f4896ed20c6b",
-        "t:cb91886ba47fb4f9"
+        "t:0167d097b577caa6",
+        "t:520c8ac89b7ba072",
+        "t:8110e35b82d460ed",
+        "t:158957d6230bf5ef",
+        "t:90629d9f61a53399"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:56671865b4daa658"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -274620,20 +274626,24 @@
       "kind": "dedicated-use",
       "handler": [
         "h:288390222c9678cc",
-        "h:c5c317d635fd953f",
+        "h:9dce921b0e95e6f5",
         "h:39ccdafd6f0acb91",
-        "h:258d945fa1122c8b",
+        "h:4f1f5e48a5df3416",
         "h:e6e192d6a27171be",
         "h:5f3002fba4ad8a14"
       ],
       "tests": [
-        "t:26d4e38242e3b747",
-        "t:421c51fa47de00f4",
-        "t:b488f4896ed20c6b",
-        "t:cb91886ba47fb4f9"
+        "t:0167d097b577caa6",
+        "t:520c8ac89b7ba072",
+        "t:8110e35b82d460ed",
+        "t:158957d6230bf5ef",
+        "t:90629d9f61a53399",
+        "t:aec94f7b43b30295"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:56671865b4daa658"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -274665,17 +274675,20 @@
       "kind": "dedicated-use",
       "handler": [
         "h:288390222c9678cc",
-        "h:c5c317d635fd953f",
+        "h:9dce921b0e95e6f5",
         "h:39ccdafd6f0acb91",
-        "h:258d945fa1122c8b",
+        "h:4f1f5e48a5df3416",
         "h:e6e192d6a27171be",
         "h:5f3002fba4ad8a14"
       ],
       "tests": [
-        "t:cb91886ba47fb4f9"
+        "t:158957d6230bf5ef",
+        "t:90629d9f61a53399"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:56671865b4daa658"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -407488,6 +407501,14 @@
     "h:99c542160303305d": {
       "path": "packages/engine/src/effects/remaining-turn-cards.ts",
       "symbol": "finishTurnCardBatch"
+    },
+    "h:9dce921b0e95e6f5": {
+      "path": "packages/engine/src/effects/combination-techniques.ts",
+      "symbol": "canSelectCombinationDedicated"
+    },
+    "h:4f1f5e48a5df3416": {
+      "path": "packages/engine/src/combat/attack.ts",
+      "symbol": "drainEmptyWindows"
     }
   },
   "testCases": {
@@ -483674,6 +483695,159 @@
       "kind": "structural-resolver",
       "parameters": -1,
       "bindingNote": "Direct maximum-endurance boundary followed by settleDamage: zero/negative current endurance retains damage and queues pending-death before unpaid recovery; REST card remains paid in resolution. No ability producer is claimed."
+    },
+    "t:d2a27d10bd6bdaf5": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen",
+      "declarationSha256": "845fba51deb1a329a3a818d4f1786b0004bea225efb352cf8bf0f7a2088c47da",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-ordinary",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:dd39556252331bfa": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen",
+      "declarationSha256": "845fba51deb1a329a3a818d4f1786b0004bea225efb352cf8bf0f7a2088c47da",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-guard",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:876ccc0e889b6a55": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen",
+      "declarationSha256": "845fba51deb1a329a3a818d4f1786b0004bea225efb352cf8bf0f7a2088c47da",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-owner-ordinary",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:4b425742d556239c": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen",
+      "declarationSha256": "845fba51deb1a329a3a818d4f1786b0004bea225efb352cf8bf0f7a2088c47da",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-dedicated",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:ad5df5848efe5c63": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen",
+      "declarationSha256": "845fba51deb1a329a3a818d4f1786b0004bea225efb352cf8bf0f7a2088c47da",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-near",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:e246ca2f56329ecf": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen",
+      "declarationSha256": "845fba51deb1a329a3a818d4f1786b0004bea225efb352cf8bf0f7a2088c47da",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-suppressed",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:b9a1cdf8980358cc": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen",
+      "declarationSha256": "845fba51deb1a329a3a818d4f1786b0004bea225efb352cf8bf0f7a2088c47da",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-silenced",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:0167d097b577caa6": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "actual post-hit optional batch of%s physical advances adds five each exactly once without refill or source return",
+      "declarationSha256": "ed9d41b531d1206d156a136999978aeca31fb977bfe1b5f81d0c56339c6de451",
+      "kind": "canonical-transition",
+      "parameters": 0,
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:520c8ac89b7ba072": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "actual post-hit optional batch of%s physical advances adds five each exactly once without refill or source return",
+      "declarationSha256": "ed9d41b531d1206d156a136999978aeca31fb977bfe1b5f81d0c56339c6de451",
+      "kind": "canonical-transition",
+      "parameters": 1,
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:8110e35b82d460ed": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "actual post-hit optional batch of%s physical advances adds five each exactly once without refill or source return",
+      "declarationSha256": "ed9d41b531d1206d156a136999978aeca31fb977bfe1b5f81d0c56339c6de451",
+      "kind": "canonical-transition",
+      "parameters": 2,
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:c1f979e6c520dbff": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual defense retains two MAAI requirement while a fully evaded target offers no post-hit payment",
+      "declarationSha256": "fc32ec10e926e81fbe041df88ede653b192531a69ee3b15da48f2dc2fed64623",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-maai-one",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:d683dff5275d004b": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual defense retains two MAAI requirement while a fully evaded target offers no post-hit payment",
+      "declarationSha256": "fc32ec10e926e81fbe041df88ede653b192531a69ee3b15da48f2dc2fed64623",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-maai-two",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:4b3b6c686e26007e": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "%s actual defense retains two MAAI requirement while a fully evaded target offers no post-hit payment",
+      "declarationSha256": "fc32ec10e926e81fbe041df88ede653b192531a69ee3b15da48f2dc2fed64623",
+      "kind": "canonical-transition",
+      "parameters": "sky-wing-evade",
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:1d7d00880e234a6c": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "fate actual chanted declaration cancellation prevents hit payment and consumes prepared source once",
+      "declarationSha256": "a572a43030296be0f19bf9822bf0ec0dcaeacb1a2f273d6c3fc90527038985e3",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:90629d9f61a53399": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "actual hit advance payment reopens every active seat before damage is applied",
+      "declarationSha256": "0b40a09b101b9a83e6fbb624c37de522ee21b5808aee01cfe3fb04eb343fc91c",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Actual CHANT, intervening turns and dedicated hit: payment opens A/B/C/D response priority before damage, rejects second payment, applies twenty once."
+    },
+    "t:158957d6230bf5ef": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "actual defense advance payment cancels MAAI but cannot pay the later hit bonus again and a separate physical card adds only five",
+      "declarationSha256": "753ef28a6fc97dcb7f1e67c4d0967a9f287ed4c755caff2c13cba1291d71854f",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "SkyWing exactphysical a2p08r1c2 actual initialdeal/setup and CHANT, ownEND/allotherturns/nextSTART. Ordinary farwarrior swordchant/use7/effect7/damage12/singletarget/maai2. ActualArness ordinary also7/12 and actualMetalGolem6/HP5 absorbs5 body7, normalfollowersdestroyed. ElectedArness effect8/damage15/ignorefollowers, warrior0spirit0 skipssevenusechecks but stillneedsactualCHANTandwait. Realapproach near, Confusion/Silence allowprintedwarrior effect; Hypnosis/recovery skipsowner. Ordinarywar6 SP6equality6success7fail. Actualposthitoptional0/1/2physicaladvancebatch adds0/5/10 once, handcost/noimmediaterefill, rejectsduplicate/nonadvance/foreign/late/wrongwindow/wrongactor; PASSdeclines. ActualBtwoMaai thenAfirstadvance cancelsdefense withoutdistancechange, spentfirstcostcannotpayhit; separatesecondcost adds5 only. OneMaai stillhit15; twoMaai/evade prevents hitandposthitpayment, costskept. Fate cancelsactualpreparedattack beforehit and costselection. Engine21 (20first+1correcteddefenseprioritysequence), related5 DO18everycommandsavedrestartreplay UI10representativeactualCHANT/fullturns/costs/reload types. ProductionUI nowchecks canonical printedchant source when no declarationcandidate, preserving abilitypreview and composite chant source. SameUI10 rerunplusrelatedUI5. Sharedactualhitmultipliers/finalizedtargets/nestedhits/source-targetlifetime andotherabilitycrossings remainpending. Noacceptedpromotion."
+    },
+    "t:aec94f7b43b30295": {
+      "path": "packages/engine/test/sky-wing-physical.test.ts",
+      "suite": [],
+      "title": "structural pending target and hit inputs share one advance payment without altering defended or finalized damage",
+      "declarationSha256": "7187ced8ec624adcc932801e8f41e3e5a5525d4cd3619876ce319ee3be7a4107",
+      "kind": "structural-resolver",
+      "parameters": null,
+      "bindingNote": "Explicit persisted extra-target/hit and integer multiplier inputs; same payment updates only unresolved undefended damage. Does not claim a physical multi-hit/target producer."
     }
   },
   "remainingNotes": {
@@ -483851,7 +484025,8 @@
     "n:e9498b01c2ffba69": "C07 attack-group creation, shared hit snapshot and terminal disposal correspondence established. Current-candidate execution receipt, dependency acceptance and independent acceptance remain pending.",
     "n:acb32c15259253d7": "Concrete scenario references bound; candidate-wide verification remains pending. No review performed per user instruction.",
     "n:49f47796c517052c": "Candidate changed after successful B8 third run: title reporting and obsolete inventory bindings corrected. Await complete execution and acceptance for the new frozen candidate.",
-    "n:f3f2f5037c6ad5b6": "Await successful complete candidate run after aggregate mapping changes."
+    "n:f3f2f5037c6ad5b6": "Await successful complete candidate run after aggregate mapping changes.",
+    "n:56671865b4daa658": "Await complete candidate run after aggregate mapping changes."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

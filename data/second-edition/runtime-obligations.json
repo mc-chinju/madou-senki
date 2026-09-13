@@ -196451,7 +196451,12 @@
       "dependsOn": [],
       "semanticReview": "pending: paragraph may require multiple atomic obligations; context is not an extra rule",
       "coverageClass": "aggregate",
-      "covers": []
+      "covers": [
+        "a2-p08-r1c2#semantic/dedicated/damage-five-per-cost",
+        "a2-p08-r1c2#semantic/dedicated/not-defense-advance-payment",
+        "a2-p08-r1c2#semantic/dedicated/physical-advance-cost",
+        "a2-p08-r1c2#semantic/dedicated/post-hit-advance-choice"
+      ]
     },
     {
       "entryId": "ruling:T02",
