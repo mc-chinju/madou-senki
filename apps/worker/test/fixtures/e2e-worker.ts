@@ -154,15 +154,46 @@ import { isCombinationScenario } from './combination-scenarios.js';
 import { isAbilityScenario } from './ability-scenarios.js';
 import { isLifetimeScenario } from './lifetime-scenarios.js';
 import { isLifecycleScenario } from './lifecycle-scenarios.js';
+import type { Entropy } from '@madou/engine';
 import application from '../../src/index.js';
 import { Room } from '../../src/rooms/room.js';
 import { HttpError, json, readJson } from '../../src/http.js';
 import { projectDirectory } from '../../src/rooms/types.js';
 import { makeScenario, type ScenarioName } from './game-scenarios.js';
 
+function mulberryTape(seed: number, calls: number): Entropy {
+  let t = (Math.imul(seed, 0x9E3779B9) + calls) >>> 0;
+  const next = () => {
+    t += 0x6D2B79F5;
+    let r = Math.imul(t ^ (t >>> 15), 1 | t);
+    r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+  const random: number[] = [];
+  const dice: number[] = [];
+  for (let i = 0; i < 8192; i++) {
+    random.push(next());
+    dice.push(1 + Math.floor(next() * 6));
+  }
+  return { now: 1000, dice, random };
+}
+
 /** Local browser-test entrypoint only. Never exported by src/index.ts or production wrangler.jsonc. */
 export class BrowserFixtureRoom extends Room {
+  async setEntropySeed(seed: number) {
+    this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS browser_fixture_seed (singleton INTEGER PRIMARY KEY CHECK(singleton = 1), seed INTEGER NOT NULL, calls INTEGER NOT NULL)');
+    this.ctx.storage.sql.exec('INSERT OR REPLACE INTO browser_fixture_seed (singleton, seed, calls) VALUES (1, ?, 0)', seed);
+    await this.ctx.storage.sync();
+  }
+
   protected commandEntropy() {
+    const seeded = this.ctx.storage.sql.exec<{ name: string }>("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'browser_fixture_seed'").toArray().length > 0
+      ? this.ctx.storage.sql.exec<{ seed: number; calls: number }>('SELECT seed, calls FROM browser_fixture_seed WHERE singleton = 1').toArray()[0]
+      : undefined;
+    if (seeded) {
+      this.ctx.storage.sql.exec('UPDATE browser_fixture_seed SET calls = ? WHERE singleton = 1', seeded.calls + 1);
+      return mulberryTape(seeded.seed, seeded.calls);
+    }
     const entropy = super.commandEntropy();
     const exists = this.ctx.storage.sql.exec<{ name: string }>("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'browser_fixture_entropy'").toArray().length > 0;
     if (!exists) return entropy;
@@ -202,7 +233,7 @@ export class BrowserFixtureRoom extends Room {
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    const match = /^\/__test\/rooms\/([A-Za-z0-9_-]+)\/(scenario|game)$/.exec(new URL(request.url).pathname);
+    const match = /^\/__test\/rooms\/([A-Za-z0-9_-]+)\/(scenario|game|entropy)$/.exec(new URL(request.url).pathname);
     if (!match) return application.fetch(request, env, ctx);
     if (!['localhost', '127.0.0.1', '[::1]'].includes(new URL(request.url).hostname)) return json({ error: 'LOCAL_TEST_ONLY' }, 403);
     try {
@@ -210,6 +241,13 @@ export default {
       if (match[2] === 'game') {
         if (request.method !== 'GET') throw new HttpError(405, 'METHOD_NOT_ALLOWED');
         return json(await stub.inspectGame());
+      }
+      if (match[2] === 'entropy') {
+        if (request.method !== 'POST') throw new HttpError(405, 'METHOD_NOT_ALLOWED');
+        const body = await readJson(request);
+        if (typeof body.seed !== 'number' || !Number.isSafeInteger(body.seed)) throw new HttpError(400, 'INVALID_FIXTURE');
+        await stub.setEntropySeed(body.seed);
+        return new Response(null, { status: 204 });
       }
       if (request.method !== 'POST') throw new HttpError(405, 'METHOD_NOT_ALLOWED');
       const body = await readJson(request);
