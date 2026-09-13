@@ -1,7 +1,24 @@
 import { readFileSync } from 'node:fs';
 import { actionCards, characters } from '@madou/catalog';
-import { createGame, transition, initialProtection, factionObjective } from '../src/index.js';
-export const entropy = () => ({ now: 1000, dice: [], random: Array.from({ length: 2000 }, (_, i) => ((i * 193 + 17) % 997) / 997) });
+import { createGame, transition, initialProtection, factionObjective, type Entropy } from '../src/index.js';
+export const entropy = () => ({ now: 1000, dice: [] as number[], random: Array.from({length: 2000}, (_, i) => ((i * 193 + 17) % 997) / 997) });
+/** Deterministic mulberry32 tape. Dice faces are 1–6; random is in [0, 1). */
+export function seededEntropy(seed: number): Entropy {
+  let t = seed >>> 0;
+  const next = () => {
+    t += 0x6D2B79F5;
+    let r = Math.imul(t ^ (t >>> 15), 1 | t);
+    r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+  const random: number[] = [];
+  const dice: number[] = [];
+  for (let i = 0; i < 8192; i++) {
+    random.push(next());
+    dice.push(1 + Math.floor(next() * 6));
+  }
+  return { now: 1000, dice, random };
+}
 export function freshGame() {
   return createGame(['A', 'B', 'C', 'D'].map(id => ({ id, name: id })), entropy(), { startingSeat: 0 });
 }
