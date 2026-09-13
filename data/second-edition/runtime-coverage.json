@@ -370313,15 +370313,18 @@
         "h:5f3002fba4ad8a14",
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
-        "h:ee005d28d99ecb92"
+        "h:3160056d7e0438c2"
       ],
       "tests": [
-        "t:c76091c8ddda8e31",
-        "t:3f90fc9387ec2d27",
-        "t:bd9b186a9288a4a0"
+        "t:017cfaa4d918df9d",
+        "t:179786216d2ffa0f",
+        "t:2af8c52155567625",
+        "t:05614a50c78e8a80"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:3794c190a13918f5"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -370735,16 +370738,19 @@
         "h:5f3002fba4ad8a14",
         "h:39ccdafd6f0acb91",
         "h:347885961710a67d",
-        "h:ee005d28d99ecb92"
+        "h:3160056d7e0438c2"
       ],
       "tests": [
-        "t:d5b7c82a5661302f",
-        "t:6be867ae9bbde5cb",
-        "t:8bcfcf53b56f70e0",
-        "t:c637ff79b1ed738d"
+        "t:eb0ad8a4c50d3a89",
+        "t:57fe2f1c86a05232",
+        "t:516879e0b9844c16",
+        "t:1ccdc6a46e9c4e1b",
+        "t:425f059413383dad"
       ],
       "status": "implemented",
-      "remaining": [],
+      "remaining": [
+        "n:3794c190a13918f5"
+      ],
       "gapKind": "evidence-missing",
       "relatedEvidence": {
         "handler": [
@@ -407554,6 +407560,10 @@
     "h:086d2fe9ada9fda4": {
       "path": "packages/engine/src/rolls/action-values.ts",
       "symbol": "prepareActionValues"
+    },
+    "h:3160056d7e0438c2": {
+      "path": "packages/engine/src/effects/turn-choice-cards.ts",
+      "symbol": "resolveTurnChoiceCard"
     }
   },
   "testCases": {
@@ -484606,6 +484616,95 @@
       "kind": "canonical-transition",
       "parameters": "zombie-attack-field",
       "bindingNote": "Exact Zombie a2-p19-r3c3 begins in initial setup with aligned initial private deal/character logs. Actual setup/own-action placement, reorder/removal/privacy; real Dia Dwarf3 hits at3/4/5/6 compare follower4 HP0 and revival cap5. Actual mixed Dwarf5 plus DarkSaint5 survives, Dwarf5 plus RoyalGuard6 either order forbids revival, every hit HP0. Real Mountain Breaker4 dead destruction inside cap prevents revival. Actual Gadyura far hand/field warrior3 damage4 selected subsets/noChecks/counter ban and real near/maai. Actual Army hand-only ordinary near warrior3 damage4 with own2/3 checks1/0, parent/child cancellation and use-failure paying both. Forged Dia excludes dead attribute, malformed targets preserve state/all views; accepted JSON/220. Candidate receipts/shared crossings remain pending."
+    },
+    "t:017cfaa4d918df9d": {
+      "path": "packages/engine/test/faction-castles-physical.test.ts",
+      "suite": [],
+      "title": "%s actual incompatible owner may hold the castle but neither setup nor own action can place it",
+      "declarationSha256": "5da483b7d74622cce953572655a9c83a9def2ac826b7c11944ff12cb0750284b",
+      "kind": "canonical-transition",
+      "parameters": "alkemia-setup",
+      "bindingNote": "Exact Alkemia/Gainas Castle starts in setup with aligned private initial logs. Actual placement/order/removal/privacy and Dwarf4/5/6 triple-hit defense5 HP5 building/castle. Real incompatible owner keeps hand card but setup/turn placement refuses. No attack bottom: even Army present cannot grant ordinary/dedicated/chant. Actual public Tia GOOD or Alseil EVIL conversion with printed turn card loses faction and immediately publicly discards placed castle; hand-only castle remains private. Next actual Bow attacks without castle. Fate preserves faction/hidden placement. Actual Alseil explicitly selects defense6 against Dwarf5/6/7 with HP5 unchanged, foreign owner refuses; real conversion removes Alseil placement eligibility. Accepted JSON/220 and rejected state/all-view equality. Synthetic frozen-castle regression is related only; wider actual frozen-boundary shared crossing and candidate receipts remain open."
+    },
+    "t:179786216d2ffa0f": {
+      "path": "packages/engine/test/faction-castles-physical.test.ts",
+      "suite": [],
+      "title": "%s actual public conversion immediately reveals and discards the incompatible castle but keeps an unplaced castle in hand",
+      "declarationSha256": "2846ec21fa8fd4ef24aa71dc98a99a666098bb8c7f77a9df4a3370c3b7e113d0",
+      "kind": "canonical-transition",
+      "parameters": "alkemia-convert",
+      "bindingNote": "Exact Alkemia/Gainas Castle starts in setup with aligned private initial logs. Actual placement/order/removal/privacy and Dwarf4/5/6 triple-hit defense5 HP5 building/castle. Real incompatible owner keeps hand card but setup/turn placement refuses. No attack bottom: even Army present cannot grant ordinary/dedicated/chant. Actual public Tia GOOD or Alseil EVIL conversion with printed turn card loses faction and immediately publicly discards placed castle; hand-only castle remains private. Next actual Bow attacks without castle. Fate preserves faction/hidden placement. Actual Alseil explicitly selects defense6 against Dwarf5/6/7 with HP5 unchanged, foreign owner refuses; real conversion removes Alseil placement eligibility. Accepted JSON/220 and rejected state/all-view equality. Synthetic frozen-castle regression is related only; wider actual frozen-boundary shared crossing and candidate receipts remain open."
+    },
+    "t:2af8c52155567625": {
+      "path": "packages/engine/test/faction-castles-physical.test.ts",
+      "suite": [],
+      "title": "%s actual canceled conversion preserves castle and faction without leaking the physical source",
+      "declarationSha256": "f79d8864673eb021844f5302b23dc47d6aea33208b5f8850d5ab1e63bc21db01",
+      "kind": "canonical-transition",
+      "parameters": "alkemia-convert",
+      "bindingNote": "Exact Alkemia/Gainas Castle starts in setup with aligned private initial logs. Actual placement/order/removal/privacy and Dwarf4/5/6 triple-hit defense5 HP5 building/castle. Real incompatible owner keeps hand card but setup/turn placement refuses. No attack bottom: even Army present cannot grant ordinary/dedicated/chant. Actual public Tia GOOD or Alseil EVIL conversion with printed turn card loses faction and immediately publicly discards placed castle; hand-only castle remains private. Next actual Bow attacks without castle. Fate preserves faction/hidden placement. Actual Alseil explicitly selects defense6 against Dwarf5/6/7 with HP5 unchanged, foreign owner refuses; real conversion removes Alseil placement eligibility. Accepted JSON/220 and rejected state/all-view equality. Synthetic frozen-castle regression is related only; wider actual frozen-boundary shared crossing and candidate receipts remain open."
+    },
+    "t:05614a50c78e8a80": {
+      "path": "packages/engine/test/castle-frozen-aggregate.test.ts",
+      "suite": [],
+      "title": "structural %s frozen defense survives faction loss and JSON reconstruction",
+      "declarationSha256": "ba500e73fe4dac1bff15865efe2e33cb6b01b8bb9b76375f2a89e495d79a9ac0",
+      "kind": "structural-resolver",
+      "parameters": [
+        "アルケミア城",
+        "GOOD",
+        "EVIL"
+      ],
+      "bindingNote": "Explicit structural heterogeneous two-hit input pauses on Royal Knights reflection; direct faction mutation and Blessing removal cause physical castle removal, while frozen levels6/6 persist after JSON reconstruction and block remaining hit. Does not claim a physical in-defense conversion producer; existing actual conversion tests retained."
+    },
+    "t:eb0ad8a4c50d3a89": {
+      "path": "packages/engine/test/faction-castles-physical.test.ts",
+      "suite": [],
+      "title": "%s actual incompatible owner may hold the castle but neither setup nor own action can place it",
+      "declarationSha256": "5da483b7d74622cce953572655a9c83a9def2ac826b7c11944ff12cb0750284b",
+      "kind": "canonical-transition",
+      "parameters": "gainas-setup",
+      "bindingNote": "Exact Alkemia/Gainas Castle starts in setup with aligned private initial logs. Actual placement/order/removal/privacy and Dwarf4/5/6 triple-hit defense5 HP5 building/castle. Real incompatible owner keeps hand card but setup/turn placement refuses. No attack bottom: even Army present cannot grant ordinary/dedicated/chant. Actual public Tia GOOD or Alseil EVIL conversion with printed turn card loses faction and immediately publicly discards placed castle; hand-only castle remains private. Next actual Bow attacks without castle. Fate preserves faction/hidden placement. Actual Alseil explicitly selects defense6 against Dwarf5/6/7 with HP5 unchanged, foreign owner refuses; real conversion removes Alseil placement eligibility. Accepted JSON/220 and rejected state/all-view equality. Synthetic frozen-castle regression is related only; wider actual frozen-boundary shared crossing and candidate receipts remain open."
+    },
+    "t:57fe2f1c86a05232": {
+      "path": "packages/engine/test/faction-castles-physical.test.ts",
+      "suite": [],
+      "title": "%s actual public conversion immediately reveals and discards the incompatible castle but keeps an unplaced castle in hand",
+      "declarationSha256": "2846ec21fa8fd4ef24aa71dc98a99a666098bb8c7f77a9df4a3370c3b7e113d0",
+      "kind": "canonical-transition",
+      "parameters": "gainas-convert",
+      "bindingNote": "Exact Alkemia/Gainas Castle starts in setup with aligned private initial logs. Actual placement/order/removal/privacy and Dwarf4/5/6 triple-hit defense5 HP5 building/castle. Real incompatible owner keeps hand card but setup/turn placement refuses. No attack bottom: even Army present cannot grant ordinary/dedicated/chant. Actual public Tia GOOD or Alseil EVIL conversion with printed turn card loses faction and immediately publicly discards placed castle; hand-only castle remains private. Next actual Bow attacks without castle. Fate preserves faction/hidden placement. Actual Alseil explicitly selects defense6 against Dwarf5/6/7 with HP5 unchanged, foreign owner refuses; real conversion removes Alseil placement eligibility. Accepted JSON/220 and rejected state/all-view equality. Synthetic frozen-castle regression is related only; wider actual frozen-boundary shared crossing and candidate receipts remain open."
+    },
+    "t:516879e0b9844c16": {
+      "path": "packages/engine/test/faction-castles-physical.test.ts",
+      "suite": [],
+      "title": "%s actual canceled conversion preserves castle and faction without leaking the physical source",
+      "declarationSha256": "f79d8864673eb021844f5302b23dc47d6aea33208b5f8850d5ab1e63bc21db01",
+      "kind": "canonical-transition",
+      "parameters": "gainas-convert",
+      "bindingNote": "Exact Alkemia/Gainas Castle starts in setup with aligned private initial logs. Actual placement/order/removal/privacy and Dwarf4/5/6 triple-hit defense5 HP5 building/castle. Real incompatible owner keeps hand card but setup/turn placement refuses. No attack bottom: even Army present cannot grant ordinary/dedicated/chant. Actual public Tia GOOD or Alseil EVIL conversion with printed turn card loses faction and immediately publicly discards placed castle; hand-only castle remains private. Next actual Bow attacks without castle. Fate preserves faction/hidden placement. Actual Alseil explicitly selects defense6 against Dwarf5/6/7 with HP5 unchanged, foreign owner refuses; real conversion removes Alseil placement eligibility. Accepted JSON/220 and rejected state/all-view equality. Synthetic frozen-castle regression is related only; wider actual frozen-boundary shared crossing and candidate receipts remain open."
+    },
+    "t:1ccdc6a46e9c4e1b": {
+      "path": "packages/engine/test/faction-castles-physical.test.ts",
+      "suite": [],
+      "title": "actual foreign Evil owner cannot select Alseil castle level6 and Alseil loses placement after real conversion",
+      "declarationSha256": "ed48811213348d4d0744a0110a00ba92ffba8f7c47dd1627e6b4696300943439",
+      "kind": "canonical-transition",
+      "parameters": null,
+      "bindingNote": "Exact Alkemia/Gainas Castle starts in setup with aligned private initial logs. Actual placement/order/removal/privacy and Dwarf4/5/6 triple-hit defense5 HP5 building/castle. Real incompatible owner keeps hand card but setup/turn placement refuses. No attack bottom: even Army present cannot grant ordinary/dedicated/chant. Actual public Tia GOOD or Alseil EVIL conversion with printed turn card loses faction and immediately publicly discards placed castle; hand-only castle remains private. Next actual Bow attacks without castle. Fate preserves faction/hidden placement. Actual Alseil explicitly selects defense6 against Dwarf5/6/7 with HP5 unchanged, foreign owner refuses; real conversion removes Alseil placement eligibility. Accepted JSON/220 and rejected state/all-view equality. Synthetic frozen-castle regression is related only; wider actual frozen-boundary shared crossing and candidate receipts remain open."
+    },
+    "t:425f059413383dad": {
+      "path": "packages/engine/test/castle-frozen-aggregate.test.ts",
+      "suite": [],
+      "title": "structural %s frozen defense survives faction loss and JSON reconstruction",
+      "declarationSha256": "ba500e73fe4dac1bff15865efe2e33cb6b01b8bb9b76375f2a89e495d79a9ac0",
+      "kind": "structural-resolver",
+      "parameters": [
+        "ガイナス城",
+        "EVIL",
+        "GOOD"
+      ],
+      "bindingNote": "Explicit structural heterogeneous two-hit input pauses on Royal Knights reflection; direct faction mutation and Blessing removal cause physical castle removal, while frozen levels6/6 persist after JSON reconstruction and block remaining hit. Does not claim a physical in-defense conversion producer; existing actual conversion tests retained."
     }
   },
   "remainingNotes": {
@@ -484785,7 +484884,8 @@
     "n:49f47796c517052c": "Candidate changed after successful B8 third run: title reporting and obsolete inventory bindings corrected. Await complete execution and acceptance for the new frozen candidate.",
     "n:f3f2f5037c6ad5b6": "Await successful complete candidate run after aggregate mapping changes.",
     "n:56671865b4daa658": "Await complete candidate run after aggregate mapping changes.",
-    "n:25d56f2fc4d08b47": "Await complete candidate acceptance after aggregate mapping."
+    "n:25d56f2fc4d08b47": "Await complete candidate acceptance after aggregate mapping.",
+    "n:3794c190a13918f5": "Current candidate requires full verification and acceptance; structural frozen-defense test is not a physical conversion producer."
   },
   "referenceFormat": "Resolve source IDs in manifest.sources; handler/tests/remaining IDs in handlers/testCases/remainingNotes. Missing references are validation errors. No inference of behavior from IDs.",
   "receiptPolicy": {

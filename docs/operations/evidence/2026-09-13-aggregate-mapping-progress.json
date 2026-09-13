@@ -35,8 +35,8 @@
     "exitCode": 0,
     "sha256": "c0d3a123665877323132e09043d9393bede0b6420b8a0652cd5f2e2ba8922161"
   },
-  "remainingAggregateMappings": 694,
-  "excluded": "Current candidate is not accepted; full verification and 694 mappings remain. Explicit structural cases are not physical producer evidence.",
+  "remainingAggregateMappings": 692,
+  "excluded": "Current candidate is not accepted; full verification and 692 mappings remain. Explicit structural cases are not physical producer evidence.",
   "sourceSha256": {
     "packages/engine/test/rest-cap-physical.test.ts": "cdae553b264b6add0da31d1e666521f2e5f519613fbfcaff367589827924d183",
     "docs/operations/evidence/2026-09-13-rest-cap-bindings.json": "45d1b97ae5283eecd029e83d7933bd60543d3ba10d6e3f84727a912fd6152cbf"
@@ -2030,6 +2030,23 @@
         "packages/engine/test/faction-castles-physical.test.ts": "e66454b8777e427ea4ff884f3eb3749d4d13ce4b2809a7c8f28bd609c4892a3a"
       },
       "matchedPassingBindings": 4
+    },
+    {
+      "identity": "ruling:F26#ruling-paragraph/004",
+      "covers": [
+        "a2-p20-r3c2#semantic/placement/good-only"
+      ],
+      "basis": "Existing physical faction-castle tests cover public conversion, incompatible setup/own-action refusal, hidden hand retention, canceled conversion, next attack with castle absent, and Alseil level6 without faction exemption. New explicitly structural frozen-defense test for this exact castle pauses heterogeneous hits on reflection, changes faction and removes Blessing, verifies castle discarded once with levels6/6 preserved and body damage0 after JSON reconstruction. Direct state mutation is not a physical conversion producer. New focused tests pass; candidate still requires full verification.",
+      "validation": "castleFrozenValidation"
+    },
+    {
+      "identity": "ruling:F27#ruling-paragraph/004",
+      "covers": [
+        "a2-p20-r3c3#semantic/dedicated/arseil-level-six",
+        "a2-p20-r3c3#semantic/placement/evil-only"
+      ],
+      "basis": "Existing physical faction-castle tests cover public conversion, incompatible setup/own-action refusal, hidden hand retention, canceled conversion, next attack with castle absent, and Alseil level6 without faction exemption. New explicitly structural frozen-defense test for this exact castle pauses heterogeneous hits on reflection, changes faction and removes Blessing, verifies castle discarded once with levels6/6 preserved and body damage0 after JSON reconstruction. Direct state mutation is not a physical conversion producer. New focused tests pass; candidate still requires full verification.",
+      "validation": "castleFrozenValidation"
     }
   ],
   "skyWingValidation": {
@@ -2099,5 +2116,21 @@
       "packages/engine/src/combat/followers.ts": "b300b617d375a36679f84d1be8c57e173a493ceb0f534512fa6a553c0ede022d",
       "data/second-edition/actions-18-25.json": "2ab85090291f612315f9ec2b09e21e54b3e5e25187d28d4e96b63e9ba3102863"
     }
+  },
+  "castleFrozenValidation": {
+    "testReport": {
+      "path": "/private/tmp/madou-castle-frozen-aggregate.json",
+      "passed": 2,
+      "failed": 0,
+      "exitCode": 0,
+      "sha256": "859944c89080ac78843eb09a748567da61b09cc43379cf833db163f65ad693ec"
+    },
+    "typecheckExitCode": 0,
+    "sourceSha256": {
+      "packages/engine/test/castle-frozen-aggregate.test.ts": "e7914fa309163abcabef3e77b22bfc8862b4eb25fc9c195e9f613b3eb9b95a30",
+      "packages/engine/test/faction-castles-physical.test.ts": "e66454b8777e427ea4ff884f3eb3749d4d13ce4b2809a7c8f28bd609c4892a3a",
+      "docs/operations/evidence/2026-09-13-castle-aggregate-bindings.json": "10070ddc416f4e417cca612bf3afe6f8cf0820452433b3f1296396a979838f13"
+    },
+    "scope": "New structural frozen snapshots only; original physical conversion test source remains unchanged from fourth run. Full candidate acceptance pending."
   }
 }
