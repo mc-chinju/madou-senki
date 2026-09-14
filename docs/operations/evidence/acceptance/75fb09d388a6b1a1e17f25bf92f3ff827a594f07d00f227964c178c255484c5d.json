@@ -6,12 +6,12 @@
     "c2-p03-r1c2-ab04#other-ban-causes-retained"
   ],
   "rowDigests": {
-    "c2-p03-r1c2-ab04#other-ban-causes-retained": "8c3f3db227c721a22a729ca37d7b94d68c67207aa8b131f29ead4b174ee8aa8d"
+    "c2-p03-r1c2-ab04#other-ban-causes-retained": "ca80fd6b94152643bd48c9fb9f1c4f782981dab8c887cd5c36382db2e79d16be"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

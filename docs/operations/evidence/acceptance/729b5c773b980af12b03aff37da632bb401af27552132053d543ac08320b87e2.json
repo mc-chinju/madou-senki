@@ -6,12 +6,12 @@
     "a2-p01-r3c2#semantic/cancel/lester-poem"
   ],
   "rowDigests": {
-    "a2-p01-r3c2#semantic/cancel/lester-poem": "354f8e7de9d322e635330c190e4b147275e8da9719959c2db89106b71a01e168"
+    "a2-p01-r3c2#semantic/cancel/lester-poem": "13a0a850e5564b3afbe1e3f166536a921b1c5c656d6effeb26eff05019d1fd6b"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

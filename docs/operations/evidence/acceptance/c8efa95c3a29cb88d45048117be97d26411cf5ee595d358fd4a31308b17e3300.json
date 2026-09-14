@@ -6,12 +6,12 @@
     "a2-p12-r1c1#semantic/dedicated/variants-not-stack"
   ],
   "rowDigests": {
-    "a2-p12-r1c1#semantic/dedicated/variants-not-stack": "2ecd99ebd76016007f690acf1aa56bbcf034c8494a44491c616d2d073be71fa9"
+    "a2-p12-r1c1#semantic/dedicated/variants-not-stack": "aedc8366eaa944559b9f82c79df57923edcf2cc48582f5827048800373a79285"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

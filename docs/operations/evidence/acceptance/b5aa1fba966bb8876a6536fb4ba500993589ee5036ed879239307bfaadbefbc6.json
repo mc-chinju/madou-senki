@@ -6,12 +6,12 @@
     "c2-p05-r1c2-ab03#before-death-disposal"
   ],
   "rowDigests": {
-    "c2-p05-r1c2-ab03#before-death-disposal": "097e2bf01d332ee5a4e143860a84bf1ceb03e403d059685c8b9473a1995fc099"
+    "c2-p05-r1c2-ab03#before-death-disposal": "cefd2e29c95151d2fb6323f2766ce062e4afb8804564d3a1145455ed340e61b8"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

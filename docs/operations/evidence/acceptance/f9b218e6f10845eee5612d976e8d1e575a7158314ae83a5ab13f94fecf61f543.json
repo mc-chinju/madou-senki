@@ -6,12 +6,12 @@
     "c2-p06-r1c1-ab01#doubles-stop-attacker"
   ],
   "rowDigests": {
-    "c2-p06-r1c1-ab01#doubles-stop-attacker": "b83c2469f7434aaea129a8622ad5f54e1505af08387f0eaa3df8d66d5cdff0b6"
+    "c2-p06-r1c1-ab01#doubles-stop-attacker": "903bde0d8a0828748cb18c7cf6af8f01dd5c013839eceb4beed598a84899086c"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

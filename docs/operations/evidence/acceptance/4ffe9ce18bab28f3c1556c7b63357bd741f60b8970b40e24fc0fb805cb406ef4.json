@@ -6,12 +6,12 @@
     "a2-p06-r3c1#semantic/maai/prohibited-defense"
   ],
   "rowDigests": {
-    "a2-p06-r3c1#semantic/maai/prohibited-defense": "a98b8664d43a23c5e925de5fae93525a7d84a9109f6c4cfc68c519b2a4bf1622"
+    "a2-p06-r3c1#semantic/maai/prohibited-defense": "fe99e2a8650e2d5f5bc175cfb09efa2b9d9cf058d1be6ee48ea4694b1c044c15"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

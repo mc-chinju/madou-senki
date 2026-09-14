@@ -6,12 +6,12 @@
     "c2-p05-r1c1-ab04#awakening-boundary"
   ],
   "rowDigests": {
-    "c2-p05-r1c1-ab04#awakening-boundary": "406c6f80c9efd9322e40a9c2673d8797349cb67651b722c99f6f9b92942e62ef"
+    "c2-p05-r1c1-ab04#awakening-boundary": "edb8c6db8efef3a52731e41e490c56bd38eb8e144bb6825de5c438029d9295fa"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

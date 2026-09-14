@@ -6,12 +6,12 @@
     "a2-p04-r1c3#semantic/exchange/atomic-swap"
   ],
   "rowDigests": {
-    "a2-p04-r1c3#semantic/exchange/atomic-swap": "60c2c35f1ba26627dc99f943a9c6d7de1d94e928886b10ddd85b34035188fdc4"
+    "a2-p04-r1c3#semantic/exchange/atomic-swap": "e05bc7e16b2b1d7d644f62f2f9e3f73a570ddf14a7733a76046a24f23d5c5a7b"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

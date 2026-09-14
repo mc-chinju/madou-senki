@@ -6,12 +6,12 @@
     "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities"
   ],
   "rowDigests": {
-    "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities": "7d8c7bfb66ad679b9e2097f2f1de6f65c6bd45700edb7e74484466b1de88b41b"
+    "ruling:G16#semantic/vanmil-transform-heals-without-old-abilities": "795080faf442ba56255cb4fa0a5f07f5462b91dd060a3f57a4a51b98eccfd0bb"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

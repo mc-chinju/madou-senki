@@ -6,12 +6,12 @@
     "a2-p15-r3c3#semantic/dedicated/0/effect-replacement"
   ],
   "rowDigests": {
-    "a2-p15-r3c3#semantic/dedicated/0/effect-replacement": "46f2a4a04ff6e0cf5382a77bfa03db9d070d9f7c31365c80bdb6708a66b84a44"
+    "a2-p15-r3c3#semantic/dedicated/0/effect-replacement": "10786128a1ccd1dcd2d45217092cfa9a099a6e286070593cd925250c4698a7d8"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

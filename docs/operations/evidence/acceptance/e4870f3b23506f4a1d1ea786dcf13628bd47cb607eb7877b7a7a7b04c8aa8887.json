@@ -6,12 +6,12 @@
     "a2-p06-r1c2#semantic/defense/spirit-allowed"
   ],
   "rowDigests": {
-    "a2-p06-r1c2#semantic/defense/spirit-allowed": "00d1e6228a8d7f4fe6cac968dc0f29e6584663eb72165a3998ca1b89272f7f5e"
+    "a2-p06-r1c2#semantic/defense/spirit-allowed": "5b0469a8033423d2c7152d5c8e3b0212ab3c26f1c2c036cc9ddbb044b2f835f9"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

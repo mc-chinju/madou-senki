@@ -6,12 +6,12 @@
     "a2-p05-r2c3#semantic/prayer/effect-addition"
   ],
   "rowDigests": {
-    "a2-p05-r2c3#semantic/prayer/effect-addition": "9414cc50d5eefa0e49d99bf66a38f18f50720c3372b6a2ee8f7a6700d0378bfb"
+    "a2-p05-r2c3#semantic/prayer/effect-addition": "1ae0392b899824a9dbd69a415f7be5d5a33f590b97364c57475616d09c0716ac"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

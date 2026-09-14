@@ -6,12 +6,12 @@
     "a2-p05-r1c2#semantic/zone/until-not-good"
   ],
   "rowDigests": {
-    "a2-p05-r1c2#semantic/zone/until-not-good": "2bcdfef5daef24589aa8389c4c99a12f7a80f5588ad4a22325c191bf8e2d2f06"
+    "a2-p05-r1c2#semantic/zone/until-not-good": "599724307af4a07a3eac7dea855e50a684529e727a0518ae346e693ea29f925d"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

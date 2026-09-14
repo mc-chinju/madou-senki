@@ -6,12 +6,12 @@
     "a2-p23-r3c2#semantic/advance/near-approach"
   ],
   "rowDigests": {
-    "a2-p23-r3c2#semantic/advance/near-approach": "7a9bd3dde4d72baa576adc8eba7d75f124594922b02a604d6ccae52a0cf93037"
+    "a2-p23-r3c2#semantic/advance/near-approach": "cd6e93b97fe749579822fddef5d681a8e1711ea1d536dbb7ded73487cb3c76d2"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "c2-p06-r2c2-ab01#child-normal-range-chant-use-level"
   ],
   "rowDigests": {
-    "c2-p06-r2c2-ab01#child-normal-range-chant-use-level": "50db5fe96deb0449922ace2f960f8c49319b9922be76603d02fd5ea77df156c6"
+    "c2-p06-r2c2-ab01#child-normal-range-chant-use-level": "cfe1058a6b2ab026119fbef115fb67df2c933ff96be3512130b8a31b7dc6131a"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

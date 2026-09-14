@@ -6,12 +6,12 @@
     "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost"
   ],
   "rowDigests": {
-    "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost": "e83c2688aa6278af0f7f4c471f42da3d76d128903963fcc02abf50a0f8daef8b"
+    "a2-p09-r2c1#semantic/dedicated/declaration-advance-cost": "74c7c70f57da68c32b17e987218f5b3a8a3b2a7668a520856f9bc6c94215cddc"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p18-r1c3#semantic/ordinary/independent-defenses"
   ],
   "rowDigests": {
-    "a2-p18-r1c3#semantic/ordinary/independent-defenses": "6186fcd4da6471ebc4ee0b77600645009988a799e0a9f56af40c719ee3913761"
+    "a2-p18-r1c3#semantic/ordinary/independent-defenses": "bdba0b19f3f1fa969c640e550dfab04c70f9f77bfeb6acae88a422f5e5820f41"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

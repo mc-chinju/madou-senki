@@ -6,12 +6,12 @@
     "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released"
   ],
   "rowDigests": {
-    "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released": "962befed864e9c5d047e62d67bec02021c725a8910fa09297bb0b65335b1d645"
+    "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released": "b0dcae9a3e98c152952d8c43e72fc058edbf6c604124cf9b8a4c451369ac6dd5"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

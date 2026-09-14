@@ -6,12 +6,12 @@
     "a2-p07-r1c2#semantic/rest/multiple-physical"
   ],
   "rowDigests": {
-    "a2-p07-r1c2#semantic/rest/multiple-physical": "b7eb1c7643b46a0f17a0fce9bc43897b33dd8a41797a701ae5f5c37289296058"
+    "a2-p07-r1c2#semantic/rest/multiple-physical": "e3135e9c8b06284bf81d895ff5cf118bd03a593f907e478910628ff19cfa19ae"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

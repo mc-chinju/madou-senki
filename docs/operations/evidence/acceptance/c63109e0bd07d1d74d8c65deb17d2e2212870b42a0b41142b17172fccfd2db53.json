@@ -6,12 +6,12 @@
     "a2-p03-r1c2#semantic/magic/level-bonus"
   ],
   "rowDigests": {
-    "a2-p03-r1c2#semantic/magic/level-bonus": "5c6e796e7661fcf19086eb0bef7c9474ed5c44ed5bb7d635b9ca6e9a28ca6365"
+    "a2-p03-r1c2#semantic/magic/level-bonus": "b6a8e9836602f54f020103922b0fcfe00140e398c8b5331c33aac7af70c2a0ec"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

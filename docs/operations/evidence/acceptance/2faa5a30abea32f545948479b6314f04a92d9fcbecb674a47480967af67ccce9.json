@@ -6,12 +6,12 @@
     "a2-p11-r2c2#semantic/dedicated/1/chant-waive"
   ],
   "rowDigests": {
-    "a2-p11-r2c2#semantic/dedicated/1/chant-waive": "210779d0b8a0a127a1436068640f420809154fcb0015e7856ac1399b83003f34"
+    "a2-p11-r2c2#semantic/dedicated/1/chant-waive": "a33024e820b8ce786b50ff57f2756b519bab440c8358acf792650c061cccd11d"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

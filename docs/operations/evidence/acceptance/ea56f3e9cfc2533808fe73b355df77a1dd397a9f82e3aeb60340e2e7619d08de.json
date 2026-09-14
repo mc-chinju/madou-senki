@@ -6,12 +6,12 @@
     "c2-p06-r1c1#owned_followers/1/retention-transform-revival"
   ],
   "rowDigests": {
-    "c2-p06-r1c1#owned_followers/1/retention-transform-revival": "be6b9cc5d47edd56637886fbc1b734919876a42730dc798f5037a486ebb98e6a"
+    "c2-p06-r1c1#owned_followers/1/retention-transform-revival": "8ab9f2360919774809077257d9e76a5d526681a1f78e60c0a86aa51fa832c912"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

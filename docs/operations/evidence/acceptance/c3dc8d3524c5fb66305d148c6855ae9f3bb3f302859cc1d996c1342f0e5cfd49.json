@@ -6,12 +6,12 @@
     "a2-p19-r1c3#semantic/placement/own-action"
   ],
   "rowDigests": {
-    "a2-p19-r1c3#semantic/placement/own-action": "60cbeecf2d8e9dad1382273b48bb2b05ac6554f9de783ea04fa9389110b157e6"
+    "a2-p19-r1c3#semantic/placement/own-action": "46e9f4834b5f0116ed596d426f37154cfe953d022e926c70e3900dd9f73a2189"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

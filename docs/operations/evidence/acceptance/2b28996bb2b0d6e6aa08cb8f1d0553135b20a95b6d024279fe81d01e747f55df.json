@@ -6,12 +6,12 @@
     "a2-p22-r3c3#semantic/morale/failure-discard"
   ],
   "rowDigests": {
-    "a2-p22-r3c3#semantic/morale/failure-discard": "f1fdc97ade12b653da22076bc84d1e5f27744af82629127736615083d13de713"
+    "a2-p22-r3c3#semantic/morale/failure-discard": "5e1f090385bc73217ad4aa08928c711658c12d5d455cceb60a6c9bdfba0317f0"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

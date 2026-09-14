@@ -6,12 +6,12 @@
     "c2-p03-r1c2-ab03#recipient-suppression-does-not-remove-gift"
   ],
   "rowDigests": {
-    "c2-p03-r1c2-ab03#recipient-suppression-does-not-remove-gift": "d747f990caba1124078c8d5b4fd673fd129e31fe09e1d73af685071bf58f89c1"
+    "c2-p03-r1c2-ab03#recipient-suppression-does-not-remove-gift": "315856dc74c64af5edd187b23475383c3ada0d374590b6229de03b27f9ed6616"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

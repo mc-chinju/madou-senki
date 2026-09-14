@@ -6,12 +6,12 @@
     "a2-p02-r2c1#semantic/substitute/own-ability-permitted"
   ],
   "rowDigests": {
-    "a2-p02-r2c1#semantic/substitute/own-ability-permitted": "776b4125345ffc031350be8b25597b6db49f9311e4288c18caa94199977c49af"
+    "a2-p02-r2c1#semantic/substitute/own-ability-permitted": "fccf7d1f641816cdee6c51b6238e3b775e0130da827c92c3a0576623568a9007"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "ruling:G11#semantic/distance-use-public-disposition-without-owned-right"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/distance-use-public-disposition-without-owned-right": "b99ccf847084c7023973ad5396662bf518a780391b0bbec0cda2c234987e8fb9"
+    "ruling:G11#semantic/distance-use-public-disposition-without-owned-right": "7e2185013b7972a586638c8d6b23b0974afbe7daf48692b7bc02b0f5e5303ca5"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

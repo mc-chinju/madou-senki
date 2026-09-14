@@ -1,8 +1,9 @@
-# R7 公開候補（C5）
+# R7 公開候補（production）
 
-記録日: 2026-09-14
-B8 凍結コミット: `47ca861d83d04b063ef1396ce2fd72df64cde4e3`
+記録日: 2026-09-15
+B8 凍結コミット: `31c3a718e8588388d5f345b69cecc2964a384791`
 この記録を含むコミットの後、作業木は `git status --porcelain` が空であること。
+C5 時点の凍結 `47ca861d83d04b063ef1396ce2fd72df64cde4e3` は、D2/D3 の後に再実行したこの B8 で置き換える。
 
 ## 実行
 
@@ -11,7 +12,7 @@ B8 凍結コミット: `47ca861d83d04b063ef1396ce2fd72df64cde4e3`
 - cases: 6497（failed 0）
 - Playwright: 2169 passed
 - run: `docs/operations/evidence/2026-09-11-candidate-run.json`
-- run sha256: `db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192`
+- run sha256: `7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43`
 
 ## 台帳
 
@@ -19,9 +20,9 @@ B8 凍結コミット: `47ca861d83d04b063ef1396ce2fd72df64cde4e3`
 - coverageClasses: integrity 6094, semantic 5259, aggregate 825
 - strict validator `--require-accepted`: valid
 - catalog readiness: `packages/catalog/src/selected/readiness.json`
-- readiness sha256: `89ff2f7f0ccb776e1722cd289cc083df840cebdf92c4bff7f4066583d170ac4b`
+- readiness sha256: `9ff25089e58440074f6319959b7eafa40e2961b4e6da33bce8867b3bb5858ba3`
 - readiness.ready: `true`
-- ledgerSha256: `aa054feb1546358e9d63927865187a4cd85bb90e4967a6c72247057f699a7520`
+- ledgerSha256: `4da526ed282f582ae11fbfce863d882f92d39c048f78655a6463d4fffe1c6e33`
 - manifestSha256: `faa6b3d7880088f19fc8b956161b0bf683943da347c32cd03e9e06611dd87041`
 
 ## 確認した検査
@@ -29,14 +30,15 @@ B8 凍結コミット: `47ca861d83d04b063ef1396ce2fd72df64cde4e3`
 - `pnpm verify:assets`: 成功
 - `pnpm typecheck`: 成功
 - `pnpm --filter @madou/web build` と `pnpm --filter @madou/worker build`: 成功
-- `pnpm verify:catalog`: この候補では未成功。既知の C11 見出し重複と gitignore された原本 PDF 欠落。D2 の freeze 変更にまとめて直す。
+- `python3 scripts/generate_catalog_readiness.py --check --require-ready`: valid / ready
+- `pnpm verify:catalog`: この候補では未成功。既知の C11 見出し重複と gitignore された原本 PDF 欠落。見出し文言は `runtime-obligations.json` の引用と結びつくため、この凍結では直さない。
 
 ## 成果物 sha256
 
 ### apps/web/dist
 
+`864074e3f99492bc71a23249acb41cbe361ecdb4331df39b1ac1401397ff0500` `apps/web/dist/assets/index-B1U2Vh5T.js`
 `2bb0da7661782147ef04edbffe1ceb6010df8088ae7f93475366bea64db0d1de` `apps/web/dist/assets/index-D-fNcJWn.css`
-`9c66a4986933c29507c3c4014873bfb3f1b95c433452256624b9b4b8e47bb67c` `apps/web/dist/assets/index-DudbfmWU.js`
 `b1e1748b2070815ceaf4303feb205e9fa19c4c61cdc02dc7c4577b6c1f1742e3` `apps/web/dist/cards/second/a2-p01-r1c1.webp`
 `11887eedc42cfb142db20ac7ed1f4d570375dd2248a26a8fbaf887b4157ff26f` `apps/web/dist/cards/second/a2-p01-r1c2.webp`
 `d3bb809c1da324f64c31391b20fda7d23da56b030658e6f11efc9b7b78db4c33` `apps/web/dist/cards/second/a2-p01-r1c3.webp`
@@ -284,10 +286,10 @@ B8 凍結コミット: `47ca861d83d04b063ef1396ce2fd72df64cde4e3`
 `347cbc2bd1e7ed07ae45ef66827dc35bfd763a4a6566270759773700f0cfe679` `apps/web/dist/cards/second/c2-p07-r1c1.webp`
 `fb3bbbe689a8eb76952bdcbce75afd07797dacdaf72c697027b4e050e68a6448` `apps/web/dist/cards/second/c2-p07-r1c2.webp`
 `bc4f827e76cd38120c8386909e32ab72d5ced6fcf581e7ac52a25cbdf4485a6d` `apps/web/dist/cards/second/manifest.json`
-`9094030f6010fffdcb6ceed74d0f61cc1e50eca5e64bd24443ff492def1f44dd` `apps/web/dist/index.html`
+`a623b0f09545b54bef2852f4df411f21f76c97404161c67f9fe90c377ad7bc39` `apps/web/dist/index.html`
 
 ### apps/worker/dist
 
-`92b9199f2ca8b6504f5315cfd4f797f932e421c70803b113b6e17ec332421a64` `apps/worker/dist/README.md`
-`14deac8e9b3a08e90de22e5aa11648bb331c62ac1c26f4d5fb4d1c9ca880fad7` `apps/worker/dist/index.js`
-`104802698116209f873f459e0742c12f50a554dbcf28e72e756ba8dcbff241bb` `apps/worker/dist/index.js.map`
+`40f02d6fed693c5670e32f535d4783b68c868e04a7c17cade37a9b2d06b2d071` `apps/worker/dist/README.md`
+`e18795a23819e57bd08faa43075781a10b08bf1d57b6b4ca758d281e001c0392` `apps/worker/dist/index.js`
+`50cd94a2192b4867e2b49dd85b071e73b56c9dff0f7f5bba91f54f35f02791d2` `apps/worker/dist/index.js.map`

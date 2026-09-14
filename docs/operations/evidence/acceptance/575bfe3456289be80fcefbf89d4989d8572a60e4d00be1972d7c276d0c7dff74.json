@@ -6,12 +6,12 @@
     "c2-p04-r1c2-ab05#transform-inheritance-preserves-source-selection"
   ],
   "rowDigests": {
-    "c2-p04-r1c2-ab05#transform-inheritance-preserves-source-selection": "af9ea3ecf53287c8c8e8d503b5089b74bfd6eca256876463d0120bb6ce00e5d0"
+    "c2-p04-r1c2-ab05#transform-inheritance-preserves-source-selection": "6ff69f6542380aa0a4d63a46fa9533f94aee03ec9d6fcf049ee2580fdb4ab9e2"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p04-r3c3#semantic/wish/opponent-hand-zone"
   ],
   "rowDigests": {
-    "a2-p04-r3c3#semantic/wish/opponent-hand-zone": "c121b96c3e357684eb67819b3e157dcf1494f4f34d5802aa59bc18e2d8daba94"
+    "a2-p04-r3c3#semantic/wish/opponent-hand-zone": "c0851ede426bd28145d7feee8e03d6e7d5b147e89ac1dca5336ba18dad8f330f"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

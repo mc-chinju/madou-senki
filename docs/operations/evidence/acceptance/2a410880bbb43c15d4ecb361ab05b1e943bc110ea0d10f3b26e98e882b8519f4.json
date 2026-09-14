@@ -6,12 +6,12 @@
     "a2-p22-r2c2#semantic/defense/fire-level-seven"
   ],
   "rowDigests": {
-    "a2-p22-r2c2#semantic/defense/fire-level-seven": "d97c003ffd685fdf248bd1b2bfccd7c254f706a0b19278610df24c8937763f7f"
+    "a2-p22-r2c2#semantic/defense/fire-level-seven": "3bdb0fa25329d8d4edb422080c650fc001ac6168957974d81a08b7f4d5cbc2ff"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

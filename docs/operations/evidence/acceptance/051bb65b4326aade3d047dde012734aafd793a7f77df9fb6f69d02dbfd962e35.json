@@ -6,12 +6,12 @@
     "c2-p03-r2c1#objective/extinction-EVIL"
   ],
   "rowDigests": {
-    "c2-p03-r2c1#objective/extinction-EVIL": "6df04053ca2abde37e6c16924d10bf2902b812bdc3d1b8fdf2f58b6eb18b6a7a"
+    "c2-p03-r2c1#objective/extinction-EVIL": "5187c1e09d23d6230989db373d7ee40efb2a5c548848f1a86fabde8c531f4ef8"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p02-r2c3#semantic/arseil/discard-card"
   ],
   "rowDigests": {
-    "a2-p02-r2c3#semantic/arseil/discard-card": "e27c7036237b99664eed3dfb709050b625fbe6e7a5519b2a27d4b3bfcacd6dec"
+    "a2-p02-r2c3#semantic/arseil/discard-card": "7233d41d81afe9a2d4ac04a0d9c1d04c6de5e44fe3b8c8270573af00edc20942"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

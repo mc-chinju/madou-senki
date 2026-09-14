@@ -6,12 +6,12 @@
     "a2-p07-r1c1#semantic/maai/withdrawal"
   ],
   "rowDigests": {
-    "a2-p07-r1c1#semantic/maai/withdrawal": "4680ceca8897e7418fac59c6580093bd12a5c09bb66174421656e166390d3f17"
+    "a2-p07-r1c1#semantic/maai/withdrawal": "169bd1863e137f52684d5a33629c17db740beb1ece322ec79bfa71b9c6e6d696"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

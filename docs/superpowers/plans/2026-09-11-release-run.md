@@ -1790,6 +1790,8 @@ Expected: 失敗率 0、p95 を記録。Cloudflare ダッシュボードの使�
 git add tests scripts playwright.remote.config.ts docs && git commit -m "ops: stagingの配備・休止復帰・再配備・負荷の実測を記録する"
 ```
 
+2026-09-15: D2 後の production 候補 B8 が `exitCode` 0。凍結 `31c3a718e8588388d5f345b69cecc2964a384791`、run sha256 `7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43`、accepted 5257、readiness `ready`。C11 / `verify:catalog` は既知の未成功。記録は [公開候補](../../operations/evidence/2026-09-11-release-candidate.md)。
+
 ### Task D4: production 配備（M4）
 
 - [ ] **Step 1: 候補が staging と同一であることを確認**

@@ -6,12 +6,12 @@
     "a2-p14-r1c2#semantic/ordinary/destroy-black-at-effect"
   ],
   "rowDigests": {
-    "a2-p14-r1c2#semantic/ordinary/destroy-black-at-effect": "1c7e7090c7d571bb9aee248037d629d3852a23e3b385aafb2b66a4b9c6246394"
+    "a2-p14-r1c2#semantic/ordinary/destroy-black-at-effect": "1dee1559b58820be2664266f8ecfcb277ef5f3e96fb378e83f9b930e7bee9f97"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

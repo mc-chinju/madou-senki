@@ -6,12 +6,12 @@
     "a2-p01-r3c1#semantic/growth/lancelot-only"
   ],
   "rowDigests": {
-    "a2-p01-r3c1#semantic/growth/lancelot-only": "a7980bc1600bda28154ba437906ca579f1d175e36d0bae951c2386cc709361a5"
+    "a2-p01-r3c1#semantic/growth/lancelot-only": "6a3c0fd91dc35f407f87635b0ab2c07545004ed7a9b85251d183d8e646df03a7"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

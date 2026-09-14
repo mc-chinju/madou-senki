@@ -6,12 +6,12 @@
     "c2-p05-r2c1-ab03#sword-damage-plus-two"
   ],
   "rowDigests": {
-    "c2-p05-r2c1-ab03#sword-damage-plus-two": "41b679be84fd98809602a7b85daba939b3bf0093d75b473503d22a1a20d88730"
+    "c2-p05-r2c1-ab03#sword-damage-plus-two": "dac4bf3d868b0f8be13b37df139ddc9bb57c68fa5d552559e788758d212fd19d"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

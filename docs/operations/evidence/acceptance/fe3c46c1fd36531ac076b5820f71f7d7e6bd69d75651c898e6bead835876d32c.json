@@ -6,12 +6,12 @@
     "a2-p22-r1c2#semantic/dedicated/uonos-morale-waiver"
   ],
   "rowDigests": {
-    "a2-p22-r1c2#semantic/dedicated/uonos-morale-waiver": "1f9970506e146bbf94249b19d31f5486134a0814c52b2217721c7458ac2225df"
+    "a2-p22-r1c2#semantic/dedicated/uonos-morale-waiver": "f83890a4d4939b525b2d90e33ab6a11353c4cb45da17bf0e6f8d3fca7f4efe38"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

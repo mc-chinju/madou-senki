@@ -6,12 +6,12 @@
     "a2-p22-r2c1#semantic/attack/ordinary-hand-grant"
   ],
   "rowDigests": {
-    "a2-p22-r2c1#semantic/attack/ordinary-hand-grant": "bd4400719b18eb0efb43c884dbc0467077aaa110f7e38aec10ca2ee61979e7b4"
+    "a2-p22-r2c1#semantic/attack/ordinary-hand-grant": "3310b0f125e603be5caa53b567a268bd1a25c67bcf779e4bed80780c44e034b0"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p21-r3c1#semantic/morale/spirit-modifier"
   ],
   "rowDigests": {
-    "a2-p21-r3c1#semantic/morale/spirit-modifier": "0a7f8c29d92b2560a0b20fa67218ad585e9122ea876a47535eed45f4c7fc2646"
+    "a2-p21-r3c1#semantic/morale/spirit-modifier": "fc634358a12e53e9a59c621a5c31b0a7efd4f05566bdeddfb7e6499c6ada6d9f"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

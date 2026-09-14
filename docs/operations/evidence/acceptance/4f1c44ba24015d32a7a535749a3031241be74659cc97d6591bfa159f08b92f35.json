@@ -6,12 +6,12 @@
     "a2-p17-r3c3#semantic/transfer/other-placed-only"
   ],
   "rowDigests": {
-    "a2-p17-r3c3#semantic/transfer/other-placed-only": "f6af3711c37442dd78c7dc2b0bf8f3dd3d1feb3b78ff6fa41326750baa10e8fe"
+    "a2-p17-r3c3#semantic/transfer/other-placed-only": "18476a495ad36d42df1f8b56175a6444328d9bc6247b155c190690ecb333f389"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

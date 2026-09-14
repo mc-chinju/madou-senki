@@ -6,12 +6,12 @@
     "a2-p15-r3c1#semantic/ordinary/first-failure-stop"
   ],
   "rowDigests": {
-    "a2-p15-r3c1#semantic/ordinary/first-failure-stop": "8f375ad1fe70e37547176e51abfe8b533e4fbffcec8251c0fec028b10d2f1af4"
+    "a2-p15-r3c1#semantic/ordinary/first-failure-stop": "58912855f016ff32f2c98e53a769db10ffeac1abac2851797e0771b9504da1c7"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

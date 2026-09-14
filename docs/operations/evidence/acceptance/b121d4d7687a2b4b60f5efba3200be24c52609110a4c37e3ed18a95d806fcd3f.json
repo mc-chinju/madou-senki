@@ -6,12 +6,12 @@
     "a2-p14-r1c1#semantic/dedicated/0/activation-check-waive"
   ],
   "rowDigests": {
-    "a2-p14-r1c1#semantic/dedicated/0/activation-check-waive": "33297361d7dfc527592a7c1511ebe88d274058b272efce57d83b66f141b5e60d"
+    "a2-p14-r1c1#semantic/dedicated/0/activation-check-waive": "960c1e4525ee16a77868db4244b72e6d52c66cda87a0452a8523d58f0f4739dd"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

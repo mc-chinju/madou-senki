@@ -6,12 +6,12 @@
     "ruling:G11#semantic/exited-owner-reservation-discarded"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/exited-owner-reservation-discarded": "dd49de24bb4506386e0c340c62f1adbb0aebfd42d058fb94075ade0b3af7a630"
+    "ruling:G11#semantic/exited-owner-reservation-discarded": "10a7f8f4b8383b48e72739df2c0426b809bc4320e0a5e72210de9ae1abd9cb7e"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

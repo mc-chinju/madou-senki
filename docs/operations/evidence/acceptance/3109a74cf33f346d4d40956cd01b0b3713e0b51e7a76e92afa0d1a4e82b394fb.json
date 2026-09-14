@@ -6,12 +6,12 @@
     "c2-p01-r2c1-ab04#Lester-doubles-protection"
   ],
   "rowDigests": {
-    "c2-p01-r2c1-ab04#Lester-doubles-protection": "e3a629f9eabdae2173123f102a195247a451b298d1a50ca84b291a65b38b7796"
+    "c2-p01-r2c1-ab04#Lester-doubles-protection": "622670ef30162efaeb59c37373af8d3f04edb47a1a0c6e8f1df8b7160abd5e4d"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

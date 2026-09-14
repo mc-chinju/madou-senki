@@ -6,12 +6,12 @@
     "c2-p04-r1c2-ab05#absence-retains-death-clears"
   ],
   "rowDigests": {
-    "c2-p04-r1c2-ab05#absence-retains-death-clears": "bfbafa7811775288a3b9addf00d0ef014f37b17f7817f3666d4798e00f9c2271"
+    "c2-p04-r1c2-ab05#absence-retains-death-clears": "c6d2014da262ef326717ba12e1045d8d36a845bbc7aecbb7d5fe7cdf32effc56"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

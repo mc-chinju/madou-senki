@@ -6,12 +6,12 @@
     "c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence"
   ],
   "rowDigests": {
-    "c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence": "e0a56e4ae985ee1187811be10cd20286f52b4b4e6d0fae91d4549030851c15b8"
+    "c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence": "731551db9c5693f70c1da7ab46971e3d032c74c944de626f074a37663fce6f82"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

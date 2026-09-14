@@ -6,12 +6,12 @@
     "a2-p02-r2c2#semantic/cancel/good-attacker"
   ],
   "rowDigests": {
-    "a2-p02-r2c2#semantic/cancel/good-attacker": "3afc967d34d8073c55980b9ee186bf32fe0ceaf85b3641c2ca569c34ef5247b6"
+    "a2-p02-r2c2#semantic/cancel/good-attacker": "034b7522567bf3ffd9af9c42b4916243dd05fe84f379e327ec54cd0dae30cb53"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

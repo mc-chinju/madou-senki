@@ -6,12 +6,12 @@
     "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript"
   ],
   "rowDigests": {
-    "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript": "439f2fde122f153ed8a518321569b2d90739cd756c2cf8dab46535b68b5bf214"
+    "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript": "f1c0556d3520a503adfcbf371523fa599b967affc22b8f64b4ac79326ee150f7"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

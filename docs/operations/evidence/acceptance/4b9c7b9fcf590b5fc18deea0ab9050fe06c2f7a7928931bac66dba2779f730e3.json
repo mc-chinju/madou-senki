@@ -6,12 +6,12 @@
     "c2-p06-r1c1-ab04#unlimited-DeathKnight"
   ],
   "rowDigests": {
-    "c2-p06-r1c1-ab04#unlimited-DeathKnight": "1cae8a9d2fba0e72b9460e2d374b304bd4d095bd0d5aa3617d41baff3c8e5501"
+    "c2-p06-r1c1-ab04#unlimited-DeathKnight": "d276cec7422a266054555a43d64124e1ccde7c585f062418db455f9507874aaa"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

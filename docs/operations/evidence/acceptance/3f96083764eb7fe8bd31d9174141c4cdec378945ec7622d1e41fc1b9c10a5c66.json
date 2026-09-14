@@ -6,12 +6,12 @@
     "ruling:G11#semantic/unlimited-preserves-base-budget"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/unlimited-preserves-base-budget": "6f988acd87c5841665f548e32e82c3fd574af3777603acb6dfee219c0e3a8123"
+    "ruling:G11#semantic/unlimited-preserves-base-budget": "e50eb4ff837a028b7ea6d41e42c4a23c21324b65e35491fd3dfc4b5201fbb705"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

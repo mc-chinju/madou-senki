@@ -6,12 +6,12 @@
     "a2-p09-r2c3#semantic/ordinary/failure-add-ten"
   ],
   "rowDigests": {
-    "a2-p09-r2c3#semantic/ordinary/failure-add-ten": "4709c7e8b9808396af858b9ccb433d8d444a0ea187e8fdd1c5f2352f61d54224"
+    "a2-p09-r2c3#semantic/ordinary/failure-add-ten": "3a0df384447952e5ede2c9fb61b3ffb474a738026403026558aa16eada065ecd"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

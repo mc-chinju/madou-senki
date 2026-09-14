@@ -6,12 +6,12 @@
     "c2-p02-r2c1-ab02#dragon-follower-destruction"
   ],
   "rowDigests": {
-    "c2-p02-r2c1-ab02#dragon-follower-destruction": "4f55c33b8faa3f2f4813188e7799f33f720d1ab481c95c7a743acf37ee7cc4d3"
+    "c2-p02-r2c1-ab02#dragon-follower-destruction": "a5dce5142277679b0b93b876598ba9b9c485146e391506720c131b3d8236eb5e"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "c2-p01-r2c2-ab05#no-physical-gift-cost"
   ],
   "rowDigests": {
-    "c2-p01-r2c2-ab05#no-physical-gift-cost": "280c1d04e26ae46423bddc7d40dbf91505582a916f7bbcc8fd41937601e4b9f6"
+    "c2-p01-r2c2-ab05#no-physical-gift-cost": "996c67d65b239952c1a0f872710e86577f8951fcf9e3f7633eb678dcbe5ad0d2"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

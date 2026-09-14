@@ -6,12 +6,12 @@
     "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation"
   ],
   "rowDigests": {
-    "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation": "a9f71c275f651400a2b0ad80760e35a2684220931b520bef811440c256f5cf76"
+    "c2-p03-r2c1-ab02#public-Arnes-virtual-guard-invalidation": "bb510d6ae96651be95d953b5e26ba1792e516c0fa146e30be16a48f378651e8b"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
+    "sha256": "7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43"
   },
   "freezePolicy": "runtime-candidate-v3"
 }
