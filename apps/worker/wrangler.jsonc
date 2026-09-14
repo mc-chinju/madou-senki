@@ -19,12 +19,12 @@
     "staging": {
       "name": "madou-senki-staging",
       "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "Room" }] },
-      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-staging", "migrations_dir": "migrations" }]
+      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-staging", "database_id": "0fc033a4-97d0-40f1-b627-7890f88c938e", "migrations_dir": "migrations" }]
     },
     "production": {
       "name": "madou-senki",
       "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "Room" }] },
-      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-production", "migrations_dir": "migrations" }]
+      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-production", "database_id": "f659209f-59b8-462f-80ed-d337e4af855b", "migrations_dir": "migrations" }]
     }
   }
 }

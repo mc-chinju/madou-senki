@@ -1,6 +1,6 @@
 # Cloudflareへの配備
 
-現在はローカル検証版。正式開始はカード・能力の未実装検査で止まり、Cloudflareのリソース作成・デプロイはまだ行っていない。
+staging/productionのD1は作成済み。リモート実配備・休止復帰・負荷の記録は未完。アカウントIDと認証トークンは書かない。
 
 ## 構成
 
@@ -43,7 +43,7 @@ pnpm test:e2e
 
 ## リモート配備時の手順
 
-以下は対象アカウント・環境・素材配信条件・完成候補を確認した後に実行する手順であり、実行済み記録ではない。`wrangler.jsonc`には実在D1の`database_id`をまだ入れていない。
+以下は対象アカウント・環境・素材配信条件・完成候補を確認した後に実行する手順。D1 UUIDは `wrangler.jsonc` に設定済み。実配備の結果は「候補と配備先の記録」へ追記する。
 
 1. 対象アカウントとstagingを確定し、D1 `madou-senki-staging`を作成する。返されたUUIDを `env.staging.d1_databases[0].database_id` へ設定する。productionも別DB/UUIDにする。
 2. `python3 scripts/generate_catalog_readiness.py --check --require-ready`、`pnpm verify:assets`を通し、`pnpm build`と該当環境のdry-runを確認する。通常のbuildは検証用の`ready=false`も許すため、build成功だけを公開可能の証拠にしない。
@@ -107,4 +107,13 @@ DO migration `v1`でSQLiteクラス`Room`を作る。保存済み卓の`schemaVe
 
 ## 認証確認の記録
 
-2026-09-08、`wrangler whoami --json`は終了コード1。保存済み認証トークンが期限切れで更新できず、非対話環境のため再ログインが必要という結果だった。デプロイ・リモートD1操作は未実行。完成候補の配備時に、対象アカウントと有効な認証を確認する。トークンを文書やソースに記録しない。
+2026-09-14、`wrangler whoami` は終了コード0。トークンとアカウント識別子は記録しない。
+
+## D1作成の記録（2026-09-14）
+
+| 環境 | Worker | D1名 | database_id |
+|---|---|---|---|
+| staging | madou-senki-staging | madou-senki-staging | `0fc033a4-97d0-40f1-b627-7890f88c938e` |
+| production | madou-senki | madou-senki-production | `f659209f-59b8-462f-80ed-d337e4af855b` |
+
+staging へ `0001_sessions_rooms.sql` を `--remote` 適用済み。`wrangler deploy --env staging --dry-run` は終了0。実配備・休止復帰・負荷の記録は未完。

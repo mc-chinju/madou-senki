@@ -1695,7 +1695,7 @@ git add docs data packages/catalog && git commit -m "docs,data: R7候補を固�
 
 ### Task D1: 認証（ユーザー操作）
 
-- [ ] **Step 1: ユーザーがこのセッションで `! pnpm --filter @madou/worker exec wrangler login` を実行し、ブラウザで承認する。エージェントは `pnpm --filter @madou/worker exec wrangler whoami` の終了コードだけを確認し、アカウント名・IDを文書に書かない**
+- [x] **Step 1: ユーザーがこのセッションで `! pnpm --filter @madou/worker exec wrangler login` を実行し、ブラウザで承認する。エージェントは `pnpm --filter @madou/worker exec wrangler whoami` の終了コードだけを確認し、アカウント名・IDを文書に書かない**
 
 Expected: 終了0
 
@@ -1705,7 +1705,7 @@ Expected: 終了0
 - Modify: `apps/worker/wrangler.jsonc`（`env.staging.d1_databases[0].database_id`, `env.production.d1_databases[0].database_id`）
 - Modify: `docs/operations/deploy.md`（実施記録）
 
-- [ ] **Step 1: D1 を作成し UUID を設定する**
+- [x] **Step 1: D1 を作成し UUID を設定する**
 
 ```bash
 pnpm --filter @madou/worker exec wrangler d1 create madou-senki-staging
@@ -1714,7 +1714,7 @@ pnpm --filter @madou/worker exec wrangler d1 create madou-senki-production
 
 出力の `database_id` を `wrangler.jsonc` の各 env に書く（UUID は秘密値ではないので設定ファイルに入れてよい。アカウントIDは書かない）。
 
-- [ ] **Step 2: migration と dry-run**
+- [x] **Step 2: migration と dry-run**
 
 ```bash
 pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --remote --env staging
