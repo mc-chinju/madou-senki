@@ -1723,7 +1723,7 @@ pnpm --filter @madou/worker exec wrangler deploy --env staging --dry-run --outdi
 
 Expected: 両方終了0
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add apps/worker/wrangler.jsonc && git commit -m "worker: staging/productionのD1を設定する"
@@ -1735,7 +1735,7 @@ git add apps/worker/wrangler.jsonc && git commit -m "worker: staging/production�
 - Create: `tests/remote/smoke.spec.ts`（`PLAYWRIGHT_BASE_URL` で対象 origin を切り替える。`webServer` を使わない別 config `playwright.remote.config.ts`）
 - Create: `docs/operations/evidence/2026-09-11-staging.md`
 
-- [ ] **Step 1: 配備**
+- [x] **Step 1: 配備**
 
 ```bash
 pnpm build && pnpm --filter @madou/worker exec wrangler deploy --env staging
@@ -1743,7 +1743,7 @@ pnpm build && pnpm --filter @madou/worker exec wrangler deploy --env staging
 
 出力の Worker URL（`*.workers.dev`）を staging origin として記録する。
 
-- [ ] **Step 2: リモート smoke（fixture 無し）を書いて実行する**
+- [x] **Step 2: リモート smoke（fixture 無し）を書いて実行する**
 
 ```ts
 // tests/remote/smoke.spec.ts

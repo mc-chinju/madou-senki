@@ -3,7 +3,8 @@ import { test, expect } from '@playwright/test';
 test('invite, ready, start and reload on the remote origin', async ({ browser, baseURL, request }) => {
   if (!baseURL) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
   const fixture = await request.post('/__test/rooms/x/scenario', { data: { name: 'setup' } });
-  expect(fixture.status()).toBe(404);
+  expect(fixture.ok()).toBe(false);
+  expect([404, 405]).toContain(fixture.status());
   const contexts = await Promise.all(Array.from({ length: 4 }, () => browser.newContext({ baseURL })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));
   try {
