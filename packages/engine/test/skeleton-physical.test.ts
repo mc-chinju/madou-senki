@@ -50,3 +50,21 @@ it('actual Gadyura Skeleton remains usable after paid near approach and maai pro
 it.each(['parent','child','use-failure'])('actual All Army %s failure pays both physical cards and does not revive Skeleton',mode=>{
  let s=approach(ready(makeSkeletonPhysicalScenario('skeleton-army',players,{warrior:1}),SK,false),'A');s=act(s,'A',{type:'PLAY_ALL_ARMY',cardInstanceId:ARMY,followerCardInstanceId:SK,targetIds:['B']});if(mode==='child')s=closeWindow(s);if(mode==='use-failure')s=until(s,'before-roll');const a=Object.values(s.actions!).find(a=>a.cardInstanceId===(mode==='parent'?ARMY:SK))!;const roll=s.rolls?.at(-1);while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='D')s=pass(s);s=finish(act(s,'D',mode==='use-failure'?{type:'PLAY_REACTION',cardInstanceId:'a2-p02-r2c3',mode:'force-fail',targetRollId:roll!.id}:{type:'PLAY_REACTION',cardInstanceId:'a2-p02-r2c3',mode:'cancel',targetActionId:a.id}));expect(s.players.B!.damage).toBe(0);expect(s.players.A!.followers).toEqual([]);for(const id of [SK,ARMY]){expect(s.discard.filter(x=>x===id)).toHaveLength(1);expect(s.players.A!.hand).not.toContain(id);}expect(s.resolution).toEqual([]);
 });
+
+it.each([0,3])('structural destruction at hit%i prevents revival while every other saved hit keeps follower HP',index=>{
+ let s=until(bundle(defense(),[DWARF,KNIGHT]),'follower-start');
+ const t=Object.values(s.groups!)[0]!.targets[0]!;
+ // Explicit mixed-effect resolver input, not a claim about the printed grant sources.
+ const h=t.hits[index]!;
+ h.technique={...structuredClone(h.technique!),destroyFollowerAttributes:['死']};
+ s=JSON.parse(JSON.stringify(s)) as GameState;
+ s=until(s,'hit');
+ const f=Object.values(s.groups!)[0]!.targets[0]!.followerDefense![0]!;
+ expect(f.revivalForbidden).toBe(true);
+ expect(f.hits.map(h=>h.hpReduction)).toEqual(Array.from({length:4},(_,i)=>i===index?0:4));
+ expect(f.hits[index]!.outcome).toBe('attribute-destroyed');
+ s=finish(JSON.parse(JSON.stringify(s)) as GameState);
+ expect(s.players.A!.damage).toBe(11);
+ expect(s.players.A!.followers).toEqual([]);
+ expect(s.discard.filter(id=>id===SK)).toHaveLength(1);
+});

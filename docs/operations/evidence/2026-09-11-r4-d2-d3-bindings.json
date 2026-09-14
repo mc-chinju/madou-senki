@@ -1,0 +1,366 @@
+{
+  "bindings": [
+    {
+      "row": "ruling:G11#semantic/source-clockwise-order-preserved-on-reveal",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "syncReclaimWindow"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+          "suite": [],
+          "path": "packages/engine/test/reclaim-privacy.test.ts",
+          "parameters": "A",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+        },
+        {
+          "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+          "suite": [],
+          "path": "packages/engine/test/reclaim-privacy.test.ts",
+          "parameters": "B",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+        },
+        {
+          "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+          "suite": [],
+          "path": "packages/engine/test/reclaim-privacy.test.ts",
+          "parameters": "C",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+        },
+        {
+          "title": "Actual source %s starts clockwise recovery and reveal never repeats an answered seat",
+          "suite": [],
+          "path": "packages/engine/test/reclaim-privacy.test.ts",
+          "parameters": "D",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual turn progression to each of four source seats, technique use, saved response steps and reveal after first pass. Public clockwise order and answered prefix preserved. Engine file 10 passed; no absence or disconnection claim."
+        },
+        {
+          "path": "packages/engine/test/reclaim-reservations.test.ts",
+          "suite": [],
+          "title": "Hidden zero base extra and unlimited worlds share public all-pass transcripts for both printed sources",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "D2: both real printed sources are compared in all four hidden-right worlds without invented grants; complete non-owner views, revisions, event IDs, events, four explicit seats and final discard agree."
+        },
+        {
+          "path": "packages/engine/test/reclaim-reservations.test.ts",
+          "suite": [],
+          "title": "Revealed Lester unlimited answer retains cursor, answers once and leaves an unused base slot intact",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "D2 public branch: actual reveal retains the original clockwise slot, one unlimited attempt returns one card, duplicate choice rejects atomically, and base stays unspent."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/unlimited-preserves-base-budget",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "commitReclaim"
+        },
+        {
+          "path": "packages/engine/src/abilities/reuse.ts",
+          "symbol": "beginReuse"
+        }
+      ],
+      "tests": [
+        {
+          "title": "S24 unlimited recovery leaves base slot intact and is finite per event",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p02-r2c2-ab04",
+            "破山剣",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p03-r2c1-ab04",
+            "魔詩",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p04-r1c2-ab04",
+            "歌う船",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p05-r1c2-ab04",
+            "グリフォン",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "スケルトン",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        {
+          "title": "%s saves and resumes one recovery declaration",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r2c2-ab03",
+            "狼牙",
+            "unlimited"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Exact budget case from 74-passed 2026-09-10 reuse file run; current full frozen candidate acceptance remains."
+        },
+        {
+          "path": "packages/engine/test/reclaim-reservations.test.ts",
+          "suite": [],
+          "title": "Revealed Lester unlimited answer retains cursor, answers once and leaves an unused base slot intact",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "D2 public branch: actual reveal retains the original clockwise slot, one unlimited attempt returns one card, duplicate choice rejects atomically, and base stays unspent."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/unlimited-no-retry-same-response",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "chooseReclaim"
+        },
+        {
+          "path": "packages/engine/src/abilities/reuse.ts",
+          "symbol": "beginReuse"
+        },
+        {
+          "path": "packages/engine/src/abilities/reuse.ts",
+          "symbol": "resolveReuse"
+        },
+        {
+          "path": "packages/engine/src/abilities/reuse.ts",
+          "symbol": "reuseClaims"
+        }
+      ],
+      "tests": [
+        {
+          "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p02-r2c2-ab04",
+            "破山剣"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+        },
+        {
+          "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p03-r2c1-ab04",
+            "魔詩"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+        },
+        {
+          "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p04-r1c2-ab04",
+            "歌う船"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+        },
+        {
+          "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p05-r1c2-ab04",
+            "グリフォン"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+        },
+        {
+          "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r1c1-ab04",
+            "スケルトン"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+        },
+        {
+          "title": "%s cannot retry canceled unlimited recovery of %s in the same response",
+          "suite": [],
+          "path": "packages/engine/test/reuse-abilities.test.ts",
+          "parameters": [
+            "c2-p06-r2c2-ab03",
+            "狼牙"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation, restored same response window, rejected original claim by previous owner and next actor; state and all views unchanged. Observable refusal, not an isolated internal retry guard. Engine file 80 passed."
+        },
+        {
+          "path": "packages/engine/test/reclaim-reservations.test.ts",
+          "suite": [],
+          "title": "Revealed Lester unlimited answer retains cursor, answers once and leaves an unused base slot intact",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "D2 public branch: actual reveal retains the original clockwise slot, one unlimited attempt returns one card, duplicate choice rejects atomically, and base stays unspent."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/first-take-closes-other-same-seat-right",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "commitReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "closeReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "chooseReclaim"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+          "suite": [],
+          "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+          "parameters": "base",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual physical use and accepted/rejected recovery commands. Foreign-name case run in owned-reclaim 12 passed; existing same-seat Courage cases covered by beneficiary-decline 118-passed related run. Distinct independent claimants are not asserted."
+        },
+        {
+          "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+          "suite": [],
+          "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+          "parameters": "printed",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual physical use and accepted/rejected recovery commands. Foreign-name case run in owned-reclaim 12 passed; existing same-seat Courage cases covered by beneficiary-decline 118-passed related run. Distinct independent claimants are not asserted."
+        },
+        {
+          "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+          "suite": [],
+          "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+          "parameters": "base",
+          "kind": "canonical-transition",
+          "bindingNote": "D3 actual base/printed alternatives: chosen right returns once, stale competing claim rejects unchanged, base consumed only on base choice."
+        },
+        {
+          "path": "apps/worker/test/room-lester-two-rights.test.ts",
+          "suite": [],
+          "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+          "parameters": "base",
+          "kind": "worker-persistence",
+          "bindingNote": "D3 actual same-seat choice, every-command restart/replay, all-seat projection and stale competing claim rejection."
+        },
+        {
+          "path": "tests/e2e/lester-two-rights.spec.ts",
+          "suite": [],
+          "title": "Actual Lester Courage base selection survives browser reload and returns once",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "D3 browser real reveal/choice, reload at intermediate and final stages, and one returned card with correct budget/check count."
+        },
+        {
+          "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+          "suite": [],
+          "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+          "parameters": "printed",
+          "kind": "canonical-transition",
+          "bindingNote": "D3 actual base/printed alternatives: chosen right returns once, stale competing claim rejects unchanged, base consumed only on base choice."
+        },
+        {
+          "path": "apps/worker/test/room-lester-two-rights.test.ts",
+          "suite": [],
+          "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+          "parameters": "printed",
+          "kind": "worker-persistence",
+          "bindingNote": "D3 actual same-seat choice, every-command restart/replay, all-seat projection and stale competing claim rejection."
+        },
+        {
+          "path": "tests/e2e/lester-two-rights.spec.ts",
+          "suite": [],
+          "title": "Actual Lester Courage printed selection survives browser reload and returns once",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "D3 browser real reveal/choice, reload at intermediate and final stages, and one returned card with correct budget/check count."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Concrete D2/D3 assertions and existing bindings retained. Frozen current-candidate execution and acceptance remain."
+      ]
+    }
+  ]
+}

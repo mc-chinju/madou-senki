@@ -9,6 +9,41 @@ function settle(s:GameState){return until(s,s=>!s.windows?.length);}
 function cmd(dedicated=false,targetIds=['B']){return {type:'ATTACK',cardInstanceId:CARD,targetIds,dedicated};}
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function chant(s:GameState){s=act(s,'A',{type:'CHANT',cardInstanceId:CARD,dedicated:false});expect(s.players.A!.chants.map(c=>c.cardInstanceId)).toContain(CARD);reject(s,'A',cmd(false));reject(s,'A',cmd(true));for(let n=0;n<300;n++){const id=s.seatOrder[s.turnSeat]!,w=s.windows?.at(-1);if(w){s=pass(s,[6,6]);continue;}if(s.phase==='action'&&id==='A')return s;if(s.phase==='action')s=act(s,id,{type:'PASS_ACTION'});else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!costs.includes(x)&&x!=='a2-p04-r2c3').slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error(`SKY_WING_PHASE_${s.phase}`);}throw Error('SKY_WING_TURN_LIMIT');}
+it('actual hit advance payment reopens every active seat before damage is applied',()=>{
+ let s=chant(makeSkyWingPhysical('sky-wing-post-one',players));
+ s=until(act(s,'A',cmd(true)),s=>s.windows?.at(-1)?.kind==='hit-advance-choice');
+ const groupId=s.windows!.at(-1)!.continuation.id;
+ s=act(s,'A',{type:'PAY_HIT_ADVANCES',groupId,cardInstanceIds:[costs[0]!]});
+ s=until(s,s=>s.windows?.at(-1)?.kind==='hit');
+ const windowId=s.windows!.at(-1)!.id;
+ expect(s.windows!.at(-1)!.participants).toEqual(['A','B','C','D']);
+ for(const actor of ['A','B','C','D']){
+  const window=s.windows!.at(-1)!;
+  expect(window.id).toBe(windowId);expect(window.participants[window.cursor]).toBe(actor);
+  expect(s.players.B!.damage).toBe(0);
+  reject(s,'A',{type:'PAY_HIT_ADVANCES',groupId,cardInstanceIds:[]});
+  s=pass(s);
+ }
+ s=settle(s);expect(s.players.B!.damage).toBe(20);
+ expect(s.discard.filter(id=>id===costs[0])).toHaveLength(1);
+});
+
+it('structural pending target and hit inputs share one advance payment without altering defended or finalized damage',()=>{
+ let s=chant(makeSkyWingPhysical('sky-wing-post-one',players));
+ s=until(act(s,'A',cmd(true)),s=>s.windows?.at(-1)?.kind==='hit-advance-choice');
+ const groupId=s.windows!.at(-1)!.continuation.id,g=s.groups![groupId]!,template=structuredClone(g.targets[0]!);
+ // Explicit resolver inputs: these extra targets/hits are not claimed as a physical producer.
+ const hit=structuredClone(template.hits[0]!);
+ g.targets[0]!.hits=[{...hit,damage:30,damageMultiplier:2},{...hit,index:1,damage:15},{...hit,index:2,damage:15,defended:true}];
+ g.targets.push({...structuredClone(template),actorId:'C',hits:[{...hit,damage:45,damageMultiplier:3}]});
+ g.targets.push({...structuredClone(template),actorId:'D',hitsApplied:true,pendingDamage:15,hits:[{...hit,damage:15,hit:true}]});
+ s=act(JSON.parse(JSON.stringify(s)),'A',{type:'PAY_HIT_ADVANCES',groupId,cardInstanceIds:[costs[0]!]});
+ expect(s.groups![groupId]!.targets.map(t=>t.hits.map(h=>h.damage))).toEqual([[40,20,15],[60],[15]]);
+ expect(s.groups![groupId]!.targets[2]!.pendingDamage).toBe(15);
+ expect(s.groups![groupId]).toMatchObject({postHitAdvancePaid:true,postHitAdvanceAmount:5});
+ reject(s,'A',{type:'PAY_HIT_ADVANCES',groupId,cardInstanceIds:[costs[1]!]});
+ expect(s.players.A!.hand).toContain(costs[1]);
+});
 it.each(['sky-wing-ordinary','sky-wing-guard','sky-wing-owner-ordinary','sky-wing-dedicated','sky-wing-near','sky-wing-suppressed','sky-wing-silenced'] as const)('%s actual CHANT and intervening turns retain mandatory preparation then ordinary7 twelve versus elected Arness8 fifteen',name=>{
  let s=makeSkyWingPhysical(name,players);const m=skyWingMode(name),damage=m.dedicated?15:12;reject(s,'A',cmd(false));reject(s,'A',cmd(m.dedicated));s=chant(s);if(name==='sky-wing-near'){s=settle(act(s,'A',{type:'APPROACH',cardInstanceId:costs[0]!,targetId:'B'}));expect(s.distances.A!.B).toBe('near');}if(name==='sky-wing-suppressed')expect(s.players.A!.statuses?.some(x=>x.kind==='ability-disabled')).toBe(true);if(name==='sky-wing-silenced')expect(s.players.A!.statuses?.some(x=>x.kind==='silenced')).toBe(true);
  const hand=[...s.players.A!.hand],deck=[...s.deck],followers=structuredClone(s.players.B!.followers),rolls=s.rolls?.length??0;reject(s,'A',cmd(m.dedicated,['B','C']));s=act(s,'A',cmd(m.dedicated));expect(s.players.A!.hand).toEqual(hand);expect(s.players.A!.chants).toEqual([]);expect(s.deck).toEqual(deck);expect(s.resolution).toContain(CARD);s=until(s,s=>s.windows?.at(-1)?.kind==='attack-abilities');const g=Object.values(s.groups!).at(-1)!;expect(g.technique).toMatchObject({school:'warrior',range:'far',useLevel:7,effectLevel:m.dedicated?8:7,damage,attributes:['戦','剣','詠'],chant:true,noChecks:m.dedicated,followerIgnore:m.dedicated,maaiRequired:2,target:'one'});expect(g.targets.map(t=>t.actorId)).toEqual(['B']);expect(g.targets[0]!.hits.map(h=>h.damage)).toEqual([damage]);s=settle(s);

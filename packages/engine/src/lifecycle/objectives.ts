@@ -83,9 +83,12 @@ export function initialProtection(characterId:string):Protection{return {charact
 export function factionObjective(faction:Faction):CurrentObjective{return {kind:'extinction',enemyFactions:faction==='ヴァンミール'?['GOOD','EVIL']:[faction==='GOOD'?'EVIL':'GOOD']};}
 export function isActive(p:PlayerState):boolean{return !p.presence||p.presence==='active';}
 export function protectedDead(state:GameState,p:PlayerState):boolean{return (p.protection??initialProtection(p.characterId)).characterIds.some(characterId=>Object.values(state.players).some(other=>(other.characterId===characterId||other.abilityCharacterIds?.includes(characterId))&&(other.presence==='dead'||other.presence==='pending-death')));}
-export function replaceAllegiance(p:PlayerState,faction:Faction,objective:CurrentObjective,protection:Protection):boolean{
+export function allowedFactions(characterId:string):Faction[]{
  const fixed:Record<string,Faction[]>={'c2-p01-r1c1':['GOOD'],'c2-p01-r2c1':['GOOD'],'c2-p02-r1c2':['GOOD'],'c2-p02-r2c2':['GOOD'],'c2-p03-r1c2':['GOOD'],'c2-p07-r1c1':['GOOD'],'c2-p05-r2c2':['EVIL'],'c2-p06-r1c1':['EVIL'],'c2-p06-r1c2':['EVIL','ヴァンミール'],'c2-p06-r2c2':['EVIL','ヴァンミール'],'c2-p07-r1c2':['ヴァンミール']};
- if(fixed[p.characterId]&&!fixed[p.characterId]!.includes(faction))return false;
+ return [...(fixed[characterId]??['GOOD','EVIL','ヴァンミール'])];
+}
+export function replaceAllegiance(p:PlayerState,faction:Faction,objective:CurrentObjective,protection:Protection):boolean{
+ if(!allowedFactions(p.characterId).includes(faction))return false;
  p.faction=faction;p.currentObjective=structuredClone(objective);p.protection=structuredClone(protection);p.objective=objective.label??(faction==='ヴァンミール'&&objective.enemyFactions.length===2&&objective.enemyFactions.includes('GOOD')&&objective.enemyFactions.includes('EVIL')?'ヴァンミール陣営以外の全滅':`${objective.enemyFactions.join('・')}の全滅`);
  if(p.deathIdentity){p.deathIdentity.faction=faction;p.deathIdentity.currentObjective=structuredClone(objective);p.deathIdentity.protection=structuredClone(protection);p.deathIdentity.objective=p.objective;}return true;
 }

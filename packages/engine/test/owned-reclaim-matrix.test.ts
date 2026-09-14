@@ -1,12 +1,715 @@
 import {describe,expect,it} from 'vitest';
-import {allCardInstanceIds,transition} from '../src/index.js';
-import {act,finish} from './combat-helpers.js';
-import {entropy} from './fixtures.js';
-import {makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow} from './owned-reclaim-helpers.js';
+import {actionCards,getAction} from '@madou/catalog';
+import {allCardInstanceIds,transition,gameStats,viewFor,techniqueFor} from '../src/index.js';
+import {act,pass} from './combat-helpers.js';
+import {eventPending} from '../src/reclaim.js';
+import {entropy,handCard} from './fixtures.js';
+import {nextOwnAction,killOwnedLifetimePlayer,reviveOwnedLifetimePlayer,makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow,finishOwnedResolution as finish} from './owned-reclaim-helpers.js';
 
-const OWNED_TECHNIQUE_CASES: [string,string,string][] = [['白魔術師シェリム','白輪','a2-p14-r1c3']];
+const OWNED_TECHNIQUE_CASES: [string,string,string][] = [
+  [
+    "白魔術師シェリム",
+    "白輪",
+    "a2-p14-r1c3"
+  ],
+  [
+    "白魔術師シェリム",
+    "白光",
+    "a2-p14-r1c2"
+  ],
+  [
+    "白魔術師シェリム",
+    "裂界",
+    "a2-p14-r2c2"
+  ],
+  [
+    "白魔術師シェリム",
+    "天舞",
+    "a2-p14-r2c1"
+  ],
+  [
+    "大神官ジル",
+    "踏み込み／殴る",
+    "a2-p23-r1c2"
+  ],
+  [
+    "大神官ジル",
+    "踏み込み／殴る",
+    "a2-p23-r1c3"
+  ],
+  [
+    "大神官ジル",
+    "踏み込み／殴る",
+    "a2-p23-r2c1"
+  ],
+  [
+    "大神官ジル",
+    "踏み込み／殴る",
+    "a2-p23-r2c2"
+  ],
+  [
+    "大神官ジル",
+    "踏み込み／蹴る",
+    "a2-p23-r2c3"
+  ],
+  [
+    "大神官ジル",
+    "踏み込み／蹴る",
+    "a2-p23-r3c1"
+  ],
+  [
+    "大神官ジル",
+    "踏み込み／蹴る",
+    "a2-p23-r3c2"
+  ],
+  [
+    "大神官ジル",
+    "気破",
+    "a2-p09-r3c2"
+  ],
+  [
+    "大神官ジル",
+    "死鬼界滅拳",
+    "a2-p10-r1c1"
+  ],
+  [
+    "大神官ジル",
+    "死鬼滅殺拳",
+    "a2-p10-r1c2"
+  ],
+  [
+    "大神官ジル",
+    "死鬼旋風脚",
+    "a2-p09-r3c3"
+  ],
+  [
+    "大神官ジル",
+    "神罰",
+    "a2-p14-r2c3"
+  ],
+  [
+    "大神官ジル",
+    "封傷",
+    "a2-p14-r3c1"
+  ],
+  [
+    "大神官ジル",
+    "封傷",
+    "a2-p14-r3c2"
+  ],
+  [
+    "侍大将のシン",
+    "天地百撃斬",
+    "a2-p10-r1c3"
+  ],
+  [
+    "侍大将のシン",
+    "天地爆砕剣",
+    "a2-p10-r2c1"
+  ],
+  [
+    "有翼人のティア",
+    "風矢",
+    "a2-p14-r3c3"
+  ],
+  [
+    "有翼人のティア",
+    "魔風",
+    "a2-p15-r1c1"
+  ],
+  [
+    "有翼人のティア",
+    "雷走",
+    "a2-p15-r1c2"
+  ],
+  [
+    "有翼人のティア",
+    "裂風",
+    "a2-p15-r1c3"
+  ],
+  [
+    "有翼人のティア",
+    "撃雷",
+    "a2-p15-r2c1"
+  ],
+  [
+    "妖精王フューリー",
+    "踏み込み／弓",
+    "a2-p24-r1c2"
+  ],
+  [
+    "妖精王フューリー",
+    "踏み込み／弓",
+    "a2-p24-r1c3"
+  ],
+  [
+    "妖精王フューリー",
+    "踏み込み／弓",
+    "a2-p24-r2c1"
+  ],
+  [
+    "妖精王フューリー",
+    "踏み込み／弓",
+    "a2-p24-r2c2"
+  ],
+  [
+    "妖精王フューリー",
+    "踏み込み／弓",
+    "a2-p24-r2c3"
+  ],
+  [
+    "妖精王フューリー",
+    "光流弓",
+    "a2-p10-r2c2"
+  ],
+  [
+    "妖精王フューリー",
+    "星流弓",
+    "a2-p10-r2c3"
+  ],
+  [
+    "早駆けのランカスター",
+    "連槍撃",
+    "a2-p10-r3c2"
+  ],
+  [
+    "早駆けのランカスター",
+    "閃光槍",
+    "a2-p10-r3c3"
+  ],
+  [
+    "早駆けのランカスター",
+    "竜殺天空槍",
+    "a2-p11-r1c1"
+  ],
+  [
+    "聖騎士ランスロット",
+    "破山剣",
+    "a2-p12-r1c1"
+  ],
+  [
+    "聖騎士ランスロット",
+    "妖撃破山剣",
+    "a2-p11-r1c2"
+  ],
+  [
+    "聖騎士ランスロット",
+    "光竜剣",
+    "a2-p11-r2c1"
+  ],
+  [
+    "聖騎士ランスロット",
+    "光竜破山剣",
+    "a2-p11-r2c2"
+  ],
+  [
+    "小人のランバ",
+    "踏み込み／斧",
+    "a2-p25-r1c3"
+  ],
+  [
+    "小人のランバ",
+    "踏み込み／斧",
+    "a2-p25-r2c1"
+  ],
+  [
+    "小人のランバ",
+    "撃戦斧",
+    "a2-p11-r2c3"
+  ],
+  [
+    "小人のランバ",
+    "剛戦斧",
+    "a2-p11-r3c1"
+  ],
+  [
+    "小人のランバ",
+    "滅殺斧",
+    "a2-p11-r3c3"
+  ],
+  [
+    "小人のランバ",
+    "死戦斧",
+    "a2-p11-r3c2"
+  ],
+  [
+    "小人のランバ",
+    "地槍",
+    "a2-p16-r2c3"
+  ],
+  [
+    "小人のランバ",
+    "植縛",
+    "a2-p16-r3c1"
+  ],
+  [
+    "小人のランバ",
+    "地流",
+    "a2-p16-r3c2"
+  ],
+  [
+    "リーア姫",
+    "破山剣",
+    "a2-p12-r1c1"
+  ],
+  [
+    "リーア姫",
+    "光王陣",
+    "a2-p16-r3c3"
+  ],
+  [
+    "リーア姫",
+    "おまえはだまされている",
+    "a2-p04-r1c1"
+  ],
+  [
+    "リーア姫",
+    "神性介入",
+    "a2-p02-r1c3"
+  ],
+  [
+    "吟遊詩人のレスター",
+    "魔詩",
+    "a2-p17-r1c1"
+  ],
+  [
+    "吟遊詩人のレスター",
+    "呪歌",
+    "a2-p17-r1c2"
+  ],
+  [
+    "吟遊詩人のレスター",
+    "死歌",
+    "a2-p17-r1c3"
+  ],
+  [
+    "吟遊詩人のレスター",
+    "勇気",
+    "a2-p01-r3c3"
+  ],
+  [
+    "吟遊詩人のレスター",
+    "ソロモン王の護符",
+    "a2-p01-r3c2"
+  ],
+  [
+    "黒妖精のアーネス",
+    "踏み込み／弓",
+    "a2-p24-r1c2"
+  ],
+  [
+    "黒妖精のアーネス",
+    "踏み込み／弓",
+    "a2-p24-r1c3"
+  ],
+  [
+    "黒妖精のアーネス",
+    "踏み込み／弓",
+    "a2-p24-r2c1"
+  ],
+  [
+    "黒妖精のアーネス",
+    "踏み込み／弓",
+    "a2-p24-r2c2"
+  ],
+  [
+    "黒妖精のアーネス",
+    "踏み込み／弓",
+    "a2-p24-r2c3"
+  ],
+  [
+    "黒妖精のアーネス",
+    "黒流弓",
+    "a2-p07-r3c3"
+  ],
+  [
+    "黒妖精のアーネス",
+    "黒翼飛翔剣",
+    "a2-p08-r1c1"
+  ],
+  [
+    "黒妖精のアーネス",
+    "黒翼天翔剣",
+    "a2-p08-r1c2"
+  ],
+  [
+    "凍気のアイエル",
+    "氷矢",
+    "a2-p12-r2c2"
+  ],
+  [
+    "凍気のアイエル",
+    "凍流",
+    "a2-p12-r2c3"
+  ],
+  [
+    "凍気のアイエル",
+    "氷鏡",
+    "a2-p12-r3c2"
+  ],
+  [
+    "凍気のアイエル",
+    "氷結",
+    "a2-p12-r3c3"
+  ],
+  [
+    "凍気のアイエル",
+    "氷狼乱舞陣",
+    "a2-p13-r1c1"
+  ],
+  [
+    "竜皇子アスフェルト",
+    "風斬剣",
+    "a2-p08-r1c3"
+  ],
+  [
+    "竜皇子アスフェルト",
+    "雷斬剣",
+    "a2-p08-r2c1"
+  ],
+  [
+    "竜皇子アスフェルト",
+    "裂風斬",
+    "a2-p08-r2c2"
+  ],
+  [
+    "占星術師のアルセイル",
+    "鏡封",
+    "a2-p13-r1c3"
+  ],
+  [
+    "占星術師のアルセイル",
+    "錯乱",
+    "a2-p13-r1c2"
+  ],
+  [
+    "占星術師のアルセイル",
+    "催眠",
+    "a2-p13-r2c1"
+  ],
+  [
+    "占星術師のアルセイル",
+    "赤い水晶球",
+    "a2-p03-r1c3"
+  ],
+  [
+    "占星術師のアルセイル",
+    "遠見の水晶球",
+    "a2-p04-r2c2"
+  ],
+  [
+    "占星術師のアルセイル",
+    "命運凶変",
+    "a2-p02-r2c3"
+  ],
+  [
+    "占星術師のアルセイル",
+    "人質",
+    "a2-p02-r2c2"
+  ],
+  [
+    "忍びのイダ",
+    "踏み込み／殴る",
+    "a2-p23-r1c2"
+  ],
+  [
+    "忍びのイダ",
+    "踏み込み／殴る",
+    "a2-p23-r1c3"
+  ],
+  [
+    "忍びのイダ",
+    "踏み込み／殴る",
+    "a2-p23-r2c1"
+  ],
+  [
+    "忍びのイダ",
+    "踏み込み／殴る",
+    "a2-p23-r2c2"
+  ],
+  [
+    "忍びのイダ",
+    "手裏剣",
+    "a2-p08-r2c3"
+  ],
+  [
+    "忍びのイダ",
+    "裏天空剣",
+    "a2-p08-r3c1"
+  ],
+  [
+    "忍びのイダ",
+    "気斬",
+    "a2-p08-r3c3"
+  ],
+  [
+    "忍びのイダ",
+    "影分身",
+    "a2-p08-r3c2"
+  ],
+  [
+    "忍びのイダ",
+    "木の葉隠れ",
+    "a2-p13-r2c2"
+  ],
+  [
+    "邪祭ウーノス",
+    "呪殺",
+    "a2-p13-r3c2"
+  ],
+  [
+    "邪祭ウーノス",
+    "復活",
+    "a2-p13-r3c1"
+  ],
+  [
+    "邪祭ウーノス",
+    "封獄死霊陣",
+    "a2-p13-r3c3"
+  ],
+  [
+    "獣使いのウパニシャット",
+    "獣王剣",
+    "a2-p09-r1c1"
+  ],
+  [
+    "黒騎士ガーウィン",
+    "破黒剣",
+    "a2-p09-r1c2"
+  ],
+  [
+    "黒騎士ガーウィン",
+    "黒竜剣",
+    "a2-p09-r1c3"
+  ],
+  [
+    "黒騎士ガーウィン",
+    "魔空剣",
+    "a2-p09-r2c1"
+  ],
+  [
+    "魔導王ガイナス",
+    "竜王爆砕剣",
+    "a2-p09-r2c2"
+  ],
+  [
+    "魔導王ガイナス",
+    "血流",
+    "a2-p09-r2c3"
+  ],
+  [
+    "不死王ガドューラ",
+    "死刻鎌",
+    "a2-p09-r3c1"
+  ],
+  [
+    "不死王ガドューラ",
+    "疫病",
+    "a2-p14-r1c1"
+  ],
+  [
+    "魔聖母ディア",
+    "吸魂",
+    "a2-p15-r2c3"
+  ],
+  [
+    "魔聖母ディア",
+    "悪夢",
+    "a2-p15-r2c2"
+  ],
+  [
+    "魔聖母ディア",
+    "死心盗",
+    "a2-p15-r3c1"
+  ],
+  [
+    "爆炎のフレイアード",
+    "炎矢",
+    "a2-p15-r3c2"
+  ],
+  [
+    "爆炎のフレイアード",
+    "炎流",
+    "a2-p15-r3c3"
+  ],
+  [
+    "爆炎のフレイアード",
+    "炎舞",
+    "a2-p16-r1c1"
+  ],
+  [
+    "爆炎のフレイアード",
+    "爆炎",
+    "a2-p16-r1c2"
+  ],
+  [
+    "爆炎のフレイアード",
+    "烈火",
+    "a2-p16-r1c3"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "踏み込み／殴る",
+    "a2-p23-r1c2"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "踏み込み／殴る",
+    "a2-p23-r1c3"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "踏み込み／殴る",
+    "a2-p23-r2c1"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "踏み込み／殴る",
+    "a2-p23-r2c2"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "踏み込み／蹴る",
+    "a2-p23-r2c3"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "踏み込み／蹴る",
+    "a2-p23-r3c1"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "踏み込み／蹴る",
+    "a2-p23-r3c2"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "狼牙",
+    "a2-p10-r3c1"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "餓狼",
+    "a2-p16-r2c2"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "妖獣",
+    "a2-p16-r2c1"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "転移",
+    "a2-p06-r1c1"
+  ],
+  [
+    "餓狼ヨーツルム",
+    "転移",
+    "a2-p06-r1c2"
+  ],
+  [
+    "聖騎士ランスロット2",
+    "破山剣",
+    "a2-p12-r1c1"
+  ],
+  [
+    "聖騎士ランスロット2",
+    "妖撃破山剣",
+    "a2-p11-r1c2"
+  ],
+  [
+    "聖騎士ランスロット2",
+    "光竜剣",
+    "a2-p11-r2c1"
+  ],
+  [
+    "聖騎士ランスロット2",
+    "光竜破山剣",
+    "a2-p11-r2c2"
+  ],
+  [
+    "破壊神ヴァンミール",
+    "滅界",
+    "a2-p13-r2c3"
+  ]
+];
 
 describe('owned technique base recovery',()=>{
+ it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) retention-transform-revival',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId,[],true);
+  if(name==='復活')table.state=killOwnedLifetimePlayer(table.state,'B');
+  let s=playOwnedCardToDiscard(table,cardId);
+  const choice=currentReclaimWindow(s,'A')!,base=choice.claims.find(c=>c.right==='base')!;
+  s=finish(act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:base.claimId}));
+  const history=structuredClone(s.players.A!.reclaimUsage),life=s.players.A!.lifeId;
+  expect(history?.[name]?.baseSpent).toBe(true);
+  if(owner==='聖騎士ランスロット'){
+   if(!s.players.C!.revealed)s=finish(act(s,'C',{type:'REVEAL_CHARACTER'}));
+   s=finish(act(s,'A',{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'}));
+   expect(s.players.A!.characterId).toBe('c2-p07-r1c1');expect(s.players.A!.reclaimUsage).toEqual(history);
+  }
+  if(owner==='邪祭ウーノス'){
+   // A separate command continuation covers the identity change without replacing the ordinary revival case.
+   let transformed=nextOwnAction({state:JSON.parse(JSON.stringify(s)),ownerId:'A'},cardId);
+   transformed=finish(act(transformed,'A',{type:'USE_REVIVAL_RITUAL'}));
+   expect(transformed.players.A!.characterId).toBe('c2-p07-r1c2');expect(transformed.players.A!.reclaimUsage).toEqual(history);
+  }
+  s=killOwnedLifetimePlayer(s,'A');
+  expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.reclaimUsage).toEqual(history);
+  if(owner==='破壊神ヴァンミール'){expect(s.outcome).toBeTruthy();return;}
+  expect(s.outcome).toBeFalsy();
+  s=reviveOwnedLifetimePlayer(JSON.parse(JSON.stringify(s)),'A');
+  expect(s.players.A!.presence).toBe('active');expect(s.players.A!.lifeId).not.toBe(life);
+  expect(s.players.A!.reclaimUsage).toEqual(history);
+ },20000);
+
+ it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) reserve-before-parent-release',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);
+  const choice=currentReclaimWindow(s,table.ownerId)!,claim=choice.claims.find(c=>c.right==='base')!;
+  const source=Object.values(s.actions!).find(a=>a.cardInstanceId===cardId)!;
+  expect(source).toBeDefined();
+  const nested=source.parentWindowId!==null;
+  const eventId=s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.eventId;
+  expect(eventPending(s,eventId)).toBe(true);
+  s=act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:claim.claimId});
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);
+  expect(s.resolution).not.toContain(cardId);expect(s.discard).not.toContain(cardId);
+  // A top-level use closes atomically; a response must remain reserved under its live parent.
+  expect(eventPending(s,eventId)).toBe(nested);
+  if(nested){
+   expect(s.reclaimReservations.filter(id=>id===cardId)).toHaveLength(1);
+   expect(s.players[table.ownerId]!.hand).not.toContain(cardId);
+   expect(s.reclaim![cardId]).toMatchObject({ownerId:table.ownerId,eventId,decisionId:choice.decisionId});
+  }else{
+   expect(s.reclaimReservations).not.toContain(cardId);
+   expect(s.players[table.ownerId]!.hand.filter(id=>id===cardId)).toHaveLength(1);
+  }
+  s=finish(JSON.parse(JSON.stringify(s)));
+  expect(eventPending(s,eventId)).toBe(false);
+  expect(s.reclaimReservations).not.toContain(cardId);expect(s.reclaim?.[cardId]).toBeUndefined();
+  expect(s.players[table.ownerId]!.hand.filter(id=>id===cardId)).toHaveLength(1);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
+ it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) exhaustion-across-physical-copies',(owner,name,cardId)=>{
+  const copies=actionCards.filter(c=>c.name===name).map(c=>c.id);
+  expect(copies).toContain(cardId);
+  const firstId=copies.find(id=>id!==cardId)??cardId;
+  const table=makeOwnedReclaimTable(owner,firstId,firstId===cardId?[]:[cardId]);
+  let s=playOwnedCardToDiscard(table,firstId);
+  const choice=currentReclaimWindow(s,table.ownerId)!,claim=choice.claims.find(c=>c.right==='base')!;
+  expect(claim).toBeDefined();
+  s=finish(act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:claim.claimId}));
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);
+  expect(s.players[table.ownerId]!.hand).toContain(cardId);
+  s=playOwnedCardToDiscard({...table,state:s},cardId);
+  const second=currentReclaimWindow(s,table.ownerId)!;
+  expect(second.cardInstanceId).toBe(cardId);expect(second.claims.some(c=>c.right==='base')).toBe(false);
+  s=finish(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  if(firstId!==cardId)expect(s.players[table.ownerId]!.hand).toContain(firstId);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) normalized-name-once-game',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);
   const first=currentReclaimWindow(s,table.ownerId)!;expect(first.cardInstanceId).toBe(cardId);
@@ -23,8 +726,8 @@ describe('owned technique base recovery',()=>{
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) actual-use-disposition',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId),s=playOwnedCardToDiscard(table,cardId),choice=currentReclaimWindow(s,table.ownerId)!;
   expect(choice.cardInstanceId).toBe(cardId);expect(choice.claims.some(c=>c.right==='base')).toBe(true);
-  expect(s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.source).toMatchObject({kind:'ordinary-disposition',trigger:'technique-resolved',sourceActorId:table.ownerId,cardInstanceId:cardId});
-  expect(s.players.B!.damage).toBe(10);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.resolution).toContain(cardId);
+  expect(s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.source).toMatchObject({...(name==='勇気'?{kind:'courage-resolution',cancellationSucceeded:true}:{kind:'ordinary-disposition',trigger:'technique-resolved'}),sourceActorId:table.ownerId,cardInstanceId:cardId});
+  expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.resolution).toContain(cardId);
  });
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) optional-decline',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);const choice=currentReclaimWindow(s,table.ownerId)!;
@@ -32,4 +735,277 @@ describe('owned technique base recovery',()=>{
   s=finish(act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'decline'}));
   expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
  });
+});
+
+const OWNED_FOLLOWER_CASES: [string,string,string][] = [
+  [
+    "白魔術師シェリム",
+    "天使",
+    "a2-p22-r2c1"
+  ],
+  [
+    "大神官ジル",
+    "女神官のシャリア",
+    "a2-p21-r3c2"
+  ],
+  [
+    "有翼人のティア",
+    "有翼族",
+    "a2-p21-r1c3"
+  ],
+  [
+    "妖精王フューリー",
+    "妖精族",
+    "a2-p21-r3c3"
+  ],
+  [
+    "聖騎士ランスロット",
+    "アルケミア城",
+    "a2-p20-r3c2"
+  ],
+  [
+    "聖騎士ランスロット",
+    "聖騎士団",
+    "a2-p20-r1c3"
+  ],
+  [
+    "小人のランバ",
+    "小人族",
+    "a2-p21-r2c3"
+  ],
+  [
+    "リーア姫",
+    "王立騎士団",
+    "a2-p21-r1c2"
+  ],
+  [
+    "リーア姫",
+    "親衛隊",
+    "a2-p22-r1c3"
+  ],
+  [
+    "リーア姫",
+    "守護者",
+    "a2-p22-r3c3"
+  ],
+  [
+    "黒妖精のアーネス",
+    "女性親衛隊",
+    "a2-p21-r2c2"
+  ],
+  [
+    "竜皇子アスフェルト",
+    "歌う船",
+    "a2-p20-r2c1"
+  ],
+  [
+    "竜皇子アスフェルト",
+    "飛竜",
+    "a2-p22-r3c1"
+  ],
+  [
+    "邪祭ウーノス",
+    "竜王教団",
+    "a2-p21-r3c1"
+  ],
+  [
+    "獣使いのウパニシャット",
+    "グリフォン",
+    "a2-p20-r3c1"
+  ],
+  [
+    "黒騎士ガーウィン",
+    "黒騎士団",
+    "a2-p20-r1c2"
+  ],
+  [
+    "不死王ガドューラ",
+    "スケルトン",
+    "a2-p19-r2c1"
+  ],
+  [
+    "不死王ガドューラ",
+    "ゾンビー",
+    "a2-p19-r3c3"
+  ],
+  [
+    "不死王ガドューラ",
+    "ワイト",
+    "a2-p21-r1c1"
+  ],
+  [
+    "不死王ガドューラ",
+    "デス・ナイト",
+    "a2-p22-r3c2"
+  ],
+  [
+    "魔聖母ディア",
+    "闇の聖女",
+    "a2-p21-r2c1"
+  ],
+  [
+    "聖騎士ランスロット2",
+    "聖騎士団",
+    "a2-p20-r1c3"
+  ],
+  [
+    "聖騎士ランスロット2",
+    "王立騎士団",
+    "a2-p21-r1c2"
+  ]
+];
+
+describe('owned follower base recovery',()=>{
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) retention-transform-revival',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId,[],true);
+  if(name==='復活')table.state=killOwnedLifetimePlayer(table.state,'B');
+  let s=playOwnedCardToDiscard(table,cardId);
+  const choice=currentReclaimWindow(s,'A')!,base=choice.claims.find(c=>c.right==='base')!;
+  s=finish(act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:base.claimId}));
+  const history=structuredClone(s.players.A!.reclaimUsage),life=s.players.A!.lifeId;
+  expect(history?.[name]?.baseSpent).toBe(true);
+  if(owner==='聖騎士ランスロット'){
+   if(!s.players.C!.revealed)s=finish(act(s,'C',{type:'REVEAL_CHARACTER'}));
+   s=finish(act(s,'A',{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'}));
+   expect(s.players.A!.characterId).toBe('c2-p07-r1c1');expect(s.players.A!.reclaimUsage).toEqual(history);
+  }
+  if(owner==='邪祭ウーノス'){
+   // A separate command continuation covers the identity change without replacing the ordinary revival case.
+   let transformed=nextOwnAction({state:JSON.parse(JSON.stringify(s)),ownerId:'A'},cardId);
+   transformed=finish(act(transformed,'A',{type:'USE_REVIVAL_RITUAL'}));
+   expect(transformed.players.A!.characterId).toBe('c2-p07-r1c2');expect(transformed.players.A!.reclaimUsage).toEqual(history);
+  }
+  s=killOwnedLifetimePlayer(s,'A');
+  expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.reclaimUsage).toEqual(history);
+  if(owner==='破壊神ヴァンミール'){expect(s.outcome).toBeTruthy();return;}
+  expect(s.outcome).toBeFalsy();
+  s=reviveOwnedLifetimePlayer(JSON.parse(JSON.stringify(s)),'A');
+  expect(s.players.A!.presence).toBe('active');expect(s.players.A!.lifeId).not.toBe(life);
+  expect(s.players.A!.reclaimUsage).toEqual(history);
+ },20000);
+
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) exhaustion-across-physical-copies',(owner,name,cardId)=>{
+  const copies=actionCards.filter(c=>c.name===name).map(c=>c.id);
+  expect(copies).toContain(cardId);
+  const firstId=copies.find(id=>id!==cardId)??cardId;
+  const table=makeOwnedReclaimTable(owner,firstId,firstId===cardId?[]:[cardId]);
+  let s=playOwnedCardToDiscard(table,firstId);
+  const choice=currentReclaimWindow(s,table.ownerId)!,claim=choice.claims.find(c=>c.right==='base')!;
+  expect(claim).toBeDefined();
+  s=finish(act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:claim.claimId}));
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);
+  expect(s.players[table.ownerId]!.hand).toContain(cardId);
+  s=playOwnedCardToDiscard({...table,state:s},cardId);
+  const second=currentReclaimWindow(s,table.ownerId)!;
+  expect(second.cardInstanceId).toBe(cardId);expect(second.claims.some(c=>c.right==='base')).toBe(false);
+  s=finish(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  if(firstId!==cardId)expect(s.players[table.ownerId]!.hand).toContain(firstId);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) normalized-name-once-game',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);
+  const first=currentReclaimWindow(s,table.ownerId)!;expect(first.cardInstanceId).toBe(cardId);
+  const claim=first.claims.find(c=>c.right==='base')!;expect(claim).toBeDefined();expect(s.resolution).toContain(cardId);
+  const command={type:'CHOOSE_RECLAIM',decisionId:first.decisionId,choice:'take',claimId:claim.claimId} as const;
+  const before=JSON.stringify(s);expect(transition(s,{actorId:'B',command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
+  s=finish(act(s,table.ownerId,command));expect(s.players[table.ownerId]!.hand.filter(id=>id===cardId)).toHaveLength(1);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);expect(s.reclaimReservations).not.toContain(cardId);
+  s=playOwnedCardToDiscard({...table,state:s},cardId);const second=currentReclaimWindow(s,table.ownerId)!;
+  expect(second.cardInstanceId).toBe(cardId);expect(second.claims.some(c=>c.right==='base')).toBe(false);
+  const repeated=JSON.stringify(s);expect(transition(s,{actorId:table.ownerId,command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(repeated);
+  s=finish(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) actual-follower-death-only',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId),s=playOwnedCardToDiscard(table,cardId),choice=currentReclaimWindow(s,table.ownerId)!;
+  expect(choice.cardInstanceId).toBe(cardId);expect(choice.claims.some(c=>c.right==='base')).toBe(true);
+  expect(s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.source).toMatchObject({kind:'ordinary-disposition',trigger:'follower-died',sourceActorId:table.ownerId,cardInstanceId:cardId});
+  expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.resolution).toContain(cardId);
+ });
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) optional-decline',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);const choice=currentReclaimWindow(s,table.ownerId)!;
+  expect(choice.claims.some(c=>c.right==='base')).toBe(true);
+  s=finish(act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'decline'}));
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+ });
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) reserve-before-parent-release',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);
+  const choice=currentReclaimWindow(s,table.ownerId)!,claim=choice.claims.find(c=>c.right==='base')!;
+  const eventId=s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.eventId;
+  s=act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:claim.claimId});
+  expect(eventPending(s,eventId)).toBe(true);
+  expect(s.reclaimReservations.filter(id=>id===cardId)).toHaveLength(1);
+  expect(s.reclaim![cardId]).toMatchObject({ownerId:table.ownerId,eventId,decisionId:choice.decisionId});
+  expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.discard).not.toContain(cardId);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);
+  s=finish(JSON.parse(JSON.stringify(s)));
+  expect(eventPending(s,eventId)).toBe(false);
+  expect(s.reclaimReservations).not.toContain(cardId);expect(s.reclaim?.[cardId]).toBeUndefined();
+  expect(s.players[table.ownerId]!.hand.filter(id=>id===cardId)).toHaveLength(1);
+  expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) morale-failure-excluded',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=table.state;
+  const attack=handCard(s,'B','踏み込み／殴る');
+  s=act(s,table.ownerId,{type:'ARRANGE_FOLLOWERS',cardInstanceIds:[cardId]});
+  s=finish(act(s,table.ownerId,{type:'END_TURN',discardIds:s.players[table.ownerId]!.hand.slice(0,Math.max(0,s.players[table.ownerId]!.hand.length-gameStats(s,table.ownerId).handLimit))}));
+  s=finish(act(s,'B',{type:'START_TURN'}));s=finish(act(s,'B',{type:'CHOOSE_DRAW',draw:false}));
+  s=act(s,'B',{type:'ATTACK',cardInstanceId:attack,targetIds:[table.ownerId],dedicated:false});
+  for(let n=0;s.windows?.length&&n<400;n++)s=pass(s,Array(30).fill(6));
+  expect(s.windows).toEqual([]);
+  const morale=s.rolls?.filter(r=>r.purpose==='follower-morale'&&r.resume.kind==='follower'&&r.resume.cardInstanceId===cardId)??[];
+  // Printed checks are optional only through explicitly selected dedicated text; this run declines it.
+  if(getAction(cardId)!.printed_text.includes('チェックに失敗すると捨て札になる')){
+   expect(morale).toHaveLength(1);expect(morale[0]).toMatchObject({success:false,faces:[6,6],stage:'applied'});
+   expect(s.players[table.ownerId]!.followers.some(f=>f.cardInstanceId===cardId)).toBe(false);
+   expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  }else{
+   expect(morale).toHaveLength(0);
+   expect(s.players[table.ownerId]!.followers.some(f=>f.cardInstanceId===cardId)).toBe(true);
+  }
+  expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId)??[]).toEqual([]);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
+ it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) attack-discard-not-follower-death',(owner,name,cardId)=>{
+  const table=makeOwnedReclaimTable(owner,cardId);let s=table.state;
+  const hasDirectAttack=!['天使','アルケミア城','闇の聖女'].includes(name)&&!(name==='王立騎士団'&&owner==='聖騎士ランスロット2');
+  if(!hasDirectAttack){
+   const before=JSON.stringify(s);
+   expect(transition(s,{actorId:table.ownerId,command:{type:'ATTACK',cardInstanceId:cardId,targetIds:['B'],dedicated:true}},entropy()).ok).toBe(false);
+   expect(JSON.stringify(s)).toBe(before);
+   handCard(s,table.ownerId,getAction('a2-p05-r2c2')!.name);
+   if(name==='アルケミア城'){
+    const saved=JSON.stringify(s);
+    expect(viewFor(s,table.ownerId).allArmyOptions.some(o=>o.followerCardInstanceId===cardId)).toBe(false);
+    expect(transition(s,{actorId:table.ownerId,command:{type:'PLAY_ALL_ARMY',cardInstanceId:'a2-p05-r2c2',followerCardInstanceId:cardId,targetIds:['B']}},entropy()).ok).toBe(false);
+    expect(JSON.stringify(s)).toBe(saved);
+    expect(s.reclaimDecisions?.some(d=>d.cardInstanceId===cardId)??false).toBe(false);
+    expect(s.players[table.ownerId]!.reclaimUsage?.[name]).toBeUndefined();return;
+   }
+   const option=viewFor(s,table.ownerId).allArmyOptions.find(o=>o.followerCardInstanceId===cardId)!;
+   expect(option).toBeDefined();
+   s=act(s,table.ownerId,{type:'PLAY_ALL_ARMY',cardInstanceId:'a2-p05-r2c2',followerCardInstanceId:cardId,targetIds:option.targetMode==='mandatory-all'?option.legalTargetIds:option.legalTargetIds.slice(0,1)});
+  }else{
+   const profile=techniqueFor(cardId,owner,true)!;expect(profile).toBeDefined();
+   s=act(s,table.ownerId,{type:'ATTACK',cardInstanceId:cardId,targetIds:profile.mandatoryAll?['B','C','D']:['B'],dedicated:true});
+  }
+  for(let n=0;n<400;n++){
+   const choice=currentReclaimWindow(s,table.ownerId);
+   if(choice?.cardInstanceId===cardId){
+    expect(choice.claims.some(c=>c.right==='base')).toBe(false);
+    expect(s.reclaimDecisions!.find(d=>d.id===choice.decisionId)!.source).toMatchObject({kind:'ordinary-disposition',trigger:'named-card-used',cardInstanceId:cardId});
+    break;
+   }
+   if(!s.windows?.length)throw Error('OWNED_FOLLOWER_ATTACK_NO_DISPOSITION');s=pass(s);
+  }
+  s=finish(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId&&d.source.kind==='ordinary-disposition'&&d.source.trigger==='named-card-used')).toHaveLength(1);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);
+  expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId&&d.source.kind==='ordinary-disposition'&&d.source.trigger==='follower-died')??[]).toEqual([]);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+ });
+
 });

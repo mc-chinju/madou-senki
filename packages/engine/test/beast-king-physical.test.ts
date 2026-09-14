@@ -2,6 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
+import {assignCharacter,takeCard} from '../../../apps/worker/test/fixtures/scenario-tools.js';
 import {makeBeastKingPhysical,beastKingCard as CARD,beastKingMode} from '../../../apps/worker/test/fixtures/beast-king-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice=Array(30).fill(1)){for(let n=0;n<800;n++){if(done(s))return s;s=pass(s,dice);}throw Error('BEAST_KING_LIMIT');}
@@ -10,6 +11,95 @@ function source(s:GameState){return Object.values(s.actions!).find(a=>a.cardInst
 function group(s:GameState){return Object.values(s.groups!).find(g=>g.actionId===source(s).id)!;}
 function cmd(dedicated=true,co?:string,targetIds=['B'],coDedicated=false){return {type:'ATTACK',cardInstanceId:CARD,targetIds,dedicated,...(co?{coSource:{cardInstanceId:co,dedicated:coDedicated}}:{})};}
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
+it('actual Griffin composite target expansion still excludes a revealed same-faction seat',()=>{
+ let s=makeBeastKingPhysical('beast-king-placed-griffin',players);
+ s=settle(act(s,'C',{type:'REVEAL_CHARACTER'}));
+ expect(s.players.C!.faction).toBe(s.players.A!.faction);
+ const co='a2-p20-r3c1';
+ reject(s,'A',cmd(true,co,['B','C'],true));
+ expect(s.players.A!.followers.map(f=>f.cardInstanceId)).toContain(co);
+ expect(s.players.A!.hand).toContain(CARD);
+ s=until(act(s,'A',cmd(true,co,['B','D'],true)),s=>s.windows?.at(-1)?.kind==='attack-abilities');
+ expect(group(s).targets.map(t=>t.actorId)).toEqual(['B','D']);
+ expect(group(s).targets.map(t=>t.hits.map(h=>h.damage))).toEqual([[18,18],[18,18]]);
+ s=settle(s);
+ expect([s.players.B!.damage,s.players.C!.damage,s.players.D!.damage]).toEqual([36,0,36]);
+ for(const card of [CARD,co])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+});
+it('actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved',()=>{
+ let s=makeBeastKingPhysical('beast-king-bow',players);
+ assignCharacter(s,'B','魔導王ガイナス');assignCharacter(s,'D','侍大将のシン');
+ s.players.B!.permanent!.spirit=20;
+ const co=beastKingMode('beast-king-bow').co!;
+ s=until(act(s,'A',cmd(true,co)),s=>s.windows?.at(-1)?.kind==='normal-defense');
+ const parentId=group(s).id,event=source(s).eventId;
+ const option=viewFor(s,'B').abilityOptions.find(o=>o.abilityId==='c2-p05-r2c2-ab02')!;
+ expect(option).toBeDefined();
+ s=act(s,'B',{type:'USE_ABILITY',abilityId:option.abilityId,targetEventId:option.targetEventId});
+ s=until(s,s=>Object.values(s.groups??{}).some(g=>g.attackerId==='B'));
+ const reflected=Object.values(s.groups!).find(g=>g.attackerId==='B')!;
+ expect(reflected.technique).toMatchObject({school:'warrior',effectLevel:6,damage:14,attributes:expect.arrayContaining(['戦','剣','獣'])});
+ expect(reflected.targets[0]!.actorId).toBe('A');
+ expect(reflected.targets[0]!.hits[0]!.damage).toBe(14);
+ expect(s.groups![parentId]!.sourceCardInstanceIds).toEqual([CARD,co]);
+ expect(s.resolution).toEqual(expect.arrayContaining([CARD,co]));
+ s=settle(JSON.parse(JSON.stringify(s)));
+ expect(s.players.A!.damage).toBe(14);expect(s.players.B!.damage).toBe(0);
+ for(const card of [CARD,co])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ expect(s.used!.filter(id=>id.endsWith(`:${CARD}`))).toEqual([`${event}:A:${CARD}`]);
+ expect(s.used!.filter(id=>id.endsWith(`:${co}`))).toEqual([`${event}:A:${co}`]);
+});
+it('actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded',()=>{
+ let s=makeBeastKingPhysical('beast-king-bow',players);
+ const co=beastKingMode('beast-king-bow').co!;
+ s=act(s,'A',cmd(true,co));
+ const event=source(s).eventId;
+ s=until(s,s=>{const r=viewFor(s,'A').reclaim;return r?.cardInstanceId===CARD&&r.claims.some(c=>c.right==='base');});
+ const decision=viewFor(s,'A').reclaim!,claim=decision.claims.find(c=>c.right==='base')!;
+ s=settle(act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:decision.decisionId,choice:'take',claimId:claim.claimId}));
+ expect(s.players.B!.damage).toBe(14);
+ expect(s.players.A!.hand.filter(id=>id===CARD)).toHaveLength(1);
+ expect(s.players.A!.hand).not.toContain(co);
+ expect(s.discard.filter(id=>id===co)).toHaveLength(1);
+ expect(s.discard).not.toContain(CARD);
+ expect(s.players.A!.reclaimUsage?.['獣王剣']?.baseSpent).toBe(true);
+ expect(s.players.A!.reclaimUsage?.['踏み込み／弓']).toBeUndefined();
+ expect(s.used).toEqual(expect.arrayContaining([`${event}:A:${CARD}`,`${event}:A:${co}`]));
+ reject(s,'A',{type:'CHOOSE_RECLAIM',decisionId:decision.decisionId,choice:'take',claimId:claim.claimId});
+});
+it.each(['GOOD','EVIL'] as const)('structural prepared Blood co-source retains its faction prohibition for %s',faction=>{
+ let s=makeBeastKingPhysical('beast-king-dedicated',players);
+ const co='a2-p09-r2c3';takeCard(s,'A',co);
+ // Isolate the inherited prohibition using an explicit prepared-state boundary.
+ s.players.A!.hand=s.players.A!.hand.filter(id=>id!==co);
+ s.players.A!.chants.push({cardInstanceId:co,revealed:false});
+ s.players.A!.faction=faction;
+ s.players.A!.permanent!.warrior_level!+=8-gameStats(s,'A').warrior_level;
+ expect(gameStats(s,'A').warrior_level).toBe(8);
+ if(faction==='GOOD'){
+  reject(s,'A',cmd(true,co));
+  expect(s.players.A!.chants.map(c=>c.cardInstanceId)).toContain(co);
+  expect(s.players.A!.hand).toContain(CARD);
+ }else{
+  s=until(act(s,'A',cmd(true,co)),s=>s.windows?.at(-1)?.kind==='attack-abilities');
+  expect(group(s).technique).toMatchObject({useLevel:6,effectLevel:6,damage:20,chant:true});
+  expect(s.players.A!.chants).toEqual([]);
+  expect(s.resolution).toEqual(expect.arrayContaining([CARD,co]));
+ }
+});
+it.each([['beast-king-bow',15],['beast-king-null',11]] as const)('%s elected Upa addition applies once to the composite and preserves a null source with result %s',(name,damage)=>{
+ let s=makeBeastKingPhysical(name,players);
+ const ability=viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId==='c2-p05-r1c2-ab01')!;
+ expect(ability.canActivate).toBe(true);
+ s=settle(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:ability.abilityId,targetEventId:ability.targetEventId!,enabled:true}));
+ const co=beastKingMode(name).co!;
+ s=until(act(s,'A',cmd(true,co)),s=>s.windows?.at(-1)?.kind==='attack-abilities');
+ if(name==='beast-king-null')expect(source(s).coSource!.technique.damage).toBeNull();
+ expect(group(s).technique).toMatchObject({useLevel:6,effectLevel:6,damage});
+ expect(group(s).targets[0]!.hits[0]!.damage).toBe(damage);
+ s=settle(s);expect(s.players.B!.damage).toBe(damage);
+ for(const card of [CARD,co])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+});
 it.each(['beast-king-ordinary','beast-king-guard','beast-king-owner-ordinary','beast-king-dedicated','beast-king-nonbeast','beast-king-near','beast-king-same-faction','beast-king-suppressed','beast-king-silenced'] as const)('%s actual optional standalone sword retains use6 damage10 and destroys only beast followers',name=>{
  let s=makeBeastKingPhysical(name,players);const m=beastKingMode(name),hand=[...s.players.A!.hand],deck=[...s.deck],rolls=s.rolls?.length??0;if(m.suffix==='same-faction')reject(s,'A',cmd(true,undefined,['C']));if(m.near)expect(s.distances.A!.B).toBe('near');reject(s,'A',cmd(m.dedicated,undefined,['B','C']));reject(s,'A',{type:'CHANT',cardInstanceId:CARD,dedicated:m.dedicated});s=act(s,'A',cmd(m.dedicated));expect(s.players.A!.hand).toEqual(hand.filter(id=>id!==CARD));expect(s.deck).toEqual(deck);s=until(s,s=>s.windows?.at(-1)?.kind==='attack-abilities');expect(group(s).technique).toMatchObject({school:'warrior',range:'far',useLevel:6,effectLevel:6,damage:10,attributes:['戦','剣','獣'],target:'one',chant:false,counter:false,noChecks:m.dedicated,followerIgnore:false});if(m.dedicated)expect(group(s).technique.destroyFollowerAttributes).toEqual(['獣']);s=settle(s);expect(s.players.B!.damage).toBe(m.guard&&(!m.dedicated||m.suffix==='nonbeast')?0:10);expect(s.players.C!.damage).toBe(0);if(m.guard&&m.dedicated&&m.suffix!=='nonbeast'){expect(s.players.B!.followers).toEqual([]);expect(s.discard).toContain('a2-p23-r1c1');}else if(m.guard){expect(s.players.B!.followers).toHaveLength(1);expect(s.players.B!.followers[0]!.revealed).toBe(true);}expect(s.rolls?.length??0).toBe(rolls+(m.guard&&(!m.dedicated||m.suffix==='nonbeast')?1:0));expect(s.discard.filter(id=>id===CARD)).toHaveLength(1);expect(s.phase).toBe('withdrawal');
 });

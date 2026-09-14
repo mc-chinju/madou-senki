@@ -1,0 +1,57 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 S04 complete two-die reroll persistence/browser correspondence; not acceptance evidence",
+  "previousMissingRows": 27,
+  "newlyBoundRows": [
+    "S04#source/title",
+    "S04#source/when",
+    "S04#acceptance-correspondence"
+  ],
+  "remainingMissingRows": 24,
+  "changes": [
+    "Existing browser reroll branch uses canonical-S04 with deterministic4,4 test entropy and asserts replacement of2,3, stable roll ID, total8, success and both attempt faces.",
+    "All seats reload during the returned parent roll and after completion and retain the same roll identity/history.",
+    "Existing S04 DO test now restarts/replays every command and confirms replay never consumes entropy, retaining its final queued-provider probe.",
+    "Refreshed the existing G07 whole-two-dice-reroll-same-identity binding to the changed shared DO declaration, retaining all original tests and handlers."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-canonical-scenarios.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 1,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/scenario-s01-s05.spec.ts --reporter=json",
+      "passed": 4,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0,
+      "note": "All existing shared-helper branches run, including force, cancel and reroll."
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked binding applications preserve previous evidence",
+    "Runtime coverage validator valid true after shared G07 declaration refresh",
+    "B7 remaining rows independently counted as24",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/fixtures/e2e-worker.ts": "80058c4e9568c2d8295c668ab193ff7d5d594bef9463ade8ce8f017684eaf11a",
+    "apps/worker/test/room-canonical-scenarios.test.ts": "7a932ad9b4c48e4e0e31735eae539322163841776f85e088edcf52044a1948e2",
+    "tests/e2e/scenario-s01-s05.spec.ts": "90618f0a6bb7e16eb33bf3117e9567d429163df887193265b70f9e95c4d148ac",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "01cf6ed740437025010cb2400e8db13ec4fdde17c6ad365f1aedfa6e2b057914",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "d94b851c444ae10a51abce6ee7c1b12290d23d6daf883301902ce2a03caacc2a"
+  },
+  "limitations": [
+    "Only test fixture entropy changed; production runtime behavior unchanged.",
+    "No new fixture scenario or test declaration; existing canonical fixture and tests extended.",
+    "B7 Step2 remains incomplete; formal START games and frozen-candidate acceptance remain. Accepted and verified remain zero."
+  ]
+}

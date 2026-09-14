@@ -158,8 +158,6 @@ describe('table HTTP lifecycle', () => {
     for (const [index, client] of clients.entries()) {
       expect(await client.command(`ready-${index}`, revision++, { type: 'READY', ready: true })).toMatchObject({ type: 'ack', revision });
     }
-    expect(await clients[0]!.command('guard', revision, { type: 'START' })).toMatchObject({ type: 'error', code: 'RULESET_NOT_READY' });
-    expect((await stored(room.roomId)).state.game).toBeNull();
     expect(await clients[0]!.command('settings', revision++, { type: 'UPDATE_SETTINGS', title: '五人卓', capacity: 5, visibility: 'private' })).toMatchObject({ type: 'ack', revision });
     const changed = (await stored(room.roomId)).state;
     expect(Object.values(changed.members).every(m => !m.ready)).toBe(true);
@@ -185,11 +183,39 @@ describe('table HTTP lifecycle', () => {
     expect(await stored(room.roomId)).toEqual(saved);
     const secondOwner=await connect(room.roomId,guests[0]!.cookie);
     expect(await clients[0]!.command('old-writer-start',revision,{type:'START'})).toMatchObject({type:'error',code:'READ_ONLY_CONNECTION'});
-    const results=await secondOwner.batchCommands(['start-one','start-two'].map(commandId=>({commandId,expectedRevision:revision,command:{type:'START'}}))); 
-    for(const result of results)expect(result).toMatchObject({type:'error',code:'RULESET_NOT_READY'});
-    expect(await stored(room.roomId)).toEqual(saved);expect(saved.state.game).toBeNull();
+    const results=await secondOwner.batchCommands(['start-one','start-two'].map(commandId=>({commandId,expectedRevision:revision,command:{type:'START'}})));
+    const acks=results.filter(result=>result.type==='ack');
+    const errors=results.filter(result=>result.type==='error');
+    expect(acks).toHaveLength(1);
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toMatchObject({type:'error'});
+    const started=await stored(room.roomId);
+    expect(started.state.status).toBe('playing');
+    expect(started.state.game?.phase).toBe('setup');
+    expect(Object.keys(started.state.game!.players)).toHaveLength(count);
+    expect(acks[0]).toMatchObject({ type: 'ack', revision: started.revision });
     await evictDurableObject(env.ROOMS.getByName(room.roomId),{webSockets:'close'});
-    for(const person of guests){const restored=await connect(room.roomId,person.cookie);expect(restored.initial.game).toBeNull();expect(restored.initial.revision).toBe(revision);}
+    for(const person of guests){const restored=await connect(room.roomId,person.cookie);expect(restored.initial.game?.phase).toBe('setup');expect(restored.initial.revision).toBe(started.revision);}
+  });
+
+  it.each([4, 6, 8, 10])('R7 %i seats start a real game through the normal START command when readiness is ready', async count => {
+    const guests = await Promise.all(Array.from({ length: count }, (_, i) => guest(`席${i + 1}`)));
+    const room = await makeRoom(guests[0]!.cookie, 'public', count);
+    for (const person of guests.slice(1)) expect((await api(`/api/rooms/${room.roomId}/join`, person.cookie, {})).status).toBe(200);
+    const clients = await Promise.all(guests.map(g => connect(room.roomId, g.cookie)));
+    let revision = (await stored(room.roomId)).revision;
+    for (const [index, client] of clients.entries()) {
+      expect(await client.command(`ready-${index}`, revision++, { type: 'READY', ready: true })).toMatchObject({ type: 'ack', revision });
+    }
+    expect(await clients[0]!.command('start', revision++, { type: 'START' })).toMatchObject({ type: 'ack', revision });
+    const started = await stored(room.roomId);
+    expect(started.state.status).toBe('playing');
+    expect(started.state.game?.phase).toBe('setup');
+    expect(Object.keys(started.state.game!.players)).toHaveLength(count);
+    const late = await guest('遅参');
+    expect((await api(`/api/rooms/${room.roomId}/join`, late.cookie, {})).status).toBe(409);
+    expect(await clients[0]!.command('stale-start', 0, { type: 'START' })).toMatchObject({ type: 'error' });
+    expect((await stored(room.roomId)).revision).toBe(started.revision);
   });
 
   it('transfers ownership on lobby departure, acknowledges a repeated leave and closes an empty room', async () => {

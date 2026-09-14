@@ -1,3 +1,4 @@
+import {cleanBlessingLeases,vanmilSuppressed} from '../src/abilities/suppression-state.js';
 import {expect, it} from 'vitest';
 import {transition, viewFor, gameStats, type GameState} from '../src/index.js';
 import {canUseCharacterAbility} from '../src/state.js';
@@ -314,4 +315,90 @@ it('C16 actual ban after the use-check freeze preserves the saved threshold whil
   expect(s.rolls!.find(r=>r.id===frozen.id)).toEqual(frozen);
   s=finish(s);
   expect(s.rolls!.find(r=>r.id===frozen.id)).toMatchObject({stage:'applied',threshold:frozen.threshold,faces:frozen.faces,success:frozen.success});
+});
+it('C16 invalid target lists do not spend the attempt and valid designation preserves main action',()=>{
+ let s=setup();s=finish(act(s,'C',{type:'REVEAL_CHARACTER'}));
+ const attack=handCard(s,'A','踏み込み／弓');
+ const option=viewFor(s,'A').abilityOptions.find(o=>o.abilityId===BAN)!;
+ expect(option.targetIds).toEqual(expect.arrayContaining(['A','B','D']));expect(option.targetIds).not.toContain('C');
+ for(const targetIds of [[],['B','B'],['missing']]){
+  rejected(s,'A',{type:'USE_ABILITY',abilityId:BAN,targetEventId:option.targetEventId,targetIds});
+  expect(viewFor(s,'A').abilityOptions.find(o=>o.abilityId===BAN)?.targetEventId).toBe(option.targetEventId);
+ }
+ s=finish(use(s,'A',BAN,['B']));expect(s.phase).toBe('action');
+ expect(s.suppressionDesignations!.map(d=>d.targetId)).toEqual(['B']);
+ s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['D'],dedicated:false});
+ expect(Object.values(s.actions!).some(a=>a.cardInstanceId===attack)).toBe(true);s=finish(s);
+ expect(s.phase).toBe('withdrawal');
+});
+it('C16 real turn advance offers Vanmil only his public reaction and spends it once',()=>{
+ let s=setup();const attack=handCard(s,'B','踏み込み／弓'),fate=handCard(s,'D','命運凶変');
+ s=actionFor(s,'B');expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===BAN)).toBe(false);
+ s=act(s,'B',{type:'ATTACK',cardInstanceId:attack,targetIds:['D'],dedicated:false});
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
+ const event=viewFor(s,'A').abilityOptions.find(o=>o.abilityId===BAN)!.targetEventId;
+ s=use(s,'A',BAN,['B']);
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='D')s=pass(s);
+ s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(s,'D').reactionTargetAbilityId!});
+ while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
+ s=JSON.parse(JSON.stringify(s));expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId===BAN&&o.targetEventId===event)).toBe(false);
+ rejected(s,'A',{type:'USE_ABILITY',abilityId:BAN,targetEventId:event,targetIds:['B']});s=finish(s);
+});
+it.each(['A','B'] as const)('C16 structural death entry and resetup of %s retain the established designation',victim=>{
+ const s=closeWindow(use(setup(),'A',BAN,['B']));const saved=structuredClone(s.suppressionDesignations);
+ settleDamage(s,[{targetId:victim,damage:999,eventId:'c16-death-boundary',sourceActorId:'D',cause:'attack'}],1000);
+ expect(s.players[victim]!.presence).toBe('pending-death');expect(s.suppressionDesignations).toEqual(saved);
+ expect(vanmilSuppressed(s,'B')).toBe(true);
+ beginResetup(s,s.players[victim]!,1001,true);
+ expect(s.suppressionDesignations).toEqual(saved);expect(vanmilSuppressed(s,'B')).toBe(true);
+});
+it.each(['source-identity','source-generation','target-otherworld','target-wandering'] as const)('C16 structural Blessing lifetime boundary %s preserves only a living matching source',boundary=>{
+ const s=blessed();const saved=structuredClone(s.blessingLeases);
+ expect(saved).toHaveLength(1);expect(saved![0]).toMatchObject({sourceActorId:'C',sourceCharacterId:'c2-p03-r1c2',sourceLifeId:s.players.C!.lifeId??'initial-life:C',targetId:'B'});
+ if(boundary==='source-identity')character(s,'C','侍大将のシン');
+ else if(boundary==='source-generation')s.players.C!.lifeId='structural-next-life:C';
+ else s.players.B!.presence=boundary==='target-otherworld'?'otherworld':'wandering';
+ const restored=JSON.parse(JSON.stringify(s)) as GameState;cleanBlessingLeases(restored);
+ const expires=boundary.startsWith('source-');
+ expect(restored.blessingLeases).toEqual(expires?[]:saved);expect(vanmilSuppressed(restored,'B')).toBe(expires);
+});
+it('C16 Blessing candidates use designated public state after actual turn advance',()=>{
+ let s=setup();s=finish(use(s,'A',BAN,['B']));s=actionFor(s,'C');
+ const option=viewFor(s,'C').abilityOptions.find(o=>o.abilityId===BLESS)!;
+ expect(option.targetIds).toEqual(['B']);
+ rejected(s,'C',{type:'USE_ABILITY',abilityId:BLESS,targetEventId:option.targetEventId,targetId:'D'});
+ s=finish(use(s,'C',BLESS,['B']));expect(s.phase).toBe('action');
+ expect(s.blessingLeases![0]).toMatchObject({sourceActorId:'C',targetId:'B',sourceLifeId:s.players.C!.lifeId??'initial-life:C'});
+});
+it('C16 actual own-turn Blessing expires on the source lethal attack before disposal',()=>{
+ let s=setup();s.players.C!.damage=gameStats(s,'C').endurance-1;const attack=handCard(s,'A','踏み込み／弓');
+ s=finish(use(s,'A',BAN,['B']));s=actionFor(s,'C');s=finish(use(s,'C',BLESS,['B']));
+ expect(s.blessingLeases).toHaveLength(1);s=actionFor(s,'A');
+ s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['C'],dedicated:false});
+ for(let n=0;n<200&&s.players.C!.presence!=='pending-death';n++)s=pass(s);
+ expect(s.players.C!.presence).toBe('pending-death');expect(s.players.C!.hand.length).toBeGreaterThan(0);
+ expect(s.blessingLeases).toEqual([]);expect(vanmilSuppressed(s,'B')).toBe(true);
+});
+
+it.each([[1,2,true],[1,3,false]] as const)('C16 actual Blessing faces %s %s success=%s releases only the selected designation',(a,b,success)=>{
+ let s=setup();s.players.C!.permanent={spirit:8-gameStats(s,'C').spirit};
+ expect(gameStats(s,'C').spirit).toBe(8);expect(s.suppressionDesignations??[]).toEqual([]);
+ s=finish(use(s,'A',BAN,['B','D']));const saved=structuredClone(s.suppressionDesignations);
+ expect(saved).toHaveLength(2);for(const targetId of ['B','D'])expect(saved).toContainEqual(expect.objectContaining({sourceActorId:'A',sourceCharacterId:'c2-p07-r1c2',sourceAbilityId:BAN,targetId}));
+ expect(canUseCharacterAbility(s.players.C!,s)).toBe(true);s=actionFor(s,'C');
+ const option=viewFor(s,'C').abilityOptions.find(o=>o.abilityId===BLESS)!;expect(option.targetIds).toEqual(['B','D']);
+ rejected(s,'C',{type:'USE_ABILITY',abilityId:BLESS,targetEventId:option.targetEventId,targetIds:['B','D']});
+ s=closeWindow(use(s,'C',BLESS,['B']));s=closeWindow(s,[a,b]);s=finish(s);
+ expect(s.rolls!.at(-1)).toMatchObject({rollerId:'C',modifier:-5,faces:[a,b],success});
+ expect(canUseCharacterAbility(s.players.B!,s)).toBe(success);expect(canUseCharacterAbility(s.players.D!,s)).toBe(false);
+ expect(s.blessingLeases?.map(l=>l.targetId)??[]).toEqual(success?['B']:[]);
+ expect(JSON.parse(JSON.stringify(s)).suppressionDesignations).toEqual(saved);expect(s.phase).toBe('action');
+ expect(viewFor(s,'C').abilityOptions.some(o=>o.abilityId===BLESS)).toBe(false);
+});
+it('C16 structural preexisting unrelated ban survives an actual successful Blessing',()=>{
+ let s=setup();const unrelated={id:'structural-other-ban',kind:'ability-disabled' as const,modifiers:[0],nextCheck:0};
+ s=finish(use(s,'A',BAN,['B']));s=actionFor(s,'C');s.players.B!.statuses=[unrelated];const before=structuredClone(s.players.B!.statuses);
+ expect(before).toEqual([unrelated]);expect(canUseCharacterAbility(s.players.B!,s)).toBe(false);
+ s=finish(use(s,'C',BLESS,['B']));expect(s.rolls!.at(-1)).toMatchObject({success:true,modifier:-5});
+ expect(vanmilSuppressed(s,'B')).toBe(false);expect(s.players.B!.statuses).toEqual(before);expect(canUseCharacterAbility(s.players.B!,s)).toBe(false);
 });

@@ -1,0 +1,42 @@
+{
+  "kind": "implementation-test-progress",
+  "date": "2026-09-12",
+  "scope": "B2 complete implementation bindings; not acceptance evidence",
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts packages/engine/test/owned-reclaim.test.ts packages/engine/test/reclaim-reservations.test.ts packages/engine/test/reuse-abilities.test.ts --reporter=json --outputFile=/private/tmp/release-b2-complete.json",
+    "exitCode": 0,
+    "passed": 1051,
+    "failed": 0,
+    "skipped": 0,
+    "matrixTests": 934
+  },
+  "lifetimeCases": {
+    "technique": 125,
+    "follower": 23
+  },
+  "method": [
+    "Six seats are arranged before the first use. Every later lifecycle change uses transition commands, each checked against JSON save/restore and conservation of all 220 unique physical cards.",
+    "Each physical owned card is actually used or destroyed and its base reclaim taken before a legal lethal attack. A real wish obtains the revival OPEN from the deck; the owner chooses revival and completes setup.",
+    "Lancelot transforms after Lia reveal finishes. Uno has a separate real ritual continuation plus the ordinary death/revival continuation. The original Vanmil case asserts terminal death with retained history.",
+    "The resurrection source itself is exercised after a real preliminary death of B, then A undergoes its own later death and revival."
+  ],
+  "bindingsApplied": 784,
+  "ownedReclaimPending": 0,
+  "semanticImplementedConcrete": 4613,
+  "semanticAccepted": 0,
+  "sourceSha256": {
+    "packages/engine/test/owned-reclaim-helpers.ts": "33020011fb9982b13e09f836b1321b481d9a9c1b9c32be9fa30db63cd85bf5b1",
+    "packages/engine/test/owned-reclaim-matrix.test.ts": "8b1061e9eced256c65fe3c9d6be07b4ae06f58f22509e5547ee4a255eb3f2fea",
+    "scripts/build_owned_reclaim_bindings.py": "d96266f89c22a3eaf189695ff5338ff7854c7e1746ce56c4db633cecb8b06d14",
+    "docs/operations/evidence/2026-09-11-owned-reclaim-bindings.json": "f08eaadf4768c706b1f7e67b71f19b68e5b9f14087c806d1b73227df2146373a"
+  },
+  "checks": [
+    "generator exact static declaration and physical tuple gate passed",
+    "python3 -m unittest scripts.test_build_owned_reclaim_bindings scripts.test_ledger_report: 8 passed",
+    "python3 scripts/validate_runtime_coverage.py: valid true (structural only)"
+  ],
+  "limitations": [
+    "This is focused implementation verification, not a frozen-candidate acceptance receipt.",
+    "No new broad unit or Worker run is claimed here. Previous broad run results are recorded in 2026-09-12-b2-exclusions-progress.json."
+  ]
+}

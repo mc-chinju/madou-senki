@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": { "types": ["node"] },
-  "include": ["./**/*.ts", "../../playwright.config.ts"]
+  "include": ["./**/*.ts", "../remote/**/*.ts", "../../playwright.config.ts", "../../playwright.remote.config.ts", "../../scripts/load_test.ts"]
 }

@@ -1,0 +1,56 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 C16 public-only target candidates; not acceptance evidence",
+  "previousMissingRows": 23,
+  "newlyBoundRows": [
+    "c2-p07-r1c2-ab03#C16/public-only-target-candidates"
+  ],
+  "remainingMissingRows": 22,
+  "changes": [
+    "Existing actual multi-target ban scenario checks that hidden Lia is among all four target names, then actual REVEAL_CHARACTER removes exactly Lia.",
+    "DO suppression send helper now saves/restarts/replays every accepted command.",
+    "Browser checks actual candidate checkbox removal and all-seat reload before and after ban.",
+    "Refreshed shared G09 explicit-optional-use references to changed declarations while retaining existing evidence."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-suppression.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 7,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/suppression.spec.ts --reporter=json",
+      "passed": 2,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked binding preserves prior Engine evidence",
+    "Runtime coverage validator valid true after shared G09 refresh",
+    "Remaining B7 rows independently counted as22",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/room-suppression.test.ts": "d1a6c4953a958df7a2717f481b51a438278059baf20262afddfe47a0f3a719e2",
+    "tests/e2e/suppression.spec.ts": "1cde888297589e46a5f8b372d24fa82fb542e3d6d922147efd1eb064ba285917",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "3e60f3ca05aaddc06a304d02e73f8529ad771a8533a1b6e8d3c8add0588667f2",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "c0da5bec7f19d53a866627d41f8ddeba1784a6717bc057c3b7468bbecbbc038c"
+  },
+  "scopeCorrection": [
+    "The ritual fixture is already at hand-adjustment, so it cannot prove preserving an unused main action. Removed the provisional no-main-action binding and kept that row awaiting a real subsequent action opportunity."
+  ],
+  "limitations": [
+    "B7 Step2 remains incomplete; no-main-action and other C16/C04 clauses remain.",
+    "No production runtime change or new scenario.",
+    "Frozen acceptance and formal START games remain; accepted and verified remain zero."
+  ]
+}

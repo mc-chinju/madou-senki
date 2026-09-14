@@ -1,0 +1,423 @@
+{
+  "bindings": [
+    {
+      "row": "a2-p09-r1c1#semantic/dedicated/add-source-damage",
+      "status": "implemented",
+      "tests": [
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-bow",
+            14
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-spirit",
+            16
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-null",
+            10
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-chant",
+            22
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-union",
+            16
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual physical Wolf co-source shares one numeric2d6 and adds ten once",
+          "declarationSha256": "d1437288dca447e4fcf11349109c9c1baf57723da01dfbbfa89ebf4fbd6bc9bc",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual prepared HundredSlash retains spirit6 minus2 activation %s plus %s success=%s before one d6 hit count",
+          "declarationSha256": "b78415becbbd20730b2358d4bf6bf4350d6575d41538682972e241184423b74f",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            2,
+            2,
+            true
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual prepared HundredSlash retains spirit6 minus2 activation %s plus %s success=%s before one d6 hit count",
+          "declarationSha256": "b78415becbbd20730b2358d4bf6bf4350d6575d41538682972e241184423b74f",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            2,
+            3,
+            false
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual placed Griffin dedicated co-source inherits two selected targets and two shared eighteen damage hits",
+          "declarationSha256": "38417c26d919880b80d637be29b047e3dce5b81d9d5f919a76780eb1f560e26c",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "%s elected Upa addition applies once to the composite and preserves a null source with result %s",
+          "parameters": [
+            "beast-king-bow",
+            15
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual elected Beast Nature adds the printed +1 once to a two-card composite; null co-source remains null and base ten becomes eleven, Bow composite fourteen becomes fifteen."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "%s elected Upa addition applies once to the composite and preserves a null source with result %s",
+          "parameters": [
+            "beast-king-null",
+            11
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual elected Beast Nature adds the printed +1 once to a two-card composite; null co-source remains null and base ten becomes eleven, Bow composite fourteen becomes fifteen."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Gainas checked reflection of Sword+Bow keeps composed warrior6 damage14 and attributes, reserved physical sources, one final discard/use each; JSON restoration before resolution."
+        }
+      ],
+      "remaining": [
+        "Await complete candidate acceptance after aggregate mapping."
+      ]
+    },
+    {
+      "row": "a2-p09-r1c1#semantic/dedicated/inherit-source-effects",
+      "status": "implemented",
+      "tests": [
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-bow",
+            14
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-spirit",
+            16
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-null",
+            10
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-chant",
+            22
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual two paid physical sources inherit components while composite levels remain6 and result=%s",
+          "declarationSha256": "363c80936f91ef3fe68a4dccbc2924cd04236db87f374ef89437cdc80e5e889d",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            "beast-king-union",
+            16
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual prepared HundredSlash retains spirit6 minus2 activation %s plus %s success=%s before one d6 hit count",
+          "declarationSha256": "b78415becbbd20730b2358d4bf6bf4350d6575d41538682972e241184423b74f",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            2,
+            2,
+            true
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual prepared HundredSlash retains spirit6 minus2 activation %s plus %s success=%s before one d6 hit count",
+          "declarationSha256": "b78415becbbd20730b2358d4bf6bf4350d6575d41538682972e241184423b74f",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": [
+            2,
+            3,
+            false
+          ],
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual placed Griffin dedicated co-source inherits two selected targets and two shared eighteen damage hits",
+          "declarationSha256": "38417c26d919880b80d637be29b047e3dce5b81d9d5f919a76780eb1f560e26c",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual co-source defense restrictions govern the whole composite",
+          "declarationSha256": "27b1c3f9ed2e98f1209af38b9a83b95e4d7625cc65fdb850b63fb855ca9f6af6",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": "beast-king-maai-one",
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual co-source defense restrictions govern the whole composite",
+          "declarationSha256": "27b1c3f9ed2e98f1209af38b9a83b95e4d7625cc65fdb850b63fb855ca9f6af6",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": "beast-king-maai-two",
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "%s actual co-source defense restrictions govern the whole composite",
+          "declarationSha256": "27b1c3f9ed2e98f1209af38b9a83b95e4d7625cc65fdb850b63fb855ca9f6af6",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": "beast-king-evade-restrict",
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual inherited Shuriken counter returns composed15 with effect6 against incomingBow3",
+          "declarationSha256": "a3931a5002e42ca9f8a13bc334c50c194fe65c3fd1c4b7b6bfd9a839d9466683",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual near component rejects far before payment and becomes legal after physical approach",
+          "declarationSha256": "79c6d2285985a517cfaf6e370bef60ff9b258930f92f77611b6a86d0bc062c17",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "suite": [],
+          "title": "actual unprepared physical chant co-source rejects even though primary dedicated has no usage checks",
+          "declarationSha256": "c50139b417d19e130817f5317f901bc247f01eae838af000a87150d806ab9e7e",
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Exactphysical BeastKing a2p09r1c1 initialdeal/setup thenactualATTACK optionalUpanishat dedicated. Ordinary far warrior swordbeast use/effect6 damage10 single noCHANT/noCOUNTER; ordinaryowner notautomatic. Selectedowner noChecks/optionalonewarriorco/destroybeasts, standalonewar0 skips6checks. Ordinarywar5SP6 shortage6success7fail. ActualplacedWaterblocksordinary aftermorale, dedicateddestroysWater beforemorale andhits10; actualGuardian nonbeast survivesandblocks whenSP6minus1moralesucceeds. Co-sourcephysicalBow14, KiSlash16+inheritedspirit/followerignore (Wateruntouchedhidden), ShadowNULL componentkeptnull andbase10/counter, Wolfrealnear one2d6[3,4]+10=17, actualCHANTAnnihilation/ownEND/fullturn=22, nearBlackDragonunionbeast+white destroysrealWater+Guardian16 afteractualBlessingrefill enables2initialfollowers. Allcompositeuse/effect6 notsum, twoactualsourcespaidonce/norefill/provenance andexpiry. ActualCHANTHundredSlash inheritsSP6minus2 PRIORactivationcheck4success5failure despiteprimarynoChecks; successone sharedd6=3 then17x3=51, failurepaysboth/nohit/no numeric. ActualinitialplacedGriffin owneligible dedicatedsource inheritsarbitrary2targets/two18hits, removesownfolloweratpayment, BWaterdestroy36 andCSoldierHP1eachhit yields34 underG14 snapshot. Maai2inheritedfromBlackWing:oneinsufficient17,twoavoid0; Rendingevadeprohibition inherited18. ActualShurikenordinary co returns15 ascountereffect6overBow3. Actualnearcomponentfarrefusal thenphysicalAPPROACH legal15. AbovelevelKiSlashwar5 unadvertised/refused(noSPshortagesubstitution), primaryalonelegal. UnpreparedAnnihilation refusedwithwar7 sufficient, noCHANTwaiver. Magic/unclassifiedEvade/foreign/self/arrayco/ordinaryprimary/wrongcoowner/targets rejectunchangedstate/allviews. ActualConfusion/Silence retainprintedprimary, Hypnosis recoveryfails/skips; wrongowner/timing/actionmodes/decline retaincard. ActualFatecancelwholeco spendsbothonce/separateusehistory/nohit. Engine30 related10 DO31 restart/replay UI30 actualrandomchecks/numeric/reload types. No productionchange; broadercomposedmodifierordering/factionconversion/source-targetlifetime/reclaimcrossings remainunmeasured; noacceptedpromotion."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "%s elected Upa addition applies once to the composite and preserves a null source with result %s",
+          "parameters": [
+            "beast-king-bow",
+            15
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual elected Beast Nature adds the printed +1 once to a two-card composite; null co-source remains null and base ten becomes eleven, Bow composite fourteen becomes fifteen."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "%s elected Upa addition applies once to the composite and preserves a null source with result %s",
+          "parameters": [
+            "beast-king-null",
+            11
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual elected Beast Nature adds the printed +1 once to a two-card composite; null co-source remains null and base ten becomes eleven, Bow composite fourteen becomes fifteen."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "structural prepared Blood co-source retains its faction prohibition for %s",
+          "parameters": "GOOD",
+          "kind": "structural-resolver",
+          "bindingNote": "Prepared Blood chant, sufficient warrior level and explicit faction boundary isolate inherited GOOD prohibition; GOOD rejects without payment, EVIL pays both cards at composite level six. Does not claim the preparatory CHANT or faction-change producer."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "structural prepared Blood co-source retains its faction prohibition for %s",
+          "parameters": "EVIL",
+          "kind": "structural-resolver",
+          "bindingNote": "Prepared Blood chant, sufficient warrior level and explicit faction boundary isolate inherited GOOD prohibition; GOOD rejects without payment, EVIL pays both cards at composite level six. Does not claim the preparatory CHANT or faction-change producer."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual Gainas reflection returns the composed warrior damage while both physical sources stay reserved",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Gainas checked reflection of Sword+Bow keeps composed warrior6 damage14 and attributes, reserved physical sources, one final discard/use each; JSON restoration before resolution."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual Griffin composite target expansion still excludes a revealed same-faction seat",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual reveal of Arness excludes same-faction C before payment even with Griffin multi-target composition; B/D receive two hits each and C remains undamaged."
+        }
+      ],
+      "remaining": [
+        "Await complete candidate acceptance after aggregate mapping."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2#owned_techniques/0/normalized-name-once-game",
+      "status": "implemented",
+      "tests": [
+        {
+          "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
+          "suite": [
+            "owned technique base recovery"
+          ],
+          "title": "%s owned technique %s (%s) normalized-name-once-game",
+          "declarationSha256": "f3fa550df88c4c2153fbac0607a5ba97764a0e85760d87ab234f6d426020bfe9",
+          "kind": "canonical-transition",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "獣王剣",
+            "a2-p09-r1c1"
+          ],
+          "bindingNote": "A chosen base recovery spends the canonical-name allowance and a later use cannot claim it again."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-source attack and explicit base claim recover Sword only; Bow stays discarded, only Sword normalized budget is spent, both physical uses recorded and repeated claim rejected."
+        }
+      ],
+      "remaining": [
+        "Await complete candidate acceptance after aggregate mapping."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2#owned_techniques/0/actual-use-disposition",
+      "status": "implemented",
+      "tests": [
+        {
+          "path": "packages/engine/test/owned-reclaim-matrix.test.ts",
+          "suite": [
+            "owned technique base recovery"
+          ],
+          "title": "%s owned technique %s (%s) actual-use-disposition",
+          "declarationSha256": "df71bd796718e73f7e6e6e8f42fccec27a879cbdd2a0cf59f4288ca126e37b52",
+          "kind": "canonical-transition",
+          "parameters": [
+            "獣使いのウパニシャット",
+            "獣王剣",
+            "a2-p09-r1c1"
+          ],
+          "bindingNote": "An actual legal use of this physical owned source opens its recovery at disposition."
+        },
+        {
+          "path": "packages/engine/test/beast-king-physical.test.ts",
+          "suite": [],
+          "title": "actual composite reclaims only the owned Sword and leaves its separately paid Bow discarded",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual two-source attack and explicit base claim recover Sword only; Bow stays discarded, only Sword normalized budget is spent, both physical uses recorded and repeated claim rejected."
+        }
+      ],
+      "remaining": [
+        "Await complete candidate acceptance after aggregate mapping."
+      ]
+    }
+  ]
+}

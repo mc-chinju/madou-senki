@@ -1,0 +1,3678 @@
+{
+  "bindings": [
+    {
+      "row": "c2-p06-r1c2-ab03#actual-post-follower-body-damage",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Dia absorbs only nine body damage after the actual initial Soldier takes one",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "actual-post-follower-body-damage: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab03#remaining-endurance-cap",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Dia absorbs actual body ten only up to remaining three",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "remaining-endurance-cap: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab03#heal-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Actual physical Ice Mirror credits numeric absorption to its reflecting Dia",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "heal-source: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab03#no-numeric-instant-death-no-heal",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Pure instant death offers no numeric absorption while the printed soul-drain rider still heals",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "no-numeric-instant-death-no-heal: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#own-kill-provenance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        },
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "counter",
+          "kind": "canonical-transition",
+          "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        },
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "reflection",
+          "kind": "canonical-transition",
+          "bindingNote": "own-kill-provenance: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#victim-predeath-spirit-eight",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "victim-predeath-spirit-eight: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        },
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Spirit seven death never offers hunger",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "victim-predeath-spirit-eight: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#surviving-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "%s actual chanted destruction kills its source simultaneously and grants no reward",
+          "parameters": "餓狼ヨーツルム",
+          "kind": "canonical-transition",
+          "bindingNote": "surviving-source: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#full-heal",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "full-heal: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#permanent-warrior-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "permanent-warrior-plus-two: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#permanent-magic-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "Yotsurm hunger preserves actual %s killing source through death",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "permanent-magic-plus-two: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab04#once-per-victim",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/combat-rewards.ts",
+          "symbol": "resolveCombatReward"
+        },
+        {
+          "path": "packages/engine/src/abilities/combat-reward-state.ts",
+          "symbol": "queueCombatRewards"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/combat-rewards.test.ts",
+          "suite": [],
+          "title": "%s %s actual chanted three-hit kill and later distinct kill reward once each",
+          "parameters": [
+            "餓狼ヨーツルム",
+            "c2-p06-r2c2-ab04"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "once-per-victim: actual source-specific attack, death and reward assertions check the printed amount, eligibility or per-victim effect; physical follower/reflection provenance retained."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#self-spirit-minus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            2,
+            3,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self roll threshold is 7-2=5; totals five/six succeed/fail respectively."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            3,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual self roll threshold is 7-2=5; totals five/six succeed/fail respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#own-incoming-cancel",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            2,
+            3,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self spirit seven minus two boundary %s plus %s success=%s",
+          "parameters": [
+            3,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump cancellation before the self-check leaves the actual incoming hit live",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Successful self check cancels only received damage; failed or canceled ability leaves the incoming four damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#optional-advance-discard",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "cost",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump cost rejects stale, foreign and non-advance payment before mutation; repeated payment is refused",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Declining payment keeps the hand and earned defense; accepted payment discards exactly one advance and cannot repeat."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#optional-original-attacker-child",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump self-check has no enemy check and defense survives declining %s",
+          "parameters": "attack",
+          "kind": "canonical-transition",
+          "bindingNote": "Paid child may be declined; wrong live target is rejected atomically and original attacker alone receives the child damage."
+        },
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Shadow jump paid child accepts only the original attacker and rejects another live target atomically",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Paid child may be declined; wrong live target is rejected atomically and original attacker alone receives the child damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#child-follower-ignore",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Actual initial follower cannot absorb the shadow child and maai is rejected without payment",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "An actual initially placed Soldier cannot absorb child damage and remains in its column."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c2-ab01#child-maai-prohibited",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "resolveShadowJump"
+        },
+        {
+          "path": "packages/engine/src/abilities/shadow-jump.ts",
+          "symbol": "payShadowJump"
+        },
+        {
+          "path": "packages/engine/src/combat/attack.ts",
+          "symbol": "transitionCombat"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/shadow-jump.test.ts",
+          "suite": [],
+          "title": "Actual initial follower cannot absorb the shadow child and maai is rejected without payment",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual child defense view omits maai; submitting it is rejected without consuming the held card."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#public-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#one-extra-maai",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s privately offers only the owned source and requires the printed maai count",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Ice one/two actual maai payments result in three/zero body damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#no-physical-source-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s Fate cancellation consumes the attack without creating a virtual discard",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#public-source",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Hidden declaration is rejected atomically; public source resolves."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#no-physical-source-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s Fate cancellation consumes the attack without creating a virtual discard",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Null source cardInstanceId and unchanged source hand/discard prove no physical source payment on success or cancellation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-near-range",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-magic-school",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual technique school equals magic."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-water-attribute",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attributes equal magic and water."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-level-four",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual use and effect levels both equal four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c1-ab02#virtual-damage-three",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual target takes exactly three body damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-near-range",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        },
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s rejects hidden ownership, foreign actor, far target and invented descriptor unchanged",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near profile and atomic far-target rejection."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-magic-school",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual technique school equals magic."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-fire-attribute",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attributes equal magic and fire."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-level-four",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual use and effect levels both equal four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r2c1-ab02#virtual-damage-five",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "virtualBladeTechnique"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        },
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "resolveVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual target takes exactly five body damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab05#own-death",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "transitionChamGift"
+        },
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "resolveChamGift"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual lethal attack enters own pending-death; only Cham receives the finite gift decision before disposal."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham projection provides her own finite choice only at the death decision",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual lethal attack enters own pending-death; only Cham receives the finite gift decision before disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab05#selected-eligible-recipient",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "transitionChamGift"
+        },
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "resolveChamGift"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham projection provides her own finite choice only at the death decision",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Cham rejects foreign actor, foreign hand, resolution source, self target and expired decision",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+        },
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Eligible recipients are A/C/D, self/foreign/stale submissions reject; selected C actually receives the residual card."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab05#no-physical-gift-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "transitionChamGift"
+        },
+        {
+          "path": "packages/engine/src/abilities/cham-death-gift.ts",
+          "symbol": "resolveChamGift"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/cham-death-gift.test.ts",
+          "suite": [],
+          "title": "Pending-death Cham gives one residual hand card before final disposal without a paid source or refill",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Only the transferred residual card leaves Cham hand, without a paid source, resolution entry or refill."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#public-Arnes-self-spirit-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love explicit aura waits for public Arnes and turns off independently",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual aura gives no bonus with hidden Arnes, then actual reveal adds one own spirit and OFF removes it."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#once-game-Arnes-substitution",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love actual substitution redirects one hit into Upa with no physical payment",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Canceled substitution spends the once-game attempt and leaves the hit with Arnes",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual substitution or cancellation spends its independent attempt, and actual death/revival does not replenish it."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Sad love grants Arnes permanent spirit only after the attributable actual death",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "An unrelated actual Upa death does not grant the substitution reward",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+        },
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Attributable actual substitution death gives Arnes one spirit, unrelated death does not; real revival retains the reward."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r1c2-ab05#concurrent-death-retention",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "transitionSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love.ts",
+          "symbol": "resolveSadLove"
+        },
+        {
+          "path": "packages/engine/src/abilities/sad-love-state.ts",
+          "symbol": "rewardSadLove"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/sad-love.test.ts",
+          "suite": [],
+          "title": "Actual two-target three-hit attack preserves the death reward through concurrent Arnes death and real revival",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual multi-hit attack kills Arnes and Upa together; Arnes one spirit and reward ID persist through actual revival."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab01#one-maai-cost",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "beginMaaiAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Canceled maai ability retains the physical payment and needs only one advance",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Cham election moves one selected maai to resolution, cancellation retains it in discard exactly once and one advance restores the hit."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2-ab01#two-advances-required",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "beginMaaiAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "distanceAdvanceFactor"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected maai survives one advance and fails after exactly two",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack: one paid advance leaves zero damage, exactly two restore four damage with unchanged global distance."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected approach response needs two additional advances",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual approach needs two additional paid advances after elected maai."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s can attach its optional maai to initial withdrawal",
+          "parameters": [
+            "小妖精のチャム",
+            "c2-p01-r2c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual withdrawal with elected maai remains far after one advance and becomes near after two."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab01#maai-requires-two-advances",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "beginMaaiAbility"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "distanceAdvanceFactor"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected maai survives one advance and fails after exactly two",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack: one paid advance leaves zero damage, exactly two restore four damage with unchanged global distance."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s elected approach response needs two additional advances",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual approach needs two additional paid advances after elected maai."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "%s can attach its optional maai to initial withdrawal",
+          "parameters": [
+            "有翼人のティア",
+            "c2-p02-r1c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual withdrawal with elected maai remains far after one advance and becomes near after two."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c1-ab01#earth-magic-immunity",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedDefenseOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "resolveReceivedDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+          "parameters": "decline",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia actual earth magic flight choice %s is saved and does not leak the unused source",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual earth magic causes zero damage only on elected flight; declined/canceled choice retains base damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia flight does not offer earth immunity for a real ordinary warrior attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior attack offers no immunity and resolves seven damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Tia earth predicate excludes a structural warrior-earth source",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Structural warrior plus earth attribute does not satisfy magic-school predicate."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab03#original-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster can elect uncancelable maai only against an actual returned counter to his attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lancaster initiates actual attack and receives actual counter: option present and zero damage. Ordinary incoming attack offers no ability and forged election fails atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab03#returned-counter-only",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster can elect uncancelable maai only against an actual returned counter to his attack",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lancaster initiates actual attack and receives actual counter: option present and zero damage. Ordinary incoming attack offers no ability and forged election fails atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r2c1-ab03#maai-uncancelable-by-advance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceFactor"
+        },
+        {
+          "path": "packages/engine/src/abilities/distance.ts",
+          "symbol": "maaiAdvanceLimit"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+        },
+        {
+          "path": "packages/engine/test/r5-distance.test.ts",
+          "suite": [],
+          "title": "Lancaster returned counter elected=%s controls real advance opportunity and payment",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Real returned counter: elected maai opens zero advance windows and rejects every attempted advance atomically, retaining both cards and zero damage; declined control allows one payment and full counter damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#own-turn-extra-once",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s own-turn-once-attempt",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab04",
+            "C"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation spends the own-turn attempt, serialized replay is rejected and real next own turn restores the extra option."
+        },
+        {
+          "path": "packages/engine/test/character-turn-extras.test.ts",
+          "suite": [],
+          "title": "%s %s target %s main-action-preserved",
+          "parameters": [
+            "リーア姫",
+            "c2-p03-r1c2-ab04",
+            "C"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ability frame takes no own action; a following actual attack damages the target and advances to withdrawal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#spirit-minus-five",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#selected-single-target-vanmil-ban-release",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#lia-alive-duration",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual own-turn Blessing expires on the source lethal attack before disposal",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real own-turn Blessing persists until a real lethal attack places Lia in pending death; leases clear before her hand disposal and Vanmil suppression returns."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Isolated turn and presence mutation demonstrate that temporary source absence retains the relief."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#other-ban-causes-retained",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural preexisting unrelated ban survives an actual successful Blessing",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Explicitly seeded unrelated ability-disabled status is present before successful Blessing and remains identical afterwards; Vanmil gate clears but ability use remains disabled."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#optional-selected-multiple-bans",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual optional designation rejects empty/duplicate/missing targets without spending attempt and allows a later real main attack."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#exclude-Lia",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "publicSuppressionTargets"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "リーア姫",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired identity fixture: hidden exempt target retains identical outsider transcript through real designation but is not suppressed; ordinary identity is suppressed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Explicit public/hidden identity boundary omits revealed Lia and Lancelot II while allowing hidden target."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#exclude-LancelotII",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "publicSuppressionTargets"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "parameters": "聖騎士ランスロット2",
+          "kind": "structural-resolver",
+          "bindingNote": "Paired identity fixture: hidden exempt target retains identical outsider transcript through real designation but is not suppressed; ordinary identity is suppressed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Explicit public/hidden identity boundary omits revealed Lia and Lancelot II while allowing hidden target."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#durable-source-provenance",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing faces %s %s success=%s releases only the selected designation",
+          "parameters": [
+            1,
+            3,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual own turn with spirit eight: sum three succeeds and sum four fails at spirit minus five. Two real designations persist with source provenance; only selected B is relieved on success while D stays suppressed. Multi-target input is rejected atomically."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "parameters": "A",
+          "kind": "structural-resolver",
+          "bindingNote": "Actual ban followed by explicit lifecycle boundary calls retains the complete designation and suppression through source or target death and resetup."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "parameters": "B",
+          "kind": "structural-resolver",
+          "bindingNote": "Actual ban followed by explicit lifecycle boundary calls retains the complete designation and suppression through source or target death and resetup."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#earth-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "地槍",
+            "地",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#wind-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "風矢",
+            "風",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#water-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "氷矢",
+            "水",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2-ab04#fire-magic-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/declaration-effects.ts",
+          "symbol": "declarationEffects"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury actual %s %s magic level %s permits the elemental election",
+          "parameters": [
+            "炎矢",
+            "炎",
+            4
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental magic offers and accepts the election; selected effect is five versus declined four, preserving use level four and actual damage/payment."
+        },
+        {
+          "path": "packages/engine/test/declaration-modifier-sources.test.ts",
+          "suite": [],
+          "title": "Fury only offers its whole package on actual elemental magic, not elemental warrior or black magic",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual printed elemental warrior and black magic candidates offer no elemental package."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#actual-attacking-role",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes shared attack check public male eligibility=%s, hidden sex never qualifies",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c2-ab04#actual-defending-role",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalStatAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes defending check refers only actual attacker public male=%s",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        },
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Arnes defending check refers only actual attacker public male=%s",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual attack or defense check receives the two-spirit addition only for the public male opponent in its real role."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#GOOD-required-for-attack-bonus",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalTechniqueAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth numeric addition preserves actual null damage and requires GOOD/public named target",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos-target attack crosses GOOD/EVIL and public/hidden combinations; effect gets one only for GOOD plus public named target and null damage remains null."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#public-Uonos-target-effect-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalTechniqueAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth numeric addition preserves actual null damage and requires GOOD/public named target",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Uonos-target attack crosses GOOD/EVIL and public/hidden combinations; effect gets one only for GOOD plus public named target and null damage remains null."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab05#public-Gainas-target-effect-plus-one",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/conditional-stats.ts",
+          "symbol": "conditionalTechniqueAdditions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/conditional-stats.test.ts",
+          "suite": [],
+          "title": "Truth freezes target-local effect/damage for the named public enemy only",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real multi-target attack adds one effect and two damage to public Gainas only; unrelated target retains base six effect and eight damage. Both actual damages are asserted."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#sword-attack",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "zanOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "resolveZan"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "decline",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Non-sword has no Zan offer and a structural null sword preserves null arithmetic",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "Actual nonsword offers no Zan and resolves four damage; separate explicitly structural null-sword arithmetic preserves null."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#actual-zero-maai-payments",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "zanOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "A real maai canceled by a real advance still prevents Zan for that hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual physical maai remains submitted history after actual advance cancellation: Zan is absent and forged use rejected atomically, damage remains five."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual chanted two-hit sword preserves canceled first-hit maai while doubling the independent second hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real chant and two-hit attack retains first hit paid-maai history and doubles only second hit: seven plus fourteen damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#hit-required",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "zanOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "freezeZan"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Zan skips the target that actually teleported while doubling the remaining undefended sword hit",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual teleport sets first target defended; follower-entry election belongs only to the remaining target and final damage is zero versus twenty-four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab02#damage-double",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/zan.ts",
+          "symbol": "freezeZan"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "decline",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Actual sword five with Zan %s only doubles the selected uncanceled use",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword resolves ten damage only after elected uncanceled Zan; decline and cancellation retain five damage."
+        },
+        {
+          "path": "packages/engine/test/zan.test.ts",
+          "suite": [],
+          "title": "Zan doubles before the actual initially placed Soldier subtracts its HP",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Real initial Soldier placement and sword attack: five doubles to ten before Soldier HP one is deducted, leaving nine body damage and discarding Soldier once."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab01#sword-attack-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "destructionAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "resolveDestructionAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "Asfelt actual %s with %s attribute enables the destruction package",
+          "parameters": [
+            "黒翼飛翔剣",
+            "剣"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword or wind attack contains required attribute and accepts the destruction package; public attack exposes level-six destruction and damage resolves."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "狼牙"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual neither-sword-nor-wind martial source offers no package and forged selection is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2-ab01#wind-attack-eligibility",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "destructionAbilityOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/follower-destruction.ts",
+          "symbol": "resolveDestructionAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "Asfelt actual %s with %s attribute enables the destruction package",
+          "parameters": [
+            "風矢",
+            "風"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual sword or wind attack contains required attribute and accepts the destruction package; public attack exposes level-six destruction and damage resolves."
+        },
+        {
+          "path": "packages/engine/test/follower-destruction-abilities.test.ts",
+          "suite": [],
+          "title": "%s rejects wrong school, attribute or absent owner (%s / %s)",
+          "parameters": [
+            "竜皇子アスフェルト",
+            "c2-p04-r1c2-ab01",
+            "狼牙"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual neither-sword-nor-wind martial source offers no package and forged selection is rejected atomically."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#doubles-cancel-own-unresolved-hits",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p03-r2c1-ab01",
+            "first",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p03-r2c1-ab01",
+            "second",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#doubles-stop-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r2c1-ab01#stop-expires-next-seat-arrival",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "expireSourceTurn"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+          "parameters": "c2-p03-r2c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#doubles-cancel-own-unresolved-hits",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c1-ab01",
+            "first",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c1-ab01",
+            "second",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#doubles-stop-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab01#stop-expires-next-seat-arrival",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "expireSourceTurn"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+          "parameters": "c2-p06-r1c1-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#doubles-cancel-own-unresolved-hits",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c2-ab01",
+            "first",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        },
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual Griffin stops unprocessed own hits at %s ordinaryFailure=%s",
+          "parameters": [
+            "c2-p06-r1c2-ab01",
+            "second",
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual Griffin doubles on first or second hit cancel only unresolved hits; final damage is zero or eight respectively."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#doubles-stop-attacker",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [
+            "C03 complete mental received defenses"
+          ],
+          "title": "%s successful doubles cancel and save separate attacker seat clock",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual successful double creates attacker stop with exact defender ability provenance and next-attacker-seat clock; own target damage is zero while other target still takes damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c2-ab01#stop-expires-next-seat-arrival",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-defense.ts",
+          "symbol": "resolveMentalDefense"
+        },
+        {
+          "path": "packages/engine/src/lifecycle/advance.ts",
+          "symbol": "expireSourceTurn"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-received-defenses.test.ts",
+          "suite": [],
+          "title": "%s actual attacker seat arrival expires only its mental stop without a recovery roll",
+          "parameters": "c2-p06-r1c2-ab01",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual doubles followed by real turn progression retains stop through B and C, removes it on arrival at A after D, performs no recovery roll, and permits A action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab02#Lester-doubles-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "resolveMentalProtection"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "hasMentalDoubleGuard"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p03-r2c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab02#Gadyoora-doubles-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "resolveMentalProtection"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "hasMentalDoubleGuard"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c1-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1-ab02#Dia-doubles-protection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "resolveMentalProtection"
+        },
+        {
+          "path": "packages/engine/src/abilities/mental-protection.ts",
+          "symbol": "hasMentalDoubleGuard"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            6,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        },
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s protects %s %i doubles / ordinary success %s",
+          "parameters": [
+            "c2-p05-r2c1-ab02",
+            "c2-p06-r1c2-ab01",
+            6,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual selected Garwin protection prevents doubles stop/fatal consequences for this named source while preserving ordinary check success/failure and corresponding target damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab02#Lester-named-defense-cancel",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/named-responses.ts",
+          "symbol": "resolveNamedResponse"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p06-r1c1-ab02",
+            "c2-p03-r2c1-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public Gadyoora cancels the declared named mental defense before any ability check, and the original attack still resolves eight damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p06-r1c1-ab02#Dia-named-defense-cancel",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/named-responses.ts",
+          "symbol": "resolveNamedResponse"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mental-protection.test.ts",
+          "suite": [],
+          "title": "%s cancels designated pending mental source %s",
+          "parameters": [
+            "c2-p06-r1c1-ab02",
+            "c2-p06-r1c2-ab01"
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual public Gadyoora cancels the declared named mental defense before any ability check, and the original attack still resolves eight damage."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p01-r2c2#mandatory-warrior-damage-half",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "damagePreview"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "手裏剣",
+            2,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "手裏剣",
+            2,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "妖獣",
+            5,
+            false
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "Actual Cham %s yields %i under real suppression=%s",
+          "parameters": [
+            "妖獣",
+            5,
+            true
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual warrior damage halves to two, magic stays five; real suppression does not remove mandatory restriction."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p02-r1c2#mandatory-black-tech-prohibition",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/printed-restrictions.ts",
+          "symbol": "printedTechniqueAllowed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury rejects the actual black magic before payment or entropy consumption",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury rejects actual black counter in a real incoming attack window",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Actual Vanmil suppression does not lift Fury mandatory black-counter restriction",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "A nonblack actual sword with black in its name remains legal for Fury",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black attack/counter is rejected atomically even under suppression; nonblack technique with black in name remains legal."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury cannot put actual black %s into chants",
+          "parameters": "呪殺",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black chant rejected before payment."
+        },
+        {
+          "path": "packages/engine/test/mandatory-restrictions.test.ts",
+          "suite": [],
+          "title": "Fury cannot put actual black %s into chants",
+          "parameters": "血流",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual black chant rejected before payment."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p04-r1c2#mandatory-allegiance-check-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/rolls/advance.ts",
+          "symbol": "closeBeforeRoll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s mandatory conversion resistance survives actual Vanmil suppression",
+          "parameters": "竜皇子アスフェルト",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s real death and no-check converting resurrection retain mandatory resistance",
+          "parameters": "竜皇子アスフェルト",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s ordinary mental defense has no conversion bonus and conceals base and allegiance",
+          "parameters": "竜皇子アスフェルト",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p05-r2c1#mandatory-allegiance-check-plus-two",
+      "handler": [
+        {
+          "path": "packages/engine/src/rolls/advance.ts",
+          "symbol": "closeBeforeRoll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s mandatory conversion resistance survives actual Vanmil suppression",
+          "parameters": "黒騎士ガーウィン",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s real death and no-check converting resurrection retain mandatory resistance",
+          "parameters": "黒騎士ガーウィン",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        },
+        {
+          "path": "packages/engine/test/mandatory-fields.test.ts",
+          "suite": [],
+          "title": "%s ordinary mental defense has no conversion bonus and conceals base and allegiance",
+          "parameters": "黒騎士ガーウィン",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual faction check retains plus two after suppression and converting resurrection; ordinary mental check has no conversion bonus."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#outside-own-attack-only",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lia has no far target option and no option during actual own attack."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lia inspects nearby chants then discards all seen or none",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near inspection identifies selected target chants and all-or-none disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab02#near-selected-target",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/turn-information.ts",
+          "symbol": "turnAbilityOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [],
+          "title": "Lia excludes attack and far targets; hidden-target selection includes self while twins require actual public counterpart",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Lia has no far target option and no option during actual own attack."
+        },
+        {
+          "path": "packages/engine/test/turn-information-abilities.test.ts",
+          "suite": [
+            "Task7x exact whole original packages"
+          ],
+          "title": "Lia inspects nearby chants then discards all seen or none",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual near inspection identifies selected target chants and all-or-none disposal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#optional-Dia-conversion",
+      "handler": [
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "resolveLifecycleAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab04#optional-Yotsurm-conversion",
+      "handler": [
+        {
+          "path": "packages/engine/src/lifecycle/commands.ts",
+          "symbol": "resolveLifecycleAbility"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        },
+        {
+          "path": "packages/engine/test/release-lifecycle-bindings.test.ts",
+          "suite": [],
+          "title": "actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual ritual choice converts both named recipients and their objectives/protection only on election; unrelated Shin retains faction."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "evaluateReceivedReservations"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 1,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 2,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c1-ab01#successful-check-threshold-hit-immunity",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "evaluateReceivedReservations"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 1,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "actual transformed shield compares incoming five plus %s to warrior six",
+          "parameters": 2,
+          "kind": "canonical-transition",
+          "bindingNote": "Real transformed warrior six with successful shield cancels incoming effect six but not seven."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": true,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        },
+        {
+          "path": "packages/engine/test/received-defense-continuations.test.ts",
+          "suite": [],
+          "title": "canonical transformed LancelotII shield check success=%s uses actual warrior threshold",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual check success/failed result distinguishes zero damage from twelve."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "common:C04#C04/once-target-hit-before-followers",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedDefenseOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+          "parameters": "select",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+          "parameters": "cancel",
+          "kind": "canonical-transition",
+          "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "common:C04#C04/cancel-consumes-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receiveAttempt"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    },
+    {
+      "row": "common:C04#C04/target-local-not-source-global",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedTechnique"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source action stays unchanged, B effect becomes five while C stays six; damage eight each."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Exact source assertions bound; frozen current-candidate run and acceptance remain."
+      ]
+    }
+  ]
+}

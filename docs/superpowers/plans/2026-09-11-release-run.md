@@ -1,5 +1,8 @@
 # 公開走り切り Implementation Plan
 
+> **再開（2026-09-12）:** ユーザーの明示的なgoal指示により本セッションでM4まで再開。現在の登録済みworktreeは `/Users/chinju/git/madou-senki-worktree-release-run`、ブランチは `worktree-release-run`。旧スレッドのgoalは変更しない。停止時点の記録は [release-run-handoff-2026-09-12.md](../../operations/release-run-handoff-2026-09-12.md) を維持する。B7残4条項から継続する。
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. サブエージェント・独立レビュー・自己レビューはユーザー指定により禁止。受け入れは [試験受け入れ方針](../../operations/acceptance-policy.md) `acceptance-policy/test-only-v1`。
 
 **Goal:** 台帳のsemantic条項5,259件を試験受け入れで全件accepted/notApplicableにし、正式STARTからの一戦を自動試験で通し、Cloudflareのstaging→productionへ招待制で公開する。対人での操作評価は公開後に行う。
@@ -999,7 +1002,7 @@ Expected: ヘルパー未定義で失敗
 Run: `pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts`
 Expected: 1件成功
 
-- [ ] **Step 5: `scripts/build_owned_reclaim_bindings.py` を書き、全 `CASES` リテラルと束縛ファイルを生成する**
+- [x] **Step 5: `scripts/build_owned_reclaim_bindings.py` を書き、全 `CASES` リテラルと束縛ファイルを生成する**
 
 ```python
 #!/usr/bin/env python3
@@ -1059,17 +1062,17 @@ if __name__ == '__main__':
 
 `row['entryId']` と `clauseKey` から人物・カード名を復元する規則は Step 1 の出力で確認し、上記の `split` を実データに合わせる。`offerReclaim` が `reclaim.ts` の export 名であることを `grep -n "export function offerReclaim" packages/engine/src/reclaim.ts` で確認する。
 
-- [ ] **Step 6: `--emit-cases` の出力を試験ファイルの `CASES` に置き換え、所有従者の `describe('owned follower base recovery')` を同じ形で追加して全件実行**
+- [x] **Step 6: `--emit-cases` の出力を試験ファイルの `CASES` に置き換え、所有従者の `describe('owned follower base recovery')` を同じ形で追加して全件実行**
 
 Run: `pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts`
 Expected: 784 件成功。失敗するカードは個別に原因を調べ、engine 側の不具合なら修正し関連 suite（`owned-reclaim.test.ts`, `reclaim-reservations.test.ts`, `reuse-abilities.test.ts`）を再実行する。カード固有の合法経路がない（例: 従者が特定条件でしか置けない）場合はその行を Task A7 の `notApplicable` 手順で扱い、理由に経路不在の根拠を書く。
 
-- [ ] **Step 7: 束縛を適用**
+- [x] **Step 7: 束縛を適用**
 
 Run: `python3 scripts/build_owned_reclaim_bindings.py --bindings docs/operations/evidence/2026-09-11-owned-reclaim-bindings.json && python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-owned-reclaim-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160`
 Expected: `valid: true`、pending の owned-reclaim が 0
 
-- [ ] **Step 8: コミット**
+- [x] **Step 8: コミット**
 
 ```bash
 git add packages/engine/test scripts data docs && git commit -m "test,data: 所有技・所有従者784件の通常回収をデータ駆動試験で束縛する"
@@ -1077,26 +1080,36 @@ git add packages/engine/test scripts data docs && git commit -m "test,data: 所�
 
 B2部分実績: Step1〜4完了。条項末尾は9種類（通常共通5、技の実使用1、従者の死亡/士気失敗除外/攻撃捨て札除外3）なので種類ごとに静的なit.eachを分ける。技125組・従者23組の物理札を生成器で展開済み。aliases.jsonの複数正規名と同名物理コピーを全て保持し、条項の数字indexを元のowned配列へ対応付ける。白輪3試験・生成器4試験・型・全台帳validator成功。全件試験と束縛適用は未完、784行はpendingを維持。生成器CLIは全件のAST宣言・tuple検証が通るまで束縛ファイルを書かない。
 
+2026-09-12 B2再開記録: PR #3 が main にマージ済みで旧 worktree が無かったため、`2f4c036` から `/private/tmp/madou-release-run/release-run`（`worktree-release-run`）を作成した。白輪に白光・裂界・天舞を追加し、3条項×4枚の12ケースを実行。裂界・天舞はヘルパーが詠唱を省いて `CHANT_REQUIRED` となることを確認し、通常の `CHANT` と手番一巡によって解消した。所有回収・予約保持の既存試験を含む36ケース成功。通常攻撃終了時の回収は選択と同時に親も完了するため、この経路を「未完了の親の下での予約保持」の証拠にはしない。残る全物理札の経路、別コピー共通予算、実変身・死亡復活、親未完了中の予約、従者の3固有条項は未完了。B2の784行はpendingを維持し、束縛生成・適用・accepted昇格はまだ行っていない。
+
+2026-09-12 B2全物理札への展開: 技125組・従者23組の静的CASESを全件配置した。技は実使用・正規名1回・辞退・別コピー共通予算の4条項（500ケース）、従者は実死亡・正規名1回・辞退・別コピー共通予算・親未完了中の予約の5条項（115ケース）が成功。既存24件を含む全639件・型検査・生成器等8件・台帳validator成功。水晶球は実際に命運凶変で取り消された使用、復活は実死亡を起こす既存fixture、従者は配置→実詠唱→滅界による破壊で検証した。原作札の効果一般をこの回収試験だけで受け入れたとは扱わない。詳細とsource hashは [B2進捗証跡](../../operations/evidence/2026-09-12-b2-owned-matrix-progress.json)。残りは技の `retention-transform-revival` / `reserve-before-parent-release`、従者の `retention-transform-revival` / `morale-failure-excluded` / `attack-discard-not-follower-death`。束縛生成の事前検証は未実装のretention条項で停止することを確認済み。784行pending・accepted 0を維持。Step5〜8は未完了。
+
+2026-09-12 B2除外条件と返却境界: 士気失敗が従者死亡の回収窓を開く不具合を13ケースで再現し、採用裁定G11に沿って直接捨て札へ移すよう修正した。士気判定のない札を含む23組と、従者攻撃の捨て札を死亡扱いしない23組を検証した。攻撃手段のないアルケミア城は、直接攻撃・全軍突撃せよの両方が支払い前に拒否されることを確認。技125組には、通常使用の原子的な親完了と、実際の割り込み使用の親未完了中の予約をそれぞれassertする試験を追加した。現在の行列は786ケース。単体全実行は7,335/7,336成功で、士気失敗札がresolutionに残る旧期待値1件を修正。その後、現行行列786件とmulti-hit 6件の全792件が成功。Worker全2,537件・全対象型検査・生成器等8件・台帳validatorも成功。単体全体を一度にgreen再実行したとは扱わない。詳細は [B2除外条件進捗](../../operations/evidence/2026-09-12-b2-exclusions-progress.json)。残件は技125組・従者23組の `retention-transform-revival`。束縛gateはその未実装条項で停止し、784行pending・accepted 0・Step5〜8未完了を維持する。
+
+2026-09-12 B2完了: 残る技125組・従者23組で実死亡と復活後の回収履歴保持を検証し、変身可能なランスロット・ウーノスは実コマンドによる変身も確認した。ヴァンミールは死亡による終局と履歴保持を検証。行列934件と関連117件の全1,051件が成功し、束縛生成・適用784行・台帳validator valid:true。owned-reclaim pendingは0、具体的実装済み4,613、acceptedは0。詳細は [B2完了進捗証跡](../../operations/evidence/2026-09-12-b2-complete-progress.json)。候補版での受入はB8に残す。
+
 ### Task B3: 原典例 S01〜S32 の source 行 210 件
 
 **Files:**
 - Read: `docs/operations/evidence/2026-09-10-r6-candidate-run.json`（122 参照）、`docs/operations/evidence/2026-09-10-r6-scenario-source-index.json`
 - Create: `docs/operations/evidence/2026-09-11-scenario-source-bindings.json`（生成: `scripts/build_scenario_bindings.py`）
 
-- [ ] **Step 1: シナリオIDごとに r6 candidate run の試験参照を集め、`S01#source/title`, `source/rulings/N`, `source/given`, `source/when`, `source/then` の各行に、そのシナリオの `canonical-transition` 試験を全て束縛する生成スクリプトを書く**
+- [x] **Step 1: シナリオIDごとに r6 candidate run の試験参照を集め、`S01#source/title`, `source/rulings/N`, `source/given`, `source/when`, `source/then` の各行に、そのシナリオの `canonical-transition` 試験を全て束縛する生成スクリプトを書く**
 
 `scenario-source-index.json` に S→試験の対応がある場合はそれを唯一の入力にする。無い場合は run の `cases[].test.title` が `S01` のような ID で始まるものを対応づける。1シナリオに試験が 1 件も無い場合は列挙して止める（その S は R6 計画の該当項目を再実行して試験を追加する）。
 
-- [ ] **Step 2: 適用し validator を通す**
+- [x] **Step 2: 適用し validator を通す**
 
 Run: `python3 scripts/build_scenario_bindings.py --bindings docs/operations/evidence/2026-09-11-scenario-source-bindings.json && python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-scenario-source-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160`
 Expected: `valid: true`、pending の scenario-source が 0
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add scripts data docs && git commit -m "data: 原典例S01〜S32のsource条項を実行済みシナリオ試験へ束縛する"
 ```
+
+2026-09-12 B3完了: 既存R6の唯一の対応表から210行を束縛した。S13/S32はR6で明記された抽象解決器、S23は初期ゾーン配置を固定した境界試験のため、元のstructural-resolver分類を維持する（canonicalへの付け替え・架空の札組合せ追加なし）。その他はcanonical-transitionを必須とし、全32例・各tuple・現行ASTを生成時に照合。対象Engine21ファイル496件、Python18件、台帳validator valid:true。scenario-source pending 0、具体的実装済み4,823、semantic pending 436、accepted 0。詳細は [B3完了進捗証跡](../../operations/evidence/2026-09-12-b3-complete-progress.json)。過去のrun hashを現候補の受入証跡には再利用せず、B8の候補版受入を残す。
 
 ### Task B4: 人物条項（目的・敗北・陣営・制限・継承・C16ほか）約 260 行
 
@@ -1105,7 +1118,7 @@ git add scripts data docs && git commit -m "data: 原典例S01〜S32のsource条
 - Read: `packages/engine/src/lifecycle/objectives.ts`（`factionObjective`, `initialProtection`, `protectedDead`, `replaceAllegiance`, `currentDefeatCondition`）、`apps/worker/test/fixtures/r6-extinction-scenario.ts`（全滅による終了の作り方）
 - Create: `docs/operations/evidence/2026-09-11-character-clauses-bindings.json`
 
-- [ ] **Step 1: 対象行の clauseKey 一覧を取り、末尾ごとに assert を決める**
+- [x] **Step 1: 対象行の clauseKey 一覧を取り、末尾ごとに assert を決める**
 
 ```bash
 python3 - <<'EOF'
@@ -1116,7 +1129,7 @@ print(collections.Counter(r['clauseKey'] .split('/')[0]+'/'+r['clauseKey'].split
 EOF
 ```
 
-- [ ] **Step 2: 26人物の `it.each` を書く。各 `it` は1条項群に対応させる**
+- [x] **Step 2: 26人物の `it.each` を書く。各 `it` は1条項群に対応させる**
 
 ```ts
 // packages/engine/test/character-clauses.test.ts
@@ -1175,21 +1188,53 @@ describe('allegiance', () => {
 
 `makeSeatedTable`/`killCharacter`/`settleLifecycle` が `fixtures.ts` に無い場合は、`r6-extinction-scenario.ts` の `act(...)` 手順を関数化して `fixtures.ts` に追加する（既存 export を壊さない）。陣営の許可集合は `objectives.ts` の `replaceAllegiance` 内にある `fixed` 表（11人物）が正本なので、これを `export function allowedFactions(characterId): Faction[]`（表に無い人物は3陣営）として切り出し、`replaceAllegiance` はそれを呼ぶ形にする。試験は `allegiance_text`（例「白の護り手：常にGOOD」）と `allowedFactions` の一致も assert し、表の写し間違いを検出する。
 
-- [ ] **Step 3: 実行し、条項の残り（restrictions / inheritance / C16 / 8件ずつある条件付き能力の共通条項）は同じファイルに `describe` を追加して 26 人物分を assert する**
+- [x] **Step 3: 実行し、条項の残り（restrictions / inheritance / C16 / 8件ずつある条件付き能力の共通条項）は同じファイルに `describe` を追加して 26 人物分を assert する**
 
 Run: `pnpm exec vitest run packages/engine/test/character-clauses.test.ts`
 Expected: 全件成功
 
-- [ ] **Step 4: 束縛ファイルを生成（`scripts/build_character_bindings.py`、B2 と同じ構造で clauseKey の先頭語→describe/title の対応表を持つ）し適用**
+- [x] **Step 4: 束縛ファイルを生成（`scripts/build_character_bindings.py`、B2 と同じ構造で clauseKey の先頭語→describe/title の対応表を持つ）し適用**
 
 Run: `python3 scripts/apply_ledger_bindings.py --bindings docs/operations/evidence/2026-09-11-character-clauses-bindings.json && python3 scripts/validate_runtime_coverage.py | cut -c1-160`
 Expected: `valid: true`、pending の character-semantic が 0
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add packages/engine data scripts docs && git commit -m "test,data: 人物26名の目的・敗北・陣営・制限・継承条項を束縛する"
 ```
+
+2026-09-12 B4基本条項: 印刷陣営・目的・敗北・追加継承なし・空の所有リスト・追加制限なしの187行を束縛した。行列216件＋関連140件の356件、全対象型検査、Python22件、台帳validator valid:true。26人物の実全滅勝利、保護対象27組の実死亡→彷徨→最終敗北、空所有12件の実回収窓を確認。陣営の既存fixed表はallowedFactionsへ切り出し、返却配列の変更で表が変わらないことも検証。残る人物能力150行はpendingで、全B4生成gateもその未実装行で停止。明示的な --core-only だけを適用した。具体的実装済み5,010、semantic pending249、accepted0。計画例の即時敗北・原文表示完全一致は採用せず、現行の彷徨処理と正規化された保護対象を検証している。詳細は [B4基本条項進捗](../../operations/evidence/2026-09-12-b4-basic-progress.json)。Step3〜5と候補版受入は未完了。
+
+2026-09-12 B4手番内追加能力: 7能力の試行回数・通常行動保持・公開優先権/非公開選択中の拒否と占星の単一対象を、新規22試験で検証して23行を追加束縛。実取消後のフェーズ変更・JSON保存復帰でも同じ手番の権利は戻らず、実際の次手番で回復する。祝福の指定は実際のヴァンミール宣言で作り、神出鬼没は戦闘除外を守る公開窓で検証。関連含む147試験、全対象型検査、Python14件、台帳validator成功。人物束縛計210行、人物pending127、semantic具体的実装済み5,033、pending226、accepted0。全B4生成gateは残127条項で停止する。詳細は [B4追加能力進捗](../../operations/evidence/2026-09-12-b4-extras-progress.json)。Step3〜5は引き続き未完了。
+
+2026-09-12 B4精神系防御・身代わり: 精神系3能力の実取消→同一2発群の再宣言拒否→後続の合法な別席攻撃での回復、同陣営攻撃者、従者開始後の拒否を能力別に追加。固定陣営は攻撃宣言前の人物設定から検証し、既存の悲しき愛の実身代わり/防御制限試験にも対応付けた。新規11試験、対象計94試験、全対象型検査、Python15件、台帳validator成功。未実装15行を解消し既存2行を再束縛、束縛ファイル計227行。人物pending112、semantic具体的実装済み5,048、pending211、accepted0。全B4生成gateは残112行で停止。詳細は [B4精神系防御進捗](../../operations/evidence/2026-09-12-b4-mental-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4条件付き能力の選択・不在: 全8能力の初期OFF/実取消/新機会での明示ON/保存復帰/OFFと、実詠唱・裂界・命運凶変による異界移動→祈願でDawn取得→実帰還→実接近・所有者死亡時の選択消去を追加した。別の保存継続では保護対象を実際に殺して彷徨中の保持も確認し、保護対象なしの人物は他者死亡でも在席・選択を保持する。新規16試験、既存込み96試験、型検査、Python16件、台帳validator成功。未実装16行を解消、人物pending96、semantic具体的実装済み5,064、pending195、accepted0。全B4生成gateは残96行で停止。詳細は [B4条件付き能力進捗](../../operations/evidence/2026-09-12-b4-conditional-progress.json)。固有条件の消失・凍結値・継承などとStep3〜5は未完了。
+
+2026-09-12 B4条件付き能力の更新: 全8能力を追加検証。リーアはB指定からC指定への更新を実際の命運凶変で取り消し、旧指定と同機会の試行済み記録を保存復帰後も保持。他7能力は更新対象集合を持たないため、重複ONの原子的拒否で既存選択・履歴が変わらないことを検証し、存在しない更新取消を試験した扱いにはしていない。新規8試験、関連104試験、型検査、Python17件、台帳validator成功。人物pending88、semantic具体的実装済み5,072、pending187、accepted0。全B4生成gateは残88行で停止。詳細は [B4更新規則進捗](../../operations/evidence/2026-09-12-b4-updates-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4影系子攻撃: イダの影分身3行・ヨーツルムの影跳び6行を実親子攻撃へ束縛。既存の専用影分身による射程・準備済み詠唱・使用判定と、新規5試験による影跳びの射程/詠唱拒否、接近/離脱/手番開始終了拒否、魔法使用レベル判定の成功失敗境界を確認した。支払1枚・移動マーカーなし・子辞退後の防御保持も実取消/辞退試験で確認。関連45試験、型検査、Python18件、台帳validator成功。人物pending79、semantic具体的実装済み5,081、pending178、accepted0。全B4生成gateは残79行で停止。詳細は [B4影系子攻撃進捗](../../operations/evidence/2026-09-12-b4-shadow-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4複数従者ソース: ウパニシャットとディアの各7条項、計14行を新規8試験へ束縛。手札/配置済みソースを宣言順・対象・専用指定付きで確保し、実親取消で全消費と行動消費を確認。実子取消と使用判定失敗では後続ソースが解決され、士気免除でも使用判定は残る。単一防御群の各ヒットの使用/効果レベル・損害が個別値を保持する。関連189試験、型検査、Python19件、台帳validator成功。人物pending65、semantic具体的実装済み5,095、pending164、accepted0。両人物の踏み込み共有範囲・従者防御snapshotの計4行は未実装。全B4生成gateは残65行で停止。詳細は [B4従者ソース進捗](../../operations/evidence/2026-09-12-b4-bundles-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4従者ソース境界: 両人物の残4条項を新規4試験へ束縛。最初のソースでB/Cの間合いを1枚の踏み込みで取消し、次ソースでは踏み込み一覧が空となりBの新たな間合いが有効であることを実損害まで確認。女性親衛隊の単一防御snapshotに全ソースのhit indexと個別レベルが保存され、実士気判定が1回だけ行われることも検証。対象70試験、型検査、Python20件、台帳validator成功。従者能力18条項の束縛が揃った。人物pending61、semantic具体的実装済み5,099、pending160、accepted0。全B4生成gateは残61行で停止。詳細は [B4従者ソース境界進捗](../../operations/evidence/2026-09-12-b4-bundle-boundaries-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4撃破報酬: ヨーツルムの6条項を束縛。実攻撃・実反撃・実氷鏡反射による精神8の対象死亡で、報酬の加害者/対象/原因カード/実損害を確認し、保存復帰後に1回だけ回復・戦士/魔法成長する新規3試験を追加。他者撃破の既存実試験と、彷徨/自傷除外の直接settleDamage試験を併用。後者2行はstructural-resolverとして明示し、実遷移へ昇格させない。対象26試験、型検査、Python21件、台帳validator成功。人物pending55、semantic具体的実装済み5,105、pending154、accepted0。全B4生成gateは残55行で停止。詳細は [B4撃破報酬進捗](../../operations/evidence/2026-09-12-b4-hunger-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4リーア指定・ディア手札: 5条項を束縛。リーアの指定後にCを実公開しても対象が追加されない試験と、createGameで実際に配られたディアの初期5枚が公開上限7でも増えない試験を追加。既存の実ENDによる上限低下後の調整と、受け手の停止/ハジャ加算の構造試験を併用し、後者2行はstructural-resolverを保持。新規2件、対象82試験、型検査、Python22件、台帳validator成功。人物pending50、semantic具体的実装済み5,110、pending149、accepted0。全B4生成gateは残50行で停止。詳細は [B4リーア・ディア進捗](../../operations/evidence/2026-09-12-b4-lia-dia-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4ランスロット変身: 残2条項を新規3試験に束縛。実成功/実取消の両方で1回の試行記録を保存復帰・フェーズ変更後も保持し再宣言を拒否。実変身後にリーアの公開状態を直接変更しても人物/継承能力が戻らない境界はstructural-resolverとし、合法な非公開化操作を作り出さない。対象5試験、型検査、Python23件、台帳validator成功。人物pending48、semantic具体的実装済み5,112、pending147、accepted0。全B4生成gateは残48行で停止。詳細は [B4変身進捗](../../operations/evidence/2026-09-12-b4-transform-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4 C16指定: ヴァンミールの指定/公開機会10条項を束縛。新規2試験で空・重複・不存在の原子的拒否と試行権保持、有効指定後の実通常攻撃、実他者手番での公開応答限定・実取消後の再試行拒否を確認。既存の新規なし拒否/累積/自己指定と非公開人物の比較試験を対応付け、公開候補・秘密情報非依存の4行はstructural-resolverを保持。対象24試験、型検査、Python24件、台帳validator成功。人物pending38、semantic具体的実装済み5,122、pending137、accepted0。全B4生成gateは残38行で停止。詳細は [B4 C16指定進捗](../../operations/evidence/2026-09-12-b4-c16-designations-progress.json)。C16の寿命・祝福および条件付き能力とStep3〜5は未完了。
+
+2026-09-12 B4 C16寿命・祝福: 残14条項を束縛。新規8試験で実手番進行後の指定済み候補・世代保存、実祝福→実致死攻撃による処分前G15失効、直接死亡/再配置での指定保持、直接人物/世代変更での失効と対象不在での保持を確認。既存の秘密情報比較・停止/不在・再指定・復活境界も対応付け、直接状態変更の検証はstructural-resolverを明示。対象32試験、型検査、Python25件、台帳validator成功。C16人物条項の束縛が揃い、残る人物24行は8条件付き能力の条件消失/継承/凍結値。semantic具体的実装済み5,136、pending123、accepted0。全B4生成gateは残24行で停止。詳細は [B4 C16寿命進捗](../../operations/evidence/2026-09-12-b4-c16-lifetimes-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4条件付き能力の継承境界: 8能力を実際に選択した後、継承元を保持した人物変更・保存復帰・cleanupで能力ID/元人物ID/対象指定が残り、継承元を除去すると選択と候補が消える新規8試験へ束縛。これらの人物にランスロット2への印刷変身はないため、全8行を明示的なstructural-resolverとした。関連114試験、型検査、Python26件、台帳validator成功。人物pending16、semantic具体的実装済み5,144、pending115、accepted0。残りは8能力の条件消失/凍結値で、全B4生成gateは残16行で停止。詳細は [B4継承境界進捗](../../operations/evidence/2026-09-12-b4-inheritance-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4条件消失: 全8能力を実選択後、能力固有の公開人物/陣営/攻撃文脈/竜従者士気文脈/自身公開の条件を外し、加算だけが0となって選択が残り、保存復帰後の条件回復で再選択なしに加算が戻る新規8試験へ束縛。竜は実攻撃から発生した士気判定を使うが条件変更は直接境界操作なので全8行をstructural-resolverとした。関連122試験、型検査、Python27件、台帳validator成功。人物pending8、semantic具体的実装済み5,152、pending107、accepted0。全B4生成gateは残る凍結値8行で停止。詳細は [B4条件消失進捗](../../operations/evidence/2026-09-12-b4-condition-loss-progress.json)。Step3〜5は未完了。
+
+2026-09-12 B4完了: 最後の凍結値8条項を束縛。新規7試験で6能力の実判定確定→実OFF後の閾値/結果保持と、ウパの実損害確定後OFFでも8損害が解決されることを確認。竜士気/真実の効果・損害/ディアEND保持の既存試験も対応付け。部分指定なしの全生成339行が成功し、計画名の character-clauses-bindings.json を適用。全束縛先13ファイル639試験、型検査、Python28件、台帳validator成功でcharacter-semantic pending0。B4 Step3〜5を完了。semantic具体的実装済み5,160、pending99、accepted0で、候補版受入は未完了。詳細は [B4全体検証記録](../../operations/evidence/2026-09-12-b4-complete-progress.json)。次はB5。
 
 ### Task B5: 残る個別条項（ability-effect / shared-semantic / その他約 170 行）
 
@@ -1197,7 +1242,7 @@ git add packages/engine data scripts docs && git commit -m "test,data: 人物26�
 - Modify: 該当 `packages/engine/test/*.test.ts`
 - Create: `docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json`
 
-- [ ] **Step 1: `python3 scripts/ledger_report.py` の pending 内訳を出し、行ごとに (a) 既存 canonical 試験を束縛、(b) 試験追加、(c) `notApplicable`（A7 手順・ユーザー承認済み D4 の範囲内のみ）に分類した一覧を `docs/operations/evidence/2026-09-11-remaining-clauses.md` に書く。D4 以外を `notApplicable` にしない**
+- [x] **Step 1: `python3 scripts/ledger_report.py` の pending 内訳を出し、行ごとに (a) 既存 canonical 試験を束縛、(b) 試験追加、(c) `notApplicable`（A7 手順・ユーザー承認済み D4 の範囲内のみ）に分類した一覧を `docs/operations/evidence/2026-09-11-remaining-clauses.md` に書く。D4 以外を `notApplicable` にしない**
 
 - [ ] **Step 2: (b) の試験を追加し実行、(a)(b) の束縛を適用**
 
@@ -1210,6 +1255,26 @@ Expected: `valid: true`、semantic の pending が 0、`implementedRelatedOnly` 
 git add packages data docs && git commit -m "test,data: 残る個別条項を束縛し、semantic pendingを解消する"
 ```
 
+2026-09-12 B5開始: 開始時99行の暫定分類一覧を作成し、確認済みの撃破報酬/吸収回復11行を束縛。既存2宣言を静的it.eachへ変換し、4ケースをASTで識別可能にした。対象24試験、型検査、台帳validator成功。具体的実装済み5,171、semantic pending88、accepted0。残86行は直接assertionの確認/追加対象、D4c 2行はA7補足に従いB8直前までpending。分類のbは暫定でStep1〜3は未完了。詳細は [B5報酬進捗](../../operations/evidence/2026-09-12-b5-rewards-progress.json)。
+
+2026-09-12 B5影跳び: 6条項を追加束縛。新規3試験で精神7−2の成功/失敗境界と、子攻撃の別在席対象への原子的拒否→元攻撃者への実攻撃を確認。実辞退・費用・初期配置従者無視・間合い拒否の既存試験も対応付け。対象19試験、型検査、台帳validator成功。具体的実装済み5,177、semantic pending82、accepted0。B5束縛計17行、残通常80行とD4c 2行。詳細は [B5影跳び進捗](../../operations/evidence/2026-09-12-b5-shadow-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5仮想攻撃: アイエル/フレイアード15条項を既存の実宣言・損害処理・取消・間合い枚数・原子的拒否試験へ束縛。射程近/魔法/使用効果4/水3損害・炎5損害、カード不要、公開条件、アイエル追加間合いを能力別tupleで確認。対象15試験、台帳validator成功。コード変更なし。具体的実装済み5,192、semantic pending67、accepted0。B5束縛計32行、残通常65行とD4c 2行。詳細は [B5仮想攻撃進捗](../../operations/evidence/2026-09-12-b5-virtual-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5死亡時能力・悲しき愛: チャム3行とウパ4行を実試験へ束縛。実死亡時の本人限定選択/適格対象/追加カード不要、実公開アーネスへの精神加算、実身代わり・取消の一回制限、実同時死亡→復活後の精神報酬・使用済み保持を確認。対象27試験、台帳validator成功。コード変更なし。具体的実装済み5,199、semantic pending60、accepted0。B5束縛計39行、残通常58行とD4c 2行。詳細は [B5死亡時能力進捗](../../operations/evidence/2026-09-12-b5-death-gifts-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5距離・間合い: チャム/ティア/ランカスター7条項を束縛。新規2ケースで実反撃への間合い選択時は踏み込み機会なし・不正提出拒否、辞退時は実踏み込みで反撃損害が入る対照を確認。接近/離脱/戦闘の必要2枚、1枚費用、地魔法免疫の既存試験も対応付け（戦士かつ地属性の除外のみ構造試験）。対象33試験、型検査、台帳validator成功。具体的実装済み5,206、semantic pending53、accepted0。B5束縛計46行、残通常51行とD4c 2行。詳細は [B5距離進捗](../../operations/evidence/2026-09-12-b5-distance-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5祝福・能力禁止: リーア5条項/ヴァンミール4条項を束縛。新規3ケースで実手番の精神8−5境界（合計3成功/4失敗）、複数の実禁止対象から単一選択解除、別原因の禁止保持を確認。実取消後の回数消費/次手番回復/通常行動保持/死亡前失効を既存試験へ対応付け。別原因禁止・公開秘匿例外・不在/死亡再登場の直接境界は構造試験と明記。対象57試験、型検査、台帳validator成功。具体的実装済み5,215、semantic pending44、accepted0。B5束縛計55行、残通常42行とD4c 2行。詳細は [B5祝福・禁止進捗](../../operations/evidence/2026-09-12-b5-suppression-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5属性・攻防条件: フューリー4条項、アーネス2条項、真実の力3条項を束縛。新規4ケースで地槍/風矢/氷矢/炎矢の実選択時に効果Lv4→5、辞退時4、使用Lv4と支払い保持を確認。実攻防の公開男性条件、GOODと公開ウーノス/ガイナス対象条件は既存試験へ対応付け。対象104試験、型検査、台帳validator成功。具体的実装済み5,224、semantic pending35、accepted0。B5束縛計64行、残通常33行とD4c 2行。詳細は [B5属性・攻防進捗](../../operations/evidence/2026-09-12-b5-eligibility-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5剣・風と斬: アスフェルト6条項を束縛。新規3ケースで実転移による防御対象を斬から除外（0/24損害）し、剣/風の実攻撃が従者破壊能力を選べることを確認。間合いの実支払履歴、多段の発別適用、初期配置兵士のHP控除前の倍加は既存試験へ対応付け（null剣の算術のみ構造試験）。対象83試験、型検査、台帳validator成功。具体的実装済み5,230、semantic pending29、accepted0。B5束縛計70行、残通常27行とD4c 2行。詳細は [B5剣・斬進捗](../../operations/evidence/2026-09-12-b5-sword-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5精神防御: レスター/ガドューラ/ディアのゾロ目取消・停止・期限9条項と、ガーウィンの指定3能力保護/ガドューラの指定2能力取消を束縛。新規3ケースで実席順一周まで停止保持、攻撃者席到来時の無判定解除と行動再開を確認。実グリフォンの未処理発取消、他対象継続、保護の通常判定結果保持は既存試験へ対応付け。対象246試験、型検査、台帳validator成功。具体的実装済み5,244、semantic pending15、accepted0。B5束縛計84行、残通常13行とD4c 2行。詳細は [B5精神防御進捗](../../operations/evidence/2026-09-12-b5-mental-progress.json)。Step1〜3は未完了。
+
+2026-09-12 B5通常条項完了: 最後の通常13条項を束縛。新規4ケースで実覚醒の改心選択/辞退（ディア・ヨーツルム）と実変身後の盾の戦士Lv6に対する効果6/7境界を確認。強制制限・リーア近距離/自攻撃外・C04は既存実試験へ対応付け。対象210試験に加えてB5全束縛先20ファイル818試験、型検査、台帳validator成功。全99行の分類完了としてStep1を完了。通常97行は具体的実装済みで、残るD4c 2行はA7補足どおりB8直前に適用し、その時点でStep2〜3のpending0条件を閉じる。具体的実装済み5,257、semantic pending2（action-effect）、accepted0。詳細は [B5通常条項全体検証](../../operations/evidence/2026-09-12-b5-ordinary-complete-progress.json)。次はB6。
+
 ### Task B6: D2 無制限回収の秘匿比較と D3 同一席2権利の束縛
 
 **Files:**
@@ -1217,7 +1282,7 @@ git add packages data docs && git commit -m "test,data: 残る個別条項を束
 - Read: `apps/worker/test/fixtures/shared-reclaim-scenarios.ts`、`docs/operations/evidence/2026-09-09-r5-shared-reclaim.json`
 - Create: `docs/operations/evidence/2026-09-11-r4-d2-d3-bindings.json`
 
-- [ ] **Step 1: 失敗する試験を書く**
+- [x] **Step 1: 失敗する試験を書く**
 
 ```ts
 it('All-pass zero base extra and unlimited worlds with a hidden right holder share one public transcript', () => {
@@ -1238,28 +1303,80 @@ it('Unlimited right used after reveal answers in seat order, once per event, and
 
 `runSharedReclaimWorld` は既存の paired-world 試験が使うヘルパー名に合わせる（`reclaim-reservations.test.ts` の該当 `it` を開いて実名に置換する）。無制限権の所持者は R4計画B2 の一覧（例: 公開レスターの月の竪琴・魔詩・呪歌）から、fixture に既にいる人物を使う。
 
-- [ ] **Step 2: 失敗→実装（runtime変更が不要なら試験のみ）→成功**
+- [x] **Step 2: 失敗→実装（runtime変更が不要なら試験のみ）→成功**
 
 Run: `pnpm exec vitest run packages/engine/test/reclaim-reservations.test.ts`
 Expected: 全件成功
 
-- [ ] **Step 3: R4計画の該当2行（D2/D3 で文言を修正済み）に対応する台帳行を特定し、上記2件とレスター同一席の既存3件（Engine/DO/browser）を束縛して適用、コミット**
+- [x] **Step 3: R4計画の該当2行（D2/D3 で文言を修正済み）に対応する台帳行を特定し、上記2件とレスター同一席の既存3件（Engine/DO/browser）を束縛して適用、コミット**
 
 ```bash
 git add packages data docs && git commit -m "test,data: 無制限回収の秘匿比較と同一席2権利を台帳へ束縛する"
 ```
 
+2026-09-12 B6試験追加: D2の2試験を reclaim-reservations に追加。単一実カードで追加/無制限の双方を持つ人物組合せがないため、各4世界で弓と魔詩の実使用をそれぞれ比較（架空の能力継承なし）。カードごとに非所有者全投影・revision・event ID・イベント・4席PASS・最終捨て札が一致。実レスター公開でcursor保持、無制限選択1回、重複拒否、通常枠未消費と1枚回収を確認。対象14試験、型検査、台帳validator成功。runtime変更不要。Step1〜2完了、Step3の台帳行対応付けと既存Engine/DO/browser束縛は継続中。詳細は [B6秘匿試験進捗](../../operations/evidence/2026-09-12-b6-privacy-progress.json)。
+
+2026-09-12 B6完了: D2はG11の公開時計回り回答/公開時席維持・無制限通常枠保持・同機会再試行禁止、D3はG11の同一席競合終了へ対応付け、既存束縛を保った4行のファイルを適用。追加Engine2試験と既存レスターbase/printedのEngine/Worker/browserを束縛。Engine42、Worker2、browser2、型検査、台帳validator成功。既存bunが8787を占有していたため、E2EにPLAYWRIGHT_PORT設定（既定8787）を追加し18787で確認。ChromiumのMachポート制約は承認済みローカル実行で解消。Step3完了。詳細は [B6全体検証](../../operations/evidence/2026-09-12-b6-complete-progress.json)。候補受入ではなく、次はB7。
+
 ### Task B7: Worker / browser 側の必要束縛
 
 R4/R5/R6 計画で「Worker毎操作保存再送・browser全席reload」を要求する条項のうち、台帳行が Engine 試験だけを持つものに `worker-persistence` / `browser` 試験を追加束縛する。
 
-- [ ] **Step 1: 台帳で `kind` に `worker-persistence` と `browser` を持たない semantic 行のうち、manifest の `source` テキストに「保存」「再接続」「投影」「画面」「reload」を含む行を列挙する**
+- [x] **Step 1: 台帳で `kind` に `worker-persistence` と `browser` を持たない semantic 行のうち、manifest の `source` テキストに「保存」「再接続」「投影」「画面」「reload」を含む行を列挙する**
 
-- [ ] **Step 2: 対応する既存 `apps/worker/test/room-*.test.ts` と `tests/e2e/*.spec.ts` の試験を束縛する（新規試験は、既存のDO/browser fixtureに該当シナリオが無い場合だけ追加する）。適用・validator・コミット**
+- [x] **Step 2: 対応する既存 `apps/worker/test/room-*.test.ts` と `tests/e2e/*.spec.ts` の試験を束縛する（新規試験は、既存のDO/browser fixtureに該当シナリオが無い場合だけ追加する）。適用・validator・コミット**
 
 ```bash
 git add apps tests data docs && git commit -m "data: 保存・投影・画面条項へWorker/browser試験を追加束縛する"
 ```
+
+2026-09-12 B7開始: source参照をmanifestのquoteまで解決し、指定語を含みWorker/browserの片方以上を欠くsemantic39行を [初期一覧](../../operations/evidence/2026-09-12-b7-inventory.md)（JSONに元文・不足種別）へ列挙、Step1完了。禁止の同機会再試行、非公開対象表示、C04取消済み再試行禁止の3行に実DO保存再送とbrowser操作/reloadを追加束縛。Worker対象2ファイル24試験（Engine直接呼出しも含むため、worker-persistence束縛は実DOケースだけ）、browser対象3試験、台帳validator成功。残36行でStep2は継続。コード変更なし。詳細は [B7初回進捗](../../operations/evidence/2026-09-12-b7-first-progress.json)。
+
+2026-09-12 B7続行: G11の間合い使用時の公開処分機会、手番の術の公開回収機会、任意時点カードの所持回収の3行へ既存DO/browser試験を追加束縛。Worker41試験・browser3試験・台帳validator成功。不足33行、Step2継続。コード変更なし。詳細は [B7回収条項進捗](../../operations/evidence/2026-09-12-b7-reclaim-progress.json)。
+
+2026-09-12 B7続行: G11の仮想刃・仮想親衛隊の物理回収禁止とS29保存則の3行を追加束縛。既存browser試験を固定名にし、全席reload後の手札・回収予約等のassertionを追加。Worker13試験・browser5試験・型チェック・台帳validator成功。不足30行、Step2継続。詳細は [B7仮想カード進捗](../../operations/evidence/2026-09-12-b7-virtual-progress.json)。
+
+2026-09-12 B7続行: G11の配置済み従者死亡時の通常回収へDO/browser試験を追加束縛。既存の名前指定死亡回収は無制限能力権で通常権と異なるため、シャリアの実配置・攻撃・死亡・正体公開から通常回収するfixtureを追加。Worker毎操作保存再送1試験・browser全席reload1試験・型チェック・台帳validator成功。不足29行、Step2継続。詳細は [B7従者回収進捗](../../operations/evidence/2026-09-12-b7-follower-progress.json)。
+
+2026-09-12 B7続行: C04対象限定軽減とG14同時各発の従者HP軽減の2行を追加束縛。既存共有攻撃試験をEngine直接呼出しからDO毎操作保存再送へ移し、browser全席reloadを追加。既存3発試験も毎操作保存再送・8席reloadへ拡張。Worker計22試験・browser計2試験・型チェック・台帳validator成功。不足27行、Step2継続。詳細は [B7軽減条項進捗](../../operations/evidence/2026-09-12-b7-defense-progress.json)。
+
+2026-09-12 B7続行: S04のsource/title・source/when・acceptance-correspondenceの3行を追加束縛。既存canonical fixtureで2,3→4,4の丸ごと振り直し・同一roll ID・履歴をbrowser全席reloadで検証し、DOは毎操作保存再送へ拡張。共有試験を参照するG07の宣言ハッシュも再束縛。Worker1試験・browser4試験・型チェック・台帳validator成功。不足24行、Step2継続。詳細は [B7 S04進捗](../../operations/evidence/2026-09-12-b7-s04-progress.json)。
+
+2026-09-12 B7続行: G08効果値確定後の気合拒否へ既存DO/browser試験を追加束縛。browserは全席reload後の効果Lv6・気合の選択肢なし・手札不変と完了時damage5を追加検証。Worker4試験・browser4試験・型チェック・台帳validator成功。不足23行（C16とC04）、Step2継続。詳細は [B7 G08進捗](../../operations/evidence/2026-09-12-b7-g08-progress.json)。
+
+2026-09-12 B7続行: C16公開情報だけの対象候補1行を追加束縛。既存複数対象禁止シナリオで非公開リーアを候補に含め、実正体公開後だけ除外することをDO毎操作保存再送とbrowser全席reloadで確認。儀式後は通常行動消費済みのためno-main-actionの束縛は保留。共有G09参照を更新し、Worker7試験・browser2試験・型チェック・台帳validator成功。不足22行、Step2継続。詳細は [B7 C16候補進捗](../../operations/evidence/2026-09-12-b7-c16-candidates-progress.json)。
+
+2026-09-12 B7続行: C16禁止が通常行動を消費しない条項を追加束縛。儀式後から実コマンドで一巡し、次の自分のactionで禁止を宣言・解決してもPASS_ACTIONが受理されるDO/browserケースを追加。Worker毎操作保存再送・browser全席reloadを含む既存全体8/3試験、型チェック、台帳validator成功。不足21行、Step2継続。詳細は [B7通常行動進捗](../../operations/evidence/2026-09-12-b7-main-action-progress.json)。
+
+2026-09-12 B7続行: C16祝福の指定済み公開状態候補1行を追加束縛。既存DO成功/失敗ケースに候補B限定と未指定Aの拒否・再送不変を追加し、browser全席reload後の選択肢が指定済みB/Dだけであることを確認。共有G09参照更新、Worker8試験・browser3試験・型チェック・台帳validator成功。不足20行、Step2継続。詳細は [B7祝福候補進捗](../../operations/evidence/2026-09-12-b7-blessing-candidates-progress.json)。
+
+2026-09-12 B7続行: C16非公開対象による拒否なし・非公開免除対象の同一宣言transcriptの2行を追加束縛。既存DO比較に対応する2卓browser比較を追加し、通常シン/非公開リーアへ実宣言・各応答後の外部3席完全ビューが同一（独立player IDだけ正規化）、全8席reload後も同一で本人の適用だけ異なることを確認。Worker8試験・browser1試験・型チェック・台帳validator成功。不足18行、Step2継続。詳細は [B7非公開対象進捗](../../operations/evidence/2026-09-12-b7-hidden-target-progress.json)。
+
+2026-09-12 B7続行: C16同一指定のみの拒否・指定累積の2行を追加束縛。実祝福の新回答機会でBのみ再指定を拒否・状態不変、Dのみ追加して元B指定を保持する既存DOケースを拡張し、同操作のbrowser全席reloadを追加。Worker8試験・browser1試験・型チェック・台帳validator成功。不足16行、Step2継続。詳細は [B7指定累積進捗](../../operations/evidence/2026-09-12-b7-designation-progress.json)。
+
+2026-09-12 B7続行: C16自己指定後の追加宣言不可1行を追加束縛。既存fixtureから実自己指定・四席一巡後の新しい自手番へ進み、DOで宣言拒否・保存再送不変、browser全席reloadで自己禁止とボタン不在を確認。共有手番進行helperの既存ケースも含めWorker9試験・browser6試験・型チェック・台帳validator成功。不足15行、Step2継続。詳細は [B7自己指定進捗](../../operations/evidence/2026-09-12-b7-self-ban-progress.json)。
+
+2026-09-12 B7続行: C16空・重複・不存在対象拒否1行を追加束縛。既存DO不正対象ケースを拡張し、browser実WSでINVALID_COMMAND/INVALID_ACTION、各拒否後の保存状態・全席reloadビュー不変、最後に有効指定が成功することを確認。Worker9試験・browser1試験・型チェック・台帳validator成功。不足14行、Step2継続。詳細は [B7不正対象進捗](../../operations/evidence/2026-09-12-b7-invalid-target-progress.json)。
+
+2026-09-12 B7続行: C16再指定で有効な祝福が消えない条項1行を追加束縛。既存成功ケースを実C/D手番進行→次のヴァンミール手番のA/B指定まで延長し、DO祝福記録完全一致、B解除維持・新A禁止、browser全席reload後の解除表示を確認。共有G09参照更新、Worker9試験・browser1試験・型チェック・台帳validator成功。不足13行、Step2継続。詳細は [B7再指定進捗](../../operations/evidence/2026-09-12-b7-redesignation-progress.json)。
+
+2026-09-12 B7続行: C16祝福元のG15死亡入口失効1行を追加束縛。残HP1と弓を用意したfixtureで実禁止・祝福・次手番致死攻撃を行い、pending-deathで手札廃棄前に祝福消滅・対象禁止復帰をDO毎操作再送/browser全席reloadで確認。Worker10試験・browser1試験・型チェック・台帳validator成功。不足12行、復活条項は別途継続。詳細は [B7祝福死亡進捗](../../operations/evidence/2026-09-12-b7-blessing-death-progress.json)。
+
+2026-09-12 B7続行: C16復活で旧祝福が戻らない・発生元の生世代保存の2行を追加束縛。既存canonical-lia-life DOケースに対応するbrowserを追加し、実死亡→復活→再配置後も対象禁止が残り、新生での再祝福だけ解除することを全席reloadで確認。DOは新lifeIdと保存sourceLifeIdを確認。Worker1試験・browser1試験・型チェック・台帳validator成功。不足10行、Step2継続。詳細は [B7祝福復活進捗](../../operations/evidence/2026-09-12-b7-blessing-revival-progress.json)。
+
+2026-09-12 B7続行: C16 G15で禁止を早期解除しない条項1行を追加束縛。既存canonical-vanmil-death DO試験にbrowser操作を対応させ、実禁止→致死攻撃→pending-deathの全席reloadで指定維持・対象禁止・結果未確定、最終reloadでC13結果を確認。Worker1試験・browser1試験・型チェック・台帳validator成功。不足9行、Step2継続。詳細は [B7ヴァンミール死亡進捗](../../operations/evidence/2026-09-12-b7-vanmil-death-progress.json)。
+
+2026-09-12 B7続行: C16 禁止対象の死亡・復活後も指定を維持する1行を追加束縛。既存DO実遷移へ死亡・新life時の指定一致と毎操作再接続の全席表示比較を追加し、browserでも実禁止→致死攻撃→死亡→復活を操作。各境界で指定維持と全席reload前後一致を確認した。Worker3試験・browser1試験・型チェック・台帳validator成功。不足8行、Step2継続。詳細は [B7禁止対象復活進捗](../../operations/evidence/2026-09-12-b7-target-revival-progress.json)。
+
+2026-09-12 B7続行: C16 非公開免除対象にも同じ祝福判定・解除記録を残し、成功応答で従前の実効禁止を明かさない2行を追加束縛。正体だけ異なる2卓の実禁止→祝福で、Worker ACK/全外部席表示、browser各回答後表示を比較。判定・試行消費・未消費の通常行動・保存解除記録と全席reloadを確認した。Worker1試験・browser1試験・型チェック・台帳validator成功。不足6行、Step2継続。詳細は [B7祝福の秘密情報進捗](../../operations/evidence/2026-09-12-b7-blessing-privacy-progress.json)。
+
+2026-09-12 B7続行: C16 祝福がヴァンミール由来の禁止だけを解除する1行を追加束縛。実禁止→錯乱/催眠の実攻撃→後続手番の祝福で、別原因の能力禁止・停止が残ることを確認。Worker毎操作保存再送・全席投影比較と共通能力ゲート、browser全席reload・保存状態読取りを検証した。Worker2試験・browser2試験・型チェック・台帳validator成功。不足5行、Step2継続。詳細は [B7祝福と状態異常進捗](../../operations/evidence/2026-09-12-b7-blessing-status-progress.json)。
+
+2026-09-12 B7続行: C04 各対象・各ヒット一度と従者開始後の選択禁止1行を追加束縛。実グリフォン2ヒットで巨神の使用/取消後は次ヒットに新機会、従者開始後は解決終了まで選択不可を確認。Worker毎操作保存再送・全席投影と旧機会拒否、browser全席reloadを検証した。Worker3試験・browser3試験・型チェック・台帳validator成功。不足4行、Step2継続。詳細は [B7グリフォン防御進捗](../../operations/evidence/2026-09-12-b7-griffin-defense-progress.json)。
+
+2026-09-12 再開後B7: リーア人物同一性喪失1行を構造的保存境界として追加束縛。実禁止・祝福成立後の人物だけをfixtureで変更し、同じ生世代の旧leaseを保存。DO全席投影と実PASS_ACTIONによる失効・保存再送、browser全席reloadで禁止復帰とlease消滅を確認。通常変身経路の成功ではない。Engine既存35件、Worker1件、browser1件、型検査・台帳validator成功。対応版Chromium 153.0.8010.12の新headlessを採用。不足3行、Step2継続。詳細は [人物同一性境界の証跡](../../operations/evidence/2026-09-12-b7-identity-progress.json)。
+
+2026-09-12 B7完了: 残3行に実錯乱/催眠/裂界7ケースと構造的流浪保存境界3ケースを追加。実禁止・祝福成立後の指定/lease/生世代維持をDO毎操作保存再送とbrowser全席reloadで確認。流浪の発生経路を実コマンドと偽らず、境界入力と明記。人物同一性回帰を含むWorker11件・browser11件、型検査・台帳validator成功。初期39行の不足0、Step2完了。semantic pending2はB8凍結直前まで維持。詳細は [B7完了証跡](../../operations/evidence/2026-09-12-b7-complete-progress.json)。
 
 ### Task B8: 候補固定・全実行・昇格・readiness
 
@@ -1269,7 +1386,7 @@ git add apps tests data docs && git commit -m "data: 保存・投影・画面条
 - Modify: `data/second-edition/runtime-coverage.json`、`packages/catalog/src/selected/readiness.json`
 - Create: `scripts/run_candidate.sh`
 
-- [ ] **Step 1: 全実行スクリプトを書く**
+- [x] **Step 1: 全実行スクリプトを書く**
 
 ```bash
 #!/usr/bin/env bash
@@ -1289,24 +1406,28 @@ python3 scripts/record_runtime_run.py \
 exit "$STATUS"
 ```
 
+2026-09-12: `scripts/run_candidate.sh` を実装。clean作業木を確認し、D4適用→凍結→全Engine/Web・Worker・browser→run記録を直列実行する。Vitestは同時実行を2 workerに制限し、全件対象を維持。記録失敗も終了1以上で伝播する。現在のブラウザは `PLAYWRIGHT_BROWSERS_PATH=/private/tmp/madou-playwright`、競合回避は `PLAYWRIGHT_PORT=18787` を使う。両envをスクリプト起動に渡す。2nd原本2点は作者配布ページから再取得し、resources/manifest.jsonのSHA-256と照合後に246画像を再生成・検査した。`.serena/` はローカルLSP設定としてgitignoreに追加し、ファイルは維持した。
+
 Worker の vitest 設定が `--outputFile` の相対パスを `apps/worker` 基準で解決することを確認する（`apps/worker/package.json` の test スクリプトと `vitest.config` を見る）。Playwright の JSON reporter は stdout に出るので上記のようにリダイレクトする。
 
-- [ ] **Step 2: 作業木が clean であることを確認して全実行（所要時間は長い。`run_in_background` で回し、ログを `.cache/run/candidate.log` に残す）**
+- [x] **Step 2: 作業木が clean であることを確認して全実行（所要時間は長い。`run_in_background` で回し、ログを `.cache/run/candidate.log` に残す）**
 
 Run: `git status --porcelain | wc -l` → 0 を確認し `bash scripts/run_candidate.sh docs/operations/evidence/2026-09-11-candidate-run.json 2>&1 | tee .cache/run/candidate.log`
 Expected: 終了0。失敗があれば原因を直し、直したファイルを含む候補で **最初から** 再実行する（run は候補 hash に束縛されるため部分再実行は使えない）。
 
-- [ ] **Step 3: 昇格**
+2026-09-12: 初回全実行は失敗。Engine/Web 7,963成功・1失敗、Worker 2,551成功・7失敗。スリープ記録と失敗時刻が重なり、変更なしの対象再実行はEngine2件・Worker175件成功。Browserは159成功・1失敗時点で修正のため中断（残り未受け入れ）。獣取得後の回収・lifecycle回答を画面から進める手順を追加し、対象Browser8件が成功。詳細は [初回失敗記録](../../operations/evidence/2026-09-12-b8-initial-failure.json)。候補全再実行と昇格は未完了。再実行は `caffeinate -i` で実行中のアイドルスリープを抑える。蓋閉じによるスリープを防ぐものとは扱わない。
+
+- [x] **Step 3: 昇格**
 
 Run: `python3 scripts/promote_ledger.py --run docs/operations/evidence/2026-09-11-candidate-run.json && python3 scripts/validate_runtime_coverage.py --require-accepted | cut -c1-200`
 Expected: `valid: true`、`acceptanceRequired: true`。失敗行が出た場合はその行の `tests` が run の `cases` にあるか（タイトル整形・パラメータ）を確認し、束縛を直してから run を再実行する。
 
-- [ ] **Step 4: readiness 再生成と catalog 検査**
+- [x] **Step 4: readiness 再生成と catalog 検査**
 
 Run: `python3 scripts/generate_catalog_readiness.py && python3 scripts/generate_catalog_readiness.py --check --require-ready && pnpm verify:catalog`
 Expected: `{"valid": true, "ready": true}`、catalog 検査成功
 
-- [ ] **Step 5: コミット（M2'）**
+- [x] **Step 5: コミット（M2'）**
 
 ```bash
 git add data packages/catalog docs scripts && git commit -m "data: 候補を固定し全条項をacceptedへ昇格、readiness ready=true"
@@ -1316,7 +1437,15 @@ git add data packages/catalog docs scripts && git commit -m "data: 候補を固�
 
 ---
 
+2026-09-12 B8第2回全実行は最後まで終了し、Engine 7,964成功・Worker 2,558成功、browser 2,155成功/9失敗/skip 0/flaky 0。browserの所要時間は約4時間8分。失敗は固定ポート2件、回収応答や入れ子の割り込み完了待ち5件、成功分岐を検証するfixtureの乱数設定2件。全失敗の修正案は別環境で個別検証済みで、終了後に本作業木へ適用した。変更されたsemantic束縛4行を更新し、関連browser 55件成功、baseURL設定確認追加後の2件再実行と全型検査も成功。notApplicable 2行は成功した現在候補runが未成立のためvalidatorが拒否しており、昇格・readinessは未完了。詳細は [第2回実行と修正の証跡](../../operations/evidence/2026-09-12-b8-second-progress.json)。
+
+2026-09-13 B8第3回全実行は終了0、Engine 7,964・Worker 2,558・browser 2,164件すべて成功（skip/flaky 0）。昇格は4,633 acceptedに留まり、Vitestタイトル整形の相違と旧related参照3種が原因と判明。整形を実際のVitest表示へ修正し、10条項の旧参照を既存の具体的試験に整理。診断照合はactive 6,536参照／distinct 6,461一致／未一致0。変更後候補の受け入れは未成立のため全semanticをimplemented 5,257／notApplicable 2へ戻し、第4回全実行で再検証する。旧原本と部分昇格receiptは `/private/tmp/madou-b8-third-success/` に保存。詳細は [束縛修正記録](../../operations/evidence/2026-09-13-b8-binding-resolution.json)。
+
 ## Phase C: 正式開始と一戦（R7）
+
+2026-09-13 B8第4回全実行は終了0、Engine/Web 7,964・Worker 2,558・browser 2,164件すべて成功（skip/flaky 0）。runの参照6,461件一致、失敗0。昇格も終了0でsemantic 5,257 accepted／2 notApplicableとなった。厳格validatorは終了1でaggregate 825行すべてのcovers未設定を報告。semantic自体の未受け入れエラーは0だが、集約元段落から具体条項への対応が必要であり、readinessは未生成。aggregateのpending状態を維持しながらmanifestのcoversを完成させ、変更後候補の全検証をやり直す。B8全体は未完了。詳細は [第4回進捗](../../operations/evidence/2026-09-13-b8-fourth-progress.json)。
+
+2026-09-13 集約対応開始: T01休息の2段落とT02黒翼天翔剣の印刷条件1段落を既存semantic条項へ対応付けた。休息の上限超過・支払札非返却・構造的最大値変更・死亡予定境界の12件、型検査が成功。aggregate未対応822件。候補変更によりsemanticの現在状態はimplemented 5,257／notApplicable 2へ戻し、第4回受け入れ証跡を `/private/tmp/madou-b8-fourth-success/` に保管。詳細は [集約対応進捗](../../operations/evidence/2026-09-13-aggregate-mapping-progress.json)。
 
 ### Task C1: 合法手ボット（Engine）
 
@@ -1330,7 +1459,7 @@ git add data packages/catalog docs scripts && git commit -m "data: 候補を固�
 - `choose(view: PlayerView, seed: number): Command` — 決定的方針: (1) 必須選択があればその先頭、(2) 自手番の action 段階で敵に届く攻撃があれば最大ダメージの技、(3) 回答窓は pass 系、(4) それ以外は手番終了。`seed` は同点時のタイブレークにのみ使う。
 - `playToOutcome(state: GameState, entropy: Entropy, seed: number, maxSteps = 5000): {state: GameState; steps: number}` — 各席の view に対し `choose` を適用し `transition` を回す。`outcome` が付くか `maxSteps` で止まる。ボットが選んだコマンドが `INVALID_ACTION` になった場合はその view と command を例外に含めて止める（列挙器の不備は隠さない）。
 
-- [ ] **Step 1: 失敗する試験を書く**
+- [x] **Step 1: 失敗する試験を書く**
 
 ```ts
 // packages/engine/test/bot-legal-commands.test.ts
@@ -1371,21 +1500,21 @@ describe('deterministic play', () => {
 
 `seededEntropy` が `fixtures.ts` に無い場合は、`Entropy` 型（`apps/worker/src/rooms/room.ts` の `entropy()` を参照）を満たす決定的PRNG（mulberry32）で追加する。`playOneStep` は `playToOutcome` の1周分を export した関数。220 枚の保存 assert は物理カードの実領域（手札・捨て札・山札・設置・予約）に合わせて修正する（`packages/engine/test` の既存 220 枚検査を流用する）。
 
-- [ ] **Step 2: 失敗を確認**
+- [x] **Step 2: 失敗を確認**
 
 Run: `pnpm exec vitest run packages/engine/test/bot-legal-commands.test.ts`
 Expected: モジュール未定義で失敗
 
-- [ ] **Step 3: `legal-commands.ts` を実装する**
+- [x] **Step 3: `legal-commands.ts` を実装する**
 
 view の各 option 配列をそのまま Command に写す。判断の必要な箇所（対象選択・カード選択）は option が既に列挙している候補を1つずつ Command 化する。view に無い情報（他人の手札・伏せ人物）は絶対に使わない。`transition` が拒否するコマンドを列挙した場合は Step 1 の試験が失敗するので、拒否理由（`code`）から列挙条件を絞る。
 
-- [ ] **Step 4: `policy.ts` と `playToOutcome` を実装し、試験を成功させる**
+- [x] **Step 4: `policy.ts` と `playToOutcome` を実装し、試験を成功させる**
 
 Run: `pnpm exec vitest run packages/engine/test/bot-legal-commands.test.ts`
 Expected: 全件成功。`maxSteps` に達する場合は方針を「攻撃可能なら必ず攻撃」に寄せ、それでも終わらない席数があれば、その状態列を `docs/operations/evidence/2026-09-11-bot-stalemate.json` に保存して原因（合法手の循環か、終了判定の不足か）を切り分ける。終了判定の不足はルール実装の不具合なので engine を直し、R6 の終了判定試験を再実行する。
 
-- [ ] **Step 5: 型検査とコミット**
+- [x] **Step 5: 型検査とコミット**
 
 Run: `pnpm typecheck`
 
@@ -1400,7 +1529,7 @@ git add packages/engine && git commit -m "engine: 本人投影だけから合法
 - Modify: `apps/worker/test/lobby.test.ts`（既存 R7 4/6/8/10 START 試験に「seed 設定後の正式 START が `RULESET_NOT_READY` ではなく成功する」ケースを追加）
 - Read: `apps/worker/src/rooms/room.ts` 200〜205 行（START gate）
 
-- [ ] **Step 1: 失敗する試験を書く（lobby.test.ts）**
+- [x] **Step 1: 失敗する試験を書く（lobby.test.ts）**
 
 ```ts
 it.each([4, 6, 8, 10])('R7 %i seats start a real game through the normal START command when readiness is ready', async count => {
@@ -1420,7 +1549,7 @@ it.each([4, 6, 8, 10])('R7 %i seats start a real game through the normal START c
 
 `createRoomWithSeats` 等は lobby.test.ts の既存ヘルパー名に合わせる。この試験は Task B8 で `readiness.ready=true` になって初めて成功する。それまでは `RULESET_NOT_READY` で失敗するのが正しいので、B8 完了後に実行する。
 
-- [ ] **Step 2: e2e-worker に seed エンドポイントを追加**
+- [x] **Step 2: e2e-worker に seed エンドポイントを追加**
 
 ```ts
 // e2e-worker.ts の __test ルート分岐に追加
@@ -1434,7 +1563,7 @@ if (match[2] === 'entropy' && request.method === 'POST') {
 
 `commandEntropy()` は seed テーブルがあれば `calls` を進めながら mulberry32 で `dice` / `shuffle` を生成する（`Entropy` 型の全フィールドを埋める）。正規表現 `(scenario|game)` に `entropy` を加える。本番エントリポイント（`apps/worker/src/index.ts`）には export しない。
 
-- [ ] **Step 3: Worker 試験を実行しコミット**
+- [x] **Step 3: Worker 試験を実行しコミット**
 
 Run: `pnpm --filter @madou/worker exec vitest run test/lobby.test.ts`
 Expected: readiness 未成立の間は新規ケースだけ `RULESET_NOT_READY` で失敗し、他は成功。B8 後に全件成功。
@@ -1453,7 +1582,7 @@ git add apps/worker && git commit -m "worker(test): e2e卓のentropyをseedで�
 - `bot-client.ts`: `class BotClient { constructor(baseURL: string, cookie: string, roomId: string); connect(): Promise<void>; view(): PlayerView | null; send(command: Command): Promise<{ok: boolean; code?: string}>; close(): void }`。Node の `WebSocket`（Playwright の `request` コンテキストから Cookie を取り出して接続）で、サーバー投影を受信し `expectedRevision` と `commandId`（UUID）を自動で付ける。
 - 席は Playwright のブラウザコンテキストでログイン・参加・準備完了・START までを **画面操作** で行い、その後の対局は `BotClient` が同じ Cookie で WS から進める。ブラウザ側は各席 1 ページを開いたままにし、対局終了後に全席 reload して結果表示を確認する。
 
-- [ ] **Step 1: 失敗する試験を書く**
+- [x] **Step 1: 失敗する試験を書く**
 
 ```ts
 import {test, expect} from '@playwright/test';
@@ -1499,12 +1628,12 @@ for (const count of [4, 6, 8, 10]) {
 
 `view.canAct`（自席が今送れる状態か）と `view.outcome` は `PlayerView` の実フィールド名に合わせる。「対戦結果」の role/name は `apps/web/src/game` の終了表示コンポーネントの実装に合わせ、無ければ `Board.tsx` に `role="status" aria-label="対戦結果"` の表示を追加する（勝者名と自席の結果を出す）。
 
-- [ ] **Step 2: `bot-client.ts` を実装し、試験を実行**
+- [x] **Step 2: `bot-client.ts` を実装し、試験を実行**
 
 Run: `pnpm exec playwright test tests/e2e/full-game.spec.ts`
 Expected: 4 件成功。合計時間を記録する。
 
-- [ ] **Step 3: 型検査（e2e tsconfig）とコミット**
+- [x] **Step 3: 型検査（e2e tsconfig）とコミット**
 
 Run: `pnpm typecheck:e2e`
 
@@ -1518,7 +1647,7 @@ git add tests apps/web && git commit -m "e2e: 正式STARTからの4/6/8/10席の
 - Create: `tests/e2e/failure-recovery.spec.ts`
 - Read: `tests/e2e/reconnect.spec.ts`（既存の切断復帰の書き方）、`apps/worker/test/room-lifecycle.test.ts`（合意終了 `CLOSE` 系コマンド名）
 
-- [ ] **Step 1: 失敗する試験を書く（4席・seed 固定・50手進めた状態から）**
+- [x] **Step 1: 失敗する試験を書く（4席・seed 固定・50手進めた状態から）**
 
 ```ts
 test('all seats disconnect mid-game, the table survives, and an unacknowledged command is not applied twice', async ({browser, request}) => {
@@ -1532,7 +1661,7 @@ test('all seats disconnect mid-game, the table survives, and an unacknowledged c
 
 コメントの各段階を実コードにする。`commandId` の再送は `BotClient.send(command, {commandId})` で指定できるようにする（Task C3 の `send` にオプション引数を追加）。
 
-- [ ] **Step 2: 実行・コミット**
+- [x] **Step 2: 実行・コミット**
 
 Run: `pnpm exec playwright test tests/e2e/failure-recovery.spec.ts`
 Expected: 成功
@@ -1543,18 +1672,18 @@ git add tests && git commit -m "e2e: 全員切断・未ACK再送・終了後再�
 
 ### Task C5: R7 候補の固定と全検査（M3'）
 
-- [ ] **Step 1: 完成計画 R7 の4項目を、上記の証跡（lobby.test.ts の R7 ケース、full-game.spec.ts、failure-recovery.spec.ts）へのリンク付きで `[x]` にする。C1〜C4 で追加した試験のうち台帳の semantic 条項に対応するもの（正式START・全員切断・再送）は束縛ファイル `docs/operations/evidence/2026-09-11-r7-bindings.json` で束縛する**
+- [x] **Step 1: 完成計画 R7 の4項目を、上記の証跡（lobby.test.ts の R7 ケース、full-game.spec.ts、failure-recovery.spec.ts）へのリンク付きで `[x]` にする。C1〜C4 で追加した試験のうち台帳の semantic 条項に対応するもの（正式START・全員切断・再送）は束縛ファイル `docs/operations/evidence/2026-09-11-r7-bindings.json` で束縛する。対応する semantic 行は無く `bindings` は空。第4項目（全検査）は Step 2 の B8 再実行が残る。**
 
-- [ ] **Step 2: Task B8 の Step 2〜5 を再実行する（候補が変わったため）**
+- [x] **Step 2: Task B8 の Step 2〜5 を再実行する（候補が変わったため）**
 
 Run: `bash scripts/run_candidate.sh docs/operations/evidence/2026-09-11-candidate-run.json && python3 scripts/promote_ledger.py --run docs/operations/evidence/2026-09-11-candidate-run.json && python3 scripts/validate_runtime_coverage.py --require-accepted | cut -c1-160 && python3 scripts/generate_catalog_readiness.py && pnpm verify:catalog && pnpm verify:assets && pnpm typecheck && pnpm build`
 Expected: 全て終了0、`ready: true`
 
-- [ ] **Step 3: 候補記録を書く**
+- [x] **Step 3: 候補記録を書く**
 
 `docs/operations/evidence/2026-09-11-release-candidate.md` に: コミットID、`git status --porcelain` が空であること、run receipt のパスと sha256、readiness の sha256、台帳の statuses、`pnpm build` 成果物（`apps/web/dist` と Worker bundle）の sha256 一覧（`find apps/web/dist -type f | sort | xargs shasum -a 256`）。
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add docs data packages/catalog && git commit -m "docs,data: R7候補を固定し、全条項accepted・正式START・一戦の証跡を記録する"
@@ -1566,7 +1695,7 @@ git add docs data packages/catalog && git commit -m "docs,data: R7候補を固�
 
 ### Task D1: 認証（ユーザー操作）
 
-- [ ] **Step 1: ユーザーがこのセッションで `! pnpm --filter @madou/worker exec wrangler login` を実行し、ブラウザで承認する。エージェントは `pnpm --filter @madou/worker exec wrangler whoami` の終了コードだけを確認し、アカウント名・IDを文書に書かない**
+- [x] **Step 1: ユーザーがこのセッションで `! pnpm --filter @madou/worker exec wrangler login` を実行し、ブラウザで承認する。エージェントは `pnpm --filter @madou/worker exec wrangler whoami` の終了コードだけを確認し、アカウント名・IDを文書に書かない**
 
 Expected: 終了0
 
@@ -1576,7 +1705,7 @@ Expected: 終了0
 - Modify: `apps/worker/wrangler.jsonc`（`env.staging.d1_databases[0].database_id`, `env.production.d1_databases[0].database_id`）
 - Modify: `docs/operations/deploy.md`（実施記録）
 
-- [ ] **Step 1: D1 を作成し UUID を設定する**
+- [x] **Step 1: D1 を作成し UUID を設定する**
 
 ```bash
 pnpm --filter @madou/worker exec wrangler d1 create madou-senki-staging
@@ -1585,7 +1714,7 @@ pnpm --filter @madou/worker exec wrangler d1 create madou-senki-production
 
 出力の `database_id` を `wrangler.jsonc` の各 env に書く（UUID は秘密値ではないので設定ファイルに入れてよい。アカウントIDは書かない）。
 
-- [ ] **Step 2: migration と dry-run**
+- [x] **Step 2: migration と dry-run**
 
 ```bash
 pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --remote --env staging
@@ -1594,7 +1723,7 @@ pnpm --filter @madou/worker exec wrangler deploy --env staging --dry-run --outdi
 
 Expected: 両方終了0
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add apps/worker/wrangler.jsonc && git commit -m "worker: staging/productionのD1を設定する"
@@ -1606,7 +1735,7 @@ git add apps/worker/wrangler.jsonc && git commit -m "worker: staging/production�
 - Create: `tests/remote/smoke.spec.ts`（`PLAYWRIGHT_BASE_URL` で対象 origin を切り替える。`webServer` を使わない別 config `playwright.remote.config.ts`）
 - Create: `docs/operations/evidence/2026-09-11-staging.md`
 
-- [ ] **Step 1: 配備**
+- [x] **Step 1: 配備**
 
 ```bash
 pnpm build && pnpm --filter @madou/worker exec wrangler deploy --env staging
@@ -1614,7 +1743,7 @@ pnpm build && pnpm --filter @madou/worker exec wrangler deploy --env staging
 
 出力の Worker URL（`*.workers.dev`）を staging origin として記録する。
 
-- [ ] **Step 2: リモート smoke（fixture 無し）を書いて実行する**
+- [x] **Step 2: リモート smoke（fixture 無し）を書いて実行する**
 
 ```ts
 // tests/remote/smoke.spec.ts
@@ -1640,50 +1769,52 @@ test('invite, ready, start and reload on the remote origin', async ({browser}) =
 Run: `PLAYWRIGHT_BASE_URL=<staging origin> pnpm exec playwright test -c playwright.remote.config.ts`
 Expected: 成功。fixture 投入 API（`/__test`）は本番エントリポイントに無いので、`fetch('<origin>/__test/rooms/x/scenario')` が 404 であることも smoke で確認する。
 
-- [ ] **Step 3: DO 休止復帰**
+- [x] **Step 3: DO 休止復帰**
 
 上記の卓を開始後、全ブラウザを閉じて **15 分以上** 待つ（`Monitor` か `sleep 960` を `run_in_background` で）。その後同じ Cookie で `/rooms/:id` を開き、手札 region と revision が保存時と一致することを確認。結果を `2026-09-11-staging.md` に記録。
 
-- [ ] **Step 4: 再配備中の試合維持**
+- [x] **Step 4: 再配備中の試合維持**
 
 対局中に `wrangler deploy --env staging` をもう一度実行し、配備前後で同じ卓に同じ revision で復帰できることを確認する。
 
-- [ ] **Step 5: 負荷試験（10卓×10人）**
+- [x] **Step 5: 負荷試験（10卓×10人）**
 
 `scripts/load_test.ts`（Node、`tsx` で実行）: 100 セッションを作成（`POST /api/sessions`）、10 卓を作り各 10 人参加・準備・START、各席が `BotClient`（Task C3）で 200 手ずつ進める。1 手ごとの ACK 往復時間を記録し、p50/p95/p99、失敗率、切断回数を JSON に出す。
 
 Run: `PLAYWRIGHT_BASE_URL=<staging origin> pnpm exec tsx scripts/load_test.ts > docs/operations/evidence/2026-09-11-staging-load.json`
 Expected: 失敗率 0、p95 を記録。Cloudflare ダッシュボードの使用量（Requests / DO duration）を数値で `2026-09-11-staging.md` に写す（料金の推定はしない）。
 
-- [ ] **Step 6: コミット**
+- [x] **Step 6: コミット**
 
 ```bash
 git add tests scripts playwright.remote.config.ts docs && git commit -m "ops: stagingの配備・休止復帰・再配備・負荷の実測を記録する"
 ```
 
+2026-09-15: D2 後の production 候補 B8 が `exitCode` 0。凍結 `31c3a718e8588388d5f345b69cecc2964a384791`、run sha256 `7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43`、accepted 5257、readiness `ready`。C11 / `verify:catalog` は既知の未成功。記録は [公開候補](../../operations/evidence/2026-09-11-release-candidate.md)。
+
 ### Task D4: production 配備（M4）
 
-- [ ] **Step 1: 候補が staging と同一であることを確認**
+- [x] **Step 1: 候補が staging と同一であることを確認**
 
 Run: `git status --porcelain | wc -l` → 0、`git rev-parse HEAD` が Task C5 の候補記録のコミットIDと一致（Task D2/D3 のコミットは `wrangler.jsonc` と tests/remote・docs のみなので、`candidate_files` の対象外である `docs` 以外の差分が無いことを `git diff <候補コミット> HEAD --stat -- packages apps/web apps/worker/src data scripts tests/e2e` で確認する。`apps/worker/wrangler.jsonc` の UUID 追加は候補 hash を変えるので、D2 の後に Task C5 Step 2 の全実行を **もう一度** 行い、その receipt を production 候補とする）
 
-- [ ] **Step 2: 配備**
+- [x] **Step 2: 配備**
 
 ```bash
 pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --remote --env production
 pnpm --filter @madou/worker exec wrangler deploy --env production
 ```
 
-- [ ] **Step 3: production smoke**
+- [x] **Step 3: production smoke**
 
 Run: `PLAYWRIGHT_BASE_URL=<production origin> pnpm exec playwright test -c playwright.remote.config.ts`
 Expected: 成功
 
-- [ ] **Step 4: 記録**
+- [x] **Step 4: 記録**
 
 `docs/operations/deploy.md` の「候補と配備先の記録」に: 候補コミットID、run receipt sha256、readiness sha256、Worker 名、D1 UUID、公開 origin、配備ID、実施日時、既知の制限（招待制、対人評価未実施）、復旧方法（recovery.md へのリンク）。`docs/operations/playtest-results.md` に「公開後の対人記録（M5）待ち」の見出しを作る。
 
-- [ ] **Step 5: コミットと PR**
+- [x] **Step 5: コミットと PR**
 
 ```bash
 git add docs && git commit -m "ops: productionへ配備し、候補・配備先・既知の制限を記録する"

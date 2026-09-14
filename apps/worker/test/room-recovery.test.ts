@@ -95,7 +95,8 @@ it('resumes shared multi-target hit progress and preserves simultaneous follower
   expect(await room.stored()).toEqual(saved);
   for (let i = 0; i < 100; i++) {
     const current = await room.stored(); const window = current.state.game!.windows?.at(-1); if (!window) break;
-    expect(await room.command(window.participants[window.cursor]!, await envelope(room, `pass-${i}`, { type: 'PASS' }))).toMatchObject({ type: 'ack' });
+    const actor=window.participants[window.cursor]!,command=await envelope(room, `pass-${i}`, { type: 'PASS' }),ack=await room.command(actor,command);expect(ack).toMatchObject({type:'ack'});
+    const committed=await room.stored();await room.restart();expect(await room.command(actor,command)).toEqual(ack);expect(await room.stored()).toEqual(committed);
   }
   const ended = (await room.stored()).state.game!;
   expect(ended.windows).toEqual([]);

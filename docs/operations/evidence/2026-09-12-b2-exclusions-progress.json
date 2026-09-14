@@ -1,0 +1,72 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "release-run B2 exclusions and reservation lifetime; not acceptance evidence",
+  "runtimeFix": "Morale failure discards a physical follower without a follower-death reclaim opportunity (adopted ruling G11).",
+  "red": {
+    "command": "pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts -t morale-failure-excluded --reporter=json --outputFile=/private/tmp/owned-morale-red.json",
+    "selected": 23,
+    "passed": 10,
+    "failed": 13,
+    "failure": "Each printed morale-failure case incorrectly opened a follower-death reclaim decision."
+  },
+  "broadUnitRun": {
+    "command": "pnpm exec vitest run --maxWorkers=4 --reporter=json --outputFile=/private/tmp/release-unit-morale.json",
+    "total": 7336,
+    "passed": 7335,
+    "failed": 1,
+    "failure": "multi-hit.test.ts expected failed-morale cards in resolution. Updated to immediate discard, no followerDestroyed entry, and no reclaim decision.",
+    "oneFullyGreenBroadRun": false
+  },
+  "finalFocusedRun": {
+    "command": "pnpm exec vitest run packages/engine/test/owned-reclaim-matrix.test.ts packages/engine/test/multi-hit.test.ts --reporter=json --outputFile=/private/tmp/release-b2-final.json",
+    "exitCode": 0,
+    "total": 792,
+    "passed": 792,
+    "failed": 0,
+    "matrixTests": 786,
+    "includesCorrectedMultiHitTests": true
+  },
+  "workerRun": {
+    "command": "pnpm --filter @madou/worker test --maxWorkers=4 --reporter=json --outputFile=/private/tmp/release-worker-morale.json",
+    "exitCode": 0,
+    "total": 2537,
+    "passed": 2537,
+    "failed": 0
+  },
+  "otherChecks": [
+    "pnpm typecheck: all targets exit 0",
+    "pnpm exec tsc --noEmit after reservation tests: exit 0",
+    "python3 scripts/validate_runtime_coverage.py: valid true, structural only",
+    "python3 -m unittest scripts.test_build_owned_reclaim_bindings scripts.test_ledger_report: 8 passed"
+  ],
+  "sourceSha256": {
+    "packages/engine/src/combat/followers.ts": "b300b617d375a36679f84d1be8c57e173a493ceb0f534512fa6a553c0ede022d",
+    "packages/engine/test/owned-reclaim-matrix.test.ts": "d447eca4daa45100dbd66501904a6459bb9c630651b27f11bcd0d08780a52d31",
+    "packages/engine/test/multi-hit.test.ts": "c29c55fb141f416dace1f9907d702f5b7673b757d611887ec3da6bbba3897128",
+    "scripts/build_owned_reclaim_bindings.py": "33d3cb58212ffbf97e294f748d77c0c11a21c85fdd61967958569979ad93b1dc"
+  },
+  "newCoveredSuffixes": {
+    "technique": [
+      "reserve-before-parent-release"
+    ],
+    "follower": [
+      "morale-failure-excluded",
+      "attack-discard-not-follower-death"
+    ]
+  },
+  "notes": [
+    "Reservation tests check real parentWindowId: nested responses remain reserved; top-level uses close atomically before delivery. Every case returns exactly one source after completion and JSON save/restore.",
+    "Followers without printed morale checks are exercised against a low-level attack and cannot enter morale failure.",
+    "Followers without dedicated attack permission are rejected; a printed bottom is exercised with All Army where permitted. Alkemia Castle has no attack bottom, so both attack routes reject without payment or reclaim.",
+    "No full broad unit rerun after the single stale assertion and the 125 additional reservation cases; final focused runs cover all changed tests.",
+    "No ledger binding or acceptance promotion has been applied."
+  ],
+  "remaining": [
+    "technique retention-transform-revival: all 125 physical owner pairs",
+    "follower retention-transform-revival: all 23 physical owner pairs"
+  ],
+  "bindingGate": "closed: nonexistent or ambiguous test: c2-p01-r1c1#owned_techniques/0/retention-transform-revival",
+  "ownedReclaimPending": 784,
+  "semanticAccepted": 0
+}

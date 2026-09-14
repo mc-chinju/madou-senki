@@ -1,0 +1,52 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 C16 self-ban prevents future declaration; not acceptance evidence",
+  "previousMissingRows": 16,
+  "newlyBoundRows": [
+    "c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration"
+  ],
+  "remainingMissingRows": 15,
+  "changes": [
+    "Generalized existing turn progression helpers to advance a specified seat sequence and next actor.",
+    "Added actual self-ban followed by full four-seat turn cycle in DO and browser, using the existing fresh-action fixture.",
+    "Fresh next own action has no ban offer; DO forged retry rejects without mutation through restart/replay; all browser seats reload with public source suppression and no source declaration button."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-suppression.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 9,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/suppression.spec.ts --reporter=json",
+      "passed": 6,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "All existing shared-helper cases re-executed",
+    "AST-checked binding preserves prior Engine evidence",
+    "Runtime coverage validator valid true",
+    "Remaining B7 rows independently counted as15",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/room-suppression.test.ts": "426af36082f05eec75302a6268fba676287f7ce39a019027d2424a63b84f21ec",
+    "tests/e2e/suppression.spec.ts": "0bfb7489f95c7302256dd143e9bb26e12a8e3f0e31a4facde3175ad9205e07f6",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "8d5eccea3b2815d8da4561699ec2a92efe722ae8e52719338b198bd634330afa",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "fbcd5ddb7c014a67e09eb90cfd40640d16b0336a9036315513ca0e80070d0409"
+  },
+  "limitations": [
+    "No production runtime changes or new fixture seed.",
+    "B7 Step2 remains incomplete; frozen acceptance and formal START games remain. Accepted and verified remain zero."
+  ]
+}

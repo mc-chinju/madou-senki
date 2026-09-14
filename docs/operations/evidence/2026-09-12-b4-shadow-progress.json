@@ -1,0 +1,46 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B4 Ida printed Shadow child and Yotsurm Shadow Jump child; not acceptance evidence",
+  "newlyImplementedClauses": 9,
+  "newTests": 5,
+  "bindingFileRows": 260,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/shadow-jump.test.ts packages/engine/test/shadow-card-physical.test.ts --reporter=json --outputFile=/private/tmp/release-b4-shadow-final.json",
+    "passed": 45,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit exit 0",
+    "Python character generator, binding application and report: 18 passed",
+    "Exact AST declarations and parameters validated before binding output",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Ida bindings use actual dedicated Shadow defense and its independent child. Existing tests assert parent turn retention, approach/withdraw rejection, ordinary range/chant eligibility, prepared chant consumption and successful/failed warrior use checks.",
+    "Shadow Jump child rejects far or unchanted cards atomically; declining after that keeps the successful parent defense.",
+    "Actual paid Shadow Jump rejects approach, withdrawal, START_TURN and END_TURN during its child choice. The child returns to the original attacker withdrawal phase without movement or a distance marker.",
+    "New magic excess-level boundary rolls 3+4 and 4+4 prove success and failure independently of the successful ability defense; both discard child and paid advance once.",
+    "Existing payment and decline tests prove exact-one advance payment, rejected repeat payment, no distance marker, and retained defense after declining cost, declining attack or child cancellation."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/shadow-jump.test.ts": "075687fbc9e0fee9c78e88fa61735e12d19b84b854356d3c37306af60d6cfc1c",
+    "packages/engine/test/shadow-card-physical.test.ts": "309a83d9598b039c8d3410007afaa5c9ac6110e911c909213366d77a203743bb",
+    "scripts/build_character_bindings.py": "9477aa22fe4f1321d221593dc078fbc7a3bb45ce9c72833a0476de4a8a362ee5",
+    "scripts/test_build_character_bindings.py": "eaaee369f64b27b4cb716a0f7d0458d590c3fc4406908b7b47dbcfed66b42339",
+    "docs/operations/evidence/2026-09-12-character-core-bindings.json": "9b06eba32a351cecd9e1acfd9713e50876064198cc87af124b82c878ab3bb6d8"
+  },
+  "characterPending": 79,
+  "semanticImplementedConcrete": 5081,
+  "semanticPending": 178,
+  "semanticAccepted": 0,
+  "fullB4Gate": "unimplemented character families: 79; first c2-p02-r1c1-ab04#condition-loss-suspends-keeps-selection",
+  "limitations": [
+    "B4 Steps 3–5 remain incomplete; conditional loss, frozen values, inheritance, C16, follower bundles and other abilities remain.",
+    "No runtime behavior changed. Arranged unit scenarios are not formal START whole-games or frozen-candidate acceptance receipts.",
+    "No new Worker or browser run is claimed."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 C16 ban consumes no main action; not acceptance evidence",
+  "previousMissingRows": 22,
+  "newlyBoundRows": [
+    "c2-p07-r1c2-ab03#C16/no-main-action"
+  ],
+  "remainingMissingRows": 21,
+  "changes": [
+    "Added suppression-next-action fixture by actual turn commands for one complete cycle after revival ritual; no phase or opportunity injection.",
+    "Added DO case proving successful ban leaves action and PASS_ACTION available, then accepts ending that retained action through every-command save/restart/replay.",
+    "Added browser case proving all-seat reload retains action after ban, followed by actual end-action click and all-seat reload into hand-adjustment."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-suppression.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 8,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/suppression.spec.ts --reporter=json",
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked binding retains prior Engine test",
+    "Runtime coverage validator valid true",
+    "Remaining B7 rows independently counted as21",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/fixtures/suppression-scenarios.ts": "f6712c250377d41e6cff1dbdcc0ca74954c363401af43c7772ac7c20a2b8c684",
+    "apps/worker/test/room-suppression.test.ts": "661144ed25b7b2d9a09b69896dc535cf71b56e6a9bd6450ea1a867ac179beba0",
+    "tests/e2e/suppression.spec.ts": "4ebc94aef56812704ba1cf0fe8a83521c20583880fb39a0f4f472f3752abe636",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "f6d8de5bb0546c0588dc5603db2ebec3dfafdfaec638a189160f0335d7d1daa6",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "9a1ae18f09485727746fe5ef0728fc370a181cb18782b2b3d62a6a8a27d4b33d"
+  },
+  "testCorrection": [
+    "Initial assertion expected withdrawal after PASS_ACTION; turns.ts sends it directly to hand-adjustment. Corrected the expected phase after inspecting the actual command implementation."
+  ],
+  "limitations": [
+    "New scenario was needed because existing ritual fixtures had already spent their main action.",
+    "B7 Step2 incomplete; remaining C16 and C04 clauses still require correspondence.",
+    "No production runtime changes. Frozen acceptance and formal START games remain; accepted and verified remain zero."
+  ]
+}

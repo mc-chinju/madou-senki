@@ -1,0 +1,87 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B5 ordinary clauses complete; deferred D4c and candidate acceptance remain",
+  "newlyImplementedClauses": 13,
+  "newTests": 4,
+  "bindingFileRows": 97,
+  "run": {
+    "command": "pnpm exec vitest run <all 20 distinct test paths in remaining-clauses-bindings.json> --reporter=json --outputFile=/private/tmp/release-b5-all.json",
+    "paths": [
+      "packages/engine/test/cham-death-gift.test.ts",
+      "packages/engine/test/character-turn-extras.test.ts",
+      "packages/engine/test/combat-rewards.test.ts",
+      "packages/engine/test/conditional-stats.test.ts",
+      "packages/engine/test/declaration-modifier-sources.test.ts",
+      "packages/engine/test/follower-destruction-abilities.test.ts",
+      "packages/engine/test/mandatory-fields.test.ts",
+      "packages/engine/test/mandatory-restrictions.test.ts",
+      "packages/engine/test/mental-protection.test.ts",
+      "packages/engine/test/mental-received-defenses.test.ts",
+      "packages/engine/test/r5-distance.test.ts",
+      "packages/engine/test/received-defense-abilities.test.ts",
+      "packages/engine/test/received-defense-continuations.test.ts",
+      "packages/engine/test/release-lifecycle-bindings.test.ts",
+      "packages/engine/test/sad-love.test.ts",
+      "packages/engine/test/shadow-jump.test.ts",
+      "packages/engine/test/suppression-blessing.test.ts",
+      "packages/engine/test/turn-information-abilities.test.ts",
+      "packages/engine/test/virtual-blades.test.ts",
+      "packages/engine/test/zan.test.ts"
+    ],
+    "passed": 818,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "targetedRun": {
+    "passed": 210,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit passed",
+    "Binding application validates all 97 exact AST bindings",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Mandatory warrior half, black prohibition and conversion plus-two survive actual suppression or revival; ordinary mental checks receive no conversion bonus.",
+    "Lia near inspection and own-attack exclusion are bound to direct tests. Actual Vanmil ritual compares optional conversion with decline for both named recipients.",
+    "Actual transformed shield compares incoming effect six and seven against warrior six after successful check. C04 tests cover attempt consumption, late follower cutoff, fresh next-hit attempts and target-local reduction.",
+    "All B5 binding test files were rerun together after the final additions."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/cham-death-gift.test.ts": "79d50db05a1c27853fb21d83b234bfae17cb09c1574b0d02845232e08cb7a812",
+    "packages/engine/test/character-turn-extras.test.ts": "c49fe8987092231a1cd49199c6906cc8beb373cbf95e2c86535c73d95419114d",
+    "packages/engine/test/combat-rewards.test.ts": "37c4b95593e0ab0742530d287f2e02942cdd6c6d5315c6408fd05c752569808a",
+    "packages/engine/test/conditional-stats.test.ts": "3054cd4574ebc42bef29dbc3eadef745f92fc06004878a45d2ac95641713e2aa",
+    "packages/engine/test/declaration-modifier-sources.test.ts": "02ad1b3f50a309c40934ed384080063da16c07e4cc13d990ebee0d334520e008",
+    "packages/engine/test/follower-destruction-abilities.test.ts": "4aeeb74d03440938d22efa2afc96afed8e120760eca03e810c2128177b066f9f",
+    "packages/engine/test/mandatory-fields.test.ts": "488ecbecc3c31406d3053f700f29c195d5937f4dc8637451f21608005da95b6d",
+    "packages/engine/test/mandatory-restrictions.test.ts": "32bb4e9fdce5894f972775ae1d2bb81f5f5d9d670040cc2815c77ee2d944a020",
+    "packages/engine/test/mental-protection.test.ts": "71752ed9bd055e378e94aafa1231c54bb6b485668be079a673bbf78f3f16b8cf",
+    "packages/engine/test/mental-received-defenses.test.ts": "95fb7a4c9558e46eeccc919aba27eaff1ea0d7ccc469e26c47294bf1e603be84",
+    "packages/engine/test/r5-distance.test.ts": "f1dbefd105c69c8e48feee6a3f945905df241157482fa491d52f98893947a9fa",
+    "packages/engine/test/received-defense-abilities.test.ts": "6d6964dcade421086ac3b79e3a70c4901c76c73212f386175e0de2c036e58b14",
+    "packages/engine/test/received-defense-continuations.test.ts": "91e51203cdc761e12cae90b21266fb855ac5d9cb40a4fc54efff7688c688e08d",
+    "packages/engine/test/release-lifecycle-bindings.test.ts": "b37da9094e2462cd8f75dc031b30524e4613120589c313b6761373562af8642e",
+    "packages/engine/test/sad-love.test.ts": "f5edb1be327078ca69bef6e07350930cb30541388f0c664f6d20b343fc087c3d",
+    "packages/engine/test/shadow-jump.test.ts": "52c5971ac0274838174210b18b242143ff196e35cae477c1d960e16ca71202ee",
+    "packages/engine/test/suppression-blessing.test.ts": "d2e4eaeffe06d92b4e10c2e0a84b7c776320f9c4f80260f94deb03170a6d347c",
+    "packages/engine/test/turn-information-abilities.test.ts": "49f0eec63cd227977b35a4345399bf2c7a5106bb62e4136d06ac56b0d4d7fcd2",
+    "packages/engine/test/virtual-blades.test.ts": "8316766dea4041f0fe76b50721658be9d3e42b12d416084bc46b3ec888fb5791",
+    "packages/engine/test/zan.test.ts": "d52ea5f77460991295533bd3f231b0f9d46f1f069355a66c72ff4fff8a7fa6af",
+    "docs/operations/evidence/2026-09-11-remaining-clauses-bindings.json": "13245cd151f81dc591d6161c4dcbdac35199251f4b3305f2c3de2023dbd1be26",
+    "docs/operations/evidence/2026-09-11-remaining-clauses.md": "55c3c7f002b58bd1cc28e8222d9d7f42b53f92b0e9376767c220326ce2338017"
+  },
+  "semanticImplementedConcrete": 5257,
+  "semanticPending": 2,
+  "semanticAccepted": 0,
+  "limitations": [
+    "B5 Step1 classification is complete; Steps2–3 remain open only for deferred D4c application and pending-zero verification at B8, as required by A7 supplement.",
+    "The 97 ordinary B5 rows are implemented and AST-bound, not accepted or verified.",
+    "No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}

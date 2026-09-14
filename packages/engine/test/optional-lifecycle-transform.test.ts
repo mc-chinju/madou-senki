@@ -1,6 +1,7 @@
 import { expect, it } from 'vitest';
 import { allCardInstanceIds, transition, viewFor, type GameCommand } from '../src/index.js';
-import { entropy } from './fixtures.js';
+import {act,finish,pass} from './combat-helpers.js';
+import { entropy,handCard } from './fixtures.js';
 import { makeLifecycleScenario } from '../../../apps/worker/test/fixtures/lifecycle-scenarios.js';
 it.each([false, true])('G09 hidden Lancelot elects transformation %s only after explicit choice', use => {
   let state = makeLifecycleScenario('lifecycle-transform-hidden', ['A', 'B', 'C', 'D'].map(id => ({ id, name: id })));
@@ -40,4 +41,30 @@ it.each([false, true])('G09 hidden Lancelot elects transformation %s only after 
     expect(state.abilities).toEqual(before.abilities);
     for (const actor of ['B', 'C', 'D']) expect(viewFor(state, actor).players.A).not.toHaveProperty('characterId');
   }
+});
+
+it.each([false,true])('Lancelot transformation attempt stays spent after actual cancellation=%s and phase change',cancel=>{
+ let state=makeLifecycleScenario('lifecycle-transform-hidden',['A','B','C','D'].map(id=>({id,name:id})));
+ const fate=handCard(state,'C','命運凶変');
+ state=finish(act(state,'B',{type:'REVEAL_CHARACTER'}));
+ state=act(state,'A',{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'});
+ if(cancel){
+  while(state.windows!.at(-1)!.participants[state.windows!.at(-1)!.cursor]!=='C')state=pass(state);
+  state=act(state,'C',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:viewFor(state,'C').reactionTargetAbilityId!});
+ }
+ state=finish(state);state=act(state,'A',{type:'PASS_ACTION'});state=JSON.parse(JSON.stringify(state));
+ expect(state.players.A!.characterId).toBe(cancel?'c2-p02-r2c2':'c2-p07-r1c1');
+ expect(state.used?.filter(k=>k==='A:lancelot-transform')).toHaveLength(1);
+ expect(viewFor(state,'A').lifecycleAbilities).not.toContain('lancelot-transform');
+ const before=JSON.stringify(state);expect(transition(state,{actorId:'A',command:{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'}},entropy()).ok).toBe(false);expect(JSON.stringify(state)).toBe(before);
+});
+it('Structural Lia concealment after actual Lancelot transformation does not revert identity or inherited abilities',()=>{
+ let state=makeLifecycleScenario('lifecycle-transform-hidden',['A','B','C','D'].map(id=>({id,name:id})));
+ state=finish(act(state,'B',{type:'REVEAL_CHARACTER'}));state=finish(act(state,'A',{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'}));
+ expect(state.players.A!.characterId).toBe('c2-p07-r1c1');
+ const inherited=[...state.players.A!.abilityCharacterIds!];expect(inherited).toEqual(['c2-p02-r2c2','c2-p07-r1c1']);
+ // Lia has no legal self-concealment producer: exercise this explicit state boundary without inventing a card action.
+ state.players.B!.revealed=false;state=JSON.parse(JSON.stringify(state));state=act(state,'A',{type:'PASS_ACTION'});
+ expect(state.players.A!.characterId).toBe('c2-p07-r1c1');expect(state.players.A!.abilityCharacterIds).toEqual(inherited);
+ expect(viewFor(state,'A').lifecycleAbilities).not.toContain('lancelot-transform');
 });

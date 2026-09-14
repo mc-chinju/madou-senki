@@ -1,0 +1,43 @@
+{
+  "kind": "partial-test-progress",
+  "date": "2026-09-12",
+  "scope": "B4 eight conditional source condition-loss boundaries; not acceptance evidence",
+  "newlyImplementedClauses": 8,
+  "newTests": 8,
+  "bindingFileRows": 331,
+  "run": {
+    "command": "pnpm exec vitest run packages/engine/test/character-conditional-matrix.test.ts packages/engine/test/conditional-stats.test.ts --reporter=json --outputFile=/private/tmp/release-b4-condition-loss.json",
+    "passed": 122,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit exit 0",
+    "Python character generator, binding application and report: 27 passed",
+    "Exact AST declarations and parameters validated before binding output",
+    "Runtime coverage validator valid true (structural only)",
+    "git diff --check passed"
+  ],
+  "methods": [
+    "Each exact source is elected through its command; assert the exact spirit, capacity or morale addition under its printed condition.",
+    "Direct source-specific condition loss uses named/public opposing identity, GOOD faction, own public identity, attacking context or follower-morale context. All additions become zero without erasing the election.",
+    "Restoring conditions after JSON roundtrip restores the exact additions without selecting again. Dragon context is an actual follower-morale roll from an actual attack."
+  ],
+  "sourceSha256": {
+    "packages/engine/test/character-conditional-matrix.test.ts": "5cb914fc54f98f8a2189162f7dbbf6b93f30a56b35d9609e22339f1d6572704a",
+    "scripts/build_character_bindings.py": "435a86dc3f1afa3eff316bf7a9ae0e553206feb15bf4c4f34f7d0b91ad1d99cf",
+    "scripts/test_build_character_bindings.py": "a4e86e8d65cb131807a5cdcc8bb1e7c091addf31e699609bc8e0e79f1e19767a",
+    "docs/operations/evidence/2026-09-12-character-core-bindings.json": "386a0f3904daeb3686dfeda4d54809474a5d146aaea7b3699f10c1105f1a9e55"
+  },
+  "characterPending": 8,
+  "semanticImplementedConcrete": 5152,
+  "semanticPending": 107,
+  "semanticAccepted": 0,
+  "fullB4Gate": "unimplemented character families: 8; first c2-p02-r1c1-ab04#frozen-values-no-rewind",
+  "limitations": [
+    "All eight clauses use structural-resolver because condition changes are direct public/faction/provenance boundaries. No legal concealment or faction-change producer is claimed.",
+    "B4 Steps 3–5 remain incomplete; frozen values remain for each of eight sources.",
+    "No runtime behavior changed. No formal START whole-game, frozen-candidate acceptance, Worker or browser run is claimed."
+  ]
+}

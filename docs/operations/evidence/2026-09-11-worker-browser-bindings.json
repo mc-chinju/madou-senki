@@ -1,0 +1,2037 @@
+{
+  "bindings": [
+    {
+      "row": "c2-p07-r1c2-ab03#C16/public-own-opportunity-once",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 real turn advance offers Vanmil only his public reaction and spends it once",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "suite": [],
+          "title": "canceled actual ban retains payment and attempt through eviction without making a designation",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual ban cancellation survives result replay/eviction and removes the same opportunity."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "suite": [],
+          "title": "Fate cancels a multiple-target declaration without returning that public opportunity",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual browser cancellation leaves no designation and no repeat option at original opportunity after reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/hidden-target-uniform-public-view",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "リーア姫",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "聖騎士ランスロット2",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "suite": [],
+          "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual saved/replayed multi-target designation exposes only private applicability for both hidden targets."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "suite": [],
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Both selected hidden targets show identical private applicability to source owner; recipient alone sees own suppression and source projection lacks target identity, through reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "common:C04#C04/cancel-consumes-attempt",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receiveAttempt"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+        },
+        {
+          "path": "apps/worker/test/room-received-defenses.test.ts",
+          "suite": [],
+          "title": "DO cancellation receipt restores a spent barrier with its prior robe reservation intact",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual DO receipt replay and restart preserve spent barrier after cancellation, and final original damage is four."
+        },
+        {
+          "path": "tests/e2e/received-defenses.spec.ts",
+          "suite": [],
+          "title": "a canceled reduction after reload cannot activate the reserved robe or be retried",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Browser cancels real barrier then reloads: neither spent barrier nor ineffective robe can be chosen; final original damage four."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/distance-use-public-disposition-without-owned-right",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        }
+      ],
+      "tests": [
+        {
+          "title": "contested approach saves one all-seat source disposition at a time before resuming the action",
+          "suite": [],
+          "path": "packages/engine/test/distance-reclaim.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+        },
+        {
+          "path": "apps/worker/test/room-reclaim.test.ts",
+          "suite": [],
+          "title": "distance payments preserve payer and mode across DO reload without spending owned recovery",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual approach and distance payments retain payer/mode through restart, leave owned usage unspent, and expose only decline before the browser reload resumes the action."
+        },
+        {
+          "path": "tests/e2e/reclaim.spec.ts",
+          "suite": [],
+          "title": "distance source responses survive reload and return to the action controls",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual approach and distance payments retain payer/mode through restart, leave owned usage unspent, and expose only decline before the browser reload resumes the action."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/actual-turn-technique-public-opportunity",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Hidden owned versus unowned name has the same empty-or-private opportunity envelope",
+          "suite": [],
+          "path": "packages/engine/test/reclaim-privacy.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+        },
+        {
+          "path": "apps/worker/test/room-reclaim.test.ts",
+          "suite": [],
+          "title": "zero-right and owned worlds retain the same all-seat schedule through disconnect and explicit passes",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual healing source produces the same all-seat schedule in owned and unowned worlds through DO replay; browser reload preserves an unowned public opportunity until explicit decline."
+        },
+        {
+          "path": "tests/e2e/reclaim.spec.ts",
+          "suite": [],
+          "title": "an unowned recovery response waits through reload and advances only after explicit decline",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual healing source produces the same all-seat schedule in owned and unowned worlds through DO replay; browser reload preserves an unowned public opportunity until explicit decline."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/actual-anytime-owned-recovery",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "commitReclaim"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Actual Lester Courage selects one of two same-seat rights: %s",
+          "suite": [],
+          "path": "packages/engine/test/printed-reclaim-adapters.test.ts",
+          "parameters": "base",
+          "kind": "canonical-transition",
+          "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+        },
+        {
+          "path": "apps/worker/test/room-lester-two-rights.test.ts",
+          "suite": [],
+          "title": "Actual Lester same-seat Courage %s choice persists once through Worker restart and replay",
+          "parameters": "base",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
+        },
+        {
+          "path": "tests/e2e/lester-two-rights.spec.ts",
+          "suite": [],
+          "title": "Actual Lester Courage base selection survives browser reload and returns once",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Actual Courage base recovery persists through every DO command restart/replay and browser reload, returns the physical card once to its owner, and closes other rights."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/virtual-blades-no-physical-recovery",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/virtual-blades.ts",
+          "symbol": "acceptVirtualBlade"
+        }
+      ],
+      "tests": [
+        {
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "suite": [],
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "parameters": [
+            "凍気のアイエル",
+            "c2-p04-r1c1-ab02",
+            "水",
+            3,
+            2
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+        },
+        {
+          "title": "%s declares its exact virtual profile and finishes without physical source disposal",
+          "suite": [],
+          "path": "packages/engine/test/virtual-blades.test.ts",
+          "parameters": [
+            "爆炎のフレイアード",
+            "c2-p06-r2c1-ab02",
+            "炎",
+            5,
+            1
+          ],
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+        },
+        {
+          "path": "apps/worker/test/room-virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+          "parameters": [
+            "virtual-blade-ice",
+            false
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+        },
+        {
+          "path": "tests/e2e/virtual-blades.spec.ts",
+          "suite": [],
+          "title": "virtual-blade-ice cancel=false declares from UI and survives refresh without a physical source",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+        },
+        {
+          "path": "apps/worker/test/room-virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+          "parameters": [
+            "virtual-blade-ice",
+            true
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+        },
+        {
+          "path": "tests/e2e/virtual-blades.spec.ts",
+          "suite": [],
+          "title": "virtual-blade-ice cancel=true declares from UI and survives refresh without a physical source",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+        },
+        {
+          "path": "apps/worker/test/room-virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+          "parameters": [
+            "virtual-blade-fire",
+            false
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+        },
+        {
+          "path": "tests/e2e/virtual-blades.spec.ts",
+          "suite": [],
+          "title": "virtual-blade-fire cancel=false declares from UI and survives refresh without a physical source",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+        },
+        {
+          "path": "apps/worker/test/room-virtual-blades.test.ts",
+          "suite": [],
+          "title": "%s canceled=%s saves the declaration, rolls and single group without physical source",
+          "parameters": [
+            "virtual-blade-fire",
+            true
+          ],
+          "kind": "worker-persistence",
+          "bindingNote": "Every actual blade command is saved, restarted and replayed; ability source has no physical card and final source hand/discard assertions cover normal and canceled branches."
+        },
+        {
+          "path": "tests/e2e/virtual-blades.spec.ts",
+          "suite": [],
+          "title": "virtual-blade-fire cancel=true declares from UI and survives refresh without a physical source",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Real UI ability declaration and normal/canceled resolution survive reload; all four hands remain unchanged except actual Fate payment and its one-card refill and no recovery reservation remains after all-seat reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/virtual-guard-no-physical-recovery",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/followers.ts",
+          "symbol": "freezeFollowerSnapshot"
+        },
+        {
+          "path": "packages/engine/src/combat/followers.ts",
+          "symbol": "resolveFollowerSnapshot"
+        }
+      ],
+      "tests": [
+        {
+          "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+          "suite": [
+            "Task7m virtual guard lifetime and restrictions"
+          ],
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "parameters": false,
+          "kind": "canonical-transition",
+          "bindingNote": "Actual source transitions in 56-passed related Engine run. Virtual guard binds only Blessing=false, without manually attached blessing. Virtual blade asserts no recovery decisions, not merely no final discard."
+        },
+        {
+          "path": "apps/worker/test/room-follower-entry.test.ts",
+          "suite": [],
+          "title": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual selected guard persists across DO eviction/replay; final 220-card conservation, absent physical virtual ID and absent recovery decision are asserted."
+        },
+        {
+          "path": "tests/e2e/follower-entry.spec.ts",
+          "suite": [],
+          "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Selected guard identity and all three HP reductions survive reload; all seats reload at completion and show no virtual card in hand/discard or pending recovery reservation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "S29#source/title",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/followers.ts",
+          "symbol": "freezeFollowerSnapshot"
+        },
+        {
+          "path": "packages/engine/src/combat/followers.ts",
+          "symbol": "resolveFollowerSnapshot"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m virtual guard lifetime and restrictions"
+          ],
+          "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+          "kind": "canonical-transition",
+          "parameters": false,
+          "bindingNote": "S29 source/title: exact R6 indexed canonical-transition assertions. S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
+        },
+        {
+          "path": "packages/engine/test/follower-entry-abilities.test.ts",
+          "suite": [
+            "Task7m virtual guard lifetime and restrictions"
+          ],
+          "title": "S29 same one virtual guard reduces all actual Dia Dwarf hits by HP1 with Blessing=%s",
+          "kind": "canonical-transition",
+          "parameters": true,
+          "bindingNote": "S29 source/title: exact R6 indexed canonical-transition assertions. S28 independent Engine fixtures prove damage4/history/inheritance versus ritual4->0/no inheritance; browser proves actual lifecycle controls, not exact starting damage4. S29 same virtual HP1 guard across three actual Dia hits, no physical source or recovery, cleanup and220 uniqueness."
+        },
+        {
+          "path": "apps/worker/test/room-follower-entry.test.ts",
+          "suite": [],
+          "title": "S29 real DO restores a selected virtual guard and its frozen snapshot without duplicate activation or physical cards",
+          "parameters": null,
+          "kind": "worker-persistence",
+          "bindingNote": "Actual selected guard persists across DO eviction/replay; final 220-card conservation, absent physical virtual ID and absent recovery decision are asserted."
+        },
+        {
+          "path": "tests/e2e/follower-entry.spec.ts",
+          "suite": [],
+          "title": "S29 Arnes explicitly selects virtual defense for three real hits without adding a physical card",
+          "parameters": null,
+          "kind": "browser",
+          "bindingNote": "Selected guard identity and all three HP reductions survive reload; all seats reload at completion and show no virtual card in hand/discard or pending recovery reservation."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G11#semantic/actual-placed-follower-death-recovery",
+      "handler": [
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "offerReclaim"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "baseClaims"
+        },
+        {
+          "path": "packages/engine/src/reclaim.ts",
+          "symbol": "commitReclaim"
+        }
+      ],
+      "tests": [
+        {
+          "title": "Only actual follower death offers ordinary follower recovery",
+          "suite": [],
+          "path": "packages/engine/test/owned-reclaim.test.ts",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "Existing actual transition case: turn-technique hidden owner/nonowner, actual anytime Courage base choice, or actual arranged follower combat death. Prior current-source successful runs recorded in accompanying evidence. No synthetic disposition injection."
+        },
+        {
+          "path": "apps/worker/test/room-ordinary-follower-death.test.ts",
+          "title": "Actual placed follower death restores ordinary recovery once through every DO restart and replay",
+          "kind": "worker-persistence",
+          "bindingNote": "Actual placed Sharia death offers the base right; every DO command is saved/restarted/replayed with all-seat projection checks; reservation becomes one hand card and baseSpent remains true.",
+          "suite": [],
+          "parameters": null
+        },
+        {
+          "path": "tests/e2e/ordinary-follower-death.spec.ts",
+          "title": "Actual placed follower ordinary recovery returns once after all-seat browser reload",
+          "kind": "browser",
+          "bindingNote": "Actual follower death offers base recovery via the UI; pending/reserved/completed reloads and final all-seat reload assert exactly one physical return to its owner.",
+          "suite": [],
+          "parameters": null
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "common:C04#C04/target-local-not-source-global",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedTechnique"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "actual two-target magic6 lowers only B to5, preserving source and damage",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual source action stays unchanged, B effect becomes five while C stays six; damage eight each."
+        },
+        {
+          "path": "apps/worker/test/room-received-defenses.test.ts",
+          "title": "a shared two-target technique reduces only Arnes incoming value and never its damage or original declaration",
+          "kind": "worker-persistence",
+          "bindingNote": "Existing scenario converted from direct Engine calls to real DO commands; every command restarts/replays and compares all-seat views. Only B receives level5, C retains level6, original action stays level6 and damage remains8.",
+          "suite": [],
+          "parameters": null
+        },
+        {
+          "path": "tests/e2e/received-defenses.spec.ts",
+          "title": "a shared attack displays each received value independently after reduction and reload",
+          "kind": "browser",
+          "bindingNote": "All seats reload after reduction and at completion; UI shows B level5/C level6, original action remains level6/damage8, and both receive damage8.",
+          "suite": [],
+          "parameters": null
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G14#semantic/follower-hp-reduces-each-simultaneous-hit",
+      "handler": [
+        {
+          "path": "packages/engine/src/combat/followers.ts",
+          "symbol": "resolveFollowerSnapshot"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s11-s13.test.ts",
+          "suite": [],
+          "title": "S13 abstract Lv5 damage6 three-hit resolver with front Lv3 HP2 yields four each and destroys one physical follower once",
+          "parameters": null,
+          "kind": "structural-resolver",
+          "bindingNote": "S13 scoped evidence only; S13 remains structural-resolver, not a printed physical play route. No final candidate or review claim."
+        },
+        {
+          "path": "apps/worker/test/room-recovery.test.ts",
+          "title": "resumes shared multi-target hit progress and preserves simultaneous follower HP on every hit",
+          "kind": "worker-persistence",
+          "bindingNote": "Each command restarts/replays through three shared hits; the follower reduces B total to18 while C receives21, dies once and all220 card IDs remain unique.",
+          "suite": [],
+          "parameters": null
+        },
+        {
+          "path": "tests/e2e/combat.spec.ts",
+          "title": "eight browsers finish three shared hits and preserve follower reduction on every hit",
+          "kind": "browser",
+          "bindingNote": "Eight-seat UI resolves all three hits; every seat reloads before and after resolution and sees B18/C21 with the destroyed follower absent.",
+          "suite": [],
+          "parameters": null
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "S04#source/title",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/advance.ts",
+          "symbol": "roll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "S04 source/title: exact R6 indexed canonical-transition assertions. Actual whole 2d6 reroll 2,3 to 4,4, stable roll ID; canonical provider called once, receipt replay after eviction does not consume again. Concrete Task1 binding; no accepted promotion or review claim."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Real reroll replaces both faces with4,4, keeps roll identity/history; every command survives eviction/replay without another entropy request, including final pending-provider probe."
+        },
+        {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "S04#source/when",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/advance.ts",
+          "symbol": "roll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "S04 source/when: exact R6 indexed canonical-transition assertions. Actual whole 2d6 reroll 2,3 to 4,4, stable roll ID; canonical provider called once, receipt replay after eviction does not consume again. Concrete Task1 binding; no accepted promotion or review claim."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Real reroll replaces both faces with4,4, keeps roll identity/history; every command survives eviction/replay without another entropy request, including final pending-provider probe."
+        },
+        {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "S04#acceptance-correspondence",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/advance.ts",
+          "symbol": "roll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s01-s05.test.ts",
+          "suite": [],
+          "title": "S04 actual whole 2d6 reroll replaces 2,3 with 4,4 and keeps one stable roll identity and double result after JSON save",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Same roll changes entire 2d6 from2,3 to4,4 and keeps both attempts across JSON save."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-scenarios.test.ts",
+          "suite": [],
+          "title": "S04 canonical one-command entropy saves 4,4 once and duplicate final PASS never calls provider after eviction",
+          "kind": "worker-persistence",
+          "parameters": null,
+          "bindingNote": "Actual DO eviction immediately after saving4,4 and duplicate final PASS reuses saved response without entropy provider or third roll."
+        },
+        {
+          "path": "tests/e2e/scenario-s01-s05.spec.ts",
+          "title": "S01-S05 reroll retains priority paid cards and roll continuation across reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Canonical S04 real reroll UI replaces2,3 with4,4 and retains stable ID/two attempts; all seats reload while pending and after completion and keep the same roll history."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "ruling:G08#semantic/frozen-effect-rejects-late-spirit",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "actionModifierOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/action-modifiers.ts",
+          "symbol": "validActionModifier"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/scenario-s06-s10.test.ts",
+          "suite": [],
+          "title": "S06 actual level6 is frozen at normal defense and late Shin Spirit spends no hand ability attempt or roll",
+          "parameters": null,
+          "kind": "canonical-transition",
+          "bindingNote": "S06 existing exact cases, historical execution retained; full source/current candidate acceptance remains."
+        },
+        {
+          "path": "apps/worker/test/room-scenario-s06-s10.test.ts",
+          "title": "S06-S10 %s real DO resumes every defense command and duplicate receipt without replaying costs or hits",
+          "kind": "worker-persistence",
+          "parameters": "s06",
+          "bindingNote": "At frozen level6, actual late Shin Spirit command is rejected without state/revision/hand/usage changes; every command and rejection is restarted/replayed before exact damage5 completion.",
+          "suite": []
+        },
+        {
+          "path": "tests/e2e/scenario-s06-s10.spec.ts",
+          "title": "S06-S10 s06 real defense continuation retains exact outcome across reload",
+          "kind": "browser",
+          "parameters": null,
+          "bindingNote": "All seats reload at normal defense and retain frozen level6 with no late Spirit offer; source hand stays unchanged and all seats reload after completion and retain damage5.",
+          "suite": []
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/public-only-target-candidates",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 public exemptions are excluded but hidden exemptions remain selectable",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "real ritual supplies Vanmil and actual multi-target ban survives declaration and result eviction",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Hidden Lia is selectable among all four public player names; actual identity reveal removes only Lia from target candidates, retained after DO replay and all-seat browser reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-main-action",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "actual next-turn Vanmil ban preserves the unused main action through every restart and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual ritual and full turn cycle reach a fresh action; successful ban retains action and PASS_ACTION, which is then accepted through save/restart/replay."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "Vanmil can still end his unused main action after actual next-turn ban and all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Fresh next-turn ban leaves the normal action available after all-seat reload; clicking end action succeeds and all seats reload into hand adjustment."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual fresh main-action Worker/browser correspondence added; frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/designated-public-state-candidates",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing candidates use designated public state after actual turn advance",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "suppression-blessing",
+          "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "suppression-blessing-fail",
+          "bindingNote": "Only the actually designated B is offered; attempting undesignated A is atomically rejected with identical state after restart/replay, before valid blessing."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "After actual B/D designation and Lia turn progression, all seats reload and the actual select contains only the two designated players, then B blessing resolves."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-secret-target-rejection",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "リーア姫",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "聖騎士ランスロット2",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "hidden Lia and hidden ordinary target have the same outside WS and ACK transcripts before and after ban",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired hidden ordinary/Lia targets accept identical declarations and every response with equal outside WS views/ACKs; every accepted command now survives restart/replay, while target-local applicability differs."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "hidden exempt and ordinary ban targets keep identical outside browser transcripts through all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two actual browser tables compare complete outside game views after every accepted UI command and all-seat reload, normalizing only independently assigned player IDs; target-local suppressed/exempt states differ while outside views remain equal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/hidden-exempt-designation-same-transcript",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "リーア姫",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 hidden %s produces the same targeting transcript as an ordinary identity",
+          "kind": "structural-resolver",
+          "parameters": "聖騎士ランスロット2",
+          "bindingNote": "Paired arranged identities/public flags verify targeting and observer projection without claiming real identity transformation."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "hidden Lia and hidden ordinary target have the same outside WS and ACK transcripts before and after ban",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired hidden ordinary/Lia targets accept identical declarations and every response with equal outside WS views/ACKs; every accepted command now survives restart/replay, while target-local applicability differs."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "hidden exempt and ordinary ban targets keep identical outside browser transcripts through all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two actual browser tables compare complete outside game views after every accepted UI command and all-seat reload, normalizing only independently assigned player IDs; target-local suppressed/exempt states differ while outside views remain equal."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct paired Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/reject-no-new-designation",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a fresh attack window cannot retry a no-new-target designation",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new Blessing response opportunity rejects existing B-only declaration without durable mutation through restart/replay; accepted D-only declaration preserves the exact prior B record and produces B/D designations."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new response opportunity after Blessing rejects submitted B-only selection with INVALID_ACTION and unchanged public game/revision after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/designations-accumulate",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a fresh attack window cannot retry a no-new-target designation",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new Blessing response opportunity rejects existing B-only declaration without durable mutation through restart/replay; accepted D-only declaration preserves the exact prior B record and produces B/D designations."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "a new ban opportunity rejects unchanged selection and adds a target without replacing earlier designations after reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual new response opportunity after Blessing rejects submitted B-only selection with INVALID_ACTION and unchanged public game/revision after all-seat reload; D-only declaration succeeds and all seats reload with both B and D still designated."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/self-target-ban-blocks-further-declaration",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 self-designation prevents subsequent ability use and never adds a public disabled status",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "actual self-ban prevents a new declaration on the next own turn after every DO restart and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual self-ban and full subsequent turn cycle use saved/replayed commands; next own action has no ban offer, forged retry is atomically rejected through eviction and all seats show source suppression."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "self-designated Vanmil stays unable to declare on his next turn across all-seat browser reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual self-target selection and four-seat turn cycle reach a fresh own action; all seats reload with source designated/suppressed and the source has no ban option/button."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual subsequent-turn Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/reject-empty-duplicate-nonexistent",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "suppressionOptions"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "transitionSuppression"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression.ts",
+          "symbol": "resolveSuppression"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 invalid target lists do not spend the attempt and valid designation preserves main action",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual public declaration/turn/attack/cancellation transitions assert the precise C16 target or opportunity rule."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "public exempt, stale opportunity, fake target and repeated no-change ban reject without durable mutation",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Empty, duplicate and nonexistent target lists reject without stored mutation, including restart/replayed rejection; a valid declaration remains accepted afterward."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "empty duplicate and nonexistent ban target lists reject in the browser connection without spending the opportunity",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual authenticated browser WebSocket rejects empty/duplicate lists as INVALID_COMMAND and nonexistent target as INVALID_ACTION; stored game and every seat view remain identical after each reload, then valid B selection succeeds."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and direct Worker/browser invalid-input assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a new declaration containing an already relieved target never cancels its living Blessing",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "%s persists actual spirit-minus-five roll and spends the attempt on either result",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "suppression-blessing",
+          "bindingNote": "Actual successful blessing record remains byte-for-byte equal after turn advance and accepted A/B redesignation; B stays relieved while newly self-designated A becomes suppressed, across every-command restart/replay."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "ritual-born Vanmil designates multiple public names, and Blessing survives reload with its actual roll",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual blessing resolves before the next Vanmil turn; accepted A/B redesignation and all-seat reload leave B relieved while A is suppressed, including the visible relief text."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual redesignation Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/lease-expires-G15-death-entry",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual own-turn Blessing expires on the source lethal attack before disposal",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+        },
+        {
+          "path": "apps/worker/test/room-suppression.test.ts",
+          "title": "actual lethal attack expires Blessing at source death entry before disposal through DO restart and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual ban and successful blessing precede actual turn progression and lethal bow attack. At source pending-death while hand still exists, lease is empty and B is suppressed; every command and final all-seat snapshot survive eviction/replay."
+        },
+        {
+          "path": "tests/e2e/suppression.spec.ts",
+          "title": "Blessing expires at actual source death entry before disposal across all-seat browser reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI blessing and later lethal bow attack reach source pending-death; all seats reload before disposal, source still has hand and beneficiary B again displays ability prohibition."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual lethal-attack Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/revival-does-not-restore-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing expires at G15 death entry and cannot revive with its old life",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-lia-life.test.ts",
+          "title": "R6 canonical living Vanmil and Lia death revival renew only the new life Blessing through every DO restart and receipt replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual source death clears the lease; actual revival changes lifeId without restoring the old lease. New actual blessing stores the new source lifeId and restores only its effect through every-command eviction/replay and all-seat projections."
+        },
+        {
+          "path": "tests/e2e/canonical-lia-life.spec.ts",
+          "title": "actual Lia revival keeps the old Blessing expired until a new-life blessing across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban/blessing/death/revival/re-setup retains beneficiary prohibition after revival and all-seat reload; only a newly declared blessing restores relief, again checked after all-seat reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/source-life-generation-saved",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+          "kind": "structural-resolver",
+          "parameters": "source-generation",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing candidates use designated public state after actual turn advance",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual turn progression and Blessing declaration, with actual lethal attack for G15 expiry before disposal."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-lia-life.test.ts",
+          "title": "R6 canonical living Vanmil and Lia death revival renew only the new life Blessing through every DO restart and receipt replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual source death clears the lease; actual revival changes lifeId without restoring the old lease. New actual blessing stores the new source lifeId and restores only its effect through every-command eviction/replay and all-seat projections."
+        },
+        {
+          "path": "tests/e2e/canonical-lia-life.spec.ts",
+          "title": "actual Lia revival keeps the old Blessing expired until a new-life blessing across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban/blessing/death/revival/re-setup retains beneficiary prohibition after revival and all-seat reload; only a newly declared blessing restores relief, again checked after all-seat reload."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine assertions retained and actual death/revival/new-life Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/no-early-ban-removal-in-G15",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "kind": "structural-resolver",
+          "parameters": "A",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "kind": "structural-resolver",
+          "parameters": "B",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-canonical-vanmil-death.test.ts",
+          "title": "R6 canonical Vanmil actual death saves accepted ban through pending death and commits one C13 result under every receipt replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual established ban remains identical through all lethal-attack/death windows; pending death has no outcome, then one C13 result is committed under every-command save/restart/replay."
+        },
+        {
+          "path": "tests/e2e/canonical-vanmil-death.spec.ts",
+          "title": "actual Vanmil death keeps established ban through pending death and all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban and lethal attack reach Vanmil pending-death; all-seat reload preserves exact per-seat designation views and target suppression with no premature outcome, then final reload confirms death completion result."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Existing Engine source/target boundary assertions retained and actual Vanmil death Worker/browser assertions added. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/target-death-revival-retains-designation",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural death entry and resetup of %s retain the established designation",
+          "kind": "structural-resolver",
+          "parameters": "B",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-r6-combinations.test.ts",
+          "title": "R6 DO preserves frozen value then designation through actual death revival and a new-life rejected modifier",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual ban, lethal attack and revival retain the exact designation at death and new life; every command saves, restarts, replays and compares all-seat views."
+        },
+        {
+          "path": "tests/e2e/banned-target-revival.spec.ts",
+          "title": "actual banned target death and revival retain designation across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban, lethal attack and revival retain designation through pending death, death and re-setup. Each stage checks all-seat reload equality while allowing death to reveal identity."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual target death and revival retain established designation in Worker persistence and browser reload checks. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/exempt-target-same-check-and-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing on a concealed inert designation has the same outsider transcript",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-privacy.test.ts",
+          "title": "actual exempt and ordinary Blessing share saved checks leases attempts and outside transcripts",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired actual ban and blessing use equal entropy; every blessing command ACK and all outsider snapshots match through save/restart/replay. Equal actual roll and lease, consumed attempt and unused main action are asserted."
+        },
+        {
+          "path": "tests/e2e/blessing-privacy.spec.ts",
+          "title": "actual exempt and ordinary Blessing share checks attempts and outside transcripts across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two UI tables differ only in hidden target identity. Outsider game projections match after each blessing response; all-seat reload retains exact check and spent attempt. Read-only local inspection verifies equal saved leases. Only session IDs are normalized."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/success-does-not-disclose-prior-ban",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 Blessing on a concealed inert designation has the same outsider transcript",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-privacy.test.ts",
+          "title": "actual exempt and ordinary Blessing share saved checks leases attempts and outside transcripts",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Paired actual ban and blessing use equal entropy; every blessing command ACK and all outsider snapshots match through save/restart/replay. Equal actual roll and lease, consumed attempt and unused main action are asserted."
+        },
+        {
+          "path": "tests/e2e/blessing-privacy.spec.ts",
+          "title": "actual exempt and ordinary Blessing share checks attempts and outside transcripts across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Two UI tables differ only in hidden target identity. Outsider game projections match after each blessing response; all-seat reload retains exact check and spent attempt. Read-only local inspection verifies equal saved leases. Only session IDs are normalized."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual paired ordinary/exempt blessing checks, leases and outside projections covered. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/only-Vanmil-ban-released",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-status.test.ts",
+          "title": "actual %s remains after Blessing releases only Vanmil through every saved command",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "confusion",
+          "bindingNote": "Actual ban and status attack precede successful Blessing. Every command is saved/restarted/replayed with all-seat projection equality; exact unrelated status persists, Vanmil is relieved, common ability gate remains closed."
+        },
+        {
+          "path": "tests/e2e/blessing-status.spec.ts",
+          "title": "actual confusion remains after Blessing across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-status.test.ts",
+          "title": "actual %s remains after Blessing releases only Vanmil through every saved command",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "hypnosis",
+          "bindingNote": "Actual ban and status attack precede successful Blessing. Every command is saved/restarted/replayed with all-seat projection equality; exact unrelated status persists, Vanmil is relieved, common ability gate remains closed."
+        },
+        {
+          "path": "tests/e2e/blessing-status.spec.ts",
+          "title": "actual hypnosis remains after Blessing across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual UI ban, status attack and later successful Blessing retain the status on all-seat reload while the owner sees Vanmil relief. Read-only test inspection confirms lease and unrelated status coexist."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual confusion and hypnosis persist through subsequent successful Blessing, saved command replay and browser reload. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "common:C04#C04/once-target-hit-before-followers",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/received-defense.ts",
+          "symbol": "receivedDefenseOptions"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [
+            "Task7r canonical received-defense packages"
+          ],
+          "title": "private offered options, exact errors, cancel spent, decline, and late follower entry",
+          "kind": "canonical-transition",
+          "parameters": null,
+          "bindingNote": "Actual cancellation consumes attempt, stale and foreign input fail atomically, and follower start ends choice."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+          "kind": "canonical-transition",
+          "parameters": "select",
+          "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+        },
+        {
+          "path": "packages/engine/test/received-defense-abilities.test.ts",
+          "suite": [],
+          "title": "actual Griffin two hits gives fresh Giant attempt after first %s",
+          "kind": "canonical-transition",
+          "parameters": "cancel",
+          "bindingNote": "Actual second Griffin hit gets fresh attempt after selected or canceled first hit."
+        },
+        {
+          "path": "apps/worker/test/room-griffin-defense.test.ts",
+          "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "select",
+          "bindingNote": "Actual dedicated Griffin creates two hits. Every command saves/restarts/replays with all-seat projection comparison. Canceled/late first-hit input and stale next-hit reference reject without durable mutation; next hit offers a fresh Giant attempt."
+        },
+        {
+          "path": "tests/e2e/griffin-defense.spec.ts",
+          "title": "actual Griffin selected first Giant allows one fresh second-hit attempt across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
+        },
+        {
+          "path": "apps/worker/test/room-griffin-defense.test.ts",
+          "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "cancel",
+          "bindingNote": "Actual dedicated Griffin creates two hits. Every command saves/restarts/replays with all-seat projection comparison. Canceled/late first-hit input and stale next-hit reference reject without durable mutation; next hit offers a fresh Giant attempt."
+        },
+        {
+          "path": "tests/e2e/griffin-defense.spec.ts",
+          "title": "actual Griffin canceled first Giant remains spent until next hit across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
+        },
+        {
+          "path": "apps/worker/test/room-griffin-defense.test.ts",
+          "title": "actual Griffin %s preserves per-hit Giant attempts and follower cutoff through DO replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": "late",
+          "bindingNote": "Actual dedicated Griffin reaches follower start. Every command saves/restarts/replays with all-seat projections; late Giant rejects without durable mutation and no new Giant option appears through completion."
+        },
+        {
+          "path": "tests/e2e/griffin-defense.spec.ts",
+          "title": "actual Griffin follower entry closes Giant choice through completion across all-seat reload",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Actual Giant selection, Fate cancellation or follower start is followed by all-seat reload. Selected/canceled cases offer a new event on the second hit; follower-start case keeps normal defense closed through completion."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual two-hit Griffin selected/canceled/follower-start cases cover saved per-hit attempts and next-hit renewal. Frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/loss-of-Lia-identity-expires-lease",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+          "kind": "structural-resolver",
+          "parameters": "source-identity",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-blessing-identity.test.ts",
+          "title": "structural Lia identity loss projects an expired lease and cleans it on a real command through eviction and replay",
+          "kind": "worker-persistence",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
+        },
+        {
+          "path": "tests/e2e/blessing-identity.spec.ts",
+          "title": "structural Lia identity loss keeps the target suppressed through reload and a real action",
+          "kind": "browser",
+          "suite": [],
+          "parameters": null,
+          "bindingNote": "Structural saved identity replacement after real Ban/Blessing: unchanged source life and stored lease, restored suppression in all-seat views, real PASS_ACTION removes stale lease; persistence/reload assertions. No reachable Lia transformation is claimed."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Structural identity boundary covered in Engine/DO/browser; frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p07-r1c2-ab03#C16/established-ban-survives-source-suppression-absence",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 bans persist while Vanmil is stopped or absent; mandatory non-ability rules remain separate",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-persistence.test.ts",
+          "title": "%s retains established effects through actual hostile attack, eviction and replay",
+          "kind": "worker-persistence",
+          "parameters": "suppression-persist-ban-confusion",
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+        },
+        {
+          "path": "tests/e2e/suppression-persistence.spec.ts",
+          "title": "actual confusion on Vanmil retains his ban after all-seat reload",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-persistence.test.ts",
+          "title": "%s retains established effects through actual hostile attack, eviction and replay",
+          "kind": "worker-persistence",
+          "parameters": "suppression-persist-ban-hypnosis",
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+        },
+        {
+          "path": "tests/e2e/suppression-persistence.spec.ts",
+          "title": "actual hypnosis on Vanmil retains his ban after all-seat reload",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-persistence.test.ts",
+          "title": "%s retains established effects through actual hostile attack, eviction and replay",
+          "kind": "worker-persistence",
+          "parameters": "suppression-persist-ban-otherworld",
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+        },
+        {
+          "path": "tests/e2e/suppression-persistence.spec.ts",
+          "title": "actual Rift sends Vanmil away without removing his ban after all-seat reload",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-wandering.test.ts",
+          "title": "%s retains the established effect at a structural saved boundary and the next real command",
+          "kind": "worker-persistence",
+          "parameters": "suppression-wandering-ban",
+          "suite": [],
+          "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+        },
+        {
+          "path": "tests/e2e/suppression-wandering.spec.ts",
+          "title": "structural wandering Vanmil keeps his established ban across reload and a real command",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual suppression/otherworld and structural wandering covered; frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 a new declaration containing an already relieved target never cancels its living Blessing",
+          "kind": "structural-resolver",
+          "parameters": null,
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-persistence.test.ts",
+          "title": "%s retains established effects through actual hostile attack, eviction and replay",
+          "kind": "worker-persistence",
+          "parameters": "suppression-persist-source-confusion",
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+        },
+        {
+          "path": "tests/e2e/suppression-persistence.spec.ts",
+          "title": "actual confusion on Lia retains her lease after all-seat reload",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-persistence.test.ts",
+          "title": "%s retains established effects through actual hostile attack, eviction and replay",
+          "kind": "worker-persistence",
+          "parameters": "suppression-persist-source-hypnosis",
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+        },
+        {
+          "path": "tests/e2e/suppression-persistence.spec.ts",
+          "title": "actual hypnosis on Lia retains her lease after all-seat reload",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-persistence.test.ts",
+          "title": "%s retains established effects through actual hostile attack, eviction and replay",
+          "kind": "worker-persistence",
+          "parameters": "suppression-persist-source-otherworld",
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+        },
+        {
+          "path": "tests/e2e/suppression-persistence.spec.ts",
+          "title": "actual Rift sends Lia away without removing her lease after all-seat reload",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-wandering.test.ts",
+          "title": "%s retains the established effect at a structural saved boundary and the next real command",
+          "kind": "worker-persistence",
+          "parameters": "suppression-wandering-source",
+          "suite": [],
+          "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+        },
+        {
+          "path": "tests/e2e/suppression-wandering.spec.ts",
+          "title": "structural wandering Lia keeps her established lease across reload and a real command",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual suppression/otherworld and structural wandering covered; frozen-candidate acceptance remains."
+      ]
+    },
+    {
+      "row": "c2-p03-r1c2-ab04#C16/lease-survives-target-absence",
+      "handler": [
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "cleanBlessingLeases"
+        },
+        {
+          "path": "packages/engine/src/abilities/suppression-state.ts",
+          "symbol": "vanmilSuppressed"
+        }
+      ],
+      "tests": [
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+          "kind": "structural-resolver",
+          "parameters": "target-otherworld",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "packages/engine/test/suppression-blessing.test.ts",
+          "suite": [],
+          "title": "C16 structural Blessing lifetime boundary %s preserves only a living matching source",
+          "kind": "structural-resolver",
+          "parameters": "target-wandering",
+          "bindingNote": "Explicit direct state/lifecycle boundary or paired identity fixture; no actual absence, revival or identity-change producer is claimed."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-persistence.test.ts",
+          "title": "%s retains established effects through actual hostile attack, eviction and replay",
+          "kind": "worker-persistence",
+          "parameters": "suppression-persist-target-otherworld",
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. Every command evicts/replays and compares persisted snapshot and 220-card conservation."
+        },
+        {
+          "path": "tests/e2e/suppression-persistence.spec.ts",
+          "title": "actual Rift sends the blessed target away without removing its lease after all-seat reload",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Actual hostile attack produces ability-disabled/stopped/otherworld after real Ban/Blessing. Assertions retain exact designation and lease, all-seat applicability and saved source life; no status or absence result is injected. UI attack and choices, all-seat reload and persisted state are checked."
+        },
+        {
+          "path": "apps/worker/test/room-suppression-wandering.test.ts",
+          "title": "%s retains the established effect at a structural saved boundary and the next real command",
+          "kind": "worker-persistence",
+          "parameters": "suppression-wandering-target",
+          "suite": [],
+          "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+        },
+        {
+          "path": "tests/e2e/suppression-wandering.spec.ts",
+          "title": "structural wandering target keeps its established lease across reload and a real command",
+          "kind": "browser",
+          "parameters": null,
+          "suite": [],
+          "bindingNote": "Structural wandering saved-state fixture following real Ban/Blessing; card zones and distances follow wandering storage shape. All-seat reload and a subsequent real command retain designation/lease and source identity/life. No actual protection-death producer is claimed."
+        }
+      ],
+      "status": "implemented",
+      "remaining": [
+        "Actual suppression/otherworld and structural wandering covered; frozen-candidate acceptance remains."
+      ]
+    }
+  ]
+}

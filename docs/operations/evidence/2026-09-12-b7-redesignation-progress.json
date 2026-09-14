@@ -1,0 +1,53 @@
+{
+  "kind": "partial-binding-progress",
+  "date": "2026-09-12",
+  "scope": "B7 C16 redesignation retains living blessing lease; not acceptance evidence",
+  "previousMissingRows": 14,
+  "newlyBoundRows": [
+    "c2-p03-r1c2-ab04#C16/redesignation-does-not-break-live-lease"
+  ],
+  "remainingMissingRows": 13,
+  "changes": [
+    "Extended existing successful blessing DO branch through actual C/D turns into the next Vanmil action and accepted A/B redesignation.",
+    "Exact saved blessing lease remains equal; B stays relieved while new A designation is suppressed across every-command save/restart/replay.",
+    "Extended corresponding browser case with the same turn cycle/redesignation and all-seat reload, retaining visible relief for B.",
+    "Refreshed shared G09 declaration reference to the extended browser case."
+  ],
+  "runs": {
+    "worker": {
+      "command": "WRANGLER_LOG_PATH=../../.cache/wrangler/logs pnpm exec vitest run test/room-suppression.test.ts --reporter=json",
+      "cwd": "apps/worker",
+      "passed": 9,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/suppression.spec.ts --grep 'ritual-born Vanmil' --reporter=json",
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit",
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "AST-checked bindings preserve prior Engine evidence",
+    "Runtime coverage validator valid true",
+    "Remaining B7 rows independently counted as13",
+    "git diff --check passed"
+  ],
+  "sourceSha256": {
+    "apps/worker/test/room-suppression.test.ts": "eb99c53b5593d236433f5ea3df1884c741c52beb15506719845f741cc144390a",
+    "tests/e2e/suppression.spec.ts": "ea0a76eaec492637bc1b00a42a210e7b6cfebfc7ede5ffa5a84e8ccc9072024d",
+    "docs/operations/evidence/2026-09-11-worker-browser-bindings.json": "2cdf328628ca878393e23c8a510210b61ba4d7b3ad17a1ab7f757861914224cb",
+    "docs/operations/evidence/2026-09-12-b7-inventory.md": "167192061f7350f4246ab2228e33d4ff2b0ff44e56655b5738d512ed17e8c1be"
+  },
+  "limitations": [
+    "Existing tests/scenarios extended; no production runtime changes.",
+    "B7 Step2 remains incomplete; source/target lifetime boundaries and other clauses remain.",
+    "Frozen acceptance and formal START games remain. Accepted and verified remain zero."
+  ]
+}

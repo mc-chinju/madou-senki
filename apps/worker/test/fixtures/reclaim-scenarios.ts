@@ -1,3 +1,4 @@
+import {makeOrdinaryFollowerDeathScenario} from './ordinary-follower-death-scenario.js';
 import {namedDeathAllScenarioNames,isNamedDeathScenario,makeNamedDeathScenario} from './named-follower-death-scenario.js';
 import {makeReclaimCrystalScenario} from './reclaim-crystal-scenario.js';
 import {makeReuseScenario} from './reuse-scenario.js';
@@ -9,11 +10,12 @@ import {anytimeScenarioNames,makeAnytimeScenario} from './anytime-scenarios.js';
 import {actionCards,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,transition,viewFor,type GameCommand,type GameState} from '@madou/engine';
 import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
-export const reclaimScenarioNames=[...namedDeathAllScenarioNames,'reclaim-crystals','reclaim-crystals-second','reclaim-extra','reclaim-unlimited','reclaim-sword-dawn','reclaim-sword-rebuild','reclaim-all-army','reclaim-all-army-fail','reclaim-printed-combinations','reclaim-printed-counter',...wishScenarioNames,...anytimeScenarioNames,'reclaim-owned','reclaim-unowned','reclaim-courage','reclaim-courage-fail','reclaim-distance','reclaim-sword-discard','reclaim-sword-install','reclaim-rest','reclaim-potion','reclaim-early','reclaim-choices'] as const;
+export const reclaimScenarioNames=['reclaim-ordinary-follower-death',...namedDeathAllScenarioNames,'reclaim-crystals','reclaim-crystals-second','reclaim-extra','reclaim-unlimited','reclaim-sword-dawn','reclaim-sword-rebuild','reclaim-all-army','reclaim-all-army-fail','reclaim-printed-combinations','reclaim-printed-counter',...wishScenarioNames,...anytimeScenarioNames,'reclaim-owned','reclaim-unowned','reclaim-courage','reclaim-courage-fail','reclaim-distance','reclaim-sword-discard','reclaim-sword-install','reclaim-rest','reclaim-potion','reclaim-early','reclaim-choices'] as const;
 export type ReclaimScenarioName=typeof reclaimScenarioNames[number];
 export function isReclaimScenario(name:string):name is ReclaimScenarioName {return reclaimScenarioNames.some(n=>n===name);}
 /** Deal, characters and prior stat changes are fixture input. Attack and mental declaration use actual commands; Courage and recovery stay live. */
 export function makeReclaimScenario(name:ReclaimScenarioName,players:{id:string;name:string}[]):GameState {
+  if(name==='reclaim-ordinary-follower-death')return makeOrdinaryFollowerDeathScenario(players);
   if(isNamedDeathScenario(name))return makeNamedDeathScenario(name,players);
   if(name==='reclaim-crystals'||name==='reclaim-crystals-second')return makeReclaimCrystalScenario(players,name==='reclaim-crystals-second');
   if(name==='reclaim-extra'||name==='reclaim-unlimited')return makeReuseScenario(players,name==='reclaim-unlimited');

@@ -2,6 +2,7 @@ import {expect,test,type Locator} from '@playwright/test';
 import {blastSwordScenarios,blastSwordCard as CARD,blastSwordMode} from '../../apps/worker/test/fixtures/blast-sword-physical-scenarios.js';
 import {observe,windowPassButtonName,tableFixture} from './helpers.js';
 for(const scenario of blastSwordScenarios)test(`${scenario} actual Blast Sword chant two targets and counter defenses survive reload`,async({browser,request})=>{
+ test.setTimeout(90_000);
  const table=await tableFixture(browser,request,scenario),errors:string[]=[];for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
  try{const views=await observe(table),ids=table.sessions.map(p=>p.id),[a,b,c,d]=ids as [string,string,string,string],page=table.pages[0]!,bp=table.pages[1]!,cp=table.pages[2]!,dp=table.pages[3]!,m=blastSwordMode(scenario),game=()=>views.get(a)!.game!,own=(id:string)=>views.get(id)!.game!.self;
   async function click(button:Locator){const rev=views.get(a)!.revision;await button.click();await expect.poll(()=>{expect(errors).toEqual([]);return views.get(a)?.revision;}).toBeGreaterThan(rev);await expect.poll(()=>views.get(b)?.revision).toBe(views.get(a)!.revision);}

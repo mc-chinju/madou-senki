@@ -1,0 +1,296 @@
+{
+  "recordedOn": "2026-09-12",
+  "stage": "B8 second candidate in progress",
+  "commit": "b000546",
+  "acceptance": "Not accepted: full browser suite and promotion remain pending.",
+  "suites": {
+    "unit": {
+      "numPassedTests": 7964,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "reportSha256": "7392d0fc0dbafb23f890d23b2d5fdc255f57666d32464daf4300e5b10aac58f9"
+    },
+    "worker": {
+      "numPassedTests": 2558,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "reportSha256": "e6cdff660e18b5dc5225ae6a5848d99c55d5600aa92a5c5904739a3ee1e372d5"
+    }
+  },
+  "snapshotSha256": "3adb7848ca22b20a90ac20e6b936bfbf6a987315f22b7e0ab88cbe548203fb98",
+  "browserFindings": {
+    "status": "running; failures observed",
+    "cases": [
+      {
+        "scenario": "dragon-close-teleport",
+        "expectedDamage": 0,
+        "actualDamage": 10
+      },
+      {
+        "scenario": "earth-pair-teleport",
+        "expectedDamage": 0,
+        "actualDamage": 3
+      },
+      {
+        "test": "Tia chooses a separate advance for each target and virtual guard still cancels follower ignore after reload",
+        "path": "tests/e2e/follower-entry.spec.ts",
+        "diagnosis": "Trace after reload shows reclaim window for paid advance card, while the test expects surprise ability declaration. Resolve cost-card reclaim responses until the actual ability declaration, then verify reload, separate target payment and final outcomes unchanged."
+      },
+      {
+        "test": "four independent guests join by invitation, ready, reach the guarded start and resume a local setup fixture",
+        "path": "tests/e2e/invite-game.spec.ts",
+        "diagnosis": "Browser context hardcodes localhost:8787, but current test server is on PLAYWRIGHT_PORT=18787; use configured baseURL fixture. Same hardcoded URL found in scenario-s01-http.spec.ts outsider context; prepare same correction."
+      },
+      {
+        "test": "Uonos chooses revival and allegiance explicitly then resumes after re-setup",
+        "path": "tests/e2e/lifetime-techniques.spec.ts",
+        "diagnosis": "After finishing re-setup, card reclaim responses remain. Wait for re-setup lifecycle decision to end, pass remaining response windows, then assert no window, revived allegiance, five cards and hand-adjustment phase."
+      },
+      {
+        "test": "Ice Flow makes a separate optional follower decision for each target and survives reload",
+        "path": "tests/e2e/magic-choices.spec.ts",
+        "diagnosis": "Local passUntil only clicks exact パス. Trace waits on this selector while reclaim response requires 回収せずに進む. Use existing shared windowPassButtonName so actual reclaim windows resolve without changing damage or follower assertions."
+      },
+      {
+        "test": "a real divine reroll keeps forced failure but derives stopping from the final faces",
+        "path": "tests/e2e/mental-defenses.spec.ts",
+        "diagnosis": "Waiting only for seat D priority can stop before the roll resumes. Require after-roll window and original rollId as well as seat D before selecting reroll. Preserve actual divine card, forced failure, final faces, stop/conversion and card consumption assertions."
+      },
+      {
+        "test": "saved guard survives a real divine reroll while Fate forced failure still cancels the attack",
+        "path": "tests/e2e/mental-protection.spec.ts",
+        "diagnosis": "Forced-failure flag and roll stage become visible before nested processing returns to after-roll window. Require original rollId and after-roll window before seeking reroll actor. Preserve saved guard, real divine card, forced failure, cancellation, no stopping/conversion and consumption checks."
+      },
+      {
+        "test": "S01 authenticated HTTP snapshots match all four WebSocket priority views and reject outsiders",
+        "path": "tests/e2e/scenario-s01-http.spec.ts",
+        "diagnosis": "Observed ERR_CONNECTION_REFUSED at hardcoded localhost:8787 in outsider context; current candidate server uses port18787. Already covered by prepared port-fixes patch and successful two-test isolated portFixProbe."
+      }
+    ],
+    "diagnosis": "close-earth browser fixtures use production random dice while corresponding Worker tests force dice=1. Their target spirit is six, so teleport can fail. Add explicit test-only scenario entropy matching the already fixed Worker setup; keep assertions unchanged. Full run must be repeated after change."
+  },
+  "parallelPreparation": {
+    "status": "temporary prototypes only; no Phase C acceptance",
+    "evidence": "/private/tmp/madou-bot-draft/evidence.json",
+    "evidenceSha256": "c2b9f305ef69ea5caeb70433cdea6ffb33d76dde5f720638c54915056593be9e",
+    "botTestsPassed": 6,
+    "clientTestsPassed": 1,
+    "typecheckExitCode": 0,
+    "seatResults": [
+      {
+        "count": 4,
+        "steps": 562,
+        "outcome": "victory"
+      },
+      {
+        "count": 6,
+        "steps": 565,
+        "outcome": "victory"
+      },
+      {
+        "count": 8,
+        "steps": 2508,
+        "outcome": "victory"
+      },
+      {
+        "count": 10,
+        "steps": 3210,
+        "outcome": "victory"
+      }
+    ],
+    "candidateSourcesModified": false,
+    "latestClientChecks": "local lobby ACK drop before acceptance, reconnect, exact raw replay, one committed revision, ACK arrival timing; not formal game or remote acceptance",
+    "integratedProjectionPrototype": {
+      "path": "/private/tmp/madou-c1-integration",
+      "evidenceSha256": "2ee80c2a537c8dc896ac5d96c73b1109657e3e5c06257a7e3e027ecee424a124",
+      "testsPassed": 6,
+      "typecheckExitCode": 0,
+      "status": "temporary engine copy with viewFor action options and bot module; no candidate source changes or Phase C acceptance"
+    }
+  },
+  "knownFixProbe": {
+    "status": "isolated prototype passed; frozen candidate remains unchanged",
+    "stats": {
+      "startTime": "2026-09-12T12:29:40.439Z",
+      "duration": 89818.02100000001,
+      "expected": 11,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "reportPath": "/private/tmp/madou-b8-fix-probe/browser.json",
+    "reportSha256": "af5127bd9fe5953659dde9a7cc80408627c24ad1bc8d9aa6e6fa5dd42d598bd9",
+    "patchPath": "/private/tmp/madou-b8-known-fixes.patch",
+    "patchSha256": "0c5c588df6cf4e69cb99b030aabee8d1fdc7f92550e323c56d029b8ab737b269",
+    "filesSha256": {
+      "worker.ts": "af48faea9b806bdbea129fc2c143c535910039650738de6771f2cacc1170aa64",
+      "wrangler.json": "151be0f2a280ae9b9dddef2caefd3c4f98b64631cdcb7773ca4ab4d46878f029",
+      "playwright.config.mjs": "a630a85e37dc41a2bd1b52ba8a52aea90cbb0452df7e1bcd5252af94401bfc05",
+      "tests/close-earth-physical.spec.ts": "64e5c70b7b812ea119f6aa7bb3cedc345ec2ad5d358d01d0723e83e688373dd8",
+      "tests/follower-entry.spec.ts": "40645690320715bb22dd00d6e7f5fa7d95930670b999394de148ed8b194c499f"
+    },
+    "limitation": "Probe subclasses the current fixture Worker to fix close-earth entropy and copies the two browser files with the Tia response fix. Not a frozen full-candidate acceptance run. Apply patch only after ongoing run completes, test actual edited files, then repeat all candidate suites."
+  },
+  "portFixProbe": {
+    "status": "temporary copies passed; frozen candidate unchanged",
+    "stats": {
+      "startTime": "2026-09-12T12:42:40.721Z",
+      "duration": 5440.657,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "reportPath": "/private/tmp/madou-b8-fix-probe/port-browser.json",
+    "reportSha256": "39f44a208289dd76fa638bd17b87a87bbc65f64b8f1ddf7f8ddf175c0488e8c4",
+    "patchPath": "/private/tmp/madou-b8-port-fixes.patch",
+    "patchSha256": "0a55324f322134de77f14498cf3ebc4157a953320fb6467285300dbdfd4d66c9",
+    "reporterValidation": "--reporter=line,json with PLAYWRIGHT_JSON_OUTPUT_FILE produces progress log and separately parseable JSON. Prepared /private/tmp/madou-b8-progress-reporter.patch; not applied.",
+    "limitation": "Apply after running candidate completes, verify actual edited files, refresh affected bindings, then repeat all frozen candidate suites."
+  },
+  "lifetimeFixProbe": {
+    "status": "temporary copied browser file passed; frozen candidate unchanged",
+    "stats": {
+      "startTime": "2026-09-12T12:54:28.178Z",
+      "duration": 19825.898,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "reportPath": "/private/tmp/madou-b8-fix-probe/lifetime-browser.json",
+    "reportSha256": "9236c5f863c00ee9936959ac74644d3959a9b20ea29699d9ee0745d7ffc6a0b0",
+    "patchPath": "/private/tmp/madou-b8-lifetime-fix.patch",
+    "patchSha256": "65e2a30477e38a831096c388b7a984f478831c610ab0127cfbfbed63753bd3a5",
+    "limitation": "Apply after ongoing full candidate run, verify actual changed files and relevant bindings, repeat full suites."
+  },
+  "magicFixProbe": {
+    "status": "temporary copied browser file passed; frozen candidate unchanged",
+    "stats": {
+      "startTime": "2026-09-12T13:04:31.302Z",
+      "duration": 11397.745,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "reportPath": "/private/tmp/madou-b8-fix-probe/magic-browser.json",
+    "reportSha256": "c5e11a7e56e27da495f290c91856aa07145360d2af5be244abe0b62b3a09e198",
+    "patchPath": "/private/tmp/madou-b8-magic-fix.patch",
+    "patchSha256": "3c4f2d77552e942bac727aaae390d2dc9bb9dd721a97203181304ceff75e3bd4",
+    "limitation": "Apply after ongoing full candidate run, verify actual changed files and relevant bindings, repeat full suites."
+  },
+  "mentalFixProbe": {
+    "status": "temporary copied browser file targeted test passed; frozen candidate unchanged",
+    "stats": {
+      "startTime": "2026-09-12T13:07:31.903Z",
+      "duration": 5911.723,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "reportPath": "/private/tmp/madou-b8-fix-probe/mental-browser.json",
+    "reportSha256": "41a960dc87695bc037c861860514394c04755bb2bfc9876714bb1cb2cee1e92b",
+    "patchPath": "/private/tmp/madou-b8-mental-fix.patch",
+    "patchSha256": "5b83d15cf8cace48283c5aaeb507397293c2c321053b8158fde71e0a90173287",
+    "limitation": "Targeted one-test probe only. Apply after ongoing full run, verify actual changed file and bindings, repeat all frozen suites."
+  },
+  "protectionFixProbe": {
+    "status": "temporary copied browser file targeted test passed; frozen candidate unchanged",
+    "stats": {
+      "startTime": "2026-09-12T13:10:04.346Z",
+      "duration": 7500.402,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "reportPath": "/private/tmp/madou-b8-fix-probe/protection-browser.json",
+    "reportSha256": "79159a2987756e985615c9c1f6a847ceebdf3afc6c1fe875f4ee580b760bc485",
+    "patchPath": "/private/tmp/madou-b8-protection-fix.patch",
+    "patchSha256": "fc509bab68f4c7f867886db5ab06744f03234582a2c44e8764e448fa818b0fc4",
+    "limitation": "Targeted one-test probe only. Apply after ongoing full run, verify actual changed file and bindings, repeat all frozen suites."
+  },
+  "combinedFixPatch": {
+    "path": "/private/tmp/madou-b8-all-known-fixes.patch",
+    "sha256": "24c45089adc20ebdd4c8b4319ef9325feb3016b1e04990a9b8084ce7ea1a7ad2",
+    "applied": false,
+    "applyCheckExitCode": 0,
+    "includes": "all known B8 fixes including port preparation and progress reporter; excludes Phase C integration"
+  },
+  "c1PortedTestsPreparation": {
+    "evidencePath": "/private/tmp/madou-c1-integration/evidence.json",
+    "evidenceSha256": "0b2c7c4de15e3776a2ad52366211ebef5fb9ce57bc33ebf51901ba8df64aec36",
+    "testsPassed": 6,
+    "candidateModified": false,
+    "formalStartAcceptance": false
+  },
+  "preparedBindingRefresh": {
+    "path": "/private/tmp/madou-b8-fix-bindings.json",
+    "sha256": "5e6d3b2059f23adb7dcdc46564f26690b402825afabe3f786bb03e1c9834f967",
+    "semanticRows": 4,
+    "preservesExistingHandlersAndTests": true,
+    "applied": true,
+    "nextStep": "After applying source patches, apply these bindings to capture changed AST declaration hashes and run the full ledger validator."
+  },
+  "completedRun": {
+    "exitCode": 1,
+    "browserStats": {
+      "startTime": "2026-09-12T10:51:42.556Z",
+      "duration": 14877417.767,
+      "expected": 2155,
+      "skipped": 0,
+      "unexpected": 9,
+      "flaky": 0
+    },
+    "rawReports": "/private/tmp/madou-b8-second-failed",
+    "reportsSha256": {
+      "candidate-run.json": "50fa47fd2e26e00a6d52777417e544f49aed0203980f2f7e05472974cf49a573",
+      "snapshot.json": "3adb7848ca22b20a90ac20e6b936bfbf6a987315f22b7e0ab88cbe548203fb98",
+      "worker.json": "e6cdff660e18b5dc5225ae6a5848d99c55d5600aa92a5c5904739a3ee1e372d5",
+      "unit.json": "7392d0fc0dbafb23f890d23b2d5fdc255f57666d32464daf4300e5b10aac58f9",
+      "browser.json": "1d7989e70e313babb42186afea924cec77368152c01e5b40b93c01a9924c7a87"
+    },
+    "acceptance": false
+  },
+  "fixesAppliedAt": "2026-09-13T00:01:17.904172+09:00",
+  "appliedFixValidation": {
+    "browser": {
+      "startTime": "2026-09-12T15:00:58.461Z",
+      "duration": 275756.202,
+      "expected": 55,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "baseUrlGuardFollowupBrowser": {
+      "startTime": "2026-09-12T15:06:02.500Z",
+      "duration": 8407.285,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "typecheckExitCode": 0,
+    "validatorExitCode": 1,
+    "validatorRemaining": "Only the two notApplicable rows require a successful current-candidate run. No acceptance claimed.",
+    "reportsSha256": {
+      "madou-b8-fixed-browser.json": "4d13aa6e29b52913de9c8ae1727ec08561622948dc4c7706c59274f0f4a65af8",
+      "madou-b8-fixed-port-browser.json": "7d9b23ca9a9b94d7373c3c5a70218a3f77454151a438826b60ed894dbe4909b9",
+      "madou-b8-fixed-typecheck.log": "22fe8106126c41fdca55c37bd467f4b59a7ed02f4e67d0d9582b060ef5bee8e4",
+      "madou-b8-fixed-validator.json": "a606b9317bf06ab2e789b1353aa2fc949eb591d96a6657fefafd16c6cab32076"
+    },
+    "sourceSha256": {
+      "apps/worker/test/fixtures/e2e-worker.ts": "2e0c46d74bd268285396ef2394cea73b0fd84d3138fad68f58f889e8bea05a7b",
+      "tests/e2e/follower-entry.spec.ts": "a484fff55d8277fcdf3489aafb06eb7d556e00d846c3b67fbda130268a31c664",
+      "tests/e2e/invite-game.spec.ts": "c8768813ecfd7f50bfb4ca4c428147c7c98bf3703082d65a84ab7706fd80932f",
+      "tests/e2e/lifetime-techniques.spec.ts": "ab8d863bb7b257f887e1b6ed077028e45da9519832f12fe5d402ff1bfc95e881",
+      "tests/e2e/magic-choices.spec.ts": "f8a987ac921613709a787da1005ca257f80f4d94e010c655fb1a6a97101b714d",
+      "tests/e2e/mental-defenses.spec.ts": "dad78efd8c57fa7b8a1ea621b4ca44673b3fa235332ee8cac6915d0d582275ee",
+      "tests/e2e/mental-protection.spec.ts": "842c9de8e6b9b46635fc40f9f8c553adff57d78a403ecdd8f5a0a370061bf830",
+      "tests/e2e/scenario-s01-http.spec.ts": "04aa90e5f301747fabf42ddb701b73176a20b5e4bc0af31e7dd7f1824f5ccc4f",
+      "scripts/run_candidate.sh": "ac0ba3c05d93e263ac11cf7ac289420ac74ec525a5550e2e55c0aed5820876be"
+    }
+  }
+}

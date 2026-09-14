@@ -1,3 +1,4 @@
+import {getAction} from '@madou/catalog';
 import { reset } from 'cloudflare:test';
 import { afterEach, expect, it } from 'vitest';
 import { activeWindowRef, allCardInstanceIds, viewFor, type GameState } from '@madou/engine';
@@ -16,6 +17,7 @@ async function send(room: Room, actor: string, id: string, command: GameCommand)
   const envelope = await request(room, id, command); const ack = await room.command(actor, envelope);
   expect(ack).toMatchObject({ type: 'ack' });
   const ids = allCardInstanceIds(await game(room)); expect(ids).toHaveLength(220); expect(new Set(ids).size).toBe(220);
+  const saved=await room.stored();await room.restart();expect(await room.command(actor,envelope)).toEqual(ack);expect(await room.stored()).toEqual(saved);
   return { actor, envelope, ack };
 }
 async function replay(room: Room, accepted: Awaited<ReturnType<typeof send>>) {
@@ -39,8 +41,8 @@ async function declare(room: Room, actor: string, id: string, abilityId: typeof 
   return send(room, actor, id, { type: 'USE_ABILITY', abilityId, targetEventId: option!.targetEventId,
     ...(abilityId === BAN ? { targetIds: targets } : { targetId: targets[0]! }) });
 }
-async function toLiaTurn(room: Room) {
-  for (const actor of ['A', 'B']) {
+async function toLiaTurn(room: Room, actors=['A','B'], next='C') {
+  for (const actor of actors) {
     let state = await game(room);
     if (state.phase === 'turn-start') { await send(room, actor, `start-${actor}`, { type: 'START_TURN' }); await settle(room, `start-pass-${actor}`); await send(room, actor, `draw-${actor}`, { type: 'CHOOSE_DRAW', draw: false }); await settle(room, `draw-pass-${actor}`); }
     state = await game(room);
@@ -50,8 +52,8 @@ async function toLiaTurn(room: Room) {
     await send(room, actor, `end-${actor}`, { type: 'END_TURN', discardIds: state.players[actor]!.hand.slice(0, Math.max(0, state.players[actor]!.hand.length - 5)) });
     await settle(room, `end-pass-${actor}`);
   }
-  await send(room, 'C', 'start-C', { type: 'START_TURN' }); await settle(room, 'start-pass-C');
-  await send(room, 'C', 'draw-C', { type: 'CHOOSE_DRAW', draw: false }); await settle(room, 'draw-pass-C');
+  await send(room, next, `start-${next}`, { type: 'START_TURN' }); await settle(room, `start-pass-${next}`);
+  await send(room, next, `draw-${next}`, { type: 'CHOOSE_DRAW', draw: false }); await settle(room, `draw-pass-${next}`);
 }
 async function cancelWithFate(room: Room, prefix: string) {
   await until(room, state => state.windows?.at(-1)?.participants[state.windows!.at(-1)!.cursor] === 'D', `${prefix}-to-D`);
@@ -66,6 +68,9 @@ it('real ritual supplies Vanmil and actual multi-target ban survives declaration
   expect(room.initial.players.A!.abilityCharacterIds).not.toContain('c2-p05-r1c1');
   expect(room.initial.suppressionDesignations ?? []).toEqual([]);
   const initial = await room.stored(); await room.restart(); expect(await room.stored()).toEqual(initial);
+  expect(viewFor(await game(room),'A').abilityOptions.find(o=>o.abilityId===BAN)!.targetIds).toEqual(['A','B','C','D']);
+  await send(room,'C','reveal-public-exemption',{type:'REVEAL_CHARACTER'});await settle(room,'reveal-public');
+  expect(viewFor(await game(room),'A').abilityOptions.find(o=>o.abilityId===BAN)!.targetIds).toEqual(['A','B','D']);
   const declaration = await declare(room, 'A', 'ban', BAN, ['B', 'D']); await replay(room, declaration);
   expect((await game(room)).suppressionDesignations ?? []).toEqual([]);
   const result = await settle(room, 'ban-resolve'); expect(result).toBeDefined(); await replay(room, result!);
@@ -106,10 +111,9 @@ it('public exempt, stale opportunity, fake target and repeated no-change ban rej
   const beforeStale = await room.stored();
   expect(await room.command('A', staleRevision)).toMatchObject({ type: 'error', code: 'STALE_REVISION' });
   expect(await room.stored()).toEqual(beforeStale);
-  for (const [id, targetIds, targetEventId] of [['public-exempt', ['C'], option.targetEventId], ['fake', ['missing'], option.targetEventId], ['stale-event', ['B'], 'old-opportunity']] as const) {
+  for (const [id, targetIds, targetEventId] of [['empty', [], option.targetEventId], ['duplicate', ['B','B'], option.targetEventId], ['public-exempt', ['C'], option.targetEventId], ['fake', ['missing'], option.targetEventId], ['stale-event', ['B'], 'old-opportunity']] as const) {
     const before = await room.stored();
-    expect(await room.command('A', await request(room, id, { type: 'USE_ABILITY', abilityId: BAN, targetIds: [...targetIds], targetEventId }))).toMatchObject({ type: 'error' });
-    expect(await room.stored()).toEqual(before);
+    const invalid=await request(room,id,{type:'USE_ABILITY',abilityId:BAN,targetIds:[...targetIds],targetEventId}),rejected=await room.command('A',invalid);expect(rejected).toMatchObject({type:'error'});expect(await room.stored()).toEqual(before);await room.restart();expect(await room.command('A',invalid)).toEqual(rejected);expect(await room.stored()).toEqual(before);
   }
   await declare(room, 'A', 'ban-once', BAN, ['B']); await settle(room, 'once-pass');
   // A receives a genuinely new public response opportunity in C's Blessing declaration.
@@ -119,8 +123,13 @@ it('public exempt, stale opportunity, fake target and repeated no-change ban rej
   // No-change cannot succeed even if forged with the current offered event; refusal remains atomic.
   const before = await room.stored(); const current = viewFor(before.state.game!, 'A').abilityOptions.find(value => value.abilityId === BAN);
   expect(current).toBeDefined();
-  expect(await room.command('A', await request(room, 'repeat-ban', { type: 'USE_ABILITY', abilityId: BAN, targetIds: ['B'], targetEventId: current?.targetEventId ?? option.targetEventId }))).toMatchObject({ type: 'error' });
-  expect(await room.stored()).toEqual(before);
+  const repeated=await request(room,'repeat-ban',{type:'USE_ABILITY',abilityId:BAN,targetIds:['B'],targetEventId:current!.targetEventId});
+  const rejection=await room.command('A',repeated);expect(rejection).toMatchObject({type:'error'});expect(await room.stored()).toEqual(before);
+  await room.restart();expect(await room.command('A',repeated)).toEqual(rejection);expect(await room.stored()).toEqual(before);
+  const first=structuredClone(before.state.game!.suppressionDesignations![0]!);
+  const added=await declare(room,'A','add-new-target',BAN,['D']);await settle(room,'add-new-settle');await replay(room,added);
+  expect((await game(room)).suppressionDesignations?.map(d=>d.targetId)).toEqual(['B','D']);
+  expect((await game(room)).suppressionDesignations![0]).toEqual(first);
 });
 
 it('canceled actual ban retains payment and attempt through eviction without making a designation', async () => {
@@ -137,6 +146,9 @@ it('canceled actual ban retains payment and attempt through eviction without mak
 it.each(['suppression-blessing', 'suppression-blessing-fail'] as const)('%s persists actual spirit-minus-five roll and spends the attempt on either result', async scenario => {
   const room = await openTestRoom(scenario);
   await declare(room, 'A', 'pre-blessing-ban', BAN, ['B']); await settle(room, 'pre-blessing-pass'); await toLiaTurn(room);
+  const offered=viewFor(await game(room),'C').abilityOptions.find(o=>o.abilityId===BLESS)!;expect(offered.targetIds).toEqual(['B']);
+  const beforeInvalid=await room.stored(),invalid=await request(room,'blessing-undesignated',{type:'USE_ABILITY',abilityId:BLESS,targetId:'A',targetEventId:offered.targetEventId});
+  const rejected=await room.command('C',invalid);expect(rejected).toMatchObject({type:'error'});expect(await room.stored()).toEqual(beforeInvalid);await room.restart();expect(await room.command('C',invalid)).toEqual(rejected);expect(await room.stored()).toEqual(beforeInvalid);
   const declaration = await declare(room, 'C', 'blessing', BLESS, ['B']); await replay(room, declaration);
   const resultCommand = await until(room, state => state.rolls?.some(roll => roll.rollerId === 'C' && roll.stage === 'after-roll') ?? false, 'bless-to-roll');
   expect(resultCommand).toBeDefined(); await replay(room, resultCommand!);
@@ -148,6 +160,14 @@ it.each(['suppression-blessing', 'suppression-blessing-fail'] as const)('%s pers
   expect((await game(room)).blessingLeases?.length ?? 0).toBe(success ? 1 : 0);
   expect(viewFor(await game(room), 'C').abilityOptions.some(value => value.abilityId === BLESS)).toBe(false);
   expect(viewFor(await game(room), 'C').legalChoices).toContain('PASS_ACTION');
+  if(success){
+    const lease=structuredClone((await game(room)).blessingLeases![0]!);
+    await toLiaTurn(room,['C','D'],'A');
+    const again=await declare(room,'A','redesignate-relieved',BAN,['A','B']);await settle(room,'redesignate-settle');await replay(room,again);
+    expect((await game(room)).blessingLeases).toEqual([lease]);
+    expect(viewFor(await game(room),'B').suppressionTargets.find(t=>t.targetId==='B')!.applicability).toBe('relieved');
+    expect(viewFor(await game(room),'A').suppressionTargets.find(t=>t.targetId==='A')!.applicability).toBe('suppressed');
+  }
 });
 
 it('canceling Blessing returns neither the own-turn attempt nor a lease after DO reload', async () => {
@@ -158,4 +178,40 @@ it('canceling Blessing returns neither the own-turn attempt nor a lease after DO
   expect((await game(room)).blessingLeases ?? []).toEqual([]);
   expect((await game(room)).rolls?.some(roll => roll.rollerId === 'C') ?? false).toBe(false);
   expect(viewFor(await game(room), 'C').abilityOptions.some(value => value.abilityId === BLESS)).toBe(false);
+});
+
+it('actual next-turn Vanmil ban preserves the unused main action through every restart and replay',async()=>{
+  const room=await openTestRoom('suppression-next-action');
+  expect((await game(room)).phase).toBe('action');expect(viewFor(await game(room),'A').legalChoices).toContain('PASS_ACTION');
+  const receipt=await declare(room,'A','next-turn-ban',BAN,['B']);await settle(room,'next-turn-ban-settle');await replay(room,receipt);
+  expect((await game(room)).suppressionDesignations?.map(d=>d.targetId)).toEqual(['B']);
+  expect((await game(room)).phase).toBe('action');expect(viewFor(await game(room),'A').legalChoices).toContain('PASS_ACTION');
+  await send(room,'A','end-retained-action',{type:'PASS_ACTION'});expect((await game(room)).phase).toBe('hand-adjustment');
+});
+
+it('actual self-ban prevents a new declaration on the next own turn after every DO restart and replay',async()=>{
+  const room=await openTestRoom('suppression-next-action');
+  const self=await declare(room,'A','self-ban',BAN,['A']);await settle(room,'self-ban-settle');await replay(room,self);
+  await toLiaTurn(room,['A','B','C','D'],'A');
+  const before=await room.stored();expect(before.state.game!.phase).toBe('action');
+  expect(before.state.game!.suppressionDesignations?.map(d=>d.targetId)).toEqual(['A']);
+  expect(viewFor(before.state.game!,'A').abilityOptions.some(o=>o.abilityId===BAN)).toBe(false);
+  const forged=await request(room,'self-banned-retry',{type:'USE_ABILITY',abilityId:BAN,targetIds:['B'],targetEventId:'forged-new-opportunity'}),rejection=await room.command('A',forged);
+  expect(rejection).toMatchObject({type:'error'});expect(await room.stored()).toEqual(before);await room.restart();expect(await room.command('A',forged)).toEqual(rejection);expect(await room.stored()).toEqual(before);
+  for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game!.suppressionTargets).toEqual([{targetId:'A',designated:true,applicability:'suppressed'}]);
+});
+
+it('actual lethal attack expires Blessing at source death entry before disposal through DO restart and replay',async()=>{
+  const room=await openTestRoom('suppression-blessing-death');
+  await declare(room,'A','death-ban',BAN,['B']);await settle(room,'death-ban-settle');await toLiaTurn(room);
+  await declare(room,'C','death-blessing',BLESS,['B']);await settle(room,'death-blessing-settle');
+  const lease=structuredClone((await game(room)).blessingLeases![0]!);expect(lease).toBeDefined();expect(viewFor(await game(room),'B').suppressionTargets[0]!.applicability).toBe('relieved');
+  await toLiaTurn(room,['C','D'],'A');
+  const state=await game(room),bow=state.players.A!.hand.find(id=>getAction(id)?.name==='踏み込み／弓')!;expect(bow).toBeDefined();
+  await send(room,'A','kill-blessing-source',{type:'ATTACK',cardInstanceId:bow,targetIds:['C'],dedicated:false});
+  await until(room,s=>s.players.C!.presence==='pending-death','death-entry');
+  const dead=await game(room);expect(dead.players.C!.hand.length).toBeGreaterThan(0);expect(dead.blessingLeases).toEqual([]);expect(dead.players.C!.lifeId).not.toBe(lease.sourceLifeId);
+  expect(viewFor(dead,'B').suppressionTargets[0]!.applicability).toBe('suppressed');
+  const stored=await room.stored();await room.restart();expect(await room.stored()).toEqual(stored);
+  for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game).toEqual(viewFor(dead,id));
 });

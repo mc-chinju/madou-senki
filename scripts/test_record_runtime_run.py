@@ -20,10 +20,18 @@ class RuntimeRunTest(unittest.TestCase):
 
     def test_formats_parameters_without_using_argument_position_as_row_index(self):
         self.assertEqual(format_title('%s %i %d %j %%', [False, 2.7, 2.7, {'a': 1}]), 'false 2 2.7 {"a":1} %')
-        self.assertEqual(format_title('$name $nested.value', {'name': 'A', 'nested': {'value': 'B'}}), 'A B')
+        self.assertEqual(format_title('$name $nested.value', {'name': 'A', 'nested': {'value': 'B'}}), "'A' 'B'")
         self.assertEqual(format_title('%# %s', ['a'], index=4), '4 a')
         with self.assertRaises(ValueError):
             format_title('%# %s', ['a'])
+
+    def test_matches_vitest_array_and_named_parameter_report_titles(self):
+        self.assertEqual(format_title('faces%s', [[3, 4]]), 'faces3,4')
+        self.assertEqual(format_title('$base / $add / $multipliers',
+                                     {'base': 5, 'add': [1], 'multipliers': [2, 0.5]}),
+                         '5 / [ 1 ] / [ 2, 0.5 ]')
+        self.assertEqual(format_title('DO $scenario replays', {'scenario': 'protect-gil-six'}),
+                         "DO 'protect-gil-six' replays")
 
     def test_matches_exact_reference_and_ignores_other_suite(self):
         ref = self.ref()

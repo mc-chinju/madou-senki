@@ -20,3 +20,6 @@ test-results/
 playwright-report/
 /apps/web/public/cards/second/
 /apps/worker/dist-staging/
+
+# Local language-server workspace metadata.
+/.serena/

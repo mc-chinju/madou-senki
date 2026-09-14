@@ -1,8 +1,8 @@
 import {expect, it} from 'vitest';
 import {allCardInstanceIds, type GameState} from '../src/state.js';
 import {act, finish, pass, ready, until} from './combat-helpers.js';
-import {character, handCard} from './fixtures.js';
-import {gameStats,viewFor} from '../src/index.js';
+import {character, handCard, entropy} from './fixtures.js';
+import {gameStats,viewFor,transition} from '../src/index.js';
 
 /** Reach a physical reservation using Lia's actual printed prayer response. */
 function prayerDeclaration() {
@@ -107,3 +107,36 @@ it('Reservation survives a nested counter until the original attack source dispo
 
 import {makeSharedReclaimScenario} from '../../../apps/worker/test/fixtures/shared-reclaim-scenarios.js';
 it('Shared A09 adapter binds B check and A reservation across both saved boundaries',()=>{let s=makeSharedReclaimScenario('shared-a09-hidden',['A','B','C','D'].map(id=>({id,name:id})));s=pass(s);s=act(s,'B',{type:'REVEAL_CHARACTER'});const d=viewFor(s,'B').reclaim!,claim=d.claims.find(c=>c.right==='printed')!;s=act(s,'B',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'request-check',claimId:claim.claimId});expect(s.reclaimDecisions!.find(t=>t.id===d.decisionId)).toMatchObject({checkActorId:'B',checkAttempted:true,checkRollId:s.rolls!.at(-1)!.id});s=until(JSON.parse(JSON.stringify(s)),'reclaim');const take=viewFor(s,'A').reclaim!;expect(take.stage).toBe('beneficiary-choice');s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:take.decisionId,choice:'take',claimId:take.claims[0]!.claimId});expect(s.reclaim!['a2-p01-r3c3']).toMatchObject({ownerId:'A',ownerLifeId:'initial-life:A'});expect(s.resolution).not.toContain('a2-p01-r3c3');s=finish(JSON.parse(JSON.stringify(s)));expect(s.players.A!.hand.filter(id=>id==='a2-p01-r3c3')).toHaveLength(1);expect(s.players.B!.hand).not.toContain('a2-p01-r3c3');expect(s.reclaimReservations).toEqual([]);});
+
+const privacyRights=['none','base','extra','unlimited'] as const;
+function hiddenBudgetWorld(right:typeof privacyRights[number],name:string){
+ let s=ready();character(s,'A',right==='unlimited'?'吟遊詩人のレスター':right==='none'?'忍びのイダ':'妖精王フューリー');character(s,'B','大神官ジル');character(s,'C','魔聖母ディア');character(s,'D','魔導王ガイナス');
+ for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20,warrior_level:20,magic_level:20};
+ // Printed owners and initial spent budgets only; no character receives an invented ability.
+ s.players.A!.reclaimUsage={'踏み込み／弓':{baseSpent:right!=='base',extraSpentByAbility:right==='extra'?[]:['c2-p02-r1c2-ab03']},'魔詩':{baseSpent:true,extraSpentByAbility:[]}};
+ const card=handCard(s,'A',name);s=until(act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false}),'reclaim');return {s,card};
+}
+it('Hidden zero base extra and unlimited worlds share public all-pass transcripts for both printed sources',()=>{
+ // No printed card has both extra and unlimited owners. Cover the two actual sources in every world.
+ for(const name of ['踏み込み／弓','魔詩']){
+  const prepared=privacyRights.map(right=>hiddenBudgetWorld(right,name));let worlds=prepared.map(p=>p.s);let slots=0;
+  expect(worlds.map(s=>viewFor(s,'A').reclaim!.claims.map(c=>c.right))).toEqual(name==='踏み込み／弓'?[[],['base'],['extra'],[]]:[[],[],[],[]]);
+  for(let n=0;n<300;n++){
+   for(const other of worlds.slice(1)){for(const viewer of ['B','C','D'])expect(viewFor(other,viewer)).toEqual(viewFor(worlds[0]!,viewer));expect(other.revision).toBe(worlds[0]!.revision);expect(other.nextEventId).toBe(worlds[0]!.nextEventId);expect(other.events).toEqual(worlds[0]!.events);}
+   if(!worlds[0]!.windows?.length)break;if(worlds[0]!.windows!.at(-1)!.kind==='reclaim')slots++;
+   worlds=worlds.map(s=>pass(JSON.parse(JSON.stringify(s))));
+  }
+  expect(slots).toBe(4);for(const s of worlds){expect(s.windows??[]).toEqual([]);expect(s.discard).toEqual(worlds[0]!.discard);expect(s.discard.filter(id=>id===prepared[0]!.card)).toHaveLength(1);}
+ }
+});
+it('Revealed Lester unlimited answer retains cursor, answers once and leaves an unused base slot intact',()=>{
+ let s=ready();character(s,'A','吟遊詩人のレスター');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};const card=handCard(s,'A','魔詩');
+ s=until(act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false}),'reclaim');
+ expect(s.windows!.at(-1)!.participants).toEqual(['A','B','C','D']);const window=structuredClone(s.windows!.at(-1));
+ expect(viewFor(s,'A').reclaim!.claims.map(c=>c.right)).toEqual(['base']);s=act(s,'A',{type:'REVEAL_CHARACTER'});expect(s.windows!.at(-1)).toEqual(window);
+ const d=viewFor(s,'A').reclaim!,claim=d.claims.find(c=>c.right==='unlimited')!;expect(claim).toBeDefined();
+ s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:claim.claimId});
+ expect(s.reclaimDecisions!.find(r=>r.id===d.decisionId)!.attemptedClaimIds.filter(id=>id===claim.claimId)).toHaveLength(1);
+ const before=JSON.stringify(s);expect(transition(s,{actorId:'A',command:{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:claim.claimId}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
+ s=finish(s);expect(s.players.A!.reclaimUsage?.['魔詩']?.baseSpent??false).toBe(false);expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(s.discard).not.toContain(card);
+});

@@ -1,0 +1,62 @@
+{
+  "kind": "task-binding-progress",
+  "scope": "B6 D2/D3 concrete binding and targeted verification; not frozen acceptance",
+  "date": "2026-09-12",
+  "newBindingRows": 4,
+  "mapping": {
+    "D2 hidden-right transcript and reveal ordering": "ruling:G11#semantic/source-clockwise-order-preserved-on-reveal (src:c31ba5b3a54854ca)",
+    "D2 unlimited keeps base": "ruling:G11#semantic/unlimited-preserves-base-budget (src:0ca5cb42ef4431de)",
+    "D2 unlimited once per response": "ruling:G11#semantic/unlimited-no-retry-same-response (src:0ca5cb42ef4431de)",
+    "D3 one same-seat choice closes alternatives": "ruling:G11#semantic/first-take-closes-other-same-seat-right (src:c31ba5b3a54854ca)"
+  },
+  "runs": {
+    "engine": {
+      "command": "pnpm exec vitest run packages/engine/test/reclaim-reservations.test.ts packages/engine/test/printed-reclaim-adapters.test.ts",
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    "worker": {
+      "command": "pnpm exec vitest run test/room-lester-two-rights.test.ts",
+      "cwd": "apps/worker",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "PLAYWRIGHT_PORT=18787 pnpm exec playwright test tests/e2e/lester-two-rights.spec.ts --reporter=json",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "exitCode": 0
+    }
+  },
+  "checks": [
+    "pnpm exec tsc --noEmit passed",
+    "AST-checked binding application preserves existing tests and handlers",
+    "Runtime coverage validator valid true",
+    "git diff --check passed"
+  ],
+  "environment": [
+    "Worker tests passed despite denied default Wrangler diagnostic-log write outside workspace.",
+    "First browser run never reached tests: unrelated bun process occupied 8787 and returned 404. Added validated PLAYWRIGHT_PORT selection to server and browser fixture, default remains 8787.",
+    "Second browser launch was denied by macOS Mach-port sandbox; approved escalated local run on 18787 passed both cases. No unrelated server was stopped."
+  ],
+  "sourceSha256": {
+    "docs/operations/evidence/2026-09-11-r4-d2-d3-bindings.json": "11fc35c8e494633f23196ae8a5a311260abfdd76e87149b0997898dd00ef75cb",
+    "packages/engine/test/reclaim-reservations.test.ts": "7262d7d2ab61c7ff466d6ec1ea9c297422772791f648e065ca3018f241db9a92",
+    "packages/engine/test/printed-reclaim-adapters.test.ts": "1b3d213b4e250bce09d9f5871cb65e580537eb6103de7593f8095d998359f192",
+    "apps/worker/test/room-lester-two-rights.test.ts": "638acb37771c4a9fbc2b1dbec683695461a9f6255dba1617ffed3c780122cc8d",
+    "tests/e2e/lester-two-rights.spec.ts": "e5755f74fd8bd3d716631aabe17d76631cd3dc1da798125ff82a245908287dbf",
+    "tests/e2e/helpers.ts": "cef9b49cb78672176d35cb3129d13015739061807f43ec7332779406aadb72b6",
+    "playwright.config.ts": "9b1642e59d44367da3f0e2021b68f8d54bcb9c76f34afe974dd97bbd2ea4b6aa"
+  },
+  "limitations": [
+    "Four hidden worlds compare each of two actual printed sources; no single card has both an extra and unlimited owner and no invented ability is injected.",
+    "Existing unrelated bindings are retained but only listed targeted files were rerun here.",
+    "No frozen acceptance, formal START whole-game or remote deployment is claimed. B7 and B8 remain."
+  ]
+}

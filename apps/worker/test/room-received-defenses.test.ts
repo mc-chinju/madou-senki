@@ -110,13 +110,17 @@ it.each(['received-shelim', 'received-shelim-hp'] as const)('%s evaluates actual
   }
   f.until(game => !game.windows?.length); expect(f.game.players.B!.damage).toBe(hp ? 5 : 0);
 });
-it('a shared two-target technique reduces only Arnes incoming value and never its damage or original declaration', () => {
-  const f = fixture('received-shared'); f.use(dark); f.until(game => game.windows?.at(-1)?.kind === 'normal-defense');
-  const attack = publicAttack(f.game); expect(attack.technique).toMatchObject({ effectLevel: 5, damage: 8 });
+it('a shared two-target technique reduces only Arnes incoming value and never its damage or original declaration', async () => {
+  const room = await savedRoom('received-shared', true); const receipt=await room.use(dark);
+  await room.until(game => game.windows?.at(-1)?.kind === 'normal-defense'); await room.replay(receipt);
+  const restored=(await room.snapshotFor('A')).game!,attack=restored.currentAttack!;
+  expect(attack.technique).toMatchObject({ effectLevel: 5, damage: 8 });
   expect(attack.targets.map(target => [target.actorId, target.hits[0]!.technique!.effectLevel, target.hits[0]!.technique!.damage])).toEqual([['B', 5, 8], ['C', 6, 8]]);
-  expect(viewFor(f.game, 'A').currentAction).toMatchObject({ technique: { effectLevel: 6, damage: 8 } });
-  f.act('B', { type: 'PASS' }); expect(publicAttack(f.game).targetId).toBe('C'); expect(publicAttack(f.game).technique.effectLevel).toBe(6);
-  f.until(game => !game.windows?.length); expect(f.game.players.B!.damage).toBe(8); expect(f.game.players.C!.damage).toBe(8);
+  expect(restored.currentAction).toMatchObject({ technique: { effectLevel: 6, damage: 8 } });
+  await room.send('B', { type: 'PASS' }); const next=(await room.snapshotFor('A')).game!.currentAttack!;
+  expect(next.targetId).toBe('C'); expect(next.technique.effectLevel).toBe(6);
+  await room.until(game => !game.windows?.length); await room.replay(receipt);
+  const done=(await room.stored()).state.game!; expect(done.players.B!.damage).toBe(8); expect(done.players.C!.damage).toBe(8);
 });
 it.each(['received-aiel-fire', 'received-aiel-water', 'received-fleiard-fire', 'received-fleiard-water'] as const)('%s accepts both named elements', name => {
   const f = fixture(name); const id = name.startsWith('received-aiel') ? 'c2-p04-r1c1-ab01' : 'c2-p06-r2c1-ab01';
@@ -127,11 +131,12 @@ it('Aiel cannot use the elemental barrier against actual wind magic', () => {
   f.until(game => !game.windows?.length); expect(f.game.players.B!.damage).toBe(4);
 });
 
-async function savedRoom(name: ReceivedDefenseScenarioName) {
+async function savedRoom(name: ReceivedDefenseScenarioName, persistEvery=false) {
   const room = await openTestRoom(name); let sequence = 0;
   async function send(actorId: string, command: GameCommand) {
     const before = await room.stored(); const envelope = { protocolVersion: 1 as const, commandId: `received-${sequence++}`, expectedRevision: before.revision, ...activeWindowRef(before.state.game!), command };
     const ack = await room.command(actorId, envelope); expect(ack).toMatchObject({ type: 'ack' }); assertCards((await room.stored()).state.game!);
+    if(persistEvery){const saved=await room.stored();await room.restart();expect(await room.command(actorId,envelope)).toEqual(ack);expect(await room.stored()).toEqual(saved);for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game).toEqual(viewFor(saved.state.game!,id));}
     return { actorId, envelope, ack };
   }
   async function until(done: (game: GameState) => boolean) {

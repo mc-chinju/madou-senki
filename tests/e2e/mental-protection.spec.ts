@@ -167,7 +167,7 @@ test('saved guard survives a real divine reroll while Fate forced failure still 
     await use(table, views, 0, '執念');
     await passUntil(table, views, state => state.currentRoll?.stage === 'after-roll' && state.activeWindow?.kind === 'after-roll', 500);
     await reaction(table, views, 3, 'force-fail', 'a2-p02-r2c3');
-    await passUntil(table, views, state => state.currentRoll?.forcedFailure === true && state.currentRoll.stage === 'after-roll', 500);
+    await passUntil(table, views, state => state.currentRoll?.rollId === rollId && state.currentRoll.forcedFailure === true && state.currentRoll.stage === 'after-roll' && state.activeWindow?.kind === 'after-roll', 500);
     await reaction(table, views, 2, 'reroll', 'a2-p02-r1c3');
     await reload(table, views, 2);
     await passUntil(table, views, state => state.currentRoll?.rollId === rollId && state.currentRoll.generation === 1 && state.currentRoll.stage === 'after-roll', 500);

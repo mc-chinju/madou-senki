@@ -18,8 +18,8 @@ export function ResultPanel({ view }: { view: PlayerView }) {
       <p>{winners.map(id => view.players[id]?.name ?? '参加者').join('、')}さんが勝利して退場しました。他の参加者の対戦は続きます。</p>
     </section> : null;
   }
-  return <section className="panel game-result" aria-label="対戦結果"><h2>{result.kind === 'draw' ? '引き分け' : '対戦終了'}</h2>
-    <p role="status">{reasonLabels[result.reason]}</p>
+  return <section className="panel game-result" role="status" aria-label="対戦結果"><h2>{result.kind === 'draw' ? '引き分け' : '対戦終了'}</h2>
+    <p>{reasonLabels[result.reason]}</p>
     <ul>{view.seatOrder.map(id => <li key={id}><strong>{view.players[id]?.name}</strong> · {resultLabels[result.results[id] ?? 'lost']}</li>)}</ul>
     <p>結果はこの卓に保存されています。</p><a className="button" href="/">卓一覧へ戻る</a>
   </section>;

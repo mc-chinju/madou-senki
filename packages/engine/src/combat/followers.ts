@@ -1,3 +1,4 @@
+import {discardPhysical} from '../discard.js';
 import {reclaimEventId} from '../reclaim.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
 import {gameStats} from '../game-stats.js';
@@ -168,12 +169,17 @@ export function resolveFollowerSnapshot(state: GameState, group: AttackGroup, ta
     }
     // Never move a source that an interruption already moved elsewhere, or recreate it.
     const player = state.players[target.actorId]!;
-    target.followerDestroyed = sources.flatMap(d => d.source==='physical'&&d.defeated?[d.cardInstanceId]:[]);
+    target.followerDestroyed = sources.flatMap(d => d.source==='physical'&&d.defeated&&!moraleFailed(d)?[d.cardInstanceId]:[]);
     for (const d of sources) {
         if (d.source!=='physical'||!d.defeated || d.descriptor.revivalLimit !== undefined && !d.revivalForbidden)
             continue;
         const at = player.followers.findIndex(f => f.cardInstanceId === d.cardInstanceId);
         if (at >= 0) {
+            // Failed morale is a discard, not a follower death (G11).
+            if (moraleFailed(d)) {
+                discardPhysical(state,d.cardInstanceId,{zone:'followers',ownerId:player.id},player.id,reclaimEventId(state,state.actions![group.actionId]!));
+                continue;
+            }
             const [placed]=player.followers.splice(at,1);
             state.resolution.push(d.cardInstanceId);
             const sourceActorId=placed!.placedById??player.id;

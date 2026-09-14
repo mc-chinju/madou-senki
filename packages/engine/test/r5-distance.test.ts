@@ -138,3 +138,18 @@ it('A real Vanmil ban during the pending flight declaration keeps the original e
  let s=use(incoming('地槍',true));const ban='c2-p07-r1c2-ab03',option=viewFor(s,'C').abilityOptions.find(o=>o.abilityId===ban)!;expect(option).toBeDefined();
  s=act(s,'C',{type:'USE_ABILITY',abilityId:ban,targetEventId:option.targetEventId,targetIds:['B']});s=closeWindow(s);s=until(s,'normal-defense');expect(viewFor(s,'B').abilityOptions.some(o=>o.abilityId===FLIGHT)).toBe(false);s=finish(s);expect(s.players.B!.damage).toBe(6);
 });
+
+it.each([false,true])('Lancaster returned counter elected=%s controls real advance opportunity and payment',elected=>{
+ let s=ready();character(s,'A','早駆けのランカスター');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};s.distances.A!.B=s.distances.B!.A='near';
+ const bow=handCard(s,'A','踏み込み／弓'),counter=handCard(s,'B','妖撃破山剣'),maai=handCard(s,'A','間合い／休息'),advances=handCards(s,['B','B'],'踏み込み／蹴る');
+ s=until(act(s,'A',{type:'ATTACK',cardInstanceId:bow,targetIds:['B'],dedicated:false}),'normal-defense');s=until(act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false}),'normal-defense');
+ expect(viewFor(s,'A').currentAttack!.attackerId).toBe('B');const damage=viewFor(s,'A').currentAttack!.technique.damage!;expect(damage).toBeGreaterThan(0);
+ s=act(s,'A',{type:'PLAY_MAAI',cardInstanceId:maai,...(elected?{abilityId:'c2-p02-r2c1-ab03'}:{})});
+ let advanceWindows=0;
+ for(let n=0;s.windows?.length&&n<300;n++){
+  if(s.windows.at(-1)!.kind==='defense-advance'){advanceWindows++;expect(elected).toBe(false);s=act(s,'B',{type:'PLAY_ADVANCE',cardInstanceId:advances[0]!});}
+  else {if(elected){const before=JSON.stringify(s);expect(transition(s,{actorId:'B',command:{type:'PLAY_ADVANCE',cardInstanceId:advances[0]!}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);}s=pass(s);}
+ }
+ expect(s.windows??[]).toHaveLength(0);expect(advanceWindows).toBe(elected?0:1);expect(s.players.A!.damage).toBe(elected?0:damage);expect(s.players.B!.damage).toBe(0);
+ expect(s.discard.filter(id=>id===maai)).toHaveLength(1);expect(s.players.B!.hand).toContain(advances[1]!);expect(s.players.B!.hand.includes(advances[0]!)).toBe(elected);
+});

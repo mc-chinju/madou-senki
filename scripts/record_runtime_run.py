@@ -26,9 +26,23 @@ def js_string(value):
         return 'null'
     if isinstance(value, bool):
         return str(value).lower()
-    if isinstance(value, (dict, list)):
-        return json.dumps(value, ensure_ascii=False, separators=(',', ':'))
+    if isinstance(value, list):
+        return ','.join('' if item is None else js_string(item) for item in value)
+    if isinstance(value, dict):
+        return '[object Object]'
     return str(value)
+
+
+@functools.lru_cache(maxsize=4096)
+def vitest_display(serialized):
+    # Use the installed runner's display implementation for named parameters.
+    return subprocess.run(['node', '-e',
+        "const {createRequire}=require('node:module');"
+        "const r=createRequire(require.resolve('vitest/package.json'));"
+        "import(r.resolve('@vitest/utils/display')).then(m=>"
+        "process.stdout.write(m.objDisplay(JSON.parse(process.argv[1]))))",
+        serialized], cwd=Path(__file__).resolve().parent.parent,
+        check=True, capture_output=True, text=True).stdout
 
 
 @functools.lru_cache(maxsize=4096)
@@ -49,7 +63,7 @@ def format_title(template, parameters, index=None):
                 if not isinstance(value, dict) or part not in value:
                     raise ValueError('missing named parameter: ' + match.group(1))
                 value = value[part]
-            return js_string(value)
+            return vitest_display(json.dumps(value, ensure_ascii=False))
         return re.sub(r'\$([A-Za-z_][A-Za-z0-9_.]*)', lookup, template)
     values = iter(parameters if isinstance(parameters, list) else [parameters])
     def replace(match):

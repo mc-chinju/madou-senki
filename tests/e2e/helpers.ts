@@ -3,7 +3,7 @@ import type { RoomView } from '../../apps/worker/src/rooms/types.js';
 import { expect, type APIRequestContext, type Browser, type BrowserContextOptions } from '@playwright/test';
 import { makeScenario, type ScenarioName } from '../../apps/worker/test/fixtures/game-scenarios.js';
 
-export const origin = 'http://localhost:8787';
+export const origin = `http://localhost:${process.env.PLAYWRIGHT_PORT ?? 8787}`;
 export async function tableFixture(browser: Browser, request: APIRequestContext, scenario?: ScenarioName, count = 4, options: BrowserContextOptions = {}) {
   const contexts = await Promise.all(Array.from({ length: count }, () => browser.newContext({ ...options, baseURL: origin })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));

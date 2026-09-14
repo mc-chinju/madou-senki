@@ -372,3 +372,11 @@ it('canonical Gainas gets a fresh attempt on later Griffin hit after first faile
  expect(s.rolls!.filter(r=>r.purpose==='ability-check')).toHaveLength(2);
  expect([s.players.A!.damage,s.players.B!.damage]).toEqual([8,8]);
 });
+
+it.each([1,2])('actual transformed shield compares incoming five plus %s to warrior six',addition=>{
+ let s=transformedIncoming('a2-p14-r1c1',addition);expect(viewFor(s,'A').self.stats.warrior_level).toBe(6);
+ expect(viewFor(s,'A').currentAttack!.technique.effectLevel).toBe(5+addition);
+ s=closeWindow(use(s,SHIELD,'A'));s=closeWindow(s,[1,1]);expect(viewFor(s,'A').currentRoll!.success).toBe(true);s=closeWindow(s);
+ if(addition===2)expect(group(s).targets[0]!.hits[0]!.defended).toBe(false);
+ s=finish(s);expect(s.players.A!.damage).toBe(addition===1?0:12);
+});

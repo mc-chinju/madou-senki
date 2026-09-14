@@ -43,3 +43,12 @@ it('Arseil conspiracy requires the actual awakening window and remains optional'
  handCard(s,'A','復活の儀式');s=until(act(s,'A',{type:'USE_REVIVAL_RITUAL'}),'lifecycle-boundary');s=act(s,'A',{type:'PASS'});expect(viewFor(s,'B').lifecycleAbilities).toContain('arseil-conspiracy');
  s=finish(s);expect(s.players.B!.presence).toBe('active');expect(s.individualResults?.B).toBeUndefined();expect(viewFor(s,'B').lifecycleAbilities).not.toContain('arseil-conspiracy');
 });
+
+it.each([false,true])('actual Vanmil awakening elected=%s converts Dia and Yotsulm only when selected',selected=>{
+ let s=ready();character(s,'A','邪祭ウーノス');character(s,'B','侍大将のシン');character(s,'C','魔聖母ディア');character(s,'D','餓狼ヨーツルム');
+ const before=['B','C','D'].map(id=>s.players[id]!.faction);handCard(s,'A','復活の儀式');s=until(act(s,'A',{type:'USE_REVIVAL_RITUAL'}),'lifecycle-boundary');
+ expect(s.players.A!.characterId).toBe('c2-p07-r1c2');expect(viewFor(s,'A').lifecycleAbilities).toContain('vanmil-subordinates');
+ if(selected)s=act(s,'A',{type:'USE_LIFECYCLE_ABILITY',ability:'vanmil-subordinates'});s=finish(s);
+ expect(s.players.B!.faction).toBe(before[0]);expect(['C','D'].map(id=>s.players[id]!.faction)).toEqual(selected?['ヴァンミール','ヴァンミール']:before.slice(1));
+ if(selected)for(const id of ['C','D'])expect(s.players[id]).toMatchObject({currentObjective:{enemyFactions:['GOOD','EVIL']},protection:{characterIds:['c2-p07-r1c2']}});
+});

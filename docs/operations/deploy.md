@@ -1,6 +1,6 @@
 # Cloudflareへの配備
 
-現在はローカル検証版。正式開始はカード・能力の未実装検査で止まり、Cloudflareのリソース作成・デプロイはまだ行っていない。
+staging/productionのD1は作成済み。リモート実配備・休止復帰・負荷の記録は未完。アカウントIDと認証トークンは書かない。
 
 ## 構成
 
@@ -43,7 +43,7 @@ pnpm test:e2e
 
 ## リモート配備時の手順
 
-以下は対象アカウント・環境・素材配信条件・完成候補を確認した後に実行する手順であり、実行済み記録ではない。`wrangler.jsonc`には実在D1の`database_id`をまだ入れていない。
+以下は対象アカウント・環境・素材配信条件・完成候補を確認した後に実行する手順。D1 UUIDは `wrangler.jsonc` に設定済み。実配備の結果は「候補と配備先の記録」へ追記する。
 
 1. 対象アカウントとstagingを確定し、D1 `madou-senki-staging`を作成する。返されたUUIDを `env.staging.d1_databases[0].database_id` へ設定する。productionも別DB/UUIDにする。
 2. `python3 scripts/generate_catalog_readiness.py --check --require-ready`、`pnpm verify:assets`を通し、`pnpm build`と該当環境のdry-runを確認する。通常のbuildは検証用の`ready=false`も許すため、build成功だけを公開可能の証拠にしない。
@@ -107,4 +107,31 @@ DO migration `v1`でSQLiteクラス`Room`を作る。保存済み卓の`schemaVe
 
 ## 認証確認の記録
 
-2026-09-08、`wrangler whoami --json`は終了コード1。保存済み認証トークンが期限切れで更新できず、非対話環境のため再ログインが必要という結果だった。デプロイ・リモートD1操作は未実行。完成候補の配備時に、対象アカウントと有効な認証を確認する。トークンを文書やソースに記録しない。
+2026-09-14、`wrangler whoami` は終了コード0。トークンとアカウント識別子は記録しない。
+
+## D1作成の記録（2026-09-14）
+
+| 環境 | Worker | D1名 | database_id |
+|---|---|---|---|
+| staging | madou-senki-staging | madou-senki-staging | `0fc033a4-97d0-40f1-b627-7890f88c938e` |
+| production | madou-senki | madou-senki-production | `f659209f-59b8-462f-80ed-d337e4af855b` |
+
+staging へ `0001_sessions_rooms.sql` を `--remote` 適用済み。実測は [staging記録](evidence/2026-09-11-staging.md)。production へ同じ migration を `--remote` 適用済み。
+
+## 候補と配備先の記録（production / 2026-09-15）
+
+アカウントID・認証トークン・Cookieは書かない。
+
+- 候補コミット: `1dd5eb9a15217076ae4c2372e2fc071f4e1d401a`（凍結 `31c3a718e8588388d5f345b69cecc2964a384791`）
+- 候補記録: [2026-09-11-release-candidate.md](evidence/2026-09-11-release-candidate.md)
+- run: `docs/operations/evidence/2026-09-11-candidate-run.json`
+- run sha256: `7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43`
+- readiness: `packages/catalog/src/selected/readiness.json`
+- readiness sha256: `9ff25089e58440074f6319959b7eafa40e2961b4e6da33bce8867b3bb5858ba3`
+- Worker: `madou-senki`
+- D1: `madou-senki-production`（`f659209f-59b8-462f-80ed-d337e4af855b`）
+- 公開 origin: `https://madou-senki.catalgorithm.workers.dev`
+- 配備 Version ID: `fb25732e-aee5-40b8-85a6-ee57cb4750dd`
+- 実施: 2026-09-14T16:05Z、production smoke 2 passed（hibernate は未実施）
+- 既知の制限: 招待制のみ。対人評価（M5）は未実施。`verify:catalog` は C11 見出し重複と gitignore された原本 PDF 欠落で未成功。
+- 復旧: [recovery.md](recovery.md)

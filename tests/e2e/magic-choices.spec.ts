@@ -2,7 +2,7 @@ import { currentCardAction } from './helpers.js';
 import { test, expect } from '@playwright/test';
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { tableFixture } from './helpers.js';
+import { tableFixture, windowPassButtonName } from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 async function observe(table: Table) {
@@ -25,7 +25,7 @@ async function passUntil(table: Table, views: Map<string, RoomView>, done: (game
     if (done(game)) return game;
     const window = game.activeWindow; expect(window).not.toBeNull();
     const page = table.pages[table.sessions.findIndex(session => session.id === window!.pendingActorId)]!;
-    await page.getByRole('button', { name: 'パス', exact: true }).click();
+    await page.getByRole('button', { name: windowPassButtonName }).click();
     await expect.poll(() => views.get(owner)?.revision).toBeGreaterThan(current.revision);
   }
   throw Error('Magic effect did not reach its expected boundary');

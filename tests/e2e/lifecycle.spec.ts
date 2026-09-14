@@ -50,11 +50,11 @@ test('a real final death shows a persisted result to winners and the defeated pl
     const views = await observe(table); const owner = table.sessions[0]!.id;
     await passUntil(table, views, game => game.outcome !== null);
     await expect.poll(() => views.get(owner)?.status).toBe('finished');
-    for (const page of table.pages) await expect(page.getByRole('region', { name: '対戦結果' })).toContainText('勝利条件が満たされました');
+    for (const page of table.pages) await expect(page.getByRole('status', { name: '対戦結果' })).toContainText('勝利条件が満たされました');
     const result = views.get(owner)!.game!.outcome;
     expect(result?.results[table.sessions[1]!.id]).toBe('lost');
     await table.pages[1]!.reload();
-    await expect(table.pages[1]!.getByRole('region', { name: '対戦結果' })).toContainText('楓 · 敗北');
+    await expect(table.pages[1]!.getByRole('status', { name: '対戦結果' })).toContainText('楓 · 敗北');
     expect(views.get(table.sessions[1]!.id)!.game!.outcome).toEqual(result);
     await expect(table.pages[0]!.getByRole('button', { name: '手番を始める', exact: true })).toHaveCount(0);
   } finally { await table.close(); }
@@ -67,7 +67,7 @@ test('opposing otherworld survivors finish as a persisted stalemate and can stil
     await passUntil(table, views, game => !game.activeWindow);
     await expect.poll(() => views.get(a)?.status).toBe('finished');
     for (const page of table.pages) {
-      const result = page.getByRole('region', { name: '対戦結果' });
+      const result = page.getByRole('status', { name: '対戦結果' });
       await expect(result).toContainText('進行不能による引き分け');
       await expect(result).not.toContainText('双方が同時に全滅');
     }
@@ -76,7 +76,7 @@ test('opposing otherworld survivors finish as a persisted stalemate and can stil
     expect(views.get(a)!.game!.players[b]!.presence).toBe('otherworld');
     expect(views.get(a)!.game!.players[c]!.presence).toBe('otherworld');
     await table.pages[1]!.reload();
-    await expect(table.pages[1]!.getByRole('region', { name: '対戦結果' })).toContainText('進行不能による引き分け');
+    await expect(table.pages[1]!.getByRole('status', { name: '対戦結果' })).toContainText('進行不能による引き分け');
     expect(views.get(b)!.game!.outcome).toEqual(result);
     await expect(table.pages[1]!.getByRole('button', { name: '手番を始める', exact: true })).toHaveCount(0);
     await table.pages[1]!.getByRole('region', { name: '自分の手札' }).getByRole('button', { name: /の詳細を見る/ }).first().click();
