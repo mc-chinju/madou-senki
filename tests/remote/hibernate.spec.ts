@@ -11,8 +11,10 @@ test('idle Durable Object resume keeps the same cookie, hand and revision', asyn
   await page.getByLabel('卓名', { exact: true }).fill('休止確認');
   await page.getByLabel('招待限定', { exact: true }).check();
   await page.getByRole('button', { name: '卓を作る', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '休止確認', exact: true })).toBeVisible();
   const roomId = new URL(page.url()).pathname.split('/').at(-1)!;
   await page.getByRole('button', { name: '準備完了', exact: true }).click();
+  await expect(page.getByRole('button', { name: '準備を取り消す', exact: true })).toBeVisible();
   const before = await snapshot(page, roomId);
   const state = await context.storageState();
   await context.close();
@@ -37,9 +39,7 @@ async function pageFor(context: import('@playwright/test').BrowserContext, name:
 }
 
 async function snapshot(page: import('@playwright/test').Page, roomId: string) {
-  return page.evaluate(async id => {
-    const response = await fetch(`/api/rooms/${id}/snapshot`);
-    if (!response.ok) throw new Error(`SNAPSHOT_${response.status}`);
-    return response.json() as Promise<{ revision: number }>;
-  }, roomId);
+  const response = await page.request.get(`/api/rooms/${roomId}/snapshot`);
+  expect(response.ok(), `snapshot ${response.status()}`).toBe(true);
+  return response.json() as Promise<{ revision: number }>;
 }
