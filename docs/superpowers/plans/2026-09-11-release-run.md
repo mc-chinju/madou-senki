@@ -1814,7 +1814,7 @@ Expected: 成功
 
 `docs/operations/deploy.md` の「候補と配備先の記録」に: 候補コミットID、run receipt sha256、readiness sha256、Worker 名、D1 UUID、公開 origin、配備ID、実施日時、既知の制限（招待制、対人評価未実施）、復旧方法（recovery.md へのリンク）。`docs/operations/playtest-results.md` に「公開後の対人記録（M5）待ち」の見出しを作る。
 
-- [ ] **Step 5: コミットと PR**
+- [x] **Step 5: コミットと PR**
 
 ```bash
 git add docs && git commit -m "ops: productionへ配備し、候補・配備先・既知の制限を記録する"
