@@ -1794,23 +1794,23 @@ git add tests scripts playwright.remote.config.ts docs && git commit -m "ops: st
 
 ### Task D4: production 配備（M4）
 
-- [ ] **Step 1: 候補が staging と同一であることを確認**
+- [x] **Step 1: 候補が staging と同一であることを確認**
 
 Run: `git status --porcelain | wc -l` → 0、`git rev-parse HEAD` が Task C5 の候補記録のコミットIDと一致（Task D2/D3 のコミットは `wrangler.jsonc` と tests/remote・docs のみなので、`candidate_files` の対象外である `docs` 以外の差分が無いことを `git diff <候補コミット> HEAD --stat -- packages apps/web apps/worker/src data scripts tests/e2e` で確認する。`apps/worker/wrangler.jsonc` の UUID 追加は候補 hash を変えるので、D2 の後に Task C5 Step 2 の全実行を **もう一度** 行い、その receipt を production 候補とする）
 
-- [ ] **Step 2: 配備**
+- [x] **Step 2: 配備**
 
 ```bash
 pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --remote --env production
 pnpm --filter @madou/worker exec wrangler deploy --env production
 ```
 
-- [ ] **Step 3: production smoke**
+- [x] **Step 3: production smoke**
 
 Run: `PLAYWRIGHT_BASE_URL=<production origin> pnpm exec playwright test -c playwright.remote.config.ts`
 Expected: 成功
 
-- [ ] **Step 4: 記録**
+- [x] **Step 4: 記録**
 
 `docs/operations/deploy.md` の「候補と配備先の記録」に: 候補コミットID、run receipt sha256、readiness sha256、Worker 名、D1 UUID、公開 origin、配備ID、実施日時、既知の制限（招待制、対人評価未実施）、復旧方法（recovery.md へのリンク）。`docs/operations/playtest-results.md` に「公開後の対人記録（M5）待ち」の見出しを作る。
 

@@ -116,4 +116,22 @@ DO migration `v1`でSQLiteクラス`Room`を作る。保存済み卓の`schemaVe
 | staging | madou-senki-staging | madou-senki-staging | `0fc033a4-97d0-40f1-b627-7890f88c938e` |
 | production | madou-senki | madou-senki-production | `f659209f-59b8-462f-80ed-d337e4af855b` |
 
-staging へ `0001_sessions_rooms.sql` を `--remote` 適用済み。`wrangler deploy --env staging --dry-run` は終了0。実配備・休止復帰・負荷の記録は未完。
+staging へ `0001_sessions_rooms.sql` を `--remote` 適用済み。実測は [staging記録](evidence/2026-09-11-staging.md)。production へ同じ migration を `--remote` 適用済み。
+
+## 候補と配備先の記録（production / 2026-09-15）
+
+アカウントID・認証トークン・Cookieは書かない。
+
+- 候補コミット: `1dd5eb9a15217076ae4c2372e2fc071f4e1d401a`（凍結 `31c3a718e8588388d5f345b69cecc2964a384791`）
+- 候補記録: [2026-09-11-release-candidate.md](evidence/2026-09-11-release-candidate.md)
+- run: `docs/operations/evidence/2026-09-11-candidate-run.json`
+- run sha256: `7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43`
+- readiness: `packages/catalog/src/selected/readiness.json`
+- readiness sha256: `9ff25089e58440074f6319959b7eafa40e2961b4e6da33bce8867b3bb5858ba3`
+- Worker: `madou-senki`
+- D1: `madou-senki-production`（`f659209f-59b8-462f-80ed-d337e4af855b`）
+- 公開 origin: `https://madou-senki.catalgorithm.workers.dev`
+- 配備 Version ID: `fb25732e-aee5-40b8-85a6-ee57cb4750dd`
+- 実施: 2026-09-14T16:05Z、production smoke 2 passed（hibernate は未実施）
+- 既知の制限: 招待制のみ。対人評価（M5）は未実施。`verify:catalog` は C11 見出し重複と gitignore された原本 PDF 欠落で未成功。
+- 復旧: [recovery.md](recovery.md)
