@@ -5,6 +5,7 @@ if (!origin) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
 
 export default defineConfig({
   testDir: './tests/remote',
+  outputDir: '.cache/remote-results',
   fullyParallel: false,
   workers: 1,
   timeout: 120_000,

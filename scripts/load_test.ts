@@ -30,6 +30,23 @@ async function json<T>(cookie: string, path: string, init: RequestInit = {}): Pr
   return response.json() as Promise<T>;
 }
 
+async function sendRetry(bot: BotClient, command: Parameters<BotClient['send']>[0]) {
+  let result = await bot.send(command);
+  for (let attempt = 0; !result.ok && result.code === 'STALE_REVISION' && attempt < 8; attempt++) {
+    await new Promise(resolve => setTimeout(resolve, 25));
+    result = await bot.send(command);
+  }
+  return result;
+}
+
+async function waitRevision(bots: BotClient[], revision: number) {
+  const deadline = Date.now() + 5000;
+  while (Date.now() < deadline) {
+    if (bots.every(bot => (bot.revision() ?? 0) >= revision)) return;
+    await new Promise(resolve => setTimeout(resolve, 20));
+  }
+}
+
 const latencies: number[] = [];
 let failures = 0;
 let disconnects = 0;
@@ -38,13 +55,20 @@ const cookies = await Promise.all(Array.from({ length: tables * seats }, (_, ind
 const roomIds: string[] = [];
 for (let table = 0; table < tables; table++) {
   const owner = cookies[table * seats]!;
-  const created = await json<{ roomId: string }>(owner, '/api/rooms', {
+  const created = await json<{ roomId: string; revision: number }>(owner, '/api/rooms', {
     method: 'POST',
     body: JSON.stringify({ title: `負荷${table}`, capacity: seats, visibility: 'private', rulesetId: 'second-online-v0.1-provisional' }),
   });
   roomIds.push(created.roomId);
+  const invited = await json<{ token: string }>(owner, `/api/rooms/${created.roomId}/invites`, {
+    method: 'POST',
+    body: JSON.stringify({ expectedRevision: created.revision }),
+  });
   for (let seat = 1; seat < seats; seat++) {
-    await json(cookies[table * seats + seat]!, `/api/rooms/${created.roomId}/join`, { method: 'POST', body: '{}' });
+    await json(cookies[table * seats + seat]!, `/api/rooms/${created.roomId}/join`, {
+      method: 'POST',
+      body: JSON.stringify({ inviteToken: invited.token }),
+    });
   }
 }
 
@@ -55,32 +79,35 @@ const bots = await Promise.all(cookies.map(async (cookie, index) => {
   return bot;
 }));
 
-for (const bot of bots) {
-  const started = Date.now();
-  const result = await bot.send({ type: 'READY', ready: true });
-  latencies.push(Date.now() - started);
-  if (!result.ok) failures += 1;
-}
 for (let table = 0; table < tables; table++) {
+  const slice = bots.slice(table * seats, table * seats + seats);
+  for (const bot of slice) {
+    const started = Date.now();
+    const result = await sendRetry(bot, { type: 'READY', ready: true });
+    latencies.push(Date.now() - started);
+    if (!result.ok) failures += 1;
+    if (result.ok && result.revision !== undefined) await waitRevision(slice, result.revision);
+  }
   const started = Date.now();
-  const result = await bots[table * seats]!.send({ type: 'START' });
+  const result = await sendRetry(slice[0]!, { type: 'START' });
   latencies.push(Date.now() - started);
   if (!result.ok) failures += 1;
+  if (result.ok && result.revision !== undefined) await waitRevision(slice, result.revision);
 }
 
 for (let table = 0; table < tables; table++) {
   const slice = bots.slice(table * seats, table * seats + seats);
   for (let step = 0; step < stepsPerSeat; step++) {
-    const views = slice.map(bot => bot.view());
-    if (views[0]?.outcome) break;
+    if (slice[0]?.view()?.outcome) break;
     let acted = false;
-    for (const [index, bot] of slice.entries()) {
-      const view = views[index];
+    for (const bot of slice) {
+      const view = bot.view();
       if (!view || legalCommands(view).length === 0) continue;
       const started = Date.now();
-      const result = await bot.send(choose(view, table));
+      const result = await sendRetry(bot, choose(view, table));
       latencies.push(Date.now() - started);
       if (!result.ok) failures += 1;
+      if (result.ok && result.revision !== undefined) await waitRevision(slice, result.revision);
       acted = true;
       break;
     }

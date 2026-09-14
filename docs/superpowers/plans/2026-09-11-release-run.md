@@ -1784,7 +1784,7 @@ Expected: 成功。fixture 投入 API（`/__test`）は本番エントリポイ�
 Run: `PLAYWRIGHT_BASE_URL=<staging origin> pnpm exec tsx scripts/load_test.ts > docs/operations/evidence/2026-09-11-staging-load.json`
 Expected: 失敗率 0、p95 を記録。Cloudflare ダッシュボードの使用量（Requests / DO duration）を数値で `2026-09-11-staging.md` に写す（料金の推定はしない）。
 
-- [ ] **Step 6: コミット**
+- [x] **Step 6: コミット**
 
 ```bash
 git add tests scripts playwright.remote.config.ts docs && git commit -m "ops: stagingの配備・休止復帰・再配備・負荷の実測を記録する"

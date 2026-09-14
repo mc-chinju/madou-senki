@@ -7,6 +7,7 @@ const origin = `http://localhost:${port}`;
 
 export default defineConfig({
   testDir: './tests/e2e',
+  outputDir: '.cache/e2e-results',
   fullyParallel: false,
   workers: 1,
   timeout: 45000,
