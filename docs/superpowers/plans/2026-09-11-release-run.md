@@ -1769,15 +1769,15 @@ test('invite, ready, start and reload on the remote origin', async ({browser}) =
 Run: `PLAYWRIGHT_BASE_URL=<staging origin> pnpm exec playwright test -c playwright.remote.config.ts`
 Expected: 成功。fixture 投入 API（`/__test`）は本番エントリポイントに無いので、`fetch('<origin>/__test/rooms/x/scenario')` が 404 であることも smoke で確認する。
 
-- [ ] **Step 3: DO 休止復帰**
+- [x] **Step 3: DO 休止復帰**
 
 上記の卓を開始後、全ブラウザを閉じて **15 分以上** 待つ（`Monitor` か `sleep 960` を `run_in_background` で）。その後同じ Cookie で `/rooms/:id` を開き、手札 region と revision が保存時と一致することを確認。結果を `2026-09-11-staging.md` に記録。
 
-- [ ] **Step 4: 再配備中の試合維持**
+- [x] **Step 4: 再配備中の試合維持**
 
 対局中に `wrangler deploy --env staging` をもう一度実行し、配備前後で同じ卓に同じ revision で復帰できることを確認する。
 
-- [ ] **Step 5: 負荷試験（10卓×10人）**
+- [x] **Step 5: 負荷試験（10卓×10人）**
 
 `scripts/load_test.ts`（Node、`tsx` で実行）: 100 セッションを作成（`POST /api/sessions`）、10 卓を作り各 10 人参加・準備・START、各席が `BotClient`（Task C3）で 200 手ずつ進める。1 手ごとの ACK 往復時間を記録し、p50/p95/p99、失敗率、切断回数を JSON に出す。
 
