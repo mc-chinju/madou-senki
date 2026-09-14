@@ -6,12 +6,12 @@
     "c2-p07-r1c2-ab02#all-techniques-chant-waiver"
   ],
   "rowDigests": {
-    "c2-p07-r1c2-ab02#all-techniques-chant-waiver": "0765fa8352d8fb90b70f230c3964254ee3c8184816668c67e79d392ea4607397"
+    "c2-p07-r1c2-ab02#all-techniques-chant-waiver": "207a84ef80a98b9d9a2fb1e16e592da51ec70b81530603a1edcef835b4ecce5d"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

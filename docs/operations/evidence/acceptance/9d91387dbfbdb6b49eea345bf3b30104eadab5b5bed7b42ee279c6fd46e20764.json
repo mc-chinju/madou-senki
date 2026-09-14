@@ -6,12 +6,12 @@
     "a2-p11-r3c2#semantic/dedicated/destroy-fixed-level"
   ],
   "rowDigests": {
-    "a2-p11-r3c2#semantic/dedicated/destroy-fixed-level": "f077671ead6ce3e8569121f860dd827c8ab8d2e69ff4bc01b66d0789e46c425e"
+    "a2-p11-r3c2#semantic/dedicated/destroy-fixed-level": "07630d9b2cdb3218553995c306a30f47c8c60cbc9b9015e57d98c807cf07b058"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

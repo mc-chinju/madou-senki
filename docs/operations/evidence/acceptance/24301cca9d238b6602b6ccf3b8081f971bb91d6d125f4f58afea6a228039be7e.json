@@ -6,12 +6,12 @@
     "c2-p02-r2c1#owned_techniques/0/reserve-before-parent-release"
   ],
   "rowDigests": {
-    "c2-p02-r2c1#owned_techniques/0/reserve-before-parent-release": "cf476fe56d2cc36c5e91aa85350e6f3a9b4fdfc6807f420eb682935f92640296"
+    "c2-p02-r2c1#owned_techniques/0/reserve-before-parent-release": "d9a093eb6cd3aae77a1ff117cfd6c261f1f0e5809f8e03b30fa97d90c0cf5af9"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p05-r2c3#semantic/prayer/paired-technique"
   ],
   "rowDigests": {
-    "a2-p05-r2c3#semantic/prayer/paired-technique": "3e6d87ffbd6d225a69b8b1c26de7219c246d29d3d2c85c532e5cac714ad1b286"
+    "a2-p05-r2c3#semantic/prayer/paired-technique": "6fec49b124c6e2aeed20809c35f0cbe392a9f7627ea40bf85489a6668a0699da"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

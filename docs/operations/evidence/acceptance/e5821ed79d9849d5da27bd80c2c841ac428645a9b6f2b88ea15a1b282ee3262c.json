@@ -6,12 +6,12 @@
     "a2-p09-r1c1#semantic/dedicated/destroy-beasts"
   ],
   "rowDigests": {
-    "a2-p09-r1c1#semantic/dedicated/destroy-beasts": "7e52f27b16a5dd8258aad08f7652c1dc1ae690a21bb0ec257a5f27406a73baf8"
+    "a2-p09-r1c1#semantic/dedicated/destroy-beasts": "29b8ec0a358e6c6584cfa5e25675c4bcb1722315031269527075f5cb51b74bcb"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p21-r2c2#semantic/morale/receive-trigger"
   ],
   "rowDigests": {
-    "a2-p21-r2c2#semantic/morale/receive-trigger": "4f75268d6f3c994c6590fb26f5631cc53ed3dec2891896d1226eb11a15569fba"
+    "a2-p21-r2c2#semantic/morale/receive-trigger": "443fa959aa13527e7a9d446d4db0705d7ab93f19dacd2738ec72afff6d58341f"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

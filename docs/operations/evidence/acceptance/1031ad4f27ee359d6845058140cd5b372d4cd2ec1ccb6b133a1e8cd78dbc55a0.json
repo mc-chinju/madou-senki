@@ -6,12 +6,12 @@
     "ruling:G04#semantic/normal-defense-closed-after-followers"
   ],
   "rowDigests": {
-    "ruling:G04#semantic/normal-defense-closed-after-followers": "fa5476a192972e313db17d4778ba2a30cb2ef616581289c8517368c375ef0976"
+    "ruling:G04#semantic/normal-defense-closed-after-followers": "4486ad772c8a0c0384739578bd4e6263687b1a0435a214a5e6301f61a4448981"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

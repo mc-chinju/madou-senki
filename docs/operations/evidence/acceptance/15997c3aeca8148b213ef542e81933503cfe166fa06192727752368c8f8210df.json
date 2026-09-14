@@ -6,12 +6,12 @@
     "a2-p17-r1c1#semantic/ordinary/first-recovery-minus-two"
   ],
   "rowDigests": {
-    "a2-p17-r1c1#semantic/ordinary/first-recovery-minus-two": "fc994458291714bc956a995618a50f295648f726de01e92e0fa964bafb97f8bb"
+    "a2-p17-r1c1#semantic/ordinary/first-recovery-minus-two": "617e5047e3704f0e21839c373fe03daea26d3e3e9a935edfdb0dc778aed398f5"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p10-r1c2#semantic/dedicated/double-gadyoora"
   ],
   "rowDigests": {
-    "a2-p10-r1c2#semantic/dedicated/double-gadyoora": "871655f51efba6149a12514865efcdb88b4ddf52a253b23ccea2c50cdae74a77"
+    "a2-p10-r1c2#semantic/dedicated/double-gadyoora": "e54d0193916d3d8d5bae7057f38783322a79f3a6cbd10257eab94ac6011446dc"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

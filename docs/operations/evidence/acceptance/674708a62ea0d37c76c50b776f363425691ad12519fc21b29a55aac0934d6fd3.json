@@ -6,12 +6,12 @@
     "c2-p05-r1c1-ab04#own-turn-ritual-card-use"
   ],
   "rowDigests": {
-    "c2-p05-r1c1-ab04#own-turn-ritual-card-use": "3c53462b0b52571849a5bd0e634e8f694930a1d6f8ed4dd9e6b66d51d573ae86"
+    "c2-p05-r1c1-ab04#own-turn-ritual-card-use": "2bb07886adf2418f1925148294eb8b7c7c52265186d678e0957aac4735f41faa"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

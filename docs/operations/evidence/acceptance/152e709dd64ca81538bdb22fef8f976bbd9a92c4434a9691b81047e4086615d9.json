@@ -6,12 +6,12 @@
     "a2-p08-r2c3#semantic/dedicated/hit-chant-discard-option"
   ],
   "rowDigests": {
-    "a2-p08-r2c3#semantic/dedicated/hit-chant-discard-option": "54e88db8f9bfd661be481a450f884c092092f416b54d31f5d5642f00e9584910"
+    "a2-p08-r2c3#semantic/dedicated/hit-chant-discard-option": "875388c3e833b11fb39a0f6220a8785e9f5b8ea8b4aa7f9b01f94a7a617699da"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

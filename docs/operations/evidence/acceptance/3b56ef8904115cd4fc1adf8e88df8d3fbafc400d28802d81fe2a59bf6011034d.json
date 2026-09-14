@@ -6,12 +6,12 @@
     "c2-p02-r1c2-ab04#wind-magic-eligibility"
   ],
   "rowDigests": {
-    "c2-p02-r1c2-ab04#wind-magic-eligibility": "47e3d2dad34d1c9a5767e906c1b58d507674072e4920ce66e7117f0539bbda28"
+    "c2-p02-r1c2-ab04#wind-magic-eligibility": "ada8c68c498cf1fc3e760d18159c8a27ae8d145b8ad3ca71069581c2d0f00107"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

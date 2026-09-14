@@ -6,12 +6,12 @@
     "c2-p06-r1c1#owned_followers/2/attack-discard-not-follower-death"
   ],
   "rowDigests": {
-    "c2-p06-r1c1#owned_followers/2/attack-discard-not-follower-death": "a649d268e70a7b7f1ffeb754e5197a11b518ab4ecbd7fd7750ec7981fe783077"
+    "c2-p06-r1c1#owned_followers/2/attack-discard-not-follower-death": "dab079a9c2ce2ee45754525da35241381220a6e538d6b8ac1a5c2cd3b6b85004"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

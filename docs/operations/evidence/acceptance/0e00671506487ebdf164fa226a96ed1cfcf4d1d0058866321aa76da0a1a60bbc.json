@@ -6,12 +6,12 @@
     "ruling:G11#semantic/base-reclaim-survives-ability-ban"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/base-reclaim-survives-ability-ban": "3939b82fa97c374b59c179c8a4b77e1093626f0a6af756dbef06cecebcb7c4b0"
+    "ruling:G11#semantic/base-reclaim-survives-ability-ban": "16a79d62809fb04f7b48d25b6133e846a292ead3362b9e903d59e086590587cd"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

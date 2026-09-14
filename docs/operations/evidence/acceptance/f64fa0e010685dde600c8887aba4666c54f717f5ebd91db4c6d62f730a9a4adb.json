@@ -6,12 +6,12 @@
     "a2-p13-r1c2#semantic/dedicated/destroy-followers"
   ],
   "rowDigests": {
-    "a2-p13-r1c2#semantic/dedicated/destroy-followers": "5c43891a113b0995dcba33967e8a423f8ffb948a840996afc69866d4e3f37926"
+    "a2-p13-r1c2#semantic/dedicated/destroy-followers": "6c52afd0a66bafbb0f3aaebf0623465c1078b39f2c4cb101f21b452766a3ea23"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

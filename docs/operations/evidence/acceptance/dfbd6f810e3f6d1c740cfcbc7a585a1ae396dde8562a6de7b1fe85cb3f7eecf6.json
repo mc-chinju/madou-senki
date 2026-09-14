@@ -6,12 +6,12 @@
     "a2-p02-r1c3#semantic/reroll/other-roller"
   ],
   "rowDigests": {
-    "a2-p02-r1c3#semantic/reroll/other-roller": "377a6fac99ccc40be48184501d3554bd004d2c2fcb1c7637c2dd21ae4157c6d7"
+    "a2-p02-r1c3#semantic/reroll/other-roller": "8bcf0990db2e63403398b250a1bb45680416f2c77c6c9a5e396889d709902f6b"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

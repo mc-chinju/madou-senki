@@ -6,12 +6,12 @@
     "c2-p05-r1c2-ab05#concurrent-death-retention"
   ],
   "rowDigests": {
-    "c2-p05-r1c2-ab05#concurrent-death-retention": "32405f374ff18aa915e18f25cbeb5ab00ab9d43b00bec392e10be794aa292988"
+    "c2-p05-r1c2-ab05#concurrent-death-retention": "5214de05df75f50114382e03313f7295099d65fd2b18a19436ce52e3bf0fb3a3"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "c2-p07-r1c2-ab04#defeat-Vanmil"
   ],
   "rowDigests": {
-    "c2-p07-r1c2-ab04#defeat-Vanmil": "9b1c306f0a9b5e962090aabe506b5d09e1f89484c9c175e39130a12b5ac61cad"
+    "c2-p07-r1c2-ab04#defeat-Vanmil": "df9500b6d28ee57efbc57053fc89c3893b6f19adc4b06e3db86c8a24ed06245f"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

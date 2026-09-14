@@ -6,12 +6,12 @@
     "a2-p19-r3c2#semantic/defense/nonmagic-base"
   ],
   "rowDigests": {
-    "a2-p19-r3c2#semantic/defense/nonmagic-base": "95d3eb47aaa7213e184ed7b2df9485b583ec79e655209bf7249d007a7e1b9090"
+    "a2-p19-r3c2#semantic/defense/nonmagic-base": "2947f4943da458bc15e0590ce9d964bcdf97072fda0f659a55906afffe621805"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

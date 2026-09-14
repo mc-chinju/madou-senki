@@ -6,12 +6,12 @@
     "c2-p05-r2c1#defeat/protected-Gainas"
   ],
   "rowDigests": {
-    "c2-p05-r2c1#defeat/protected-Gainas": "046ed74ea7d36040e0e4d88d45016722d58b72c906697e3fd4be133f8d9c2f13"
+    "c2-p05-r2c1#defeat/protected-Gainas": "4530128b825835c569a47f7d121f9130fc2b17c871aa0facd49aaf96429cb4f4"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "ruling:G04#semantic/allied-reveal-follower-boundary"
   ],
   "rowDigests": {
-    "ruling:G04#semantic/allied-reveal-follower-boundary": "0ae31c3d57c5d3d3a793020a0bd3cb00db2976146b2a1691c98382852eb65ef8"
+    "ruling:G04#semantic/allied-reveal-follower-boundary": "13dcc7a543965da7971640bd0a473a4335decaf41f9530f674e1d58e87dffbee"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

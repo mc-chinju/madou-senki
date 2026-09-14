@@ -6,12 +6,12 @@
     "a2-p05-r1c3#semantic/boost/self-spirit-plus-two"
   ],
   "rowDigests": {
-    "a2-p05-r1c3#semantic/boost/self-spirit-plus-two": "501f1c3245397d969e7e1b5fe557ca563bd64c33c2b266e504a280855bf7dc30"
+    "a2-p05-r1c3#semantic/boost/self-spirit-plus-two": "1213eef427e4c0ecbc2f55d3324d8051225885a64965ea5c429b2c7076bf6aff"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

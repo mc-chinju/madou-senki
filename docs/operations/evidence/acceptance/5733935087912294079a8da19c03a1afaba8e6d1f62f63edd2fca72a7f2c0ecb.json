@@ -6,12 +6,12 @@
     "a2-p19-r2c1#semantic/attack/printed-damage"
   ],
   "rowDigests": {
-    "a2-p19-r2c1#semantic/attack/printed-damage": "4e0dac29dee13164225227d559a160ced932f617c3d04179836f4f9a239d101c"
+    "a2-p19-r2c1#semantic/attack/printed-damage": "10043d6142f8a98664e3457ba9a360d73ef3dbf425b5556abb7420381b344455"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

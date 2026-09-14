@@ -6,12 +6,12 @@
     "c2-p06-r1c2-ab04#shared-advance-only-same-source-hit-index"
   ],
   "rowDigests": {
-    "c2-p06-r1c2-ab04#shared-advance-only-same-source-hit-index": "b6081906e37aeb5346846734176782aaeb858edda89b3f31f3aeda1f050ebd15"
+    "c2-p06-r1c2-ab04#shared-advance-only-same-source-hit-index": "d86a057a8e115de4b6c88f1b265e01f87b0bf2e16fc4c003cabfb2199431537f"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

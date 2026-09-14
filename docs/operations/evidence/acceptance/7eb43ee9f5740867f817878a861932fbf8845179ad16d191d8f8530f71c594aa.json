@@ -6,12 +6,12 @@
     "a2-p14-r1c1#semantic/ordinary/gadyoora-immune"
   ],
   "rowDigests": {
-    "a2-p14-r1c1#semantic/ordinary/gadyoora-immune": "acd7188be9640fdbe33f4be36fbb963d1dfefc43d4cb2b6643d852cc33703ec5"
+    "a2-p14-r1c1#semantic/ordinary/gadyoora-immune": "b9971231b1c1e1783a96d79396a49f4dbac5e455bb595c49217dc0621bac7832"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p03-r1c1#semantic/draw/that-many"
   ],
   "rowDigests": {
-    "a2-p03-r1c1#semantic/draw/that-many": "9b9f999e6083592bd0407436c5bc49a555c77ffe96267dd6387b4ebeb189b123"
+    "a2-p03-r1c1#semantic/draw/that-many": "0a44bf38f621464f22a9cbdf9b1bdf81753eb168b5ce8566a3183b1b4ac8cc81"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

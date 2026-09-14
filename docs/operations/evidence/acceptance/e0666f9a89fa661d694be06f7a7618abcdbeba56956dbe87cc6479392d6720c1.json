@@ -6,12 +6,12 @@
     "ruling:G11#semantic/base-reclaim-shared-by-name"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/base-reclaim-shared-by-name": "e1386c9d351b0508b6885ddee52de291434afc98c41e8f5e630438f85f984334"
+    "ruling:G11#semantic/base-reclaim-shared-by-name": "5abe15ff17f63f8a19f965f3b3e452a75ff008a23e7202b65aaed1dd831e7206"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

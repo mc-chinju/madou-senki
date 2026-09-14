@@ -6,12 +6,12 @@
     "c2-p07-r1c1#owned_techniques/0/normalized-name-once-game"
   ],
   "rowDigests": {
-    "c2-p07-r1c1#owned_techniques/0/normalized-name-once-game": "b5ed5a5ed2928571d0e4de8e485894a8e996a7f96f8ff1d1d6f88fb5c3b9b38e"
+    "c2-p07-r1c1#owned_techniques/0/normalized-name-once-game": "6d9c2ea187c1c46bae8504fa50150f03d70c4d1a0659aa300d94863263ec21e5"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

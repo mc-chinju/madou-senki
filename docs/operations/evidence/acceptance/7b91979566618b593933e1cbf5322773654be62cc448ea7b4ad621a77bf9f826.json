@@ -6,12 +6,12 @@
     "a2-p21-r1c2#semantic/dedicated/morale-waiver"
   ],
   "rowDigests": {
-    "a2-p21-r1c2#semantic/dedicated/morale-waiver": "13f9a21958f178a3f468af7b20b8ada0f019e9eed9ff7abbaf234da34b1eee51"
+    "a2-p21-r1c2#semantic/dedicated/morale-waiver": "96921e62fc1950d362bc414d34c90ed001b82f9c2ddb585b3f786732de5e1b38"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

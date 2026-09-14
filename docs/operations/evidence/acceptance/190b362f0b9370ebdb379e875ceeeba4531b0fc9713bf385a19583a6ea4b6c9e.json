@@ -6,12 +6,12 @@
     "a2-p06-r2c3#semantic/rest/self-heal-one"
   ],
   "rowDigests": {
-    "a2-p06-r2c3#semantic/rest/self-heal-one": "7190748fe63628de6ec8dc2c87b6ac439467f43c500f271231fa7af73aa2f29b"
+    "a2-p06-r2c3#semantic/rest/self-heal-one": "f2c6c9b1d17f6649765377914533f54d674448ddc7ce10636d0c7c0a3af279f5"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

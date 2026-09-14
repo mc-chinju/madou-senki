@@ -6,12 +6,12 @@
     "c2-p02-r1c1-ab01#earth-magic-immunity"
   ],
   "rowDigests": {
-    "c2-p02-r1c1-ab01#earth-magic-immunity": "2da5d6ddb6dff1b0a905b55354ac620c60ebe2f15f2f9cbeb9e7d0e482bf708e"
+    "c2-p02-r1c1-ab01#earth-magic-immunity": "408c4fe62f7eeb19abde875f27172215d045d7e3a69aa9ddb6500418d2b33032"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

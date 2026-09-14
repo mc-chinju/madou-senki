@@ -6,12 +6,12 @@
     "a2-p02-r3c3#semantic/gift/one-hand-card"
   ],
   "rowDigests": {
-    "a2-p02-r3c3#semantic/gift/one-hand-card": "79449b0aaa3cf4680a882f48db0f29c64c65565a20370934c2cfa7f6b88441af"
+    "a2-p02-r3c3#semantic/gift/one-hand-card": "a1cbeae0f68000080fab98933e9a2682015be49af5f1a01e02507cbcf7a92046"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

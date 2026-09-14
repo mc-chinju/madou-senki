@@ -6,12 +6,12 @@
     "c2-p05-r2c1-ab05#cancel-update-retains-prior-selection-and-attempt"
   ],
   "rowDigests": {
-    "c2-p05-r2c1-ab05#cancel-update-retains-prior-selection-and-attempt": "1db271a6ef8c2fe6628134d015c651f344fc3da8db164678eac7b8bd82438994"
+    "c2-p05-r2c1-ab05#cancel-update-retains-prior-selection-and-attempt": "67e6a7f81a459b89e999c7a6e4bdbdae594ac871e21216c7f9977f2372c94bce"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "ruling:G07#semantic/whole-two-dice-reroll-same-identity"
   ],
   "rowDigests": {
-    "ruling:G07#semantic/whole-two-dice-reroll-same-identity": "307b66469fae0b5d50c515cb53de4bdfa2eda138befced56f4eda5db5f937b04"
+    "ruling:G07#semantic/whole-two-dice-reroll-same-identity": "560c4364bfe4634939e48925b2af6183b649aea63fcf143f0852d90906b090f0"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

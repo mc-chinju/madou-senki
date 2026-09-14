@@ -6,12 +6,12 @@
     "c2-p04-r1c2-ab03#morale-plus-two"
   ],
   "rowDigests": {
-    "c2-p04-r1c2-ab03#morale-plus-two": "c6da4d48e5f508751eaca196c89392200fff4d7782e6dfb64871e467cc49c907"
+    "c2-p04-r1c2-ab03#morale-plus-two": "7905cadd5547348eab818abc72cd6ec7def26e2078a49d0e5fbba2876a8e1695"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "ruling:G07#semantic/forced-failure-survives-reroll"
   ],
   "rowDigests": {
-    "ruling:G07#semantic/forced-failure-survives-reroll": "0aecd14384cce4d24239736990bd399c181892700411536cb10421b480e98b61"
+    "ruling:G07#semantic/forced-failure-survives-reroll": "c46c12ba282e2d432a4db35944f7836dc8abc53948cd3a508ad5884cd62725f7"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p17-r3c3#main-producer"
   ],
   "rowDigests": {
-    "a2-p17-r3c3#main-producer": "fafcf3dadb3deccb5b19b9b3fef7c81c6f7ca48982935e0b16832e145a9ad116"
+    "a2-p17-r3c3#main-producer": "6da6f282e9a78693f68ee6ff8349beb58f0f78f610c5ab19fcbd1f893f451c5e"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

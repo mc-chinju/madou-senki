@@ -6,12 +6,12 @@
     "S25#source/rulings/1"
   ],
   "rowDigests": {
-    "S25#source/rulings/1": "11cb8cb817bb63b36a5ff4472813f44243bc534b2ceeed258fae502bb809e5c3"
+    "S25#source/rulings/1": "93799ac9e03666db0e36e1d22b3aa54a79a1e4b349ad5dd719af857886358b72"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p05-r3c3#semantic/defense/no-spirit"
   ],
   "rowDigests": {
-    "a2-p05-r3c3#semantic/defense/no-spirit": "06dad825fc46ed9ab1b6f7f4bb0cc2db6b36fe80dad5b490022ede807b3fc65b"
+    "a2-p05-r3c3#semantic/defense/no-spirit": "fec48f0d408aecbd7c7cf15d26a4c535dbd7133dae371fac192b7691cddfaaa7"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

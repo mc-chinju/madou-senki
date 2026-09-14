@@ -6,12 +6,12 @@
     "a2-p22-r3c2#semantic/revival/effect-threshold"
   ],
   "rowDigests": {
-    "a2-p22-r3c2#semantic/revival/effect-threshold": "5b5c4c515a769890e04a1f7fdf8a6d9779986391c0d2cb0f78fbcd82180b840f"
+    "a2-p22-r3c2#semantic/revival/effect-threshold": "df96b95e12103e02269f566d8beb6bf0fdb3150cf8a55a1a193847bdb6f45669"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

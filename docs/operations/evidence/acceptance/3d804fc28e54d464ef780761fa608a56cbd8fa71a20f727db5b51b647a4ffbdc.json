@@ -6,12 +6,12 @@
     "ruling:G12#semantic/one-advance-cancels-each-target-maai"
   ],
   "rowDigests": {
-    "ruling:G12#semantic/one-advance-cancels-each-target-maai": "aa9278e22d209379fbac1ab512596a80803d285654a8e811bfc332a525b5ee1d"
+    "ruling:G12#semantic/one-advance-cancels-each-target-maai": "dac80857489a4e97b0dd5a20833a3daee56e8d6a5727584d8df68ac299441b65"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

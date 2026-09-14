@@ -6,12 +6,12 @@
     "c2-p02-r2c2-ab01#effect-threshold-four"
   ],
   "rowDigests": {
-    "c2-p02-r2c2-ab01#effect-threshold-four": "3872947f7e1a276365fb8fa8b62c1d9bc724e77458d6db49fd8c6a2c4b7f3fcb"
+    "c2-p02-r2c2-ab01#effect-threshold-four": "94ae481c5ebdbe13cf5724957e32bd9ed8e090ce11e70102024d3a5c07f4ea05"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

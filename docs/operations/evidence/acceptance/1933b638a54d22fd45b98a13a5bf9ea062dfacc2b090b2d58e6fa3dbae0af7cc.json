@@ -6,12 +6,12 @@
     "a2-p14-r2c1#semantic/ordinary/school"
   ],
   "rowDigests": {
-    "a2-p14-r2c1#semantic/ordinary/school": "5134164e2f002ee61445794141da78911f6ce42af21b557d2f13b0eaa7d54951"
+    "a2-p14-r2c1#semantic/ordinary/school": "22300ab08624a2c07fc14ca6edb2e6d0309bafdd2e2ff2126a8d7ff463391047"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p10-r1c3#semantic/ordinary/one-mental-defense-check"
   ],
   "rowDigests": {
-    "a2-p10-r1c3#semantic/ordinary/one-mental-defense-check": "4400896a4bbb0960d1a597443fe61e7562a1f92dce744184f8a45cf850f61dae"
+    "a2-p10-r1c3#semantic/ordinary/one-mental-defense-check": "8b2941c6edc1be0682dc27c62adbfd1ba99f941e02fd43234b458dbc7ffd1f41"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

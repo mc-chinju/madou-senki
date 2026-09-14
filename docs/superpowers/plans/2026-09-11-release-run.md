@@ -1674,16 +1674,16 @@ git add tests && git commit -m "e2e: 全員切断・未ACK再送・終了後再�
 
 - [x] **Step 1: 完成計画 R7 の4項目を、上記の証跡（lobby.test.ts の R7 ケース、full-game.spec.ts、failure-recovery.spec.ts）へのリンク付きで `[x]` にする。C1〜C4 で追加した試験のうち台帳の semantic 条項に対応するもの（正式START・全員切断・再送）は束縛ファイル `docs/operations/evidence/2026-09-11-r7-bindings.json` で束縛する。対応する semantic 行は無く `bindings` は空。第4項目（全検査）は Step 2 の B8 再実行が残る。**
 
-- [ ] **Step 2: Task B8 の Step 2〜5 を再実行する（候補が変わったため）**
+- [x] **Step 2: Task B8 の Step 2〜5 を再実行する（候補が変わったため）**
 
 Run: `bash scripts/run_candidate.sh docs/operations/evidence/2026-09-11-candidate-run.json && python3 scripts/promote_ledger.py --run docs/operations/evidence/2026-09-11-candidate-run.json && python3 scripts/validate_runtime_coverage.py --require-accepted | cut -c1-160 && python3 scripts/generate_catalog_readiness.py && pnpm verify:catalog && pnpm verify:assets && pnpm typecheck && pnpm build`
 Expected: 全て終了0、`ready: true`
 
-- [ ] **Step 3: 候補記録を書く**
+- [x] **Step 3: 候補記録を書く**
 
 `docs/operations/evidence/2026-09-11-release-candidate.md` に: コミットID、`git status --porcelain` が空であること、run receipt のパスと sha256、readiness の sha256、台帳の statuses、`pnpm build` 成果物（`apps/web/dist` と Worker bundle）の sha256 一覧（`find apps/web/dist -type f | sort | xargs shasum -a 256`）。
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add docs data packages/catalog && git commit -m "docs,data: R7候補を固定し、全条項accepted・正式START・一戦の証跡を記録する"

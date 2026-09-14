@@ -6,12 +6,12 @@
     "c2-p02-r2c2-ab03#Lester-cancel"
   ],
   "rowDigests": {
-    "c2-p02-r2c2-ab03#Lester-cancel": "01b959d356e3028eec3cf48567753c8561571353b7ad15c79fdc701d09d5b9c2"
+    "c2-p02-r2c2-ab03#Lester-cancel": "304487b3dbfa65d21d77fe80b20a01a3e0f94e35d9940d8c564f577f5efe1fce"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "c2-p06-r1c2-ab01#canceled-attempt-stays-spent"
   ],
   "rowDigests": {
-    "c2-p06-r1c2-ab01#canceled-attempt-stays-spent": "dd748898d4aeffc320fecf335b81ea083da69988efa024726c17276f0b5be316"
+    "c2-p06-r1c2-ab01#canceled-attempt-stays-spent": "d4051279c04da19b01401e378a0b8cdf09b0b62045d1ca80e6ea3ef3c56430a6"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p10-r1c2#semantic/dedicated/not-double-others"
   ],
   "rowDigests": {
-    "a2-p10-r1c2#semantic/dedicated/not-double-others": "c20d29212af9145d9fa6ab55d6cac3768045f0561b1765e41674692a94f82f2e"
+    "a2-p10-r1c2#semantic/dedicated/not-double-others": "1854bdcf5cfaddfba8241517f35dd7bf4801c71b4ebf5b65e210b09a155e65b6"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

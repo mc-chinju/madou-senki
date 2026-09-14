@@ -6,12 +6,12 @@
     "a2-p24-r2c1#semantic/mode/1/warrior_level"
   ],
   "rowDigests": {
-    "a2-p24-r2c1#semantic/mode/1/warrior_level": "c65aacaa49d13506d89efff19f8ba7116ab97e6186c528b1be57b1ef3cd2cefc"
+    "a2-p24-r2c1#semantic/mode/1/warrior_level": "56d5a0dfcf8ae99533c9183ed345bc5912e7ef7adfcb5b3e9997ec64e1f09c72"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

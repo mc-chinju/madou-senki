@@ -6,12 +6,12 @@
     "a2-p20-r2c1#semantic/defense/earth-magic-null"
   ],
   "rowDigests": {
-    "a2-p20-r2c1#semantic/defense/earth-magic-null": "022a3da6b5cc4b566e5e5d2ef8d0b29382a42b8d45abdb24f98053f0f45ba9b7"
+    "a2-p20-r2c1#semantic/defense/earth-magic-null": "a26ead70de7637cb7559730677b5a4ba4bfc3d0813f07122ab35253f8c37005c"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p03-r2c3#semantic/training/equality-fails"
   ],
   "rowDigests": {
-    "a2-p03-r2c3#semantic/training/equality-fails": "702051c587752dd2fb21852f58f94545dbd9fbebf73667cb878ed30cc3e85819"
+    "a2-p03-r2c3#semantic/training/equality-fails": "1ef8ebf13ecad7e93d12dbcc08262c5ae18bd44dfcfc44911d605088e592c540"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

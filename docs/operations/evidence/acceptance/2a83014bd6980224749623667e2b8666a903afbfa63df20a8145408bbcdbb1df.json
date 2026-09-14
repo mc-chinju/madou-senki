@@ -6,12 +6,12 @@
     "ruling:G04#semantic/normal-defense-before-follower-start"
   ],
   "rowDigests": {
-    "ruling:G04#semantic/normal-defense-before-follower-start": "1482c5002fdc9fd3a31f85c7ff7dfced74005b0c2e78c33d7f3ac4ea06e8e1f6"
+    "ruling:G04#semantic/normal-defense-before-follower-start": "ddef2feb65949e40a5ed1a4661f4f49d17e7dc7a69ed4ea3a5c547cbf9d80743"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

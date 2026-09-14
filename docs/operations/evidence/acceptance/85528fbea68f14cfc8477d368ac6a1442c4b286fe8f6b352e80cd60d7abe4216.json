@@ -6,12 +6,12 @@
     "ruling:G10#semantic/open-refill-resumes-after-child"
   ],
   "rowDigests": {
-    "ruling:G10#semantic/open-refill-resumes-after-child": "89b1f62139d2bb63539a0f35b82f29878e9099e804efe26d9c64754e93a75630"
+    "ruling:G10#semantic/open-refill-resumes-after-child": "dfb86b24ce36728900b318b8cfdbcdb5e7ceac6f67457043b7651a25b1638ba8"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

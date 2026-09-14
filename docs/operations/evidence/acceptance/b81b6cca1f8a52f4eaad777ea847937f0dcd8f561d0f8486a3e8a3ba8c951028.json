@@ -6,12 +6,12 @@
     "c2-p04-r2c2-ab04#exact-maai-cost"
   ],
   "rowDigests": {
-    "c2-p04-r2c2-ab04#exact-maai-cost": "2610115d71e1f295212172f2ec1beae124a0e904032b830c0f8cdcd38b94a88d"
+    "c2-p04-r2c2-ab04#exact-maai-cost": "4d3cae320e3ac413f0093fb6f418de7ae17bcff33adbff9e67ffbfc6369d181e"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

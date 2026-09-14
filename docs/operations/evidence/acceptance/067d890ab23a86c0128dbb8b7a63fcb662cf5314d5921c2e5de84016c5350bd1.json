@@ -6,12 +6,12 @@
     "ruling:G16#semantic/lancelot-transform-retains-damage-and-abilities"
   ],
   "rowDigests": {
-    "ruling:G16#semantic/lancelot-transform-retains-damage-and-abilities": "5afdbfe80dc6c01d080548d6e4a0fa86ee6410be273865e4e1551bb9657edfeb"
+    "ruling:G16#semantic/lancelot-transform-retains-damage-and-abilities": "3db48ad9a9202e999b64042e8c76de875aafafe66a5a578a902bce4e45c02118"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

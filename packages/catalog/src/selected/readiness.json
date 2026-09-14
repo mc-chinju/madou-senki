@@ -2,5 +2,5 @@
   "format": "catalog-readiness/v1",
   "ready": true,
   "manifestSha256": "faa6b3d7880088f19fc8b956161b0bf683943da347c32cd03e9e06611dd87041",
-  "ledgerSha256": "bff9cab4c3eff1e368d55fd98b5f4e624c7e7a50a31c6496a16cf12f82c1e0a3"
+  "ledgerSha256": "aa054feb1546358e9d63927865187a4cd85bb90e4967a6c72247057f699a7520"
 }

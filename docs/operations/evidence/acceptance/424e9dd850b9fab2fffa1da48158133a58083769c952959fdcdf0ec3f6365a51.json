@@ -6,12 +6,12 @@
     "ruling:G06#semantic/different-physical-defense-allowed"
   ],
   "rowDigests": {
-    "ruling:G06#semantic/different-physical-defense-allowed": "b78682065bf8d9dc37ac647fffa9455af3792b99b659f8e6c63f186f41e267ad"
+    "ruling:G06#semantic/different-physical-defense-allowed": "24ba8ef0e2fd167e265980ea8176166a40ef5ede5189fe2617fc5a2419ba39e7"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

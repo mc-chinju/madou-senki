@@ -6,12 +6,12 @@
     "c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one"
   ],
   "rowDigests": {
-    "c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one": "d2417c6936bb5777bf5e694e6a79b78bba9fd5636eebfacfce58f7dda540bbaf"
+    "c2-p05-r1c2-ab05#substitute-death-Arnes-permanent-spirit-plus-one": "31bf7638103881a7b0546311f7f18a1e93a59cd75321ae4b9df4b4ee0471579d"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

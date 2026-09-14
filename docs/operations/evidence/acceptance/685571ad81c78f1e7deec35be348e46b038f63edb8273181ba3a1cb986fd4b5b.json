@@ -6,12 +6,12 @@
     "a2-p09-r2c2#semantic/dedicated/roll-at-most-six"
   ],
   "rowDigests": {
-    "a2-p09-r2c2#semantic/dedicated/roll-at-most-six": "71805983f59778a885ed9da22ad1a6a6dabe205dfabb069fb9c24c094ec65db6"
+    "a2-p09-r2c2#semantic/dedicated/roll-at-most-six": "10dcb483e708a5d764ab6e3899cfb60990a6b3a22c0fa5e79e6af48419ea8f55"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

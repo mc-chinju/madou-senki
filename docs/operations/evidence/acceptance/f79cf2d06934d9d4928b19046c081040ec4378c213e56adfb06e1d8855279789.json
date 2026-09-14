@@ -6,12 +6,12 @@
     "c2-p04-r2c2#owned_techniques/3/exhaustion-across-physical-copies"
   ],
   "rowDigests": {
-    "c2-p04-r2c2#owned_techniques/3/exhaustion-across-physical-copies": "a77824fe1012f7a08f3a157c75e8e2470c2279dafda5193dd45c8f2dcbd74888"
+    "c2-p04-r2c2#owned_techniques/3/exhaustion-across-physical-copies": "a52bfeb9ec8f73c4aeb3bc45d40e3b3ef4964cfefe1d49394bba00e8446e6093"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

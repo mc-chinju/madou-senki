@@ -6,12 +6,12 @@
     "c2-p04-r1c1-ab04#complete-hand-exchange"
   ],
   "rowDigests": {
-    "c2-p04-r1c1-ab04#complete-hand-exchange": "d4f401ee4c56a206465ab1e625ffa50c1ae4a022cd91af0f337705c327ba7b86"
+    "c2-p04-r1c1-ab04#complete-hand-exchange": "8e254cba015cd79df95176c40bb6fd08b32bafa985ee7e4b9fb855674e6a6e58"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p03-r1c2#semantic/morale/faction-condition"
   ],
   "rowDigests": {
-    "a2-p03-r1c2#semantic/morale/faction-condition": "80a43fa75a64fea6785cab6a427df8898f0eee1a0f23b7b25273c943e307e63f"
+    "a2-p03-r1c2#semantic/morale/faction-condition": "1a8b63f6574f2b20f56b1cd04bc93cb1158064f22d5922b15dc6f941866c3ee7"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

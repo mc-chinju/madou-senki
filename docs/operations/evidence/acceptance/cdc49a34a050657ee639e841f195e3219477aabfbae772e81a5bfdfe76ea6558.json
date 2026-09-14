@@ -6,12 +6,12 @@
     "c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence"
   ],
   "rowDigests": {
-    "c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence": "d7b35c18bc068a618b101dd5a87cff20cf821bf52af1307901dc7a803330621c"
+    "c2-p03-r1c2-ab04#C16/lease-survives-Lia-suppression-absence": "f1ceb478ee7a6a418fd60e7f5aaefc8812cd89f51927c5597b1c08fc72ff7c7b"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

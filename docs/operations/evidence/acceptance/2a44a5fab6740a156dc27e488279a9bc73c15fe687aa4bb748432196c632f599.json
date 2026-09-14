@@ -6,12 +6,12 @@
     "c2-p05-r2c1-ab04#chanted-sword"
   ],
   "rowDigests": {
-    "c2-p05-r2c1-ab04#chanted-sword": "39af975b004906f4397f06bee9cbeb2740a242dd5f97c56b36aed942d4b48b10"
+    "c2-p05-r2c1-ab04#chanted-sword": "8a54d07c41313f0a38e27076a12b5684749a22c5f635264d6e637c4bf5de5d36"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

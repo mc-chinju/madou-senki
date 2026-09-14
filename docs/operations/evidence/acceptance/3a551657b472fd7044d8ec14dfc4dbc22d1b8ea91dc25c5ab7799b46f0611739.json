@@ -6,12 +6,12 @@
     "a2-p03-r1c2#semantic/morale/bonus"
   ],
   "rowDigests": {
-    "a2-p03-r1c2#semantic/morale/bonus": "c9eab89c26d71baca49174144e3d3d0cb52031396977d5a332f892a6d99ca4b8"
+    "a2-p03-r1c2#semantic/morale/bonus": "15868a03c8ba1f182fbaed76e54332be2313cfbc5b23316bea73ac9fc52b97d0"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

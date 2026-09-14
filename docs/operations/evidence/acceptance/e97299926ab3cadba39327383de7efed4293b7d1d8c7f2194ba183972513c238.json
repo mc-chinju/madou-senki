@@ -6,12 +6,12 @@
     "c2-p01-r1c1#owned_followers/0/morale-failure-excluded"
   ],
   "rowDigests": {
-    "c2-p01-r1c1#owned_followers/0/morale-failure-excluded": "8a6eab4af9ac4818e4bff3520f2b091ccb5048ac2e5d0723378026078da2c461"
+    "c2-p01-r1c1#owned_followers/0/morale-failure-excluded": "1f5ef0fb8fd71b0edc9ad9965cf93828a00416aedec4eadcb5d694e05b53a0a0"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

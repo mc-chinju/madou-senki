@@ -6,12 +6,12 @@
     "a2-p03-r2c1#semantic/zone/self-attachment"
   ],
   "rowDigests": {
-    "a2-p03-r2c1#semantic/zone/self-attachment": "7d52f13374dbb13854e342d74abd4868b6e7a4725eae5e86eb575df4fedc039c"
+    "a2-p03-r2c1#semantic/zone/self-attachment": "b0e8b90c29c313d9a9678746dc2732321160b92f1f5d48e2dceffb7c4a268360"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "ruling:G08#semantic/null-damage-remains-null-under-addition"
   ],
   "rowDigests": {
-    "ruling:G08#semantic/null-damage-remains-null-under-addition": "95ddc12d06ced688cf95f01cdbd7188c5a43ee77aadca4a7bf7fe542684d4e0e"
+    "ruling:G08#semantic/null-damage-remains-null-under-addition": "98ff05bc53c1f6f9cf61a2c361a13be84f8f82fb6f4ea20298d085555349b964"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "ruling:G11#semantic/actual-turn-technique-public-opportunity"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/actual-turn-technique-public-opportunity": "ef3fc9d922feb177619c831fdd9c9b7d6d90dd5831be6c71d125d1508098712e"
+    "ruling:G11#semantic/actual-turn-technique-public-opportunity": "84e58cbe3619cda8015bc32fe89b31b40818fd682afd41b10189052e7250e4ec"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

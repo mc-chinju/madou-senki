@@ -6,12 +6,12 @@
     "c2-p04-r2c1-ab03#actual-attacker-or-current-turn-end-expiry"
   ],
   "rowDigests": {
-    "c2-p04-r2c1-ab03#actual-attacker-or-current-turn-end-expiry": "4b672d8272412dd52197f6d2f58ddb59fea94b13fb2c6ca19418f025e713507e"
+    "c2-p04-r2c1-ab03#actual-attacker-or-current-turn-end-expiry": "6aba6e142858332b1e301ba2ec4ccdc59c23ec2304e5d2e02604674de0e279a9"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

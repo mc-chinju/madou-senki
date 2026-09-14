@@ -6,12 +6,12 @@
     "ruling:G11#semantic/named-reuse-excludes-failed-morale"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/named-reuse-excludes-failed-morale": "0011cd86edd51e9b91c0b80d7ed15465978862c9171cde1742a3f4d022a4a2f8"
+    "ruling:G11#semantic/named-reuse-excludes-failed-morale": "db80ad6c11f72aa4a5585d682e3366dfd40db34d1da629283fcf0273a6ea545c"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

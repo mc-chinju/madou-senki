@@ -6,12 +6,12 @@
     "a2-p21-r2c3#semantic/attack/not-lumped-damage"
   ],
   "rowDigests": {
-    "a2-p21-r2c3#semantic/attack/not-lumped-damage": "c651f43eabc082e31db05de30a402a82005f798363b08b1f7c01f3960c850ce3"
+    "a2-p21-r2c3#semantic/attack/not-lumped-damage": "df7a841eb848fcb9e1f1961b3838c810a13ed3e030b91bbe6fadbbd2690b5c8b"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

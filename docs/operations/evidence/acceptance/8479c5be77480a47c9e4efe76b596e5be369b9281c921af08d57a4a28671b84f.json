@@ -6,12 +6,12 @@
     "ruling:G11#semantic/source-clockwise-order-preserved-on-reveal"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/source-clockwise-order-preserved-on-reveal": "37f9a2fe277c9344821d3ffe0f63a85ea9f4cf113a32ce8120086ad1b02204a2"
+    "ruling:G11#semantic/source-clockwise-order-preserved-on-reveal": "a295fb9b2f64e2971983800445bb3f05926271be240ef4deeda0cea0e6d39227"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

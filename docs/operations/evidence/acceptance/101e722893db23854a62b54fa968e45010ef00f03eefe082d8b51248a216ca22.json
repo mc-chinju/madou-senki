@@ -6,12 +6,12 @@
     "c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior"
   ],
   "rowDigests": {
-    "c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior": "a54c246517c81abb015a7b6a2590ffa409aa8afddd84d8d9eee380de5a96faab"
+    "c2-p07-r1c1-ab01#compare-incoming-effect-to-own-warrior": "bd9a92ddbb5611c97b70df5c6ba589588eb729ce5be3ed778457967461400c32"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

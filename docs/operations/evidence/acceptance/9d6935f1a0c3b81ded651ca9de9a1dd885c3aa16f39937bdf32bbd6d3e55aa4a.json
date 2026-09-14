@@ -6,12 +6,12 @@
     "ruling:G08#semantic/frozen-effect-rejects-late-spirit"
   ],
   "rowDigests": {
-    "ruling:G08#semantic/frozen-effect-rejects-late-spirit": "7ff22f16ea1a4fb0b38857592ac3496513399a9bfcc78489b50fb02a7d281a79"
+    "ruling:G08#semantic/frozen-effect-rejects-late-spirit": "46f505119c65cf05ed0e8af261b211b76e85d4a71957655e0b6a16a869001e07"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

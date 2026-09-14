@@ -6,12 +6,12 @@
     "a2-p02-r2c3#semantic/arseil/public-owner"
   ],
   "rowDigests": {
-    "a2-p02-r2c3#semantic/arseil/public-owner": "6e908ba647fef3d457adbc2ca1820a6c3a632107c40f3c7581c33651b1b88f3c"
+    "a2-p02-r2c3#semantic/arseil/public-owner": "b63b1038b7233e9c2b656a17d72964374b4d54813f1403caf58e4e7cb03a0f5b"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "ruling:G11#semantic/base-and-extra-separate-name-budgets"
   ],
   "rowDigests": {
-    "ruling:G11#semantic/base-and-extra-separate-name-budgets": "c93ea21a3c814a63184df348a58495b1be75d0c2d21eb6bbdddbd925801f9790"
+    "ruling:G11#semantic/base-and-extra-separate-name-budgets": "11d70c48bc930d13da5c1e7f809b626031de0b2cf5605ba988adf4e11e76b341"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

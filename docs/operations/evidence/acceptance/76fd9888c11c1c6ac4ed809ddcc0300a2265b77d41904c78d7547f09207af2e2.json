@@ -6,12 +6,12 @@
     "ruling:G06#semantic/physical-card-reuse-later-attack"
   ],
   "rowDigests": {
-    "ruling:G06#semantic/physical-card-reuse-later-attack": "f3a296140442e452da61489cc7a8d4cf36f1ae3370411536d0e8d0f293641338"
+    "ruling:G06#semantic/physical-card-reuse-later-attack": "8cda420bd8ca47caa9fc2ffdb7228bb8207050ffc9d77cc3547289dfd78f6635"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

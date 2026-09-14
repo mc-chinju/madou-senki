@@ -6,12 +6,12 @@
     "a2-p05-r1c1#semantic/ritual/vanmil-transform"
   ],
   "rowDigests": {
-    "a2-p05-r1c1#semantic/ritual/vanmil-transform": "4f730c63c7576045099b510414abfc651ec32eaf96c298507539e72e641c5bec"
+    "a2-p05-r1c1#semantic/ritual/vanmil-transform": "7d4838827178f506873000f78332d96490e32e05a8ee565e4c6b82098699d0ab"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

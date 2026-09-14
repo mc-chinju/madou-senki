@@ -6,12 +6,12 @@
     "a2-p04-r3c3#semantic/wish/one-card"
   ],
   "rowDigests": {
-    "a2-p04-r3c3#semantic/wish/one-card": "cba2fae62f80699d453f792ce7014ce2742d44a3086faffe3360611c1eb47405"
+    "a2-p04-r3c3#semantic/wish/one-card": "1112fadbe06904384e31d2965d4781a3bd0938aae2443a2a031d38c32202c713"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

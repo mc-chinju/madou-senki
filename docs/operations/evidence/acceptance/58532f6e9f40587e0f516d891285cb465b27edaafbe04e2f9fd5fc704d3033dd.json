@@ -6,12 +6,12 @@
     "ruling:G13#semantic/higher-counter-replaces-hit-in-range"
   ],
   "rowDigests": {
-    "ruling:G13#semantic/higher-counter-replaces-hit-in-range": "ecb54480a666cebfd423e801de28c26bd0a786a2981155a8ffe09e344f5e1a07"
+    "ruling:G13#semantic/higher-counter-replaces-hit-in-range": "55260eca26d1ae3e2f2fe17ad0c284308bc158e4a007fdc80bbc4c105b47902a"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

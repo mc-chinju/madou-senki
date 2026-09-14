@@ -6,12 +6,12 @@
     "c2-p03-r2c1-ab02#physical-human-invalidation"
   ],
   "rowDigests": {
-    "c2-p03-r2c1-ab02#physical-human-invalidation": "383093201e236fd4ba7fd6623086e825eb2fbd611a627ee13ba6f269d191bbe4"
+    "c2-p03-r2c1-ab02#physical-human-invalidation": "dcb9162315e1f17134837360f47a4fe37594d824610b5e22b67b1d94478bf7a2"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

@@ -6,12 +6,12 @@
     "a2-p17-r1c1#semantic/ordinary/stop-until-success"
   ],
   "rowDigests": {
-    "a2-p17-r1c1#semantic/ordinary/stop-until-success": "35a01b3e42aff3889c77365854130ee23dc4f9793bca46a8705a7041e756aed4"
+    "a2-p17-r1c1#semantic/ordinary/stop-until-success": "b384149c4d8fdf62da45d724a4c1b4b39354f440d2e289d58c919b31806ff7ac"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

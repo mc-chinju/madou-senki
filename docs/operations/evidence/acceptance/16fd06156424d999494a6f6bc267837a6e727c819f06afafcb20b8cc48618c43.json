@@ -6,12 +6,12 @@
     "a2-p05-r2c3#semantic/lia/other-technique"
   ],
   "rowDigests": {
-    "a2-p05-r2c3#semantic/lia/other-technique": "24f79e7a404882b569e92efdda6b4d87399709f9c183821b4f758230e05accb2"
+    "a2-p05-r2c3#semantic/lia/other-technique": "f3a7fcccdf951ed17cf944b0b43853614306ef742c5fe6020f296d949103a99a"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

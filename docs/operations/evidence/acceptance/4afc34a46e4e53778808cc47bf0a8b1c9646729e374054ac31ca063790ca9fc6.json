@@ -6,12 +6,12 @@
     "a2-p02-r3c1#semantic/destroy/all-golems"
   ],
   "rowDigests": {
-    "a2-p02-r3c1#semantic/destroy/all-golems": "46b1afca63e999661418f3cd9825dc044cb23da5cb81d6b5579cf7900e7cbdd1"
+    "a2-p02-r3c1#semantic/destroy/all-golems": "c3eb6403fdb0a51310c14be39fec9a6997e91b30c0774f21bb042b77a1e4d8e6"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

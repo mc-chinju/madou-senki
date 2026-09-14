@@ -6,12 +6,12 @@
     "c2-p06-r1c1-ab02#Dia-named-defense-cancel"
   ],
   "rowDigests": {
-    "c2-p06-r1c1-ab02#Dia-named-defense-cancel": "872f37ced16309486c4daa68de68d88507d40e89bc6023c829405def7fd9e597"
+    "c2-p06-r1c1-ab02#Dia-named-defense-cancel": "7e3c72bcb1554c1c45c69422082871cb5100c61888a275c3ccd03a60ac1f360d"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

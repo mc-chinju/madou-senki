@@ -6,12 +6,12 @@
     "a2-p04-r3c3#semantic/wish/attachment-zone"
   ],
   "rowDigests": {
-    "a2-p04-r3c3#semantic/wish/attachment-zone": "fb8620ef46f1716658a2331edc0a3624c38f85b94d8e45cec22156743858d1a6"
+    "a2-p04-r3c3#semantic/wish/attachment-zone": "59a341504bb267db2d38048c80fa3a1346052213a88e6a3f76a8308e625e21b8"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

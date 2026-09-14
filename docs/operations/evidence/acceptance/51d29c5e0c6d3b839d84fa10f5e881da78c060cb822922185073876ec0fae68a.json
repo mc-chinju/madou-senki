@@ -6,12 +6,12 @@
     "a2-p22-r2c1#semantic/defense/magic-level"
   ],
   "rowDigests": {
-    "a2-p22-r2c1#semantic/defense/magic-level": "5b6c56d65513b7fd2844dcbff1e19efe47ab2889691b4c2e066846da58543905"
+    "a2-p22-r2c1#semantic/defense/magic-level": "229cef1cdc336f6f319d41cc912e2cd05d567b763a4cd7fdb0501da6466e16ff"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }

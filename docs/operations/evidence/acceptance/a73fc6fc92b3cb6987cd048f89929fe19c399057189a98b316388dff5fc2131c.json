@@ -6,12 +6,12 @@
     "c2-p06-r1c2-ab01#sixes-faction-copy"
   ],
   "rowDigests": {
-    "c2-p06-r1c2-ab01#sixes-faction-copy": "5dbe167c8320f66c02cf05f2fcfc7882017f6e3087d21be0aa7d83c66d5a9c65"
+    "c2-p06-r1c2-ab01#sixes-faction-copy": "57c022bd4330a75511c2e23ad3d8ad8224088a381493039312594363379baa89"
   },
   "command": "pnpm exec vitest run --maxWorkers=2 && pnpm --filter @madou/worker exec vitest run --maxWorkers=2 && pnpm exec playwright test",
   "runEvidence": {
     "path": "docs/operations/evidence/2026-09-11-candidate-run.json",
-    "sha256": "0209fb074a101589f7b40d05e5306f0209204768ab5335065222e53a1ec39cb2"
+    "sha256": "db7ff051fb3baed2e25ef822dfd0daf83cdf7a10a97785d6c8c7db949fe7c192"
   },
   "freezePolicy": "runtime-candidate-v3"
 }
