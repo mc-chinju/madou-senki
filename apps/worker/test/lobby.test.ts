@@ -7,12 +7,11 @@ import worker from '../src/index.js';
 import type { ClientServerMessage } from '@madou/protocol';
 import type { RoomData, RoomView } from '../src/rooms/types.js';
 import { RoomStorage } from '../src/rooms/storage.js';
+import { applyMigrations } from './fixtures/schema.js';
+import { createTestSession } from './fixtures/test-session.js';
 
 const origin = 'https://game.example';
-beforeEach(async () => {
-  await env.DB.exec('CREATE TABLE sessions (token_hash TEXT PRIMARY KEY, actor_id TEXT NOT NULL UNIQUE, name TEXT NOT NULL, expires_at INTEGER NOT NULL)');
-  await env.DB.exec('CREATE TABLE room_directory (room_id TEXT PRIMARY KEY, revision INTEGER NOT NULL, listing TEXT)');
-});
+beforeEach(async () => { await applyMigrations(env.DB); });
 afterEach(async () => { await reset(); });
 async function api(path: string, cookie?: string, body?: unknown) {
   const headers = new Headers({ Origin: origin });
@@ -21,11 +20,10 @@ async function api(path: string, cookie?: string, body?: unknown) {
   return worker.fetch(new Request(origin + path, { method: body === undefined ? 'GET' : 'POST', headers,
     ...(body !== undefined ? { body: JSON.stringify(body) } : {}) }), env, createExecutionContext());
 }
+/** A registered user with a session cookie; the OTP screen itself is covered by auth.test.ts. */
 async function guest(name: string) {
-  const response = await api('/api/sessions', undefined, { name });
-  expect(response.status).toBe(201);
-  const session = await response.json<{ id: string; name: string }>();
-  return { ...session, cookie: response.headers.get('Set-Cookie')!.split(';')[0]! };
+  const { id, cookie } = await createTestSession(env, new Request(origin + '/__test/session'), name);
+  return { id, name, cookie };
 }
 async function makeRoom(cookie: string, visibility = 'public', capacity = 4) {
   const response = await api('/api/rooms', cookie, { title: '魔導戦記の卓', capacity, visibility, rulesetId: ruleset.id });

@@ -9,6 +9,15 @@
   },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room"] }],
   "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-local", "migrations_dir": "migrations" }],
+  // Local wrangler dev simulates this binding and does not deliver mail.
+  "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["noreply@madou-senki.com", "noreply@madou-senki.local"] }],
+  // AUTH_SECRET here is for local development only. staging/production set it with `wrangler secret put`.
+  "vars": {
+    "ENVIRONMENT": "local",
+    "BASE_URL": "http://localhost:8787",
+    "EMAIL_FROM_ADDRESS": "noreply@madou-senki.local",
+    "AUTH_SECRET": "local-development-only-secret-0123456789abcdef"
+  },
   "assets": {
     "directory": "../web/dist",
     "not_found_handling": "single-page-application",
@@ -19,12 +28,18 @@
     "staging": {
       "name": "madou-senki-staging",
       "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "Room" }] },
-      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-staging", "database_id": "0fc033a4-97d0-40f1-b627-7890f88c938e", "migrations_dir": "migrations" }]
+      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-staging", "database_id": "0fc033a4-97d0-40f1-b627-7890f88c938e", "migrations_dir": "migrations" }],
+      "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["noreply@madou-senki.com"] }],
+      // Replace with https://staging.madou-senki.com once the custom domain is attached.
+      "vars": { "ENVIRONMENT": "staging", "BASE_URL": "https://madou-senki-staging.catalgorithm.workers.dev", "EMAIL_FROM_ADDRESS": "noreply@madou-senki.com" }
     },
     "production": {
       "name": "madou-senki",
       "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "Room" }] },
-      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-production", "database_id": "f659209f-59b8-462f-80ed-d337e4af855b", "migrations_dir": "migrations" }]
+      "d1_databases": [{ "binding": "DB", "database_name": "madou-senki-production", "database_id": "f659209f-59b8-462f-80ed-d337e4af855b", "migrations_dir": "migrations" }],
+      "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["noreply@madou-senki.com"] }],
+      // Replace with https://madou-senki.com once the custom domain is attached.
+      "vars": { "ENVIRONMENT": "production", "BASE_URL": "https://madou-senki.catalgorithm.workers.dev", "EMAIL_FROM_ADDRESS": "noreply@madou-senki.com" }
     }
   }
 }

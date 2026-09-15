@@ -1,17 +1,26 @@
 import { test, expect } from '@playwright/test';
+import { remoteSessionCookies, useSessionCookie } from './sessions.js';
 
-test('invite, ready, start and reload on the remote origin', async ({ browser, baseURL, request }) => {
+test('the remote origin exposes no test fixtures, guest sessions or unauthenticated seating', async ({ baseURL, request }) => {
   if (!baseURL) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
-  const fixture = await request.post('/__test/rooms/x/scenario', { data: { name: 'setup' } });
-  expect(fixture.ok()).toBe(false);
-  expect([404, 405]).toContain(fixture.status());
+  for (const path of ['/__test/rooms/x/scenario', '/__test/session']) {
+    const fixture = await request.post(path, { data: { name: 'setup' } });
+    expect(fixture.ok()).toBe(false);
+    expect([403, 404, 405]).toContain(fixture.status());
+  }
+  expect((await request.post('/api/sessions', { data: { name: 'ゲスト' }, headers: { Origin: baseURL } })).status()).toBe(404);
+  expect((await request.post(`/api/rooms/${crypto.randomUUID()}/join`, { data: {}, headers: { Origin: baseURL } })).status()).toBe(401);
+});
+
+test('invite, ready, start and reload on the remote origin', async ({ browser, baseURL }) => {
+  if (!baseURL) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
+  const cookies = remoteSessionCookies(4);
   const contexts = await Promise.all(Array.from({ length: 4 }, () => browser.newContext({ baseURL })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));
   try {
     for (const [index, page] of pages.entries()) {
+      await useSessionCookie(contexts[index]!, baseURL, cookies[index]!);
       await page.goto('/');
-      await page.getByLabel('表示名').fill(`遠隔${index}`);
-      await page.getByRole('button', { name: 'はじめる', exact: true }).click();
       await expect(page.getByRole('heading', { name: /ようこそ/ })).toBeVisible();
     }
     const owner = pages[0]!;
@@ -41,7 +50,9 @@ test('invite, ready, start and reload on the remote origin', async ({ browser, b
 
 test('an ACK lost after commit is replayed with the exact same command after reload', async ({ browser, baseURL }) => {
   if (!baseURL) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
+  const cookies = remoteSessionCookies(1);
   const context = await browser.newContext({ baseURL });
+  await useSessionCookie(context, baseURL, cookies[0]!);
   const page = await context.newPage();
   try {
     let dropped = false;
@@ -60,8 +71,6 @@ test('an ACK lost after commit is replayed with the exact same command after rel
       });
     });
     await page.goto('/');
-    await page.getByLabel('表示名').fill('再送');
-    await page.getByRole('button', { name: 'はじめる', exact: true }).click();
     await page.getByLabel('卓名', { exact: true }).fill('ACK確認');
     await page.getByLabel('招待限定', { exact: true }).check();
     await page.getByRole('button', { name: '卓を作る', exact: true }).click();

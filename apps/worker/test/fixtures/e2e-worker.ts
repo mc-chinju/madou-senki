@@ -157,9 +157,49 @@ import { isLifecycleScenario } from './lifecycle-scenarios.js';
 import type { Entropy } from '@madou/engine';
 import application from '../../src/index.js';
 import { Room } from '../../src/rooms/room.js';
-import { HttpError, json, readJson } from '../../src/http.js';
+import { displayText, HttpError, json, readJson } from '../../src/http.js';
 import { projectDirectory } from '../../src/rooms/types.js';
 import { makeScenario, type ScenarioName } from './game-scenarios.js';
+import { createTestSession } from './test-session.js';
+
+const LOCAL_HOSTS = ['localhost', '127.0.0.1', '[::1]'];
+const OUTBOX = 'CREATE TABLE IF NOT EXISTS browser_fixture_outbox (email TEXT NOT NULL, text TEXT NOT NULL, sent_at INTEGER NOT NULL)';
+
+/** Keeps login mail in the test D1 instead of sending it, so login.spec can type the code from the screen flow. */
+function capturedEmail(db: D1Database): SendEmail {
+  return { async send(message: { to: string; text?: string }) {
+    await db.prepare(OUTBOX).run();
+    await db.prepare('INSERT INTO browser_fixture_outbox (email, text, sent_at) VALUES (?, ?, ?)').bind(message.to, message.text ?? '', Date.now()).run();
+    return { messageId: crypto.randomUUID() };
+  } } as unknown as SendEmail;
+}
+
+/** Local-only sign-in and mail inspection. The production entrypoint has neither route. */
+async function accountFixture(request: Request, env: Env, path: string): Promise<Response> {
+  if (path === '/__test/session') {
+    if (request.method !== 'POST') throw new HttpError(405, 'METHOD_NOT_ALLOWED');
+    const name = displayText((await readJson(request)).name, 24);
+    if (!name) throw new HttpError(400, 'INVALID_FIXTURE');
+    // Scenario specs seat several tables with the same fixed names; each seat needs its own account.
+    // Only this local test database drops the index. Real registration still refuses duplicates in the hook.
+    await env.DB.prepare('DROP INDEX IF EXISTS user_name').run();
+    const session = await createTestSession(env, request, name);
+    return json({ id: session.id, name: session.name }, 201, { 'Set-Cookie': session.setCookie });
+  }
+  await env.DB.prepare(OUTBOX).run();
+  const email = new URL(request.url).searchParams.get('email')?.toLowerCase() ?? '';
+  if (request.method === 'DELETE') {
+    // Lets one browser test sign in twice without waiting out the 60-second send limit.
+    await env.DB.batch([env.DB.prepare('DELETE FROM auth_attempt WHERE key IN (?, ?)').bind(`send:${email}`, `verify:${email}`),
+      env.DB.prepare('DELETE FROM browser_fixture_outbox WHERE email = ?').bind(email)]);
+    return new Response(null, { status: 204 });
+  }
+  if (request.method !== 'GET') throw new HttpError(405, 'METHOD_NOT_ALLOWED');
+  const row = await env.DB.prepare('SELECT text FROM browser_fixture_outbox WHERE email = ? ORDER BY sent_at DESC LIMIT 1').bind(email).first<{ text: string }>();
+  const otp = row ? /\b(\d{6})\b/.exec(row.text)?.[1] : undefined;
+  if (!otp) throw new HttpError(404, 'NO_MAIL');
+  return json({ otp });
+}
 
 function mulberryTape(seed: number, calls: number): Entropy {
   let t = (Math.imul(seed, 0x9E3779B9) + calls) >>> 0;
@@ -233,9 +273,15 @@ export class BrowserFixtureRoom extends Room {
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    const match = /^\/__test\/rooms\/([A-Za-z0-9_-]+)\/(scenario|game|entropy)$/.exec(new URL(request.url).pathname);
-    if (!match) return application.fetch(request, env, ctx);
-    if (!['localhost', '127.0.0.1', '[::1]'].includes(new URL(request.url).hostname)) return json({ error: 'LOCAL_TEST_ONLY' }, 403);
+    const url = new URL(request.url);
+    if (url.pathname === '/__test/session' || url.pathname === '/__test/otp') {
+      if (!LOCAL_HOSTS.includes(url.hostname)) return json({ error: 'LOCAL_TEST_ONLY' }, 403);
+      try { return await accountFixture(request, env, url.pathname); }
+      catch (cause) { return json({ error: cause instanceof HttpError ? cause.code : 'FIXTURE_FAILED' }, cause instanceof HttpError ? cause.status : 500); }
+    }
+    const match = /^\/__test\/rooms\/([A-Za-z0-9_-]+)\/(scenario|game|entropy)$/.exec(url.pathname);
+    if (!match) return application.fetch(request, { ...env, EMAIL: capturedEmail(env.DB) }, ctx);
+    if (!LOCAL_HOSTS.includes(url.hostname)) return json({ error: 'LOCAL_TEST_ONLY' }, 403);
     try {
       const stub = env.ROOMS.getByName(match[1]!) as unknown as DurableObjectStub<BrowserFixtureRoom>;
       if (match[2] === 'game') {

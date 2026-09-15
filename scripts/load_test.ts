@@ -8,14 +8,21 @@ const tables = 10;
 const seats = 10;
 const stepsPerSeat = 200;
 
-async function session(name: string) {
-  const response = await fetch(new URL('/api/sessions', base), {
+// Remote origins need cookies of accounts registered beforehand (LOAD_TEST_SESSION_COOKIES, a JSON array of
+// name=value strings). The local browser-test Worker issues them through its localhost-only /__test/session.
+const providedCookies = process.env.LOAD_TEST_SESSION_COOKIES ? JSON.parse(process.env.LOAD_TEST_SESSION_COOKIES) as string[] : null;
+const local = ['localhost', '127.0.0.1', '[::1]'].includes(new URL(base).hostname);
+if (!local && (!providedCookies || providedCookies.length < tables * seats)) throw new Error(`LOAD_TEST_SESSION_COOKIES must list ${tables * seats} sessions for a remote origin`);
+
+async function session(name: string, index: number) {
+  if (providedCookies) return providedCookies[index]!;
+  const response = await fetch(new URL('/__test/session', base), {
     method: 'POST',
     headers: { Origin: base, 'Content-Type': 'application/json' },
     body: JSON.stringify({ name }),
   });
   if (!response.ok) throw new Error(`SESSION_${response.status}`);
-  const cookie = response.headers.getSetCookie().find(value => value.startsWith('__Host-madou_session='));
+  const cookie = response.headers.getSetCookie().find(value => /^(__Secure-)?madou\.session_token=/.test(value));
   if (!cookie) throw new Error('SESSION_COOKIE');
   return cookie.split(';', 1)[0]!;
 }
@@ -51,7 +58,7 @@ const latencies: number[] = [];
 let failures = 0;
 let disconnects = 0;
 
-const cookies = await Promise.all(Array.from({ length: tables * seats }, (_, index) => session(`負荷${index}`)));
+const cookies = await Promise.all(Array.from({ length: tables * seats }, (_, index) => session(`負荷${index}`, index)));
 const roomIds: string[] = [];
 for (let table = 0; table < tables; table++) {
   const owner = cookies[table * seats]!;

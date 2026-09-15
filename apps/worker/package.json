@@ -18,8 +18,11 @@
     "wrangler": "4.129.1"
   },
   "dependencies": {
+    "@better-auth/passkey": "1.7.5",
+    "@better-auth/utils": "0.4.2",
     "@madou/catalog": "workspace:*",
     "@madou/engine": "workspace:*",
-    "@madou/protocol": "workspace:*"
+    "@madou/protocol": "workspace:*",
+    "better-auth": "1.7.5"
   }
 }

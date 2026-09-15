@@ -9,9 +9,12 @@
     "test": "vitest run --root ../.. apps/web/test"
   },
   "dependencies": {
+    "@better-auth/passkey": "1.7.5",
+    "@better-auth/utils": "0.4.2",
     "@madou/catalog": "workspace:*",
     "@madou/engine": "workspace:*",
     "@madou/protocol": "workspace:*",
+    "better-auth": "1.7.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },

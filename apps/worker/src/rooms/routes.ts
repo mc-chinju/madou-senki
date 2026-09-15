@@ -14,7 +14,7 @@ export async function roomRoute(request: Request, env: Env): Promise<Response | 
   const path = new URL(request.url).pathname;
   const match = /^\/api\/rooms\/([A-Za-z0-9_-]{1,128})\/(join|invites|seat|snapshot)$/.exec(path);
   if (path !== '/api/rooms' && !match) return null;
-  const session = await requireSession(request, env.DB);
+  const session = await requireSession(request, env);
   if (path === '/api/rooms' && request.method === 'GET') return json({ rooms: await listRooms(env.DB) });
   if (match?.[2] === 'snapshot') {
     if (request.method !== 'GET') return null;

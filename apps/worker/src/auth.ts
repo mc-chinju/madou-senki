@@ -1,7 +1,7 @@
-import { displayText, HttpError, json, readJson } from './http.js';
+import { createAuth } from './auth/better-auth.js';
+import { HttpError, json } from './http.js';
 
-const COOKIE = '__Host-madou_session';
-const LIFETIME_SECONDS = 30 * 24 * 60 * 60;
+/** Identity seen by rooms. `id` is the Better Auth user ID and never depends on the game. */
 export interface Session { id: string; name: string }
 
 export function randomToken(): string {
@@ -12,36 +12,28 @@ export async function hashToken(token: string): Promise<string> {
   const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(token));
   return [...new Uint8Array(hash)].map(byte => byte.toString(16).padStart(2, '0')).join('');
 }
-function credential(request: Request): string | null {
-  const matches = (request.headers.get('Cookie') ?? '').split(';').map(part => part.trim()).filter(part => part.startsWith(COOKIE + '='));
-  if (matches.length !== 1) return null;
-  const token = matches[0]!.slice(COOKIE.length + 1);
-  return /^[A-Za-z0-9_-]{43}$/.test(token) ? token : null;
+
+export async function findSession(request: Request, env: Env): Promise<Session | null> {
+  if (!request.headers.get('Cookie')) return null;
+  // Refresh only where the new cookie can be returned (currentSession); otherwise the database would
+  // be extended while the browser keeps the old expiry.
+  const result = await createAuth(env, request).api.getSession({ headers: request.headers, query: { disableRefresh: true } });
+  return result ? { id: result.user.id, name: result.user.name } : null;
 }
 
-export async function findSession(request: Request, db: D1Database): Promise<Session | null> {
-  const token = credential(request);
-  if (!token) return null;
-  const row = await db.prepare('SELECT actor_id, name FROM sessions WHERE token_hash = ? AND expires_at > ?')
-    .bind(await hashToken(token), Date.now()).first<{ actor_id: string; name: string }>();
-  return row ? { id: row.actor_id, name: row.name } : null;
-}
-
-export async function requireSession(request: Request, db: D1Database): Promise<Session> {
-  const session = await findSession(request, db);
+export async function requireSession(request: Request, env: Env): Promise<Session> {
+  const session = await findSession(request, env);
   if (!session) throw new HttpError(401, 'UNAUTHENTICATED');
   return session;
 }
 
-export async function createSession(request: Request, db: D1Database): Promise<Response> {
-  const body = await readJson(request);
-  const name = displayText(body.name, 24);
-  if (Object.keys(body).length !== 1 || !name) throw new HttpError(400, 'INVALID_REQUEST');
-  const existing = await findSession(request, db);
-  if (existing) return json(existing);
-  const token = randomToken();
-  const session: Session = { id: crypto.randomUUID(), name };
-  await db.prepare('INSERT INTO sessions (token_hash, actor_id, name, expires_at) VALUES (?, ?, ?, ?)')
-    .bind(await hashToken(token), session.id, name, Date.now() + LIFETIME_SECONDS * 1000).run();
-  return json(session, 201, { 'Set-Cookie': `${COOKIE}=${token}; Path=/; Max-Age=${LIFETIME_SECONDS}; HttpOnly; Secure; SameSite=Lax` });
+/** Current identity. A session older than `updateAge` gets a new 30-day cookie here. */
+export async function currentSession(request: Request, env: Env): Promise<Response> {
+  if (!request.headers.get('Cookie')) throw new HttpError(401, 'UNAUTHENTICATED');
+  const response = await createAuth(env, request).handler(new Request(new URL('/api/auth/get-session', request.url), { headers: request.headers }));
+  const body = response.ok ? await response.json<{ user?: { id: string; name: string } } | null>() : null;
+  if (!body?.user) throw new HttpError(401, 'UNAUTHENTICATED');
+  const headers = new Headers();
+  for (const cookie of response.headers.getSetCookie()) headers.append('Set-Cookie', cookie);
+  return json({ id: body.user.id, name: body.user.name }, 200, headers);
 }
