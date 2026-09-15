@@ -310,8 +310,10 @@ pnpm exec playwright test tests/e2e/login.spec.ts tests/e2e/invite-game.spec.ts 
 - ログイン画面は `apps/web/src/login/LoginScreen.tsx`、パスキー登録の勧め・一覧・削除とログアウトは `apps/web/src/account/AccountPanel.tsx`（ロビー下部）。
 - staging/production の `BASE_URL` はドメイン取得まで workers.dev のまま。取得後に deploy.md の手順で切り替える。
 - `@better-auth/utils@0.4.2` を worker/web の直接依存に固定した。固定しないと `@better-auth/passkey` が別の `@better-auth/core` 実体を読み込む。
-- リモートの smoke / hibernate / 負荷試験は OTP を読めないため、事前登録アカウントの Cookie を `REMOTE_SESSION_COOKIES` / `LOAD_TEST_SESSION_COOKIES` で渡す（未設定なら着席系の試験は skip）。
+- リモートの smoke / hibernate / 負荷試験は OTP を読めないため、事前登録アカウントの Cookie を `REMOTE_SESSION_COOKIES` / `LOAD_TEST_SESSION_COOKIES` で渡す（リモート試験を実行するときは必須。未設定・不足は設定エラー。負荷試験も未設定なら終了）。
 - パスキーのブラウザ試験では、ログアウト後のログイン画面の Conditional UI に仮想 authenticator が即応答するため、自動でロビーへ戻ることを確認する。「パスキーでログイン」ボタンは削除後の拒否で確認する。
+
+- 独立レビュー修正: 通信例外を認証クライアントのエラー結果へ変換し、操作の再試行を可能にする。送信カウンタは拒否した呼出しを加算せず、送信失敗の払い戻しを保証する。Worker試験は5秒の既定タイムアウトを維持し、並列Worker数を2に制限して資源競合を避ける。
 
 ## やらないこと
 
