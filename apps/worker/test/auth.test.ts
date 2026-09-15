@@ -1,6 +1,6 @@
 import { env } from 'cloudflare:workers';
 import { createExecutionContext, reset, runInDurableObject } from 'cloudflare:test';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import worker from '../src/index.js';
 import { ruleset } from '@madou/catalog';
 import { sendOtpEmail } from '../src/auth/email-sender.js';
@@ -13,7 +13,7 @@ import { createTestSession } from './fixtures/test-session.js';
 const origin = 'https://game.example';
 const DAY = 24 * 60 * 60 * 1000;
 beforeEach(async () => { await applyMigrations(env.DB); });
-afterEach(async () => { await reset(); });
+afterEach(async () => { vi.restoreAllMocks(); await reset(); });
 
 interface Sent { from: string; to: string; subject: string; text: string; html: string }
 /** Replaces Cloudflare Email Sending. `fail` makes the provider reject. */
@@ -89,6 +89,39 @@ describe('email OTP registration and session', () => {
       expect(sessionCookie(rejected)).toBeNull();
     }
     expect((await env.DB.prepare('SELECT COUNT(*) AS n FROM "user"').first<{ n: number }>())!.n).toBe(1);
+  });
+
+  it('returns a display-name conflict when another account claims the name after validation', async () => {
+    const mail = mailbox();
+    const email = 'name-race@example.com';
+    expect((await sendCode(mail, email)).status).toBe(200);
+    const prepare = env.DB.prepare.bind(env.DB);
+    let competitorId: string | undefined;
+    vi.spyOn(env.DB, 'prepare').mockImplementation(sql => {
+      const statement = prepare(sql);
+      if (sql === 'SELECT 1 FROM "user" WHERE name = ?') {
+        const bind = statement.bind.bind(statement);
+        vi.spyOn(statement, 'bind').mockImplementation((...values) => {
+          const bound = bind(...values);
+          const first = bound.first.bind(bound);
+          vi.spyOn(bound, 'first').mockImplementation(async () => {
+            const result = await first();
+            // Commit the competing account between the availability check and INSERT.
+            competitorId = (await createTestSession(env, new Request(origin), '競合名')).id;
+            return result;
+          });
+          return bound;
+        });
+      }
+      return statement;
+    });
+    const response = await signIn(mail, { email, otp: mail.otp(), name: '競合名' });
+    expect(competitorId).toBeDefined();
+    expect(response.status).toBe(400);
+    expect(await response.json()).toMatchObject({ code: 'DISPLAY_NAME_TAKEN' });
+    expect(sessionCookie(response)).toBeNull();
+    expect(await prepare('SELECT id FROM "user" WHERE email = ?').bind(email).first()).toBeNull();
+    expect(await prepare('SELECT id FROM "user" WHERE name = ?').bind('競合名').first()).toEqual({ id: competitorId });
   });
 
   it('returns 401 UNAUTHENTICATED for missing, forged and expired sessions', async () => {

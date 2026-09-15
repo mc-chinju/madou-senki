@@ -25,6 +25,15 @@ async function registrationName(db: D1Database, value: unknown): Promise<string>
   return name;
 }
 
+function isDisplayNameConflict(error: unknown): boolean {
+  // The availability check can race with another email's registration. D1 may
+  // wrap the SQLite constraint error in a cause; other database failures stay errors.
+  for (let depth = 0; depth < 5 && error instanceof Error; depth++, error = error.cause) {
+    if (/^(?:D1_ERROR: )?UNIQUE constraint failed: user\.name(?:: SQLITE_CONSTRAINT(?: \(extended: SQLITE_CONSTRAINT_UNIQUE\))?)?$/.test(error.message)) return true;
+  }
+  return false;
+}
+
 /** Built per request: D1 and the passkey relying party both come from the current request. */
 export function createAuth(env: Env, request: Request, hooks: AuthHooks = {}, extraPlugins: BetterAuthPlugin[] = []) {
   if (!env.AUTH_SECRET) throw new Error('AUTH_SECRET_MISSING');
@@ -38,6 +47,13 @@ export function createAuth(env: Env, request: Request, hooks: AuthHooks = {}, ex
     trustedOrigins,
     database: env.DB,
     telemetry: { enabled: false },
+    onAPIError: {
+      onError(error) {
+        if (isDisplayNameConflict(error)) {
+          throw new APIError('BAD_REQUEST', { code: 'DISPLAY_NAME_TAKEN', message: 'DISPLAY_NAME_TAKEN' });
+        }
+      },
+    },
     emailAndPassword: { enabled: false },
     session: { expiresIn: SESSION_EXPIRES_IN, updateAge: SESSION_UPDATE_AGE },
     // Workers has no NODE_ENV=production, so the limiter must be enabled and stored explicitly.
