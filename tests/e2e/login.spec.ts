@@ -75,3 +75,29 @@ test('registers with an emailed code, keeps the saved name on return and refuses
     await expect(second.getByLabel('メールアドレス')).toBeVisible();
   } finally { await other.close(); }
 });
+
+test('network failures leave login and logout available for retry', async ({ page }) => {
+  const id = unique();
+  const email = `retry-${id}@example.com`;
+  const name = `再試行${id}`.slice(0, 24);
+  await page.goto('/');
+  const sendPath = '**/api/auth/email-otp/send-verification-otp';
+  await page.route(sendPath, route => route.abort('failed'), { times: 1 });
+  await requestCode(page, email, name);
+  await expect(page.getByRole('alert')).toBeVisible();
+  await expect(page.getByRole('button', { name: '確認コードを送信', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: '確認コードを送信', exact: true }).click();
+  await page.getByLabel('確認コード').fill(await readCode(page, email));
+  await page.route('**/api/auth/sign-in/email-otp', route => route.abort('failed'), { times: 1 });
+  await page.getByRole('button', { name: 'ログイン', exact: true }).click();
+  await expect(page.getByRole('alert')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'ログイン', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: 'ログイン', exact: true }).click();
+  await expect(page.getByRole('heading', { name: `ようこそ、${name}さん` })).toBeVisible();
+  await page.route('**/api/auth/sign-out', route => route.abort('failed'), { times: 1 });
+  await page.getByRole('button', { name: 'ログアウト', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('ログアウトできませんでした');
+  await expect(page.getByRole('button', { name: 'ログアウト', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: 'ログアウト', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'ログイン', exact: true })).toBeVisible();
+});

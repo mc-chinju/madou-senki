@@ -9,7 +9,8 @@ export function AccountPanel({ offerPasskey }: { offerPasskey: boolean }) {
   const [error, setError] = useState(''); const [busy, setBusy] = useState(false);
 
   async function refresh() {
-    const { data } = await listPasskeys();
+    const { data, error: failure } = await listPasskeys();
+    if (failure) { setError('パスキーの一覧を取得できませんでした'); return; }
     setPasskeys((data ?? []) as StoredPasskey[]);
   }
   useEffect(() => { void refresh(); }, []);
@@ -34,8 +35,10 @@ export function AccountPanel({ offerPasskey }: { offerPasskey: boolean }) {
     await refresh();
   }
   async function logout() {
-    setBusy(true);
-    await signOut();
+    setBusy(true); setError('');
+    const { error: failure } = await signOut();
+    setBusy(false);
+    if (failure) { setError('ログアウトできませんでした。もう一度お試しください'); return; }
     location.assign('/');
   }
 
