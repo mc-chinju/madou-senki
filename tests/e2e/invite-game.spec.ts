@@ -1,13 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { signIn } from './helpers.js';
 
-test('four independent guests join by invitation, ready, start through the normal API and resume after reload', async ({ browser, baseURL }) => {
+test('four independent accounts join by invitation, ready, start through the normal API and resume after reload', async ({ browser, baseURL }) => {
   if (!baseURL) throw new Error('Playwright baseURL must be configured');
   const contexts = await Promise.all(Array.from({ length: 4 }, () => browser.newContext({ baseURL })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));
   try {
     for (const [index, page] of pages.entries()) {
-      await page.goto('/'); await page.getByLabel('表示名').fill(['葵', '楓', '凛', '蓮'][index]!);
-      await page.getByRole('button', { name: 'はじめる', exact: true }).click();
+      await signIn(contexts[index]!, ['葵', '楓', '凛', '蓮'][index]!);
+      await page.goto('/');
       await expect(page.getByRole('heading', { name: /ようこそ/ })).toBeVisible();
     }
     const owner = pages[0]!;

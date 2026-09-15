@@ -1,18 +1,25 @@
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { expect, type APIRequestContext, type Browser, type BrowserContextOptions } from '@playwright/test';
+import { expect, type APIRequestContext, type Browser, type BrowserContext, type BrowserContextOptions } from '@playwright/test';
 import { makeScenario, type ScenarioName } from '../../apps/worker/test/fixtures/game-scenarios.js';
 
 export const origin = `http://localhost:${process.env.PLAYWRIGHT_PORT ?? 8787}`;
+
+/** Signs a context in through the local test Worker's session route; login.spec covers the OTP screen itself. */
+export async function signIn(context: BrowserContext, name: string): Promise<{ id: string; name: string }> {
+  const response = await context.request.post('/__test/session', { data: { name } });
+  expect(response.status()).toBe(201);
+  return response.json();
+}
+
 export async function tableFixture(browser: Browser, request: APIRequestContext, scenario?: ScenarioName, count = 4, options: BrowserContextOptions = {}) {
   const contexts = await Promise.all(Array.from({ length: count }, () => browser.newContext({ ...options, baseURL: origin })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));
   const sessions: { id: string; name: string }[] = [];
   for (const [index, page] of pages.entries()) {
-    await page.goto('/'); await page.getByLabel('表示名').fill(['葵', '楓', '凛', '蓮', '澪', '樹', '紬', '湊', '旭', '翠'][index]!);
-    await page.getByRole('button', { name: 'はじめる', exact: true }).click();
+    sessions.push(await signIn(contexts[index]!, ['葵', '楓', '凛', '蓮', '澪', '樹', '紬', '湊', '旭', '翠'][index]!));
+    await page.goto('/');
     await expect(page.getByRole('heading', { name: /ようこそ/ })).toBeVisible();
-    sessions.push(await page.evaluate(async () => (await fetch('/api/sessions/current')).json()));
   }
   const created = await pages[0]!.evaluate(async capacity => {
     const response = await fetch('/api/rooms', { method: 'POST', headers: { 'Content-Type': 'application/json' },
