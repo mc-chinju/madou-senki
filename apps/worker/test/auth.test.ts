@@ -3,93 +3,228 @@ import { createExecutionContext, reset, runInDurableObject } from 'cloudflare:te
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import worker from '../src/index.js';
 import { ruleset } from '@madou/catalog';
+import { sendOtpEmail } from '../src/auth/email-sender.js';
+import { otpEmail } from '../src/auth/otp-email.js';
 import { RoomStorage } from '../src/rooms/storage.js';
 import type { RoomData } from '../src/rooms/types.js';
+import { applyMigrations } from './fixtures/schema.js';
+import { createTestSession } from './fixtures/test-session.js';
 
 const origin = 'https://game.example';
-beforeEach(async () => {
-  await env.DB.exec('CREATE TABLE sessions (token_hash TEXT PRIMARY KEY, actor_id TEXT NOT NULL UNIQUE, name TEXT NOT NULL, expires_at INTEGER NOT NULL)');
-});
+const DAY = 24 * 60 * 60 * 1000;
+beforeEach(async () => { await applyMigrations(env.DB); });
 afterEach(async () => { await reset(); });
-function request(path: string, options: { method?: string; body?: string; cookie?: string; origin?: string; headers?: Record<string, string> } = {}) {
+
+interface Sent { from: string; to: string; subject: string; text: string; html: string }
+/** Replaces Cloudflare Email Sending. `fail` makes the provider reject. */
+function mailbox(behaviour: 'deliver' | 'fail' = 'deliver') {
+  const sent: Sent[] = [];
+  const EMAIL = { send: async (message: Sent) => {
+    if (behaviour === 'fail') throw Error('provider rejected noreply@madou-senki.local');
+    sent.push(message); return { messageId: crypto.randomUUID() };
+  } } as unknown as SendEmail;
+  return { sent, env: { ...env, EMAIL } as Env, otp: () => /\b(\d{6})\b/.exec(sent.at(-1)!.text)![1]! };
+}
+type Mailbox = ReturnType<typeof mailbox>;
+
+function call(path: string, options: { method?: string; body?: unknown; cookie?: string; origin?: string | null; headers?: Record<string, string>; env?: Env } = {}) {
   const headers = new Headers(options.headers);
   if (options.body !== undefined) headers.set('Content-Type', 'application/json');
   if (options.cookie) headers.set('Cookie', options.cookie);
-  if (options.origin !== undefined) headers.set('Origin', options.origin);
-  return worker.fetch(new Request(origin + path, { method: options.method ?? 'GET', headers, ...(options.body !== undefined ? { body: options.body } : {}) }), env, createExecutionContext());
+  if (options.origin !== null) headers.set('Origin', options.origin ?? origin);
+  return worker.fetch(new Request(origin + path, { method: options.method ?? 'GET', headers,
+    ...(options.body !== undefined ? { body: typeof options.body === 'string' ? options.body : JSON.stringify(options.body) } : {}) }), options.env ?? env, createExecutionContext());
 }
-const create = (name = 'あかり', cookie?: string) => request('/api/sessions', { method: 'POST', body: JSON.stringify({ name }), origin, ...(cookie ? { cookie } : {}) });
-function cookie(response: Response) { return response.headers.get('Set-Cookie')!.split(';')[0]!; }
+const sendCode = (mail: Mailbox, email: string, extra: Record<string, unknown> = {}, headers?: Record<string, string>) =>
+  call('/api/auth/email-otp/send-verification-otp', { method: 'POST', body: { email, type: 'sign-in', ...extra }, env: mail.env, ...(headers ? { headers } : {}) });
+const signIn = (mail: Mailbox, body: Record<string, unknown>) => call('/api/auth/sign-in/email-otp', { method: 'POST', body, env: mail.env });
+function sessionCookie(response: Response) {
+  const header = response.headers.getSetCookie().find(value => value.startsWith('__Secure-madou.session_token='));
+  return header ? { header, pair: header.split(';')[0]! } : null;
+}
+async function register(mail: Mailbox, email: string, name?: string) {
+  expect((await sendCode(mail, email)).status).toBe(200);
+  const response = await signIn(mail, { email, otp: mail.otp(), ...(name === undefined ? {} : { name }) });
+  expect(response.status).toBe(200);
+  return sessionCookie(response)!.pair;
+}
+const current = async (cookie: string) => (await call('/api/sessions/current', { cookie })).json();
+const moveWindow = (key: string, ms: number) => env.DB.prepare('UPDATE auth_attempt SET window_start = window_start - ? WHERE key = ?').bind(ms, key).run();
 
-describe('guest session HTTP boundary', () => {
-  it('creates a server identity, stores only a credential hash and restores via a secure cookie', async () => {
-    const response = await create();
-    expect(response.status).toBe(201);
-    expect(response.headers.get('Set-Cookie')).toMatch(/^__Host-madou_session=[A-Za-z0-9_-]{43};/);
-    for (const flag of ['HttpOnly', 'Secure', 'SameSite=Lax', 'Path=/']) expect(response.headers.get('Set-Cookie')).toContain(flag);
-    expect(response.headers.get('Cache-Control')).toBe('no-store');
-    const session = await response.json<{ id: string; name: string }>();
-    expect(session).toEqual({ id: expect.any(String), name: 'あかり' });
-    const stored = await env.DB.prepare('SELECT * FROM sessions').first();
-    expect(stored?.actor_id).toBe(session.id);
-    expect(JSON.stringify(stored)).not.toContain(cookie(response).split('=')[1]);
-    const restored = await request('/api/sessions/current', { cookie: cookie(response) });
-    expect(restored.status).toBe(200);
-    expect(await restored.json()).toEqual(session);
+describe('email OTP registration and session', () => {
+  it('registers with a code, stores only a hash and returns the Better Auth user as the room identity', async () => {
+    const mail = mailbox();
+    const send = await sendCode(mail, 'Akari@Example.com');
+    expect(send.status).toBe(200);
+    expect(send.headers.get('Cache-Control')).toBe('no-store');
+    expect(mail.sent).toHaveLength(1);
+    const otp = mail.otp();
+    expect(mail.sent[0]).toMatchObject({ from: 'noreply@madou-senki.local', to: 'akari@example.com', subject: '魔導戦記 ログイン確認コード' });
+    expect(mail.sent[0]!.html).toContain(otp);
+    expect(await send.text()).not.toContain(otp);
+    const stored = await env.DB.prepare('SELECT value FROM verification').first<{ value: string }>();
+    expect(stored!.value).not.toContain(otp);
+
+    const response = await signIn(mail, { email: 'akari@example.com', otp, name: '  あかり  ' });
+    expect(response.status).toBe(200);
+    const cookie = sessionCookie(response)!;
+    for (const flag of ['Path=/', 'HttpOnly', 'Secure', 'SameSite=Lax', `Max-Age=${30 * 24 * 60 * 60}`]) expect(cookie.header).toContain(flag);
+    expect(cookie.header).not.toMatch(/domain=/i);
+    const user = await env.DB.prepare('SELECT id, name FROM "user"').first<{ id: string; name: string }>();
+    expect(await current(cookie.pair)).toEqual({ id: user!.id, name: 'あかり' });
   });
 
-  it('retains identity on creation retry while allowing duplicate display names for different guests', async () => {
-    const first = await create();
-    const identity = await first.json();
-    const retry = await create('別の名前', cookie(first));
-    expect(retry.status).toBe(200);
-    expect(await retry.json()).toEqual(identity);
-    const other = await create();
-    expect(await other.json()).not.toEqual(identity);
-    expect((await env.DB.prepare('SELECT COUNT(*) AS n FROM sessions').first())?.n).toBe(2);
-  });
+  it('keeps the saved display name on later sign-in and rejects duplicate or invalid names for new users', async () => {
+    const mail = mailbox();
+    await register(mail, 'aoi@example.com', '葵');
+    await moveWindow('send:aoi@example.com', 60_000);
+    const again = await register(mail, 'aoi@example.com', '別の名前');
+    expect(await current(again)).toMatchObject({ name: '葵' });
 
-  it('rejects missing, forged, duplicate and expired cookies without revealing session details', async () => {
-    expect((await request('/api/sessions/current')).status).toBe(401);
-    expect((await request('/api/sessions/current', { cookie: '__Host-madou_session=' + 'A'.repeat(43) })).status).toBe(401);
-    const created = await create();
-    expect((await request('/api/sessions/current', { cookie: cookie(created) + '; ' + cookie(created) })).status).toBe(401);
-    await env.DB.exec('UPDATE sessions SET expires_at = 1');
-    const expired = await request('/api/sessions/current', { cookie: cookie(created) });
-    expect(expired.status).toBe(401);
-    expect(await expired.json()).toEqual({ error: 'UNAUTHENTICATED' });
-  });
-
-  it('requires an exact same origin for session creation', async () => {
-    for (const supplied of [undefined, 'null', 'https://evil.example', 'https://game.example.evil', 'http://game.example']) {
-      const response = await request('/api/sessions', { method: 'POST', body: '{"name":"A"}', ...(supplied ? { origin: supplied } : {}) });
-      expect(response.status).toBe(403);
+    for (const [email, name, code] of [['kaede@example.com', '葵', 'DISPLAY_NAME_TAKEN'], ['rin@example.com', '', 'INVALID_DISPLAY_NAME'], ['ren@example.com', 'あ'.repeat(25), 'INVALID_DISPLAY_NAME'], ['mio@example.com', 'A\nB', 'INVALID_DISPLAY_NAME']] as const) {
+      expect((await sendCode(mail, email)).status).toBe(200);
+      const rejected = await signIn(mail, { email, otp: mail.otp(), name });
+      expect(rejected.status).toBe(400);
+      expect(await rejected.json()).toMatchObject({ code });
+      expect(sessionCookie(rejected)).toBeNull();
     }
-    expect((await env.DB.prepare('SELECT COUNT(*) AS n FROM sessions').first())?.n).toBe(0);
+    expect((await env.DB.prepare('SELECT COUNT(*) AS n FROM "user"').first<{ n: number }>())!.n).toBe(1);
   });
 
-  it('bounds and validates names and bodies and rejects client-supplied identity', async () => {
-    for (const body of ['{', 'null', '[]', '{"name":""}', '{"name":"  "}', '{"name":"A\\nB"}', JSON.stringify({ name: 'あ'.repeat(25) }), '{"name":"A","id":"victim"}', '{"name":"A","__proto__":{}}']) {
-      expect((await request('/api/sessions', { method: 'POST', body, origin })).status).toBe(400);
+  it('returns 401 UNAUTHENTICATED for missing, forged and expired sessions', async () => {
+    expect((await call('/api/sessions/current')).status).toBe(401);
+    const forged = await call('/api/sessions/current', { cookie: '__Secure-madou.session_token=forged.signature' });
+    expect(forged.status).toBe(401);
+    expect(await forged.json()).toEqual({ error: 'UNAUTHENTICATED' });
+    const cookie = await register(mailbox(), 'expired@example.com', '期限切れ');
+    await env.DB.prepare('UPDATE session SET expiresAt = ?').bind(new Date(Date.now() - 1000).toISOString()).run();
+    expect((await call('/api/sessions/current', { cookie })).status).toBe(401);
+    expect((await call('/api/rooms', { cookie })).status).toBe(401);
+  });
+
+  it('extends the cookie only after updateAge has passed', async () => {
+    const cookie = await register(mailbox(), 'slide@example.com', '延長');
+    const setExpiry = (ms: number) => env.DB.prepare('UPDATE session SET expiresAt = ?').bind(new Date(Date.now() + ms).toISOString()).run();
+    // Issued 9 days ago: 21 days remain, so no refresh.
+    await setExpiry(21 * DAY);
+    const fresh = await call('/api/sessions/current', { cookie });
+    expect(fresh.status).toBe(200);
+    expect(sessionCookie(fresh)).toBeNull();
+    // Issued 11 days ago: 19 days remain, so the cookie and row move to now + 30 days.
+    await setExpiry(19 * DAY);
+    const refreshed = await call('/api/sessions/current', { cookie });
+    expect(refreshed.status).toBe(200);
+    expect(sessionCookie(refreshed)!.header).toContain(`Max-Age=${30 * 24 * 60 * 60}`);
+    const row = await env.DB.prepare('SELECT expiresAt FROM session').first<{ expiresAt: string }>();
+    expect(Date.parse(row!.expiresAt)).toBeGreaterThan(Date.now() + 29 * DAY);
+  });
+
+  it('issues test sessions that the room API accepts', async () => {
+    const request = new Request(origin + '/__test/session');
+    const session = await createTestSession(env, request, '試験');
+    expect(await current(session.cookie)).toEqual({ id: session.id, name: '試験' });
+    expect((await call('/api/rooms', { cookie: session.cookie })).status).toBe(200);
+  });
+});
+
+describe('OTP rate limits in front of Better Auth', () => {
+  it('allows one of twenty parallel sends for the same email', async () => {
+    const mail = mailbox();
+    const responses = await Promise.all(Array.from({ length: 20 }, () => sendCode(mail, 'burst@example.com')));
+    expect(responses.map(response => response.status).sort()).toEqual([200, ...Array(19).fill(429)]);
+    expect(mail.sent).toHaveLength(1);
+  });
+
+  it('lets only three of twenty parallel verifications reach the handler and never forwards a missing code', async () => {
+    const mail = mailbox();
+    expect((await sendCode(mail, 'guess@example.com')).status).toBe(200);
+    const otp = mail.otp();
+    const missing = await signIn(mail, { email: 'guess@example.com' });
+    expect(missing.status).toBe(400);
+    expect(await missing.json()).toEqual({ error: 'INVALID_OTP' });
+    expect(await env.DB.prepare("SELECT value FROM verification").first<{ value: string }>()).toMatchObject({ value: expect.stringMatching(/:0$/) });
+    expect(await env.DB.prepare("SELECT 1 FROM auth_attempt WHERE key = 'verify:guess@example.com'").first()).toBeNull();
+
+    const wrong = otp === '000000' ? '111111' : '000000';
+    const responses = await Promise.all(Array.from({ length: 20 }, () => signIn(mail, { email: 'guess@example.com', otp: wrong })));
+    const statuses = responses.map(response => response.status);
+    expect(statuses.filter(status => status === 429)).toHaveLength(17);
+    expect(statuses.filter(status => status !== 429).every(status => status === 400 || status === 403)).toBe(true);
+    expect((await signIn(mail, { email: 'guess@example.com', otp })).status).toBe(429);
+  });
+
+  it('invalidates the previous code on resend', async () => {
+    const mail = mailbox();
+    expect((await sendCode(mail, 'resend@example.com')).status).toBe(200);
+    const first = mail.otp();
+    expect((await sendCode(mail, 'resend@example.com')).status).toBe(429);
+    await moveWindow('send:resend@example.com', 60_000);
+    expect((await sendCode(mail, 'resend@example.com')).status).toBe(200);
+    const second = mail.otp();
+    if (first !== second) expect((await signIn(mail, { email: 'resend@example.com', otp: first, name: '再送' })).status).toBe(400);
+    expect((await signIn(mail, { email: 'resend@example.com', otp: second, name: '再送' })).status).toBe(200);
+  });
+
+  it('limits each client IP per endpoint', async () => {
+    const mail = mailbox();
+    const headers = { 'cf-connecting-ip': '203.0.113.9' };
+    for (let i = 0; i < 10; i++) expect((await sendCode(mail, `ip${i}@example.com`, {}, headers)).status).toBe(200);
+    expect((await sendCode(mail, 'ip10@example.com', {}, headers)).status).toBe(429);
+    expect((await sendCode(mail, 'ip10@example.com', {}, { 'cf-connecting-ip': '203.0.113.10' })).status).toBe(200);
+  });
+
+  it('refunds the send when email delivery fails and fails closed when the counter is unavailable', async () => {
+    const failing = mailbox('fail');
+    const failed = await sendCode(failing, 'fail@example.com');
+    expect(failed.status).toBe(502);
+    expect(await failed.json()).toEqual({ error: 'EMAIL_SEND_FAILED' });
+    expect((await sendCode(mailbox(), 'fail@example.com')).status).toBe(200);
+
+    await env.DB.exec('DROP TABLE auth_attempt');
+    const mail = mailbox();
+    const unavailable = await sendCode(mail, 'down@example.com');
+    expect(unavailable.status).toBe(503);
+    expect(await unavailable.json()).toEqual({ error: 'AUTH_UNAVAILABLE' });
+    expect(mail.sent).toHaveLength(0);
+  });
+});
+
+describe('auth endpoint surface', () => {
+  it('returns 404 for non sign-in OTP types and unused Better Auth routes', async () => {
+    const mail = mailbox();
+    for (const type of ['forget-password', 'email-verification', 'change-email']) {
+      expect((await sendCode(mail, 'surface@example.com', { type })).status).toBe(404);
     }
-    expect((await request('/api/sessions', { method: 'POST', body: JSON.stringify({ name: 'A'.repeat(5000) }), origin })).status).toBe(413);
-    const trimmed = await create('  太郎  ');
-    expect(await trimmed.json()).toMatchObject({ name: '太郎' });
+    for (const path of ['/api/auth/forget-password/email-otp', '/api/auth/email-otp/request-password-reset', '/api/auth/email-otp/reset-password',
+      '/api/auth/email-otp/check-verification-otp', '/api/auth/email-otp/verify-email', '/api/auth/sign-up/email', '/api/auth/sign-in/email', '/api/auth/update-user', '/api/auth/delete-user']) {
+      expect((await call(path, { method: 'POST', body: { email: 'surface@example.com', otp: '123456' }, env: mail.env })).status).toBe(404);
+    }
+    expect(mail.sent).toHaveLength(0);
+    expect((await call('/api/sessions', { method: 'POST', body: { name: 'ゲスト' } })).status).toBe(404);
   });
 
-  it('rejects form content and uses generic errors if the database fails', async () => {
-    const wrong = await worker.fetch(new Request(origin + '/api/sessions', { method: 'POST', headers: { Origin: origin, 'Content-Type': 'text/plain' }, body: '{"name":"A"}' }), env, createExecutionContext());
-    expect(wrong.status).toBe(415);
-    await env.DB.exec('DROP TABLE sessions');
-    const response = await create();
-    expect(response.status).toBe(500);
-    expect(await response.json()).toEqual({ error: 'INTERNAL_ERROR' });
+  it('requires the exact origin for auth posts', async () => {
+    const mail = mailbox();
+    for (const supplied of [null, 'null', 'https://evil.example', 'http://game.example']) {
+      expect((await call('/api/auth/email-otp/send-verification-otp', { method: 'POST', body: { email: 'o@example.com', type: 'sign-in' }, origin: supplied, env: mail.env })).status).toBe(403);
+    }
+    expect(mail.sent).toHaveLength(0);
+  });
+
+  it('builds a mail without URLs and times out a stalled provider', async () => {
+    const message = otpEmail('012345');
+    expect(message.text).toContain('012345');
+    expect(message.html).toContain('012345');
+    expect(message.text + message.html).not.toMatch(/https?:/);
+    const stalled = { send: () => new Promise(() => {}) } as unknown as SendEmail;
+    expect(await sendOtpEmail({ EMAIL: stalled, EMAIL_FROM_ADDRESS: 'noreply@madou-senki.local' }, 'a@example.com', '012345', 20)).toBe(false);
   });
 
   it('authenticates WebSocket identity from the cookie and ignores attacker-supplied internal headers', async () => {
-    const a = await create('A');
-    const identity = await a.json<{ id: string; name: string }>();
-    const b = await create('B');
+    const request = new Request(origin + '/__test/session');
+    const a = await createTestSession(env, request, 'A');
+    const b = await createTestSession(env, request, 'B');
+    const identity = { id: a.id, name: a.name };
     const roomId = crypto.randomUUID();
     await runInDurableObject(env.ROOMS.getByName(roomId), (_instance, state) => {
       const room: RoomData = { schemaVersion: 1, roomId, title: 'Private', ownerId: identity.id, rulesetId: ruleset.id,
@@ -99,12 +234,12 @@ describe('guest session HTTP boundary', () => {
     });
     const path = `/api/rooms/${roomId}/ws`;
     const headers = { Upgrade: 'websocket', 'X-Room-Actor': identity.id };
-    expect((await request(path, { origin, headers })).status).toBe(401);
-    expect((await request(path, { origin, headers, cookie: cookie(b) })).status).toBe(403);
-    expect((await request(path, { origin: 'https://evil.example', headers, cookie: cookie(a) })).status).toBe(403);
-    expect((await request(path, { headers, cookie: cookie(a) })).status).toBe(403);
-    expect((await request(path, { origin, cookie: cookie(a) })).status).toBe(426);
-    const accepted = await request(path, { origin, cookie: cookie(a), headers: { Upgrade: 'websocket', 'X-Room-Actor': 'someone-else' } });
+    expect((await call(path, { headers })).status).toBe(401);
+    expect((await call(path, { headers, cookie: b.cookie })).status).toBe(403);
+    expect((await call(path, { origin: 'https://evil.example', headers, cookie: a.cookie })).status).toBe(403);
+    expect((await call(path, { origin: null, headers, cookie: a.cookie })).status).toBe(403);
+    expect((await call(path, { cookie: a.cookie })).status).toBe(426);
+    const accepted = await call(path, { cookie: a.cookie, headers: { Upgrade: 'websocket', 'X-Room-Actor': 'someone-else' } });
     expect(accepted.status).toBe(101);
     expect(accepted.webSocket).toBeDefined();
     accepted.webSocket!.accept();

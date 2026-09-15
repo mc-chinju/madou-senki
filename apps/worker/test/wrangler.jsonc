@@ -11,5 +11,12 @@
     ]
   },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RoomStoreProbe", "Room"] }],
-  "d1_databases": [{ "binding": "DB", "database_name": "madou-test" }]
+  "d1_databases": [{ "binding": "DB", "database_name": "madou-test" }],
+  "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["noreply@madou-senki.local"] }],
+  "vars": {
+    "ENVIRONMENT": "local",
+    "BASE_URL": "https://game.example",
+    "EMAIL_FROM_ADDRESS": "noreply@madou-senki.local",
+    "AUTH_SECRET": "worker-test-only-secret-0123456789abcdef"
+  }
 }

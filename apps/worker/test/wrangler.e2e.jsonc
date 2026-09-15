@@ -7,5 +7,12 @@
   "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "BrowserFixtureRoom" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["BrowserFixtureRoom"] }],
   "d1_databases": [{ "binding": "DB", "database_name": "madou-browser-test", "database_id": "00000000-0000-0000-0000-000000000001", "migrations_dir": "../migrations" }],
+  "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["noreply@madou-senki.local"] }],
+  "vars": {
+    "ENVIRONMENT": "local",
+    "BASE_URL": "http://localhost:8787",
+    "EMAIL_FROM_ADDRESS": "noreply@madou-senki.local",
+    "AUTH_SECRET": "browser-test-only-secret-0123456789abcdef"
+  },
   "assets": { "directory": "../../web/dist", "not_found_handling": "single-page-application", "run_worker_first": ["/api/*", "/__test/*"] }
 }
