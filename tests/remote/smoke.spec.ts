@@ -15,12 +15,11 @@ test('the remote origin exposes no test fixtures, guest sessions or unauthentica
 test('invite, ready, start and reload on the remote origin', async ({ browser, baseURL }) => {
   if (!baseURL) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
   const cookies = remoteSessionCookies(4);
-  test.skip(!cookies, 'set REMOTE_SESSION_COOKIES to four registered accounts');
   const contexts = await Promise.all(Array.from({ length: 4 }, () => browser.newContext({ baseURL })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));
   try {
     for (const [index, page] of pages.entries()) {
-      await useSessionCookie(contexts[index]!, baseURL, cookies![index]!);
+      await useSessionCookie(contexts[index]!, baseURL, cookies[index]!);
       await page.goto('/');
       await expect(page.getByRole('heading', { name: /ようこそ/ })).toBeVisible();
     }
@@ -52,9 +51,8 @@ test('invite, ready, start and reload on the remote origin', async ({ browser, b
 test('an ACK lost after commit is replayed with the exact same command after reload', async ({ browser, baseURL }) => {
   if (!baseURL) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
   const cookies = remoteSessionCookies(1);
-  test.skip(!cookies, 'set REMOTE_SESSION_COOKIES to a registered account');
   const context = await browser.newContext({ baseURL });
-  await useSessionCookie(context, baseURL, cookies![0]!);
+  await useSessionCookie(context, baseURL, cookies[0]!);
   const page = await context.newPage();
   try {
     let dropped = false;

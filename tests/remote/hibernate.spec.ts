@@ -6,11 +6,10 @@ const idleMs = Number(process.env.REMOTE_HIBERNATE_MS ?? 15 * 60 * 1000);
 test('idle Durable Object resume keeps the same cookie, hand and revision', async ({ browser, baseURL }) => {
   test.skip(!process.env.REMOTE_HIBERNATE, 'set REMOTE_HIBERNATE=1 to wait for DO hibernation');
   const cookies = remoteSessionCookies(1);
-  test.skip(!cookies, 'set REMOTE_SESSION_COOKIES to a registered account');
   test.setTimeout(idleMs + 120_000);
   if (!baseURL) throw new Error('PLAYWRIGHT_BASE_URL must be configured');
   const context = await browser.newContext({ baseURL });
-  const page = await pageFor(context, baseURL, cookies![0]!);
+  const page = await pageFor(context, baseURL, cookies[0]!);
   await page.getByLabel('卓名', { exact: true }).fill('休止確認');
   await page.getByLabel('招待限定', { exact: true }).check();
   await page.getByRole('button', { name: '卓を作る', exact: true }).click();
