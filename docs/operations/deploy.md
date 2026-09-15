@@ -4,7 +4,7 @@ staging/productionのD1は作成済み。リモート実配備・休止復帰・
 
 ## 構成
 
-Reactの静的ファイルと2ndのWebP画像はWorkers Static Assets、APIは同じWorkerの `/api/*`、試合は1卓1SQLite Durable Object、ゲストセッションと卓一覧はD1を使う。約6MBの固定画像はビルドと一緒に配信できるため、初期版ではR2を追加しない。[Static Assetsの設定](https://developers.cloudflare.com/workers/static-assets/binding/)に従い、卓URLの画面遷移はSPAへ、APIはWorkerへ送る。
+Reactの静的ファイルと2ndのWebP画像はWorkers Static Assets、APIは同じWorkerの `/api/*`、試合は1卓1SQLite Durable Object、アカウント（Better Auth）と卓一覧はD1、ログインコードのメールはCloudflare Email Sendingを使う。約6MBの固定画像はビルドと一緒に配信できるため、初期版ではR2を追加しない。[Static Assetsの設定](https://developers.cloudflare.com/workers/static-assets/binding/)に従い、卓URLの画面遷移はSPAへ、APIはWorkerへ送る。
 
 | 環境 | Worker | D1名 | ローカル保存先 |
 |---|---|---|---|
@@ -30,7 +30,7 @@ pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --local --env= 
 pnpm --filter @madou/worker dev
 ```
 
-`http://localhost:8787`で閲覧する。`pnpm build`は静的ファイル生成とWorkerのdry-runだけで、アップロードしない。ログはリポジトリの`.cache/wrangler`に置く。
+`http://localhost:8787`で閲覧する。`pnpm build`は静的ファイル生成とWorkerのdry-runだけで、アップロードしない。ログはリポジトリの`.cache/wrangler`に置く。ローカルの`wrangler dev`は`EMAIL` bindingをシミュレートし、実際には送信しない。ローカル用`AUTH_SECRET`は`wrangler.jsonc`のvarsにあり、staging/productionでは使われない。
 
 ブラウザテストはテスト専用入口・保存先を使う。
 
@@ -47,8 +47,8 @@ pnpm test:e2e
 
 1. 対象アカウントとstagingを確定し、D1 `madou-senki-staging`を作成する。返されたUUIDを `env.staging.d1_databases[0].database_id` へ設定する。productionも別DB/UUIDにする。
 2. `python3 scripts/generate_catalog_readiness.py --check --require-ready`、`pnpm verify:assets`を通し、`pnpm build`と該当環境のdry-runを確認する。通常のbuildは検証用の`ready=false`も許すため、build成功だけを公開可能の証拠にしない。
-3. D1の`0001_sessions_rooms.sql`を対象環境へ適用してからWorkerを配備する。
-4. 別々のCookieを持つブラウザで招待・参加・開始・切断復帰を確認する。
+3. 「アカウントとログイン」の`AUTH_SECRET`とEmail Sendingを済ませ、D1 migration（`0001_sessions_rooms.sql`、`0002_better_auth.sql`）を対象環境へ適用してからWorkerを配備する。
+4. 別々のアカウントでログインしたブラウザで招待・参加・開始・切断復帰を確認する。リモートsmokeは事前登録したアカウントのCookieを`REMOTE_SESSION_COOKIES`（JSON配列、Gitや記録に残さない）で渡す。
 5. stagingの実戦・障害試験を記録してから、同じビルドをproductionのbindingsで検証・配備する。
 
 ```bash
@@ -62,7 +62,39 @@ pnpm --filter @madou/worker exec wrangler d1 migrations apply DB --remote --env 
 pnpm --filter @madou/worker exec wrangler deploy --env staging
 ```
 
-テスト設定 `test/wrangler.e2e.jsonc` と `test/wrangler.jsonc` は配備対象にしない。テスト用の状態投入APIとストレージ検査用DOは本番入口からexportされない。ソースPDF/ZIPも静的配信ディレクトリへ入れない。APIトークンやCookieをソース管理しない。
+テスト設定 `test/wrangler.e2e.jsonc` と `test/wrangler.jsonc` は配備対象にしない。テスト用の状態投入API、`/__test/session`（OTPなしのセッション発行）、ログインメールの捕捉とストレージ検査用DOは本番入口からexportされない。ソースPDF/ZIPも静的配信ディレクトリへ入れない。APIトークンやCookieをソース管理しない。
+
+## アカウントとログイン
+
+ゲストは廃止し、メールアドレスで登録したアカウントだけが卓に着席できる。認証はBetter Auth（メールOTP + パスキー）で、パスワード・OAuth・ゲストプラグインは使わない。卓の`actor_id`はBetter Authの`user.id`。
+
+- ログイン: メールと初回だけの表示名 → 6桁コード（5分・3回・D1にはハッシュ）。ログイン後にこの端末へパスキー登録を勧める。メール欄はConditional UI。
+- Cookie: `__Secure-madou.session_token`、30日。前回更新から10日以上経ったアクセスで30日へ延びる。30日アクセスがなければ再ログイン。
+- 送信するメールはログインコードだけ。手番通知や非同期卓のメールは送らない。
+- 破壊的変更: 旧ゲストCookie `__Host-madou_session` と `POST /api/sessions` は廃止した。`0002_better_auth.sql` は旧`sessions`表を削除するため、配備前にゲストで着席していた卓には復帰できない。招待制プレイテストの参加者へ事前に案内する。
+
+### ドメインとホスト（人が行う）
+
+推奨は`madou-senki.com`をCloudflare Registrarで取得し、自動更新にすること。取得前はstaging/productionの`BASE_URL`を現行のworkers.dev originにしている。Cookieとパスキーはホスト名に結びつくため、カスタムドメインへ切り替えるとworkers.devで登録したパスキーは使えず、再ログインが必要になる。
+
+| 用途 | ホスト | `BASE_URL` / パスキーrpID |
+|---|---|---|
+| production | `https://madou-senki.com`（wwwはapexへ） | `https://madou-senki.com` / `madou-senki.com` |
+| staging | `https://staging.madou-senki.com` | `https://staging.madou-senki.com` / `staging.madou-senki.com` |
+| ローカル | `http://localhost:8787` | `http://localhost:8787` / `localhost` |
+| 送信元 | `noreply@madou-senki.com` | `EMAIL_FROM_ADDRESS`と`send_email.allowed_sender_addresses`を一致させる |
+
+1. Cloudflare Registrarで`madou-senki.com`を登録する。
+2. production/stagingのWorkerにカスタムドメインを付け、`wrangler.jsonc`の各環境`BASE_URL`をカスタムドメインへ変える。productionは`BASE_URL`のoriginだけを信頼する。
+3. Email Sendingに`madou-senki.com`をonboardし、SPF/DKIMが有効になったことを確認する。`*.workers.dev`からは送れないため、onboard前の環境ではログインコードが届かない。
+4. 各環境のsecretを入れる。値はGit・証跡・ログに残さない。
+
+```bash
+pnpm --filter @madou/worker exec wrangler secret put AUTH_SECRET --env staging
+pnpm --filter @madou/worker exec wrangler secret put AUTH_SECRET --env production
+```
+
+`AUTH_SECRET`が無いWorkerは認証処理で500を返す。OTPの防御はBetter Auth前段のD1カウンタ（メールごとに送信60秒1回、コードごとに検証3回、`cf-connecting-ip`ごとに各endpoint60秒10回）が主で、カウンタ障害時は503で認証を進めない。
 
 ### 候補と配備先の記録
 
@@ -99,7 +131,7 @@ DO migration `v1`でSQLiteクラス`Room`を作る。保存済み卓の`schemaVe
 4. 旧Worker・旧D1・旧assetsと旧ホストを維持し、進行中卓を旧版で終了させる。現行実装には旧版の新規卓作成だけを止める運用スイッチがないため、案内の変更を作成禁止の保証と扱わない。旧版で卓が増えた場合も保持対象とする。
 5. 旧版の進行中卓がなく、利用者への保存・閲覧期間の案内が済むまで旧リソースを削除しない。D1一覧は遅延し得るため、一覧が空であることだけで終了を判定しない。旧版終了の確認方法と保管期限が未確定なら削除を保留する。
 
-セッションは`__Host-madou_session`と各環境のD1で照合する。新版のホストでは新しいセッションを作り、旧版の席は旧ホストに残るCookieで復帰する。新旧間の席移管は実装されていない。旧originを維持することが、既存卓の復帰経路を保つ条件になる。
+セッションは`__Secure-madou.session_token`と各環境のD1で照合する。新版のホストでは改めてログインし、旧版の席は旧ホストに残るCookieで復帰する。新旧間の席移管は実装されていない。旧originを維持することが、既存卓の復帰経路を保つ条件になる。
 
 切り替え失敗時は新規プレイ案内を旧版へ戻し、新版に既に卓がある場合は新版も保持する。保存後の新版卓を旧コードへ戻して継続させることはしない。同じ版の配備失敗は[復旧手順](recovery.md)に従う。実際のリソースID・公開URLと新旧同時稼働の結果は、配備時の記録が揃うまで未検証とする。
 

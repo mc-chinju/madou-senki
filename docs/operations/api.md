@@ -6,8 +6,11 @@ All JSON responses are no-store. Mutating HTTP requests and WebSocket upgrades r
 
 | Endpoint | Body | Result |
 |---|---|---|
-| POST /api/sessions | `{name}` (1–24 Unicode codepoints, trim/NFC, no control/format characters) | 201 `{id,name}` and secure cookie; valid existing session returns200 with original identity/name |
-| GET /api/sessions/current | — | `{id,name}` or401 |
+| POST /api/auth/email-otp/send-verification-otp | `{email,type:"sign-in"}` | 200 whether or not the email is registered; other types 404; 429 over limit; 502 `EMAIL_SEND_FAILED`; 503 `AUTH_UNAVAILABLE` |
+| POST /api/auth/sign-in/email-otp | `{email,otp,name?}` | 200 and session cookie; `name` (1–24 codepoints, trim/NFC, unique) is used only on first registration |
+| GET/POST /api/auth/passkey/* | Better Auth passkey endpoints (register options/verify, authenticate options/verify, list, delete) | Registration, listing and deletion require a session |
+| GET /api/auth/get-session, POST /api/auth/sign-out | — | Better Auth session read and logout |
+| GET /api/sessions/current | — | `{id,name}` (`id` is the Better Auth user ID) or401; renews the cookie once the session is 10 days old |
 | GET /api/rooms | — | `{rooms:[{roomId,revision,title,capacity,occupied,rulesetId}]}`; at most100 publicly recruiting tables |
 | GET /api/rooms/:id/seat | — | `{seated:boolean}` for the current session;false also for nonexistent rooms; never joins |
 | POST /api/rooms | `{title,capacity,visibility,rulesetId}` | 201 `{roomId,revision}`; creator owns the first seat |
@@ -15,7 +18,9 @@ All JSON responses are no-store. Mutating HTTP requests and WebSocket upgrades r
 | POST /api/rooms/:id/invites | `{expectedRevision}` | Owner-only `{token,revision}`; replaces previous invitation |
 | GET /api/rooms/:id/ws | Cookie + Origin + Upgrade |101 WebSocket for an existing seat |
 
-Capacity is4–10; titles1–60 codepoints. Visibility is `public` or `private`. Guest sessions last30 days in a `__Host-madou_session` HttpOnly Secure SameSite=Lax cookie. Only a SHA256 token hash is stored in D1. Other-device/account recovery is outside this version. Creating a new session does not acquire an existing seat with the same display name.
+Capacity is4–10; titles1–60 codepoints. Visibility is `public` or `private`.
+
+Accounts use Better Auth with email OTP and passkeys; there is no password, OAuth or guest session, and `POST /api/sessions` no longer exists. Every other `/api/auth/*` path is 404. The session cookie is `__Secure-madou.session_token` (Path=/, HttpOnly, Secure, SameSite=Lax, no Domain), lasts 30 days and is renewed to 30 days when a request arrives 10 days or more after the last renewal. OTPs are 6 digits, valid 5 minutes, 3 attempts, stored hashed; a resend invalidates the previous code. Before Better Auth runs, a D1 guard allows one send per email per 60 seconds, three verifications per code, and ten calls per `cf-connecting-ip` per endpoint per 60 seconds; a counter or lease failure returns 503. The only mail sent is the login code. Seats created with the former guest cookie cannot be restored.
 
 Invite tokens are256-bit random secrets. The Worker returns the plaintext token only to the owner and accepts it in the join request body; the DO stores only its hash. The client must put shared tokens in the URL fragment, not the URL query/path, and omit them from logs. Rotation invalidates old links for new entrants; existing seated actors restore with their session. D1 keeps no private table metadata (only an opaque ID/revision tombstone).
 
