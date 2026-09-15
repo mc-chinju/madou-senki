@@ -173,6 +173,15 @@ describe('OTP rate limits in front of Better Auth', () => {
     expect((await sendCode(mail, 'ip10@example.com', {}, { 'cf-connecting-ip': '203.0.113.10' })).status).toBe(200);
   });
 
+  it('refunds a failed delivery even when parallel sends were rejected', async () => {
+    const { consumeAttempt, refundAttempt, LIMITS } = await import('../src/auth/rate-limit.js');
+    const key = 'send:parallel-failure@example.com';
+    const allowed = await Promise.all(Array.from({ length: 20 }, () => consumeAttempt(env.DB, key, LIMITS.send)));
+    expect(allowed.filter(Boolean)).toHaveLength(1);
+    await refundAttempt(env.DB, key);
+    expect(await consumeAttempt(env.DB, key, LIMITS.send)).toBe(true);
+  });
+
   it('refunds the send when email delivery fails and fails closed when the counter is unavailable', async () => {
     const failing = mailbox('fail');
     const failed = await sendCode(failing, 'fail@example.com');

@@ -32,9 +32,9 @@ export function consumeAttempt(db: D1Database, key: string, limit: Limit, now = 
       ON CONFLICT (key) DO UPDATE SET
         count = CASE WHEN auth_attempt.window_start <= ?2 - ?3 THEN 1 ELSE auth_attempt.count + 1 END,
         window_start = CASE WHEN auth_attempt.window_start <= ?2 - ?3 THEN ?2 ELSE auth_attempt.window_start END
-      RETURNING count`).bind(key, now, limit.windowMs).first<{ count: number }>();
-    if (!row) throw unavailable();
-    return row.count <= limit.max;
+      WHERE auth_attempt.window_start <= ?2 - ?3 OR auth_attempt.count < ?4
+      RETURNING count`).bind(key, now, limit.windowMs, limit.max).first<{ count: number }>();
+    return row !== null && row.count <= limit.max;
   });
 }
 
