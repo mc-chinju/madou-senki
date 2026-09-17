@@ -1,4 +1,5 @@
 import {recordPass,recordRest,recordTurn} from './public-record.js';
+import {cloneGameState} from './clone-state.js';
 import {printedTechniqueAllowed} from './combat/printed-restrictions.js';
 import {playWish} from './effects/wish.js';
 import {playTurnChoiceCard} from './effects/turn-choice-cards.js';
@@ -55,7 +56,7 @@ export function transitionTurn(state: GameState, input: GameInput, entropy: Entr
     } else if (!['START_TURN', 'CHOOSE_DRAW','PASS_ACTION'].includes(command.type)) return { ok: false, code: 'WRONG_PHASE' };
   }
   try {
-    const random = randomSource(entropy); const next = structuredClone(state); const p = next.players[input.actorId]!; const start = next.events.length;
+    const random = randomSource(entropy); const next = cloneGameState(state); const p = next.players[input.actorId]!; const start = next.events.length;
     switch (command.type) {
       case 'REVEAL_CHARACTER': revealCharacter(next,p.id,entropy.now); break;
       case 'START_TURN': {

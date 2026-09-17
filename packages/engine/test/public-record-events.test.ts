@@ -8,6 +8,25 @@ const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED
 const record = (s: GameState, viewer = 'C') => viewFor(s, viewer).logs.filter(log => RECORD_TYPES.has(log.type));
 const indexOf = (logs: LogView[], match: Partial<LogView>, from = 0) => logs.findIndex((log, index) => index >= from && Object.entries(match).every(([key, value]) => JSON.stringify(log[key as keyof LogView]) === JSON.stringify(value)));
 
+it('keeps the previous state and its historical payloads independent after a move', () => {
+  const before = ready();
+  before.events.push({id: before.nextEventId++, at: 1, type: 'ROLL_RESOLVED', actorId: 'A',
+    audience: {playerId: 'A'}, targetIds: ['B'], death: {cause: 'attack', eventId: 'old'},
+    roll: {rollId: 'old-roll', kind: 'ability-check', faces: [2, 3], total: 5, attempt: 1},
+    status: {kind: 'stopped', change: 'applied'}});
+  const original = structuredClone(before);
+  const next = act(before, 'A', {type: 'PASS_ACTION'});
+  expect(next.events.slice(0, before.events.length)).toEqual(before.events);
+  const historical = next.events[before.events.length - 1]!;
+  historical.targetIds!.push('C');
+  historical.death!.eventId = 'changed';
+  historical.roll!.faces[0] = 6;
+  historical.roll!.total = 9;
+  historical.status!.change = 'removed';
+  if (historical.audience !== 'public') historical.audience.playerId = 'B';
+  expect(before).toEqual(original);
+});
+
 it.each([true, false])('records a selected declaration ability when its window opens (revealed=%s)', revealed => {
   let s = ready();
   character(s, 'A', '白魔術師シェリム');

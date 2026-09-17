@@ -1,4 +1,5 @@
 import {canChooseDarkSaintIgnore} from '../effects/dark-saint.js';
+import {cloneGameState} from '../clone-state.js';
 import {payShadowJump,shadowJumpGrantLive} from '../abilities/shadow-jump.js';
 import {actionCards,requirePhysicalAction,effectProvenance} from './action-source.js';
 import {acceptVirtualBlade} from '../abilities/virtual-blades.js';
@@ -411,7 +412,7 @@ function closeWindow(s:GameState,w:ReactionWindow,roll:()=>number,now:number,ran
 export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy):TransitionResult{
   try{
     randomSource(entropy);let cursor=0;const roll=()=>{const n=entropy.dice[cursor++];if(n===undefined)throw new EntropyError('ENTROPY_EXHAUSTED');return n;};
-    const s=structuredClone(state);const start=s.events.length;const c=input.command;const p=s.players[input.actorId]!;const w=s.windows?.at(-1);
+    const s=cloneGameState(state);const start=s.events.length;const c=input.command;const p=s.players[input.actorId]!;const w=s.windows?.at(-1);
     if(substituteRestricted(s,p.id)&&['PLAY_REACTION','CANCEL_REACTION','PLAY_MAAI','START_FOLLOWERS','PLAY_GROUP_DEFENSE'].includes(c.type))reject('ILLEGAL_DEFENSE');
     if(c.type==='PLAY_DEFENSE'&&w?.continuation.kind==='group'&&s.groups?.[w.continuation.id]?.targets.some(t=>t.actorId===p.id&&(t.followerStarted||t.normalDefenseClosed||s.groups![w.continuation.id]!.stage==='followers')))reject('DEFENSE_WINDOW_CLOSED');
     if(c.type==='PAY_SHADOW_JUMP'){const error=payShadowJump(s,p.id,c);if(error)reject(error);

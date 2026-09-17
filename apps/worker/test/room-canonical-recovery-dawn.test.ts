@@ -28,4 +28,4 @@ it('R6 canonical extra recovery cancellation saves Dawn shuffle and final physic
  expect(done.reclaimDecisions!.find(d=>d.id===decision.decisionId)!.attemptedClaimIds).toEqual([claim.claimId]);
  expect(done.windows).toEqual([]);expect(done.resolution).toEqual([]);expect(done.reclaimReservations).toEqual([]);expect(Object.values(done.actions??{})).toEqual([]);expect(Object.values(done.groups??{})).toEqual([]);expect(done.lifecycle??[]).toEqual([]);
  for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game).toEqual(viewFor(done,id));
-},15000);
+});

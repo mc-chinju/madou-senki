@@ -77,25 +77,24 @@ export function choose(view: PlayerView, seed: number): Command {
   return pool[0]!;
 }
 
-function actingActor(state: GameState): string | undefined {
-  const withCommands = state.seatOrder.filter(id => legalCommands(viewFor(state, id)).length);
-  if (!withCommands.length) return;
+function actingView(state: GameState): PlayerView | undefined {
   const pending = state.windows?.at(-1)?.participants[state.windows.at(-1)!.cursor];
-  if (pending && withCommands.includes(pending)) return pending;
   const turn = state.seatOrder[state.turnSeat];
-  if (turn && withCommands.includes(turn)) return turn;
   const setup = state.pending?.actorId;
-  if (setup && withCommands.includes(setup)) return setup;
-  return withCommands[0];
+  for (const id of new Set([pending, turn, setup, ...state.seatOrder])) {
+    if (!id || !state.seatOrder.includes(id)) continue;
+    const view = viewFor(state, id);
+    if (legalCommands(view).length) return view;
+  }
 }
 
 export function playOneStep(state: GameState, entropy: Entropy, seed = 0): GameState {
-  const actorId = actingActor(state);
-  if (!actorId) {
+  const view = actingView(state);
+  if (!view) {
     if (state.outcome) return state;
     throw new Error(`NO_ACTING_SEAT phase=${state.phase} window=${state.windows?.at(-1)?.kind ?? 'none'}`);
   }
-  const view = viewFor(state, actorId);
+  const actorId = view.self.id;
   const command = choose(view, seed);
   const result = transition(state, {actorId, command}, entropy);
   if (!result.ok) {

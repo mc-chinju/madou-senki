@@ -31,6 +31,5 @@ describe('deterministic play', () => {
     const ids = allCardInstanceIds(state);
     expect(ids).toHaveLength(220);
     expect(new Set(ids).size).toBe(220);
-    // Every step projects the whole public record for every seat.
-  }, 60_000);
+  });
 });
