@@ -2,7 +2,7 @@ import type {Browser,APIRequestContext} from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Map<string, RoomView>;
@@ -45,7 +45,7 @@ async function verifyGuard(browser:Browser,request:APIRequestContext,selected:bo
     const done = await passUntil(table, views, game => !game.activeWindow, 400);
     expect(done.players[b]!.damage).toBe(selected ? 15 : 18); expect(done.virtualFollowerDefense).toEqual([]);
     expect(done.players[b]!.followers).toEqual([]);
-    if(selected){expect(virtualId).toBeTruthy();for(const [seat,page] of table.pages.entries()){await page.reload();const own=views.get(table.sessions[seat]!.id)!.game!;expect(own.self.hand).not.toContain(virtualId);expect(own.discard).not.toContain(virtualId);expect(own.reservedCards).toEqual([]);expect(own.reclaim).toBeNull();}}
+    if(selected){expect(virtualId).toBeTruthy();for(const [seat,page] of table.pages.entries()){await page.reload();const own=views.get(table.sessions[seat]!.id)!.game!;expect(own.self.hand).not.toContain(virtualId);expect((await storedDiscard())).not.toContain(virtualId);expect(own.reservedCards).toEqual([]);expect(own.reclaim).toBeNull();}}
   } finally { await table.close(); }
 }
 test('Arnes explicitly declines virtual defense for three real hits',async({browser,request})=>{await verifyGuard(browser,request,false);});
@@ -60,7 +60,7 @@ test('a third party cancels virtual guard after reload and the original three hi
     const revision = views.get(a)!.revision; await table.pages[2]!.getByRole('button', { name: '割り込みを使う', exact: true }).click();
     await expect.poll(() => views.get(a)?.revision).toBeGreaterThan(revision);
     const done = await passUntil(table, views, game => !game.activeWindow, 400);
-    expect(done.players[b]!.damage).toBe(18); expect(done.virtualFollowerDefense).toEqual([]); expect(done.discard).toContain('a2-p02-r2c3');
+    expect(done.players[b]!.damage).toBe(18); expect(done.virtualFollowerDefense).toEqual([]); expect((await storedDiscard())).toContain('a2-p02-r2c3');
   } finally { await table.close(); }
 });
 test('Lester chooses spirit conversion explicitly and keeps the original warrior technique after reload', async ({ browser, request }) => {
@@ -121,6 +121,6 @@ test('Tia chooses a separate advance for each target and virtual guard still can
     const done = await passUntil(table, views, game => !game.activeWindow, 400);
     expect(done.players[b]!.damage).toBe(5); expect(done.players[c]!.damage).toBe(7);
     expect(views.get(c)!.game!.self.followers.map(card => card.cardInstanceId)).toEqual(['a2-p20-r3c1']);
-    expect(done.discard).toEqual(expect.arrayContaining(['a2-p23-r1c2', 'a2-p23-r1c3'])); expect(done.distances).toEqual(distances);
+    expect((await storedDiscard())).toEqual(expect.arrayContaining(['a2-p23-r1c2', 'a2-p23-r1c3'])); expect(done.distances).toEqual(distances);
   } finally { await table.close(); }
 });

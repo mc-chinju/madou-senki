@@ -1,7 +1,7 @@
 import { expect, test, type Locator } from '@playwright/test';
 import { getAction } from '../../packages/catalog/src/index.js';
 import { declarationScenarioSpecs, type DeclarationScenarioName } from '../../apps/worker/test/fixtures/declaration-scenarios.js';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -18,9 +18,9 @@ async function reload(table: Table, views: Views, seat = 0) {
   await expect(table.pages[seat]!.getByRole('region', { name: '自分の手札' })).toBeVisible();
   expect(game(table, views, seat)).toEqual(before);
 }
-function consumed(table: Table, views: Views, source: string, seat: number) {
+async function consumed(table: Table, views: Views, source: string, seat: number) {
   const done = game(table, views, seat);
-  expect(done.discard.filter(id => id === source)).toHaveLength(1);
+  expect((await storedDiscard()).filter(id => id === source)).toHaveLength(1);
   expect(done.self.hand).not.toContain(source);
   expect(done.self.chants.map(card => card.cardInstanceId)).not.toContain(source);
   expect(done.self.followers.map(card => card.cardInstanceId)).not.toContain(source);
@@ -108,7 +108,7 @@ for (const entry of cases) test(`${entry.scenario} selects the whole ability thr
     for (const seat of targets) expect(done.players[table.sessions[seat]!.id]!.damage).toBe(entry.damage ?? 0);
     if (selected.defense) expect(done.players[table.sessions[1]!.id]!.damage).toBe(0);
     if (entry.scenario === 'declare-shin-both') expect(done.recentRolls.filter(roll => roll.purpose === 'ability-check')).toHaveLength(2);
-    consumed(table, views, selected.source, selected.seat);
+    await consumed(table, views, selected.source, selected.seat);
   } finally { await table.close(); }
 });
 for (const entry of [
@@ -144,7 +144,7 @@ for (const scenario of ['declare-shelim-waive', 'declare-shin-both', 'declare-va
     expect(done.players[table.sessions[0]!.id]!.damage).toBe(0);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(selected.defense ? 6 : 0);
     expect(done.players[table.sessions[2]!.id]!.damage).toBe(0);
-    consumed(table, views, selected.source, selected.seat);
+    await consumed(table, views, selected.source, selected.seat);
   } finally { await table.close(); }
 });
 test('Yotsurm displays a pending bound and rolls effect and damage separately', async ({ browser, request }) => {
@@ -171,7 +171,7 @@ test('Yotsurm displays a pending bound and rolls effect and damage separately', 
     await reload(table, views);
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(technique.damage);
-    consumed(table, views, selected.source, 0);
+    await consumed(table, views, selected.source, 0);
   } finally { await table.close(); }
 });
 
@@ -192,7 +192,7 @@ test('Magic Gate selects its declaration ability and transfers the exact public 
     const donor = table.expected!.players[table.sessions[1]!.id]!.followers[0]!.cardInstanceId;
     expect(done.self.followers[0]!.cardInstanceId).toBe(donor);
     expect(done.players[table.sessions[1]!.id]!.followers).toEqual([]);
-    consumed(table, views, 'a2-p17-r3c3', 0);
+    await consumed(table, views, 'a2-p17-r3c3', 0);
   } finally { await table.close(); }
 });
 

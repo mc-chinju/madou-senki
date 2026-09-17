@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -40,7 +40,7 @@ test('a third party cancels Lancaster after reload and the dragon still blocks t
     await expect(table.pages[0]!.getByRole('button', { name: '竜殺槍を使う', exact: true })).toHaveCount(0);
     const done = await passUntil(table, views, game => !game.activeWindow, 500);
     expect(done.players[b]!.damage).toBe(0); expect(done.players[b]!.followers).toEqual([{ position: 0, face: 'front', cardInstanceId: 'a2-p22-r3c1' }]);
-    expect(done.discard).toContain('a2-p02-r2c3');
+    expect((await storedDiscard())).toContain('a2-p02-r2c3');
   } finally { await table.close(); }
 });
 test('White Sword reserves both clauses once and keeps Gadyoora target damage through reload', async ({ browser, request }) => {
@@ -59,7 +59,7 @@ test('White Sword reserves both clauses once and keeps Gadyoora target damage th
     await table.pages[1]!.reload(); await expect(table.pages[1]!.getByRole('region', { name: '従者への攻撃と結果' })).toContainText('ワイト');
     const done = await passUntil(table, views, game => !game.activeWindow, 500);
     expect(done.players[b]!.damage).toBe(14); expect(done.players[b]!.followers).toEqual([]);
-    expect(done.discard).toContain('a2-p21-r1c1');
+    expect((await storedDiscard())).toContain('a2-p21-r1c1');
   } finally { await table.close(); }
 });
 for (const blessed of [false, true]) test(`Asfelt uses effective follower level with Blessing=${blessed} and protects an unreached rear`, async ({ browser, request }) => {
@@ -99,6 +99,6 @@ test('Frenzy destroys the explicitly chosen virtual guard and physical human wit
     await expect(table.pages[1]!.getByRole('region', { name: '従者への攻撃と結果' })).toContainText('仮想女性親衛隊');
     const done = await passUntil(table, views, game => !game.activeWindow, 500);
     expect(done.players[b]!.damage).toBe(5); expect(done.players[b]!.followers).toEqual([]); expect(done.virtualFollowerDefense).toEqual([]);
-    expect(done.discard).toContain('a2-p18-r3c3'); expect(done.discard.every(id => !id.includes('virtual'))).toBe(true);
+    expect((await storedDiscard())).toContain('a2-p18-r3c3'); expect((await storedDiscard()).every(id => !id.includes('virtual'))).toBe(true);
   } finally { await table.close(); }
 });

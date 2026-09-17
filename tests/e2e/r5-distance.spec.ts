@@ -1,5 +1,5 @@
 import {expect,test} from '@playwright/test';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 import {getAction} from '../../packages/catalog/src/index.js';
 for(const [fixture,cancel] of [['r5-distance-approach',false],['r5-distance-withdrawal',false],['r5-distance-approach',true],['r5-distance-withdrawal',true]] as const)test(`${fixture} exchange cancel=${cancel} selects ability and restores partial response after refresh`,async({browser,request})=>{
  const table=await tableFixture(browser,request,fixture);
@@ -14,7 +14,7 @@ for(const [fixture,cancel] of [['r5-distance-approach',false],['r5-distance-with
   await passUntil(table,views,g=>g.activeWindow?.kind===kind,300);await advancePage.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(advances[0]!);await click(otherSeat,'踏み込みを使う');await advancePage.reload();await page.reload();
   await expect(advancePage.getByRole('region',{name:'接近・離脱の応酬',exact:true})).toContainText(`1 / ${cancel?1:2}枚`);expect(views.get(other)!.game!.activeWindow!.pendingActorId).toBe(cancel?owner:other);
   if(!cancel){await advancePage.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(advances[1]!);await click(otherSeat,'踏み込みを使う');}
-  const done=await passUntil(table,views,g=>!g.activeWindow,300);expect(done.distances[a]![b]).toBe('near');expect(done.discard.filter(id=>id===maai)).toHaveLength(1);if(cancel)expect(views.get(other)!.game!.self.hand).toContain(advances[1]);if(!withdraw)expect(done.distanceMarkers[0]!.cardInstanceId).toBe(advances[cancel?0:1]);
+  const done=await passUntil(table,views,g=>!g.activeWindow,300);expect(done.distances[a]![b]).toBe('near');expect((await storedDiscard()).filter(id=>id===maai)).toHaveLength(1);if(cancel)expect(views.get(other)!.game!.self.hand).toContain(advances[1]);if(!withdraw)expect(done.distanceMarkers[0]!.cardInstanceId).toBe(advances[cancel?0:1]);
  }finally{await table.close();}
 });
 for(const choice of ['select','decline','cancel'] as const)test(`Tia earth defense ${choice} is private and resumes after browser refresh`,async({browser,request})=>{
@@ -32,7 +32,7 @@ for(const choice of ['select','decline','cancel'] as const)test(`Tia earth defen
     await passUntil(table,views,g=>g.activeWindow?.kind==='normal-defense',300);await page.reload();await expect(button).toHaveCount(0);
    }
   }else await page.reload();
-  const done=await passUntil(table,views,g=>!g.activeWindow,300);expect(done.players[b]!.damage).toBe(choice==='select'?0:6);expect(done.discard.filter(id=>id==='a2-p16-r2c3')).toHaveLength(1);
+  const done=await passUntil(table,views,g=>!g.activeWindow,300);expect(done.players[b]!.damage).toBe(choice==='select'?0:6);expect((await storedDiscard()).filter(id=>id==='a2-p16-r2c3')).toHaveLength(1);
  }finally{await table.close();}
 });
 for(const [fixture,cancel] of [['r5-distance-cham',false],['r5-distance-tia',false],['r5-distance-lancaster',false],['r5-distance-cham',true]] as const)test(`${fixture} canceled=${cancel} elected maai persists its first advance across refresh`,async({browser,request})=>{
@@ -44,11 +44,11 @@ for(const [fixture,cancel] of [['r5-distance-cham',false],['r5-distance-tia',fal
   await defense.getByRole('combobox',{name:'間合いに添える能力',exact:true}).selectOption(abilityId);await defense.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(maai);
   async function click(seat:number,label:string){const rev=views.get(a)!.revision;await table.pages[seat]!.getByRole('button',{name:label,exact:true}).click();await expect.poll(()=>views.get(a)?.revision).toBeGreaterThan(rev);}
   await click(defenseSeat,'間合いを使う');await defense.reload();
-  if(cancel){const c=table.sessions[2]!.id;await passUntil(table,views,g=>g.activeWindow?.pendingActorId===c&&!!g.reactionTargetAbilityId,400);const page=table.pages[2]!;await page.getByRole('combobox',{name:'割り込み効果',exact:true}).selectOption('cancel-ability');await page.getByRole('combobox',{name:'使うカード',exact:true}).selectOption('a2-p02-r2c3');await click(2,'割り込みを使う');await defense.reload();await passUntil(table,views,g=>g.activeWindow?.kind==='defense-advance',400);await attack.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(advances[0]!);await click(attackSeat,'踏み込みを使う');const done=await passUntil(table,views,g=>!g.activeWindow,400);expect(done.players[defender]!.damage).toBe(4);expect(views.get(attacker)!.game!.self.hand).toContain(advances[1]);expect(done.discard.filter(id=>id===maai)).toHaveLength(1);return;}
+  if(cancel){const c=table.sessions[2]!.id;await passUntil(table,views,g=>g.activeWindow?.pendingActorId===c&&!!g.reactionTargetAbilityId,400);const page=table.pages[2]!;await page.getByRole('combobox',{name:'割り込み効果',exact:true}).selectOption('cancel-ability');await page.getByRole('combobox',{name:'使うカード',exact:true}).selectOption('a2-p02-r2c3');await click(2,'割り込みを使う');await defense.reload();await passUntil(table,views,g=>g.activeWindow?.kind==='defense-advance',400);await attack.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(advances[0]!);await click(attackSeat,'踏み込みを使う');const done=await passUntil(table,views,g=>!g.activeWindow,400);expect(done.players[defender]!.damage).toBe(4);expect(views.get(attacker)!.game!.self.hand).toContain(advances[1]);expect((await storedDiscard()).filter(id=>id===maai)).toHaveLength(1);return;}
   if(lancaster){const done=await passUntil(table,views,g=>!g.activeWindow,400);expect(done.players[defender]!.damage).toBe(0);expect(views.get(attacker)!.game!.self.hand).toEqual(expect.arrayContaining(advances));return;}
   await passUntil(table,views,g=>g.activeWindow?.kind==='defense-advance',400);
   await attack.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(advances[0]!);await click(attackSeat,'踏み込みを使う');await passUntil(table,views,g=>g.activeWindow?.kind==='defense-advance',400);
   await attack.reload();await defense.reload();await expect(attack.getByRole('region',{name:'間合いの状況',exact:true})).toContainText('間合い1枚を打ち消すには踏み込み2枚');expect(views.get(attacker)!.game!.maaiDefense).toMatchObject({sharedAdvances:1,targets:[{effective:1}]});
-  await attack.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(advances[1]!);await click(attackSeat,'踏み込みを使う');const done=await passUntil(table,views,g=>!g.activeWindow,400);expect(done.players[defender]!.damage).toBe(4);for(const id of [maai,...advances])expect(done.discard.filter(x=>x===id)).toHaveLength(1);
+  await attack.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(advances[1]!);await click(attackSeat,'踏み込みを使う');const done=await passUntil(table,views,g=>!g.activeWindow,400);expect(done.players[defender]!.damage).toBe(4);for(const id of [maai,...advances])expect((await storedDiscard()).filter(x=>x===id)).toHaveLength(1);
  }finally{await table.close();}
 });

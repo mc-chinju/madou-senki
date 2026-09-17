@@ -1,7 +1,7 @@
 import type {Browser,APIRequestContext} from '@playwright/test';
 import {expect,test,type Locator} from '@playwright/test';
 import {getAction} from '../../packages/catalog/src/index.js';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 type Table=Awaited<ReturnType<typeof tableFixture>>;
 type Views=Awaited<ReturnType<typeof observe>>;
 async function click(table:Table,views:Views,button:Locator) {
@@ -20,14 +20,14 @@ test('sword discard waits for hidden Cham to reveal and survives recipient reloa
     await click(table,views,p.getByRole('button',{name:'行動を終える',exact:true}));
     await p.getByRole('region',{name:'自分の手札'}).getByRole('button',{name:'ふぇありぃそぅど',exact:true}).click();
     await click(table,views,p.getByRole('button',{name:'選んだ1枚を捨てて手番を終える',exact:true}));
-    expect(views.get(owner)!.game!.discard).toContain('a2-p04-r2c1');expect(views.get(owner)!.game!.turnSeat).toBe(0);
+    expect((await storedDiscard())).toContain('a2-p04-r2c1');expect(views.get(owner)!.game!.turnSeat).toBe(0);
     await passUntil(table,views,g=>g.reclaim?.pendingActorId===cham);
     const recipient=table.pages[2]!,panel=recipient.getByRole('region',{name:'カードの回収'});
     await recipient.reload();await expect(panel.getByRole('button')).toHaveCount(1);
     await click(table,views,recipient.getByRole('button',{name:'正体を公開',exact:true}));
     await expect(panel.getByRole('button',{name:'ふぇありぃそぅどを回収する',exact:true})).toBeEnabled();
     await recipient.reload();await click(table,views,panel.getByRole('button',{name:'ふぇありぃそぅどを回収する',exact:true}));
-    expect(views.get(cham)!.game!.self.hand).toContain('a2-p04-r2c1');expect(views.get(owner)!.game!.discard).not.toContain('a2-p04-r2c1');
+    expect(views.get(cham)!.game!.self.hand).toContain('a2-p04-r2c1');expect((await storedDiscard())).not.toContain('a2-p04-r2c1');
     expect(views.get(owner)!.game!.turnSeat).toBe(1);
   }finally{await table.close();}
 });
@@ -184,7 +184,7 @@ for(const kind of ['rest','potion'] as const)test(`${kind} batch reloads between
    await p.reload();await expect(p.getByRole('region',{name:'サイコロの結果'})).toBeVisible();
   }
   const done=await passUntil(table,views,game=>!game.activeWindow);expect(views.get(owner)!.game!.self.damage).toBe(Math.max(0,8-amount));expect(done.phase).toBe('hand-adjustment');
-  for(const card of cards)expect(done.discard.filter(id=>id===card)).toHaveLength(1);
+  for(const card of cards)expect((await storedDiscard()).filter(id=>id===card)).toHaveLength(1);
  }finally{await table.close();}
 });
 for(const kind of ['book','training','dedicated','crown','crystal'] as const)test(`early-turn ${kind} has an actual card control and survives declaration or roll reload`,async({browser,request})=>{
@@ -253,7 +253,7 @@ for(const kind of ['tragedy','keil','hostage','amulet'] as const)test(`named any
   const views=await observe(table),owner=table.sessions[kind==='amulet'?0:1]!.id,p=table.pages[kind==='amulet'?0:1]!,o=views.get(owner)!.game!.anytimeCardOptions[0]!,count=views.get(owner)!.game!.self.hand.length,spirit=views.get(owner)!.game!.self.stats.spirit;
   await click(table,views,p.getByRole('region',{name:'その場で使うカード'}).getByRole('button',{name:o.label,exact:true}));await p.reload();
   await expect.poll(()=>views.get(owner)?.game?.activeWindow?.kind).toBe('declaration');expect(views.get(owner)!.game!.self.hand).toHaveLength(count);
-  const done=await passUntil(table,views,g=>!g.activeWindow);expect(done.discard).toContain(o.cardInstanceId);
+  const done=await passUntil(table,views,g=>!g.activeWindow);expect((await storedDiscard())).toContain(o.cardInstanceId);
   if(kind!=='amulet'){
    expect(views.get(table.sessions[1]!.id)!.game!.self.damage).toBe(0);expect(views.get(table.sessions[2]!.id)!.game!.self.damage).toBe(kind==='keil'?15:0);
   }else expect(done.recentRolls.filter(r=>r.purpose==='ability-check')).toHaveLength(0);
@@ -304,7 +304,7 @@ for(const use of [true,false])test(`pre-attack Dispel use=${use} preserves the c
   expect(views.get(owner)!.game!.self.hand).toHaveLength(hand-(use?2:1));
   await passUntil(table,views,g=>g.activeWindow?.kind==='attack-abilities');
   const g=views.get(owner)!.game!;expect(g.players[target]!.followers).toHaveLength(use?1:2);expect(g.players[target]!.followers.every(f=>f.face==='back')).toBe(true);
-  if(use){expect(g.discard).toContain('a2-p02-r3c1');await expect(p.getByRole('region',{name:'公開ログ'})).toContainText('ウッドゴーレムを破壊しました');}
+  if(use){expect((await storedDiscard())).toContain('a2-p02-r3c1');await expect(p.getByRole('region',{name:'公開ログ'})).toContainText('ウッドゴーレムを破壊しました');}
   else expect(g.self.hand).toContain('a2-p02-r3c1');
   await passUntil(table,views,g=>!g.activeWindow);expect(views.get(owner)!.game!.phase).toBe('withdrawal');
  }finally{await table.close();}
@@ -367,7 +367,7 @@ test('successful Courage decline after reload keeps the final public response vi
   await table.pages[3]!.reload();
   await click(table,views,lastPanel.getByRole('button',{name:'回収せずに進む',exact:true}));
   await passUntil(table,views,g=>!g.activeWindow,160);
-  expect(views.get(owner)!.game!.discard.filter(id=>id==='a2-p01-r3c3')).toHaveLength(1);
+  expect((await storedDiscard()).filter(id=>id==='a2-p01-r3c3')).toHaveLength(1);
   expect(views.get(owner)!.game!.self.hand).not.toContain('a2-p01-r3c3');
  }finally{await table.close();}
 });

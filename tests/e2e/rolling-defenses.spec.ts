@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -15,8 +15,8 @@ function source(table: Table, views: Views) {
   expect(action).toMatchObject({ source: 'card', sourceZone: 'hand', actorId: table.sessions[0]!.id });
   if (!action || action.source !== 'card') throw Error('ROLLING_SOURCE_MISSING'); return action.cardInstanceId;
 }
-function consumed(done: ReturnType<typeof game>, cardId: string) {
-  expect(done.discard.filter(id => id === cardId)).toHaveLength(1); expect(done.self.hand).not.toContain(cardId);
+async function consumed(done: ReturnType<typeof game>, cardId: string) {
+  expect((await storedDiscard()).filter(id => id === cardId)).toHaveLength(1); expect(done.self.hand).not.toContain(cardId);
   expect(done.self.chants.map(card => card.cardInstanceId)).not.toContain(cardId);
   expect(done.self.followers.map(card => card.cardInstanceId)).not.toContain(cardId);
 }
@@ -43,7 +43,7 @@ for (const selected of [false, true]) test(`magic half selected=${selected} reso
     await passUntil(table, views, state => state.followerDefenseResults.some(result => result.cardInstanceId === 'a2-p18-r3c3'), 500);
     expect(game(table, views).followerDefenseResults[0]!.hits[0]!.hpReduction).toBe(1);
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
-    expect(done.players[b]!.damage).toBe(selected ? 2 : 5); consumed(done, original);
+    expect(done.players[b]!.damage).toBe(selected ? 2 : 5); await consumed(done, original);
   } finally { await table.close(); }
 });
 test('half final body value survives reload while the other target retains its incoming value', async ({ browser, request }) => {
@@ -55,7 +55,7 @@ test('half final body value survives reload while the other target retains its i
     await expect(incoming(table).getByRole('listitem').filter({ hasText: '楓さん・1発目' })).toContainText('本人への確定ダメージ 3');
     await expect(incoming(table).getByRole('listitem').filter({ hasText: '凛さん・1発目' })).toContainText('効果Lv 6 / ダメージ 8');
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
-    expect(done.players[b]!.damage).toBe(3); expect(done.players[c]!.damage).toBe(8); consumed(done, original);
+    expect(done.players[b]!.damage).toBe(3); expect(done.players[c]!.damage).toBe(8); await consumed(done, original);
   } finally { await table.close(); }
 });
 for (const zero of [true, false]) test(`Grace zero=${zero} restores separate saved check and numeric die`, async ({ browser, request }) => {
@@ -87,7 +87,7 @@ for (const zero of [true, false]) test(`Grace zero=${zero} restores separate sav
       await expect(incoming(table)).toContainText(`効果Lv ${8 - reduction} / ダメージ 10`);
       await expect(table.pages[1]!.getByRole('button', { name: '光の加護を使う', exact: true })).toHaveCount(0);
     }
-    const done = await passUntil(table, views, state => !state.activeWindow, 500); expect(done.players[b]!.damage).toBe(zero ? 0 : 10); consumed(done, original);
+    const done = await passUntil(table, views, state => !state.activeWindow, 500); expect(done.players[b]!.damage).toBe(zero ? 0 : 10); await consumed(done, original);
   } finally { await table.close(); }
 });
 test('forced failed Grace check survives reload and never rolls a reduction die', async ({ browser, request }) => {
@@ -100,7 +100,7 @@ test('forced failed Grace check survives reload and never rolls a reduction die'
     await expect(table.pages[1]!.getByRole('button', { name: '光の加護を使う', exact: true })).toHaveCount(0);
     expect(game(table, views).recentRolls.filter(roll => roll.purpose === 'ability-value')).toEqual([]);
     const done = await passUntil(table, views, state => !state.activeWindow, 500); expect(done.players[b]!.damage).toBe(2);
-    expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1); consumed(done, original);
+    expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1); await consumed(done, original);
   } finally { await table.close(); }
 });
 for (const failed of [false, true]) test(`transformed Light Shield failed=${failed} is independent from inherited armor`, async ({ browser, request }) => {
@@ -115,7 +115,7 @@ for (const failed of [false, true]) test(`transformed Light Shield failed=${fail
       await expect(table.pages[1]!.getByRole('button', { name: '白銀の鎧を使う', exact: true })).toBeEnabled();
     }
     const done = await passUntil(table, views, state => !state.activeWindow, 500); expect(done.players[b]!.damage).toBe(failed ? 6 : 0);
-    if (failed) expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1); consumed(done, original);
+    if (failed) expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1); await consumed(done, original);
   } finally { await table.close(); }
 });
 test('Majesty reflection restores public original technique and lets its attacker defend', async ({ browser, request }) => {
@@ -130,7 +130,7 @@ test('Majesty reflection restores public original technique and lets its attacke
     await table.pages[0]!.getByRole('combobox', { name: '使うカード', exact: true }).selectOption('a2-p05-r3c1');
     await click(table, views, 0, '防御する');
     const done = await passUntil(table, views, state => !state.activeWindow, 500); expect(done.players[a]!.damage).toBe(0); expect(done.players[b]!.damage).toBe(0);
-    expect(done.discard.filter(id => id === 'a2-p05-r3c1')).toHaveLength(1); consumed(done, original);
+    expect((await storedDiscard()).filter(id => id === 'a2-p05-r3c1')).toHaveLength(1); await consumed(done, original);
   } finally { await table.close(); }
 });
 test('canceling Majesty through an actual private reaction spends the attempt without reflection', async ({ browser, request }) => {
@@ -146,6 +146,6 @@ test('canceling Majesty through an actual private reaction spends the attempt wi
     await expect(table.pages[1]!.getByRole('button', { name: '魔導王の威厳を使う', exact: true })).toHaveCount(0);
     expect(game(table, views).currentAttack!.reflection).toBeUndefined();
     const done = await passUntil(table, views, state => !state.activeWindow, 500); expect(done.players[b]!.damage).toBe(6);
-    expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1); consumed(done, original);
+    expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1); await consumed(done, original);
   } finally { await table.close(); }
 });

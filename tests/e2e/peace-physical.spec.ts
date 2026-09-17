@@ -1,6 +1,6 @@
 import {expect,test,type Locator} from '@playwright/test';
 import {peacePhysicalScenarios,peaceMode} from '../../apps/worker/test/fixtures/peace-physical-scenarios.js';
-import {observe,windowPassButtonName,tableFixture} from './helpers.js';
+import {observe,windowPassButtonName,tableFixture,storedDiscard} from './helpers.js';
 for(const scenario of peacePhysicalScenarios)test(`${scenario} actual Peace replacement and public action expiry survive reload`,async({browser,request})=>{
  const table=await tableFixture(browser,request,scenario),errors:string[]=[];for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
  try{const views=await observe(table),ids=table.sessions.map(p=>p.id),[a,b,c,d]=ids as [string,string,string,string],page=table.pages[0]!,bp=table.pages[1]!,dp=table.pages[3]!,m=peaceMode(scenario),target=ids[m.target]!,card='a2-p02-r1c1';const game=()=>views.get(a)!.game!,spirit=()=>views.get(target)!.game!.self.stats.spirit;
@@ -21,6 +21,6 @@ for(const scenario of peacePhysicalScenarios)test(`${scenario} actual Peace repl
    await next(b,scenario==='peace-blood'?'draw':'action');if(scenario==='peace-blood'){await click(bp.getByRole('button',{name:'カードを引く',exact:true}));await until(()=>!game().activeWindow);expect(game().players[b]!.open).toContain('a2-p01-r1c3');expect(spirit()).toBe(15);}if(scenario==='peace-book'){await click(bp.getByRole('region',{name:'手番カードの効果'}).getByRole('button',{name:'秘伝書を使う',exact:true}));await until(()=>!game().activeWindow);expect(spirit()).toBe(14);expect(game().phase).toBe('action');}if(scenario==='peace-next'){await attack(1,'a2-p24-r2c2',0);expect(spirit()).toBe(14);await until(()=>!game().activeWindow);}else if(scenario==='peace-chant'){await select(1,'a2-p13-r1c1');await click(bp.getByRole('button',{name:'詠唱',exact:true}));}else await click(bp.getByRole('button',{name:'行動を終える',exact:true}));
   }
  }
- expect(spirit()).toBe(base+(scenario==='peace-blood'?1:0));expect(game().peaceExpiries).toEqual([]);for(const p of table.pages)await expect(p.getByRole('region',{name:'愛と平和の期限'})).toHaveCount(0);expect(game().discard.filter(id=>id===card)).toHaveLength(1);expect(errors).toEqual([]);
+ expect(spirit()).toBe(base+(scenario==='peace-blood'?1:0));expect(game().peaceExpiries).toEqual([]);for(const p of table.pages)await expect(p.getByRole('region',{name:'愛と平和の期限'})).toHaveCount(0);expect((await storedDiscard()).filter(id=>id===card)).toHaveLength(1);expect(errors).toEqual([]);
  }finally{await table.close();}
 });

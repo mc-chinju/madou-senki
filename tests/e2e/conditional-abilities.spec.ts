@@ -2,7 +2,7 @@ import { expect, test, type Locator } from '@playwright/test';
 import { allCardInstanceIds, type GameState } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
 import { conditionalScenarioNames, type ConditionalScenarioName } from '../../apps/worker/test/fixtures/conditional-ability-scenarios.js';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 const entries: Record<ConditionalScenarioName, { name: string; id: string; seat: number }> = {
@@ -164,7 +164,7 @@ test('Upa bundle displays the elected warrior increment and resolves both actual
     const defense = await passUntil(table, views, game => game.activeWindow?.kind === 'normal-defense', 500);
     expect(defense.currentAttack!.technique.damage).toBe(9);
     const done = await passUntil(table, views, game => !game.activeWindow, 500);
-    expect(done.discard).toEqual(expect.arrayContaining(['a2-p20-r3c1', 'a2-p22-r2c2']));
+    expect((await storedDiscard())).toEqual(expect.arrayContaining(['a2-p20-r3c1', 'a2-p22-r2c2']));
     expect(views.get(a)!.game!.self.followers).toEqual([]);
   } finally { await table.close(); }
 });
@@ -191,7 +191,7 @@ test('Dia OFF preserves excess cards through reload and requires the actual two-
     expect(views.get(a)!.game!.self.hand).toHaveLength(6);
     for (const id of discardedIds) {
       expect(views.get(a)!.game!.self.hand).not.toContain(id);
-      expect(views.get(a)!.game!.discard.filter(card => card === id)).toHaveLength(1);
+      expect((await storedDiscard()).filter(card => card === id)).toHaveLength(1);
     }
   } finally { await table.close(); }
 });

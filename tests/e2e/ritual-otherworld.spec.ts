@@ -1,5 +1,5 @@
 import {expect,test,type Locator} from '@playwright/test';
-import {observe,tableFixture,windowPassButtonName} from './helpers.js';
+import {observe,tableFixture,windowPassButtonName,storedDiscard} from './helpers.js';
 test('actual ritual Vanmil otherworld absence remains nonterminal after browser reloads and later turns',async({browser,request})=>{
  const table=await tableFixture(browser,request,'ritual-otherworld'),errors:string[]=[];
  for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const m=JSON.parse(String(frame.payload));if(m.type==='error')errors.push(m.code);}));
@@ -22,7 +22,7 @@ test('actual ritual Vanmil otherworld absence remains nonterminal after browser 
   await chant();await attack(0);await until(()=>!game().activeWindow);
   expect(game().players[a]).toMatchObject({characterId:'c2-p07-r1c2',presence:'otherworld',damage:8});const away=structuredClone(game().self);expect(game().outcome).toBeNull();await ap.reload();
   await until(action);expect(game().self).toEqual(away);expect(game().logs.filter(x=>x.type==='PLAYER_DIED'&&x.actorId===a)).toEqual([]);expect(game().logs.filter(x=>x.type==='GAME_COMPLETED')).toEqual([]);
-  for(const card of ['a2-p05-r1c1',spear])expect(game().discard.filter(id=>id===card)).toHaveLength(1);
+  for(const card of ['a2-p05-r1c1',spear])expect((await storedDiscard()).filter(id=>id===card)).toHaveLength(1);
   for(const [i,p] of table.pages.entries()){await p.reload();await expect.poll(()=>views.get(ids[i]!)!.game!.players[a]!.presence).toBe('otherworld');expect(views.get(ids[i]!)!.game!.outcome).toBeNull();}expect(errors).toEqual([]);
  }finally{await table.close();}
 });

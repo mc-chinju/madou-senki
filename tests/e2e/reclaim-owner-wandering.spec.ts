@@ -1,6 +1,6 @@
 import {expect,test} from '@playwright/test';
 import {actionCards} from '../../packages/catalog/src/index.js';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 
 test('Actual protected death returns the reserved counter once to its wandering owner after browser reloads',async({browser,request})=>{
  const table=await tableFixture(browser,request,'reclaim-wandering');
@@ -26,7 +26,7 @@ test('Actual protected death returns the reserved counter once to its wandering 
   for(const p of table.pages)await p.reload();
   expect(own().players[b]!.presence).toBe('wandering');expect(own().players[c]!.presence).toBe('dead');
   expect(own().self.hand.filter(id=>id===counter)).toHaveLength(1);expect(own().reservedCards).toEqual([]);
-  expect(own().discard).not.toContain(counter);
+  expect((await storedDiscard())).not.toContain(counter);
   expect(own().logs.filter(e=>e.type==='PLAYER_WANDERING'&&e.actorId===b)).toHaveLength(1);
   for(const session of table.sessions.filter(s=>s.id!==b))expect(views.get(session.id)!.game!.self.hand).not.toContain(counter);
  }finally{await table.close();}

@@ -1,6 +1,6 @@
 import {expect,test,type Locator} from '@playwright/test';
 import {waterDragonPhysicalMode,waterDragonPhysicalScenarios} from '../../apps/worker/test/fixtures/water-dragon-physical-scenarios.js';
-import {observe,windowPassButtonName,tableFixture} from './helpers.js';
+import {observe,windowPassButtonName,tableFixture,storedDiscard} from './helpers.js';
 for(const scenario of waterDragonPhysicalScenarios)test(`${scenario} actual Water Dragon defense attack and source expiry survive reload`,async({browser,request})=>{
  const table=await tableFixture(browser,request,scenario),m=waterDragonPhysicalMode(scenario),errors:string[]=[];for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
  try{const views=await observe(table),ids=table.sessions.map(p=>p.id),[a,b,c,d]=ids as [string,string,string,string],page=table.pages[0]!,bp=table.pages[1]!;
@@ -20,7 +20,7 @@ for(const scenario of waterDragonPhysicalScenarios)test(`${scenario} actual Wate
   if(m.army){const panel=page.getByRole('region',{name:'全軍突撃せよ',exact:true});await panel.getByRole('combobox',{name:'突撃に使う従者',exact:true}).selectOption(m.card);await click(panel.getByRole('button',{name:'2枚を使って全軍突撃する',exact:true}));}else{const panel=page.getByRole('region',{name:'複数従者の攻撃'});await panel.getByRole('combobox',{name:'使う能力',exact:true}).selectOption('c2-p05-r1c2-ab02');await panel.getByRole('combobox',{name:'追加する従者',exact:true}).selectOption(m.card);await panel.getByRole('button',{name:'攻撃に加える',exact:true}).click();await click(panel.getByRole('button',{name:'選んだ従者で攻撃する',exact:true}));}
   if(m.maai||m.mirror){await settle('normal-defense');const panel=bp.getByRole('complementary',{name:'現在の判断'});await panel.getByRole('combobox',{name:'使うカード',exact:true}).selectOption(m.mirror?'a2-p11-r1c3':'a2-p07-r1c2');await click(panel.getByRole('button',{name:m.mirror?'防御する':'間合いを使う',exact:true}));}
  }
- await page.reload();await settle();await page.reload();const done=game(),alive=m.defense&&(m.sky||!m.destroy&&!m.fail&&m.attackLevel<7);expect(done.self.followers.map(f=>f.cardInstanceId)).toEqual(alive?[m.card]:[]);expect(done.discard.filter(id=>id===m.card)).toHaveLength(alive?0:1);
+ await page.reload();await settle();await page.reload();const done=game(),alive=m.defense&&(m.sky||!m.destroy&&!m.fail&&m.attackLevel<7);expect(done.self.followers.map(f=>f.cardInstanceId)).toEqual(alive?[m.card]:[]);expect((await storedDiscard()).filter(id=>id===m.card)).toHaveLength(alive?0:1);
  if(m.defense){expect([done.players[a]!.damage,done.players[c]!.damage]).toEqual(m.sky?[12,12]:[m.destroy?0:m.fail?18:m.attackLevel>7?6:0,0]);if(m.sky)expect(done.self.followers[0]!.revealed).toBe(false);}
  else{
   const recipients=m.dead?[c,d]:m.wander?[b,d]:m.maai||m.mirror||m.block?[c,d]:[b,c,d];for(const id of recipients)expect(stops(id)).toEqual([expect.objectContaining({kind:'stopped',sourceActorId:a})]);if(!recipients.includes(b))expect(stops(b)).toEqual([]);if(m.block||m.hp)expect(done.players[b]!.damage).toBe(0);else if(!m.dead&&!m.wander)expect(done.players[b]!.damage).toBe(m.maai||m.mirror?0:5);

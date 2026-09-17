@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 test('Jill explicitly heals the near other player without healing herself', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'lifetime-heal');
@@ -13,7 +13,7 @@ test('Jill explicitly heals the near other player without healing herself', asyn
     await passUntil(table, views, game => !game.activeWindow);
     expect(views.get(a)!.game!.self.damage).toBe(3);
     expect(views.get(b)!.game!.self.damage).toBe(0);
-    expect(views.get(a)!.game!.discard).toContain('a2-p14-r3c1');
+    expect((await storedDiscard())).toContain('a2-p14-r3c1');
   } finally { await table.close(); }
 });
 

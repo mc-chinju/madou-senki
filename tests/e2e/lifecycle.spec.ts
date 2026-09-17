@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 test('death gift distinguishes the spent card, transfers privately and survives reload', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'death-gift');
@@ -40,7 +40,7 @@ test('a third party can cancel the death gift before its private hand transfer',
     await expect.poll(() => views.get(a)?.game?.self.hand.includes('a2-p02-r2c3')).toBe(false);
     await passUntil(table, views, game => game.players[b]!.presence === 'dead' && !game.activeWindow);
     expect(views.get(c)!.game!.self.hand).not.toContain('a2-p05-r2c3');
-    expect(views.get(a)!.game!.discard).toContain('a2-p05-r2c3');
+    expect((await storedDiscard())).toContain('a2-p05-r2c3');
   } finally { await table.close(); }
 });
 

@@ -1,5 +1,5 @@
 import {expect,test} from '@playwright/test';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 
 test('Prayer reserved by its living owner is discarded after actual owner death across reloads',async({browser,request})=>{
  const table=await tableFixture(browser,request,'lia-prayer-fatal');
@@ -20,6 +20,6 @@ test('Prayer reserved by its living owner is discarded after actual owner death 
   await page.reload();
   const done=views.get(b)!.game!;expect(done.players[b]!.presence).toBe('dead');
   expect(done.reservedCards).toEqual([]);expect(done.self.hand).not.toContain(prayer);
-  expect(done.discard.filter(id=>id===prayer)).toHaveLength(1);
+  expect((await storedDiscard()).filter(id=>id===prayer)).toHaveLength(1);
  }finally{await table.close();}
 });

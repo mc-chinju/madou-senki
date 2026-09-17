@@ -1,6 +1,6 @@
 import {expect,test,type Locator} from '@playwright/test';
 import {advanceRemainingScenarios,advanceRemainingCards} from '../../apps/worker/test/fixtures/advance-remaining-physical-scenarios.js';
-import {observe,windowPassButtonName,tableFixture} from './helpers.js';
+import {observe,windowPassButtonName,tableFixture,storedDiscard} from './helpers.js';
 for(const scenario of advanceRemainingScenarios)test(`${scenario} physical mode and source remain consistent after reload`,async({browser,request})=>{
  const table=await tableFixture(browser,request,scenario),errors:string[]=[];for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
  try{const views=await observe(table),ids=table.sessions.map(p=>p.id),[a,b]=ids as [string,string],page=table.pages[0]!,bp=table.pages[1]!,index=Number(scenario.split('-')[2])-1,card=advanceRemainingCards[index]!,mode=scenario.split('-')[3],game=()=>views.get(a)!.game!,own=()=>game().self;
@@ -16,8 +16,8 @@ for(const scenario of advanceRemainingScenarios)test(`${scenario} physical mode 
  }
  await page.reload();await until(()=>!game().activeWindow);
  expect(game().players[b]!.damage).toBe(mode==='attack'?(index===0?4:index===1?5:3):mode==='advance'?10:0);expect(own().hand).not.toContain(card);
- if(mode==='approach'){expect(game().distances[a]![b]).toBe('near');expect(game().distances[b]![a]).toBe('near');expect(game().distanceMarkers).toEqual([{a,b,ownerId:a,cardInstanceId:card}]);expect(game().discard).not.toContain(card);}
- else{expect(game().distances).toEqual(distances);expect(game().discard.filter(id=>id===card)).toHaveLength(1);}
+ if(mode==='approach'){expect(game().distances[a]![b]).toBe('near');expect(game().distances[b]![a]).toBe('near');expect(game().distanceMarkers).toEqual([{a,b,ownerId:a,cardInstanceId:card}]);expect((await storedDiscard())).not.toContain(card);}
+ else{expect(game().distances).toEqual(distances);expect((await storedDiscard()).filter(id=>id===card)).toHaveLength(1);}
  expect(game().phase).toBe(mode==='attack'||mode==='advance'?'withdrawal':'action');await bp.reload();await expect.poll(()=>views.get(b)?.revision).toBe(views.get(a)!.revision);expect(errors).toEqual([]);
  }finally{await table.close();}
 });

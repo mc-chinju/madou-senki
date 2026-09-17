@@ -1,5 +1,5 @@
 import {expect,test,type Locator} from '@playwright/test';
-import {observe,tableFixture,windowPassButtonName} from './helpers.js';
+import {observe,tableFixture,windowPassButtonName,storedDiscard} from './helpers.js';
 test('actual approach and once-per-game Curse recovery precede ritual with distance and possessions retained after reload',async({browser,request})=>{
  const table=await tableFixture(browser,request,'ritual-history'),errors:string[]=[];
  for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const m=JSON.parse(String(frame.payload));if(m.type==='error')errors.push(m.code);}));
@@ -22,6 +22,6 @@ test('actual approach and once-per-game Curse recovery precede ritual with dista
   await until(()=>game().activeWindow?.kind==='reclaim'&&game().reclaim?.pendingActorId===a&&game().reclaim?.cardInstanceId===curse);const claim=game().reclaim!.claims.find(c=>c.right==='base');expect(claim).toBeDefined();await click(page.getByRole('region',{name:'カードの回収',exact:true}).getByRole('button',{name:claim!.label,exact:true}));await page.reload();await until(action);
   const before=structuredClone(game().self),distances=structuredClone(game().distances),attachments=[...game().players[a]!.attachments];expect(before.hand.filter(id=>id===curse)).toHaveLength(1);expect(distances).not.toEqual(initialDistances);
   await click(page.getByRole('button',{name:'儀式を行い、ヴァンミールへ変身する',exact:true}));await until(()=>game().activeWindow?.kind==='lifecycle-boundary');expect(game().self).toMatchObject({characterId:'c2-p07-r1c2',damage:0});expect(game().distances).toEqual(distances);expect(game().self.hand).toEqual(before.hand.filter(id=>id!==ritual));expect(game().self.followers).toEqual(before.followers);expect(game().self.chants).toEqual(before.chants);expect(game().players[a]!.attachments).toEqual(attachments);await page.reload();await until(()=>!game().activeWindow);
-  for(const [i,p] of table.pages.entries()){await p.reload();await expect.poll(()=>views.get(ids[i]!)!.game!.distances).toEqual(distances);expect(views.get(ids[i]!)!.game!.outcome).toBeNull();}expect(game().self.hand.filter(id=>id===curse)).toHaveLength(1);expect(game().discard.filter(id=>id===ritual)).toHaveLength(1);expect(errors).toEqual([]);
+  for(const [i,p] of table.pages.entries()){await p.reload();await expect.poll(()=>views.get(ids[i]!)!.game!.distances).toEqual(distances);expect(views.get(ids[i]!)!.game!.outcome).toBeNull();}expect(game().self.hand.filter(id=>id===curse)).toHaveLength(1);expect((await storedDiscard()).filter(id=>id===ritual)).toHaveLength(1);expect(errors).toEqual([]);
  }finally{await table.close();}
 });

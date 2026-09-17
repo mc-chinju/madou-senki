@@ -1,6 +1,6 @@
 import { currentCardAction } from './helpers.js';
 import { test, expect } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, storedDiscard, tableFixture } from './helpers.js';
 
 test('a persisted stop explains the limitation and keeps follower defense available', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'stopped-defense');
@@ -114,6 +114,7 @@ test('a reflected stop finishes the turn without refill and lets the next player
   try {
     const views = await observe(table); const owner = table.sessions[0]!.id; const page = table.pages[0]!;
     const before = views.get(owner)!.game!;
+    const discardBefore = await storedDiscard();
     expect(before.phase).toBe('withdrawal'); expect(before.self.hand.length).toBeLessThan(before.self.stats.handLimit);
     expect(before.players[owner]!.statuses[0]?.kind).toBe('stopped');
     await expect(page.getByRole('button', { name: '離脱', exact: true })).toHaveCount(0);
@@ -121,7 +122,7 @@ test('a reflected stop finishes the turn without refill and lets the next player
     await expect.poll(() => views.get(owner)?.game?.turnSeat).toBe(1);
     const after = views.get(owner)!.game!;
     expect(after.phase).toBe('turn-start'); expect(after.self.hand).toEqual(before.self.hand);
-    expect(after.deckCount).toBe(before.deckCount); expect(after.discard).toEqual(before.discard);
+    expect(after.deckCount).toBe(before.deckCount); expect(after.discardCount).toBe(before.discardCount); expect(await storedDiscard()).toEqual(discardBefore);
     expect(after.players[owner]!.statuses).toEqual(before.players[owner]!.statuses);
     await table.pages[1]!.getByRole('button', { name: '手番を始める', exact: true }).click();
     await expect(table.pages[1]!.getByRole('button', { name: 'カードを引く', exact: true })).toBeEnabled();

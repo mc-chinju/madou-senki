@@ -1,5 +1,5 @@
 import {expect,test,type Locator} from '@playwright/test';
-import {observe,windowPassButtonName,tableFixture} from './helpers.js';
+import {observe,windowPassButtonName,tableFixture,storedDiscard} from './helpers.js';
 test('Actual Fury Royal Knights bow reflection survives browser reload without new bonus dice',async({browser,request})=>{
  const table=await tableFixture(browser,request,'fury-royal-reflection'),errors:string[]=[];
  for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
@@ -38,6 +38,6 @@ test('Actual Fury Royal Knights bow reflection survives browser reload without n
  expect([done.players[a]!.damage,done.players[b]!.damage]).toEqual([5,0]);
  expect(done.recentRolls.filter(r=>r.purpose==='technique-value'||r.purpose==='attack-damage')).toEqual(rolls);
  expect(done.recentRolls.filter(r=>r.purpose==='ability-value')).toEqual([]);
- expect(done.discard.filter(id=>id==='a2-p21-r3c3')).toHaveLength(1);expect(done.activeWindow).toBeNull();expect(errors).toEqual([]);
+ expect((await storedDiscard()).filter(id=>id==='a2-p21-r3c3')).toHaveLength(1);expect(done.activeWindow).toBeNull();expect(errors).toEqual([]);
  }finally{await table.close();}
 });

@@ -1,5 +1,5 @@
 import {expect,test,type Locator,type Browser,type APIRequestContext} from '@playwright/test';
-import {observe,tableFixture,windowPassButtonName} from './helpers.js';
+import {observe,tableFixture,windowPassButtonName,storedDiscard} from './helpers.js';
 async function exercise(browser:Browser,request:APIRequestContext,stopped:boolean){
  const table=await tableFixture(browser,request,stopped?'ritual-stopped':'ritual-disabled'),errors:string[]=[];
  for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const m=JSON.parse(String(frame.payload));if(m.type==='error')errors.push(m.code);}));
@@ -16,9 +16,9 @@ async function exercise(browser:Browser,request:APIRequestContext,stopped:boolea
   else await until(()=>!game().activeWindow&&game().phase==='action'&&game().seatOrder[game().turnSeat]===a);
   expect(game().players[a]!.statuses.some(x=>x.kind===(stopped?'stopped':'ability-disabled'))).toBe(true);await page.reload();
   const use=page.getByRole('button',{name:'儀式を行い、ヴァンミールへ変身する',exact:true});
-  if(stopped){await expect(use).toHaveCount(0);expect(game().self.hand).toContain(ritual);expect(game().self.characterId).toBe('c2-p05-r1c1');expect(game().discard).not.toContain(ritual);expect(errors).toEqual([]);return;}
+  if(stopped){await expect(use).toHaveCount(0);expect(game().self.hand).toContain(ritual);expect(game().self.characterId).toBe('c2-p05-r1c1');expect((await storedDiscard())).not.toContain(ritual);expect(errors).toEqual([]);return;}
   const before=structuredClone(game().self),statuses=structuredClone(game().players[a]!.statuses);await click(use);await until(()=>game().activeWindow?.kind==='lifecycle-boundary');expect(game().self).toMatchObject({characterId:'c2-p07-r1c2',damage:0});expect(game().self.stats.endurance).toBe(25);expect(game().players[a]!.statuses).toEqual(statuses);await page.reload();await until(()=>!game().activeWindow);
-  expect(game().self.hand).toEqual(before.hand.filter(id=>id!==ritual));expect(game().discard.filter(id=>id===ritual)).toHaveLength(1);for(const [i,p] of table.pages.entries()){await p.reload();await expect.poll(()=>views.get(ids[i]!)!.game!.players[a]!.characterId).toBe('c2-p07-r1c2');expect(views.get(ids[i]!)!.game!.outcome).toBeNull();}expect(errors).toEqual([]);
+  expect(game().self.hand).toEqual(before.hand.filter(id=>id!==ritual));expect((await storedDiscard()).filter(id=>id===ritual)).toHaveLength(1);for(const [i,p] of table.pages.entries()){await p.reload();await expect.poll(()=>views.get(ids[i]!)!.game!.players[a]!.characterId).toBe('c2-p07-r1c2');expect(views.get(ids[i]!)!.game!.outcome).toBeNull();}expect(errors).toEqual([]);
  }finally{await table.close();}
 }
 test('actual Confusion disables Uonos abilities but physical ritual still transforms after reload',async({browser,request})=>exercise(browser,request,false));

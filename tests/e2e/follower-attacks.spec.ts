@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { currentCardAction, observe, passUntil, tableFixture } from './helpers.js';
+import { currentCardAction, observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 test('a placed Royal Guard attack leaves the defense column, survives reload and is spent', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'follower-attack-royal');
@@ -15,7 +15,7 @@ test('a placed Royal Guard attack leaves the defense column, survives reload and
     expect(currentCardAction(views.get(a)?.game)?.sourceZone).toBe('followers');
     await page.reload(); await expect(page.getByRole('region', { name: '現在の行動' })).toContainText('配置中の従者を使用');
     const done = await passUntil(table, views, game => !game.activeWindow);
-    expect(done.players[b]!.damage).toBe(5); expect(done.discard).toContain('a2-p21-r1c2');
+    expect(done.players[b]!.damage).toBe(5); expect((await storedDiscard())).toContain('a2-p21-r1c2');
     expect(views.get(a)!.game!.self.followers).toEqual([]);
   } finally { await table.close(); }
 });
@@ -29,7 +29,7 @@ test('cancellation never puts a paid follower attack back into the column', asyn
     await page.getByRole('button', { name: '割り込みを使う', exact: true }).click();
     await expect.poll(() => views.get(a)?.revision).toBeGreaterThan(revision);
     const done = await passUntil(table, views, game => !game.activeWindow);
-    expect(done.players[b]!.damage).toBe(0); expect(done.discard).toContain('a2-p21-r1c2');
+    expect(done.players[b]!.damage).toBe(0); expect((await storedDiscard())).toContain('a2-p21-r1c2');
     expect(views.get(a)!.game!.self.followers).toEqual([]); expect(views.get(a)!.game!.self.hand).not.toContain('a2-p21-r1c2');
   } finally { await table.close(); }
 });
@@ -46,7 +46,7 @@ test('Griffin repeats its two shared hits against each selected target', async (
     await expect.poll(() => views.get(a)?.game?.self.followers.length).toBe(0);
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(16); expect(done.players[table.sessions[3]!.id]!.damage).toBe(16);
-    expect(done.players[table.sessions[2]!.id]!.damage).toBe(0); expect(done.discard).toContain('a2-p20-r3c1');
+    expect(done.players[table.sessions[2]!.id]!.damage).toBe(0); expect((await storedDiscard())).toContain('a2-p20-r3c1');
   } finally { await table.close(); }
 });
 
@@ -83,7 +83,7 @@ test('Dwarves snapshot the current warrior level and resolve three hits at the s
     await panel.getByRole('button', { name: '従者で攻撃する', exact: true }).click();
     await expect.poll(() => views.get(a)?.game?.self.followers.length).toBe(0); await page.reload();
     const done = await passUntil(table, views, game => !game.activeWindow);
-    expect(done.players[table.sessions[1]!.id]!.damage).toBe(18); expect(done.discard).toContain('a2-p21-r2c3');
+    expect(done.players[table.sessions[1]!.id]!.damage).toBe(18); expect((await storedDiscard())).toContain('a2-p21-r2c3');
   } finally { await table.close(); }
 });
 
@@ -117,6 +117,6 @@ test('Beast King combines a placed Griffin and spends both sources for each inhe
     await page.reload(); await expect(page.getByRole('region', { name: '現在の行動' })).toContainText('組み合わせた従者も配置から外れ');
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(36); expect(done.players[table.sessions[3]!.id]!.damage).toBe(36);
-    expect(done.discard).toContain('a2-p20-r3c1'); expect(done.discard).toContain('a2-p09-r1c1');
+    expect((await storedDiscard())).toContain('a2-p20-r3c1'); expect((await storedDiscard())).toContain('a2-p09-r1c1');
   } finally { await table.close(); }
 });

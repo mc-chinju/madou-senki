@@ -1,7 +1,7 @@
 import {expect,test,type Browser,type APIRequestContext,type Locator} from '@playwright/test';
 import {actionCards} from '../../packages/catalog/src/index.js';
 import type {NamedDeathScenario,NamedDeathNegativeScenario} from '../../apps/worker/test/fixtures/named-follower-death-scenario.js';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 async function exercise(browser:Browser,request:APIRequestContext,scenario:NamedDeathScenario|NamedDeathNegativeScenario,name:string,mode:'decline'|'cancel'|'ban'){
  const table=await tableFixture(browser,request,scenario);
  try{
@@ -24,7 +24,7 @@ async function exercise(browser:Browser,request:APIRequestContext,scenario:Named
    await respondent.reload();
   }
   await passUntil(table,views,g=>!g.activeWindow,300);await p.reload();
-  await expect.poll(()=>own().discard.filter(c=>c===card).length).toBe(1);expect(own().self.hand).not.toContain(card);expect(own().reservedCards).not.toContain(card);
+  await expect.poll(async()=>(await storedDiscard()).filter(c=>c===card).length).toBe(1);expect(own().self.hand).not.toContain(card);expect(own().reservedCards).not.toContain(card);
  }finally{await table.close();}
 }
 test('Named death ship decline stays discarded after browser reload',async({browser,request})=>exercise(browser,request,'reclaim-named-death-ship','歌う船','decline'));

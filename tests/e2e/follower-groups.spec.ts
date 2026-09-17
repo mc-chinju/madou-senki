@@ -1,6 +1,6 @@
 import { allCardInstanceIds, type GameState } from '../../packages/engine/src/index.js';
 import { expect, test, type APIRequestContext, type Locator } from '@playwright/test';
-import { currentCardAction, observe, passUntil, tableFixture, windowPassButtonName } from './helpers.js';
+import { currentCardAction, observe, passUntil, tableFixture, windowPassButtonName,storedDiscard} from './helpers.js';
 
 async function addSource(panel: Locator, id: string) {
   await panel.getByRole('combobox', { name: '追加する従者', exact: true }).selectOption(id);
@@ -40,7 +40,7 @@ test('Upa explicitly orders two sources with separate targets and retains one fo
     expect(currentCardAction(defense)?.cardInstanceId).toBe('a2-p22-r2c2'); expect(defense.currentAttack?.technique.damage).toBe(12);
     const done = await passUntil(table, views, game => !game.activeWindow, 400);
     expect(done.players[b]!.damage).toBe(6); expect(done.players[d]!.damage).toBe(28);
-    expect(done.discard).toEqual(expect.arrayContaining(['a2-p20-r3c1', 'a2-p22-r2c2', 'a2-p21-r2c3']));
+    expect((await storedDiscard())).toEqual(expect.arrayContaining(['a2-p20-r3c1', 'a2-p22-r2c2', 'a2-p21-r2c3']));
     expect(done.followerBundle).toBeNull();
   } finally { await table.close(); }
 });
@@ -140,7 +140,7 @@ for (const wholeGrant of [true, false]) test(`Fate cancels ${wholeGrant ? 'the e
     await expect.poll(() => views.get(a)?.revision).toBeGreaterThan(revision);
     const done = await passUntil(table, views, game => !game.activeWindow, 400);
     expect(done.players[b]!.damage).toBe(wholeGrant ? 0 : 12);
-    expect(done.discard).toEqual(expect.arrayContaining(['a2-p20-r3c1', 'a2-p22-r2c2']));
+    expect((await storedDiscard())).toEqual(expect.arrayContaining(['a2-p20-r3c1', 'a2-p22-r2c2']));
     expect(done.self.followers).toEqual([]); expect(done.followerBundle).toBeNull();
   } finally { await table.close(); }
 });
@@ -161,7 +161,7 @@ test('Royal Guard reflects the actual low source and resumes the higher independ
     await page.reload(); await expect(page.getByRole('region', { name: '現在の行動' })).toContainText('王立騎士団による反射');
     const done = await passUntil(table, views, game => !game.activeWindow, 400);
     expect(done.players[a]!.damage).toBe(1); expect(done.players[b]!.damage).toBe(0);
-    expect(done.discard).toEqual(expect.arrayContaining(['a2-p18-r3c3', 'a2-p21-r2c1']));
+    expect((await storedDiscard())).toEqual(expect.arrayContaining(['a2-p18-r3c3', 'a2-p21-r2c1']));
   } finally { await table.close(); }
 });
 

@@ -1,5 +1,5 @@
 import {expect,test,type Locator} from '@playwright/test';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 
 test('Actual Arseil exit after reserved self-canceled Fate survives browser reloads and discards once',async({browser,request})=>{
  const table=await tableFixture(browser,request,'reclaim-exit');
@@ -27,7 +27,7 @@ test('Actual Arseil exit after reserved self-canceled Fate survives browser relo
   for(const p of table.pages)await p.reload();
   expect(game().players[b]!.presence).toBe('exited');expect(game().individualResults[b]).toBe('won');
   expect(own().reservedCards).toEqual([]);expect(own().self.hand).not.toContain(fate);
-  expect(game().discard.filter(id=>id===fate)).toHaveLength(1);
+  expect((await storedDiscard()).filter(id=>id===fate)).toHaveLength(1);
   expect(game().logs.filter(e=>e.type==='PLAYER_EXITED'&&e.actorId===b)).toHaveLength(1);
  }finally{await table.close();}
 });

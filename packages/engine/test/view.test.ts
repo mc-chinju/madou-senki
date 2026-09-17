@@ -63,3 +63,14 @@ it('projects self reveal at combat boundaries and out of turn without leaking co
 
 it('allowlists current action and attack identities without early locked values or private candidates',()=>{let s=ready();const attack=handCard(s,'A','踏み込み／弓');s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});let view=viewFor(s,'C');expect(view.currentAction).toMatchObject({actorId:'A',cardInstanceId:attack,targetIds:['B'],stage:'declaration',technique:{range:'far',useLevel:3}});expect((view.currentAction?.source==='card'?view.currentAction.technique:undefined)).not.toHaveProperty('effectLevel');expect((view.currentAction?.source==='card'?view.currentAction.technique:undefined)).not.toHaveProperty('damage');expect(view.reactionTargetActionId).toBe(view.currentAction!.actionId);expect(JSON.stringify(view)).not.toContain(s.players.B!.characterId);
   s=until(s,'normal-defense');view=viewFor(s,'C');expect(view.currentAttack).toMatchObject({attackerId:'A',targetIds:['B'],hitIndex:0,targetId:'B',reason:'normal-defense',technique:{effectLevel:3,damage:4,attributes:['遠','戦','弓']},targets:[{actorId:'B',hits:[{index:0,defended:false,hit:false}]}]});expect((view.currentAction?.source==='card'?view.currentAction.technique:undefined)).toMatchObject({effectLevel:3,damage:4,hitCount:1});});
+it('sends only the discard count, never discard pile card ids, to every viewer', () => {
+  const s = freshGame();
+  const discarded = { B: s.players.B!.hand.splice(0, 2), C: s.players.C!.hand.splice(0, 1) }; s.discard.push(...discarded.B, ...discarded.C);
+  for (const viewer of s.seatOrder) {
+    const v = viewFor(s, viewer);
+    expect(v).not.toHaveProperty('discard'); expect(v.discardCount).toBe(s.discard.length);
+    // Own draw history may name one's own cards; nobody else's discarded ids may appear.
+    const serialized = JSON.stringify(v);
+    for (const [owner, ids] of Object.entries(discarded)) if (owner !== viewer) for (const id of ids) expect(serialized).not.toContain(id);
+  }
+});

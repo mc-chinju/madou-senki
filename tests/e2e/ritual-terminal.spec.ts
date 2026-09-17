@@ -1,5 +1,5 @@
 import {expect,test,type Locator,type Browser,type APIRequestContext} from '@playwright/test';
-import {observe,tableFixture,windowPassButtonName} from './helpers.js';
+import {observe,tableFixture,windowPassButtonName,storedDiscard} from './helpers.js';
 async function exercise(browser:Browser,request:APIRequestContext,subordinates:boolean,conspiracy=false){
  const table=await tableFixture(browser,request,subordinates?'ritual-terminal-subordinates':'ritual-terminal',subordinates?6:4),errors:string[]=[];
  for(const page of table.pages)page.on('websocket',socket=>socket.on('framereceived',frame=>{const m=JSON.parse(String(frame.payload));if(m.type==='error')errors.push(m.code);}));
@@ -30,7 +30,7 @@ async function exercise(browser:Browser,request:APIRequestContext,subordinates:b
   await until(()=>game().players[a]!.presence==='pending-death');for(const id of ids)expect(views.get(id)!.game!.outcome).toBeNull();await ap.reload();
   await until(()=>!!game().outcome);const outcome=structuredClone(game().outcome);expect(outcome).toMatchObject({reason:'vanmil-death',winnerIds:conspiracy?[ids[5],ids[2],ids[4]]:subordinates?[ids[2],ids[4],ids[5]]:ids.slice(1)});expect(game().players[a]!.presence).toBe('dead');expect(game().activeWindow).toBeNull();
   if(conspiracy){expect(game().players[ids[5]!]!.presence).toBe('exited');expect(game().individualResults).toEqual({[ids[5]!]: 'won'});expect(outcome!.results[ids[5]!]).toBe('won');}
-  for(const card of ['a2-p05-r1c1','a2-p11-r1c1'])expect(game().discard.filter(id=>id===card)).toHaveLength(1);
+  for(const card of ['a2-p05-r1c1','a2-p11-r1c1'])expect((await storedDiscard()).filter(id=>id===card)).toHaveLength(1);
   for(const [i,page] of table.pages.entries()){await page.reload();await expect.poll(()=>views.get(ids[i]!)!.game!.outcome).toEqual(outcome);}expect(errors).toEqual([]);
  }finally{await table.close();}
 }

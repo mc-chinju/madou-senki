@@ -1,6 +1,6 @@
 import {expect,test,type Locator} from '@playwright/test';
 import {getAction} from '../../packages/catalog/src/index.js';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 type Table=Awaited<ReturnType<typeof tableFixture>>;
 type Views=Awaited<ReturnType<typeof observe>>;
 async function click(table:Table,views:Views,button:Locator){const actor=table.sessions[0]!.id,rev=views.get(actor)!.revision;await button.click();await expect.poll(()=>views.get(actor)?.revision).toBeGreaterThan(rev);}
@@ -16,7 +16,7 @@ for(const [index,cardInstanceId] of ['a2-p04-r3c2','a2-p04-r3c3'].entries())for(
   await click(table,views,panel.getByRole('button',{name:'この候補から1枚取得する',exact:true}));await p.reload();
   if(kind==='capacity'){await b.reload();const cap=views.get(oldOwner)!.game!.wishCapacity!,adjust=b.getByRole('complementary',{name:'祈願後の上限調整'});await expect(adjust).toContainText('詠唱札を1枚');await adjust.getByRole('checkbox',{name:getAction(cap.chantIds[0]!)!.name,exact:true}).check();await click(table,views,adjust.getByRole('button',{name:'選んだ札を捨てて続ける',exact:true}));}
   if(kind==='open'){expect(views.get(owner)!.game!.activeWindow!.kind).toBe('before-roll');await passUntil(table,views,g=>g.activeWindow?.kind==='after-roll');await d.reload();const result=await passUntil(table,views,g=>g.activeWindow?.kind==='revival'||g.activeWindow?.kind==='reclaim'||!g.activeWindow);if(result.activeWindow?.kind==='revival')await click(table,views,d.getByRole('button',{name:'復活しない',exact:true}));}
-  await passUntil(table,views,g=>!g.activeWindow);await p.reload();const result=views.get(owner)!.game!;expect(result.phase).toBe('hand-adjustment');expect(result.discard).toContain(cardInstanceId);expect(result.logs.filter(e=>e.type==='WISH_ACQUIRED')).toHaveLength(1);
+  await passUntil(table,views,g=>!g.activeWindow);await p.reload();const result=views.get(owner)!.game!;expect(result.phase).toBe('hand-adjustment');expect((await storedDiscard())).toContain(cardInstanceId);expect(result.logs.filter(e=>e.type==='WISH_ACQUIRED')).toHaveLength(1);
   if(kind==='hand'){await expect(p.getByRole('region',{name:'自分だけの祈願取得履歴'})).toBeVisible();await expect(b.getByRole('region',{name:'自分だけの祈願取得履歴'})).toBeVisible();await expect(table.pages[2]!.getByRole('region',{name:'自分だけの祈願取得履歴'})).toHaveCount(0);}
   if(kind==='open')expect(result.logs.filter(e=>e.type==='OPEN'&&e.cardInstanceId==='a2-p01-r1c1')).toHaveLength(1);
  }finally{await table.close();}
