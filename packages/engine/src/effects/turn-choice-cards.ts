@@ -28,7 +28,7 @@ export function turnChoiceCardOptions(s:GameState,actorId:string){
 export function playTurnChoiceCard(state:GameState,actorId:string,c:Command):TransitionResult {
  const option=turnChoiceCardOptions(state,actorId).find(o=>o.cardInstanceId===c.cardInstanceId);
  if(!option||!option.targetIds.includes(c.targetId)||c.mode==='astrology'&&!option.canUseAstrology)return {ok:false,code:'INVALID_TARGET'};
- const s=structuredClone(state);payTurnCardBatch(s,actorId,[c.cardInstanceId],effects[c.cardInstanceId]);const a=s.actions![s.windows!.at(-1)!.continuation.id]!;
+ const s=structuredClone(state);payTurnCardBatch(s,actorId,[c.cardInstanceId],effects[c.cardInstanceId],[c.targetId]);const a=s.actions![s.windows!.at(-1)!.continuation.id]!;
  a.targetIds=[c.targetId];a.turnCardTargetLifeId=lifeIdentity(s.players[c.targetId]!);a.turnCardAstrology=c.mode==='astrology';s.revision++;return {ok:true,state:s,events:[]};
 }
 export function resolveTurnChoiceCard(s:GameState,a:ActionFrame,dice:()=>number):boolean {

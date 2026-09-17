@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import type {GameCommand} from '@madou/protocol';
 import type {GameState} from '../state.js';
 import {hasPendingFatal,hasStatus} from '../state.js';
@@ -38,7 +39,7 @@ export function substituteOptions(s:GameState,actorId:string):AnytimeCardOption[
 export function acceptSubstitute(s:GameState,actorId:string,c:Extract<GameCommand,{type:'PLAY_ANYTIME_CARD'}>,random:()=>number,now:number):EngineErrorCode|undefined {
  if(!substituteOptions(s,actorId).some(o=>o.cardInstanceId===c.cardInstanceId&&o.targetEventId===c.targetEventId&&o.targetId===c.targetId&&o.groupId===c.groupId&&o.hitIndex===c.hitIndex))return 'INVALID_TARGET';
  const p=s.players[actorId]!,w=s.windows!.at(-1)!,source=s.actions![c.targetEventId]!,id=`a-${s.nextEventId++}`;
- (s.used??=[]).push(`${source.id}:${actorId}:${SUBSTITUTE}`);p.hand.splice(p.hand.indexOf(SUBSTITUTE),1);s.resolution.push(SUBSTITUTE);
+ (s.used??=[]).push(`${source.id}:${actorId}:${SUBSTITUTE}`);p.hand.splice(p.hand.indexOf(SUBSTITUTE),1);s.resolution.push(SUBSTITUTE);recordCardPlayed(s,actorId,SUBSTITUTE,'anytime',[c.targetId!]);
  s.actions![id]={id,eventId:source.eventId,parentWindowId:w.id,actorId,cardInstanceId:SUBSTITUTE,kind:'reaction',targetIds:[c.targetId!],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,reclaimOwnerLifeId:lifeIdentity(p),substituteBinding:{groupId:c.groupId!,targetId:c.targetId!,hitIndex:c.hitIndex!,sourceActionId:source.id,targetLifeId:lifeIdentity(s.players[c.targetId!]!)}};
  enqueueLifecycle(s,{kind:'declaration',id:`declare-${id}`,actionId:id,rootEventIds:[source.eventId]});refillHand(s,p,p.hand.length+1,random,now);
 }

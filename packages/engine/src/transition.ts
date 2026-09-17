@@ -1,3 +1,4 @@
+import {recordStepChanges,recordTurn} from './public-record.js';
 import {transitionChamGift} from './abilities/cham-death-gift.js';
 import {transitionSadLove} from './abilities/sad-love.js';
 import {transitionAllArmy} from './effects/all-army.js';
@@ -123,6 +124,7 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
   }
   if(s.turnSeat!==state.turnSeat)expireSourceTurn(s,s.seatOrder[s.turnSeat]!);
   normalizeTurn(s);cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);if(s.turnSeat!==state.turnSeat)s.turnNumber=(state.turnNumber??0)+1;cleanPeaceLifetimes(s);cleanCombinationSpirit(s);finalizeReclaimReservations(s);advanceDiscardResponses(s);stableOutcome(s,entropy.now);
+  recordStepChanges(state,s);if(s.turnSeat!==state.turnSeat&&state.phase!=='setup')recordTurn(s,'TURN_ENDED',state.seatOrder[state.turnSeat]!,(state.turnNumber??0)+1);
   for(const event of s.events.slice(state.events.length))event.at=entropy.now;
   result.events=structuredClone(s.events.slice(state.events.length));return result;
  }catch(error){if(error instanceof EntropyError)return {ok:false,code:'INVALID_ENTROPY'};throw error;}

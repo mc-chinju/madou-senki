@@ -1,3 +1,4 @@
+import {recordAbility} from '../public-record.js';
 import type {GameState} from '../state.js';
 import {canUseCharacterAbility, hasPendingFatal} from '../state.js';
 import type {GameInput, TransitionResult} from '../commands.js';
@@ -46,7 +47,7 @@ export function transitionSuppression(s:GameState, input:GameInput):TransitionRe
     actorId:p.id, targetIds:[...chosen].sort(), eventId:option.targetEventId, parentWindowId:w?.id??null,
     useOrdinal:1, costs:{ownAction:false}, stage:'declaration', canceled:false, rollIds:[],
     context:{kind:'suppression',sourceCharacterId:p.characterId,sourceLifeId:lifeIdentity(p),opportunityId:option.targetEventId}};
-  (next.abilities??={})[frame.id]=frame;
+  (next.abilities??={})[frame.id]=frame;recordAbility(next,'ABILITY_DECLARED',frame.actorId,frame.abilityId,frame.targetIds.filter(id=>id!==frame.actorId));
   (next.used??=[]).push(attempt(next,p.id,c.abilityId,option.targetEventId));
   openWindow(next,'declaration',frame.eventId,{kind:'ability',id:frame.id},w?participants(next,(next.seatOrder.indexOf(p.id)+1)%next.seatOrder.length):participants(next));
   next.revision++;return {ok:true,state:next,events:[]};

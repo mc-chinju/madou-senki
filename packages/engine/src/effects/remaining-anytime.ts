@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {substituteOptions,acceptSubstitute,substituteRestricted,SUBSTITUTE} from './substitute.js';
 import {informationAnytimeOptions,acceptInformationAnytime,PEACE,REVELATION} from './anytime-information.js';
 import {namedAnytimeOptions,acceptNamedAnytimeCard,type AnytimeCardOption} from './remaining-anytime-cards.js';
@@ -26,7 +27,7 @@ export function acceptAnytimeCard(s:GameState,actorId:string,c:Extract<GameComma
   if(c.targetId!==undefined||c.groupId!==undefined||c.hitIndex!==undefined||!anytimeCardOptions(s,actorId).some(o=>o.cardInstanceId===c.cardInstanceId&&o.targetEventId===c.targetEventId))return 'INVALID_TARGET';
   const p=s.players[actorId]!,w=s.windows!.at(-1)!,f=s.abilities![c.targetEventId]!;
   const key=`${f.eventId}:${actorId}:${COURAGE}`;if(s.used?.includes(key))return 'ALREADY_USED';
-  (s.used??=[]).push(key);p.hand.splice(p.hand.indexOf(COURAGE),1);s.resolution.push(COURAGE);
+  (s.used??=[]).push(key);p.hand.splice(p.hand.indexOf(COURAGE),1);s.resolution.push(COURAGE);recordCardPlayed(s,p.id,COURAGE,'anytime');
   const id=`a-${s.nextEventId++}`;
   (s.actions??={})[id]={id,eventId:f.eventId,parentWindowId:w.id,actorId,cardInstanceId:COURAGE,kind:'reaction',reclaimOwnerLifeId:lifeIdentity(p),
     targetIds:[],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,reactionMode:'cancel-ability',targetAbilityId:f.id};

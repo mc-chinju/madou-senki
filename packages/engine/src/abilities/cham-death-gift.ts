@@ -1,3 +1,4 @@
+import {recordAbility} from '../public-record.js';
 import type {GameState} from '../state.js';
 import {canUseCharacterAbility} from '../state.js';
 import type {GameInput,TransitionResult} from '../commands.js';
@@ -26,7 +27,7 @@ export function transitionChamGift(state:GameState,input:GameInput):TransitionRe
  if(task.kind!=='death-batch')throw Error('MISSING_DEATH_BATCH');
  (task.chamGifts??={})[p.id]={cardInstanceId:c.cardInstanceId,targetId:c.targetId,sourceLifeId:lifeIdentity(p),eligibleTargetIds:[...option.eligibleTargetIds]};
  const frame:AbilityFrame={id:`ability-${s.nextEventId++}`,source:'ability',abilityId:CHAM_GIFT,actorId:p.id,eventId:task.id,parentWindowId:s.windows!.at(-1)!.id,useOrdinal:1,targetIds:[c.targetId],costs:{ownAction:false},stage:'declaration',canceled:false,rollIds:[],context:{kind:'cham-gift',batchId:task.id}};
- (s.abilities??={})[frame.id]=frame;openWindow(s,'declaration',task.id,{kind:'ability',id:frame.id},participants(s,(s.seatOrder.indexOf(p.id)+1)%s.seatOrder.length));
+ (s.abilities??={})[frame.id]=frame;recordAbility(s,'ABILITY_DECLARED',frame.actorId,frame.abilityId,frame.targetIds.filter(id=>id!==frame.actorId));openWindow(s,'declaration',task.id,{kind:'ability',id:frame.id},participants(s,(s.seatOrder.indexOf(p.id)+1)%s.seatOrder.length));
  s.revision++;return {ok:true,state:s,events:[]};
 }
 export function resolveChamGift(s:GameState,f:AbilityFrame,now:number):void {

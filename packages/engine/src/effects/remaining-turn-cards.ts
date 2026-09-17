@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {requirePhysicalAction} from '../combat/action-source.js';
 import {beginWish} from './wish.js';
 import {resolveTurnChoiceCard} from './turn-choice-cards.js';
@@ -24,9 +25,9 @@ function beginTurnCard(s:GameState,actorId:string,ids:string[],effect:TurnEffect
   s.phase='combat';openWindow(s,'declaration',eventId??id,{kind:'action',id},participants(s));
 }
 /** The accepted whole batch is paid once; each physical source has its own declaration. */
-export function payTurnCardBatch(s:GameState,actorId:string,ids:string[],effect:TurnEffect):void {
+export function payTurnCardBatch(s:GameState,actorId:string,ids:string[],effect:TurnEffect,targetIds:string[]=[]):void {
   const p=s.players[actorId]!;
-  for(const id of ids){p.hand.splice(p.hand.indexOf(id),1);s.resolution.push(id);}
+  for(const id of ids){p.hand.splice(p.hand.indexOf(id),1);s.resolution.push(id);recordCardPlayed(s,actorId,id,'turn',targetIds);}
   beginTurnCard(s,actorId,ids,effect);
 }
 export function finishTurnCardBatch(s:GameState,a:ActionFrame):void {

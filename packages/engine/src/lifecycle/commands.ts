@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {discardPlayerCards} from '../discard.js';
 import {getCharacter} from '@madou/catalog';
 import {canUseCharacterAbility,hasStatus,type GameState} from '../state.js';
@@ -63,7 +64,7 @@ export function transitionLifecycleCommand(state:GameState,input:GameInput,now:n
  }
  const s=structuredClone(state);const actor=s.players[p.id]!;const current=s.windows?.at(-1);
  if(c.type==='PLAY_DEATH_GIFT'||c.type==='USE_REVIVAL_RITUAL'){
-  const card=c.type==='PLAY_DEATH_GIFT'?c.cardInstanceId:'a2-p05-r1c1';actor.hand.splice(actor.hand.indexOf(card),1);s.resolution.push(card);
+  const card=c.type==='PLAY_DEATH_GIFT'?c.cardInstanceId:'a2-p05-r1c1';actor.hand.splice(actor.hand.indexOf(card),1);s.resolution.push(card);recordCardPlayed(s,p.id,card,c.type==='PLAY_DEATH_GIFT'?'anytime':'turn',c.type==='PLAY_DEATH_GIFT'?[c.targetId]:[]);
   const id=`a-${s.nextEventId++}`;const eventId=current?.eventId??id;
   const action:ActionFrame={id,eventId,parentWindowId:current?.id??null,actorId:p.id,cardInstanceId:card,kind:'lifecycle',targetIds:c.type==='PLAY_DEATH_GIFT'?[c.targetId]:[p.id],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,lifecycleEffect:c.type==='PLAY_DEATH_GIFT'?{kind:'gift',giftCardInstanceId:c.giftCardInstanceId,targetId:c.targetId}:{kind:'ritual'}};
   (s.actions??={})[id]=action;if(c.type==='USE_REVIVAL_RITUAL')s.phase='hand-adjustment';

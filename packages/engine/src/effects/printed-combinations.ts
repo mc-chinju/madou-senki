@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {getAction} from '@madou/catalog';
 import type {GameState} from '../state.js';
 import type {ActionFrame,Technique} from '../reactions/continuations.js';
@@ -15,7 +16,7 @@ export function validPrintedComponents(s:GameState,actorId:string,ids:readonly s
 export function beginPrintedComponents(s:GameState,parent:ActionFrame,ids:readonly string[]):void{
  if(!ids.length)return;
  parent.printedComponents=ids.map(cardInstanceId=>({cardInstanceId,childId:`a-${s.nextEventId++}`,status:'pending'}));
- for(const source of parent.printedComponents){const p=s.players[parent.actorId]!;p.hand.splice(p.hand.indexOf(source.cardInstanceId),1);s.resolution.push(source.cardInstanceId);
+ for(const source of parent.printedComponents){const p=s.players[parent.actorId]!;p.hand.splice(p.hand.indexOf(source.cardInstanceId),1);s.resolution.push(source.cardInstanceId);recordCardPlayed(s,p.id,source.cardInstanceId,parent.kind==='defense'?'counter':'attack',parent.targetIds);
   if(source.cardInstanceId===COMBINATION_SPIRIT)(s.combinationSpirit??=[]).push({actorId:p.id,lifeId:lifeIdentity(p),sourceActionId:parent.id,componentActionId:source.childId,rootEventId:reclaimEventId(s,parent),turnSeat:s.turnSeat,turnNumber:s.turnNumber??0});
  }
  nextPrintedComponent(s,parent);

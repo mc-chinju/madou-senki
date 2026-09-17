@@ -271,8 +271,8 @@ function continueAction(s:GameState,a:ActionFrame,w:ReactionWindow,roll:()=>numb
   if(a.kind==='reaction'&&(w.kind==='declaration'||w.kind==='after-roll')){
     if(a.reactionMode==='effect-plus'&&a.reactionAmount===undefined){beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:'prayer-addition',formula:'d6',resume:{kind:'prayer',actionId:a.id}},roll);return;}
     const targetRoll=s.rolls?.find(frame=>frame.id===a.targetRollId);
-    if(targetRoll&&targetRoll.stage!=='applied'){if(a.reactionMode==='force-fail'){targetRoll.forcedFailure=true;targetRoll.success=false;}else if(a.reactionMode==='reroll'&&targetRoll.stage==='after-roll'){targetRoll.generation++;throwRoll(targetRoll,roll);}if(targetRoll.stage==='after-roll'&&targetRoll.resume.kind==='action-check'){const parent=s.actions?.[targetRoll.resume.actionId];if(parent)parent.roll={dice:[...targetRoll.faces],threshold:targetRoll.threshold!,success:targetRoll.success!};}}
-    const ability=s.abilities?.[a.targetAbilityId!];if(a.reactionMode==='cancel-ability'&&ability&&ability.stage==='declaration'&&!ability.canceled){ability.canceled=true;if(a.cardInstanceId===COURAGE)a.courageCancellationSucceeded=true;}
+    if(targetRoll&&targetRoll.stage!=='applied'){if(a.reactionMode==='force-fail'){targetRoll.forcedFailure=true;targetRoll.success=false;if(targetRoll.stage==='after-roll')recordRoll(s,targetRoll);}else if(a.reactionMode==='reroll'&&targetRoll.stage==='after-roll'){targetRoll.generation++;throwRoll(targetRoll,roll);recordRoll(s,targetRoll);}if(targetRoll.stage==='after-roll'&&targetRoll.resume.kind==='action-check'){const parent=s.actions?.[targetRoll.resume.actionId];if(parent)parent.roll={dice:[...targetRoll.faces],threshold:targetRoll.threshold!,success:targetRoll.success!};}}
+    const ability=s.abilities?.[a.targetAbilityId!];if(a.reactionMode==='cancel-ability'&&ability&&ability.stage==='declaration'&&!ability.canceled){ability.canceled=true;recordAbility(s,'ABILITY_CANCELED',ability.actorId,ability.abilityId);if(a.cardInstanceId===COURAGE)a.courageCancellationSucceeded=true;}
     const target=s.actions?.[a.targetActionId!];if(target){if(a.reactionMode==='cancel')target.canceled=true;else if(a.reactionMode==='effect-plus')addPrayer(s,target,a.reactionAmount??0);}
     if(a.reactionDedicated&&a.cardInstanceId==='a2-p05-r2c3'){if(!reserveReclaimCard(s,a.cardInstanceId,a.actorId,reclaimEventId(s,a),a.reclaimOwnerLifeId??`initial-life:${a.actorId}`))throw Error('MISSING_PRAYER_SOURCE');delete s.actions![a.id];resetParent(s,a.parentWindowId);}else completeAction(s,a,'none');return;
   }
@@ -427,7 +427,7 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
       const g=s.groups![c.groupId]!;if(g.postHitAdvancePaid)reject('ALREADY_USED');
       const pool=advanceCards(s,p.id);if(c.cardInstanceIds.some(id=>!pool.includes(id)))reject('CARD_NOT_IN_HAND');
-      for(const id of c.cardInstanceIds)moveToResolution(s,p,id);
+      for(const id of c.cardInstanceIds){moveToResolution(s,p,id);recordCardPlayed(s,p.id,id,'advance');}
       for(const scope of hitPaymentGroups(s,g)){scope.postHitAdvancePaid=true;scope.postHitAdvanceAmount=c.cardInstanceIds.length*5;
       for(const target of scope.targets){if(target.hitsApplied)continue;for(const hit of target.hits){if(!hit.defended&&hit.damage!==null)hit.damage+=scope.postHitAdvanceAmount*(hit.damageMultiplier??1);}}}
       s.windows!.pop();openWindow(s,'hit',g.actionId,{kind:'group',id:g.id,targetId:w.continuation.targetId});
@@ -453,14 +453,14 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(c.discard){s.discard.push(...target.chants.map(chant=>chant.cardInstanceId));target.chants=[];}
       s.windows!.pop();group.targetCursor++;nextDefense(s,group);
     }else if(c.type==='PASS_WITHDRAWAL'){
-      if(w||s.phase!=='withdrawal'||s.seatOrder[s.turnSeat]!==p.id)reject('WRONG_PHASE');
+      if(w||s.phase!=='withdrawal'||s.seatOrder[s.turnSeat]!==p.id)reject('WRONG_PHASE');recordPass(s,p.id,'withdrawal');
       if(hasStatus(p,'stopped')){completeOwnTurn(p,s);s.turnSeat=(s.turnSeat+1)%s.seatOrder.length;s.phase='turn-start';}else s.phase='hand-adjustment';
     }else if(c.type==='PLAY_MAAI'||c.type==='PLAY_ADVANCE'){
       if(!w||w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
       if(hasStatus(p,'stopped'))reject('STOPPED');
       if(w.kind==='approach'||w.kind==='withdrawal'){
         if(c.type==='PLAY_MAAI'&&c.additionalCardInstanceIds!==undefined)reject('ILLEGAL_DEFENSE');
-        if(w.continuation.kind!=='action')reject('WRONG_PHASE');const action=s.actions![w.continuation.id]!;const expected=c.type==='PLAY_MAAI'?'distance':'advance',maaiActor=action.distanceMode==='approach'?action.distanceTargetId:action.actorId;if((p.id===maaiActor)!==(c.type==='PLAY_MAAI'))reject('WRONG_PHASE');if(c.type==='PLAY_MAAI'&&c.abilityId&&!maaiAbilityOptions(s,p.id).some(o=>o.abilityId===c.abilityId))reject('ABILITY_DISABLED');if(!distanceCard(c.cardInstanceId,expected))reject('UNSUPPORTED_CARD');moveToResolution(s,p,c.cardInstanceId);
+        if(w.continuation.kind!=='action')reject('WRONG_PHASE');const action=s.actions![w.continuation.id]!;const expected=c.type==='PLAY_MAAI'?'distance':'advance',maaiActor=action.distanceMode==='approach'?action.distanceTargetId:action.actorId;if((p.id===maaiActor)!==(c.type==='PLAY_MAAI'))reject('WRONG_PHASE');if(c.type==='PLAY_MAAI'&&c.abilityId&&!maaiAbilityOptions(s,p.id).some(o=>o.abilityId===c.abilityId))reject('ABILITY_DISABLED');if(!distanceCard(c.cardInstanceId,expected))reject('UNSUPPORTED_CARD');moveToResolution(s,p,c.cardInstanceId);recordCardPlayed(s,p.id,c.cardInstanceId,expected==='distance'?'maai':'advance',[p.id===action.actorId?action.distanceTargetId!:action.actorId]);
         (action.distancePayments??=[]).push({cardInstanceId:c.cardInstanceId,actorId:p.id,lifeId:lifeIdentity(p),mode:expected});
         if(c.type==='PLAY_MAAI')(action.distanceMaais??=[]).push(c.cardInstanceId);else(action.distanceAdvances??=[]).push(c.cardInstanceId);
         if(c.type==='PLAY_MAAI'){startDistanceMaai(s,action,p.id);if(c.abilityId)beginDistanceMaaiAbility(s,action,p.id,c.cardInstanceId,c.abilityId);}else if(action.distanceMaai)syncDistanceMaai(s);else{const other=p.id===action.actorId?action.distanceTargetId!:action.actorId;action.distanceNextActorId=other;w.participants=[other];w.cursor=0;w.passed=[];w.revision++;}
@@ -472,12 +472,12 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
         if(new Set(cards).size!==cards.length||cards.some(id=>!p.hand.includes(id)||!distanceCard(id,'distance')))reject('UNSUPPORTED_CARD');
         if((technique.maaiAtomic||c.additionalCardInstanceIds!==undefined)&&cards.length+(group.maai!.submissions[p.id]?.length??0)!==required)reject('ILLEGAL_DEFENSE');
         if(c.abilityId&&!maaiAbilityOptions(s,p.id).some(o=>o.abilityId===c.abilityId))reject('ABILITY_DISABLED');
-        for(const id of cards)moveToResolution(s,p,id);
+        for(const id of cards){moveToResolution(s,p,id);recordCardPlayed(s,p.id,id,'maai',[group.attackerId]);}
         hit.maaiWasSubmitted=true;(group.maai!.submissions[p.id]??=[]).push(...cards);
         if(c.abilityId)beginMaaiAbility(s,group,p.id,c.cardInstanceId,c.abilityId,required,cards.slice(1));else offerMaaiPayment(s,group,p.id,c.cardInstanceId,'distance',required,lifeIdentity(p),cards.slice(1));
       }else if(w.kind==='defense-advance'&&c.type==='PLAY_ADVANCE'){
         if(w.continuation.kind!=='group')reject('WRONG_PHASE');if(!distanceCard(c.cardInstanceId,'advance'))reject('UNSUPPORTED_CARD');
-        const group=s.groups![w.continuation.id]!,needed=maaiAdvanceLimit(s,group);if(group.maai!.advances.length>=needed)reject('ILLEGAL_DEFENSE');moveToResolution(s,p,c.cardInstanceId);group.maai!.advances.push(c.cardInstanceId);
+        const group=s.groups![w.continuation.id]!,needed=maaiAdvanceLimit(s,group);if(group.maai!.advances.length>=needed)reject('ILLEGAL_DEFENSE');moveToResolution(s,p,c.cardInstanceId);recordCardPlayed(s,p.id,c.cardInstanceId,'advance');group.maai!.advances.push(c.cardInstanceId);
         offerMaaiPayment(s,group,p.id,c.cardInstanceId,'advance',needed);
       }else reject('WRONG_PHASE');
     }else if(c.type==='PLAY_REACTION'){
@@ -493,7 +493,7 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(!expected)reject('UNSUPPORTED_CARD');if(!p.hand.includes(c.cardInstanceId))reject('CARD_NOT_IN_HAND');
       const dedicated='dedicated' in c&&!!c.dedicated;if(dedicated&&(c.cardInstanceId!=='a2-p05-r2c3'||getCharacter(p.characterId)?.name!=='リーア姫'))reject('UNSUPPORTED_CARD');if(c.cardInstanceId==='a2-p05-r2c3'&&!dedicated&&action!.actorId!==p.id)reject('INVALID_TARGET');
       const eventId=targetRoll?.eventId??ability?.eventId??action!.eventId;const key=`${eventId}:${p.id}:${c.cardInstanceId}`;if(s.used?.includes(key))reject('ALREADY_USED');(s.used??=[]).push(key);
-      p.hand.splice(p.hand.indexOf(c.cardInstanceId),1);s.resolution.push(c.cardInstanceId);
+      p.hand.splice(p.hand.indexOf(c.cardInstanceId),1);s.resolution.push(c.cardInstanceId);recordCardPlayed(s,p.id,c.cardInstanceId,'anytime',action&&action.actorId!==p.id?[action.actorId]:[]);
       const id=`a-${s.nextEventId++}`;const base=techniqueFor('a2-p05-r3c1')!;const reaction:ActionFrame={reclaimOwnerLifeId:lifeIdentity(p),id,eventId,parentWindowId:w.id,actorId:p.id,cardInstanceId:c.cardInstanceId,kind:'reaction',targetIds:[],technique:base,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,reactionMode:c.mode,...(action?{targetActionId:action.id}:{}),...(ability?{targetAbilityId:ability.id}:{}),...(targetRoll?{targetRollId:targetRoll.id}:{}),...(dedicated?{reactionDedicated:true,reclaimOwnerLifeId:lifeIdentity(p)}:{})};
       (s.actions??={})[id]=reaction;if(c.mode!=='effect-plus'||dedicated){enqueueLifecycle(s,{kind:'declaration',rootEventIds:[eventId],id:`declare-${id}`,actionId:id});refillHand(s,p,p.hand.length+1,randomSource(entropy),entropy.now);}else openWindow(s,'declaration',eventId,{kind:'action',id},participants(s,(s.seatOrder.indexOf(p.id)+1)%s.seatOrder.length));
     }else if(c.type==='CANCEL_REACTION'){
@@ -505,6 +505,8 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(w&&w.kind!=='reclaim')resetParent(s,w.id);
     }else if(c.type==='PASS'){
       if(!w)reject('WRONG_PHASE');if(w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
+      // Reclaim windows stay unrecorded: who holds a reclaim right is secret (G11).
+      if(w.kind!=='reclaim')recordPass(s,p.id,w.kind);
       if(w.kind==='approach'||w.kind==='withdrawal') {if(w.continuation.kind!=='action')reject('WRONG_PHASE');const action=s.actions![w.continuation.id]!;s.windows!.pop();const success=p.id===action.distanceTargetId;finishDistance(s,action,success);}
       else if(w.kind==='reclaim'&&s.reclaimDecisions?.find(d=>d.windowId===w.id)?.stage==='beneficiary-choice'){
         const error=chooseReclaim(s,p.id,{type:'CHOOSE_RECLAIM',decisionId:w.continuation.id,choice:'decline'},roll);if(error)reject(error);resumeReclaimDispositions(s);
@@ -524,7 +526,7 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(c.type==='APPROACH'){if(s.phase!=='action')reject('WRONG_PHASE');if(s.distances[p.id]![c.targetId]!=='far'||!distanceCard(c.cardInstanceId,'advance'))reject('OUT_OF_RANGE');}
       else {if(s.phase!=='withdrawal')reject('WRONG_PHASE');if(s.distances[p.id]![c.targetId]!=='near'||!distanceCard(c.cardInstanceId,'distance'))reject('OUT_OF_RANGE');}
       if(c.type==='WITHDRAW'&&c.abilityId&&!maaiAbilityOptions(s,p.id).some(o=>o.abilityId===c.abilityId))reject('ABILITY_DISABLED');
-      moveToResolution(s,p,c.cardInstanceId);const id=`a-${s.nextEventId++}`;const mode=c.type==='APPROACH'?'approach':'withdrawal';const action:ActionFrame={id,eventId:id,parentWindowId:null,actorId:p.id,cardInstanceId:c.cardInstanceId,kind:'distance',reclaimOwnerLifeId:lifeIdentity(p),distancePayments:[{cardInstanceId:c.cardInstanceId,actorId:p.id,lifeId:lifeIdentity(p),mode:c.type==='APPROACH'?'advance':'distance'}],targetIds:[c.targetId],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,distanceMode:mode,distanceTargetId:c.targetId,distanceNextActorId:c.targetId,distanceAdvances:c.type==='APPROACH'?[c.cardInstanceId]:[],distanceMaais:c.type==='WITHDRAW'?[c.cardInstanceId]:[]};(s.actions??={})[id]=action;s.phase=c.type==='APPROACH'?'combat':'withdrawal';openWindow(s,mode,id,{kind:'action',id},[c.targetId]);if(c.type==='WITHDRAW'){startDistanceMaai(s,action,p.id);if(c.abilityId)beginDistanceMaaiAbility(s,action,p.id,c.cardInstanceId,c.abilityId);}
+      moveToResolution(s,p,c.cardInstanceId);recordCardPlayed(s,p.id,c.cardInstanceId,c.type==='APPROACH'?'advance':'maai',[c.targetId]);const id=`a-${s.nextEventId++}`;const mode=c.type==='APPROACH'?'approach':'withdrawal';const action:ActionFrame={id,eventId:id,parentWindowId:null,actorId:p.id,cardInstanceId:c.cardInstanceId,kind:'distance',reclaimOwnerLifeId:lifeIdentity(p),distancePayments:[{cardInstanceId:c.cardInstanceId,actorId:p.id,lifeId:lifeIdentity(p),mode:c.type==='APPROACH'?'advance':'distance'}],targetIds:[c.targetId],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,distanceMode:mode,distanceTargetId:c.targetId,distanceNextActorId:c.targetId,distanceAdvances:c.type==='APPROACH'?[c.cardInstanceId]:[],distanceMaais:c.type==='WITHDRAW'?[c.cardInstanceId]:[]};(s.actions??={})[id]=action;s.phase=c.type==='APPROACH'?'combat':'withdrawal';openWindow(s,mode,id,{kind:'action',id},[c.targetId]);if(c.type==='WITHDRAW'){startDistanceMaai(s,action,p.id);if(c.abilityId)beginDistanceMaaiAbility(s,action,p.id,c.cardInstanceId,c.abilityId);}
     }else if(c.type==='ATTACK'||c.type==='PLAY_DEFENSE'||c.type==='PLAY_GROUP_DEFENSE'||c.type==='PLAY_TURN_TECHNIQUE'){
       if(p.statuses?.some(x=>x.kind==='stopped'))reject('STOPPED');
       const groupMode=c.type==='PLAY_GROUP_DEFENSE';
@@ -562,9 +564,12 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       const followerTransfer=c.type==='PLAY_TURN_TECHNIQUE'&&c.followerTransfer?acceptMagicGate(s,p.id,targetIds[0]!,c.followerTransfer):undefined;
       const id=`a-${s.nextEventId++}`;const eventId=printedGranted?`${printedGranted.id}-attack`:granted?`${granted.id}-attack`:group?`${group.id}-${p.id}-0`:id;const key=`${eventId}:${p.id}:${c.cardInstanceId}`;
       if(s.used?.includes(key))reject('ALREADY_USED');(s.used??=[]).push(key);
+      const use=c.type==='ATTACK'?'attack':c.type==='PLAY_TURN_TECHNIQUE'?'turn':technique.defense==='counter'?'counter':'defense';
       if(coSource){s.used.push(`${eventId}:${p.id}:${coSource.cardInstanceId}`);if(coSource.fromFollowers)p.followers=p.followers.filter(f=>f.cardInstanceId!==coSource.cardInstanceId);else if(coSource.fromChant)p.chants=p.chants.filter(ch=>ch.cardInstanceId!==coSource.cardInstanceId);else p.hand.splice(p.hand.indexOf(coSource.cardInstanceId),1);s.resolution.push(coSource.cardInstanceId);}
       for(const cost of advanceCosts??[])moveToResolution(s,p,cost);
       if(fromFollowers)p.followers=p.followers.filter(f=>f.cardInstanceId!==c.cardInstanceId);else if(fromHand)p.hand.splice(p.hand.indexOf(c.cardInstanceId),1);else p.chants=p.chants.filter(x=>x.cardInstanceId!==c.cardInstanceId);s.resolution.push(c.cardInstanceId);
+      recordCardPlayed(s,p.id,c.cardInstanceId,use,targetIds);if(coSource)recordCardPlayed(s,p.id,coSource.cardInstanceId,use,targetIds);
+      for(const cost of advanceCosts??[])recordCardPlayed(s,p.id,cost,'advance');
       const noChecks=technique.noChecks||(c.type==='PLAY_DEFENSE'&&technique.counterNoChecks);const stats=gameStats(s,p.id,{technique});
       const checkSpecs:NonNullable<ActionFrame['checkSpecs']>=noChecks?[]:Array.from({length:Math.max(0,technique.useLevel-(technique.school==='warrior'?stats.warrior_level:stats.magic_level))},()=>({purpose:'excess-level' as const,modifier:0}));
       if((!noChecks||!!coSource)&&technique.activationCheckModifier!==undefined)checkSpecs.unshift({purpose:'activation',modifier:technique.activationCheckModifier});
@@ -621,3 +626,4 @@ export function continueFollowerBundle(s:GameState,b:FollowerBundle):void{
  nextDefense(s,g);
 }
 import {printedTechniqueAllowed} from './printed-restrictions.js';
+import {recordAbility,recordCardPlayed,recordPass,recordRoll} from '../public-record.js';

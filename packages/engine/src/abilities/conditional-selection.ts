@@ -1,3 +1,4 @@
+import {recordAbility} from '../public-record.js';
 import {cleanSadLove} from './sad-love-state.js';
 import type {ConditionalAbilityId} from '@madou/protocol';
 import type {GameState,PlayerState} from '../state.js';
@@ -41,11 +42,11 @@ export function transitionConditionalAbility(s:GameState,input:GameInput):Transi
  if(chosen.some(id=>!o.eligibleTargetIds?.includes(id)))return {ok:false,code:'INVALID_TARGET'};
  if(c.enabled&&o.enabled&&JSON.stringify([...chosen].sort())===JSON.stringify([...o.selectedTargetIds].sort()))return {ok:false,code:'INVALID_COMMAND'};
  const next=structuredClone(s),p=next.players[input.actorId]!;
- if(!c.enabled){p.conditionalSelections=p.conditionalSelections?.filter(x=>x.abilityId!==c.abilityId)??[];for(const pending of Object.values(next.abilities??{}))if(pending.actorId===p.id&&pending.abilityId===c.abilityId&&pending.context.kind==='conditional-stat')pending.canceled=true;}
+ if(!c.enabled){p.conditionalSelections=p.conditionalSelections?.filter(x=>x.abilityId!==c.abilityId)??[];for(const pending of Object.values(next.abilities??{}))if(pending.actorId===p.id&&pending.abilityId===c.abilityId&&pending.context.kind==='conditional-stat'&&!pending.canceled){pending.canceled=true;recordAbility(next,'ABILITY_CANCELED',p.id,c.abilityId);}}
  else {
   const w=next.windows?.at(-1);
   const f:AbilityFrame={source:'ability',id:`ability-${next.nextEventId++}`,abilityId:c.abilityId,actorId:p.id,targetIds:[...chosen].sort(),eventId:c.targetEventId,parentWindowId:w?.id??null,useOrdinal:1,costs:{ownAction:false},stage:'declaration',canceled:false,rollIds:[],context:{kind:'conditional-stat',sourceCharacterId:c.abilityId.split('-ab')[0]!,opportunityId:c.targetEventId}};
-  (next.abilities??={})[f.id]=f;(next.used??=[]).push(key(c.targetEventId,p.id,c.abilityId));
+  (next.abilities??={})[f.id]=f;recordAbility(next,'ABILITY_DECLARED',f.actorId,f.abilityId,f.targetIds.filter(id=>id!==f.actorId));(next.used??=[]).push(key(c.targetEventId,p.id,c.abilityId));
   openWindow(next,'declaration',f.eventId,{kind:'ability',id:f.id},w?participants(next,(next.seatOrder.indexOf(p.id)+1)%next.seatOrder.length):participants(next));
  }
  next.revision++;return {ok:true,state:next,events:[]};

@@ -131,16 +131,18 @@ it('actual recovery decision and name budget survive reload and duplicate accept
 });
 it('zero-right and owned worlds retain the same all-seat schedule through disconnect and explicit passes',async()=>{
   const owner=await openTestRoom('reclaim-owned'),none=await openTestRoom('reclaim-unowned');
+  // The rooms commit at different wall-clock times; the public record's content must still match.
+  const outside=async(room:typeof owner,id:string)=>{const view=(await room.snapshotFor(id)).game!;return {...view,logs:view.logs.map(log=>({...log,at:0}))};};
   await heal(owner);await heal(none);
   await until(owner,s=>s.windows?.at(-1)?.kind==='reclaim','resolve');await until(none,s=>s.windows?.at(-1)?.kind==='reclaim','resolve');
   for(let n=0;n<4;n++) {
-    for(const id of ['B','C','D'])expect((await owner.snapshotFor(id)).game).toEqual((await none.snapshotFor(id)).game);
+    for(const id of ['B','C','D'])expect(await outside(owner,id)).toEqual(await outside(none,id));
     const before=await none.stored();await none.restart();expect(await none.stored()).toEqual(before);
     const s=await game(owner),w=s.windows!.at(-1)!,actorId=w.participants[w.cursor]!;
     const a=await send(owner,actorId,`pass-${n}`,{type:'PASS'}),b=await send(none,actorId,`pass-${n}`,{type:'PASS'});expect(b.ack).toEqual(a.ack);await replay(owner,a);await replay(none,b);for(const room of [owner,none])expect(allCardInstanceIds(await game(room)).sort()).toEqual(actionCards.map(c=>c.id).sort());
   }
   expect((await game(owner)).phase).toBe('hand-adjustment');expect((await game(none)).phase).toBe('hand-adjustment');
-  for(const id of ['B','C','D'])expect((await owner.snapshotFor(id)).game).toEqual((await none.snapshotFor(id)).game);for(const room of [owner,none]){const s=await game(room);expect(s.windows??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);expect(Object.values(s.actions??{})).toEqual([]);expect(s.lifecycle??[]).toEqual([]);}
+  for(const id of ['B','C','D'])expect(await outside(owner,id)).toEqual(await outside(none,id));for(const room of [owner,none]){const s=await game(room);expect(s.windows??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);expect(Object.values(s.actions??{})).toEqual([]);expect(s.lifecycle??[]).toEqual([]);}
 });
 it('a reclaimed cancellation stays reserved across parent reload and returns once after all source decisions',async()=>{
   const room=await openTestRoom('reclaim-owned');await heal(room);await send(room,'A','first-pass',{type:'PASS'});
