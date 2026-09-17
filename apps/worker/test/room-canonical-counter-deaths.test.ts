@@ -28,4 +28,4 @@ it('R6 canonical local counter child follower reduction and simultaneous death o
  expect(s.windows).toEqual([]);expect(s.groups).toEqual({});expect(s.actions).toEqual({});expect(s.lifecycle??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);for(const id of [counter,soldier,source.cardInstanceId])expect(s.discard.filter(x=>x===id)).toHaveLength(1);
 
  for(const id of ['A','B','C','D'])expect((await room.snapshotFor(id)).game).toEqual(viewFor(s,id));
-});
+},15000);

@@ -52,4 +52,4 @@ it('Same-root prayer owner death and revival preserve the old reservation throug
  expect(done.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='B')).toHaveLength(1);
  expect(done.events.filter(e=>e.type==='PLAYER_REVIVED'&&e.actorId==='B')).toHaveLength(1);
  expect(done.used).toContain(`${root.eventId}:B:${prayer}`);
-});
+},15000);

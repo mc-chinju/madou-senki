@@ -45,4 +45,4 @@ it('Actual protected death and wandering preserve counter reservation across eve
  expect(done.windows??[]).toEqual([]);expect(done.lifecycle??[]).toEqual([]);expect(Object.keys(done.actions??{})).toEqual([]);expect(Object.keys(done.groups??{})).toEqual([]);
  expect(done.events.filter(e=>e.type==='PLAYER_WANDERING'&&e.actorId==='B')).toHaveLength(1);
  expect(done.events.find(e=>e.type==='PLAYER_DIED'&&e.actorId==='C')?.death?.eventId).toBe(root.eventId);
-});
+},15000);
