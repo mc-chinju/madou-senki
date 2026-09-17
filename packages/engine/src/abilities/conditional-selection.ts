@@ -42,7 +42,7 @@ export function transitionConditionalAbility(s:GameState,input:GameInput):Transi
  if(chosen.some(id=>!o.eligibleTargetIds?.includes(id)))return {ok:false,code:'INVALID_TARGET'};
  if(c.enabled&&o.enabled&&JSON.stringify([...chosen].sort())===JSON.stringify([...o.selectedTargetIds].sort()))return {ok:false,code:'INVALID_COMMAND'};
  const next=structuredClone(s),p=next.players[input.actorId]!;
- if(!c.enabled){p.conditionalSelections=p.conditionalSelections?.filter(x=>x.abilityId!==c.abilityId)??[];for(const pending of Object.values(next.abilities??{}))if(pending.actorId===p.id&&pending.abilityId===c.abilityId&&pending.context.kind==='conditional-stat'&&!pending.canceled){pending.canceled=true;recordAbility(next,'ABILITY_CANCELED',p.id,c.abilityId);}}
+ if(!c.enabled){p.conditionalSelections=p.conditionalSelections?.filter(x=>x.abilityId!==c.abilityId)??[];for(const pending of Object.values(next.abilities??{}))if(pending.actorId===p.id&&pending.abilityId===c.abilityId&&pending.context.kind==='conditional-stat'&&!pending.canceled){pending.canceled=true;}recordAbility(next,'ABILITY_CANCELED',p.id,c.abilityId,o.selectedTargetIds);}
  else {
   const w=next.windows?.at(-1);
   const f:AbilityFrame={source:'ability',id:`ability-${next.nextEventId++}`,abilityId:c.abilityId,actorId:p.id,targetIds:[...chosen].sort(),eventId:c.targetEventId,parentWindowId:w?.id??null,useOrdinal:1,costs:{ownAction:false},stage:'declaration',canceled:false,rollIds:[],context:{kind:'conditional-stat',sourceCharacterId:c.abilityId.split('-ab')[0]!,opportunityId:c.targetEventId}};

@@ -1,3 +1,4 @@
+import {getAction} from '@madou/catalog';
 import {expect, it} from 'vitest';
 import {gameStats, viewFor, type GameEvent, type GameState, type LogView} from '../src/index.js';
 import {act, closeWindow, finish, pass, passReclaims, ready, until} from './combat-helpers.js';
@@ -198,4 +199,40 @@ it('projects each record type through a fixed field allowlist and hides a concea
   const own = viewFor(s, 'B').logs;
   expect(own.find(log => log.type === 'ABILITY_DECLARED')).toMatchObject({abilityId: 'secret-ability', targetIds: ['D']});
   expect(own.find(log => log.type === 'ROLL_RESOLVED')!.roll).toMatchObject({threshold: 8, success: true});
+});
+
+
+it.each([true, false])('records resolved conditional and sad-love deactivation (revealed=%s)', revealed => {
+  for (const sadLove of [false, true]) {
+    let s = ready();
+    character(s, 'A', sadLove ? '獣使いのウパニシャット' : '有翼人のティア');
+    s.players.A!.revealed = revealed;
+    const abilityId = sadLove ? 'c2-p05-r1c2-ab05' : 'c2-p02-r1c1-ab04';
+    const toggle = (enabled: boolean) => {
+      const v = viewFor(s, 'A');
+      const targetEventId = sadLove ? v.sadLove!.targetEventId! : v.conditionalAbilities.find(o => o.abilityId === abilityId)!.targetEventId!;
+      return act(s, 'A', sadLove
+        ? {type: 'USE_ABILITY', abilityId, mode: 'aura', enabled, targetEventId}
+        : {type: 'SET_CONDITIONAL_ABILITY', abilityId: abilityId as 'c2-p02-r1c1-ab04', enabled, targetEventId});
+    };
+    s = finish(toggle(true));
+    const since = s.nextEventId;
+    s = toggle(false);
+    const own = record(s, 'A').filter(log => log.id >= since && log.type === 'ABILITY_CANCELED');
+    expect(own).toEqual([expect.objectContaining({actorId: 'A', abilityId})]);
+    const other = record(s, 'C').filter(log => log.id >= since && log.type === 'ABILITY_CANCELED');
+    expect(other).toHaveLength(1);
+    if (revealed) expect(other[0]).toMatchObject({abilityId});
+    else expect(other[0]).not.toHaveProperty('abilityId');
+  }
+});
+
+it('records the public target of revelation in the third-party history', () => {
+  let s = ready();
+  const cardInstanceId = handCard(s, 'A', getAction('a2-p02-r1c2')!.name);
+  const option = viewFor(s, 'A').anytimeCardOptions.find(o => o.cardInstanceId === cardInstanceId && o.targetId === 'B')!;
+  s = act(s, 'A', {type: 'PLAY_ANYTIME_CARD', cardInstanceId, targetEventId: option.targetEventId, targetId: 'B'});
+  expect(record(s, 'C').filter(log => log.cardInstanceId === cardInstanceId)).toEqual([
+    expect.objectContaining({type: 'CARD_PLAYED', actorId: 'A', use: 'anytime', targetIds: ['B']}),
+  ]);
 });

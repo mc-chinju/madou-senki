@@ -27,7 +27,7 @@ export function transitionSadLove(state:GameState,input:GameInput):TransitionRes
   if(c.targetEventId!==o.targetEventId)return {ok:false,code:'INVALID_TARGET'};
  }else if(c.mode!=='substitute'||!o.substitutions.some(o=>o.targetEventId===c.targetEventId&&o.targetId===c.targetId&&o.groupId===c.groupId&&o.hitIndex===c.hitIndex))return {ok:false,code:'INVALID_TARGET'};
  const s=structuredClone(state),p=s.players[input.actorId]!,w=s.windows?.at(-1);
- if(c.mode==='aura'&&!c.enabled){delete p.sadLoveAura;for(const f of Object.values(s.abilities??{}))if(f.actorId===p.id&&f.context.kind==='sad-love'&&f.context.mode==='aura')f.canceled=true;}
+ if(c.mode==='aura'&&!c.enabled){delete p.sadLoveAura;for(const f of Object.values(s.abilities??{}))if(f.actorId===p.id&&f.context.kind==='sad-love'&&f.context.mode==='aura')f.canceled=true;recordAbility(s,'ABILITY_CANCELED',p.id,SAD_LOVE);}
  else{
   const context:SadLoveContext={kind:'sad-love',mode:c.mode,opportunityId:c.targetEventId,sourceLifeId:lifeIdentity(p)};
   if(c.mode==='substitute'){p.sadLoveSubstitutionSpent=true;context.binding={groupId:c.groupId!,targetId:c.targetId!,hitIndex:c.hitIndex!,sourceActionId:c.targetEventId,targetLifeId:lifeIdentity(s.players[c.targetId!]!)};}
