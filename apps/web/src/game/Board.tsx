@@ -131,7 +131,7 @@ export function Board({room,actorId,disabled:connectionDisabled,send}:{room:Room
  <DistanceExchangeSummary progress={view.distanceExchange} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
  <MaaiDefenseSummary progress={view.maaiDefense} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
  <InspectionPanel view={view} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))} disabled={disabled} send={send} onInspect={setInspect}/>
- <ReactionPanel key={`${view.activeWindow?.windowId??'none'}:${view.activeWindow?.windowRevision??0}`} view={view} disabled={disabled} send={send}/><PublicLog view={view}/>
+ <ReactionPanel key={`${view.activeWindow?.windowId??'none'}:${view.activeWindow?.windowRevision??0}`} view={view} disabled={disabled} send={send}/><PublicLog view={view} onInspect={setInspect}/>
  <section className="panel quiet" aria-label="対戦卓の管理"><h2>卓の管理</h2><p>閉卓への同意: {votes.size} / {room.members.length}人</p><div className="button-row"><button className="secondary" disabled={connectionDisabled||room.status==='closed'} onClick={()=>send({type:'CLOSE_BY_AGREEMENT',agree:!votes.has(actorId)})}>{votes.has(actorId)?'閉卓への同意を取り消す':'閉卓に同意する'}</button><a className="button secondary" href="/">卓一覧へ戻る</a></div><p className="hint">対戦中の席は保持されます。全員が同意すると保存された卓を閉じます。</p></section>
  <CardDialog card={inspect} onClose={()=>setInspect(null)}/></main>;
 }
