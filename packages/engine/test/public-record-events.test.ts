@@ -8,6 +8,26 @@ const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED
 const record = (s: GameState, viewer = 'C') => viewFor(s, viewer).logs.filter(log => RECORD_TYPES.has(log.type));
 const indexOf = (logs: LogView[], match: Partial<LogView>, from = 0) => logs.findIndex((log, index) => index >= from && Object.entries(match).every(([key, value]) => JSON.stringify(log[key as keyof LogView]) === JSON.stringify(value)));
 
+it.each([true, false])('records a selected declaration ability when its window opens (revealed=%s)', revealed => {
+  let s = ready();
+  character(s, 'A', '白魔術師シェリム');
+  s.players.A!.revealed = revealed;
+  const card = handCard(s, 'A', '烈火'), abilityId = 'c2-p01-r1c1-ab03';
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false, declarationAbilityIds: [abilityId]});
+  expect(record(s, 'A').filter(log => log.type === 'ABILITY_DECLARED')).toEqual([]);
+  s = closeWindow(s);
+  expect(record(s, 'A').filter(log => log.type === 'ABILITY_DECLARED')).toEqual([
+    expect.objectContaining({actorId: 'A', abilityId, targetIds: ['B']}),
+  ]);
+  const others = record(s, 'B').filter(log => log.type === 'ABILITY_DECLARED');
+  expect(others).toHaveLength(1);
+  if (revealed) expect(others[0]).toMatchObject({actorId: 'A', abilityId, targetIds: ['B']});
+  else {
+    expect(others[0]).not.toHaveProperty('abilityId');
+    expect(others[0]).not.toHaveProperty('targetIds');
+  }
+});
+
 /** Plays out other seats' turns with no action until `actorId` may start. */
 function turnOf(s: GameState, actorId: string): GameState {
   for (let n = 0; n < 200; n++) {
