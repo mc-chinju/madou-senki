@@ -1,3 +1,4 @@
+import { recordRoll } from '../public-record.js';
 import {gameStats} from '../game-stats.js';
 import type { GameState } from '../state.js';
 import { EntropyError } from '../setup.js';
@@ -41,7 +42,7 @@ export function beginRoll(state: GameState, options: RollOptions, dice: () => nu
     ...(options.check ? { checkBase: options.check.base ?? 'spirit', ...(options.check.threshold!==undefined?{threshold:options.check.threshold}:{}) } : {}),
   };
   (state.rolls ??= []).push(frame);
-  if (frame.stage === 'after-roll') throwRoll(frame, dice);
+  if (frame.stage === 'after-roll') { throwRoll(frame, dice); recordRoll(state, frame); }
   openWindow(state, frame.stage === 'before-roll' ? 'before-roll' : 'after-roll', frame.eventId, { kind: 'roll', id: frame.id });
   return frame;
 }
@@ -71,6 +72,7 @@ export function closeBeforeRoll(state: GameState, frame: RollFrame, dice: () => 
   if(frame.checkBase!=='fixed')frame.threshold = (frame.checkBase==='warrior'?stats.warrior_level:frame.checkBase==='magic'?stats.magic_level:stats.spirit) + frame.modifier + (frame.purpose==='faction-change'&&['c2-p04-r1c2','c2-p05-r2c1'].includes(state.players[frame.rollerId]!.characterId)?2:0) + (frame.checkBase === 'morale' ? stats.moraleBonus : 0);
   }
   throwRoll(frame, dice);
+  recordRoll(state, frame);
   frame.stage = 'after-roll';
   if (frame.resume.kind === 'action-check') {
     const action = state.actions![frame.resume.actionId]!;

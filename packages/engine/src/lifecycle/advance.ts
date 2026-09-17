@@ -1,3 +1,4 @@
+import {recordDamage} from '../public-record.js';
 import {snapshotCombatDamage,queueCombatRewards} from '../abilities/combat-reward-state.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
 import {rewardSadLove} from '../abilities/sad-love-state.js';
@@ -26,7 +27,7 @@ function deathIdentity(p:PlayerState){return {characterId:p.characterId,faction:
 /** One commit for the entire simultaneous group, including future explicit death/self costs. */
 export function settleDamage(s:GameState,intents:DamageIntent[],now:number):void{
  const rewardBatchId=`damage-${s.nextEventId++}`;snapshotCombatDamage(s,intents);
- for(const intent of intents){const p=s.players[intent.targetId];if(p&&isActive(p))p.damage+=intent.damage;}
+ for(const intent of intents){const p=s.players[intent.targetId];if(p&&isActive(p)){p.damage+=intent.damage;if(intent.damage>0)recordDamage(s,p.id,intent.damage);}}
  const doomed=s.seatOrder.filter(id=>{const p=s.players[id]!;return isActive(p)&&(p.damage>=gameStats(s,p.id).endurance||intents.some(intent=>intent.targetId===id&&intent.instantDeath));});
  queueCombatRewards(s,intents,doomed,rewardBatchId,'kill');
  if(!doomed.length){queueCombatRewards(s,intents,doomed,rewardBatchId,'damage');return;}
