@@ -239,6 +239,16 @@ pnpm test:e2e                                  # 残す全件が成功（目安 
 
 受入条件 2、5、6。加えて、照合表の `needs-port` がすべて移植済みか、削除対象から外して報告済みであること。
 
+### 実施済み: PR #8（2026-09-18）
+
+E2E は 30件 / 24 spec。58機能・シナリオ 422行の照合はすべて `covered`（`needs-port` 0件）で、
+engine への移植は発生しなかった。`apps/web/src` の card ID リテラル 34種は web 単体テストで担保済み。
+
+E2E に代表を置かなかったパネルの担保先: ShadowJump は engine の `attack-property-abilities.test.ts` ほか
+（`c2-p04-r2c2-ab01`）、TurnTechnique は engine の lifetime 系と web `lifetime-input.test.ts`、
+TurnChoiceCard は engine の手番カード試験、Wish は engine の `wish-physical-scenarios` を使う試験で、
+いずれも再送・再起動の側面は PR3 で残す worker の汎用テスト（`room-command-replay.test.ts`）が担う。
+
 ### リスクと戻し方
 
 - ブラウザ固有の退行（表示・操作）を見逃す → パネル代表と web 単体テストで補う。card 固有の UI 分岐は、削除前に web 単体テストで全 ID を通す（上記の工程）。消した spec は `git show <PR2 の親>:tests/e2e/<file>` で個別に戻せる。
