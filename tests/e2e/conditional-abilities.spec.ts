@@ -1,7 +1,7 @@
 import { expect, test, type Locator } from '@playwright/test';
 import { allCardInstanceIds, type GameState } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { conditionalScenarioNames, type ConditionalScenarioName } from '../../apps/worker/test/fixtures/conditional-ability-scenarios.js';
+import { conditionalScenarioNames, type ConditionalScenarioName } from '../../packages/engine/test/fixtures/conditional-ability-scenarios.js';
 import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
