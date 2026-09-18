@@ -74,7 +74,8 @@ export interface GameState {
   earlyTurnBook?:{actorId:string;closed:boolean};
   rulesetVersion: string; revision: number; phase: 'setup' | 'turn-start' | 'draw' | 'action' | 'hand-adjustment' | 'combat' | 'withdrawal';
   seatOrder: PlayerId[]; players: Record<PlayerId, PlayerState>; turnSeat: number;
-  setupCursor: number; pending: { kind: 'initial-followers'; actorId: PlayerId; seat: number } | null;
+  /** Concurrent setup round (G10): every participant places in any order, then the round refills in seat order. */
+  pending: { kind: 'initial-followers'; round: number; participantIds: PlayerId[]; readyIds: PlayerId[]; placedIds: PlayerId[] } | null;
   distances: Record<PlayerId, Record<PlayerId, 'near' | 'far'>>;
   distanceMarkers?: Record<string,{ a:PlayerId; b:PlayerId; ownerId:PlayerId; cardInstanceId:string }>;
   deck: string[]; discard: string[]; resolution: string[]; reclaimReservations: string[];

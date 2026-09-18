@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {createGame,gameStats,viewFor,techniqueFor,type GameState} from '../src/index.js';
-import {act,finish,pass,ready,until} from './combat-helpers.js';
+import {act,finish,pass,ready,until,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 import {makeResurrectionPhysicalScenario} from './fixtures/resurrection-physical-scenarios.js';
 import {legalAttackTargets} from '../src/combat/legality.js';
@@ -11,7 +11,7 @@ export function makeOwnedReclaimTable(owner:string,cardId:string,additionalIds:s
  if(!lifetime&&getAction(cardId)?.name==='復活')return {state:makeResurrectionPhysicalScenario('resurrection-ordinary',['A','B','C','D'].map(id=>({id,name:id})),{owner}),ownerId:'A'};
  if(!getAction(cardId))throw Error('UNKNOWN_OWNED_CARD');
  let s:GameState;
- if(lifetime){s=createGame(['A','B','C','D','E','F'].map(id=>({id,name:id})),entropy(),{startingSeat:0});for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});}else s=ready();character(s,'A',owner);character(s,'C','リーア姫');character(s,'D','魔導王ガイナス');
+ if(lifetime){s=createGame(['A','B','C','D','E','F'].map(id=>({id,name:id})),entropy(),{startingSeat:0});s=readySetup(s);s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});}else s=ready();character(s,'A',owner);character(s,'C','リーア姫');character(s,'D','魔導王ガイナス');
  character(s,'B',s.players.A!.faction==='GOOD'?'魔導王ガイナス':'白魔術師シェリム');
  const profile=techniqueFor(cardId);
  const name=getAction(cardId)!.name;

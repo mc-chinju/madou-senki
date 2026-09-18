@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const followerAttackScenarioNames = ['follower-attack-royal', 'follower-attack-cancel', 'follower-attack-griffin', 'follower-attack-fairy', 'follower-attack-dwarves', 'follower-attack-all', 'follower-attack-beast'] as const;
 export type FollowerAttackScenarioName = typeof followerAttackScenarioNames[number];
@@ -16,7 +16,7 @@ export function makeFollowerAttackScenario(name: FollowerAttackScenarioName, pla
     state = result.state; const ids = allCardInstanceIds(state);
     if (ids.length !== 220 || new Set(ids).size !== 220) throw Error('FOLLOWER_ATTACK_FIXTURE_CARDS');
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   const character = name === 'follower-attack-griffin' || name === 'follower-attack-beast' ? '獣使いのウパニシャット'
     : name === 'follower-attack-fairy' ? '妖精王フューリー' : name === 'follower-attack-dwarves' ? '小人のランバ' : 'リーア姫';

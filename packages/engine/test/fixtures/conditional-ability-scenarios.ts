@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, derivedStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 type Spec = { owner: string; ownerSeat?: 1; counterpart?: string; publicOwner?: boolean; publicCounterpart?: boolean; lanceII?: boolean; truth?: boolean; dragon?: boolean; defending?: boolean; warrior?: boolean; haja?: boolean };
 export const conditionalScenarioSpecs = {
@@ -92,6 +92,7 @@ export function makeConditionalScenario(name: ConditionalScenarioName, players: 
     if (player.id === owner && dragon) act(owner, { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: dragon });
     act(player.id, { type: 'PASS_SETUP' });
   }
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   start(a);
   if (spec.publicOwner) { act(owner, { type: 'REVEAL_CHARACTER' }); if (!spec.lanceII) settle(); }
   if (spec.lanceII) {

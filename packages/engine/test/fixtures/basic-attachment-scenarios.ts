@@ -1,6 +1,6 @@
 import {allCardInstanceIds,createGame,transition,type GameCommand,type GameState} from '@madou/engine';
 import {getAction} from '@madou/catalog';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const basicAttachmentScenarios=['basic-attachment-warrior','basic-attachment-magic','basic-attachment-evil','basic-attachment-good'] as const;
 export type BasicAttachmentScenario=typeof basicAttachmentScenarios[number];
 export function isBasicAttachmentScenario(name:string):name is BasicAttachmentScenario{return basicAttachmentScenarios.some(n=>n===name);}
@@ -13,5 +13,5 @@ export function makeBasicAttachmentScenario(name:BasicAttachmentScenario,players
  const card=takeCard(s,a,cards[name]),fate=takeCard(s,b,'命運凶変'),wish=takeCard(s,b,'a2-p04-r3c2');trimHand(s,a,card);trimHand(s,b,fate,wish);
  s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
  function act(actorId:string,command:GameCommand){const input={actorId,command},r=transition(s,input,entropy());if(!r.ok)throw Error(`BASIC_ATTACHMENT_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,entropy())))throw Error('BASIC_ATTACHMENT_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('BASIC_ATTACHMENT_CARDS');}
- for(const p of players)act(p.id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
 }

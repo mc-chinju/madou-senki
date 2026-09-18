@@ -14,6 +14,8 @@ export interface CommandIdentity {
   expectedRevision: number;
 }
 export interface CommitInput<State, Event, Projection> extends CommandIdentity {
+  /** Revision this commit is serialized against, when it differs from the client's expectation. */
+  baseRevision?: number;
   state: State;
   events: Event[];
   projection?: Projection;
@@ -72,7 +74,7 @@ export class RoomStorage<State, Event, Projection> {
       if (prior) return prior;
       const current = this.snapshot();
       if (!current) return { ok: false, code: 'NOT_INITIALIZED' };
-      if (current.revision !== input.expectedRevision) return { ok: false, code: 'STALE_REVISION' };
+      if (current.revision !== (input.baseRevision ?? input.expectedRevision)) return { ok: false, code: 'STALE_REVISION' };
       const revision = current.revision + 1;
       if (!Number.isSafeInteger(revision)) throw new Error('ROOM_REVISION_EXHAUSTED');
       this.storage.sql.exec('UPDATE room_snapshot SET revision = ?, value = ? WHERE singleton = 1',

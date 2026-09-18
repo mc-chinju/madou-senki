@@ -2,7 +2,7 @@ import {readFileSync} from 'node:fs';
 import {actionCards,characters} from '@madou/catalog';
 import {describe,expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
-import {act,ready,until,pass,finish,closeWindow as closeBoundary,passReclaims} from './combat-helpers.js';
+import {act,ready,until,pass,finish,closeWindow as closeBoundary,passReclaims,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 
 // Physical reaction disposal now waits for each public reclaim response before resuming the original boundary.
@@ -319,7 +319,7 @@ it('actual physical Royal Guard reflection cannot trigger mental defense',()=>{
 it('actual Dia replacement survives old Gainas death; Dia death causes wandering and Fusen revival returns the new identity',async()=>{
  const {createGame,derivedStats}=await import('../src/index.js');
  let s=createGame(['A','B','C','D','E','F'].map(id=>({id,name:id})),entropy(),{startingSeat:0});
- for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});
+ s=readySetup(s);
  for(const [id,name] of [['A','黒妖精のアーネス'],['B','魔聖母ディア'],['C','魔導王ガイナス'],['D','侍大将のシン'],['E','黒騎士ガーウィン'],['F','吟遊詩人のレスター']])character(s,id!,name!);
  for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20,magic_level:20};
  // Alternate pre-existing E protection replacement keeps an opposing survivor

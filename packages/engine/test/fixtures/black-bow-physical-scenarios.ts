@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {createGame,gameStats,transition,allCardInstanceIds,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const blackBowCard='a2-p07-r3c3';
 export const blackBowScenarios=['black-bow-ordinary','black-bow-guard','black-bow-owner-ordinary','black-bow-low','black-bow-dedicated','black-bow-subset','black-bow-all','black-bow-near','black-bow-fate','black-bow-maai','black-bow-evade','black-bow-suppressed','black-bow-stopped','black-bow-silenced','black-bow-wrong-owner','black-bow-decline'] as const;
 export type BlackBowScenario=typeof blackBowScenarios[number];
@@ -16,7 +16,7 @@ export function makeBlackBowPhysical(name:BlackBowScenario,players:{id:string;na
  for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];s.events=[];
  function act(actorId:string,command:GameCommand,face=1){const input={actorId,command},e={...entropy(),dice:Array(100).fill(face)},r=transition(s,input,e);if(!r.ok)throw Error(`BLACK_BOW_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('BLACK_BOW_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('BLACK_BOW_FIXTURE_CARDS');}
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('BLACK_BOW_FIXTURE_LIMIT');}
- for(const id of [a,b,c,d]){if(mode.guard&&(id===b||id===c))act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:id===b?'a2-p22-r1c1':'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}if(options.beforeStart)return s;
+ for(const id of [a,b,c,d]){if(mode.guard&&(id===b||id===c))act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:id===b?'a2-p22-r1c1':'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(options.beforeStart)return s;
  if(prior){act(d,{type:'START_TURN'});settle();act(d,{type:'CHOOSE_DRAW',draw:false});act(d,{type:'ATTACK',cardInstanceId:name==='black-bow-suppressed'?'a2-p13-r1c2':name==='black-bow-stopped'?'a2-p13-r2c1':'a2-p18-r1c1',targetIds:[a],dedicated:false});settle(6);if(s.phase==='withdrawal')act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();}
  act(a,{type:'START_TURN'});settle(prior?6:1);if(s.phase==='draw')act(a,{type:'CHOOSE_DRAW',draw:false});
  if(name==='black-bow-subset'){act(c,{type:'REVEAL_CHARACTER'});settle();}if(name==='black-bow-near'){act(a,{type:'APPROACH',cardInstanceId:'a2-p24-r1c3',targetId:b});settle();}return s;

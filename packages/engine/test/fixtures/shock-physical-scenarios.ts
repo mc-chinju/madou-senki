@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const shockPhysicalScenarios=['shock-small','shock-large','phantom-resist','phantom-fail','shock-small-teleport','shock-large-teleport','phantom-teleport'] as const;
 export type ShockPhysicalScenario=typeof shockPhysicalScenarios[number];
 export function isShockPhysicalScenario(name:string):name is ShockPhysicalScenario{return (shockPhysicalScenarios as readonly string[]).includes(name);}
@@ -10,5 +10,5 @@ export function makeShockPhysicalScenario(name:ShockPhysicalScenario,players:{id
  s.players[b]!.permanent!.spirit=(s.players[b]!.permanent!.spirit??0)+(options.spirit??(m.fail?2:14))-gameStats(s,b).spirit;
  const front=options.none?null:takeCard(s,b,options.guardian?'守護者':'ストーンゴーレム'),rear=options.none||options.guardian?null:takeCard(s,b,'兵士'),metal=options.none?null:takeCard(s,c,'メタルゴーレム'),keep=[takeCard(s,a,m.card),takeCard(s,a,'a2-p24-r1c2'),takeCard(s,a,'必勝の祈り'),takeCard(s,d,'命運凶変'),...[front,rear,metal].filter((x):x is string=>!!x),...['a2-p06-r1c1','a2-p05-r3c1','a2-p07-r1c1'].map(id=>takeCard(s,b,id))];for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
  function act(actorId:string,command:GameCommand){const input={actorId,command},e={...entropy(),dice:Array(100).fill(1)},r=transition(s,input,e);if(!r.ok)throw Error(`SHOCK_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('SHOCK_JSON');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('SHOCK_IDS');}
- for(const p of players){for(const cardInstanceId of (p.id===b?[front,rear]:p.id===c?[metal]:[]).filter((x):x is string=>!!x))act(p.id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(p.id,{type:'PASS_SETUP'});}act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
+ for(const p of players){for(const cardInstanceId of (p.id===b?[front,rear]:p.id===c?[metal]:[]).filter((x):x is string=>!!x))act(p.id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(p.id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
 }

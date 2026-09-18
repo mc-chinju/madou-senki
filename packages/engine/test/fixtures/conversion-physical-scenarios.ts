@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const conversionPhysicalScenarios=['conversion-good-fail','conversion-evil-fail','conversion-good-success','conversion-evil-success','conversion-good-dedicated','conversion-evil-dedicated','conversion-good-same','conversion-evil-same','conversion-good-fixed','conversion-evil-fixed','conversion-good-asfelt','conversion-evil-asfelt','conversion-good-garwin','conversion-evil-garwin','conversion-good-fate','conversion-evil-fate','conversion-good-forced','conversion-evil-forced','conversion-good-reroll','conversion-evil-reroll','conversion-good-hidden','conversion-evil-hidden','conversion-good-decline','conversion-evil-decline','conversion-evil-protector-dead'] as const;
 export type ConversionPhysicalScenario=typeof conversionPhysicalScenarios[number];
 export function isConversionPhysicalScenario(name:string):name is ConversionPhysicalScenario{return (conversionPhysicalScenarios as readonly string[]).includes(name);}
@@ -12,6 +12,6 @@ export function makeConversionPhysicalScenario(name:ConversionPhysicalScenario,p
  function act(actorId:string,command:GameCommand,face=1){const input={actorId,command},e={...entropy(),dice:Array(100).fill(face)},r=transition(s,input,e);if(!r.ok)throw Error(`CONVERSION_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('CONVERSION_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('CONVERSION_FIXTURE_CARDS');}
  function settle(){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('CONVERSION_FIXTURE_WINDOW');}
  function start(id:string){act(id,{type:'START_TURN'});settle();if(s.phase==='draw'){act(id,{type:'CHOOSE_DRAW',draw:false});settle();}}
- for(const id of [a,b,c,d]){if(id===b&&m.dead)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}if(options.beforeStart)return s;
+ for(const id of [a,b,c,d]){if(id===b&&m.dead)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(options.beforeStart)return s;
  if(m.dead){start(d);act(d,{type:'ATTACK',cardInstanceId:'a2-p24-r1c2',targetIds:[c],dedicated:false});settle();if(s.players[c]!.presence!=='dead'||s.outcome)throw Error('CONVERSION_NO_LIVE_DEAD_PROTECTOR_PATH');if(s.phase==='withdrawal')act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();}start(a);if(!name.endsWith('-hidden')){act(b,{type:'REVEAL_CHARACTER'});settle();}return s;
 }

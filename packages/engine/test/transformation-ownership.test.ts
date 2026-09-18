@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {createGame,derivedStats,transition,viewFor} from '../src/index.js';
 import {ownsAbility} from '../src/abilities/ownership.js';
-import {act,ready,until,finish,closeWindow} from './combat-helpers.js';
+import {act,ready,until,finish,closeWindow,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 
 it.each(['c2-p02-r2c2-ab01','c2-p02-r2c2-ab02','c2-p02-r2c2-ab03','c2-p02-r2c2-ab04','c2-p02-r2c2-ab05'])('actual transformation retains ownership of %s and its spent history',abilityId=>{
@@ -19,7 +19,7 @@ it.each(['c2-p02-r2c2-ab01','c2-p02-r2c2-ab02','c2-p02-r2c2-ab03','c2-p02-r2c2-a
 });
 
 it('actual dead Yotsulm changes allegiance at awakening and retains it through FuSen revival',()=>{
- let s=createGame(['A','B','C','D','E','F'].map(id=>({id,name:id})),entropy(),{startingSeat:0});character(s,'A','侍大将のシン');character(s,'B','邪祭ウーノス');character(s,'C','餓狼ヨーツルム');character(s,'D','魔聖母ディア');character(s,'E','魔導王ガイナス');character(s,'F','リーア姫');for(const actor of s.seatOrder)s=act(s,actor,{type:'PASS_SETUP'});s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});
+ let s=createGame(['A','B','C','D','E','F'].map(id=>({id,name:id})),entropy(),{startingSeat:0});character(s,'A','侍大将のシン');character(s,'B','邪祭ウーノス');character(s,'C','餓狼ヨーツルム');character(s,'D','魔聖母ディア');character(s,'E','魔導王ガイナス');character(s,'F','リーア姫');s=readySetup(s);s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});
  s.players.C!.damage=derivedStats(s.players.C!).endurance-1;
  const attack=handCard(s,'A','衝破');s=finish(act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['C'],dedicated:false}));
  expect(s.players.C!.presence).toBe('dead');expect(s.players.C!.deathIdentity!.faction).toBe('EVIL');

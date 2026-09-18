@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {createGame, transition, viewFor, type GameState, type LogView} from '../src/index.js';
+import {createGame, pendingSetupSeats, transition, viewFor, type GameState, type LogView} from '../src/index.js';
 import {choose, legalCommands, type Command} from '../src/bot/index.js';
 import {seededEntropy} from './fixtures.js';
 
@@ -7,7 +7,7 @@ import {seededEntropy} from './fixtures.js';
 function actingActor(state: GameState): string | undefined {
   const withCommands = state.seatOrder.filter(id => legalCommands(viewFor(state, id)).length);
   const window = state.windows?.at(-1);
-  const candidates = [window?.participants[window.cursor], state.seatOrder[state.turnSeat], state.pending?.actorId];
+  const candidates = [window?.participants[window.cursor], state.seatOrder[state.turnSeat], ...pendingSetupSeats(state)];
   return candidates.find(id => id && withCommands.includes(id)) ?? withCommands[0];
 }
 

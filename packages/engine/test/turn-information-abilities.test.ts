@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';
 import {getCharacter,getAction} from '@madou/catalog';
 import {viewFor,transition,derivedStats,type GameState} from '../src/index.js';
 import {ABILITIES} from '../src/abilities/frames.js';
-import {act,ready,pass,closeWindow,finish,until} from './combat-helpers.js';
+import {act,ready,pass,closeWindow,finish,until,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy,freshGame} from './fixtures.js';
 const sources:{characterId:string;characterName:string;id:string;name:string;timing:string[];specification:string;activation:string}[]=JSON.parse(readFileSync(new URL('./fixtures/turn-information-sources.json',import.meta.url),'utf8'));
 const CHAM='c2-p01-r2c2-ab03',LIA='c2-p03-r1c2-ab02',LESTER='c2-p03-r2c1-ab03',STAR='c2-p04-r2c1-ab02',SHADOW='c2-p04-r2c1-ab01',TRUE='c2-p04-r2c1-ab03',UONOS='c2-p05-r1c1-ab01',LANCA='c2-p02-r2c1-ab04';
@@ -11,7 +11,7 @@ function owner(name:string){const s=ready();character(s,'A',name);return s;}
 function actualDraw(id:string){
  let s=freshGame();character(s,'A',id==='c2-p01-r2c2-ab02'?'小妖精のチャム':'聖騎士ランスロット');
  if(id==='c2-p07-r1c1-ab03')character(s,'B','リーア姫');
- for(const actor of s.seatOrder)s=act(s,actor,{type:'PASS_SETUP'});
+ s=readySetup(s);
  s=act(s,'A',{type:'START_TURN'});
  if(id==='c2-p01-r2c2-ab02')return s;
  s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=act(s,'B',{type:'REVEAL_CHARACTER'});

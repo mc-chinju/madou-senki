@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, derivedStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const lifetimeScenarioNames = ['lifetime-mekai-defense', 'lifetime-heal', 'lifetime-revive', 'lifetime-soul', 'lifetime-fixed-stop', 'lifetime-deadly-stop', 'lifetime-otherworld'] as const;
 export type LifetimeScenarioName = typeof lifetimeScenarioNames[number];
@@ -26,7 +26,7 @@ export function makeLifetimeScenario(name: LifetimeScenarioName, players: { id: 
   };
   const chant = (id: string) => { takeCard(state, a, id); state.players[a]!.hand = state.players[a]!.hand.filter(card => card !== id); state.players[a]!.chants.push({ cardInstanceId: id, revealed: false }); };
   const top = (id: string) => { takeCard(state, a, id); state.players[a]!.hand = state.players[a]!.hand.filter(card => card !== id); state.deck.unshift(id); };
-  for (const p of players) act(p.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, '大神官ジル'); assignCharacter(state, b, '黒騎士ガーウィン');
   assignCharacter(state, c, '白魔術師シェリム'); assignCharacter(state, d, '魔導王ガイナス');

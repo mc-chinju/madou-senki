@@ -33,7 +33,7 @@ function revision(value: unknown): value is number {
 
 export function parseGameCommand(value: unknown): ParseResult<GameCommand> {
   const invalid = { ok: false, code: 'INVALID_COMMAND' } as const;
-  const command = plainDataRecord(value, ['additionalCardInstanceIds','abilityEventId','advanceCardInstanceId','followerCardInstanceId','combinationCardInstanceIds','source','followerIds','chantIds','dispel','hitIndex','claimId','enabled','decisionId','declarationAbilityIds','windowId','abilityEffectIds','sources','followerTransfer','dedicatedCardInstanceIds','coSource','advanceCardInstanceIds','actionId','groupId','attempt','abilityId','targetEventId','costCardInstanceId','conceal','targetAbilityId','choice','convertTargetIds','revive','ability','giftCardInstanceId','type', 'cardInstanceId', 'cardInstanceIds', 'discardIds', 'draw', 'discard', 'ignore', 'targetIds', 'targetId', 'dedicated', 'techniqueVariant', 'mode', 'targetActionId', 'targetRollId']);
+  const command = plainDataRecord(value, ['additionalCardInstanceIds','abilityEventId','advanceCardInstanceId','followerCardInstanceId','combinationCardInstanceIds','source','followerIds','chantIds','dispel','hitIndex','claimId','enabled','decisionId','declarationAbilityIds','windowId','abilityEffectIds','sources','followerTransfer','dedicatedCardInstanceIds','coSource','advanceCardInstanceIds','actionId','groupId','attempt','abilityId','targetEventId','costCardInstanceId','conceal','targetAbilityId','choice','convertTargetIds','revive','ability','giftCardInstanceId','position','type', 'cardInstanceId', 'cardInstanceIds', 'discardIds', 'draw', 'discard', 'ignore', 'targetIds', 'targetId', 'dedicated', 'techniqueVariant', 'mode', 'targetActionId', 'targetRollId']);
   if (!command) return invalid;
   if(Object.hasOwn(command,'combinationCardInstanceIds')){
     const ids=command.combinationCardInstanceIds;
@@ -182,9 +182,12 @@ export function parseGameCommand(value: unknown): ParseResult<GameCommand> {
     case 'CHANT':
       if ((!exactKeys(command, ['type', 'cardInstanceId']) && !exactKeys(command, ['type', 'cardInstanceId', 'dedicated'])) || !identifier(command.cardInstanceId) || (Object.hasOwn(command, 'dedicated') && typeof command.dedicated !== 'boolean')) return invalid;
       return { ok: true, value: { type: command.type, cardInstanceId: command.cardInstanceId, ...(Object.hasOwn(command, 'dedicated') ? { dedicated: command.dedicated as boolean } : {}) } };
-    case 'PLACE_INITIAL_FOLLOWER':
-      if (!exactKeys(command, ['type', 'cardInstanceId']) || !identifier(command.cardInstanceId)) return invalid;
-      return { ok: true, value: { type: command.type, cardInstanceId: command.cardInstanceId } };
+    case 'PLACE_INITIAL_FOLLOWER': {
+      if ((!exactKeys(command, ['type', 'cardInstanceId']) && !exactKeys(command, ['type', 'cardInstanceId', 'position'])) || !identifier(command.cardInstanceId)) return invalid;
+      const position = command.position;
+      if (Object.hasOwn(command, 'position') && position !== 'front' && position !== 'back') return invalid;
+      return { ok: true, value: { type: command.type, cardInstanceId: command.cardInstanceId, ...(Object.hasOwn(command, 'position') ? { position: position as 'front' | 'back' } : {}) } };
+    }
     case 'PLAY_ALL_ARMY': {
       const ids=command.targetIds;
       if(!exactKeys(command,['type','cardInstanceId','followerCardInstanceId','targetIds'])||command.cardInstanceId!=='a2-p05-r2c2'||!identifier(command.followerCardInstanceId)||!Array.isArray(ids)||!ids.length||ids.length>10||!ids.every(identifier)||new Set(ids).size!==ids.length)return invalid;

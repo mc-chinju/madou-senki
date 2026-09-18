@@ -1,7 +1,7 @@
 import {composeValue} from '../src/abilities/action-modifiers.js';
 import {expect,it} from 'vitest';
 import {viewFor,transition,type GameState} from '../src/index.js';
-import {act,ready,until,finish,pass,closeWindow} from './combat-helpers.js';
+import {act,ready,until,finish,pass,closeWindow,readySetup} from './combat-helpers.js';
 import {character,handCard,handCards,entropy,freshGame} from './fixtures.js';
 const ZAN='c2-p04-r1c2-ab02';
 function incoming(maai=false,withBan=false,name='破砕剣'){let s=ready();character(s,'A','竜皇子アスフェルト');if(withBan){character(s,'C','破壊神ヴァンミール');s.players.C!.revealed=true;}for(const p of Object.values(s.players))p.permanent={spirit:20,endurance:100};const sword=handCard(s,'A',name),advance=handCard(s,'A','踏み込み／蹴る'),distance=handCard(s,'B','間合い／休息');handCard(s,'C','命運凶変');s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'normal-defense');if(maai){s=until(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:distance}),'defense-advance');s=act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advance});}return until(s,'follower-entry-abilities');}
@@ -29,7 +29,7 @@ it('Actual chanted two-hit sword preserves canceled first-hit maai while doublin
 });
 
 it('Zan doubles before the actual initially placed Soldier subtracts its HP',()=>{
- let s=freshGame();character(s,'A','竜皇子アスフェルト');character(s,'B','黒騎士ガーウィン');for(const p of Object.values(s.players))p.permanent={spirit:20,endurance:100};const sword=handCard(s,'A','破砕剣'),soldier=handCard(s,'B','兵士');for(const actor of s.seatOrder){if(actor==='B')s=act(s,actor,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier});s=act(s,actor,{type:'PASS_SETUP'});}s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'follower-entry-abilities');s=finish(use(s));expect(s.players.B!.damage).toBe(9);expect(s.discard.filter(id=>id===soldier)).toHaveLength(1);
+ let s=freshGame();character(s,'A','竜皇子アスフェルト');character(s,'B','黒騎士ガーウィン');for(const p of Object.values(s.players))p.permanent={spirit:20,endurance:100};const sword=handCard(s,'A','破砕剣'),soldier=handCard(s,'B','兵士');for(const actor of s.seatOrder){if(actor==='B')s=act(s,actor,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier});s=act(s,actor,{type:'PASS_SETUP'});}s=readySetup(s);s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'follower-entry-abilities');s=finish(use(s));expect(s.players.B!.damage).toBe(9);expect(s.discard.filter(id=>id===soldier)).toHaveLength(1);
 });
 it('Explicit abstract composition adds before both multipliers and rounds once',()=>{expect(composeValue(5,null,[1],[2,0.5])).toBe(6);});
 

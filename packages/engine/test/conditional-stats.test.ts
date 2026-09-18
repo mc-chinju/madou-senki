@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {getCharacter} from '@madou/catalog';
 import {createGame,viewFor,transition,type GameState} from '../src/index.js';
 import {ABILITIES} from '../src/abilities/frames.js';
-import {act,ready,finish,closeWindow,until,pass} from './combat-helpers.js';
+import {act,ready,finish,closeWindow,until,pass,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 const sources: {characterId:string;characterName:string;id:string;name:string}[]=JSON.parse(readFileSync(new URL('./fixtures/conditional-stat-sources.json',import.meta.url),'utf8'));
 const TIA='c2-p02-r1c1-ab04',LIA='c2-p03-r1c2-ab03',ARNES='c2-p03-r2c2-ab04',DRAGON='c2-p04-r1c2-ab03',TRUTH='c2-p04-r1c2-ab05',UPA='c2-p05-r1c2-ab01',GARWIN='c2-p05-r2c1-ab05',DIA='c2-p06-r1c2-ab02';
@@ -122,7 +122,7 @@ it('Dia initial five cards do not grow when public capacity is elected',()=>{
  }
  expect(selected).toBeDefined();let s=selected!;const actor=Object.values(s.players).find(p=>p.characterId==='c2-p06-r1c2')!.id;
  expect(s.players[actor]!.hand).toHaveLength(5);const hand=[...s.players[actor]!.hand];
- for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});
+ s=readySetup(s);
  s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});
  s=finish(set(s,actor,DIA));s=act(s,actor,{type:'REVEAL_CHARACTER'});
  expect(viewFor(s,actor).self.stats.handLimit).toBe(7);expect(s.players[actor]!.hand).toEqual(hand);

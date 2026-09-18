@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {createGame,gameStats,transition,allCardInstanceIds,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const maaiOtherCards=['a2-p06-r1c3','a2-p06-r2c1','a2-p06-r2c2','a2-p06-r2c3','a2-p06-r3c1','a2-p06-r3c2','a2-p06-r3c3'] as const;
 export type MaaiOtherCard=typeof maaiOtherCards[number];
 export type MaaiOtherMode='rest'|'rest-cap'|'defense'|'mental'|'additional'|'advance'|'approach'|'withdrawal'|'prohibited';
@@ -23,7 +23,7 @@ export function makeMaaiOtherPhysical(card:MaaiOtherCard,mode:MaaiOtherMode,play
  for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];s.events=[];
  function act(actorId:string,command:GameCommand){const input={actorId,command},e={...entropy(),dice:Array(100).fill(1)},r=transition(s,input,e);if(!r.ok)throw Error(`MAAI_OTHER_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('MAAI_OTHER_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('MAAI_OTHER_CARDS');}
  function settle(){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('MAAI_OTHER_WINDOW');}
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});act(d,{type:'START_TURN'});act(d,{type:'CHOOSE_DRAW',draw:false});act(d,{type:'ATTACK',cardInstanceId:'a2-p24-r1c2',targetIds:[rest?a:b],dedicated:false});settle();act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();if(beforeStart)return s;
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(d,{type:'START_TURN'});act(d,{type:'CHOOSE_DRAW',draw:false});act(d,{type:'ATTACK',cardInstanceId:'a2-p24-r1c2',targetIds:[rest?a:b],dedicated:false});settle();act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();if(beforeStart)return s;
  act(a,{type:'START_TURN'});settle();act(a,{type:'CHOOSE_DRAW',draw:false});
  if(mode==='withdrawal'){act(a,{type:'APPROACH',cardInstanceId:maaiOtherAdvance,targetId:b});settle();act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[b],dedicated:false});settle();}
  else if(!rest&&mode!=='approach'){act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[b],dedicated:false});for(let n=0;n<400&&s.windows?.at(-1)?.kind!=='normal-defense';n++){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'});}}

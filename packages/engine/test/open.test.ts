@@ -3,6 +3,9 @@ import { actionCards, getCharacter } from '@madou/catalog';
 import { allCardInstanceIds, createGame, derivedStats, transition } from '../src/index.js';
 import { entropy, freshGame, handCard } from './fixtures.js';
 const identityEntropy = () => ({ now: 20, dice: [], random: Array(1500).fill(0.999999) });
+function apply(s: ReturnType<typeof createGame>, actorId: string, command: { type: 'PLACE_INITIAL_FOLLOWER'; cardInstanceId: string } | { type: 'PASS_SETUP' }) {
+  const r = transition(s, { actorId, command }, identityEntropy()); if (!r.ok) throw Error(r.code); return r.state;
+}
 it('resolves all five OPENs and replacements before next player, keeps their physical cards and derives live modifiers', () => {
   const s = createGame(['A', 'B', 'C', 'D'].map(id => ({ id, name: id })), identityEntropy(), { distribution: 'random', startingSeat: 0 });
   const a = s.players.A!;
@@ -21,9 +24,13 @@ it('Dawn merges discard and current deck during refill, leaves OPEN outside shuf
   while (s.players.A!.hand.length > 5) s.deck.push(s.players.A!.hand.shift()!);
   const dawn = handCard(s, 'B', '大陸の夜明け'); s.players.B!.hand = s.players.B!.hand.filter(id => id !== dawn);
   s.deck.unshift(dawn); const discarded = s.deck.pop()!; s.discard.push(discarded);
-  const before = JSON.stringify(s); const input = { actorId: 'A', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: follower } } as const;
-  expect(transition(s, input, { now: 1, dice: [], random: [] })).toEqual({ ok: false, code: 'INVALID_ENTROPY' }); expect(JSON.stringify(s)).toBe(before);
-  const result = transition(s, input, identityEntropy()); expect(result.ok).toBe(true); if (!result.ok) throw Error(result.code);
+  // The refill runs when the round closes, so the last ready is the command that needs the entropy.
+  let staged = apply(s, 'A', { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: follower });
+  expect(staged.discard).toEqual([discarded]);
+  for (const id of ['B', 'C', 'D']) staged = apply(staged, id, { type: 'PASS_SETUP' });
+  const before = JSON.stringify(staged); const input = { actorId: 'A', command: { type: 'PASS_SETUP' } } as const;
+  expect(transition(staged, input, { now: 1, dice: [], random: [] })).toEqual({ ok: false, code: 'INVALID_ENTROPY' }); expect(JSON.stringify(staged)).toBe(before);
+  const result = transition(staged, input, identityEntropy()); expect(result.ok).toBe(true); if (!result.ok) throw Error(result.code);
   expect(result.state.discard).toEqual([]); expect(result.state.players.A!.open).toContain(dawn); expect(result.state.deck).toContain(discarded);
   expect(result.state.players.A!.hand).toHaveLength(5); expect(new Set(allCardInstanceIds(result.state)).size).toBe(220);
   expect(result).toEqual(transition(JSON.parse(before), input, identityEntropy()));
@@ -34,9 +41,12 @@ it('Blessing allows a third initial follower and Haja still refills only to five
   for (const name of ['兵士', '市民', 'ゴブリン']) {
     const id = handCard(s, 'A', name); while (s.players.A!.hand.length > 5) s.deck.push(s.players.A!.hand.shift()!);
     const r = transition(s, { actorId: 'A', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: id } }, entropy());
-    expect(r.ok).toBe(true); if (!r.ok) throw Error(r.code); s = r.state; expect(s.players.A!.hand).toHaveLength(5);
+    expect(r.ok).toBe(true); if (!r.ok) throw Error(r.code); s = r.state;
   }
   expect(s.players.A!.followers).toHaveLength(3);
+  // The refill waits for the round end and still stops at five while Haja raises the hand limit.
+  for (const id of ['A', 'B', 'C', 'D']) s = apply(s, id, { type: 'PASS_SETUP' });
+  expect(s.players.A!.hand).toHaveLength(5);
 });
 it('draws available cards and stops without replenishment debt when deck and discard are empty', () => {
   const s = freshGame(); const id = handCard(s, 'A', '兵士');

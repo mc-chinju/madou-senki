@@ -57,7 +57,7 @@ export function createGame(players: { id: string; name: string }[], entropy: Ent
   }
   const turnSeat = options.startingSeat ?? Math.floor(random() * players.length);
   const state: GameState = { rulesetVersion: ruleset.id, revision: 0, phase: 'setup', seatOrder: players.map(p => p.id), players: {}, turnSeat,
-    initialFactions:selected.map(c=>c.initial_faction), setupCursor: 0, pending: { kind: 'initial-followers', actorId: players[0]!.id, seat: 0 }, distances: {},
+    initialFactions:selected.map(c=>c.initial_faction), pending: { kind: 'initial-followers', round: 1, participantIds: players.map(p => p.id), readyIds: [], placedIds: [] }, distances: {},
     deck: shuffle(deck.flatMap(c => Array.from({ length: c.copies }, () => c.id)), random), discard: [], resolution: [], reclaimReservations: [], nextEventId: 1, events: [] };
   players.forEach((p, i) => {
     const c = selected[i]!;

@@ -1,5 +1,14 @@
 import { actionCards, characters } from '@madou/catalog';
-import { initialProtection, factionObjective, type GameState } from '@madou/engine';
+import { initialProtection, factionObjective, pendingSetupSeats, type GameState } from '@madou/engine';
+
+/** Ready every remaining seat through the concurrent setup rounds (G10) and leave setup. */
+export function readySetup(current: () => GameState, pass: (actorId: string) => void): void {
+  for (let round = 0; round < 6 && current().pending; round++) for (const id of pendingSetupSeats(current())) pass(id);
+}
+/** Same, for fixtures whose command helper is asynchronous. */
+export async function readySetupAsync(current: () => Promise<GameState>, pass: (actorId: string) => Promise<unknown>): Promise<void> {
+  for (let round = 0; round < 6 && (await current()).pending; round++) for (const id of pendingSetupSeats(await current())) await pass(id);
+}
 
 export const entropy = () => ({ now: 1000, dice: Array(100).fill(1) as number[], random: Array.from({ length: 4096 }, (_, i) => ((i * 193 + 17) % 997) / 997) });
 

@@ -1,6 +1,6 @@
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand,type GameState} from '@madou/engine';
 import {getAction} from '@madou/catalog';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const s26Entropy=()=>({...entropy(),random:Array(4096).fill(0.999999999),dice:Array(100).fill(1)});
 /** Only initial deal/order/stats are arranged. Death, wandering, actual resurrection and both setup windows use commands. */
 export function makeR6WanderingScenario(players:{id:string;name:string}[],boundary:'attack'|'revive'|'return'='attack'):GameState{
@@ -10,7 +10,7 @@ export function makeR6WanderingScenario(players:{id:string;name:string}[],bounda
  const fillers=s.deck.filter(id=>getAction(id)!.category!=='open').slice(0,12);s.deck=[...fillers.slice(0,7),newFollower,...fillers.slice(7),...s.deck.filter(id=>!fillers.includes(id)&&getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
  function act(actorId:string,command:GameCommand){const input={actorId,command},e=s26Entropy(),r=transition(s,input,e);if(!r.ok)throw Error(`S26_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('S26_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('S26_FIXTURE_CARDS');}
  function until(done:()=>boolean){for(let n=0;n<300;n++){if(done())return;const w=s.windows?.at(-1);if(!w)throw Error('S26_FIXTURE_WINDOW');act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('S26_FIXTURE_LIMIT');}
- act(a,{type:'PASS_SETUP'});act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:oldFollower});for(const id of [b,c,d])act(id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});if(boundary==='attack')return s;
+ act(a,{type:'PASS_SETUP'});act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:oldFollower});readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});if(boundary==='attack')return s;
  act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[c],dedicated:false});until(()=>!s.windows?.length);if(s.players[c]!.presence!=='dead'||s.players[b]!.presence!=='wandering'||s.outcome)throw Error('S26_FIXTURE_WANDERING');
  for(let n=0;n<40;n++){const actor=s.seatOrder[s.turnSeat]!;if(s.phase==='turn-start'&&actor===a)break;if(s.phase==='turn-start')act(actor,{type:'START_TURN'});else if(s.phase==='draw')act(actor,{type:'CHOOSE_DRAW',draw:false});else if(s.phase==='action')act(actor,{type:'PASS_ACTION'});else if(s.phase==='withdrawal')act(actor,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment'){act(actor,{type:'END_TURN',discardIds:[]});until(()=>!s.windows?.length);}else throw Error('S26_FIXTURE_TURN');}
  act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});if(boundary==='revive')return s;act(a,{type:'PLAY_TURN_TECHNIQUE',cardInstanceId:revive,targetIds:[c],dedicated:true});until(()=>s.windows?.at(-1)?.kind==='re-setup');act(c,{type:'PASS_SETUP'});if(s.windows?.at(-1)?.kind!=='re-setup'||s.windows.at(-1)!.participants[s.windows.at(-1)!.cursor]!==b)throw Error('S26_FIXTURE_RETURN');return s;

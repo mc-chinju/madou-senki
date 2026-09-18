@@ -29,7 +29,7 @@ export type GameCommand =
   | {type:'USE_LIFECYCLE_ABILITY';ability:'lancelot-transform'|'vanmil-subordinates'|'arseil-conspiracy'}
   | {type:'TRANSFER_RITUAL';targetId:string}
   | {type:'USE_REVIVAL_RITUAL'}
-  | { type: 'PLACE_INITIAL_FOLLOWER'; cardInstanceId: string }
+  | { type: 'PLACE_INITIAL_FOLLOWER'; cardInstanceId: string; position?: 'front' | 'back' }
   | { type: 'PASS_SETUP' }
   | { type: 'REVEAL_CHARACTER'; abilityId?:'c2-p04-r2c1-ab03' }
   | { type: 'START_TURN' }

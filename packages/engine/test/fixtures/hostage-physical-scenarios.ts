@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,viewFor,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const hostagePhysicalScenarios=['hostage-hidden','hostage-public','hostage-multi','hostage-late','hostage-counter','hostage-follower','hostage-third','hostage-cham','hostage-reveal','hostage-cham-decline','hostage-unrelated','hostage-suppressed','hostage-stopped','hostage-vanmil','hostage-fate','hostage-refill','hostage-wrong-user','hostage-wrong-attacker','hostage-decline'] as const;
 export type HostagePhysicalScenario=typeof hostagePhysicalScenarios[number];
 export function isHostagePhysicalScenario(name:string):name is HostagePhysicalScenario{return (hostagePhysicalScenarios as readonly string[]).includes(name);}
@@ -13,7 +13,7 @@ export function makeHostagePhysicalScenario(name:HostagePhysicalScenario,players
  function settle(){for(let n=0;n<300;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('HOSTAGE_FIXTURE_WINDOW');}
  function start(id:string){act(id,{type:'START_TURN'});settle();act(id,{type:'CHOOSE_DRAW',draw:false});settle();}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d]){if(id===b&&wood)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:wood});act(id,{type:'PASS_SETUP'});}start(m.prior?d:a);if(m.prior||['hostage-cham','hostage-cham-decline','hostage-unrelated'].includes(name)){act(c,{type:'REVEAL_CHARACTER'});settle();}
+ for(const id of [a,b,c,d]){if(id===b&&wood)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:wood});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));start(m.prior?d:a);if(m.prior||['hostage-cham','hostage-cham-decline','hostage-unrelated'].includes(name)){act(c,{type:'REVEAL_CHARACTER'});settle();}
  if(prior){if(name==='hostage-vanmil'){act(d,{type:'USE_REVIVAL_RITUAL'});settle();const o=viewFor(s,d).abilityOptions.find(o=>o.abilityId==='c2-p07-r1c2-ab03')!;act(d,{type:'USE_ABILITY',abilityId:o.abilityId,targetEventId:o.targetEventId,targetIds:[c]});settle();if(!s.suppressionDesignations?.some(x=>x.targetId===c))throw Error('HOSTAGE_FIXTURE_SUPPRESSION');}else{act(d,{type:'ATTACK',cardInstanceId:prior,targetIds:[c],dedicated:false});settle();if(!s.players[c]!.statuses?.some(x=>x.kind===(name==='hostage-stopped'?'stopped':'ability-disabled')))throw Error('HOSTAGE_FIXTURE_STATUS');}end(d);start(a);}
  if(name==='hostage-public'){act(a,{type:'REVEAL_CHARACTER'});settle();}if(m.multi||m.late||name==='hostage-counter'){act(a,{type:'CHANT',cardInstanceId:m.attack});end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}if(blood&&s.deck[0]!==blood)throw Error('HOSTAGE_FIXTURE_BLOOD');return s;
 }

@@ -73,8 +73,41 @@ async function connect(room: DurableObjectStub<import('../src/rooms/room.js').Ro
   return new Inbox(response.webSocket);
 }
 const pass = (id: string, revision: number) => ({ protocolVersion: 1, commandId: id, expectedRevision: revision, command: { type: 'PASS_SETUP' } });
+/** Broadcasts queue up, so skip past the projections that predate the state under test. */
+async function viewWhen(inbox: Inbox, done: (view: RoomView) => boolean): Promise<RoomView> {
+  for (;;) {
+    const message = await inbox.next(m => m.type === 'snapshot');
+    if (message.type === 'snapshot' && done(message.view)) return message.view;
+  }
+}
 
 describe('room WebSocket and durable recovery', () => {
+  it('resumes a stored sequential setup without reopening completed seats or refilling twice', async () => {
+    const { room, game } = await fixture();
+    const legacy = { ...game, setupCursor: 1, pending: { kind: 'initial-followers', actorId: 'B', seat: 1 } };
+    await runInDurableObject(room, (_instance, state) => {
+      const stored = new RoomStorage<RoomData, RoomEvent, RoomProjection>(state.storage).snapshot()!;
+      state.storage.sql.exec('UPDATE room_snapshot SET value = ? WHERE singleton = 1',
+        JSON.stringify({ ...stored.state, game: legacy }));
+    });
+    const restored = await room.gameSnapshot('B');
+    expect(restored?.game?.pending).toEqual({ kind: 'initial-followers', round: 1, participantIds: ['B', 'C', 'D'], readyIds: [] });
+    expect((await room.gameSnapshot('A'))?.game?.legalChoices).not.toContain('PASS_SETUP');
+    const b = await connect(room, 'B');
+    await b.snapshot();
+    for (const actorId of ['D', 'C', 'B']) {
+      const inbox = actorId === 'B' ? b : await connect(room, actorId);
+      const before = await room.gameSnapshot(actorId);
+      inbox.send(pass(`legacy-${actorId}`, before!.revision));
+      expect(await inbox.next(m => m.type === 'ack')).toMatchObject({ type: 'ack' });
+    }
+    await evictDurableObject(room);
+    const after = await room.gameSnapshot('B');
+    expect(after?.game?.phase).toBe('turn-start');
+    expect(after?.game?.self.hand).toEqual(game.players.B!.hand);
+    expect(after?.game?.deckCount).toBe(game.deck.length);
+  });
+
   it('sends only the seated viewer projection and rejects an unknown seat', async () => {
     const { room, game } = await fixture();
     const a = await connect(room, 'A');
@@ -94,11 +127,11 @@ describe('room WebSocket and durable recovery', () => {
     a.send(pass('one', start.revision));
     expect(await a.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'one', revision: start.revision + 1 });
     const after = await a.snapshot();
-    expect(after.game?.pending?.actorId).toBe('B');
+    expect(after.game?.pending?.readyIds).toEqual(['A']);
     await evictDurableObject(room);
     a.send(pass('one', start.revision));
     expect(await a.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'one', revision: after.revision });
-    expect((await a.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await a.snapshot()).game?.pending?.readyIds).toEqual(['A']);
   });
 
   it('makes the newest connection active without letting old tabs submit', async () => {
@@ -126,7 +159,8 @@ describe('room WebSocket and durable recovery', () => {
     await a.next(m => m.type === 'ack');
     const placed = await a.snapshot();
     expect(placed.game?.self.followers).toHaveLength(1);
-    expect(placed.game?.self.hand).toHaveLength(5);
+    // The refill waits for the setup round to close (G10), so the hand is one short here.
+    expect(placed.game?.self.hand).toHaveLength(4);
     expect(placed.game?.self.hand).not.toContain(card);
     await evictDurableObject(room);
     a.send(request);
@@ -164,7 +198,7 @@ describe('room WebSocket and durable recovery', () => {
     expect(await a.next(m => m.type === 'error')).toMatchObject({ code: 'INTERNAL_ERROR' });
     const rolledBack = await a.snapshot();
     expect(rolledBack.revision).toBe(before.revision);
-    expect(rolledBack.game?.pending?.actorId).toBe('A');
+    expect(rolledBack.game?.pending?.readyIds).toEqual([]);
     expect(await runInDurableObject(room, (_instance, state) => state.storage.getAlarm())).toBeNull();
     a.send(pass('atomic', before.revision));
     expect(await a.next(m => m.type === 'ack')).toMatchObject({ revision: before.revision + 1 });
@@ -184,7 +218,7 @@ describe('room WebSocket and durable recovery', () => {
       });
     });
     a.send(pass('lost-ack', before.revision));
-    expect((await a.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await a.snapshot()).game?.pending?.readyIds).toEqual(['A']);
     expect(a.has(m => m.type === 'ack')).toBe(false);
     vi.restoreAllMocks();
     await evictDurableObject(room, { webSockets: 'close' });
@@ -192,7 +226,7 @@ describe('room WebSocket and durable recovery', () => {
     const recovered = await resumed.snapshot();
     resumed.send(pass('lost-ack', before.revision));
     expect(await resumed.next(m => m.type === 'ack')).toMatchObject({ commandId: 'lost-ack', revision: recovered.revision });
-    expect((await resumed.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await resumed.snapshot()).game?.pending?.readyIds).toEqual(['A']);
   });
 
   it('keeps the saved game and retries a failed directory projection after eviction', async () => {
@@ -234,10 +268,10 @@ describe('room WebSocket and durable recovery', () => {
     });
     a.send(pass('broadcast', before.revision));
     await a.next(m => m.type === 'ack');
-    expect((await b.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await b.snapshot()).game?.pending?.readyIds).toEqual(['A']);
     vi.restoreAllMocks();
     const resumed = await connect(room, 'A');
-    expect((await resumed.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await resumed.snapshot()).game?.pending?.readyIds).toEqual(['A']);
   });
 
   it('cannot overwrite a newer directory revision with a delayed outbox record', async () => {
@@ -250,5 +284,41 @@ describe('room WebSocket and durable recovery', () => {
     await a.next(m => m.type === 'ack');
     await runDurableObjectAlarm(room);
     expect(await env.DB.prepare('SELECT revision, listing FROM room_directory').first()).toEqual({ revision: 100, listing: '{"title":"newest"}' });
+  });
+
+  it('accepts concurrent setup commands on the same round and rejects a base from a finished round', async () => {
+    const { room, game } = await fixture(true);
+    const follower = game.players.A!.hand.find(id => getAction(id)?.category === 'follower')!;
+    const seats = { A: await connect(room, 'A'), B: await connect(room, 'B'), C: await connect(room, 'C'), D: await connect(room, 'D') };
+    const start = await seats.A.snapshot();
+    const base = { windowId: 'setup-1', windowRevision: 0 };
+    // Both seats answer the same projection; the later one is concurrent, not stale.
+    seats.A.send({ protocolVersion: 1, commandId: 'place-a', expectedRevision: start.revision, ...base, command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: follower } });
+    expect(await seats.A.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'place-a', revision: start.revision + 1 });
+    seats.B.send({ protocolVersion: 1, commandId: 'ready-b', expectedRevision: start.revision, ...base, command: { type: 'PASS_SETUP' } });
+    expect(await seats.B.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'ready-b', revision: start.revision + 2 });
+    for (const actor of ['C', 'D', 'A'] as const) {
+      seats[actor].send({ protocolVersion: 1, commandId: `ready-${actor}`, expectedRevision: start.revision, ...base, command: { type: 'PASS_SETUP' } });
+      expect(await seats[actor].next(m => m.type === 'ack')).toMatchObject({ type: 'ack', commandId: `ready-${actor}` });
+    }
+    const second = await viewWhen(seats.A, view => view.game?.pending?.round === 2);
+    // The round advanced, so the same base is now a stale screen.
+    seats.A.send({ protocolVersion: 1, commandId: 'stale-round', expectedRevision: second.revision, ...base, command: { type: 'PASS_SETUP' } });
+    expect(await seats.A.next(m => m.type === 'error')).toMatchObject({ type: 'error', code: 'STALE_WINDOW' });
+  });
+
+  it('still requires an exact revision when the command has no base to name', async () => {
+    const { room } = await fixture();
+    const seats = { A: await connect(room, 'A'), B: await connect(room, 'B'), C: await connect(room, 'C'), D: await connect(room, 'D') };
+    const start = await seats.A.snapshot();
+    for (const actor of ['B', 'C', 'D', 'A'] as const) {
+      seats[actor].send({ protocolVersion: 1, commandId: `ready-${actor}`, expectedRevision: start.revision, windowId: 'setup-1', windowRevision: 0, command: { type: 'PASS_SETUP' } });
+      await seats[actor].next(m => m.type === 'ack');
+    }
+    const turn = await viewWhen(seats.A, view => view.game?.phase === 'turn-start');
+    seats.A.send({ protocolVersion: 1, commandId: 'stale-turn', expectedRevision: start.revision, command: { type: 'START_TURN' } });
+    expect(await seats.A.next(m => m.type === 'error')).toMatchObject({ type: 'error', code: 'STALE_REVISION' });
+    seats.A.send({ protocolVersion: 1, commandId: 'fresh-turn', expectedRevision: turn.revision, command: { type: 'START_TURN' } });
+    expect(await seats.A.next(m => m.type === 'ack')).toMatchObject({ type: 'ack', commandId: 'fresh-turn' });
   });
 });

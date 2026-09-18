@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const shadowCard='a2-p08-r3c2',shadowChild='a2-p08-r1c1';
 export const shadowCardScenarios=['shadow-card-ordinary','shadow-card-owner-ordinary','shadow-card-low-ordinary','shadow-card-dedicated','shadow-card-low-dedicated','shadow-card-shin-ordinary','shadow-card-shin-dedicated','shadow-card-high','shadow-card-equal','shadow-card-near','shadow-card-suppressed','shadow-card-silenced','shadow-card-stopped','shadow-card-prohibited','shadow-card-wrong-owner','shadow-card-decline','shadow-card-grant-decline','shadow-card-defense-fate','shadow-card-child-fate','shadow-card-child-low','shadow-card-child-chant','shadow-card-child-unchanted','shadow-card-child-follower','shadow-card-multi','shadow-card-shin-multi'] as const;
 export type ShadowCardScenario=typeof shadowCardScenarios[number];
@@ -15,7 +15,7 @@ export function makeShadowCardPhysical(name:ShadowCardScenario,players:{id:strin
  for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];s.events=[];
  function act(actorId:string,command:GameCommand,faces:number[]=Array(100).fill(1)){const input={actorId,command},e={...entropy(),dice:faces},r=transition(s,input,e);if(!r.ok)throw Error(`SHADOW_CARD_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('SHADOW_CARD_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('SHADOW_CARD_FIXTURE_CARDS');}
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},Array(100).fill(face));}throw Error('SHADOW_CARD_FIXTURE_LIMIT');}
- for(const id of [a,b,c,d]){if(id===a&&name==='shadow-card-child-follower')act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p22-r1c1'});act(id,{type:'PASS_SETUP'});}
+ for(const id of [a,b,c,d]){if(id===a&&name==='shadow-card-child-follower')act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p22-r1c1'});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));
  function start(id:string){act(id,{type:'START_TURN'});settle();act(id,{type:'CHOOSE_DRAW',draw:false});}
  function end(id:string){if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
  if(prior){start(d);act(d,{type:'ATTACK',cardInstanceId:name==='shadow-card-suppressed'?'a2-p13-r1c2':name==='shadow-card-stopped'?'a2-p13-r2c1':'a2-p18-r1c1',targetIds:[b],dedicated:false});settle(6);end(d);}

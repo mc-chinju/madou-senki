@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const followerScenarioNames = ['follower-initial', 'follower-royal', 'follower-regeneration', 'follower-rear-guard', 'follower-placement', 'magic-gate-ready', 'magic-gate-hidden-invalid', 'magic-gate-cancel', 'magic-gate-extra-slot'] as const;
 export type FollowerScenarioName = typeof followerScenarioNames[number];
@@ -39,7 +39,7 @@ export function makeFollowerScenario(name: FollowerScenarioName, players: { id: 
     assignCharacter(state, a, '魔導王ガイナス');
     takeCard(state, a, 'アルケミア城'); takeCard(state, a, '砦'); return state;
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, '魔導王ガイナス'); assignCharacter(state, b, 'リーア姫');
   assignCharacter(state, c, '白魔術師シェリム'); assignCharacter(state, d, '黒騎士ガーウィン');

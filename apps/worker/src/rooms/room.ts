@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { activeWindowRef, createGame, transition, viewFor, type Entropy } from '@madou/engine';
+import { activeWindowRef, commandBaseRef, createGame, transition, viewFor, type Entropy } from '@madou/engine';
 import { assertPlayableCatalog, entries, ruleset } from '@madou/catalog';
 import { isRoomCommand, MAX_COMMAND_MESSAGE_BYTES, parseClientEnvelope, type ClientErrorCode, type ClientServerMessage, type RoomCommand } from '@madou/protocol';
 import { RoomStorage, type Snapshot } from './storage.js';
@@ -151,7 +151,11 @@ export class Room extends DurableObject<Env> {
           ? { type: 'ack', commandId: envelope.commandId, revision: prior.revision }
           : error(prior.code === 'NOT_INITIALIZED' ? 'ROOM_UNAVAILABLE' : prior.code, envelope.commandId);
         if (!Object.hasOwn(current.state.members, actorId)) return error('NOT_SEATED', envelope.commandId);
-        if (current.revision !== envelope.expectedRevision) return error('STALE_REVISION', envelope.commandId);
+        // A command naming the current window generation or setup round is concurrent with the seats it raced, not stale (design §6).
+        const playing = !isRoomCommand(envelope.command) && current.state.status === 'playing' ? current.state.game : undefined;
+        const base = playing ? commandBaseRef(playing) : null;
+        const onBase = !!base && envelope.windowId === base.windowId && envelope.windowRevision === base.windowRevision;
+        if (current.revision !== envelope.expectedRevision && !(onBase && envelope.expectedRevision < current.revision)) return error('STALE_REVISION', envelope.commandId);
         let next: RoomData;
         let events: RoomEvent[];
         if (isRoomCommand(envelope.command)) {
@@ -160,18 +164,16 @@ export class Room extends DurableObject<Env> {
           next = outcome.state;
           events = [{ kind: 'lobby', type: outcome.event, actorId, at: Date.now() }];
         } else {
-          const game = current.state.game;
-          if (!game || current.state.status !== 'playing') return error('INVALID_ACTION', envelope.commandId);
-          const window = activeWindowRef(game);
-          if (window ? envelope.windowId !== window.windowId || envelope.windowRevision !== window.windowRevision : envelope.windowId !== undefined) {
-            return error('STALE_WINDOW', envelope.commandId);
-          }
+          const game = playing;
+          if (!game) return error('INVALID_ACTION', envelope.commandId);
+          // A named base must be the current one; an open reaction window must always be named.
+          if (envelope.windowId !== undefined ? !onBase : !!activeWindowRef(game)) return error('STALE_WINDOW', envelope.commandId);
           const outcome = transition(game, { actorId, command: envelope.command }, this.commandEntropy());
           if (!outcome.ok) return error('INVALID_ACTION', envelope.commandId);
           next = { ...current.state, game: outcome.state, status: outcome.state.outcome ? 'finished' : 'playing' };
           events = outcome.events.map(event => ({ kind: 'game', event }));
         }
-        const committed = this.store.commit({ ...identity, state: next, events, projection: projectDirectory(next) });
+        const committed = this.store.commit({ ...identity, baseRevision: current.revision, state: next, events, projection: projectDirectory(next) });
         if (!committed.ok) return error(committed.code === 'NOT_INITIALIZED' ? 'ROOM_UNAVAILABLE' : committed.code, envelope.commandId);
         // SQLite async transactions include these SQL writes and the alarm together.
         await this.scheduleProjection();
@@ -251,6 +253,17 @@ export class Room extends DurableObject<Env> {
     const snapshot = this.store.snapshot();
     if (!snapshot || snapshot.state.schemaVersion !== 1 || snapshot.state.rulesetId !== ruleset.id ||
       (snapshot.state.game && snapshot.state.game.rulesetVersion !== ruleset.id)) return null;
+    const game = snapshot.state.game;
+    const pending = game?.pending as NonNullable<RoomData['game']>['pending'] | { kind: 'initial-followers'; actorId: string; seat: number };
+    if (game?.phase === 'setup' && pending && 'seat' in pending) {
+      // Legacy setup refilled immediately. Keep finished seats out, and only
+      // refill placements made after this conversion when the new round ends.
+      game.pending = {
+        kind: 'initial-followers', round: 1, participantIds: game.seatOrder.slice(pending.seat),
+        readyIds: [], placedIds: [],
+      };
+      delete (game as typeof game & { setupCursor?: number }).setupCursor;
+    }
     return snapshot;
   }
 

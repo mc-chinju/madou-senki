@@ -1,6 +1,6 @@
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { expect, type APIRequestContext, type Browser, type BrowserContext, type BrowserContextOptions } from '@playwright/test';
+import { expect, type APIRequestContext, type Browser, type BrowserContext, type BrowserContextOptions, type Page } from '@playwright/test';
 import { makeScenario, type ScenarioName } from '../../packages/engine/test/fixtures/game-scenarios.js';
 
 export const origin = `http://localhost:${process.env.PLAYWRIGHT_PORT ?? 8787}`;
@@ -15,10 +15,13 @@ export async function signIn(context: BrowserContext, name: string): Promise<{ i
 let storedRoom: { request: APIRequestContext; roomId: string } | null = null;
 /** Discard pile contents are never sent to players; browser tests read them from the saved game of the latest table. */
 export async function storedDiscard(): Promise<string[]> {
+  return (await storedGame()).discard;
+}
+async function storedGame(): Promise<{ phase: string; revision: number; discard: string[]; pending: { participantIds: string[]; readyIds: string[] } | null }> {
   if (!storedRoom) throw Error('NO_TABLE');
   const response = await storedRoom.request.get(`/__test/rooms/${storedRoom.roomId}/game`);
   expect(response.ok()).toBe(true);
-  return (await response.json()).discard;
+  return response.json();
 }
 
 export async function tableFixture(browser: Browser, request: APIRequestContext, scenario?: ScenarioName, count = 4, options: BrowserContextOptions = {}) {
@@ -65,6 +68,28 @@ export async function observe(table: Table) {
     await expect(page.getByRole('region', { name: '自分の手札' })).toBeVisible();
   }
   return views;
+}
+/** Presses 「配置を終える」; a seat that could still place a follower is asked once more inside the bar and confirms. */
+export async function finishSetup(page: Page) {
+  const finish = page.getByRole('button', { name: '配置を終える', exact: true });
+  const confirm = page.getByRole('button', { name: '置かずに終える', exact: true });
+  await finish.click();
+  // React flushes the click synchronously, so an armed confirmation is already rendered when click() returns.
+  if (await confirm.isVisible()) await confirm.click();
+}
+/** Ready every seat through the remaining concurrent setup rounds (G10); placements happen before this. */
+export async function readySetup(table: Table) {
+  for (let round = 0; round < 6; round++) {
+    const game = await storedGame();
+    if (game.phase !== 'setup' || !game.pending) return;
+    for (const id of game.pending.participantIds) {
+      if (game.pending.readyIds.includes(id)) continue;
+      const page = table.pages[table.sessions.findIndex(session => session.id === id)]!;
+      await finishSetup(page);
+    }
+    await expect.poll(async () => (await storedGame()).revision).toBeGreaterThan(game.revision);
+  }
+  throw Error('SETUP_DID_NOT_FINISH');
 }
 export async function passUntil(table: Table, views: Map<string, RoomView>, done: (game: PlayerView) => boolean, maxSteps = 100) {
   const owner = table.sessions[0]!.id;

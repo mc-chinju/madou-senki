@@ -3,7 +3,7 @@ import {makeDispelScenario} from './dispel-scenario.js';
 import {makeInformationAnytimeScenario} from './information-anytime-scenarios.js';
 import {getAction} from '@madou/catalog';
 import {createGame,transition,viewFor,type GameState,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const anytimeScenarioNames=['reclaim-substitute-open','reclaim-substitute','reclaim-dispel','reclaim-peace','reclaim-revelation','reclaim-tragedy','reclaim-keil','reclaim-hostage','reclaim-amulet'] as const;
 export function makeAnytimeScenario(name:typeof anytimeScenarioNames[number],players:{id:string;name:string}[]):GameState {
  if(name==='reclaim-substitute'||name==='reclaim-substitute-open')return makeSubstituteScenario(players,name==='reclaim-substitute-open');
@@ -17,7 +17,7 @@ export function makeAnytimeScenario(name:typeof anytimeScenarioNames[number],pla
  trimHand(s,a,attack,...(amulet?[response]:[]));trimHand(s,b,...(!amulet?[response]:[]));trimHand(s,c,fate);
  const act=(actorId:string,command:GameCommand,dice=Array(100).fill(1))=>{const r=transition(s,{actorId,command},{...entropy(),dice});if(!r.ok)throw Error(`ANYTIME_FIXTURE_${r.code}`);s=r.state;};
  const pass=()=>{const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'},[3,...Array(100).fill(1)]);};
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
  if(!amulet){act(a,{type:'CHANT',cardInstanceId:attack});for(let n=0;n<4;n++){const id=s.seatOrder[s.turnSeat]!;act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.slice(viewFor(s,id).self.stats.handLimit)});const next=s.seatOrder[s.turnSeat]!;act(next,{type:'START_TURN'});act(next,{type:'CHOOSE_DRAW',draw:false});if(next!==a)act(next,{type:'PASS_ACTION'});}}
  if(hostage)s.players[c]!.statuses=[{id:'prior-ban',kind:'ability-disabled',modifiers:[0],nextCheck:0}];
  act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:hostage||keil?[b,c]:[b],dedicated:hostage});

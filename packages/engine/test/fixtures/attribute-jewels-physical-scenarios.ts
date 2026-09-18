@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const attributeJewelsPhysicalScenarios=['crown-install','crystal-install','crown-fate','crystal-fate','crown-decline','crystal-decline','crown-element','crystal-element','crown-other','crystal-other','crown-human','crystal-human','crown-wrong','crystal-wrong','crown-nonhuman','crystal-nonhuman','crown-convert-on','crystal-convert-on','crown-convert-off','crystal-convert-off','crown-training','crystal-training','crown-army-human','crystal-army-human','crown-army-nonhuman','crystal-army-nonhuman'] as const;
 export type AttributeJewelsPhysicalScenario=typeof attributeJewelsPhysicalScenarios[number];
 export function isAttributeJewelsPhysicalScenario(name:string):name is AttributeJewelsPhysicalScenario{return (attributeJewelsPhysicalScenarios as readonly string[]).includes(name);}
@@ -15,6 +15,6 @@ export function makeAttributeJewelsPhysicalScenario(name:AttributeJewelsPhysical
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('JEWEL_FIXTURE_WINDOW');}
  function start(id:string){act(id,{type:'START_TURN'});settle();act(id,{type:'CHOOSE_DRAW',draw:false});settle();}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d]){if(id===a&&m.morale&&!m.army)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:m.follower});act(id,{type:'PASS_SETUP'});}start(a);if(m.early)return s;act(a,{type:'PLAY_TURN_CARD',cardInstanceId:m.card});settle();end(a);if(m.morale&&!m.converted&&!m.army){start(b);return s;}
+ for(const id of [a,b,c,d]){if(id===a&&m.morale&&!m.army)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:m.follower});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));start(a);if(m.early)return s;act(a,{type:'PLAY_TURN_CARD',cardInstanceId:m.card});settle();end(a);if(m.morale&&!m.converted&&!m.army){start(b);return s;}
  for(const id of [b,c,d]){start(id);if(id===d&&m.converted){act(a,{type:'REVEAL_CHARACTER'});settle();act(d,{type:'PLAY_TURN_CARD',cardInstanceId:m.finalEvil?'a2-p04-r1c2':'a2-p04-r1c1',targetId:a});settle(6);if(s.players[a]!.faction!==(m.finalEvil?'EVIL':'GOOD'))throw Error('JEWEL_CONVERSION');}end(id);}start(a);if(m.morale&&!m.army){end(a);start(b);}return s;
 }

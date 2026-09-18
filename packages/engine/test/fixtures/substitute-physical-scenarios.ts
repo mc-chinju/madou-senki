@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const substitutePhysicalScenarios=['substitute-one','substitute-multi','substitute-followers','substitute-receiver-followers','substitute-counter','substitute-mental','substitute-water','substitute-near','substitute-canceled','substitute-third','substitute-refill','substitute-decline','substitute-teleport','substitute-reaction','substitute-chain'] as const;
 export type SubstitutePhysicalScenario=typeof substitutePhysicalScenarios[number];
 export function isSubstitutePhysicalScenario(name:string):name is SubstitutePhysicalScenario{return (substitutePhysicalScenarios as readonly string[]).includes(name);}
@@ -14,5 +14,5 @@ export function makeSubstitutePhysicalScenario(name:SubstitutePhysicalScenario,p
  function settle(){for(let n=0;n<300;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('SUBSTITUTE_PHYSICAL_WINDOW');}
  function start(id:string){act(id,{type:'START_TURN'});settle();act(id,{type:'CHOOSE_DRAW',draw:false});settle();}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d]){if(id===b&&wood)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:wood});if(id===c&&metal)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:metal});act(id,{type:'PASS_SETUP'});}start(a);if(name==='substitute-third'){act(a,{type:'REVEAL_CHARACTER'});settle();}if(m.multi){act(a,{type:'CHANT',cardInstanceId:m.attack});end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}if(name==='substitute-near'){act(a,{type:'APPROACH',cardInstanceId:'a2-p24-r1c2',targetId:b});settle();}if(blood&&s.deck[0]!==blood)throw Error('SUBSTITUTE_PHYSICAL_BLOOD');return s;
+ for(const id of [a,b,c,d]){if(id===b&&wood)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:wood});if(id===c&&metal)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:metal});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));start(a);if(name==='substitute-third'){act(a,{type:'REVEAL_CHARACTER'});settle();}if(m.multi){act(a,{type:'CHANT',cardInstanceId:m.attack});end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}if(name==='substitute-near'){act(a,{type:'APPROACH',cardInstanceId:'a2-p24-r1c2',targetId:b});settle();}if(blood&&s.deck[0]!==blood)throw Error('SUBSTITUTE_PHYSICAL_BLOOD');return s;
 }

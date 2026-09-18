@@ -135,11 +135,17 @@
     }
   },
   "turnSeat": 0,
-  "setupCursor": 0,
   "pending": {
     "kind": "initial-followers",
-    "actorId": "A",
-    "seat": 0
+    "round": 1,
+    "participantIds": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "readyIds": [],
+    "placedIds": []
   },
   "distances": {
     "A": {

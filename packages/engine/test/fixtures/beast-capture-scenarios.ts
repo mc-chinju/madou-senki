@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, derivedStats, transition, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const beastCaptureScenarioNames = ['beast-capture', 'beast-capture-no-beasts', 'beast-capture-guard', 'beast-capture-blocked', 'beast-capture-lethal'] as const;
 export type BeastCaptureScenarioName = typeof beastCaptureScenarioNames[number];
@@ -24,7 +24,7 @@ export function makeBeastCaptureScenario(name: BeastCaptureScenarioName, players
     game.players[b]!.hand = game.players[b]!.hand.filter(card => card !== id);
     game.players[b]!.followers.push({ cardInstanceId: id, revealed: false });
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(game, a, '獣使いのウパニシャット'); assignCharacter(game, b, '侍大将のシン');
   assignCharacter(game, c, '黒妖精のアーネス'); assignCharacter(game, d, '魔導王ガイナス');

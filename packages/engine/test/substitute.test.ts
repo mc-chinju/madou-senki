@@ -1,7 +1,7 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
-import {act,finish,pass,ready,until,closeWindow} from './combat-helpers.js';
+import {act,finish,pass,ready,until,closeWindow,readySetup} from './combat-helpers.js';
 import {character,entropy,handCard,freshGame} from './fixtures.js';
 const SUBSTITUTE='a2-p02-r2c1';
 function incoming(){let s=ready();character(s,'C','黒騎士ガーウィン');handCard(s,'C','身代わり');const card=handCard(s,'A','踏み込み／弓');s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});s=until(s,'attack-abilities');s=pass(s);s=pass(s);return s;}
@@ -25,7 +25,7 @@ it('Fate cancellation leaves the original hit live while preserving payment and 
 function multi(withFollower=false,receiverFollower=false){
  let s=freshGame();character(s,'A','侍大将のシン');character(s,'B','黒騎士ガーウィン');character(s,'C','忍びのイダ');for(const p of Object.values(s.players))p.permanent={endurance:100};
  const attack=handCard(s,'A','天地百撃斬'),wood=handCard(s,'B','ウッドゴーレム'),metal=handCard(s,'C','メタルゴーレム');handCard(s,'C','身代わり');
- for(const id of s.seatOrder){if(id==='C'&&receiverFollower)s=act(s,id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:metal});if(id==='B'&&withFollower)s=act(s,id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:wood});s=act(s,id,{type:'PASS_SETUP'});}
+ for(const id of s.seatOrder){if(id==='C'&&receiverFollower)s=act(s,id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:metal});if(id==='B'&&withFollower)s=act(s,id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:wood});s=act(s,id,{type:'PASS_SETUP'});}s=readySetup(s);
  s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=act(s,'A',{type:'CHANT',cardInstanceId:attack});
  for(let n=0;n<4;n++){const id=s.seatOrder[s.turnSeat]!;s=act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!==SUBSTITUTE).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});const next=s.seatOrder[s.turnSeat]!;s=act(s,next,{type:'START_TURN'});s=act(s,next,{type:'CHOOSE_DRAW',draw:false});if(next!=='A')s=act(s,next,{type:'PASS_ACTION'});}
  s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B','C'],dedicated:true});for(let n=0;n<100&&!Object.keys(s.groups??{}).length;n++)s=pass(s,[3,...Array(40).fill(1)]);expect(Object.values(s.groups!)[0]!.targets.map(t=>t.hits.length)).toEqual([3,3]);return {s,wood};

@@ -1,5 +1,5 @@
 import {expect,test,type Locator} from '@playwright/test';
-import {observe,windowPassButtonName,tableFixture,storedDiscard} from './helpers.js';
+import {observe,windowPassButtonName,tableFixture,storedDiscard,readySetup} from './helpers.js';
 test('Actual Fury Royal Knights bow reflection survives browser reload without new bonus dice',async({browser,request})=>{
  const table=await tableFixture(browser,request,'fury-royal-reflection'),errors:string[]=[];
  for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
@@ -9,9 +9,8 @@ test('Actual Fury Royal Knights bow reflection survives browser reload without n
  async function settle(stop?:string){for(let n=0;n<300;n++){const current=views.get(a)!,g=current.game!,w=g.activeWindow;if(!w||w.kind===stop)return;const actor=w.pendingActorId!;await expect.poll(()=>views.get(actor)?.revision).toBe(current.revision);await table.pages[table.sessions.findIndex(p=>p.id===actor)]!.getByRole('button',{name:windowPassButtonName}).click();await expect.poll(()=>{expect(errors).toEqual([]);return views.get(a)?.revision;}).toBeGreaterThan(current.revision);}throw Error('FAIRY_UI_LIMIT');}
  async function select(seat:number,id:string){const p=table.pages[seat]!,who=table.sessions[seat]!.id,index=views.get(who)!.game!.self.hand.indexOf(id);expect(index).toBeGreaterThanOrEqual(0);await p.getByRole('region',{name:'自分の手札',exact:true}).getByRole('article').nth(index).getByRole('button').first().click();}
 
- await click(page.getByRole('button',{name:'従者を置かず進む',exact:true}));
  await select(1,'a2-p21-r1c2');await click(table.pages[1]!.getByRole('button',{name:'従者を置く',exact:true}));
- for(let i=1;i<4;i++)await click(table.pages[i]!.getByRole('button',{name:'従者を置かず進む',exact:true}));
+ await readySetup(table);
  await click(page.getByRole('button',{name:'手番を始める',exact:true}));await click(page.getByRole('button',{name:'カードを引かない',exact:true}));
  const panel=page.getByRole('region',{name:'複数従者の攻撃'});
  await panel.getByRole('combobox',{name:'使う能力',exact:true}).selectOption('c2-p06-r1c2-ab04');

@@ -54,10 +54,14 @@ export class BotClient {
     const envelope: Record<string, unknown> = {
       protocolVersion: 1, commandId, expectedRevision: this.roomView.revision, command,
     };
-    const window = this.roomView.game?.activeWindow;
-    if (!isRoomCommand(command) && window) {
-      envelope.windowId = window.windowId;
-      envelope.windowRevision = window.windowRevision;
+    // Same base as the browser client: the window generation, or the open setup round.
+    const game = this.roomView.game;
+    const window = game?.activeWindow;
+    const base = window ? { windowId: window.windowId, windowRevision: window.windowRevision }
+      : game?.phase === 'setup' && game.pending ? { windowId: `setup-${game.pending.round}`, windowRevision: 0 } : null;
+    if (!isRoomCommand(command) && base) {
+      envelope.windowId = base.windowId;
+      envelope.windowRevision = base.windowRevision;
     }
     const payload = JSON.stringify(envelope);
     this.lastPayload = payload;

@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const trainingPhysicalScenarios=['training-warrior-equal','training-magic-equal','training-warrior-success','training-magic-success','training-warrior-fate','training-magic-fate','training-warrior-forced','training-magic-forced','training-warrior-reroll','training-magic-reroll','training-warrior-lan','training-magic-lan','training-warrior-ii','training-magic-ii','training-warrior-lan-ordinary','training-magic-lan-ordinary','training-warrior-lan-fate','training-magic-lan-fate','training-warrior-artifact','training-magic-artifact','training-warrior-before','training-magic-before','training-warrior-after','training-magic-after','training-warrior-decline','training-magic-decline','training-warrior-suppressed','training-magic-suppressed','training-warrior-stopped','training-magic-stopped'] as const;
 export type TrainingPhysicalScenario=typeof trainingPhysicalScenarios[number];
 export function isTrainingPhysicalScenario(name:string):name is TrainingPhysicalScenario{return (trainingPhysicalScenarios as readonly string[]).includes(name);}
@@ -14,7 +14,7 @@ export function makeTrainingPhysicalScenario(name:TrainingPhysicalScenario,playe
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('TRAINING_FIXTURE_WINDOW');}
  function start(id:string,face=1){act(id,{type:'START_TURN'});settle(face);if(s.phase==='draw'){act(id,{type:'CHOOSE_DRAW',draw:false});settle();}}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});if(options.beforeStart)return s;
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(options.beforeStart)return s;
  if(prior){start(d);act(d,{type:'ATTACK',cardInstanceId:m.suppressed?'a2-p13-r1c2':'a2-p13-r2c1',targetIds:[a],dedicated:false});settle(6);if(!s.players[a]!.statuses?.some(x=>x.kind===(m.suppressed?'ability-disabled':'stopped')))throw Error('TRAINING_NO_STATUS');end(d);}start(a,prior?6:1);
  if(m.ii){act(c,{type:'REVEAL_CHARACTER'});settle();act(a,{type:'USE_LIFECYCLE_ABILITY',ability:'lancelot-transform'});settle();if(s.players[a]!.characterId!=='c2-p07-r1c1')throw Error('TRAINING_NO_TRANSFORM');}
  if(m.artifact){act(a,{type:'PLAY_TURN_CARD',cardInstanceIds:[m.attachment]});settle();end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}return s;

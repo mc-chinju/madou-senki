@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
 import {gameStats} from '../src/index.js';
-import {act,pass} from './combat-helpers.js';
+import {act,pass,readySetup} from './combat-helpers.js';
 import {freshGame} from './fixtures.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 
@@ -16,7 +16,7 @@ it('Actual same-root death and FuSen revival do not give the old reserved prayer
  s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
  // A chant refill, D short-hand refill and B prayer refill precede the death-gift child.
  s.deck.splice(3,0,fusen);
- for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});
+ s=readySetup(s);
  s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=act(s,'A',{type:'CHANT',cardInstanceId:sword});
  for(let n=0;n<200;n++){
   const id=s.seatOrder[s.turnSeat]!;
