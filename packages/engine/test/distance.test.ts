@@ -1,4 +1,4 @@
-import {passReclaims,closeWindow,act,finish,pass,ready,until} from './combat-helpers.js';
+import {passReclaims,closeWindow,act,finish,pass,ready,readySetup,until} from './combat-helpers.js';
 import {expect,it} from 'vitest';
 import {character,entropy,handCard,handCards,freshGame} from './fixtures.js';
 import {transition,viewFor,type GameState} from '../src/index.js';
@@ -141,7 +141,8 @@ it('Tia earth predicate excludes a structural warrior-earth source',()=>{const s
 it('Tia flight defeats real earth magic before an actually placed follower is exposed',()=>{
  let s=freshGame();character(s,'A','魔導王ガイナス');character(s,'B','有翼人のティア');for(const p of Object.values(s.players))p.permanent={spirit:20,endurance:100};
  const card=handCard(s,'A','地槍'),soldier=handCard(s,'B','兵士');
- for(const actor of s.seatOrder){if(actor==='B')s=act(s,actor,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier});s=act(s,actor,{type:'PASS_SETUP'});}
+ // G10: a seat that placed is asked again after the refill, so ready every remaining round.
+ s=readySetup(act(s,'B',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier}));
  s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=until(act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false}),'normal-defense');
  const followers=structuredClone(s.players.B!.followers);expect(followers).toHaveLength(1);s=finish(use(s));expect(s.players.B!.followers).toEqual(followers);expect(s.players.B!.damage).toBe(0);expect(s.discard).not.toContain(soldier);
 });
