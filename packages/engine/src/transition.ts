@@ -52,7 +52,7 @@ function transitionCore(state: GameState, input: GameInput, entropy: Entropy): T
   const command = parseGameCommand(input?.command);
   if (!command.ok) return { ok: false, code: 'INVALID_COMMAND' };
   if (!input || !Object.hasOwn(state.players, input.actorId)) return { ok: false, code: 'UNKNOWN_ACTOR' };
-  if (state.windows?.length || state.phase === 'combat' || state.phase === 'withdrawal' || ['DECLARE_VIRTUAL_BLADE','PLAY_ANYTIME_CARD','PLAY_TURN_TECHNIQUE','CHOOSE_LIFETIME_EFFECT','ATTACK', 'APPROACH', 'WITHDRAW', 'PASS_WITHDRAWAL', 'PLAY_MAAI', 'PLAY_ADVANCE', 'PLAY_DEFENSE', 'PLAY_REACTION', 'CANCEL_REACTION', 'PASS', 'START_FOLLOWERS'].includes(command.value.type)) return transitionCombat(state, { actorId: input.actorId, command: command.value }, entropy);
+  if (state.windows?.length || state.phase === 'combat' || state.phase === 'withdrawal' || ['DECLARE_VIRTUAL_BLADE','PLAY_ANYTIME_CARD','PLAY_TURN_TECHNIQUE','CHOOSE_LIFETIME_EFFECT','ATTACK', 'APPROACH', 'WITHDRAW', 'PASS_WITHDRAWAL', 'PLAY_MAAI', 'PLAY_ADVANCE', 'PLAY_DEFENSE', 'PLAY_REACTION', 'CANCEL_REACTION', 'PASS', 'PASS_ACTION_THROUGH', 'CANCEL_PASS_THROUGH', 'START_FOLLOWERS'].includes(command.value.type)) return transitionCombat(state, { actorId: input.actorId, command: command.value }, entropy);
   if (state.phase !== 'setup') return transitionTurn(state, { actorId: input.actorId, command: command.value }, entropy);
   if (!['PLACE_INITIAL_FOLLOWER', 'PASS_SETUP', 'REVEAL_CHARACTER'].includes(command.value.type)) return { ok: false, code: 'WRONG_PHASE' };
   const p = state.players[input.actorId]!;
@@ -132,6 +132,8 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
   }else result=transitionChamGift(state,{actorId:input.actorId,command})??transitionAllArmy(state,{actorId:input.actorId,command})??transitionWish(state,{actorId:input.actorId,command},random,entropy.now)??transitionSuppression(state,{actorId:input.actorId,command})??transitionConditionalAbility(state,{actorId:input.actorId,command})??transitionInspection(state,{actorId:input.actorId,command})??transitionTurnPackage(state,{actorId:input.actorId,command})??transitionBeastCapture(state,{actorId:input.actorId,command},entropy.now)??transitionFollowerBundle(state,{actorId:input.actorId,command})??transitionSadLove(state,{actorId:input.actorId,command})??transitionAbilityCommand(state,{actorId:input.actorId,command})??transitionLifecycleCommand(state,{actorId:input.actorId,command},entropy.now)??transitionCore(state,{actorId:input.actorId,command},entropy);
   if(!result.ok)return result;
   const s=result.state;bindPeaceAction(s,state,{actorId:input.actorId,command});
+  // Anything but a pass changed the situation, so every seat is asked again (G03).
+  if(!['PASS','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH'].includes(command.type))delete s.standingPasses;
   if(state.phase==='action'&&state.seatOrder[state.turnSeat]===actor.id&&s.phase!=='action'&&s.earlyTurnBook)s.earlyTurnBook.closed=true;
   if(selectedReveal)startVoluntaryBenefit(s,input.actorId,expiresOnActorId!);
   cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);maintainFollowers(s);
@@ -143,6 +145,7 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
    if(!s.lifecycle?.length){settleProtection(s,random,entropy.now);advanceLifecycle(s,random,entropy.now);}
   }
   if(s.turnSeat!==state.turnSeat)expireSourceTurn(s,s.seatOrder[s.turnSeat]!);
+  if(!s.windows?.length)delete s.standingPasses;
   normalizeTurn(s);cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);if(s.turnSeat!==state.turnSeat)s.turnNumber=(state.turnNumber??0)+1;cleanPeaceLifetimes(s);cleanCombinationSpirit(s);finalizeReclaimReservations(s);advanceDiscardResponses(s);stableOutcome(s,entropy.now);
   recordStepChanges(state,s);if(s.turnSeat!==state.turnSeat&&state.phase!=='setup')recordTurn(s,'TURN_ENDED',state.seatOrder[state.turnSeat]!,(state.turnNumber??0)+1);
   for(const event of s.events.slice(state.events.length))event.at=entropy.now;

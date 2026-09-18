@@ -68,6 +68,8 @@ export interface GameState {
   abilities?:Record<string,AbilityFrame>;
   initialFactions?:('GOOD'|'EVIL'|'ヴァンミール')[];turnNumber?:number; lifecycle?:LifecycleTask[]; outcome?:Outcome; individualResults?:Record<string,'won'>; vanmilDeath?:boolean; lifecycleTriggers?:string[];
   windows?: ReactionWindow[]; actions?: Record<string, ActionFrame>; groups?: Record<string, AttackGroup>; used?: string[];
+  /** Seats that left the whole root action to the others (G03); cleared by any accepted intervention. */
+  standingPasses?: { rootEventId: string; actorIds: PlayerId[] };
   rolls?: RollFrame[]; turnRoll?: TurnRollContinuation;
   randomRolls?: RandomRollRecord[];
   reclaim?: Record<string,import('./reclaim.js').ReclaimReservation>;

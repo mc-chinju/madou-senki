@@ -344,15 +344,16 @@ it('rejects magic fixed defenses while silenced without consuming them', () => {
   }
 });
 
-it('blocks stopped Fate/God card reactions while preserving PASS and public reveal', () => {
+it('drops a stopped seat from public windows while preserving its public reveal', () => {
   let state = ready(); const attack = handCard(state, 'A', '踏み込み／弓'); const fate = handCard(state, 'B', '命運凶変');
   state.players.B!.statuses = [{ id: 'stop', kind: 'stopped', modifiers: [0], nextCheck: 1 }];
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['C'], dedicated: false });
   state = pass(state);
-  expect(engine.viewFor(state, 'B').legalChoices).toEqual(expect.arrayContaining(['PASS', 'REVEAL_CHARACTER']));
-  expect(engine.viewFor(state, 'B').legalChoices).not.toContain('PLAY_REACTION');
+  // A stopped seat can use neither hand nor ability (11.2), so it is not asked at all (G03).
+  expect(state.windows!.at(-1)!.participants).not.toContain('B');
+  expect(engine.viewFor(state, 'B').legalChoices).toEqual(['REVEAL_CHARACTER']);
   const before = JSON.stringify(state);
-  expect(engine.transition(state, { actorId: 'B', command: { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel', targetActionId: Object.keys(state.actions!)[0]! } }, entropy())).toEqual({ ok: false, code: 'STOPPED' });
+  expect(engine.transition(state, { actorId: 'B', command: { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel', targetActionId: Object.keys(state.actions!)[0]! } }, entropy())).toEqual({ ok: false, code: 'NOT_PRIORITY' });
   expect(JSON.stringify(state)).toBe(before);
 });
 

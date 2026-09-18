@@ -34,6 +34,8 @@ export type GameCommand =
   | { type: 'REVEAL_CHARACTER'; abilityId?:'c2-p04-r2c1-ab03' }
   | { type: 'START_TURN' }
   | { type: 'PASS' }
+  | { type: 'PASS_ACTION_THROUGH' }
+  | { type: 'CANCEL_PASS_THROUGH' }
   | { type: 'START_FOLLOWERS'; dedicatedCardInstanceIds?:string[] }
   | { type: 'DISCARD_HIT_CHANTS'; discard: boolean }
   | { type: 'CHOOSE_FOLLOWER_BYPASS'; ignore: boolean }

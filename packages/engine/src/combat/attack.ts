@@ -49,7 +49,7 @@ import { appendEvent, EntropyError, randomSource, refillHand } from '../setup.js
 import { getAction, getCharacter } from '@madou/catalog';
 import { freezeFollowerSnapshot,resolveFollowerSnapshot } from './followers.js';
 import { applyHits } from './hits.js';
-import { openWindow, participants, resetParent } from '../reactions/windows.js';
+import { applyStandingPasses, openWindow, participants, passAhead, resetParent, syncPriority, windowRootEventId } from '../reactions/windows.js';
 class Rejected extends Error { constructor(readonly code: EngineErrorCode) { super(code); } }
 function reject(code: EngineErrorCode): never { throw new Rejected(code); }
 function discardAction(s: GameState, action: ActionFrame) {
@@ -504,17 +504,34 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
     }else if(c.type==='REVEAL_CHARACTER'){
       if(p.revealed)reject('ALREADY_REVEALED');reveal(s,p.id,entropy.now);
       if(w&&w.kind!=='reclaim')resetParent(s,w.id);
-    }else if(c.type==='PASS'){
-      if(!w)reject('WRONG_PHASE');if(w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
+    }else if(c.type==='PASS'||c.type==='PASS_ACTION_THROUGH'||c.type==='CANCEL_PASS_THROUGH'){
+      if(!w)reject('WRONG_PHASE');
+      const ahead=passAhead(w);
+      if(c.type==='CANCEL_PASS_THROUGH'){
+        if(!s.standingPasses?.actorIds.includes(p.id))reject('WRONG_PHASE');
+        s.standingPasses.actorIds=s.standingPasses.actorIds.filter(id=>id!==p.id);
+        if(!s.standingPasses.actorIds.length)delete s.standingPasses;
+      }else{
+      if(c.type==='PASS_ACTION_THROUGH'&&!ahead)reject('WRONG_PHASE');
+      // A pass-ahead window takes any unanswered respondent; elsewhere only the priority seat may pass.
+      if(ahead?!w.participants.includes(p.id)||w.passed.includes(p.id):w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
+      if(c.type==='PASS_ACTION_THROUGH'){
+        const root=windowRootEventId(s,w);
+        const saved=s.standingPasses?.rootEventId===root?s.standingPasses:(s.standingPasses={rootEventId:root,actorIds:[]});
+        if(!saved.actorIds.includes(p.id))saved.actorIds.push(p.id);
+      }
       // Reclaim windows stay unrecorded: who holds a reclaim right is secret (G11).
-      if(w.kind!=='reclaim')recordPass(s,p.id,w.kind);
+      // One line per action for a standing pass; the passes it fills in later are not recorded again.
+      if(w.kind!=='reclaim')recordPass(s,p.id,c.type==='PASS_ACTION_THROUGH'?'action-through':w.kind);
       if(w.kind==='approach'||w.kind==='withdrawal') {if(w.continuation.kind!=='action')reject('WRONG_PHASE');const action=s.actions![w.continuation.id]!;s.windows!.pop();const success=p.id===action.distanceTargetId;finishDistance(s,action,success);}
       else if(w.kind==='reclaim'&&s.reclaimDecisions?.find(d=>d.windowId===w.id)?.stage==='beneficiary-choice'){
         const error=chooseReclaim(s,p.id,{type:'CHOOSE_RECLAIM',decisionId:w.continuation.id,choice:'decline'},roll);if(error)reject(error);resumeReclaimDispositions(s);
       }
       else {
-      w.passed.push(p.id);w.cursor++;w.revision++;if(w.kind==='reclaim')syncReclaimWindow(s);
-      if(w.cursor===w.participants.length){s.windows!.pop();closeWindow(s,w,roll,entropy.now,randomSource(entropy));}
+      // The generation only changes when someone acts; a pass leaves the other answers valid (G03).
+      w.passed.push(p.id);syncPriority(w);if(w.kind==='reclaim')syncReclaimWindow(s);
+      if(w.passed.length===w.participants.length){s.windows!.pop();closeWindow(s,w,roll,entropy.now,randomSource(entropy));}
+      }
       }
     }else if(c.type==='START_FOLLOWERS'){
       if(!w||w.kind!=='normal-defense')reject('WRONG_PHASE');if(w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
@@ -603,10 +620,11 @@ export function drainEmptyWindows(s:GameState,dice:()=>number,random:()=>number,
    if(g&&t&&hit){evaluateReceivedReservations(s,g,t,hit);if(hit.defended){finishReceivedDefense(s);continue;}}
   }
   if(!['death-gift','revival'].includes(w.kind)){
-   const pending=w.participants[w.cursor];const remaining=w.participants.slice(w.cursor).filter(id=>isActive(s.players[id]!));
-   const passed=w.participants.slice(0,w.cursor).filter(id=>isActive(s.players[id]!));
-   w.participants=[...passed,...remaining];w.cursor=passed.length;
+   w.participants=w.participants.filter(id=>isActive(s.players[id]!));
+   w.passed=w.passed.filter(id=>w.participants.includes(id));
+   syncPriority(w);
   }
+  applyStandingPasses(s,w);
   if(w.cursor<w.participants.length)return;
   s.windows!.pop();closeWindow(s,w,dice,now,random);
  }

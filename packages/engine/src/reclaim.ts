@@ -5,7 +5,7 @@ import {lifeIdentity} from './abilities/suppression-state.js';
 import {hasPendingFatal,hasStatus, type GameState} from './state.js';
 import {getAction} from '@madou/catalog';
 import {canonicalOwnedNames} from './reclaim-names.js';
-import {openWindow,participants} from './reactions/windows.js';
+import {openWindow,participants,rootEventId,syncPriority} from './reactions/windows.js';
 import type {GameCommand} from '@madou/protocol';
 import type {EngineErrorCode} from './commands.js';
 import {beginRoll} from './rolls/advance.js';
@@ -13,18 +13,7 @@ import {beginRoll} from './rolls/advance.js';
 export interface ReclaimBudget {baseSpent:boolean;extraSpentByAbility:string[]}
 /** Bind a nested physical disposition to its outer attack while parent links still exist. */
 export function reclaimEventId(s:GameState,source:{eventId:string;parentWindowId:string|null}):string {
-  let eventId=source.eventId,parentId=source.parentWindowId;
-  const seen=new Set<string>();
-  while(parentId&&!seen.has(parentId)) {
-    seen.add(parentId);const w=s.windows?.find(w=>w.id===parentId);if(!w)break;
-    const c=w.continuation;
-    const a=c.kind==='action'?s.actions?.[c.id]:c.kind==='group'?s.actions?.[s.groups?.[c.id]?.actionId??'']:undefined;
-    const ability=c.kind==='ability'?s.abilities?.[c.id]:undefined;
-    if(a){eventId=a.eventId;parentId=a.parentWindowId;}
-    else if(ability){eventId=ability.eventId;parentId=ability.parentWindowId;}
-    else {eventId=w.eventId;parentId=w.parentId;}
-  }
-  return eventId;
+  return rootEventId(s,source);
 }
 export type ReclaimRight='base'|'extra'|'unlimited'|'printed';
 export type ReclaimSource={eventId:string;sourceId:string;sourceActorId:string;cardInstanceId:string} & (
@@ -127,7 +116,8 @@ export function advanceResponse(s:GameState,d:ReclaimDecision):void {
     w.participants=[...d.responseResume.participants];w.cursor=d.responseResume.cursor;w.passed=[...d.responseResume.passed];
     delete d.responseResume;d.stage='responses';
   }
-  const actor=w.participants[w.cursor];if(actor)w.passed.push(actor);w.cursor++;w.revision++;syncReclaimWindow(s);
+  // A pass keeps the window generation; only an intervention invalidates the answers already given (G03).
+  const actor=w.participants[w.cursor];if(actor&&!w.passed.includes(actor))w.passed.push(actor);syncPriority(w);syncReclaimWindow(s);
   if(w.cursor>=w.participants.length){s.windows=s.windows!.filter(x=>x.id!==w.id);closeReclaim(s,d.id);}
 }
 export function chooseReclaim(s:GameState,actorId:string,c:Extract<GameCommand,{type:'CHOOSE_RECLAIM'}>,dice:()=>number):EngineErrorCode|undefined {

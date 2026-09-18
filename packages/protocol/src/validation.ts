@@ -174,6 +174,8 @@ export function parseGameCommand(value: unknown): ParseResult<GameCommand> {
       return exactKeys(command,['type','dedicatedCardInstanceIds'])&&Array.isArray(ids)&&ids.length<=220&&ids.every(identifier)&&new Set(ids).size===ids.length?{ok:true,value:{type:command.type,dedicatedCardInstanceIds:[...ids]}}:invalid;
     }
     case 'PASS':
+    case 'PASS_ACTION_THROUGH':
+    case 'CANCEL_PASS_THROUGH':
     case 'START_TURN':
     case 'PASS_ACTION':
     case 'PASS_WITHDRAWAL':
