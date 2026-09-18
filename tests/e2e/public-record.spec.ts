@@ -66,7 +66,9 @@ test('another seat can trace the whole bot game in the public record while its s
     }
     expect(bots[0]!.view()?.outcome).toBeDefined();
     await audit();
-    expect(audits).toBeGreaterThan(5);
+    // audit() runs every 40 steps and once more after the outcome, so the count follows the bot game's length.
+    expect(audits).toBe(Math.floor(steps / 40) + 1);
+    expect(audits).toBeGreaterThanOrEqual(2);
     bots.forEach(bot => bot.close());
 
     await watcher.reload();
