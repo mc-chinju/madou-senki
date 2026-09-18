@@ -1,7 +1,6 @@
-import {passReclaims} from './combat-helpers.js';
+import {passReclaims,act,ready,until,pass,finish,closeWindow} from './combat-helpers.js';
 import {describe,it,expect} from 'vitest';
-import {transition,viewFor,allCardInstanceIds,type GameState} from '../src/index.js';
-import {act,ready,until,pass,finish,closeWindow} from './combat-helpers.js';
+import {transition,viewFor,allCardInstanceIds,type GameState,derivedStats,type GameInput} from '../src/index.js';
 import {character,handCard,entropy} from './fixtures.js';
 const IDA='c2-p04-r2c2';
 function use(s:GameState,actorId:string,n:number,extra:Record<string,unknown>={}){const option=viewFor(s,actorId).abilityOptions.find(o=>o.abilityId===`${IDA}-ab0${n}`);expect(option).toBeDefined();return act(s,actorId,{type:'USE_ABILITY',abilityId:option!.abilityId,targetEventId:option!.targetEventId,...extra});}
@@ -137,4 +136,39 @@ describe('Task7h review I1: reached target publication', () => {
     expect(viewFor(state, 'A').players.B).not.toHaveProperty('characterId');
     expect(viewFor(state, 'A').logs.some(log => log.type === 'CHARACTER_REVEALED' && log.actorId === 'B')).toBe(false);
   });
+});
+
+it('requires a non-Shin spirit-minus-two activation check before ordinary level checks', () => {
+  let state = ready(); character(state, 'A', 'リーア姫');
+  const attack = handCard(state, 'A', '天地百撃斬');
+  state.players.A!.hand = state.players.A!.hand.filter(id => id !== attack);
+  state.players.A!.chants.push({ cardInstanceId: attack, revealed: false });
+  state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false }, [2]);
+  const stats = derivedStats(state.players.A!);
+  expect(Object.values(state.actions!)[0]!.checks).toEqual([-2, ...Array(7 - stats.warrior_level).fill(0)]);
+  for (let i = 0; i < 80 && state.windows?.length; i++) state = pass(state, [6, 6]);
+  expect(state.players.B!.damage).toBe(0);
+  expect(state.discard).toContain(attack);
+  expect(state.groups ?? {}).toEqual({});
+});
+
+it.each([false, true])('keeps Ida chant disposal an explicit persisted on-hit choice: %s', discard => {
+  let state = ready(); character(state, 'A', '忍びのイダ');
+  const attack = handCard(state, 'A', '手裏剣'); const chant = handCard(state, 'B', '天地百撃斬');
+  state.players.B!.hand = state.players.B!.hand.filter(id => id !== chant);
+  state.players.B!.chants.push({ cardInstanceId: chant, revealed: false });
+  state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: true }, [2]);
+  for (let i = 0; i < 100 && state.windows?.length && state.windows.at(-1)!.kind !== 'on-hit-choice'; i++) state = pass(state);
+  expect(state.windows?.at(-1)?.kind).toBe('on-hit-choice');
+  expect(state.players.B!.chants).toHaveLength(1);
+  expect(viewFor(state, 'A').legalChoices).toContain('DISCARD_HIT_CHANTS');
+  expect(JSON.stringify(viewFor(state, 'A'))).not.toContain(chant);
+  const before = allCardInstanceIds(state).sort();
+  const input = { actorId: 'A', command: { type: 'DISCARD_HIT_CHANTS', discard } } as unknown as GameInput;
+  const result = transition(JSON.parse(JSON.stringify(state)), input, entropy());
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw Error(result.code);
+  expect(result.state.players.B!.chants).toHaveLength(discard ? 0 : 1);
+  expect(result.state.discard.includes(chant)).toBe(discard);
+  expect(allCardInstanceIds(result.state).sort()).toEqual(before);
 });

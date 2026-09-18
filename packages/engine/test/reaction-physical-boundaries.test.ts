@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {parseGameCommand} from '@madou/protocol';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState,derivedStats} from '../src/index.js';
 import {act,ready,until,finish,pass,closeWindow,passReclaims} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const GOD='a2-p02-r1c3',FATE='a2-p02-r2c3',PRAYER='a2-p05-r2c3';
@@ -34,4 +34,30 @@ it('Dedicated Lia Prayer cannot reopen an actual technique after its effect leve
 
 it('Physical Fate protocol binds exactly one of its three modes to the matching single target',()=>{
  for(const [mode,key] of [['force-fail','targetRollId'],['cancel-ability','targetAbilityId'],['cancel','targetActionId']] as const){const command={type:'PLAY_REACTION',cardInstanceId:FATE,mode,[key]:'target'};expect(parseGameCommand(command).ok).toBe(true);for(const other of ['targetRollId','targetAbilityId','targetActionId'].filter(k=>k!==key)){expect(parseGameCommand({...command,[other]:'second'}).ok).toBe(false);}expect(parseGameCommand({...command,mode:[mode,'cancel']}).ok).toBe(false);}
+});
+
+it('checks dynamic parry shortage and returns to defense with the failed card spent', () => {
+  let state = ready(); character(state, 'B', '凍気のアイエル');
+  const attack = handCard(state, 'A', '踏み込み／弓');
+  const parry = handCard(state, 'B', '受け流し');
+  const evade = handCard(state, 'B', '見切る');
+  state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false });
+  state = until(state, 'normal-defense');
+  state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: parry, dedicated: false });
+  const defense = Object.values(state.actions!).find(action => action.cardInstanceId === parry)!;
+  expect(defense.technique.useLevel).toBe(3);
+  expect(defense.checks).toHaveLength(3 - derivedStats(state.players.B!).warrior_level);
+  for (let i = 0; i < 60 && state.windows!.at(-1)!.kind !== 'normal-defense'; i++) state = pass(state, [6, 6]);
+  expect(state.discard).toContain(parry);
+  state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: evade, dedicated: false });
+  expect(finish(state).players.B!.damage).toBe(0);
+});
+
+it('rejects parry against magic before reserving or spending anything', () => {
+  let state = ready(); character(state, 'A', '白魔術師シェリム');
+  const attack = handCard(state, 'A', '沈黙'); const parry = handCard(state, 'B', '受け流し');
+  state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false }); state = until(state, 'normal-defense');
+  const before = JSON.stringify(state);
+  expect(transition(state, { actorId: 'B', command: { type: 'PLAY_DEFENSE', cardInstanceId: parry, dedicated: false } }, entropy())).toEqual({ ok: false, code: 'ILLEGAL_DEFENSE' });
+  expect(JSON.stringify(state)).toBe(before);
 });
