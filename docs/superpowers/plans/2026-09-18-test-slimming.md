@@ -429,6 +429,23 @@ pnpm typecheck && pnpm test
 - 統合で `it` を取りこぼす → commit 1 の後と各統合 commit の後に、vitest の JSON レポーターで件数とテスト名の差分を取る。減ったものは、マトリクスの行に対応があることを PR の説明に書く。
 - 戻し方: commit 単位で revert する。
 
+### 実施済み: PR #11（2026-09-18）
+
+engine テストは作業名（`task7*` / `r5-` / `r6-` / `*-fix1` / `review-` / `release-` / `scenario-s*`）が 0件になり、
+protocol テストは 33 → 5ファイル。engine の vitest は 7,485 → 7,482件で、減ったのは `owned-reclaim` の
+個別版のうちマトリクスの行と入力・期待が同じ 3件だけ（対応表は PR 本文）。protocol は 298件のまま変わらない。
+カバレッジは engine 97.58 / 94.91 / 98.45 / 92.89、protocol は基準値と同値で、4指標とも基準値以上。
+
+PR3 で原因を特定した E2E 2件も直した。`blessing-privacy.spec.ts` は `click()` が owner 席の revision しか
+待たないため、比較する席の revision が owner に追いつくまで待つ barrier を `same()` に入れた。
+`public-record.spec.ts` は `audits > 5` という bot 対戦の手数に依存する閾値を、`audits === Math.floor(steps / 40) + 1`
+かつ `audits >= 2` という構造から導く期待値に変えた。`retries` は入れていない。
+`PLAYWRIGHT_PORT=18787 pnpm test:e2e` の全件実行を 3回行い、3回とも 31/31 が成功した。
+
+protocol の統合は `it` を書き換えず移設だけにした。テーブル駆動（`it.each([{ name, input, ok | error }])`）は
+コピーの同一性検査・getter を実行しないことの検査・`Object.create(null)` / symbol / 非列挙プロパティの
+入力構築を表現できず、「`it` の検証内容は変えない」と両立しないため。受入条件 3 と 4 はこの方法で満たしている。
+
 ---
 
 ## 前提と判断（ユーザーに確認していないもの）
