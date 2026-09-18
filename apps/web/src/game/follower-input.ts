@@ -23,8 +23,9 @@ export function followerDefenseCommand(view: FollowerInputView, selected: string
   return { type: 'START_FOLLOWERS', ...(selected.length ? { dedicatedCardInstanceIds: [...selected] } : {}) };
 }
 
-export function initialFollowerCommand(view: FollowerInputView, cardInstanceId: string): GameCommand | null {
+export function initialFollowerCommand(view: FollowerInputView, cardInstanceId: string, position?: 'front' | 'back'): GameCommand | null {
   if (!view.legalChoices.includes('PLACE_INITIAL_FOLLOWER') || view.self.followers.length >= view.self.stats.followerLimit || !view.self.hand.includes(cardInstanceId) || !view.followerPlacementOptions.placeableCardInstanceIds.includes(cardInstanceId)) return null;
   if (view.activeWindow && view.activeWindow.pendingActorId !== view.self.id) return null;
-  return { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId };
+  // The front line is only a choice once something is already placed; the engine defaults to the back.
+  return { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId, ...(position === 'front' && view.self.followers.length ? { position } : {}) };
 }
