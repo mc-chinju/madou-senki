@@ -97,16 +97,17 @@ export function LifecyclePanel({ view, disabled, send }: {
   if (decision.kind === 're-setup') {
     const cards = view.followerPlacementOptions.placeableCardInstanceIds.filter(id => view.self.hand.includes(id));
     const placement = initialFollowerCommand(view, followerId, position);
-    return withActions(<aside className="decision" aria-label="復帰後の従者配置">{waiting}<h2>復帰後の従者を配置する</h2>
-      <p>{name(decision.actorId)}さんが手札から従者を配置します。</p>
-      {mine ? <>{allowed('PLACE_INITIAL_FOLLOWER') ? <><p>現在 {view.self.followers.length} / {view.self.stats.followerLimit}枚</p>
-        <label>配置する従者<select value={followerId} onChange={event => setFollowerId(event.target.value)}>
+    return withActions(<aside className="decision resetup" aria-label="復帰後の従者配置">{waiting}<h2>復帰後の従者を配置する</h2>
+      {mine ? <>{allowed('PLACE_INITIAL_FOLLOWER') ? <p>手札から従者を配置できます（現在 {view.self.followers.length} / {view.self.stats.followerLimit}枚）。</p> : null}
+        {allowed('PLACE_INITIAL_FOLLOWER') && cards.length ? <div className="field-row"><label>配置する従者<select value={followerId} onChange={event => setFollowerId(event.target.value)}>
           <option value="">従者を選択</option>{cards.map(id => <option key={id} value={id}>{getAction(id)?.name}</option>)}
         </select></label>
-        {view.self.followers.length ? <FollowerPositionChoice value={position} disabled={disabled} onChange={setPosition} /> : null}
-        <button disabled={disabled || !placement}
-          onClick={() => { if (placement) send(placement); }}>この従者を配置する</button></> : null}
-        {allowed('PASS_SETUP') ? <button className="secondary" disabled={disabled} onClick={() => send({ type: 'PASS_SETUP' })}>従者の配置を終える</button> : null}</> : null}
+        {view.self.followers.length ? <FollowerPositionChoice value={position} disabled={disabled} onChange={setPosition} /> : null}</div>
+          : allowed('PLACE_INITIAL_FOLLOWER') ? <p className="hint">置ける従者は手札にありません。</p> : null}
+        <div className="button-row">{allowed('PLACE_INITIAL_FOLLOWER') && cards.length ? <button disabled={disabled || !placement}
+          onClick={() => { if (placement) send(placement); }}>従者を置く</button> : null}
+        {allowed('PASS_SETUP') ? <button className="secondary" disabled={disabled} onClick={() => send({ type: 'PASS_SETUP' })}>配置を終える</button> : null}</div></>
+        : <p>{name(decision.actorId)}さんが手札から従者を配置します。</p>}
     </aside>);
   }
   return withActions(<aside className="decision" aria-label="変身と陣営の確認">{waiting}<h2>変身と陣営の確認</h2>

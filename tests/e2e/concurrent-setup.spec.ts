@@ -29,6 +29,14 @@ test('later seats place and ready before the first seat, and a refilled seat pla
     }
     const ready = (seat: number) => commit(seat, () => table.pages[seat]!.getByRole('button', { name: '配置を終える', exact: true }).click());
 
+    // Finishing with a placeable follower in hand is final, so the first press only asks inside the bar (no browser dialog).
+    const bar = table.pages[first]!.getByRole('region', { name: '現在できる操作' });
+    await bar.getByRole('button', { name: '配置を終える', exact: true }).click();
+    await expect(bar.getByRole('alert')).toContainText('まだ置ける従者があります');
+    await bar.getByRole('button', { name: 'やめる', exact: true }).click();
+    await expect(bar.getByRole('alert')).toHaveCount(0);
+    expect(views.get(table.sessions[first]!.id)!.game!.pending!.readyIds).toEqual([]);
+
     // The last seat commits and finishes while the first seat has not touched its hand.
     await place(last, followerIn(last)!);
     await ready(last);

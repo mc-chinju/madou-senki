@@ -1,6 +1,6 @@
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { expect, type APIRequestContext, type Browser, type BrowserContext, type BrowserContextOptions } from '@playwright/test';
+import { expect, type APIRequestContext, type Browser, type BrowserContext, type BrowserContextOptions, type Page } from '@playwright/test';
 import { makeScenario, type ScenarioName } from '../../packages/engine/test/fixtures/game-scenarios.js';
 
 export const origin = `http://localhost:${process.env.PLAYWRIGHT_PORT ?? 8787}`;
@@ -69,6 +69,14 @@ export async function observe(table: Table) {
   }
   return views;
 }
+/** Presses 「配置を終える」; a seat that could still place a follower is asked once more inside the bar and confirms. */
+export async function finishSetup(page: Page) {
+  const finish = page.getByRole('button', { name: '配置を終える', exact: true });
+  const confirm = page.getByRole('button', { name: '置かずに終える', exact: true });
+  await finish.click();
+  // React flushes the click synchronously, so an armed confirmation is already rendered when click() returns.
+  if (await confirm.isVisible()) await confirm.click();
+}
 /** Ready every seat through the remaining concurrent setup rounds (G10); placements happen before this. */
 export async function readySetup(table: Table) {
   for (let round = 0; round < 6; round++) {
@@ -77,7 +85,7 @@ export async function readySetup(table: Table) {
     for (const id of game.pending.participantIds) {
       if (game.pending.readyIds.includes(id)) continue;
       const page = table.pages[table.sessions.findIndex(session => session.id === id)]!;
-      await page.getByRole('button', { name: '配置を終える', exact: true }).click();
+      await finishSetup(page);
     }
     await expect.poll(async () => (await storedGame()).revision).toBeGreaterThan(game.revision);
   }
