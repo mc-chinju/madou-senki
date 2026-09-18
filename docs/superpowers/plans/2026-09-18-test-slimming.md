@@ -429,7 +429,7 @@ pnpm typecheck && pnpm test
 - 統合で `it` を取りこぼす → commit 1 の後と各統合 commit の後に、vitest の JSON レポーターで件数とテスト名の差分を取る。減ったものは、マトリクスの行に対応があることを PR の説明に書く。
 - 戻し方: commit 単位で revert する。
 
-### 実施済み: PR #11（2026-09-18）
+### 実施済み: PR #12（2026-09-18）
 
 engine テストは作業名（`task7*` / `r5-` / `r6-` / `*-fix1` / `review-` / `release-` / `scenario-s*`）が 0件になり、
 protocol テストは 33 → 5ファイル。engine の vitest は 7,485 → 7,482件で、減ったのは `owned-reclaim` の
