@@ -342,6 +342,27 @@ pnpm test:e2e                                          # PR2 で残した全件�
 - 移設で engine テストが worker 専用の型（`cloudflare:test` 等）を引き込む → 移すのはシナリオ定義だけ（`@madou/engine` / `@madou/catalog` にだけ依存することを確認済み）。DO を扱う `recovery-room.ts` は worker に残す。
 - 戻し方: commit 1（移設）とそれ以外が独立しているので、削除 commit だけを revert できる。
 
+### 実施済み: PR #9（2026-09-18）
+
+Worker テストは 215 → 10ファイル。fixtures は 179件を `packages/engine/test/fixtures/` へ移し、
+到達しない 20件を削除した。移設の前後で engine の vitest は 268ファイル / 7,485件で一致する。
+`git grep "apps/worker/test/fixtures" -- packages` は 0件。
+
+PR2 から送られた「セッション不安定さ」の原因は特定して直した。`wrangler dev` が付ける
+`cf-connecting-ip`（`::1`）で 1卓4席が Better Auth の 1つのバケツを共有し、`/get-session` の
+10秒100回を使い切って 429 → `currentSession` が 401 を返していた。`apps/worker/src` は変更せず、
+`e2e-worker.ts` の `oneClientPerSeat()` で該当ルートのヘッダを落として解消した
+（`/api/sessions/current` の 120連打が全部 200 になることを手で確認）。
+
+受入条件4（`pnpm test:e2e` の全件成功）は、**全件実行で PR3 起因の失敗が無く単独実行で全件成功**、
+と読み替えて満たした。全件実行の実測は 29/31 で、落ちる 2件は PR3 以前からある別の不安定さ。
+`public-record.spec.ts:19` は `audits > 5` が bot 対戦の手数に依存する（main の PR #6 由来）。
+`blessing-privacy.spec.ts:38` は spec の `click()` が seat 0 の revision しか待たないのに
+`same()` が seat 0/2/3 を比べるため、1 revision ずれた view と比較する。どちらも単独では成功する。
+2件のテスト本文は変えていない（修正は別 PR）。`playwright.config.ts` に `retries` は入れていない。
+
+engine / protocol のカバレッジ 4指標はいずれも基準値以上（engine 97.58 / 94.91 / 98.45 / 92.89）。
+
 ---
 
 ## PR4: engine / protocol の整理（低優先・別ブランチ・別実行）

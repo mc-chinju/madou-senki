@@ -35,6 +35,12 @@ after a reload, multi-seat synchronisation, HTTP/WebSocket body secrecy, login a
 Rule outcomes are verified in `packages/engine/test`, and the card-specific UI branches that
 only E2E used to exercise now have `apps/web/test` unit tests.
 
+2026-09-18 (PR3): the Worker suite is now 10 test files, down from 215. What remains is the
+Worker's own concern — authentication, the lobby, per-participant WebSocket projection,
+persistence and replay idempotency, per-participant secrecy, disconnection and the endgame.
+The scenario fixtures moved to `packages/engine/test/fixtures`, so no engine test depends on
+an application's test assets any more.
+
 ## Current evidence
 
 - Baseline: source verifier passed (5 originals, 221 extracted files).
