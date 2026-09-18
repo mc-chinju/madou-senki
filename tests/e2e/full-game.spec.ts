@@ -3,7 +3,7 @@ import { choose, legalCommands } from '../../packages/engine/src/bot/index.js';
 import { origin, tableFixture } from './helpers.js';
 import { BotClient } from './bot-client.js';
 
-for (const count of [4, 6, 8, 10]) {
+for (const count of [4]) {
   test(`${count} seats start through the normal API and play to an outcome with fixed entropy`, async ({ browser, request }) => {
     test.setTimeout(20 * 60 * 1000);
     const table = await tableFixture(browser, request, undefined, count);

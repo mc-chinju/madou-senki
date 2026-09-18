@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { currentCardAction, observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
+import { currentCardAction, observe, passUntil, tableFixture } from './helpers.js';
 
 test('Beast King explicitly combines two physical cards and displays the accepted pair after reload', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'combination-ready');

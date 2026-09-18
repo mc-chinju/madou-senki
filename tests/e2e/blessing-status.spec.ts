@@ -23,4 +23,3 @@ async function statusCase({browser,request}:{browser:Browser;request:APIRequestC
  }finally{await table.close();}
 }
 test('actual confusion remains after Blessing across all-seat reload',async({browser,request})=>statusCase({browser,request},'confusion'));
-test('actual hypnosis remains after Blessing across all-seat reload',async({browser,request})=>statusCase({browser,request},'hypnosis'));

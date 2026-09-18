@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getAction, getCharacter } from '../../packages/catalog/src/index.js';
-import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
+import { observe, passUntil, tableFixture } from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;

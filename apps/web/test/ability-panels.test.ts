@@ -163,7 +163,7 @@ test('the dispel source is attached only for a chosen owned target and is offere
   expect(fields([])).toBe('');
 });
 
-function buttons(node: unknown, found: { label: string; onClick?: () => void }[] = []): { label: string; onClick?: () => void }[] {
+function buttons(node: unknown, found: { label: string; onClick: (() => void) | undefined }[] = []): { label: string; onClick: (() => void) | undefined }[] {
   if (Array.isArray(node)) { for (const child of node) buttons(child, found); return found; }
   const element = node as { type?: unknown; props?: { children?: unknown; onClick?: () => void } } | null;
   if (!element || typeof element !== 'object' || !element.props) return found;

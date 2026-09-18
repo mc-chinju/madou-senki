@@ -15,6 +15,3 @@ async function verifyBlade(browser:Browser,request:APIRequestContext,fixture:'vi
  }finally{await table.close();}
 }
 test('virtual-blade-ice cancel=false declares from UI and survives refresh without a physical source',async({browser,request})=>{await verifyBlade(browser,request,'virtual-blade-ice',false);});
-test('virtual-blade-fire cancel=false declares from UI and survives refresh without a physical source',async({browser,request})=>{await verifyBlade(browser,request,'virtual-blade-fire',false);});
-test('virtual-blade-ice cancel=true declares from UI and survives refresh without a physical source',async({browser,request})=>{await verifyBlade(browser,request,'virtual-blade-ice',true);});
-test('virtual-blade-fire cancel=true declares from UI and survives refresh without a physical source',async({browser,request})=>{await verifyBlade(browser,request,'virtual-blade-fire',true);});

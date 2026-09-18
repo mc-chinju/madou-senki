@@ -68,14 +68,14 @@ test('next-turn skip is visible even without an ordinary status and distinguishe
 });
 
 test('printed components are offered from the real pool and only attached when actually selected', () => {
-  const components = ['a2-p05-r1c3', 'a2-p05-r2c1'];
+  const components = ['a2-p05-r1c3', 'a2-p05-r2c1'] as const;
   const attack = { type: 'ATTACK' as const, cardInstanceId: 'a2-p09-r1c1', targetIds: ['B'], dedicated: true };
-  const printedView = { printedCombinationOptions: [{ cardInstanceId: 'a2-p09-r1c1', dedicated: true, componentIds: components }] };
+  const printedView = { printedCombinationOptions: [{ cardInstanceId: 'a2-p09-r1c1', dedicated: true, componentIds: [...components] }] };
   expect(withPrintedComponents(printedView, attack, [])).toEqual(attack);
-  expect(withPrintedComponents(printedView, attack, components)).toEqual({ ...attack, combinationCardInstanceIds: components });
+  expect(withPrintedComponents(printedView, attack, [...components])).toEqual({ ...attack, combinationCardInstanceIds: [...components] });
   expect(withPrintedComponents(printedView, attack, ['a2-p05-r1c3', 'a2-p05-r1c3'])).toBeNull();
   expect(withPrintedComponents(printedView, attack, ['a2-p08-r1c1'])).toBeNull();
-  expect(withPrintedComponents(printedView, { ...attack, dedicated: false }, components)).toBeNull();
+  expect(withPrintedComponents(printedView, { ...attack, dedicated: false }, [...components])).toBeNull();
   const markup = renderToStaticMarkup(createElement(PrintedCombinationFields, { view: printedView, command: attack, selected: ['a2-p05-r2c1'], disabled: false, onChange: noOp }));
   expect(markup).toContain('同時に使う複合札');
   expect(markup.match(/checked=""/g)).toHaveLength(1);
@@ -86,7 +86,7 @@ test('All-Army sends its own printed source with the paid follower and the offer
   const sent: unknown[] = [];
   const option = { followerCardInstanceId: 'a2-p20-r3c1', range: 'near', attributes: ['近', '戦'], effectLevel: 3, moraleRequired: true, targetMode: 'one', legalTargetIds: ['B', 'C'] };
   const view = { allArmyOptions: [option], players: { A: { name: '葵' }, B: { name: '楓' }, C: { name: '凛' } } } as unknown as PlayerView;
-  const html = renderToStaticMarkup(createElement(AllArmyPanel, { view, disabled: false, send: (command: never) => { sent.push(command); return true; } }));
+  const html = renderToStaticMarkup(createElement(AllArmyPanel, { view, disabled: false, send: (command: unknown) => { sent.push(command); return true; } }));
   expect(html).toContain('全軍突撃せよ');
   expect(html).toContain('2枚を使って全軍突撃する');
   expect(html).toContain('突撃に使う従者');

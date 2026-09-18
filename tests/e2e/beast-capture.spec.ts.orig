@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture, windowPassButtonName,storedDiscard} from './helpers.js';
+import { observe, passUntil, tableFixture, windowPassButtonName } from './helpers.js';
 import type { PlayerView } from '../../packages/engine/src/index.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
