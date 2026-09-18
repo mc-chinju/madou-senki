@@ -1,3 +1,4 @@
+import {recordAbility,recordCardPlayed} from '../public-record.js';
 import {resolveChamGift} from './cham-death-gift.js';
 import {combatRewardOptions,initializeCombatReward,resolveCombatReward} from './combat-rewards.js';
 import {resolveSadLove} from './sad-love.js';
@@ -115,7 +116,8 @@ export function transitionAbilityCommand(state:GameState,input:GameInput):Transi
  (s.abilities??={})[frame.id]=frame;(s.used??=[]).push(usedKey(frame.eventId,p.id,abilityId));
  if(kind==='lancelot-transform')s.used.push(`${p.id}:lancelot-transform`);
  if(kind==='vanmil-subordinates'||kind==='arseil-conspiracy')s.used.push(`${frame.context.kind==='boundary'?frame.context.triggerId:frame.eventId}:${p.id}:${kind}`);
- if(cost){actor.hand.splice(actor.hand.indexOf(cost),1);s.resolution.push(cost);if(kind==='conceal-heal')s.phase='hand-adjustment';}
+ recordAbility(s,'ABILITY_DECLARED',p.id,abilityId,frame.targetIds.filter(id=>id!==p.id));
+ if(cost){actor.hand.splice(actor.hand.indexOf(cost),1);s.resolution.push(cost);recordCardPlayed(s,p.id,cost,'maai');if(kind==='conceal-heal')s.phase='hand-adjustment';}
  openWindow(s,'declaration',frame.eventId,{kind:'ability',id:frame.id},w?participants(s,(s.seatOrder.indexOf(p.id)+1)%s.seatOrder.length):participants(s));
  if(cost)offerReclaim(s,{kind:'ordinary-disposition',fromZone:'resolution',eventId:reclaimEventId(s,frame),
   sourceId:`${frame.id}-cost`,sourceActorId:actor.id,sourceLifeId:lifeIdentity(actor),cardInstanceId:cost,

@@ -1,3 +1,4 @@
+import {recordAbility} from '../public-record.js';
 import {canUseCharacterAbility,type GameState} from '../state.js';
 import {isActive} from '../lifecycle/objectives.js';
 import {ownsAbility} from './ownership.js';
@@ -26,6 +27,7 @@ export function beginMaaiAbility(s:GameState,g:AttackGroup,actorId:string,cardIn
  const election:MaaiElection={abilityId,actorId,lifeId:lifeIdentity(s.players[actorId]!),sourceActionId:a.id,originalAttackerId:parent?.attackerId??g.attackerId,returnedCounter:returnedCounter(s,g,actorId)};
  const f:AbilityFrame={source:'ability',id:`ability-${s.nextEventId++}`,abilityId,actorId,targetIds:[actorId],eventId:w.eventId,parentWindowId:w.id,useOrdinal:1,costs:{cardInstanceId,ownAction:false},stage:'declaration',canceled:false,rollIds:[],context:{kind:'maai',groupId:g.id,targetId:actorId,hitIndex:g.hitCursor,cardInstanceId,required,...(pendingCardInstanceIds.length?{pendingCardInstanceIds:[...pendingCardInstanceIds]}:{}),election}};
  (s.abilities??={})[f.id]=f;(s.used??=[]).push(`${w.eventId}:${actorId}:${abilityId}`);
+ recordAbility(s,'ABILITY_DECLARED',actorId,abilityId);
  openWindow(s,'declaration',w.eventId,{kind:'ability',id:f.id},participants(s,(s.seatOrder.indexOf(actorId)+1)%s.seatOrder.length));
 }
 export function resolveMaaiAbility(s:GameState,f:AbilityFrame):void {
@@ -58,7 +60,7 @@ export function startDistanceMaai(s:GameState,a:ActionFrame,actorId:string):void
 export function beginDistanceMaaiAbility(s:GameState,a:ActionFrame,actorId:string,cardInstanceId:string,abilityId:MaaiAbilityId):void {
  const w=s.windows!.at(-1)!,election:MaaiElection={abilityId,actorId,lifeId:lifeIdentity(s.players[actorId]!),sourceActionId:a.id,originalAttackerId:a.actorId,returnedCounter:false};
  const f:AbilityFrame={source:'ability',id:`ability-${s.nextEventId++}`,abilityId,actorId,targetIds:[actorId],eventId:a.eventId,parentWindowId:w.id,useOrdinal:1,costs:{cardInstanceId,ownAction:false},stage:'declaration',canceled:false,rollIds:[],context:{kind:'distance-maai',actionId:a.id,election}};
- (s.abilities??={})[f.id]=f;(s.used??=[]).push(`${a.eventId}:${actorId}:${abilityId}`);openWindow(s,'declaration',a.eventId,{kind:'ability',id:f.id},participants(s,(s.seatOrder.indexOf(actorId)+1)%s.seatOrder.length));
+ (s.abilities??={})[f.id]=f;(s.used??=[]).push(`${a.eventId}:${actorId}:${abilityId}`);recordAbility(s,'ABILITY_DECLARED',actorId,abilityId);openWindow(s,'declaration',a.eventId,{kind:'ability',id:f.id},participants(s,(s.seatOrder.indexOf(actorId)+1)%s.seatOrder.length));
 }
 export function resolveDistanceMaaiAbility(s:GameState,f:AbilityFrame):void {if(f.context.kind!=='distance-maai')return;const c=f.context,a=s.actions?.[c.actionId];if(!a||f.canceled||!live(s,f.actorId,c.election.abilityId)||lifeIdentity(s.players[f.actorId]!)!==c.election.lifeId)return;a.distanceElection=c.election;}
 /** Commit a completed response once; later suppression never rewinds already answered exchanges. */

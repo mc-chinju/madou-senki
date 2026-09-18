@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {requirePhysicalAction} from '../combat/action-source.js';
 import {getAction,getCharacter} from '@madou/catalog';
 import {followerBottomFor} from './follower-attacks.js';
@@ -47,7 +48,7 @@ export function transitionAllArmy(state:GameState,input:GameInput):TransitionRes
  const stats=gameStats(s,p.id,{technique:t}),checkSpecs:NonNullable<ActionFrame['checkSpecs']>=Array.from({length:Math.max(0,t.useLevel-(t.school==='warrior'?stats.warrior_level:stats.magic_level))},()=>({purpose:'excess-level',modifier:0}));
  const parent:ActionFrame={id,eventId:id,parentWindowId:null,actorId:p.id,cardInstanceId:ALL_ARMY,kind:'reaction',allArmy:{childId,followerCardInstanceId:c.followerCardInstanceId},reclaimOwnerLifeId:lifeId,targetIds:[...c.targetIds],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false};
  const child:ActionFrame={id:childId,eventId:id,parentWindowId:null,actorId:p.id,cardInstanceId:c.followerCardInstanceId,kind:'attack',allArmyParentId:id,sourceZone:'hand',reclaimOwnerLifeId:lifeId,targetIds:[...c.targetIds],technique:t,groupId:null,stage:'declaration',checks:checkSpecs.map(c=>c.modifier),checkSpecs,roll:null,canceled:false};
- for(const card of [ALL_ARMY,c.followerCardInstanceId]){p.hand.splice(p.hand.indexOf(card),1);s.resolution.push(card);}
+ for(const card of [ALL_ARMY,c.followerCardInstanceId]){p.hand.splice(p.hand.indexOf(card),1);s.resolution.push(card);recordCardPlayed(s,p.id,card,'attack',c.targetIds);}
  (s.actions??={})[id]=parent;s.actions[childId]=child;acceptActionModifiers(s,child);s.phase='combat';openWindow(s,'declaration',id,{kind:'action',id});s.revision++;return {ok:true,state:s,events:[]};
 }
 export function beginArmyChild(s:GameState,a:ActionFrame):void{const child=s.actions?.[a.allArmy!.childId];if(child){a.stage='resolve';openWindow(s,'declaration',a.eventId,{kind:'action',id:child.id});}}

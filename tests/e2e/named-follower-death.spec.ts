@@ -1,7 +1,7 @@
 import {expect,test,type Browser,type APIRequestContext} from '@playwright/test';
 import {actionCards} from '../../packages/catalog/src/index.js';
 import type {NamedDeathScenario} from '../../apps/worker/test/fixtures/named-follower-death-scenario.js';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 async function recover(browser:Browser,request:APIRequestContext,scenario:NamedDeathScenario,name:string){
  const table=await tableFixture(browser,request,scenario);
  try{
@@ -13,10 +13,10 @@ async function recover(browser:Browser,request:APIRequestContext,scenario:NamedD
   await expect.poll(()=>views.get(owner)?.revision).toBeGreaterThan(revision);
   await p.reload();await expect.poll(()=>own().reclaim?.stage).toBe('ability-declaration');
   await passUntil(table,views,()=>own().reservedCards.includes(card),300);
-  await p.reload();expect(own().self.hand).not.toContain(card);expect(own().discard).not.toContain(card);
+  await p.reload();expect(own().self.hand).not.toContain(card);expect((await storedDiscard())).not.toContain(card);
   await passUntil(table,views,g=>!g.activeWindow,300);
   await p.reload();await expect.poll(()=>own().self.hand.filter(c=>c===card).length).toBe(1);
-  expect(own().reservedCards).not.toContain(card);expect(own().discard).not.toContain(card);
+  expect(own().reservedCards).not.toContain(card);expect((await storedDiscard())).not.toContain(card);
  }finally{await table.close();}
 }
 test('Named death Singing Ship returns once across browser reloads',async({browser,request})=>recover(browser,request,'reclaim-named-death-ship','歌う船'));

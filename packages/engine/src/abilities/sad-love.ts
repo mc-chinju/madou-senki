@@ -1,3 +1,4 @@
+import {recordAbility} from '../public-record.js';
 import type {GameState} from '../state.js';
 import {canUseCharacterAbility,hasPendingFatal} from '../state.js';
 import type {GameInput,TransitionResult} from '../commands.js';
@@ -26,13 +27,13 @@ export function transitionSadLove(state:GameState,input:GameInput):TransitionRes
   if(c.targetEventId!==o.targetEventId)return {ok:false,code:'INVALID_TARGET'};
  }else if(c.mode!=='substitute'||!o.substitutions.some(o=>o.targetEventId===c.targetEventId&&o.targetId===c.targetId&&o.groupId===c.groupId&&o.hitIndex===c.hitIndex))return {ok:false,code:'INVALID_TARGET'};
  const s=structuredClone(state),p=s.players[input.actorId]!,w=s.windows?.at(-1);
- if(c.mode==='aura'&&!c.enabled){delete p.sadLoveAura;for(const f of Object.values(s.abilities??{}))if(f.actorId===p.id&&f.context.kind==='sad-love'&&f.context.mode==='aura')f.canceled=true;}
+ if(c.mode==='aura'&&!c.enabled){delete p.sadLoveAura;for(const f of Object.values(s.abilities??{}))if(f.actorId===p.id&&f.context.kind==='sad-love'&&f.context.mode==='aura')f.canceled=true;recordAbility(s,'ABILITY_CANCELED',p.id,SAD_LOVE);}
  else{
   const context:SadLoveContext={kind:'sad-love',mode:c.mode,opportunityId:c.targetEventId,sourceLifeId:lifeIdentity(p)};
   if(c.mode==='substitute'){p.sadLoveSubstitutionSpent=true;context.binding={groupId:c.groupId!,targetId:c.targetId!,hitIndex:c.hitIndex!,sourceActionId:c.targetEventId,targetLifeId:lifeIdentity(s.players[c.targetId!]!)};}
   const f:AbilityFrame={source:'ability',id:`ability-${s.nextEventId++}`,abilityId:SAD_LOVE,actorId:p.id,targetIds:[c.mode==='substitute'?c.targetId!:p.id],eventId:c.targetEventId,parentWindowId:w?.id??null,useOrdinal:1,costs:{ownAction:false},stage:'declaration',canceled:false,rollIds:[],context};
   if(context.binding)context.binding.sadLoveSource={substitutionEventId:f.id,originalTargetId:c.targetId!,substituteId:p.id,substituteLifeId:context.sourceLifeId};
-  (s.abilities??={})[f.id]=f;(s.used??=[]).push(`${c.targetEventId}:${p.id}:${SAD_LOVE}:${c.mode}`);openWindow(s,'declaration',f.eventId,{kind:'ability',id:f.id},w?participants(s,(s.seatOrder.indexOf(p.id)+1)%s.seatOrder.length):participants(s));
+  (s.abilities??={})[f.id]=f;(s.used??=[]).push(`${c.targetEventId}:${p.id}:${SAD_LOVE}:${c.mode}`);recordAbility(s,'ABILITY_DECLARED',p.id,f.abilityId,f.targetIds.filter(id=>id!==p.id));openWindow(s,'declaration',f.eventId,{kind:'ability',id:f.id},w?participants(s,(s.seatOrder.indexOf(p.id)+1)%s.seatOrder.length):participants(s));
  }
  s.revision++;return {ok:true,state:s,events:[]};
 }

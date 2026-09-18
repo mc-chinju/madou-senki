@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 test('Ida explicitly pays for healing and concealment after a cancellable declaration', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'ability-hide');
@@ -43,7 +43,7 @@ test('a concealed ability remains private after reload and Fate cancels it witho
     await expect.poll(() => views.get(responder)?.game?.self.hand.includes('a2-p02-r2c3')).toBe(false);
     await passUntil(table, views, game => !game.activeWindow);
     expect(views.get(owner)!.game!.self.damage).toBe(5);
-    expect(views.get(owner)!.game!.discard).toContain('a2-p07-r3c1');
+    expect((await storedDiscard())).toContain('a2-p07-r3c1');
     expect(views.get(owner)!.game!.abilityOptions).toEqual([]);
     expect(views.get(responder)!.game!.players[owner]!.revealed).toBe(false);
   } finally { await table.close(); }

@@ -10,7 +10,9 @@ it('S21 White Light6 hidden alternate worlds keep foreign snapshots equal until 
   const states=await Promise.all(rooms.map(async r=>(await r.stored()).state.game!));
   expect(states[0]!.players.B!.revealed).toBe(states[1]!.players.B!.revealed);
   if(!states[0]!.players.B!.revealed)for(const actor of ['A','C','D']){
-   const views=await Promise.all(rooms.map(r=>r.snapshotFor(actor)));expect(views[0]!.game).toEqual(views[1]!.game);
+   const views=await Promise.all(rooms.map(r=>r.snapshotFor(actor)));
+   // Separate rooms commit at different wall-clock times; the public record's content must still match.
+   const [left,right]=views.map(v=>({...v.game!,logs:v.game!.logs.map(log=>({...log,at:0}))}));expect(left).toEqual(right);
    expect(JSON.stringify(views[0]!.game)).not.toContain('c2-p01-r1c1');
   }
   const w=states[0]!.windows?.at(-1);if(!w)break;

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 for (const dedicated of [false, true]) test(`Royal Guard reflection preserves its placed source with explicit dedication ${dedicated}`, async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'follower-royal');
@@ -21,7 +21,7 @@ for (const dedicated of [false, true]) test(`Royal Guard reflection preserves it
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[a]!.damage).toBe(4); expect(done.players[b]!.damage).toBe(0);
     expect(views.get(b)!.game!.self.followers.map(card => card.cardInstanceId)).toEqual(['a2-p21-r1c2']);
-    expect(done.discard).not.toContain('a2-p21-r1c2');
+    expect((await storedDiscard())).not.toContain('a2-p21-r1c2');
     expect(done.recentRolls.filter(roll => roll.purpose === 'follower-morale')).toHaveLength(dedicated ? 0 : 1);
   } finally { await table.close(); }
 });
@@ -33,7 +33,7 @@ test('Skeleton revives at its saved position after absorbing an eligible hit', a
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[b]!.damage).toBe(1);
     expect(views.get(b)!.game!.self.followers).toEqual([{ cardInstanceId: 'a2-p19-r2c1', revealed: true }]);
-    expect(done.discard).not.toContain('a2-p19-r2c1');
+    expect((await storedDiscard())).not.toContain('a2-p19-r2c1');
     await table.pages[1]!.reload(); await expect(table.pages[1]!.getByRole('region', { name: '自分の従者' })).toContainText('スケルトン');
   } finally { await table.close(); }
 });

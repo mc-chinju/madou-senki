@@ -270,6 +270,7 @@ export class Room extends DurableObject<Env> {
     }));
     const room = current.state;
     for (const socket of sockets) {
+      if (socket.readyState !== WebSocket.OPEN) continue;
       const a = attachment(socket);
       if (!a || !Object.hasOwn(room.members, a.actorId)) continue;
       const view: RoomView = {

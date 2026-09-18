@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Map<string, RoomView>;
@@ -82,7 +82,7 @@ test('Fate cancels Shin after reload without a check or repeat opportunity', asy
     const defense = await passUntil(table, views, game => at(game, 'normal-defense'), 400);
     expect(defense.currentAction).toMatchObject({ technique: { effectLevel: 5, damage: 7 } });
     expect(defense.recentRolls.some(roll => roll.purpose === 'ability-check')).toBe(false);
-    const done = await passUntil(table, views, game => !game.activeWindow, 400); expect(done.players[b]!.damage).toBe(7); expect(done.discard).toContain('a2-p02-r2c3');
+    const done = await passUntil(table, views, game => !game.activeWindow, 400); expect(done.players[b]!.damage).toBe(7); expect((await storedDiscard())).toContain('a2-p02-r2c3');
   } finally { await table.close(); }
 });
 test('Jill composes a real Lia prayer and rerolls only the independent Fist die with the parent visible', async ({ browser, request }) => {

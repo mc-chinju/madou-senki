@@ -1,3 +1,5 @@
+import {recordPass,recordRest,recordTurn} from './public-record.js';
+import {cloneGameState} from './clone-state.js';
 import {printedTechniqueAllowed} from './combat/printed-restrictions.js';
 import {playWish} from './effects/wish.js';
 import {playTurnChoiceCard} from './effects/turn-choice-cards.js';
@@ -54,10 +56,11 @@ export function transitionTurn(state: GameState, input: GameInput, entropy: Entr
     } else if (!['START_TURN', 'CHOOSE_DRAW','PASS_ACTION'].includes(command.type)) return { ok: false, code: 'WRONG_PHASE' };
   }
   try {
-    const random = randomSource(entropy); const next = structuredClone(state); const p = next.players[input.actorId]!; const start = next.events.length;
+    const random = randomSource(entropy); const next = cloneGameState(state); const p = next.players[input.actorId]!; const start = next.events.length;
     switch (command.type) {
       case 'REVEAL_CHARACTER': revealCharacter(next,p.id,entropy.now); break;
       case 'START_TURN': {
+        recordTurn(next,'TURN_STARTED',p.id,(next.turnNumber??0)+1);
         next.earlyTurnBook={actorId:p.id,closed:false};
         if((p.skipTurns??0)>0){p.skipTurns!--;completeOwnTurn(p,next);next.turnSeat=(next.turnSeat+1)%next.seatOrder.length;next.phase='turn-start';break;}
         next.turnRoll={id:`turn-${next.nextEventId++}`,actorId:p.id,kind:'recovery',remainingIds:(p.statuses??[]).filter(status=>status.timing!=='next-own-seat'&&status.timing!=='source-turn'&&status.timing!=='fixed-turns'&&status.timing!=='until-death').map(status=>status.id),hadStopped:p.statuses?.some(status=>status.kind==='stopped')??false};
@@ -72,9 +75,10 @@ export function transitionTurn(state: GameState, input: GameInput, entropy: Entr
         p.hand = p.hand.filter(id => !command.cardInstanceIds.includes(id)); next.phase = 'hand-adjustment'; break;
       }
       case 'REST':
-        payTurnCardBatch(next,p.id,command.cardInstanceIds,'rest');break;
+        recordRest(next,p.id,command.cardInstanceIds.length);payTurnCardBatch(next,p.id,command.cardInstanceIds,'rest');break;
       case 'CHANT': p.hand.splice(p.hand.indexOf(command.cardInstanceId), 1); p.chants.push({ cardInstanceId: command.cardInstanceId, revealed: false }); next.phase = 'hand-adjustment'; break;
       case 'PASS_ACTION':
+        recordPass(next,p.id,'action');
         if(hasStatus(p,'stopped')){completeOwnTurn(p,next);next.turnSeat=(next.turnSeat+1)%next.seatOrder.length;next.phase='turn-start';}else next.phase='hand-adjustment';
         break;
       case 'PLAY_TURN_CARD':{

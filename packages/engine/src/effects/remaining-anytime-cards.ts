@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {attackScopeGroups,substituteRestricted} from './substitute.js';
 import {getAction} from '@madou/catalog';
 import type {GameCommand} from '@madou/protocol';
@@ -43,7 +44,7 @@ export function acceptNamedAnytimeCard(s:GameState,actorId:string,c:Extract<Game
  const option=namedAnytimeOptions(s,actorId).find(o=>o.cardInstanceId===c.cardInstanceId&&o.targetEventId===c.targetEventId&&o.targetId===c.targetId&&o.groupId===c.groupId&&o.hitIndex===c.hitIndex);
  if(!option)return 'INVALID_TARGET';
  const p=s.players[actorId]!,w=s.windows!.at(-1)!,source=s.actions?.[c.targetEventId]??s.abilities?.[c.targetEventId];if(!source)return 'INVALID_TARGET';
- (s.used??=[]).push(`${c.targetEventId}:${actorId}:${c.cardInstanceId}`);p.hand.splice(p.hand.indexOf(c.cardInstanceId),1);s.resolution.push(c.cardInstanceId);
+ (s.used??=[]).push(`${c.targetEventId}:${actorId}:${c.cardInstanceId}`);p.hand.splice(p.hand.indexOf(c.cardInstanceId),1);s.resolution.push(c.cardInstanceId);recordCardPlayed(s,actorId,c.cardInstanceId,'anytime',c.targetId?[c.targetId]:[]);
  const id=`a-${s.nextEventId++}`;
  (s.actions??={})[id]={id,eventId:source.eventId,parentWindowId:w.id,actorId,cardInstanceId:c.cardInstanceId,kind:'reaction',reclaimOwnerLifeId:lifeIdentity(p),
   targetIds:c.targetId?[c.targetId]:[],...(c.targetId?{turnCardTargetLifeId:lifeIdentity(s.players[c.targetId]!)}:{}),technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,

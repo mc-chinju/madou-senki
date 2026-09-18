@@ -1,3 +1,4 @@
+import {recordAbility,recordCardPlayed} from '../public-record.js';
 import {printedTechniqueAllowed} from './printed-restrictions.js';
 import {offerReclaim} from '../reclaim.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
@@ -52,7 +53,7 @@ export function transitionFollowerBundle(state:GameState,input:GameInput):Transi
  for(let i=0;i<c.sources.length;i++){
   const choice=c.sources[i]!;const resolved=selections[i]!;const t=resolved.technique;
   if(resolved.sourceZone==='hand')actor.hand.splice(actor.hand.indexOf(choice.cardInstanceId),1);else actor.followers=actor.followers.filter(f=>f.cardInstanceId!==choice.cardInstanceId);
-  s.resolution.push(choice.cardInstanceId);const actionId=`a-${s.nextEventId++}`;const stats=gameStats(s,actor.id,{technique:t});
+  s.resolution.push(choice.cardInstanceId);recordCardPlayed(s,actor.id,choice.cardInstanceId,'attack',choice.targetIds);const actionId=`a-${s.nextEventId++}`;const stats=gameStats(s,actor.id,{technique:t});
   const checkSpecs:NonNullable<ActionFrame['checkSpecs']>=t.noChecks?[]:Array.from({length:Math.max(0,t.useLevel-(t.school==='warrior'?stats.warrior_level:stats.magic_level))},()=>({purpose:'excess-level',modifier:0}));
   const a:ActionFrame={reclaimOwnerLifeId:lifeIdentity(actor),followerBundleId:id,sourceZone:resolved.sourceZone,id:actionId,eventId:actionId,parentWindowId:null,actorId:p.id,cardInstanceId:choice.cardInstanceId,kind:'attack',targetIds:[...choice.targetIds],technique:structuredClone(t),groupId:null,stage:'declaration',checks:checkSpecs.map(c=>c.modifier),checkSpecs,roll:null,canceled:false};
   // Dedicated selection is saved in the bundle's immutable source metadata.
@@ -61,7 +62,7 @@ export function transitionFollowerBundle(state:GameState,input:GameInput):Transi
   (s.actions??={})[actionId]=a;bundle.actionIds.push(actionId);
  }
  const ability:AbilityFrame={followerBundleId:id,source:'ability',id:`ability-${s.nextEventId++}`,abilityId:c.abilityId,actorId:p.id,targetIds:[...new Set(c.sources.flatMap(c=>c.targetIds))],eventId:c.targetEventId,parentWindowId:null,useOrdinal:1,costs:{ownAction:true},stage:'declaration',canceled:false,rollIds:[],context:{kind:'own-action'}};
- (s.abilities??={})[ability.id]=ability;s.phase='combat';openWindow(s,'declaration',ability.eventId,{kind:'ability',id:ability.id});s.revision++;return {ok:true,state:s,events:[]};
+ (s.abilities??={})[ability.id]=ability;recordAbility(s,'ABILITY_DECLARED',ability.actorId,ability.abilityId,ability.targetIds.filter(id=>id!==ability.actorId));s.phase='combat';openWindow(s,'declaration',ability.eventId,{kind:'ability',id:ability.id});s.revision++;return {ok:true,state:s,events:[]};
 }
 export function discardBundle(s:GameState,b:FollowerBundle):boolean{
  b.reclaimCursor??=0;

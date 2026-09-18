@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {getAction} from '@madou/catalog';
 import type {GameCommand} from '@madou/protocol';
 import type {EngineErrorCode} from '../commands.js';
@@ -28,6 +29,6 @@ export function shadowJumpGrantLive(s:GameState,f:AbilityFrame):boolean{const j=
 export function shadowJumpCostView(s:GameState,actorId:string){const w=s.windows?.at(-1),f=w?.continuation.kind==='ability'?s.abilities?.[w.continuation.id]:undefined;if(w?.kind!=='shadow-jump-cost'||w.participants[w.cursor]!==actorId||f?.actorId!==actorId||f.shadowJump?.stage!=='cost-choice')return null;return {abilityEventId:f.id,targetId:f.shadowJump.originalAttackerId,cardInstanceIds:shadowJumpGrantLive(s,f)&&!hasStatus(s.players[actorId]!,'stopped')?s.players[actorId]!.hand.filter(id=>getAction(id)?.modes?.some(m=>m.playMode==='advance')):[]};}
 export function payShadowJump(s:GameState,actorId:string,c:Extract<GameCommand,{type:'PAY_SHADOW_JUMP'}>):EngineErrorCode|undefined{
  const choice=shadowJumpCostView(s,actorId);if(!choice||choice.abilityEventId!==c.abilityEventId)return 'NOT_PRIORITY';if(!choice.cardInstanceIds.includes(c.advanceCardInstanceId))return 'CARD_NOT_IN_HAND';
- const f=s.abilities![c.abilityEventId]!,p=s.players[actorId]!,j=f.shadowJump!;p.hand.splice(p.hand.indexOf(c.advanceCardInstanceId),1);s.resolution.push(c.advanceCardInstanceId);j.paidAdvanceId=c.advanceCardInstanceId;j.stage='attack-choice';f.stage='attack-choice';s.windows!.pop();openWindow(s,'ability-attack',f.eventId,{kind:'ability',id:f.id},[actorId]);
+ const f=s.abilities![c.abilityEventId]!,p=s.players[actorId]!,j=f.shadowJump!;p.hand.splice(p.hand.indexOf(c.advanceCardInstanceId),1);s.resolution.push(c.advanceCardInstanceId);recordCardPlayed(s,actorId,c.advanceCardInstanceId,'advance');j.paidAdvanceId=c.advanceCardInstanceId;j.stage='attack-choice';f.stage='attack-choice';s.windows!.pop();openWindow(s,'ability-attack',f.eventId,{kind:'ability',id:f.id},[actorId]);
  offerReclaim(s,{kind:'ordinary-disposition',fromZone:'resolution',sourceId:`${f.id}-advance`,eventId:f.eventId,sourceActorId:actorId,sourceLifeId:j.sourceLifeId,cardInstanceId:c.advanceCardInstanceId,trigger:'technique-resolved',usedModeName:'advance'});
 }

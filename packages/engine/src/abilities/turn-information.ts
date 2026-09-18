@@ -1,3 +1,4 @@
+import {recordAbility} from '../public-record.js';
 import {enqueueLifecycle} from '../lifecycle/events.js';
 import {getAction,type ActionCard} from '@madou/catalog';
 import type {GameState} from '../state.js';
@@ -50,7 +51,7 @@ export function revealAbilityOptions(s:GameState,actorId:string):{abilityId:type
 /** Called only after an accepted actual voluntary hidden→public transition. */
 export function beginTurnPackage(s:GameState,actorId:string,id:TurnPackageId,eventId:string,targetIds:string[],extra:Partial<TurnAbilityContext>={}):void{
  const w=s.windows?.at(-1);const f:AbilityFrame={source:'ability',id:`ability-${s.nextEventId++}`,abilityId:id,actorId,targetIds,eventId,parentWindowId:w?.id??null,useOrdinal:1,costs:{ownAction:mainTurnPackage(id)},stage:'declaration',canceled:false,rollIds:[],context:{kind:'turn-information',sourceCharacterId:s.players[actorId]!.characterId,turnNumber:s.turnNumber??0,phase:s.phase,...extra}};
- (s.abilities??={})[f.id]=f;(s.used??=[]).push(turnKey(s,actorId,id));
+ (s.abilities??={})[f.id]=f;(s.used??=[]).push(turnKey(s,actorId,id));recordAbility(s,'ABILITY_DECLARED',actorId,id,targetIds.filter(target=>target!==actorId));
  if(mainTurnPackage(id))s.phase='hand-adjustment';
  openWindow(s,'declaration',f.eventId,{kind:'ability',id:f.id},w?participants(s,(s.seatOrder.indexOf(actorId)+1)%s.seatOrder.length):participants(s));
 }

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getAction } from '../../packages/catalog/src/index.js';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -44,7 +44,7 @@ for (const selected of [false, true]) test(`Lancaster selected=${selected} displ
     expect(game(table, views).activeWindow?.kind).toBe('defense-advance'); await click(table, views, 0, 'パス');
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[b]!.damage).toBe(0); expect(done.maaiDefense).toBeNull(); await expect(panel).toHaveCount(0);
-    for (const id of cards.slice(0, selected ? 4 : 2)) expect(done.discard.filter(card => card === id)).toHaveLength(1);
+    for (const id of cards.slice(0, selected ? 4 : 2)) expect((await storedDiscard()).filter(card => card === id)).toHaveLength(1);
   } finally { await table.close(); }
 });
 
@@ -94,7 +94,7 @@ for (const scenario of ['property-lancaster', 'property-arnes'] as const) test(`
       expect(game(table, views).activeWindow?.kind).toBe('defense-advance'); await click(table, views, 0, 'パス');
     }
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
-    expect(done.players[b]!.damage).toBe(0); expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
+    expect(done.players[b]!.damage).toBe(0); expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
   } finally { await table.close(); }
 });
 
@@ -116,7 +116,7 @@ test('a single advance affects each actual spear target and restored progress ke
     await card(table, views, 1, bCards[2]!, '間合いを使う'); await card(table, views, 2, cCards[2]!, '間合いを使う'); await click(table, views, 0, 'パス');
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[b]!.damage).toBe(0); expect(done.players[c]!.damage).toBe(0); expect(done.distances).toEqual(beforeDistances);
-    for (const id of [...bCards, ...cCards, advance]) expect(done.discard.filter(card => card === id)).toHaveLength(1);
+    for (const id of [...bCards, ...cCards, advance]) expect((await storedDiscard()).filter(card => card === id)).toHaveLength(1);
     expect(done.maaiDefense).toBeNull(); await expect(panel).toHaveCount(0);
   } finally { await table.close(); }
 });

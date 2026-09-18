@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getAction } from '../../packages/catalog/src/index.js';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -27,9 +27,9 @@ function originalSource(table: Table, views: Views) {
   expect(attack.technique).toMatchObject({ effectLevel: shared ? 6 : 5, damage: shared ? 8 : 6 });
   return original.cardInstanceId;
 }
-function consumed(done: ReturnType<typeof game>, source: string | null) {
+async function consumed(done: ReturnType<typeof game>, source: string | null) {
   if(source===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
-  expect(done.discard.filter(id => id === source)).toHaveLength(1);
+  expect((await storedDiscard()).filter(id => id === source)).toHaveLength(1);
   expect(done.self.hand).not.toContain(source);
   expect(done.self.chants.map(card => card.cardInstanceId)).not.toContain(source);
   expect(done.self.followers.map(card => card.cardInstanceId)).not.toContain(source);
@@ -63,7 +63,7 @@ for (const entry of choices) test(`${entry.scenario} may decline the optional me
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(6);
     expect(done.recentRolls.filter(roll => roll.purpose === 'ability-check')).toEqual([]);
     expect(done.players[table.sessions[0]!.id]!.statuses).toEqual([]);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('actual Lester selection saves a real random roll across reload and uses its final faces', async ({ browser, request }) => {
@@ -84,7 +84,7 @@ test('actual Lester selection saves a real random roll across reload and uses it
     const double = roll.faces![0] === roll.faces![1];
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(double ? 0 : 6);
     expect(done.players[table.sessions[0]!.id]!.statuses.some(status => status.timing === 'next-own-seat')).toBe(double);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('actual Fate cancels hidden mental source and a reload does not restore the spent attempt', async ({ browser, request }) => {
@@ -105,8 +105,8 @@ test('actual Fate cancels hidden mental source and a reload does not restore the
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(6);
     expect(done.recentRolls.filter(roll => roll.purpose === 'ability-check')).toEqual([]);
-    expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
-    consumed(done, source);
+    expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const entry of [
@@ -130,7 +130,7 @@ for (const entry of [
     await expect(goals).toContainText(entry.defeat);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(0);
     expect(done.players[table.sessions[0]!.id]!.statuses).toContainEqual({ kind: 'stopped', timing: 'next-own-seat', expiresOnActorId: table.sessions[0]!.id });
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('fixed allegiance preserves current goals after Dia sixes while cancellation and stop still apply', async ({ browser, request }) => {
@@ -145,7 +145,7 @@ test('fixed allegiance preserves current goals after Dia sixes while cancellatio
     expect(done.players[table.sessions[0]!.id]!.statuses).toContainEqual({ kind: 'stopped', timing: 'next-own-seat', expiresOnActorId: table.sessions[0]!.id });
     await reload(table, views);
     await expect(table.pages[0]!.getByRole('region', { name: '現在の勝利・敗北条件' })).toContainText(before.objective);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('ordinary doubles stop until the actual attacker seat arrives without any recovery roll', async ({ browser, request }) => {
@@ -159,7 +159,7 @@ test('ordinary doubles stop until the actual attacker seat arrives without any r
     expect(done.self.faction).toBe(before.faction);
     expect(done.self.protection).toEqual(before.protection);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(0);
-    consumed(done, source);
+    await consumed(done, source);
     const attacker = table.sessions[0]!.id;
     const panel = table.pages[0]!.getByRole('article').filter({ has: table.pages[0]!.getByRole('heading', { name: '葵', exact: true }) });
     await expect(panel).toContainText('回復判定はありません');
@@ -192,8 +192,8 @@ test('saved real Fate non-double failure cancels the attack without stopping or 
     expect(done.players[table.sessions[0]!.id]!.statuses).toEqual([]);
     expect(done.self.faction).toBe(before.faction);
     expect(done.self.protection).toEqual(before.protection);
-    expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
-    consumed(done, source);
+    expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const giftUsed of [false, true]) test(`Fear pending fatal notice preserves the other target before death gift use=${giftUsed}`, async ({ browser, request }) => {
@@ -206,7 +206,7 @@ for (const giftUsed of [false, true]) test(`Fear pending fatal notice preserves 
     await passUntil(table, views, state => state.players[a]!.pendingFatal, 500);
     expect(game(table, views).players[a]).toMatchObject({ presence: 'active', pendingFatal: true, damage: 0 });
     expect(game(table, views).players[c]!.damage).toBe(0);
-    expect(game(table, views).discard).not.toContain(source);
+    expect((await storedDiscard())).not.toContain(source);
     hiddenSource(table, views, choices[2].id, '恐怖');
     for (const page of table.pages) await expect(page.getByRole('region', { name: '保留中の死亡効果' })).toContainText('宣言済みの攻撃を解決した後');
     await reload(table, views);
@@ -233,11 +233,11 @@ for (const giftUsed of [false, true]) test(`Fear pending fatal notice preserves 
     expect(done.players[c]!.damage).toBe(8);
     if (giftUsed) {
       expect(game(table, views, 3).self.hand.filter(id => id === gift)).toHaveLength(1);
-      expect(done.discard.filter(id => id === giftCost)).toHaveLength(1);
-      expect(done.discard).not.toContain(gift);
+      expect((await storedDiscard()).filter(id => id === giftCost)).toHaveLength(1);
+      expect((await storedDiscard())).not.toContain(gift);
       for (const seat of [1, 2]) expect(JSON.stringify(game(table, views, seat))).not.toContain(gift);
     }
-    consumed(done, source);
+    await consumed(done, source);
     await reload(table, views);
   } finally { await table.close(); }
 });
@@ -266,7 +266,7 @@ test('a real divine reroll keeps forced failure but derives stopping from the fi
     expect(done.players[table.sessions[0]!.id]!.statuses.some(status => status.timing === 'next-own-seat')).toBe(double);
     expect(done.self.faction).toBe(sixes ? 'GOOD' : before.faction);
     expect(done.self.protection.characterIds).toEqual(sixes ? ['c2-p03-r1c2'] : before.protection.characterIds);
-    for (const id of ['a2-p02-r1c3', 'a2-p02-r2c3']) expect(done.discard.filter(card => card === id)).toHaveLength(1);
-    consumed(done, source);
+    for (const id of ['a2-p02-r1c3', 'a2-p02-r2c3']) expect((await storedDiscard()).filter(card => card === id)).toHaveLength(1);
+    await consumed(done, source);
   } finally { await table.close(); }
 });

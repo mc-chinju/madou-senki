@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getAction, getCharacter } from '../../packages/catalog/src/index.js';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -88,7 +88,7 @@ for (const entry of [
     await click(table, views, 0, entry.all ? '見た詠唱札をすべて捨てさせる' : '選んだ1枚を捨てさせる');
     await passUntil(table, views, state => !state.activeWindow, 500);
     const discarded = entry.all ? decision.cards : decision.cards.slice(0, 1);
-    for (const seat of [0, 1, 2, 3]) for (const card of discarded) expect(game(table, views, seat).discard.filter(id => id === card.cardInstanceId)).toHaveLength(1);
+    for (const seat of [0, 1, 2, 3]) for (const card of discarded) expect((await storedDiscard()).filter(id => id === card.cardInstanceId)).toHaveLength(1);
     await reload(table, views); expect(game(table, views).inspection).toBeNull();
   } finally { await table.close(); }
 });
@@ -176,7 +176,7 @@ test('Lancaster discards actual printed magic while retaining a follower and war
     await passUntil(table, views, state => !state.activeWindow, 500);
     expect(game(table, views).self.hand).toEqual(before.filter(id => !magic.includes(id)));
     expect(game(table, views).phase).toBe('hand-adjustment');
-    for (const card of magic) expect(game(table, views).discard.filter(id => id === card)).toHaveLength(1);
+    for (const card of magic) expect((await storedDiscard()).filter(id => id === card)).toHaveLength(1);
   } finally { await table.close(); }
 });
 test('Shadow conceals its actual public owner without spending the main action', async ({ browser, request }) => {

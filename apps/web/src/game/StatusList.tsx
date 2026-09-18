@@ -3,7 +3,7 @@ import type { PublicPlayerView } from '@madou/engine';
 
 type PublicStatusView = PublicPlayerView['statuses'][number];
 
-const statusNames = { stopped: '停止', silenced: '沈黙', 'ability-disabled': '特殊能力無効', 'stat-drain': '能力値低下' };
+export const statusNames = { stopped: '停止', silenced: '沈黙', 'ability-disabled': '特殊能力無効', 'stat-drain': '能力値低下' };
 const explanations = {
   stopped: 'カードと特殊能力は使えません。正体の公開と従者による防御はできます。',
   silenced: '魔法技の使用と魔法技の新規詠唱はできません。戦士技（詠唱を含む）と転移は使えます。詠唱済みの魔法は回復後に使えます。',

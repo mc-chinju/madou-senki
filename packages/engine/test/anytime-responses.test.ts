@@ -18,7 +18,7 @@ it('Tragedy fails all three unresolved hits of the actual public Gainas attack',
  let s=attack(initial(TRAGEDY));s=play(s,'B',TRAGEDY);s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(0);expect(s.discard).toContain(TRAGEDY);
 });
 it.each(['c2-p02-r2c2','c2-p03-r1c2'])('Keil protects only the selected %s of a real two-target attack and grows only Lancelot',target=>{
- let s=attack(initial(KEIL,'c2-p05-r2c2',target));s=play(s,'B',KEIL,'B');s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBeGreaterThan(0);expect(s.players.B!.permanent?.spirit??0).toBe(target==='c2-p02-r2c2'?1:0);
+ let s=attack(initial(KEIL,'c2-p05-r2c2',target));s=play(s,'B',KEIL,'B');expect(viewFor(s,'D').logs.find(e=>e.type==='CARD_PLAYED'&&e.cardInstanceId===KEIL)).toMatchObject({actorId:'B',targetIds:['B']});s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBeGreaterThan(0);expect(s.players.B!.permanent?.spirit??0).toBe(target==='c2-p02-r2c2'?1:0);
 });
 it('Hostage from EVIL fails all six unresolved hits of the selected GOOD attack',()=>{
  let s=attack(initial(HOSTAGE,'c2-p01-r2c1','c2-p05-r2c1'));s=finish(play(s,'B',HOSTAGE));expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(0);

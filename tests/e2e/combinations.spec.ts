@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { currentCardAction, observe, passUntil, tableFixture } from './helpers.js';
+import { currentCardAction, observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 test('Beast King explicitly combines two physical cards and displays the accepted pair after reload', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'combination-ready');
@@ -31,7 +31,7 @@ test('Fate cancels the whole composite declaration while keeping both paid cards
     await table.pages[1]!.getByRole('button', { name: '割り込みを使う', exact: true }).click();
     await expect.poll(() => views.get(table.sessions[1]!.id)?.game?.self.hand.includes('a2-p02-r2c3')).toBe(false);
     const done = await passUntil(table, views, game => !game.activeWindow);
-    expect(done.discard).toContain(action.cardInstanceId); expect(done.discard).toContain(action.coSourceCardInstanceId);
+    expect((await storedDiscard())).toContain(action.cardInstanceId); expect((await storedDiscard())).toContain(action.coSourceCardInstanceId);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(0);
   } finally { await table.close(); }
 });
@@ -73,7 +73,7 @@ test('Black Wing post-hit payment is explicit and survives reload at its saved c
     await expect(page.getByRole('region',{name:'カードの回収'}).getByRole('button',{name:'回収せずに進む',exact:true})).toBeEnabled();
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(20);
-    expect(done.discard.filter(id => id === 'a2-p23-r1c2')).toHaveLength(1);
+    expect((await storedDiscard()).filter(id => id === 'a2-p23-r1c2')).toHaveLength(1);
   } finally { await table.close(); }
 });
 
@@ -89,7 +89,7 @@ test('Black Wing can decline its saved post-hit payment after reload without con
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[target]!.damage).toBe(15);
     expect(views.get(owner)!.game!.self.hand).toContain('a2-p23-r1c2');
-    expect(done.discard).not.toContain('a2-p23-r1c2');
+    expect((await storedDiscard())).not.toContain('a2-p23-r1c2');
   } finally { await table.close(); }
 });
 
@@ -223,6 +223,6 @@ test('Beast King can explicitly inherit a counter source in the normal defense w
     await expect(table.pages[1]!.getByRole('region', { name: '現在の行動' })).toContainText('手裏剣');
     const done = await passUntil(table, views, game => !game.activeWindow);
     expect(done.players[defender]!.damage).toBe(0); expect(done.players[owner]!.damage).toBe(15);
-    expect(done.discard).toContain('a2-p09-r1c1'); expect(done.discard).toContain('a2-p08-r2c3');
+    expect((await storedDiscard())).toContain('a2-p09-r1c1'); expect((await storedDiscard())).toContain('a2-p08-r2c3');
   } finally { await table.close(); }
 });

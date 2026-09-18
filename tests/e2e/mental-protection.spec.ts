@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -21,9 +21,9 @@ function originalSource(table: Table, views: Views, expected = 'a2-p14-r1c2') {
   expect(original).toMatchObject({ actorId: table.sessions[0]!.id, kind: 'attack', cardInstanceId: expected });
   return original.cardInstanceId;
 }
-function consumed(done: ReturnType<typeof game>, source: string | null) {
+async function consumed(done: ReturnType<typeof game>, source: string | null) {
   if(source===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
-  expect(done.discard.filter(id => id === source)).toHaveLength(1);
+  expect((await storedDiscard()).filter(id => id === source)).toHaveLength(1);
   expect(done.self.hand).not.toContain(source);
   expect(done.self.chants.map(card => card.cardInstanceId)).not.toContain(source);
   expect(done.self.followers.map(card => card.cardInstanceId)).not.toContain(source);
@@ -68,7 +68,7 @@ for (const entry of named) test(`${entry.scenario} selects the exact named respo
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.recentRolls.filter(roll => roll.purpose === 'ability-check')).toEqual([]);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(6);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const cancel of [false, true]) test(`Cham response selected=${cancel} then declined or canceled leaves the real mental check`, async ({ browser, request }) => {
@@ -91,8 +91,8 @@ for (const cancel of [false, true]) test(`Cham response selected=${cancel} then 
     const double = roll.faces[0] === roll.faces[1];
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(double ? 0 : 6);
     expect(done.players[table.sessions[0]!.id]!.statuses.some(status => status.timing === 'next-own-seat')).toBe(double);
-    if (cancel) expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
-    consumed(done, source);
+    if (cancel) expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const entry of [
@@ -111,7 +111,7 @@ for (const entry of [
     const double = game(table, views).currentRoll!.faces[0] === game(table, views).currentRoll!.faces[1];
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(double ? 0 : 6);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 const guards = [
@@ -136,7 +136,7 @@ for (const entry of guards) test(`${entry.scenario} selected guard removes doubl
     expect(done.players[table.sessions[0]!.id]).toMatchObject({ presence: 'active', pendingFatal: false, statuses: [] });
     expect(done.self.faction).toBe(before.faction);
     expect(done.self.protection).toEqual(before.protection);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('canceling a selected Garwin guard restores Dia sixes and does not restore the spent attempt', async ({ browser, request }) => {
@@ -153,8 +153,8 @@ test('canceling a selected Garwin guard restores Dia sixes and does not restore 
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(0);
     expect(done.players[table.sessions[0]!.id]!.statuses.some(status => status.timing === 'next-own-seat')).toBe(true);
     expect(done.self.protection.characterIds).toEqual(['c2-p06-r1c2']);
-    expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
-    consumed(done, source);
+    expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('saved guard survives a real divine reroll while Fate forced failure still cancels the attack', async ({ browser, request }) => {
@@ -178,8 +178,8 @@ test('saved guard survives a real divine reroll while Fate forced failure still 
     expect(done.players[table.sessions[0]!.id]!.statuses).toEqual([]);
     expect(done.self.faction).toBe(before.faction);
     expect(done.self.protection).toEqual(before.protection);
-    for (const id of ['a2-p02-r1c3', 'a2-p02-r2c3']) expect(done.discard.filter(card => card === id)).toHaveLength(1);
-    consumed(done, source);
+    for (const id of ['a2-p02-r1c3', 'a2-p02-r2c3']) expect((await storedDiscard()).filter(card => card === id)).toHaveLength(1);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('Garwin Nightmare clause keeps damage and a real forced failed resistance while preventing only stopping', async ({ browser, request }) => {
@@ -196,7 +196,7 @@ test('Garwin Nightmare clause keeps damage and a real forced failed resistance w
     expect(game(table, views, 1).currentRoll!.success).toBe(false);
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]).toMatchObject({ damage: 2, statuses: [] });
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const entry of [
@@ -215,7 +215,7 @@ for (const entry of [
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(0);
     expect(done.recentRolls.filter(roll => roll.purpose === 'status-resistance')).toEqual([]);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 test('Gil dedicated 気破 keeps its printed Gad exception in the actual defense UI', async ({ browser, request }) => {
@@ -228,6 +228,6 @@ test('Gil dedicated 気破 keeps its printed Gad exception in the actual defense
     await reload(table, views, 1);
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(38);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });

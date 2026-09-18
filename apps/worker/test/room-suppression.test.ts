@@ -83,7 +83,9 @@ it('real ritual supplies Vanmil and actual multi-target ban survives declaration
 it('hidden Lia and hidden ordinary target have the same outside WS and ACK transcripts before and after ban', async () => {
   const ordinary = await openTestRoom('suppression-hidden-ordinary'); const exempt = await openTestRoom('suppression-hidden-lia');
   async function same() {
-    for (const actor of ['A', 'C', 'D']) expect((await exempt.snapshotFor(actor)).game).toEqual((await ordinary.snapshotFor(actor)).game);
+    // The two rooms commit at different wall-clock times; the record's content must still match.
+    const outside = async (room: typeof ordinary, actor: string) => { const view = (await room.snapshotFor(actor)).game!; return { ...view, logs: view.logs.map(log => ({ ...log, at: 0 })) }; };
+    for (const actor of ['A', 'C', 'D']) expect(await outside(exempt, actor)).toEqual(await outside(ordinary, actor));
   }
   await same();
   const first = await declare(ordinary, 'A', 'paired-ban', BAN, ['B']); const second = await declare(exempt, 'A', 'paired-ban', BAN, ['B']);

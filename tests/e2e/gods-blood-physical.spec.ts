@@ -1,6 +1,6 @@
 import {expect,test,type Locator} from '@playwright/test';
 import {godsBloodPhysicalScenarios} from '../../apps/worker/test/fixtures/gods-blood-physical-scenarios.js';
-import {observe,windowPassButtonName,tableFixture} from './helpers.js';
+import {observe,windowPassButtonName,tableFixture,storedDiscard} from './helpers.js';
 for(const scenario of godsBloodPhysicalScenarios)test(`${scenario} actual Blood stats ownership and use boundaries survive reload`,async({browser,request})=>{
  const table=await tableFixture(browser,request,scenario),errors:string[]=[];for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const message=JSON.parse(String(frame.payload));if(message.type==='error')errors.push(message.code);}));
  try{const views=await observe(table),ids=table.sessions.map(p=>p.id),[a,b]=ids as [string,string],page=table.pages[0]!,bp=table.pages[1]!,base=structuredClone(views.get(a)!.game!.self.stats),other=structuredClone(views.get(b)!.game!.self.stats),stats=['warrior_level','magic_level','spirit'] as const;const game=()=>views.get(a)!.game!;
@@ -12,7 +12,7 @@ for(const scenario of godsBloodPhysicalScenarios)test(`${scenario} actual Blood 
  if(scenario==='blood-transfer'||scenario==='blood-death'){
   await click(page.getByRole('button',{name:'行動を終える',exact:true}));await select(0,views.get(a)!.game!.self.hand[0]!);await click(page.getByRole('button',{name:'選んだ1枚を捨てて手番を終える',exact:true}));await settle();await click(bp.getByRole('button',{name:'手番を始める',exact:true}));await click(bp.getByRole('button',{name:'カードを引かない',exact:true}));
   if(scenario==='blood-transfer'){await click(bp.getByRole('button',{name:'祈願を使う（1枚目）',exact:true}));await settle('wish');await bp.reload();const panel=bp.getByRole('complementary',{name:'自分だけの祈願の選択'});await panel.getByRole('combobox',{name:'取得先',exact:true}).selectOption('public');await panel.getByRole('combobox',{name:'取得候補',exact:true}).selectOption('a2-p01-r1c3');await click(panel.getByRole('button',{name:'この候補から1枚取得する',exact:true}));await settle();await bp.reload();for(const stat of stats)expect(views.get(b)!.game!.self.stats[stat]).toBe(other[stat]+1);expect(game().players[b]!.open).toContain('a2-p01-r1c3');}
-  else{await attack(1,'a2-p24-r2c2',0);await settle();expect(game().players[a]!.presence).toBe('dead');expect(game().discard.filter(id=>id==='a2-p01-r1c3')).toHaveLength(1);}
+  else{await attack(1,'a2-p24-r2c2',0);await settle();expect(game().players[a]!.presence).toBe('dead');expect((await storedDiscard()).filter(id=>id==='a2-p01-r1c3')).toHaveLength(1);}
   await page.reload();expect(views.get(a)!.game!.self.stats).toEqual(base);expect(game().players[a]!.open).not.toContain('a2-p01-r1c3');
  }else if(['blood-warrior','blood-magic','blood-spirit'].includes(scenario)){
   await attack(0,scenario==='blood-magic'?'a2-p18-r1c3':'a2-p24-r1c2',1);await page.reload();await settle();const checks=game().recentRolls.filter(r=>r.purpose==='excess-level');if(scenario==='blood-spirit'){expect(checks.length).toBeGreaterThanOrEqual(1);for(const r of checks)expect(r.threshold).toBe(7);}else{expect(checks).toEqual([]);expect(game().players[b]!.damage).toBe(scenario==='blood-magic'?8:4);}

@@ -1,6 +1,6 @@
 import {expect,test} from '@playwright/test';
 import {getAction} from '../../packages/catalog/src/index.js';
-import {observe,passUntil,tableFixture} from './helpers.js';
+import {observe,passUntil,tableFixture,storedDiscard} from './helpers.js';
 for(const choice of ['cost','attack','child','cancel-child','cancel-ability'] as const)test(`Shadow jump ${choice} saves private payment and granted attack across refresh`,async({browser,request})=>{
  const table=await tableFixture(browser,request,'shadow-jump');
  try{
@@ -17,6 +17,6 @@ for(const choice of ['cost','attack','child','cancel-child','cancel-ability'] as
     if(choice==='attack')await click(1,'追加攻撃をしない');else{await page.getByRole('combobox',{name:'追加攻撃に使うカード',exact:true}).selectOption(child);await click(1,'追加攻撃を行う');await page.reload();if(choice==='cancel-child')await cancel('cancel');}
    }
   }
-  const done=await passUntil(table,views,g=>!g.activeWindow,400);expect([done.players[a]!.damage,done.players[b]!.damage]).toEqual([choice==='child'?7:0,choice==='cancel-ability'?4:0]);expect(done.phase).toBe('withdrawal');if(choice==='cost'||choice==='cancel-ability')expect(views.get(b)!.game!.self.hand).toContain(advance);else expect(done.discard.filter(id=>id===advance)).toHaveLength(1);
+  const done=await passUntil(table,views,g=>!g.activeWindow,400);expect([done.players[a]!.damage,done.players[b]!.damage]).toEqual([choice==='child'?7:0,choice==='cancel-ability'?4:0]);expect(done.phase).toBe('withdrawal');if(choice==='cost'||choice==='cancel-ability')expect(views.get(b)!.game!.self.hand).toContain(advance);else expect((await storedDiscard()).filter(id=>id===advance)).toHaveLength(1);
  }finally{await table.close();}
 });

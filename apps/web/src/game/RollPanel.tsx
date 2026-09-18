@@ -1,6 +1,6 @@
 import type { PlayerView, PublicRollView } from '@madou/engine';
 
-const purposeNames: Record<PublicRollView['purpose'], string> = {
+export const purposeNames: Record<PublicRollView['purpose'], string> = {
   'faction-change':'陣営変更への抵抗','card-inspection':'遠見の判定',
   training:'修行の判定','extra-draw':'秘伝書の追加枚数',
   'technique-check': '技の追加判定', 'technique-value': '技のサイコロ', 'hit-resistance': '命中時の抵抗判定',

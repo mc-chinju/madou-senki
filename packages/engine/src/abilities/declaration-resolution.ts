@@ -1,4 +1,5 @@
 import {printedTechniqueAllowed} from '../combat/printed-restrictions.js';
+import {recordAbility} from '../public-record.js';
 import {gameStats} from '../game-stats.js';
 import { getCharacter } from '@madou/catalog';
 import type { GameState } from '../state.js';
@@ -127,6 +128,7 @@ export function advanceDeclaration(s: GameState, a: ActionFrame): 'pending' | 'f
         entry.frameId = frame.id;
         (s.abilities ??= {})[frame.id] = frame;
         (s.used ??= []).push(`${a.eventId}:${a.actorId}:${entry.abilityId}`);
+        recordAbility(s, 'ABILITY_DECLARED', frame.actorId, frame.abilityId, frame.targetIds.filter(id => id !== frame.actorId));
         openWindow(s, 'declaration', a.eventId, { kind: 'ability', id: frame.id }, participants(s, (s.seatOrder.indexOf(a.actorId) + 1) % s.seatOrder.length));
         return 'pending';
     }

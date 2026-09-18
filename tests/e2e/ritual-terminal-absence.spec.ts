@@ -1,5 +1,5 @@
 import {expect,test,type Locator} from '@playwright/test';
-import {observe,tableFixture,windowPassButtonName} from './helpers.js';
+import {observe,tableFixture,windowPassButtonName,storedDiscard} from './helpers.js';
 test('actual dead Gaina and wandering Arseil win after ritual terminal across six browser reloads',async({browser,request})=>{
  const table=await tableFixture(browser,request,'ritual-terminal-subordinates',6),errors:string[]=[];
  for(const p of table.pages)p.on('websocket',socket=>socket.on('framereceived',frame=>{const m=JSON.parse(String(frame.payload));if(m.type==='error')errors.push(m.code);}));
@@ -26,7 +26,7 @@ test('actual dead Gaina and wandering Arseil win after ritual terminal across si
   await table.pages[4]!.reload();await table.pages[5]!.reload();await until(action);await chant();await attack(0);
   await until(()=>game().players[a]!.presence==='pending-death');for(const id of ids)expect(views.get(id)!.game!.outcome).toBeNull();expect(game().players[e]!.presence).toBe('dead');expect(game().players[f]!.presence).toBe('wandering');await ap.reload();
   await until(()=>!!game().outcome);const outcome=structuredClone(game().outcome);expect(outcome).toMatchObject({reason:'vanmil-death',winnerIds:ids.slice(1)});expect(outcome!.results[e]).toBe('won');expect(outcome!.results[f]).toBe('won');expect(game().players[e]!.presence).toBe('dead');expect(game().players[f]!.presence).toBe('wandering');
-  for(const card of ['a2-p05-r1c1',spear])expect(game().discard.filter(id=>id===card)).toHaveLength(1);
+  for(const card of ['a2-p05-r1c1',spear])expect((await storedDiscard()).filter(id=>id===card)).toHaveLength(1);
   for(const [i,p] of table.pages.entries()){await p.reload();await expect.poll(()=>views.get(ids[i]!)!.game!.outcome).toEqual(outcome);}expect(errors).toEqual([]);
  }finally{await table.close();}
 });

@@ -1,3 +1,4 @@
+import {recordAbility} from '../public-record.js';
 import type {GameState} from '../state.js';
 import {currentHit} from '../reactions/continuations.js';
 import {activeAbilitySource} from './follower-entry.js';
@@ -49,7 +50,7 @@ export function validNamedResponse(s:GameState,frame:AbilityFrame):boolean {
 }
 export function resolveNamedResponse(s:GameState,frame:AbilityFrame):void {
  if(frame.printedCardResponse){s.actions![frame.printedCardResponse.sourceActionId]!.canceled=true;return;}
- if(frame.context.kind==='ability-response')s.abilities![frame.context.sourceAbilityId]!.canceled=true;
+ if(frame.context.kind==='ability-response'){const source=s.abilities![frame.context.sourceAbilityId]!;source.canceled=true;recordAbility(s,'ABILITY_CANCELED',source.actorId,source.abilityId);}
 }
 
 /** A14 grants a card-specific public Cham response, separate from character ability suppression. */

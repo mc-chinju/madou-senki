@@ -1,6 +1,6 @@
 import {expect,test,type Locator} from '@playwright/test';
 import {actionCards} from '../../packages/catalog/src/index.js';
-import {observe,windowPassButtonName,tableFixture} from './helpers.js';
+import {observe,windowPassButtonName,tableFixture,storedDiscard} from './helpers.js';
 
 test('Same-root death and revival retain the old prayer reservation across browser reload and discard it once',async({browser,request})=>{
  const table=await tableFixture(browser,request,'lia-prayer-revival');
@@ -45,7 +45,7 @@ test('Same-root death and revival retain the old prayer reservation across brows
   expect({reserved,died,revived,giftPlayed,canceled}).toEqual({reserved:true,died:true,revived:true,giftPlayed:true,canceled:true});
   expect(game().activeWindow).toBeNull();expect(game().players[b]!.presence).toBe('active');expect(game().players[c]!.presence).toBe('dead');
   expect(own().reservedCards).toEqual([]);expect(own().self.hand).not.toContain(prayer);
-  expect(game().discard.filter(id=>id===prayer)).toHaveLength(1);
+  expect((await storedDiscard()).filter(id=>id===prayer)).toHaveLength(1);
   expect(game().logs.filter(e=>e.type==='PLAYER_DIED'&&e.actorId===b)).toHaveLength(1);
   expect(game().logs.filter(e=>e.type==='PLAYER_REVIVED'&&e.actorId===b)).toHaveLength(1);
  }finally{await table.close();}

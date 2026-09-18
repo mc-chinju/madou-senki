@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture } from './helpers.js';
+import { observe, passUntil, tableFixture,storedDiscard} from './helpers.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
 type Views = Awaited<ReturnType<typeof observe>>;
@@ -20,9 +20,9 @@ function originalSource(table: Table, views: Views) {
   expect(attack.technique).toMatchObject({ effectLevel: 5, damage: 6 });
   return original.cardInstanceId;
 }
-function consumed(done: ReturnType<typeof game>, source: string | null) {
+async function consumed(done: ReturnType<typeof game>, source: string | null) {
   if(source===null)throw Error('EXPECTED_PHYSICAL_SOURCE');
-  expect(done.discard.filter(id => id === source)).toHaveLength(1);
+  expect((await storedDiscard()).filter(id => id === source)).toHaveLength(1);
   expect(done.self.hand).not.toContain(source);
   expect(done.self.chants.map(card => card.cardInstanceId)).not.toContain(source);
   expect(done.self.followers.map(card => card.cardInstanceId)).not.toContain(source);
@@ -61,7 +61,7 @@ for (const entry of positive) test(`${entry.scenario} cancels exactly the pendin
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(6);
     expect(done.players[table.sessions[0]!.id]!.damage).toBe(0);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const entry of [positive[0], positive[2]]) test(`${entry.scenario} may decline cancellation`, async ({ browser, request }) => {
@@ -75,7 +75,7 @@ for (const entry of [positive[0], positive[2]]) test(`${entry.scenario} may decl
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(entry.ability === '鏡心' ? 6 : 0);
     expect(done.players[table.sessions[0]!.id]!.damage).toBe(entry.ability === '鏡心' ? 0 : 6);
     expect(done.recentRolls.filter(roll => roll.purpose === 'ability-check')).toHaveLength(entry.ability === '鏡心' ? 2 : 1);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const entry of [positive[1], positive[2]]) test(`${entry.scenario} a canceled response resumes its original source after reload`, async ({ browser, request }) => {
@@ -115,9 +115,9 @@ for (const entry of [positive[1], positive[2]]) test(`${entry.scenario} a cancel
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(entry.ability === '鏡心' ? 6 : 0);
     expect(done.players[table.sessions[0]!.id]!.damage).toBe(0);
     expect(done.recentRolls.filter(roll => roll.purpose === 'ability-check')).toHaveLength(entry.ability === '鏡心' ? 2 : 1);
-    expect(done.discard.filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
-    if (entry.ability === '悲しみを胸に') expect(done.discard.filter(id => id === 'a2-p05-r3c1')).toHaveLength(1);
-    consumed(done, source);
+    expect((await storedDiscard()).filter(id => id === 'a2-p02-r2c3')).toHaveLength(1);
+    if (entry.ability === '悲しみを胸に') expect((await storedDiscard()).filter(id => id === 'a2-p05-r3c1')).toHaveLength(1);
+    await consumed(done, source);
   } finally { await table.close(); }
 });
 for (const entry of [
@@ -141,6 +141,6 @@ for (const entry of [
     const done = await passUntil(table, views, state => !state.activeWindow, 500);
     expect(done.players[table.sessions[1]!.id]!.damage).toBe(entry.ability === '鏡心' ? 6 : 0);
     expect(done.players[table.sessions[0]!.id]!.damage).toBe(entry.ability === '鏡心' ? 0 : 6);
-    consumed(done, source);
+    await consumed(done, source);
   } finally { await table.close(); }
 });

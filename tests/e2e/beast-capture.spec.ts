@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { observe, passUntil, tableFixture, windowPassButtonName } from './helpers.js';
+import { observe, passUntil, tableFixture, windowPassButtonName,storedDiscard} from './helpers.js';
 import type { PlayerView } from '../../packages/engine/src/index.js';
 
 type Table = Awaited<ReturnType<typeof tableFixture>>;
@@ -34,7 +34,7 @@ test('Upa can decline beast ignore without revealing or acquiring the blocked re
     await expect(table.pages[0]!.getByRole('button', { name: '獣共感を使う', exact: true })).toBeVisible();
     const done = await passWithoutBeastCapture(table, views, game => !game.activeWindow);
     expect(done.players[b]!.damage).toBe(0); expect(done.players[b]!.followers).toEqual([{ position: 0, face: 'back' }]);
-    expect(done.beastCapture).toBeNull(); expect(done.discard).toContain(griffin); expect(done.self.hand).not.toContain(wyvern);
+    expect(done.beastCapture).toBeNull(); expect((await storedDiscard())).toContain(griffin); expect(done.self.hand).not.toContain(wyvern);
     await expect(table.pages[0]!.getByRole('complementary', { name: '獣の取得' })).toHaveCount(0);
   } finally { await table.close(); }
 });
@@ -95,7 +95,7 @@ test('a third party can cancel beast ignore after reload and spends the sole att
     await passWithoutBeastCapture(table, views, game => game.activeWindow?.kind === 'attack-abilities');
     await expect(table.pages[0]!.getByRole('button', { name: '獣共感を使う', exact: true })).toHaveCount(0);
     const done = await passWithoutBeastCapture(table, views, game => !game.activeWindow);
-    expect(done.players[b]!.damage).toBe(0); expect(done.beastCapture).toBeNull(); expect(done.discard).toContain('a2-p02-r2c3');
+    expect(done.players[b]!.damage).toBe(0); expect(done.beastCapture).toBeNull(); expect((await storedDiscard())).toContain('a2-p02-r2c3');
   } finally { await table.close(); }
 });
 for (const scenario of ['beast-capture-no-beasts', 'beast-capture-guard', 'beast-capture-blocked'] as const) test(`${scenario} prevents capture through the actual follower defense`, async ({ browser, request }) => {
@@ -151,7 +151,7 @@ test('lethal capture restores before the victim can gift and disposes only the r
     await expect.poll(() => views.get(a)?.revision).toBeGreaterThan(beforeGift);
     const done = await passUntil(table, views, game => !!game.outcome, 500);
     expect(done.players[b]!.presence).toBe('dead'); expect(done.self.hand.filter(id => id === griffin)).toHaveLength(1);
-    expect(done.discard).not.toContain(griffin); expect(done.discard.filter(id => id === wyvern)).toHaveLength(1);
+    expect((await storedDiscard())).not.toContain(griffin); expect((await storedDiscard()).filter(id => id === wyvern)).toHaveLength(1);
     expect(views.get(d)!.game!.self.hand).toContain('a2-p05-r2c3');
     await table.pages[0]!.reload(); await expect(table.pages[0]!.getByRole('region', { name: '自分の手札' })).toContainText('グリフォン');
     expect(views.get(a)!.game!.beastCapture).toBeNull(); expect(views.get(a)!.game!.outcome).not.toBeNull();

@@ -12,6 +12,15 @@ export async function signIn(context: BrowserContext, name: string): Promise<{ i
   return response.json();
 }
 
+let storedRoom: { request: APIRequestContext; roomId: string } | null = null;
+/** Discard pile contents are never sent to players; browser tests read them from the saved game of the latest table. */
+export async function storedDiscard(): Promise<string[]> {
+  if (!storedRoom) throw Error('NO_TABLE');
+  const response = await storedRoom.request.get(`/__test/rooms/${storedRoom.roomId}/game`);
+  expect(response.ok()).toBe(true);
+  return (await response.json()).discard;
+}
+
 export async function tableFixture(browser: Browser, request: APIRequestContext, scenario?: ScenarioName, count = 4, options: BrowserContextOptions = {}) {
   const contexts = await Promise.all(Array.from({ length: count }, () => browser.newContext({ ...options, baseURL: origin })));
   const pages = await Promise.all(contexts.map(context => context.newPage()));
@@ -30,6 +39,7 @@ export async function tableFixture(browser: Browser, request: APIRequestContext,
     const response = await fetch(`/api/rooms/${roomId}/join`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
     if (!response.ok) throw Error('JOIN_FAILED');
   }, created.roomId);
+  storedRoom = { request, roomId: created.roomId };
   if (scenario) expect((await request.post(`/__test/rooms/${created.roomId}/scenario`, { data: { name: scenario } })).ok()).toBe(true);
   return { contexts, pages, sessions, roomId: created.roomId, url: `/rooms/${created.roomId}`,
     expected: scenario ? makeScenario(scenario, sessions) : null,

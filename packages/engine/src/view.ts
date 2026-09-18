@@ -62,7 +62,8 @@ export interface PublicPlayerView {
   id: PlayerId; name: string; revealed: boolean; characterId?: string; presence:Presence;
   damage: number; handCount: number; followers: CardBackView[]; chants: CardBackView[]; chantCount: number; open: string[]; attachments: string[]; statuses:PublicStatusView[];
 }
-export interface LogView { count?:number; death?:GameEvent['death']; id: number; at: number; type: GameEvent['type']; actorId: PlayerId; targetId?:PlayerId; cardInstanceId?: string; characterId?: string }
+export interface LogView { count?:number; death?:GameEvent['death']; id: number; at: number; type: GameEvent['type']; actorId: PlayerId; targetId?:PlayerId; cardInstanceId?: string; characterId?: string;
+  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'] }
 export interface PlayerView {
   sadLove:SadLoveView|null;
  shadowJumpCost:ReturnType<typeof shadowJumpCostView>;
@@ -105,7 +106,7 @@ export interface PlayerView {
   outcome:Outcome|null; individualResults:Record<string,'won'>; lifecycleDecision:LifecycleDecision|null; lifecycleAbilities:LifecycleAbility[];
   rulesetVersion: string; revision: number; phase: GameState['phase']; seatOrder: PlayerId[]; turnSeat: number;
   pending: { kind: 'initial-followers'; actorId: PlayerId } | null;
-  deckCount: number; discard: string[]; distances: GameState['distances']; distanceMarkers: { a:PlayerId;b:PlayerId;ownerId:PlayerId;cardInstanceId:string }[]; players: Record<PlayerId, PublicPlayerView>;
+  deckCount: number; discardCount: number; distances: GameState['distances']; distanceMarkers: { a:PlayerId;b:PlayerId;ownerId:PlayerId;cardInstanceId:string }[]; players: Record<PlayerId, PublicPlayerView>;
   self: { currentObjective:import('./lifecycle/types.js').CurrentObjective;protection:import('./lifecycle/types.js').Protection;defeatCondition:string; id: PlayerId; characterId: string; faction: string; objective: string; damage: number; stats: DerivedStats; hand: string[]; followers: PlacedCard[]; chants: PlacedCard[] };
   activeWindow: { windowId:string; windowRevision:number; kind:string; pendingActorId:PlayerId; reason:string } | null;
   actionCalculation:null|{actionId:string;actorId:string;cardInstanceId:string|null;abilityName?:string;effectLevel:number;damage:number|null;calculation:CalculationReadiness};
@@ -117,8 +118,19 @@ export interface PlayerView {
 function publicCards(cards: PlacedCard[]): CardBackView[] {
   return cards.map((card, position) => card.revealed ? { position, face: 'front', cardInstanceId: card.cardInstanceId } : { position, face: 'back' });
 }
-function logView(event: GameEvent): LogView {
+function logView(event: GameEvent, viewerId: PlayerId): LogView {
   const result: LogView = { id: event.id, at: event.at, type: event.type, actorId: event.actorId };
+  // Public record types: each lists exactly the fields it may carry.
+  const identityVisible=!event.concealed||event.actorId===viewerId;
+  if((event.type==='TURN_STARTED'||event.type==='TURN_ENDED')&&event.turnNumber!==undefined)result.turnNumber=event.turnNumber;
+  if(event.type==='REST'&&event.count!==undefined)result.count=event.count;
+  if(event.type==='CARD_PLAYED'){result.cardInstanceId=event.cardInstanceId!;result.use=event.use!;if(event.targetIds)result.targetIds=[...event.targetIds];}
+  if((event.type==='ABILITY_DECLARED'||event.type==='ABILITY_CANCELED')&&identityVisible){result.abilityId=event.abilityId!;if(event.targetIds)result.targetIds=[...event.targetIds];}
+  if(event.type==='ROLL_RESOLVED'&&event.roll){const r=event.roll;result.roll={rollId:r.rollId,kind:r.kind,faces:[...r.faces],total:r.total,attempt:r.attempt,...(r.forcedFailure?{forcedFailure:true as const}:{}),...(identityVisible&&r.threshold!==undefined?{threshold:r.threshold}:{}),...(identityVisible&&r.success!==undefined?{success:r.success}:{})};}
+  if(event.type==='DAMAGE_APPLIED'&&event.amount!==undefined)result.amount=event.amount;
+  if(event.type==='STATUS_CHANGED'&&event.status)result.status={...event.status};
+  if(event.type==='DISTANCE_CHANGED'){result.targetId=event.targetId!;result.distance=event.distance!;}
+  if(event.type==='PASSED')result.windowKind=event.windowKind!;
   if(event.type==='PLAYER_DIED'&&event.death)result.death={cause:event.death.cause,eventId:event.death.eventId,...(event.death.sourceActorId?{sourceActorId:event.death.sourceActorId}:{}),...(event.death.sourceCardInstanceId?{sourceCardInstanceId:event.death.sourceCardInstanceId}:{})};
   if((event.type==='WISH_ACQUIRED'||event.type==='FOLLOWER_DESTROYED'||event.type==='CHARACTER_INSPECTED'||event.type==='CARD_GIFTED'||event.type==='BEAST_CAPTURED')&&event.targetId)result.targetId=event.targetId;
   if(event.type==='BEAST_CAPTURED'&&event.audience==='public'&&event.count!==undefined)result.count=event.count;
@@ -258,10 +270,10 @@ export function viewFor(state: GameState, viewerId: PlayerId): PlayerView {
   }
   return {shadowJumpCost,allArmyOptions:allArmyOptions(state,viewerId),printedCombinationOptions:printedCombinationOptions(state,viewerId),wish:wishView(state,viewerId),wishCapacity:wishCapacityView(state,viewerId),wishOptions:wishOptions(state,viewerId), turnChoiceCardOptions:turnChoiceCardOptions(state,viewerId),turnCardOptions:turnCardOptions(state,viewerId),anytimeCardOptions:anytimeOptions,reservedCards:state.reclaimReservations.filter(id=>state.reclaim?.[id]?.ownerId===viewerId),reclaim:reclaimView(state,viewerId),suppressionTargets:suppressionTargetViews(state,viewerId),sadLove:sadLoveView(state,viewerId),conditionalAbilities,inspection:inspectionView(state,viewerId),inspectionHistory:structuredClone((state.inspectionHistory??[]).filter(d=>d.actorId===viewerId)),peaceExpiries:peaceExpiryViews(state),spiritExpiry:spiritExpiryView(self,state),drawAbilityOptions:drawAbilityOptions(state,viewerId),revealAbilityOptions:revealAbilityOptions(state,viewerId),declarationCandidates:declarationCandidates(state,viewerId),declarationSelection:declarationSelection(state,viewerId),distanceExchange:distanceExchangeView(state),virtualBladeOptions:virtualBladeOptions(state,viewerId),maaiAbilityOptions:maaiAbilityOptions(state,viewerId),maaiDefense:maaiDefenseView(state,effectiveHitTechnique),beastCapture,followerEntry,followerDefenseResults,virtualFollowerDefense,followerBundleOptions:bundleOptions,followerBundle,followerAttackOptions:followerAttackOptions(state,viewerId),followerDefenseOptions:!substituteRestricted(state,viewerId)&&hasPriority&&active?.kind==='normal-defense'?self.followers.filter(f=>canSelectFollowerDedicated(f.cardInstanceId,self.characterId)).map(f=>({cardInstanceId:f.cardInstanceId})):[],followerPlacementOptions:followerPlacementOptions(self),magicGateTargets:magicGateTargets(state,viewerId),additionalAttackOptions:additionalAttackOptions(state,viewerId),...choices,groupDefenseOptions,techniqueDecision,additionalAttack,abilityOptions,reactionTargetAbilityId:activeAbility?.stage==='declaration'&&!activeAbility.printedCardResponse&&!activeAbility.canceled?activeAbility.id:null,lifetimeDecision,outcome:state.outcome?structuredClone(state.outcome):null,individualResults:{...state.individualResults},lifecycleDecision,lifecycleAbilities, rulesetVersion: state.rulesetVersion, revision: state.revision, phase: state.phase, seatOrder: [...state.seatOrder], turnSeat: state.turnSeat,
     pending: state.pending ? { kind: state.pending.kind, actorId: state.pending.actorId } : null,
-    deckCount: state.deck.length, discard: [...state.discard], distances: Object.fromEntries(state.seatOrder.map(a => [a, Object.fromEntries(state.seatOrder.filter(b => a !== b).map(b => [b, state.distances[a]![b]!]))])), distanceMarkers:Object.values(state.distanceMarkers??{}).map(marker=>({...marker})), players,
+    deckCount: state.deck.length, discardCount: state.discard.length, distances: Object.fromEntries(state.seatOrder.map(a => [a, Object.fromEntries(state.seatOrder.filter(b => a !== b).map(b => [b, state.distances[a]![b]!]))])), distanceMarkers:Object.values(state.distanceMarkers??{}).map(marker=>({...marker})), players,
     activeWindow:active?{windowId:active.id,windowRevision:active.revision,kind:active.kind,pendingActorId:active.participants[active.cursor]!,reason:active.kind}:null,actionCalculation,currentAction,currentAttack,reactionTargetActionId:projectedAbility?null:activeContinuation?.id??rollAction?.id??(activeGroup?.actionId??null),currentRoll:roll?projectRoll(state,roll,viewerId):null,recentRolls:(state.rolls??[]).slice(-30).map(frame=>projectRoll(state,frame,viewerId)),reactionTargetRollId:unresolvedRoll(state)?.id??null,legalChoices,
     self: { currentObjective:structuredClone(self.currentObjective??factionObjective(self.faction)),protection:structuredClone(self.protection??initialProtection(self.characterId)),defeatCondition:currentDefeatCondition(self),id: self.id, characterId: self.characterId, faction: self.faction, objective: self.objective, damage: self.damage, stats: gameStats(state,self.id), hand: [...self.hand],
       followers: self.followers.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })), chants: self.chants.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })) },
-    logs: state.events.filter(e => e.audience === 'public').map(logView),
-    privateLogs: state.events.filter(e => e.audience !== 'public' && e.audience.playerId === viewerId).map(logView) };
+    logs: state.events.filter(e => e.audience === 'public').map(e => logView(e, viewerId)),
+    privateLogs: state.events.filter(e => e.audience !== 'public' && e.audience.playerId === viewerId).map(e => logView(e, viewerId)) };
 }

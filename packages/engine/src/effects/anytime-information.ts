@@ -1,3 +1,4 @@
+import {recordCardPlayed} from '../public-record.js';
 import {getAction} from '@madou/catalog';
 import type {GameCommand} from '@madou/protocol';
 import type {AnytimeCardOption} from './remaining-anytime-cards.js';
@@ -25,7 +26,7 @@ export function acceptInformationAnytime(s:GameState,actorId:string,c:Extract<Ga
  (s.used??=[]).push(`${w?reclaimEventId(s,{eventId:w.eventId,parentWindowId:w.id}):c.targetEventId}:${actorId}:${c.cardInstanceId}`);
  const current=Object.values(s.actions??{}).filter(a=>a.actorId===c.targetId&&['attack','defense','turn-technique','turn-card','distance'].includes(a.kind)&&!a.disposition).at(-1)
   ??Object.values(s.abilities??{}).filter(a=>a.actorId===c.targetId).at(-1);
- p.hand.splice(p.hand.indexOf(c.cardInstanceId),1);s.resolution.push(c.cardInstanceId);
+ p.hand.splice(p.hand.indexOf(c.cardInstanceId),1);s.resolution.push(c.cardInstanceId);recordCardPlayed(s,p.id,c.cardInstanceId,'anytime',[c.targetId!]);
  (s.actions??={})[id]={id,eventId,parentWindowId:w?.id??null,actorId,cardInstanceId:c.cardInstanceId,kind:'reaction',anytimeEffect:c.cardInstanceId===PEACE?'peace':'revelation',anytimeReturnPhase:s.phase,
   ...(c.cardInstanceId===PEACE?{peaceExpiry:current?{eventId:reclaimEventId(s,current)}:{awaitingOwnAction:true}}:{}),reclaimOwnerLifeId:lifeIdentity(p),turnCardTargetLifeId:lifeIdentity(s.players[c.targetId!]!),targetIds:[c.targetId!],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false};
  enqueueLifecycle(s,{kind:'declaration',id:`declare-${id}`,actionId:id,rootEventIds:[eventId]});refillHand(s,p,p.hand.length+1,random,now);
