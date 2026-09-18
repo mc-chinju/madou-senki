@@ -55,60 +55,53 @@
 - [ ] `pnpm test:e2e` で残した全件が成功する（`PLAYWRIGHT_PORT=18787`）— **27/30。残り3件は PR2 の差分が原因ではない（下記）**
 - [x] 親計画「共通: カバレッジの測り方」の unit コマンド（`--testTimeout=120000` 付き）で engine / protocol の4指標を取り、基準値との比較表を作業記録に保存する（PR 本文に転記）— 8指標すべて基準値と同値
 
-## 未達の項目: `pnpm test:e2e` の3件
+## 未達の項目: `pnpm test:e2e`
 
-いずれも PR2 の差分が原因ではないことを確認した。詳細は作業記録の `verification.md`。
+`pnpm test:e2e` は実行のたびに数件が失敗する。**失敗するテストは実行ごとに入れ替わり、
+単独・少数で流すと必ず成功する。** PR2 の差分による退行ではない。
 
-1. `privacy.spec.ts` › card inspection … — カード画像アセットがこの環境に無いため
-   `naturalWidth > 0` が満たせない。生成物 `apps/web/public/cards/second/` と生成元
-   `resources/original/second-edition/*.pdf` はどちらも gitignore 済みで存在しない。
-   **base の同じ spec でも同様に失敗する**。この spec は PR2 で1行も変更していない。
-2. `blessing-status.spec.ts` › actual confusion … / `lifecycle.spec.ts` › Dia can explicitly hand the ritual …
-   — 複数席・全席再読込の E2E に元からある不安定さ。この2 spec だけの `--repeat-each=3` は 9件全成功。
-   **base の `blessing-privacy` / `blessing-status` / `lifecycle` 3 spec 全件（13件）を流すと 3件失敗し、
-   失敗する顔ぶれも別**（blessing-privacy、lifecycle の death gift と Fusen revival）。
-   症状は `observe()` の `page.goto` 後に盤面ではなくログイン画面が出るもので、
-   PR2 は `helpers.ts`・`e2e-worker.ts`・認証 src のいずれも変更していない。
-   切り分けと修正は E2E 注入経路を触る PR3 か、別の不具合として扱う。
-   `playwright.config.ts` に `retries` を足せば通るが、既知の不安定さを隠すので入れていない。
+### 原因: このマシンの負荷
 
-## 実装中に判明したこと
-
-- **照合の結果、`needs-port` は 0件だった**（シナリオ行 422件すべて `covered`）。58機能が使う
-  card / ability ID 284種すべてが engine テストの照合対象（engine テスト本体と、それが import する
-  fixture モジュール、`packages/engine/test/fixtures/` の JSON）に現れる。
-  そのため commit 1（`test: worker∩e2eのみの機能をengineで検証する`）は発生しない。
-  照合表は作業記録の `layer-reconciliation.md`。
-- `helpers.ts` と `bot-client.ts` の export は、残した spec か `scripts/load_test.ts` の
-  いずれかが引き続き使うため、削除するものが無かった（`payload()` は `failure-recovery.spec.ts` が使う）。
-- `docs/operations/playtest-guide.md` は 2案のうち「比較基準の記述ごと過去の測定にする」を選んだ。
-  残した `full-game.spec.ts` は 4人の通し対戦で、8人・パス数/窓数という測定項目と対応しないため。
-- `Board.tsx` の `c2-p02-r2c1-ab03` 分岐は `act()` のイベントハンドラ内にあり、
-  既存 web テストの静的描画では到達できない。新規 `apps/web/test/board-withdraw-ability.test.ts` で、
-  engine の実遷移で離脱フェーズまで進めた実 view を `Board` に描画し、離脱の能力セレクタに
-  この ID が決して現れないこと（＝ガードが前提にする engine 側の不変条件）を確かめる。
-
-## commit 分割（この順）
-
-1. ~~`test: worker∩e2eのみの機能をengineで検証する`~~（needs-port が 0件のため発生しない）
-2. `test: card固有のUI分岐をweb単体テストで担保する`
-3. `test: 物理札のE2Eを削除する`
-4. `test: engineで検証済みのE2Eを削除する`
-5. `test: 残すE2Eをパネル代表と中核シナリオに絞る`
-6. `docs: E2Eの範囲と件数を更新する`
-
-## 検証コマンド
-
-```bash
-pnpm exec playwright test --list | tail -1
-ls tests/e2e/*-physical.spec.ts 2>/dev/null | wc -l
-comm -23 <(grep -rhoE "'[ac][0-9]-p[0-9]{2}-r[0-9]c[0-9][^']*'" apps/web/src | sort -u) <(grep -rhoE "'[ac][0-9]-p[0-9]{2}-r[0-9]c[0-9][^']*'" apps/web/test | sort -u)   # 空
-pnpm typecheck && pnpm test
-PLAYWRIGHT_PORT=18787 pnpm test:e2e
+```
+$ uptime
+load averages: 19.90 15.20 12.58
 ```
 
-## 判断済み事項
+別ワークスペース（`lnexus`）の workerd など、同時に動いている作業でロードアベレージが
+11〜20 まで上がる。PR1 の記録にも worker テストで同種の「負荷起因の既存の不安定さ」がある
+（単独実行では全成功）。
 
-- E2E の上限は 30件。6/8/10席の full-game は削る（worker `lobby.test.ts` と engine `bot-full-game.test.ts` で担保）。
-- 移植は engine テストの追加に限る。src は変えない。
-- 作業用のスクリプトと JSON はリポジトリに置かない。
+### 実行ごとの結果
+
+| 実行 | 条件 | 結果 |
+|---|---|---|
+| 1・2回目 | 通し30件 | 27 passed / 3 failed（blessing-status, lifecycle-Dia, privacy） |
+| 3回目 | `.cache/e2e-state` を消して通し | 同じ3件 |
+| 4回目 | `--retries=2` | 25 passed / **4 flaky** / 1 failed（blessing-privacy） |
+| 5回目 | 通し30件 | 26 passed / 4 failed（blessing-privacy, lifecycle 終局結果, sad-love, turn-information）**＝毎回顔ぶれが違う** |
+| 部分 | blessing-status + lifecycle を `--repeat-each=3`（9件） | 9件すべて成功 |
+| base | base の blessing-privacy / blessing-status / lifecycle 全13件 | 3件失敗（顔ぶれは別） |
+
+### 訂正
+
+前の記録で「カード画像アセットが無いため `privacy.spec.ts` は原理的に通らない」と書いたが、
+**これは誤りだった**。カード画像は `apps/web/dist/cards/second/`（`wrangler.e2e.jsonc` の
+`assets.directory` が指す先）に存在する。`apps/web/public/` を見て判断したのが間違いで、
+`--retries=2` の実行では `privacy.spec.ts › card inspection` は 2.8秒で成功している。
+`privacy` の失敗も他と同じ負荷起因の不安定さだった。
+
+### 症状と、直せない理由
+
+多くは `observe()` の `page.goto(table.url)` の後に盤面ではなくログイン画面が出る。
+`apps/web/src/session.ts` の `api()` にクライアント側タイムアウトは無いので、これは
+`/api/sessions/current` が実際に **401** を返している（`App.tsx:15` で `setSession(null)` → `LoginScreen`）。
+`tableFixture` の中では同じセッションで「ようこそ」まで出ているので、その後に無効化されている。
+
+直すには `apps/worker/src` の認証・セッション処理か、`apps/worker/test/fixtures/e2e-worker.ts` の
+`/__test/session`（`createTestSession`）を調べる必要がある。前者は**この PR の範囲外**（src を変更しない）、
+後者は**PR3 の範囲**（fixtures は PR2 で触らない）。
+
+`playwright.config.ts` に `retries` を入れれば通しやすくなる（4回目の実行で failed 3→1）が、
+それでも 0 にはならず、受入条件の意味も変わるため、独断では入れていない。
+
+**この項目はユーザーの判断が要る。**
