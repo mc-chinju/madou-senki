@@ -29,7 +29,7 @@ and the retained E2E suite. The test suite itself is being slimmed in four PRs p
 [test slimming plan](superpowers/plans/2026-09-18-test-slimming.md); the counts recorded
 above and below are the measurements of their own time and are not restated here.
 
-2026-09-18 (PR2): the E2E suite is now 30 tests in 24 spec files, down from 2,173 in 221.
+2026-09-18 (PR2): the E2E suite is now 31 tests in 25 spec files (30 selected in PR2 plus `public-record.spec.ts` merged from main), down from 2,173 in 221.
 What remains is limited to what only a browser can show: real on-screen operation, restoring
 after a reload, multi-seat synchronisation, HTTP/WebSocket body secrecy, login and operability.
 Rule outcomes are verified in `packages/engine/test`, and the card-specific UI branches that

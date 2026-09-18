@@ -39,7 +39,7 @@
 - [x] `tests/e2e/*-physical.spec.ts`（107ファイル）を `git rm` する
 - [x] 親計画の「残すファイルとテスト」表にある 24 spec と `helpers.ts` / `bot-client.ts` / `tsconfig.json` 以外の spec を `git rm` する
 - [x] 残す 24 spec の中身を表のテストだけに絞る（`for` のループは表の値に固定、`it` は表の名前だけ残す）
-- [x] `pnpm exec playwright test --list` が 30件以下であることを確かめる。超えたら、パネル代表のうち web 単体テストがあるものから削る
+- [x] `pnpm exec playwright test --list` が 30件以下であることを確かめる。超えたら、パネル代表のうち web 単体テストがあるものから削る（PR2 の選定は 30件。main の rebase 後は、PR #6 で追加された `public-record.spec.ts` 1件が加わり 31件 / 25ファイル。別 PR の新機能の E2E なので削らない）
 - [x] `tests/e2e/helpers.ts` と `bot-client.ts` から、残した spec が使わない export を削る（fixtures と `e2e-worker.ts` は触らない）
 - [x] `scripts/load_test.ts` が `bot-client.ts` を引き続き import できることを `pnpm typecheck` で確かめる
 
