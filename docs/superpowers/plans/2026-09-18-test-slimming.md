@@ -342,7 +342,7 @@ pnpm test:e2e                                          # PR2 で残した全件�
 - 移設で engine テストが worker 専用の型（`cloudflare:test` 等）を引き込む → 移すのはシナリオ定義だけ（`@madou/engine` / `@madou/catalog` にだけ依存することを確認済み）。DO を扱う `recovery-room.ts` は worker に残す。
 - 戻し方: commit 1（移設）とそれ以外が独立しているので、削除 commit だけを revert できる。
 
-### 実施済み: PR #9（2026-09-18）
+### 実施済み: PR #10（2026-09-18）
 
 Worker テストは 215 → 10ファイル。fixtures は 179件を `packages/engine/test/fixtures/` へ移し、
 到達しない 20件を削除した。移設の前後で engine の vitest は 268ファイル / 7,485件で一致する。
