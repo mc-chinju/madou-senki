@@ -41,7 +41,7 @@ persistence and replay idempotency, per-participant secrecy, disconnection and t
 The scenario fixtures moved to `packages/engine/test/fixtures`, so no engine test depends on
 an application's test assets any more.
 
-2026-09-18 (PR4): the engine tests are named after the behaviour they verify instead of the task that produced them, the `owned-reclaim` single cases that the matrix already covers are gone, and the protocol suite is 5 files, down from 33; no `it` was dropped except those three duplicates.
+2026-09-18 (PR4): the engine tests are named after the behaviour they verify instead of the task that produced them, the `owned-reclaim` single cases and matrix share one file, and the protocol suite is 5 files, down from 33; all original `it` cases are retained because review found distinct assertions in the three initially removed cases.
 
 ## Current evidence
 

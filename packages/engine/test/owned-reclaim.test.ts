@@ -21,6 +21,39 @@ function nextOwnTurn(state:GameState) {
   throw Error('OWN_TURN_NOT_REACHED');
 }
 
+it('S24 same-name physical copies share one base allowance',()=>{
+  let s=ready();character(s,'A','大神官ジル');
+  const [x,y]=handCards(s,['A','A'],'封傷');s.players.A!.damage=2;
+  s=until(act(s,'A',{type:'PLAY_TURN_TECHNIQUE',cardInstanceId:x!,targetIds:['A'],dedicated:false}),'reclaim');
+  expect(s.players.A!.damage).toBe(0);
+  expect(s.resolution).toContain(x);
+  const choice=viewFor(s,'A').reclaim!;
+  expect(choice.claims.map(c=>c.right)).toEqual(['base']);
+  const take={type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:choice.claims[0]!.claimId};
+  const before=JSON.stringify(s);
+  expect(transition(s,{actorId:'B',command:take} as Parameters<typeof transition>[1],entropy()).ok).toBe(false);
+  expect(JSON.stringify(s)).toBe(before);
+  s=act(JSON.parse(before) as GameState,'A',take);
+  expect(s.players.A!.hand).toContain(x);
+  expect(s.players.A!.reclaimUsage?.['封傷']?.baseSpent).toBe(true);
+  expect(s.phase).toBe('hand-adjustment');
+  s=nextOwnTurn(s);
+  s=until(act(s,'A',{type:'PLAY_TURN_TECHNIQUE',cardInstanceId:y!,targetIds:['A'],dedicated:false}),'reclaim');
+  expect(viewFor(s,'A').reclaim!.claims).toEqual([]);
+  expect(s.players.A!.damage).toBe(0);
+  const current=viewFor(s,'A').reclaim!,second=JSON.stringify(s);
+  expect(transition(s,{actorId:'A',command:{type:'CHOOSE_RECLAIM',decisionId:current.decisionId,choice:'take',claimId:`${current.decisionId}-A-base`}},entropy()).ok).toBe(false);
+  expect(JSON.stringify(s)).toBe(second);
+  expect(transition(s,{actorId:'A',command:take} as Parameters<typeof transition>[1],entropy()).ok).toBe(false);
+  expect(JSON.stringify(s)).toBe(second);
+  for(const id of ['A','B','C','D']) {
+    expect(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]).toBe(id);
+    s=pass(s);
+  }
+  expect(s.discard).toContain(y);
+  expect(s.players.A!.hand).not.toContain(y);
+  expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+});
 
 it.each([
   ['大神官ジル','follower',['女神官のシャリア']],
@@ -50,7 +83,32 @@ it('Current owned lists follow Lancelot II even while base abilities are inherit
   expect(canonicalOwnedNames(s.players.A!,'follower')).not.toContain('アルケミア城');
 });
 
+it('Only actual follower death offers ordinary follower recovery',()=>{
+  let s=ready();character(s,'A','大神官ジル');character(s,'B','侍大将のシン');
+  const follower=handCard(s,'A','女神官のシャリア'),attack=handCard(s,'B','妖撃破山剣');
+  s.distances.A!.B='near';s.distances.B!.A='near';
+  s=act(s,'A',{type:'ARRANGE_FOLLOWERS',cardInstanceIds:[follower]});
+  s=finish(act(s,'A',{type:'END_TURN',discardIds:s.players.A!.hand.slice(0,Math.max(0,s.players.A!.hand.length-5))}));
+  s=finish(act(s,'B',{type:'START_TURN'}));s=finish(act(s,'B',{type:'CHOOSE_DRAW',draw:false}));
+  s=until(act(s,'B',{type:'ATTACK',cardInstanceId:attack,targetIds:['A'],dedicated:false}),'reclaim');
+  const d=viewFor(s,'A').reclaim!;
+  expect(d.cardInstanceId).toBe(follower);expect(d.claims.map(c=>c.right)).toEqual(['base']);
+  expect(s.players.A!.followers).toEqual([]);expect(s.players.A!.damage).toBe(0);
+  s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims[0]!.claimId});
+  expect(s.reclaimReservations).toContain(follower);expect(s.players.A!.hand).not.toContain(follower);
+  s=finish(s);
+  expect(s.players.A!.hand).toContain(follower);expect(s.players.A!.followers).toEqual([]);
+  expect(s.players.A!.reclaimUsage?.['女神官のシャリア']?.baseSpent).toBe(true);
+});
 
+it('Using an owned follower as an attack never spends the ordinary follower-death allowance',()=>{
+  let s=ready();character(s,'A','大神官ジル');s.distances.A!.B='near';s.distances.B!.A='near';
+  const follower=handCard(s,'A','女神官のシャリア');
+  s=until(act(s,'A',{type:'ATTACK',cardInstanceId:follower,targetIds:['B'],dedicated:true}),'reclaim');
+  expect(viewFor(s,'A').reclaim).toMatchObject({cardInstanceId:follower,claims:[]});
+  s=finish(s);expect(s.discard).toContain(follower);
+  expect(s.players.A!.reclaimUsage?.['女神官のシャリア']).toBeUndefined();
+});
 
 it('Recovery history survives actual transform death and revival',()=>{
  let s=ready();character(s,'A','聖騎士ランスロット');character(s,'C','リーア姫');

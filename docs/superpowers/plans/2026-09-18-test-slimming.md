@@ -432,8 +432,8 @@ pnpm typecheck && pnpm test
 ### 実施済み: PR #12（2026-09-18）
 
 engine テストは作業名（`task7*` / `r5-` / `r6-` / `*-fix1` / `review-` / `release-` / `scenario-s*`）が 0件になり、
-protocol テストは 33 → 5ファイル。engine の vitest は 7,485 → 7,482件で、減ったのは `owned-reclaim` の
-個別版のうちマトリクスの行と入力・期待が同じ 3件だけ（対応表は PR 本文）。protocol は 298件のまま変わらない。
+protocol テストは 33 → 5ファイル。独立レビューで `owned-reclaim` の個別版 3件に固有の入力・期待値があると判明したため復元した。
+engine は 7,485件を維持し、protocol は 298件のまま変わらない。
 カバレッジは engine 97.58 / 94.91 / 98.45 / 92.89、protocol は基準値と同値で、4指標とも基準値以上。
 
 PR3 で原因を特定した E2E 2件も直した。`blessing-privacy.spec.ts` は `click()` が owner 席の revision しか
