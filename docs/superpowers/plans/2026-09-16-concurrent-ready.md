@@ -187,6 +187,15 @@ flowchart TD
 - 基準はワイヤ上で任意にする。基準を名乗ったコマンドは現在の基準と一致することを要求し、一致すれば revision 差を受理する。反応窓が開いている場面では従来どおり基準を名乗ることを必須にする。setup 中に基準を必須にすると、revision 完全一致で送る既存の経路まで拒否してしまうため
 - `RoomStorage.commit` に任意の `baseRevision` を足し、revision 差を受理したコマンドは現在の revision を基準に直列化する。受領証の指紋はクライアントの `expectedRevision` のままなので、同じ封筒の再送は従来どおり冪等
 
+実装で確定した細部（PR B）:
+
+- `PASS` はどの窓でも窓世代を上げない（対象外の窓も含む）。窓世代を上げるのは介入・取消・公開・起点変更だけで、`cursor` は常に `syncPriority` で「未パスの最先」に再計算する
+- 停止中の席を公開窓から外す例外は `reclaim` だけにした。通常回収は持ち札の権利で、停止（原文 11.2 の「手札も能力も使えない」）では失われないため（G11）。他の許可リストの窓では、対象者が2人以上のときだけ外す
+- 「任せる」の範囲を決める根の行動は、窓の `eventId` ではなく continuation からたどる。`follower-entry-abilities` などは `<group>-<seat>-follower-entry` という合成 `eventId` を持ち、親の窓も残っていないので、`eventId` からたどると行動が変わったと誤判定して解除されてしまう
+- 窓が1つも残らない遷移の終わりで `standingPasses` を消す。行動が終わった後に席の一覧が残らない
+- 戦記の「任せる」は `PASSED` イベントの `windowKind: 'action-through'` で表す。回収窓で押した場合だけは、回収回答を記録しない既存の規則（G11）を優先して記録しない
+- 画面は各パネルへ配るのではなく、公開窓の回答状況（優先権者・未回答・パス済み・任せている席）とパスの操作をまとめた `WindowStatus` を1つ置き、`ReactionPanel`・`AbilityPanel`・`ReclaimPanel` のどれが窓を持っていても同じ表示にした。`ReactionPanel` は実プレイ権のある席にだけ話しかける
+
 ## 画面
 
 初期配置:
@@ -213,7 +222,7 @@ flowchart TD
 
 PR を2本に分ける。B は A の「同時入力の通信」（Task 4）に依存するので、A のマージ後に始める。
 
-- **PR A — 初期配置の同時化と同時入力の通信:** Task 1A、2、3、4、5、10A
+- **PR A — 初期配置の同時化と同時入力の通信（完了。main の 5b61a019）:** Task 1A、2、3、4、5、10A
 - **PR B — 反応窓の順不同合意:** Task 1B、6、7、7b、8、9、10B
 
 前提: [捨て札の非公開化と戦記](2026-09-16-public-record.md) は main にマージ済み（PR #6）。パスは `public-record.ts` の `recordPass` で戦記に記録されている。窓のパス処理を変えるときは、この記録と `public-record-privacy.test.ts` を保つ。
@@ -227,8 +236,8 @@ PR を2本に分ける。B は A の「同時入力の通信」（Task 4）に�
 
 ### Task 1B: 裁定と設計文書（反応窓）
 
-- （PR B）`docs/rules/second-edition/rulings.md` の G03 を上記に替える（パス先出し、「任せる」、停止中の席）
-- （PR B）`docs/superpowers/specs/2026-09-07-online-game-design.md` の §5 を上記に更新する
+- [x] `docs/rules/second-edition/rulings.md` の G03 を上記に替える（パス先出し、「任せる」、停止中の席）
+- [x] `docs/superpowers/specs/2026-09-07-online-game-design.md` の §5 を上記に更新する
 - コミット: `docs: define pass-ahead and passing through an action`
 
 ### Task 2: 初期配置の試験を先に書く
@@ -285,34 +294,34 @@ PR を2本に分ける。B は A の「同時入力の通信」（Task 4）に�
 
 ### Task 6: パス先出しの試験を先に書く
 
-- （PR B）宣言窓（起点 A、順 A→B→C→D）で A がパスし優先権が B のあいだに、D が `PASS` でき、窓は閉じず優先権は B のまま
-- （PR B）B, C がパスすると、D を飛ばして窓が閉じる
-- （PR B）C が先出し、B がパスすると優先権は D へ進む（パス済みの C を飛ばす）
-- （PR B）D の二重パスは拒否、状態不変
-- （PR B）先出しパスでは `windows.at(-1).revision` が変わらない
-- （PR B）B が命運凶変を出したあと、D の先出しパスは消え、D は再回答する（S01 と同じ）
-- （PR B）他人の優先権中に C が正体公開すると、先出しパスも消える
-- （PR B）優先権のない D の `PLAY_REACTION` は従来どおり `NOT_PRIORITY`
-- （PR B）`approach` の非手番 `PASS`、`wish` 中の他人 `PASS`、`normal-defense` の他人 `PASS` は従来どおり拒否
-- （PR B）`death-gift` / `lifecycle-boundary` では先出しできない
-- （PR B）`view.test.ts`: 対象窓で優先権のない対象者の `legalChoices` が `['PASS']`（と正体公開）だけ、パス済みなら `PASS` なし。`passedActorIds` の投影
+- [x] 宣言窓（起点 A、順 A→B→C→D）で A がパスし優先権が B のあいだに、D が `PASS` でき、窓は閉じず優先権は B のまま
+- [x] B, C がパスすると、D を飛ばして窓が閉じる
+- [x] C が先出し、B がパスすると優先権は D へ進む（パス済みの C を飛ばす）
+- [x] D の二重パスは拒否、状態不変
+- [x] 先出しパスでは `windows.at(-1).revision` が変わらない
+- [x] B が命運凶変を出したあと、D の先出しパスは消え、D は再回答する（S01 と同じ）
+- [x] 他人の優先権中に C が正体公開すると、先出しパスも消える
+- [x] 優先権のない D の `PLAY_REACTION` は従来どおり `NOT_PRIORITY`
+- [x] `approach` の非手番 `PASS`、`wish` 中の他人 `PASS`、`normal-defense` の他人 `PASS` は従来どおり拒否
+- [x] `death-gift` / `lifecycle-boundary` では先出しできない
+- [x] `view.test.ts`: 対象窓で優先権のない対象者の `legalChoices` が `['PASS']`（と正体公開）だけ、パス済みなら `PASS` なし。`passedActorIds` の投影
 - コミット: `test: expect out-of-order PASS on public windows`
 
 ### Task 7: パス先出しのエンジン
 
-- （PR B）許可リストと「未パスの最先」を計算する関数を `reactions/windows.ts` に置く
-- （PR B）`combat/attack.ts` の `PASS`: 対象窓かつ対象者かつ未パスなら `cursor` 不一致でも受理。`passed` に加え `cursor` を再計算し、全員パスで `closeWindow`。パスでは `revision` を上げない
-- （PR B）`resetParent`・命運凶変取消・公開は現行どおり `passed=[]`、`cursor=0`、`revision++`
-- （PR B）`cursor` を直接進める他の箇所（`syncReclaimWindow`、`abilities/distance.ts` など）がパス済み席を飛ばす前提を壊さないか確認する
-- （PR B）`view.ts`: `legalChoices`・`passedActorIds`・`passAhead`
-- （PR B）既存の `while (...) pass()` 型の試験は、優先権者パスのままで通ることを確認する
-- （PR B）`scenario-s01-s05.test.ts`（同時介入の席順）が変更なしで通ることを確認する
+- [x] 許可リストと「未パスの最先」を計算する関数を `reactions/windows.ts` に置く
+- [x] `combat/attack.ts` の `PASS`: 対象窓かつ対象者かつ未パスなら `cursor` 不一致でも受理。`passed` に加え `cursor` を再計算し、全員パスで `closeWindow`。パスでは `revision` を上げない
+- [x] `resetParent`・命運凶変取消・公開は現行どおり `passed=[]`、`cursor=0`、`revision++`
+- [x] `cursor` を直接進める他の箇所（`syncReclaimWindow`、`abilities/distance.ts` など）がパス済み席を飛ばす前提を壊さないか確認する
+- [x] `view.ts`: `legalChoices`・`passedActorIds`・`passAhead`
+- [x] 既存の `while (...) pass()` 型の試験は、優先権者パスのままで通ることを確認する
+- [x] `scenario-s01-s05.test.ts`（同時介入の席順）が変更なしで通ることを確認する
 - コミット: `feat: accept PASS before priority on public windows`
 
 ### Task 7b: 「この行動は任せる」と停止中の席
 
-- （PR B）protocol に `PASS_ACTION_THROUGH` / `CANCEL_PASS_THROUGH` を足し、検証試験を書く
-- （PR B）試験（先に書く）
+- [x] protocol に `PASS_ACTION_THROUGH` / `CANCEL_PASS_THROUGH` を足し、検証試験を書く
+- [x] 試験（先に書く）
   - C と D が宣言窓で「任せる」→ 以後の判定前・判定後・効果Lv・ダメージ・命中の窓で C と D のパスが自動で入り、A と B の回答だけで進む
   - 全員が「任せる」なら、受ける側の通常防御など一人の窓まで1回の遷移で進む
   - B が防御札を出すと全員の「任せる」が消え、その宣言窓で C と D に聞き直す
@@ -321,26 +330,26 @@ PR を2本に分ける。B は A の「同時入力の通信」（Task 4）に�
   - 「任せる」中でも、本人が優先権を持つ窓が開く前に解除すればカードを使える
   - 停止中の席は公開窓の回答者に入らない。停止中の席が公開窓で持つ合法手が `PASS` と正体公開だけであることを全窓種で確認する
   - 戦記: 「任せる」は行動ごとに1件、自動で入ったパスは記録しない。秘密漏れ試験（`public-record-privacy.test.ts`）が通る
-- （PR B）エンジン: `standingPasses`、窓を開いた直後の処理、解除条件、根の行動の求め方（窓の continuation から行動をたどる）
-- （PR B）bot: 合法手に「任せる」があっても使わない（既存の全試合試験の手順を変えない）
+- [x] エンジン: `standingPasses`、窓を開いた直後の処理、解除条件、根の行動の求め方（窓の continuation から行動をたどる）
+- [x] bot: 合法手に「任せる」があっても使わない（既存の全試合試験の手順を変えない）
 - コミット: `feat: let seats pass through a whole action and skip stopped seats`
 
 ### Task 8: 反応窓の画面
 
-- （PR B）`ReactionPanel` と、全員対象の窓を出す `AbilityPanel` などに、優先権者・未回答・パス済みを出す
-- （PR B）優先権がない対象者にもパスボタンを出す。実プレイの入力は出さない
-- （PR B）「この行動は任せる」と解除、参加者欄の印、戦記の文言
-- （PR B）「あなたの判断です」は実プレイ権があるときだけにする
-- （PR B）他人のパスで入力中の選択が消えないことを web 試験で確認する
+- [x] `ReactionPanel` と、全員対象の窓を出す `AbilityPanel` などに、優先権者・未回答・パス済みを出す
+- [x] 優先権がない対象者にもパスボタンを出す。実プレイの入力は出さない
+- [x] 「この行動は任せる」と解除、参加者欄の印、戦記の文言
+- [x] 「あなたの判断です」は実プレイ権があるときだけにする
+- [x] 他人のパスで入力中の選択が消えないことを web 試験で確認する
 - コミット: `feat: show who passed and allow pass-ahead in the decision panel`
 
 ### Task 9: 回収窓のパス先出し
 
 原文の回収は「持ち技は一度使用した後」「持ち従者は一度死亡した後」に、その人物が一回だけ手札に戻せる（p.2）というだけで、回答の順番はない。全員に回答を回すのは、回収権の有無を隠すための G11 の補完で、物理札を使うたびに全員の回答待ちが起きる。待ち時間の効果が大きいが、G11 の規則が別なので分ける。
 
-- （PR B）G11 に追記: 回収回答でも「回収しない」パスは先出しできる。回収の成立は現在の回収回答席だけ。子の反応後も回答済みの席は復活させない（現行 G11）ので、先出しパスも残る。受益者選択段階の `PASS`（辞退）は先出し対象外
-- （PR B）試験: 先出しパス、成立で競合終了、子反応後に先出しパスが残る、受益者選択段階の他人 `PASS` 拒否、`ReclaimPanel` の表示
-- （PR B）`reclaim` を許可リストへ入れ、`syncReclaimWindow` を合わせる
+- [x] G11 に追記: 回収回答でも「回収しない」パスは先出しできる。回収の成立は現在の回収回答席だけ。子の反応後も回答済みの席は復活させない（現行 G11）ので、先出しパスも残る。受益者選択段階の `PASS`（辞退）は先出し対象外
+- [x] 試験: 先出しパス、成立で競合終了、子反応後に先出しパスが残る、受益者選択段階の他人 `PASS` 拒否、`ReclaimPanel` の表示
+- [x] `reclaim` を許可リストへ入れ、`syncReclaimWindow` を合わせる
 - コミット: `feat: allow pass-ahead on reclaim responses`
 
 ### Task 10A: 通し確認（初期配置・通信）
@@ -350,10 +359,10 @@ PR を2本に分ける。B は A の「同時入力の通信」（Task 4）に�
 
 ### Task 10B: 通し確認（反応窓）
 
-- （PR B）`pnpm test` と `pnpm typecheck`
-- （PR B）攻撃1回: 後席が先にパスし、ほぼ同時に優先権者がカードを出しても押し直しにならない。カードが出たら先出しパスが消えて再回答になる
-- （PR B）攻撃1回: 第三者2人が「任せる」を押すと、攻撃側と受ける側の操作だけで命中まで進む。受ける側が防御札を出すと第三者に聞き直しが出る
-- （PR B）正体公開は他人の優先権中でもできる（既存 `combat.spec` を残す）
+- [x] `pnpm test` と `pnpm typecheck`
+- [x] 攻撃1回: 後席が先にパスし、ほぼ同時に優先権者がカードを出しても押し直しにならない。カードが出たら先出しパスが消えて再回答になる
+- [x] 攻撃1回: 第三者2人が「任せる」を押すと、攻撃側と受ける側の操作だけで命中まで進む。受ける側が防御札を出すと第三者に聞き直しが出る
+- [x] 正体公開は他人の優先権中でもできる（`combat.spec` は既に無い。`reconnect.spec` の「他人の優先権を保ったまま再読込」と engine 側の公開試験で確認した）
 
 ## 受け入れ条件
 
