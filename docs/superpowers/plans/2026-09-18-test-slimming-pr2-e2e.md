@@ -52,7 +52,7 @@
 ### 5. 検証
 
 - [x] `pnpm typecheck` と `pnpm test` が成功する（typecheck 成功。unit 8,027件・assets 7件・worker 2,573件すべて成功、終了コード0）
-- [ ] `pnpm test:e2e` で残した全件が成功する（`PLAYWRIGHT_PORT=18787`）— **27/30。残り3件は PR2 の差分が原因ではない（下記）**
+- [ ] `pnpm test:e2e` で残した全件が成功する（`PLAYWRIGHT_PORT=18787`）— **未達。実行ごとに1〜4件が失敗し顔ぶれが毎回変わる。単独・少数では全成功、base でも同率で失敗する。原因と、範囲内で直せない理由は下記**
 - [x] 親計画「共通: カバレッジの測り方」の unit コマンド（`--testTimeout=120000` 付き）で engine / protocol の4指標を取り、基準値との比較表を作業記録に保存する（PR 本文に転記）— 8指標すべて基準値と同値
 
 ## 未達の項目: `pnpm test:e2e`
