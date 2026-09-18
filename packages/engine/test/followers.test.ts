@@ -2,17 +2,18 @@ import { actionCards, initialCharacterPool } from '@madou/catalog';
 import { expect, it } from 'vitest';
 import { allCardInstanceIds, transition } from '../src/index.js';
 import { character, entropy, freshGame, handCard } from './fixtures.js';
-it('places concealed followers in order, refills and rejects capacity, repeats and out-of-turn without mutation', () => {
+it('places concealed followers in order, holds the refill for the round end and rejects capacity, repeats and other hands without mutation', () => {
   let s = freshGame();
   const first = handCard(s, 'A', '兵士'); const second = handCard(s, 'A', '市民'); const third = handCard(s, 'A', 'ゴブリン');
-  // Move excess hand back to deck so each placement must refill.
+  // Move excess hand back to deck so the round-end refill has to draw.
   while (s.players.A!.hand.length > 5) s.deck.push(s.players.A!.hand.shift()!);
+  let remaining = s.players.A!.hand.length;
   for (const id of [first, second]) {
     const before = JSON.stringify(s);
-    expect(transition(s, { actorId: 'B', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: id } }, entropy())).toEqual({ ok: false, code: 'NOT_YOUR_TURN' });
+    expect(transition(s, { actorId: 'B', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: id } }, entropy())).toEqual({ ok: false, code: 'CARD_NOT_IN_HAND' });
     const r = transition(s, { actorId: 'A', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: id } }, entropy());
     expect(r.ok).toBe(true); expect(JSON.stringify(s)).toBe(before); if (!r.ok) throw Error(r.code); s = r.state;
-    expect(s.players.A!.hand).toHaveLength(5);
+    expect(s.players.A!.hand).toHaveLength(--remaining);
     expect(transition(s, { actorId: 'A', command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: id } }, entropy()).ok).toBe(false);
   }
   expect(s.players.A!.followers).toEqual([{ cardInstanceId: first, revealed: false, placedById: 'A', placedLifeId: 'initial-life:A' }, { cardInstanceId: second, revealed: false, placedById: 'A', placedLifeId: 'initial-life:A' }]);
