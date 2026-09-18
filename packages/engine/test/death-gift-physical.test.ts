@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState,type GameCommand} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeDeathGiftPhysicalScenario,deathGiftMode,type DeathGiftPhysicalScenario} from '../../../apps/worker/test/fixtures/death-gift-physical-scenarios.js';
+import {makeDeathGiftPhysicalScenario,deathGiftMode,type DeathGiftPhysicalScenario} from './fixtures/death-gift-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s);}throw Error('DEATH_GIFT_LIMIT');}
 function giftWindow(s:GameState){return until(s,s=>s.windows?.at(-1)?.kind==='death-gift');}

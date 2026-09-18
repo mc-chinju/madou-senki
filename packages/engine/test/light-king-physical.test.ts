@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeLightKingPhysical,lightKingCard as CARD,lightKingMode} from '../../../apps/worker/test/fixtures/light-king-physical-scenarios.js';
+import {makeLightKingPhysical,lightKingCard as CARD,lightKingMode} from './fixtures/light-king-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice:number[]=[3,4]){for(let n=0;n<700;n++){if(done(s))return s;s=pass(s,s.windows?.at(-1)?.kind==='damage'||s.rolls?.at(-1)?.purpose==='attack-damage'||s.rolls?.at(-1)?.stage==='after-roll'?dice:[1,1]);}throw Error('LIGHT_KING_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,ready,until,finish,pass,closeWindow,passReclaims} from './combat-helpers.js';
 import {entropy,handCard} from './fixtures.js';
-import {makeR6MaaiScenario} from '../../../apps/worker/test/fixtures/r6-maai-scenarios.js';
+import {makeR6MaaiScenario} from './fixtures/r6-maai-scenarios.js';
 const CARD='a2-p12-r1c3';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

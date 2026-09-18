@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,finish,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeAmuletPhysicalScenario,amuletMode,type AmuletPhysicalScenario} from '../../../apps/worker/test/fixtures/amulet-physical-scenarios.js';
+import {makeAmuletPhysicalScenario,amuletMode,type AmuletPhysicalScenario} from './fixtures/amulet-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p01-r3c2';
 function until(s:GameState,done:(s:GameState)=>boolean,dice=[1,2]){for(let n=0;n<300;n++){if(done(s))return s;s=pass(s,dice);}throw Error('AMULET_WINDOW');}
 function at(s:GameState,kind:string){return until(s,s=>s.windows?.at(-1)?.kind===kind);}

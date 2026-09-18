@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeCouragePhysicalScenario,courageMode,type CouragePhysicalScenario} from '../../../apps/worker/test/fixtures/courage-physical-scenarios.js';
+import {makeCouragePhysicalScenario,courageMode,type CouragePhysicalScenario} from './fixtures/courage-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p01-r3c3';
 function until(s:GameState,done:(s:GameState)=>boolean,dice=[1,2]){for(let n=0;n<300;n++){if(done(s))return s;s=pass(s,dice);}throw Error('COURAGE_WINDOW');}
 function at(s:GameState,kind:string){return until(s,s=>s.windows?.at(-1)?.kind===kind);}

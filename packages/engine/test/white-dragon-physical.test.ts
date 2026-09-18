@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,closeWindow,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeWhiteDragonScenario,whiteDragonMode,type WhiteDragonScenario} from '../../../apps/worker/test/fixtures/white-dragon-scenarios.js';
+import {makeWhiteDragonScenario,whiteDragonMode,type WhiteDragonScenario} from './fixtures/white-dragon-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['white-sword-ordinary','white-sword-first','white-sword-inherited','white-sword-full','white-slash-ordinary','white-slash-first','white-slash-inherited','white-slash-full'] as const;
 function command(name:WhiteDragonScenario){const m=whiteDragonMode(name);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:name.startsWith('white-slash')&&m.dedicated?['B','C']:['B'],dedicated:m.dedicated,...(m.variant?{techniqueVariant:m.variant}:{})};}

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeScythePhysicalScenario,SCYTHE,type ScythePhysicalScenario} from '../../../apps/worker/test/fixtures/scythe-physical-scenarios.js';
+import {makeScythePhysicalScenario,SCYTHE,type ScythePhysicalScenario} from './fixtures/scythe-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['scythe-physical-ordinary','scythe-physical-dedicated'] as const;
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function next(s:GameState){for(let n=0;n<200;n++){const id=s.seatOrder[s.turnSeat]!,w=s.windows?.at(-1);if(w)s=pass(s);else if(s.phase==='action'){if(id==='A')return s;s=act(s,id,{type:'PASS_ACTION'});}else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!==SCYTHE).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error('SCYTHE_TURN');}throw Error('SCYTHE_TURN_LIMIT');}

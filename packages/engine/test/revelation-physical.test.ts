@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeRevelationPhysicalScenario,revelationTarget,type RevelationPhysicalScenario} from '../../../apps/worker/test/fixtures/revelation-physical-scenarios.js';
+import {makeRevelationPhysicalScenario,revelationTarget,type RevelationPhysicalScenario} from './fixtures/revelation-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p02-r1c2';
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<300;n++){if(done(s))return s;s=pass(s);}throw Error('REVELATION_WINDOW');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

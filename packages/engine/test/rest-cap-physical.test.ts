@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats} from '../src/game-stats.js';
 import {settleDamage} from '../src/lifecycle/advance.js';
 import {act, finish, ready} from './combat-helpers.js';
-import {assignCharacter, takeCard, trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter, takeCard, trimHand} from './fixtures/scenario-tools.js';
 
 it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','a2-p07-r2c3','a2-p07-r3c1','a2-p07-r3c2'])('Physical %s rest caps recovery and consumes every paid copy beyond the cap', card => {
   let state = ready();

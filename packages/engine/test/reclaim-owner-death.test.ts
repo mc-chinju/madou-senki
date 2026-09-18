@@ -2,7 +2,7 @@ import {absentRecoveryResponse} from './reclaim-public-absence-helpers.js';
 import {expect,it} from 'vitest';
 import {allCardInstanceIds,gameStats,viewFor} from '../src/index.js';
 import {act,finish,pass} from './combat-helpers.js';
-import {makeLiaPrayerScenario} from '../../../apps/worker/test/fixtures/lia-prayer-scenarios.js';
+import {makeLiaPrayerScenario} from './fixtures/lia-prayer-scenarios.js';
 
 it('Reservation owner actual death discards its held prayer once after the root death boundary',()=>{
  let s=makeLiaPrayerScenario('lia-prayer-fatal',['A','B','C','D'].map(id=>({id,name:id})));

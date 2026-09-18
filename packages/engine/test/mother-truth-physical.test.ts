@@ -3,7 +3,7 @@ import {getCharacter} from '@madou/catalog';
 import {viewFor,transition,type GameState} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeMotherTruthPhysicalScenario,motherCard,motherGood,motherEvil,type MotherTruthPhysicalScenario} from '../../../apps/worker/test/fixtures/mother-truth-physical-scenarios.js';
+import {makeMotherTruthPhysicalScenario,motherCard,motherGood,motherEvil,type MotherTruthPhysicalScenario} from './fixtures/mother-truth-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice=[1,1]){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s,dice);}throw Error('MOTHER_LIMIT');}
 function settle(s:GameState,dice=[1,1]){return until(s,s=>!s.windows?.length,dice);}

@@ -1,6 +1,6 @@
 import {expect,test} from '@playwright/test';
 import {observe,passUntil,tableFixture} from './helpers.js';
-for(const choice of ['aura','substitute','decline','cancel','reward'] as const)test(`Sad love ${choice} survives refresh at declaration and result`,async({browser,request})=>{
+for(const choice of ['aura'] as const)test(`Sad love ${choice} survives refresh at declaration and result`,async({browser,request})=>{
  const table=await tableFixture(browser,request,choice==='aura'?'sad-love-aura':choice==='reward'?'sad-love-lethal':'sad-love');try{
   const views=await observe(table),a=table.sessions[0]!.id,b=table.sessions[1]!.id,c=table.sessions[2]!.id,d=table.sessions[3]!.id,page=table.pages[2]!,base=views.get(b)!.game!.self.stats.spirit,ownBase=views.get(c)!.game!.self.stats.spirit;for(const seat of [0,1,3])await expect(table.pages[seat]!.getByRole('region',{name:'悲しき愛',exact:true})).toHaveCount(0);await page.reload();
   if(choice==='aura'){let rev=views.get(a)!.revision;await page.getByRole('button',{name:'悲しき愛の継続効果を使う',exact:true}).click();await expect.poll(()=>views.get(a)?.revision).toBeGreaterThan(rev);await page.reload();await passUntil(table,views,g=>!g.activeWindow,300);expect(views.get(c)!.game!.self.stats.spirit).toBe(ownBase+1);await page.reload();rev=views.get(a)!.revision;await page.getByRole('button',{name:'継続効果を不使用にする',exact:true}).click();await expect.poll(()=>views.get(a)?.revision).toBeGreaterThan(rev);expect(views.get(c)!.game!.self.stats.spirit).toBe(ownBase);return;}

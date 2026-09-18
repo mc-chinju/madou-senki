@@ -1,7 +1,7 @@
 import type { PlayerView } from '../../packages/engine/src/index.js';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
 import { expect, type APIRequestContext, type Browser, type BrowserContext, type BrowserContextOptions } from '@playwright/test';
-import { makeScenario, type ScenarioName } from '../../apps/worker/test/fixtures/game-scenarios.js';
+import { makeScenario, type ScenarioName } from '../../packages/engine/test/fixtures/game-scenarios.js';
 
 export const origin = `http://localhost:${process.env.PLAYWRIGHT_PORT ?? 8787}`;
 
@@ -43,7 +43,12 @@ export async function tableFixture(browser: Browser, request: APIRequestContext,
     if (!response.ok) throw Error('JOIN_FAILED');
   }, created.roomId);
   storedRoom = { request, roomId: created.roomId };
-  if (scenario) expect((await request.post(`/__test/rooms/${created.roomId}/scenario`, { data: { name: scenario } })).ok()).toBe(true);
+  if (scenario) {
+    const seated = await request.post(`/__test/rooms/${created.roomId}/scenario`, { data: { name: scenario } });
+    // The fixture Worker only seats the scenarios these specs ask for; a new spec has to be added to
+    // BROWSER_SCENARIOS in e2e-worker.ts, and INVALID_FIXTURE here is what says so.
+    if (!seated.ok()) throw Error(`FIXTURE_REFUSED ${scenario}: ${seated.status()} ${await seated.text()}`);
+  }
   return { contexts, pages, sessions, roomId: created.roomId, url: `/rooms/${created.roomId}`,
     expected: scenario ? makeScenario(scenario, sessions) : null,
     async close() { await Promise.all(contexts.map(context => context.close())); },

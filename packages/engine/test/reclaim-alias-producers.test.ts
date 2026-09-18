@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,ready} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
-import {makeReclaimCrystalScenario} from '../../../apps/worker/test/fixtures/reclaim-crystal-scenario.js';
+import {makeReclaimCrystalScenario} from './fixtures/reclaim-crystal-scenario.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),RED='a2-p03-r1c3',FAR='a2-p04-r2c2';
 function nextOwn(s:GameState){for(let n=0;n<60;n++){const id=s.seatOrder[s.turnSeat]!;if(s.phase==='action'){if(id==='A')return s;s=act(s,id,{type:'PASS_ACTION'});}else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=finish(act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!==RED&&x!==FAR).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))}));else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error('ALIAS_TURN');}throw Error('ALIAS_TURN_LIMIT');}
 function claim(s:GameState,actor:string,card:string){for(let n=0;n<300;n++){const d=viewFor(s,actor).reclaim;if(s.windows?.at(-1)?.kind==='reclaim'&&d?.pendingActorId===actor&&d.cardInstanceId===card){expect(d.claims.map(c=>c.right)).toContain('base');return act(s,actor,{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims.find(c=>c.right==='base')!.claimId});}s=pass(s);}throw Error('ALIAS_CLAIM');}

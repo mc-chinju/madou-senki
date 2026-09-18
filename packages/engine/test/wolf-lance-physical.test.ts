@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeWolfLanceScenario} from '../../../apps/worker/test/fixtures/wolf-lance-scenarios.js';
+import {makeWolfLanceScenario} from './fixtures/wolf-lance-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=[['wolf-ordinary','a2-p10-r3c1',false,null],['wolf-dedicated','a2-p10-r3c1',true,null],['lance-ordinary','a2-p10-r3c2',false,null],['lance-one','a2-p10-r3c2',true,'one-hit'],['lance-two','a2-p10-r3c2',true,'two-hit']] as const;
 function attack(card:string,dedicated:boolean,variant:'one-hit'|'two-hit'|null){return {type:'ATTACK' as const,cardInstanceId:card,targetIds:['B'],dedicated,...(variant?{techniqueVariant:variant}:{})};}

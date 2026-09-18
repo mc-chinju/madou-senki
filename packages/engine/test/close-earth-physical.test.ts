@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeCloseEarthPhysicalScenario,closeEarthPhysicalMode,type CloseEarthPhysicalScenario} from '../../../apps/worker/test/fixtures/close-earth-physical-scenarios.js';
+import {makeCloseEarthPhysicalScenario,closeEarthPhysicalMode,type CloseEarthPhysicalScenario} from './fixtures/close-earth-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['dragon-close','earth-pair'] as const;
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function attack(scenario:CloseEarthPhysicalScenario){const m=closeEarthPhysicalMode(scenario);return{type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dragon?['B']:['B','C'],dedicated:false};}

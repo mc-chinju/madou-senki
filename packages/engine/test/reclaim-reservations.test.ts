@@ -105,7 +105,7 @@ it('Reservation survives a nested counter until the original attack source dispo
   s=finish(s);expect(s.players.B!.hand).toContain(counter);expect(s.reclaimReservations).toEqual([]);
 });
 
-import {makeSharedReclaimScenario} from '../../../apps/worker/test/fixtures/shared-reclaim-scenarios.js';
+import {makeSharedReclaimScenario} from './fixtures/shared-reclaim-scenarios.js';
 it('Shared A09 adapter binds B check and A reservation across both saved boundaries',()=>{let s=makeSharedReclaimScenario('shared-a09-hidden',['A','B','C','D'].map(id=>({id,name:id})));s=pass(s);s=act(s,'B',{type:'REVEAL_CHARACTER'});const d=viewFor(s,'B').reclaim!,claim=d.claims.find(c=>c.right==='printed')!;s=act(s,'B',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'request-check',claimId:claim.claimId});expect(s.reclaimDecisions!.find(t=>t.id===d.decisionId)).toMatchObject({checkActorId:'B',checkAttempted:true,checkRollId:s.rolls!.at(-1)!.id});s=until(JSON.parse(JSON.stringify(s)),'reclaim');const take=viewFor(s,'A').reclaim!;expect(take.stage).toBe('beneficiary-choice');s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:take.decisionId,choice:'take',claimId:take.claims[0]!.claimId});expect(s.reclaim!['a2-p01-r3c3']).toMatchObject({ownerId:'A',ownerLifeId:'initial-life:A'});expect(s.resolution).not.toContain('a2-p01-r3c3');s=finish(JSON.parse(JSON.stringify(s)));expect(s.players.A!.hand.filter(id=>id==='a2-p01-r3c3')).toHaveLength(1);expect(s.players.B!.hand).not.toContain('a2-p01-r3c3');expect(s.reclaimReservations).toEqual([]);});
 
 const privacyRights=['none','base','extra','unlimited'] as const;

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeAnnihilationAxeScenario} from '../../../apps/worker/test/fixtures/annihilation-axe-scenarios.js';
+import {makeAnnihilationAxeScenario} from './fixtures/annihilation-axe-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p11-r3c3';
 const rows=[['annihilation-ordinary',true,false,12],['annihilation-dedicated',false,true,20],['annihilation-chanted-dedicated',true,true,20]] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

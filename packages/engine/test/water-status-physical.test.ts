@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeWaterStatusScenario,waterStatusMode,type WaterStatusScenario} from '../../../apps/worker/test/fixtures/water-status-scenarios.js';
+import {makeWaterStatusScenario,waterStatusMode,type WaterStatusScenario} from './fixtures/water-status-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['poison-flow-ordinary','poison-flow-dedicated','freeze-ordinary','freeze-dedicated'] as const;
 function command(scenario:WaterStatusScenario){const m=waterStatusMode(scenario);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

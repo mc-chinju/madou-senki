@@ -3,7 +3,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeSilencePhysicalScenario} from '../../../apps/worker/test/fixtures/silence-physical-scenarios.js';
+import {makeSilencePhysicalScenario} from './fixtures/silence-physical-scenarios.js';
 const CARD='a2-p18-r1c1',CHANT='a2-p14-r2c3',players=['A','B','C','D'].map(id=>({id,name:id})),attack={type:'ATTACK' as const,cardInstanceId:CARD,targetIds:['B'],dedicated:false};
 function reject(s:GameState,actorId:string,command:unknown,code?:string){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id)),r=transition(s,{actorId,command} as never,entropy());expect(r.ok).toBe(false);if(code)expect(r).toMatchObject({code});expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function settle(s:GameState,faces=[6,6]){for(let n=0;n<400&&s.windows?.length;n++){const r=s.rolls?.at(-1);s=pass(s,r?.rollerId==='B'&&['status-resistance','status-recovery'].includes(r.purpose)&&r.stage==='before-roll'?faces:Array(30).fill(1));}expect(s.windows??[]).toEqual([]);return s;}

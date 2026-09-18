@@ -31,5 +31,5 @@ describe('deterministic play', () => {
     const ids = allCardInstanceIds(state);
     expect(ids).toHaveLength(220);
     expect(new Set(ids).size).toBe(220);
-  });
+  }, 60000); // 検証は手数上限。壁時計は負荷の高い環境でも既定の 5 秒に縛られないようにする
 });

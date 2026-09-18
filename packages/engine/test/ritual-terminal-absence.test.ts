@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
 import {entropy} from './fixtures.js';
-import {makeRitualPhysicalScenario,ritualCard} from '../../../apps/worker/test/fixtures/ritual-physical-scenarios.js';
+import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 it('actual Gaina death and Arseil wandering remain winners after later ritual Vanmil death',()=>{
  let s=makeRitualPhysicalScenario('ritual-terminal-subordinates',['A','B','C','D','E','F'].map(id=>({id,name:id})));
  const spear='a2-p11-r1c1';

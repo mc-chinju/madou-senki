@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeStormMagicScenario,stormMagicMode,type StormMagicScenario} from '../../../apps/worker/test/fixtures/storm-magic-scenarios.js';
+import {makeStormMagicScenario,stormMagicMode,type StormMagicScenario} from './fixtures/storm-magic-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['gale-ordinary','gale-dedicated','thunder-ordinary','thunder-dedicated'] as const;
 function command(scenario:StormMagicScenario){const m=stormMagicMode(scenario);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

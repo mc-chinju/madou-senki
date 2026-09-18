@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { abilityCommand, grantedAttackCommand, type AbilityInputView } from '../src/game/ability-input.js';
+import { abilityCommand, grantedAttackCommand, selectableAbilities, type AbilityInputView } from '../src/game/ability-input.js';
 
 const hide = { abilityId: 'c2-p04-r2c2-ab04', name: '隠行', targetEventId: 'turn-4', costCardInstanceIds: ['a2-p07-r3c1'], canConceal: true };
 function input(): AbilityInputView {
@@ -100,4 +100,16 @@ test('granted attacks require one complete authoritative candidate and exclude a
   expect(grantedAttackCommand(view, beast, true, undefined, undefined, [advance, advance])).toBeNull();
   expect(grantedAttackCommand(view, beast, true, undefined, { cardInstanceId: component, dedicated: false }, [component])).toBeNull();
   expect(grantedAttackCommand({ ...view, additionalAttackOptions: [] }, ranged, false)).toBeNull();
+});
+
+test('lifecycle-adapted abilities disappear from the ability list only while the lifecycle command is offered', () => {
+  for (const abilityId of ['c2-p02-r2c2-ab05', 'c2-p04-r2c1-ab04', 'c2-p07-r1c2-ab04']) {
+    const option = { abilityId, name: '継続', targetEventId: 'turn-6' };
+    const view = { ...input(), abilityOptions: [option] };
+    expect(selectableAbilities(view).map(item => item.abilityId)).toEqual([abilityId]);
+    expect(abilityCommand(view, abilityId)).toEqual({ type: 'USE_ABILITY', abilityId, targetEventId: 'turn-6' });
+    const lifecycle = { ...view, legalChoices: ['USE_ABILITY', 'USE_LIFECYCLE_ABILITY'] };
+    expect(selectableAbilities(lifecycle)).toEqual([]);
+    expect(abilityCommand(lifecycle, abilityId)).toBeNull();
+  }
 });

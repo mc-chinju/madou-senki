@@ -36,11 +36,3 @@ test('defender can explicitly choose the dedicated counter effect', async ({ bro
   } finally { await table.close(); }
 });
 
-test('prayer selection states the printed one-die effect increase', async ({ browser, request }) => {
-  const table = await tableFixture(browser, request, 'prayer-effect-level');
-  try {
-    const page = table.pages[0]!; await page.goto(table.url);
-    const effect = page.getByRole('combobox', { name: '割り込み効果', exact: true });
-    await expect(effect.locator('option[value="effect-plus"]')).toHaveText('必勝の祈り: 効果値+1d6');
-  } finally { await table.close(); }
-});

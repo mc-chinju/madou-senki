@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeFarseeingPhysicalScenario,farseeingMode,farseeingCard,astrologyAbility,type FarseeingPhysicalScenario} from '../../../apps/worker/test/fixtures/farseeing-physical-scenarios.js';
+import {makeFarseeingPhysicalScenario,farseeingMode,farseeingCard,astrologyAbility,type FarseeingPhysicalScenario} from './fixtures/farseeing-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice=[1,1]){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s,dice);}throw Error('FARSEEING_LIMIT');}
 function settle(s:GameState,dice=[1,1]){return until(s,s=>!s.windows?.length,dice);}

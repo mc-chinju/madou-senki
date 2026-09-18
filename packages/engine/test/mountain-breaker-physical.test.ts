@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,closeWindow,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeMountainBreakerScenario,mountainBreakerMode,type MountainBreakerScenario} from '../../../apps/worker/test/fixtures/mountain-breaker-scenarios.js';
+import {makeMountainBreakerScenario,mountainBreakerMode,type MountainBreakerScenario} from './fixtures/mountain-breaker-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['mountain-base','mountain-lia','mountain-lancelot','mountain-lancelot-ii','breaker-base'] as const;
 function command(name:MountainBreakerScenario){const m=mountainBreakerMode(name);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:['B'],dedicated:m.dedicated};}

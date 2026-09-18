@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,passReclaims,ready,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {assignCharacter,takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 
 // Remaining seven physical cards: printed values from actions-18-25.md, independent of runtime factories.
 const rows=[

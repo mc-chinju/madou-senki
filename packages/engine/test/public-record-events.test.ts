@@ -3,7 +3,7 @@ import {expect, it} from 'vitest';
 import {gameStats, viewFor, type GameEvent, type GameState, type LogView} from '../src/index.js';
 import {act, closeWindow, finish, pass, passReclaims, ready, until} from './combat-helpers.js';
 import {character, handCard, handCards} from './fixtures.js';
-import {makeR6RollScenario} from '../../../apps/worker/test/fixtures/r6-roll-scenarios.js';
+import {makeR6RollScenario} from './fixtures/r6-roll-scenarios.js';
 
 const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
 const record = (s: GameState, viewer = 'C') => viewFor(s, viewer).logs.filter(log => RECORD_TYPES.has(log.type));

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeDeathSongPhysicalScenario,deathSongPhysicalMode,type DeathSongPhysicalScenario} from '../../../apps/worker/test/fixtures/death-song-physical-scenarios.js';
+import {makeDeathSongPhysicalScenario,deathSongPhysicalMode,type DeathSongPhysicalScenario} from './fixtures/death-song-physical-scenarios.js';
 const CARD='a2-p17-r1c3',players=['A','B','C','D'].map(id=>({id,name:id})),rows=['death-song-ordinary','death-song-dedicated'] as const;
 function attack(scenario:DeathSongPhysicalScenario){const m=deathSongPhysicalMode(scenario);return{type:'ATTACK' as const,cardInstanceId:CARD,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

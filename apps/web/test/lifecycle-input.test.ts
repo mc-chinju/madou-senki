@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { deathGiftCommand, initialFollowerCards } from '../src/game/lifecycle-input.js';
+import { deathGiftCards, deathGiftCommand, initialFollowerCards } from '../src/game/lifecycle-input.js';
 
 test('a death gift keeps its spent source separate from the privately transferred card', () => {
   const choice = {
@@ -21,4 +21,15 @@ test('revival follower choices respect the current faction without excluding cha
   expect(initialFollowerCards(hand, 'GOOD')).toEqual(['a2-p20-r3c2', 'a2-p20-r3c1']);
   expect(initialFollowerCards(hand, 'EVIL')).toEqual(['a2-p20-r3c3', 'a2-p20-r3c1']);
   expect(initialFollowerCards(hand, 'ヴァンミール')).toEqual(['a2-p20-r3c1']);
+});
+
+test('the EVIL death gift uses its own printed source and never the GOOD one', () => {
+  const hand = ['a2-p02-r3c2', 'a2-p02-r3c3', 'a2-p05-r2c3'];
+  expect(deathGiftCards(hand, 'EVIL')).toEqual(['a2-p02-r3c2']);
+  expect(deathGiftCards(hand, 'GOOD')).toEqual(['a2-p02-r3c3']);
+  expect(deathGiftCards(hand, 'ヴァンミール')).toEqual([]);
+  const choice = { hand, faction: 'EVIL' as const, eligibleTargetIds: ['B'], cardInstanceId: 'a2-p02-r3c2', giftCardInstanceId: 'a2-p05-r2c3', targetId: 'B' };
+  expect(deathGiftCommand(choice)).toEqual({ type: 'PLAY_DEATH_GIFT', cardInstanceId: 'a2-p02-r3c2', giftCardInstanceId: 'a2-p05-r2c3', targetId: 'B' });
+  expect(deathGiftCommand({ ...choice, faction: 'GOOD' })).toBeNull();
+  expect(deathGiftCommand({ ...choice, giftCardInstanceId: 'a2-p02-r3c2' })).toBeNull();
 });

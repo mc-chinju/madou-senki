@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,closeWindow,finish,pass,until,readySetup} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeGodsBloodPhysicalScenario,type GodsBloodPhysicalScenario} from '../../../apps/worker/test/fixtures/gods-blood-physical-scenarios.js';
+import {makeGodsBloodPhysicalScenario,type GodsBloodPhysicalScenario} from './fixtures/gods-blood-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),blood='a2-p01-r1c3',book='a2-p03-r1c1',stats=['warrior_level','magic_level','spirit'] as const;
 function ready(name:GodsBloodPhysicalScenario){let s=makeGodsBloodPhysicalScenario(name,players);s=readySetup(s);s=act(s,'A',{type:'START_TURN'});expect(s.phase).toBe('draw');expect(s.players.A!.open).not.toContain(blood);return s;}
 function acquire(s:GameState,bookDraw=false){s=act(s,'A',{type:'CHOOSE_DRAW',draw:!bookDraw});return bookDraw?finish(act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceId:book})):s;}

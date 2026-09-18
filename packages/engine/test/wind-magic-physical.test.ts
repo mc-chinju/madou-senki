@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeWindMagicScenario,windMagicMode,type WindMagicScenario} from '../../../apps/worker/test/fixtures/wind-magic-scenarios.js';
+import {makeWindMagicScenario,windMagicMode,type WindMagicScenario} from './fixtures/wind-magic-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['wind-arrow-ordinary','wind-arrow-dedicated','magic-wind-ordinary','magic-wind-dedicated','lightning-run-ordinary','lightning-run-dedicated'] as const;
 function command(name:WindMagicScenario){const m=windMagicMode(name);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

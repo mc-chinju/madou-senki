@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeHealingPhysicalScenario,healingPhysicalMode,type HealingPhysicalScenario} from '../../../apps/worker/test/fixtures/healing-physical-scenarios.js';
+import {makeHealingPhysicalScenario,healingPhysicalMode,type HealingPhysicalScenario} from './fixtures/healing-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['heal-warrior','heal-magic-1','heal-magic-2','heal-jill-1','heal-jill-2'] as const;
 function command(scenario:HealingPhysicalScenario){const m=healingPhysicalMode(scenario);return {type:'PLAY_TURN_TECHNIQUE' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B']:['A'],dedicated:m.dedicated};}
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

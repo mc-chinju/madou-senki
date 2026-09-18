@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,closeWindow,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeSpearMountainScenario} from '../../../apps/worker/test/fixtures/spear-mountain-scenarios.js';
+import {makeSpearMountainScenario} from './fixtures/spear-mountain-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=[['spear-ordinary','a2-p10-r3c3',false],['spear-dedicated','a2-p10-r3c3',true],['mountain-ordinary','a2-p11-r1c2',false],['mountain-dedicated','a2-p11-r1c2',true]] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
