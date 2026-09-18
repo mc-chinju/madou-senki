@@ -238,6 +238,18 @@ describe('passing a whole action through (G03)', () => {
     expect(s.standingPasses).toBeUndefined();
     expect(engine.viewFor(s, 'D').legalChoices).not.toContain('CANCEL_PASS_THROUGH');
   });
+
+  it.each(['wish', 'wish-capacity', 'private-inspection'] as const)('allows cancellation during %s without answering that private decision', kind => {
+    let s = act(bowAttack(), 'D', {type: 'PASS_ACTION_THROUGH'});
+    // Model an outstanding private decision while D's standing pass is still active.
+    Object.assign(top(s), {kind, participants: ['B'], passed: [], cursor: 0});
+    const decision = structuredClone(top(s));
+    expect(engine.viewFor(s, 'D').legalChoices).toContain('CANCEL_PASS_THROUGH');
+    reject(s, 'D', {type: 'PASS'}, 'WRONG_PHASE');
+    s = act(s, 'D', {type: 'CANCEL_PASS_THROUGH'});
+    expect(s.standingPasses).toBeUndefined();
+    expect(top(s)).toEqual(decision);
+  });
 });
 
 describe('stopped seats on public windows (11.2, G03)', () => {
@@ -297,5 +309,19 @@ describe('pass-ahead on reclaim responses (G11)', () => {
     const windowId = top(s).id;
     for (const id of [...order].reverse()) s = act(s, id, {type: 'PASS'});
     expect(s.windows?.some(w => w.id === windowId)).toBeFalsy();
+  });
+
+  it('accepts the offered standing pass and cancellation without retracting a reclaim answer', () => {
+    let s = reclaimWindow();
+    const later = [...top(s).participants].at(-1)!;
+    const windowId = top(s).id;
+    expect(engine.viewFor(s, later).legalChoices).toContain('PASS_ACTION_THROUGH');
+    s = act(s, later, {type: 'PASS_ACTION_THROUGH'});
+    expect(s.standingPasses?.actorIds).toContain(later);
+    expect(engine.viewFor(s, later).legalChoices).toContain('CANCEL_PASS_THROUGH');
+    s = act(s, later, {type: 'CANCEL_PASS_THROUGH'});
+    expect(s.standingPasses).toBeUndefined();
+    expect(top(s)).toMatchObject({id: windowId, passed: [later], cursor: 0});
+    expect(s.events.some(e => e.type === 'PASSED' && e.actorId === later && ['reclaim', 'action-through'].includes(e.windowKind ?? ''))).toBe(false);
   });
 });

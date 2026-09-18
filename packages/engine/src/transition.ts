@@ -101,9 +101,12 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
  const command=parsed.value;const w=state.windows?.at(-1);const actor=state.players[input.actorId]!;
  const special=w?.continuation.kind==='lifecycle'&&w.participants[w.cursor]===actor.id;
  if(!isActive(actor)&&!(special&&['PASS','PLAY_DEATH_GIFT','CHAM_DEATH_GIFT','CHOOSE_REVIVAL'].includes(command.type)))return {ok:false,code:'INACTIVE_ACTOR'};
- if(w?.kind==='wish'&&command.type!=='CHOOSE_WISH'||w?.kind==='wish-capacity'&&command.type!=='CHOOSE_WISH_CAPACITY')return {ok:false,code:'WRONG_PHASE'};
- if(w?.kind==='reclaim'&&!['CHOOSE_RECLAIM','PASS','REVEAL_CHARACTER'].includes(command.type))return {ok:false,code:'WRONG_PHASE'};
- if(w?.kind==='private-inspection'&&!['PASS','CHOOSE_INSPECTION','REVEAL_CHARACTER'].includes(command.type))return {ok:false,code:'WRONG_PHASE'};
+ // Taking back a standing pass does not answer or change a private decision.
+ if(command.type!=='CANCEL_PASS_THROUGH'){
+  if(w?.kind==='wish'&&command.type!=='CHOOSE_WISH'||w?.kind==='wish-capacity'&&command.type!=='CHOOSE_WISH_CAPACITY')return {ok:false,code:'WRONG_PHASE'};
+  if(w?.kind==='reclaim'&&!['CHOOSE_RECLAIM','PASS','PASS_ACTION_THROUGH','REVEAL_CHARACTER'].includes(command.type))return {ok:false,code:'WRONG_PHASE'};
+  if(w?.kind==='private-inspection'&&!['PASS','CHOOSE_INSPECTION','REVEAL_CHARACTER'].includes(command.type))return {ok:false,code:'WRONG_PHASE'};
+ }
  if(command.type==='REVEAL_CHARACTER'&&command.abilityId&&!revealAbilityOptions(state,input.actorId).some(o=>o.abilityId===command.abilityId))return {ok:false,code:'ABILITY_DISABLED'};
  const selectedReveal=command.type==='REVEAL_CHARACTER'&&command.abilityId;
  const expiresOnActorId=selectedReveal?revealExpiryActor(state):undefined;
