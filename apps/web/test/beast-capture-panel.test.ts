@@ -12,7 +12,7 @@ import type { PlayerView } from '@madou/engine';
 
 function choice(): BeastCaptureInputView {
   return { self: { id: 'A' }, legalChoices: ['CHOOSE_BEAST_CAPTURE', 'PASS'],
-    activeWindow: { windowId: 'saved-choice', windowRevision: 0, kind: 'beast-capture', pendingActorId: 'A', reason: 'beast-capture' },
+    activeWindow: { windowId: 'saved-choice', windowRevision: 0, kind: 'beast-capture', pendingActorId: 'A', reason: 'beast-capture', participantIds: ['A'], passedActorIds: [], passAhead: false },
     beastCapture: { groupId: 'finished-group', windowId: 'saved-choice', actorId: 'A', candidates: [
       { cardInstanceId: 'a2-p20-r3c1', name: 'グリフォン', targetId: 'B', position: 0 },
       { cardInstanceId: 'a2-p22-r3c1', name: '飛竜', targetId: 'C', position: 1 },

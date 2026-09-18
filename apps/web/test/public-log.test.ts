@@ -63,3 +63,17 @@ test('new record types read as sentences with card and ability links, and unknow
   expect(markup).toContain('<strong>蓮</strong>が記録');
   expect(markup).not.toContain('FUTURE_EVENT');
 });
+
+test('leaving a whole action to the others reads as one line per action', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'PASSED', actorId: 'C', windowKind: 'action-through' },
+    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through' },
+    { id: 4, type: 'PASSED', actorId: 'B', windowKind: 'declaration' },
+  ]);
+  expect(publicLogSections(v)[0]!.lines).toEqual([
+    { kind: 'through', id: 2, lastId: 3, actorIds: ['C', 'D'] },
+    { kind: 'passes', id: 4, lastId: 4, windowKinds: ['declaration'], actorIds: ['B'] },
+  ]);
+  expect(html(v)).toContain('<strong>凛・蓮</strong>がこの行動を任せました');
+});

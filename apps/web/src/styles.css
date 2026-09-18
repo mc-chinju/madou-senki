@@ -20,12 +20,18 @@
 .command-bar label select{width:auto}
 .tag.ready{background:#d5e5d8;color:#23533a}
 .tag.outside{background:transparent;border:1px dashed var(--line);color:#6d6257;font-weight:400}
+/* One compact line above the decision controls: who decides now and who has not answered (G03). */
+.window-roster{display:grid;gap:.15rem;font-size:.9rem}
+.window-roster p{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:.2rem .6rem}
+.window-roster strong{font-family:serif}
+.window-roster .tag{background:var(--paper)}
+.decision .button-row+.button-row{margin-top:0}
 dt small.hint{font-weight:400;margin-left:.25rem}
 /* A focused control scrolls clear of the sticky bar, whose height varies with the setup status (set by Board). */
 .board :where(button,a,input,select,[tabindex]):focus-visible{scroll-margin-block-end:max(6rem,calc(var(--command-bar-h,0px) + 4.5rem))}
 #own-hand{scroll-margin-top:1rem}
 .field-row{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(min(14rem,100%),1fr))}
-/* Low screens (phone landscape): one compact bar row, and the re-setup decision scrolls inside itself. */
+/* Low screens (phone landscape): one compact bar row, and the decision bar scrolls inside itself. */
 @media(max-height:500px){
  .command-bar{padding:.45rem .7rem;gap:.4rem;align-items:center}
  .command-bar button{padding:.4rem .8rem}
@@ -33,7 +39,15 @@ dt small.hint{font-weight:400;margin-left:.25rem}
  .setup-status{order:1;flex:1 1 22rem;margin:0;padding:0 .2rem;font-size:.8rem}
  .setup-status p{gap:.1rem .4rem}
  .setup-warning{order:2;padding:.3rem .6rem;font-size:.8rem}
- .decision.resetup{max-height:calc(100vh - 5.5rem);overflow-y:auto;overscroll-behavior:contain;padding:.6rem .8rem}
- .decision.resetup h2{font-size:1.1rem}
- .decision.resetup .button-row{margin-top:.3rem}
+ /* The sticky bar cannot rise above the board's top edge, so on a short screen that edge has to move up. */
+ .site-header{min-height:3rem;padding-block:.3rem}
+ .board{padding-top:.5rem}
+ .decision{max-height:calc(100vh - 4.2rem);overflow-y:auto;overscroll-behavior:contain;padding:.5rem .8rem;gap:.35rem}
+ .decision h2{font-size:1.05rem;margin:0}
+ .decision label{gap:.15rem}
+ .decision .button-row{margin-top:.2rem}
+ .decision .button-row button{padding:.45rem .85rem}
+ .decision .hint{font-size:.78rem}
+ .window-roster{font-size:.8rem}
+ .window-roster p{gap:.1rem .4rem}
 }

@@ -8,7 +8,7 @@ const useNames:Record<NonNullable<LogView['use']>,string>={attack:'攻撃',defen
 const windowNames:Record<string,string>={declaration:'宣言',
  'before-roll':'判定前','after-roll':'判定後','effect-level':'効果Lv',damage:'ダメージ','attack-abilities':'攻撃時の能力','normal-defense':'防御','defense-advance':'間合いへの踏み込み','follower-entry-abilities':'従者登場前','follower-start':'従者の防御',hit:'命中','hit-abilities':'命中時の能力','on-hit-choice':'命中時の選択','lifecycle-boundary':'区切り','death-gift':'死亡時の託し',revival:'復活',approach:'踏み込み',withdrawal:'離脱',action:'行動','ability-attack':'追加攻撃','technique-double-choice':'ダメージ倍化','hit-advance-choice':'命中後の踏み込み','lifetime-effect-choice':'効果の選択','follower-bypass-choice':'従者の無視','private-inspection':'確認','beast-capture':'獣の捕獲','shadow-jump-cost':'影跳びの支払い'};
 type Inspect=(card:ActionCard|CharacterCard)=>void;
-export type LogLine={kind:'event';event:LogView}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]};
+export type LogLine={kind:'event';event:LogView}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;actorIds:string[]};
 export interface LogSection{key:string;heading:string;lines:LogLine[]}
 
 /** Groups the public record by turn, folds a run of passes in one window, then joins windows the same seats passed in a row. */
@@ -18,6 +18,11 @@ export function publicLogSections(view:PlayerView):LogSection[]{
  for(const event of view.logs){
   if(event.type==='TURN_STARTED'){sections.push({key:`turn-${event.id}`,heading:`${event.turnNumber??'?'}手番 ${name(event.actorId)}さん`,lines:[]});continue;}
   const lines=sections.at(-1)!.lines,last=lines.at(-1);
+  if(event.type==='PASSED'&&event.windowKind==='action-through'){
+   // One line per action; the passes it fills in later are never recorded (G03).
+   if(last?.kind==='through'&&!last.actorIds.includes(event.actorId)){last.actorIds.push(event.actorId);last.lastId=event.id;continue;}
+   lines.push({kind:'through',id:event.id,lastId:event.id,actorIds:[event.actorId]});continue;
+  }
   if(event.type==='PASSED'){
    // A seat passing again means a new window of the same kind has opened.
    if(last?.kind==='passes'&&last.windowKinds.at(-1)===event.windowKind&&!last.actorIds.includes(event.actorId)){last.actorIds.push(event.actorId);last.lastId=event.id;continue;}
@@ -83,7 +88,9 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  const name=(id:string)=>view.players[id]?.name??'参加者';
  const windows=(kinds:string[])=>{const names=kinds.map(kind=>windowNames[kind]).filter(Boolean);return names.length?`${names.join('、')}で`:'';};
  return <section className="panel log" aria-label="公開ログ"><div className="section-title log-title"><h2>戦記</h2>{!following?<button type="button" className="secondary" onClick={latest}>{unread?`最新へ（新着${unread}件）`:'最新へ'}</button>:null}</div>
-  <div className="log-scroll" ref={list} onScroll={onScroll} tabIndex={0} role="region" aria-label="戦記の全件"><div ref={content}>{sections.map(section=><section key={section.key} aria-label={section.heading}><h3>{section.heading}</h3><ol>{section.lines.map(line=>line.kind==='passes'
+  <div className="log-scroll" ref={list} onScroll={onScroll} tabIndex={0} role="region" aria-label="戦記の全件"><div ref={content}>{sections.map(section=><section key={section.key} aria-label={section.heading}><h3>{section.heading}</h3><ol>{section.lines.map(line=>line.kind==='through'
+   ?<li key={line.id} className={fresh(line.lastId)?'log-new':undefined}><strong>{line.actorIds.map(name).join('・')}</strong>がこの行動を任せました</li>
+   :line.kind==='passes'
    ?<li key={line.id} className={fresh(line.lastId)?'log-new':undefined}><strong>{line.actorIds.map(name).join('・')}</strong>が{windows(line.windowKinds)}パスしました</li>
    :<li key={line.event.id} className={fresh(line.event.id)?'log-new':undefined}><strong>{name(line.event.actorId)}</strong>{line.event.type==='ABILITY_CANCELED'?'':'が'}{eventText(view,line.event,onInspect)}</li>)}</ol></section>)}</div></div>
  </section>;
