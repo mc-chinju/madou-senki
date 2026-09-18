@@ -1,8 +1,8 @@
 import {allCardInstanceIds,createGame,transition,type GameCommand,type GameState} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export function makeShadowJumpScenario(players:{id:string;name:string}[]):GameState{
  let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];assignCharacter(s,a,'侍大将のシン');assignCharacter(s,b,'餓狼ヨーツルム');assignCharacter(s,c,'リーア姫');assignCharacter(s,d,'忍びのイダ');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};
  const attack=takeCard(s,a,'踏み込み／弓'),advance=takeCard(s,b,'踏み込み／蹴る'),child=takeCard(s,b,'黒翼飛翔剣'),fate=takeCard(s,c,'命運凶変');trimHand(s,a,attack);trimHand(s,b,advance,child);trimHand(s,c,fate);s.distances[a]![b]=s.distances[b]![a]='near';
  function act(actorId:string,command:GameCommand){const input={actorId,command},r=transition(s,input,entropy());if(!r.ok)throw Error(`JUMP_FIXTURE_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,entropy())))throw Error('JUMP_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('JUMP_CARDS');}
- for(const p of players)act(p.id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[b],dedicated:false});for(let i=0;i<300;i++){const w=s.windows?.at(-1);if(w?.kind==='normal-defense')return s;if(!w)throw Error('JUMP_DEFENSE');act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('JUMP_LIMIT');
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[b],dedicated:false});for(let i=0;i<300;i++){const w=s.windows?.at(-1);if(w?.kind==='normal-defense')return s;if(!w)throw Error('JUMP_DEFENSE');act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('JUMP_LIMIT');
 }

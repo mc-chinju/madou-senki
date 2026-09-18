@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 const sources = {
   'mental-lester-choice': { character: '吟遊詩人のレスター', abilityId: 'c2-p03-r2c1-ab01', result: 'choice' },
@@ -57,7 +57,7 @@ export function makeMentalDefenseScenario(name: MentalDefenseScenarioName, playe
   trimHand(game, a, attack, ...(gift && prayer ? [gift, prayer] : []));
   trimHand(game, c, fate);
   trimHand(game, d, reroll);
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' });
   act(a, { type: 'CHOOSE_DRAW', draw: false });
   game.events = [];

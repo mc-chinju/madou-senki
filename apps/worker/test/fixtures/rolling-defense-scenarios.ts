@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 const sources = {
   'defense-half': { defender: '小人のランバ', card: '白光' },
@@ -48,6 +48,7 @@ export function makeRollingDefenseScenario(name: RollingDefenseScenarioName, pla
     if (player.id === b && soldier) act(b, { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: soldier });
     act(player.id, { type: 'PASS_SETUP' });
   }
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   if (shield) {
     act(c, { type: 'REVEAL_CHARACTER' });

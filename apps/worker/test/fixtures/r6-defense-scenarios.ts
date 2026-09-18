@@ -1,6 +1,6 @@
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand,type GameState} from '@madou/engine';
 import {getAction} from '@madou/catalog';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export type DefenseScenario='s06'|'s08'|'s09'|'s09-parry'|'s10'|'s10-seven';
 /** Initial allocations only; every attack, failed teleport and prayer value is produced by commands. */
 export function makeR6DefenseScenario(players:{id:string;name:string}[],mode:DefenseScenario):GameState{
@@ -14,7 +14,7 @@ export function makeR6DefenseScenario(players:{id:string;name:string}[],mode:Def
  trimHand(s,a,attack);trimHand(s,b,counter,...(teleport?[teleport]:[]),...(prayer?[prayer]:[]));s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
  function act(actorId:string,command:GameCommand,dice=Array(100).fill(1)){const input={actorId,command},e={...entropy(),dice},r=transition(s,input,e);if(!r.ok)throw Error(`S06_10_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('S06_10_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('S06_10_CARDS');}
  function until(done:()=>boolean,dice=Array(100).fill(1)){for(let n=0;n<300;n++){if(done())return;const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'},dice);}throw Error('S06_10_WINDOW');}
- for(const p of players)act(p.id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:mode.startsWith('s09')?[b,c]:[b],dedicated:mode.startsWith('s09')});until(()=>s.windows?.at(-1)?.kind==='normal-defense');
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:mode.startsWith('s09')?[b,c]:[b],dedicated:mode.startsWith('s09')});until(()=>s.windows?.at(-1)?.kind==='normal-defense');
  if(mode==='s08'){act(b,{type:'PLAY_DEFENSE',cardInstanceId:teleport!,dedicated:false});until(()=>s.windows?.at(-1)?.kind==='normal-defense',[6,6]);}
  if(mode==='s10-seven'){act(b,{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false});until(()=>s.windows?.at(-1)?.kind==='effect-level'&&s.windows.at(-1)!.participants[s.windows.at(-1)!.cursor]===b);const defense=Object.values(s.actions!).find(x=>x.kind==='defense')!;act(b,{type:'PLAY_REACTION',cardInstanceId:prayer!,mode:'effect-plus',targetActionId:defense.id});until(()=>s.windows?.at(-1)?.kind==='damage'&&s.windows.at(-1)!.continuation.id===defense.id,[2]);}
  return s;

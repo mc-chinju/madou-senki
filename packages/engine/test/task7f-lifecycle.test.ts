@@ -1,6 +1,6 @@
 import {describe,it,expect} from 'vitest';
 import {allCardInstanceIds,transition,viewFor,derivedStats,type GameState} from '../src/index.js';
-import {act,ready,until,pass,finish,closeWindow,passReclaims} from './combat-helpers.js';
+import {act,ready,until,pass,finish,closeWindow,passReclaims,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy,freshGame} from './fixtures.js';
 function attackLethal(){let s=ready();character(s,'A','侍大将のシン');character(s,'B','黒騎士ガーウィン');s.players.B!.damage=derivedStats(s.players.B!).endurance-1;const id=handCard(s,'A','衝破');s=act(s,'A',{type:'ATTACK',cardInstanceId:id,targetIds:['B'],dedicated:false});return s;}
 function takeTop(s:GameState,id:string){for(const p of Object.values(s.players)){p.hand=p.hand.filter(x=>x!==id);p.open=p.open.filter(x=>x!==id);}s.deck=s.deck.filter(x=>x!==id);s.discard=s.discard.filter(x=>x!==id);s.deck.unshift(id);}

@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const mentalProtectionScenarioNames = [
   'protect-cham', 'protect-cham-hidden-owner', 'protect-cham-hidden-source',
@@ -73,7 +73,7 @@ export function makeMentalProtectionScenario(name: MentalProtectionScenarioName,
   trimHand(game, c, divine);
   trimHand(game, d, fate);
   if (name === 'protect-gad-gil-exception') game.distances[a]![b] = game.distances[b]![a] = 'near';
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' });
   act(a, { type: 'CHOOSE_DRAW', draw: false });
   if (name === 'protect-lancelot-ii') {

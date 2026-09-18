@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, derivedStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const lifecycleScenarioNames = ['death-gift', 'lifecycle-finish', 'lifecycle-stalemate', 'fusen-revival', 'lifecycle-transform', 'lifecycle-transform-hidden', 'ritual-transfer', 'ritual-use'] as const;
 export type LifecycleScenarioName = typeof lifecycleScenarioNames[number];
@@ -26,7 +26,7 @@ export function makeLifecycleScenario(name: LifecycleScenarioName, players: { id
     }
     throw Error('LIFECYCLE_FIXTURE_DID_NOT_CONVERGE');
   };
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, '侍大将のシン'); assignCharacter(state, b, '黒騎士ガーウィン');
   assignCharacter(state, c, '白魔術師シェリム');

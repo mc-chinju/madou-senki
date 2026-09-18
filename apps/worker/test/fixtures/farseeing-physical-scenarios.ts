@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,viewFor,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const farseeingPhysicalScenarios=['farseeing-success','farseeing-fail','farseeing-public','farseeing-self','farseeing-decline','farseeing-fate','farseeing-forced','farseeing-reroll','farseeing-alseil-ordinary','farseeing-astrology-discard','farseeing-astrology-finish','farseeing-astrology-empty','farseeing-astrology-self','farseeing-astrology-fate','farseeing-astrology-before','farseeing-astrology-after','farseeing-astrology-suppressed','farseeing-garwin','farseeing-asfelt'] as const;
 export type FarseeingPhysicalScenario=typeof farseeingPhysicalScenarios[number];
 export function isFarseeingPhysicalScenario(name:string):name is FarseeingPhysicalScenario{return (farseeingPhysicalScenarios as readonly string[]).includes(name);}
@@ -15,7 +15,7 @@ export function makeFarseeingPhysicalScenario(name:FarseeingPhysicalScenario,pla
  function act(actorId:string,command:GameCommand,face=1){const input={actorId,command},e={...entropy(),dice:Array(100).fill(face)},r=transition(s,input,e);if(!r.ok)throw Error(`FARSEEING_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('FARSEEING_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('FARSEEING_FIXTURE_CARDS');}
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('FARSEEING_FIXTURE_WINDOW');}
  function start(id:string,face=1){act(id,{type:'START_TURN'});settle(face);if(s.phase==='draw'){act(id,{type:'CHOOSE_DRAW',draw:false});settle();}}
- for(const id of [a,b,c,d]){if(follower&&id===target)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}if(options.beforeStart)return s;
+ for(const id of [a,b,c,d]){if(follower&&id===target)act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(options.beforeStart)return s;
  if(m.suppressed){start(d);act(d,{type:'ATTACK',cardInstanceId:'a2-p13-r1c2',targetIds:[a],dedicated:false});settle(6);if(s.phase==='withdrawal')act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();}start(a,m.suppressed?6:1);if(m.suppressed&&!s.players[a]!.statuses?.some(x=>x.kind==='ability-disabled'))throw Error('FARSEEING_NO_SUPPRESSION');if(name==='farseeing-public'){act(b,{type:'REVEAL_CHARACTER'});settle();}
  if(name==='farseeing-astrology-before'){const o=viewFor(s,a).abilityOptions.find(o=>o.abilityId===astrologyAbility)!;act(a,{type:'USE_ABILITY',abilityId:astrologyAbility,targetEventId:o.targetEventId,targetId:b});settle();}return s;
 }

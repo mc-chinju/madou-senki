@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const followerGroupScenarioNames = ['follower-group-upa', 'follower-group-dia', 'follower-group-grant-cancel', 'follower-group-source-cancel', 'follower-group-reflect', 'follower-group-water', 'follower-group-fairy'] as const;
 export type FollowerGroupScenarioName = typeof followerGroupScenarioNames[number];
@@ -17,7 +17,7 @@ export function makeFollowerGroupScenario(name: FollowerGroupScenarioName, playe
     state = result.state;
     const ids = allCardInstanceIds(state); if (ids.length !== 220 || new Set(ids).size !== 220) throw Error('FOLLOWER_GROUP_FIXTURE_CARDS');
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   const dia = name === 'follower-group-dia' || name === 'follower-group-reflect' || name === 'follower-group-fairy';
   assignCharacter(state, a, dia ? '魔聖母ディア' : '獣使いのウパニシャット');

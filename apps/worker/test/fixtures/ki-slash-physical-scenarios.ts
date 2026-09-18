@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {createGame,gameStats,transition,allCardInstanceIds,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const kiSlashCard='a2-p08-r3c3';
 export const kiSlashScenarios=['ki-slash-ordinary', 'ki-slash-guard', 'ki-slash-owner-ordinary', 'ki-slash-low', 'ki-slash-dedicated', 'ki-slash-near', 'ki-slash-same-faction', 'ki-slash-fate', 'ki-slash-maai', 'ki-slash-evade', 'ki-slash-suppressed', 'ki-slash-stopped', 'ki-slash-silenced', 'ki-slash-wrong-owner', 'ki-slash-decline', 'ki-slash-before-ordinary', 'ki-slash-after-ordinary', 'ki-slash-before-dedicated', 'ki-slash-after-dedicated', 'ki-slash-target-before-ordinary', 'ki-slash-target-after-ordinary', 'ki-slash-target-before-dedicated', 'ki-slash-target-after-dedicated'] as const;
 export type KiSlashScenario=typeof kiSlashScenarios[number];
@@ -16,7 +16,7 @@ export function makeKiSlashPhysical(name:KiSlashScenario,players:{id:string;name
  for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];s.events=[];
  function act(actorId:string,command:GameCommand,face=1){const input={actorId,command},e={...entropy(),dice:Array(100).fill(face)},r=transition(s,input,e);if(!r.ok)throw Error(`KI_SLASH_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('KI_SLASH_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('KI_SLASH_FIXTURE_CARDS');}
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('KI_SLASH_FIXTURE_LIMIT');}
- for(const id of [a,b,c,d]){if(mode.guard&&(id===b||id===c))act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:id===b?'a2-p22-r1c1':'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}if(options.beforeStart)return s;
+ for(const id of [a,b,c,d]){if(mode.guard&&(id===b||id===c))act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:id===b?'a2-p22-r1c1':'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(options.beforeStart)return s;
  if(prior){act(d,{type:'START_TURN'});settle();act(d,{type:'CHOOSE_DRAW',draw:false});act(d,{type:'ATTACK',cardInstanceId:name==='ki-slash-suppressed'?'a2-p13-r1c2':name==='ki-slash-stopped'?'a2-p13-r2c1':'a2-p18-r1c1',targetIds:[a],dedicated:false});settle(6);if(s.phase==='withdrawal')act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();}
  act(a,{type:'START_TURN'});settle(prior?6:1);if(s.phase==='draw')act(a,{type:'CHOOSE_DRAW',draw:false});
  if(name==='ki-slash-same-faction'){act(c,{type:'REVEAL_CHARACTER'});settle();}if(name==='ki-slash-near'){act(a,{type:'APPROACH',cardInstanceId:'a2-p24-r1c3',targetId:b});settle();}return s;

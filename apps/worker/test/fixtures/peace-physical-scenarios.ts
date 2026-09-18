@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const peacePhysicalScenarios=['peace-next','peace-pass','peace-chant','peace-book','peace-blood','peace-current','peace-counter','peace-frozen','peace-before-roll','peace-own-ability','peace-defense-ability','peace-canceled','peace-evil','peace-receiving','peace-repeated'] as const;
 export type PeacePhysicalScenario=typeof peacePhysicalScenarios[number];
 export function isPeacePhysicalScenario(name:string):name is PeacePhysicalScenario{return (peacePhysicalScenarios as readonly string[]).includes(name);}
@@ -11,5 +11,5 @@ export function makePeacePhysicalScenario(name:PeacePhysicalScenario,players:{id
  const keep=[takeCard(s,a,'a2-p24-r1c2'),takeCard(s,a,'a2-p12-r2c2'),takeCard(s,a,'a2-p07-r1c1'),takeCard(s,b,'a2-p24-r2c2'),takeCard(s,b,'a2-p13-r1c1'),takeCard(s,b,'a2-p10-r3c3'),takeCard(s,m.repeated?d:b,'a2-p03-r1c1'),takeCard(s,c,'a2-p02-r2c3'),takeCard(s,d,'a2-p02-r1c1'),takeCard(s,d,'a2-p04-r3c2')];for(const p of players)trimHand(s,p.id,...keep);
  let open:string|undefined;if(name==='peace-blood'||m.repeated){open=takeCard(s,a,m.repeated?'a2-p01-r1c2':'a2-p01-r1c3');s.players[a]!.hand=s.players[a]!.hand.filter(id=>id!==open);}const ordinary=s.deck.filter(id=>getAction(id)!.category!=='open'),opens=s.deck.filter(id=>getAction(id)!.category==='open'),prefix=players.reduce((n,p)=>n+Math.max(0,5-s.players[p.id]!.hand.length),0)+1;s.deck=open?[...ordinary.slice(0,prefix),open,...ordinary.slice(prefix),...opens]:[...ordinary,...opens];
  function act(actorId:string,command:GameCommand){const input={actorId,command},e=entropy(),r=transition(s,input,e);if(!r.ok)throw Error(`PEACE_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('PEACE_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('PEACE_FIXTURE_CARDS');}
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});const first=m.repeated?d:a;act(first,{type:'START_TURN'});act(first,{type:'CHOOSE_DRAW',draw:false});if(open&&s.deck[1]!==open)throw Error('PEACE_DRAW_PREFIX');return s;
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));const first=m.repeated?d:a;act(first,{type:'START_TURN'});act(first,{type:'CHOOSE_DRAW',draw:false});if(open&&s.deck[1]!==open)throw Error('PEACE_DRAW_PREFIX');return s;
 }

@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
-import {act,closeWindow,finish,pass,until} from './combat-helpers.js';
+import {act,closeWindow,finish,pass,until,readySetup} from './combat-helpers.js';
 import {character,entropy,freshGame,handCard} from './fixtures.js';
 const DISPEL='a2-p02-r3c1';
 function scenario(mode:'two'|'mixed'|'zero'='mixed'){
@@ -8,7 +8,7 @@ function scenario(mode:'two'|'mixed'|'zero'='mixed'){
  const wood=handCard(s,'B','ウッドゴーレム'),stone=handCard(s,'B','ストーンゴーレム'),other=handCard(s,'B','グリフォン');
  s=act(s,'A',{type:'PASS_SETUP'});
  for(const id of (mode==='two'?[wood,stone]:mode==='mixed'?[wood,other]:[other]))s=act(s,'B',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:id});
- for(const id of ['B','C','D'])s=act(s,id,{type:'PASS_SETUP'});
+ s=readySetup(s);
  s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});
  handCard(s,'A','呪払');const attack=handCard(s,'A','踏み込み／弓');return {s,wood,stone,other,attack};
 }

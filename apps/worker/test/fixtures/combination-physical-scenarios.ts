@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {createGame,gameStats,transition,allCardInstanceIds,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const combinationSpirit='a2-p05-r1c3',combinationHarp='a2-p05-r2c1',combinationPoem='a2-p17-r1c1',combinationBow='a2-p24-r1c2',combinationCounter='a2-p10-r3c3';
 export type CombinationPhysicalScenario='both'|'spirit'|'harp'|'decline'|'null'|'zero'|'cancel-spirit'|'cancel-harp'|'cancel-parent'|'check-pass'|'check-fail'|'counter-give'|'counter-return'|'multi'|'approach'|'invalid'|'next';
 export function makeCombinationPhysicalScenario(name:CombinationPhysicalScenario,players:{id:string;name:string}[]){
@@ -16,7 +16,7 @@ export function makeCombinationPhysicalScenario(name:CombinationPhysicalScenario
  for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];s.events=[];
  function act(actorId:string,command:GameCommand){const input={actorId,command},e={...entropy(),dice:Array(100).fill(1)},r=transition(s,input,e);if(!r.ok)throw Error(`COMBO_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('COMBO_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('COMBO_FIXTURE_CARDS');}
  function settle(){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('COMBO_FIXTURE_WINDOW');}
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
  if(name==='multi'){act(a,{type:'CHANT',cardInstanceId:attack});settle();for(let n=0;n<4;n++){const id=s.seatOrder[s.turnSeat]!;act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();const next=s.seatOrder[s.turnSeat]!;act(next,{type:'START_TURN'});settle();act(next,{type:'CHOOSE_DRAW',draw:false});if(n<3)act(next,{type:'PASS_ACTION'});}}
  return {s,attack};
 }

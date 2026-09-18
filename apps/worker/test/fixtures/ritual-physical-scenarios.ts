@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,viewFor,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const ritualPhysicalScenarios=['ritual-basic','ritual-subordinates','ritual-conspiracy','ritual-both','ritual-fate','ritual-decline','ritual-gift-hidden','ritual-gift-public','ritual-gift-start','ritual-gift-draw','ritual-gift-end','ritual-gift-window','ritual-gift-suppressed','ritual-gift-stopped','ritual-gift-hidden-target','ritual-gift-dead-target','ritual-wrong-owner'] as const;
 export type RitualPhysicalScenario=typeof ritualPhysicalScenarios[number]|'ritual-terminal'|'ritual-terminal-subordinates'|'ritual-otherworld'|'ritual-history'|'ritual-disabled'|'ritual-stopped';
 export function isRitualPhysicalScenario(name:string):name is RitualPhysicalScenario{return name==='ritual-disabled'||name==='ritual-stopped'||name==='ritual-history'||name==='ritual-otherworld'||name==='ritual-terminal'||name==='ritual-terminal-subordinates'||(ritualPhysicalScenarios as readonly string[]).includes(name);}
@@ -33,7 +33,7 @@ export function makeRitualPhysicalScenario(name:RitualPhysicalScenario,players:{
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('RITUAL_FIXTURE_LIMIT');}
  function start(id:string){act(id,{type:'START_TURN'});settle();if(s.phase==='draw'){act(id,{type:'CHOOSE_DRAW',draw:false});settle();}}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of players.map(p=>p.id)){if(id===a&&!gift&&name!=='ritual-wrong-owner'&&name!=='ritual-history')act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}
+ for(const id of players.map(p=>p.id)){if(id===a&&!gift&&name!=='ritual-wrong-owner'&&name!=='ritual-history')act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p18-r3c3'});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));
  if(beforeStart)return s;
  if(dead){start(d);act(d,{type:'ATTACK',cardInstanceId:'a2-p24-r1c2',targetIds:[a],dedicated:false});settle();if(s.players[a]!.presence!=='dead')throw Error('RITUAL_NO_DEAD_TARGET');return s;}
  if(prior){start(d);act(d,{type:'ATTACK',cardInstanceId:name==='ritual-gift-stopped'?'a2-p13-r2c1':'a2-p13-r1c2',targetIds:[b],dedicated:false});settle(6);end(d);}

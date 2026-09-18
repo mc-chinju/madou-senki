@@ -166,7 +166,7 @@ import { isCombinationScenario, makeCombinationScenario, type CombinationScenari
 import { isAbilityScenario, makeAbilityScenario, type AbilityScenarioName } from './ability-scenarios.js';
 import { isLifetimeScenario, makeLifetimeScenario, type LifetimeScenarioName } from './lifetime-scenarios.js';
 import { isLifecycleScenario, makeLifecycleScenario, type LifecycleScenarioName } from './lifecycle-scenarios.js';
-import { entropy, takeCard, trimHand, assignCharacter } from './scenario-tools.js';
+import { entropy, takeCard, trimHand, assignCharacter, readySetup } from './scenario-tools.js';
 import { allCardInstanceIds, createGame, derivedStats, transition, type GameCommand, type GameState } from '@madou/engine';
 
 import {makeReclaimExit} from './reclaim-exit-scenario.js';
@@ -355,7 +355,7 @@ export function makeScenario(name: ScenarioName, players: { id: string; name: st
     if (allCardInstanceIds(state).length !== 220 || new Set(allCardInstanceIds(state)).size !== 220) throw Error('FIXTURE_CARD_CONSERVATION');
   };
   if (name === 'setup') return state;
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, '侍大将のシン'); assignCharacter(state, b, '黒騎士ガーウィン');
   if (name === 'reflected-stop-withdrawal') {

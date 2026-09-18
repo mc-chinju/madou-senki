@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {createGame,gameStats,transition,allCardInstanceIds,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const asfeltSwordCards={wind:'a2-p08-r1c3',thunder:'a2-p08-r2c1',rend:'a2-p08-r2c2'} as const;
 export type AsfeltSword=keyof typeof asfeltSwordCards;
 export type AsfeltSwordMode='ordinary'|'guard'|'owner-ordinary'|'low'|'dedicated'|'all'|'subset'|'near'|'high'|'fate'|'maai'|'evade'|'suppressed'|'stopped'|'silenced'|'wrong-owner'|'decline';
@@ -20,7 +20,9 @@ export function makeAsfeltSwordsPhysical(card:AsfeltSword,mode:AsfeltSwordMode,p
  for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];if(blessing)s.deck.push(blessing);s.events=[];
  function act(actorId:string,command:GameCommand,face=1){const input={actorId,command},e={...entropy(),dice:Array(100).fill(face)},r=transition(s,input,e);if(!r.ok)throw Error(`ASFELT_SWORDS_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('ASFELT_SWORDS_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('ASFELT_SWORDS_CARDS');}
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('ASFELT_SWORDS_LIMIT');}
- for(const id of [a,b,c,d]){if(blessing&&id===c)s.deck=[blessing,...s.deck.filter(x=>x!==blessing)];if(guards[id])act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:guards[id]!});act(id,{type:'PASS_SETUP'});}if(options.beforeStart)return s;
+ // The round-end refill draws in seat order, so the blessing waits behind the seats that refill before C (G10).
+ if(blessing){const rest=s.deck.filter(x=>x!==blessing),ahead=[a,b].filter(id=>guards[id]).length;s.deck=[...rest.slice(0,ahead),blessing,...rest.slice(ahead)];}
+ for(const id of [a,b,c,d]){if(guards[id])act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:guards[id]!});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(options.beforeStart)return s;
  if(prior){act(d,{type:'START_TURN'});settle();act(d,{type:'CHOOSE_DRAW',draw:false});act(d,{type:'ATTACK',cardInstanceId:mode==='suppressed'?'a2-p13-r1c2':mode==='stopped'?'a2-p13-r2c1':'a2-p18-r1c1',targetIds:[a],dedicated:false});settle(6);if(s.phase==='withdrawal')act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();}
  act(a,{type:'START_TURN'});settle(prior?6:1);if(s.phase==='draw')act(a,{type:'CHOOSE_DRAW',draw:false});if(mode==='subset'){act(c,{type:'REVEAL_CHARACTER'});settle();}if(mode==='near'){act(a,{type:'APPROACH',cardInstanceId:'a2-p24-r1c3',targetId:b});settle();}return s;
 }

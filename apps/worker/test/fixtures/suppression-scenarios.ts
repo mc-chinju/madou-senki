@@ -1,6 +1,6 @@
 import {clearDistances} from '../../../../packages/engine/src/lifecycle/advance.js';
 import { allCardInstanceIds, createGame, gameStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const suppressionScenarioNames = ['suppression-wandering-ban', 'suppression-wandering-source', 'suppression-wandering-target', 'suppression-persist-ban-confusion', 'suppression-persist-ban-hypnosis', 'suppression-persist-ban-otherworld', 'suppression-persist-source-confusion', 'suppression-persist-source-hypnosis', 'suppression-persist-source-otherworld', 'suppression-persist-target-otherworld', 'suppression-identity-boundary', 'suppression-blessing-confusion', 'suppression-blessing-hypnosis', 'suppression-blessing-paired', 'suppression-blessing-exempt', 'suppression-blessing-death', 'suppression-next-action', 'suppression-hidden-lia', 'suppression-hidden-ordinary', 'suppression-blessing', 'suppression-blessing-fail'] as const;
 export type SuppressionScenarioName = typeof suppressionScenarioNames[number];
@@ -44,7 +44,7 @@ export function makeSuppressionScenario(name: SuppressionScenarioName, players: 
     }
     throw Error('SUPPRESSION_FIXTURE_WINDOW');
   }
-  for (const id of [a, b, c, d]) act(id, { type: 'PASS_SETUP' });
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); settle();
   act(a, { type: 'CHOOSE_DRAW', draw: false }); settle();
   act(a, { type: 'USE_REVIVAL_RITUAL' }); settle();

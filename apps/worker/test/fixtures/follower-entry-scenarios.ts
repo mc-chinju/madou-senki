@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const followerEntryScenarioNames = ['entry-arnes', 'entry-arnes-cancel', 'entry-lester-spirit', 'entry-lester-hidden', 'entry-lester-revealed', 'entry-tia'] as const;
 export type FollowerEntryScenarioName = typeof followerEntryScenarioNames[number];
@@ -34,7 +34,7 @@ export function makeFollowerEntryScenario(name: FollowerEntryScenarioName, playe
     state.players[owner]!.followers.push({ cardInstanceId: id, revealed: false });
     return id;
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   const lester = name.startsWith('entry-lester');
   assignCharacter(state, a, lester ? '吟遊詩人のレスター' : name === 'entry-tia' ? '有翼人のティア' : '魔聖母ディア');

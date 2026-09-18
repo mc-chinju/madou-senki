@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const lesterSongsPhysicalScenarios=['poem-ordinary','poem-dedicated','chant-song-ordinary','chant-song-dedicated','poem-ordinary-teleport','poem-dedicated-teleport','chant-song-ordinary-teleport','chant-song-dedicated-teleport'] as const;
 export type LesterSongsPhysicalScenario=typeof lesterSongsPhysicalScenarios[number];
 export function isLesterSongsPhysicalScenario(name:string):name is LesterSongsPhysicalScenario{return (lesterSongsPhysicalScenarios as readonly string[]).includes(name);}
@@ -10,5 +10,5 @@ export function makeLesterSongsPhysicalScenario(name:LesterSongsPhysicalScenario
  for(const id of [b,c,d])s.players[id]!.permanent!.spirit=(s.players[id]!.permanent!.spirit??0)+(options.spirit??14)-gameStats(s,id).spirit;
  const front=options.follower==='none'?null:takeCard(s,b,options.follower==='guardian'?'守護者':'メタルゴーレム'),rear=options.follower===undefined?takeCard(s,b,'兵士'):null,water=options.follower==='none'?null:takeCard(s,c,'水竜'),keep=[takeCard(s,a,m.card),takeCard(s,a,'必勝の祈り'),takeCard(s,a,'a2-p24-r1c2'),takeCard(s,a,'a2-p15-r3c2'),takeCard(s,d,'命運凶変'),...(options.mirrors?['a2-p11-r1c3','a2-p12-r3c2','a2-p14-r2c3']:['a2-p06-r1c1','a2-p05-r3c1','a2-p07-r1c1']).map(id=>takeCard(s,b,id)),...[front,rear,water].filter((x):x is string=>!!x)];for(const p of players)trimHand(s,p.id,...keep);s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
  function act(actorId:string,command:GameCommand){const input={actorId,command},e={...entropy(),dice:Array(100).fill(1)},r=transition(s,input,e);if(!r.ok)throw Error(`LESTER_SONGS_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('LESTER_SONGS_JSON');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('LESTER_SONGS_IDS');}
- for(const p of players){for(const cardInstanceId of (p.id===b?[front,rear]:p.id===c?[water]:[]).filter((x):x is string=>!!x))act(p.id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(p.id,{type:'PASS_SETUP'});}act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
+ for(const p of players){for(const cardInstanceId of (p.id===b?[front,rear]:p.id===c?[water]:[]).filter((x):x is string=>!!x))act(p.id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(p.id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});return s;
 }

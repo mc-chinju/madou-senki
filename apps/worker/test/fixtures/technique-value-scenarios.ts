@@ -1,6 +1,6 @@
 import {makeFuryBowScenario} from './fury-bow-scenarios.js';
 import { allCardInstanceIds, createGame, transition, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const techniqueValueScenarioNames = ['value-fury', 'value-staff', 'value-fist', 'value-spirit', 'value-axe', 'value-black-magic'] as const;
 export type TechniqueValueScenarioName = typeof techniqueValueScenarioNames[number];
@@ -29,7 +29,7 @@ export function makeTechniqueValueScenario(name: TechniqueValueScenarioName, pla
     const ids = allCardInstanceIds(state);
     if (ids.length !== 220 || new Set(ids).size !== 220) throw Error('VALUE_FIXTURE_CARDS');
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, sources[name].character);
   assignCharacter(state, b, '黒騎士ガーウィン'); assignCharacter(state, c, 'リーア姫'); assignCharacter(state, d, '忍びのイダ');

@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const followerDestructionScenarioNames = ['destroy-lancaster', 'destroy-lancelot', 'destroy-asfelt', 'destroy-asfelt-blessing', 'destroy-frenzy'] as const;
 export type FollowerDestructionScenarioName = typeof followerDestructionScenarioNames[number];
@@ -28,7 +28,7 @@ export function makeFollowerDestructionScenario(name: FollowerDestructionScenari
     state.players[b]!.hand = state.players[b]!.hand.filter(card => card !== id);
     state.players[b]!.followers.push({ cardInstanceId: id, revealed: false });
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, characters[name]);
   assignCharacter(state, b, name === 'destroy-lancelot' ? '不死王ガドューラ' : name === 'destroy-frenzy' ? '黒妖精のアーネス' : '黒騎士ガーウィン');

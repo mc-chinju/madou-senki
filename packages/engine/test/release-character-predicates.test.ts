@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {createGame,derivedStats,transition,viewFor} from '../src/index.js';
-import {act,finish,ready} from './combat-helpers.js';
+import {act,finish,ready,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 
 it.each([
@@ -16,7 +16,7 @@ it.each([
  for(const victim of ['B','C']){
   let s=createGame(['A','B','C','D'].map(id=>({id,name:id})),entropy(),{startingSeat:3});
   character(s,'A',owner);character(s,'B',protectedName);character(s,'C','占星術師のアルセイル');character(s,'D','侍大将のシン');
-  for(const actor of s.seatOrder)s=act(s,actor,{type:'PASS_SETUP'});s=act(s,'D',{type:'START_TURN'});s=act(s,'D',{type:'CHOOSE_DRAW',draw:false});
+  s=readySetup(s);s=act(s,'D',{type:'START_TURN'});s=act(s,'D',{type:'CHOOSE_DRAW',draw:false});
   expect(s.players.A!.characterId).toBe(ownerId);expect(s.players.A!.protection!.characterIds).toContain(s.players.B!.characterId);
   s.players[victim]!.damage=derivedStats(s.players[victim]!).endurance-1;const card=handCard(s,'D','衝破');
   s=finish(act(s,'D',{type:'ATTACK',cardInstanceId:card,targetIds:[victim],dedicated:false}));

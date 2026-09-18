@@ -1,6 +1,6 @@
 import { actionCards } from '@madou/catalog';
 import { allCardInstanceIds, createGame, transition, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const attackPropertyScenarioNames = ['property-lancaster', 'property-lancaster-shared', 'property-arnes'] as const;
 export type AttackPropertyScenarioName = typeof attackPropertyScenarioNames[number];
@@ -21,7 +21,7 @@ export function makeAttackPropertyScenario(name: AttackPropertyScenarioName, pla
     const ids = allCardInstanceIds(game);
     if (ids.length !== 220 || new Set(ids).size !== 220) throw Error('PROPERTY_FIXTURE_CARDS');
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(game, a, name === 'property-arnes' ? '黒妖精のアーネス' : '早駆けのランカスター');
   assignCharacter(game, b, '侍大将のシン'); assignCharacter(game, c, '忍びのイダ'); assignCharacter(game, d, '魔導王ガイナス');

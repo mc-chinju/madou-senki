@@ -3,7 +3,7 @@ import {afterEach,expect,it} from 'vitest';
 import {activeWindowRef,allCardInstanceIds,viewFor,type GameCommand} from '@madou/engine';
 import {actionCards} from '@madou/catalog';
 import {openTestRoom} from './fixtures/recovery-room.js';
-import {entropy} from './fixtures/scenario-tools.js';
+import {entropy,readySetupAsync} from './fixtures/scenario-tools.js';
 import type {CanonicalRoom} from './fixtures/canonical-room.js';
 afterEach(async()=>{await reset();});
 
@@ -22,7 +22,7 @@ it('Actual Fury Royal Knights bow reflection retains original dice through every
  }
  await send('A',{type:'PASS_SETUP'});
  await send('B',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p21-r1c2'});
- for(const id of ['B','C','D'])await send(id,{type:'PASS_SETUP'});
+ await readySetupAsync(async()=>(await room.stored()).state.game!,id=>send(id,{type:'PASS_SETUP'}));
  await send('A',{type:'START_TURN'});await send('A',{type:'CHOOSE_DRAW',draw:false});
  const option=viewFor(await game(),'A').followerBundleOptions.find(o=>o.abilityId==='c2-p06-r1c2-ab04')!;
  await send('A',{type:'USE_FOLLOWER_ATTACK',abilityId:option.abilityId,targetEventId:option.targetEventId,sources:[{cardInstanceId:'a2-p21-r3c3',dedicated:false,targetIds:['B']}]});

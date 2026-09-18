@@ -9,7 +9,7 @@ import {wishScenarioNames,makeWishScenario} from './wish-scenario.js';
 import {anytimeScenarioNames,makeAnytimeScenario} from './anytime-scenarios.js';
 import {actionCards,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,transition,viewFor,type GameCommand,type GameState} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const reclaimScenarioNames=['reclaim-ordinary-follower-death',...namedDeathAllScenarioNames,'reclaim-crystals','reclaim-crystals-second','reclaim-extra','reclaim-unlimited','reclaim-sword-dawn','reclaim-sword-rebuild','reclaim-all-army','reclaim-all-army-fail','reclaim-printed-combinations','reclaim-printed-counter',...wishScenarioNames,...anytimeScenarioNames,'reclaim-owned','reclaim-unowned','reclaim-courage','reclaim-courage-fail','reclaim-distance','reclaim-sword-discard','reclaim-sword-install','reclaim-rest','reclaim-potion','reclaim-early','reclaim-choices'] as const;
 export type ReclaimScenarioName=typeof reclaimScenarioNames[number];
 export function isReclaimScenario(name:string):name is ReclaimScenarioName {return reclaimScenarioNames.some(n=>n===name);}
@@ -42,7 +42,7 @@ export function makeReclaimScenario(name:ReclaimScenarioName,players:{id:string;
   if(courage)game.players[c]!.permanent={...game.players[c]!.permanent,spirit:name==='reclaim-courage-fail'?-20:20};
   if(name==='reclaim-sword-discard'){for(const card of ['神性介入','転移'])if(game.players[a]!.hand.length<=5)takeCard(game,a,card);}else trimHand(game,a,...(choices?[]:[heal]),...choiceCards,...earlyCards,...utilityCards,...(attack?[attack]:[]));trimHand(game,b,fate);game.players[a]!.damage=utility?8:2;
   const act=(actorId:string,command:GameCommand)=>{const r=transition(game,{actorId,command},entropy());if(!r.ok)throw Error(`RECLAIM_FIXTURE_${r.code}`);game=r.state;};
-  for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
   if(courage){
     act(a,{type:'ATTACK',cardInstanceId:attack!,targetIds:[b],dedicated:false});

@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const combinationScenarioNames = ['combination-defense', 'combination-ready', 'combination-cancel', 'combination-advances', 'combination-hit-advance', 'combination-double', 'combination-critical', 'combination-shadow', 'combination-lia', 'combination-blast'] as const;
 export type CombinationScenarioName = typeof combinationScenarioNames[number];
@@ -34,7 +34,7 @@ export function makeCombinationScenario(name: CombinationScenarioName, players: 
     state.players[owner]!.chants.push({ cardInstanceId: id, revealed: false });
     return id;
   }
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, '黒騎士ガーウィン'); assignCharacter(state, b, '魔導王ガイナス');
   assignCharacter(state, c, '白魔術師シェリム'); assignCharacter(state, d, '占星術師のアルセイル');

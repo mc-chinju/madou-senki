@@ -1,5 +1,5 @@
 import {getCharacter} from '@madou/catalog';
-import {transition, type Entropy, type GameState} from '../index.js';
+import {pendingSetupSeats, transition, type Entropy, type GameState} from '../index.js';
 import {techniqueFor} from '../effects/registry.js';
 import {viewFor, type PlayerView} from '../view.js';
 import {legalCommands, type Command} from './legal-commands.js';
@@ -80,8 +80,8 @@ export function choose(view: PlayerView, seed: number): Command {
 function actingView(state: GameState): PlayerView | undefined {
   const pending = state.windows?.at(-1)?.participants[state.windows.at(-1)!.cursor];
   const turn = state.seatOrder[state.turnSeat];
-  const setup = state.pending?.actorId;
-  for (const id of new Set([pending, turn, setup, ...state.seatOrder])) {
+  const setup = pendingSetupSeats(state);
+  for (const id of new Set([pending, turn, ...setup, ...state.seatOrder])) {
     if (!id || !state.seatOrder.includes(id)) continue;
     const view = viewFor(state, id);
     if (legalCommands(view).length) return view;

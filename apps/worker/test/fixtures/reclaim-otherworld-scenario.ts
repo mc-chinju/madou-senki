@@ -1,6 +1,6 @@
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
 import {getAction} from '@madou/catalog';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 
 export function makeReclaimOtherworld(players:{id:string;name:string}[]){
  let s=createGame(players,entropy(),{startingSeat:0});
@@ -19,7 +19,7 @@ export function makeReclaimOtherworld(players:{id:string;name:string}[]){
   s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('OTHERWORLD_CARDS');
  }
  function pass(){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'});}
- for(const p of players)act(p.id,{type:'PASS_SETUP'});
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));
  act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'CHANT',cardInstanceId:rift});
  for(let n=0;n<200;n++){
   const actor=s.seatOrder[s.turnSeat]!;

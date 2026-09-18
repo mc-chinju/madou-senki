@@ -18,7 +18,7 @@ import {transitionInspection,cleanInspections} from './abilities/private-inspect
 import {cleanSpiritLifetimes} from './abilities/spirit-lifetime.js';
 import {transitionBeastCapture} from './abilities/beast-empathy.js';
 import {transitionFollowerBundle} from './combat/follower-bundles.js';
-import {canPlaceFollower,maintainFollowers} from './combat/follower-placement.js';
+import {canPlaceFollower,maintainFollowers,placeFollower} from './combat/follower-placement.js';
 import {transitionAbilityCommand} from './abilities/advance.js';
 import {transitionLifecycleCommand} from './lifecycle/commands.js';
 import {advanceLifecycle,beginResetup,settleProtection,stableOutcome,expireSourceTurn,normalizeTurn,settleDamage,scheduleBoundary} from './lifecycle/advance.js';
@@ -30,6 +30,24 @@ import { parseGameCommand } from '@madou/protocol';
 import type { GameInput, TransitionResult } from './commands.js';
 import type { Entropy, GameState } from './state.js';
 import { appendEvent, EntropyError, randomSource, refillInitialHand } from './setup.js';
+/** Seats still owing a ready in the open setup round, in seat order. */
+export function pendingSetupSeats(state: GameState): string[] {
+  const round = state.pending; if (!round) return [];
+  return round.participantIds.filter(id => !round.readyIds.includes(id));
+}
+/** Every participant is ready: refill the seats that placed, in seat order, then open the next round (G10). */
+function closeSetupRound(next: GameState, random: () => number, now: number): void {
+  const round = next.pending!;
+  for (const id of next.seatOrder) {
+    if (!round.placedIds.includes(id)) continue;
+    refillInitialHand(next, next.players[id]!, random, now); advanceLifecycle(next, random, now);
+  }
+  // Only a seat that placed can have room left, and the limit counts the blessing drawn by this refill.
+  const participantIds = next.seatOrder.filter(id => round.placedIds.includes(id) && next.players[id]!.followers.length < gameStats(next, id).followerLimit);
+  if (participantIds.length) { next.pending = { kind: 'initial-followers', round: round.round + 1, participantIds, readyIds: [], placedIds: [] }; return; }
+  next.phase = 'turn-start'; next.pending = null;
+  appendEvent(next, now, { type: 'SETUP_COMPLETE', actorId: next.seatOrder[next.turnSeat]!, audience: 'public' });
+}
 function transitionCore(state: GameState, input: GameInput, entropy: Entropy): TransitionResult {
   const command = parseGameCommand(input?.command);
   if (!command.ok) return { ok: false, code: 'INVALID_COMMAND' };
@@ -41,7 +59,8 @@ function transitionCore(state: GameState, input: GameInput, entropy: Entropy): T
   if (command.value.type === 'REVEAL_CHARACTER') {
     if (p.revealed) return { ok: false, code: 'ALREADY_REVEALED' };
   } else {
-    if (state.pending?.actorId !== input.actorId) return { ok: false, code: 'NOT_YOUR_TURN' };
+    const round = state.pending;
+    if (!round || !round.participantIds.includes(input.actorId) || round.readyIds.includes(input.actorId)) return { ok: false, code: 'NOT_YOUR_TURN' };
     if (command.value.type === 'PLACE_INITIAL_FOLLOWER') {
       const id = command.value.cardInstanceId;
       if (!p.hand.includes(id)) return { ok: false, code: 'CARD_NOT_IN_HAND' };
@@ -59,16 +78,17 @@ function transitionCore(state: GameState, input: GameInput, entropy: Entropy): T
       case 'REVEAL_CHARACTER':
         revealCharacter(next,player.id,entropy.now); break;
       case 'PLACE_INITIAL_FOLLOWER': {
-        const id = command.value.cardInstanceId; player.hand.splice(player.hand.indexOf(id), 1); player.followers.push({cardInstanceId:id,revealed:false,placedById:player.id,placedLifeId:lifeIdentity(player)});
+        const id = command.value.cardInstanceId; player.hand.splice(player.hand.indexOf(id), 1); placeFollower(player, id, command.value.position);
         appendEvent(next, entropy.now, { type: 'FOLLOWER_PLACED', actorId: player.id, audience: 'public' });
-        refillInitialHand(next, player, random, entropy.now); break;
+        // The refill waits for the round end (G10): the deck order must not follow the commit order.
+        if (!next.pending!.placedIds.includes(player.id)) next.pending!.placedIds.push(player.id);
+        break;
       }
-      case 'PASS_SETUP':
-        appendEvent(next, entropy.now, { type: 'SETUP_PASSED', actorId: player.id, audience: 'public' }); next.setupCursor++;
-        if (next.setupCursor === next.seatOrder.length) {
-          next.phase = 'turn-start'; next.pending = null;
-          appendEvent(next, entropy.now, { type: 'SETUP_COMPLETE', actorId: next.seatOrder[next.turnSeat]!, audience: 'public' });
-        } else next.pending = { kind: 'initial-followers', actorId: next.seatOrder[next.setupCursor]!, seat: next.setupCursor };
+      case 'PASS_SETUP': {
+        appendEvent(next, entropy.now, { type: 'SETUP_PASSED', actorId: player.id, audience: 'public' });
+        const round = next.pending!; round.readyIds.push(player.id);
+        if (round.readyIds.length === round.participantIds.length) closeSetupRound(next, random, entropy.now);
+      }
     }
     next.revision++; return { ok: true, state: next, events: structuredClone(next.events.slice(eventStart)) };
   } catch (error) { if (error instanceof EntropyError) return { ok: false, code: 'INVALID_ENTROPY' }; throw error; }
@@ -107,7 +127,7 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
    const s=structuredClone(state);const p=s.players[actor.id]!;s.windows!.pop();
    const task=s.lifecycle!.find(t=>t.id===w!.continuation.id)!;
    if(command.type==='PASS_SETUP')s.lifecycle=s.lifecycle!.filter(t=>t.id!==task.id);
-   else {p.hand.splice(p.hand.indexOf(command.cardInstanceId),1);p.followers.push({cardInstanceId:command.cardInstanceId,revealed:false,placedById:p.id,placedLifeId:lifeIdentity(p)});if(task.kind==='re-setup')task.waiting=false;refillInitialHand(s,p,randomSource(entropy),entropy.now);}
+   else {p.hand.splice(p.hand.indexOf(command.cardInstanceId),1);placeFollower(p,command.cardInstanceId,command.position);if(task.kind==='re-setup')task.waiting=false;refillInitialHand(s,p,randomSource(entropy),entropy.now);}
    s.revision++;result={ok:true,state:s,events:[]};
   }else result=transitionChamGift(state,{actorId:input.actorId,command})??transitionAllArmy(state,{actorId:input.actorId,command})??transitionWish(state,{actorId:input.actorId,command},random,entropy.now)??transitionSuppression(state,{actorId:input.actorId,command})??transitionConditionalAbility(state,{actorId:input.actorId,command})??transitionInspection(state,{actorId:input.actorId,command})??transitionTurnPackage(state,{actorId:input.actorId,command})??transitionBeastCapture(state,{actorId:input.actorId,command},entropy.now)??transitionFollowerBundle(state,{actorId:input.actorId,command})??transitionSadLove(state,{actorId:input.actorId,command})??transitionAbilityCommand(state,{actorId:input.actorId,command})??transitionLifecycleCommand(state,{actorId:input.actorId,command},entropy.now)??transitionCore(state,{actorId:input.actorId,command},entropy);
   if(!result.ok)return result;

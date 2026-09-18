@@ -15,10 +15,13 @@ export async function signIn(context: BrowserContext, name: string): Promise<{ i
 let storedRoom: { request: APIRequestContext; roomId: string } | null = null;
 /** Discard pile contents are never sent to players; browser tests read them from the saved game of the latest table. */
 export async function storedDiscard(): Promise<string[]> {
+  return (await storedGame()).discard;
+}
+async function storedGame(): Promise<{ phase: string; revision: number; discard: string[]; pending: { participantIds: string[]; readyIds: string[] } | null }> {
   if (!storedRoom) throw Error('NO_TABLE');
   const response = await storedRoom.request.get(`/__test/rooms/${storedRoom.roomId}/game`);
   expect(response.ok()).toBe(true);
-  return (await response.json()).discard;
+  return response.json();
 }
 
 export async function tableFixture(browser: Browser, request: APIRequestContext, scenario?: ScenarioName, count = 4, options: BrowserContextOptions = {}) {
@@ -60,6 +63,20 @@ export async function observe(table: Table) {
     await expect(page.getByRole('region', { name: '自分の手札' })).toBeVisible();
   }
   return views;
+}
+/** Ready every seat through the remaining concurrent setup rounds (G10); placements happen before this. */
+export async function readySetup(table: Table) {
+  for (let round = 0; round < 6; round++) {
+    const game = await storedGame();
+    if (game.phase !== 'setup' || !game.pending) return;
+    for (const id of game.pending.participantIds) {
+      if (game.pending.readyIds.includes(id)) continue;
+      const page = table.pages[table.sessions.findIndex(session => session.id === id)]!;
+      await page.getByRole('button', { name: '配置を終える', exact: true }).click();
+    }
+    await expect.poll(async () => (await storedGame()).revision).toBeGreaterThan(game.revision);
+  }
+  throw Error('SETUP_DID_NOT_FINISH');
 }
 export async function passUntil(table: Table, views: Map<string, RoomView>, done: (game: PlayerView) => boolean, maxSteps = 100) {
   const owner = table.sessions[0]!.id;

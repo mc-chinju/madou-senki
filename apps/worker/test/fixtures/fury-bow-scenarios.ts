@@ -1,12 +1,12 @@
 import {allCardInstanceIds,createGame,transition,type GameCommand,type GameState} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 
 /** Prior deal/training only; one actual bow declaration reaches the unselected effect window. */
 export function makeFuryBowScenario(players:{id:string;name:string}[]):GameState {
  let state=createGame(players,entropy(),{startingSeat:0});
  const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];
  function act(actorId:string,command:GameCommand){const input={actorId,command},random=entropy(),result=transition(state,input,random);if(!result.ok)throw Error(`FURY_FIXTURE_${result.code}`);if(JSON.stringify(result)!==JSON.stringify(transition(JSON.parse(JSON.stringify(state)),input,random)))throw Error('FURY_FIXTURE_REPLAY');state=result.state;const cards=allCardInstanceIds(state);if(cards.length!==220||new Set(cards).size!==220)throw Error('FURY_FIXTURE_CARDS');}
- for(const p of players)act(p.id,{type:'PASS_SETUP'});
+ readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
  act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
  assignCharacter(state,a,'妖精王フューリー');assignCharacter(state,b,'黒騎士ガーウィン');assignCharacter(state,c,'リーア姫');assignCharacter(state,d,'忍びのイダ');
  for(const p of Object.values(state.players))p.permanent={spirit:20,endurance:100};

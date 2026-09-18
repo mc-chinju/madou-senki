@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const secretBookPhysicalScenarios=['book-one','book-six','book-opens','book-fate','book-reroll','book-late','book-decline','book-recovery','book-recovery-fail','book-main-attack','book-main-chant','book-draw','book-revive'] as const;
 export type SecretBookPhysicalScenario=typeof secretBookPhysicalScenarios[number];
 export function isSecretBookPhysicalScenario(name:string):name is SecretBookPhysicalScenario{return (secretBookPhysicalScenarios as readonly string[]).includes(name);}
@@ -13,7 +13,7 @@ export function makeSecretBookPhysicalScenario(name:SecretBookPhysicalScenario,p
  const openIds=m.opens?['a2-p01-r1c1','a2-p01-r1c3','a2-p01-r2c2']:[];for(const id of openIds){takeCard(s,c,id);s.players[c]!.hand=s.players[c]!.hand.filter(x=>x!==id);}const ordinary=s.deck.filter(id=>getAction(id)!.category!=='open'),opens=s.deck.filter(id=>getAction(id)!.category==='open');s.deck=m.opens?[ordinary[0]!,...openIds,...ordinary.slice(1),...opens]:[...ordinary,...opens];s.events=[];
  function act(actorId:string,command:GameCommand,face=1){const input={actorId,command},e={...entropy(),dice:Array(100).fill(face)},r=transition(s,input,e);if(!r.ok)throw Error(`BOOK_FIXTURE_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('BOOK_FIXTURE_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('BOOK_FIXTURE_CARDS');}
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('BOOK_FIXTURE_WINDOW');}
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));
  if(prior){act(d,{type:'START_TURN'});settle();act(d,{type:'CHOOSE_DRAW',draw:false});act(d,{type:'ATTACK',cardInstanceId:m.opens?'a2-p24-r2c2':'a2-p13-r2c1',targetIds:[m.opens?b:a],dedicated:false});if(m.recovery){for(let n=0;n<100&&s.windows?.at(-1)?.kind!=='normal-defense';n++){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'});}act(a,{type:'PLAY_DEFENSE',cardInstanceId:'a2-p06-r1c1',dedicated:false});settle(6);}else settle();if(m.opens&&s.players[b]!.presence!=='dead')throw Error('BOOK_NO_DEATH');if(m.recovery&&!s.players[a]!.statuses?.some(x=>x.kind==='stopped'))throw Error('BOOK_NO_STOP');if(s.phase==='withdrawal')act(d,{type:'PASS_WITHDRAWAL'});act(d,{type:'END_TURN',discardIds:[]});settle();}
  if(beforeStart)return s;act(a,{type:'START_TURN'});settle(m.fail?6:1);if(s.phase==='draw'){act(a,{type:'CHOOSE_DRAW',draw:m.draw});settle();}if(m.opens&&s.deck[0]!==openIds[0])throw Error('BOOK_OPEN_ORDER');return s;
 }

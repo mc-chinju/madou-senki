@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
-import {act,closeWindow,finish,pass,ready,until} from './combat-helpers.js';
+import {act,closeWindow,finish,pass,ready,until,readySetup} from './combat-helpers.js';
 import {character,entropy,handCard,handCards,freshGame} from './fixtures.js';
 import {getAction} from '@madou/catalog';
 const FLIGHT='c2-p02-r1c1-ab01';
@@ -125,7 +125,7 @@ it('Tia earth predicate excludes a structural warrior-earth source',()=>{const s
 it('Tia flight defeats real earth magic before an actually placed follower is exposed',()=>{
  let s=freshGame();character(s,'A','魔導王ガイナス');character(s,'B','有翼人のティア');for(const p of Object.values(s.players))p.permanent={spirit:20,endurance:100};
  const card=handCard(s,'A','地槍'),soldier=handCard(s,'B','兵士');
- for(const actor of s.seatOrder){if(actor==='B')s=act(s,actor,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier});s=act(s,actor,{type:'PASS_SETUP'});}
+ for(const actor of s.seatOrder){if(actor==='B')s=act(s,actor,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier});s=act(s,actor,{type:'PASS_SETUP'});}s=readySetup(s);
  s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=until(act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false}),'normal-defense');
  const followers=structuredClone(s.players.B!.followers);expect(followers).toHaveLength(1);s=finish(use(s));expect(s.players.B!.followers).toEqual(followers);expect(s.players.B!.damage).toBe(0);expect(s.discard).not.toContain(soldier);
 });

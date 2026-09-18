@@ -1,6 +1,6 @@
 import {allCardInstanceIds,createGame,transition,type GameCommand} from '@madou/engine';
 import {getAction} from '@madou/catalog';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 
 export function makeReclaimExit(players:{id:string;name:string}[]){
  let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];
@@ -15,7 +15,7 @@ export function makeReclaimExit(players:{id:string;name:string}[]){
   if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('RECLAIM_EXIT_REPLAY');
   s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('RECLAIM_EXIT_CARDS');
  }
- for(const p of players)act(p.id,{type:'PASS_SETUP'});
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));
  act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(b,{type:'REVEAL_CHARACTER'});
  return s;
 }

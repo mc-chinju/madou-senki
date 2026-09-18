@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const deathGiftPhysicalScenarios=['death-gift-evil','death-gift-good','death-gift-evil-fate','death-gift-good-fate','death-gift-evil-decline','death-gift-good-decline','death-gift-evil-batch','death-gift-good-batch','death-gift-evil-protection','death-gift-good-protection','death-gift-good-ability-first','death-gift-good-printed-first','death-gift-evil-ability-first','death-gift-evil-printed-first','death-gift-good-converted'] as const;
 export type DeathGiftPhysicalScenario=typeof deathGiftPhysicalScenarios[number];
 export function isDeathGiftPhysicalScenario(name:string):name is DeathGiftPhysicalScenario{return (deathGiftPhysicalScenarios as readonly string[]).includes(name);}
@@ -23,7 +23,7 @@ export function makeDeathGiftPhysicalScenario(name:DeathGiftPhysicalScenario,pla
  function settle(){for(let n=0;n<300;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('DEATH_GIFT_FIXTURE_WINDOW');}
  function start(id:string){act(id,{type:'START_TURN'});settle();act(id,{type:'CHOOSE_DRAW',draw:false});settle();}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});if(m.converted){start(d);act(b,{type:'REVEAL_CHARACTER'});settle();act(d,{type:'PLAY_TURN_CARD',cardInstanceId:m.evil?'a2-p04-r1c2':'a2-p04-r1c1',targetId:b});settle();if(s.players[b]!.faction!==(m.evil?'EVIL':'GOOD'))throw Error('DEATH_GIFT_CONVERSION');end(d);}start(a);
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(m.converted){start(d);act(b,{type:'REVEAL_CHARACTER'});settle();act(d,{type:'PLAY_TURN_CARD',cardInstanceId:m.evil?'a2-p04-r1c2':'a2-p04-r1c1',targetId:b});settle();if(s.players[b]!.faction!==(m.evil?'EVIL':'GOOD'))throw Error('DEATH_GIFT_CONVERSION');end(d);}start(a);
  if(m.batch){act(a,{type:'CHANT',cardInstanceId:m.attack});end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}
  if(beforeAttack)return s;
  act(a,{type:'ATTACK',cardInstanceId:m.attack,targetIds:m.batch?[b,c]:[b],dedicated:m.batch});

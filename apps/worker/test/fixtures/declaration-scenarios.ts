@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, derivedStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 type Spec = { owner: string; card: string; defense?: boolean; chanted?: boolean; reveal?: boolean; near?: boolean; vanmil?: boolean; placed?: boolean; gate?: boolean };
 export const declarationScenarioSpecs = {
@@ -97,6 +97,7 @@ export function makeDeclarationScenario(name: DeclarationScenarioName, players: 
     if (player.id === b && donor) act(b, { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: donor });
     act(player.id, { type: 'PASS_SETUP' });
   }
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   start(a);
   if (spec.reveal) {
     act(owner, { type: 'REVEAL_CHARACTER' });

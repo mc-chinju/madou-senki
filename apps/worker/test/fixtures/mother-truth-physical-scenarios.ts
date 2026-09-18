@@ -1,6 +1,6 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const motherTruthPhysicalScenarios=['mother-basic','mother-hidden','mother-wrong-target','mother-asfelt-user','mother-fate','mother-decline','mother-same','mother-stay-good','mother-evil-resist','mother-evil-convert','mother-return-good','mother-death','mother-protector-death','mother-otherworld','mother-suppressed','mother-stopped'] as const;
 export type MotherTruthPhysicalScenario=typeof motherTruthPhysicalScenarios[number];
 export function isMotherTruthPhysicalScenario(name:string):name is MotherTruthPhysicalScenario{return (motherTruthPhysicalScenarios as readonly string[]).includes(name);}
@@ -14,7 +14,7 @@ export function makeMotherTruthPhysicalScenario(name:MotherTruthPhysicalScenario
  function settle(face=1){for(let n=0;n<500;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'},face);}throw Error('MOTHER_FIXTURE_WINDOW');}
  function start(id:string,face=1){act(id,{type:'START_TURN'});settle(face);if(s.phase==='draw'){act(id,{type:'CHOOSE_DRAW',draw:false});settle();}}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});if(options.beforeStart)return s;
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(options.beforeStart)return s;
  if(prior){start(d);if(otherworld){act(d,{type:'CHANT',cardInstanceId:'a2-p14-r2c2'});end(d);for(const id of [a,b,c]){start(id);end(id);}start(d);act(d,{type:'ATTACK',cardInstanceId:'a2-p14-r2c2',targetIds:[b],dedicated:true});for(let n=0;n<200&&s.windows?.at(-1)?.kind!=='lifetime-effect-choice';n++){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'});}act(d,{type:'CHOOSE_LIFETIME_EFFECT',choice:'apply'});const first=s.windows!.at(-1)!.id;for(let n=0;n<200&&s.windows?.at(-1)?.id===first;n++){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'},6);}settle();if(s.players[b]!.presence!=='otherworld')throw Error('MOTHER_NO_OTHERWORLD');}else{act(d,{type:'ATTACK',cardInstanceId:suppressed?'a2-p13-r1c2':'a2-p13-r2c1',targetIds:[a],dedicated:false});settle(6);}end(d);}start(a,prior?6:1);if(!otherworld&&!stopped&&name!=='mother-hidden'){act(name==='mother-asfelt-user'?a:b,{type:'REVEAL_CHARACTER'});settle();}
  if(name==='mother-same'){act(a,{type:'PLAY_TURN_CARD',cardInstanceId:motherGood,targetId:b,mode:'ordinary'});settle(6);if(s.players[b]!.faction!=='GOOD')throw Error('MOTHER_NO_PRIOR_GOOD');end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}return s;
 }

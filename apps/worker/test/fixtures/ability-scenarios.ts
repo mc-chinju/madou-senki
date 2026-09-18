@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const abilityScenarioNames = ['ability-hide', 'ability-hidden-cancel', 'ability-martial', 'ability-critical', 'ability-critical-roll', 'ability-shadow'] as const;
 export type AbilityScenarioName = typeof abilityScenarioNames[number];
@@ -25,7 +25,7 @@ export function makeAbilityScenario(name: AbilityScenarioName, players: { id: st
     }
     throw Error('ABILITY_FIXTURE_DID_NOT_CONVERGE');
   };
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>state,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' }); act(a, { type: 'CHOOSE_DRAW', draw: false });
   assignCharacter(state, a, '忍びのイダ'); assignCharacter(state, b, '黒騎士ガーウィン');
   assignCharacter(state, c, '白魔術師シェリム'); assignCharacter(state, d, '魔導王ガイナス');

@@ -94,11 +94,11 @@ describe('room WebSocket and durable recovery', () => {
     a.send(pass('one', start.revision));
     expect(await a.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'one', revision: start.revision + 1 });
     const after = await a.snapshot();
-    expect(after.game?.pending?.actorId).toBe('B');
+    expect(after.game?.pending?.readyIds).toEqual(['A']);
     await evictDurableObject(room);
     a.send(pass('one', start.revision));
     expect(await a.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'one', revision: after.revision });
-    expect((await a.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await a.snapshot()).game?.pending?.readyIds).toEqual(['A']);
   });
 
   it('makes the newest connection active without letting old tabs submit', async () => {
@@ -126,7 +126,8 @@ describe('room WebSocket and durable recovery', () => {
     await a.next(m => m.type === 'ack');
     const placed = await a.snapshot();
     expect(placed.game?.self.followers).toHaveLength(1);
-    expect(placed.game?.self.hand).toHaveLength(5);
+    // The refill waits for the setup round to close (G10), so the hand is one short here.
+    expect(placed.game?.self.hand).toHaveLength(4);
     expect(placed.game?.self.hand).not.toContain(card);
     await evictDurableObject(room);
     a.send(request);
@@ -164,7 +165,7 @@ describe('room WebSocket and durable recovery', () => {
     expect(await a.next(m => m.type === 'error')).toMatchObject({ code: 'INTERNAL_ERROR' });
     const rolledBack = await a.snapshot();
     expect(rolledBack.revision).toBe(before.revision);
-    expect(rolledBack.game?.pending?.actorId).toBe('A');
+    expect(rolledBack.game?.pending?.readyIds).toEqual([]);
     expect(await runInDurableObject(room, (_instance, state) => state.storage.getAlarm())).toBeNull();
     a.send(pass('atomic', before.revision));
     expect(await a.next(m => m.type === 'ack')).toMatchObject({ revision: before.revision + 1 });
@@ -184,7 +185,7 @@ describe('room WebSocket and durable recovery', () => {
       });
     });
     a.send(pass('lost-ack', before.revision));
-    expect((await a.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await a.snapshot()).game?.pending?.readyIds).toEqual(['A']);
     expect(a.has(m => m.type === 'ack')).toBe(false);
     vi.restoreAllMocks();
     await evictDurableObject(room, { webSockets: 'close' });
@@ -192,7 +193,7 @@ describe('room WebSocket and durable recovery', () => {
     const recovered = await resumed.snapshot();
     resumed.send(pass('lost-ack', before.revision));
     expect(await resumed.next(m => m.type === 'ack')).toMatchObject({ commandId: 'lost-ack', revision: recovered.revision });
-    expect((await resumed.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await resumed.snapshot()).game?.pending?.readyIds).toEqual(['A']);
   });
 
   it('keeps the saved game and retries a failed directory projection after eviction', async () => {
@@ -234,10 +235,10 @@ describe('room WebSocket and durable recovery', () => {
     });
     a.send(pass('broadcast', before.revision));
     await a.next(m => m.type === 'ack');
-    expect((await b.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await b.snapshot()).game?.pending?.readyIds).toEqual(['A']);
     vi.restoreAllMocks();
     const resumed = await connect(room, 'A');
-    expect((await resumed.snapshot()).game?.pending?.actorId).toBe('B');
+    expect((await resumed.snapshot()).game?.pending?.readyIds).toEqual(['A']);
   });
 
   it('cannot overwrite a newer directory revision with a delayed outbox record', async () => {

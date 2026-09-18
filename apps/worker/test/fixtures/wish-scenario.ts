@@ -1,5 +1,5 @@
 import {allCardInstanceIds,createGame,transition,viewFor,type GameState,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const wishScenarioNames=['reclaim-wish','reclaim-wish-open'] as const;
 /** Initial deal/OPEN only; actual CHANT and installation prepare the public acquisition sources. */
 export function makeWishScenario(players:{id:string;name:string}[],open=false):GameState{
@@ -8,7 +8,7 @@ export function makeWishScenario(players:{id:string;name:string}[],open=false):G
  const wishes=['a2-p04-r3c2','a2-p04-r3c3'].map(id=>takeCard(s,a,id));const book=takeCard(s,b,'魔導書'),chants=['天地百撃斬','天地爆砕剣'].map(name=>takeCard(s,b,name)),fate=takeCard(s,c,'命運凶変'),haja=takeCard(s,b,'賢者ハジャ');
  s.players[b]!.hand=s.players[b]!.hand.filter(id=>id!==haja);s.players[b]!.open.push(haja);trimHand(s,a,...wishes);trimHand(s,b,book,...chants);trimHand(s,c,fate);
  const act=(actorId:string,command:GameCommand)=>{const r=transition(s,{actorId,command},entropy());if(!r.ok)throw Error(`WISH_FIXTURE_${r.code}`);s=r.state;};
- for(const id of [a,b,c,d])act(id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});
  for(let round=0;round<3;round++){
   act(a,{type:'PASS_ACTION'});
   for(let n=0;n<4;n++){

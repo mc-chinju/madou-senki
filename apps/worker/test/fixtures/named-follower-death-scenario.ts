@@ -1,6 +1,6 @@
 import {allCardInstanceIds,createGame,gameStats,transition,viewFor,type GameCommand} from '@madou/engine';
 import {getAction,getCharacter} from '@madou/catalog';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const namedDeathScenarioNames=['reclaim-named-death-ship','reclaim-named-death-dragon','reclaim-named-death-griffin','reclaim-named-death-skeleton','reclaim-named-death-zombie','reclaim-named-death-wight','reclaim-named-death-knight'] as const;
 export type NamedDeathScenario=typeof namedDeathScenarioNames[number];
 export type NamedDeathNegativeScenario=`${NamedDeathScenario}-cancel`|`${NamedDeathScenario}-ban`;
@@ -22,7 +22,7 @@ export function makeNamedDeathScenario(name:NamedDeathScenario|NamedDeathNegativ
  s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];
  function act(actorId:string,command:GameCommand){const input={actorId,command},e=entropy(),r=transition(s,input,e);if(!r.ok)throw Error(`NAMED_DEATH_${command.type}_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,e)))throw Error('NAMED_DEATH_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('NAMED_DEATH_CARDS');}
  function pass(){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'});}
- for(const p of players)act(p.id,{type:'PASS_SETUP'});
+ readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));
  act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ARRANGE_FOLLOWERS',cardInstanceIds:[card]});
  act(a,{type:'END_TURN',discardIds:s.players[a]!.hand.slice(0,Math.max(0,s.players[a]!.hand.length-gameStats(s,a).handLimit))});while(s.windows?.length)pass();
  act(b,{type:'START_TURN'});act(b,{type:'CHOOSE_DRAW',draw:false});act(b,{type:'ATTACK',cardInstanceId:attack,targetIds:[a],dedicated:false});

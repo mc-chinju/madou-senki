@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, derivedStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 type Spec = { owner: string; ownerSeat?: 1; target?: string; draw?: boolean; setup?: boolean; growth?: boolean; followers?: boolean; chants?: boolean; attack?: boolean; revealOwner?: boolean; revealTarget?: boolean; forcedLia?: boolean; discard?: boolean };
 export const turnInformationScenarioSpecs = {
@@ -92,6 +92,7 @@ export function makeTurnInformationScenario(name: TurnInformationScenarioName, p
     if (player.id === b) for (const cardInstanceId of followers) act(b, { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId });
     act(player.id, { type: 'PASS_SETUP' });
   }
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   // A real ordinary draw makes the two public twins' hands unequal. Initial follower placement refills.
   start(a, !!spec.draw && !spec.growth, !!spec.revealTarget);
   if (spec.revealOwner) { act(owner, { type: 'REVEAL_CHARACTER' }); settle(); }

@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 import {makeR6OtherworldScenario} from './r6-otherworld-scenario.js';
 export const revelationPhysicalScenarios=['revelation-zones','revelation-self','revelation-hand','revelation-combat','revelation-canceled','revelation-otherworld','revelation-history','revelation-pass','revelation-evil'] as const;
 export type RevelationPhysicalScenario=typeof revelationPhysicalScenarios[number];
@@ -17,7 +17,7 @@ export function makeRevelationPhysicalScenario(name:RevelationPhysicalScenario,p
  function settle(){for(let n=0;n<300;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('REVELATION_FIXTURE_WINDOW');}
  function start(id:string){act(id,{type:'START_TURN'});settle();act(id,{type:'CHOOSE_DRAW',draw:false});settle();}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>![...chants,bow,fate,card].includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d]){if(id===b)for(const cardInstanceId of followers)act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(id,{type:'PASS_SETUP'});}if(!s.players[b]!.open.includes(haja))throw Error('REVELATION_FIXTURE_HAJA');start(a);
+ for(const id of [a,b,c,d]){if(id===b)for(const cardInstanceId of followers)act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(id,{type:'PASS_SETUP'});}readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(!s.players[b]!.open.includes(haja))throw Error('REVELATION_FIXTURE_HAJA');start(a);
  for(const cardInstanceId of chants){end(a);for(const id of [b,c,d]){start(id);if(id===b)act(b,{type:'CHANT',cardInstanceId});end(id);}start(a);}
  if(s.players[b]!.followers.length!==2||s.players[b]!.chants.length!==2)throw Error('REVELATION_FIXTURE_ZONES');return s;
 }

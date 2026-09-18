@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,createGame,gameStats,transition,type GameCommand} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
+import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const dispelPhysicalScenarios=['dispel-two','dispel-mixed','dispel-zero','dispel-empty','dispel-multi-b','dispel-multi-c','dispel-fate','dispel-parent-cancel','dispel-attack-fate','dispel-decline','dispel-cost','dispel-hand','dispel-defense'] as const;
 export type DispelPhysicalScenario=typeof dispelPhysicalScenarios[number];
 export function isDispelPhysicalScenario(name:string):name is DispelPhysicalScenario{return (dispelPhysicalScenarios as readonly string[]).includes(name);}
@@ -13,5 +13,7 @@ export function makeDispelPhysicalScenario(name:DispelPhysicalScenario,players:{
  function settle(){for(let n=0;n<300;n++){const w=s.windows?.at(-1);if(!w)return;act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('DISPEL_FIXTURE_WINDOW');}
  function start(id:string){act(id,{type:'START_TURN'});settle();act(id,{type:'CHOOSE_DRAW',draw:false});settle();}
  function end(id:string){if(s.phase==='action')act(id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')act(id,{type:'PASS_WITHDRAWAL'});act(id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!keep.includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});settle();}
- for(const id of [a,b,c,d]){for(const cardInstanceId of id===b?m.bFollowers:id===c?m.cFollowers:[])act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(id,{type:'PASS_SETUP'});}if(blessing&&!s.players[b]!.open.includes(blessing))throw Error('DISPEL_FIXTURE_BLESSING');start(m.defense?b:a);if(m.multi){act(a,{type:'CHANT',cardInstanceId:m.attack});end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}return s;
+ for(const id of [a,b,c,d]){for(const cardInstanceId of (id===b?m.bFollowers:id===c?m.cFollowers:[]).slice(0,2))act(id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});act(id,{type:'PASS_SETUP'});}
+ // The blessing arrives with the round-end refill, so the third follower goes down in the next round (G10).
+ for(const cardInstanceId of m.bFollowers.slice(2))act(b,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});for(const cardInstanceId of m.cFollowers.slice(2))act(c,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});readySetup(()=>s,id=>act(id,{type:'PASS_SETUP'}));if(blessing&&!s.players[b]!.open.includes(blessing))throw Error('DISPEL_FIXTURE_BLESSING');start(m.defense?b:a);if(m.multi){act(a,{type:'CHANT',cardInstanceId:m.attack});end(a);for(const id of [b,c,d]){start(id);end(id);}start(a);}return s;
 }

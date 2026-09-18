@@ -1,5 +1,5 @@
 import { allCardInstanceIds, createGame, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
-import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
+import { assignCharacter, entropy, takeCard, trimHand, readySetup } from './scenario-tools.js';
 
 export const namedResponseScenarioNames = [
   'response-mirror-attacker',
@@ -51,7 +51,7 @@ export function makeNamedResponseScenario(name: NamedResponseScenarioName, playe
   const fate = takeCard(game, d, '命運凶変');
   trimHand(game, a, attack, evade);
   trimHand(game, d, fate);
-  for (const player of players) act(player.id, { type: 'PASS_SETUP' });
+  readySetup(()=>game,id=>act(id,{type:'PASS_SETUP'}));
   act(a, { type: 'START_TURN' });
   act(a, { type: 'CHOOSE_DRAW', draw: false });
   if (sorrow) {

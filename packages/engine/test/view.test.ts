@@ -12,7 +12,7 @@ it('allowlists private state and logs, public backs, and safe pending actor', ()
   expect(v.players.B!.chants).toEqual([{ position: 0, face: 'back' }]); expect(v.players.B!.chantCount).toBe(1);
   expect(v.players.B).not.toHaveProperty('faction'); expect(v.players.B).not.toHaveProperty('stats'); expect(v.players.B).not.toHaveProperty('objective');
   expect(v.self.hand).toEqual(s.players.A!.hand); expect(v.self.characterId).toBe(s.players.A!.characterId);
-  expect(v.pending).toEqual({ kind: 'initial-followers', actorId: 'A' });
+  expect(v.pending).toEqual({ kind: 'initial-followers', round: 1, participantIds: ['A', 'B', 'C', 'D'], readyIds: [] });
   expect(v.logs.some((e: any) => e.type === 'CHARACTER_ASSIGNED')).toBe(false);
   expect(v.privateLogs.every((e: any) => e.actorId === 'A')).toBe(true);
 });
@@ -21,7 +21,7 @@ it('reveal works at setup boundary even out of turn and exposes only revealed ch
   expect(r.ok).toBe(true); if (!r.ok) throw Error(r.code);
   expect(viewFor(r.state, 'A').players.B!.characterId).toBe(s.players.B!.characterId);
   expect(JSON.stringify(viewFor(r.state, 'A'))).not.toContain(s.players.C!.characterId);
-  expect(r.state.pending).toEqual(s.pending); expect(r.state.setupCursor).toBe(s.setupCursor); expect(r.state.players.B!.followers).toEqual([]);
+  expect(r.state.pending).toEqual(s.pending); expect(r.state.players.B!.followers).toEqual([]);
   expect(transition(r.state, { actorId: 'B', command: { type: 'REVEAL_CHARACTER' } }, entropy())).toEqual({ ok: false, code: 'ALREADY_REVEALED' });
 });
 it('views do not alias state and reject unknown viewers including prototype properties', () => {
@@ -41,7 +41,7 @@ it('projects only public window ownership and private legal command kinds',()=>{
   expect(actorView.legalChoices).toEqual(['REVEAL_CHARACTER','PASS','PLAY_REACTION']);expect(JSON.stringify(publicView.activeWindow)).not.toContain(s.players.C!.characterId);
 });
 
-it('projects explicit setup and turn choices only to the eligible viewer',()=>{const setup=freshGame();expect(viewFor(setup,'A').legalChoices).toEqual(['REVEAL_CHARACTER','PLACE_INITIAL_FOLLOWER','PASS_SETUP']);expect(viewFor(setup,'B').legalChoices).toEqual(['REVEAL_CHARACTER']);let turn=ready();expect(viewFor(turn,'A').legalChoices).toEqual(['REVEAL_CHARACTER','ATTACK','APPROACH','CHANT','ARRANGE_FOLLOWERS','REST','PLAY_TURN_CARD','PLAY_TURN_TECHNIQUE','PASS_ACTION']);expect(viewFor(turn,'B').legalChoices).toEqual(['REVEAL_CHARACTER','SET_CONDITIONAL_ABILITY']);expect(viewFor(turn,'B').conditionalAbilities).toEqual([expect.objectContaining({abilityId:'c2-p05-r2c1-ab05',enabled:false,canActivate:true,canDeactivate:false})]);});
+it('projects explicit setup and turn choices only to the eligible viewer',()=>{const setup=freshGame();expect(viewFor(setup,'A').legalChoices).toEqual(['REVEAL_CHARACTER','PLACE_INITIAL_FOLLOWER','PASS_SETUP']);expect(viewFor(setup,'B').legalChoices).toEqual(['REVEAL_CHARACTER','PLACE_INITIAL_FOLLOWER','PASS_SETUP']);const readied=act(setup,'B',{type:'PASS_SETUP'});expect(viewFor(readied,'B').legalChoices).toEqual(['REVEAL_CHARACTER']);expect(viewFor(readied,'A').legalChoices).toEqual(['REVEAL_CHARACTER','PLACE_INITIAL_FOLLOWER','PASS_SETUP']);let turn=ready();expect(viewFor(turn,'A').legalChoices).toEqual(['REVEAL_CHARACTER','ATTACK','APPROACH','CHANT','ARRANGE_FOLLOWERS','REST','PLAY_TURN_CARD','PLAY_TURN_TECHNIQUE','PASS_ACTION']);expect(viewFor(turn,'B').legalChoices).toEqual(['REVEAL_CHARACTER','SET_CONDITIONAL_ABILITY']);expect(viewFor(turn,'B').conditionalAbilities).toEqual([expect.objectContaining({abilityId:'c2-p05-r2c1-ab05',enabled:false,canActivate:true,canDeactivate:false})]);});
 
 it('projects self reveal at combat boundaries and out of turn without leaking concealed opponents',()=>{
   let s=ready();

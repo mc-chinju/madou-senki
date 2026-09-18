@@ -7,7 +7,7 @@ export type {ConditionalAbilitySetting} from './abilities/conditional-selection.
 export * from './state.js';
 export * from './commands.js';
 export { createGame, derivedStats } from './setup.js';
-export { transition } from './transition.js';
+export { transition, pendingSetupSeats } from './transition.js';
 export * from './view.js';
 export { activeWindowRef } from './reactions/windows.js';
 
