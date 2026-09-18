@@ -21,6 +21,14 @@ card clauses, reclaim,32 original examples, formal START, human playtests and Cl
 verification are still open. The revised plan tracks M0–M4 completion gates rather than a
 percentage inferred from task numbers.
 
+2026-09-18: the ledger gate is retired. `verify:readiness` is gone from `build`, and the
+ledger, its acceptance evidence and its scripts are frozen at the tag
+`ledger-accepted-2026-09-15` (`1dd5eb9a`) instead of living in the working tree; see
+[acceptance-policy.md](operations/acceptance-policy.md). Acceptance now rests on `pnpm test`
+and the retained E2E suite. The test suite itself is being slimmed in four PRs per the
+[test slimming plan](superpowers/plans/2026-09-18-test-slimming.md); the counts recorded
+above and below are the measurements of their own time and are not restated here.
+
 ## Current evidence
 
 - Baseline: source verifier passed (5 originals, 221 extracted files).

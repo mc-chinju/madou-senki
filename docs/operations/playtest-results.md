@@ -4,7 +4,7 @@
 
 ## 実ブラウザによる自動検証
 
-R0/R1の条件付き継続8能力を受け入れ、M0へ到達した。新規19件と既存の関連45件、計64件が4.6分ですべて成功。使用・解除・取消更新・再読込、隠れた対象の偽造拒否、対象別の従者攻撃数値、複数従者の実消費、ディアの通常手番末調整を確認した。Web197件・Worker437件・全型検査と独立レビューも成功し、検査後372ファイルのハッシュ一致を確認。[証跡](evidence/2026-09-08-r1-acceptance.json)と[表示画像](evidence/2026-09-08-r1-truth-target-values.png)を保存した。初回64件はmacOSサンドボックスによるChromium起動拒否で終了し、同じ固定ソースの許可済み再実行で検証した。対人の確認・正式デッキ・公開版の完了を意味しない。
+R0/R1の条件付き継続8能力を受け入れ、M0へ到達した。新規19件と既存の関連45件、計64件が4.6分ですべて成功。使用・解除・取消更新・再読込、隠れた対象の偽造拒否、対象別の従者攻撃数値、複数従者の実消費、ディアの通常手番末調整を確認した。Web197件・Worker437件・全型検査と独立レビューも成功し、検査後372ファイルのハッシュ一致を確認。証跡（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-08-r1-acceptance.json`）と表示画像（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-08-r1-truth-target-values.png`）を保存した。初回64件はmacOSサンドボックスによるChromium起動拒否で終了し、同じ固定ソースの許可済み再実行で検証した。対人の確認・正式デッキ・公開版の完了を意味しない。
 
 Task7uでは魔詩・恐怖・魅了を追加。判定の振り直し、次の本人席での停止解除、現在の目的・敗北条件の置換、他対象の宣言済み攻撃を残した死亡・贈与を確認した。死亡保留中の手裏剣の追加選択を修正し、原文検証の一時ファイル依存も解消して独立再レビューを通過。Web161件・Worker233件・型検査、新規ブラウザ13経路と関連27経路が成功。全168件の実行は167件成功・既存の秘密情報テスト1件失敗（14.0分）。本人の保護対象まで漏えいと判定していたテストを修正し、関連2件が8.3秒で成功、修正の独立レビューも通過した。製品コードは同一で、全168経路の確認はこの初回結果と再実行の組合せ。関連実行の画像GET再試行10件は全件復旧し、全体実行には1msのローカルアラーム警告が1件あった。人間の通し対戦・正式デッキの完成を示すものではない。
 
@@ -82,7 +82,7 @@ Task7wの宣言時13能力を追加し、全213件を一括検証したところ
 ## 操作数の測定
 
 M0の同じ固定ソースで `tests/e2e/combat.spec.ts` を再実行し、4件すべてが34.5秒で成功。
-[現在の測定値](evidence/2026-09-08-r3-combat-metrics.json)を保存し、実行後372ファイルのハッシュ一致を確認した。
+現在の測定値（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-08-r3-combat-metrics.json`）を保存し、実行後372ファイルのハッシュ一致を確認した。
 
 | M0での測定 | 人数 | 窓数 | パス回数 | 自動操作・ローカル通信の所要時間 |
 |---|---:|---:|---:|---:|
@@ -95,7 +95,7 @@ M0の同じ固定ソースで `tests/e2e/combat.spec.ts` を再実行し、4件�
 現候補では明示パスを維持する。自動パス方式の新規採用や秘密情報による順番省略は行っていない。
 
 
-[Task7wの測定データ（全体実行中の3戦闘が成功）](evidence/task7w-browser-metrics.json)・[Task7uの測定データ（全体実行中の3戦闘が成功）](evidence/task7u-browser-metrics.json)・[Task7sの測定データ（追加10経路・関連23件確認）](evidence/task7s-browser-metrics.json)・[Task7rの測定データ（追加11件・関連20件成功）](evidence/task7r-browser-metrics.json)・[Task7qの測定データ（関連20件成功）](evidence/task7q-browser-metrics.json)・[Task7p修正後の測定データ（全116件成功）](evidence/task7p-browser-metrics.json)・[Task7o修正後の測定データ（全108件成功）](evidence/task7o-browser-metrics.json)・[Task7n修正後の測定データ（全101件成功）](evidence/task7n-browser-metrics.json)・[Task7m修正後の測定データ（全94件成功）](evidence/task7m-browser-metrics.json)・[Task7l修正後の測定データ（全87件成功）](evidence/task7l-browser-metrics.json)（[Task7j修正後の測定データ（全73件成功）](evidence/task7j-browser-metrics.json)）（[Task7h時点の測定データ（レビュー修正前の全51件実行）](evidence/task7h-browser-metrics.json)）（[Task7gの測定](evidence/task7g-browser-metrics.json)）（[Task7fの測定](evidence/task7f-browser-metrics.json)・[初期の測定](evidence/task6-browser-metrics.json)も保持）。時間は自動操作とローカル通信の所要時間で、人間の判断時間・待ち時間やCloudflare上の遅延ではない。
+Task7wの測定データ（全体実行中の3戦闘が成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7w-browser-metrics.json`）・Task7uの測定データ（全体実行中の3戦闘が成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7u-browser-metrics.json`）・Task7sの測定データ（追加10経路・関連23件確認）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7s-browser-metrics.json`）・Task7rの測定データ（追加11件・関連20件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7r-browser-metrics.json`）・Task7qの測定データ（関連20件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7q-browser-metrics.json`）・Task7p修正後の測定データ（全116件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7p-browser-metrics.json`）・Task7o修正後の測定データ（全108件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7o-browser-metrics.json`）・Task7n修正後の測定データ（全101件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7n-browser-metrics.json`）・Task7m修正後の測定データ（全94件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7m-browser-metrics.json`）・Task7l修正後の測定データ（全87件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7l-browser-metrics.json`）（Task7j修正後の測定データ（全73件成功）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7j-browser-metrics.json`））（Task7h時点の測定データ（レビュー修正前の全51件実行）（`ledger-accepted-2026-09-15:docs/operations/evidence/task7h-browser-metrics.json`））（Task7gの測定（`ledger-accepted-2026-09-15:docs/operations/evidence/task7g-browser-metrics.json`））（Task7fの測定（`ledger-accepted-2026-09-15:docs/operations/evidence/task7f-browser-metrics.json`）・初期の測定（`ledger-accepted-2026-09-15:docs/operations/evidence/task6-browser-metrics.json`）も保持）。時間は自動操作とローカル通信の所要時間で、人間の判断時間・待ち時間やCloudflare上の遅延ではない。
 
 | 試験 | 測定範囲 | 窓数 | パス回数 | 自動操作の所要時間 |
 |---|---|---:|---:|---:|

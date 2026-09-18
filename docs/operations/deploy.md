@@ -46,14 +46,15 @@ pnpm test:e2e
 以下は対象アカウント・環境・素材配信条件・完成候補を確認した後に実行する手順。D1 UUIDは `wrangler.jsonc` に設定済み。実配備の結果は「候補と配備先の記録」へ追記する。
 
 1. 対象アカウントとstagingを確定し、D1 `madou-senki-staging`を作成する。返されたUUIDを `env.staging.d1_databases[0].database_id` へ設定する。productionも別DB/UUIDにする。
-2. `python3 scripts/generate_catalog_readiness.py --check --require-ready`、`pnpm verify:assets`を通し、`pnpm build`と該当環境のdry-runを確認する。通常のbuildは検証用の`ready=false`も許すため、build成功だけを公開可能の証拠にしない。
+2. `pnpm test`、残した`pnpm test:e2e`、`pnpm verify:assets`を通し、`pnpm build`と該当環境のdry-runを確認する。buildは公開可能の判定を行わないため、build成功だけを公開可能の証拠にしない。公開可能の証拠は`pnpm test`と`tests/e2e`の全件成功である。
 3. 「アカウントとログイン」の`AUTH_SECRET`とEmail Sendingを済ませ、D1 migration（`0001_sessions_rooms.sql`、`0002_better_auth.sql`）を対象環境へ適用してからWorkerを配備する。
 4. 別々のアカウントでログインしたブラウザで招待・参加・開始・切断復帰を確認する。リモートsmokeは事前登録したアカウントのCookieを`REMOTE_SESSION_COOKIES`（JSON配列、Gitや記録に残さない）で渡す。
 5. stagingの実戦・障害試験を記録してから、同じビルドをproductionのbindingsで検証・配備する。
 
 ```bash
 # 完成候補の確認。いずれか失敗した場合は以降の配備へ進まない:
-python3 scripts/generate_catalog_readiness.py --check --require-ready
+pnpm test
+pnpm test:e2e
 pnpm verify:assets
 pnpm build
 pnpm --filter @madou/worker exec wrangler deploy --env staging --dry-run --outdir dist-staging
@@ -98,7 +99,7 @@ pnpm --filter @madou/worker exec wrangler secret put AUTH_SECRET --env productio
 
 ### 候補と配備先の記録
 
-配備ごとに以下を実値で残す。現在の準備状況は[2026-09-10の記録](evidence/2026-09-10-r8-preparation.md)を参照する。空欄や未確認を成功扱いにしない。
+配備ごとに以下を実値で残す。当時の準備状況は `git show ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r8-preparation.md` を参照する（証跡はタグ上にのみ存在する）。空欄や未確認を成功扱いにしない。
 
 - 候補: ソースを固定した識別子とハッシュ、rulesetId、readinessと台帳のハッシュ、実施した受け入れ結果。dirtyな作業ツリーではcommit IDだけを候補の識別子にしない。
 - 成果物: Worker bundleと静的配信ファイル一式のハッシュ、画像manifestのハッシュ、使用したビルドコマンド。staging検証後に再ビルド・ソース変更した場合は同一候補とは扱わない。
@@ -148,17 +149,17 @@ DO migration `v1`でSQLiteクラス`Room`を作る。保存済み卓の`schemaVe
 | staging | madou-senki-staging | madou-senki-staging | `0fc033a4-97d0-40f1-b627-7890f88c938e` |
 | production | madou-senki | madou-senki-production | `f659209f-59b8-462f-80ed-d337e4af855b` |
 
-staging へ `0001_sessions_rooms.sql` を `--remote` 適用済み。実測は [staging記録](evidence/2026-09-11-staging.md)。production へ同じ migration を `--remote` 適用済み。
+staging へ `0001_sessions_rooms.sql` を `--remote` 適用済み。実測は `ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-11-staging.md`。production へ同じ migration を `--remote` 適用済み。
 
 ## 候補と配備先の記録（production / 2026-09-15）
 
 アカウントID・認証トークン・Cookieは書かない。
 
 - 候補コミット: `1dd5eb9a15217076ae4c2372e2fc071f4e1d401a`（凍結 `31c3a718e8588388d5f345b69cecc2964a384791`）
-- 候補記録: [2026-09-11-release-candidate.md](evidence/2026-09-11-release-candidate.md)
-- run: `docs/operations/evidence/2026-09-11-candidate-run.json`
+- 候補記録: `ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-11-release-candidate.md`
+- run: `ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-11-candidate-run.json`
 - run sha256: `7297a9e76b34edeabdeebaf767200a6b8d381bc287040f0b5bc8f8a7c3e43a43`
-- readiness: `packages/catalog/src/selected/readiness.json`
+- readiness: `packages/catalog/src/selected/readiness.json`（生成器を削除したため、タグ時点の値で固定。手で書き換えない限り変わらない）
 - readiness sha256: `9ff25089e58440074f6319959b7eafa40e2961b4e6da33bce8867b3bb5858ba3`
 - Worker: `madou-senki`
 - D1: `madou-senki-production`（`f659209f-59b8-462f-80ed-d337e4af855b`）
