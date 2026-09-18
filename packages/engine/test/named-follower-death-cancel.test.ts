@@ -3,7 +3,7 @@ import {expect,it} from 'vitest';
 import {viewFor} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {handCard,character} from './fixtures.js';
-import {makeNamedDeathScenario,namedDeathCases,type NamedDeathScenario} from '../../../apps/worker/test/fixtures/named-follower-death-scenario.js';
+import {makeNamedDeathScenario,namedDeathCases,type NamedDeathScenario} from './fixtures/named-follower-death-scenario.js';
 const cases=['reclaim-named-death-ship','reclaim-named-death-dragon','reclaim-named-death-griffin','reclaim-named-death-skeleton','reclaim-named-death-zombie','reclaim-named-death-wight','reclaim-named-death-knight'] as const;
 function death(scenario:NamedDeathScenario,vanmil=false){
  let s=makeNamedDeathScenario(scenario,['A','B','C','D'].map(id=>({id,name:id})));

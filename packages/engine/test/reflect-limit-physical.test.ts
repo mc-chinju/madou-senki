@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,until,pass,closeWindow,passReclaims,ready} from './combat-helpers.js';
 import {entropy,handCard} from './fixtures.js';
-import {makeReflectLimitScenario} from '../../../apps/worker/test/fixtures/reflect-limit-scenarios.js';
+import {makeReflectLimitScenario} from './fixtures/reflect-limit-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=[['reflect-limit-mirror','a2-p11-r1c3',false,'warrior',6,5],['reflect-limit-mirror','a2-p11-r1c3',true,'warrior',7,6],['reflect-limit-god','a2-p17-r3c2',false,'magic',6,-1]] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

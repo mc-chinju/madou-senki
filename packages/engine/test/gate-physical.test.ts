@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeGatePhysicalScenario,GATE,type GatePhysicalScenario} from '../../../apps/worker/test/fixtures/gate-physical-scenarios.js';
+import {makeGatePhysicalScenario,GATE,type GatePhysicalScenario} from './fixtures/gate-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function command(s:GameState,targetPosition=0,destinationPosition=0){return {type:'PLAY_TURN_TECHNIQUE' as const,cardInstanceId:GATE,targetIds:['B'],dedicated:false,followerTransfer:{targetPosition,destinationPosition,...(s.players.A!.followers.length===2?{replacementCardInstanceId:s.players.A!.followers[1]!.cardInstanceId}:{})}};}
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

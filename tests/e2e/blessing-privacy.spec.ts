@@ -48,40 +48,48 @@ test('actual exempt and ordinary Blessing share checks attempts and outside tran
       if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[replace(k),normalized(table,v)]));
       return value;
     }
-    function same(){for(const seat of [0,2,3])expect(normalized(exempt,views[1]!.get(exempt.sessions[seat]!.id)!.game)).toEqual(normalized(ordinary,views[0]!.get(ordinary.sessions[seat]!.id)!.game));}
-    same();
+    // click() only waits for the owner's snapshot; seats 2 and 3 receive their own, so wait for them
+    // to reach the owner's revision before comparing, otherwise a stale view fails the comparison.
+    async function same(){
+      for(const [index,table] of tables.entries()){
+        const revision=views[index]!.get(table.sessions[0]!.id)!.revision;
+        for(const seat of [2,3])await expect.poll(()=>views[index]!.get(table.sessions[seat]!.id)?.revision).toBeGreaterThanOrEqual(revision);
+      }
+      for(const seat of [0,2,3])expect(normalized(exempt,views[1]!.get(exempt.sessions[seat]!.id)!.game)).toEqual(normalized(ordinary,views[0]!.get(ordinary.sessions[seat]!.id)!.game));
+    }
+    await same();
     for(const [index,table] of tables.entries()){
       const panel=table.pages[0]!.getByRole('region',{name:'能力の禁止と祝福'});
       await panel.getByRole('checkbox',{name:'楓',exact:true}).check();await click(table,views[index]!,panel.getByRole('button',{name:'神と人の差を使う',exact:true}));
     }
-    same();
+    await same();
     for(let n=0;n<150;n++){
       const g=views[0]!.get(ordinary.sessions[0]!.id)!.game!;if(!g.activeWindow)break;
       const seat=ordinary.sessions.findIndex(p=>p.id===g.activeWindow!.pendingActorId);
       for(const [index,table] of tables.entries())await click(table,views[index]!,table.pages[seat]!.getByRole('button',{name:windowPassButtonName}));
-      same();
+      await same();
     }
     for(const [index,table] of tables.entries()){
       expect(views[index]!.get(table.sessions[0]!.id)!.game!.activeWindow).toBeNull();
       for(const page of table.pages)await page.reload();
     }
-    same();
+    await same();
     expect(views[0]!.get(ordinary.sessions[1]!.id)!.game!.suppressionTargets[0]!.applicability).toBe('suppressed');
     expect(views[1]!.get(exempt.sessions[1]!.id)!.game!.suppressionTargets[0]!.applicability).toBe('exempt');
-    for(const [index,table] of tables.entries())await toLiaTurn(table,views[index]!);same();
+    for(const [index,table] of tables.entries())await toLiaTurn(table,views[index]!);await same();
     for(const [index,table] of tables.entries()){
       const panel=table.pages[2]!.getByRole('region',{name:'能力の禁止と祝福'});await panel.getByLabel('祝福する対象').selectOption(table.sessions[1]!.id);await click(table,views[index]!,panel.getByRole('button',{name:'祝福を使う',exact:true}));
-    }same();
+    }await same();
     let sawRoll=false;
     for(let n=0;n<150;n++){
       const g=views[0]!.get(ordinary.sessions[0]!.id)!.game!;
       const roll=views[0]!.get(ordinary.sessions[2]!.id)!.game!.currentRoll;
-      if(roll?.stage==='after-roll'){sawRoll=true;expect(roll).toMatchObject({formula:'2d6',modifier:-5,faces:[1,1],success:true});for(const table of tables)for(const page of table.pages)await page.reload();same();}
+      if(roll?.stage==='after-roll'){sawRoll=true;expect(roll).toMatchObject({formula:'2d6',modifier:-5,faces:[1,1],success:true});for(const table of tables)for(const page of table.pages)await page.reload();await same();}
       if(!g.activeWindow)break;const seat=ordinary.sessions.findIndex(p=>p.id===g.activeWindow!.pendingActorId);
-      for(const [index,table] of tables.entries())await click(table,views[index]!,table.pages[seat]!.getByRole('button',{name:windowPassButtonName}));same();
+      for(const [index,table] of tables.entries())await click(table,views[index]!,table.pages[seat]!.getByRole('button',{name:windowPassButtonName}));await same();
     }
     expect(sawRoll).toBe(true);
-    for(const [index,table] of tables.entries()){for(const page of table.pages)await page.reload();const own=views[index]!.get(table.sessions[2]!.id)!.game!;expect(own.activeWindow).toBeNull();expect(own.abilityOptions.some(o=>o.abilityId===BLESS)).toBe(false);await expect(table.pages[2]!.getByRole('button',{name:'行動を終える',exact:true})).toBeVisible();}same();
+    for(const [index,table] of tables.entries()){for(const page of table.pages)await page.reload();const own=views[index]!.get(table.sessions[2]!.id)!.game!;expect(own.activeWindow).toBeNull();expect(own.abilityOptions.some(o=>o.abilityId===BLESS)).toBe(false);await expect(table.pages[2]!.getByRole('button',{name:'行動を終える',exact:true})).toBeVisible();}await same();
     const leases=[];for(const table of tables){const saved=await(await request.get(`/__test/rooms/${table.roomId}/game`)).json();expect(saved.blessingLeases).toHaveLength(1);leases.push(normalized(table,saved.blessingLeases));}expect(leases[1]).toEqual(leases[0]);
     expect(views[0]!.get(ordinary.sessions[1]!.id)!.game!.suppressionTargets[0]!.applicability).toBe('relieved');
     expect(views[1]!.get(exempt.sessions[1]!.id)!.game!.suppressionTargets[0]!.applicability).toBe('exempt');

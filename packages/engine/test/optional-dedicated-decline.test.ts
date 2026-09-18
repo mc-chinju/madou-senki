@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
 import { allCardInstanceIds, transition, viewFor, type GameCommand } from '../src/index.js';
 import { entropy } from './fixtures.js';
-import { makeSuppressionScenario } from '../../../apps/worker/test/fixtures/suppression-scenarios.js';
-import { makeFollowerAttackScenario } from '../../../apps/worker/test/fixtures/follower-attack-scenarios.js';
+import { makeSuppressionScenario } from './fixtures/suppression-scenarios.js';
+import { makeFollowerAttackScenario } from './fixtures/follower-attack-scenarios.js';
 it.each(['suppression-hidden-ordinary', 'follower-attack-griffin'] as const)('G09 %s remains unelected through actual turn end', scenario => {
   const players = ['A', 'B', 'C', 'D'].map(id => ({ id, name: id }));
   let state = scenario === 'suppression-hidden-ordinary' ? makeSuppressionScenario(scenario, players) : makeFollowerAttackScenario(scenario, players);

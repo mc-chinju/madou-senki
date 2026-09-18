@@ -3,8 +3,8 @@ import {getAction,actionCards} from '@madou/catalog';
 import {viewFor,gameStats,allCardInstanceIds,type GameState} from '../src/index.js';
 import {canUseCharacterAbility} from '../src/state.js';
 import {act as checkedAct} from './combat-helpers.js';
-import {makeCanonicalLiaLife} from '../../../apps/worker/test/fixtures/canonical-lia-life-scenario.js';
-import {makeCanonicalRecovery} from '../../../apps/worker/test/fixtures/canonical-recovery-scenario.js';
+import {makeCanonicalLiaLife} from './fixtures/canonical-lia-life-scenario.js';
+import {makeCanonicalRecovery} from './fixtures/canonical-recovery-scenario.js';
 function trace(s:GameState){const w=s.windows?.at(-1);return JSON.stringify({phase:s.phase,window:w,chooser:w?.participants[w.cursor],view:w?viewFor(s,w.participants[w.cursor]!).activeWindow:null});}
 function savedState(s:GameState){
  const ids=allCardInstanceIds(s);expect(ids).toHaveLength(220);expect(new Set(ids).size).toBe(220);expect(ids.sort()).toEqual(actionCards.map(card=>card.id).sort());
@@ -143,7 +143,7 @@ it('R6 Task5 actual Vanmil death retains accepted designations before G15 commit
  for(const id of ['A','B','C','D'])expect(viewFor(s,id).outcome).toEqual(s.outcome);
 });
 
-import {makeR6CombinedDeathScenario} from '../../../apps/worker/test/fixtures/r6-combined-death-scenario.js';
+import {makeR6CombinedDeathScenario} from './fixtures/r6-combined-death-scenario.js';
 it('R6 Task5 actual two target three hit attack returns one local counter before Soldier reduction and simultaneous deaths',()=>{
  let s=makeR6CombinedDeathScenario(['A','B','C','D'].map(id=>({id,name:id})),true);
  const parent=Object.values(s.groups!)[0]!,source=s.actions![parent.actionId]!,counter='a2-p10-r3c3',soldier=s.players.C!.followers[0]!.cardInstanceId,b=s.players.B!.damage,c=s.players.C!.damage,a=s.players.A!.damage;

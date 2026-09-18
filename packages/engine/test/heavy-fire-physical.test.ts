@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeHeavyFireScenario,heavyFireMode,type HeavyFireScenario} from '../../../apps/worker/test/fixtures/heavy-fire-scenarios.js';
+import {makeHeavyFireScenario,heavyFireMode,type HeavyFireScenario} from './fixtures/heavy-fire-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['fire-stream-ordinary','fire-stream-dedicated','raging-fire-ordinary','raging-fire-dedicated','raging-fire-chanted-dedicated'] as const;
 function command(scenario:HeavyFireScenario){const m=heavyFireMode(scenario);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

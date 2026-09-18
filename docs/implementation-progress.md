@@ -21,6 +21,28 @@ card clauses, reclaim,32 original examples, formal START, human playtests and Cl
 verification are still open. The revised plan tracks M0–M4 completion gates rather than a
 percentage inferred from task numbers.
 
+2026-09-18: the ledger gate is retired. `verify:readiness` is gone from `build`, and the
+ledger, its acceptance evidence and its scripts are frozen at the tag
+`ledger-accepted-2026-09-15` (`1dd5eb9a`) instead of living in the working tree; see
+[acceptance-policy.md](operations/acceptance-policy.md). Acceptance now rests on `pnpm test`
+and the retained E2E suite. The test suite itself is being slimmed in four PRs per the
+[test slimming plan](superpowers/plans/2026-09-18-test-slimming.md); the counts recorded
+above and below are the measurements of their own time and are not restated here.
+
+2026-09-18 (PR2): the E2E suite is now 31 tests in 25 spec files (30 selected in PR2 plus `public-record.spec.ts` merged from main), down from 2,173 in 221.
+What remains is limited to what only a browser can show: real on-screen operation, restoring
+after a reload, multi-seat synchronisation, HTTP/WebSocket body secrecy, login and operability.
+Rule outcomes are verified in `packages/engine/test`, and the card-specific UI branches that
+only E2E used to exercise now have `apps/web/test` unit tests.
+
+2026-09-18 (PR3): the Worker suite is now 10 test files, down from 215. What remains is the
+Worker's own concern — authentication, the lobby, per-participant WebSocket projection,
+persistence and replay idempotency, per-participant secrecy, disconnection and the endgame.
+The scenario fixtures moved to `packages/engine/test/fixtures`, so no engine test depends on
+an application's test assets any more.
+
+2026-09-18 (PR4): the engine tests are named after the behaviour they verify instead of the task that produced them, the `owned-reclaim` single cases and matrix share one file, and the protocol suite is 5 files, down from 33; all original `it` cases are retained because review found distinct assertions in the three initially removed cases.
+
 ## Current evidence
 
 - Baseline: source verifier passed (5 originals, 221 extracted files).

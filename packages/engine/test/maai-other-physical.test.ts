@@ -3,8 +3,8 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeMaaiOtherPhysical,maaiOtherSecond as SECOND,maaiOtherAdvance as ADVANCE} from '../../../apps/worker/test/fixtures/maai-other-physical-scenarios.js';
-import {makeR6MaaiScenario} from '../../../apps/worker/test/fixtures/r6-maai-scenarios.js';
+import {makeMaaiOtherPhysical,maaiOtherSecond as SECOND,maaiOtherAdvance as ADVANCE} from './fixtures/maai-other-physical-scenarios.js';
+import {makeR6MaaiScenario} from './fixtures/r6-maai-scenarios.js';
 const cards=['a2-p06-r1c3','a2-p06-r2c1','a2-p06-r2c2','a2-p06-r2c3','a2-p06-r3c1','a2-p06-r3c2','a2-p06-r3c3'] as const;
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<600;n++){if(done(s))return s;s=pass(s);}throw Error('MAAI_OTHER_LIMIT');}

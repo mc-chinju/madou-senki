@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeWolfFangPhysical,wolfFangCard as CARD,wolfFangMode} from '../../../apps/worker/test/fixtures/wolf-fang-physical-scenarios.js';
+import {makeWolfFangPhysical,wolfFangCard as CARD,wolfFangMode} from './fixtures/wolf-fang-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice:number[]=Array(30).fill(3)){for(let n=0;n<700;n++){if(done(s))return s;s=pass(s,dice);}throw Error('WOLF_FANG_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

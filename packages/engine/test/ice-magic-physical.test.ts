@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeIceMagicScenario as makeFixture,iceMagicMode,type IceMagicScenario} from '../../../apps/worker/test/fixtures/ice-magic-scenarios.js';
+import {makeIceMagicScenario as makeFixture,iceMagicMode,type IceMagicScenario} from './fixtures/ice-magic-scenarios.js';
 function makeIceMagicScenario(scenario:Parameters<typeof makeFixture>[0],ps:Parameters<typeof makeFixture>[1],options:Parameters<typeof makeFixture>[2]={}){return makeFixture(scenario,ps,{guard:'none',...options});}
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['ice-arrow-ordinary','ice-arrow-dedicated','ice-stream-ordinary','ice-stream-dedicated'] as const;

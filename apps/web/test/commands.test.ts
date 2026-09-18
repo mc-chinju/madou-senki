@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { arrangeFollowers, buildCardCommand, discardRequirement, eligibleChantCards, eligibleReactionCards, moveFollower, toggleSelection } from '../src/game/commands.js';
+import { arrangeFollowers, buildCardCommand, discardRequirement, eligibleChantCards, eligibleReactionCards, moveFollower, techniqueVariants, toggleSelection } from '../src/game/commands.js';
 test('Printed black chant prohibition stays mandatory in Fury selection UI',()=>{expect(eligibleChantCards(['a2-p13-r3c2','a2-p09-r2c3','a2-p10-r1c3'],'妖精王フューリー')).toEqual(['a2-p10-r1c3']);});
 
 describe('game command input', () => {
@@ -133,4 +133,13 @@ test.each([['侍大将のシン','GOOD',false],['侍大将のシン','EVIL',true
  const cards=eligibleChantCards(['a2-p09-r2c3','a2-p10-r1c3'],name,false,false,faction);
  expect(cards.includes('a2-p09-r2c3')).toBe(eligible);
  expect(cards).toContain('a2-p10-r1c3');
+});
+
+test('LancelotII offers the two printed variants only for its own dedicated sword sources', () => {
+  for (const cardId of ['a2-p11-r2c1', 'a2-p11-r2c2']) {
+    expect(techniqueVariants(cardId, '聖騎士ランスロット2', true).map(option => option.value)).toEqual(['lancelot-2', 'lancelot-1']);
+    expect(techniqueVariants(cardId, '聖騎士ランスロット2', false)).toEqual([]);
+    expect(techniqueVariants(cardId, '聖騎士ランスロット', true)).toEqual([]);
+  }
+  expect(techniqueVariants('a2-p11-r2c3', '聖騎士ランスロット2', true)).toEqual([]);
 });

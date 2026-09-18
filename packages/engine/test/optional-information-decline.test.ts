@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { allCardInstanceIds, transition, viewFor, type GameCommand } from '../src/index.js';
 import { entropy } from './fixtures.js';
-import { makeTurnInformationScenario } from '../../../apps/worker/test/fixtures/turn-information-scenarios.js';
+import { makeTurnInformationScenario } from './fixtures/turn-information-scenarios.js';
 
 it.each([
   ['info-cham-followers', 'c2-p01-r2c2-ab03'], ['info-lia-chants', 'c2-p03-r1c2-ab02'],

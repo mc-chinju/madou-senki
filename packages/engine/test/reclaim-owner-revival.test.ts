@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {freshGame} from './fixtures.js';
-import {assignCharacter,takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 
 it('Actual same-root death and FuSen revival do not give the old reserved prayer to the new life',()=>{
  let s=freshGame();

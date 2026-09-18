@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import { allCardInstanceIds, transition, viewFor, type GameCommand } from '../src/index.js';
 import {act,finish,pass} from './combat-helpers.js';
 import { entropy,handCard } from './fixtures.js';
-import { makeLifecycleScenario } from '../../../apps/worker/test/fixtures/lifecycle-scenarios.js';
+import { makeLifecycleScenario } from './fixtures/lifecycle-scenarios.js';
 it.each([false, true])('G09 hidden Lancelot elects transformation %s only after explicit choice', use => {
   let state = makeLifecycleScenario('lifecycle-transform-hidden', ['A', 'B', 'C', 'D'].map(id => ({ id, name: id })));
   const before = structuredClone(state), ability = 'c2-p02-r2c2-ab05';

@@ -30,7 +30,7 @@ so Task 7a does not invent a multi-hit mode for them.
 ## Task 7b — remaining direct warrior techniques
 
 The 17 physical cards below are covered through real `transition` calls in
-`packages/engine/test/task7b-techniques.test.ts`. Every accepted step is replayed from a JSON copy
+`packages/engine/test/printed-techniques.test.ts`. Every accepted step is replayed from a JSON copy
 with the same entropy and checks that the exact 220-card physical multiset is conserved. The
 catalog remains pending and the formal production START gate is unchanged.
 
@@ -73,7 +73,7 @@ JSON replay.
 
 These 28 physical cards use `effects/magic-techniques.ts` through the existing action/check/damage,
 normal-defense, follower, hit, and cleanup continuations in `combat/attack.ts`. Real transitions in
-`packages/engine/test/task7c-magic-techniques.test.ts` cover every ordinary attack and every printed
+`packages/engine/test/magic-techniques.test.ts` cover every ordinary attack and every printed
 dedicated package, immutable wrong-owner/invalid-target rejection, chant/check rules, counter paths,
 target-local 凍流 choices, follower predicates, 疫病 immunity, and frozen/shared damage. Protocol
 validation for the explicit 凍流 choice is in `packages/protocol/test/validation.test.ts`. Catalog
@@ -151,7 +151,7 @@ and raw continuation frames are never projected. `reactionTargetRollId` is avail
 for the top unresolved result; an underlying result may remain visible while its reaction
 child is declared. Incoming attack context remains public during defense and follower rolls.
 
-`packages/engine/test/task7d-rolls.test.ts` covers these transitions, nested cancellation,
+`packages/engine/test/rolls.test.ts` covers these transitions, nested cancellation,
 exact over-limit replacement plus OPEN draws, retained prayer reservations, counter-parent
 G06 identity, privacy, and repeated JSON replay with physical-card conservation. Existing
 timing-sensitive tests now provide entropy and assert final rules at the actual persisted
@@ -206,7 +206,7 @@ modifier/index, and optional public source actor/card metadata. Internal status 
 modifier sequences, target bookkeeping, thresholds, and concealed check results are omitted.
 Legacy persisted statuses without source metadata project safely without fabricating identity.
 
-`packages/engine/test/task7e-status-defenses.test.ts` covers ordinary and exact-owner dedicated
+`packages/engine/test/status-defenses.test.ts` covers ordinary and exact-owner dedicated
 transitions, immutable wrong-owner/restriction rejection, every printed modifier sequence,
 conditional success/failure damage, recovery progression, both 結界 copies, failed-defense parent
 recovery, counter prohibition, Lancaster high-Lv success/failure, public privacy, JSON replay, and
@@ -219,12 +219,12 @@ later slices.
 
 ## Task 7f — persisted lifecycle, OPEN continuations, and stable outcomes
 
-`packages/engine/test/task7f-lifecycle.test.ts` exercises real attacks, draws, turn-end/recovery
+`packages/engine/test/lifecycle-outcomes.test.ts` exercises real attacks, draws, turn-end/recovery
 refills, reaction acceptance, optional revival and re-setup, physical gift/ritual declarations,
 and stable public outcomes. Every accepted helper transition is compared with a JSON-restored
 transition using identical entropy, and checks the exact physical-card multiset including
 resolution/reclaim/distance reservations. Strict lifecycle command parsing is covered in
-`packages/protocol/test/lifecycle.test.ts`. The root task owns Worker/browser integration.
+`packages/protocol/test/commands-abilities.test.ts`. The root task owns Worker/browser integration.
 
 | Source / physical identity | Executable paths | Remaining dependency |
 |---|---|---|
@@ -265,14 +265,14 @@ A17/A18 gift recipient validation and projection now share the owning persisted 
 full `actorIds` exclusion. A disposed victim revived by a nested Fate-refill/FuSen cannot receive
 a later gift from the same batch. The check applies at acceptance and resolution, including a
 restored historically accepted action, and invalid commands leave cost/state/revision unchanged.
-`packages/engine/test/task7f-fix1.test.ts` covers both review findings with real death settlement,
+`packages/engine/test/lifecycle-outcomes.test.ts` covers both review findings with real death settlement,
 nested cancellation/refill/roll/revival/re-setup, exact220 conservation and JSON restoration.
 
 ## Task 7g — lifetime-dependent printed techniques
 
 Source: adopted T12, T29–33, T35, T37, T39–41 and F04; the eleven exact physical
 records are captured in `.superpowers/sdd/2026-09-07-online-game/task-7g-source-cards.json`.
-`packages/engine/test/task7g-lifetime.test.ts` exercises actual accepted declarations,
+`packages/engine/test/lifetime-effects.test.ts` exercises actual accepted declarations,
 rolls, defenses, choices, death batches, draws and re-setup. Its ordinary/dedicated
 mode matrix checks saved printed values before consuming the actual physical card.
 Every accepted helper transition is compared with JSON restoration and preserves the
@@ -326,7 +326,7 @@ projected only to the owning player. There is no synthetic physical ability card
 
 | Canonical ability | Executable behavior | Covering real transitions | Remaining dependencies |
 |---|---|---|---|
-| `c2-p02-r2c2-ab05` 姫への愛 | Cancellable optional transformation, once-game attempt consumed on acceptance; public Lia revalidated; retained damage, allegiance/history and inherited source identities | `task7h-abilities.test.ts`, adapted `task7f-lifecycle.test.ts` and `task7g-lifetime.test.ts` | Other Lancelot abilities/reclaim |
+| `c2-p02-r2c2-ab05` 姫への愛 | Cancellable optional transformation, once-game attempt consumed on acceptance; public Lia revalidated; retained damage, allegiance/history and inherited source identities | `character-abilities.test.ts`, adapted `lifecycle-outcomes.test.ts` and `lifetime-effects.test.ts` | Other Lancelot abilities/reclaim |
 | `c2-p07-r1c2-ab04` 破壊神の下僕達 | Cancellable awakening event declaration; acceptance consumes attempt; permanent allegiance/protection outcome retained | Accepted/canceled boundary paths; live state validation and no same-event retry | Vanmil suppression and other optional abilities |
 | `c2-p04-r2c1-ab04` 陰謀 | Cancellable awakening declaration; accepted attempt consumed; only resolved effect exits/wins | Accepted/canceled boundary paths and personal result retention | Other Arseil abilities |
 | `c2-p04-r2c2-ab01` 影分身 | Own spirit−2 then enemy spirit−2 only on own success; enemy failure negates that incoming hit and offers one physical child attack; ordinary range/chant/use costs, no approach/withdrawal | Failed/self/enemy checks, optional non-counter attack, declined child, independent multi-hit attempts, saved parent continuation | Dedicated 影分身 technique remains a separate card task |
@@ -350,8 +350,8 @@ formal START remain pending; this section claims exactly the seven paths above.
 ## Task7i — remaining ten combination and defense techniques
 
 All ten physical sources below now have ordinary/dedicated real-transition coverage in
-`packages/engine/test/task7i-combinations.test.ts`, with strict wire cases in
-`packages/protocol/test/task7i-combinations.test.ts`. The common helper replays every accepted
+`packages/engine/test/combinations.test.ts`, with strict wire cases in
+`packages/protocol/test/commands-combat.test.ts`. The common helper replays every accepted
 step from JSON using identical entropy and checks the exact conserved 220-card multiset.
 The registry remains bounded: no catalog implementation flags or production START gate changed.
 
@@ -377,7 +377,7 @@ and T43–44 Lia substitution remain major provisional rulings requiring indepen
 ### Task7i fix1 — source authority, relative defense limits, exact granted attacks
 
 Independent review findings I1/I2 are covered by real transitions in
-`packages/engine/test/task7i-fix1.test.ts`. Beast components now require actual printed 戦
+`packages/engine/test/combinations.test.ts`. Beast components now require actual printed 戦
 classification/use-Lv, or an explicit supported mixed-card warrior attack mode. Generic 見切る
 is rejected and unoffered; real 踏み込み／弓 and received-warrior dynamic 受け流し remain legal.
 
@@ -567,7 +567,7 @@ bottoms, private/public projections, strict acceptance, grant and constituent fa
 independent dice, mixed normal defense, original-source returned attacks, one snapshot,
 Earth/Water effects and simultaneous damage. Every accepted test transition is compared
 with an exact JSON reload and conserves220 unique physical cards.
-`protocol/test/follower-bundles.test.ts` rejects forged capabilities, nested extras,
+`protocol/test/commands-followers.test.ts` rejects forged capabilities, nested extras,
 duplicate sources/targets and accessor records. Root-owned Worker/browser integration
 is recorded separately; it is not inferred from engine tests.
 
@@ -662,8 +662,8 @@ for null, zero, fractional final rounding and additive-before-chant/optional
 multiplier combinations lacking a current canonical producer; it does not claim
 invented full-card combinations or unsupported multi-hit martial producers.
 
-Regression consumers: `task7d-rolls.test.ts`, `task7h-abilities.test.ts`,
-`task7i-combinations.test.ts`, `dedicated-follower-attacks.test.ts`,
+Regression consumers: `rolls.test.ts`, `character-abilities.test.ts`,
+`combinations.test.ts`, `dedicated-follower-attacks.test.ts`,
 `heterogeneous-followers.test.ts`, `physical-followers.test.ts`, and
 `follower-entry-live-suppression.test.ts`. C05/G08/G09 provisional interpretation
 applies: defense declaration must already be legal; prospective boosts do not
@@ -773,7 +773,7 @@ accepted command replays from JSON and preserves all 220 unique physical IDs.
 `beast-empathy-properties.test.ts` explicitly labels direct probes for missing
 source fallback, ineffective/morale/spirit/virtual traversal, independent frozen
 and live targets, immutable earned provenance, zero damage and simultaneous owner
-pending death. `beast-capture.test.ts` covers strict protocol shape/list bounds.
+pending death. `packages/protocol/test/commands-followers.test.ts` covers strict protocol shape/list bounds.
 
 Producer limits are explicit: the only current printed selfCost is magic
 滅界; no canonical qualifying warrior/self-cost combination exists. The
@@ -1180,7 +1180,7 @@ New source modules are `turn-packages.ts`, `turn-information.ts`, `private-inspe
 `character-visibility.ts`, and `spirit-lifetime.ts` under engine abilities.
 `turn-information-spirit.test.ts` covers C08 derived values and exact END boundaries;
 `printed-turn-classification.test.ts` verifies runtime-independent printed classification.
-Strict command-schema checks are in `packages/protocol/test/turn-information.test.ts`.
+Strict command-schema checks are in `packages/protocol/test/commands-abilities.test.ts`.
 
 Every accepted command in the new engine transition suites replays JSON with identical entropy
 and checks the exact 220 unique physical card IDs. Owning inspection is an explicit private
@@ -1230,7 +1230,7 @@ START remains disabled, and this slice does not complete all of Task 7.
 R0・R1の現在ソースを再検証し、M0へ到達した。対象Engine/Protocol106件・関連346件、
 Web197件・Worker437件・全型検査・指定ブラウザ64件（うち新規19件）が成功。
 独立エンジン・画面/通信・実画像レビューは指摘なし。検査後372ファイルのハッシュ一致を確認した。
-[受け入れ証跡](../operations/evidence/2026-09-08-r1-acceptance.json)へ保存。旧Task7yの件数からの推定ではない。
+受け入れ証跡（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-08-r1-acceptance.json`）へ保存。旧Task7yの件数からの推定ではない。
 カタログはpendingを維持し、正式STARTの未対応ルール拒否を解除していない。
 
 
@@ -1240,35 +1240,35 @@ Engine の `canonical-combinations.test.ts` と対応する DO 試験で、次�
 
 | 列 | 確認した成立経路 | 証跡 |
 | --- | --- | --- |
-| 生存VanmilとLia | 実禁止、Asfelt継続値停止、祝福、Lia実死亡で解除失効、実復活、新lifeで再祝福 | [Lia life](../operations/evidence/2026-09-10-r6-canonical-lia-life.json) |
-| Vanmil死亡 | 死亡待ちまで指定保持、G15確定でC13を一回だけ確定 | [Vanmil terminal](../operations/evidence/2026-09-10-r6-canonical-vanmil-terminal.json) |
-| 回収と再構成 | 同じ弓の追加回収宣言をFateで取消、即時補充のDawnで再構成、親終了時に一枚だけ廃棄 | [Recovery Dawn](../operations/evidence/2026-09-10-r6-canonical-recovery-dawn.json) |
-| 多段と反撃死亡 | 実詠唱の天地百撃斬2対象3hit、Bの専用反撃からAだけに1hit7、B残14/C兵士軽減18、同時G15死亡をB→Cで確定 | [Counter deaths](../operations/evidence/2026-09-10-r6-canonical-counter-deaths.json) |
+| 生存VanmilとLia | 実禁止、Asfelt継続値停止、祝福、Lia実死亡で解除失効、実復活、新lifeで再祝福 | Lia life（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-canonical-lia-life.json`） |
+| Vanmil死亡 | 死亡待ちまで指定保持、G15確定でC13を一回だけ確定 | Vanmil terminal（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-canonical-vanmil-terminal.json`） |
+| 回収と再構成 | 同じ弓の追加回収宣言をFateで取消、即時補充のDawnで再構成、親終了時に一枚だけ廃棄 | Recovery Dawn（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-canonical-recovery-dawn.json`） |
+| 多段と反撃死亡 | 実詠唱の天地百撃斬2対象3hit、Bの専用反撃からAだけに1hit7、B残14/C兵士軽減18、同時G15死亡をB→Cで確定 | Counter deaths（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-canonical-counter-deaths.json`） |
 
 取消された追加回収宣言の札は解決領域に残り、予約は成立しない。
 成立済み予約の保護は別の実占星術廃棄→Cham回収→保留補充再開の列で検証した。
 夜明け・山札枯渇の両方で、再構成前後の二重取得拒否と正当な返却までの所属一意性を確認。
 Engine では拒否前後のJSONと乱数消費ゼロ、DOでは拒否前後の保存状態と再起動後の同一エラーを検査する。
 非公開の持ち技/使用歴の比較は全員パスの実経路を使い、第三者の投影と回収窓の順序を比較する。
-[予約・秘密窓の証跡](../operations/evidence/2026-09-10-r6-reservation-protection.json)に対象tupleと実行結果を保存した。
+予約・秘密窓の証跡（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-reservation-protection.json`）に対象tupleと実行結果を保存した。
 
 これらは限定した組み合わせの証拠であり、R6全条件・全カードのacceptedを意味しない。
 Task5の4列では、全操作/パスのexact220・JSON投影同値・全処理が空の安定終了をEngineで確認し、DOの各保存地点で全員の再投影を確認した。
-[共通invariant証跡](../operations/evidence/2026-09-10-r6-canonical-invariants.json)を参照。
+共通invariant証跡（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-canonical-invariants.json`）を参照。
 S01〜S32の最終出典対応と候補全体の検査は未完。
 strict A31の未証明producerとR4-B1の秘密契約も、この列から完了とは判定しない。
 
 
 R6 S01〜S32の出典本文・裁定ID・122件の具体試験参照と24件の過去実行証跡を
-[出典対応インデックス](../operations/evidence/2026-09-10-r6-scenario-source-index.json)に統合した。
+出典対応インデックス（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-scenario-source-index.json`）に統合した。
 過去ログは全参照先が存在し、ハッシュを記録した。現在の試験ファイルの実行を過去ログから推定しない。
-[候補スナップショット](../operations/evidence/2026-09-10-r6-candidate-snapshot.json)は既存バリデータの
+候補スナップショット（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-candidate-snapshot.json`）は既存バリデータの
 `runtime-candidate-v2` 定義で1640ファイルを固定した機械的記録であり、成功実行receiptではない。
 現在候補に紐付く実行結果と依存条項の受け入れは引き続き未完。
 
 
 固定候補に対してEngine45ケース・DO47ケース・ブラウザ40ケースが成功し、
-122件すべての具体参照を[統合実行receipt](../operations/evidence/2026-09-10-r6-candidate-run.json)へ紐付けた。
+122件すべての具体参照を統合実行receipt（`ledger-accepted-2026-09-15:docs/operations/evidence/2026-09-10-r6-candidate-run.json`）へ紐付けた。
 各層のJSON reporter原本と実行前後の候補一致を記録した。DOは参照外の同宣言tuple12件も実行している。
 ブラウザはスキップ・失敗・flakyとも0。これにより現在候補のR6参照試験の実行は確認できるが、
 依存条項のaccepted・独立レビュー・R7全ゲートの完了は意味しない。

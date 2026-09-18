@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,passReclaims,ready,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {assignCharacter,takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 
 // Printed values and actual owners are explicit; this table is not inferred from runtime factories.
 const rows=[

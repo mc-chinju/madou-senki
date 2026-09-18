@@ -1,9 +1,0 @@
-import {allCardInstanceIds,createGame,transition,type GameCommand,type GameState} from '@madou/engine';
-import {assignCharacter,entropy,takeCard,trimHand} from './scenario-tools.js';
-export type ZanScenarioName='zan'|'zan-maai';
-export function makeZanScenario(name:ZanScenarioName,players:{id:string;name:string}[]):GameState{
- let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];assignCharacter(s,a,'竜皇子アスフェルト');assignCharacter(s,b,'黒騎士ガーウィン');assignCharacter(s,c,'リーア姫');assignCharacter(s,d,'忍びのイダ');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};const sword=takeCard(s,a,'破砕剣'),advance=takeCard(s,a,'踏み込み／蹴る'),maai=takeCard(s,b,'間合い／休息'),fate=takeCard(s,c,'命運凶変');trimHand(s,a,sword,advance);trimHand(s,b,maai);trimHand(s,c,fate);
- function act(actorId:string,command:GameCommand){const input={actorId,command},r=transition(s,input,entropy());if(!r.ok)throw Error(`ZAN_FIXTURE_${r.code}`);if(JSON.stringify(r)!==JSON.stringify(transition(JSON.parse(JSON.stringify(s)),input,entropy())))throw Error('ZAN_REPLAY');s=r.state;const ids=allCardInstanceIds(s);if(ids.length!==220||new Set(ids).size!==220)throw Error('ZAN_CARDS');}
- function until(kind:string){for(let i=0;i<300;i++){const w=s.windows?.at(-1);if(w?.kind===kind)return;if(!w)throw Error('ZAN_WINDOW');act(w.participants[w.cursor]!,{type:'PASS'});}throw Error('ZAN_LIMIT');}
- for(const p of players)act(p.id,{type:'PASS_SETUP'});act(a,{type:'START_TURN'});act(a,{type:'CHOOSE_DRAW',draw:false});act(a,{type:'ATTACK',cardInstanceId:sword,targetIds:[b],dedicated:false});until('normal-defense');if(name==='zan-maai'){act(b,{type:'PLAY_MAAI',cardInstanceId:maai});until('defense-advance');act(a,{type:'PLAY_ADVANCE',cardInstanceId:advance});}until('follower-entry-abilities');return s;
-}

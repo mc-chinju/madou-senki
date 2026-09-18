@@ -34,3 +34,15 @@ test('mandatory targets cannot be reduced, normal Griffin stays single-target an
   expect(followerBundleCommand(input(), abilityId, 'event-1', [{ cardInstanceId: griffin, dedicated: false, targetIds: ['B', 'C'] }])).toBeNull();
   expect(followerBundleCommand(input(), abilityId, 'event-1', [{ cardInstanceId: griffin, dedicated: false, targetIds: ['B'] }])).toMatchObject({ sources: [{ dedicated: false }] });
 });
+
+test('the Dia grant bundle builds the same atomic command under its own ability id', () => {
+  const dia = 'c2-p06-r1c2-ab04';
+  const view = input();
+  view.followerBundleOptions = [{ ...view.followerBundleOptions[0]!, abilityId: dia, name: '下僕達' }];
+  expect(followerBundleCommand(view, dia, 'event-1', selected())).toEqual({ type: 'USE_FOLLOWER_ATTACK', abilityId: dia, targetEventId: 'event-1', sources: [
+    { cardInstanceId: fire, dedicated: false, targetIds: ['B', 'C'] }, { cardInstanceId: griffin, dedicated: true, targetIds: ['C'] },
+  ] });
+  expect(followerBundleCommand(view, abilityId, 'event-1', selected())).toBeNull();
+  expect(followerBundleCommand(view, dia, 'event-2', selected())).toBeNull();
+  expect(followerBundleCommand({ ...view, legalChoices: [] }, dia, 'event-1', selected())).toBeNull();
+});

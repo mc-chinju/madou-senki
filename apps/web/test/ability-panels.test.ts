@@ -4,6 +4,8 @@ import type { PlayerView } from '@madou/engine';
 import { expect, test } from 'vitest';
 import { AbilityPanel } from '../src/game/AbilityPanel.js';
 import { ActionSummary } from '../src/game/ActionSummary.js';
+import { DispelFields, withDispel } from '../src/game/DispelFields.js';
+import { SadLovePanel } from '../src/game/SadLovePanel.js';
 import { techniqueFor } from '../../../packages/engine/src/effects/registry.js';
 
 const render = (view: Partial<PlayerView>) => renderToStaticMarkup(createElement(AbilityPanel, { view: view as PlayerView, disabled: false, send: () => true }));
@@ -115,4 +117,78 @@ test('normal defense options do not borrow a declaration candidate from dedicate
   } as unknown as PlayerView;
   const html = renderToStaticMarkup(createElement(ReactionPanel, { view, disabled: false, send: () => true }));
   expect(html).not.toContain(`value="${cardInstanceId}"`);
+});
+
+test('each ability without an offered description falls back to its own printed explanation', () => {
+  const fallbacks: Record<string, string> = {
+    'c2-p04-r1c2-ab02': 'ダメージ2倍', 'c2-p04-r2c2-ab01': 'この攻撃を無効にし',
+    'c2-p04-r2c2-ab02': 'この格闘技で従者を無視します。', 'c2-p06-r2c2-ab01': '精神力−2の判定に成功すると',
+  };
+  for (const [abilityId, fragment] of Object.entries(fallbacks)) {
+    const html = render({ self: { id: 'A', hand: [], chants: [], followers: [] }, players: {}, activeWindow: null, currentAction: null,
+      legalChoices: ['USE_ABILITY'], abilityOptions: [{ abilityId, name: '能力', targetEventId: 'hit-2' }] } as unknown as PlayerView);
+    expect(html).toContain(fragment);
+    expect(html).not.toContain('この能力の使用を宣言します。');
+  }
+  const offered = render({ self: { id: 'A', hand: [], chants: [], followers: [] }, players: {}, activeWindow: null, currentAction: null,
+    legalChoices: ['USE_ABILITY'], abilityOptions: [{ abilityId: 'c2-p04-r2c2-ab02', name: '忍び', targetEventId: 'hit-2', description: '公開された説明' }] } as unknown as PlayerView);
+  expect(offered).toContain('公開された説明');
+  expect(offered).not.toContain('この格闘技で従者を無視します。');
+});
+
+test('printed component and All-Army parents replace the technique lines with their own confirmation notice', () => {
+  const summary = (cardInstanceId: string) => renderToStaticMarkup(createElement(ActionSummary, {
+    action: { source: 'card', kind: 'attack', actionId: 'act-1', actorId: 'A', targetIds: ['B'], stage: 'declaration', cardInstanceId,
+      technique: { school: 'warrior', attributes: ['近', '戦'], range: 'near', useLevel: 3, effectLevel: 3, damage: 4 } } as never,
+    names: { A: '葵', B: '楓' },
+  }));
+  expect(summary('a2-p05-r2c2')).toContain('全軍突撃の使用を確認しています。');
+  for (const component of ['a2-p05-r1c3', 'a2-p05-r2c1']) {
+    expect(summary(component)).toContain('複合札の使用を確認しています。');
+    expect(summary(component)).not.toContain('全軍突撃');
+  }
+  for (const cardInstanceId of ['a2-p05-r2c2', 'a2-p05-r1c3', 'a2-p05-r2c1']) expect(summary(cardInstanceId)).not.toContain('使用値 3');
+  expect(summary('a2-p10-r1c1')).toContain('使用値 3');
+});
+
+test('the dispel source is attached only for a chosen owned target and is offered only while held', () => {
+  const attack = { type: 'ATTACK' as const, cardInstanceId: 'a2-p10-r1c1', targetIds: ['B', 'C'], dedicated: false };
+  expect(withDispel(attack, ['a2-p02-r3c1'], 'B')).toEqual({ ...attack, dispel: { cardInstanceId: 'a2-p02-r3c1', targetId: 'B' } });
+  expect(withDispel(attack, ['a2-p02-r3c1'], 'D')).toEqual(attack);
+  expect(withDispel(attack, ['a2-p02-r3c1'], '')).toEqual(attack);
+  expect(withDispel(attack, [], 'B')).toEqual(attack);
+  expect(withDispel(null, ['a2-p02-r3c1'], 'B')).toBeNull();
+  const fields = (hand: string[]) => renderToStaticMarkup(createElement(DispelFields, { hand, targets: ['B'], names: { B: '楓' }, targetId: '', disabled: false, onChange: () => {} }));
+  expect(fields(['a2-p02-r3c1'])).toContain('呪払の対象');
+  expect(fields([])).toBe('');
+});
+
+function buttons(node: unknown, found: { label: string; onClick: (() => void) | undefined }[] = []): { label: string; onClick: (() => void) | undefined }[] {
+  if (Array.isArray(node)) { for (const child of node) buttons(child, found); return found; }
+  const element = node as { type?: unknown; props?: { children?: unknown; onClick?: () => void } } | null;
+  if (!element || typeof element !== 'object' || !element.props) return found;
+  if (element.type === 'button') found.push({ label: JSON.stringify(element.props.children), onClick: element.props.onClick });
+  buttons(element.props.children, found);
+  return found;
+}
+
+test('Sad Love sends its own ability id for both the continuous effect and one substitution', () => {
+  const sent: { abilityId?: string; mode?: string; enabled?: boolean; hitIndex?: number }[] = [];
+  const love = { auraEnabled: false, auraActive: false, canActivate: true, canDeactivate: false, targetEventId: 'turn-3', substitutionSpent: false,
+    substitutions: [{ groupId: 'g1', targetId: 'B', hitIndex: 0 }] };
+  const view = { sadLove: love, players: { B: { name: '楓' } } } as unknown as PlayerView;
+  const html = renderToStaticMarkup(createElement(SadLovePanel, { view, disabled: false, send: () => true }));
+  expect(html).toContain('悲しき愛の継続効果を使う');
+  expect(html).toContain('楓への1発目を身代わりする');
+
+  const controls = buttons(SadLovePanel({ view, disabled: false, send: command => sent.push(command as never) }));
+  for (const control of controls) control.onClick?.();
+  expect(sent).toEqual([
+    { type: 'USE_ABILITY', abilityId: 'c2-p05-r1c2-ab05', mode: 'aura', enabled: true, targetEventId: 'turn-3' },
+    { type: 'USE_ABILITY', abilityId: 'c2-p05-r1c2-ab05', mode: 'substitute', groupId: 'g1', targetId: 'B', hitIndex: 0 },
+  ]);
+
+  expect(renderToStaticMarkup(createElement(SadLovePanel, { view: { sadLove: null } as unknown as PlayerView, disabled: false, send: () => true }))).toBe('');
+  expect(renderToStaticMarkup(createElement(SadLovePanel, { view: { ...view, sadLove: { ...love, substitutions: [] } } as unknown as PlayerView, disabled: false, send: () => true })))
+    .not.toContain('身代わりする');
 });

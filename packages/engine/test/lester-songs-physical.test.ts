@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {canUseCharacterAbility,gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeLesterSongsPhysicalScenario,lesterSongsPhysicalMode,type LesterSongsPhysicalScenario} from '../../../apps/worker/test/fixtures/lester-songs-physical-scenarios.js';
+import {makeLesterSongsPhysicalScenario,lesterSongsPhysicalMode,type LesterSongsPhysicalScenario} from './fixtures/lester-songs-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['poem-ordinary','poem-dedicated','chant-song-ordinary','chant-song-dedicated'] as const;
 function attack(scenario:LesterSongsPhysicalScenario){const m=lesterSongsPhysicalMode(scenario);return{type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

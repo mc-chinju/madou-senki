@@ -3,7 +3,7 @@ import {actionCards} from '@madou/catalog';
 import {viewFor,transition,type GameState,type GameCommand} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeDispelPhysicalScenario,dispelMode,type DispelPhysicalScenario} from '../../../apps/worker/test/fixtures/dispel-physical-scenarios.js';
+import {makeDispelPhysicalScenario,dispelMode,type DispelPhysicalScenario} from './fixtures/dispel-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p02-r3c1';
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s);}throw Error('DISPEL_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

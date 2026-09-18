@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,until,finish} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeLeafDefenseScenario,leafDefenseMode,type LeafDefenseScenario} from '../../../apps/worker/test/fixtures/leaf-defense-scenarios.js';
+import {makeLeafDefenseScenario,leafDefenseMode,type LeafDefenseScenario} from './fixtures/leaf-defense-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p13-r2c2';
 const rows=['leaf-ordinary','leaf-dedicated'] as const;
 function command(scenario:LeafDefenseScenario){return {type:'PLAY_DEFENSE' as const,cardInstanceId:card,dedicated:leafDefenseMode(scenario).dedicated};}

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeVoidSwordPhysical,voidSwordCard as CARD,voidSwordAdvances as ADV,voidSwordMode} from '../../../apps/worker/test/fixtures/void-sword-physical-scenarios.js';
+import {makeVoidSwordPhysical,voidSwordCard as CARD,voidSwordAdvances as ADV,voidSwordMode} from './fixtures/void-sword-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<700;n++){if(done(s))return s;s=pass(s);}throw Error('VOID_SWORD_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeFactionCastlesPhysicalScenario,factionCastlesPhysicalMode,type FactionCastlesPhysicalScenario} from '../../../apps/worker/test/fixtures/faction-castles-physical-scenarios.js';
+import {makeFactionCastlesPhysicalScenario,factionCastlesPhysicalMode,type FactionCastlesPhysicalScenario} from './fixtures/faction-castles-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['alkemia-setup','gainas-setup'] as const;
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function ready(s:GameState,card:string,initial=true,rear=false){if(initial)s=act(s,'A',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:card});if(rear)s=act(s,'A',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p22-r1c1'});for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});s=act(s,'A',{type:'START_TURN'});return act(s,'A',{type:'CHOOSE_DRAW',draw:false});}

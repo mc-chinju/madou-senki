@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeBlastSwordPhysical,blastSwordCard as CARD,blastSwordMode,type BlastSwordScenario} from '../../../apps/worker/test/fixtures/blast-sword-physical-scenarios.js';
+import {makeBlastSwordPhysical,blastSwordCard as CARD,blastSwordMode,type BlastSwordScenario} from './fixtures/blast-sword-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function source(s:GameState){return Object.values(s.actions!).find(a=>a.cardInstanceId===CARD)!;}
 function group(s:GameState){return Object.values(s.groups!).find(g=>g.actionId===source(s).id)!;}

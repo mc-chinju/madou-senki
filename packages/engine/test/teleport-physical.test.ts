@@ -2,9 +2,9 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,until,finish,closeWindow,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {assignCharacter} from '../../../apps/worker/test/fixtures/scenario-tools.js';
-import {makeTeleportPhysicalScenario} from '../../../apps/worker/test/fixtures/teleport-physical-scenarios.js';
-import {makeR6MaaiScenario} from '../../../apps/worker/test/fixtures/r6-maai-scenarios.js';
+import {assignCharacter} from './fixtures/scenario-tools.js';
+import {makeTeleportPhysicalScenario} from './fixtures/teleport-physical-scenarios.js';
+import {makeR6MaaiScenario} from './fixtures/r6-maai-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=[['teleport-physical-1','a2-p06-r1c1'],['teleport-physical-2','a2-p06-r1c2']] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

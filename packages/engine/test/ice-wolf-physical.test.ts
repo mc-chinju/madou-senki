@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeIceWolfScenario} from '../../../apps/worker/test/fixtures/ice-wolf-scenarios.js';
+import {makeIceWolfScenario} from './fixtures/ice-wolf-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p13-r1c1';
 const rows=[['ice-wolf-ordinary',true,false,7],['ice-wolf-dedicated',false,true,14],['ice-wolf-chanted-dedicated',true,true,14]] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

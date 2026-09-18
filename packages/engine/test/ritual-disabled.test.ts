@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
 import {entropy} from './fixtures.js';
-import {makeRitualPhysicalScenario,ritualCard} from '../../../apps/worker/test/fixtures/ritual-physical-scenarios.js';
+import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 it.each(['ritual-disabled','ritual-stopped'] as const)('%s actual mental attack distinguishes character ability disable from inability to perform the ritual',scenario=>{
  let s=makeRitualPhysicalScenario(scenario,['A','B','C','D'].map(id=>({id,name:id})));
  function send(actorId:string,command:GameCommand){const input={actorId,command},e={...entropy(),dice:Array(100).fill(6)},r=transition(s,input,e);expect(r).toEqual(transition(JSON.parse(JSON.stringify(s)),input,e));if(!r.ok)throw Error(`${command.type}: ${r.code}`);s=r.state;expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);}

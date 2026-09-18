@@ -2,8 +2,8 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,ready,until,finish} from './combat-helpers.js';
 import {entropy,handCard} from './fixtures.js';
-import {takeCard} from '../../../apps/worker/test/fixtures/scenario-tools.js';
-import {makeEvadePhysicalScenario} from '../../../apps/worker/test/fixtures/evade-physical-scenarios.js';
+import {takeCard} from './fixtures/scenario-tools.js';
+import {makeEvadePhysicalScenario} from './fixtures/evade-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=[['evade-physical-1','a2-p05-r3c1'],['evade-physical-2','a2-p05-r3c2'],['evade-physical-3','a2-p05-r3c3']] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

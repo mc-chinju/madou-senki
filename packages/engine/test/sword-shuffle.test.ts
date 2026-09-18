@@ -3,7 +3,7 @@ import {expect,it} from 'vitest';
 import {viewFor,transition,gameStats,allCardInstanceIds,type GameState} from '../src/index.js';
 import {act,closeWindow,finish,pass,until,ready} from './combat-helpers.js';
 import {entropy,character,handCard} from './fixtures.js';
-import {makeSwordShuffleScenario} from '../../../apps/worker/test/fixtures/sword-shuffle-scenario.js';
+import {makeSwordShuffleScenario} from './fixtures/sword-shuffle-scenario.js';
 const SWORD='a2-p04-r2c1',DAWN='a2-p01-r1c2';
 it.each([true,false])('real astrology discard suspends the already queued refill, dawn=%s, until a hidden Cham elects reservation',dawn=>{
  let s=makeSwordShuffleScenario(['A','B','C','D'].map(id=>({id,name:id})),false,dawn);const o=viewFor(s,'A').anytimeCardOptions.find(o=>o.cardInstanceId==='a2-p02-r1c2'&&o.targetId==='B')!;

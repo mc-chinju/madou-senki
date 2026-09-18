@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,gameStats,type GameState} from '../src/index.js';
 import {act,finish,pass,ready} from './combat-helpers.js';
 import {entropy,handCard} from './fixtures.js';
-import {assignCharacter,takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 const SWORD='a2-p04-r2c1';
 function rejected(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as Parameters<typeof transition>[1],entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 it.each(['foreign-owner','other-turn','spent-action'] as const)('Fairy Sword %s cannot install or spend the physical source',mode=>{

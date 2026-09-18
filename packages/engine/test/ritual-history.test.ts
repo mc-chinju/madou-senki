@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
 import {entropy} from './fixtures.js';
-import {makeRitualPhysicalScenario,ritualCard} from '../../../apps/worker/test/fixtures/ritual-physical-scenarios.js';
+import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 it('actual Uonos approach and once-per-game Curse recovery survive the ritual transformation',()=>{
  let s=makeRitualPhysicalScenario('ritual-history',['A','B','C','D'].map(id=>({id,name:id})));
  const spear='a2-p13-r3c2';

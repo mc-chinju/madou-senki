@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makePlaguePhysicalScenario,PLAGUE,type PlaguePhysicalScenario} from '../../../apps/worker/test/fixtures/plague-physical-scenarios.js';
+import {makePlaguePhysicalScenario,PLAGUE,type PlaguePhysicalScenario} from './fixtures/plague-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['plague-physical-ordinary','plague-physical-dedicated'] as const;
 function attack(scenario:PlaguePhysicalScenario){const dedicated=scenario.includes('dedicated');return {type:'ATTACK' as const,cardInstanceId:PLAGUE,targetIds:dedicated?['B','C','D']:['B'],dedicated};}
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

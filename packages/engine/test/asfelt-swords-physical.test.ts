@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeAsfeltSwordsPhysical,asfeltSwordCards,asfeltSwordMode,type AsfeltSword,type AsfeltSwordMode} from '../../../apps/worker/test/fixtures/asfelt-swords-physical-scenarios.js';
+import {makeAsfeltSwordsPhysical,asfeltSwordCards,asfeltSwordMode,type AsfeltSword,type AsfeltSwordMode} from './fixtures/asfelt-swords-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),cards=['wind','thunder','rend'] as const;
 const printed={wind:{level:4,damage:6,dedicatedEffect:6,dedicatedDamage:12,maai:2,hp:true,evade:false},thunder:{level:5,damage:7,dedicatedEffect:7,dedicatedDamage:14,maai:1,hp:false,evade:true},rend:{level:6,damage:8,dedicatedEffect:8,dedicatedDamage:16,maai:2,hp:true,evade:true}};
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s);}throw Error('ASFELT_SWORDS_TEST_LIMIT');}

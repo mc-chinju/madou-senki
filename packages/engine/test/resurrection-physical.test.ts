@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeResurrectionPhysicalScenario,type ResurrectionPhysicalScenario} from '../../../apps/worker/test/fixtures/resurrection-physical-scenarios.js';
+import {makeResurrectionPhysicalScenario,type ResurrectionPhysicalScenario} from './fixtures/resurrection-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p13-r3c1',rows=['resurrection-ordinary','resurrection-dedicated','resurrection-chanted-dedicated'] as const;
 function command(scenario:ResurrectionPhysicalScenario,convert=false){const dedicated=scenario!=='resurrection-ordinary';return {type:'PLAY_TURN_TECHNIQUE' as const,cardInstanceId:card,targetIds:dedicated?['B','C']:['B'],dedicated,convertTargetIds:convert?['B']:[]};}
 function nextA(s:GameState){for(let n=0;n<200;n++){const id=s.seatOrder[s.turnSeat]!;if(s.windows?.length)s=pass(s);else if(s.phase==='action'){if(id==='A')return s;s=act(s,id,{type:'PASS_ACTION'});}else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!==card).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error('RESURRECTION_TEST_PHASE');}throw Error('RESURRECTION_TEST_TURN');}

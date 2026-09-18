@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makePlantBindPhysical,plantBindCard as CARD,plantBindMode} from '../../../apps/worker/test/fixtures/plant-bind-physical-scenarios.js';
+import {makePlantBindPhysical,plantBindCard as CARD,plantBindMode} from './fixtures/plant-bind-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,resistance:number[]=[6,6],damage:number[]=[3,3]){for(let n=0;n<900;n++){if(done(s))return s;const r=s.rolls?.at(-1);s=pass(s,s.windows?.at(-1)?.kind==='damage'||r?.purpose==='attack-damage'?damage:r?.rollerId==='B'&&['status-resistance','status-recovery'].includes(r.purpose)?resistance:[1,1]);}throw Error('PLANT_BIND_LIMIT');}
 function settle(s:GameState,faces:number[]=[6,6]){return until(s,s=>!s.windows?.length,faces);}

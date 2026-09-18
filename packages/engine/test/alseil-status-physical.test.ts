@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {canUseCharacterAbility,gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeAlseilStatusScenario,alseilStatusMode,type AlseilStatusScenario} from '../../../apps/worker/test/fixtures/alseil-status-scenarios.js';
+import {makeAlseilStatusScenario,alseilStatusMode,type AlseilStatusScenario} from './fixtures/alseil-status-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['confusion-ordinary','confusion-dedicated','mirror-seal-ordinary','mirror-seal-dedicated','hypnosis-ordinary','hypnosis-dedicated'] as const;
 function command(scenario:AlseilStatusScenario){const m=alseilStatusMode(scenario);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

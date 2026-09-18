@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeKiBurstPhysical,kiBurstCard as CARD,kiBurstMode} from '../../../apps/worker/test/fixtures/ki-burst-physical-scenarios.js';
+import {makeKiBurstPhysical,kiBurstCard as CARD,kiBurstMode} from './fixtures/ki-burst-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),GAD='c2-p06-r1c1-ab02',PEACE='a2-p02-r1c1';
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<700;n++){if(done(s))return s;s=pass(s);}throw Error('KI_BURST_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

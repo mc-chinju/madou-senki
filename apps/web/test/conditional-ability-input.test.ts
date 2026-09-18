@@ -42,3 +42,16 @@ test('an identical ON configuration cannot consume another attempt, including re
   expect(conditionalAbilityCommand(current, lia, true, ['C', 'B'])).toBeNull();
   expect(conditionalAbilityCommand(current, lia, true, ['B'])).toMatchObject({ targetIds: ['B'] });
 });
+
+test('every registered single-setting ability toggles ON and OFF without a target payload', () => {
+  const singles = ['c2-p03-r2c2-ab04', 'c2-p04-r1c2-ab03', 'c2-p04-r1c2-ab05', 'c2-p05-r1c2-ab01', 'c2-p05-r2c1-ab05', 'c2-p06-r1c2-ab02'];
+  for (const abilityId of singles) {
+    const off = view(setting({ abilityId }));
+    expect(conditionalAbilityCommand(off, abilityId, true)).toEqual({ type: 'SET_CONDITIONAL_ABILITY', abilityId, enabled: true, targetEventId: off.conditionalAbilities![0]!.targetEventId });
+    expect(conditionalAbilityCommand(off, abilityId, true, [])).toBeNull();
+    const on = view(setting({ abilityId, enabled: true, canActivate: false, canDeactivate: true }));
+    expect(conditionalAbilityCommand(on, abilityId, false)).toEqual({ type: 'SET_CONDITIONAL_ABILITY', abilityId, enabled: false, targetEventId: on.conditionalAbilities![0]!.targetEventId });
+    expect(conditionalAbilityCommand(on, abilityId, true)).toBeNull();
+    expect(conditionalAbilityCommand({ ...off, legalChoices: [] }, abilityId, true)).toBeNull();
+  }
+});

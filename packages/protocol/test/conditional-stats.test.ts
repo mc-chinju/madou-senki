@@ -1,6 +1,0 @@
-import {it,expect} from 'vitest';
-import {parseGameCommand} from '../src/index.js';
-const ids=['c2-p02-r1c1-ab04','c2-p03-r1c2-ab03','c2-p03-r2c2-ab04','c2-p04-r1c2-ab03','c2-p04-r1c2-ab05','c2-p05-r1c2-ab01','c2-p05-r2c1-ab05','c2-p06-r1c2-ab02'];
-it.each(ids)('finite conditional source %s ON/OFF strict round-trip',abilityId=>{for(const enabled of [true,false]){const c={type:'SET_CONDITIONAL_ABILITY',abilityId,targetEventId:'conditional-w-42',enabled,...(enabled&&abilityId===ids[1]?{targetIds:[]}:{} )};expect(parseGameCommand(c)).toEqual({ok:true,value:c});}});
-const base={type:'SET_CONDITIONAL_ABILITY',abilityId:ids[0],targetEventId:'event',enabled:true};
-it.each([{...base,abilityId:'unknown'},{...base,enabled:'true'},{...base,targetIds:[]},{...base,targetEventId:''},{...base,amount:2},{...base,sourceCharacterId:'c2-p02-r1c1'},{...base,active:true},{...base,modifier:2},{...base,abilityId:ids[1]},{...base,abilityId:ids[1],targetIds:['B','B']},{...base,abilityId:ids[1],targetIds:['B',,'C']},{...base,abilityId:ids[1],enabled:false,targetIds:[]},{...base,abilityId:ids[1],targetIds:Array(10).fill('B').map((x,i)=>x+i)}])('rejects malformed/forged conditional command %#',c=>expect(parseGameCommand(c)).toEqual({ok:false,code:'INVALID_COMMAND'}));

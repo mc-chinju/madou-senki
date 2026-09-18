@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,finish,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeTragedyPhysicalScenario,tragedyMode,type TragedyPhysicalScenario} from '../../../apps/worker/test/fixtures/tragedy-physical-scenarios.js';
+import {makeTragedyPhysicalScenario,tragedyMode,type TragedyPhysicalScenario} from './fixtures/tragedy-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),tragedy='a2-p01-r2c3';
 const dice=[3,...Array(60).fill(1)];
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<250;n++){if(done(s))return s;s=pass(s,dice);}throw Error('TRAGEDY_WINDOW');}

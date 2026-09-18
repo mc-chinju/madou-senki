@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeEarthMagicScenario,earthMagicMode,type EarthMagicScenario} from '../../../apps/worker/test/fixtures/earth-magic-scenarios.js';
+import {makeEarthMagicScenario,earthMagicMode,type EarthMagicScenario} from './fixtures/earth-magic-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['earth-spear-ordinary','earth-spear-dedicated','earth-stream-ordinary','earth-stream-dedicated'] as const;
 function command(name:EarthMagicScenario){const m=earthMagicMode(name);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

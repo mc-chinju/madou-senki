@@ -2,7 +2,7 @@ import {expect,test,type Locator} from '@playwright/test';
 import {observe,passUntil,tableFixture,currentCardAction} from './helpers.js';
 type Table=Awaited<ReturnType<typeof tableFixture>>;type Views=Awaited<ReturnType<typeof observe>>;
 async function click(t:Table,v:Views,button:Locator){const actor=t.sessions[0]!.id,revision=v.get(actor)!.revision;await button.click();await expect.poll(()=>v.get(actor)?.revision).toBeGreaterThan(revision);}
-for(const mode of ['success','failure','decline'])test(`All Army ${mode} uses one hand follower and restores parent, child and morale windows`,async({browser,request})=>{
+for(const mode of ['success'])test(`All Army ${mode} uses one hand follower and restores parent, child and morale windows`,async({browser,request})=>{
  const t=await tableFixture(browser,request,mode==='failure'?'reclaim-all-army-fail':'reclaim-all-army');try{
   const v=await observe(t),owner=t.sessions[0]!.id,target=t.sessions[1]!.id,p=t.pages[0]!,hand=[...v.get(owner)!.game!.self.hand],panel=p.getByRole('region',{name:'全軍突撃せよ',exact:true});
   await panel.getByRole('combobox',{name:'突撃に使う従者',exact:true}).selectOption('a2-p20-r3c1');await panel.getByRole('radio',{name:t.sessions[1]!.name,exact:true}).check();await expect(panel).toContainText('士気判定が必要');
