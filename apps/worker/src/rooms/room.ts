@@ -253,6 +253,17 @@ export class Room extends DurableObject<Env> {
     const snapshot = this.store.snapshot();
     if (!snapshot || snapshot.state.schemaVersion !== 1 || snapshot.state.rulesetId !== ruleset.id ||
       (snapshot.state.game && snapshot.state.game.rulesetVersion !== ruleset.id)) return null;
+    const game = snapshot.state.game;
+    const pending = game?.pending as NonNullable<RoomData['game']>['pending'] | { kind: 'initial-followers'; actorId: string; seat: number };
+    if (game?.phase === 'setup' && pending && 'seat' in pending) {
+      // Legacy setup refilled immediately. Keep finished seats out, and only
+      // refill placements made after this conversion when the new round ends.
+      game.pending = {
+        kind: 'initial-followers', round: 1, participantIds: game.seatOrder.slice(pending.seat),
+        readyIds: [], placedIds: [],
+      };
+      delete (game as typeof game & { setupCursor?: number }).setupCursor;
+    }
     return snapshot;
   }
 

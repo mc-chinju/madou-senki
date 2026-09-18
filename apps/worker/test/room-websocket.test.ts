@@ -82,6 +82,32 @@ async function viewWhen(inbox: Inbox, done: (view: RoomView) => boolean): Promis
 }
 
 describe('room WebSocket and durable recovery', () => {
+  it('resumes a stored sequential setup without reopening completed seats or refilling twice', async () => {
+    const { room, game } = await fixture();
+    const legacy = { ...game, setupCursor: 1, pending: { kind: 'initial-followers', actorId: 'B', seat: 1 } };
+    await runInDurableObject(room, (_instance, state) => {
+      const stored = new RoomStorage<RoomData, RoomEvent, RoomProjection>(state.storage).snapshot()!;
+      state.storage.sql.exec('UPDATE room_snapshot SET value = ? WHERE singleton = 1',
+        JSON.stringify({ ...stored.state, game: legacy }));
+    });
+    const restored = await room.gameSnapshot('B');
+    expect(restored?.game?.pending).toEqual({ kind: 'initial-followers', round: 1, participantIds: ['B', 'C', 'D'], readyIds: [] });
+    expect((await room.gameSnapshot('A'))?.game?.legalChoices).not.toContain('PASS_SETUP');
+    const b = await connect(room, 'B');
+    await b.snapshot();
+    for (const actorId of ['D', 'C', 'B']) {
+      const inbox = actorId === 'B' ? b : await connect(room, actorId);
+      const before = await room.gameSnapshot(actorId);
+      inbox.send(pass(`legacy-${actorId}`, before!.revision));
+      expect(await inbox.next(m => m.type === 'ack')).toMatchObject({ type: 'ack' });
+    }
+    await evictDurableObject(room);
+    const after = await room.gameSnapshot('B');
+    expect(after?.game?.phase).toBe('turn-start');
+    expect(after?.game?.self.hand).toEqual(game.players.B!.hand);
+    expect(after?.game?.deckCount).toBe(game.deck.length);
+  });
+
   it('sends only the seated viewer projection and rejects an unknown seat', async () => {
     const { room, game } = await fixture();
     const a = await connect(room, 'A');
