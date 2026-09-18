@@ -147,7 +147,7 @@ export function Board({room,actorId,disabled:connectionDisabled,send}:{room:Room
  <ReclaimPanel view={view} disabled={disabled} send={send}/>
  <SuppressionPanel view={view} disabled={disabled} send={send}/>
  <ShadowJumpPanel key={`shadow-jump:${view.activeWindow?.windowId}`} view={view} disabled={disabled} send={send}/>
- <AbilityPanel key={`ability:${view.activeWindow?.windowId??view.phase}:${view.revision}`} view={view} disabled={disabled} send={send}/>
+ <AbilityPanel key={`ability:${view.activeWindow?decisionPanelKey(view):`${view.phase}:${view.revision}`}`} view={view} disabled={disabled} send={send}/>
  <FollowerAttackPanel key={`follower-attack:${view.revision}`} view={view} disabled={disabled} send={send}/>
  <FollowerBundlePanel key={`follower-bundle:${view.revision}`} view={view} disabled={disabled} send={send}/>
  <MagicGatePanel key={`magic-gate:${view.revision}`} view={view} disabled={disabled} send={send}/>
