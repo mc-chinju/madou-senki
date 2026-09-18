@@ -9,7 +9,7 @@ export * from './commands.js';
 export { createGame, derivedStats } from './setup.js';
 export { transition, pendingSetupSeats } from './transition.js';
 export * from './view.js';
-export { activeWindowRef } from './reactions/windows.js';
+export { activeWindowRef, commandBaseRef } from './reactions/windows.js';
 
 export type { PublicRollView, RollFrame, RollPurpose } from './rolls/frames.js';
 

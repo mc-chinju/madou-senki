@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { transition, viewFor } from '../src/index.js';
+import { commandBaseRef, transition, viewFor } from '../src/index.js';
 import { character, entropy, freshGame, handCard, loadFixture } from './fixtures.js';
 import { act,ready,until } from './combat-helpers.js';
 it('allowlists private state and logs, public backs, and safe pending actor', () => {
@@ -73,4 +73,17 @@ it('sends only the discard count, never discard pile card ids, to every viewer',
     const serialized = JSON.stringify(v);
     for (const [owner, ids] of Object.entries(discarded)) if (owner !== viewer) for (const id of ids) expect(serialized).not.toContain(id);
   }
+});
+it('bases commands on the open window generation, the setup round, or nothing at all',()=>{
+ const setup=freshGame();
+ expect(commandBaseRef(setup)).toEqual({windowId:'setup-1',windowRevision:0});
+ const soldier=handCard(setup,'A','兵士');
+ let round2=act(setup,'A',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier});
+ for(const id of setup.seatOrder)round2=act(round2,id,{type:'PASS_SETUP'});
+ expect(commandBaseRef(round2)).toEqual({windowId:'setup-2',windowRevision:0});
+ const turn=ready();
+ expect(commandBaseRef(turn)).toBeNull();
+ const attacking=loadFixture('third-party-interrupt');
+ const window=attacking.windows!.at(-1)!;
+ expect(commandBaseRef(attacking)).toEqual({windowId:window.id,windowRevision:window.revision});
 });

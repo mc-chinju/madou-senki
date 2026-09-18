@@ -8,7 +8,7 @@ import { WaitingRoom } from './room/WaitingRoom.js';
 import { api, getCurrentSession, UNAUTHENTICATED_MESSAGE, type Session } from './session.js';
 
 const statusLabel={stopped:'停止中',connecting:'接続中',reconnecting:'再接続中',syncing:'同期中',ready:'接続済み','read-only':'閲覧のみ'} as const;
-const errorLabel:Record<string,string>={FORBIDDEN:'この操作は許可されていません',ROOM_FULL:'卓は満席です',ROOM_NOT_OPEN:'この卓は募集を終了しています',NOT_READY:'開始条件が揃っていません',RULESET_NOT_READY:'対戦ルールを準備中です',READ_ONLY_CONNECTION:'別のタブが操作中です。この画面は閲覧専用です',STALE_REVISION:'卓が更新されました。再同期しています',STALE_WINDOW:'判断の状態が更新されました',INVALID_ACTION:'現在はその操作を実行できません',CLIENT_STORAGE_ERROR:'操作の復旧情報を保存できません',INTERNAL_ERROR:'サーバーとの同期をやり直しています'};
+const errorLabel:Record<string,string>={FORBIDDEN:'この操作は許可されていません',ROOM_FULL:'卓は満席です',ROOM_NOT_OPEN:'この卓は募集を終了しています',NOT_READY:'開始条件が揃っていません',RULESET_NOT_READY:'対戦ルールを準備中です',READ_ONLY_CONNECTION:'別のタブが操作中です。この画面は閲覧専用です',STALE_REVISION:'卓が更新されました。再同期しています',STALE_WINDOW:'状況が変わりました。もう一度判断してください',INVALID_ACTION:'現在はその操作を実行できません',CLIENT_STORAGE_ERROR:'操作の復旧情報を保存できません',INTERNAL_ERROR:'サーバーとの同期をやり直しています'};
 
 export function App(){
  const [session,setSession]=useState<Session|null|undefined>(undefined);const [startupError,setStartupError]=useState('');const [offerPasskey,setOfferPasskey]=useState(false);

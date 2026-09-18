@@ -3,6 +3,12 @@ import type { Continuation, ReactionWindow, WindowKind } from './continuations.j
 export function activeWindowRef(state: GameState): { windowId: string; windowRevision: number } | null {
   const w = state.windows?.at(-1); return w ? { windowId: w.id, windowRevision: w.revision } : null;
 }
+/** What a client's command is based on. Commands sharing it are concurrent, not stale (design §6). */
+export function commandBaseRef(state: GameState): { windowId: string; windowRevision: number } | null {
+  const window = activeWindowRef(state);
+  if (window) return window;
+  return state.phase === 'setup' && state.pending ? { windowId: `setup-${state.pending.round}`, windowRevision: 0 } : null;
+}
 export function participants(state: GameState, seat = state.turnSeat): string[] {
   return [...state.seatOrder.slice(seat), ...state.seatOrder.slice(0, seat)].filter(id => !state.players[id]!.presence || state.players[id]!.presence === 'active');
 }

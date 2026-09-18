@@ -73,6 +73,13 @@ async function connect(room: DurableObjectStub<import('../src/rooms/room.js').Ro
   return new Inbox(response.webSocket);
 }
 const pass = (id: string, revision: number) => ({ protocolVersion: 1, commandId: id, expectedRevision: revision, command: { type: 'PASS_SETUP' } });
+/** Broadcasts queue up, so skip past the projections that predate the state under test. */
+async function viewWhen(inbox: Inbox, done: (view: RoomView) => boolean): Promise<RoomView> {
+  for (;;) {
+    const message = await inbox.next(m => m.type === 'snapshot');
+    if (message.type === 'snapshot' && done(message.view)) return message.view;
+  }
+}
 
 describe('room WebSocket and durable recovery', () => {
   it('sends only the seated viewer projection and rejects an unknown seat', async () => {
@@ -251,5 +258,41 @@ describe('room WebSocket and durable recovery', () => {
     await a.next(m => m.type === 'ack');
     await runDurableObjectAlarm(room);
     expect(await env.DB.prepare('SELECT revision, listing FROM room_directory').first()).toEqual({ revision: 100, listing: '{"title":"newest"}' });
+  });
+
+  it('accepts concurrent setup commands on the same round and rejects a base from a finished round', async () => {
+    const { room, game } = await fixture(true);
+    const follower = game.players.A!.hand.find(id => getAction(id)?.category === 'follower')!;
+    const seats = { A: await connect(room, 'A'), B: await connect(room, 'B'), C: await connect(room, 'C'), D: await connect(room, 'D') };
+    const start = await seats.A.snapshot();
+    const base = { windowId: 'setup-1', windowRevision: 0 };
+    // Both seats answer the same projection; the later one is concurrent, not stale.
+    seats.A.send({ protocolVersion: 1, commandId: 'place-a', expectedRevision: start.revision, ...base, command: { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: follower } });
+    expect(await seats.A.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'place-a', revision: start.revision + 1 });
+    seats.B.send({ protocolVersion: 1, commandId: 'ready-b', expectedRevision: start.revision, ...base, command: { type: 'PASS_SETUP' } });
+    expect(await seats.B.next(m => m.type === 'ack')).toEqual({ type: 'ack', commandId: 'ready-b', revision: start.revision + 2 });
+    for (const actor of ['C', 'D', 'A'] as const) {
+      seats[actor].send({ protocolVersion: 1, commandId: `ready-${actor}`, expectedRevision: start.revision, ...base, command: { type: 'PASS_SETUP' } });
+      expect(await seats[actor].next(m => m.type === 'ack')).toMatchObject({ type: 'ack', commandId: `ready-${actor}` });
+    }
+    const second = await viewWhen(seats.A, view => view.game?.pending?.round === 2);
+    // The round advanced, so the same base is now a stale screen.
+    seats.A.send({ protocolVersion: 1, commandId: 'stale-round', expectedRevision: second.revision, ...base, command: { type: 'PASS_SETUP' } });
+    expect(await seats.A.next(m => m.type === 'error')).toMatchObject({ type: 'error', code: 'STALE_WINDOW' });
+  });
+
+  it('still requires an exact revision when the command has no base to name', async () => {
+    const { room } = await fixture();
+    const seats = { A: await connect(room, 'A'), B: await connect(room, 'B'), C: await connect(room, 'C'), D: await connect(room, 'D') };
+    const start = await seats.A.snapshot();
+    for (const actor of ['B', 'C', 'D', 'A'] as const) {
+      seats[actor].send({ protocolVersion: 1, commandId: `ready-${actor}`, expectedRevision: start.revision, windowId: 'setup-1', windowRevision: 0, command: { type: 'PASS_SETUP' } });
+      await seats[actor].next(m => m.type === 'ack');
+    }
+    const turn = await viewWhen(seats.A, view => view.game?.phase === 'turn-start');
+    seats.A.send({ protocolVersion: 1, commandId: 'stale-turn', expectedRevision: start.revision, command: { type: 'START_TURN' } });
+    expect(await seats.A.next(m => m.type === 'error')).toMatchObject({ type: 'error', code: 'STALE_REVISION' });
+    seats.A.send({ protocolVersion: 1, commandId: 'fresh-turn', expectedRevision: turn.revision, command: { type: 'START_TURN' } });
+    expect(await seats.A.next(m => m.type === 'ack')).toMatchObject({ type: 'ack', commandId: 'fresh-turn' });
   });
 });

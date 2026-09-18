@@ -24,6 +24,12 @@ export function clearPendingDeparture(storage: Options['storage'], actorId: stri
   } catch { /* Preserve unknown state; no replacement operation is sent. */ }
 }
 function pendingKey(actorId: string, roomId: string): string { return `madou:pending:v1:${actorId}:${roomId}`; }
+/** Mirrors the engine's `commandBaseRef`: what this command is based on, so concurrent seats are not rejected. */
+function commandBase(game: RoomView['game']): { windowId: string; windowRevision: number } | null {
+  if (!game) return null;
+  if (game.activeWindow) return { windowId: game.activeWindow.windowId, windowRevision: game.activeWindow.windowRevision };
+  return game.phase === 'setup' && game.pending ? { windowId: `setup-${game.pending.round}`, windowRevision: 0 } : null;
+}
 export interface ConnectionSnapshot {
   status: 'stopped' | 'connecting' | 'reconnecting' | 'syncing' | 'ready' | 'read-only';
   view: RoomView | null;
@@ -78,8 +84,8 @@ export class RoomConnection {
     if (this.state.status !== 'ready' || !this.state.view || this.pending) return false;
     const envelope: ClientEnvelope = { protocolVersion: 1, commandId: this.options.commandId?.() ?? crypto.randomUUID(),
       expectedRevision: this.state.view.revision, command };
-    const window = this.state.view.game?.activeWindow;
-    if (!isRoomCommand(command) && window) { envelope.windowId = window.windowId; envelope.windowRevision = window.windowRevision; }
+    const base = commandBase(this.state.view.game);
+    if (!isRoomCommand(command) && base) { envelope.windowId = base.windowId; envelope.windowRevision = base.windowRevision; }
     const parsed = parseClientEnvelope(envelope);
     if (!parsed.ok) return false;
     const serialized = JSON.stringify(parsed.value);
@@ -141,7 +147,7 @@ export class RoomConnection {
       return;
     }
     if (!this.pending || !('commandId' in message) || message.commandId !== this.pending.commandId) return;
-    if (message.type === 'ack' && 'revision' in message && typeof message.revision === 'number' && Number.isSafeInteger(message.revision) && message.revision === this.pending.expectedRevision + 1) {
+    if (message.type === 'ack' && 'revision' in message && typeof message.revision === 'number' && Number.isSafeInteger(message.revision) && message.revision > this.pending.expectedRevision) {
       const ack = { commandId: this.pending.commandId, commandType: this.pending.command.type, revision: message.revision };
       this.acknowledgedRevision = Math.max(this.acknowledgedRevision, message.revision);
       this.clearPending();

@@ -132,12 +132,21 @@ describe('browser room connection', () => {
   it('keeps the pending receipt when an ACK revision cannot represent this command commit', () => {
     const { client, sockets } = fixture();
     sockets[0]!.receive(snapshot()); client.send({ type: 'READY', ready: true });
-    for (const revision of [4, 6, 100]) {
+    for (const revision of [0, 3, 4]) {
       sockets[0]!.receive({ type: 'ack', commandId: 'command-1', revision });
       expect(client.getSnapshot().pending).toBe(true);
     }
-    sockets[0]!.receive({ type: 'ack', commandId: 'command-1', revision: 5 });
+    // Concurrent seats may commit between the send and this commit, so any later revision acknowledges it.
+    sockets[0]!.receive({ type: 'ack', commandId: 'command-1', revision: 6 });
     expect(client.getSnapshot().pending).toBe(false);
+  });
+  it('bases a setup command on the open round so concurrent seats do not invalidate it', () => {
+    const { client, sockets } = fixture();
+    const game = { revision: 4, phase: 'setup', activeWindow: null,
+      pending: { kind: 'initial-followers', round: 2, participantIds: ['A'], readyIds: [] } } as unknown as NonNullable<RoomView['game']>;
+    sockets[0]!.receive({ type: 'snapshot', revision: 4, view: { ...view(4), status: 'playing', game } });
+    expect(client.send({ type: 'PASS_SETUP' })).toBe(true);
+    expect(JSON.parse(sockets[0]!.sent[0]!)).toMatchObject({ expectedRevision: 4, windowId: 'setup-2', windowRevision: 0 });
   });
   it('clears only a departed-seat LEAVE intent and preserves other unresolved operations', () => {
     const { client, sockets, storage, values } = fixture();
