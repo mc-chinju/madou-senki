@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {allCardInstanceIds,transition,viewFor,type GameCommand} from '../src/index.js';
 import {entropy} from './fixtures.js';
-import {makeAbilityScenario} from '../../../apps/worker/test/fixtures/ability-scenarios.js';
+import {makeAbilityScenario} from './fixtures/ability-scenarios.js';
 it.each([false,true])('G09 explicit optional critical use %s keeps unchosen identity and candidates private',use=>{
  let s=makeAbilityScenario('ability-critical',['A','B','C','D'].map(id=>({id,name:id})));const ida='c2-p04-r2c2',ability=ida+'-ab03',before=structuredClone(s),option=viewFor(s,'A').abilityOptions.find(o=>o.abilityId===ability)!;expect(option).toBeDefined();expect(s.players.A!.revealed).toBe(false);
  function privateViews(){for(const id of ['B','C','D']){const v=viewFor(s,id);expect(v.players.A).not.toHaveProperty('characterId');expect(JSON.stringify(v)).not.toContain(ida);expect(v.abilityOptions.some(o=>o.abilityId===ability)).toBe(false);}}

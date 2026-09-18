@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeBlackBreakPhysical,blackBreakCard as CARD,blackBreakMode} from '../../../apps/worker/test/fixtures/black-break-physical-scenarios.js';
+import {makeBlackBreakPhysical,blackBreakCard as CARD,blackBreakMode} from './fixtures/black-break-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<600;n++){if(done(s))return s;s=pass(s);}throw Error('BLACK_BREAK_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeShurikenPhysical,shurikenCard as CARD,shurikenChants as CHANTS,shurikenMode} from '../../../apps/worker/test/fixtures/shuriken-physical-scenarios.js';
+import {makeShurikenPhysical,shurikenCard as CARD,shurikenChants as CHANTS,shurikenMode} from './fixtures/shuriken-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice=[1]){for(let n=0;n<600;n++){if(done(s))return s;s=pass(s,dice);}throw Error('SHURIKEN_TEST_LIMIT');}
 function finish(s:GameState,discard:(id:string)=>boolean=()=>false){let choices=0;for(let n=0;n<600&&s.windows?.length;n++){const w=s.windows.at(-1)!;if(w.kind==='on-hit-choice'){if(w.continuation.kind!=='group')throw Error('SHURIKEN_HIT_CONTINUATION');choices++;s=act(s,'A',{type:'DISCARD_HIT_CHANTS',discard:discard(w.continuation.targetId!)});}else s=pass(s);}expect(s.windows??[]).toEqual([]);return {s,choices};}

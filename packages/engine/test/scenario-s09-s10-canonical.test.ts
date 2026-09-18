@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {act,pass,until,finish} from './combat-helpers.js';
-import {makeCanonicalDefense} from '../../../apps/worker/test/fixtures/canonical-defense-scenarios.js';
+import {makeCanonicalDefense} from './fixtures/canonical-defense-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 it('S09 Ramba dedicated Death Axe6 versus Shin checked parry6 cancels B and keeps C damage10',()=>{
  let s=makeCanonicalDefense(players,'S09');const incoming=Object.values(s.actions!).find(a=>a.kind==='attack')!;expect(incoming.technique).toMatchObject({effectLevel:6,damage:10,noChecks:true});

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,closeWindow,finish,pass,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeOpenBlessingPhysicalScenario,openBlessingMode,type OpenBlessingPhysicalScenario} from '../../../apps/worker/test/fixtures/open-blessing-physical-scenarios.js';
+import {makeOpenBlessingPhysicalScenario,openBlessingMode,type OpenBlessingPhysicalScenario} from './fixtures/open-blessing-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),bless='a2-p01-r2c1',soldier='a2-p18-r3c3',stone='a2-p20-r2c3',griffin='a2-p20-r3c1',saint='a2-p21-r2c1';
 function ready(name:OpenBlessingPhysicalScenario,other=false){let s=makeOpenBlessingPhysicalScenario(name,players,other);for(const cardInstanceId of openBlessingMode(name).initial)s=act(s,'A',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId});for(const id of s.seatOrder){if(other&&id==='C')s=act(s,id,{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p22-r2c3'});s=act(s,id,{type:'PASS_SETUP'});}s=act(s,'A',{type:'START_TURN'});expect(s.players.A!.open).not.toContain(bless);return s;}
 function nextB(s:GameState){if(s.phase==='action')s=act(s,'A',{type:'PASS_ACTION'});if(s.phase==='withdrawal')s=act(s,'A',{type:'PASS_WITHDRAWAL'});s=finish(act(s,'A',{type:'END_TURN',discardIds:s.players.A!.hand.slice(0,Math.max(0,s.players.A!.hand.length-gameStats(s,'A').handLimit))}));s=act(s,'B',{type:'START_TURN'});return act(s,'B',{type:'CHOOSE_DRAW',draw:false});}

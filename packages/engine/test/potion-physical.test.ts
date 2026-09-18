@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,ready} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {assignCharacter,takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 
 function prepared(card:string,damage=8){
  const s=ready();assignCharacter(s,'A','占星術師のアルセイル');assignCharacter(s,'B','黒騎士ガーウィン');assignCharacter(s,'C','大神官ジル');assignCharacter(s,'D','魔導王ガイナス');

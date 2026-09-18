@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {canUseCharacterAbility,gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeMadKingPhysicalScenario} from '../../../apps/worker/test/fixtures/mad-king-physical-scenarios.js';
+import {makeMadKingPhysicalScenario} from './fixtures/mad-king-physical-scenarios.js';
 const CARD='a2-p17-r3c1',players=['A','B','C','D'].map(id=>({id,name:id})),attack={type:'ATTACK' as const,cardInstanceId:CARD,targetIds:['B'],dedicated:false};
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function settle(s:GameState,faces=[6,6]){for(let n=0;n<350&&s.windows?.length;n++){const r=s.rolls?.at(-1);s=pass(s,r?.rollerId==='B'&&['status-resistance','status-recovery'].includes(r.purpose)&&r.stage==='before-roll'?faces:Array(30).fill(1));}expect(s.windows??[]).toEqual([]);return s;}

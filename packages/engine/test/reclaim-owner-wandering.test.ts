@@ -1,11 +1,11 @@
-import {assignCharacter} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter} from './fixtures/scenario-tools.js';
 import {handCard} from './fixtures.js';
 import {absentRecoveryResponse} from './reclaim-public-absence-helpers.js';
 import {expect,it} from 'vitest';
 import {actionCards,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,gameStats,viewFor} from '../src/index.js';
 import {act,finish,pass,until} from './combat-helpers.js';
-import {makeReclaimWandering} from '../../../apps/worker/test/fixtures/reclaim-wandering-scenario.js';
+import {makeReclaimWandering} from './fixtures/reclaim-wandering-scenario.js';
 
 it('Actual protected Lia death makes the counter reservation owner wander before one final return',()=>{
  let s=makeReclaimWandering(['A','B','C','D','E','F'].map(id=>({id,name:id})));

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeSkeletonPhysicalScenario} from '../../../apps/worker/test/fixtures/skeleton-physical-scenarios.js';
+import {makeSkeletonPhysicalScenario} from './fixtures/skeleton-physical-scenarios.js';
 const SK='a2-p19-r2c1',METAL='a2-p22-r1c1',ARMY='a2-p05-r2c2',DWARF='a2-p21-r2c3',SAINT='a2-p21-r2c1',KNIGHT='a2-p20-r1c2',players=['A','B','C','D'].map(id=>({id,name:id}));
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function ready(s:GameState,card=SK,initial=true,rear=false){if(initial)s=act(s,'A',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:card});if(rear)s=act(s,'A',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:'a2-p22-r1c1'});for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});s=act(s,'A',{type:'START_TURN'});return act(s,'A',{type:'CHOOSE_DRAW',draw:false});}

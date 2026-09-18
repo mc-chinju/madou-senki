@@ -2,8 +2,8 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,until,pass,closeWindow,passReclaims,ready} from './combat-helpers.js';
 import {entropy,handCard} from './fixtures.js';
-import {assignCharacter} from '../../../apps/worker/test/fixtures/scenario-tools.js';
-import {makeIceMirrorScenario} from '../../../apps/worker/test/fixtures/ice-mirror-scenarios.js';
+import {assignCharacter} from './fixtures/scenario-tools.js';
+import {makeIceMirrorScenario} from './fixtures/ice-mirror-scenarios.js';
 const CARD='a2-p12-r3c2',players=['A','B','C','D'].map(id=>({id,name:id}));
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function declare(s:GameState,dedicated:boolean){return act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:CARD,dedicated});}

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,finish,pass,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeHajaPhysicalScenario,type HajaPhysicalScenario} from '../../../apps/worker/test/fixtures/haja-physical-scenarios.js';
+import {makeHajaPhysicalScenario,type HajaPhysicalScenario} from './fixtures/haja-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),haja='a2-p01-r2c2',ice='a2-p13-r1c1',rift='a2-p14-r2c2',mekai='a2-p13-r2c3',book='a2-p03-r1c1';
 function ready(name:HajaPhysicalScenario,drawOpen=true){let s=makeHajaPhysicalScenario(name,players,drawOpen);for(const id of s.seatOrder)s=act(s,id,{type:'PASS_SETUP'});s=act(s,'A',{type:'START_TURN'});expect(s.players.A!.hand).toHaveLength(5);return s;}
 function step(s:GameState){const id=s.seatOrder[s.turnSeat]!,w=s.windows?.at(-1);if(w)return pass(s);if(s.phase==='action')return act(s,id,{type:'PASS_ACTION'});if(s.phase==='withdrawal')return act(s,id,{type:'PASS_WITHDRAWAL'});if(s.phase==='hand-adjustment')return act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});if(s.phase==='turn-start')return act(s,id,{type:'START_TURN'});if(s.phase==='draw')return act(s,id,{type:'CHOOSE_DRAW',draw:false});throw Error('HAJA_PHASE');}

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeDragonSpearScenario} from '../../../apps/worker/test/fixtures/dragon-spear-scenarios.js';
+import {makeDragonSpearScenario} from './fixtures/dragon-spear-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p11-r1c1';
 const rows=[['dragon-ordinary',false,false,10],['dragon-dedicated',false,true,15],['dragon-chant-ordinary',true,false,10],['dragon-chant-dedicated',true,true,30]] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

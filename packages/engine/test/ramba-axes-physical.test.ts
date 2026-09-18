@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,closeWindow,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeRambaAxesScenario,rambaAxeMode,type RambaAxesScenario} from '../../../apps/worker/test/fixtures/ramba-axes-scenarios.js';
+import {makeRambaAxesScenario,rambaAxeMode,type RambaAxesScenario} from './fixtures/ramba-axes-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['axe-strike-ordinary','axe-strike-dedicated','axe-mighty-ordinary','axe-mighty-dedicated','axe-death-ordinary','axe-death-dedicated'] as const;
 function command(name:RambaAxesScenario){const m=rambaAxeMode(name);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.far&&m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

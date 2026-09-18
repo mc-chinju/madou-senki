@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeSkyWingPhysical,skyWingCard as CARD,skyWingMode} from '../../../apps/worker/test/fixtures/sky-wing-physical-scenarios.js';
+import {makeSkyWingPhysical,skyWingCard as CARD,skyWingMode} from './fixtures/sky-wing-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),costs=['a2-p24-r1c3','a2-p24-r2c1'];
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s);}throw Error('SKY_WING_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

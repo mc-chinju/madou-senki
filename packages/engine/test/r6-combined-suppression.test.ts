@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeR6CombinedSuppressionScenario} from '../../../apps/worker/test/fixtures/r6-combined-suppression-scenario.js';
+import {makeR6CombinedSuppressionScenario} from './fixtures/r6-combined-suppression-scenario.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<400;n++){if(done(s))return s;s=pass(s);}throw Error('COMBINED_SUPPRESSION_TEST_WINDOW');}
 function nextOwn(s:GameState,owner:string){for(let n=0;n<60;n++){const id=s.seatOrder[s.turnSeat]!;if(s.phase==='action'){if(id===owner)return s;s=act(s,id,{type:'PASS_ACTION'});}else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=finish(act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!=='a2-p13-r3c1').slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))}));else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error(`COMBINED_SUPPRESSION_TEST_TURN_${s.phase}`);}throw Error('COMBINED_SUPPRESSION_TEST_TURN_LIMIT');}

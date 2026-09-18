@@ -2,8 +2,8 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {assignCharacter,takeCard} from '../../../apps/worker/test/fixtures/scenario-tools.js';
-import {makeBeastKingPhysical,beastKingCard as CARD,beastKingMode} from '../../../apps/worker/test/fixtures/beast-king-physical-scenarios.js';
+import {assignCharacter,takeCard} from './fixtures/scenario-tools.js';
+import {makeBeastKingPhysical,beastKingCard as CARD,beastKingMode} from './fixtures/beast-king-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean,dice=Array(30).fill(1)){for(let n=0;n<800;n++){if(done(s))return s;s=pass(s,dice);}throw Error('BEAST_KING_LIMIT');}
 function settle(s:GameState,dice=Array(30).fill(1)){return until(s,s=>!s.windows?.length,dice);}

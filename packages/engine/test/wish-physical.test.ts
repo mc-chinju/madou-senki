@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,gameStats,viewFor,transition,type GameState,type GameCommand} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeWishPhysicalScenario,wishMode,type WishPhysicalScenario} from '../../../apps/worker/test/fixtures/wish-physical-scenarios.js';
+import {makeWishPhysicalScenario,wishMode,type WishPhysicalScenario} from './fixtures/wish-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s);}throw Error('WISH_PHYSICAL_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

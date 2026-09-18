@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeSharedReclaimScenario} from '../../../apps/worker/test/fixtures/shared-reclaim-scenarios.js';
+import {makeSharedReclaimScenario} from './fixtures/shared-reclaim-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),COURAGE='a2-p01-r3c3';
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s);expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);}
 it.each(['a09','a31'] as const)('Shared %s hidden claimant and absent claimant keep every explicit public response identical',kind=>{let a=makeSharedReclaimScenario(kind==='a09'?'shared-a09-hidden':'shared-a31-hidden',players),b=makeSharedReclaimScenario(kind==='a09'?'shared-a09-none':'shared-a31-none',players);let slots=0;for(let n=0;n<300;n++){for(const actor of ['A','C','D'])expect(viewFor(a,actor)).toEqual(viewFor(b,actor));expect(a.revision).toBe(b.revision);expect(a.nextEventId).toBe(b.nextEventId);const w=a.windows?.at(-1);if(!w)break;if(w.kind==='reclaim')slots++;if(w.kind==='reclaim'&&w.participants[w.cursor]==='B'){expect(viewFor(a,'B').reclaim!.claims).toEqual([]);expect(viewFor(b,'B').reclaim!.claims).toEqual([]);}a=pass(JSON.parse(JSON.stringify(a)));b=pass(JSON.parse(JSON.stringify(b)));}expect(slots).toBeGreaterThanOrEqual(4);for(const actor of ['A','C','D'])expect(viewFor(a,actor)).toEqual(viewFor(b,actor));});

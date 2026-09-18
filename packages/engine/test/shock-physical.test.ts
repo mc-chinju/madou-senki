@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeShockPhysicalScenario,shockPhysicalMode,type ShockPhysicalScenario} from '../../../apps/worker/test/fixtures/shock-physical-scenarios.js';
+import {makeShockPhysicalScenario,shockPhysicalMode,type ShockPhysicalScenario} from './fixtures/shock-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['shock-small','shock-large','phantom-resist'] as const;
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function attack(scenario:ShockPhysicalScenario){return{type:'ATTACK' as const,cardInstanceId:shockPhysicalMode(scenario).card,targetIds:['B'],dedicated:false};}

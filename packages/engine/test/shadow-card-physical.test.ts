@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeShadowCardPhysical,shadowCard as CARD,shadowChild as CHILD,shadowCardMode} from '../../../apps/worker/test/fixtures/shadow-card-physical-scenarios.js';
+import {makeShadowCardPhysical,shadowCard as CARD,shadowChild as CHILD,shadowCardMode} from './fixtures/shadow-card-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<800;n++){if(done(s))return s;s=pass(s);}throw Error('SHADOW_CARD_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

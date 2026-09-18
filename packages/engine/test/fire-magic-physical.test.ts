@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until,passReclaims} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeFireMagicScenario,fireMagicMode,type FireMagicScenario} from '../../../apps/worker/test/fixtures/fire-magic-scenarios.js';
+import {makeFireMagicScenario,fireMagicMode,type FireMagicScenario} from './fixtures/fire-magic-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const rows=['fire-arrow-ordinary','fire-arrow-dedicated','fire-dance-ordinary','fire-dance-dedicated','fire-explosion-ordinary','fire-explosion-dedicated'] as const;
 function command(name:FireMagicScenario){const m=fireMagicMode(name);return {type:'ATTACK' as const,cardInstanceId:m.card,targetIds:m.dedicated?['B','C']:['B'],dedicated:m.dedicated};}

@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
 import {entropy} from './fixtures.js';
-import {makeRitualPhysicalScenario,ritualCard} from '../../../apps/worker/test/fixtures/ritual-physical-scenarios.js';
+import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 
 it.each([false,true,'conspiracy'] as const)('actual ritual then chanted Dragon Spear commits one terminal result with subordinates %s',subordinates=>{
  let s=makeRitualPhysicalScenario(subordinates?'ritual-terminal-subordinates':'ritual-terminal',(subordinates?['A','B','C','D','E','F']:['A','B','C','D']).map(id=>({id,name:id})),false,true);

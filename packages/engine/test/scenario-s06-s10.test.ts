@@ -3,7 +3,7 @@ import {transition,viewFor,type GameState} from '../src/index.js';
 import {getAction} from '@madou/catalog';
 import {act,finish,pass,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeR6DefenseScenario} from '../../../apps/worker/test/fixtures/r6-defense-scenarios.js';
+import {makeR6DefenseScenario} from './fixtures/r6-defense-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const card=(s:GameState,name:string)=>s.players.B!.hand.find(id=>getAction(id)!.name===name)!;
 const main=(s:GameState)=>Object.values(s.actions!).find(a=>a.kind==='attack')!;

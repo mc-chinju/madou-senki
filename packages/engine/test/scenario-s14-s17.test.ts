@@ -3,7 +3,7 @@ import {transition,type GameState} from '../src/index.js';
 import {getAction} from '@madou/catalog';
 import {act,finish,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeR6BoundaryScenario} from '../../../apps/worker/test/fixtures/r6-boundary-scenarios.js';
+import {makeR6BoundaryScenario} from './fixtures/r6-boundary-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const card=(s:GameState,owner:string,name:string)=>s.players[owner]!.hand.find(id=>getAction(id)!.name===name)!;
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<300;n++){if(done(s))return s;s=pass(s);}throw Error('S14_17_TEST_WINDOW');}

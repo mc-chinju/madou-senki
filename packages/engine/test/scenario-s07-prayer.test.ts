@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {transition,viewFor,gameStats,type GameState} from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {assignCharacter,takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 function rejected(s:GameState,command:Parameters<typeof transition>[1]['command']){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:'B',command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 it('S07 actual Lia prayer reserves once rejects same-action reuse and returns for a later independent attack',()=>{
  let s=ready();assignCharacter(s,'A','侍大将のシン');assignCharacter(s,'B','リーア姫');assignCharacter(s,'C','黒騎士ガーウィン');

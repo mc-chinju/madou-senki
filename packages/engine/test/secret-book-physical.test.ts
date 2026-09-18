@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeSecretBookPhysicalScenario,bookMode} from '../../../apps/worker/test/fixtures/secret-book-physical-scenarios.js';
+import {makeSecretBookPhysicalScenario,bookMode} from './fixtures/secret-book-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p03-r1c1',command={type:'PLAY_TURN_CARD',cardInstanceId:card} as const;
 function until(s:GameState,done:(s:GameState)=>boolean,face=1){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s,[face,face]);}throw Error('BOOK_LIMIT');}
 function settle(s:GameState,face=1){return until(s,s=>!s.windows?.length,face);}

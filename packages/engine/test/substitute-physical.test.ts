@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,viewFor,transition,type GameState} from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeSubstitutePhysicalScenario,substituteMode,type SubstitutePhysicalScenario} from '../../../apps/worker/test/fixtures/substitute-physical-scenarios.js';
+import {makeSubstitutePhysicalScenario,substituteMode,type SubstitutePhysicalScenario} from './fixtures/substitute-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p02-r2c1';
 function until(s:GameState,done:(s:GameState)=>boolean,dice=[1,1]){for(let n=0;n<500;n++){if(done(s))return s;s=pass(s,dice);}throw Error('SUBSTITUTE_PHYSICAL_LIMIT');}
 function settle(s:GameState){return until(s,s=>!s.windows?.length);}

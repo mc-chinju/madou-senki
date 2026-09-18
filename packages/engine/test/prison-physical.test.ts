@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makePrisonPhysicalScenario} from '../../../apps/worker/test/fixtures/prison-physical-scenarios.js';
+import {makePrisonPhysicalScenario} from './fixtures/prison-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p13-r3c3',rows=['prison-ordinary','prison-dedicated'] as const;
 function reject(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function nextOwn(s:GameState){for(let n=0;n<150;n++){const id=s.seatOrder[s.turnSeat]!;if(s.windows?.length)s=pass(s);else if(s.phase==='action'){if(id==='A')return s;s=act(s,id,{type:'PASS_ACTION'});}else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>x!==card).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error('PRISON_TURN');}throw Error('PRISON_TURN_LIMIT');}

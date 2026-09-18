@@ -2,8 +2,8 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,closeWindow,finish,pass,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
-import {makeFusenPhysicalScenario,fusenPhysicalScenarios} from '../../../apps/worker/test/fixtures/fusen-physical-scenarios.js';
+import {takeCard,trimHand} from './fixtures/scenario-tools.js';
+import {makeFusenPhysicalScenario,fusenPhysicalScenarios} from './fixtures/fusen-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),card='a2-p01-r1c1',book='a2-p03-r1c1';
 function reject(s:GameState,id:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId:id,command} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function open(s:GameState){s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceId:book});return until(s,'before-roll');}

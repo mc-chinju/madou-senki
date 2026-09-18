@@ -2,7 +2,7 @@ import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {expect,it} from 'vitest';
 import {viewFor} from '@madou/engine';
-import {makeDeathRewardScenario} from '../../worker/test/fixtures/death-reward-scenarios.js';
+import {makeDeathRewardScenario} from '../../../packages/engine/test/fixtures/death-reward-scenarios.js';
 import {AbilityPanel} from '../src/game/AbilityPanel.js';
 import {LifecyclePanel} from '../src/game/LifecyclePanel.js';
 import {abilityCommand} from '../src/game/ability-input.js';

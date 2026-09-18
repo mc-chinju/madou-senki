@@ -3,7 +3,7 @@ import {expect,it} from 'vitest';
 import {actionCards,getAction} from '@madou/catalog';
 import {allCardInstanceIds,viewFor} from '../src/index.js';
 import {act,pass,ready} from './combat-helpers.js';
-import {assignCharacter,takeCard,trimHand} from '../../../apps/worker/test/fixtures/scenario-tools.js';
+import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 
 it('Actual Vanmil awakening lets the reserved Fate owner exit without return or refunded history',()=>{
  let s=ready();

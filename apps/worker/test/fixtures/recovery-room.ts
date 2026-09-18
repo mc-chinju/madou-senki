@@ -4,7 +4,7 @@ import { ruleset } from '@madou/catalog';
 import type { ClientEnvelope, ClientServerMessage } from '@madou/protocol';
 import { RoomStorage } from '../../src/rooms/storage.js';
 import type { RoomData, RoomView } from '../../src/rooms/types.js';
-import { makeScenario, type ScenarioName } from './game-scenarios.js';
+import { makeScenario, type ScenarioName } from '../../../../packages/engine/test/fixtures/game-scenarios.js';
 
 type Message = ClientServerMessage<RoomView>;
 class Inbox {

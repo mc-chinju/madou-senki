@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,pass,finish,until,closeWindow} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeWhiteMagicPhysicalScenario,whiteMagicPhysicalMode,type WhiteMagicPhysicalScenario} from '../../../apps/worker/test/fixtures/white-magic-physical-scenarios.js';
+import {makeWhiteMagicPhysicalScenario,whiteMagicPhysicalMode,type WhiteMagicPhysicalScenario} from './fixtures/white-magic-physical-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id})),rows=['white-light-ordinary','white-light-dedicated','white-ring-ordinary','white-ring-dedicated','white-dance-ordinary','white-dance-dedicated'] as const;
 function reject(s:GameState,actorId:string,c:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command:c} as never,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}
 function next(s:GameState){for(let n=0;n<180;n++){const id=s.seatOrder[s.turnSeat]!,w=s.windows?.at(-1);if(w)s=pass(s);else if(s.phase==='action'){if(id==='A')return s;s=act(s,id,{type:'PASS_ACTION'});}else if(s.phase==='withdrawal')s=act(s,id,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=act(s,id,{type:'END_TURN',discardIds:s.players[id]!.hand.filter(x=>!['a2-p14-r1c2','a2-p14-r1c3','a2-p14-r2c1'].includes(x)).slice(0,Math.max(0,s.players[id]!.hand.length-gameStats(s,id).handLimit))});else if(s.phase==='turn-start')s=act(s,id,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,id,{type:'CHOOSE_DRAW',draw:false});else throw Error('WHITE_TURN');}throw Error('WHITE_TURN_LIMIT');}

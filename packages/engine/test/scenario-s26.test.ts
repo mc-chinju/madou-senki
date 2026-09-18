@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
-import {makeR6WanderingScenario,s26Entropy} from '../../../apps/worker/test/fixtures/r6-wandering-scenario.js';
+import {makeR6WanderingScenario,s26Entropy} from './fixtures/r6-wandering-scenario.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function act(s:GameState,actorId:string,command:GameCommand){const input={actorId,command},r=transition(s,input,s26Entropy());expect(r).toEqual(transition(JSON.parse(JSON.stringify(s)),input,s26Entropy()));if(!r.ok)throw Error(r.code);const ids=allCardInstanceIds(r.state);expect(ids).toHaveLength(220);expect(new Set(ids).size).toBe(220);return r.state;}
 function until(s:GameState,done:(s:GameState)=>boolean){for(let n=0;n<300;n++){if(done(s))return s;const w=s.windows!.at(-1)!;s=act(s,w.participants[w.cursor]!,{type:'PASS'});}throw Error('S26_WINDOW');}

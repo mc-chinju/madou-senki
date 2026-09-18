@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {allCardInstanceIds,transition,type GameState} from '../src/index.js';
 import {act,finish,pass} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeR6CombinedDeathScenario} from '../../../apps/worker/test/fixtures/r6-combined-death-scenario.js';
+import {makeR6CombinedDeathScenario} from './fixtures/r6-combined-death-scenario.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 it('R6 actual chanted two-target three-hit parry and Soldier HP settle B14 C18 in one simultaneous death batch',()=>{
  let s=makeR6CombinedDeathScenario(players),b=s.players.B!.damage,c=s.players.C!.damage;const counter=s.players.B!.hand.find(id=>getAction(id)!.name==='受け流し')!,soldier=s.players.C!.followers[0]!.cardInstanceId,group=Object.values(s.groups!)[0]!;const sword=s.actions![group.actionId]!.cardInstanceId;expect(group.hitIndices).toEqual([0,1,2]);expect(group.targets.map(t=>t.actorId)).toEqual(['B','C']);expect(s.outcome).toBeUndefined();

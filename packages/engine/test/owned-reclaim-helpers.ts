@@ -2,7 +2,7 @@ import {getAction} from '@madou/catalog';
 import {createGame,gameStats,viewFor,techniqueFor,type GameState} from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
-import {makeResurrectionPhysicalScenario} from '../../../apps/worker/test/fixtures/resurrection-physical-scenarios.js';
+import {makeResurrectionPhysicalScenario} from './fixtures/resurrection-physical-scenarios.js';
 import {legalAttackTargets} from '../src/combat/legality.js';
 
 export interface OwnedReclaimTable {state:GameState;ownerId:string}

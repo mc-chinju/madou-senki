@@ -4,7 +4,7 @@ import {getAction} from '@madou/catalog';
 import {resolveFollowerSnapshot,freezeFollowerSnapshot} from '../src/combat/followers.js';
 import {act,finish,passReclaims,ready,until} from './combat-helpers.js';
 import {handCard} from './fixtures.js';
-import {makeR6MaaiScenario} from '../../../apps/worker/test/fixtures/r6-maai-scenarios.js';
+import {makeR6MaaiScenario} from './fixtures/r6-maai-scenarios.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 const card=(s:GameState,owner:string,name:string)=>s.players[owner]!.hand.find(id=>getAction(id)!.name===name)!;
 it('S11 actual chanted one-hit two-target sword shares one advance against both maai and preserves pair distances through final damage',()=>{let s=makeR6MaaiScenario(players),distances=structuredClone(s.distances);const bm=card(s,'B','間合い／休息'),cm=card(s,'C','間合い／休息'),advance=card(s,'A','踏み込み／蹴る');expect(Object.values(s.groups!)[0]!.hitIndices).toEqual([0]);s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:bm}));s=passReclaims(act(s,'C',{type:'PLAY_MAAI',cardInstanceId:cm}));expect(s.windows!.at(-1)!.kind).toBe('defense-advance');s=passReclaims(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advance}));expect(s.windows!.at(-1)).toMatchObject({kind:'normal-defense',continuation:{targetId:'B'}});expect(s.distances).toEqual(distances);for(const id of [bm,cm,advance])expect(s.discard.filter(x=>x===id)).toHaveLength(1);s=finish(s);expect(s.distances).toEqual(distances);expect([s.players.B!.damage,s.players.C!.damage]).toEqual([7,7]);expect(s.phase).toBe('withdrawal');});

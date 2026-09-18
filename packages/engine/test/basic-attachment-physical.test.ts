@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
 import {act,finish,pass,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeBasicAttachmentScenario} from '../../../apps/worker/test/fixtures/basic-attachment-scenarios.js';
+import {makeBasicAttachmentScenario} from './fixtures/basic-attachment-scenarios.js';
 const rows=[['basic-attachment-warrior','a2-p03-r2c1','warrior_level'],['basic-attachment-magic','a2-p03-r3c1','magic_level'],['basic-attachment-evil','a2-p03-r3c2','spirit'],['basic-attachment-good','a2-p03-r3c3','spirit']] as const;
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function rejected(s:GameState,actorId:string,command:unknown){const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));expect(transition(s,{actorId,command} as Parameters<typeof transition>[1],entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);}

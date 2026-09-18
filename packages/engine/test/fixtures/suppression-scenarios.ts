@@ -1,4 +1,4 @@
-import {clearDistances} from '../../../../packages/engine/src/lifecycle/advance.js';
+import {clearDistances} from '../../src/lifecycle/advance.js';
 import { allCardInstanceIds, createGame, gameStats, transition, viewFor, type GameCommand, type GameState } from '@madou/engine';
 import { assignCharacter, entropy, takeCard, trimHand } from './scenario-tools.js';
 

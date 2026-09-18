@@ -3,7 +3,7 @@ import {getAction} from '@madou/catalog';
 import {gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
 import {act,finish,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
-import {makeR6OtherworldScenario} from '../../../apps/worker/test/fixtures/r6-otherworld-scenario.js';
+import {makeR6OtherworldScenario} from './fixtures/r6-otherworld-scenario.js';
 const players=['A','B','C','D'].map(id=>({id,name:id}));
 function nextC(s:GameState){for(let n=0;n<60;n++){const actor=s.seatOrder[s.turnSeat]!;if(s.phase==='action'&&actor==='C')return s;if(s.phase==='turn-start')s=act(s,actor,{type:'START_TURN'});else if(s.phase==='draw')s=act(s,actor,{type:'CHOOSE_DRAW',draw:false});else if(s.phase==='action')s=act(s,actor,{type:'PASS_ACTION'});else if(s.phase==='withdrawal')s=act(s,actor,{type:'PASS_WITHDRAWAL'});else if(s.phase==='hand-adjustment')s=finish(act(s,actor,{type:'END_TURN',discardIds:s.players[actor]!.hand.filter(id=>!['a2-p04-r3c3','a2-p02-r1c2'].includes(id)).slice(0,Math.max(0,s.players[actor]!.hand.length-gameStats(s,actor).handLimit))}));else throw Error('S30_TURN');}throw Error('S30_TURN_LIMIT');}
 function reject(s:GameState,actorId:string,command:GameCommand){const saved=JSON.stringify(s),views=players.map(p=>viewFor(s,p.id));expect(transition(s,{actorId,command},entropy())).toEqual({ok:false,code:'INVALID_TARGET'});expect(JSON.stringify(s)).toBe(saved);expect(players.map(p=>viewFor(s,p.id))).toEqual(views);}
