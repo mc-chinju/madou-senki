@@ -51,9 +51,26 @@
 
 ### 5. 検証
 
-- [ ] `pnpm typecheck` と `pnpm test` が成功する
-- [ ] `pnpm test:e2e` で残した全件が成功する（`PLAYWRIGHT_PORT` は 8787 が他作業で使用中なら 18787 を使う）
-- [ ] 親計画「共通: カバレッジの測り方」の unit コマンド（`--testTimeout=120000` 付き）で engine / protocol の4指標を取り、基準値との比較表を作業記録に保存する（PR 本文に転記）
+- [x] `pnpm typecheck` と `pnpm test` が成功する（typecheck 成功。unit 8,027件・assets 7件・worker 2,573件すべて成功、終了コード0）
+- [ ] `pnpm test:e2e` で残した全件が成功する（`PLAYWRIGHT_PORT=18787`）— **27/30。残り3件は PR2 の差分が原因ではない（下記）**
+- [x] 親計画「共通: カバレッジの測り方」の unit コマンド（`--testTimeout=120000` 付き）で engine / protocol の4指標を取り、基準値との比較表を作業記録に保存する（PR 本文に転記）— 8指標すべて基準値と同値
+
+## 未達の項目: `pnpm test:e2e` の3件
+
+いずれも PR2 の差分が原因ではないことを確認した。詳細は作業記録の `verification.md`。
+
+1. `privacy.spec.ts` › card inspection … — カード画像アセットがこの環境に無いため
+   `naturalWidth > 0` が満たせない。生成物 `apps/web/public/cards/second/` と生成元
+   `resources/original/second-edition/*.pdf` はどちらも gitignore 済みで存在しない。
+   **base の同じ spec でも同様に失敗する**。この spec は PR2 で1行も変更していない。
+2. `blessing-status.spec.ts` › actual confusion … / `lifecycle.spec.ts` › Dia can explicitly hand the ritual …
+   — 複数席・全席再読込の E2E に元からある不安定さ。この2 spec だけの `--repeat-each=3` は 9件全成功。
+   **base の `blessing-privacy` / `blessing-status` / `lifecycle` 3 spec 全件（13件）を流すと 3件失敗し、
+   失敗する顔ぶれも別**（blessing-privacy、lifecycle の death gift と Fusen revival）。
+   症状は `observe()` の `page.goto` 後に盤面ではなくログイン画面が出るもので、
+   PR2 は `helpers.ts`・`e2e-worker.ts`・認証 src のいずれも変更していない。
+   切り分けと修正は E2E 注入経路を触る PR3 か、別の不具合として扱う。
+   `playwright.config.ts` に `retries` を足せば通るが、既知の不安定さを隠すので入れていない。
 
 ## 実装中に判明したこと
 
