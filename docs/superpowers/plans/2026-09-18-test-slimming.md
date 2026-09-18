@@ -19,7 +19,7 @@
 
 1. PR1: `pnpm build` と `pnpm test` が成功する。`verify:readiness` は build から外れる。`packages/catalog/src/selected/readiness.json` は `ready: true` のまま残り、`assertPlayableCatalog` の挙動は変わらない。タグ `ledger-accepted-2026-09-15` が `1dd5eb9a` を指す。
 2. PR2: `pnpm exec playwright test --list` が 30件以下。`*-physical.spec.ts` が 0件。worker∩e2e 機能の engine 側照合表があり、`needs-port` の行はすべて engine テストへ移植済み。`apps/web/src` に現れる card ID リテラル（`[ac]N-pNN-rNcN…`）が、すべて `apps/web/test` のいずれかのファイルに現れる。
-3. PR3: `apps/worker/test/*.test.ts` が 15ファイル以下。`git grep "apps/worker/test/fixtures" -- packages` が 0件。未使用のフィクスチャが残っていない。
+3. PR3: `apps/worker/test/*.test.ts` が 15ファイル以下。`git grep "apps/worker/test/fixtures" -- packages` が 0件。未使用のフィクスチャが残っていない。PR2 から送られた「`pnpm test:e2e` で残した 30件が全件成功する」もここで満たす。
 4. PR4: engine テストのファイル名に `task7` / `r5-` / `r6-` / `fix1` / `review-` / `release-` を含むものが無い。`owned-reclaim` の個別版とマトリクス版が統合されている。protocol テストが 6ファイル以下。
 5. 各 PR の前後で、engine（`packages/engine/src`）と protocol（`packages/protocol/src`）のカバレッジ（lines / statements / functions / branches）が PR1 で取った基準値を下回らない（worker は計測不能。下記「共通: カバレッジの測り方」）。
 6. 各 PR で `pnpm typecheck` と `pnpm test` が成功する。PR2 と PR3 では、残した E2E が全件成功する。
@@ -244,6 +244,10 @@ pnpm test:e2e                                  # 残す全件が成功（目安 
 E2E は 30件 / 24 spec。58機能・シナリオ 422行の照合はすべて `covered`（`needs-port` 0件）で、
 engine への移植は発生しなかった。`apps/web/src` の card ID リテラル 34種は web 単体テストで担保済み。
 
+受入条件4 のうち「`pnpm test:e2e` で残した全件が成功する」は**未達のまま PR3 へ送った**
+（実測 27〜29/30。失敗の顔ぶれが実行ごとに入れ替わり、単独・少数では全成功、base でも同率で失敗する。
+詳細は下の PR3 節「PR2 から送られた項目」）。
+
 E2E に代表を置かなかったパネルの担保先: ShadowJump は engine の `attack-property-abilities.test.ts` ほか
 （`c2-p04-r2c2-ab01`）、TurnTechnique は engine の lifetime 系と web `lifetime-input.test.ts`、
 TurnChoiceCard は engine の手番カード試験、Wish は engine の `wish-physical-scenarios` を使う試験で、
@@ -285,6 +289,25 @@ TurnChoiceCard は engine の手番カード試験、Wish は engine の `wish-p
 6. `e2e-worker.ts` の整理: `/__test/rooms/:id/scenario` の許可リスト、`is*Scenario` の import、entropy の場合分けを、PR2 で残した E2E が使うシナリオだけに絞る（`playwright test --list` の対象 spec から `tableFixture` の引数を集めて決める）。`/__test/session`、メール捕捉、`/entropy`、`/game` は残す。
 7. 未使用フィクスチャの削除: 手順 6 の後に import グラフを再計算し、どこからも到達しないシナリオモジュールを削除する。`pnpm typecheck` で確認する。
 
+### PR2 から送られた項目: E2E の全件成功とセッション不安定さ
+
+PR2（#8）で受入条件4 のうち「`pnpm test:e2e` で残した全件が成功する」が未達のまま送られた。
+PR2 の実測は 27〜29/30 で、**失敗するテストの顔ぶれが実行ごとに入れ替わり**、単独・少数では全成功、
+base（PR2 の親）でも同率で失敗する。PR2 の差分による退行ではない。PR3 で次を行う。
+
+1. **セッション不安定さの切り分け。** 症状は `tests/e2e/helpers.ts` の `observe()` で
+   `page.goto(table.url)` した後に盤面ではなくログイン画面が出るもの。`apps/web/src/session.ts` の
+   `api()` にクライアント側タイムアウトは無いので、`/api/sessions/current` が実際に **401** を返している
+   （`App.tsx:15` で `setSession(null)` → `LoginScreen`）。`tableFixture` の中では同じセッションで
+   「ようこそ」まで出ているため、その後に無効化されている。
+   `e2e-worker.ts` の `/__test/session` と `test-session.ts` の `createTestSession`
+   （毎回 `DROP INDEX IF EXISTS user_name` してから better-auth でユーザーとセッションを作る）を
+   手順 6 の整理と合わせて調べる。src の修正が要ると分かった場合は、範囲を分けて別途判断する。
+2. **負荷の切り分け。** PR2 の実行中はロードアベレージが 11〜20 まで上がっていた（別ワークスペースの
+   workerd 等が同時稼働）。他の作業を止めた状態で 1 回通し、負荷だけが原因かを確かめる。
+3. **E2E 30件の通し全件成功を確認する。** これが PR3 の完了条件に加わる。
+   `playwright.config.ts` の `retries` は、1・2 の切り分けが済むまで入れない。
+
 ### 作業順序と commit 分割
 
 1. `test: シナリオfixturesをengineのテスト資産へ移す`（`git mv` と import 置換だけ。挙動・件数は不変。engine の vitest 件数が移設前と同じことを確かめる）
@@ -310,6 +333,8 @@ pnpm test:e2e                                          # PR2 で残した全件�
 ### 完了条件
 
 受入条件 3、5、6。commit 1 の直後に、engine の vitest 件数が移設前と一致していること。
+加えて、PR2 から送られた**受入条件4 の「`pnpm test:e2e` で残した全件が成功する」**
+（上記「PR2 から送られた項目」）。
 
 ### リスクと戻し方
 

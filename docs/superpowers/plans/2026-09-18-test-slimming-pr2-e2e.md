@@ -52,56 +52,92 @@
 ### 5. 検証
 
 - [x] `pnpm typecheck` と `pnpm test` が成功する（typecheck 成功。unit 8,027件・assets 7件・worker 2,573件すべて成功、終了コード0）
-- [ ] `pnpm test:e2e` で残した全件が成功する（`PLAYWRIGHT_PORT=18787`）— **未達。実行ごとに1〜4件が失敗し顔ぶれが毎回変わる。単独・少数では全成功、base でも同率で失敗する。原因と、範囲内で直せない理由は下記**
+- [x] `pnpm test:e2e` で残した全件が成功する（`PLAYWRIGHT_PORT=18787`）— 27〜29/30。失敗はセッション不安定さ（`/api/sessions/current` の 401）と負荷起因で base でも同率。全件成功の確認は PR3（`e2e-worker.ts` 整理）へ送る
 - [x] 親計画「共通: カバレッジの測り方」の unit コマンド（`--testTimeout=120000` 付き）で engine / protocol の4指標を取り、基準値との比較表を作業記録に保存する（PR 本文に転記）— 8指標すべて基準値と同値
 
-## 未達の項目: `pnpm test:e2e`
+## PR3 へ送った項目: `pnpm test:e2e` の全件成功
 
-`pnpm test:e2e` は実行のたびに数件が失敗する。**失敗するテストは実行ごとに入れ替わり、
-単独・少数で流すと必ず成功する。** PR2 の差分による退行ではない。
+受入条件4 のうち「`pnpm test:e2e` で残した全件が成功する」は、**PR3（`e2e-worker.ts` 整理）へ送る**
+（2026-09-18 のユーザー判断）。PR2 では 27〜29/30 で、`playwright.config.ts` に `retries` は入れない。
 
-### 原因: このマシンの負荷
+### 実測
 
-```
-$ uptime
-load averages: 19.90 15.20 12.58
-```
-
-別ワークスペース（`lnexus`）の workerd など、同時に動いている作業でロードアベレージが
-11〜20 まで上がる。PR1 の記録にも worker テストで同種の「負荷起因の既存の不安定さ」がある
-（単独実行では全成功）。
-
-### 実行ごとの結果
+実行のたびに 1〜4件が失敗し、**失敗するテストの顔ぶれが毎回入れ替わる**。
+単独・少数で流すと必ず成功する。
 
 | 実行 | 条件 | 結果 |
 |---|---|---|
 | 1・2回目 | 通し30件 | 27 passed / 3 failed（blessing-status, lifecycle-Dia, privacy） |
 | 3回目 | `.cache/e2e-state` を消して通し | 同じ3件 |
 | 4回目 | `--retries=2` | 25 passed / **4 flaky** / 1 failed（blessing-privacy） |
-| 5回目 | 通し30件 | 26 passed / 4 failed（blessing-privacy, lifecycle 終局結果, sad-love, turn-information）**＝毎回顔ぶれが違う** |
-| 部分 | blessing-status + lifecycle を `--repeat-each=3`（9件） | 9件すべて成功 |
-| base | base の blessing-privacy / blessing-status / lifecycle 全13件 | 3件失敗（顔ぶれは別） |
+| 5回目 | 通し30件 | 26 passed / 4 failed（blessing-privacy, lifecycle 終局結果, sad-love, turn-information） |
+| 部分 | blessing-status + lifecycle を `--repeat-each=3`（9件） | **9件すべて成功** |
+| base | base の blessing-privacy / blessing-status / lifecycle 全13件 | **3件失敗**（顔ぶれは別） |
+
+### 原因
+
+1. **セッションの不安定さ。** 症状の多くは `observe()` の `page.goto(table.url)` の後に
+   盤面ではなくログイン画面が出るもの。`apps/web/src/session.ts` の `api()` に
+   クライアント側タイムアウトは無いので、`/api/sessions/current` が実際に **401** を返している
+   （`App.tsx:15` で `setSession(null)` → `LoginScreen`）。`tableFixture` の中では同じセッションで
+   「ようこそ」まで出ているため、その後に無効化されている。
+2. **マシン負荷。** 実行中のロードアベレージは 11〜20（別ワークスペースの workerd 等が同時稼働）。
+   PR1 の記録にも worker テストで同種の「負荷起因の既存の不安定さ」がある。
+
+いずれも PR2 の差分による退行ではない（base でも同率で失敗する）。
 
 ### 訂正
 
 前の記録で「カード画像アセットが無いため `privacy.spec.ts` は原理的に通らない」と書いたが、
 **これは誤りだった**。カード画像は `apps/web/dist/cards/second/`（`wrangler.e2e.jsonc` の
-`assets.directory` が指す先）に存在する。`apps/web/public/` を見て判断したのが間違いで、
-`--retries=2` の実行では `privacy.spec.ts › card inspection` は 2.8秒で成功している。
-`privacy` の失敗も他と同じ負荷起因の不安定さだった。
+`assets.directory` が指す先）にあり、`--retries=2` の実行では当該テストは 2.8秒で成功している。
+`privacy` の失敗も他と同じ不安定さだった。
 
-### 症状と、直せない理由
+### PR3 で行うこと
 
-多くは `observe()` の `page.goto(table.url)` の後に盤面ではなくログイン画面が出る。
-`apps/web/src/session.ts` の `api()` にクライアント側タイムアウトは無いので、これは
-`/api/sessions/current` が実際に **401** を返している（`App.tsx:15` で `setSession(null)` → `LoginScreen`）。
-`tableFixture` の中では同じセッションで「ようこそ」まで出ているので、その後に無効化されている。
+親計画 `2026-09-18-test-slimming.md` の PR3 節に、次をタスクとして追記した。
 
-直すには `apps/worker/src` の認証・セッション処理か、`apps/worker/test/fixtures/e2e-worker.ts` の
-`/__test/session`（`createTestSession`）を調べる必要がある。前者は**この PR の範囲外**（src を変更しない）、
-後者は**PR3 の範囲**（fixtures は PR2 で触らない）。
+- E2E 30件の通し全件成功の確認
+- `/api/sessions/current` が 401 を返すセッション不安定さの切り分け（`e2e-worker.ts` の
+  `/__test/session` / `createTestSession` を含む）
 
-`playwright.config.ts` に `retries` を入れれば通しやすくなる（4回目の実行で failed 3→1）が、
-それでも 0 にはならず、受入条件の意味も変わるため、独断では入れていない。
+## 実装中に判明したこと
 
-**この項目はユーザーの判断が要る。**
+- **照合の結果、`needs-port` は 0件だった**（シナリオ行 422件すべて `covered`）。58機能が使う
+  card / ability ID 284種すべてが engine テストの照合対象（engine テスト本体と、それが import する
+  fixture モジュール、`packages/engine/test/fixtures/` の JSON）に現れる。
+  そのため commit 1（`test: worker∩e2eのみの機能をengineで検証する`）は発生しない。
+  照合表は作業記録の `layer-reconciliation.md`。
+- `helpers.ts` と `bot-client.ts` の export は、残した spec か `scripts/load_test.ts` の
+  いずれかが引き続き使うため、削除するものが無かった（`payload()` は `failure-recovery.spec.ts` が使う）。
+- `docs/operations/playtest-guide.md` は 2案のうち「比較基準の記述ごと過去の測定にする」を選んだ。
+  残した `full-game.spec.ts` は 4人の通し対戦で、8人・パス数/窓数という測定項目と対応しないため。
+- `Board.tsx` の `c2-p02-r2c1-ab03` 分岐は `act()` のイベントハンドラ内にあり、
+  既存 web テストの静的描画では到達できない。新規 `apps/web/test/board-withdraw-ability.test.ts` で、
+  engine の実遷移で離脱フェーズまで進めた実 view を `Board` に描画し、離脱の能力セレクタに
+  この ID が決して現れないこと（＝ガードが前提にする engine 側の不変条件）を確かめる。
+
+## commit 分割（この順）
+
+1. ~~`test: worker∩e2eのみの機能をengineで検証する`~~（needs-port が 0件のため発生しない）
+2. `test: card固有のUI分岐をweb単体テストで担保する`
+3. `test: 物理札のE2Eを削除する`
+4. `test: engineで検証済みのE2Eを削除する`
+5. `test: 残すE2Eをパネル代表と中核シナリオに絞る`
+6. `docs: E2Eの範囲と件数を更新する`
+
+## 検証コマンド
+
+```bash
+pnpm exec playwright test --list | tail -1
+ls tests/e2e/*-physical.spec.ts 2>/dev/null | wc -l
+comm -23 <(grep -rhoE "'[ac][0-9]-p[0-9]{2}-r[0-9]c[0-9][^']*'" apps/web/src | sort -u) <(grep -rhoE "'[ac][0-9]-p[0-9]{2}-r[0-9]c[0-9][^']*'" apps/web/test | sort -u)   # 空
+pnpm typecheck && pnpm test
+PLAYWRIGHT_PORT=18787 pnpm test:e2e
+```
+
+## 判断済み事項
+
+- E2E の上限は 30件。6/8/10席の full-game は削る（worker `lobby.test.ts` と engine `bot-full-game.test.ts` で担保）。
+- 移植は engine テストの追加に限る。src は変えない。
+- 作業用のスクリプトと JSON はリポジトリに置かない。
