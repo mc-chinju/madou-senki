@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getAction } from '../../packages/catalog/src/index.js';
-import { observe, readySetup, tableFixture } from './helpers.js';
+import { finishSetup, observe, readySetup, tableFixture } from './helpers.js';
 
 /** G10: seats place in any order inside a round; the refill and the next round follow the last ready. */
 test('later seats place and ready before the first seat, and a refilled seat places again in round 2', async ({ browser, request }) => {
@@ -27,7 +27,7 @@ test('later seats place and ready before the first seat, and a refilled seat pla
       await commit(seat, () => page.getByRole('button', { name: '従者を置く', exact: true }).click());
       await expect.poll(() => views.get(table.sessions[seat]!.id)!.game!.self.followers.length).toBe(placed + 1);
     }
-    const ready = (seat: number) => commit(seat, () => table.pages[seat]!.getByRole('button', { name: '配置を終える', exact: true }).click());
+    const ready = (seat: number) => commit(seat, () => finishSetup(table.pages[seat]!));
 
     // Finishing with a placeable follower in hand is final, so the first press only asks inside the bar (no browser dialog).
     const bar = table.pages[first]!.getByRole('region', { name: '現在できる操作' });
