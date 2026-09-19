@@ -1,7 +1,8 @@
-import {getAction} from '@madou/catalog';
+import {actionCards, getAction} from '@madou/catalog';
 import {expect, it} from 'vitest';
 import {gameStats, viewFor, type GameEvent, type GameState, type LogView} from '../src/index.js';
 import {act, closeWindow, finish, pass, passReclaims, ready, until} from './combat-helpers.js';
+import {recordCardPlayed} from '../src/public-record.js';
 import {character, handCard, handCards} from './fixtures.js';
 import {makeR6RollScenario} from './fixtures/r6-roll-scenarios.js';
 
@@ -391,6 +392,37 @@ it('keeps cards that declare no attack out of the attack wording', () => {
   // One declaration, one ending: the pre-attack card is not a second attack.
   expect(played.filter(([, use]) => use === 'attack')).toEqual([[card, 'attack']]);
   expect(outcomes(s)).toHaveLength(1);
+});
+
+/** The word is chosen from the printed category, so a fifth 複合 card cannot come out reading differently. */
+it('gives every card printed 複合 the same word, whatever a caller asks for', () => {
+  const printed = actionCards.filter(card => {
+    const category = (card as {printed_category?: string | string[]}).printed_category;
+    return Array.isArray(category) ? category.includes('複合') : category === '複合';
+  }).map(card => card.id);
+  expect(printed).toEqual(['a2-p05-r1c3', 'a2-p05-r2c1', 'a2-p05-r2c2', 'a2-p05-r2c3']);
+  const s = ready();
+  for (const id of printed) recordCardPlayed(s, 'A', id, 'attack');
+  expect(record(s, 'C').filter(log => log.type === 'CARD_PLAYED').map(log => [log.cardInstanceId, log.use]))
+    .toEqual(printed.map(id => [id, 'combination']));
+});
+
+/** 必勝の祈り is 複合 too, on its own turn and when リーア姫 spends it on someone else's technique. */
+it('says 必勝の祈り was used as a combination, whoever it is spent for', () => {
+  const play = (owner: 'A' | 'C') => {
+    let s = ready();
+    if (owner === 'C') character(s, 'C', 'リーア姫');
+    const card = handCard(s, 'A', '踏み込み／弓'), prayer = handCard(s, owner, '必勝の祈り');
+    s = until(act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false}), 'effect-level');
+    const main = Object.values(s.actions!).find(a => a.kind === 'attack')!;
+    for (let n = 0; n < 10 && s.windows?.at(-1)?.participants[s.windows.at(-1)!.cursor] !== owner; n++) s = pass(s);
+    s = act(s, owner, {type: 'PLAY_REACTION', cardInstanceId: prayer, mode: 'effect-plus', targetActionId: main.id, ...(owner === 'C' ? {dedicated: true} : {})});
+    return {s: finish(s), card, prayer};
+  };
+  for (const owner of ['A', 'C'] as const) {
+    const {s, card, prayer} = play(owner);
+    expect(uses(s, 'D'), owner).toEqual([[card, 'attack'], [prayer, 'combination']]);
+  }
 });
 
 /** Every card printed 複合 gets the same word, and none of them reads as a declaration of its own. */

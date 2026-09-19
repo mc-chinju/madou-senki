@@ -37,7 +37,8 @@ export interface RollAttempt {
 export interface RollFrame {
     excludeSourceAbilityId?:string;
     /** Whether the roller was open when the roll began; the record and the history both stay at that reading.
-     *  Absent on a frame saved before this field existed, and those fall back to the seat's state now. */
+     *  Absent on a frame saved before this field existed; those are read as hidden by both, which can only
+     *  drop a threshold that used to show, never show one that used to be hidden. */
     rollerRevealed?: boolean;
     id: string;
     eventId: string;

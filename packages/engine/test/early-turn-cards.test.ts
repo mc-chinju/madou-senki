@@ -12,7 +12,10 @@ it.each([[WAR,'修行（戦士技）','warrior_level'],[MAGIC,'修行（魔法�
   s=closeWindow(s);expect(s.windows!.at(-1)!.kind).toBe('before-roll');s=closeWindow(s,[...faces]);
   expect(s.rolls!.at(-1)).toMatchObject({threshold:6,comparison:'greater-than',success});
   // G03 判定の公開範囲: the outcome is public, the threshold stays with the revealed seat.
-  expect(viewFor(s,'B').currentRoll).not.toHaveProperty('threshold');expect(viewFor(s,'B').currentRoll!.success).toBe(success);
+  // The way the threshold is read is part of it, and 修行 is the one check that wants a bigger total.
+  for(const key of ['threshold','comparison','modifier'])expect(viewFor(s,'B').currentRoll,key).not.toHaveProperty(key);
+  expect(viewFor(s,'B').currentRoll!.success).toBe(success);
+  expect(viewFor(s,'A').currentRoll).toMatchObject({threshold:6,comparison:'greater-than'});
   s=finish(s);expect(s.players.A!.attachments.includes(id)).toBe(success);expect(s.discard.includes(id)).toBe(!success);expect(gameStats(s,'A')[stat]).toBe(success?7:6);
  }
 });

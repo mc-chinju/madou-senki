@@ -1,3 +1,4 @@
+import {getAction} from '@madou/catalog';
 import type {GameEvent, GameState, PlayerId, PublicRollRecord} from './state.js';
 import type {RollFrame} from './rolls/frames.js';
 import type {ActionFrame} from './reactions/continuations.js';
@@ -9,9 +10,16 @@ function record(s: GameState, event: Omit<GameEvent, 'id' | 'at'>): void {
   s.events.push({...event, id: s.nextEventId++, at: s.events.at(-1)?.at ?? 0});
 }
 
+/** Every card printed 複合 is paid alongside a technique rather than declaring one, so they all read alike
+ *  wherever they are played: the combination components, 全軍突撃せよ and 必勝の祈り. */
+function printedUse(cardInstanceId: string, use: CardUse): CardUse {
+  const printed = getAction(cardInstanceId)?.printed_category;
+  return (Array.isArray(printed) ? printed.includes('複合') : printed === '複合') ? 'combination' : use;
+}
+
 /** Only for a card that is face up in resolution (or on the table) at this moment. */
 export function recordCardPlayed(s: GameState, actorId: PlayerId, cardInstanceId: string, use: CardUse, targetIds: readonly PlayerId[] = []): void {
-  record(s, {type: 'CARD_PLAYED', actorId, audience: 'public', cardInstanceId, use, ...(targetIds.length ? {targetIds: [...targetIds]} : {})});
+  record(s, {type: 'CARD_PLAYED', actorId, audience: 'public', cardInstanceId, use: printedUse(cardInstanceId, use), ...(targetIds.length ? {targetIds: [...targetIds]} : {})});
 }
 
 /** A hidden character's ability stays anonymous to others; the actor still sees its own record. */
@@ -60,7 +68,7 @@ export function recordRoll(s: GameState, frame: RollFrame): void {
   const roll: PublicRollRecord = {rollId: frame.id, kind: frame.purpose, faces: [...frame.faces], total: frame.total ?? 0, attempt: frame.attempts.length,
     ...(frame.threshold !== undefined ? {threshold: frame.threshold} : {}), ...(frame.comparison ? {comparison: frame.comparison} : {}), ...(frame.success !== undefined ? {success: frame.success} : {}), ...(frame.forcedFailure ? {forcedFailure: true} : {})};
   // The record keeps the reading the roll was thrown under, so revealing later does not reopen past thresholds.
-  const open = frame.rollerRevealed ?? !!s.players[frame.rollerId]?.revealed;
+  const open = frame.rollerRevealed ?? false;
   record(s, {type: 'ROLL_RESOLVED', actorId: frame.rollerId, audience: 'public', roll, ...(open ? {} : {concealed: true})});
 }
 

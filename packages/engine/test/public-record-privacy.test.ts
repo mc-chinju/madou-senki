@@ -72,10 +72,13 @@ describe('public record privacy over full bot games', () => {
             // A card still hidden after the step cannot have been shown, unless this step's command played it.
             if (!playedByCommand(command).has(id)) expect(secret.has(id), context).toBe(false);
           }
-          // A bot game reveals every seat before it rolls and never declares an ability, so the concealed
-          // readings of a check and of an ability name cannot be reached from here. They are pinned where they
-          // can be built on purpose: rolls.test.ts for the check values, public-record-events.test.ts for names.
-          if (log.characterId && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, `step=${steps} log=${JSON.stringify(log)}`).toBe(true);
+          const context = `step=${steps} viewer=${viewerId} log=${JSON.stringify(log)}`;
+          if (log.characterId && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, context).toBe(true);
+          // The threshold is the roller's modified spirit (G03 判定の公開範囲). A bot game does reach this:
+          // at 6 seats a hidden seat throws excess-level checks, so removing view.ts's gate breaks this line.
+          if (log.roll?.threshold !== undefined && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, context).toBe(true);
+          // Only the ability-name reading is out of reach here: the bot declares none at 4 or 6 seats.
+          // public-record-events.test.ts's allowlist pins that one instead.
         }
       }
       state = next;

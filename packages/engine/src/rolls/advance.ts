@@ -104,7 +104,7 @@ export function visibleRoll(state: GameState): RollFrame | undefined {
  *  are all the roller's spirit value, so they need a revealed seat. A seat revealed later does not reopen
  *  the rolls it threw while hidden, which is the reading the record already takes. */
 export function projectRoll(state: GameState, frame: RollFrame, viewerId: string): PublicRollView {
-  const seeCheck = frame.rollerId === viewerId || (frame.rollerRevealed ?? !!state.players[frame.rollerId]?.revealed);
+  const seeCheck = frame.rollerId === viewerId || (frame.rollerRevealed ?? false);
   return {
     rollId: frame.id, eventId: frame.eventId, purpose: frame.purpose, rollerId: frame.rollerId,
     kind: frame.kind, formula: frame.formula, stage: frame.stage, generation: frame.generation,
