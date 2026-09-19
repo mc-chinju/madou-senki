@@ -50,7 +50,7 @@ test('new record types read as sentences with card and ability links, and unknow
     { id: 12, type: 'TURN_ENDED', actorId: 'B', turnNumber: 1 },
     { id: 13, type: 'FUTURE_EVENT' as LogView['type'], actorId: 'D' },
   ]));
-  expect(markup).toMatch(/<strong>楓<\/strong>が<button class="card-link" aria-label="[^"]+の詳細を見る">[^<]+<\/button>を防御に使いました（対象: 葵）/);
+  expect(markup).toMatch(/<strong>楓<\/strong>が葵さんへ防御を宣言しました（<button class="card-link" aria-label="[^"]+の詳細を見る">[^<]+<\/button>）/);
   expect(markup).toMatch(/<strong>葵<\/strong>が<button class="card-link" aria-label="[^"]+（[^"]+）の詳細を見る">[^<]+<\/button>を宣言しました（対象: 楓）/);
   expect(markup).toContain('<strong>凛</strong>が特殊能力を宣言しました');
   expect(markup).toContain('使用Lv超過の判定で3・4（合計7）を出しました（目標値8・成功）［振り直し1回目］');
@@ -62,6 +62,74 @@ test('new record types read as sentences with card and ability links, and unknow
   expect(markup).toContain('<strong>楓</strong>が手番を終えました');
   expect(markup).toContain('<strong>蓮</strong>が記録');
   expect(markup).not.toContain('FUTURE_EVENT');
+});
+
+/** Every name the record prints must be a link, so a reader can open what it refers to. */
+test('every record type names its target and keeps card, person and ability names inside links', () => {
+  const logs: Omit<LogView, 'at'>[] = [
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p05-r3c1', use: 'attack', targetIds: ['B', 'C'] },
+    { id: 3, type: 'CARD_PLAYED', actorId: 'B', cardInstanceId: 'a2-p05-r3c1', use: 'maai', targetIds: ['A'] },
+    { id: 4, type: 'CARD_PLAYED', actorId: 'B', cardInstanceId: 'a2-p05-r3c1', use: 'advance' },
+    { id: 5, type: 'CARD_PLAYED', actorId: 'C', cardInstanceId: 'a2-p02-r1c2', use: 'anytime', targetIds: ['A'] },
+    // A follower attack and 全軍突撃 name the follower they sent; a virtual follower names its ability.
+    { id: 6, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p20-r3c1', use: 'attack', targetIds: ['B'] },
+    { id: 7, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p05-r2c2', use: 'attack', targetIds: ['B'] },
+    { id: 8, type: 'ATTACK_DECLARED', actorId: 'D', abilityId: 'c2-p04-r1c1-ab02', targetIds: ['B'] },
+    { id: 9, type: 'ATTACK_DECLARED', actorId: 'D', targetIds: ['B'] },
+    { id: 10, type: 'CHECK_SKIPPED', actorId: 'A', checkSkip: 'level' },
+    { id: 11, type: 'CHECK_SKIPPED', actorId: 'A', checkSkip: 'card' },
+    { id: 12, type: 'CHECK_SKIPPED', actorId: 'D', checkSkip: 'ability', abilityId: 'c2-p06-r2c2-ab02' },
+    { id: 13, type: 'CHECK_SKIPPED', actorId: 'D', checkSkip: 'ability' },
+    { id: 14, type: 'FOLLOWER_DESTROYED', actorId: 'B', targetId: 'A', cardInstanceId: 'a2-p20-r3c1' },
+    { id: 15, type: 'CHARACTER_REVEALED', actorId: 'D', characterId: 'c2-p04-r1c1' },
+    { id: 16, type: 'CHARACTER_TRANSFORMED', actorId: 'D', characterId: 'c2-p01-r1c1' },
+    { id: 17, type: 'PLAYER_REVIVED', actorId: 'C', characterId: 'c2-p06-r2c2' },
+    { id: 18, type: 'PLAYER_DIED', actorId: 'C', death: { cause: 'attack', eventId: 'e', sourceCardInstanceId: 'a2-p05-r3c1' } },
+    { id: 19, type: 'CARD_GIFTED', actorId: 'C', targetId: 'B', cardInstanceId: 'a2-p02-r1c2' },
+    { id: 20, type: 'OPEN', actorId: 'B', cardInstanceId: 'a2-p01-r1c1' },
+    { id: 21, type: 'CHARACTER_INSPECTED', actorId: 'B', targetId: 'D', characterId: 'c2-p04-r2c2' },
+    { id: 22, type: 'ABILITY_DECLARED', actorId: 'D', abilityId: 'c2-p04-r2c2-ab03', targetIds: ['A'] },
+  ];
+  const markup = html(view(logs));
+  expect(markup).toContain('が楓さん・凛さんへ攻撃を宣言しました（<button');
+  expect(markup).toContain('が葵さんへ間合いを宣言しました（<button');
+  expect(markup).toMatch(/<strong>楓<\/strong>が<button[^>]*>見切る<\/button>を踏み込みに使いました<\/li>/);
+  expect(markup).toMatch(/<strong>凛<\/strong>が<button[^>]*>啓示<\/button>をいつでもに使いました（対象: 葵）/);
+  expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>）');
+  expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="氷刃（凍気のアイエル）の詳細を見る">氷刃</button>）');
+  expect(markup).toContain('が楓さんへ攻撃を宣言しました（特殊能力）');
+  expect(markup).toContain('使用Lvを満たしていて判定は要りませんでした');
+  expect(markup).toContain('カードの記述により判定は要りませんでした');
+  expect(markup).toContain('>野獣</button>で判定を免れました');
+  expect(markup).toContain('が特殊能力で判定を免れました');
+  expect(markup).toContain('が葵さんの<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>を破壊しました');
+  // Nothing outside a link may print a card, person or ability name.
+  const plain = markup.replace(/<button[^>]*>[^<]*<\/button>/g, '').replace(/aria-label="[^"]*"/g, '');
+  for (const name of ['見切る', 'グリフォン', '全軍突撃せよ', '啓示', 'そうかっ', '氷刃', '野獣', '必殺', '凍気のアイエル', '白魔術師シェリム', '餓狼ヨーツルム', '忍びのイダ']) {
+    expect(plain, `${name} escaped its link`).not.toContain(name);
+  }
+});
+
+test('the reader can flip the record to newest first', () => {
+  const v = view([
+    { id: 1, type: 'SETUP_COMPLETE', actorId: 'A' },
+    { id: 2, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 3, type: 'PASSED', actorId: 'B', windowKind: 'declaration' },
+    { id: 4, type: 'PASSED', actorId: 'C', windowKind: 'declaration' },
+    { id: 5, type: 'DAMAGE_APPLIED', actorId: 'B', amount: 4 },
+    { id: 6, type: 'TURN_STARTED', actorId: 'B', turnNumber: 2 },
+    { id: 7, type: 'REST', actorId: 'B', count: 1 },
+  ]);
+  const oldest = publicLogSections(v), newest = publicLogSections(v, 'newest');
+  expect(oldest.map(section => section.heading)).toEqual(['対戦準備', '1手番 葵さん', '2手番 楓さん']);
+  expect(newest.map(section => section.heading)).toEqual(['2手番 楓さん', '1手番 葵さん', '対戦準備']);
+  // The fold still runs over the chronological run, so the two passes stay one line in either order.
+  expect(newest[1]!.lines).toEqual([
+    { kind: 'event', event: expect.objectContaining({ id: 5 }) },
+    { kind: 'passes', id: 3, lastId: 4, windowKinds: ['declaration'], actorIds: ['B', 'C'] },
+  ]);
+  expect(oldest[1]!.lines.map(line => (line.kind === 'event' ? line.event.id : line.id))).toEqual([3, 5]);
 });
 
 test('leaving a whole action to the others reads as one line per action', () => {

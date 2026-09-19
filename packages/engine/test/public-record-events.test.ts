@@ -5,7 +5,7 @@ import {act, closeWindow, finish, pass, passReclaims, ready, until} from './comb
 import {character, handCard, handCards} from './fixtures.js';
 import {makeR6RollScenario} from './fixtures/r6-roll-scenarios.js';
 
-const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
+const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ATTACK_DECLARED', 'CHECK_SKIPPED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
 const record = (s: GameState, viewer = 'C') => viewFor(s, viewer).logs.filter(log => RECORD_TYPES.has(log.type));
 const indexOf = (logs: LogView[], match: Partial<LogView>, from = 0) => logs.findIndex((log, index) => index >= from && Object.entries(match).every(([key, value]) => JSON.stringify(log[key as keyof LogView]) === JSON.stringify(value)));
 
@@ -171,6 +171,9 @@ it('projects each record type through a fixed field allowlist and hides a concea
     {type: 'TURN_ENDED', actorId: 'A', ...secret},
     {type: 'REST', actorId: 'A', ...secret},
     {type: 'CARD_PLAYED', actorId: 'A', ...secret, roll},
+    {type: 'ATTACK_DECLARED', actorId: 'B', ...secret, concealed: true},
+    {type: 'CHECK_SKIPPED', actorId: 'B', ...secret, checkSkip: 'ability', concealed: true},
+    {type: 'CHECK_SKIPPED', actorId: 'A', ...secret, checkSkip: 'level'},
     {type: 'ABILITY_DECLARED', actorId: 'B', ...secret, concealed: true},
     {type: 'ABILITY_CANCELED', actorId: 'A', ...secret},
     {type: 'ROLL_RESOLVED', actorId: 'B', ...secret, roll, concealed: true},
@@ -186,6 +189,10 @@ it('projects each record type through a fixed field allowlist and hides a concea
     ['TURN_ENDED', ['turnNumber']],
     ['REST', ['count']],
     ['CARD_PLAYED', ['cardInstanceId', 'targetIds', 'use']],
+    // A card-less attack keeps its targets public; only the ability name follows the concealed seat.
+    ['ATTACK_DECLARED', ['targetIds']],
+    ['CHECK_SKIPPED', ['checkSkip']],
+    ['CHECK_SKIPPED', ['abilityId', 'checkSkip']],
     ['ABILITY_DECLARED', []],
     ['ABILITY_CANCELED', ['abilityId', 'targetIds']],
     ['ROLL_RESOLVED', ['roll']],
@@ -194,10 +201,13 @@ it('projects each record type through a fixed field allowlist and hides a concea
     ['DISTANCE_CHANGED', ['distance', 'targetId']],
     ['PASSED', ['windowKind']],
   ]);
+  // G03 判定の公開範囲: the outcome reaches everyone, the threshold only a revealed seat.
   const hiddenRoll = viewFor(s, 'C').logs.find(log => log.type === 'ROLL_RESOLVED')!.roll!;
-  expect(hiddenRoll).toEqual({rollId: 'roll-1', kind: 'ability-check', faces: [3, 4], total: 7, attempt: 1});
+  expect(hiddenRoll).toEqual({rollId: 'roll-1', kind: 'ability-check', faces: [3, 4], total: 7, attempt: 1, success: true});
   const own = viewFor(s, 'B').logs;
   expect(own.find(log => log.type === 'ABILITY_DECLARED')).toMatchObject({abilityId: 'secret-ability', targetIds: ['D']});
+  expect(own.find(log => log.type === 'ATTACK_DECLARED')).toMatchObject({abilityId: 'secret-ability', targetIds: ['D']});
+  expect(own.find(log => log.type === 'CHECK_SKIPPED')).toMatchObject({abilityId: 'secret-ability', checkSkip: 'ability'});
   expect(own.find(log => log.type === 'ROLL_RESOLVED')!.roll).toMatchObject({threshold: 8, success: true});
 });
 
@@ -234,5 +244,32 @@ it('records the public target of revelation in the third-party history', () => {
   s = act(s, 'A', {type: 'PLAY_ANYTIME_CARD', cardInstanceId, targetEventId: option.targetEventId, targetId: 'B'});
   expect(record(s, 'C').filter(log => log.cardInstanceId === cardInstanceId)).toEqual([
     expect.objectContaining({type: 'CARD_PLAYED', actorId: 'A', use: 'anytime', targetIds: ['B']}),
+  ]);
+});
+
+it.each([true, false])('records why a usage check never happened, naming the ability only for a revealed seat (revealed=%s)', revealed => {
+  let s = ready();
+  character(s, 'A', '餓狼ヨーツルム');
+  s.players.A!.revealed = revealed;
+  s.distances.A!.B = 'near'; s.distances.B!.A = 'near';
+  const card = handCard(s, 'A', '狼牙');
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false, declarationAbilityIds: ['c2-p06-r2c2-ab02']});
+  s = until(s, 'effect-level');
+  const own = record(s, 'A').filter(log => log.type === 'CHECK_SKIPPED');
+  expect(own).toEqual([expect.objectContaining({actorId: 'A', checkSkip: 'ability', abilityId: 'c2-p06-r2c2-ab02'})]);
+  const other = record(s, 'C').filter(log => log.type === 'CHECK_SKIPPED');
+  expect(other).toHaveLength(1);
+  expect(other[0]!.checkSkip).toBe('ability');
+  if (revealed) expect(other[0]).toMatchObject({abilityId: 'c2-p06-r2c2-ab02'});
+  else expect(other[0]).not.toHaveProperty('abilityId');
+});
+
+it('records an attack whose level needed no check at all', () => {
+  let s = ready();
+  const attack = handCard(s, 'A', '踏み込み／弓');
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false});
+  s = until(s, 'normal-defense');
+  expect(record(s, 'C').filter(log => log.type === 'CHECK_SKIPPED')).toEqual([
+    expect.objectContaining({actorId: 'A', checkSkip: 'level'}),
   ]);
 });

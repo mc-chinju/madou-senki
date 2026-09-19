@@ -18,6 +18,17 @@ export function recordAbility(s: GameState, type: 'ABILITY_DECLARED' | 'ABILITY_
   record(s, {type, actorId, audience: 'public', abilityId, ...(targetIds.length ? {targetIds: [...targetIds]} : {}), ...(s.players[actorId]?.revealed ? {} : {concealed: true})});
 }
 
+/** An attack with no card behind it (a virtual follower); the ability name follows the same rule as recordAbility. */
+export function recordAbilityAttack(s: GameState, actorId: PlayerId, abilityId: string, targetIds: readonly PlayerId[]): void {
+  record(s, {type: 'ATTACK_DECLARED', actorId, audience: 'public', abilityId, ...(targetIds.length ? {targetIds: [...targetIds]} : {}), ...(s.players[actorId]?.revealed ? {} : {concealed: true})});
+}
+
+/** Whether a usage check was needed is visible at the table, so the fact is public even when the reason is not. */
+export function recordCheckSkipped(s: GameState, actorId: PlayerId, checkSkip: NonNullable<GameEvent['checkSkip']>, abilityId?: string): void {
+  record(s, {type: 'CHECK_SKIPPED', actorId, audience: 'public', checkSkip,
+    ...(abilityId ? {abilityId} : {}), ...(abilityId && !s.players[actorId]?.revealed ? {concealed: true} : {})});
+}
+
 export function recordPass(s: GameState, actorId: PlayerId, windowKind: string): void {
   record(s, {type: 'PASSED', actorId, audience: 'public', windowKind});
 }

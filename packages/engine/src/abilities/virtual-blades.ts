@@ -1,4 +1,4 @@
-import {recordAbility} from '../public-record.js';
+import {recordAbility,recordAbilityAttack} from '../public-record.js';
 import type {GameCommand} from '@madou/protocol';
 import type {EngineErrorCode} from '../commands.js';
 import {canUseCharacterAbility,hasStatus,type GameState} from '../state.js';
@@ -20,6 +20,9 @@ export function acceptVirtualBlade(s:GameState,actorId:string,c:Extract<GameComm
  const option=virtualBladeOptions(s,actorId).find(o=>o.abilityId===c.abilityId);if(!option)return 'ABILITY_DISABLED';if(c.targetIds.length!==1||!option.targetIds.includes(c.targetIds[0]!))return 'INVALID_TARGET';
  const p=s.players[actorId]!,id=`a-${s.nextEventId++}`,technique=option.technique,stats=gameStats(s,actorId,{technique}),checkSpecs:NonNullable<ActionFrame['checkSpecs']>=Array.from({length:Math.max(0,technique.useLevel-stats.magic_level)},()=>({purpose:'excess-level',modifier:0}));
  const a:ActionFrame={id,eventId:id,parentWindowId:null,actorId,cardInstanceId:null,source:{kind:'ability',abilityId:c.abilityId,actorId},sourceCardInstanceIds:[],kind:'attack',targetIds:[...c.targetIds],technique,groupId:null,stage:'declaration',checks:checkSpecs.map(c=>c.modifier),checkSpecs,roll:null,canceled:false};acceptActionModifiers(s,a);(s.actions??={})[id]=a;
- const f:AbilityFrame={source:'ability',id:`ability-${s.nextEventId++}`,abilityId:c.abilityId,actorId,targetIds:[...c.targetIds],eventId:id,parentWindowId:null,useOrdinal:1,costs:{ownAction:true},stage:'declaration',canceled:false,rollIds:[],context:{kind:'virtual-blade',actionId:id,lifeId:lifeIdentity(p)}};(s.abilities??={})[f.id]=f;recordAbility(s,'ABILITY_DECLARED',actorId,f.abilityId,f.targetIds.filter(id=>id!==actorId));s.phase='combat';openWindow(s,'declaration',id,{kind:'ability',id:f.id},participants(s));
+ const f:AbilityFrame={source:'ability',id:`ability-${s.nextEventId++}`,abilityId:c.abilityId,actorId,targetIds:[...c.targetIds],eventId:id,parentWindowId:null,useOrdinal:1,costs:{ownAction:true},stage:'declaration',canceled:false,rollIds:[],context:{kind:'virtual-blade',actionId:id,lifeId:lifeIdentity(p)}};(s.abilities??={})[f.id]=f;recordAbility(s,'ABILITY_DECLARED',actorId,f.abilityId,f.targetIds.filter(id=>id!==actorId));
+ // A virtual blade attacks with no card, so the record names the ability instead.
+ recordAbilityAttack(s,actorId,f.abilityId,f.targetIds);
+ s.phase='combat';openWindow(s,'declaration',id,{kind:'ability',id:f.id},participants(s));
 }
 export function resolveVirtualBlade(s:GameState,f:AbilityFrame){if(f.context.kind!=='virtual-blade')return;const a=s.actions?.[f.context.actionId];if(a)a.canceled=f.canceled||!live(s,f.actorId,f.abilityId as VirtualBladeId)||lifeIdentity(s.players[f.actorId]!)!==f.context.lifeId;return a;}

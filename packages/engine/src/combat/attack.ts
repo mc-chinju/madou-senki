@@ -20,7 +20,7 @@ import {reserveReclaimCard,reclaimEventId,offerReclaim,closeReclaim,chooseReclai
 import {gameStats} from '../game-stats.js';
 import {revealCharacter} from '../abilities/character-visibility.js';
 import {finishInspection} from '../abilities/private-inspection.js';
-import {advanceDeclaration,prepareDeclarationValue} from '../abilities/declaration-resolution.js';
+import {advanceDeclaration,noChecksAbilityId,prepareDeclarationValue} from '../abilities/declaration-resolution.js';
 import {evaluateReceivedReservations} from '../abilities/received-defense.js';
 import {destructionTargetMultiplier,fixedReflectedTechnique} from '../abilities/follower-destruction.js';
 import {acceptActionModifiers,addPrayer,freezeEffectLevel,prepareModifierDamage,freezeDamage} from '../abilities/action-modifiers.js';
@@ -255,6 +255,14 @@ function resolveDefenseMaai(s:GameState,g:AttackGroup):void{
 export function resumeDeclarationAction(s:GameState,a:ActionFrame,roll:()=>number):void {
   continueAction(s,a,{kind:'declaration'} as ReactionWindow,roll);
 }
+/** A technique that reaches its effect level with no check ever thrown leaves the reason in the record (G03 判定の公開範囲). */
+function recordSkippedChecks(s:GameState,a:ActionFrame):void{
+  if(a.checkRollId||a.checkSkipRecorded||!['attack','defense','turn-technique'].includes(a.kind))return;
+  a.checkSkipRecorded=true;
+  const abilityId=noChecksAbilityId(s,a);
+  const waivedByCard=a.technique.noChecks||a.kind==='defense'&&!!a.technique.counterNoChecks;
+  recordCheckSkipped(s,a.actorId,abilityId?'ability':waivedByCard?'card':'level',abilityId);
+}
 function continueAction(s:GameState,a:ActionFrame,w:ReactionWindow,roll:()=>number){
   if(a.kind==='turn-card'){
     if(!resolveTurnCard(s,a,roll))return;
@@ -293,6 +301,7 @@ function continueAction(s:GameState,a:ActionFrame,w:ReactionWindow,roll:()=>numb
     if((a.followerBundleId||a.allArmyParentId)&&a.technique.effectLevelFormula&&!a.useLevelPrepared){if(!a.effectLevelRollId){a.effectLevelRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:'technique-value',formula:'d6',resume:{kind:'action-value',actionId:a.id,value:'effect-level'}},roll).id;return;}a.useLevelPrepared=true;const stats=gameStats(s,a.actorId,{provenance:{kind:'action',id:a.id}});a.checkSpecs=a.technique.noChecks?[]:Array.from({length:Math.max(0,a.technique.useLevel-(a.technique.school==='warrior'?stats.warrior_level:stats.magic_level))},()=>({purpose:'excess-level' as const,modifier:0}));a.checks=a.checkSpecs.map(c=>c.modifier);}
     if(w.kind==='after-roll' && !a.roll!.success){if(a.kind==='defense'){finishDefense(s,a);return;}completeAction(s,a,'end-action');return;}
     if(a.checks.length){const spec=a.checkSpecs?.shift()??{purpose:'excess-level' as const,modifier:0};a.checks.shift();a.stage='checks';a.checkRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:spec.purpose,formula:'2d6',check:{modifier:spec.modifier},resume:{kind:'action-check',actionId:a.id}},roll).id;return;}
+    recordSkippedChecks(s,a);
     a.stage='effect-level';openWindow(s,'effect-level',a.eventId,{kind:'action',id:a.id});return;
   }
   if(w.kind==='effect-level'){if(a.technique.effectLevelFormula&&!a.effectLevelRollId){a.effectLevelRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:'technique-value',formula:'d6',resume:{kind:'action-value',actionId:a.id,value:'effect-level'}},roll).id;return;}if(!prepareDeclarationValue(s,a,'effect',roll))return;freezeEffectLevel(s,a);freezeRelativeDefenseLimits(a.technique);a.stage='damage';openWindow(s,'damage',a.eventId,{kind:'action',id:a.id});return;}
@@ -645,4 +654,4 @@ export function continueFollowerBundle(s:GameState,b:FollowerBundle):void{
  nextDefense(s,g);
 }
 import {printedTechniqueAllowed} from './printed-restrictions.js';
-import {recordAbility,recordCardPlayed,recordPass,recordRoll} from '../public-record.js';
+import {recordAbility,recordCardPlayed,recordCheckSkipped,recordPass,recordRoll} from '../public-record.js';

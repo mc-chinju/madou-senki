@@ -64,7 +64,7 @@ export interface PublicPlayerView {
   damage: number; handCount: number; followers: CardBackView[]; chants: CardBackView[]; chantCount: number; open: string[]; attachments: string[]; statuses:PublicStatusView[];
 }
 export interface LogView { count?:number; death?:GameEvent['death']; id: number; at: number; type: GameEvent['type']; actorId: PlayerId; targetId?:PlayerId; cardInstanceId?: string; characterId?: string;
-  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'] }
+  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; checkSkip?:GameEvent['checkSkip']; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'] }
 export interface PlayerView {
   sadLove:SadLoveView|null;
  shadowJumpCost:ReturnType<typeof shadowJumpCostView>;
@@ -128,7 +128,12 @@ function logView(event: GameEvent, viewerId: PlayerId): LogView {
   if(event.type==='REST'&&event.count!==undefined)result.count=event.count;
   if(event.type==='CARD_PLAYED'){result.cardInstanceId=event.cardInstanceId!;result.use=event.use!;if(event.targetIds)result.targetIds=[...event.targetIds];}
   if((event.type==='ABILITY_DECLARED'||event.type==='ABILITY_CANCELED')&&identityVisible){result.abilityId=event.abilityId!;if(event.targetIds)result.targetIds=[...event.targetIds];}
-  if(event.type==='ROLL_RESOLVED'&&event.roll){const r=event.roll;result.roll={rollId:r.rollId,kind:r.kind,faces:[...r.faces],total:r.total,attempt:r.attempt,...(r.forcedFailure?{forcedFailure:true as const}:{}),...(identityVisible&&r.threshold!==undefined?{threshold:r.threshold}:{}),...(identityVisible&&r.success!==undefined?{success:r.success}:{})};}
+  // The attack itself is public even when its ability name is not; the target is what makes the line readable.
+  if(event.type==='ATTACK_DECLARED'){if(event.targetIds)result.targetIds=[...event.targetIds];if(identityVisible)result.abilityId=event.abilityId!;}
+  // Needing no check is visible at the table (G03 判定の公開範囲); only the ability behind it can be concealed.
+  if(event.type==='CHECK_SKIPPED'){result.checkSkip=event.checkSkip!;if(identityVisible&&event.abilityId)result.abilityId=event.abilityId;}
+  // Faces, total, rerolls, forced failure and the outcome are public; only the threshold belongs to a revealed seat (G03 判定の公開範囲).
+  if(event.type==='ROLL_RESOLVED'&&event.roll){const r=event.roll;result.roll={rollId:r.rollId,kind:r.kind,faces:[...r.faces],total:r.total,attempt:r.attempt,...(r.forcedFailure?{forcedFailure:true as const}:{}),...(identityVisible&&r.threshold!==undefined?{threshold:r.threshold}:{}),...(r.success!==undefined?{success:r.success}:{})};}
   if(event.type==='DAMAGE_APPLIED'&&event.amount!==undefined)result.amount=event.amount;
   if(event.type==='STATUS_CHANGED'&&event.status)result.status={...event.status};
   if(event.type==='DISTANCE_CHANGED'){result.targetId=event.targetId!;result.distance=event.distance!;}
