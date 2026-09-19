@@ -36,6 +36,8 @@ export interface RollAttempt {
 }
 export interface RollFrame {
     excludeSourceAbilityId?:string;
+    /** The roller's identity was hidden when the roll began; the record and the history both stay at that reading. */
+    concealedRoller?: true;
     id: string;
     eventId: string;
     rollerId: string;
@@ -74,7 +76,8 @@ export interface PublicRollView {
     stage: RollFrame['stage'];
     generation: number;
     faces: number[];
-    modifier: number;
+    /** A formula multiplier is public; a check's modifier is part of the hidden threshold, so it can be absent. */
+    modifier?: number;
     total: number | null;
     forcedFailure: boolean;
     threshold?: number;

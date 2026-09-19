@@ -1,4 +1,4 @@
-import {recordAbility,recordCardPlayed} from '../public-record.js';
+import {recordAbility,recordAttackEnded,recordCardPlayed} from '../public-record.js';
 import {printedTechniqueAllowed} from './printed-restrictions.js';
 import {offerReclaim} from '../reclaim.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
@@ -65,6 +65,8 @@ export function transitionFollowerBundle(state:GameState,input:GameInput):Transi
  (s.abilities??={})[ability.id]=ability;recordAbility(s,'ABILITY_DECLARED',ability.actorId,ability.abilityId,ability.targetIds.filter(id=>id!==ability.actorId));s.phase='combat';openWindow(s,'declaration',ability.eventId,{kind:'ability',id:ability.id});s.revision++;return {ok:true,state:s,events:[]};
 }
 export function discardBundle(s:GameState,b:FollowerBundle):boolean{
+ // Every follower that was declared gets its ending, even when the whole bundle is thrown away.
+ for(const id of b.actionIds){const a=s.actions?.[id];if(a)recordAttackEnded(s,a,'nullified');}
  b.reclaimCursor??=0;
  if(b.reclaimDecisionId&&s.reclaimDecisions?.find(d=>d.id===b.reclaimDecisionId)?.stage!=='closed')return false;
  while(b.reclaimCursor<b.actionIds.length){

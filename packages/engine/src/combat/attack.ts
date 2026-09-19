@@ -196,6 +196,36 @@ export function finishReceivedDefense(s:GameState):void {
  const g=s.groups?.[w.continuation.id];if(!g||!currentHit(g,w.continuation.targetId!)?.defended)return;
  s.windows!.pop();g.targetCursor++;nextDefense(s,g);
 }
+/** Where a transferred hit ended up: the seat that stepped in, and whether it landed on them. */
+function substitutions(g:AttackGroup):Map<string,{actorId:string;landed:boolean}>{
+  const out=new Map<string,{actorId:string;landed:boolean}>();
+  for(const result of g.substituteResults??[]){
+    const origin=result.group.substituteOrigin,actorId=result.action.targetIds[0];
+    if(!origin||!actorId)continue;
+    out.set(`${origin.targetId}:${origin.hitIndex}`,{actorId,landed:result.group.targets.some(t=>t.hits.some(h=>h.hit))});
+  }
+  return out;
+}
+/** A bundle sends several declarations into one group, so each source closes with its own ending. */
+function recordGroupEndings(s:GameState,g:AttackGroup,fallback:ActionFrame):void{
+  const moved=substitutions(g);
+  const bySource=new Map<string,{landed:Set<string>;declared:Set<string>}>();
+  for(const t of g.targets)for(const hit of t.hits){
+    const id=hit.sourceActionId??g.actionId;
+    const entry=bySource.get(id)??{landed:new Set<string>(),declared:new Set<string>()};
+    entry.declared.add(t.actorId);
+    const transfer=hit.substitutedBy?moved.get(`${t.actorId}:${hit.index}`):undefined;
+    if(transfer?.landed)entry.landed.add(transfer.actorId);
+    else if(hit.hit)entry.landed.add(t.actorId);
+    bySource.set(id,entry);
+  }
+  if(!bySource.size)bySource.set(g.actionId,{landed:new Set<string>(),declared:new Set(g.targets.map(t=>t.actorId))});
+  for(const [id,entry] of bySource){
+    const frame=s.actions?.[id]??(id===g.actionId?fallback:undefined);
+    if(!frame)continue;
+    recordAttackEnded(s,frame,entry.landed.size?'hit':'blocked',entry.landed.size?[...entry.landed]:[...entry.declared]);
+  }
+}
 function nextDefense(s:GameState,g:AttackGroup){
   if(!g.abilityWindowOpened){g.abilityWindowOpened=true;openWindow(s,'attack-abilities',g.actionId,{kind:'group',id:g.id,targetId:null});return;}
   if(g.stage==='defense'){
@@ -214,7 +244,7 @@ function nextDefense(s:GameState,g:AttackGroup){
   while(g.targetCursor<g.targets.length){const t=g.targets[g.targetCursor]!;if(!isActive(s.players[t.actorId]!)||t.hits.every(hit=>hit.defended)){g.targetCursor++;continue;}if(g.substituteOrigin){openWindow(s,'hit',g.actionId,{kind:'group',id:g.id,targetId:t.actorId});return;}if(hasPendingFatal(s,g.attackerId)&&t.followerBypassChoice===undefined)t.followerBypassChoice=false;if(g.technique.optionalFollowerBypassAtOrBelowEffectLevel&&t.followerBypassChoice===undefined&&s.players[t.actorId]!.followers.length){openWindow(s,'follower-bypass-choice',g.actionId,{kind:'group',id:g.id,targetId:t.actorId},[g.attackerId]);return;}if(!t.followerEntryClosed){openWindow(s,'follower-entry-abilities',`${g.id}-${t.actorId}-follower-entry`,{kind:'group',id:g.id,targetId:t.actorId});return;}t.followerStarted=true;freezeFollowerSnapshot(s,g,t);openWindow(s,'follower-start',g.actionId,{kind:'group',id:g.id,targetId:t.actorId},[t.actorId]);return;
   }
   const a=s.actions![g.actionId]!;if(g.substituteOrigin){const parent=s.groups?.[g.substituteOrigin.groupId];if(parent)(parent.substituteResults??=[]).push({group:structuredClone(g),action:structuredClone(a)});}else settleLifetimeGroup(s,g,s.events.at(-1)?.at??0);
-  if(!g.substituteOrigin){const landed=g.targets.filter(t=>t.hits.some(hit=>hit.hit));recordAttackEnd(s,a,landed.length?'hit':'blocked',landed.length?landed.map(t=>t.actorId):g.targets.map(t=>t.actorId));}
+  if(!g.substituteOrigin)recordGroupEndings(s,g,a);
   delete s.groups![g.id];completeAction(s,a,'end-attack');
 }
 export function startSubstituteHit(s:GameState,card:Pick<ActionFrame,'id'|'actorId'|'parentWindowId'|'substituteTransfer'>):void {
@@ -265,22 +295,16 @@ function recordSkippedChecks(s:GameState,a:ActionFrame):void{
   const waivedByCard=a.technique.noChecks||a.kind==='defense'&&!!a.technique.counterNoChecks;
   recordCheckSkipped(s,a.actorId,abilityId?'ability':waivedByCard?'card':'level',abilityId);
 }
-/** A declared attack says how it ended, once, so the record does not leave the reader to guess (G03 判定の公開範囲). */
-function recordAttackEnd(s:GameState,a:ActionFrame,outcome:NonNullable<import('../state.js').GameEvent['attackOutcome']>,targetIds:readonly string[]=a.targetIds):void{
-  if(a.kind!=='attack'||a.attackOutcomeRecorded||a.substituteOrigin||a.substituteTransfer)return;
-  a.attackOutcomeRecorded=true;
-  recordAttackOutcome(s,a.actorId,outcome,targetIds);
-}
 function continueAction(s:GameState,a:ActionFrame,w:ReactionWindow,roll:()=>number){
   if(a.kind==='turn-card'){
     if(!resolveTurnCard(s,a,roll))return;
     completeAction(s,a,'end-turn-technique');return;
   }
-  if(a.allArmy){if(a.canceled)completeAction(s,a,'end-action');else beginArmyChild(s,a);return;}
+  if(a.allArmy){if(a.canceled){const child=s.actions?.[a.allArmy.childId];if(child)recordAttackEnded(s,child,'nullified');completeAction(s,a,'end-action');}else beginArmyChild(s,a);return;}
   if(a.kind==='lifecycle'){resolveLifecycleAction(s,a,s.events.at(-1)?.at??0);completeAction(s,a,'none');return;}
   if(a.printedComponentParentId){resolvePrintedComponent(s,a);completeAction(s,a,'none');return;}
-  if(a.canceled){if(a.kind==='defense'){finishDefense(s,a);return;}recordAttackEnd(s,a,'nullified');completeAction(s,a,'end-action');return;}
-  if(a.allArmyParentId&&!a.allArmyMoraleDone){if(!advanceArmyMorale(s,a,roll))return;if(a.canceled){completeAction(s,a,'end-action');return;}w={...w,kind:'declaration'};}
+  if(a.canceled){if(a.kind==='defense'){finishDefense(s,a);return;}recordAttackEnded(s,a,'nullified');completeAction(s,a,'end-action');return;}
+  if(a.allArmyParentId&&!a.allArmyMoraleDone){if(!advanceArmyMorale(s,a,roll))return;if(a.canceled){recordAttackEnded(s,a,'fizzled');completeAction(s,a,'end-action');return;}w={...w,kind:'declaration'};}
   if(a.substituteBinding){resolveSubstitute(s,a);completeAction(s,a,'none');return;}
   if(a.preAttack){resolveDispel(s,a);completeAction(s,a,'none');return;}
   if(a.kind==='reaction'&&(a.anytimeEffect==='peace'||a.anytimeEffect==='revelation')){if(!resolveInformationAnytime(s,a))return;completeAction(s,a,'none');return;}
@@ -307,7 +331,7 @@ function continueAction(s:GameState,a:ActionFrame,w:ReactionWindow,roll:()=>numb
       }
     }
     if((a.followerBundleId||a.allArmyParentId)&&a.technique.effectLevelFormula&&!a.useLevelPrepared){if(!a.effectLevelRollId){a.effectLevelRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:'technique-value',formula:'d6',resume:{kind:'action-value',actionId:a.id,value:'effect-level'}},roll).id;return;}a.useLevelPrepared=true;const stats=gameStats(s,a.actorId,{provenance:{kind:'action',id:a.id}});a.checkSpecs=a.technique.noChecks?[]:Array.from({length:Math.max(0,a.technique.useLevel-(a.technique.school==='warrior'?stats.warrior_level:stats.magic_level))},()=>({purpose:'excess-level' as const,modifier:0}));a.checks=a.checkSpecs.map(c=>c.modifier);}
-    if(w.kind==='after-roll' && !a.roll!.success){if(a.kind==='defense'){finishDefense(s,a);return;}recordAttackEnd(s,a,'fizzled');completeAction(s,a,'end-action');return;}
+    if(w.kind==='after-roll' && !a.roll!.success){if(a.kind==='defense'){finishDefense(s,a);return;}recordAttackEnded(s,a,'fizzled');completeAction(s,a,'end-action');return;}
     if(a.checks.length){const spec=a.checkSpecs?.shift()??{purpose:'excess-level' as const,modifier:0};a.checks.shift();a.stage='checks';a.checkRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:spec.purpose,formula:'2d6',check:{modifier:spec.modifier},resume:{kind:'action-check',actionId:a.id}},roll).id;return;}
     recordSkippedChecks(s,a);
     a.stage='effect-level';openWindow(s,'effect-level',a.eventId,{kind:'action',id:a.id});return;
@@ -662,4 +686,4 @@ export function continueFollowerBundle(s:GameState,b:FollowerBundle):void{
  nextDefense(s,g);
 }
 import {printedTechniqueAllowed} from './printed-restrictions.js';
-import {recordAbility,recordAttackOutcome,recordCardPlayed,recordCheckSkipped,recordPass,recordRoll} from '../public-record.js';
+import {recordAbility,recordAttackEnded,recordCardPlayed,recordCheckSkipped,recordPass,recordRoll} from '../public-record.js';

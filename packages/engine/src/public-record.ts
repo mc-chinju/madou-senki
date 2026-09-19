@@ -1,5 +1,6 @@
 import type {GameEvent, GameState, PlayerId, PublicRollRecord} from './state.js';
 import type {RollFrame} from './rolls/frames.js';
+import type {ActionFrame} from './reactions/continuations.js';
 
 export type CardUse = NonNullable<GameEvent['use']>;
 
@@ -26,12 +27,28 @@ export function recordAbilityAttack(s: GameState, actorId: PlayerId, abilityId: 
 /** Whether a usage check was needed is visible at the table, so the fact is public even when the reason is not. */
 export function recordCheckSkipped(s: GameState, actorId: PlayerId, checkSkip: NonNullable<GameEvent['checkSkip']>, abilityId?: string): void {
   record(s, {type: 'CHECK_SKIPPED', actorId, audience: 'public', checkSkip,
-    ...(abilityId ? {abilityId} : {}), ...(abilityId && !s.players[actorId]?.revealed ? {concealed: true} : {})});
+    ...(abilityId ? {abilityId} : {}), ...(s.players[actorId]?.revealed ? {} : {concealed: true})});
 }
 
-/** How a declared attack ended. Landing, being blocked, fizzling and being cancelled are all seen at the table. */
-export function recordAttackOutcome(s: GameState, actorId: PlayerId, attackOutcome: NonNullable<GameEvent['attackOutcome']>, targetIds: readonly PlayerId[]): void {
-  record(s, {type: 'ATTACK_RESOLVED', actorId, audience: 'public', attackOutcome, ...(targetIds.length ? {targetIds: [...targetIds]} : {})});
+/** How a declared attack ended. Landing, being blocked, fizzling and being cancelled are all seen at the table.
+ *  The source pairs the ending with its declaration: a card that was already named in public, or, for a
+ *  card-less attack, the ability under the same rule `recordAbility` uses. */
+export function recordAttackOutcome(s: GameState, actorId: PlayerId, attackOutcome: NonNullable<GameEvent['attackOutcome']>,
+  targetIds: readonly PlayerId[], source: {cardInstanceId?: string; abilityId?: string} = {}): void {
+  record(s, {type: 'ATTACK_RESOLVED', actorId, audience: 'public', attackOutcome,
+    ...(targetIds.length ? {targetIds: [...targetIds]} : {}),
+    ...(source.cardInstanceId ? {cardInstanceId: source.cardInstanceId} : {}),
+    ...(source.abilityId ? {abilityId: source.abilityId} : {}),
+    ...(s.players[actorId]?.revealed ? {} : {concealed: true})});
+}
+
+/** A declared attack says how it ended, once, whichever exit it takes (G03 判定の公開範囲). The ending names
+ *  what was declared, because a follower bundle or 全軍突撃 puts several declarations in flight at once. */
+export function recordAttackEnded(s: GameState, a: ActionFrame, attackOutcome: NonNullable<GameEvent['attackOutcome']>, targetIds: readonly PlayerId[] = a.targetIds): void {
+  if (a.kind !== 'attack' || a.attackOutcomeRecorded || a.substituteOrigin || a.substituteTransfer) return;
+  a.attackOutcomeRecorded = true;
+  recordAttackOutcome(s, a.actorId, attackOutcome, targetIds,
+    a.cardInstanceId ? {cardInstanceId: a.cardInstanceId} : a.source?.kind === 'ability' ? {abilityId: a.source.abilityId} : {});
 }
 
 export function recordPass(s: GameState, actorId: PlayerId, windowKind: string): void {
@@ -42,7 +59,8 @@ export function recordPass(s: GameState, actorId: PlayerId, windowKind: string):
 export function recordRoll(s: GameState, frame: RollFrame): void {
   const roll: PublicRollRecord = {rollId: frame.id, kind: frame.purpose, faces: [...frame.faces], total: frame.total ?? 0, attempt: frame.attempts.length,
     ...(frame.threshold !== undefined ? {threshold: frame.threshold} : {}), ...(frame.comparison ? {comparison: frame.comparison} : {}), ...(frame.success !== undefined ? {success: frame.success} : {}), ...(frame.forcedFailure ? {forcedFailure: true} : {})};
-  record(s, {type: 'ROLL_RESOLVED', actorId: frame.rollerId, audience: 'public', roll, ...(s.players[frame.rollerId]?.revealed ? {} : {concealed: true})});
+  // The record keeps the reading the roll was thrown under, so revealing later does not reopen past thresholds.
+  record(s, {type: 'ROLL_RESOLVED', actorId: frame.rollerId, audience: 'public', roll, ...(frame.concealedRoller ? {concealed: true} : {})});
 }
 
 export function recordDamage(s: GameState, targetId: PlayerId, amount: number): void {

@@ -18,13 +18,14 @@ function diceText(roll: PublicRollView, faces = roll.faces, total = roll.total):
   const expression = roll.formula === 'd6-product-min10' ? `最大（10, ${faces.join(' × ')}）`
     : roll.formula === '2d6x2' ? `(${sum}) × 2`
     : roll.formula === '4d6+1' ? `${sum} + 1`
-    : roll.formula.startsWith('d6x') ? `${sum} × ${roll.modifier}` : sum;
+    : roll.formula.startsWith('d6x') && roll.modifier !== undefined ? `${sum} × ${roll.modifier}` : sum;
   return `${expression} = ${total}`;
 }
 function resultText(roll: PublicRollView): string {
   if (roll.forcedFailure) return '強制失敗';
   if (roll.success === undefined) return '';
-  return roll.success ? '成功' : '失敗';
+  // Before it is applied the throw can still be rerolled or forced, so the record's word gets a 暫定 mark.
+  return `${roll.stage === 'applied' ? '' : '暫定'}${roll.success ? '成功' : '失敗'}`;
 }
 function RollResult({ roll, name, announce = false }: { roll: PublicRollView; name: string; announce?: boolean }) {
   return <>

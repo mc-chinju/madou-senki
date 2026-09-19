@@ -18,7 +18,7 @@ export function validDispel(s:GameState,actorId:string,c:Attack):boolean {
 /** Both cards are committed atomically; this child resolves before the saved attack declaration. */
 export function beginDispel(s:GameState,attack:ActionFrame,targetId:string):void {
  const p=s.players[attack.actorId]!,w=s.windows!.at(-1)!;
- p.hand.splice(p.hand.indexOf(DISPEL),1);s.resolution.push(DISPEL);recordCardPlayed(s,p.id,DISPEL,'attack',[targetId]);(s.used??=[]).push(`${attack.eventId}:${p.id}:${DISPEL}`);
+ p.hand.splice(p.hand.indexOf(DISPEL),1);s.resolution.push(DISPEL);recordCardPlayed(s,p.id,DISPEL,'anytime',[targetId]);(s.used??=[]).push(`${attack.eventId}:${p.id}:${DISPEL}`);
  const id=`a-${s.nextEventId++}`;attack.preAttackPending=id;
  s.actions![id]={id,eventId:attack.eventId,parentWindowId:w.id,actorId:p.id,cardInstanceId:DISPEL,kind:'reaction',targetIds:[targetId],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,
   reclaimOwnerLifeId:lifeIdentity(p),preAttack:{attackId:attack.id,targetLifeId:lifeIdentity(s.players[targetId]!),destroyed:[]}};

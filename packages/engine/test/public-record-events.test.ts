@@ -96,7 +96,11 @@ it('a chant stays unnamed until the attack turns it face up, and every hit adds 
   s = until(s, 'damage'); s = closeWindow(s, [3]); s = closeWindow(s); s = finish(s);
   expect(s.players.B!.damage).toBe(21); expect(s.players.C!.damage).toBe(21);
   const logs = record(s, 'D');
-  expect(logs.filter(log => log.cardInstanceId === card)).toEqual([expect.objectContaining({type: 'CARD_PLAYED', actorId: 'A', use: 'attack', targetIds: ['B', 'C']})]);
+  // The declaration and the ending both name the card, which is how a reader pairs them.
+  expect(logs.filter(log => log.cardInstanceId === card)).toEqual([
+    expect.objectContaining({type: 'CARD_PLAYED', actorId: 'A', use: 'attack', targetIds: ['B', 'C']}),
+    expect.objectContaining({type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'hit', targetIds: ['B', 'C']}),
+  ]);
   expect(indexOf(logs, {type: 'CARD_PLAYED', cardInstanceId: card})).toBeGreaterThan(indexOf(logs, {type: 'TURN_STARTED', actorId: 'A', turnNumber: 5}));
   expect(logs.filter(log => log.type === 'DAMAGE_APPLIED')).toEqual([
     expect.objectContaining({actorId: 'B', amount: 21}), expect.objectContaining({actorId: 'C', amount: 21}),
@@ -192,8 +196,9 @@ it('projects each record type through a fixed field allowlist and hides a concea
     ['CARD_PLAYED', ['cardInstanceId', 'targetIds', 'use']],
     // A card-less attack keeps its targets public; only the ability name follows the concealed seat.
     ['ATTACK_DECLARED', ['targetIds']],
-    // How an attack ended is seen at the table, so a concealed seat still shows it whole.
-    ['ATTACK_RESOLVED', ['attackOutcome', 'targetIds']],
+    // How an attack ended is seen at the table, and it names the card its declaration already named;
+    // only a card-less attack's ability follows the concealed seat.
+    ['ATTACK_RESOLVED', ['attackOutcome', 'cardInstanceId', 'targetIds']],
     ['CHECK_SKIPPED', ['checkSkip']],
     ['CHECK_SKIPPED', ['abilityId', 'checkSkip']],
     ['ABILITY_DECLARED', []],
@@ -301,4 +306,86 @@ it('closes an attack that never landed, so a failed check is not left dangling',
   expect(outcomes).toEqual([expect.objectContaining({actorId: 'A', attackOutcome: 'fizzled', targetIds: ['B']})]);
   // Nothing landed, so the record must not carry a damage line the reader could tie to it.
   expect(record(s, 'C').filter(log => log.type === 'DAMAGE_APPLIED')).toEqual([]);
+});
+
+const ALL_ARMY = 'a2-p05-r2c2';
+const outcomes = (s: GameState, viewer = 'C') => record(s, viewer).filter(log => log.type === 'ATTACK_RESOLVED')
+  .map(log => [log.attackOutcome, log.cardInstanceId ?? log.abilityId, (log.targetIds ?? []).join(',')]);
+
+/** 全軍突撃せよ pays two cards for one charge; both of its endings used to be missing. */
+function charge(follower = 'a2-p20-r3c1') {
+  const s = ready();
+  for (const p of Object.values(s.players)) p.permanent = {endurance: 100};
+  handCard(s, 'A', getAction(ALL_ARMY)!.name); handCard(s, 'A', getAction(follower)!.name);
+  return {s, command: {type: 'PLAY_ALL_ARMY' as const, cardInstanceId: ALL_ARMY, followerCardInstanceId: follower, targetIds: ['B']}};
+}
+
+it('closes a charge whose morale failed, and one cancelled before it started', () => {
+  let {s, command} = charge();
+  s.players.A!.permanent = {endurance: 100, spirit: -20};
+  s = closeWindow(closeWindow(act(s, 'A', command)));
+  s = finish(closeWindow(s, [1, 1]));
+  expect(s.players.B!.damage).toBe(0);
+  expect(outcomes(s)).toEqual([['fizzled', command.followerCardInstanceId, 'B']]);
+
+  let cancelled = charge();
+  const fate = handCard(cancelled.s, 'B', '命運凶変');
+  let t = pass(act(cancelled.s, 'A', cancelled.command));
+  t = act(t, 'B', {type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel', targetActionId: viewFor(t, 'B').reactionTargetActionId!});
+  t = finish(t);
+  expect(t.players.B!.damage).toBe(0);
+  expect(outcomes(t)).toEqual([['nullified', cancelled.command.followerCardInstanceId, 'B']]);
+});
+
+/** A bundle declares several followers at once, so each declaration needs its own ending to pair with. */
+function bundle(s: GameState, fairy: string, soldier: string) {
+  return act(s, 'A', {type: 'USE_FOLLOWER_ATTACK', abilityId: 'c2-p06-r1c2-ab04', targetEventId: `turn-${s.turnNumber ?? 0}-A-action`,
+    sources: [{cardInstanceId: fairy, dedicated: false, targetIds: ['B']}, {cardInstanceId: soldier, dedicated: false, targetIds: ['B']}]});
+}
+function bundleTable() {
+  const s = ready(); character(s, 'A', '魔聖母ディア'); s.distances.A!.B = s.distances.B!.A = 'near';
+  return {s, fairy: handCard(s, 'A', '妖精族'), soldier: handCard(s, 'A', '兵士')};
+}
+
+it('gives every follower in a bundle its own ending, named, whether it lands or the bundle is thrown away', () => {
+  const landed = bundleTable();
+  const hit = finish(bundle(landed.s, landed.fairy, landed.soldier));
+  expect(outcomes(hit)).toEqual([['hit', landed.fairy, 'B'], ['hit', landed.soldier, 'B']]);
+
+  const stopped = bundleTable();
+  const fate = handCard(stopped.s, 'B', '命運凶変');
+  let t = pass(bundle(stopped.s, stopped.fairy, stopped.soldier));
+  t = act(t, 'B', {type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel-ability', targetAbilityId: viewFor(t, 'B').reactionTargetAbilityId!});
+  t = finish(t);
+  expect(t.players.B!.damage).toBe(0);
+  expect(outcomes(t)).toEqual([['nullified', stopped.fairy, 'B'], ['nullified', stopped.soldier, 'B']]);
+});
+
+it('says an attack landed on the seat that took the hit in the target\'s place', () => {
+  let s = ready(); character(s, 'C', '黒騎士ガーウィン'); handCard(s, 'C', '身代わり');
+  const card = handCard(s, 'A', '踏み込み／弓');
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false});
+  s = pass(pass(until(s, 'attack-abilities')));
+  const option = viewFor(s, 'C').anytimeCardOptions.find(o => o.cardInstanceId === 'a2-p02-r2c1')!;
+  s = finish(act(s, 'C', {type: 'PLAY_ANYTIME_CARD', cardInstanceId: 'a2-p02-r2c1', targetEventId: option.targetEventId,
+    targetId: option.targetId, groupId: option.groupId, hitIndex: option.hitIndex}));
+  expect([s.players.B!.damage, s.players.C!.damage]).toEqual([0, 4]);
+  // It landed, on C; calling it blocked against B contradicted the damage line right above it.
+  expect(outcomes(s, 'D')).toEqual([['hit', card, 'C']]);
+});
+
+/** 呪払 is printed as 攻撃の前 and never makes an attack frame, so it must not read as an attack declaration. */
+it('keeps cards that declare no attack out of the attack wording', () => {
+  let s = ready(); character(s, 'B', '黒騎士ガーウィン');
+  const golem = handCard(s, 'B', 'ウッドゴーレム');
+  s.players.B!.hand = s.players.B!.hand.filter(id => id !== golem);
+  s.players.B!.followers = [{cardInstanceId: golem, revealed: false}];
+  handCard(s, 'A', '呪払');
+  const card = handCard(s, 'A', '踏み込み／弓');
+  s = finish(act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false, dispel: {cardInstanceId: 'a2-p02-r3c1', targetId: 'B'}}));
+  const played = record(s, 'C').filter(log => log.type === 'CARD_PLAYED').map(log => [log.cardInstanceId, log.use]);
+  expect(played).toContainEqual(['a2-p02-r3c1', 'anytime']);
+  // One declaration, one ending: the pre-attack card is not a second attack.
+  expect(played.filter(([, use]) => use === 'attack')).toEqual([[card, 'attack']]);
+  expect(outcomes(s)).toHaveLength(1);
 });

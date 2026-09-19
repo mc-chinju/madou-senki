@@ -1,6 +1,6 @@
 import {getAction,getCharacter,type ActionCard,type CharacterCard} from '@madou/catalog';
 import type { LogView, PlayerView } from '@madou/engine';
-import {useEffect,useRef,useState,type ReactNode} from 'react';
+import {useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {purposeNames} from './RollPanel.js';
 import {statusNames} from './StatusList.js';
 const labels:Record<string,string>={CARD_DRAWN:'カードを引きました',FOLLOWER_PLACED:'従者を配置しました',SETUP_PASSED:'配置を終えました',CHARACTER_REVEALED:'正体を公開しました',SETUP_COMPLETE:'初期配置を完了しました',DEATH_PENDING:'死亡時の処理に入りました',PLAYER_DIED:'死亡しました',PLAYER_REVIVED:'復活しました',PLAYER_WANDERING:'流浪状態になりました',PLAYER_RETURNED:'復帰しました',PLAYER_EXITED:'退場しました',CHARACTER_TRANSFORMED:'変身しました',FACTION_CHANGED:'陣営を変更しました',CARD_GIFTED:'カードを託しました',GAME_COMPLETED:'対戦の決着を迎えました',TURN_ENDED:'手番を終えました',CHARACTER_ASSIGNED:'配役を確認しました'};
@@ -76,8 +76,11 @@ function eventText(view:PlayerView,event:LogView,onInspect:Inspect):ReactNode{
   case 'ATTACK_RESOLVED':{
    const ending=event.attackOutcome==='hit'?'が命中しました':event.attackOutcome==='blocked'?'は防がれました'
     :event.attackOutcome==='fizzled'?'は不発に終わりました':'は無効化されました';
+   // Several attacks can be in flight at once, so the ending names the declaration it closes.
+   const source=event.cardInstanceId?<>（<CardLink id={event.cardInstanceId} onInspect={onInspect}/>）</>
+    :event.abilityId?<>（<AbilityLink abilityId={event.abilityId} onInspect={onInspect}/>）</>:null;
    // The attack is the subject here, not the seat, so the line brings its own particle.
-   return `の${opponents?`${opponents}の`:''}攻撃${ending}`;
+   return <>{`の${opponents?`${opponents}の`:''}攻撃`}{source}{ending}</>;
   }
   case 'CHECK_SKIPPED':return event.checkSkip==='level'?'使用Lvを満たしていて判定は要りませんでした'
    :event.checkSkip==='card'?'カードの記述により判定は要りませんでした'
@@ -115,9 +118,10 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  const highlight=useRef({fromId:lastId,prevId:lastId,until:0});
  if(lastId>highlight.current.prevId)highlight.current={fromId:highlight.current.prevId,prevId:lastId,until:Date.now()+HIGHLIGHT_MS};
  const fresh=(id:number)=>id>highlight.current.fromId&&Date.now()<highlight.current.until;
- const sections=publicLogSections(view,order);
+ // Folding, reversing and counting walk the whole record, so they only run when it or its order changes.
+ const sections=useMemo(()=>publicLogSections(view,order),[view,order]);
  // A run of passes folds into one line, so unread is counted in lines, not in events.
- const lineCount=sections.reduce((total,section)=>total+section.lines.length,0);
+ const lineCount=useMemo(()=>sections.reduce((total,section)=>total+section.lines.length,0),[sections]);
  // Lines that arrived while the reader was scrolled away from the followed end.
  const [seenLines,setSeenLines]=useState(lineCount);
  // Newest first stacks arrivals at the top, so the followed end flips with the order.

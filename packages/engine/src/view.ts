@@ -130,8 +130,10 @@ function logView(event: GameEvent, viewerId: PlayerId): LogView {
   if((event.type==='ABILITY_DECLARED'||event.type==='ABILITY_CANCELED')&&identityVisible){result.abilityId=event.abilityId!;if(event.targetIds)result.targetIds=[...event.targetIds];}
   // The attack itself is public even when its ability name is not; the target is what makes the line readable.
   if(event.type==='ATTACK_DECLARED'){if(event.targetIds)result.targetIds=[...event.targetIds];if(identityVisible)result.abilityId=event.abilityId!;}
-  // How the attack ended is seen at the table, and the line carries no name that could be hidden.
-  if(event.type==='ATTACK_RESOLVED'){result.attackOutcome=event.attackOutcome!;if(event.targetIds)result.targetIds=[...event.targetIds];}
+  // How the attack ended is seen at the table. The card was named in public when it was declared; a
+  // card-less attack names its ability only where the declaration already did.
+  if(event.type==='ATTACK_RESOLVED'){result.attackOutcome=event.attackOutcome!;if(event.targetIds)result.targetIds=[...event.targetIds];
+   if(event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;if(identityVisible&&event.abilityId)result.abilityId=event.abilityId;}
   // Needing no check is visible at the table (G03 判定の公開範囲); only the ability behind it can be concealed.
   if(event.type==='CHECK_SKIPPED'){result.checkSkip=event.checkSkip!;if(identityVisible&&event.abilityId)result.abilityId=event.abilityId;}
   // Faces, total, rerolls, forced failure and the outcome are public; only the threshold belongs to a revealed seat (G03 判定の公開範囲).

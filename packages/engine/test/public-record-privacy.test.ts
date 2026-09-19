@@ -43,12 +43,18 @@ function cardIds(log: LogView): string[] {
   return [log.cardInstanceId, log.death?.sourceCardInstanceId].filter((id): id is string => typeof id === 'string');
 }
 
+/** An ability name belongs to its owner's character sheet, so a hidden seat must not be named by one. */
+function abilityOwner(abilityId: string): string {
+  return abilityId.replace(/-ab\d+$/, '');
+}
+
 describe('public record privacy over full bot games', () => {
   it.each([4, 6])('%i seats: public logs name only cards that were face up or played face up', seats => {
     const seed = seats + 11;
     const entropy = seededEntropy(seed);
     let state = createGame(Array.from({length: seats}, (_, i) => ({id: `P${i}`, name: `P${i}`})), entropy);
     let steps = 0;
+    const seen = {abilityId: 0, threshold: 0};
     for (; !state.outcome && steps < 5000; steps++) {
       const actorId = actingActor(state);
       if (!actorId) throw Error('NO_ACTING_SEAT');
@@ -62,8 +68,7 @@ describe('public record privacy over full bot games', () => {
       // Destroyed followers also pass through resolution; their record belongs to the later stage.
       const destroyed = new Set(prev.seatOrder.flatMap(id => prev.players[id]!.followers.map(card => card.cardInstanceId)));
       for (const id of next.resolution) if (!prev.resolution.includes(id) && !destroyed.has(id)) expect(played.has(id), `step=${steps} resolution=${id} command=${JSON.stringify(command)}`).toBe(true);
-      const naming = next.events.some(event => event.id > lastEventId && event.audience === 'public' && (event.cardInstanceId || event.characterId || event.death));
-      for (const viewerId of naming ? next.seatOrder : []) {
+      for (const viewerId of next.seatOrder) {
         const fresh = viewFor(next, viewerId).logs.filter(log => log.id > lastEventId);
         const secret = hiddenFrom(next, viewerId);
         for (const log of fresh) {
@@ -73,11 +78,24 @@ describe('public record privacy over full bot games', () => {
             // A card still hidden after the step cannot have been shown, unless this step's command played it.
             if (!playedByCommand(command).has(id)) expect(secret.has(id), context).toBe(false);
           }
-          if (log.characterId && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, `step=${steps} log=${JSON.stringify(log)}`).toBe(true);
+          const context = `step=${steps} viewer=${viewerId} log=${JSON.stringify(log)}`;
+          if (log.characterId && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, context).toBe(true);
+          // An ability names the character behind it, so only a seat that is already open may be named by one.
+          if (log.abilityId) seen.abilityId++;
+          if (log.roll?.threshold !== undefined) seen.threshold++;
+          if (log.abilityId && log.actorId !== viewerId) {
+            expect(next.players[log.actorId]!.revealed, context).toBe(true);
+            expect(abilityOwner(log.abilityId), context).toBe(next.players[log.actorId]!.characterId);
+          }
+          // The threshold is the roller's modified spirit; a hidden seat keeps it (G03 判定の公開範囲).
+          if (log.roll?.threshold !== undefined && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, context).toBe(true);
         }
       }
       state = next;
     }
     expect(state.outcome).toBeDefined();
+    // A check is worth nothing if the game never produced the field it guards. Thresholds always appear;
+    // ability records depend on what the bot chooses, so that count is reported rather than required.
+    expect(seen.threshold, `no roll threshold reached the record: ${JSON.stringify(seen)}`).toBeGreaterThan(0);
   }, 60_000);
 });

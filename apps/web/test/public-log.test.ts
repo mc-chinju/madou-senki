@@ -101,10 +101,10 @@ test('every record type names its target and keeps card, person and ability name
     { id: 20, type: 'OPEN', actorId: 'B', cardInstanceId: 'a2-p01-r1c1' },
     { id: 21, type: 'CHARACTER_INSPECTED', actorId: 'B', targetId: 'D', characterId: 'c2-p04-r2c2' },
     { id: 22, type: 'ABILITY_DECLARED', actorId: 'D', abilityId: 'c2-p04-r2c2-ab03', targetIds: ['A'] },
-    { id: 23, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'hit', targetIds: ['B'] },
+    { id: 23, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'hit', targetIds: ['B'], cardInstanceId: 'a2-p05-r3c1' },
     { id: 24, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'blocked', targetIds: ['B', 'C'] },
     { id: 25, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'fizzled', targetIds: ['B'] },
-    { id: 26, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'nullified', targetIds: ['B'] },
+    { id: 26, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'nullified', targetIds: ['B'], abilityId: 'c2-p04-r1c1-ab02' },
   ];
   const markup = html(view(logs));
   expect(markup).toContain('が楓さん・凛さんへ攻撃を宣言しました（<button');
@@ -120,10 +120,11 @@ test('every record type names its target and keeps card, person and ability name
   expect(markup).toContain('>野獣</button>で判定を免れました');
   expect(markup).toContain('が特殊能力で判定を免れました');
   // A declared attack closes with how it ended, right where it ended.
-  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃が命中しました');
+  // Several attacks can be in flight at once, so the ending names the declaration it closes.
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃（<button class="card-link" aria-label="見切るの詳細を見る">見切る</button>）が命中しました');
   expect(markup).toContain('<strong>葵</strong>の楓さん・凛さんへの攻撃は防がれました');
   expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃は不発に終わりました');
-  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃は無効化されました');
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃（<button class="card-link" aria-label="氷刃（凍気のアイエル）の詳細を見る">氷刃</button>）は無効化されました');
   expect(markup).toContain('が葵さんの<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>を破壊しました');
   // Nothing outside a link may print a card, person or ability name.
   const plain = markup.replace(/<button[^>]*>[^<]*<\/button>/g, '').replace(/aria-label="[^"]*"/g, '');
