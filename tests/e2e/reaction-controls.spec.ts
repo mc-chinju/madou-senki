@@ -1,7 +1,7 @@
 import { currentCardAction } from './helpers.js';
 import { test, expect } from '@playwright/test';
 import type { RoomView } from '../../apps/worker/src/rooms/types.js';
-import { tableFixture } from './helpers.js';
+import { tableFixture, windowPassButtonName } from './helpers.js';
 
 test('defender can explicitly choose the dedicated counter effect', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'dedicated-defense');
@@ -29,7 +29,7 @@ test('defender can explicitly choose the dedicated counter effect', async ({ bro
       const current = views.get(defenderId)!;
       const window = current.game!.activeWindow!;
       const page = table.pages[table.sessions.findIndex(session => session.id === window.pendingActorId)]!;
-      await page.getByRole('button', { name: 'パス', exact: true }).click();
+      await page.getByRole('button', { name: windowPassButtonName }).click();
       await expect.poll(() => views.get(defenderId)?.revision).toBeGreaterThan(current.revision);
     }
     expect(currentCardAction(views.get(defenderId)!.game)!.technique.effectLevel).toBe(6);

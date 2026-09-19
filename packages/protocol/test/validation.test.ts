@@ -23,7 +23,7 @@ describe('untrusted command envelopes', () => {
     expect(result.value.command).not.toBe(input.command);
   });
 
-  it.each(['PASS_SETUP', 'REVEAL_CHARACTER'])('accepts %s without unrelated payload', (type) => {
+  it.each(['PASS_SETUP', 'REVEAL_CHARACTER', 'PASS_ACTION_THROUGH', 'CANCEL_PASS_THROUGH'])('accepts %s without unrelated payload', (type) => {
     expect(parseCommandEnvelope({ ...envelope(), command: { type } }).ok).toBe(true);
     expect(parseCommandEnvelope({ ...envelope(), command: { type, cardInstanceId: 'secret' } }).ok).toBe(false);
   });

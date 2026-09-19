@@ -1,15 +1,15 @@
 import { test, expect } from '@playwright/test';
-import { tableFixture } from './helpers.js';
+import { tableFixture, windowPassButtonName } from './helpers.js';
 
 test('reload restores the same public interruption priority without auto-passing', async ({ browser, request }) => {
   const table = await tableFixture(browser, request, 'third-party-interrupt');
   try {
     for (const page of table.pages) await page.goto(table.url);
-    await expect(table.pages[0]!.getByRole('status').filter({ hasText: '凛さんの判断を待っています' })).toBeVisible();
+    await expect(table.pages[0]!.getByRole('status').filter({ hasText: 'いま 凛さん' })).toBeVisible();
     await table.pages[2]!.reload();
-    await expect(table.pages[2]!.getByRole('button', { name: 'パス', exact: true })).toBeEnabled();
-    await table.pages[2]!.getByRole('button', { name: 'パス', exact: true }).click();
-    await expect(table.pages[0]!.getByRole('status').filter({ hasText: '蓮さんの判断を待っています' })).toBeVisible();
+    await expect(table.pages[2]!.getByRole('button', { name: windowPassButtonName })).toBeEnabled();
+    await table.pages[2]!.getByRole('button', { name: windowPassButtonName }).click();
+    await expect(table.pages[0]!.getByRole('status').filter({ hasText: 'いま 蓮さん' })).toBeVisible();
     await expect(table.pages[2]!.getByRole('region', { name: '自分の手札', exact: true })).toBeVisible();
   } finally { await table.close(); }
 });
