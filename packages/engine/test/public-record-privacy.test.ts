@@ -65,6 +65,8 @@ describe('public record privacy over full bot games', () => {
       for (const viewerId of next.seatOrder) {
         const fresh = viewFor(next, viewerId).logs.filter(log => log.id > lastEventId);
         const secret = hiddenFrom(next, viewerId);
+        // Seats the table has seen open at least once; re-hiding afterwards does not unsay it.
+        const opened = new Set(next.events.filter(event => event.type === 'CHARACTER_REVEALED' && event.audience === 'public').map(event => event.actorId));
         for (const log of fresh) {
           for (const id of cardIds(log)) {
             const context = `step=${steps} viewer=${viewerId} log=${JSON.stringify(log)} command=${JSON.stringify(command)}`;
@@ -73,10 +75,17 @@ describe('public record privacy over full bot games', () => {
             if (!playedByCommand(command).has(id)) expect(secret.has(id), context).toBe(false);
           }
           const context = `step=${steps} viewer=${viewerId} log=${JSON.stringify(log)}`;
-          if (log.characterId && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, context).toBe(true);
+          // 隠行 and ALSEIL_SHADOW put a seat back face down, so "it is open right now" is not what the
+          // record promised. Both lines below read the durable fact the projection was built from instead.
+          if (log.characterId && log.actorId !== viewerId) {
+            expect(log.characterId, context).toBe(next.players[log.actorId]!.characterId);
+            expect(opened.has(log.actorId), context).toBe(true);
+          }
           // The threshold is the roller's modified spirit (G03 判定の公開範囲). A bot game does reach this:
           // at 6 seats a hidden seat throws excess-level checks, so removing view.ts's gate breaks this line.
-          if (log.roll?.threshold !== undefined && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, context).toBe(true);
+          if (log.roll?.threshold !== undefined && log.actorId !== viewerId) {
+            expect(next.rolls!.find(roll => roll.id === log.roll!.rollId)?.rollerRevealed, context).toBe(true);
+          }
           // Only the ability-name reading is out of reach here: the bot declares none at 4 or 6 seats.
           // public-record-events.test.ts's allowlist pins that one instead.
         }

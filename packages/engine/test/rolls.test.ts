@@ -123,6 +123,9 @@ it('reads a roll frame saved before it recorded its reading as hidden, in the pa
  // A frame that was still open when the table was saved resolves after it comes back, so recordRoll gets it too.
  const pending=forget(act(s,'A',{type:'START_TURN'}));
  expect(pending.rolls!.at(-1)).toMatchObject({stage:'before-roll'});
+ // The seat opens up while that saved roll is still in the air. A frame with no reading of its own must not
+ // borrow the seat's reading now, or coming back from a save would publish what the table had kept hidden.
+ pending.players.A!.revealed=true;
  const resolved=finish(pending);
  const line=engine.viewFor(resolved,'B').logs.filter(log=>log.type==='ROLL_RESOLVED').at(-1)!.roll!;
  expect(line).toHaveProperty('success');

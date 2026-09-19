@@ -37,6 +37,8 @@ export function beginRoll(state: GameState, options: RollOptions, dice: () => nu
     stage: options.check || options.beforeRoll ? 'before-roll' : 'after-roll', generation: 0,
     faces: [], modifier: options.check?.modifier ?? FORMULAS[options.formula].modifier,
     total: null, forcedFailure: false, attempts: [], resume: options.resume,
+    // Fixed here, where the check starts. closeBeforeRoll settles the threshold and the dice later, and a
+    // reveal inside that window does not reopen this roll (G03 判定の公開範囲).
     rollerRevealed: !!state.players[options.rollerId]?.revealed,
     ...(options.check?.comparison?{comparison:options.check.comparison}:{}),
     ...(options.check?.excludeSourceAbilityId?{excludeSourceAbilityId:options.check.excludeSourceAbilityId}:{}),
@@ -101,8 +103,8 @@ export function visibleRoll(state: GameState): RollFrame | undefined {
 
 /** Use the same explicit privacy allowlist for the active frame and durable history.
  *  Outcomes are public (G03 判定の公開範囲); the threshold, the modifier that built it and the way it is read
- *  are all the roller's spirit value, so they need a revealed seat. A seat revealed later does not reopen
- *  the rolls it threw while hidden, which is the reading the record already takes. */
+ *  are all the roller's spirit value, so they need a seat that was open when the check was set up. Opening
+ *  later never reopens that roll, which is the reading the record already takes. */
 export function projectRoll(state: GameState, frame: RollFrame, viewerId: string): PublicRollView {
   const seeCheck = frame.rollerId === viewerId || (frame.rollerRevealed ?? false);
   return {
