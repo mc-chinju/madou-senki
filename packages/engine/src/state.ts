@@ -44,17 +44,21 @@ export interface GameEvent {
   death?:Pick<DamageIntent,'cause'|'eventId'|'sourceActorId'|'sourceCardInstanceId'>;
   id: number; at: number; audience: 'public' | { playerId: PlayerId };
   type: 'WISH_ACQUIRED' | 'WISH_DISCARDED' | 'FOLLOWER_DESTROYED' | 'CHARACTER_INSPECTED' | 'BEAST_CAPTURED' | 'CHARACTER_ASSIGNED' | 'CARD_DRAWN' | 'OPEN' | 'FOLLOWER_PLACED' | 'SETUP_PASSED' | 'CHARACTER_REVEALED' | 'SETUP_COMPLETE' | 'DEATH_PENDING' | 'PLAYER_DIED' | 'PLAYER_REVIVED' | 'PLAYER_WANDERING' | 'PLAYER_RETURNED' | 'PLAYER_EXITED' | 'CHARACTER_TRANSFORMED' | 'FACTION_CHANGED' | 'CARD_GIFTED' | 'GAME_COMPLETED'
-    | 'TURN_STARTED' | 'TURN_ENDED' | 'REST' | 'CARD_PLAYED' | 'ABILITY_DECLARED' | 'ABILITY_CANCELED' | 'ROLL_RESOLVED' | 'DAMAGE_APPLIED' | 'STATUS_CHANGED' | 'DISTANCE_CHANGED' | 'PASSED';
+    | 'TURN_STARTED' | 'TURN_ENDED' | 'REST' | 'CARD_PLAYED' | 'ATTACK_DECLARED' | 'ATTACK_RESOLVED' | 'CHECK_SKIPPED' | 'ABILITY_DECLARED' | 'ABILITY_CANCELED' | 'ROLL_RESOLVED' | 'DAMAGE_APPLIED' | 'STATUS_CHANGED' | 'DISTANCE_CHANGED' | 'PASSED';
   actorId: PlayerId; cardInstanceId?: string; characterId?: string; targetId?:string; count?:number;
   /** Public record fields. The text is built by the screen, never by the engine. */
   targetIds?: PlayerId[]; use?: 'attack' | 'defense' | 'counter' | 'maai' | 'advance' | 'anytime' | 'turn'; abilityId?: string;
+  /** Why a usage check never happened: the level was enough, or an ability or the card's own text waived it. */
+  checkSkip?: 'level' | 'ability' | 'card';
+  /** How a declared attack ended. Everyone at the table sees this, so it carries no hidden name. */
+  attackOutcome?: 'hit' | 'blocked' | 'fizzled' | 'nullified';
   roll?: PublicRollRecord; amount?: number; windowKind?: string; turnNumber?: number;
   status?: { kind: PersistentStatus['kind']; change: 'applied' | 'removed' }; distance?: 'near' | 'far';
   /** The actor's character was hidden when this happened; others see neither the ability name nor the check threshold. */
   concealed?: true;
 }
 /** `attempt` counts throws of the same roll, starting at 1. */
-export interface PublicRollRecord { rollId: string; kind: import('./rolls/frames.js').RollPurpose; faces: number[]; total: number; threshold?: number; success?: boolean; forcedFailure?: true; attempt: number }
+export interface PublicRollRecord { rollId: string; kind: import('./rolls/frames.js').RollPurpose; faces: number[]; total: number; threshold?: number; comparison?: 'greater-than'; success?: boolean; forcedFailure?: true; attempt: number }
 export interface GameState {
   combinationSpirit?:import('./effects/printed-combinations.js').CombinationSpirit[];
   wishes?:import('./effects/wish.js').WishDecision[];

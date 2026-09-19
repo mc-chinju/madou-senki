@@ -98,7 +98,8 @@ export function visibleRoll(state: GameState): RollFrame | undefined {
   return undefined;
 }
 
-/** Use the same explicit privacy allowlist for the active frame and durable history. */
+/** Use the same explicit privacy allowlist for the active frame and durable history.
+ *  Outcomes are public (G03 判定の公開範囲); the threshold is the roller's spirit value, so it needs a revealed seat. */
 export function projectRoll(state: GameState, frame: RollFrame, viewerId: string): PublicRollView {
   const seeCheck = frame.rollerId === viewerId || state.players[frame.rollerId]!.revealed;
   return {
@@ -107,10 +108,10 @@ export function projectRoll(state: GameState, frame: RollFrame, viewerId: string
     kind: frame.kind, formula: frame.formula, stage: frame.stage, generation: frame.generation,
     faces: [...frame.faces], modifier: frame.modifier, total: frame.total, forcedFailure: frame.forcedFailure,
     ...(seeCheck && frame.threshold !== undefined ? { threshold: frame.threshold } : {}),
-    ...(seeCheck && frame.success !== undefined ? { success: frame.success } : {}),
+    ...(frame.success !== undefined ? { success: frame.success } : {}),
     attempts: frame.attempts.map(attempt => ({
       generation: attempt.generation, faces: [...attempt.faces], total: attempt.total,
-      ...(seeCheck && attempt.success !== undefined ? { success: attempt.success } : {}),
+      ...(attempt.success !== undefined ? { success: attempt.success } : {}),
     })),
   };
 }

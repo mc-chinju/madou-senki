@@ -9,13 +9,14 @@ test('a roll can be rerolled after reload without revealing another player’s t
     expect(original.faces).toEqual([6, 6]); expect(original.threshold).toBe(8);
     const roll = page.getByRole('region', { name: 'サイコロの結果', exact: true });
     await expect(roll).toContainText('6 + 6 = 12');
-    await expect(roll).toContainText('判定値: 8以下');
+    await expect(roll).toContainText('目標値: 8以下');
     for (const session of table.sessions.slice(1)) {
       const other = views.get(session.id)!.game!.currentRoll!;
-      expect(other.threshold).toBeUndefined(); expect(other.success).toBeUndefined();
-      expect(other.attempts.every(attempt => attempt.success === undefined)).toBe(true);
+      // G03 判定の公開範囲: the outcome reaches every seat, the threshold stays with a revealed one.
+      expect(other.threshold).toBeUndefined(); expect(other.success).toBe(original.success);
+      expect(other.attempts.map(attempt => attempt.success)).toEqual(original.attempts.map(attempt => attempt.success));
     }
-    await expect(table.pages[1]!.getByRole('region', { name: 'サイコロの結果', exact: true })).not.toContainText('判定値:');
+    await expect(table.pages[1]!.getByRole('region', { name: 'サイコロの結果', exact: true })).not.toContainText('目標値:');
     const decision = page.getByRole('complementary', { name: '現在の判断' });
     await decision.getByRole('combobox', { name: '割り込み効果', exact: true }).selectOption('reroll');
     await decision.getByRole('combobox', { name: '使うカード', exact: true }).selectOption('a2-p02-r1c3');

@@ -78,7 +78,8 @@ test('another seat can trace the whole bot game in the public record while its s
     const firstTurn = record.getByRole('region', { name: /^1手番 / });
     await firstTurn.scrollIntoViewIfNeeded();
     await expect(firstTurn).toBeVisible();
-    for (const text of [/を攻撃に使いました/, /（合計\d+）を出しました/, /ダメージを受けました/, /でパスしました/]) await expect(record.getByText(text).first()).toBeAttached();
+    // L1: an attack names the seat it points at and closes with how it ended; L2 keeps the roll's outcome on the line.
+    for (const text of [/さんへ攻撃を宣言しました/, /への攻撃(が命中しました|は防がれました|は不発に終わりました|は無効化されました)/, /を出しました/, /ダメージを受けました/, /でパスしました/]) await expect(record.getByText(text).first()).toBeAttached();
     await watcher.screenshot({ path: '.cache/e2e-results/public-record-first-turn.png', fullPage: false });
     await watcher.getByRole('button', { name: '最新へ', exact: true }).click();
     await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toHaveCount(0);
