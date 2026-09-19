@@ -60,7 +60,8 @@ export function recordRoll(s: GameState, frame: RollFrame): void {
   const roll: PublicRollRecord = {rollId: frame.id, kind: frame.purpose, faces: [...frame.faces], total: frame.total ?? 0, attempt: frame.attempts.length,
     ...(frame.threshold !== undefined ? {threshold: frame.threshold} : {}), ...(frame.comparison ? {comparison: frame.comparison} : {}), ...(frame.success !== undefined ? {success: frame.success} : {}), ...(frame.forcedFailure ? {forcedFailure: true} : {})};
   // The record keeps the reading the roll was thrown under, so revealing later does not reopen past thresholds.
-  record(s, {type: 'ROLL_RESOLVED', actorId: frame.rollerId, audience: 'public', roll, ...(frame.concealedRoller ? {concealed: true} : {})});
+  const open = frame.rollerRevealed ?? !!s.players[frame.rollerId]?.revealed;
+  record(s, {type: 'ROLL_RESOLVED', actorId: frame.rollerId, audience: 'public', roll, ...(open ? {} : {concealed: true})});
 }
 
 export function recordDamage(s: GameState, targetId: PlayerId, amount: number): void {

@@ -83,6 +83,7 @@ test('every record type names its target and keeps card, person and ability name
     { id: 3, type: 'CARD_PLAYED', actorId: 'B', cardInstanceId: 'a2-p05-r3c1', use: 'maai', targetIds: ['A'] },
     { id: 4, type: 'CARD_PLAYED', actorId: 'B', cardInstanceId: 'a2-p05-r3c1', use: 'advance' },
     { id: 5, type: 'CARD_PLAYED', actorId: 'C', cardInstanceId: 'a2-p02-r1c2', use: 'anytime', targetIds: ['A'] },
+    { id: 51, type: 'CARD_PLAYED', actorId: 'C', cardInstanceId: 'a2-p05-r2c1', use: 'combination', targetIds: ['A'] },
     // A follower attack and 全軍突撃 name the follower they sent; a virtual follower names its ability.
     { id: 6, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p20-r3c1', use: 'attack', targetIds: ['B'] },
     { id: 7, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p05-r2c2', use: 'attack', targetIds: ['B'] },
@@ -112,6 +113,8 @@ test('every record type names its target and keeps card, person and ability name
   expect(markup).toMatch(/<strong>楓<\/strong>が<button[^>]*>見切る<\/button>を踏み込みに使いました<\/li>/);
   // Every line that points at a seat opens the same way, whichever kind of line it is.
   expect(markup).toMatch(/<strong>凛<\/strong>が葵さんへ<button[^>]*>啓示<\/button>をいつでもに使いました/);
+  // A 複合 card is paid together with a technique, so it is used as one rather than used for one.
+  expect(markup).toMatch(/<strong>凛<\/strong>が葵さんへ<button[^>]*>月の竪琴<\/button>を複合技として使いました/);
   expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>）');
   expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="氷刃（凍気のアイエル）の詳細を見る">氷刃</button>）');
   expect(markup).toContain('が楓さんへ攻撃を宣言しました（特殊能力）');

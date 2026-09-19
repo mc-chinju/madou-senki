@@ -4,7 +4,7 @@ import {useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {purposeNames} from './RollPanel.js';
 import {statusNames} from './StatusList.js';
 const labels:Record<string,string>={CARD_DRAWN:'カードを引きました',FOLLOWER_PLACED:'従者を配置しました',SETUP_PASSED:'配置を終えました',CHARACTER_REVEALED:'正体を公開しました',SETUP_COMPLETE:'初期配置を完了しました',DEATH_PENDING:'死亡時の処理に入りました',PLAYER_DIED:'死亡しました',PLAYER_REVIVED:'復活しました',PLAYER_WANDERING:'流浪状態になりました',PLAYER_RETURNED:'復帰しました',PLAYER_EXITED:'退場しました',CHARACTER_TRANSFORMED:'変身しました',FACTION_CHANGED:'陣営を変更しました',CARD_GIFTED:'カードを託しました',GAME_COMPLETED:'対戦の決着を迎えました',TURN_ENDED:'手番を終えました',CHARACTER_ASSIGNED:'配役を確認しました'};
-const useNames:Record<NonNullable<LogView['use']>,string>={attack:'攻撃',defense:'防御',counter:'反撃',maai:'間合い',advance:'踏み込み',anytime:'いつでも',turn:'手番'};
+const useNames:Record<NonNullable<LogView['use']>,string>={attack:'攻撃',defense:'防御',counter:'反撃',maai:'間合い',advance:'踏み込み',anytime:'いつでも',turn:'手番',combination:'複合技'};
 /** Uses that always point at an opponent; the record names them instead of tagging the line with a target list. */
 const directedUses=new Set<NonNullable<LogView['use']>>(['attack','defense','counter','maai','advance']);
 /** Lines whose subject is the ability or the attack, not the seat; their text opens with its own particle. */
@@ -70,7 +70,8 @@ function eventText(view:PlayerView,event:LogView,onInspect:Inspect):ReactNode{
   case 'BEAST_CAPTURED':return `${name(event.targetId)}さんから獣を${event.count??0}枚手札に加えました`;
   case 'CARD_PLAYED':return opponents&&directedUses.has(event.use!)
    ?<>{opponents}{useNames[event.use!]}を宣言しました（<CardLink id={event.cardInstanceId} onInspect={onInspect}/>）</>
-   :<>{opponents}<CardLink id={event.cardInstanceId} onInspect={onInspect}/>を{useNames[event.use!]??''}に使いました</>;
+   // A 複合 card is paid together with a technique, so it is used as one, not used for one.
+   :<>{opponents}<CardLink id={event.cardInstanceId} onInspect={onInspect}/>を{useNames[event.use!]??''}{event.use==='combination'?'として使いました':'に使いました'}</>;
   // A virtual follower attacks with no card, so the ability stands in for the card name.
   case 'ATTACK_DECLARED':return <>{opponents}攻撃を宣言しました（<AbilityLink abilityId={event.abilityId} onInspect={onInspect}/>）</>;
   case 'ATTACK_RESOLVED':{

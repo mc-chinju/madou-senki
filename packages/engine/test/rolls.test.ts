@@ -93,6 +93,38 @@ it('reads a roll thrown in the open in the open, and keeps a hidden one hidden a
  expect(engine.viewFor(s,'B').recentRolls.at(-1)).toMatchObject({threshold:expect.any(Number),modifier:expect.any(Number)});
  expect(engine.viewFor(s,'B').logs.filter(log=>log.type==='ROLL_RESOLVED').at(-1)!.roll).toMatchObject({threshold:expect.any(Number)});
 });
+/** The one audit that can actually catch the leak: a seat that was hidden when it threw a real check.
+ *  A bot game never reaches this state, so it is built here on purpose (G03 判定の公開範囲). */
+it('leaks nothing of a hidden seat\'s check to the other seats, in the history or in the record',()=>{
+ let s=ready();s.phase='turn-start';s.players.A!.statuses=[{id:'hidden',kind:'silenced' as const,modifiers:[0],nextCheck:1}];
+ expect(s.players.A!.revealed).toBe(false);
+ s=finish(act(s,'A',{type:'START_TURN'}));
+ const thrown=s.rolls!.at(-1)!;
+ expect(thrown).toMatchObject({kind:'check',rollerRevealed:false,threshold:expect.any(Number),success:expect.any(Boolean)});
+ // The roller keeps the whole reading of its own check.
+ expect(engine.viewFor(s,'A').recentRolls.at(-1)).toMatchObject({threshold:thrown.threshold,modifier:thrown.modifier});
+ expect(engine.viewFor(s,'A').logs.filter(log=>log.type==='ROLL_RESOLVED').at(-1)!.roll).toMatchObject({threshold:thrown.threshold});
+ for(const viewer of ['B','C','D']){
+  const roll=engine.viewFor(s,viewer).recentRolls.at(-1)!;
+  // The outcome is public; the value it was measured against, the modifier that built it and its direction are not.
+  expect(roll,viewer).toMatchObject({success:thrown.success});
+  for(const key of ['threshold','modifier','comparison'])expect(roll,`${viewer} ${key}`).not.toHaveProperty(key);
+  const record=engine.viewFor(s,viewer).logs.filter(log=>log.type==='ROLL_RESOLVED').at(-1)!.roll!;
+  expect(record,viewer).toMatchObject({success:thrown.success});
+  for(const key of ['threshold','comparison'])expect(record,`${viewer} record ${key}`).not.toHaveProperty(key);
+  expect(JSON.stringify(engine.viewFor(s,viewer)),viewer).not.toContain(`"threshold":${thrown.threshold}`);
+ }
+});
+/** A table saved before the frame carried its own reading must not open up when it comes back. */
+it('falls back to the seat\'s state for a roll frame saved before it recorded its reading',()=>{
+ let s=ready();s.phase='turn-start';s.players.A!.statuses=[{id:'hidden',kind:'silenced' as const,modifiers:[0],nextCheck:1}];
+ s=finish(act(s,'A',{type:'START_TURN'}));
+ const restored=structuredClone(s);for(const frame of restored.rolls!)delete (frame as {rollerRevealed?:boolean}).rollerRevealed;
+ const roll=engine.viewFor(restored,'B').recentRolls.at(-1)!;
+ for(const key of ['threshold','modifier','comparison'])expect(roll,key).not.toHaveProperty(key);
+ restored.players.A!.revealed=true;
+ expect(engine.viewFor(restored,'B').recentRolls.at(-1)).toHaveProperty('threshold');
+});
 it('rejects new turn actions while recovery is pending and refills only after every stopped status clears',()=>{
  let s=ready();s.phase='turn-start';s.players.A!.statuses=[{id:'s1',kind:'stopped',modifiers:[0],nextCheck:1},{id:'s2',kind:'stopped',modifiers:[0],nextCheck:1}];s.discard.push(...s.players.A!.hand.splice(2));s=act(s,'A',{type:'START_TURN'});expect(engine.transition(s,{actorId:'A',command:{type:'START_TURN'}},entropy())).toEqual({ok:false,code:'WRONG_PHASE'});s=closeAndDeclineDispositions(s,[1,1]);s=closeAndDeclineDispositions(s);expect(s.players.A!.hand).toHaveLength(2);s=closeAndDeclineDispositions(s,[1,1]);s=closeAndDeclineDispositions(s);expect(s.players.A!.hand).toHaveLength(5);expect(s.players.A!.statuses).toEqual([]);expect(s.phase).toBe('draw');
 });

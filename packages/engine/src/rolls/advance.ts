@@ -37,7 +37,7 @@ export function beginRoll(state: GameState, options: RollOptions, dice: () => nu
     stage: options.check || options.beforeRoll ? 'before-roll' : 'after-roll', generation: 0,
     faces: [], modifier: options.check?.modifier ?? FORMULAS[options.formula].modifier,
     total: null, forcedFailure: false, attempts: [], resume: options.resume,
-    ...(state.players[options.rollerId]?.revealed ? {} : { concealedRoller: true }),
+    rollerRevealed: !!state.players[options.rollerId]?.revealed,
     ...(options.check?.comparison?{comparison:options.check.comparison}:{}),
     ...(options.check?.excludeSourceAbilityId?{excludeSourceAbilityId:options.check.excludeSourceAbilityId}:{}),
     ...(options.check ? { checkBase: options.check.base ?? 'spirit', ...(options.check.threshold!==undefined?{threshold:options.check.threshold}:{}) } : {}),
@@ -104,7 +104,7 @@ export function visibleRoll(state: GameState): RollFrame | undefined {
  *  are all the roller's spirit value, so they need a revealed seat. A seat revealed later does not reopen
  *  the rolls it threw while hidden, which is the reading the record already takes. */
 export function projectRoll(state: GameState, frame: RollFrame, viewerId: string): PublicRollView {
-  const seeCheck = frame.rollerId === viewerId || !frame.concealedRoller;
+  const seeCheck = frame.rollerId === viewerId || (frame.rollerRevealed ?? !!state.players[frame.rollerId]?.revealed);
   return {
     rollId: frame.id, eventId: frame.eventId, purpose: frame.purpose, rollerId: frame.rollerId,
     kind: frame.kind, formula: frame.formula, stage: frame.stage, generation: frame.generation,

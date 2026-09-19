@@ -207,7 +207,7 @@ function substitutions(g:AttackGroup):Map<string,{actorId:string;landed:boolean}
   return out;
 }
 /** A bundle sends several declarations into one group, so each source closes with its own ending. */
-function recordGroupEndings(s:GameState,g:AttackGroup,fallback:ActionFrame):void{
+function recordGroupEndings(s:GameState,g:AttackGroup):void{
   const moved=substitutions(g);
   const bySource=new Map<string,{landed:Set<string>;declared:Set<string>}>();
   for(const t of g.targets)for(const hit of t.hits){
@@ -221,7 +221,7 @@ function recordGroupEndings(s:GameState,g:AttackGroup,fallback:ActionFrame):void
   }
   if(!bySource.size)bySource.set(g.actionId,{landed:new Set<string>(),declared:new Set(g.targets.map(t=>t.actorId))});
   for(const [id,entry] of bySource){
-    const frame=s.actions?.[id]??(id===g.actionId?fallback:undefined);
+    const frame=s.actions?.[id];
     if(!frame)continue;
     recordAttackEnded(s,frame,entry.landed.size?'hit':'blocked',entry.landed.size?[...entry.landed]:[...entry.declared]);
   }
@@ -244,7 +244,7 @@ function nextDefense(s:GameState,g:AttackGroup){
   while(g.targetCursor<g.targets.length){const t=g.targets[g.targetCursor]!;if(!isActive(s.players[t.actorId]!)||t.hits.every(hit=>hit.defended)){g.targetCursor++;continue;}if(g.substituteOrigin){openWindow(s,'hit',g.actionId,{kind:'group',id:g.id,targetId:t.actorId});return;}if(hasPendingFatal(s,g.attackerId)&&t.followerBypassChoice===undefined)t.followerBypassChoice=false;if(g.technique.optionalFollowerBypassAtOrBelowEffectLevel&&t.followerBypassChoice===undefined&&s.players[t.actorId]!.followers.length){openWindow(s,'follower-bypass-choice',g.actionId,{kind:'group',id:g.id,targetId:t.actorId},[g.attackerId]);return;}if(!t.followerEntryClosed){openWindow(s,'follower-entry-abilities',`${g.id}-${t.actorId}-follower-entry`,{kind:'group',id:g.id,targetId:t.actorId});return;}t.followerStarted=true;freezeFollowerSnapshot(s,g,t);openWindow(s,'follower-start',g.actionId,{kind:'group',id:g.id,targetId:t.actorId},[t.actorId]);return;
   }
   const a=s.actions![g.actionId]!;if(g.substituteOrigin){const parent=s.groups?.[g.substituteOrigin.groupId];if(parent)(parent.substituteResults??=[]).push({group:structuredClone(g),action:structuredClone(a)});}else settleLifetimeGroup(s,g,s.events.at(-1)?.at??0);
-  if(!g.substituteOrigin)recordGroupEndings(s,g,a);
+  if(!g.substituteOrigin)recordGroupEndings(s,g);
   delete s.groups![g.id];completeAction(s,a,'end-attack');
 }
 export function startSubstituteHit(s:GameState,card:Pick<ActionFrame,'id'|'actorId'|'parentWindowId'|'substituteTransfer'>):void {

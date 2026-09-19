@@ -47,7 +47,7 @@ export interface GameEvent {
     | 'TURN_STARTED' | 'TURN_ENDED' | 'REST' | 'CARD_PLAYED' | 'ATTACK_DECLARED' | 'ATTACK_RESOLVED' | 'CHECK_SKIPPED' | 'ABILITY_DECLARED' | 'ABILITY_CANCELED' | 'ROLL_RESOLVED' | 'DAMAGE_APPLIED' | 'STATUS_CHANGED' | 'DISTANCE_CHANGED' | 'PASSED';
   actorId: PlayerId; cardInstanceId?: string; characterId?: string; targetId?:string; count?:number;
   /** Public record fields. The text is built by the screen, never by the engine. */
-  targetIds?: PlayerId[]; use?: 'attack' | 'defense' | 'counter' | 'maai' | 'advance' | 'anytime' | 'turn'; abilityId?: string;
+  targetIds?: PlayerId[]; use?: 'attack' | 'defense' | 'counter' | 'maai' | 'advance' | 'anytime' | 'turn' | 'combination'; abilityId?: string;
   /** Why a usage check never happened: the level was enough, or an ability or the card's own text waived it. */
   checkSkip?: 'level' | 'ability' | 'card';
   /** How a declared attack ended. Everyone at the table sees this, so it carries no hidden name. */

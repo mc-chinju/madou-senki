@@ -309,6 +309,7 @@ it('closes an attack that never landed, so a failed check is not left dangling',
 });
 
 const ALL_ARMY = 'a2-p05-r2c2';
+const uses = (s: GameState, viewer = 'C') => record(s, viewer).filter(log => log.type === 'CARD_PLAYED').map(log => [log.cardInstanceId, log.use]);
 const outcomes = (s: GameState, viewer = 'C') => record(s, viewer).filter(log => log.type === 'ATTACK_RESOLVED')
   .map(log => [log.attackOutcome, log.cardInstanceId ?? log.abilityId, (log.targetIds ?? []).join(',')]);
 
@@ -327,6 +328,8 @@ it('closes a charge whose morale failed, and one cancelled before it started', (
   s = finish(closeWindow(s, [1, 1]));
   expect(s.players.B!.damage).toBe(0);
   expect(outcomes(s)).toEqual([['fizzled', command.followerCardInstanceId, 'B']]);
+  // 全軍突撃せよ is printed 複合 like the other two; the follower under it is what declares the attack.
+  expect(uses(s)).toEqual([[ALL_ARMY, 'combination'], [command.followerCardInstanceId, 'attack']]);
 
   let cancelled = charge();
   const fate = handCard(cancelled.s, 'B', '命運凶変');
@@ -388,4 +391,17 @@ it('keeps cards that declare no attack out of the attack wording', () => {
   // One declaration, one ending: the pre-attack card is not a second attack.
   expect(played.filter(([, use]) => use === 'attack')).toEqual([[card, 'attack']]);
   expect(outcomes(s)).toHaveLength(1);
+});
+
+/** Every card printed 複合 gets the same word, and none of them reads as a declaration of its own. */
+it('says a combination card was used as one, never as the attack it was paid for', () => {
+  const spirit = 'a2-p05-r1c3', harp = 'a2-p05-r2c1';
+  const s0 = ready(); character(s0, 'A', '大神官ジル');
+  for (const p of Object.values(s0.players)) p.permanent = {endurance: 100};
+  for (const id of [spirit, harp]) handCard(s0, 'A', getAction(id)!.name);
+  const card = handCard(s0, 'A', '魔詩');
+  const s = finish(act(s0, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false, combinationCardInstanceIds: [spirit, harp]}));
+  expect(uses(s)).toEqual([[card, 'attack'], [spirit, 'combination'], [harp, 'combination']]);
+  // One declaration and one ending: a component is not a second attack.
+  expect(outcomes(s)).toEqual([['hit', card, 'B']]);
 });
