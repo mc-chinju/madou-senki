@@ -66,6 +66,10 @@ test('the command bar keeps round, ready count and the next step in view beside 
   expect(placedLastRound(refilled)).toBe(1);
   expect(setupStatusText(refilled, undefined, false)).toBe('補充で1枚引きました。置ける従者はありません（現在 1 / 2枚）。もう一度「配置を終える」で準備完了にしてください。');
   expect(setupStatusText(input({ self: { id: 'A', followers: [{}], stats: { followerLimit: 2 } } }), undefined, false)).not.toContain('補充');
+  // Only the round just before this one counts: earlier rounds stop at the previous pass, and what this round already placed is not a refill.
+  const third = input({ pending: { kind: 'initial-followers', round: 3, participantIds: ['A'], readyIds: [] }, self: { id: 'A', followers: [{}, {}], stats: { followerLimit: 3 } },
+    logs: [{ type: 'FOLLOWER_PLACED', actorId: 'A' }, { type: 'SETUP_PASSED', actorId: 'A' }, { type: 'FOLLOWER_PLACED', actorId: 'A' }, { type: 'SETUP_PASSED', actorId: 'A' }, { type: 'FOLLOWER_PLACED', actorId: 'A' }] });
+  expect(placedLastRound(third)).toBe(1);
   expect(bar(input())).toContain('手札へ');
   const ready = input({ pending: { kind: 'initial-followers', round: 1, participantIds: ['A', 'B', 'C'], readyIds: ['A'] }, legalChoices: [] });
   expect(setupStatusText(ready)).toBe('準備完了しました。楓、凛の配置を待っています。');
