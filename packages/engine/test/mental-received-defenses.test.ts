@@ -238,7 +238,7 @@ it('hidden source identity stays private through attacker roll and committed sto
   const view=viewFor(s,actor),wire=JSON.stringify(view);
   expect(wire).not.toContain(LESTER);expect(wire).not.toContain('吟遊詩人のレスター');
   expect(view.currentRoll!.faces).toEqual([2,2]);
-  if(actor!=='A')expect(view.currentRoll).not.toHaveProperty('success');
+  if(actor!=='A')expect(view.currentRoll).not.toHaveProperty('threshold');
  }
  s=closeWindow(s);
  for(const actor of ['A','C','D']){

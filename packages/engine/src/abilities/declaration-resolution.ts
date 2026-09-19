@@ -103,6 +103,14 @@ function finalUsageLegal(s: GameState, a: ActionFrame, t: Technique): boolean {
     }
     return true;
 }
+/** The declaration ability that waived the usage checks, when one did; a printed technique waives them without a name. */
+export function noChecksAbilityId(s: GameState, a: ActionFrame): DeclarationAbilityId | undefined {
+    const d = a.declaration, p = s.players[a.actorId];
+    if (!d || a.fixedReceivedEffect || !p || !isActive(p) || !canUseCharacterAbility(p, s))
+        return undefined;
+    return d.queue.find(q => q.status === 'accepted' && ownsAbility(p, q.abilityId)
+        && declarationEffects(q.abilityId, d.base, d.kind, !!a.fromChant, p.revealed)?.noChecks)?.abilityId;
+}
 export function usageChecks(s: GameState, a: ActionFrame): NonNullable<ActionFrame['checkSpecs']> {
     const t = a.technique, stats = gameStats(s,a.actorId,{provenance:{kind:'action',id:a.id}});
     const explicitNoChecks = liveDeclarationEffects(s, a).some(e => e.noChecks);
