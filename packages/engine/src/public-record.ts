@@ -29,6 +29,11 @@ export function recordCheckSkipped(s: GameState, actorId: PlayerId, checkSkip: N
     ...(abilityId ? {abilityId} : {}), ...(abilityId && !s.players[actorId]?.revealed ? {concealed: true} : {})});
 }
 
+/** How a declared attack ended. Landing, being blocked, fizzling and being cancelled are all seen at the table. */
+export function recordAttackOutcome(s: GameState, actorId: PlayerId, attackOutcome: NonNullable<GameEvent['attackOutcome']>, targetIds: readonly PlayerId[]): void {
+  record(s, {type: 'ATTACK_RESOLVED', actorId, audience: 'public', attackOutcome, ...(targetIds.length ? {targetIds: [...targetIds]} : {})});
+}
+
 export function recordPass(s: GameState, actorId: PlayerId, windowKind: string): void {
   record(s, {type: 'PASSED', actorId, audience: 'public', windowKind});
 }
@@ -36,7 +41,7 @@ export function recordPass(s: GameState, actorId: PlayerId, windowKind: string):
 /** One record per throw; a reroll repeats the same roll with the next attempt number. */
 export function recordRoll(s: GameState, frame: RollFrame): void {
   const roll: PublicRollRecord = {rollId: frame.id, kind: frame.purpose, faces: [...frame.faces], total: frame.total ?? 0, attempt: frame.attempts.length,
-    ...(frame.threshold !== undefined ? {threshold: frame.threshold} : {}), ...(frame.success !== undefined ? {success: frame.success} : {}), ...(frame.forcedFailure ? {forcedFailure: true} : {})};
+    ...(frame.threshold !== undefined ? {threshold: frame.threshold} : {}), ...(frame.comparison ? {comparison: frame.comparison} : {}), ...(frame.success !== undefined ? {success: frame.success} : {}), ...(frame.forcedFailure ? {forcedFailure: true} : {})};
   record(s, {type: 'ROLL_RESOLVED', actorId: frame.rollerId, audience: 'public', roll, ...(s.players[frame.rollerId]?.revealed ? {} : {concealed: true})});
 }
 

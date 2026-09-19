@@ -79,6 +79,8 @@ export interface ActionFrame {
   checks: number[]; checkSpecs?: {purpose:'activation'|'excess-level'|'teleport'|'counter';modifier:number}[]; checkRollId?:string; hitCountRollId?:string; roll: { dice: number[]; threshold: number; success: boolean } | null; canceled: boolean;
   /** A reopened declaration window re-enters the check stage; the skipped-check record belongs to the action once. */
   checkSkipRecorded?: true;
+  /** An attack writes its ending once, whichever of the three exits it takes. */
+  attackOutcomeRecorded?: true;
   targetAbilityId?:string; abilityReturnId?:string;
   reactionMode?: 'cancel-ability'|'cancel'|'force-fail'|'effect-plus'|'reroll'; targetActionId?: string; targetRollId?:string; reactionAmount?: number;
   reactionDedicated?: boolean;

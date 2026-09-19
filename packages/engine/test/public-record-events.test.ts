@@ -5,7 +5,7 @@ import {act, closeWindow, finish, pass, passReclaims, ready, until} from './comb
 import {character, handCard, handCards} from './fixtures.js';
 import {makeR6RollScenario} from './fixtures/r6-roll-scenarios.js';
 
-const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ATTACK_DECLARED', 'CHECK_SKIPPED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
+const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ATTACK_DECLARED', 'ATTACK_RESOLVED', 'CHECK_SKIPPED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
 const record = (s: GameState, viewer = 'C') => viewFor(s, viewer).logs.filter(log => RECORD_TYPES.has(log.type));
 const indexOf = (logs: LogView[], match: Partial<LogView>, from = 0) => logs.findIndex((log, index) => index >= from && Object.entries(match).every(([key, value]) => JSON.stringify(log[key as keyof LogView]) === JSON.stringify(value)));
 
@@ -165,13 +165,14 @@ it('approach and withdrawal record the distance cards and the resulting near and
 it('projects each record type through a fixed field allowlist and hides a concealed actor', () => {
   const s = ready();
   const secret = {cardInstanceId: 'a2-p01-r1c1', characterId: 'c2-p01-r1c1', targetId: 'D', count: 9, amount: 9, abilityId: 'secret-ability', windowKind: 'secret', turnNumber: 99, targetIds: ['D'], use: 'attack' as const, distance: 'near' as const, status: {kind: 'stopped' as const, change: 'applied' as const}};
-  const roll = {rollId: 'roll-1', kind: 'ability-check' as const, faces: [3, 4], total: 7, threshold: 8, success: true, attempt: 1};
+  const roll = {rollId: 'roll-1', kind: 'ability-check' as const, faces: [3, 4], total: 7, threshold: 8, comparison: 'greater-than' as const, success: true, attempt: 1};
   const events: Omit<GameEvent, 'id' | 'at' | 'audience'>[] = [
     {type: 'TURN_STARTED', actorId: 'A', ...secret},
     {type: 'TURN_ENDED', actorId: 'A', ...secret},
     {type: 'REST', actorId: 'A', ...secret},
     {type: 'CARD_PLAYED', actorId: 'A', ...secret, roll},
     {type: 'ATTACK_DECLARED', actorId: 'B', ...secret, concealed: true},
+    {type: 'ATTACK_RESOLVED', actorId: 'B', ...secret, attackOutcome: 'hit', concealed: true},
     {type: 'CHECK_SKIPPED', actorId: 'B', ...secret, checkSkip: 'ability', concealed: true},
     {type: 'CHECK_SKIPPED', actorId: 'A', ...secret, checkSkip: 'level'},
     {type: 'ABILITY_DECLARED', actorId: 'B', ...secret, concealed: true},
@@ -191,6 +192,8 @@ it('projects each record type through a fixed field allowlist and hides a concea
     ['CARD_PLAYED', ['cardInstanceId', 'targetIds', 'use']],
     // A card-less attack keeps its targets public; only the ability name follows the concealed seat.
     ['ATTACK_DECLARED', ['targetIds']],
+    // How an attack ended is seen at the table, so a concealed seat still shows it whole.
+    ['ATTACK_RESOLVED', ['attackOutcome', 'targetIds']],
     ['CHECK_SKIPPED', ['checkSkip']],
     ['CHECK_SKIPPED', ['abilityId', 'checkSkip']],
     ['ABILITY_DECLARED', []],
@@ -208,7 +211,8 @@ it('projects each record type through a fixed field allowlist and hides a concea
   expect(own.find(log => log.type === 'ABILITY_DECLARED')).toMatchObject({abilityId: 'secret-ability', targetIds: ['D']});
   expect(own.find(log => log.type === 'ATTACK_DECLARED')).toMatchObject({abilityId: 'secret-ability', targetIds: ['D']});
   expect(own.find(log => log.type === 'CHECK_SKIPPED')).toMatchObject({abilityId: 'secret-ability', checkSkip: 'ability'});
-  expect(own.find(log => log.type === 'ROLL_RESOLVED')!.roll).toMatchObject({threshold: 8, success: true});
+  // The direction the threshold is read travels with it, so it stays behind the same gate.
+  expect(own.find(log => log.type === 'ROLL_RESOLVED')!.roll).toMatchObject({threshold: 8, comparison: 'greater-than', success: true});
 });
 
 
@@ -272,4 +276,29 @@ it('records an attack whose level needed no check at all', () => {
   expect(record(s, 'C').filter(log => log.type === 'CHECK_SKIPPED')).toEqual([
     expect.objectContaining({actorId: 'A', checkSkip: 'level'}),
   ]);
+});
+
+/** A declared attack has to say how it ended, or the reader ties the next damage line to the wrong attack. */
+it('closes a landed attack with its outcome, once, next to the damage it caused', () => {
+  let s = ready();
+  const attack = handCard(s, 'A', '踏み込み／弓');
+  s = finish(act(s, 'A', {type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false}));
+  const logs = record(s, 'C');
+  const outcomes = logs.filter(log => log.type === 'ATTACK_RESOLVED');
+  expect(outcomes).toEqual([expect.objectContaining({actorId: 'A', attackOutcome: 'hit', targetIds: ['B']})]);
+  // The ending sits after the damage it explains, not nineteen lines later under someone else's attack.
+  expect(indexOf(logs, {type: 'ATTACK_RESOLVED'})).toBeGreaterThan(indexOf(logs, {type: 'DAMAGE_APPLIED'}));
+});
+
+it('closes an attack that never landed, so a failed check is not left dangling', () => {
+  let s = ready();
+  // A high 使用Lv forces excess-level checks; every window is closed on sixes so the check fails.
+  const attack = handCard(s, 'A', '白輪');
+  const sixes = Array(30).fill(6);
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false}, sixes);
+  for (let n = 0; n < 300 && s.windows?.length; n++) s = pass(s, sixes);
+  const outcomes = record(s, 'C').filter(log => log.type === 'ATTACK_RESOLVED');
+  expect(outcomes).toEqual([expect.objectContaining({actorId: 'A', attackOutcome: 'fizzled', targetIds: ['B']})]);
+  // Nothing landed, so the record must not carry a damage line the reader could tie to it.
+  expect(record(s, 'C').filter(log => log.type === 'DAMAGE_APPLIED')).toEqual([]);
 });

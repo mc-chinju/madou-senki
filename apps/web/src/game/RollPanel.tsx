@@ -24,14 +24,14 @@ function diceText(roll: PublicRollView, faces = roll.faces, total = roll.total):
 function resultText(roll: PublicRollView): string {
   if (roll.forcedFailure) return '強制失敗';
   if (roll.success === undefined) return '';
-  return `${roll.stage === 'applied' ? '' : '暫定'}${roll.success ? '成功' : '失敗'}`;
+  return roll.success ? '成功' : '失敗';
 }
 function RollResult({ roll, name, announce = false }: { roll: PublicRollView; name: string; announce?: boolean }) {
   return <>
     <h3>{name} · {purposeNames[roll.purpose]}</h3>
     <p>{roll.stage === 'before-roll' ? '判定前' : roll.stage === 'after-roll' ? '結果の確認中' : '適用済み'}</p>
     <p role={announce ? "status" : undefined}>{diceText(roll)}{resultText(roll) ? ` · ${resultText(roll)}` : ''}</p>
-    {roll.threshold === undefined ? null : <p>判定値: {roll.threshold}{roll.comparison==='greater-than'?'より大きい':'以下'}</p>}
+    {roll.threshold === undefined ? null : <p>目標値: {roll.threshold}{roll.comparison==='greater-than'?'より大きい':'以下'}</p>}
     {roll.generation > 0 ? <details><summary>振り直し {roll.generation}回</summary><ol>{roll.attempts.map(attempt =>
       <li key={attempt.generation}>{attempt.generation === 0 ? '最初' : `振り直し ${attempt.generation}回目`}: {diceText(roll, attempt.faces, attempt.total)}</li>,
     )}</ol></details> : null}

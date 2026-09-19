@@ -28,6 +28,8 @@ test('turns become headings and consecutive passes in one window fold into one l
   ]))[0]!.lines;
   expect(merged).toEqual([{ kind: 'passes', id: 2, lastId: 5, windowKinds: ['declaration', 'before-roll'], actorIds: ['B', 'C'] }]);
   expect(html(view([{ id: 1, type: 'PASSED', actorId: 'B', windowKind: 'declaration' }, { id: 2, type: 'PASSED', actorId: 'B', windowKind: 'after-roll' }]))).toContain('<strong>楓</strong>が宣言、判定後でパスしました');
+  // Two windows of the same kind in a row are one thing to the reader; the name is not repeated.
+  expect(html(view([{ id: 1, type: 'PASSED', actorId: 'B', windowKind: 'lifecycle-boundary' }, { id: 2, type: 'PASSED', actorId: 'B', windowKind: 'lifecycle-boundary' }]))).toContain('<strong>楓</strong>が区切りでパスしました');
   const markup = html(v);
   expect(markup).toContain('<h3>3手番 葵さん</h3>');
   expect(markup).toContain('<strong>楓・凛・蓮</strong>が宣言でパスしました');
@@ -42,6 +44,9 @@ test('new record types read as sentences with card and ability links, and unknow
     { id: 4, type: 'ABILITY_DECLARED', actorId: 'C' },
     { id: 5, type: 'ROLL_RESOLVED', actorId: 'B', roll: { rollId: 'r', kind: 'excess-level', faces: [3, 4], total: 7, threshold: 8, success: true, attempt: 2 } },
     { id: 6, type: 'ROLL_RESOLVED', actorId: 'C', roll: { rollId: 's', kind: 'status-resistance', faces: [6, 6], total: 12, attempt: 1 } },
+    { id: 61, type: 'ROLL_RESOLVED', actorId: 'A', roll: { rollId: 't', kind: 'training', faces: [5, 4], total: 9, threshold: 7, comparison: 'greater-than', success: true, attempt: 1 } },
+    { id: 62, type: 'ROLL_RESOLVED', actorId: 'A', roll: { rollId: 'u', kind: 'use', faces: [1, 2], total: 3, threshold: 9, success: false, forcedFailure: true, attempt: 1 } },
+    { id: 63, type: 'ROLL_RESOLVED', actorId: 'A', roll: { rollId: 'v', kind: 'attack-damage', faces: [4], total: 4, attempt: 1 } },
     { id: 7, type: 'DAMAGE_APPLIED', actorId: 'B', amount: 21 },
     { id: 8, type: 'STATUS_CHANGED', actorId: 'B', status: { kind: 'stopped', change: 'applied' } },
     { id: 9, type: 'STATUS_CHANGED', actorId: 'B', status: { kind: 'stopped', change: 'removed' } },
@@ -51,10 +56,16 @@ test('new record types read as sentences with card and ability links, and unknow
     { id: 13, type: 'FUTURE_EVENT' as LogView['type'], actorId: 'D' },
   ]));
   expect(markup).toMatch(/<strong>楓<\/strong>が葵さんへ防御を宣言しました（<button class="card-link" aria-label="[^"]+の詳細を見る">[^<]+<\/button>）/);
-  expect(markup).toMatch(/<strong>葵<\/strong>が<button class="card-link" aria-label="[^"]+（[^"]+）の詳細を見る">[^<]+<\/button>を宣言しました（対象: 楓）/);
+  expect(markup).toMatch(/<strong>葵<\/strong>が楓さんへ<button class="card-link" aria-label="[^"]+（[^"]+）の詳細を見る">[^<]+<\/button>を宣言しました/);
   expect(markup).toContain('<strong>凛</strong>が特殊能力を宣言しました');
-  expect(markup).toContain('使用Lv超過の判定で3・4（合計7）を出しました（目標値8・成功）［振り直し1回目］');
+  // Which throw this is comes before the numbers, so the reader knows what to make of them.
+  expect(markup).toContain('使用Lv超過の判定の振り直し1回目で3・4（合計7）を出しました（目標値8以下・成功）');
+  // 修行 is the one check that wants a bigger total, so the line has to say which way the threshold is read.
+  expect(markup).toContain('修行の判定で5・4（合計9）を出しました（目標値7より大きい・成功）');
+  expect(markup).toContain('使用の判定で1・2（合計3）を出しました（目標値9以下・強制失敗）');
   expect(markup).toContain('<strong>凛</strong>が抵抗の判定で6・6（合計12）を出しました</li>');
+  // One die is already its own total.
+  expect(markup).toContain('<strong>葵</strong>が攻撃ダメージで4を出しました</li>');
   expect(markup).toContain('21ダメージを受けました');
   expect(markup).toContain('停止状態になりました'); expect(markup).toContain('停止状態から回復しました');
   expect(markup).toContain('<strong>葵</strong>が楓さんと近距離になりました');
@@ -90,12 +101,17 @@ test('every record type names its target and keeps card, person and ability name
     { id: 20, type: 'OPEN', actorId: 'B', cardInstanceId: 'a2-p01-r1c1' },
     { id: 21, type: 'CHARACTER_INSPECTED', actorId: 'B', targetId: 'D', characterId: 'c2-p04-r2c2' },
     { id: 22, type: 'ABILITY_DECLARED', actorId: 'D', abilityId: 'c2-p04-r2c2-ab03', targetIds: ['A'] },
+    { id: 23, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'hit', targetIds: ['B'] },
+    { id: 24, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'blocked', targetIds: ['B', 'C'] },
+    { id: 25, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'fizzled', targetIds: ['B'] },
+    { id: 26, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'nullified', targetIds: ['B'] },
   ];
   const markup = html(view(logs));
   expect(markup).toContain('が楓さん・凛さんへ攻撃を宣言しました（<button');
   expect(markup).toContain('が葵さんへ間合いを宣言しました（<button');
   expect(markup).toMatch(/<strong>楓<\/strong>が<button[^>]*>見切る<\/button>を踏み込みに使いました<\/li>/);
-  expect(markup).toMatch(/<strong>凛<\/strong>が<button[^>]*>啓示<\/button>をいつでもに使いました（対象: 葵）/);
+  // Every line that points at a seat opens the same way, whichever kind of line it is.
+  expect(markup).toMatch(/<strong>凛<\/strong>が葵さんへ<button[^>]*>啓示<\/button>をいつでもに使いました/);
   expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>）');
   expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="氷刃（凍気のアイエル）の詳細を見る">氷刃</button>）');
   expect(markup).toContain('が楓さんへ攻撃を宣言しました（特殊能力）');
@@ -103,6 +119,11 @@ test('every record type names its target and keeps card, person and ability name
   expect(markup).toContain('カードの記述により判定は要りませんでした');
   expect(markup).toContain('>野獣</button>で判定を免れました');
   expect(markup).toContain('が特殊能力で判定を免れました');
+  // A declared attack closes with how it ended, right where it ended.
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃が命中しました');
+  expect(markup).toContain('<strong>葵</strong>の楓さん・凛さんへの攻撃は防がれました');
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃は不発に終わりました');
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃は無効化されました');
   expect(markup).toContain('が葵さんの<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>を破壊しました');
   // Nothing outside a link may print a card, person or ability name.
   const plain = markup.replace(/<button[^>]*>[^<]*<\/button>/g, '').replace(/aria-label="[^"]*"/g, '');
