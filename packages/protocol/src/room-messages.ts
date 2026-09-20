@@ -12,8 +12,13 @@ export type RoomCommand =
   | { type: 'UPDATE_SETTINGS'; title: string; capacity: number; visibility: 'public' | 'private' };
 export interface ClientEnvelope extends Omit<CommandEnvelope, 'command'> { command: GameCommand | RoomCommand }
 export type ClientErrorCode = PublicServerErrorCode | 'FORBIDDEN' | 'ROOM_FULL' | 'ROOM_NOT_OPEN' | 'NOT_READY' | 'RULESET_NOT_READY';
-export type ClientServerMessage<View> =
+/** The most of the record one request may pull back, so a page always fits a single frame. */
+export const MAX_LOG_PAGE = 200;
+/** Reading further back in the record. It commits nothing, so it travels beside commands rather than as one. */
+export interface LogPageRequest { type: 'LOG_PAGE'; requestId: string; beforeId: number; limit: number }
+export type ClientServerMessage<View, Log = unknown> =
   | { type: 'snapshot'; revision: number; view: View }
+  | { type: 'log-page'; requestId: string; beforeId: number; logStart: number; logs: Log[]; privateLogs: Log[] }
   | { type: 'ack'; commandId: string; revision: number }
   | { type: 'error'; commandId?: string; code: ClientErrorCode };
 
@@ -33,6 +38,19 @@ function dataRecord(value: unknown, keys: readonly string[]): Record<string, unk
     }
     return result;
   } catch { return null; }
+}
+
+/** Read requests carry no envelope: there is no revision to be stale against and nothing to replay.
+ *  `null` says the payload never claimed to be one, so the caller may still read it as a command. */
+export function parseLogPageRequest(value: unknown): ParseResult<LogPageRequest> | null {
+  const request = dataRecord(value, ['type', 'requestId', 'beforeId', 'limit']);
+  const invalid = { ok: false, code: 'INVALID_COMMAND' } as const;
+  if (!request || request.type !== 'LOG_PAGE') return null;
+  if (Object.keys(request).length !== 4) return invalid;
+  if (typeof request.requestId !== 'string' || !request.requestId || request.requestId.length > 64) return invalid;
+  if (typeof request.beforeId !== 'number' || !Number.isSafeInteger(request.beforeId) || request.beforeId < 0) return invalid;
+  if (typeof request.limit !== 'number' || !Number.isSafeInteger(request.limit) || request.limit < 1 || request.limit > MAX_LOG_PAGE) return invalid;
+  return { ok: true, value: { type: 'LOG_PAGE', requestId: request.requestId, beforeId: request.beforeId, limit: request.limit } };
 }
 
 export function parseClientEnvelope(value: unknown): ParseResult<ClientEnvelope> {

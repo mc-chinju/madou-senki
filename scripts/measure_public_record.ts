@@ -1,5 +1,6 @@
 // Measures how large the public record and one player snapshot grow over a full bot game.
-// Run: node --experimental-transform-types --no-warnings --import ./scripts/ts-resolve-hook.mjs scripts/measure_public_record.ts [seats...]
+// Run: node --experimental-transform-types --no-warnings --import ./scripts/ts-resolve-hook.mjs scripts/measure_public_record.ts [seats|seats:seed ...]
+// A table that fights more leaves a longer record, so a seed can be named to look for one.
 import {createGame, viewFor, type Entropy, type GameState} from '../packages/engine/src/index.js';
 import {playOneStep} from '../packages/engine/src/bot/index.js';
 
@@ -23,8 +24,7 @@ function seededEntropy(seed: number): Entropy {
 
 const bytes = (value: unknown) => Buffer.byteLength(JSON.stringify(value));
 
-function measure(seats: number) {
-  const seed = seats + 11;
+function measure(seats: number, seed = seats + 11) {
   const entropy = seededEntropy(seed);
   let state: GameState = createGame(Array.from({length: seats}, (_, i) => ({id: `P${i}`, name: `P${i}`})), entropy);
   let steps = 0;
@@ -42,12 +42,14 @@ function measure(seats: number) {
     steps,
     finished: Boolean(state.outcome),
     publicEvents: state.events.filter(event => event.audience === 'public').length,
+    // How much a table fought is what makes its record long, so it is reported beside the size.
+    attacks: state.events.filter(event => event.type === 'ATTACK_RESOLVED').length,
     publicLogBytes: bytes(final.logs),
     finalSnapshotBytes: bytes(final),
     maxSnapshotBytes,
   };
 }
 
-const seats = process.argv.slice(2).map(Number);
-const results = (seats.length ? seats : [4, 10]).map(measure);
+const tables = process.argv.slice(2).map(argument => argument.split(':').map(Number) as [number, number?]);
+const results = (tables.length ? tables : [[4], [10]] as [number, number?][]).map(([seats, seed]) => measure(seats, seed));
 console.log(JSON.stringify({thresholds: {publicLogBytes: 100_000, snapshotBytes: 200_000}, results}, null, 2));

@@ -1,4 +1,5 @@
-import { isRoomCommand, MAX_COMMAND_MESSAGE_BYTES, parseClientEnvelope, type ClientEnvelope, type ClientErrorCode } from '@madou/protocol';
+import { isRoomCommand, MAX_COMMAND_MESSAGE_BYTES, MAX_LOG_PAGE, parseClientEnvelope, type ClientEnvelope, type ClientErrorCode, type LogPageRequest } from '@madou/protocol';
+import type { LogView } from '@madou/engine';
 import type { RoomView } from '../../../worker/src/rooms/types.js';
 
 export interface SocketTransport {
@@ -30,16 +31,23 @@ function commandBase(game: RoomView['game']): { windowId: string; windowRevision
   if (game.activeWindow) return { windowId: game.activeWindow.windowId, windowRevision: game.activeWindow.windowRevision };
   return game.phase === 'setup' && game.pending ? { windowId: `setup-${game.pending.round}`, windowRevision: 0 } : null;
 }
+/** The record read back past what a snapshot carries. Events never change, so pages gathered once keep
+ *  their meaning across a reconnect and the reader goes on from where they had got to. */
+export interface LogHistory { logs: LogView[]; privateLogs: LogView[]; loading: boolean }
 export interface ConnectionSnapshot {
   status: 'stopped' | 'connecting' | 'reconnecting' | 'syncing' | 'ready' | 'read-only';
   view: RoomView | null;
   error: ClientErrorCode | 'CLIENT_STORAGE_ERROR' | null;
   pending: boolean;
   lastAck: { commandId: string; commandType: ClientEnvelope['command']['type']; revision: number } | null;
+  logHistory: LogHistory;
 }
 
 export class RoomConnection {
-  private state: ConnectionSnapshot = { status: 'stopped', view: null, error: null, pending: false, lastAck: null };
+  private state: ConnectionSnapshot = { status: 'stopped', view: null, error: null, pending: false, lastAck: null,
+    logHistory: { logs: [], privateLogs: [], loading: false } };
+  /** The page being waited for. Only one is ever in flight, so a slow answer cannot pile pages up. */
+  private logRequest: LogPageRequest | null = null;
   private listeners = new Set<() => void>();
   private socket: SocketTransport | null = null;
   private running = false;
@@ -98,6 +106,19 @@ export class RoomConnection {
     return true;
   }
 
+  /** Asks for the page of the record that ends just before `beforeId`. One at a time, and never while the
+   *  socket is unusable; the reader is free to ask again once the answer or a reconnection has arrived. */
+  requestLogPage(beforeId: number, limit = MAX_LOG_PAGE): boolean {
+    if (this.logRequest || !this.socket || !this.synced || !Number.isSafeInteger(beforeId) || beforeId <= 0) return false;
+    const request: LogPageRequest = { type: 'LOG_PAGE', requestId: this.options.commandId?.() ?? crypto.randomUUID(),
+      beforeId, limit: Math.min(Math.max(Math.trunc(limit), 1), MAX_LOG_PAGE) };
+    try { this.socket.send(JSON.stringify(request)); }
+    catch { this.reconnect(); return false; }
+    this.logRequest = request;
+    this.publish({ logHistory: { ...this.state.logHistory, loading: true } });
+    return true;
+  }
+
   private open(): void {
     if (!this.running) return;
     const generation = ++this.generation;
@@ -116,6 +137,8 @@ export class RoomConnection {
     if (!this.running) return;
     const readOnly = this.state.status === 'read-only';
     this.generation++; this.synced = false; this.sent = false;
+    // Pages already gathered still hold; only the one this dead socket owed is given up on.
+    if (this.logRequest) { this.logRequest = null; this.publish({ logHistory: { ...this.state.logHistory, loading: false } }); }
     this.clearTimers(); this.socket?.close(); this.socket = null;
     // Passive old tabs must not fight the active tab by acquiring new generations.
     if (readOnly) return;
@@ -144,6 +167,16 @@ export class RoomConnection {
         if (!this.sent) this.transmit();
         else if (!this.responseTimer) this.armResponseTimeout();
       }
+      return;
+    }
+    if (message.type === 'log-page') {
+      if (!this.logRequest || !('requestId' in message) || message.requestId !== this.logRequest.requestId) return;
+      const page = message as unknown as { logs?: unknown; privateLogs?: unknown };
+      const logs = Array.isArray(page.logs) ? page.logs as LogView[] : [];
+      const privateLogs = Array.isArray(page.privateLogs) ? page.privateLogs as LogView[] : [];
+      this.logRequest = null;
+      this.publish({ logHistory: { logs: mergeLogs(this.state.logHistory.logs, logs),
+        privateLogs: mergeLogs(this.state.logHistory.privateLogs, privateLogs), loading: false } });
       return;
     }
     if (!this.pending || !('commandId' in message) || message.commandId !== this.pending.commandId) return;
@@ -194,6 +227,13 @@ export class RoomConnection {
     this.state = { ...this.state, ...patch };
     for (const listener of this.listeners) listener();
   }
+}
+
+/** One record in event order. An event is written once and never rewritten, so an id already held wins. */
+function mergeLogs(held: LogView[], arriving: LogView[]): LogView[] {
+  const ids = new Set(held.map(log => log.id));
+  const added = arriving.filter(log => log && Number.isSafeInteger(log.id) && !ids.has(log.id));
+  return added.length ? [...held, ...added].sort((a, b) => a.id - b.id) : held;
 }
 
 function browserSocket(url: string): SocketTransport {

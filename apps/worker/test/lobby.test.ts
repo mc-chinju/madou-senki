@@ -55,12 +55,12 @@ async function connect(roomId: string, cookie: string) {
       // Send all requests first; this inbox deliberately has only one active waiter.
       for(const item of items)socket.send(JSON.stringify({protocolVersion:1,...item}));
       const replies:Message[]=[];
-      for(const item of items)replies.push(await next(message=>message.type!=='snapshot'&&message.commandId===item.commandId));
+      for(const item of items)replies.push(await next(message=>message.type!=='snapshot'&&message.type!=='log-page'&&message.commandId===item.commandId));
       return replies;
     },
     async command(commandId: string, expectedRevision: number, command: unknown) {
     socket.send(JSON.stringify({ protocolVersion: 1, commandId, expectedRevision, command }));
-    return next(message => message.type !== 'snapshot' && (message.commandId === commandId || message.commandId === undefined));
+    return next(message => message.type !== 'snapshot' && message.type !== 'log-page' && (message.commandId === commandId || message.commandId === undefined));
   } };
 }
 async function stored(roomId: string) {

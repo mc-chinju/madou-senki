@@ -162,7 +162,9 @@ const ORDER_KEY='madou:log-order:v1';
 function orderKey():string{return `${ORDER_KEY}:${globalThis.location?.pathname??''}`;}
 function storedOrder():LogOrder{try{return globalThis.sessionStorage?.getItem(orderKey())==='newest'?'newest':'oldest';}catch{return 'oldest';}}
 function storeOrder(order:LogOrder):void{try{globalThis.sessionStorage?.setItem(orderKey(),order);}catch{/* storage may be unavailable */}}
-export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
+/** Reading further back than the snapshot carries: what it costs to ask, and whether an answer is still due. */
+export interface LogHistoryControl{loading:boolean;load:(beforeId:number)=>boolean|void}
+export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect:Inspect;logHistory?:LogHistoryControl}){
  const list=useRef<HTMLDivElement>(null),content=useRef<HTMLDivElement>(null);
  const [order,setOrder]=useState<LogOrder>(storedOrder);const orderRef=useRef(order);orderRef.current=order;
  const seatIds=view.seatOrder??[];
@@ -188,7 +190,19 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  useEffect(()=>{const el=list.current;if(!el)return;if(followingRef.current){pin(el);setSeenLines(lineCount);}else if(atEnd(el))follow(true);},[count,lineCount,order,filterKey]);
  // A narrower screen rewraps lines and grows the record; a follower must stay on the newest line.
  useEffect(()=>{const el=list.current,inner=content.current;if(!el||!inner||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(()=>{if(followingRef.current)pin(el);});observer.observe(inner);observer.observe(el);return ()=>observer.disconnect();},[]);
- const onScroll=()=>{const el=list.current;if(!el)return;const now=atEnd(el);if(now!==followingRef.current)follow(now);};
+ // The oldest line sits at the top reading forwards and at the bottom reading backwards, so the far edge flips too.
+ const atOlderEnd=(el:HTMLDivElement)=>orderRef.current==='newest'?el.scrollHeight-el.scrollTop-el.clientHeight<48:el.scrollTop<48;
+ const oldestId=view.logs[0]?.id,atRecordStart=oldestId===undefined||oldestId<=(view.logStart??0);
+ // Where the reader stood when they asked for more, so the arriving page can be laid in without moving them.
+ const anchor=useRef<{oldestId:number;height:number;top:number;lineCount:number}|null>(null);
+ const loadOlder=()=>{if(!logHistory||logHistory.loading||atRecordStart||oldestId===undefined)return;
+  const el=list.current;anchor.current={oldestId,height:el?.scrollHeight??0,top:el?.scrollTop??0,lineCount};logHistory.load(oldestId);};
+ const onScroll=()=>{const el=list.current;if(!el)return;const now=atEnd(el);if(now!==followingRef.current)follow(now);if(atOlderEnd(el))loadOlder();};
+ // A page read back from the past is not an arrival: it must not count as unread, and the line the reader
+ // was on has to stay where their eye left it, however much was laid in front of it.
+ useEffect(()=>{const held=anchor.current;if(!held||oldestId===undefined||oldestId>=held.oldestId)return;
+  anchor.current=null;setSeenLines(seen=>seen+Math.max(0,lineCount-held.lineCount));
+  const el=list.current;if(el&&orderRef.current==='oldest')el.scrollTop=Math.max(0,el.scrollHeight-held.height+held.top);},[oldestId,lineCount]);
  const latest=()=>{const el=list.current;if(!el)return;pin(el);follow(true);el.focus({preventScroll:true});};
  const flip=()=>{const next:LogOrder=orderRef.current==='newest'?'oldest':'newest';orderRef.current=next;setOrder(next);storeOrder(next);const el=list.current;if(el&&followingRef.current)pin(el);};
  const unread=following?0:Math.max(0,lineCount-seenLines);
@@ -197,6 +211,10 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  const windows=(kinds:string[])=>{const names=kinds.map(kind=>windowNames[kind]).filter(Boolean).filter((name,index,all)=>name!==all[index-1]);return names.length?`${names.join('、')}で`:'';};
  const orderName=order==='newest'?'新しい順':'古い順';
  const choose=(value:string)=>{const next=parseFilter(value,seatIds);setFilter(next);storeFilter(next);follow(true);};
+ // Only a reader who can actually ask for more is told where the read record ends.
+ const olderEdge=!logHistory?null:logHistory.loading?<p className="muted log-edge" role="status">過去の記録を読み込んでいます…</p>
+  :atRecordStart?<p className="muted log-edge">これが戦記の最初です</p>
+  :<button type="button" className="secondary log-edge" onClick={loadOlder}>過去の記録を読む</button>;
  const selfId=(view.self as PlayerView['self']|undefined)?.id;
  return <section className="panel log" aria-label="公開ログ"><div className="section-title log-title"><h2>戦記</h2>
   {/* Which way the record runs is a state, so it is shown as one and read out when it changes. */}
@@ -211,6 +229,8 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
    <button type="button" className="secondary" onClick={flip}>{order==='newest'?'古い順にする':'新しい順にする'}</button></div></div>
   {/* Anchoring keeps the read line still while browsing; while following, it would fight the pin instead. */}
   <div className={`log-scroll${following?' log-following':''}`} ref={list} onScroll={onScroll} tabIndex={0} role="region" aria-label="戦記の全件"><div ref={content}>
+   {/* The far end of what has been read says where it stands, and offers the next page to anyone not scrolling. */}
+   {order==='oldest'?olderEdge:null}
    {/* A filter that keeps nothing has to say so, or the record reads as if it were still loading. */}
    {sections.length?null:<p className="muted">この絞り込みに当てはまる記録はまだありません</p>}
    {sections.map(section=><section key={section.key} aria-label={section.heading}><h3>{section.heading}</h3>
@@ -233,6 +253,7 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
     {line.ownCardInstanceIds?.length?<OwnNames ids={line.ownCardInstanceIds} onInspect={onInspect}/>:null}
     {line.ownCharacterIds?.length?<OwnNames ids={line.ownCharacterIds} kind="character" onInspect={onInspect}/>:null}
     {runStart?<span className="log-own">（自分だけに見えています）</span>:null}</li>;
-   })}</ol></section>)}</div></div>
+   })}</ol></section>)}
+   {order==='newest'?olderEdge:null}</div></div>
  </section>;
 }

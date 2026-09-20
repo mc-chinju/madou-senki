@@ -85,6 +85,20 @@ test('the filter is offered, remembered for this table, and says so when it keep
   expect(renderToStaticMarkup(createElement(PublicLog, { view: view([]), onInspect: () => {} }))).toContain('記録はまだありません');
 });
 
+/** The record arrives in pages now, so its far end has to say where the reader stands in it. */
+test('the record says whether more of it can be read, and offers the page before what it holds', () => {
+  const paged = { ...view([{ id: 51, type: 'REST', actorId: 'A', count: 1 }]), logStart: 1 } as PlayerView;
+  const asked: number[] = [];
+  const render = (v: PlayerView, loading: boolean) =>
+    renderToStaticMarkup(createElement(PublicLog, { view: v, onInspect: () => {}, logHistory: { loading, load: (id: number) => { asked.push(id); } } }));
+  expect(render(paged, false)).toContain('過去の記録を読む');
+  expect(render(paged, true)).toContain('過去の記録を読み込んでいます');
+  // A record whose oldest line is its first has nothing left behind it.
+  expect(render({ ...paged, logStart: 51 } as PlayerView, false)).toContain('これが戦記の最初です');
+  // A reader with no way to ask is told nothing about an end they cannot reach.
+  expect(html(paged)).not.toContain('過去の記録');
+});
+
 /** Acceptance (plan Task 4): a bot 4-seat game, counting the lines drawn from an attack's declaration to its ending. */
 function attackSpans(sections: LogSection[], seatId?: string): number[] {
   const lines = sections.flatMap(section => section.lines);

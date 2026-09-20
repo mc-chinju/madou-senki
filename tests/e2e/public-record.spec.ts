@@ -76,6 +76,14 @@ test('another seat can trace the whole bot game in the public record while its s
     const record = watcher.getByRole('region', { name: '戦記の全件' });
     await record.evaluate(element => { element.scrollTop = 0; });
     await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toBeVisible();
+    // A snapshot carries only the newest window, so the whole game is reached by reading back page by page.
+    const older = watcher.getByRole('button', { name: '過去の記録を読む', exact: true });
+    await expect.poll(async () => {
+      if (await older.count()) await older.click({ timeout: 5000 }).catch(() => {});
+      return record.getByText('これが戦記の最初です').count();
+    }, { timeout: 120_000 }).toBeGreaterThan(0);
+    // Reading the past back is not an arrival, so nothing the reader already saw is announced as new.
+    await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toBeVisible();
     const firstTurn = record.getByRole('region', { name: /^1手番 / });
     await firstTurn.scrollIntoViewIfNeeded();
     await expect(firstTurn).toBeVisible();

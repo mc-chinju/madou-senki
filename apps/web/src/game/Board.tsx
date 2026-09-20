@@ -44,7 +44,7 @@ import { SetupCommandStatus, SetupPanel, SetupPositionChoice, setupSeatLabel } f
 import { MagicGatePanel } from './MagicGatePanel.js';
 import { Hand } from './Hand.js';
 import { OwnCardZone } from './OwnCardZone.js';
-import { PublicLog } from './PublicLog.js';
+import { PublicLog, type LogHistoryControl } from './PublicLog.js';
 import { PublicCardLinks } from './PublicCardLinks.js';
 import { RollPanel } from './RollPanel.js';
 import { StatusList } from './StatusList.js';
@@ -65,7 +65,7 @@ type Command = ClientEnvelope['command'];
 const phaseNames:Record<string,string>={setup:'初期配置','turn-start':'手番開始',draw:'ドロー',action:'行動','hand-adjustment':'手札調整',combat:'戦闘',withdrawal:'離脱'};
 const commandNames:Record<string,string>={REVEAL_CHARACTER:'正体を公開',PASS_SETUP:'配置を終える',PLACE_INITIAL_FOLLOWER:'従者を置く',START_TURN:'手番を始める',PASS_ACTION:'行動を終える',REST:'休息',CHANT:'詠唱',PLAY_TURN_CARD:'カードを使う',APPROACH:'接近',WITHDRAW:'離脱',PASS_WITHDRAWAL:'離脱しない'};
 
-export function Board({room,actorId,disabled:connectionDisabled,send}:{room:RoomView;actorId:string;disabled:boolean;send:(command:Command)=>boolean}){
+export function Board({room,actorId,disabled:connectionDisabled,send,logHistory}:{room:RoomView;actorId:string;disabled:boolean;send:(command:Command)=>boolean;logHistory?:LogHistoryControl}){
  const disabled=connectionDisabled||room.status!=='playing'; const view=room.game!; const [selected,setSelected]=useState<string[]>([]); const [targets,setTargets]=useState<string[]>([]); const [inspect,setInspect]=useState<ActionCard|CharacterCard|null>(null); const [dedicated,setDedicated]=useState(false); const [variant,setVariant]=useState<TechniqueVariant|''>(''); const character=getCharacter(view.self.characterId); const activeCard=selected.length===1?getAction(selected[0]!):undefined; const discard=discardRequirement(view.self.hand.length,view.self.stats.handLimit,selected); const votes=new Set(room.closeVotes); const variants=techniqueVariants(activeCard?.id,character?.name,dedicated); const chosenVariant=variants.find(option=>option.value===variant)?.value??variants[0]?.value;
  const [coSource,setCoSource]=useState<CoSource|undefined>(); const [advanceCosts,setAdvanceCosts]=useState<string[]>([]);
  const [dispelTarget,setDispelTarget]=useState('');
@@ -162,7 +162,7 @@ export function Board({room,actorId,disabled:connectionDisabled,send}:{room:Room
  <MaaiDefenseSummary progress={view.maaiDefense} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>
  <InspectionPanel view={view} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))} disabled={disabled} send={send} onInspect={setInspect}/>
  {!reactionPanelHandles(view)?<WindowStatus view={view} disabled={disabled} send={send}/>:null}
- <ReactionPanel key={decisionPanelKey(view)} view={view} disabled={disabled} send={send}/><PublicLog view={view} onInspect={setInspect}/>
+ <ReactionPanel key={decisionPanelKey(view)} view={view} disabled={disabled} send={send}/><PublicLog view={view} onInspect={setInspect} {...(logHistory?{logHistory}:{})}/>
  <section className="panel quiet" aria-label="対戦卓の管理"><h2>卓の管理</h2><p>閉卓への同意: {votes.size} / {room.members.length}人</p><div className="button-row"><button className="secondary" disabled={connectionDisabled||room.status==='closed'} onClick={()=>send({type:'CLOSE_BY_AGREEMENT',agree:!votes.has(actorId)})}>{votes.has(actorId)?'閉卓への同意を取り消す':'閉卓に同意する'}</button><a className="button secondary" href="/">卓一覧へ戻る</a></div><p className="hint">対戦中の席は保持されます。全員が同意すると保存された卓を閉じます。</p></section>
  <CardDialog card={inspect} onClose={()=>setInspect(null)}/></main>;
 }

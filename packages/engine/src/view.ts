@@ -1,3 +1,4 @@
+import {MAX_LOG_PAGE} from '@madou/protocol';
 import {canChooseDarkSaintIgnore} from './effects/dark-saint.js';
 import {chamGiftOption} from './abilities/cham-death-gift.js';
 import {sadLoveView,type SadLoveView} from './abilities/sad-love.js';
@@ -118,6 +119,28 @@ export interface PlayerView {
   currentAttack: null|{substitution?:{originalTargetId:string;originalHitIndex:number};reflection?:{source:'ability';actorId:string;sourceCardInstanceId:string};groupId:string;actionId:string;attackerId:PlayerId;targetIds:PlayerId[];hitIndex:number;targetId:PlayerId|null;reason:string;technique:{effectLevel:number;damage:number|null;attributes:string[];destructionEffects:string[];beastIgnore:boolean};defenseRestrictions:{maaiProhibited:boolean;evadeProhibited:boolean;counterProhibited:boolean;maaiBundleSize?:number;limitedDefenses?:('teleport'|'counter')[]};targets:{actorId:PlayerId;hits:{bodyDamage?:{directDamage:number|null;resistanceDamage:number;total:number};index:number;defended:boolean;hit:boolean;sourceCardInstanceId?:string;technique?:{effectLevel:number;damage:number|null;attributes:string[];destructionEffects:string[];beastIgnore:boolean};damageRollId?:string}[]}[]};
   currentRoll:PublicRollView|null;recentRolls:PublicRollView[];reactionTargetRollId:string|null;
   reactionTargetActionId:string|null;legalChoices: string[]; logs: LogView[]; privateLogs: LogView[];
+  /** The id of the oldest public record there is. `logs` starts later than this when older pages remain. */
+  logStart: number;
+}
+/** How much of the record a snapshot carries; the transport settles the most one page may be asked for. */
+export const LOG_WINDOW=50;
+export const LOG_PAGE_MAX=MAX_LOG_PAGE;
+export interface LogPage{logs:LogView[];privateLogs:LogView[];logStart:number}
+/** One window of the record as this seat may read it, ending just before `beforeId`. A snapshot takes the
+ *  newest window and an older page is asked for by id, so both go through the same projection and the same
+ *  allowlist. The seat's own records ride with the window they fall in; nothing precedes the first page, so
+ *  anything older than the oldest public record travels with it rather than being lost. */
+export function logPage(state: GameState, viewerId: PlayerId, options: {beforeId?: number; limit?: number} = {}): LogPage {
+  const limit=Math.min(Math.max(Math.trunc(options.limit??LOG_WINDOW),1),LOG_PAGE_MAX);
+  const publicEvents=state.events.filter(event=>event.audience==='public');
+  const logStart=publicEvents[0]?.id??0;
+  const before=options.beforeId;
+  const page=(before===undefined?publicEvents:publicEvents.filter(event=>event.id<before)).slice(-limit);
+  if(!page.length)return {logs:[],privateLogs:[],logStart};
+  const from=page[0]!.id===logStart?0:page[0]!.id;
+  const own=state.events.filter(event=>event.audience!=='public'&&event.audience.playerId===viewerId&&
+    event.id>=from&&(before===undefined||event.id<before));
+  return {logs:page.map(event=>logView(event,viewerId)),privateLogs:own.map(event=>logView(event,viewerId)),logStart};
 }
 function publicCards(cards: PlacedCard[]): CardBackView[] {
   return cards.map((card, position) => card.revealed ? { position, face: 'front', cardInstanceId: card.cardInstanceId } : { position, face: 'back' });
@@ -309,6 +332,6 @@ export function viewFor(state: GameState, viewerId: PlayerId): PlayerView {
     self: { currentObjective:structuredClone(self.currentObjective??factionObjective(self.faction)),protection:structuredClone(self.protection??initialProtection(self.characterId)),defeatCondition:currentDefeatCondition(self),id: self.id, characterId: self.characterId, faction: self.faction, objective: self.objective, damage: self.damage, stats: gameStats(state,self.id), hand: [...self.hand],
       followers: self.followers.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })), chants: self.chants.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })),
       discardedCardInstanceIds: state.discard.filter(entry => entry.ownerId === viewerId).map(entry => entry.cardInstanceId) },
-    logs: state.events.filter(e => e.audience === 'public').map(e => logView(e, viewerId)),
-    privateLogs: state.events.filter(e => e.audience !== 'public' && e.audience.playerId === viewerId).map(e => logView(e, viewerId)) };
+    // A long game outgrows one message, so a snapshot carries the newest window and the rest is asked for.
+    ...logPage(state, viewerId) };
 }

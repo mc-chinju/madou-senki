@@ -156,4 +156,32 @@ describe('browser room connection', () => {
     const other = fixture(); other.sockets[0]!.receive(snapshot()); other.client.send({ type: 'READY', ready: true });
     clearPendingDeparture(other.storage, 'A', 'room'); expect(other.values.size).toBe(1);
   });
+
+  /** The record is read back page by page, so a slow answer must not let a second ask pile on top of it. */
+  it('asks for one older page at a time, keeps what it gathered, and gives up only the page a dead socket owed', () => {
+    const { client, sockets } = fixture();
+    sockets[0]!.receive(snapshot());
+    expect(client.requestLogPage(0)).toBe(false);
+    expect(client.requestLogPage(51)).toBe(true);
+    expect(client.requestLogPage(51)).toBe(false);
+    expect(client.getSnapshot().logHistory.loading).toBe(true);
+    expect(JSON.parse(sockets[0]!.sent.at(-1)!)).toEqual({ type: 'LOG_PAGE', requestId: 'command-1', beforeId: 51, limit: 200 });
+    // A page answering some other request is not this reader's, so it changes nothing.
+    sockets[0]!.receive({ type: 'log-page', requestId: 'other', beforeId: 51, logStart: 1, logs: [{ id: 9 }], privateLogs: [] });
+    expect(client.getSnapshot().logHistory).toMatchObject({ logs: [], loading: true });
+    sockets[0]!.receive({ type: 'log-page', requestId: 'command-1', beforeId: 51, logStart: 1, logs: [{ id: 3 }, { id: 5 }], privateLogs: [{ id: 4 }] });
+    expect(client.getSnapshot().logHistory).toEqual({ logs: [{ id: 3 }, { id: 5 }], privateLogs: [{ id: 4 }], loading: false });
+    // An event is written once, so a page seen twice adds nothing and the record stays in order.
+    expect(client.requestLogPage(3)).toBe(true);
+    sockets[0]!.receive({ type: 'log-page', requestId: 'command-2', beforeId: 3, logStart: 1, logs: [{ id: 1 }, { id: 3 }], privateLogs: [] });
+    expect(client.getSnapshot().logHistory.logs).toEqual([{ id: 1 }, { id: 3 }, { id: 5 }]);
+    // A socket that dies owing a page releases the wait but keeps every page already read.
+    client.requestLogPage(1);
+    expect(client.getSnapshot().logHistory.loading).toBe(true);
+    sockets[0]!.closed();
+    expect(client.getSnapshot().logHistory).toMatchObject({ logs: [{ id: 1 }, { id: 3 }, { id: 5 }], loading: false });
+    vi.advanceTimersByTime(1000);
+    sockets[1]!.receive(snapshot());
+    expect(client.requestLogPage(1)).toBe(true);
+  });
 });
