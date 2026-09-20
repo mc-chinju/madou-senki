@@ -23,6 +23,8 @@ const ownPairs=new Set<LogView['type']>(['CHANTED','FOLLOWERS_ARRANGED','CARD_RE
 export type LogLine={kind:'event';event:LogView;own:boolean;ownCardInstanceIds?:string[];ownCharacterIds?:string[]}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;actorIds:string[]}
  |{kind:'discards';id:number;lastId:number;actorId:string;count:number;cardInstanceIds:string[]};
 export interface LogSection{key:string;heading:string;lines:LogLine[]}
+/** Where a line stands in the record: for a fold, the last record folded into it, since that is what made it grow. */
+function lineId(line:LogLine):number{return line.kind==='event'?line.event.id:line.lastId;}
 
 /** Groups the record by turn, folds a run of passes in one window, then joins windows the same seats passed in a row.
  *  The reader's own private record is woven in by event id, so a line only it can see keeps its place in the story.
@@ -180,22 +182,23 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
  const fresh=(id:number)=>id>highlight.current.fromId&&Date.now()<highlight.current.until;
  // Folding, reversing and counting walk the whole record, so they only run when it or its order changes.
  const sections=useMemo(()=>publicLogSections(view,order,filter),[view,order,filter]);
- // A run of passes folds into one line, so unread is counted in lines, not in events.
+ // A run of passes folds into one line, so the record is measured in lines, not in events: an older page can
+ // lay a hundred records in front of the reader without the newest line changing at all.
  const lineCount=useMemo(()=>sections.reduce((total,section)=>total+section.lines.length,0),[sections]);
- // Lines that arrived while the reader was scrolled away from the followed end.
- const [seenLines,setSeenLines]=useState(lineCount);
+ // How far the reader has read, kept as the newest line they were shown at the followed end. An id is fixed to
+ // its record: narrowing the filter, laying an older page in front, or a window that had to start over all move
+ // every line's place but no line's id, so none of them can make a line already read look like it just arrived.
+ const newestId=useMemo(()=>sections.reduce((newest,section)=>section.lines.reduce((id,line)=>Math.max(id,lineId(line)),newest),0),[sections]);
+ const [seenId,setSeenId]=useState(newestId);
+ // The record only grows, so what has been read is never unread again, even when the filter hides it for a while.
+ const markSeen=()=>setSeenId(seen=>Math.max(seen,newestId));
  // Newest first stacks arrivals at the top, so the followed end flips with the order.
  const pin=(el:HTMLDivElement)=>{el.scrollTop=orderRef.current==='newest'?0:el.scrollHeight;};
  const atEnd=(el:HTMLDivElement)=>orderRef.current==='newest'?el.scrollTop<24:el.scrollHeight-el.scrollTop-el.clientHeight<24;
- const follow=(value:boolean)=>{followingRef.current=value;setFollowing(value);if(value)setSeenLines(lineCount);};
+ const follow=(value:boolean)=>{followingRef.current=value;setFollowing(value);if(value)markSeen();};
  // Flipping the order moves the newest line to the other end, so where the reader stands has to be judged again.
  // Narrowing the record moves every line too, so where the reader stands has to be judged again.
- useEffect(()=>{const el=list.current;if(!el)return;if(followingRef.current){pin(el);setSeenLines(lineCount);}else if(atEnd(el))follow(true);},[count,lineCount,order,filterKey]);
- // Widening the filter brings back lines that were there all along; they did not just arrive, so the unread
- // count moves with them. Without this a reader who had scrolled back is told of "new" lines nobody sent.
- const shown=useRef({filterKey,lineCount});
- useEffect(()=>{const before=shown.current;shown.current={filterKey,lineCount};
-  if(before.filterKey!==filterKey)setSeenLines(seen=>Math.min(lineCount,Math.max(0,seen+lineCount-before.lineCount)));},[filterKey,lineCount]);
+ useEffect(()=>{const el=list.current;if(!el)return;if(followingRef.current){pin(el);markSeen();}else if(atEnd(el))follow(true);},[count,lineCount,newestId,order,filterKey]);
  // A narrower screen rewraps lines and grows the record; a follower must stay on the newest line.
  useEffect(()=>{const el=list.current,inner=content.current;if(!el||!inner||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(()=>{if(followingRef.current)pin(el);});observer.observe(inner);observer.observe(el);return ()=>observer.disconnect();},[]);
  // The oldest line sits at the top reading forwards and at the bottom reading backwards, so the far edge flips too.
@@ -203,18 +206,18 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
  // A record with no start to point at is all there is: nothing behind it can be asked for.
  const oldestId=view.logs[0]?.id,atRecordStart=oldestId===undefined||view.logStart===undefined||oldestId<=view.logStart;
  // Where the reader stood when they asked for more, so the arriving page can be laid in without moving them.
- const anchor=useRef<{oldestId:number;height:number;top:number;lineCount:number}|null>(null);
+ const anchor=useRef<{oldestId:number;height:number;top:number}|null>(null);
  const loadOlder=()=>{if(!logHistory||logHistory.loading||atRecordStart||oldestId===undefined)return;
-  const el=list.current;anchor.current={oldestId,height:el?.scrollHeight??0,top:el?.scrollTop??0,lineCount};logHistory.load(oldestId);};
+  const el=list.current;anchor.current={oldestId,height:el?.scrollHeight??0,top:el?.scrollTop??0};logHistory.load(oldestId);};
  const onScroll=()=>{const el=list.current;if(!el)return;const now=atEnd(el);if(now!==followingRef.current)follow(now);if(atOlderEnd(el))loadOlder();};
- // A page read back from the past is not an arrival: it must not count as unread, and the line the reader
- // was on has to stay where their eye left it, however much was laid in front of it.
+ // A page read back from the past carries no line newer than the one the reader is on, so it is no arrival and
+ // the count leaves it alone. The line their eye is on has to stay put, however much is laid in front of it.
  useEffect(()=>{const held=anchor.current;if(!held||oldestId===undefined||oldestId>=held.oldestId)return;
-  anchor.current=null;setSeenLines(seen=>seen+Math.max(0,lineCount-held.lineCount));
+  anchor.current=null;
   const el=list.current;if(el&&orderRef.current==='oldest')el.scrollTop=Math.max(0,el.scrollHeight-held.height+held.top);},[oldestId,lineCount]);
  const latest=()=>{const el=list.current;if(!el)return;pin(el);follow(true);el.focus({preventScroll:true});};
  const flip=()=>{const next:LogOrder=orderRef.current==='newest'?'oldest':'newest';orderRef.current=next;setOrder(next);storeOrder(next);const el=list.current;if(el&&followingRef.current)pin(el);};
- const unread=following?0:Math.max(0,lineCount-seenLines);
+ const unread=useMemo(()=>following?0:sections.reduce((total,section)=>total+section.lines.filter(line=>lineId(line)>seenId).length,0),[sections,seenId,following]);
  const name=(id:string)=>view.players[id]?.name??'参加者';
  // Two windows of the same kind in a row are one thing to the reader, so the name is said once.
  // Filtering to one seat puts its passes next to each other, so a fold can run over a dozen windows. Past a
