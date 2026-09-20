@@ -184,4 +184,36 @@ describe('browser room connection', () => {
     sockets[1]!.receive(snapshot());
     expect(client.requestLogPage(1)).toBe(true);
   });
+
+  /** The window a snapshot carries moves on as the game does, while the pages read back stay where they were.
+   *  If the two ever stop meeting, the records in between were seen by nobody and cannot be asked for from
+   *  either end: the reader would be shown late lines filed under an early turn, with nothing to say so. */
+  it('joins the window to the pages it gathered, and gives them up rather than show a record with a hole', () => {
+    const { client, sockets } = fixture();
+    const windowed = (revision: number, ids: number[]) => ({ type: 'snapshot', revision,
+      view: { ...view(revision), game: { logs: ids.map(id => ({ id })), privateLogs: [], logStart: 1 } } });
+    sockets[0]!.receive(windowed(4, [10, 11, 12]));
+    expect(client.requestLogPage(10)).toBe(true);
+    sockets[0]!.receive({ type: 'log-page', requestId: 'command-1', beforeId: 10, logStart: 1, logs: [{ id: 1 }, { id: 2 }], privateLogs: [] });
+    // The page is asked for from the oldest line held, so it arrives joined to the window it was asked from.
+    expect(client.getSnapshot().logHistory.logs.map(log => log.id)).toEqual([1, 2, 10, 11, 12]);
+    // A window that still reaches back into what is held is folded in, and the record stays unbroken.
+    sockets[0]!.receive(windowed(5, [11, 12, 13]));
+    expect(client.getSnapshot().logHistory.logs.map(log => log.id)).toEqual([1, 2, 10, 11, 12, 13]);
+    // A window that has run clean past everything held cannot be joined to it, so the pages are let go.
+    sockets[0]!.receive(windowed(6, [40, 41]));
+    expect(client.getSnapshot().logHistory.logs).toEqual([]);
+  });
+
+  /** An `error` reply names no request, so a refused page looks exactly like a lost one and only time tells. */
+  it('stops waiting for a page that never comes, so the reader may ask again', () => {
+    const { client, sockets } = fixture();
+    sockets[0]!.receive(snapshot());
+    expect(client.requestLogPage(51)).toBe(true);
+    expect(client.getSnapshot().logHistory.loading).toBe(true);
+    sockets[0]!.receive({ type: 'error', code: 'INVALID_COMMAND' });
+    vi.advanceTimersByTime(10000);
+    expect(client.getSnapshot().logHistory.loading).toBe(false);
+    expect(client.requestLogPage(51)).toBe(true);
+  });
 });

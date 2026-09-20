@@ -1,7 +1,7 @@
 import {getAction,getCharacter,type ActionCard,type CharacterCard} from '@madou/catalog';
 import type { LogView, PlayerView } from '@madou/engine';
 import {useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
-import {filterSeat,logInvolves,parseFilter,readerCards,serializeFilter,storedFilter,storeFilter,type LogFilter} from './log-filter.js';
+import {filterTarget,logInvolves,parseFilter,serializeFilter,storedFilter,storeFilter,type LogFilter} from './log-filter.js';
 import {purposeNames} from './RollPanel.js';
 import {statusNames} from './StatusList.js';
 const labels:Record<string,string>={CARD_DRAWN:'カードを引きました',FOLLOWER_PLACED:'従者を配置しました',SETUP_PASSED:'配置を終えました',CHARACTER_REVEALED:'正体を公開しました',SETUP_COMPLETE:'初期配置を完了しました',DEATH_PENDING:'死亡時の処理に入りました',PLAYER_DIED:'死亡しました',PLAYER_REVIVED:'復活しました',PLAYER_WANDERING:'流浪状態になりました',PLAYER_RETURNED:'復帰しました',PLAYER_EXITED:'退場しました',CHARACTER_TRANSFORMED:'変身しました',FACTION_CHANGED:'陣営を変更しました',CARD_GIFTED:'カードを託しました',GAME_COMPLETED:'対戦の決着を迎えました',TURN_ENDED:'手番を終えました',CHARACTER_ASSIGNED:'配役を確認しました'};
@@ -29,7 +29,7 @@ export interface LogSection{key:string;heading:string;lines:LogLine[]}
  *  A filter drops the records the chosen seat has no share in before anything folds, so a fold never spans a gap. */
 export function publicLogSections(view:PlayerView,order:LogOrder='oldest',filter:LogFilter={kind:'all'}):LogSection[]{
  const name=(id:string)=>view.players[id]?.name??'参加者';
- const seatId=filterSeat(view,filter),ownCards=filter.kind==='self'?readerCards(view):undefined;
+ const {seatId,ownCards}=filterTarget(view,filter);
  // Only a record held from its very beginning opens with the table being set up. A window that opens partway
  // through starts inside a turn whose heading has not been read back yet, and must not claim to be the setup.
  const fromStart=view.logs[0]===undefined||view.logStart===undefined||view.logs[0].id<=view.logStart;
@@ -218,7 +218,9 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
   if(!names.length)return '';
   return names.length>4?`${names.slice(0,3).join('、')}ほか${names.length-3}件で`:`${names.join('、')}で`;};
  const orderName=order==='newest'?'新しい順':'古い順';
- const choose=(value:string)=>{const next=parseFilter(value,seatIds);setFilter(next);storeFilter(next);follow(true);};
+ // Narrowing the record is not the same as asking for the newest line: a reader who had scrolled back stays
+ // where they were, exactly as flipping the order leaves them. The effect below judges the new position.
+ const choose=(value:string)=>{const next=parseFilter(value,seatIds);setFilter(next);storeFilter(next);};
  // Only a reader who can actually ask for more is told where the read record ends.
  const olderEdge=!logHistory?null:logHistory.loading?<p className="muted log-edge" role="status">過去の記録を読み込んでいます…</p>
   :atRecordStart?<p className="muted log-edge">これが戦記の最初です</p>

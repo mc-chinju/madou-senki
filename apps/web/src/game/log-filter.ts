@@ -22,6 +22,14 @@ export function logInvolves(event:LogView,seatId:string,ownCards?:ReadonlySet<st
 export function filterSeat(view:PlayerView,filter:LogFilter):string|undefined{
  return filter.kind==='seat'?filter.actorId:filter.kind==='self'?(view.self as PlayerView['self']|undefined)?.id:undefined;
 }
+/** The seat a filter reads together with the cards that seat may call its own. Naming one's own seat in the
+ *  participant list has to read the same record as 「自分に関係する」, so which cards are known is decided by
+ *  whose seat it is and never by which of the two ways the reader got there. */
+export function filterTarget(view:PlayerView,filter:LogFilter):{seatId?:string;ownCards?:ReadonlySet<string>}{
+ const seatId=filterSeat(view,filter);
+ if(seatId===undefined)return {};
+ return seatId===(view.self as PlayerView['self']|undefined)?.id?{seatId,ownCards:readerCards(view)}:{seatId};
+}
 const FILTER_KEY='madou:log-filter:v1';
 /** The choice belongs to this table only, and a server render has no storage at all. */
 function filterKey():string{return `${FILTER_KEY}:${globalThis.location?.pathname??''}`;}

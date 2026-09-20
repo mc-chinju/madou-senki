@@ -1,10 +1,10 @@
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { createGame, viewFor, type GameState, type LogView, type PlayerView } from '@madou/engine';
+import { createGame, logPage, LOG_PAGE_MAX, viewFor, type GameState, type LogView, type PlayerView } from '@madou/engine';
 import { playOneStep } from '@madou/engine/bot';
 import { expect, test } from 'vitest';
 import { PublicLog, publicLogSections, type LogSection } from '../src/game/PublicLog.js';
-import { logInvolves, parseFilter, readerCards, serializeFilter } from '../src/game/log-filter.js';
+import { logInvolves, parseFilter, readerCards, serializeFilter, type LogFilter } from '../src/game/log-filter.js';
 import { seededEntropy } from '../../../packages/engine/test/fixtures.js';
 
 const players = { A: { name: '葵' }, B: { name: '楓' }, C: { name: '凛' }, D: { name: '蓮' } };
@@ -73,6 +73,22 @@ test('a filter drops the turns and passes the chosen seat has no share in, and k
   expect(ids(publicLogSections(v, 'newest', { kind: 'self' }))).toEqual([11, 8, 7, 5, 2]);
 });
 
+/** Reading one's own seat from the participant list has to mean the same as 「自分に関係する」. Only the reader
+ *  knows which cards are their own, so a record that points at them by card and not by name is exactly the one
+ *  that falls out when the two ways of naming the same seat are decided in different places. */
+test('naming the reader own seat reads the same record as asking for what concerns them', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'B', turnNumber: 1 },
+    { id: 3, type: 'WISH_ACQUIRED', actorId: 'B', cardInstanceId: 'a2-p02-r1c2' },
+  ], [
+    { id: 2, type: 'CHANTED', actorId: 'A', cardInstanceId: 'a2-p02-r1c2' },
+  ]);
+  const ids = (filter: LogFilter) => publicLogSections(v, 'oldest', filter).flatMap(s => s.lines.map(line => (line.kind === 'event' ? line.event.id : line.id)));
+  // Someone else moved a card the reader only ever saw named in their own record.
+  expect(ids({ kind: 'self' })).toContain(3);
+  expect(ids({ kind: 'seat', actorId: 'A' })).toEqual(ids({ kind: 'self' }));
+});
+
 test('the filter is offered, remembered for this table, and says so when it keeps nothing', () => {
   expect(parseFilter('seat:C', ['A', 'B', 'C', 'D'])).toEqual({ kind: 'seat', actorId: 'C' });
   // A seat that is not at this table is no filter at all.
@@ -121,6 +137,18 @@ function attackSpans(sections: LogSection[], seatId?: string): number[] {
   return spans;
 }
 const mean = (values: number[]) => values.reduce((total, value) => total + value, 0) / values.length;
+/** A snapshot carries only the newest window, so the measure reads the record back to its start first.
+ *  Measuring the window alone would weigh a handful of late attacks and skip the seats with none in it. */
+function wholeRecord(state: GameState, seatId: string): PlayerView {
+  const newest = viewFor(state, seatId);
+  const logs: LogView[] = [...newest.logs], privateLogs: LogView[] = [...newest.privateLogs];
+  while (logs.length && logs[0]!.id > newest.logStart) {
+    const page = logPage(state, seatId, { beforeId: logs[0]!.id, limit: LOG_PAGE_MAX });
+    if (!page.logs.length) break;
+    logs.unshift(...page.logs); privateLogs.unshift(...page.privateLogs);
+  }
+  return { ...newest, logs, privateLogs };
+}
 
 test('reading only what concerns the reader keeps an attack under seven lines in a bot four-seat game', () => {
   const seed = 15, entropy = seededEntropy(seed);
@@ -128,8 +156,11 @@ test('reading only what concerns the reader keeps an attack under seven lines in
   for (let steps = 0; !state.outcome && steps < 5000; steps++) state = playOneStep(state, entropy, seed);
   expect(state.outcome).toBeTruthy();
   for (const seatId of state.seatOrder) {
-    const v = viewFor(state, seatId);
+    const v = wholeRecord(state, seatId);
+    expect(v.logs.length, `${seatId} reads the whole record, not one window`).toBe(state.events.filter(event => event.audience === 'public').length);
     const whole = attackSpans(publicLogSections(v), seatId);
+    // A seat with no attack to weigh would pass this on an empty span list, so the measure has to have one.
+    expect(whole.length, `${seatId} shares at least one attack`).toBeGreaterThan(0);
     const filtered = attackSpans(publicLogSections(v, 'oldest', { kind: 'self' }), seatId);
     // Shortening the record must not lose an attack: every one the seat shares still opens and closes.
     expect(filtered.length, `${seatId} keeps every attack it shares`).toBe(whole.length);

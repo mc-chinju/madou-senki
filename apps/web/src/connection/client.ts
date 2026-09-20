@@ -59,6 +59,7 @@ export class RoomConnection {
   private pending: ClientEnvelope | null = null;
   private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
   private responseTimer: ReturnType<typeof setTimeout> | null = null;
+  private logTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly key: string;
 
   constructor(private readonly options: Options) {
@@ -115,6 +116,11 @@ export class RoomConnection {
     try { this.socket.send(JSON.stringify(request)); }
     catch { this.reconnect(); return false; }
     this.logRequest = request;
+    // An `error` reply carries no requestId, so a refused page is indistinguishable from a lost one. Either
+    // way the wait has to end by itself, or the reader is left reading "loading" until they reconnect.
+    if (this.logTimer) clearTimeout(this.logTimer);
+    this.logTimer = setTimeout(() => { this.logTimer = null; this.logRequest = null;
+      this.publish({ logHistory: { ...this.state.logHistory, loading: false } }); }, 10000);
     this.publish({ logHistory: { ...this.state.logHistory, loading: true } });
     return true;
   }
@@ -162,7 +168,7 @@ export class RoomConnection {
         if (this.responseTimer) clearTimeout(this.responseTimer);
         this.responseTimer = null;
       }
-      this.publish({ view, status: view.readOnly ? 'read-only' : this.pending || view.revision < this.acknowledgedRevision ? 'syncing' : 'ready' });
+      this.publish({ view, logHistory: this.joinWindow(view), status: view.readOnly ? 'read-only' : this.pending || view.revision < this.acknowledgedRevision ? 'syncing' : 'ready' });
       if (!view.readOnly && this.pending) {
         if (!this.sent) this.transmit();
         else if (!this.responseTimer) this.armResponseTimeout();
@@ -175,8 +181,14 @@ export class RoomConnection {
       const logs = Array.isArray(page.logs) ? page.logs as LogView[] : [];
       const privateLogs = Array.isArray(page.privateLogs) ? page.privateLogs as LogView[] : [];
       this.logRequest = null;
-      this.publish({ logHistory: { logs: mergeLogs(this.state.logHistory.logs, logs),
-        privateLogs: mergeLogs(this.state.logHistory.privateLogs, privateLogs), loading: false } });
+      if (this.logTimer) clearTimeout(this.logTimer);
+      this.logTimer = null;
+      // The page was asked for from the oldest line already held, so it joins what is held to the window the
+      // newest snapshot carries. Taking the window in now is what lets a later window be checked against it.
+      const held = this.state.logHistory, window = this.state.view?.game;
+      this.publish({ logHistory: {
+        logs: mergeLogs(mergeLogs(held.logs, logs), window?.logs ?? []),
+        privateLogs: mergeLogs(mergeLogs(held.privateLogs, privateLogs), window?.privateLogs ?? []), loading: false } });
       return;
     }
     if (!this.pending || !('commandId' in message) || message.commandId !== this.pending.commandId) return;
@@ -202,6 +214,20 @@ export class RoomConnection {
     }
   }
 
+  /** The snapshot window folded into what the reader has read back, so the two stay one unbroken record.
+   *  The window moves on as the game goes; once it no longer reaches back to the newest line already held,
+   *  the records in between were never seen by this tab and cannot be asked for from either end. A record
+   *  with a hole in it reads as a lie — it files late lines under an early turn and calls itself complete —
+   *  so the gathered pages are given up and the reader starts again from the window they can trust. */
+  private joinWindow(view: RoomView): LogHistory {
+    const held = this.state.logHistory;
+    if (!held.logs.length) return held;
+    const game = view.game, oldest = game?.logs[0]?.id;
+    if (oldest !== undefined && oldest > held.logs.at(-1)!.id) return { logs: [], privateLogs: [], loading: held.loading };
+    return { logs: mergeLogs(held.logs, game?.logs ?? []),
+      privateLogs: mergeLogs(held.privateLogs, game?.privateLogs ?? []), loading: held.loading };
+  }
+
   private transmit(): void {
     if (!this.pending || !this.socket || !this.synced || this.sent || this.state.status === 'read-only') return;
     try { this.socket.send(JSON.stringify(this.pending)); this.sent = true; this.armResponseTimeout(); }
@@ -221,7 +247,8 @@ export class RoomConnection {
   private clearTimers(): void {
     if (this.responseTimer) clearTimeout(this.responseTimer);
     if (this.reconnectTimer) clearTimeout(this.reconnectTimer);
-    this.responseTimer = null; this.reconnectTimer = null;
+    if (this.logTimer) clearTimeout(this.logTimer);
+    this.responseTimer = null; this.reconnectTimer = null; this.logTimer = null;
   }
   private publish(patch: Partial<ConnectionSnapshot>): void {
     this.state = { ...this.state, ...patch };
