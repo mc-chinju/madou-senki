@@ -31,7 +31,7 @@ export function resolveDispel(s:GameState,a:ActionFrame):void {
   if(!followerFor(placed.cardInstanceId)?.attributes.includes('ゴ'))continue;
   target.followers=target.followers.filter(f=>f.cardInstanceId!==placed.cardInstanceId);s.resolution.push(placed.cardInstanceId);
   const sourceActorId=placed.placedById??target.id;
-  saved.destroyed.push({kind:'ordinary-disposition',fromZone:'resolution',eventId:reclaimEventId(s,a),sourceId:`${a.id}-${placed.cardInstanceId}`,sourceActorId,sourceLifeId:placed.placedLifeId??lifeIdentity(s.players[sourceActorId]!),cardInstanceId:placed.cardInstanceId,trigger:'follower-died'});
+  saved.destroyed.push({kind:'ordinary-disposition',fromZone:'resolution',eventId:reclaimEventId(s,a),sourceId:`${a.id}-${placed.cardInstanceId}`,sourceActorId,heldById:target.id,sourceLifeId:placed.placedLifeId??lifeIdentity(s.players[sourceActorId]!),cardInstanceId:placed.cardInstanceId,trigger:'follower-died'});
   appendEvent(s,s.events.at(-1)?.at??0,{type:'FOLLOWER_DESTROYED',actorId:a.actorId,targetId:target.id,cardInstanceId:placed.cardInstanceId,audience:'public'});
  }
 }

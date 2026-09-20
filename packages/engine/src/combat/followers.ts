@@ -185,7 +185,7 @@ export function resolveFollowerSnapshot(state: GameState, group: AttackGroup, ta
             const sourceActorId=placed!.placedById??player.id;
             (target.followerReclaimSources??=[]).push({kind:'ordinary-disposition',fromZone:'resolution',
               sourceId:`${group.id}-${target.actorId}-${d.cardInstanceId}`,eventId:reclaimEventId(state,state.actions![group.actionId]!),
-              sourceActorId,sourceLifeId:placed!.placedLifeId??lifeIdentity(state.players[sourceActorId]!),
+              sourceActorId,heldById:player.id,sourceLifeId:placed!.placedLifeId??lifeIdentity(state.players[sourceActorId]!),
               cardInstanceId:d.cardInstanceId,trigger:'follower-died'});
         }
     }

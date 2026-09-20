@@ -49,6 +49,25 @@ it('gives the maai to the seat that paid it, not to the seat that approached',()
   expect(viewFor(s,'A').self.discardedCardInstanceIds).not.toContain(maai);
 });
 
+// 魔招門 moves the placed card itself, so `placedById` still names the donor after the transfer. The
+// pile follows the board the follower died on; only the reclaim right stays with the seat that placed it.
+it('gives a transferred follower to the board it died on, not to the seat that placed it',()=>{
+  let s=ready();character(s,'A','白魔術師シェリム');
+  const follower=handCard(s,'B','兵士');s.players.B!.hand=s.players.B!.hand.filter(id=>id!==follower);
+  s.players.B!.followers=[{cardInstanceId:follower,revealed:false,placedById:'B',placedLifeId:'initial-life:B'}];
+  const gate=handCard(s,'A','魔招門');
+  s=finish(act(s,'A',{type:'PLAY_TURN_TECHNIQUE',cardInstanceId:gate,targetIds:['B'],dedicated:false,followerTransfer:{targetPosition:0,destinationPosition:0}}));
+  expect(s.players.A!.followers[0]).toMatchObject({cardInstanceId:follower,placedById:'B'});
+  s=finish(act(s,'A',{type:'END_TURN',discardIds:[]}));
+  s.phase='action';s.distances.B!.A='near';s.distances.A!.B='near';
+  s=act(s,'B',{type:'ATTACK',cardInstanceId:handCard(s,'B','踏み込み／槍'),targetIds:['A'],dedicated:false});
+  while(s.windows!.at(-1)!.kind!=='follower-start')s=pass(s);
+  s=finish(pass(s));
+  expect(entry(s,follower)).toEqual({cardInstanceId:follower,ownerId:'A',faceUp:true});
+  expect(viewFor(s,'A').self.discardedCardInstanceIds).toContain(follower);
+  expect(viewFor(s,'B').self.discardedCardInstanceIds).not.toContain(follower);
+});
+
 it('takes a reclaimed card back out of the pile',()=>{
   let s=ready();character(s,'A','大神官ジル');s.players.A!.damage=3;
   s=finish(act(s,'A',{type:'REST',cardInstanceIds:[handCard(s,'A','間合い／休息')]}));

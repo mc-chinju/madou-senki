@@ -18,6 +18,8 @@ export function reclaimEventId(s:GameState,source:{eventId:string;parentWindowId
 export type ReclaimRight='base'|'extra'|'unlimited'|'printed';
 export type ReclaimSource={eventId:string;sourceId:string;sourceActorId:string;cardInstanceId:string} & (
   {kind:'ordinary-disposition';fromZone:'resolution';sourceLifeId:string;
+   /** The seat the card left. A follower moved by 魔招門 dies on its new board while `sourceActorId` keeps the reclaim right with the seat that placed it. */
+   heldById?:string;
    trigger:'technique-resolved'|'follower-died'|'named-card-used';usedModeName?:string}
   | {kind:'courage-resolution';fromZone:'resolution';cardInstanceId:'a2-p01-r3c3';beneficiaryId:string;beneficiaryLifeId:string;cancellationSucceeded:true}
   | {kind:'actual-discard';fromZone:'discard';cardInstanceId:'a2-p04-r2c1';discardEventId:string;
@@ -81,7 +83,9 @@ export function offerReclaim(s:GameState,source:ReclaimSource):ReclaimDecision {
 export function closeReclaim(s:GameState,id:string):void {
   const d=s.reclaimDecisions?.find(d=>d.id===id);if(!d||d.stage==='closed')return;
   if(d.stage!=='reserved'&&d.fromZone==='resolution') {
-    discardPhysical(s,d.cardInstanceId,{zone:'resolution'},d.sourceActorId,d.eventId);
+    // The pile follows the board the card left, which is not the placer once 魔招門 has moved a follower.
+    const heldById=d.source.kind==='ordinary-disposition'?d.source.heldById:undefined;
+    discardPhysical(s,d.cardInstanceId,{zone:'resolution',...(heldById?{ownerId:heldById}:{})},d.sourceActorId,d.eventId);
   }
   d.stage='closed';
 }
