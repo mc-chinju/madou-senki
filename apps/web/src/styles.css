@@ -14,23 +14,25 @@
 
 /* Setup progress inside the sticky command bar: status, buttons and position choice share one view with the hand. */
 .setup-status{flex:1 0 100%;display:flex;align-items:center;gap:.25rem .6rem;margin:-.2rem -.4rem;padding:.2rem .4rem;border-radius:.3rem;font-size:.9rem}
-.setup-status.flash{animation:setup-status-new 1.6s ease-out}
 .setup-status p{flex:1;min-width:0;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .6rem}
 .setup-status p:focus-visible{outline-offset:1px}
 .setup-status strong{font-family:serif}
 .setup-status button{flex:none;align-self:flex-start}
 .setup-warning{flex:1 0 100%;margin:0;padding:.5rem .75rem;font-size:.9rem}
-@keyframes setup-status-new{from{background:#dbae7699}to{background:transparent}}
-@media(prefers-reduced-motion:reduce){.setup-status.flash{animation-timing-function:steps(1,end)}}
+/* The setup round and the open window report progress the same way, so their bars highlight the same way. */
+.setup-status.flash,.window-roster.flash{animation:progress-flash 1.6s ease-out}
+@keyframes progress-flash{from{background:#dbae7699}to{background:transparent}}
+@media(prefers-reduced-motion:reduce){.setup-status.flash,.window-roster.flash{animation-timing-function:steps(1,end)}}
 .command-bar label{display:flex;align-items:center;gap:.5rem;font-weight:700}
 .command-bar label select{width:auto}
 .tag.ready{background:#d5e5d8;color:#23533a}
 .tag.outside{background:transparent;border:1px dashed var(--line);color:#6d6257;font-weight:400}
 /* One compact line above the decision controls: who decides now and who has not answered (G03). */
-.window-roster{display:grid;gap:.15rem;font-size:.9rem}
+.window-roster{display:grid;gap:.15rem;margin:-.2rem -.4rem;padding:.2rem .4rem;border-radius:.3rem;font-size:.9rem}
 .window-roster p{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:.2rem .6rem}
 .window-roster strong{font-family:serif}
-.window-roster .tag{background:var(--paper)}
+/* Both bars sit on the same sticky background, so their pills are told apart from it the same way. */
+.setup-status .tag,.window-roster .tag{background:var(--paper)}
 .decision .button-row+.button-row{margin-top:0}
 dt small.hint{font-weight:400;margin-left:.25rem}
 /* A focused control scrolls clear of the sticky bar, whose height varies with the setup status (set by Board). */

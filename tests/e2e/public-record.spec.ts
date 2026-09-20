@@ -31,11 +31,19 @@ test('another seat can trace the whole bot game in the public record while its s
   try {
     expect((await request.post(`/__test/rooms/${table.roomId}/entropy`, { data: { seed: 4 } })).status()).toBe(204);
     const watcher = table.pages[1]!, watcherId = table.sessions[1]!.id;
-    const frames: string[] = [];
+    /** Every snapshot of a game the watcher's socket carried, with the strings it names read off once: the
+     *  sweep below asks after one card at a time, and a frame holds every card the seat may see. The room
+     *  snapshots that come before the table is dealt carry no game, so there is nothing in them to sweep. */
+    const frames: { revision: number; text: string; names: Set<string> | null }[] = [];
     let latest: RoomView | null = null;
     watcher.on('websocket', socket => socket.on('framereceived', frame => {
       const text = String(frame.payload), message = JSON.parse(text);
-      if (message.type === 'snapshot') { frames.push(text); latest = message.view; }
+      if (message.type !== 'snapshot') return;
+      latest = message.view;
+      const revision = message.view?.game?.revision;
+      // Reading the strings off pairs the quotes, which only holds while none of them is escaped; a frame
+      // that carries an escaped quote is read the slow way instead of being read wrong.
+      if (revision !== undefined) frames.push({ revision, text, names: text.includes('\\"') ? null : new Set(text.match(/"[^"]*"/g) ?? []) });
     }));
     for (const page of table.pages) {
       await page.goto(table.url);
@@ -48,7 +56,7 @@ test('another seat can trace the whole bot game in the public record while its s
       await bot.connect();
       return bot;
     }));
-    let steps = 0, audits = 0, widenings = 0, narrowedAt: number | null = null;
+    let steps = 0, audited = 0, widenings = 0, narrowedAt: number | null = null;
     const record = watcher.getByRole('region', { name: '戦記の全件' });
     const filter = watcher.getByLabel('絞り込み');
     const toLatest = watcher.getByRole('button', { name: /^最新へ/ });
@@ -81,34 +89,47 @@ test('another seat can trace the whole bot game in the public record while its s
       widenings++;
       return true;
     };
-    /** 決着後の全公開: the same sweep read the other way round once the game is over. Everything the socket
-     *  refused all game has to arrive in the snapshot that carries the outcome, and not one line before it. */
-    const audit = async (decided = false) => {
+    /** Every snapshot is swept, not a sample of them: a leak the socket carried for one revision is a leak.
+     *  The secrets of a revision are read from the server as the table reaches it, so each frame is judged by
+     *  the state it was sent from — a card that is public now may have been in a hand when the frame went out.
+     *  決着後の全公開 is the same sweep read the other way round: everything the socket refused all game has to
+     *  arrive in the snapshot that carries the outcome, and not one line before it. */
+    const secretsAt = new Map<number, string[]>();
+    const audit = async () => {
       const game = await (await request.get(`/__test/rooms/${table.roomId}/game`)).json() as GameState;
       await expect.poll(() => (latest as RoomView | null)?.game?.revision).toBe(game.revision);
-      const frame = frames.at(-1)!;
-      const sent = JSON.parse(frame).view.game as PlayerView;
-      expect(sent).not.toHaveProperty('discard');
-      // The line above only ever says the pile is not at the top of the view. Before the outcome that is the
-      // whole claim, and the sweep below carries it; after it the pile has moved under `reveal`, so the same
-      // line would pass on a snapshot that shipped nothing at all. Name where it went instead.
-      if (decided) {
-        // The deck is left out of the sweep below, because a decided game opens it while the sweep reads the
-        // cards nobody saw. So what says it arrived at all is named here, beside the pile. Two empty decks
-        // would agree without the reveal carrying anything, so the length is asked for first.
-        expect(game.deck.length, 'the table has to leave cards undrawn for the line below to say anything').toBeGreaterThan(0);
-        expect(sent.reveal!.deck).toEqual(game.deck);
-        expect(sent.reveal!.discard.map(entry => entry.cardInstanceId)).toEqual(game.discard.map(entry => entry.cardInstanceId));
-      } else expect(sent.reveal).toBeNull();
-      expect((latest as RoomView | null)!.game!.discardCount).toBe(game.discard.length);
+      const decided = !!game.outcome;
       const secrets = secretsFor(game, watcherId, decided);
       if (decided) expect(secrets.length, 'a decided game still has something left to open').toBeGreaterThan(0);
-      for (const secret of secrets) {
-        if (decided) expect(frame, `revision ${game.revision}`).toContain(`"${secret}"`);
-        else expect(frame, `revision ${game.revision}`).not.toContain(`"${secret}"`);
+      secretsAt.set(game.revision, secrets);
+      expect((latest as RoomView | null)!.game!.discardCount).toBe(game.discard.length);
+      while (audited < frames.length) {
+        const frame = frames[audited]!;
+        const known = secretsAt.get(frame.revision);
+        expect(known, `revision ${frame.revision} never came back from the server`).toBeDefined();
+        const sent = JSON.parse(frame.text).view.game as PlayerView;
+        expect(sent).not.toHaveProperty('discard');
+        // The line above only ever says the pile is not at the top of the view. Before the outcome that is the
+        // whole claim, and the sweep below carries it; after it the pile has moved under `reveal`, so the same
+        // line would pass on a snapshot that shipped nothing at all. Name where it went instead.
+        const open = decided && frame.revision === game.revision;
+        if (open) {
+          // The deck is left out of the sweep below, because a decided game opens it while the sweep reads the
+          // cards nobody saw. So what says it arrived at all is named here, beside the pile. Two empty decks
+          // would agree without the reveal carrying anything, so the length is asked for first.
+          expect(game.deck.length, 'the table has to leave cards undrawn for the line below to say anything').toBeGreaterThan(0);
+          expect(sent.reveal!.deck).toEqual(game.deck);
+          expect(sent.reveal!.discard.map(entry => entry.cardInstanceId)).toEqual(game.discard.map(entry => entry.cardInstanceId));
+        } else expect(sent.reveal).toBeNull();
+        for (const secret of known!) {
+          const carried = frame.names ? frame.names.has(`"${secret}"`) : frame.text.includes(`"${secret}"`);
+          expect(carried, `revision ${frame.revision}: ${secret}`).toBe(open);
+        }
+        audited++;
       }
-      audits++;
     };
+    // The deal is the most secret the table ever is, so the sweep starts before the first seat acts.
+    await audit();
     while (steps < 5000) {
       const views = bots.map(bot => bot.view());
       if (views[0]?.outcome) break;
@@ -119,7 +140,7 @@ test('another seat can trace the whole bot game in the public record while its s
         const result = await bot.send(choose(view, 4));
         expect(result.ok, `seat ${index} step ${steps} ${result.code}`).toBe(true);
         acted = true; steps++;
-        if (steps % 40 === 0) await audit();
+        await audit();
         // Rounds of it at least thirty of the table's steps apart, so the lines the filter hides do arrive in
         // between. A round that cannot be finished yet holds the reader where they are and tries again later.
         if (steps >= 50 && steps % 10 === 0) {
@@ -134,10 +155,10 @@ test('another seat can trace the whole bot game in the public record while its s
     // reader through the reload below and read the rest of the test through one seat.
     await filter.selectOption('all');
     expect(bots[0]!.view()?.outcome).toBeDefined();
-    await audit(true);
-    // audit() runs every 40 steps and once more after the outcome, so the count follows the bot game's length.
-    expect(audits).toBe(Math.floor(steps / 40) + 1);
-    expect(audits).toBeGreaterThanOrEqual(2);
+    await audit();
+    // Not one snapshot of the table's whole game went unread, and every step sent at least one.
+    expect(audited).toBe(frames.length);
+    expect(audited).toBeGreaterThanOrEqual(steps);
     // A table too short to reach them would leave the filter unmeasured while still reading as a pass.
     expect(widenings, 'the table has to play long enough to widen the filter twice').toBeGreaterThanOrEqual(2);
     bots.forEach(bot => bot.close());

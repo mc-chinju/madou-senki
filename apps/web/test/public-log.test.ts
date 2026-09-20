@@ -249,8 +249,24 @@ test('leaving a whole action to the others reads as one line per action', () => 
     { id: 4, type: 'PASSED', actorId: 'B', windowKind: 'declaration' },
   ]);
   expect(publicLogSections(v)[0]!.lines).toEqual([
-    { kind: 'through', id: 2, lastId: 3, actorIds: ['C', 'D'] },
+    { kind: 'through', id: 2, lastId: 3, scope: 'action', actorIds: ['C', 'D'] },
     { kind: 'passes', id: 4, lastId: 4, windowKinds: ['declaration'], actorIds: ['B'] },
   ]);
   expect(html(v)).toContain('<strong>凛・蓮</strong>がこの行動を任せました');
+});
+
+test('changing your mind about leaving the same action reads as the one state it ended in', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    // 任せる → 解除 → 任せる: taking it back records nothing, so the two records stand next to each other.
+    { id: 2, type: 'PASSED', actorId: 'D', windowKind: 'action-through' },
+    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through' },
+    { id: 4, type: 'PASSED', actorId: 'D', windowKind: 'turn-through' },
+  ]);
+  expect(publicLogSections(v)[0]!.lines).toEqual([
+    { kind: 'through', id: 2, lastId: 3, scope: 'action', actorIds: ['D'] },
+    // A wider range is a different thing to have left behind, so it gets its own line.
+    { kind: 'through', id: 4, lastId: 4, scope: 'turn', actorIds: ['D'] },
+  ]);
+  expect(html(v)).toContain('<strong>蓮</strong>がこの手番を任せました');
 });

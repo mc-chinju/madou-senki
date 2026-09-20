@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import type { PlayerView } from '@madou/engine';
+import { useProgressFlash } from './progress-flash.js';
 
 export type SetupView = Pick<PlayerView, 'phase' | 'pending' | 'seatOrder' | 'legalChoices'> & {
   logs?: readonly { id?: number; type: string; actorId?: string | undefined }[];
@@ -66,14 +66,7 @@ export function SetupCommandStatus({ view, selected, canPlace, onShowHand }: {
   view: SetupView; selected?: { name: string; placeable: boolean } | undefined; canPlace: boolean; onShowHand?: (() => void) | undefined;
 }) {
   const pending = view.pending;
-  const progress = pending ? `${pending.round}:${pending.readyIds.length}` : '';
-  const box = useRef<HTMLDivElement | null>(null);
-  // Replay the highlight in place: remounting would drop focus from the status line and swap out the live region.
-  useEffect(() => {
-    const box_ = box.current;
-    if (!box_ || !progress) return;
-    box_.classList.remove('flash'); void box_.offsetWidth; box_.classList.add('flash');
-  }, [progress]);
+  const box = useProgressFlash<HTMLDivElement>(pending ? `${pending.round}:${pending.readyIds.length}` : '');
   if (view.phase !== 'setup' || !pending) return null;
   return <div className="setup-status" ref={box}>
     <p role="status" tabIndex={-1}>
