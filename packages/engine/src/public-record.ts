@@ -90,14 +90,16 @@ export function recordFaceDownDiscard(s: GameState, ownerId: PlayerId, cardInsta
   record(s, {type: 'CARDS_DISCARDED', actorId: ownerId, audience: {playerId: ownerId}, cardInstanceId, count: 1});
 }
 
-/** A chant goes down face down, so only the act is public; the card is named when something turns it over. */
-export function recordChanted(s: GameState, actorId: PlayerId): void {
+/** A chant goes down face down, so the table gets only the act; the seat's own copy carries the card. */
+export function recordChanted(s: GameState, actorId: PlayerId, cardInstanceId: string): void {
   record(s, {type: 'CHANTED', actorId, audience: 'public'});
+  record(s, {type: 'CHANTED', actorId, audience: {playerId: actorId}, cardInstanceId});
 }
 
 /** How many followers the seat ended up with is already visible at the table; which cards they are is not. */
-export function recordFollowersArranged(s: GameState, actorId: PlayerId, count: number): void {
-  record(s, {type: 'FOLLOWERS_ARRANGED', actorId, audience: 'public', count});
+export function recordFollowersArranged(s: GameState, actorId: PlayerId, cardInstanceIds: string[]): void {
+  record(s, {type: 'FOLLOWERS_ARRANGED', actorId, audience: 'public', count: cardInstanceIds.length});
+  if (cardInstanceIds.length) record(s, {type: 'FOLLOWERS_ARRANGED', actorId, audience: {playerId: actorId}, count: cardInstanceIds.length, cardInstanceIds: [...cardInstanceIds]});
 }
 
 /** A follower that meets an attack is turned face up first, so its name travels with what it did. */

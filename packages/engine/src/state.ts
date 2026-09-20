@@ -46,7 +46,7 @@ export interface GameEvent {
   type: 'WISH_ACQUIRED' | 'WISH_DISCARDED' | 'FOLLOWER_DESTROYED' | 'CHARACTER_INSPECTED' | 'BEAST_CAPTURED' | 'CHARACTER_ASSIGNED' | 'CARD_DRAWN' | 'OPEN' | 'FOLLOWER_PLACED' | 'SETUP_PASSED' | 'CHARACTER_REVEALED' | 'SETUP_COMPLETE' | 'DEATH_PENDING' | 'PLAYER_DIED' | 'PLAYER_REVIVED' | 'PLAYER_WANDERING' | 'PLAYER_RETURNED' | 'PLAYER_EXITED' | 'CHARACTER_TRANSFORMED' | 'FACTION_CHANGED' | 'CARD_GIFTED' | 'GAME_COMPLETED'
     | 'TURN_STARTED' | 'TURN_ENDED' | 'REST' | 'CARD_PLAYED' | 'ATTACK_DECLARED' | 'ATTACK_RESOLVED' | 'CHECK_SKIPPED' | 'ABILITY_DECLARED' | 'ABILITY_CANCELED' | 'ROLL_RESOLVED' | 'DAMAGE_APPLIED' | 'STATUS_CHANGED' | 'DISTANCE_CHANGED' | 'PASSED'
     | 'CARDS_DISCARDED' | 'CHANTED' | 'FOLLOWERS_ARRANGED' | 'FOLLOWER_DEFENDED' | 'MORALE_CHECKED' | 'CARD_RECLAIMED' | 'DECK_RESHUFFLED';
-  actorId: PlayerId; cardInstanceId?: string; characterId?: string; targetId?:string; count?:number;
+  actorId: PlayerId; cardInstanceId?: string; cardInstanceIds?: string[]; characterId?: string; targetId?:string; count?:number;
   /** Public record fields. The text is built by the screen, never by the engine. */
   targetIds?: PlayerId[]; use?: 'attack' | 'defense' | 'counter' | 'maai' | 'advance' | 'anytime' | 'turn' | 'combination'; abilityId?: string;
   /** Why a usage check never happened: the level was enough, or an ability or the card's own text waived it. */

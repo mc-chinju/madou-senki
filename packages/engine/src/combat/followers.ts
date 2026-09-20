@@ -72,7 +72,10 @@ function summarize(s: GameState, t: AttackTarget, d: FollowerDefenseSnapshot): v
     const outcome = d.morale?.success === false ? 'morale-failed' : d.hits.at(-1)?.outcome ?? 'passed-through';
     // A follower that was ignored or never reached did nothing to record, and a failed morale is already
     // its own MORALE_CHECKED line. The record keeps the real outcome, not the summary's older wording.
-    if (outcome !== 'passed-through' && outcome !== 'morale-failed') recordFollowerDefended(s, t.actorId, outcome, d.identityPublic ? d.cardInstanceId : undefined);
+    // Across several hits it is what the follower did that goes on the line: being ignored by a later hit
+    // does not undo the one it answered, so the summary's last-hit wording is not reused here.
+    const recorded = d.morale?.success === false ? 'morale-failed' : d.hits.find(h => h.outcome !== 'passed-through')?.outcome ?? 'passed-through';
+    if (recorded !== 'passed-through' && recorded !== 'morale-failed') recordFollowerDefended(s, t.actorId, recorded, d.identityPublic ? d.cardInstanceId : undefined);
     // Compatibility summary; per-hit outcomes remain authoritative in the frozen source.
     const compatible = outcome === 'earth-nullified' || outcome === 'reflected' ? 'blocked' : outcome;
     t.followerResults!.push({ cardInstanceId: d.cardInstanceId, morale: d.morale ?? null, outcome: compatible, hpReduction: Math.max(0, ...d.hits.map(h => h.hpReduction)) });

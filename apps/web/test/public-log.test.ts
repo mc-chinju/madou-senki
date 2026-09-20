@@ -192,6 +192,31 @@ test('folds a run of face-down discards into one counted line and marks what onl
   expect(markup).toMatch(/<button[^>]*>[^<]+<\/button>を引きました<span class="log-own">（自分だけに見えています）<\/span>/);
 });
 
+/** The table's line and the reader's own named copy are the same act, so they must not read as two. */
+test('folds the table\'s line and the reader\'s own names of one act together', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'CHANTED', actorId: 'A' },
+    { id: 4, type: 'FOLLOWERS_ARRANGED', actorId: 'A', count: 2 },
+    { id: 6, type: 'CARD_RECLAIMED', actorId: 'A' },
+    { id: 8, type: 'CARD_RECLAIMED', actorId: 'B' },
+  ], [
+    { id: 3, type: 'CHANTED', actorId: 'A', cardInstanceId: 'a2-p01-r1c1' },
+    { id: 5, type: 'FOLLOWERS_ARRANGED', actorId: 'A', count: 2, cardInstanceIds: ['a2-p20-r3c1', 'a2-p05-r2c2'] },
+    { id: 7, type: 'CARD_RECLAIMED', actorId: 'A', cardInstanceId: 'a2-p02-r1c2' },
+  ]);
+  const lines = publicLogSections(v)[0]!.lines;
+  expect(lines.map(line => (line.kind === 'event' ? [line.event.id, line.ownCardInstanceIds ?? null] : line.kind))).toEqual([
+    [2, ['a2-p01-r1c1']], [4, ['a2-p20-r3c1', 'a2-p05-r2c2']], [6, ['a2-p02-r1c2']], [8, null],
+  ]);
+  const markup = html(v);
+  expect(markup).toMatch(/詠唱して伏せました<span class="log-own">（自分だけに見えています：<span><button[^>]*>[^<]+<\/button>/);
+  expect(markup).toMatch(/従者を並べました（2枚）<span class="log-own">（自分だけに見えています：/);
+  // Only the seat that took a card out of the pile learns which card it was (G11).
+  expect(markup).toMatch(/<strong>葵<\/strong>がカードを1枚回収しました<span class="log-own">（自分だけに見えています：/);
+  expect(markup).toContain('<strong>楓</strong>がカードを1枚回収しました</li>');
+});
+
 test('leaving a whole action to the others reads as one line per action', () => {
   const v = view([
     { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
