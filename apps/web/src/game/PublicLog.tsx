@@ -191,6 +191,11 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
  // Flipping the order moves the newest line to the other end, so where the reader stands has to be judged again.
  // Narrowing the record moves every line too, so where the reader stands has to be judged again.
  useEffect(()=>{const el=list.current;if(!el)return;if(followingRef.current){pin(el);setSeenLines(lineCount);}else if(atEnd(el))follow(true);},[count,lineCount,order,filterKey]);
+ // Widening the filter brings back lines that were there all along; they did not just arrive, so the unread
+ // count moves with them. Without this a reader who had scrolled back is told of "new" lines nobody sent.
+ const shown=useRef({filterKey,lineCount});
+ useEffect(()=>{const before=shown.current;shown.current={filterKey,lineCount};
+  if(before.filterKey!==filterKey)setSeenLines(seen=>Math.min(lineCount,Math.max(0,seen+lineCount-before.lineCount)));},[filterKey,lineCount]);
  // A narrower screen rewraps lines and grows the record; a follower must stay on the newest line.
  useEffect(()=>{const el=list.current,inner=content.current;if(!el||!inner||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(()=>{if(followingRef.current)pin(el);});observer.observe(inner);observer.observe(el);return ()=>observer.disconnect();},[]);
  // The oldest line sits at the top reading forwards and at the bottom reading backwards, so the far edge flips too.
