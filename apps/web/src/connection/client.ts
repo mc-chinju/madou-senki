@@ -121,7 +121,10 @@ export class RoomConnection {
     if (this.logTimer) clearTimeout(this.logTimer);
     this.logTimer = setTimeout(() => { this.logTimer = null; this.logRequest = null;
       this.publish({ logHistory: { ...this.state.logHistory, loading: false } }); }, 10000);
-    this.publish({ logHistory: { ...this.state.logHistory, loading: true } });
+    // The page ends just before the line the window opens on, so that window has to be held before the
+    // answer arrives: it moves on while the request is in flight, and a page laid against a later window
+    // would leave the lines the two no longer share in neither of them.
+    this.publish({ logHistory: { ...this.joinWindow(this.state.view), loading: true } });
     return true;
   }
 
@@ -177,6 +180,7 @@ export class RoomConnection {
     }
     if (message.type === 'log-page') {
       if (!this.logRequest || !('requestId' in message) || message.requestId !== this.logRequest.requestId) return;
+      const request = this.logRequest;
       const page = message as unknown as { logs?: unknown; privateLogs?: unknown };
       const logs = Array.isArray(page.logs) ? page.logs as LogView[] : [];
       const privateLogs = Array.isArray(page.privateLogs) ? page.privateLogs as LogView[] : [];
@@ -185,10 +189,14 @@ export class RoomConnection {
       this.logTimer = null;
       // The page was asked for from the oldest line already held, so it joins what is held to the window the
       // newest snapshot carries. Taking the window in now is what lets a later window be checked against it.
-      const held = this.state.logHistory, window = this.state.view?.game;
-      this.publish({ logHistory: {
-        logs: mergeLogs(mergeLogs(held.logs, logs), window?.logs ?? []),
-        privateLogs: mergeLogs(mergeLogs(held.privateLogs, privateLogs), window?.privateLogs ?? []), loading: false } });
+      const held = this.state.logHistory;
+      // The page ends just before the oldest line that was held when it was asked for. If the record has
+      // been started over since — a window that ran clean past everything held — the page joins nothing,
+      // and laying it in would open a hole, so it is let go and the window is kept.
+      const joins = !held.logs.length || held.logs[0]!.id === request.beforeId;
+      this.publish({ logHistory: this.joinWindow(this.state.view, joins
+        ? { logs: mergeLogs(held.logs, logs), privateLogs: mergeLogs(held.privateLogs, privateLogs), loading: false }
+        : { ...held, loading: false }) });
       return;
     }
     if (!this.pending || !('commandId' in message) || message.commandId !== this.pending.commandId) return;
@@ -215,17 +223,20 @@ export class RoomConnection {
   }
 
   /** The snapshot window folded into what the reader has read back, so the two stay one unbroken record.
+   *  Every window is taken in, even before a page has been asked for: what is held is what an arriving page
+   *  is measured against, and a window left out would be a window no page can be joined to.
    *  The window moves on as the game goes; once it no longer reaches back to the newest line already held,
    *  the records in between were never seen by this tab and cannot be asked for from either end. A record
    *  with a hole in it reads as a lie — it files late lines under an early turn and calls itself complete —
-   *  so the gathered pages are given up and the reader starts again from the window they can trust. */
-  private joinWindow(view: RoomView): LogHistory {
-    const held = this.state.logHistory;
-    if (!held.logs.length) return held;
-    const game = view.game, oldest = game?.logs[0]?.id;
-    if (oldest !== undefined && oldest > held.logs.at(-1)!.id) return { logs: [], privateLogs: [], loading: held.loading };
-    return { logs: mergeLogs(held.logs, game?.logs ?? []),
-      privateLogs: mergeLogs(held.privateLogs, game?.privateLogs ?? []), loading: held.loading };
+   *  so the gathered pages are given up and what is held starts again as the window they can trust. */
+  private joinWindow(view: RoomView | null, held: LogHistory = this.state.logHistory): LogHistory {
+    const game = view?.game;
+    if (!game) return held;
+    const logs = game.logs ?? [], privateLogs = game.privateLogs ?? [];
+    const newest = held.logs.at(-1)?.id, oldest = logs[0]?.id;
+    if (newest !== undefined && oldest !== undefined && oldest > newest)
+      return { logs: [...logs], privateLogs: [...privateLogs], loading: held.loading };
+    return { logs: mergeLogs(held.logs, logs), privateLogs: mergeLogs(held.privateLogs, privateLogs), loading: held.loading };
   }
 
   private transmit(): void {

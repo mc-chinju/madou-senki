@@ -17,6 +17,9 @@ function view(revision = 4, readOnly = false): RoomView {
     members: [{ id: 'A', name: 'A', ready: false, connected: true }], readOnly, closeVotes: [], game: null };
 }
 const snapshot = (revision = 4, readOnly = false) => ({ type: 'snapshot', revision, view: view(revision, readOnly) });
+/** A snapshot carrying one window of the record: the ids it holds are the lines the reader has been sent. */
+const windowed = (revision: number, ids: number[]) => ({ type: 'snapshot', revision,
+  view: { ...view(revision), game: { logs: ids.map(id => ({ id })), privateLogs: [], logStart: 1 } } });
 function fixture() {
   const sockets: Socket[] = [];
   const values = new Map<string, string>();
@@ -190,8 +193,6 @@ describe('browser room connection', () => {
    *  either end: the reader would be shown late lines filed under an early turn, with nothing to say so. */
   it('joins the window to the pages it gathered, and gives them up rather than show a record with a hole', () => {
     const { client, sockets } = fixture();
-    const windowed = (revision: number, ids: number[]) => ({ type: 'snapshot', revision,
-      view: { ...view(revision), game: { logs: ids.map(id => ({ id })), privateLogs: [], logStart: 1 } } });
     sockets[0]!.receive(windowed(4, [10, 11, 12]));
     expect(client.requestLogPage(10)).toBe(true);
     sockets[0]!.receive({ type: 'log-page', requestId: 'command-1', beforeId: 10, logStart: 1, logs: [{ id: 1 }, { id: 2 }], privateLogs: [] });
@@ -200,9 +201,27 @@ describe('browser room connection', () => {
     // A window that still reaches back into what is held is folded in, and the record stays unbroken.
     sockets[0]!.receive(windowed(5, [11, 12, 13]));
     expect(client.getSnapshot().logHistory.logs.map(log => log.id)).toEqual([1, 2, 10, 11, 12, 13]);
-    // A window that has run clean past everything held cannot be joined to it, so the pages are let go.
+    // A window that has run clean past everything held cannot be joined to it, so the pages are let go and
+    // what is held starts again as that window: the reader sees a shorter record, never a broken one.
     sockets[0]!.receive(windowed(6, [40, 41]));
-    expect(client.getSnapshot().logHistory.logs).toEqual([]);
+    expect(client.getSnapshot().logHistory.logs.map(log => log.id)).toEqual([40, 41]);
+  });
+
+  /** The window moves on while a page is in flight. The page ends where the window began when it was asked
+   *  for, so that window has to be held from the moment of the ask; laid against a later window instead,
+   *  the lines the two no longer share would be in neither place and the record would read on past them. */
+  it('holds the window it asked from, so a page answered after the window moved on still joins it', () => {
+    const { client, sockets } = fixture();
+    sockets[0]!.receive(windowed(4, [10, 11, 12]));
+    expect(client.requestLogPage(10)).toBe(true);
+    sockets[0]!.receive(windowed(5, [12, 13, 14]));
+    sockets[0]!.receive({ type: 'log-page', requestId: 'command-1', beforeId: 10, logStart: 1, logs: [{ id: 8 }, { id: 9 }], privateLogs: [] });
+    expect(client.getSnapshot().logHistory.logs.map(log => log.id)).toEqual([8, 9, 10, 11, 12, 13, 14]);
+    // A page answering a record that has since been started over joins nothing, so it is let go too.
+    expect(client.requestLogPage(8)).toBe(true);
+    sockets[0]!.receive(windowed(6, [60, 61]));
+    sockets[0]!.receive({ type: 'log-page', requestId: 'command-2', beforeId: 8, logStart: 1, logs: [{ id: 6 }, { id: 7 }], privateLogs: [] });
+    expect(client.getSnapshot().logHistory.logs.map(log => log.id)).toEqual([60, 61]);
   });
 
   /** An `error` reply names no request, so a refused page looks exactly like a lost one and only time tells. */
