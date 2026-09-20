@@ -46,7 +46,7 @@ test('another seat can trace the whole bot game in the public record while its s
       await expect.poll(() => (latest as RoomView | null)?.game?.revision).toBe(game.revision);
       const frame = frames.at(-1)!;
       expect(JSON.parse(frame).view.game).not.toHaveProperty('discard');
-      expect((latest as RoomView | null)!.game!.discardCount).toBe(discardIds(game).length);
+      expect((latest as RoomView | null)!.game!.discardCount).toBe(game.discard.length);
       for (const secret of secretsFor(game, watcherId)) expect(frame, `revision ${game.revision}`).not.toContain(`"${secret}"`);
       audits++;
     };

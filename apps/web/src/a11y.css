@@ -26,6 +26,6 @@ dialog { overscroll-behavior: contain; max-height: 92vh; overflow: auto; }
 .portrait-button { display: grid; width: 100%; padding: 0; background: transparent; color: var(--burgundy); border-color: var(--line); font-size: .75rem; }
 .zone-cards { list-style: none; padding: 0; display: grid; gap: .65rem; }
 .zone-cards li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
-.zone-cards [aria-pressed="true"] { background: var(--burgundy); color: white; }
+.zone-cards [aria-pressed="true"], .button-row [aria-pressed="true"] { background: var(--burgundy); color: white; }
 
 .card-link { display: inline; border: 0; padding: 0; background: transparent; color: var(--burgundy); font-size: inherit; text-decoration: underline; text-underline-offset: .15em; }

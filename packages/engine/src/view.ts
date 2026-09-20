@@ -108,7 +108,8 @@ export interface PlayerView {
   rulesetVersion: string; revision: number; phase: GameState['phase']; seatOrder: PlayerId[]; turnSeat: number;
   pending: { kind: 'initial-followers'; round: number; participantIds: PlayerId[]; readyIds: PlayerId[] } | null;
   deckCount: number; discardCount: number; distances: GameState['distances']; distanceMarkers: { a:PlayerId;b:PlayerId;ownerId:PlayerId;cardInstanceId:string }[]; players: Record<PlayerId, PublicPlayerView>;
-  self: { currentObjective:import('./lifecycle/types.js').CurrentObjective;protection:import('./lifecycle/types.js').Protection;defeatCondition:string; id: PlayerId; characterId: string; faction: string; objective: string; damage: number; stats: DerivedStats; hand: string[]; followers: PlacedCard[]; chants: PlacedCard[] };
+  /** Only the viewer's own discards; every other seat is still just `discardCount`. */
+  self: { currentObjective:import('./lifecycle/types.js').CurrentObjective;protection:import('./lifecycle/types.js').Protection;defeatCondition:string; id: PlayerId; characterId: string; faction: string; objective: string; damage: number; stats: DerivedStats; hand: string[]; followers: PlacedCard[]; chants: PlacedCard[]; discardedCardInstanceIds: string[] };
   activeWindow: { windowId:string; windowRevision:number; kind:string; pendingActorId:PlayerId; reason:string; participantIds:PlayerId[]; passedActorIds:PlayerId[]; passAhead:boolean } | null;
   standingPassActorIds: PlayerId[];
   actionCalculation:null|{actionId:string;actorId:string;cardInstanceId:string|null;abilityName?:string;effectLevel:number;damage:number|null;calculation:CalculationReadiness};
@@ -294,7 +295,8 @@ export function viewFor(state: GameState, viewerId: PlayerId): PlayerView {
     deckCount: state.deck.length, discardCount: state.discard.length, distances: Object.fromEntries(state.seatOrder.map(a => [a, Object.fromEntries(state.seatOrder.filter(b => a !== b).map(b => [b, state.distances[a]![b]!]))])), distanceMarkers:Object.values(state.distanceMarkers??{}).map(marker=>({...marker})), players,
     activeWindow:active?{windowId:active.id,windowRevision:active.revision,kind:active.kind,pendingActorId:active.participants[active.cursor]!,reason:active.kind,participantIds:[...active.participants],passedActorIds:[...active.passed],passAhead:passAhead(active)}:null,standingPassActorIds:[...(state.standingPasses?.actorIds??[])],actionCalculation,currentAction,currentAttack,reactionTargetActionId:projectedAbility?null:activeContinuation?.id??rollAction?.id??(activeGroup?.actionId??null),currentRoll:roll?projectRoll(state,roll,viewerId):null,recentRolls:(state.rolls??[]).slice(-30).map(frame=>projectRoll(state,frame,viewerId)),reactionTargetRollId:unresolvedRoll(state)?.id??null,legalChoices,
     self: { currentObjective:structuredClone(self.currentObjective??factionObjective(self.faction)),protection:structuredClone(self.protection??initialProtection(self.characterId)),defeatCondition:currentDefeatCondition(self),id: self.id, characterId: self.characterId, faction: self.faction, objective: self.objective, damage: self.damage, stats: gameStats(state,self.id), hand: [...self.hand],
-      followers: self.followers.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })), chants: self.chants.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })) },
+      followers: self.followers.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })), chants: self.chants.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })),
+      discardedCardInstanceIds: state.discard.filter(entry => entry.ownerId === viewerId).map(entry => entry.cardInstanceId) },
     logs: state.events.filter(e => e.audience === 'public').map(e => logView(e, viewerId)),
     privateLogs: state.events.filter(e => e.audience !== 'public' && e.audience.playerId === viewerId).map(e => logView(e, viewerId)) };
 }
