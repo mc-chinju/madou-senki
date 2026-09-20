@@ -28,6 +28,22 @@ describe('untrusted command envelopes', () => {
     expect(parseCommandEnvelope({ ...envelope(), command: { type, cardInstanceId: 'secret' } }).ok).toBe(false);
   });
 
+  it('accepts the two ranges a standing pass can be given for and nothing else', () => {
+    for (const scope of ['action', 'turn']) {
+      expect(parseCommandEnvelope({ ...envelope(), command: { type: 'PASS_ACTION_THROUGH', scope } }).ok).toBe(true);
+    }
+    // The range is optional, and an omitted one is left out of the normalized command rather than filled in.
+    expect(parseGameCommand({ type: 'PASS_ACTION_THROUGH' })).toEqual({ ok: true, value: { type: 'PASS_ACTION_THROUGH' } });
+    expect(parseGameCommand({ type: 'PASS_ACTION_THROUGH', scope: 'turn' })).toEqual({ ok: true, value: { type: 'PASS_ACTION_THROUGH', scope: 'turn' } });
+    for (const scope of ['game', '', 1, null, undefined, ['turn']]) {
+      expect(parseCommandEnvelope({ ...envelope(), command: { type: 'PASS_ACTION_THROUGH', scope } }).ok, String(scope)).toBe(false);
+    }
+    // No other command takes a range, and the pass that answers one window is never given one.
+    for (const type of ['PASS', 'CANCEL_PASS_THROUGH', 'PASS_SETUP']) {
+      expect(parseCommandEnvelope({ ...envelope(), command: { type, scope: 'turn' } }).ok, type).toBe(false);
+    }
+  });
+
   it('accepts a complete window identity and rejects half of one', () => {
     expect(parseCommandEnvelope({ ...envelope(), windowId: 'window-1', windowRevision: 0 }).ok).toBe(true);
     expect(parseCommandEnvelope({ ...envelope(), windowId: 'window-1' }).ok).toBe(false);

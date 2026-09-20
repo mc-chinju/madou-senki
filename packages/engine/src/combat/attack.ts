@@ -49,7 +49,7 @@ import { appendEvent, EntropyError, randomSource, refillHand } from '../setup.js
 import { getAction, getCharacter } from '@madou/catalog';
 import { freezeFollowerSnapshot,resolveFollowerSnapshot } from './followers.js';
 import { applyHits } from './hits.js';
-import { applyStandingPasses, openWindow, participants, passAhead, resetParent, syncPriority, windowRootEventId } from '../reactions/windows.js';
+import { addStandingPass, applyStandingPasses, dropStandingPass, openWindow, participants, passAhead, resetParent, standingPassScope, syncPriority, windowRootEventId } from '../reactions/windows.js';
 class Rejected extends Error { constructor(readonly code: EngineErrorCode) { super(code); } }
 function reject(code: EngineErrorCode): never { throw new Rejected(code); }
 function discardAction(s: GameState, action: ActionFrame) {
@@ -552,21 +552,17 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(!w)reject('WRONG_PHASE');
       const ahead=passAhead(w);
       if(c.type==='CANCEL_PASS_THROUGH'){
-        if(!s.standingPasses?.actorIds.includes(p.id))reject('WRONG_PHASE');
-        s.standingPasses.actorIds=s.standingPasses.actorIds.filter(id=>id!==p.id);
-        if(!s.standingPasses.actorIds.length)delete s.standingPasses;
+        if(!standingPassScope(s,p.id))reject('WRONG_PHASE');
+        dropStandingPass(s,p.id);
       }else{
       if(c.type==='PASS_ACTION_THROUGH'&&!ahead)reject('WRONG_PHASE');
       // A pass-ahead window takes any unanswered respondent; elsewhere only the priority seat may pass.
       if(ahead?!w.participants.includes(p.id)||w.passed.includes(p.id):w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
-      if(c.type==='PASS_ACTION_THROUGH'){
-        const root=windowRootEventId(s,w);
-        const saved=s.standingPasses?.rootEventId===root?s.standingPasses:(s.standingPasses={rootEventId:root,actorIds:[]});
-        if(!saved.actorIds.includes(p.id))saved.actorIds.push(p.id);
-      }
+      const scope=c.type==='PASS_ACTION_THROUGH'?c.scope??'action':undefined;
+      if(scope)addStandingPass(s,p.id,scope,windowRootEventId(s,w));
       // Reclaim windows stay unrecorded: who holds a reclaim right is secret (G11).
-      // One line per action for a standing pass; the passes it fills in later are not recorded again.
-      if(w.kind!=='reclaim')recordPass(s,p.id,c.type==='PASS_ACTION_THROUGH'?'action-through':w.kind);
+      // One line per action or turn for a standing pass; the passes it fills in later are not recorded again.
+      if(w.kind!=='reclaim')recordPass(s,p.id,scope?`${scope}-through`:w.kind);
       if(w.kind==='approach'||w.kind==='withdrawal') {if(w.continuation.kind!=='action')reject('WRONG_PHASE');const action=s.actions![w.continuation.id]!;s.windows!.pop();const success=p.id===action.distanceTargetId;finishDistance(s,action,success);}
       else if(w.kind==='reclaim'&&s.reclaimDecisions?.find(d=>d.windowId===w.id)?.stage==='beneficiary-choice'){
         const error=chooseReclaim(s,p.id,{type:'CHOOSE_RECLAIM',decisionId:w.continuation.id,choice:'decline'},roll);if(error)reject(error);resumeReclaimDispositions(s);

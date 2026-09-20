@@ -1,7 +1,7 @@
 import {describe, expect, it} from 'vitest';
 import * as engine from '../src/index.js';
 import {entropy, handCard} from './fixtures.js';
-import {act, pass, ready, until} from './combat-helpers.js';
+import {act, finish, pass, ready, until} from './combat-helpers.js';
 import {legalCommands} from '../src/bot/index.js';
 
 function bowAttack(target = 'B') {
@@ -121,7 +121,7 @@ describe('passing a whole action through (G03)', () => {
     let s = bowAttack();
     s = act(s, 'C', {type: 'PASS_ACTION_THROUGH'});
     s = act(s, 'D', {type: 'PASS_ACTION_THROUGH'});
-    expect(s.standingPasses).toMatchObject({actorIds: ['C', 'D']});
+    expect(s.standingPasses).toMatchObject([{scope: 'action', actorIds: ['C', 'D']}]);
     s = act(s, 'A', {type: 'PASS'});
     s = act(s, 'B', {type: 'PASS'});
     // Every later public window of this attack already carries C and D, right through to the hit.
@@ -252,6 +252,81 @@ describe('passing a whole action through (G03)', () => {
   });
 });
 
+describe('passing a whole turn through (G03)', () => {
+  /** Run the rest of A's turn out and hand the table to B. */
+  function endTurn(s: engine.GameState) {
+    s = finish(s);
+    if (s.phase === 'withdrawal') s = act(s, 'A', {type: 'PASS_WITHDRAWAL'});
+    const limit = engine.gameStats(s, 'A').handLimit;
+    return act(s, 'A', {type: 'END_TURN', discardIds: s.players.A!.hand.slice(0, Math.max(0, s.players.A!.hand.length - limit))});
+  }
+
+  it('fills in the next action of the same turn, which an action-long pass no longer reaches', () => {
+    let s = bowAttack();
+    s = act(s, 'C', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH'});
+    s = finish(s);
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['C']}]);
+    // The turn holds more than one action in a real game; here the second one is declared in its own right.
+    s.phase = 'action';
+    s = act(s, 'A', {type: 'ATTACK', cardInstanceId: handCard(s, 'A', '踏み込み／弓'), targetIds: ['B'], dedicated: false});
+    expect(top(s)).toMatchObject({kind: 'declaration', passed: ['C'], cursor: 0});
+    expect(engine.viewFor(s, 'D').legalChoices).toContain('PASS_ACTION_THROUGH');
+  });
+
+  it('drops it when someone intervenes, and asks that seat again', () => {
+    let s = bowAttack();
+    const teleport = handCard(s, 'B', '転移');
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = until(s, 'normal-defense');
+    s = act(s, 'B', {type: 'PLAY_DEFENSE', cardInstanceId: teleport, dedicated: false});
+    expect(s.standingPasses).toBeUndefined();
+    expect(top(s)).toMatchObject({kind: 'declaration', passed: []});
+    expect(engine.viewFor(s, 'D').legalChoices).toContain('PASS_ACTION_THROUGH');
+  });
+
+  it('ends with the turn it was given in', () => {
+    let s = bowAttack();
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = endTurn(s);
+    expect(s.seatOrder[s.turnSeat]).toBe('B');
+    expect(s.standingPasses).toBeUndefined();
+  });
+
+  it('keeps each seat on the range it chose, and lets a seat move up to the whole turn', () => {
+    let s = bowAttack();
+    s = act(s, 'C', {type: 'PASS_ACTION_THROUGH'});
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    expect(s.standingPasses).toMatchObject([{scope: 'action', actorIds: ['C']}, {scope: 'turn', actorIds: ['D']}]);
+    // Both ranges cover the rest of this action, so the later windows of it carry the two seats alike.
+    s = until(s, 'normal-defense');
+    expect(s.windows!.filter(w => w.participants.includes('C')).every(w => w.passed.includes('C') && w.passed.includes('D'))).toBe(true);
+    // Taking the action-long pass back and pressing again leaves that seat on the whole turn.
+    s = act(s, 'C', {type: 'CANCEL_PASS_THROUGH'});
+    s = finish(s);
+    s.phase = 'action';
+    s = act(s, 'A', {type: 'ATTACK', cardInstanceId: handCard(s, 'A', '踏み込み／弓'), targetIds: ['B'], dedicated: false});
+    s = act(s, 'C', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D', 'C']}]);
+  });
+
+  it('records the range it was given for, and nothing for the passes it fills in', () => {
+    let s = bowAttack();
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = until(s, 'normal-defense');
+    const passes = s.events.filter(e => e.type === 'PASSED' && e.actorId === 'D');
+    expect(passes).toHaveLength(1);
+    expect(passes[0]).toMatchObject({windowKind: 'turn-through', audience: 'public'});
+  });
+
+  it('is never offered to a bot, which keeps answering window by window', () => {
+    const s = act(bowAttack(), 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    for (const id of ['A', 'B', 'C', 'D']) {
+      expect(legalCommands(engine.viewFor(s, id)).map(command => command.type)).not.toContain('PASS_ACTION_THROUGH');
+    }
+  });
+});
+
 describe('stopped seats on public windows (11.2, G03)', () => {
   it('drops the stopped seat from every public window of an attack', () => {
     let s = ready();
@@ -317,7 +392,7 @@ describe('pass-ahead on reclaim responses (G11)', () => {
     const windowId = top(s).id;
     expect(engine.viewFor(s, later).legalChoices).toContain('PASS_ACTION_THROUGH');
     s = act(s, later, {type: 'PASS_ACTION_THROUGH'});
-    expect(s.standingPasses?.actorIds).toContain(later);
+    expect(s.standingPasses?.flatMap(saved => saved.actorIds)).toContain(later);
     expect(engine.viewFor(s, later).legalChoices).toContain('CANCEL_PASS_THROUGH');
     s = act(s, later, {type: 'CANCEL_PASS_THROUGH'});
     expect(s.standingPasses).toBeUndefined();

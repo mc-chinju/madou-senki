@@ -33,7 +33,7 @@ function revision(value: unknown): value is number {
 
 export function parseGameCommand(value: unknown): ParseResult<GameCommand> {
   const invalid = { ok: false, code: 'INVALID_COMMAND' } as const;
-  const command = plainDataRecord(value, ['additionalCardInstanceIds','abilityEventId','advanceCardInstanceId','followerCardInstanceId','combinationCardInstanceIds','source','followerIds','chantIds','dispel','hitIndex','claimId','enabled','decisionId','declarationAbilityIds','windowId','abilityEffectIds','sources','followerTransfer','dedicatedCardInstanceIds','coSource','advanceCardInstanceIds','actionId','groupId','attempt','abilityId','targetEventId','costCardInstanceId','conceal','targetAbilityId','choice','convertTargetIds','revive','ability','giftCardInstanceId','position','type', 'cardInstanceId', 'cardInstanceIds', 'discardIds', 'draw', 'discard', 'ignore', 'targetIds', 'targetId', 'dedicated', 'techniqueVariant', 'mode', 'targetActionId', 'targetRollId']);
+  const command = plainDataRecord(value, ['additionalCardInstanceIds','abilityEventId','advanceCardInstanceId','followerCardInstanceId','combinationCardInstanceIds','source','followerIds','chantIds','dispel','hitIndex','claimId','enabled','decisionId','declarationAbilityIds','windowId','abilityEffectIds','sources','followerTransfer','dedicatedCardInstanceIds','coSource','advanceCardInstanceIds','actionId','groupId','attempt','abilityId','targetEventId','costCardInstanceId','conceal','targetAbilityId','choice','scope','convertTargetIds','revive','ability','giftCardInstanceId','position','type', 'cardInstanceId', 'cardInstanceIds', 'discardIds', 'draw', 'discard', 'ignore', 'targetIds', 'targetId', 'dedicated', 'techniqueVariant', 'mode', 'targetActionId', 'targetRollId']);
   if (!command) return invalid;
   if(Object.hasOwn(command,'combinationCardInstanceIds')){
     const ids=command.combinationCardInstanceIds;
@@ -173,8 +173,12 @@ export function parseGameCommand(value: unknown): ParseResult<GameCommand> {
       if(!Object.hasOwn(command,'dedicatedCardInstanceIds'))return exactKeys(command,['type'])?{ok:true,value:{type:command.type}}:invalid;
       return exactKeys(command,['type','dedicatedCardInstanceIds'])&&Array.isArray(ids)&&ids.length<=220&&ids.every(identifier)&&new Set(ids).size===ids.length?{ok:true,value:{type:command.type,dedicatedCardInstanceIds:[...ids]}}:invalid;
     }
+    case 'PASS_ACTION_THROUGH': {
+      if (!Object.hasOwn(command, 'scope')) return exactKeys(command, ['type']) ? { ok: true, value: { type: command.type } } : invalid;
+      return exactKeys(command, ['type', 'scope']) && (command.scope === 'action' || command.scope === 'turn')
+        ? { ok: true, value: { type: command.type, scope: command.scope } } : invalid;
+    }
     case 'PASS':
-    case 'PASS_ACTION_THROUGH':
     case 'CANCEL_PASS_THROUGH':
     case 'START_TURN':
     case 'PASS_ACTION':

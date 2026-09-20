@@ -62,6 +62,8 @@ export interface GameEvent {
   /** The actor's character was hidden when this happened; others see neither the ability name nor the check threshold. */
   concealed?: true;
 }
+/** How far a standing pass reaches: the root action it was given in, or the turn it was given in (G03). */
+export type StandingPass = { actorIds: PlayerId[] } & ({ scope: 'action'; rootEventId: string } | { scope: 'turn'; turnNumber: number });
 /** `attempt` counts throws of the same roll, starting at 1. */
 export interface PublicRollRecord { rollId: string; kind: import('./rolls/frames.js').RollPurpose; faces: number[]; total: number; threshold?: number; comparison?: 'greater-than'; success?: boolean; forcedFailure?: true; attempt: number }
 export interface GameState {
@@ -78,8 +80,9 @@ export interface GameState {
   abilities?:Record<string,AbilityFrame>;
   initialFactions?:('GOOD'|'EVIL'|'ヴァンミール')[];turnNumber?:number; lifecycle?:LifecycleTask[]; outcome?:Outcome; individualResults?:Record<string,'won'>; vanmilDeath?:boolean; lifecycleTriggers?:string[];
   windows?: ReactionWindow[]; actions?: Record<string, ActionFrame>; groups?: Record<string, AttackGroup>; used?: string[];
-  /** Seats that left the whole root action to the others (G03); cleared by any accepted intervention. */
-  standingPasses?: { rootEventId: string; actorIds: PlayerId[] };
+  /** Seats that left the rest of a root action, or the rest of a turn, to the others (G03); cleared by any
+   *  accepted intervention. One record per scope, so seats that chose different ranges keep their own. */
+  standingPasses?: StandingPass[];
   rolls?: RollFrame[]; turnRoll?: TurnRollContinuation;
   randomRolls?: RandomRollRecord[];
   reclaim?: Record<string,import('./reclaim.js').ReclaimReservation>;

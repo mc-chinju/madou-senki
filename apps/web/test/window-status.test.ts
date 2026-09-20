@@ -1,13 +1,13 @@
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, test } from 'vitest';
-import { WindowStatus, decisionPanelKey, showsWindowSeatLabel, windowSeatLabel, type WindowStatusView } from '../src/game/WindowStatus.js';
+import { WindowStatus, decisionPanelKey, showsWindowSeatLabel, standingScope, windowSeatLabel, type WindowStatusView } from '../src/game/WindowStatus.js';
 
 function input(overrides: Partial<WindowStatusView> = {}): WindowStatusView {
   return {
     activeWindow: { windowId: 'w-1', windowRevision: 0, kind: 'declaration', pendingActorId: 'B', reason: 'declaration',
       participantIds: ['A', 'B', 'C', 'D'], passedActorIds: ['A'], passAhead: true },
-    standingPassActorIds: [],
+    standingPasses: [],
     legalChoices: ['PASS', 'PASS_ACTION_THROUGH'],
     players: { A: { name: '葵' }, B: { name: '楓' }, C: { name: '凛' }, D: { name: '蓮' } },
     self: { id: 'D' },
@@ -30,13 +30,32 @@ test('a respondent without priority is offered a pass and the whole action', () 
 });
 
 test('a seat that left the action sees only the way back', () => {
-  const html = render(input({ standingPassActorIds: ['C', 'D'], legalChoices: ['CANCEL_PASS_THROUGH'],
+  const html = render(input({ standingPasses: [{ actorId: 'C', scope: 'action' }, { actorId: 'D', scope: 'action' }], legalChoices: ['CANCEL_PASS_THROUGH'],
     activeWindow: { ...input().activeWindow!, passedActorIds: ['A', 'C', 'D'] } }));
   expect(html).toContain('この行動は任せています。');
   // The viewer is one of them; only the other seats are worth naming.
   expect(html).toContain('この行動を任せている席: 凛');
   expect(html).toContain('任せるのをやめる');
   expect(html).not.toContain('パス（この確認だけ）');
+});
+
+test('the whole turn is offered beside the whole action, and says what it takes in', () => {
+  const html = render(input());
+  expect(html).toContain('この手番は任せる');
+  expect(html).toContain('この手番のあいだ、割り込みの機会は流れます');
+  expect(html).toContain('この手番に続く回収の回答もまとめて済ませます');
+});
+
+test('the range each seat left behind is the one the status line names', () => {
+  const view = input({ standingPasses: [{ actorId: 'C', scope: 'action' }, { actorId: 'D', scope: 'turn' }], legalChoices: ['CANCEL_PASS_THROUGH'],
+    activeWindow: { ...input().activeWindow!, passedActorIds: ['A', 'C', 'D'] } });
+  const html = render(view);
+  expect(html).toContain('この手番は任せています。');
+  expect(html).not.toContain('この行動は任せています。');
+  expect(html).toContain('この行動を任せている席: 凛');
+  expect(standingScope(view, 'C')).toBe('action');
+  expect(standingScope(view, 'D')).toBe('turn');
+  expect(standingScope(view, 'A')).toBeUndefined();
 });
 
 test('the seat holding priority is told so and never gets the pass-ahead button', () => {
@@ -58,7 +77,7 @@ test('windows that keep priority strictly show no roster', () => {
 });
 
 test('a seat that left the action can take it back from a window it is not asked in', () => {
-  const html = render(input({ standingPassActorIds: ['D'], legalChoices: ['CANCEL_PASS_THROUGH'],
+  const html = render(input({ standingPasses: [{ actorId: 'D', scope: 'action' }], legalChoices: ['CANCEL_PASS_THROUGH'],
     activeWindow: { ...input().activeWindow!, kind: 'normal-defense', passAhead: false, participantIds: ['B'], passedActorIds: [] } }));
   expect(html).toContain('この行動は任せています。');
   expect(html).toContain('任せるのをやめる');
@@ -71,7 +90,7 @@ test('leaving the window keeps the answer it already gave', () => {
 });
 
 test('a standing pass is the only seat state shown on a window that keeps priority', () => {
-  const view = input({ standingPassActorIds: ['C'], activeWindow: { ...input().activeWindow!, kind: 'normal-defense', passAhead: false, participantIds: ['B'] } });
+  const view = input({ standingPasses: [{ actorId: 'C', scope: 'action' }], activeWindow: { ...input().activeWindow!, kind: 'normal-defense', passAhead: false, participantIds: ['B'] } });
   expect(showsWindowSeatLabel(view, 'C')).toBe(true);
   expect(windowSeatLabel(view, 'C')).toBe('任せる');
   expect(showsWindowSeatLabel(view, 'A')).toBe(false);
@@ -85,7 +104,7 @@ test('a bystander with nothing to press still sees who is answering', () => {
 });
 
 test('each seat carries its public answer state', () => {
-  const view = input({ standingPassActorIds: ['C'] });
+  const view = input({ standingPasses: [{ actorId: 'C', scope: 'action' }] });
   expect(windowSeatLabel(view, 'A')).toBe('回答済み');
   expect(windowSeatLabel(view, 'B')).toBe('判断中');
   expect(windowSeatLabel(view, 'C')).toBe('任せる');

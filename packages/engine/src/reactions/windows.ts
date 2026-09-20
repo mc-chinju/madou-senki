@@ -1,4 +1,4 @@
-import type { GameState } from '../state.js';
+import type { GameState, PlayerId } from '../state.js';
 import {hasStatus} from '../state.js';
 import type { Continuation, ReactionWindow, WindowKind } from './continuations.js';
 export function activeWindowRef(state: GameState): { windowId: string; windowRevision: number } | null {
@@ -53,12 +53,43 @@ export function windowRootEventId(state: GameState, w: ReactionWindow): string {
   }
   return rootEventId(state, source ?? { eventId: w.eventId, parentWindowId: w.parentId });
 }
-/** Record the standing passes of a freshly opened window, dropping them once the action changed. */
+/** Seats with a standing pass running right now, in the order they gave it. */
+export function standingPassActors(state: GameState): PlayerId[] {
+  return (state.standingPasses ?? []).flatMap(saved => saved.actorIds);
+}
+/** How far this seat's standing pass reaches, if it has one. */
+export function standingPassScope(state: GameState, id: PlayerId): 'action' | 'turn' | undefined {
+  return state.standingPasses?.find(saved => saved.actorIds.includes(id))?.scope;
+}
+/** Leave the rest of the action, or of the turn, to the others. A seat sits in one record at a time. */
+export function addStandingPass(state: GameState, id: PlayerId, scope: 'action' | 'turn', rootEventId: string): void {
+  dropStandingPass(state, id);
+  const saved = (state.standingPasses ??= []).find(saved => scope === 'turn'
+    ? saved.scope === 'turn' && saved.turnNumber === (state.turnNumber ?? 0)
+    : saved.scope === 'action' && saved.rootEventId === rootEventId);
+  if (saved) { saved.actorIds.push(id); return; }
+  state.standingPasses.push(scope === 'turn'
+    ? { scope, turnNumber: state.turnNumber ?? 0, actorIds: [id] }
+    : { scope, rootEventId, actorIds: [id] });
+}
+/** Take the standing pass back; the passes it already filled in stay where they were recorded (G03). */
+export function dropStandingPass(state: GameState, id: PlayerId): void {
+  for (const saved of state.standingPasses ?? []) saved.actorIds = saved.actorIds.filter(actorId => actorId !== id);
+  pruneStandingPasses(state);
+}
+/** A standing pass ends with what it was given for: the last window of its action, or its own turn (G03). */
+export function pruneStandingPasses(state: GameState): void {
+  const kept = (state.standingPasses ?? []).filter(saved => saved.actorIds.length
+    && (saved.scope === 'turn' ? saved.turnNumber === (state.turnNumber ?? 0) : !!state.windows?.length));
+  if (kept.length) state.standingPasses = kept; else delete state.standingPasses;
+}
+/** Record the standing passes of a freshly opened window, dropping the ones the action moved past. */
 export function applyStandingPasses(state: GameState, w: ReactionWindow): void {
-  const saved = state.standingPasses; if (!saved) return;
-  if (!passAhead(w)) return;
-  if (windowRootEventId(state, w) !== saved.rootEventId) { delete state.standingPasses; return; }
-  for (const id of saved.actorIds) if (w.participants.includes(id) && !w.passed.includes(id)) w.passed.push(id);
+  if (!state.standingPasses?.length || !passAhead(w)) return;
+  const root = windowRootEventId(state, w);
+  state.standingPasses = state.standingPasses.filter(saved => saved.scope === 'turn' || saved.rootEventId === root);
+  pruneStandingPasses(state);
+  for (const id of standingPassActors(state)) if (w.participants.includes(id) && !w.passed.includes(id)) w.passed.push(id);
   syncPriority(w);
 }
 export function participants(state: GameState, seat = state.turnSeat): string[] {
