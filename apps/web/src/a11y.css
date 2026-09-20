@@ -26,7 +26,9 @@ dialog { overscroll-behavior: contain; max-height: 92vh; overflow: auto; }
 .portrait-button { display: grid; width: 100%; padding: 0; background: transparent; color: var(--burgundy); border-color: var(--line); font-size: .75rem; }
 .zone-cards { list-style: none; padding: 0; display: grid; gap: .65rem; }
 .zone-cards li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
-.zone-cards [aria-pressed="true"], .button-row [aria-pressed="true"] { background: var(--burgundy); color: white; }
+.zone-cards [aria-pressed="true"], .own-discard .button-row [aria-pressed="true"] { background: var(--burgundy); color: white; }
+/* `aria-disabled` keeps the control focusable, so its name can say why; it still has to read as off. */
+.own-discard .button-row [aria-disabled="true"] { cursor: not-allowed; opacity: .48; }
 
 /* One scroll region, as in the card dialog: the dialog itself scrolls (max-height 92vh, above). Bounding
    the list inside a shorter dialog squeezed it to a single row on a landscape phone, because the heading,

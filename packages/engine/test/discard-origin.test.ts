@@ -35,6 +35,33 @@ it('leaves a dead seat owning the hand it lost, face down',()=>{
   for(const id of lost)expect(entry(s,id)).toMatchObject({ownerId:'B',faceUp:false});
 });
 
+// `discardPhysical` is the only reader of a placement's face, and `ARRANGE_FOLLOWERS` above goes through
+// `moveToDiscard` instead, so a death that loses both faces at once is what holds that branch to its word.
+it('takes a dead seat\'s hidden chant face down and its revealed one face up',()=>{
+  let s=ready();character(s,'A','大神官ジル');s.players.A!.damage=9;
+  const kill=handCard(s,'A','滅界');s.players.A!.hand=s.players.A!.hand.filter(id=>id!==kill);
+  s.players.A!.chants=[{cardInstanceId:kill,revealed:false}];
+  const hidden=handCard(s,'B','封傷'),shown=handCard(s,'B','祈願');
+  s.players.B!.hand=s.players.B!.hand.filter(id=>id!==hidden&&id!==shown);
+  s.players.B!.chants=[{cardInstanceId:hidden,revealed:false},{cardInstanceId:shown,revealed:true}];
+  s=finish(act(s,'A',{type:'ATTACK',cardInstanceId:kill,targetIds:['B'],dedicated:false}));
+  expect(s.players.B!.presence).toBe('dead');
+  expect(entry(s,hidden)).toEqual({cardInstanceId:hidden,ownerId:'B',faceUp:false});
+  expect(entry(s,shown)).toEqual({cardInstanceId:shown,ownerId:'B',faceUp:true});
+});
+
+// Maintenance drops an illegal placement with no event and no clock, so nothing announces it: the pile
+// keeps the face the placement had, and a card that never turned over stays hidden there.
+it.each([false,true])('drops an illegal placement revealed=%s with the face it already had',revealed=>{
+  let s=ready();const good='a2-p20-r3c2';// GOOD-only placement (follower-descriptors)
+  s.deck=s.deck.filter(id=>id!==good);
+  s.players.B!.followers=[{cardInstanceId:good,revealed,placedById:'B',placedLifeId:'initial-life:B'}];
+  s.players.B!.faction='EVIL';
+  s=act(s,'A',{type:'PASS_ACTION'});
+  expect(s.players.B!.followers).toEqual([]);
+  expect(entry(s,good)).toEqual({cardInstanceId:good,ownerId:'B',faceUp:revealed});
+});
+
 // The live attribution is completeAction's disposal, which reads distancePayments; finalizeDistance's
 // own branch never runs today (see c1de19bc), so this watches the path a game actually takes.
 it('gives the maai to the seat that paid it, not to the seat that approached',()=>{

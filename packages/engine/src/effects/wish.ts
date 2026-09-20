@@ -81,7 +81,9 @@ export function transitionWish(state:GameState,input:GameInput,random:()=>number
   const offered=wishCapacityView(state,input.actorId);if(!offered||offered.decisionId!==d.id)return {ok:false,code:'WRONG_PHASE'};
   if(c.followerIds.length!==offered.followerCount||c.chantIds.length!==offered.chantCount||c.followerIds.some(id=>!offered.followerIds.includes(id))||c.chantIds.some(id=>!offered.chantIds.includes(id)))return {ok:false,code:'INVALID_DISCARD'};
   const s=structuredClone(state),eventId=s.actions![d.actionId]!.eventId;
-  for(const [zone,ids] of [['followers',c.followerIds],['chants',c.chantIds]] as const)for(const id of ids){discardPhysical(s,id,{zone,ownerId:input.actorId},input.actorId,eventId);appendEvent(s,now,{type:'WISH_DISCARDED',actorId:input.actorId,audience:'public',cardInstanceId:id});}
+  // The capacity discard (G11) is announced by name to the whole table below, so a face-down placement is
+  // turned face up as it goes: the pile records the face the table saw, and never less than that.
+  for(const [zone,ids] of [['followers',c.followerIds],['chants',c.chantIds]] as const)for(const id of ids){const placed=s.players[input.actorId]![zone].find(card=>card.cardInstanceId===id);if(placed)placed.revealed=true;discardPhysical(s,id,{zone,ownerId:input.actorId},input.actorId,eventId);appendEvent(s,now,{type:'WISH_DISCARDED',actorId:input.actorId,audience:'public',cardInstanceId:id});}
   s.windows!.pop();const task=s.lifecycle!.find(t=>t.id===w.continuation.id)!;if(task.kind==='wish-complete')task.waiting=false;s.revision++;return {ok:true,state:s,events:[]};
  }
  if(w.kind!=='wish'||w.continuation.id!==d.actionId||d.stage!=='selection'||d.actorId!==input.actorId||lifeIdentity(state.players[d.actorId]!)!==d.sourceLifeId)return {ok:false,code:'INVALID_TARGET'};

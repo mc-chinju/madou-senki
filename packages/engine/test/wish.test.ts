@@ -89,6 +89,10 @@ it.each(wishes)('%s applies capacity loss immediately, excludes irremovable foll
  s=choose(until(play(s,id),'wish'),{kind:'public',cardInstanceId:blessing});expect(gameStats(s,'B').followerLimit).toBe(2);expect(gameStats(s,'A').followerLimit).toBe(3);expect(s.windows!.at(-1)!.kind).toBe('wish-capacity');expect(viewFor(s,'A').wishCapacity).toBeNull();const d=viewFor(s,'B').wishCapacity!;expect(d.followerCount).toBe(1);expect(d.followerIds).not.toContain(fs[2]);expect(viewFor(s,'C').players.B!.followers.every(f=>f.face==='back')).toBe(true);
  reject(s,'B',{type:'CHOOSE_WISH_CAPACITY',decisionId:d.decisionId,followerIds:[fs[2]],chantIds:[]});reject(s,'A',{type:'CHOOSE_WISH_CAPACITY',decisionId:d.decisionId,followerIds:[fs[0]],chantIds:[]});
  s=act(s,'B',{type:'CHOOSE_WISH_CAPACITY',decisionId:d.decisionId,followerIds:[fs[0]],chantIds:[]});s=finish(s);expect(s.players.B!.followers.map(f=>f.cardInstanceId)).toEqual(fs.slice(1));expect(discardIds(s)).toContain(fs[0]);expect(s.phase).toBe('hand-adjustment');
+ // The excess is announced by name to every seat (G11), so the face-down placement leaves face up: the
+ // pile may not record less than the table was shown.
+ expect(s.discard.find(e=>e.cardInstanceId===fs[0])).toEqual({cardInstanceId:fs[0],ownerId:'B',faceUp:true});
+ for(const seat of ['A','B','C'] as const)expect(viewFor(s,seat).logs.filter(e=>e.type==='WISH_DISCARDED'&&e.cardInstanceId===fs[0])).toHaveLength(1);
 });
 it.each(wishes)('%s chooses excess chants after Haja loss but retains an excess hand until that owners turn end',id=>{
  let s=start(id);const haja=handCard(s,'B','賢者ハジャ');s.players.B!.hand=s.players.B!.hand.filter(x=>x!==haja);s.players.B!.open.push(haja);

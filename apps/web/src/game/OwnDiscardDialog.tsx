@@ -41,9 +41,11 @@ export function OwnDiscardDialog({ ids, count, open, onClose, onInspect }: {
     {ids.length ? <>
       <div className="button-row" role="group" aria-label="並べ方">
         <button className="secondary" aria-pressed={view === 'recent'} onClick={() => setMode('recent')}>新しい順</button>
-        <button className="secondary" aria-pressed={view === 'grouped'} disabled={!canGroup}
+        {/* `aria-disabled` rather than `disabled`: the reason lives in the name, and a disabled control is
+            skipped by focus, so nobody reading by keyboard or screen reader would ever hear it. */}
+        <button className="secondary" aria-pressed={view === 'grouped'} aria-disabled={canGroup ? undefined : true}
           aria-label={canGroup ? undefined : '同名をまとめる（同じ名前の札がまだありません）'}
-          onClick={() => setMode('grouped')}>同名をまとめる</button>
+          onClick={() => { if (canGroup) setMode('grouped'); }}>同名をまとめる</button>
       </div>
       {view === 'recent'
         ? <ol className="zone-cards own-discard-list">{newest.map((id, index) => {
