@@ -14,8 +14,10 @@ function grouped(ids: readonly string[]) {
 }
 
 /** The viewer's own pile. Other seats only ever learn the count, so nothing here is shared. */
-export function OwnDiscardDialog({ ids, open, onClose, onInspect }: {
+export function OwnDiscardDialog({ ids, count, open, onClose, onInspect }: {
   ids: readonly string[];
+  /** The whole pile, the number the header shows; the copy reconciles it with the viewer's own share. */
+  count: number;
   open: boolean;
   onClose: () => void;
   onInspect: (card: ActionCard) => void;
@@ -25,26 +27,27 @@ export function OwnDiscardDialog({ ids, open, onClose, onInspect }: {
   useEffect(() => { const dialog = ref.current; if (open && dialog && !dialog.open) { returnFocus.current = document.activeElement as HTMLElement; dialog.showModal(); } else if (!open && dialog?.open) dialog.close(); }, [open]);
   if (!open) return null;
   const newest = [...ids].reverse();
-  return <dialog ref={ref} aria-labelledby="own-discard-title" onClose={() => { onClose(); returnFocus.current?.focus(); }}>
+  return <dialog className="own-discard" ref={ref} aria-labelledby="own-discard-title" onClose={() => { onClose(); returnFocus.current?.focus(); }}>
     <button className="dialog-close" aria-label="自分の捨て札を閉じる" onClick={() => ref.current?.close()}>×</button>
     <h2 id="own-discard-title">自分の捨て札</h2>
-    <p>自分が捨てて、いまも捨て札にある札です（{ids.length}枚）。ほかの席には枚数しか出ません。</p>
+    {/* The header counts the whole pile, so say in one line how much of it is the viewer's. */}
+    <p>捨て札 {count}枚のうち、自分が捨てた {ids.length}枚です。ほかの席には枚数しか出ません。</p>
     {ids.length ? <>
       <div className="button-row" role="group" aria-label="並べ方">
         <button className="secondary" aria-pressed={mode === 'recent'} onClick={() => setMode('recent')}>新しい順</button>
         <button className="secondary" aria-pressed={mode === 'grouped'} onClick={() => setMode('grouped')}>同名をまとめる</button>
       </div>
       {mode === 'recent'
-        ? <ol className="zone-cards">{newest.map((id, index) => {
+        ? <ol className="zone-cards own-discard-list">{newest.map((id, index) => {
           const card = getAction(id);
           return <li key={`${id}-${index}`}>{card
             ? <button className="card-link" aria-label={`${card.name}の詳細を見る`} onClick={() => onInspect(card)}>{card.name}</button>
             : <span>不明な札</span>}</li>;
         })}</ol>
-        : <ul className="zone-cards">{grouped(ids).map(row => <li key={row.card.name}>
+        : <ul className="zone-cards own-discard-list">{grouped(ids).map(row => <li key={row.card.name}>
           <button className="card-link" aria-label={`${row.card.name}の詳細を見る`} onClick={() => onInspect(row.card)}>{row.card.name}</button>
           <span className="tag">{row.ids.length}枚</span>
         </li>)}</ul>}
-    </> : <p>まだありません。</p>}
+    </> : <p>まだありません。自分が札を捨てると、ここに新しい順で並びます。</p>}
   </dialog>;
 }

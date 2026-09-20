@@ -28,4 +28,9 @@ dialog { overscroll-behavior: contain; max-height: 92vh; overflow: auto; }
 .zone-cards li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .zone-cards [aria-pressed="true"], .button-row [aria-pressed="true"] { background: var(--burgundy); color: white; }
 
+/* A long game fills the pile, so the list scrolls inside a bounded dialog instead of running off the
+   screen. The rules follow the record's scroll region; the hairlines make a half-row read as "more below". */
+.own-discard[open] { display: flex; flex-direction: column; max-height: min(88vh, 40rem); }
+.own-discard-list { max-height: min(24rem, 60vh); overflow: auto; margin: 1rem 0 0; padding: .7rem .5rem .7rem 0; border-block: 1px solid var(--line); }
+
 .card-link { display: inline; border: 0; padding: 0; background: transparent; color: var(--burgundy); font-size: inherit; text-decoration: underline; text-underline-offset: .15em; }
