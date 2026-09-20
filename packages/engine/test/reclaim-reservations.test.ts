@@ -126,7 +126,7 @@ it('Hidden zero base extra and unlimited worlds share public all-pass transcript
    if(!worlds[0]!.windows?.length)break;if(worlds[0]!.windows!.at(-1)!.kind==='reclaim')slots++;
    worlds=worlds.map(s=>pass(JSON.parse(JSON.stringify(s))));
   }
-  expect(slots).toBe(4);for(const s of worlds){expect(s.windows??[]).toEqual([]);expect(discardIds(s)).toEqual(discardIds(worlds[0]!));expect(discardIds(s).filter(id=>id===prepared[0]!.card)).toHaveLength(1);}
+  expect(slots).toBe(4);for(const s of worlds){expect(s.windows??[]).toEqual([]);expect(s.discard).toEqual(worlds[0]!.discard);expect(discardIds(s).filter(id=>id===prepared[0]!.card)).toHaveLength(1);}
  }
 });
 it('Revealed Lester unlimited answer retains cursor, answers once and leaves an unused base slot intact',()=>{
