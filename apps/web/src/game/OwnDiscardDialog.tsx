@@ -13,7 +13,8 @@ function grouped(ids: readonly string[]) {
   return [...rows.values()].sort((a, b) => b.ids.length - a.ids.length || a.card.name.localeCompare(b.card.name, 'ja'));
 }
 
-/** The viewer's own pile. Other seats only ever learn the count, so nothing here is shared. */
+/** The viewer's own pile. While the game is played other seats learn only the count; once it is decided the
+ *  reveal opens every pile to everyone (オンライン設計 §8), so the copy says which of the two is in force. */
 export function OwnDiscardDialog({ ids, count, open, onClose, onInspect }: {
   ids: readonly string[];
   /** The whole pile, the number the header shows; the copy reconciles it with the viewer's own share. */
@@ -37,7 +38,7 @@ export function OwnDiscardDialog({ ids, count, open, onClose, onInspect }: {
     <h2 id="own-discard-title">自分の捨て札</h2>
     {/* The header counts the whole pile, so say in one line how much of it is the viewer's. Folded rows are
         fewer than the cards they stand for, so the grouped view names how many kinds the rows are. */}
-    <p>捨て札 {count}枚のうち、自分が捨てた {ids.length}枚です{view === 'grouped' ? `（${rows.length}種）` : ''}。ほかの席には枚数しか出ません。</p>
+    <p>捨て札 {count}枚のうち、自分が捨てた {ids.length}枚です{view === 'grouped' ? `（${rows.length}種）` : ''}。ほかの席には、対戦中は枚数しか出ません（決着すると全員に開示されます）。</p>
     {ids.length ? <>
       <div className="button-row" role="group" aria-label="並べ方">
         <button className="secondary" aria-pressed={view === 'recent'} onClick={() => setMode('recent')}>新しい順</button>

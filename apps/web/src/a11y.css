@@ -54,7 +54,7 @@ dialog { overscroll-behavior: contain; max-height: 92vh; overflow: auto; }
 .reveal-seat .tag { margin-left: .5rem; }
 /* The deck fold is the one control in the panel; the padding is the same 44px allowance .pile-link makes. */
 .reveal-deck { margin-top: 1rem; }
-.reveal-deck summary { padding-block: .5rem; }
+.reveal-deck summary { padding-block: .6rem; }
 
 .card-link { display: inline; border: 0; padding: 0; background: transparent; color: var(--burgundy); font-size: inherit; text-decoration: underline; text-underline-offset: .15em; }
 /* The pile trigger sits inline in "山札 N · 捨て札 N", where the other screens put the same pair. Padding an
