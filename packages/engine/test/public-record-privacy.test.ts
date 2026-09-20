@@ -31,6 +31,16 @@ function hiddenFrom(state: GameState, viewerId: string): Set<string> {
   }));
 }
 
+/** The seat holding each card right now, by zone. A card the table shares has no holder. */
+function holders(state: GameState): Map<string, string> {
+  const held = new Map<string, string>();
+  for (const id of state.seatOrder) {
+    const p = state.players[id]!;
+    for (const card of [...p.hand, ...p.open, ...p.attachments, ...[...p.followers, ...p.chants].map(c => c.cardInstanceId)]) held.set(card, id);
+  }
+  return held;
+}
+
 /** Cards a command puts face up by naming them; discards, chants and placements stay face down. */
 function playedByCommand(command: Command): Set<string> {
   if (['END_TURN', 'CHANT', 'ARRANGE_FOLLOWERS', 'PLACE_INITIAL_FOLLOWER'].includes(command.type)) return new Set();
@@ -48,8 +58,11 @@ describe('public record privacy over full bot games', () => {
     const seed = seats + 11;
     const entropy = seededEntropy(seed);
     let state = createGame(Array.from({length: seats}, (_, i) => ({id: `P${i}`, name: `P${i}`})), entropy);
+    // The last seat each card belonged to, so a pile entry can be checked against its real origin.
+    const lastHeld = new Map<string, string>();
     let steps = 0;
     for (; !state.outcome && steps < 5000; steps++) {
+      for (const [card, seat] of holders(state)) lastHeld.set(card, seat);
       const actorId = actingActor(state);
       if (!actorId) throw Error('NO_ACTING_SEAT');
       const command = choose(viewFor(state, actorId), seed);
@@ -62,6 +75,14 @@ describe('public record privacy over full bot games', () => {
       // Destroyed followers also pass through resolution; their record belongs to the later stage.
       const destroyed = new Set(prev.seatOrder.flatMap(id => prev.players[id]!.followers.map(card => card.cardInstanceId)));
       for (const id of next.resolution) if (!prev.resolution.includes(id) && !destroyed.has(id)) expect(played.has(id), `step=${steps} resolution=${id} command=${JSON.stringify(command)}`).toBe(true);
+      // A pile entry names the seat the card came from, not whoever's action swept it away. Cards that
+      // never belonged to a seat (straight off the deck) have no owner to check.
+      const alreadyInPile = new Set(prev.discard.map(entry => entry.cardInstanceId));
+      for (const entry of next.discard) {
+        if (alreadyInPile.has(entry.cardInstanceId)) continue;
+        const owner = lastHeld.get(entry.cardInstanceId);
+        if (owner) expect(entry.ownerId, `step=${steps} discarded=${entry.cardInstanceId} command=${JSON.stringify(command)}`).toBe(owner);
+      }
       for (const viewerId of next.seatOrder) {
         const view = viewFor(next, viewerId);
         const fresh = view.logs.filter(log => log.id > lastEventId);

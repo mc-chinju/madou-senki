@@ -173,8 +173,9 @@ function finishDistance(s:GameState,a:ActionFrame,success:boolean):void{
 function finalizeDistance(s:GameState,a:ActionFrame,success:boolean):void{
   const ids=[...(a.distanceAdvances??[]),...(a.distanceMaais??[])];const key=distanceKey(a.actorId,a.distanceTargetId!);let marker:string|undefined;
   if(a.distanceMode==='approach'&&success)marker=a.distanceAdvances!.at(-1);
-  // Advance and maai cards were played face up to change the distance.
-  for(const id of ids){const index=s.resolution.indexOf(id);if(index>=0){s.resolution.splice(index,1);if(id!==marker)moveToDiscard(s,id,{ownerId:a.actorId,faceUp:true});}}
+  // Advance and maai cards were played face up to change the distance, each by whoever paid it:
+  // the seat being approached pays the maai, so the card is theirs and not the attacker's.
+  for(const id of ids){const index=s.resolution.indexOf(id);if(index>=0){s.resolution.splice(index,1);if(id!==marker)moveToDiscard(s,id,{ownerId:a.distancePayments?.find(p=>p.cardInstanceId===id)?.actorId??a.actorId,faceUp:true});}}
   if(a.distanceMode==='approach')s.phase='action';
   if(a.distanceMode==='approach'&&success){s.distances[a.actorId]![a.distanceTargetId!]='near';s.distances[a.distanceTargetId!]![a.actorId]='near';(s.distanceMarkers??={})[key]={a:a.actorId,b:a.distanceTargetId!,ownerId:a.actorId,cardInstanceId:marker!};s.phase='action';}
   if(a.distanceMode==='withdrawal'){
