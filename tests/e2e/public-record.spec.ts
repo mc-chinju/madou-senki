@@ -5,15 +5,23 @@ import type { RoomView } from '../../apps/worker/src/rooms/types.js';
 import { origin, tableFixture } from './helpers.js';
 import { BotClient } from './bot-client.js';
 
-/** Card and character ids the viewer must not receive at this saved revision. */
-function secretsFor(game: GameState, viewerId: string): string[] {
-  const shown = new Set(game.events.filter(event => event.audience === 'public').flatMap(event => [event.cardInstanceId, event.death?.sourceCardInstanceId]));
+/** Card and character ids the viewer must not receive at this saved revision. Once the game is decided the
+ *  reveal opens all of them, so the same list is read the other way round. */
+function secretsFor(game: GameState, viewerId: string, decided: boolean): string[] {
+  const open = game.events.filter(event => event.audience === 'public');
+  const shown = new Set(open.flatMap(event => [event.cardInstanceId, event.death?.sourceCardInstanceId]));
+  // Every card a public line has ever named; one line can name several at once, so the list form counts too.
+  const named = new Set([...shown, ...open.flatMap(event => event.cardInstanceIds ?? [])]);
   const others = game.seatOrder.filter(id => id !== viewerId).map(id => game.players[id]!);
   return [
     // A seat reviews its own discards, so only the other seats' unseen cards stay secret from this viewer.
     ...game.discard.filter(entry => entry.ownerId !== viewerId && !shown.has(entry.cardInstanceId)).map(entry => entry.cardInstanceId),
     ...others.flatMap(p => [...p.hand, ...[...p.followers, ...p.chants].filter(card => !card.revealed).map(card => card.cardInstanceId)]),
     ...others.filter(p => !p.revealed).map(p => p.characterId),
+    // The deck is secret from everyone while the table plays, and the reveal opens it once the game is
+    // decided. A card the table already saw can be shuffled back under it, and the record goes on naming it
+    // there, so what the deck keeps is the cards nobody has seen.
+    ...(decided ? [] : game.deck.filter(id => !named.has(id))),
   ];
 }
 
@@ -84,10 +92,16 @@ test('another seat can trace the whole bot game in the public record while its s
       // The line above only ever says the pile is not at the top of the view. Before the outcome that is the
       // whole claim, and the sweep below carries it; after it the pile has moved under `reveal`, so the same
       // line would pass on a snapshot that shipped nothing at all. Name where it went instead.
-      if (decided) expect(sent.reveal!.discard.map(entry => entry.cardInstanceId)).toEqual(game.discard.map(entry => entry.cardInstanceId));
-      else expect(sent.reveal).toBeNull();
+      if (decided) {
+        // The deck is left out of the sweep below, because a decided game opens it while the sweep reads the
+        // cards nobody saw. So what says it arrived at all is named here, beside the pile. Two empty decks
+        // would agree without the reveal carrying anything, so the length is asked for first.
+        expect(game.deck.length, 'the table has to leave cards undrawn for the line below to say anything').toBeGreaterThan(0);
+        expect(sent.reveal!.deck).toEqual(game.deck);
+        expect(sent.reveal!.discard.map(entry => entry.cardInstanceId)).toEqual(game.discard.map(entry => entry.cardInstanceId));
+      } else expect(sent.reveal).toBeNull();
       expect((latest as RoomView | null)!.game!.discardCount).toBe(game.discard.length);
-      const secrets = secretsFor(game, watcherId);
+      const secrets = secretsFor(game, watcherId, decided);
       if (decided) expect(secrets.length, 'a decided game still has something left to open').toBeGreaterThan(0);
       for (const secret of secrets) {
         if (decided) expect(frame, `revision ${game.revision}`).toContain(`"${secret}"`);

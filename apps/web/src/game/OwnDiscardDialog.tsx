@@ -37,8 +37,10 @@ export function OwnDiscardDialog({ ids, count, open, onClose, onInspect }: {
     <button className="dialog-close" aria-label="自分の捨て札を閉じる" onClick={() => ref.current?.close()}>×</button>
     <h2 id="own-discard-title">自分の捨て札</h2>
     {/* The header counts the whole pile, so say in one line how much of it is the viewer's. Folded rows are
-        fewer than the cards they stand for, so the grouped view names how many kinds the rows are. */}
-    <p>捨て札 {count}枚のうち、自分が捨てた {ids.length}枚です{view === 'grouped' ? `（${rows.length}種）` : ''}。ほかの席には、対戦中は枚数しか出ません（決着すると全員に開示されます）。</p>
+        fewer than the cards they stand for, so the grouped view names how many kinds the rows are. The line
+        is what the list is short by: on a landscape phone each wrapped line costs a visible card, so 決着まで
+        carries 「決着すると全員に開示されます」 rather than spelling it out and taking a second line. */}
+    <p>捨て札 {count}枚のうち、自分が捨てた {ids.length}枚です{view === 'grouped' ? `（${rows.length}種）` : ''}。ほかの席には、決着まで枚数だけです。</p>
     {ids.length ? <>
       <div className="button-row" role="group" aria-label="並べ方">
         <button className="secondary" aria-pressed={view === 'recent'} onClick={() => setMode('recent')}>新しい順</button>

@@ -62,6 +62,9 @@ describe('public record privacy over full bot games', () => {
     let state = createGame(Array.from({length: seats}, (_, i) => ({id: `P${i}`, name: `P${i}`})), entropy);
     // The last seat each card belonged to, so a pile entry can be checked against its real origin.
     const lastHeld = new Map<string, string>();
+    // Every card the table has already seen, at any point. A reshuffle puts them back under the deck, and the
+    // record still names them there, so the deck sweep below asks only after the cards nobody has seen.
+    const seen = new Set<string>();
     let steps = 0;
     for (; !state.outcome && steps < 5000; steps++) {
       for (const [card, seat] of holders(state)) lastHeld.set(card, seat);
@@ -73,6 +76,7 @@ describe('public record privacy over full bot games', () => {
       const prev = state, next = result.state;
       const lastEventId = prev.events.at(-1)?.id ?? 0;
       const allowed = new Set([...faceUp(prev), ...faceUp(next), ...playedByCommand(command)]);
+      for (const id of allowed) seen.add(id);
       const played = new Set(next.events.filter(event => event.id > lastEventId && event.type === 'CARD_PLAYED').map(event => event.cardInstanceId));
       // Destroyed followers also pass through resolution; their record belongs to the later stage.
       const destroyed = new Set(prev.seatOrder.flatMap(id => prev.players[id]!.followers.map(card => card.cardInstanceId)));
@@ -97,7 +101,9 @@ describe('public record privacy over full bot games', () => {
           for (const id of held) expect(wire.includes(id), `step=${steps} viewer=${viewerId} still closed=${id}`).toBe(true);
         } else {
           expect(view.reveal, `step=${steps} viewer=${viewerId}`).toBeNull();
-          for (const id of held) expect(wire.includes(id), `step=${steps} viewer=${viewerId} leaked=${id}`).toBe(false);
+          // The deck is secret from every seat, its holder included, so it is swept here rather than out of
+          // hiddenFrom. After the outcome the reveal opens it, so this is the only side it is asked on.
+          for (const id of [...held, ...next.deck.filter(id => !seen.has(id))]) expect(wire.includes(id), `step=${steps} viewer=${viewerId} leaked=${id}`).toBe(false);
         }
         // A snapshot carries only the newest window, and one step can add more lines than it holds, so the
         // lines this step wrote are read back from the record rather than taken from the window.
