@@ -1,5 +1,6 @@
 import type { GameState, PlayerId } from '../state.js';
 import {hasStatus} from '../state.js';
+import {isActive} from '../lifecycle/objectives.js';
 import type { Continuation, ReactionWindow, WindowKind } from './continuations.js';
 export function activeWindowRef(state: GameState): { windowId: string; windowRevision: number } | null {
   const w = state.windows?.at(-1); return w ? { windowId: w.id, windowRevision: w.revision } : null;
@@ -72,6 +73,18 @@ export function addStandingPass(state: GameState, id: PlayerId, scope: 'action' 
     ? { scope, turnNumber: state.turnNumber ?? 0, actorIds: [id] }
     : { scope, rootEventId, actorIds: [id] });
 }
+/** Every seat is asked again once a character is revealed, whoever chose it and however it came about (G03).
+ *  Called where the reveal is written rather than from the end of the step, so no window opened later in the
+ *  same step can still be filled in from a hand-over the reveal has already ended.
+ *
+ *  `scope` narrows it to the hand-overs of one range. A hit that turns its target face up is the result of the
+ *  very action a seat handed over, so an action-long hand-over stands; for a turn-long one the identity is new
+ *  information about the actions still to come, and that seat is asked again. */
+export function dropStandingPasses(state: GameState, scope?: 'action' | 'turn'): void {
+  if (!scope) { delete state.standingPasses; return; }
+  const kept = (state.standingPasses ?? []).filter(saved => saved.scope !== scope);
+  if (kept.length) state.standingPasses = kept; else delete state.standingPasses;
+}
 /** Take the standing pass back; the passes it already filled in stay where they were recorded (G03). */
 export function dropStandingPass(state: GameState, id: PlayerId): void {
   for (const saved of state.standingPasses ?? []) saved.actorIds = saved.actorIds.filter(actorId => actorId !== id);
@@ -79,6 +92,9 @@ export function dropStandingPass(state: GameState, id: PlayerId): void {
 }
 /** A standing pass ends with what it was given for: the last window of its action, or its own turn (G03). */
 export function pruneStandingPasses(state: GameState): void {
+  // A seat that left the table is not leaving its answers to anyone; its hand-over goes out with it, so the
+  // others stop being told that a dead seat is passing through the rest of the turn.
+  for (const saved of state.standingPasses ?? []) saved.actorIds = saved.actorIds.filter(id => isActive(state.players[id]!));
   const kept = (state.standingPasses ?? []).filter(saved => saved.actorIds.length
     && (saved.scope === 'turn' ? saved.turnNumber === (state.turnNumber ?? 0) : !!state.windows?.length));
   if (kept.length) state.standingPasses = kept; else delete state.standingPasses;

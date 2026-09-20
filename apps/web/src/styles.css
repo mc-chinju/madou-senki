@@ -44,8 +44,10 @@ dt small.hint{font-weight:400;margin-left:.25rem}
  .command-bar{padding:.45rem .7rem;gap:.4rem;align-items:center}
  .command-bar button{padding:.4rem .8rem}
  .command-bar label select{padding:.35rem}
- .setup-status{order:1;flex:1 1 22rem;margin:0;padding:0 .2rem;font-size:.8rem}
- .setup-status p{gap:.1rem .4rem}
+ .setup-status{order:1;flex:1 1 22rem}
+ /* The two progress bars keep the same shape as each other here too, highlight included. */
+ .setup-status,.window-roster{margin:0;padding:0 .2rem;font-size:.8rem}
+ .setup-status p,.window-roster p{gap:.1rem .4rem}
  .setup-warning{order:2;padding:.3rem .6rem;font-size:.8rem}
  /* The sticky bar cannot rise above the board's top edge, so on a short screen that edge has to move up. */
  .site-header{min-height:3rem;padding-block:.3rem}
@@ -56,8 +58,6 @@ dt small.hint{font-weight:400;margin-left:.25rem}
  .decision .button-row{margin-top:.2rem}
  .decision .button-row button{padding:.45rem .85rem}
  .decision .hint{font-size:.78rem}
- .window-roster{font-size:.8rem}
- .window-roster p{gap:.1rem .4rem}
  .decision.resetup{max-height:calc(100vh - 5.5rem);overflow-y:auto;overscroll-behavior:contain;padding:.6rem .8rem}
  .decision.resetup h2{font-size:1.1rem}
  .decision.resetup .button-row{margin-top:.3rem}

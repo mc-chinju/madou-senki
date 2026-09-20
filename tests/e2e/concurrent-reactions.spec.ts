@@ -14,11 +14,16 @@ test('a later seat passes first and the priority seat still plays its card witho
     const generation = game().activeWindow!.windowRevision;
     const before = views.get(owner)!.revision;
     const decisionBar = table.pages[3]!.getByRole('complementary', { name: '現在の判断' });
-    await expect(decisionBar.getByRole('region', { name: 'この確認の回答状況' })).toContainText('先にパスできます');
+    const roster = decisionBar.getByRole('region', { name: 'この確認の回答状況' });
+    await expect(roster).toContainText('先にパスできます');
+    // The window's progress is highlighted in place by the same rule the setup round uses (P008); clearing the
+    // mark by hand first is what makes the next answer prove that the bar still replays it.
+    await roster.evaluate(box => box.classList.remove('flash'));
     await decisionBar.getByRole('button', { name: 'パス（この確認だけ）', exact: true }).click();
     await expect.poll(() => views.get(owner)?.revision).toBeGreaterThan(before);
+    await expect(roster).toHaveClass(/\bflash\b/);
     expect(game().activeWindow).toMatchObject({ pendingActorId: third.id, windowRevision: generation });
-    await expect(decisionBar.getByRole('region', { name: 'この確認の回答状況' })).toContainText('パス済みです');
+    await expect(roster).toContainText('パス済みです');
 
     // The card that arrives after that pass is accepted; nothing is rejected as stale.
     const decision = table.pages[2]!.getByRole('complementary', { name: '現在の判断' });

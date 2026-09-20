@@ -20,7 +20,7 @@ type Inspect=(card:ActionCard|CharacterCard)=>void;
 export type LogOrder='oldest'|'newest';
 /** Acts the table sees as a fact and the seat sees by name: the two records are folded into one line. */
 const ownPairs=new Set<LogView['type']>(['CHANTED','FOLLOWERS_ARRANGED','CARD_RECLAIMED','CARD_GIFTED','BEAST_CAPTURED','CHARACTER_INSPECTED','WISH_ACQUIRED']);
-export type LogLine={kind:'event';event:LogView;own:boolean;ownCardInstanceIds?:string[];ownCharacterIds?:string[]}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;scope:'action'|'turn';actorIds:string[]}
+export type LogLine={kind:'event';event:LogView;own:boolean;ownCardInstanceIds?:string[];ownCharacterIds?:string[]}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;scope:'action'|'turn';range?:string;actorIds:string[]}
  |{kind:'discards';id:number;lastId:number;actorId:string;count:number;cardInstanceIds:string[]};
 export interface LogSection{key:string;heading:string;lines:LogLine[]}
 /** Where a line stands in the record: for a fold, the last record folded into it, since that is what made it grow. */
@@ -77,11 +77,14 @@ export function publicLogSections(view:PlayerView,order:LogOrder='oldest',filter
      ...(characters.length?{ownCharacterIds:[...line.ownCharacterIds??[],...characters]}:{})};continue;}
   }
   if(event.type==='PASSED'&&(event.windowKind==='action-through'||event.windowKind==='turn-through')){
-   // One line per action or turn; the passes it fills in later are never recorded (G03). Leaving it and
-   // pressing again with nothing in between is one seat changing its mind, so the line carries where it ended.
+   // One line per range; the passes it fills in later are never recorded (G03). Leaving a range and pressing
+   // again with nothing in between is one seat changing its mind, so the line carries where it ended. Two
+   // hand-overs given for different ranges are two acts, and the range says so: being next to each other
+   // proves nothing, because a filter can take away every line that stood between them.
    const scope=event.windowKind==='turn-through'?'turn':'action';
-   if(last?.kind==='through'&&last.scope===scope){if(!last.actorIds.includes(event.actorId))last.actorIds.push(event.actorId);last.lastId=event.id;continue;}
-   lines.push({kind:'through',id:event.id,lastId:event.id,scope,actorIds:[event.actorId]});continue;
+   const range=event.standingRange;
+   if(last?.kind==='through'&&last.scope===scope&&last.range===range){if(!last.actorIds.includes(event.actorId))last.actorIds.push(event.actorId);last.lastId=event.id;continue;}
+   lines.push({kind:'through',id:event.id,lastId:event.id,scope,...(range===undefined?{}:{range}),actorIds:[event.actorId]});continue;
   }
   if(event.type==='PASSED'){
    // A seat passing again means a new window of the same kind has opened.

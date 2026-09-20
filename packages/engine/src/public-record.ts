@@ -59,8 +59,10 @@ export function recordAttackEnded(s: GameState, a: ActionFrame, attackOutcome: N
     a.cardInstanceId ? {cardInstanceId: a.cardInstanceId} : a.source?.kind === 'ability' ? {abilityId: a.source.abilityId} : {});
 }
 
-export function recordPass(s: GameState, actorId: PlayerId, windowKind: string): void {
-  record(s, {type: 'PASSED', actorId, audience: 'public', windowKind});
+/** A pass given for one window names the window; one that hands over a whole range names the range it was
+ *  given for, so the record can tell two hand-overs apart without relying on the lines between them (G03). */
+export function recordPass(s: GameState, actorId: PlayerId, windowKind: string, standingRange?: string): void {
+  record(s, {type: 'PASSED', actorId, audience: 'public', windowKind, ...(standingRange ? {standingRange} : {})});
 }
 
 /** One record per throw; a reroll repeats the same roll with the next attempt number. */

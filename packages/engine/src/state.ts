@@ -58,6 +58,11 @@ export interface GameEvent {
   /** Whether a morale check passed. */
   success?: boolean;
   roll?: PublicRollRecord; amount?: number; windowKind?: string; turnNumber?: number;
+  /** Which range a standing pass was given for: the root action, or the turn. Two hand-overs given for the
+   *  same range are one seat settling on an answer; two given for different ranges are two separate acts, and
+   *  the record has to keep them apart even when the lines between them are filtered away (G03). The action's
+   *  root is the id the public view already names as `reactionTargetActionId`, so it tells nothing new. */
+  standingRange?: string;
   status?: { kind: PersistentStatus['kind']; change: 'applied' | 'removed' }; distance?: 'near' | 'far';
   /** The actor's character was hidden when this happened; others see neither the ability name nor the check threshold. */
   concealed?: true;

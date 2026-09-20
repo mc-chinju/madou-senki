@@ -138,8 +138,10 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
   const s=result.state;bindPeaceAction(s,state,{actorId:input.actorId,command});
   // Anything but a pass changed the situation, so every seat is asked again (G03). A turn-long pass is given
   // for the actions this turn still holds, so only an intervention into an open window ends it early: the
-  // seat whose turn it is opening its next action is what the pass was given for.
-  if(!['PASS','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH'].includes(command.type)&&(state.windows?.length||command.type==='REVEAL_CHARACTER'))delete s.standingPasses;
+  // seat whose turn it is opening its next action is what the pass was given for. A reveal ends it too,
+  // wherever it happens; that is written where the reveal is (`dropStandingPasses`), because a death reveals
+  // a character without any command asking for it, and because a hit's reveal ends only the turn-long ones.
+  if(!['PASS','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH'].includes(command.type)&&state.windows?.length)delete s.standingPasses;
   if(state.phase==='action'&&state.seatOrder[state.turnSeat]===actor.id&&s.phase!=='action'&&s.earlyTurnBook)s.earlyTurnBook.closed=true;
   if(selectedReveal)startVoluntaryBenefit(s,input.actorId,expiresOnActorId!);
   cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);maintainFollowers(s);

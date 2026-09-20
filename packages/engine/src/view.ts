@@ -66,7 +66,7 @@ export interface PublicPlayerView {
   damage: number; handCount: number; followers: CardBackView[]; chants: CardBackView[]; chantCount: number; open: string[]; attachments: string[]; statuses:PublicStatusView[];
 }
 export interface LogView { count?:number; death?:GameEvent['death']; id: number; at: number; type: GameEvent['type']; actorId: PlayerId; targetId?:PlayerId; cardInstanceId?: string; cardInstanceIds?: string[]; characterId?: string;
-  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; checkSkip?:GameEvent['checkSkip']; attackOutcome?:GameEvent['attackOutcome']; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'];
+  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; checkSkip?:GameEvent['checkSkip']; attackOutcome?:GameEvent['attackOutcome']; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; standingRange?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'];
   followerOutcome?:GameEvent['followerOutcome']; success?:boolean }
 export interface PlayerView {
   sadLove:SadLoveView|null;
@@ -176,7 +176,7 @@ function logView(event: GameEvent, viewerId: PlayerId): LogView {
   if(event.type==='DAMAGE_APPLIED'&&event.amount!==undefined)result.amount=event.amount;
   if(event.type==='STATUS_CHANGED'&&event.status)result.status={...event.status};
   if(event.type==='DISTANCE_CHANGED'){result.targetId=event.targetId!;result.distance=event.distance!;}
-  if(event.type==='PASSED')result.windowKind=event.windowKind!;
+  if(event.type==='PASSED'){result.windowKind=event.windowKind!;if(event.standingRange!==undefined)result.standingRange=event.standingRange;}
   // A card nobody saw is a number to the table; its owner's own copy of the line carries the name.
   if(event.type==='CARDS_DISCARDED'){if(event.count!==undefined)result.count=event.count;if(event.audience!=='public')result.cardInstanceId=event.cardInstanceId!;}
   // A chant and a row of followers are face down on the table, so only the seat's own copy names them.

@@ -44,8 +44,12 @@ test('later seats place and ready before the first seat, and a refilled seat pla
     await expect(table.pages[first]!.getByRole('region', { name: '初期配置の進行' })).toContainText('全員の準備完了を待っています');
     await expect(table.pages[last]!.getByRole('region', { name: '初期配置の進行' })).toContainText('準備完了しました');
 
+    // The round's progress is highlighted in place, by the rule the reaction window's bar shares (P008).
+    const status = table.pages[first]!.locator('.setup-status');
+    await status.evaluate(box => box.classList.remove('flash'));
     await place(first, followerIn(first)!);
     for (const seat of [0, 1, 2, 3]) if (!views.get(table.sessions[seat]!.id)!.game!.pending!.readyIds.includes(table.sessions[seat]!.id)) await ready(seat);
+    await expect(status).toHaveClass(/\bflash\b/);
 
     // Both placing seats refilled and may place again; nobody else is asked.
     await expect.poll(() => views.get(table.sessions[first]!.id)!.game!.pending?.round).toBe(2);

@@ -3,6 +3,7 @@ import * as engine from '../src/index.js';
 import {entropy, handCard} from './fixtures.js';
 import {act, finish, pass, ready, until} from './combat-helpers.js';
 import {legalCommands} from '../src/bot/index.js';
+import {pruneStandingPasses} from '../src/reactions/windows.js';
 
 function bowAttack(target = 'B') {
   let s = ready();
@@ -11,6 +12,9 @@ function bowAttack(target = 'B') {
   return s;
 }
 const top = (s: engine.GameState) => s.windows!.at(-1)!;
+/** The same attack against a target that is already face up. A hit turns a hidden target over, and that ends
+ *  every turn-long hand-over (G03), so a test about the range itself starts with nothing left to turn. */
+function bowAttackOnRevealed() { const s = bowAttack(); s.players.B!.revealed = true; return s; }
 const reject = (s: engine.GameState, actorId: string, command: unknown, code: string) => {
   const before = JSON.stringify(s);
   expect(engine.transition(s, {actorId, command} as engine.GameInput, entropy())).toEqual({ok: false, code});
@@ -262,7 +266,7 @@ describe('passing a whole turn through (G03)', () => {
   }
 
   it('fills in the next action of the same turn, which an action-long pass no longer reaches', () => {
-    let s = bowAttack();
+    let s = bowAttackOnRevealed();
     s = act(s, 'C', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
     s = act(s, 'D', {type: 'PASS_ACTION_THROUGH'});
     s = finish(s);
@@ -294,7 +298,7 @@ describe('passing a whole turn through (G03)', () => {
   });
 
   it('keeps each seat on the range it chose, and lets a seat move up to the whole turn', () => {
-    let s = bowAttack();
+    let s = bowAttackOnRevealed();
     s = act(s, 'C', {type: 'PASS_ACTION_THROUGH'});
     s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
     expect(s.standingPasses).toMatchObject([{scope: 'action', actorIds: ['C']}, {scope: 'turn', actorIds: ['D']}]);
@@ -317,6 +321,86 @@ describe('passing a whole turn through (G03)', () => {
     const passes = s.events.filter(e => e.type === 'PASSED' && e.actorId === 'D');
     expect(passes).toHaveLength(1);
     expect(passes[0]).toMatchObject({windowKind: 'turn-through', audience: 'public'});
+  });
+
+  it('ends when a seat reveals itself with no window open', () => {
+    let s = bowAttackOnRevealed();
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = finish(s);
+    // The action is over and the turn goes on, so nothing is open to answer; the reveal still ends the pass.
+    expect(s.windows?.length ?? 0).toBe(0);
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D']}]);
+    s = act(s, 'C', {type: 'REVEAL_CHARACTER'});
+    expect(s.standingPasses).toBeUndefined();
+  });
+
+  it('ends when a death reveals a character, though no command asked for the reveal', async () => {
+    const {settleDamage} = await import('../src/index.js');
+    let s = bowAttack();
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D']}]);
+    // A seat can die without an attack ever reaching it, and the reveal that comes with the death is written
+    // by the engine rather than asked for by a command. At the table it is the same change of situation.
+    expect(s.players.C!.revealed).toBe(false);
+    settleDamage(s, [{targetId: 'C', damage: 0, instantDeath: true, cause: 'instant-death', eventId: 'death-event'}], 1000);
+    expect(s.events.some(e => e.type === 'CHARACTER_REVEALED' && e.actorId === 'C')).toBe(true);
+    expect(s.standingPasses).toBeUndefined();
+  });
+
+  it('goes out with a seat that is no longer at the table', () => {
+    let s = bowAttack();
+    s = act(s, 'C', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['C', 'D']}]);
+    // A seat that left the table is not leaving its answers to anyone, so the others stop being told it is.
+    s.players.C!.presence = 'dead';
+    pruneStandingPasses(s);
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D']}]);
+  });
+
+  it('records the range it was given for, so two actions of one turn are never read as one', () => {
+    let s = bowAttack();
+    s = act(s, 'C', {type: 'PASS_ACTION_THROUGH'});
+    s = finish(s);
+    s.phase = 'action';
+    s = act(s, 'A', {type: 'ATTACK', cardInstanceId: handCard(s, 'A', '踏み込み／弓'), targetIds: ['B'], dedicated: false});
+    s = act(s, 'C', {type: 'PASS_ACTION_THROUGH'});
+    const ranges = s.events.filter(e => e.type === 'PASSED' && e.windowKind === 'action-through').map(e => e.standingRange);
+    expect(ranges).toHaveLength(2);
+    expect(ranges[0]).toBeDefined();
+    expect(ranges[0]).not.toBe(ranges[1]);
+    // The range has to reach the reader, or the record folds the two actions into one line again.
+    expect(engine.viewFor(s, 'B').logs.filter(log => log.windowKind === 'action-through').map(log => log.standingRange)).toEqual(ranges);
+    // A turn-long pass names the turn instead, so pressing it twice in one turn is the one range it is.
+    const turn = act(act(bowAttack(), 'C', {type: 'PASS_ACTION_THROUGH', scope: 'turn'}), 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    expect(turn.events.filter(e => e.windowKind === 'turn-through').map(e => e.standingRange)).toEqual(['turn-0', 'turn-0']);
+  });
+
+  it('ends at a hit that turns its target face up, while the action-long hand-over beside it stands', () => {
+    let s = bowAttack();
+    s = act(s, 'C', {type: 'PASS_ACTION_THROUGH'});
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    expect(s.players.B!.revealed).toBe(false);
+    // The hit is the result of the action C handed over, so C stays out of the rest of it; for D the identity
+    // it turned up is new information about the actions this turn still holds, so D is asked again.
+    s = until(s, 'hit-abilities');
+    expect(s.players.B!.revealed).toBe(true);
+    expect(s.standingPasses).toEqual([{scope: 'action', rootEventId: expect.any(String), actorIds: ['C']}]);
+    expect(top(s).passed).toContain('C');
+    expect(top(s).passed).not.toContain('D');
+    expect(engine.viewFor(s, 'D').legalChoices).toContain('PASS_ACTION_THROUGH');
+    // The rest of this action keeps filling itself in for C, right through to the end of the attack.
+    for (let n = 0; n < 30 && s.windows?.length && top(s).kind !== 'lifecycle-boundary'; n++) {
+      const w = top(s);
+      expect(w.participants.includes('C') && !w.passed.includes('C'), w.kind).toBe(false);
+      s = act(s, w.participants[w.cursor]!, {type: 'PASS'});
+    }
+    // The next action of the same turn asks D again, which is what the turn-long hand-over would have covered.
+    s = finish(s);
+    s.phase = 'action';
+    s = act(s, 'A', {type: 'ATTACK', cardInstanceId: handCard(s, 'A', '踏み込み／弓'), targetIds: ['B'], dedicated: false});
+    expect(top(s)).toMatchObject({kind: 'declaration', passed: []});
+    expect(engine.viewFor(s, 'D').legalChoices).toContain('PASS');
   });
 
   it('is never offered to a bot, which keeps answering window by window', () => {

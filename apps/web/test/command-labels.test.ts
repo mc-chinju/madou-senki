@@ -9,18 +9,37 @@ import { combinationCommands } from '../src/game/combination-input.js';
 
 /** Every command the engine can put in `legalChoices`, read off the one place that builds them. The list a
  *  seat is offered grows with the rules, and an entry with no Japanese name reaches the screen as its internal
- *  name, so the sweep is taken from the source rather than repeated here. The two bars are told apart by the
- *  branch that builds them: `if(!active)` is the command bar, everything else can stand beside a window. */
+ *  name, so the sweep is taken from the source rather than repeated here.
+ *
+ *  Which bar a choice can reach is decided by what the branch that pushes it needs. Only two shapes settle it:
+ *  `if(!active)` can run only with no window, so the command bar is the only bar that can draw it, and a
+ *  branch guarded by the open window (`if(active…`, or an answer built from `hasPriority?`) can only stand
+ *  beside one. Everything else — the abilities, the rituals, the reveal, the anytime card — is pushed either
+ *  way and has to carry a name in both. Reading the guard instead of assuming one keeps the sweep from
+ *  quietly shrinking: classifying by a literal that happens to sit on the line put every one of those into the
+ *  window bucket, and `commandNames` was then never looked at. A branch can run on past its own line, so an
+ *  `if(active…)` block is followed by the braces it opened. */
 function offeredChoices(): { bar: Set<string>; window: Set<string> } {
   const read = (path: string) => readFileSync(new URL(path, import.meta.url), 'utf8');
   // The parser's switch is the one exhaustive list of command types, so it tells the commands on those lines
   // apart from the factions and window kinds that stand next to them.
   const commands = new Set([...read('../../../packages/protocol/src/validation.ts').matchAll(/case '([A-Z][A-Z0-9_]+)'/g)].map(([, name]) => name!));
   const bar = new Set<string>(), window_ = new Set<string>();
-  for (const line of read('../../../packages/engine/src/view.ts').split('\n')) {
-    if (!line.includes('legalChoices')) continue;
-    const into = line.includes('if(!active)') ? bar : window_;
-    for (const [, name] of line.matchAll(/'([A-Z][A-Z0-9_]{2,})'/g)) if (commands.has(name!)) into.add(name!);
+  let depth = 0, windowBlock: number | null = null;
+  for (const raw of read('../../../packages/engine/src/view.ts').split('\n')) {
+    const line = raw.trim();
+    // A line that takes choices away names the ones it removes, which is the opposite of offering them.
+    const offers = line.includes('legalChoices') && !/legalChoices=legalChoices\.filter/.test(line) && !line.includes('legalChoices: string[]');
+    if (offers) {
+      const barOnly = line.startsWith('if(!active)');
+      const windowOnly = windowBlock !== null || line.startsWith('if(active') || /legalChoices=hasPriority\?/.test(line);
+      const into = barOnly ? [bar] : windowOnly ? [window_] : [bar, window_];
+      for (const [, name] of line.matchAll(/'([A-Z][A-Z0-9_]{2,})'/g)) if (commands.has(name!)) for (const set of into) set.add(name!);
+    }
+    const opens = (line.match(/\{/g) ?? []).length, closes = (line.match(/\}/g) ?? []).length;
+    if (windowBlock === null && line.startsWith('if(active') && opens > closes) windowBlock = depth;
+    depth += opens - closes;
+    if (windowBlock !== null && depth <= windowBlock) windowBlock = null;
   }
   return { bar, window: window_ };
 }
@@ -34,6 +53,10 @@ test('every choice a seat can be offered reaches the screen with a name of its o
   expect(inWindow.size).toBeGreaterThan(20);
   for (const choice of ['ATTACK', 'PASS_ACTION', 'END_TURN']) expect(bar).toContain(choice);
   for (const choice of ['PASS', 'PLAY_DEFENSE', 'SET_CONDITIONAL_ABILITY']) expect(inWindow).toContain(choice);
+  // The choices that are pushed whether or not a window is open have to reach the command bar's bucket too,
+  // or the map it draws from is never asked about them.
+  for (const choice of ['PLAY_ANYTIME_CARD', 'SET_CONDITIONAL_ABILITY', 'USE_ABILITY', 'PAY_SHADOW_JUMP',
+    'TRANSFER_RITUAL', 'USE_REVIVAL_RITUAL', 'REVEAL_CHARACTER']) expect(bar, choice).toContain(choice);
 
   for (const choice of bar) {
     if (ownedByPanel(choice, otherPanelCommands)) continue;

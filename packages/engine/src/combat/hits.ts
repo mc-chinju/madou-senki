@@ -4,7 +4,7 @@ import {commitMentalStopPrevention} from '../abilities/mental-protection.js';
 import {hasPendingFatal} from '../state.js';
 import {MAGIC_HALF} from '../abilities/received-defense.js';
 import {activeAbilitySource} from '../abilities/follower-entry.js';
-import {openWindow} from '../reactions/windows.js';
+import {openWindow,dropStandingPasses} from '../reactions/windows.js';
 import {prepareHitAbilityWindow} from '../abilities/advance.js';
 import {prepareLifetimeHit} from './lifetime.js';
 import { beginRoll } from '../rolls/advance.js';
@@ -19,7 +19,7 @@ export function applyHits(state:GameState,target:AttackTarget,technique:Techniqu
   const personallyImmune=technique.personalImmunityCharacterNames?.includes(getCharacter(player.characterId)?.name??'')??false;
   const reached=target.hits.some(hit=>!hit.defended);
   if(personallyImmune||!reached){target.hitsApplied=true;return true;}
-  if(!player.revealed){player.revealed=true;appendEvent(state,now,{type:'CHARACTER_REVEALED',actorId:player.id,audience:'public',characterId:player.characterId});}
+  if(!player.revealed){player.revealed=true;appendEvent(state,now,{type:'CHARACTER_REVEALED',actorId:player.id,audience:'public',characterId:player.characterId});dropStandingPasses(state,'turn');}
   const group=state.groups![sourceId]!;
   if(technique.postHitAdvances&&!group.postHitAdvancePaid&&hasPendingFatal(state,group.attackerId)){for(const scope of hitPaymentGroups(state,group)){scope.postHitAdvancePaid=true;scope.postHitAdvanceAmount=0;}}
   if(technique.postHitAdvances&&!group.postHitAdvancePaid){openWindow(state,'hit-advance-choice',group.actionId,{kind:'group',id:sourceId,targetId:target.actorId},[group.attackerId]);return false;}

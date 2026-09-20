@@ -65,8 +65,11 @@ import { attackWithCosts, combinationCommands, type CoSource } from './combinati
 type Command = ClientEnvelope['command'];
 const phaseNames:Record<string,string>={setup:'初期配置','turn-start':'手番開始',draw:'ドロー',action:'行動','hand-adjustment':'手札調整',combat:'戦闘',withdrawal:'離脱'};
 export const commandNames:Record<string,string>={REVEAL_CHARACTER:'正体を公開',PASS_SETUP:'配置を終える',PLACE_INITIAL_FOLLOWER:'従者を置く',START_TURN:'手番を始める',PASS_ACTION:'行動を終える',REST:'休息',CHANT:'詠唱',PLAY_TURN_CARD:'カードを使う',APPROACH:'接近',WITHDRAW:'離脱',PASS_WITHDRAWAL:'離脱しない',ATTACK:'攻撃を確認して実行'};
-/** Choices a panel of its own owns; the command bar leaves them to it rather than drawing a bare button. */
-export const otherPanelCommands=new Set(['PLAY_ANYTIME_CARD','SET_CONDITIONAL_ABILITY','CHOOSE_DRAW','ARRANGE_FOLLOWERS','REVEAL_CHARACTER']);
+/** Choices a panel of its own owns; the command bar leaves them to it rather than drawing a bare button. The
+ *  last three belong to the decision panel and to the panels that answer a window (`ShadowJumpPanel`,
+ *  `BeastCapturePanel`), which stand beside the command bar wherever the window that offers them is open. */
+export const otherPanelCommands=new Set(['PLAY_ANYTIME_CARD','SET_CONDITIONAL_ABILITY','CHOOSE_DRAW','ARRANGE_FOLLOWERS','REVEAL_CHARACTER',
+ 'PASS','PAY_SHADOW_JUMP','CHOOSE_BEAST_CAPTURE']);
 
 export function Board({room,actorId,disabled:connectionDisabled,send,logHistory}:{room:RoomView;actorId:string;disabled:boolean;send:(command:Command)=>boolean;logHistory?:LogHistoryControl}){
  const disabled=connectionDisabled||room.status!=='playing'; const view=room.game!; const [selected,setSelected]=useState<string[]>([]); const [targets,setTargets]=useState<string[]>([]); const [inspect,setInspect]=useState<ActionCard|CharacterCard|null>(null); const [dedicated,setDedicated]=useState(false); const [variant,setVariant]=useState<TechniqueVariant|''>(''); const character=getCharacter(view.self.characterId); const activeCard=selected.length===1?getAction(selected[0]!):undefined; const discard=discardRequirement(view.self.hand.length,view.self.stats.handLimit,selected); const votes=new Set(room.closeVotes); const variants=techniqueVariants(activeCard?.id,character?.name,dedicated); const chosenVariant=variants.find(option=>option.value===variant)?.value??variants[0]?.value;

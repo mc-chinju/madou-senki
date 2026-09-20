@@ -244,29 +244,48 @@ test('folds the reader\'s named copy of a capture or an inspection onto the line
 test('leaving a whole action to the others reads as one line per action', () => {
   const v = view([
     { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
-    { id: 2, type: 'PASSED', actorId: 'C', windowKind: 'action-through' },
-    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through' },
+    { id: 2, type: 'PASSED', actorId: 'C', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through', standingRange: 'action-a-1' },
     { id: 4, type: 'PASSED', actorId: 'B', windowKind: 'declaration' },
   ]);
   expect(publicLogSections(v)[0]!.lines).toEqual([
-    { kind: 'through', id: 2, lastId: 3, scope: 'action', actorIds: ['C', 'D'] },
+    { kind: 'through', id: 2, lastId: 3, scope: 'action', range: 'action-a-1', actorIds: ['C', 'D'] },
     { kind: 'passes', id: 4, lastId: 4, windowKinds: ['declaration'], actorIds: ['B'] },
   ]);
   expect(html(v)).toContain('<strong>凛・蓮</strong>がこの行動を任せました');
+});
+
+test('two actions of the same turn keep their own line even when the lines between them are filtered away', () => {
+  // The seat leaves the first action, then leaves the second one too. A filter on 凛 takes away everything
+  // the other seats did in between, so the two records end up next to each other; they are still two acts.
+  const logs = [
+    { id: 1, type: 'TURN_STARTED' as const, actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'ATTACK_DECLARED' as const, actorId: 'A', targetIds: ['B'] },
+    { id: 3, type: 'PASSED' as const, actorId: 'C', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 4, type: 'ATTACK_RESOLVED' as const, actorId: 'A', attackOutcome: 'hit' as const, targetIds: ['B'] },
+    { id: 5, type: 'ATTACK_DECLARED' as const, actorId: 'A', targetIds: ['B'] },
+    { id: 6, type: 'PASSED' as const, actorId: 'C', windowKind: 'action-through', standingRange: 'action-a-5' },
+  ];
+  expect(publicLogSections(view(logs), 'oldest', { kind: 'seat', actorId: 'C' })[0]!.lines).toEqual([
+    { kind: 'through', id: 3, lastId: 3, scope: 'action', range: 'action-a-1', actorIds: ['C'] },
+    { kind: 'through', id: 6, lastId: 6, scope: 'action', range: 'action-a-5', actorIds: ['C'] },
+  ]);
+  // Unfiltered, the same two records are told apart by the same range rather than by what stands between them.
+  expect(publicLogSections(view(logs))[0]!.lines.filter(line => line.kind === 'through')).toHaveLength(2);
 });
 
 test('changing your mind about leaving the same action reads as the one state it ended in', () => {
   const v = view([
     { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
     // 任せる → 解除 → 任せる: taking it back records nothing, so the two records stand next to each other.
-    { id: 2, type: 'PASSED', actorId: 'D', windowKind: 'action-through' },
-    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through' },
-    { id: 4, type: 'PASSED', actorId: 'D', windowKind: 'turn-through' },
+    { id: 2, type: 'PASSED', actorId: 'D', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 4, type: 'PASSED', actorId: 'D', windowKind: 'turn-through', standingRange: 'turn-1' },
   ]);
   expect(publicLogSections(v)[0]!.lines).toEqual([
-    { kind: 'through', id: 2, lastId: 3, scope: 'action', actorIds: ['D'] },
+    { kind: 'through', id: 2, lastId: 3, scope: 'action', range: 'action-a-1', actorIds: ['D'] },
     // A wider range is a different thing to have left behind, so it gets its own line.
-    { kind: 'through', id: 4, lastId: 4, scope: 'turn', actorIds: ['D'] },
+    { kind: 'through', id: 4, lastId: 4, scope: 'turn', range: 'turn-1', actorIds: ['D'] },
   ]);
   expect(html(v)).toContain('<strong>蓮</strong>がこの手番を任せました');
 });
