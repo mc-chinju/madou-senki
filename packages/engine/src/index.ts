@@ -6,6 +6,7 @@ export {gameStats,type GameStatOptions,type StatProvenance} from './game-stats.j
 export type {ConditionalAbilitySetting} from './abilities/conditional-selection.js';
 export * from './state.js';
 export { discardIds, moveToDiscard, type DiscardEntry } from './discard.js';
+export { endgameReveal, type EndgameReveal, type SeatReveal } from './endgame-reveal.js';
 export * from './commands.js';
 export { createGame, derivedStats } from './setup.js';
 export { transition, pendingSetupSeats } from './transition.js';

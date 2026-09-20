@@ -52,6 +52,7 @@ import { ReactionPanel, reactionPanelHandles } from './ReactionPanel.js';
 import { WindowStatus, decisionPanelKey, showsWindowSeatLabel, windowSeatLabel } from './WindowStatus.js';
 import { LifecyclePanel, lifecycleCommands } from './LifecyclePanel.js';
 import { ResultPanel, presenceLabels } from './ResultPanel.js';
+import { EndgameRevealPanel } from './EndgameRevealPanel.js';
 import { LifetimeDecisionPanel } from './LifetimeDecisionPanel.js';
 import { TurnTechniquePanel } from './TurnTechniquePanel.js';
 import { lifetimeCommands, turnTechniqueIds } from './lifetime-input.js';
@@ -112,6 +113,7 @@ export function Board({room,actorId,disabled:connectionDisabled,send,logHistory}
  return <main id="main-content" className="board"><header className="board-header"><div><p className="eyebrow">{phaseNames[view.phase]??view.phase}</p><h1>戦場</h1></div><div>山札 {view.deckCount} · <button className="card-link pile-link" aria-haspopup="dialog" aria-label={`自分の捨て札を見る（捨て札 ${view.discardCount}枚）`} onClick={()=>setShowOwnDiscard(true)}>捨て札 {view.discardCount}</button></div></header>
  <OwnDiscardDialog ids={view.self.discardedCardInstanceIds} count={view.discardCount} open={showOwnDiscard} onClose={()=>setShowOwnDiscard(false)} onInspect={setInspect}/>
  <ResultPanel view={view}/>
+ <EndgameRevealPanel view={view} onInspect={setInspect}/>
  <PendingFatalNotice players={view.seatOrder.map(id=>view.players[id]!)}/>
  <section className="self panel"><div>{character?<button className="portrait-button" aria-label="自分の人物カードを確認" onClick={()=>setInspect(character)}><img className="portrait" src={character.assetId} alt="" width="400" height="560"/><span>人物の詳細</span></button>:null}</div><div><p className="eyebrow">自分の配役</p><h2>{character?.name??'未確認'}</h2><p><span className="tag">{view.self.faction}</span></p><CurrentGoals objective={view.self.objective} currentObjective={view.self.currentObjective} defeatCondition={view.self.defeatCondition}/><dl className="stats"><div><dt>戦士</dt><dd>{view.self.stats.warrior_level}</dd></div><div><dt>魔法</dt><dd>{view.self.stats.magic_level}</dd></div><div><dt>精神</dt><dd>{view.self.stats.spirit}</dd></div><div><dt>耐久</dt><dd>{view.self.stats.endurance}</dd></div><div><dt>損傷</dt><dd>{view.self.damage}</dd></div></dl></div></section>
  <SpiritExpiryNotice value={view.spiritExpiry} names={Object.fromEntries(view.seatOrder.map(id=>[id,view.players[id]!.name]))}/>

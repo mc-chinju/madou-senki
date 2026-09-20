@@ -87,6 +87,18 @@ describe('public record privacy over full bot games', () => {
       }
       for (const viewerId of next.seatOrder) {
         const view = viewFor(next, viewerId);
+        // 決着後の全公開: every path that can settle `outcome` runs through these games, so the sweep below
+        // is what pins "not one character until the very last step". The step that decides the game is the
+        // first one allowed to name what the other seats were holding, and then it must name all of it.
+        const held = hiddenFrom(next, viewerId);
+        const wire = JSON.stringify(view);
+        if (next.outcome) {
+          expect(view.reveal, `step=${steps} viewer=${viewerId}`).not.toBeNull();
+          for (const id of held) expect(wire.includes(id), `step=${steps} viewer=${viewerId} still closed=${id}`).toBe(true);
+        } else {
+          expect(view.reveal, `step=${steps} viewer=${viewerId}`).toBeNull();
+          for (const id of held) expect(wire.includes(id), `step=${steps} viewer=${viewerId} leaked=${id}`).toBe(false);
+        }
         // A snapshot carries only the newest window, and one step can add more lines than it holds, so the
         // lines this step wrote are read back from the record rather than taken from the window.
         const fresh = wholeRecord(next, viewerId, lastEventId);

@@ -73,13 +73,20 @@ test('another seat can trace the whole bot game in the public record while its s
       widenings++;
       return true;
     };
-    const audit = async () => {
+    /** 決着後の全公開: the same sweep read the other way round once the game is over. Everything the socket
+     *  refused all game has to arrive in the snapshot that carries the outcome, and not one line before it. */
+    const audit = async (decided = false) => {
       const game = await (await request.get(`/__test/rooms/${table.roomId}/game`)).json() as GameState;
       await expect.poll(() => (latest as RoomView | null)?.game?.revision).toBe(game.revision);
       const frame = frames.at(-1)!;
       expect(JSON.parse(frame).view.game).not.toHaveProperty('discard');
       expect((latest as RoomView | null)!.game!.discardCount).toBe(game.discard.length);
-      for (const secret of secretsFor(game, watcherId)) expect(frame, `revision ${game.revision}`).not.toContain(`"${secret}"`);
+      const secrets = secretsFor(game, watcherId);
+      if (decided) expect(secrets.length, 'a decided game still has something left to open').toBeGreaterThan(0);
+      for (const secret of secrets) {
+        if (decided) expect(frame, `revision ${game.revision}`).toContain(`"${secret}"`);
+        else expect(frame, `revision ${game.revision}`).not.toContain(`"${secret}"`);
+      }
       audits++;
     };
     while (steps < 5000) {
@@ -107,7 +114,7 @@ test('another seat can trace the whole bot game in the public record while its s
     // reader through the reload below and read the rest of the test through one seat.
     await filter.selectOption('all');
     expect(bots[0]!.view()?.outcome).toBeDefined();
-    await audit();
+    await audit(true);
     // audit() runs every 40 steps and once more after the outcome, so the count follows the bot game's length.
     expect(audits).toBe(Math.floor(steps / 40) + 1);
     expect(audits).toBeGreaterThanOrEqual(2);
