@@ -136,7 +136,10 @@ export function logPage(state: GameState, viewerId: PlayerId, options: {beforeId
   const logStart=publicEvents[0]?.id??0;
   const before=options.beforeId;
   const page=(before===undefined?publicEvents:publicEvents.filter(event=>event.id<before)).slice(-limit);
-  if(!page.length)return {logs:[],privateLogs:[],logStart};
+  // Before the table has done anything in public there is no window to hang the seat's own records on, and
+  // they are all it has to read: the newest window carries them rather than letting them go until then.
+  if(!page.length)return {logs:[],logStart,
+    privateLogs:before===undefined?state.events.filter(event=>event.audience!=='public'&&event.audience.playerId===viewerId).map(event=>logView(event,viewerId)):[]};
   const from=page[0]!.id===logStart?0:page[0]!.id;
   const own=state.events.filter(event=>event.audience!=='public'&&event.audience.playerId===viewerId&&
     event.id>=from&&(before===undefined||event.id<before));

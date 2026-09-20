@@ -15,6 +15,9 @@ it('allowlists private state and logs, public backs, and safe pending actor', ()
   expect(v.pending).toEqual({ kind: 'initial-followers', round: 1, participantIds: ['A', 'B', 'C', 'D'], readyIds: [] });
   expect(v.logs.some((e: any) => e.type === 'CHARACTER_ASSIGNED')).toBe(false);
   expect(v.privateLogs.every((e: any) => e.actorId === 'A')).toBe(true);
+  // Before the table has done anything in public, the seat's own records are the whole of its record.
+  expect(v.logs).toEqual([]);
+  expect(v.privateLogs.map((e: any) => e.type)).toContain('CHARACTER_ASSIGNED');
 });
 it('reveal works at setup boundary even out of turn and exposes only revealed character data', () => {
   const s = freshGame(); const r = transition(s, { actorId: 'B', command: { type: 'REVEAL_CHARACTER' } }, entropy());
