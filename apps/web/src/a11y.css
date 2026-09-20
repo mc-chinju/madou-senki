@@ -28,9 +28,24 @@ dialog { overscroll-behavior: contain; max-height: 92vh; overflow: auto; }
 .zone-cards li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .zone-cards [aria-pressed="true"], .button-row [aria-pressed="true"] { background: var(--burgundy); color: white; }
 
-/* A long game fills the pile, so the list scrolls inside a bounded dialog instead of running off the
-   screen. The rules follow the record's scroll region; the hairlines make a half-row read as "more below". */
-.own-discard[open] { display: flex; flex-direction: column; max-height: min(88vh, 40rem); }
-.own-discard-list { max-height: min(24rem, 60vh); overflow: auto; margin: 1rem 0 0; padding: .7rem .5rem .7rem 0; border-block: 1px solid var(--line); }
+/* One scroll region, as in the card dialog: the dialog itself scrolls (max-height 92vh, above). Bounding
+   the list inside a shorter dialog squeezed it to a single row on a landscape phone, because the heading,
+   the copy and the mode buttons kept their full height in a box that could not grow. The hairlines stay,
+   so a half-row still reads as "more below". */
+.own-discard-list { margin: 1rem 0 0; padding: .7rem .5rem .7rem 0; border-block: 1px solid var(--line); }
+/* Low screens (phone landscape), the breakpoint the command bar already uses: the chrome above the list is
+   what crowds it out, so the chrome gets smaller and the list keeps the rest. */
+@media (max-height: 500px) {
+  .own-discard { padding: 1rem 1.25rem; }
+  .own-discard h2 { font-size: 1.2rem; margin: .1rem 3rem .3rem 0; }
+  .own-discard > p { font-size: .85rem; margin: 0 0 .2rem; }
+  .own-discard .button-row { margin-top: .4rem; }
+  .own-discard .button-row button { padding: .35rem .7rem; }
+  .own-discard-list { margin-top: .5rem; padding-block: .4rem; gap: .5rem; }
+}
 
 .card-link { display: inline; border: 0; padding: 0; background: transparent; color: var(--burgundy); font-size: inherit; text-decoration: underline; text-underline-offset: .15em; }
+/* The pile trigger sits inline in "山札 N · 捨て札 N", where the other screens put the same pair. Padding an
+   inline box grows the hit area to 44px without moving a glyph; only this one is safe, as the card names in
+   the list and the record sit on adjacent lines. */
+.pile-link { padding-block: .6rem; }
