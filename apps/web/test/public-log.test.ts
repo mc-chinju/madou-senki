@@ -217,6 +217,30 @@ test('folds the table\'s line and the reader\'s own names of one act together', 
   expect(markup).toContain('<strong>楓</strong>がカードを1枚回収しました</li>');
 });
 
+/** Acts that point at a seat are recorded twice as well, and the reader's copy carries the name, not the count. */
+test('folds the reader\'s named copy of a capture or an inspection onto the line for that seat', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', count: 2 },
+    { id: 3, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'C', count: 1 },
+    { id: 7, type: 'CHARACTER_INSPECTED', actorId: 'A', targetId: 'B' },
+  ], [
+    { id: 4, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', cardInstanceId: 'a2-p01-r1c1' },
+    { id: 5, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', cardInstanceId: 'a2-p02-r1c2' },
+    { id: 6, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'C', cardInstanceId: 'a2-p05-r2c2' },
+    { id: 8, type: 'CHARACTER_INSPECTED', actorId: 'A', targetId: 'B', characterId: 'c2-p04-r2c2' },
+  ]);
+  // The copies for one seat join that seat's line, so the seat a card came from stays right.
+  expect(publicLogSections(v)[0]!.lines.map(line => (line.kind === 'event' ? [line.event.id, line.ownCardInstanceIds ?? null, line.ownCharacterIds ?? null] : line.kind))).toEqual([
+    [2, ['a2-p01-r1c1', 'a2-p02-r1c2'], null], [3, ['a2-p05-r2c2'], null], [7, null, ['c2-p04-r2c2']],
+  ]);
+  const markup = html(v);
+  // The count belongs to the table's copy alone, so a copy that reads alone would say nothing was taken.
+  expect(markup).not.toContain('獣を0枚');
+  expect(markup).toMatch(/楓さんから獣を2枚手札に加えました<span class="log-own">（自分だけに見えています：<span><button[^>]*>[^<]+<\/button><\/span><span>・/);
+  expect(markup).toMatch(/楓さんの正体を確認しました<span class="log-own">（自分だけに見えています：<span><button[^>]*>[^<]+<\/button>/);
+});
+
 test('leaving a whole action to the others reads as one line per action', () => {
   const v = view([
     { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },

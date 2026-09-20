@@ -18,8 +18,8 @@ const windowNames:Record<string,string>={declaration:'宣言',
 type Inspect=(card:ActionCard|CharacterCard)=>void;
 export type LogOrder='oldest'|'newest';
 /** Acts the table sees as a fact and the seat sees by name: the two records are folded into one line. */
-const ownPairs=new Set<LogView['type']>(['CHANTED','FOLLOWERS_ARRANGED','CARD_RECLAIMED']);
-export type LogLine={kind:'event';event:LogView;own:boolean;ownCardInstanceIds?:string[]}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;actorIds:string[]}
+const ownPairs=new Set<LogView['type']>(['CHANTED','FOLLOWERS_ARRANGED','CARD_RECLAIMED','CARD_GIFTED','BEAST_CAPTURED','CHARACTER_INSPECTED','WISH_ACQUIRED']);
+export type LogLine={kind:'event';event:LogView;own:boolean;ownCardInstanceIds?:string[];ownCharacterIds?:string[]}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;actorIds:string[]}
  |{kind:'discards';id:number;lastId:number;actorId:string;count:number;cardInstanceIds:string[]};
 export interface LogSection{key:string;heading:string;lines:LogLine[]}
 
@@ -41,10 +41,13 @@ export function publicLogSections(view:PlayerView,order:LogOrder='oldest'):LogSe
    lines.push({kind:'discards',id:event.id,lastId:event.id,actorId:event.actorId,count:own?0:event.count??1,
     cardInstanceIds:own&&event.cardInstanceId?[event.cardInstanceId]:[]});continue;
   }
-  if(own&&ownPairs.has(event.type)&&last?.kind==='event'&&!last.own&&last.event.type===event.type&&last.event.actorId===event.actorId){
+  if(own&&ownPairs.has(event.type)){
    // The table's line and this reader's named copy are the same act, so the names join the line already there.
-   const named=event.cardInstanceIds??(event.cardInstanceId?[event.cardInstanceId]:[]);
-   if(named.length){lines[lines.length-1]={...last,ownCardInstanceIds:named};continue;}
+   const cards=event.cardInstanceIds??(event.cardInstanceId?[event.cardInstanceId]:[]),characters=event.characterId?[event.characterId]:[];
+   const at=cards.length||characters.length?publicLineOf(lines,event):-1;
+   if(at>=0){const line=lines[at] as Extract<LogLine,{kind:'event'}>;
+    lines[at]={...line,...(cards.length?{ownCardInstanceIds:[...line.ownCardInstanceIds??[],...cards]}:{}),
+     ...(characters.length?{ownCharacterIds:[...line.ownCharacterIds??[],...characters]}:{})};continue;}
   }
   if(event.type==='PASSED'&&event.windowKind==='action-through'){
    // One line per action; the passes it fills in later are never recorded (G03).
@@ -67,9 +70,18 @@ export function publicLogSections(view:PlayerView,order:LogOrder='oldest'):LogSe
  // Folding needs the events adjacent in time, so the reader's order is applied to the finished sections.
  return order==='newest'?kept.map(section=>({...section,lines:[...section.lines].reverse()})).reverse():kept;
 }
-/** The count on the line is the table's; only this reader knows which cards, so the names say so. */
-function OwnNames({ids,onInspect}:{ids:string[];onInspect:Inspect}){
- return <span className="log-own">（自分だけに見えています：{ids.map((id,index)=><span key={`${id}-${index}`}>{index?'・':''}<CardLink id={id} onInspect={onInspect}/></span>)}）</span>;
+/** The table's line this reader's named copy belongs to. One act can name several cards and can point at
+ *  several seats, so the copies are matched by seat within the run of lines the same kind of act just left. */
+function publicLineOf(lines:LogLine[],event:LogView):number{
+ for(let i=lines.length-1;i>=0;i--){const line=lines[i]!;
+  if(line.kind!=='event'||line.event.type!==event.type)return -1;
+  if(!line.own&&line.event.actorId===event.actorId&&line.event.targetId===event.targetId)return i;
+ }
+ return -1;
+}
+/** The count on the line is the table's; only this reader knows which cards or faces, so the names say so. */
+function OwnNames({ids,onInspect,kind='card'}:{ids:string[];onInspect:Inspect;kind?:'card'|'character'}){
+ return <span className="log-own">（自分だけに見えています：{ids.map((id,index)=><span key={`${id}-${index}`}>{index?'・':''}{kind==='character'?<CharacterLink characterId={id} onInspect={onInspect}/>:<CardLink id={id} onInspect={onInspect}/>}</span>)}）</span>;
 }
 function CardLink({id,onInspect,fallback='カード'}:{id:string|undefined;onInspect:Inspect;fallback?:string}){const card=id?getAction(id):undefined;return card?<button className="card-link" aria-label={`${card.name}の詳細を見る`} onClick={()=>onInspect(card)}>{card.name}</button>:<>{fallback}</>;}
 function CharacterLink({characterId,onInspect}:{characterId:string|undefined;onInspect:Inspect}){const person=characterId?getCharacter(characterId):undefined;return person?<button className="card-link" aria-label={`${person.name}の詳細を見る`} onClick={()=>onInspect(person)}>{person.name}</button>:<>人物</>;}
@@ -201,6 +213,7 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
     {line.cardInstanceIds.length?<OwnNames ids={line.cardInstanceIds} onInspect={onInspect}/>:null}</li>
    :<li key={line.event.id} className={mark(line.event.id,line.own)}><strong>{name(line.event.actorId)}</strong>{ownParticle.has(line.event.type)?'':'が'}{eventText(view,line.event,onInspect)}
     {line.ownCardInstanceIds?.length?<OwnNames ids={line.ownCardInstanceIds} onInspect={onInspect}/>:null}
+    {line.ownCharacterIds?.length?<OwnNames ids={line.ownCharacterIds} kind="character" onInspect={onInspect}/>:null}
     {runStart?<span className="log-own">（自分だけに見えています）</span>:null}</li>;
    })}</ol></section>)}</div></div>
  </section>;
