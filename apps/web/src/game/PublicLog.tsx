@@ -1,6 +1,7 @@
 import {getAction,getCharacter,type ActionCard,type CharacterCard} from '@madou/catalog';
 import type { LogView, PlayerView } from '@madou/engine';
 import {useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
+import {filterSeat,logInvolves,parseFilter,readerCards,serializeFilter,storedFilter,storeFilter,type LogFilter} from './log-filter.js';
 import {purposeNames} from './RollPanel.js';
 import {statusNames} from './StatusList.js';
 const labels:Record<string,string>={CARD_DRAWN:'カードを引きました',FOLLOWER_PLACED:'従者を配置しました',SETUP_PASSED:'配置を終えました',CHARACTER_REVEALED:'正体を公開しました',SETUP_COMPLETE:'初期配置を完了しました',DEATH_PENDING:'死亡時の処理に入りました',PLAYER_DIED:'死亡しました',PLAYER_REVIVED:'復活しました',PLAYER_WANDERING:'流浪状態になりました',PLAYER_RETURNED:'復帰しました',PLAYER_EXITED:'退場しました',CHARACTER_TRANSFORMED:'変身しました',FACTION_CHANGED:'陣営を変更しました',CARD_GIFTED:'カードを託しました',GAME_COMPLETED:'対戦の決着を迎えました',TURN_ENDED:'手番を終えました',CHARACTER_ASSIGNED:'配役を確認しました'};
@@ -24,11 +25,15 @@ export type LogLine={kind:'event';event:LogView;own:boolean;ownCardInstanceIds?:
 export interface LogSection{key:string;heading:string;lines:LogLine[]}
 
 /** Groups the record by turn, folds a run of passes in one window, then joins windows the same seats passed in a row.
- *  The reader's own private record is woven in by event id, so a line only it can see keeps its place in the story. */
-export function publicLogSections(view:PlayerView,order:LogOrder='oldest'):LogSection[]{
+ *  The reader's own private record is woven in by event id, so a line only it can see keeps its place in the story.
+ *  A filter drops the records the chosen seat has no share in before anything folds, so a fold never spans a gap. */
+export function publicLogSections(view:PlayerView,order:LogOrder='oldest',filter:LogFilter={kind:'all'}):LogSection[]{
  const name=(id:string)=>view.players[id]?.name??'参加者';
+ const seatId=filterSeat(view,filter),ownCards=filter.kind==='self'?readerCards(view):undefined;
  const sections:LogSection[]=[{key:'setup',heading:'対戦準備',lines:[]}];
- const entries=[...view.logs.map(event=>({event,own:false})),...view.privateLogs.map(event=>({event,own:true}))].sort((a,b)=>a.event.id-b.event.id);
+ const entries=[...view.logs.map(event=>({event,own:false})),...view.privateLogs.map(event=>({event,own:true}))].sort((a,b)=>a.event.id-b.event.id)
+  // A turn heading is the frame the kept lines hang in, so it outlives the filter and goes only if nothing hung on it.
+  .filter(({event})=>seatId===undefined||event.type==='TURN_STARTED'||logInvolves(event,seatId,ownCards));
  for(const {event,own} of entries){
   if(event.type==='TURN_STARTED'){sections.push({key:`turn-${event.id}`,heading:`${event.turnNumber??'?'}手番 ${name(event.actorId)}さん`,lines:[]});continue;}
   const lines=sections.at(-1)!.lines,last=lines.at(-1);
@@ -66,7 +71,8 @@ export function publicLogSections(view:PlayerView,order:LogOrder='oldest'):LogSe
   if(line.kind==='passes'&&last?.kind==='passes'&&same(last.actorIds,line.actorIds)){last.windowKinds.push(...line.windowKinds);last.lastId=line.lastId;}else lines.push(line);
   return lines;
  },[]);
- const kept=sections.filter(section=>section.key!=='setup'||section.lines.length);
+ // A whole turn the reader had no share in is a heading over nothing, so a filtered record leaves it out.
+ const kept=sections.filter(section=>(section.key!=='setup'||section.lines.length)&&(seatId===undefined||section.lines.length));
  // Folding needs the events adjacent in time, so the reader's order is applied to the finished sections.
  return order==='newest'?kept.map(section=>({...section,lines:[...section.lines].reverse()})).reverse():kept;
 }
@@ -159,6 +165,8 @@ function storeOrder(order:LogOrder):void{try{globalThis.sessionStorage?.setItem(
 export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  const list=useRef<HTMLDivElement>(null),content=useRef<HTMLDivElement>(null);
  const [order,setOrder]=useState<LogOrder>(storedOrder);const orderRef=useRef(order);orderRef.current=order;
+ const seatIds=view.seatOrder??[];
+ const [filter,setFilter]=useState<LogFilter>(()=>storedFilter(seatIds));const filterKey=serializeFilter(filter);
  const [following,setFollowing]=useState(true);const followingRef=useRef(true);
  const count=view.logs.length,lastId=view.logs.at(-1)?.id??0;
  // Lines newer than the previous snapshot stay marked for a moment, even across re-renders.
@@ -166,7 +174,7 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  if(lastId>highlight.current.prevId)highlight.current={fromId:highlight.current.prevId,prevId:lastId,until:Date.now()+HIGHLIGHT_MS};
  const fresh=(id:number)=>id>highlight.current.fromId&&Date.now()<highlight.current.until;
  // Folding, reversing and counting walk the whole record, so they only run when it or its order changes.
- const sections=useMemo(()=>publicLogSections(view,order),[view,order]);
+ const sections=useMemo(()=>publicLogSections(view,order,filter),[view,order,filter]);
  // A run of passes folds into one line, so unread is counted in lines, not in events.
  const lineCount=useMemo(()=>sections.reduce((total,section)=>total+section.lines.length,0),[sections]);
  // Lines that arrived while the reader was scrolled away from the followed end.
@@ -176,7 +184,8 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  const atEnd=(el:HTMLDivElement)=>orderRef.current==='newest'?el.scrollTop<24:el.scrollHeight-el.scrollTop-el.clientHeight<24;
  const follow=(value:boolean)=>{followingRef.current=value;setFollowing(value);if(value)setSeenLines(lineCount);};
  // Flipping the order moves the newest line to the other end, so where the reader stands has to be judged again.
- useEffect(()=>{const el=list.current;if(!el)return;if(followingRef.current){pin(el);setSeenLines(lineCount);}else if(atEnd(el))follow(true);},[count,lineCount,order]);
+ // Narrowing the record moves every line too, so where the reader stands has to be judged again.
+ useEffect(()=>{const el=list.current;if(!el)return;if(followingRef.current){pin(el);setSeenLines(lineCount);}else if(atEnd(el))follow(true);},[count,lineCount,order,filterKey]);
  // A narrower screen rewraps lines and grows the record; a follower must stay on the newest line.
  useEffect(()=>{const el=list.current,inner=content.current;if(!el||!inner||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(()=>{if(followingRef.current)pin(el);});observer.observe(inner);observer.observe(el);return ()=>observer.disconnect();},[]);
  const onScroll=()=>{const el=list.current;if(!el)return;const now=atEnd(el);if(now!==followingRef.current)follow(now);};
@@ -187,15 +196,24 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
  // Two windows of the same kind in a row are one thing to the reader, so the name is said once.
  const windows=(kinds:string[])=>{const names=kinds.map(kind=>windowNames[kind]).filter(Boolean).filter((name,index,all)=>name!==all[index-1]);return names.length?`${names.join('、')}で`:'';};
  const orderName=order==='newest'?'新しい順':'古い順';
+ const choose=(value:string)=>{const next=parseFilter(value,seatIds);setFilter(next);storeFilter(next);follow(true);};
+ const selfId=(view.self as PlayerView['self']|undefined)?.id;
  return <section className="panel log" aria-label="公開ログ"><div className="section-title log-title"><h2>戦記</h2>
   {/* Which way the record runs is a state, so it is shown as one and read out when it changes. */}
   <p className="tag" role="status">{orderName}</p>
-  {/* The order button is always here, so it is last and keeps the edge; the one that comes and goes sits inside it. */}
+  {/* The order button is always here, so it is last and keeps the edge; the ones that come and go sit inside it. */}
   <div className="log-controls">
+   <label className="log-filter">絞り込み<select value={filterKey} onChange={event=>choose(event.target.value)}>
+    <option value="all">全員</option>
+    {selfId?<option value="self">自分に関係する記録</option>:null}
+    {seatIds.map(id=><option key={id} value={`seat:${id}`}>{name(id)}さん</option>)}</select></label>
    {!following?<button type="button" className="secondary" onClick={latest}>{unread?`最新へ（新着${unread}件）`:'最新へ'}</button>:null}
    <button type="button" className="secondary" onClick={flip}>{order==='newest'?'古い順にする':'新しい順にする'}</button></div></div>
   {/* Anchoring keeps the read line still while browsing; while following, it would fight the pin instead. */}
-  <div className={`log-scroll${following?' log-following':''}`} ref={list} onScroll={onScroll} tabIndex={0} role="region" aria-label="戦記の全件"><div ref={content}>{sections.map(section=><section key={section.key} aria-label={section.heading}><h3>{section.heading}</h3>
+  <div className={`log-scroll${following?' log-following':''}`} ref={list} onScroll={onScroll} tabIndex={0} role="region" aria-label="戦記の全件"><div ref={content}>
+   {/* A filter that keeps nothing has to say so, or the record reads as if it were still loading. */}
+   {sections.length?null:<p className="muted">この絞り込みに当てはまる記録はまだありません</p>}
+   {sections.map(section=><section key={section.key} aria-label={section.heading}><h3>{section.heading}</h3>
    {/* Newest first still counts from the oldest line, so a number keeps meaning the same record. */}
    <ol {...(order==='newest'?{reversed:true,start:section.lines.length}:{})}>{section.lines.map((line,index)=>{
    // A run of lines only this reader can see is one thing to the reader, so the words are said once at
