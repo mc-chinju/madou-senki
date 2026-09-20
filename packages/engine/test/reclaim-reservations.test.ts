@@ -2,7 +2,7 @@ import {expect, it} from 'vitest';
 import {allCardInstanceIds, type GameState} from '../src/state.js';
 import {act, finish, pass, ready, until} from './combat-helpers.js';
 import {character, handCard, entropy} from './fixtures.js';
-import {gameStats,viewFor,transition} from '../src/index.js';
+import {gameStats,viewFor,transition, discardIds } from '../src/index.js';
 
 /** Reach a physical reservation using Lia's actual printed prayer response. */
 function prayerDeclaration() {
@@ -30,7 +30,7 @@ it.each(['active','otherworld','wandering'] as const)('Reservation owner life an
   s=finish(JSON.parse(JSON.stringify(s)) as GameState);
   expect(s.reclaimReservations).not.toContain(prepared.prayer);
   expect(s.players.B!.hand).toContain(prepared.prayer);
-  expect(s.discard).not.toContain(prepared.prayer);
+  expect(discardIds(s)).not.toContain(prepared.prayer);
   expect(new Set(allCardInstanceIds(s)).size).toBe(220);
 });
 
@@ -39,7 +39,7 @@ it('Reservation owner life and absence decide one final disposition: a revived l
   s.players.B!.lifeId='new-life-after-death';
   s=finish(JSON.parse(JSON.stringify(s)) as GameState);
   expect(s.players.B!.hand).not.toContain(prepared.prayer);
-  expect(s.discard).toContain(prepared.prayer);
+  expect(discardIds(s)).toContain(prepared.prayer);
   expect(s.reclaimReservations).toEqual([]);
 });
 
@@ -50,7 +50,7 @@ it.each(['pending-death','dead','exited'] as const)('Reservation owner life and 
  s.players.B!.presence=presence;
  s=finish(JSON.parse(JSON.stringify(s)) as GameState);
  expect(s.players.B!.hand).not.toContain(prepared.prayer);
- expect(s.discard.filter(id=>id===prepared.prayer)).toHaveLength(1);
+ expect(discardIds(s).filter(id=>id===prepared.prayer)).toHaveLength(1);
  expect(s.reclaimReservations).toEqual([]);expect(s.reclaim?.[prepared.prayer]).toBeUndefined();
  expect(s.used).toContain(`${prepared.eventId}:B:${prepared.prayer}`);
  expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
@@ -89,7 +89,7 @@ it('A paid prayer keeps its declaring life through death and revival before rese
   s.players.B!.lifeId='revived-before-prayer-resolves';
   s=finish(s);
   expect(s.players.B!.hand).not.toContain(prepared.prayer);
-  expect(s.discard).toContain(prepared.prayer);
+  expect(discardIds(s)).toContain(prepared.prayer);
 });
 
 it('Reservation survives a nested counter until the original attack source disposition completes',()=>{
@@ -126,7 +126,7 @@ it('Hidden zero base extra and unlimited worlds share public all-pass transcript
    if(!worlds[0]!.windows?.length)break;if(worlds[0]!.windows!.at(-1)!.kind==='reclaim')slots++;
    worlds=worlds.map(s=>pass(JSON.parse(JSON.stringify(s))));
   }
-  expect(slots).toBe(4);for(const s of worlds){expect(s.windows??[]).toEqual([]);expect(s.discard).toEqual(worlds[0]!.discard);expect(s.discard.filter(id=>id===prepared[0]!.card)).toHaveLength(1);}
+  expect(slots).toBe(4);for(const s of worlds){expect(s.windows??[]).toEqual([]);expect(discardIds(s)).toEqual(discardIds(worlds[0]!));expect(discardIds(s).filter(id=>id===prepared[0]!.card)).toHaveLength(1);}
  }
 });
 it('Revealed Lester unlimited answer retains cursor, answers once and leaves an unused base slot intact',()=>{
@@ -138,5 +138,5 @@ it('Revealed Lester unlimited answer retains cursor, answers once and leaves an 
  s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:claim.claimId});
  expect(s.reclaimDecisions!.find(r=>r.id===d.decisionId)!.attemptedClaimIds.filter(id=>id===claim.claimId)).toHaveLength(1);
  const before=JSON.stringify(s);expect(transition(s,{actorId:'A',command:{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:claim.claimId}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
- s=finish(s);expect(s.players.A!.reclaimUsage?.['魔詩']?.baseSpent??false).toBe(false);expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(s.discard).not.toContain(card);
+ s=finish(s);expect(s.players.A!.reclaimUsage?.['魔詩']?.baseSpent??false).toBe(false);expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(discardIds(s)).not.toContain(card);
 });

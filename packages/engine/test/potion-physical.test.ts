@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
@@ -39,7 +39,7 @@ it.each(['a2-p04-r2c3','a2-p04-r3c1'])('Physical %s potion uses one actual d6 to
   expect(s.resolution).toContain(card);expect(s.players.A!.hand).not.toContain(card);
   s=finishPotions(s,[face]);expect(s.players.A!.damage).toBe(8-face);expect(s.players.B!.damage).toBe(3);
   expect(s.rolls!.filter(r=>r.purpose==='potion-recovery')).toMatchObject([{formula:'d6',rollerId:'A',total:face,stage:'applied'}]);
-  expect(s.discard.filter(id=>id===card)).toHaveLength(1);expect(s.phase).toBe('hand-adjustment');
+  expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);expect(s.phase).toBe('hand-adjustment');
   rejected(s,'A',{type:'PLAY_TURN_CARD',cardInstanceIds:[card]});rejected(s,'A',{type:'PASS_ACTION'});
  }
 });
@@ -50,12 +50,12 @@ it.each(['a2-p04-r2c3','a2-p04-r3c1'])('Physical %s potion combines with its oth
  s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceIds:[card,second]});expect(s.resolution).toEqual(expect.arrayContaining([card,second]));
  s=finishPotions(s,[2,5]);expect(s.players.A!.damage).toBe(1);expect(s.players.B!.damage).toBe(3);
  const rolls=s.rolls!.filter(r=>r.purpose==='potion-recovery');expect(new Set(rolls.map(r=>r.id)).size).toBe(2);
- for(const id of [card,second])expect(s.discard.filter(value=>value===id)).toHaveLength(1);
+ for(const id of [card,second])expect(discardIds(s).filter(value=>value===id)).toHaveLength(1);
  expect(s.phase).toBe('hand-adjustment');
 });
 
 it.each(['a2-p04-r2c3','a2-p04-r3c1'])('Physical %s potion never heals beyond the users current damage',card=>{
- for(const damage of [0,2]){let s=prepared(card,damage);s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceIds:[card]});s=finishPotions(s,[6]);expect(s.players.A!.damage).toBe(0);expect(s.players.B!.damage).toBe(3);expect(s.discard.filter(id=>id===card)).toHaveLength(1);}
+ for(const damage of [0,2]){let s=prepared(card,damage);s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceIds:[card]});s=finishPotions(s,[6]);expect(s.players.A!.damage).toBe(0);expect(s.players.B!.damage).toBe(3);expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);}
 });
 
 it.each(['a2-p04-r2c3','a2-p04-r3c1'])('Physical %s canceled potion stays paid and heals nothing without generating a die',card=>{
@@ -64,7 +64,7 @@ it.each(['a2-p04-r2c3','a2-p04-r3c1'])('Physical %s canceled potion stays paid a
  s=pass(s);s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:action});s=finish(s);
  expect(s.players.A!.damage).toBe(8);expect(s.players.B!.damage).toBe(3);
  expect(s.rolls?.filter(r=>r.purpose==='potion-recovery')??[]).toEqual([]);
- for(const id of [card,fate])expect(s.discard.filter(value=>value===id)).toHaveLength(1);expect(s.phase).toBe('hand-adjustment');
+ for(const id of [card,fate])expect(discardIds(s).filter(value=>value===id)).toHaveLength(1);expect(s.phase).toBe('hand-adjustment');
 });
 
 it.each(['a2-p04-r2c3','a2-p04-r3c1'])('Physical %s first potion cancellation preserves the second paid copy and its one saved die',card=>{
@@ -72,5 +72,5 @@ it.each(['a2-p04-r2c3','a2-p04-r3c1'])('Physical %s first potion cancellation pr
  s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceIds:[card,second]});const action=s.windows!.at(-1)!.continuation.id;
  s=pass(s);s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:action});
  s=finishPotions(s,[5]);expect(s.players.A!.damage).toBe(3);expect(s.players.B!.damage).toBe(3);
- for(const id of [card,second,fate])expect(s.discard.filter(value=>value===id)).toHaveLength(1);expect(s.phase).toBe('hand-adjustment');
+ for(const id of [card,second,fate])expect(discardIds(s).filter(value=>value===id)).toHaveLength(1);expect(s.phase).toBe('hand-adjustment');
 });

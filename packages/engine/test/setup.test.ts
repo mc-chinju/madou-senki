@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { actionCards, getCharacter } from '@madou/catalog';
-import { allCardInstanceIds, createGame, transition, type GameCommand, type GameState } from '../src/index.js';
+import { allCardInstanceIds, createGame, transition, type GameCommand, type GameState, discardIds } from '../src/index.js';
 const players = (n: number) => Array.from({ length: n }, (_, i) => ({ id: String.fromCharCode(65 + i), name: `Player ${i}` }));
 const entropy = () => ({ now: 1000, dice: [], random: Array.from({ length: 2000 }, (_, i) => ((i * 193 + 17) % 997) / 997) });
 function act(s: GameState, actorId: string, command: GameCommand): GameState {
@@ -16,14 +16,14 @@ function reject(s: GameState, actorId: string, command: GameCommand, code: strin
 /** Test-only zone move: keep every physical card while forcing the next draw. */
 function deckTop(s: GameState, name: string): string {
   const id = actionCards.find(card => card.name === name)!.id;
-  s.deck = s.deck.filter(x => x !== id); s.discard = s.discard.filter(x => x !== id);
+  s.deck = s.deck.filter(x => x !== id); s.discard = s.discard.filter(entry => entry.cardInstanceId !== id);
   for (const p of Object.values(s.players)) { p.hand = p.hand.filter(x => x !== id); p.open = p.open.filter(x => x !== id); }
   s.deck.unshift(id); return id;
 }
 /** Test-only zone move: give a seat a card and keep its hand at the dealt five. */
 function give(s: GameState, owner: string, name: string): string {
   const id = actionCards.find(card => card.name === name)!.id;
-  s.deck = s.deck.filter(x => x !== id); s.discard = s.discard.filter(x => x !== id);
+  s.deck = s.deck.filter(x => x !== id); s.discard = s.discard.filter(entry => entry.cardInstanceId !== id);
   for (const p of Object.values(s.players)) { p.hand = p.hand.filter(x => x !== id); p.open = p.open.filter(x => x !== id); }
   const hand = s.players[owner]!.hand; hand.push(id);
   while (hand.length > 5) s.deck.push(hand.splice(hand.findIndex(x => x !== id), 1)[0]!);

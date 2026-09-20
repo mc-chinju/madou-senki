@@ -15,9 +15,9 @@ export async function signIn(context: BrowserContext, name: string): Promise<{ i
 let storedRoom: { request: APIRequestContext; roomId: string } | null = null;
 /** Discard pile contents are never sent to players; browser tests read them from the saved game of the latest table. */
 export async function storedDiscard(): Promise<string[]> {
-  return (await storedGame()).discard;
+  return (await storedGame()).discard.map(entry => entry.cardInstanceId);
 }
-async function storedGame(): Promise<{ phase: string; revision: number; discard: string[]; pending: { participantIds: string[]; readyIds: string[] } | null }> {
+async function storedGame(): Promise<{ phase: string; revision: number; discard: { cardInstanceId: string; ownerId?: string; faceUp: boolean }[]; pending: { participantIds: string[]; readyIds: string[] } | null }> {
   if (!storedRoom) throw Error('NO_TABLE');
   const response = await storedRoom.request.get(`/__test/rooms/${storedRoom.roomId}/game`);
   expect(response.ok()).toBe(true);

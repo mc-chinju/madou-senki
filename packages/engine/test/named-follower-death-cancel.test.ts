@@ -1,6 +1,6 @@
 import {vanmilSuppressed} from '../src/abilities/suppression-state.js';
 import {expect,it} from 'vitest';
-import {viewFor} from '../src/index.js';
+import {viewFor, discardIds } from '../src/index.js';
 import {act,pass} from './combat-helpers.js';
 import {handCard,character} from './fixtures.js';
 import {makeNamedDeathScenario,namedDeathCases,type NamedDeathScenario} from './fixtures/named-follower-death-scenario.js';
@@ -18,7 +18,7 @@ it.each(cases)('%s actual death can be declined without an automatic return',sce
  let {s,card,d}=death(scenario);expect(d.claims.some(c=>c.right==='unlimited')).toBe(true);
  s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'decline'});
  for(let n=0;s.windows?.length&&n<300;n++){expect(s.reclaimReservations).not.toContain(card);s=pass(JSON.parse(JSON.stringify(s)));}
- expect(s.windows??[]).toEqual([]);expect(s.players.A!.hand).not.toContain(card);expect(s.discard.filter(c=>c===card)).toHaveLength(1);
+ expect(s.windows??[]).toEqual([]);expect(s.players.A!.hand).not.toContain(card);expect(discardIds(s).filter(c=>c===card)).toHaveLength(1);
  expect(s.reclaimDecisions!.find(x=>x.id===d.decisionId)!.attemptedClaimIds).toEqual([]);expect(s.players.A!.reclaimUsage).toBeUndefined();
 });
 it.each(cases)('%s actual death recovery cancellation consumes only its one attempt',scenario=>{
@@ -28,7 +28,7 @@ it.each(cases)('%s actual death recovery cancellation consumes only its one atte
  for(let n=0;s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='B'&&n<20;n++)s=pass(s);
  s=act(JSON.parse(JSON.stringify(s)),'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:frame.id});
  for(let n=0;s.windows?.length&&n<300;n++){expect(s.reclaimReservations).not.toContain(card);s=pass(JSON.parse(JSON.stringify(s)));}
- expect(s.windows??[]).toEqual([]);expect(s.players.A!.hand).not.toContain(card);expect(s.discard.filter(c=>c===card)).toHaveLength(1);
+ expect(s.windows??[]).toEqual([]);expect(s.players.A!.hand).not.toContain(card);expect(discardIds(s).filter(c=>c===card)).toHaveLength(1);
  expect(s.reclaimDecisions!.find(x=>x.id===d.decisionId)).toMatchObject({stage:'closed',attemptedClaimIds:[claim.claimId],resolvedClaimIds:[claim.claimId]});
  expect(s.players.A!.reclaimUsage?.[namedDeathCases[scenario][1]]?.baseSpent??false).toBe(false);
 });
@@ -41,7 +41,7 @@ it.each(cases)('%s actual death recovery respects a live Vanmil ban before resol
  s=act(JSON.parse(JSON.stringify(s)),'C',{type:'USE_ABILITY',abilityId:option!.abilityId,targetEventId:option!.targetEventId,targetIds:['A']});
  for(let n=0;s.windows?.length&&n<300;n++){expect(s.reclaimReservations).not.toContain(card);s=pass(JSON.parse(JSON.stringify(s)));}
  expect(s.windows??[]).toEqual([]);expect(vanmilSuppressed(s,'A')).toBe(true);
- expect(s.players.A!.hand).not.toContain(card);expect(s.discard.filter(c=>c===card)).toHaveLength(1);
+ expect(s.players.A!.hand).not.toContain(card);expect(discardIds(s).filter(c=>c===card)).toHaveLength(1);
  expect(s.reclaimDecisions!.find(x=>x.id===d.decisionId)).toMatchObject({stage:'closed',attemptedClaimIds:[claim.claimId],resolvedClaimIds:[claim.claimId]});
  expect(s.players.A!.reclaimUsage?.[namedDeathCases[scenario][1]]?.baseSpent??false).toBe(false);
 });

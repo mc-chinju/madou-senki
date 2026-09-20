@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,passReclaims,ready,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
@@ -27,7 +27,7 @@ it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','
  expect(Object.values(s.groups!)[0]!.hitCursor).toBe(1);
  rejected(s,'B',{type:'PLAY_MAAI',cardInstanceId:card});
  s=finish(s);expect(s.players.B!.damage).toBe(14);expect(s.phase).toBe('withdrawal');
- expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
 });
 
 it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','a2-p07-r2c3','a2-p07-r3c1','a2-p07-r3c2'])('Physical %s maai needs a second distinct card for an actual additional-one attack',card=>{
@@ -41,8 +41,8 @@ it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','
   rejected(s,'B',{type:'PLAY_MAAI',cardInstanceId:card});
   if(count===2)s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:second}));
   s=finish(s);expect(s.players.B!.damage).toBe(count===2?3:10);
-  expect(s.discard.filter(id=>id===card)).toHaveLength(1);
-  if(count===2)expect(s.discard.filter(id=>id===second)).toHaveLength(1);else expect(s.players.B!.hand).toContain(second);
+  expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
+  if(count===2)expect(discardIds(s).filter(id=>id===second)).toHaveLength(1);else expect(s.players.B!.hand).toContain(second);
  }
 });
 
@@ -53,7 +53,7 @@ it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','
  s=passReclaims(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advance}));
  expect(s.windows!.at(-1)).toMatchObject({kind:'normal-defense',continuation:{targetId:'B'}});
  s=finish(s);expect(s.players.B!.damage).toBe(7);expect(s.distances).toEqual(distances);
- for(const id of [card,advance])expect(s.discard.filter(value=>value===id)).toHaveLength(1);
+ for(const id of [card,advance])expect(discardIds(s).filter(value=>value===id)).toHaveLength(1);
  expect(Object.values(s.distanceMarkers??{})).toEqual([]);
 });
 
@@ -63,7 +63,7 @@ it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','
  s=act(s,'B',{type:'PLAY_MAAI',cardInstanceId:card});s=finish(s);
  expect(s.distances.A!.B).toBe('far');expect(s.distances.B!.A).toBe('far');expect(s.phase).toBe('action');
  expect(s.players.B!.damage).toBe(3);expect(Object.values(s.distanceMarkers??{})).toEqual([]);
- for(const id of [card,advance])expect(s.discard.filter(value=>value===id)).toHaveLength(1);
+ for(const id of [card,advance])expect(discardIds(s).filter(value=>value===id)).toHaveLength(1);
 });
 
 it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','a2-p07-r2c3','a2-p07-r3c1','a2-p07-r3c2'])('Physical %s withdraws after an actual approach and attack and removes the old marker once',card=>{
@@ -74,7 +74,7 @@ it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','
  s=finish(act(s,'A',{type:'WITHDRAW',targetId:'B',cardInstanceId:card}));
  expect(s.distances.A!.B).toBe('far');expect(s.distances.B!.A).toBe('far');expect(s.phase).toBe('hand-adjustment');
  expect(Object.values(s.distanceMarkers!)).toEqual([]);expect(s.players.A!.damage).toBe(0);
- for(const id of [card,advance])expect(s.discard.filter(value=>value===id)).toHaveLength(1);
+ for(const id of [card,advance])expect(discardIds(s).filter(value=>value===id)).toHaveLength(1);
  rejected(s,'A',{type:'WITHDRAW',targetId:'B',cardInstanceId:card});
 });
 
@@ -83,6 +83,6 @@ it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','
  s=until(act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false}),'normal-defense');
  expect(Object.values(s.groups!)[0]!.technique.maaiProhibited).toBe(true);
  rejected(s,'B',{type:'PLAY_MAAI',cardInstanceId:card});
- s=finish(s);expect(s.players.B!.hand).toContain(card);expect(s.discard).not.toContain(card);
+ s=finish(s);expect(s.players.B!.hand).toContain(card);expect(discardIds(s)).not.toContain(card);
  expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===card)??[]).toEqual([]);expect(s.players.B!.damage).toBe(5);
 });

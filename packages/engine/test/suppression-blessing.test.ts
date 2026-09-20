@@ -1,6 +1,6 @@
 import {cleanBlessingLeases,vanmilSuppressed} from '../src/abilities/suppression-state.js';
 import {expect, it} from 'vitest';
-import {transition, viewFor, gameStats, type GameState} from '../src/index.js';
+import {transition, viewFor, gameStats, type GameState, discardIds } from '../src/index.js';
 import {canUseCharacterAbility} from '../src/state.js';
 import {act, closeWindow, finish, ready, pass, until} from './combat-helpers.js';
 import {character, entropy, handCard} from './fixtures.js';
@@ -97,7 +97,7 @@ it('C16 canceled addition keeps the old designation and spends this public oppor
   expect(canUseCharacterAbility(s.players.B!, s)).toBe(false);
   expect(canUseCharacterAbility(s.players.D!, s)).toBe(true);
   expect(viewFor(s, 'A').abilityOptions.some(o => o.abilityId === BAN && o.targetEventId===opportunity)).toBe(false);
-  expect(s.discard).toContain(fate);
+  expect(discardIds(s)).toContain(fate);
 });
 
 it('C16 actual Blessing spirit minus five roll relieves only Vanmil and survives temporary absence', () => {

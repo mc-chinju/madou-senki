@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {allCardInstanceIds,viewFor} from '../src/index.js';
+import {allCardInstanceIds,viewFor, discardIds } from '../src/index.js';
 import {act,ready,until,pass,finish,closeWindow} from './combat-helpers.js';
 import {character,handCard} from './fixtures.js';
 import {vanmilSuppressed} from '../src/abilities/suppression-state.js';
@@ -23,7 +23,7 @@ it.each([
  expect(decision.claims.map(c=>c.right)).toEqual(['base']);
  s=act(JSON.parse(JSON.stringify(s)),'A',{type:'CHOOSE_RECLAIM',decisionId:decision.decisionId,choice:'take',claimId:decision.claims[0]!.claimId});
  s=finish(s);
- expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(s.discard).not.toContain(card);
+ expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(discardIds(s)).not.toContain(card);
  expect(s.players.A!.reclaimUsage?.[name]).toEqual({baseSpent:true,extraSpentByAbility:[]});
  const cards=allCardInstanceIds(s);expect(cards).toHaveLength(220);expect(new Set(cards).size).toBe(220);
 });

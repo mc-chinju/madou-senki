@@ -10,6 +10,7 @@ import {openWindow,participants} from '../reactions/windows.js';
 import {beginRoll} from '../rolls/advance.js';
 import type {AbilityFrame,AbilityOption} from './frames.js';
 import {ownsAbility} from './ownership.js';
+import {moveToDiscard} from '../discard.js';
 import {beginInspection} from './private-inspection.js';
 import {revealExpiryActor} from './spirit-lifetime.js';
 import {TURN_PACKAGES,isTurnPackage,mainTurnPackage,CHAM_INSPECT,LIA_INSPECT,LESTER_INSPECT,STAR_INSPECT,ALSEIL_SHADOW,TRUE_POWER,UONOS_REVEAL,LANCASTER_DISCARD,type TurnPackageId} from './turn-packages.js';
@@ -92,7 +93,8 @@ export function resolveTurnPackage(s:GameState,f:AbilityFrame,dice:()=>number,no
  else if(id===LIA_INSPECT)beginInspection(s,f,'chants','all');
  else if(id===LESTER_INSPECT)beginInspection(s,f,'character','none');
  else if(id===STAR_INSPECT)beginInspection(s,f,'hand','one');
- else if(id===LANCASTER_DISCARD){const ids=p.hand.filter(id=>isPrintedMagicTechnique(getAction(id)));p.hand=p.hand.filter(id=>!ids.includes(id));s.discard.push(...ids);}
+ // Cards leaving a hand stay hidden; only their count is public.
+ else if(id===LANCASTER_DISCARD){const ids=p.hand.filter(id=>isPrintedMagicTechnique(getAction(id)));p.hand=p.hand.filter(id=>!ids.includes(id));for(const discarded of ids)moveToDiscard(s,discarded,{ownerId:p.id,faceUp:false});}
  else if(id==='c2-p04-r1c1-ab04'||id==='c2-p06-r2c1-ab04'){[p.hand,target.hand]=[target.hand,p.hand];}
  else if(id===ALSEIL_SHADOW)p.revealed=false;
  else if(id===TRUE_POWER){p.spiritReplacements=(p.spiritReplacements??[]).filter(r=>r.sourceAbilityId!==TRUE_POWER);p.spiritReplacements.push({id:f.id,sourceAbilityId:TRUE_POWER,sourceCharacterId:p.characterId,base:12,expiresOnActorId:f.context.expiresOnActorId!,timing:'turn-end'});}

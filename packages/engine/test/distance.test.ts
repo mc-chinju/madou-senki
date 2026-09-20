@@ -1,19 +1,19 @@
 import {passReclaims,closeWindow,act,finish,pass,ready,readySetup,until} from './combat-helpers.js';
 import {expect,it} from 'vitest';
 import {character,entropy,handCard,handCards,freshGame} from './fixtures.js';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {getAction} from '@madou/catalog';
 function approach(){let s=ready();const [first,second]=handCards(s,['A','A'],'踏み込み／殴る');const maai=handCard(s,'B','間合い／休息');s=act(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:first});s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai}));s=passReclaims(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:second}));s=finish(act(s,'B',{type:'PASS'}));return {s,first,second,maai};}
 
-it('persists a symmetric near distance and the winning physical advance marker',()=>{const {s,first,second,maai}=approach();expect(s.distances.A!.B).toBe('near');expect(s.distances.B!.A).toBe('near');expect(Object.values(s.distanceMarkers!)).toEqual([{a:'A',b:'B',ownerId:'A',cardInstanceId:second}]);expect(viewFor(s,'C').distanceMarkers).toEqual([{a:'A',b:'B',ownerId:'A',cardInstanceId:second}]);expect(s.discard).toEqual(expect.arrayContaining([first,maai]));expect(s.resolution).not.toContain(second);expect(JSON.parse(JSON.stringify(s))).toEqual(s);});
+it('persists a symmetric near distance and the winning physical advance marker',()=>{const {s,first,second,maai}=approach();expect(s.distances.A!.B).toBe('near');expect(s.distances.B!.A).toBe('near');expect(Object.values(s.distanceMarkers!)).toEqual([{a:'A',b:'B',ownerId:'A',cardInstanceId:second}]);expect(viewFor(s,'C').distanceMarkers).toEqual([{a:'A',b:'B',ownerId:'A',cardInstanceId:second}]);expect(discardIds(s)).toEqual(expect.arrayContaining([first,maai]));expect(s.resolution).not.toContain(second);expect(JSON.parse(JSON.stringify(s))).toEqual(s);});
 
-it('keeps a failed approach far and spends both submitted physical cards',()=>{let s=ready();const advance=handCard(s,'A','踏み込み／殴る');const maai=handCard(s,'B','間合い／休息');s=act(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:advance});s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai}));s=finish(act(s,'A',{type:'PASS'}));expect(s.distances.A!.B).toBe('far');expect(s.distanceMarkers).toEqual({});expect(s.discard).toEqual(expect.arrayContaining([advance,maai]));});
+it('keeps a failed approach far and spends both submitted physical cards',()=>{let s=ready();const advance=handCard(s,'A','踏み込み／殴る');const maai=handCard(s,'B','間合い／休息');s=act(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:advance});s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai}));s=finish(act(s,'A',{type:'PASS'}));expect(s.distances.A!.B).toBe('far');expect(s.distanceMarkers).toEqual({});expect(discardIds(s)).toEqual(expect.arrayContaining([advance,maai]));});
 
-it('accepts withdrawal, discards the persistent marker, and keeps failed withdrawal near',()=>{let {s,second}=approach();s.phase='withdrawal';const retreat=handCard(s,'A','間合い／休息');s=act(s,'A',{type:'WITHDRAW',targetId:'B',cardInstanceId:retreat});s=finish(act(s,'B',{type:'PASS'}));expect(s.distances.A!.B).toBe('far');expect(s.discard).toEqual(expect.arrayContaining([second,retreat]));expect(s.distanceMarkers).toEqual({});
+it('accepts withdrawal, discards the persistent marker, and keeps failed withdrawal near',()=>{let {s,second}=approach();s.phase='withdrawal';const retreat=handCard(s,'A','間合い／休息');s=act(s,'A',{type:'WITHDRAW',targetId:'B',cardInstanceId:retreat});s=finish(act(s,'B',{type:'PASS'}));expect(s.distances.A!.B).toBe('far');expect(discardIds(s)).toEqual(expect.arrayContaining([second,retreat]));expect(s.distanceMarkers).toEqual({});
   let failed=approach().s;failed.phase='withdrawal';const [maai,advance]=handCards(failed,['A','B'],'間合い／休息');const push=handCard(failed,'B','踏み込み／蹴る');void advance;failed=act(failed,'A',{type:'WITHDRAW',targetId:'B',cardInstanceId:maai});failed=passReclaims(act(failed,'B',{type:'PLAY_ADVANCE',cardInstanceId:push}));failed=finish(act(failed,'A',{type:'PASS'}));expect(failed.distances.A!.B).toBe('near');expect(Object.keys(failed.distanceMarkers!)).toHaveLength(1);
 });
 
-it('collects all target maai before one attacker advance cancels one from each target',()=>{let s=ready();character(s,'A','侍大将のシン');const attack=handCard(s,'A','天地百撃斬');const [bMaai,cMaai]=handCards(s,['B','C'],'間合い／休息');const advance=handCard(s,'A','踏み込み／蹴る');s.players.A!.hand=s.players.A!.hand.filter(id=>id!==attack);s.players.A!.chants.push({cardInstanceId:attack,revealed:false});s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B','C'],dedicated:true},[1]);s=until(s,'normal-defense');s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:bMaai}));expect(s.windows!.at(-1)!.continuation).toMatchObject({targetId:'C'});s=passReclaims(act(s,'C',{type:'PLAY_MAAI',cardInstanceId:cMaai}));expect(s.windows!.at(-1)!.kind).toBe('defense-advance');s=passReclaims(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advance}));expect(s.windows!.at(-1)!.kind).toBe('normal-defense');expect(s.windows!.at(-1)!.continuation).toMatchObject({targetId:'B'});expect(s.discard).toEqual(expect.arrayContaining([bMaai,cMaai,advance]));expect(JSON.parse(JSON.stringify(s))).toEqual(s);});
+it('collects all target maai before one attacker advance cancels one from each target',()=>{let s=ready();character(s,'A','侍大将のシン');const attack=handCard(s,'A','天地百撃斬');const [bMaai,cMaai]=handCards(s,['B','C'],'間合い／休息');const advance=handCard(s,'A','踏み込み／蹴る');s.players.A!.hand=s.players.A!.hand.filter(id=>id!==attack);s.players.A!.chants.push({cardInstanceId:attack,revealed:false});s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B','C'],dedicated:true},[1]);s=until(s,'normal-defense');s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:bMaai}));expect(s.windows!.at(-1)!.continuation).toMatchObject({targetId:'C'});s=passReclaims(act(s,'C',{type:'PLAY_MAAI',cardInstanceId:cMaai}));expect(s.windows!.at(-1)!.kind).toBe('defense-advance');s=passReclaims(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advance}));expect(s.windows!.at(-1)!.kind).toBe('normal-defense');expect(s.windows!.at(-1)!.continuation).toMatchObject({targetId:'B'});expect(discardIds(s)).toEqual(expect.arrayContaining([bMaai,cMaai,advance]));expect(JSON.parse(JSON.stringify(s))).toEqual(s);});
 
 it('lets one shared hit evade every target when the attacker passes the collected maai',()=>{let s=ready();character(s,'A','侍大将のシン');const attack=handCard(s,'A','天地百撃斬');const [bMaai,cMaai]=handCards(s,['B','C'],'間合い／休息');s.players.A!.hand=s.players.A!.hand.filter(id=>id!==attack);s.players.A!.chants.push({cardInstanceId:attack,revealed:false});s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B','C'],dedicated:true},[1]);s=until(s,'normal-defense');s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:bMaai}));s=passReclaims(act(s,'C',{type:'PLAY_MAAI',cardInstanceId:cMaai}));s=act(s,'A',{type:'PASS'});s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(0);});
 
@@ -34,7 +34,7 @@ it.each([false,true])('Distance withdrawal=%s declines or cancels the election w
   s=act(s,owner,{type:withdraw?'WITHDRAW':'PLAY_MAAI',...(withdraw?{targetId:'B'}:{}),cardInstanceId:maai,...(cancel?{abilityId:FLIGHT}:{})});
   if(cancel){while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='C')s=pass(s);s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:'a2-p02-r2c3',mode:'cancel-ability',targetAbilityId:viewFor(s,'C').reactionTargetAbilityId!});s=until(s,kind);}
   s=act(s,other,{type:'PLAY_ADVANCE',cardInstanceId:advances[0]});expect(viewFor(s,owner).distanceExchange).toMatchObject({requiredAdvances:1,paidAdvances:1,responseComplete:true});expect(s.windows!.at(-1)!.participants).toEqual([owner]);
-  s=finish(s);expect(s.distances.A!.B).toBe('near');expect(s.discard.filter(id=>id===maai)).toHaveLength(1);expect(s.players[other]!.hand).toContain(advances[1]);
+  s=finish(s);expect(s.distances.A!.B).toBe('near');expect(discardIds(s).filter(id=>id===maai)).toHaveLength(1);expect(s.players[other]!.hand).toContain(advances[1]);
  }
 });
 it.each([false,true])('Distance withdrawal=%s actual ban after first advance immediately returns the response',withdraw=>{
@@ -45,13 +45,13 @@ it.each([false,true])('Distance withdrawal=%s actual ban after first advance imm
  const ban='c2-p07-r1c2-ab03',option=viewFor(s,other).abilityOptions.find(o=>o.abilityId===ban)!;expect(option).toBeDefined();s=until(act(s,other,{type:'USE_ABILITY',abilityId:ban,targetEventId:option.targetEventId,targetIds:[owner]}),kind);
  expect(s.windows!.at(-1)!.participants).toEqual([owner]);expect(viewFor(s,other).distanceExchange).toMatchObject({requiredAdvances:1,paidAdvances:1,responseComplete:true});
  const before=JSON.stringify(s);expect(transition(s,{actorId:other,command:{type:'PLAY_ADVANCE',cardInstanceId:advances[1]!}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
- s=finish(s);expect(s.distances.A!.B).toBe('near');expect(s.players[other]!.hand).toContain(advances[1]);for(const id of [maai,...(withdraw?[advances[0]]:[])])expect(s.discard.filter(x=>x===id)).toHaveLength(1);if(!withdraw)expect(Object.values(s.distanceMarkers!)[0]!.cardInstanceId).toBe(advances[0]);
+ s=finish(s);expect(s.distances.A!.B).toBe('near');expect(s.players[other]!.hand).toContain(advances[1]);for(const id of [maai,...(withdraw?[advances[0]]:[])])expect(discardIds(s).filter(x=>x===id)).toHaveLength(1);if(!withdraw)expect(Object.values(s.distanceMarkers!)[0]!.cardInstanceId).toBe(advances[0]);
 });
 it('Repeated withdrawal maai starts a fresh two-advance response after actual paid history',()=>{
  let {s,advances}=distanceSetup('有翼人のティア',true);const maais=handCards(s,['A','A'],'間合い／休息'),fourth=handCard(s,'B','踏み込み／殴る');
  s=until(act(s,'A',{type:'WITHDRAW',targetId:'B',cardInstanceId:maais[0],abilityId:FLIGHT}),'withdrawal');for(const id of advances.slice(0,2))s=act(s,'B',{type:'PLAY_ADVANCE',cardInstanceId:id});
  s=act(s,'A',{type:'PLAY_MAAI',cardInstanceId:maais[1]});expect(viewFor(s,'B').distanceExchange).toMatchObject({requiredAdvances:2,paidAdvances:0,responseComplete:false});
- s=act(s,'B',{type:'PLAY_ADVANCE',cardInstanceId:advances[2]});expect(s.windows!.at(-1)!.participants).toEqual(['B']);s=act(s,'B',{type:'PLAY_ADVANCE',cardInstanceId:fourth});expect(s.windows!.at(-1)!.participants).toEqual(['A']);s=finish(s);expect(s.distances.A!.B).toBe('near');for(const id of [...maais,...advances,fourth])expect(s.discard.filter(x=>x===id)).toHaveLength(1);
+ s=act(s,'B',{type:'PLAY_ADVANCE',cardInstanceId:advances[2]});expect(s.windows!.at(-1)!.participants).toEqual(['B']);s=act(s,'B',{type:'PLAY_ADVANCE',cardInstanceId:fourth});expect(s.windows!.at(-1)!.participants).toEqual(['A']);s=finish(s);expect(s.distances.A!.B).toBe('near');for(const id of [...maais,...advances,fourth])expect(discardIds(s).filter(x=>x===id)).toHaveLength(1);
 });
 function incoming(name='地槍',withBan=false){
  let s=ready();character(s,'B','有翼人のティア');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};
@@ -92,24 +92,24 @@ it('Maai rejects foreign source and foreign actor before physical payment',()=>{
  const {s,maai}=maaiIncoming('有翼人のティア');for(const [actorId,abilityId] of [['B','c2-p01-r2c2-ab01'],['A',FLIGHT]] as const){const before=JSON.stringify(s);expect(transition(s,{actorId:actorId!,command:{type:'PLAY_MAAI',cardInstanceId:maai,abilityId}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);}
 });
 it('Paid maai retains original owner life across a structural later-life boundary',()=>{
- let {s,maai}=maaiIncoming('有翼人のティア');const life=s.players.B!.lifeId??'initial-life:B';s=act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai,abilityId:FLIGHT});s.players.B!.lifeId='structural-new-life';s=until(s,'reclaim');expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({cardInstanceId:maai,sourceLifeId:life});expect(Object.values(s.groups!)[0]!.targets[0]!.hits[0]!.maaiElection).toBeUndefined();s=finish(s);expect(s.discard.filter(id=>id===maai)).toHaveLength(1);
+ let {s,maai}=maaiIncoming('有翼人のティア');const life=s.players.B!.lifeId??'initial-life:B';s=act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai,abilityId:FLIGHT});s.players.B!.lifeId='structural-new-life';s=until(s,'reclaim');expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({cardInstanceId:maai,sourceLifeId:life});expect(Object.values(s.groups!)[0]!.targets[0]!.hits[0]!.maaiElection).toBeUndefined();s=finish(s);expect(discardIds(s).filter(id=>id===maai)).toHaveLength(1);
 });
 it('Canceled maai ability retains the physical payment and needs only one advance',()=>{
  let {s,maai,advances}=maaiIncoming('小妖精のチャム');s=act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai,abilityId:'c2-p01-r2c2-ab01'});expect(s.resolution).toContain(maai);
- s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:'a2-p02-r2c3',mode:'cancel-ability',targetAbilityId:viewFor(s,'C').reactionTargetAbilityId!});s=until(s,'defense-advance');expect(s.discard).toContain(maai);s=finish(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advances[0]}));expect(s.players.B!.damage).toBe(4);expect(s.discard.filter(id=>id===maai)).toHaveLength(1);
+ s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:'a2-p02-r2c3',mode:'cancel-ability',targetAbilityId:viewFor(s,'C').reactionTargetAbilityId!});s=until(s,'defense-advance');expect(discardIds(s)).toContain(maai);s=finish(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advances[0]}));expect(s.players.B!.damage).toBe(4);expect(discardIds(s).filter(id=>id===maai)).toHaveLength(1);
 });
 it('Actual suppression after the first paid advance lowers the live threshold without refund or second payment',()=>{
  let {s,maai,advances}=maaiIncoming('有翼人のティア',true);s=until(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai,abilityId:FLIGHT}),'defense-advance');s=act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advances[0]});
  s=until(s,'defense-advance');
  const ban='c2-p07-r1c2-ab03',o=viewFor(s,'A').abilityOptions.find(o=>o.abilityId===ban)!;expect(o).toBeDefined();s=act(s,'A',{type:'USE_ABILITY',abilityId:ban,targetEventId:o.targetEventId,targetIds:['B']});s=finish(s);
- expect(s.players.B!.damage).toBe(4);expect(s.discard).toEqual(expect.arrayContaining([maai,advances[0]]));expect(s.players.A!.hand).toContain(advances[1]);
+ expect(s.players.B!.damage).toBe(4);expect(discardIds(s)).toEqual(expect.arrayContaining([maai,advances[0]]));expect(s.players.A!.hand).toContain(advances[1]);
 });
 it.each([1,2])('Unequal target elections share exactly %s actual advances',count=>{
  let s=ready();character(s,'A','小人のランバ');character(s,'B','小妖精のチャム');character(s,'C','有翼人のティア');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};
  const source=handCard(s,'A','地槍'),maais=handCards(s,['B','C'],'間合い／休息'),advances=handCards(s,['A','A'],'踏み込み／蹴る'),distances=structuredClone(s.distances);
  s=until(act(s,'A',{type:'ATTACK',cardInstanceId:source,targetIds:['B','C'],dedicated:true}),'normal-defense');s=act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maais[0],abilityId:'c2-p01-r2c2-ab01'});s=until(s,'normal-defense');expect(viewFor(s,'C').activeWindow!.pendingActorId).toBe('C');s=until(act(s,'C',{type:'PLAY_MAAI',cardInstanceId:maais[1]}),'defense-advance');
  s=act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advances[0]});s=until(s,'defense-advance');expect(viewFor(s,'A').maaiDefense!.targets.map(t=>t.effective)).toEqual([1,0]);if(count===2)s=act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:advances[1]});s=finish(s);
- expect([s.players.B!.damage,s.players.C!.damage]).toEqual([count===1?0:9,9]);expect(s.distances).toEqual(distances);for(const id of advances.slice(0,count))expect(s.discard.filter(x=>x===id)).toHaveLength(1);
+ expect([s.players.B!.damage,s.players.C!.damage]).toEqual([count===1?0:9,9]);expect(s.distances).toEqual(distances);for(const id of advances.slice(0,count))expect(discardIds(s).filter(x=>x===id)).toHaveLength(1);
 });
 it('The next actual Griffin hit starts with fresh maai election and advance history',()=>{
  let s=ready();character(s,'A','獣使いのウパニシャット');character(s,'B','小妖精のチャム');for(const p of Object.values(s.players))p.permanent={endurance:100,spirit:20};const source=handCard(s,'A','グリフォン'),maais=handCards(s,['B','B'],'間合い／休息'),advances=handCards(s,['A','A'],'踏み込み／蹴る');
@@ -144,7 +144,7 @@ it('Tia flight defeats real earth magic before an actually placed follower is ex
  // G10: a seat that placed is asked again after the refill, so ready every remaining round.
  s=readySetup(act(s,'B',{type:'PLACE_INITIAL_FOLLOWER',cardInstanceId:soldier}));
  s=act(s,'A',{type:'START_TURN'});s=act(s,'A',{type:'CHOOSE_DRAW',draw:false});s=until(act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false}),'normal-defense');
- const followers=structuredClone(s.players.B!.followers);expect(followers).toHaveLength(1);s=finish(use(s));expect(s.players.B!.followers).toEqual(followers);expect(s.players.B!.damage).toBe(0);expect(s.discard).not.toContain(soldier);
+ const followers=structuredClone(s.players.B!.followers);expect(followers).toHaveLength(1);s=finish(use(s));expect(s.players.B!.followers).toEqual(followers);expect(s.players.B!.damage).toBe(0);expect(discardIds(s)).not.toContain(soldier);
 });
 
 it('Tia flight protects only her target in a real dedicated multi-target earth attack',()=>{
@@ -168,5 +168,5 @@ it.each([false,true])('Lancaster returned counter elected=%s controls real advan
   else {if(elected){const before=JSON.stringify(s);expect(transition(s,{actorId:'B',command:{type:'PLAY_ADVANCE',cardInstanceId:advances[0]!}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);}s=pass(s);}
  }
  expect(s.windows??[]).toHaveLength(0);expect(advanceWindows).toBe(elected?0:1);expect(s.players.A!.damage).toBe(elected?0:damage);expect(s.players.B!.damage).toBe(0);
- expect(s.discard.filter(id=>id===maai)).toHaveLength(1);expect(s.players.B!.hand).toContain(advances[1]!);expect(s.players.B!.hand.includes(advances[0]!)).toBe(elected);
+ expect(discardIds(s).filter(id=>id===maai)).toHaveLength(1);expect(s.players.B!.hand).toContain(advances[1]!);expect(s.players.B!.hand.includes(advances[0]!)).toBe(elected);
 });

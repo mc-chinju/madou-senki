@@ -1,7 +1,7 @@
 import {it,expect} from 'vitest';
 import {act,ready,until,closeWindow,pass,finish} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
-import {viewFor,transition,type GameState} from '../src/index.js';
+import {viewFor,transition,type GameState, discardIds } from '../src/index.js';
 it('Lester live suppression through actual Ida shadow child restores remaining target evade',()=>{
  let s=ready(); character(s,'A','吟遊詩人のレスター'); character(s,'B','忍びのイダ');
  // Documented training prerequisite: ordinary 地裂 use Lv6 versus trained magic6.
@@ -35,7 +35,7 @@ it('Lester live suppression through actual Ida shadow child restores remaining t
  s=act(s,'C',{type:'PLAY_DEFENSE',cardInstanceId:evade,dedicated:false});
  s=finish(s);
  expect(s.players.C!.damage).toBe(0);
- expect(s.discard).toContain(evade);
+ expect(discardIds(s)).toContain(evade);
 });
 
 function convertedAttack(name='地裂',targets=['B','C']) {

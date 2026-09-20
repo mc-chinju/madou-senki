@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,passReclaims,ready,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
@@ -54,7 +54,7 @@ it.each(rows)('Physical %s attack uses its printed range level damage and warrio
   s=finish(s);expect(s.players.B!.damage).toBe(damage);expect(s.players.A!.damage).toBe(0);
   expect(s.rolls?.filter(r=>r.purpose==='excess-level')??[]).toHaveLength(deficit);
   expect(s.distances).toEqual(distances);expect(s.phase).toBe('withdrawal');
-  expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+  expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
   rejected(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:card});
  }
 });
@@ -63,7 +63,7 @@ it.each(rows)('Physical %s approach becomes one near marker without also attacki
  let s=prepared(card);s=finish(act(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:card}));
  expect(s.distances.A!.B).toBe('near');expect(s.distances.B!.A).toBe('near');expect(s.phase).toBe('action');
  expect(Object.values(s.distanceMarkers!)).toEqual([{a:'A',b:'B',ownerId:'A',cardInstanceId:card}]);
- expect(s.players.B!.damage).toBe(0);expect(s.players.A!.hand).not.toContain(card);expect(s.discard).not.toContain(card);
+ expect(s.players.B!.damage).toBe(0);expect(s.players.A!.hand).not.toContain(card);expect(discardIds(s)).not.toContain(card);
  rejected(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});
  rejected(s,'A',{type:'APPROACH',targetId:'C',cardInstanceId:card});
 });
@@ -76,7 +76,7 @@ it.each(rows)('Physical %s advance cancels actual combat maai with one payment a
  rejected(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:card});
  s=finish(s);expect(s.players.B!.damage).toBe(10);expect(s.distances).toEqual(distances);
  expect(Object.values(s.distanceMarkers??{})).toEqual([]);
- expect(s.discard.filter(id=>id===card)).toHaveLength(1);expect(s.players.A!.reclaimUsage?.[getAction(card)!.name]).toBeUndefined();
+ expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);expect(s.players.A!.reclaimUsage?.[getAction(card)!.name]).toBeUndefined();
 });
 
 it.each(rows)('Physical %s owned attack retains its base recovery after a same-name advance was discarded', (card,range,_level,damage,_attribute,owner,spare)=>{
@@ -85,13 +85,13 @@ it.each(rows)('Physical %s owned attack retains its base recovery after a same-n
  s=act(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:spare});s=act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai});
  s=until(s,'reclaim');expect(viewFor(s,'A').reclaim!.cardInstanceId).toBe(spare);
  expect(viewFor(s,'A').reclaim!.claims).toEqual([]);s=finish(s);
- expect(s.players.A!.reclaimUsage?.[name]).toBeUndefined();expect(s.discard).toContain(spare);
+ expect(s.players.A!.reclaimUsage?.[name]).toBeUndefined();expect(discardIds(s)).toContain(spare);
  if(range==='near')s=approachWithAnother(s,card);
  s=until(act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false}),'reclaim');
  expect(s.players.B!.damage).toBe(damage);const d=viewFor(s,'A').reclaim!,claim=d.claims.find(c=>c.right==='base');
  expect(d.cardInstanceId).toBe(card);expect(claim).toBeDefined();
  s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:claim!.claimId});s=finish(s);
- expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(s.discard).not.toContain(card);
+ expect(s.players.A!.hand.filter(id=>id===card)).toHaveLength(1);expect(discardIds(s)).not.toContain(card);
  expect(s.players.A!.reclaimUsage?.[name]?.baseSpent).toBe(true);expect(s.phase).toBe('withdrawal');
  rejected(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});
 });

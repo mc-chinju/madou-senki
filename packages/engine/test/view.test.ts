@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { commandBaseRef, transition, viewFor } from '../src/index.js';
+import { commandBaseRef, transition, viewFor, discardIds, moveToDiscard } from '../src/index.js';
 import { character, entropy, freshGame, handCard, loadFixture } from './fixtures.js';
 import { act,ready,until } from './combat-helpers.js';
 it('allowlists private state and logs, public backs, and safe pending actor', () => {
@@ -65,10 +65,10 @@ it('allowlists current action and attack identities without early locked values 
   s=until(s,'normal-defense');view=viewFor(s,'C');expect(view.currentAttack).toMatchObject({attackerId:'A',targetIds:['B'],hitIndex:0,targetId:'B',reason:'normal-defense',technique:{effectLevel:3,damage:4,attributes:['遠','戦','弓']},targets:[{actorId:'B',hits:[{index:0,defended:false,hit:false}]}]});expect((view.currentAction?.source==='card'?view.currentAction.technique:undefined)).toMatchObject({effectLevel:3,damage:4,hitCount:1});});
 it('sends only the discard count, never discard pile card ids, to every viewer', () => {
   const s = freshGame();
-  const discarded = { B: s.players.B!.hand.splice(0, 2), C: s.players.C!.hand.splice(0, 1) }; s.discard.push(...discarded.B, ...discarded.C);
+  const discarded = { B: s.players.B!.hand.splice(0, 2), C: s.players.C!.hand.splice(0, 1) }; for(const __discarded of [...discarded.B, ...discarded.C])moveToDiscard(s,__discarded,{faceUp:true});
   for (const viewer of s.seatOrder) {
     const v = viewFor(s, viewer);
-    expect(v).not.toHaveProperty('discard'); expect(v.discardCount).toBe(s.discard.length);
+    expect(v).not.toHaveProperty('discard'); expect(v.discardCount).toBe(discardIds(s).length);
     // Own draw history may name one's own cards; nobody else's discarded ids may appear.
     const serialized = JSON.stringify(v);
     for (const [owner, ids] of Object.entries(discarded)) if (owner !== viewer) for (const id of ids) expect(serialized).not.toContain(id);

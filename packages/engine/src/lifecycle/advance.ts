@@ -4,7 +4,7 @@ import {lifeIdentity} from '../abilities/suppression-state.js';
 import {rewardSadLove} from '../abilities/sad-love-state.js';
 import {advanceWishCompletion} from '../effects/wish.js';
 import {finishTurnCardDraw} from '../combat/attack.js';
-import {advanceDiscardResponses,discardPlayerCards} from '../discard.js';
+import {advanceDiscardResponses,discardIds,discardPlayerCards,moveToDiscard} from '../discard.js';
 import {enqueueLifecycle} from './events.js';
 import {gameStats} from '../game-stats.js';
 import {cleanBlessingLeases} from '../abilities/suppression-state.js';
@@ -20,7 +20,8 @@ import {factionObjective,initialProtection,isActive,protectedDead,replaceAllegia
 import type {DamageIntent,LifecycleTask,Outcome} from './types.js';
 
 export function clearDistances(s:GameState,actorId:string):void{
- for(const [key,marker] of Object.entries(s.distanceMarkers??{}))if(marker.a===actorId||marker.b===actorId){s.discard.push(marker.cardInstanceId);delete s.distanceMarkers![key];}
+ // A distance marker was played face up onto the table between the two seats.
+ for(const [key,marker] of Object.entries(s.distanceMarkers??{}))if(marker.a===actorId||marker.b===actorId){moveToDiscard(s,marker.cardInstanceId,{ownerId:marker.ownerId,faceUp:true});delete s.distanceMarkers![key];}
  for(const id of s.seatOrder)if(id!==actorId){s.distances[actorId]![id]='far';s.distances[id]![actorId]='far';}
 }
 function deathIdentity(p:PlayerState){return {characterId:p.characterId,faction:p.faction,objective:p.objective,currentObjective:structuredClone(p.currentObjective??factionObjective(p.faction)),protection:structuredClone(p.protection??initialProtection(p.characterId))};}
@@ -61,7 +62,7 @@ export function revealOpen(s:GameState,p:PlayerState,id:string,random:()=>number
     const returning=[...s.seatOrder.slice(s.turnSeat),...s.seatOrder.slice(0,s.turnSeat)].filter(id=>s.players[id]!.presence==='otherworld');
     for(const actorId of returning)s.players[actorId]!.presence='active';
     for(const actorId of returning)appendEvent(s,now,{type:'PLAYER_RETURNED',actorId,audience:'public'});
-    s.deck=shuffle([...s.deck,...s.discard],random);s.discard=[];
+    s.deck=shuffle([...s.deck,...discardIds(s)],random);s.discard=[];
    }
    if(id==='a2-p01-r1c1'){const targets=s.seatOrder.filter(actor=>s.players[actor]!.presence==='dead');if(targets.length)enqueueLifecycle(s,{kind:'fusen',id:`open-${s.nextEventId++}`,actorId:p.id,sourceCardInstanceId:id,targetIds:targets,cursor:0});}
 }
@@ -96,7 +97,7 @@ export function advanceLifecycle(s:GameState,random:()=>number,now:number):void{
   if(task.kind==='draw'){
    const p=s.players[task.actorId]!;
    if(!isActive(p)||p.hand.length>=task.target){s.lifecycle!.pop();continue;}
-   if(!s.deck.length&&s.discard.length){s.deck=shuffle(s.discard,random);s.discard=[];}
+   if(!s.deck.length&&s.discard.length){s.deck=shuffle(discardIds(s),random);s.discard=[];}
    const id=s.deck.shift();if(!id){s.lifecycle!.pop();continue;}
    const card=getAction(id);if(!card)throw Error('UNKNOWN_CARD');
    if(card.category!=='open'){p.hand.push(id);appendEvent(s,now,{type:'CARD_DRAWN',actorId:p.id,audience:{playerId:p.id},cardInstanceId:id});continue;}

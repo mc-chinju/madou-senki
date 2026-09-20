@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { actionCards } from '@madou/catalog';
-import { viewFor, type GameState } from '../src/index.js';
+import { viewFor, type GameState, discardIds, moveToDiscard } from '../src/index.js';
 import { act, ready, until, finish, pass, closeWindow } from './combat-helpers.js';
 import { character, handCard } from './fixtures.js';
 function place(s: GameState, owner: string, name: string) { const id = handCard(s, owner, name); s.players[owner]!.hand = s.players[owner]!.hand.filter(x => x !== id); s.players[owner]!.followers.push({ cardInstanceId: id, revealed: false }); return id; }
@@ -36,14 +36,14 @@ it.each([['アルケミア城', 'GOOD', 'EVIL'], ['ガイナス城', 'EVIL', 'GO
     s = JSON.parse(JSON.stringify(s)) as GameState;
     s.players.B!.faction = changedFaction;
     s.players.B!.open = s.players.B!.open.filter(id => id !== blessing);
-    s.discard.push(blessing);
+    moveToDiscard(s,blessing,{faceUp:true});
     s = pass(s);
-    expect(s.discard).toContain(castle);
+    expect(discardIds(s)).toContain(castle);
     expect(s.players.B!.followers.some(f => f.cardInstanceId === castle)).toBe(false);
     expect(group(s).targets[0]!.followerDefense![1]!.levels).toEqual([6, 6]);
     s = JSON.parse(JSON.stringify(s)) as GameState;
     s = finish(s);
     expect(s.players.B!.damage).toBe(0);
-    expect(s.discard.filter(id => id === castle)).toHaveLength(1);
+    expect(discardIds(s).filter(id => id === castle)).toHaveLength(1);
     expect(s.players.B!.followers.map(f => f.cardInstanceId)).toEqual([guard]);
 });

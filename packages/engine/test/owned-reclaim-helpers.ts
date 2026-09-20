@@ -1,5 +1,5 @@
 import {getAction} from '@madou/catalog';
-import {createGame,gameStats,viewFor,techniqueFor,type GameState} from '../src/index.js';
+import {createGame,gameStats,viewFor,techniqueFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 import {makeResurrectionPhysicalScenario} from './fixtures/resurrection-physical-scenarios.js';
@@ -23,7 +23,7 @@ export function makeOwnedReclaimTable(owner:string,cardId:string,additionalIds:s
  if(profile?.range==='none'&&!profile.turnEffect){handCard(s,'B','氷矢');handCard(s,'B','凍流');}
  // Arrange this exact physical copy in the initial deal; never mint a copy.
  for(const id of [cardId,...additionalIds]){
-  s.deck=s.deck.filter(x=>x!==id);s.discard=s.discard.filter(x=>x!==id);
+  s.deck=s.deck.filter(x=>x!==id);s.discard = s.discard.filter(entry => entry.cardInstanceId !== id);
   for(const p of Object.values(s.players)){p.hand=p.hand.filter(x=>x!==id);p.open=p.open.filter(x=>x!==id);}
   s.players.A!.hand.push(id);
  }
@@ -36,7 +36,7 @@ export function makeOwnedReclaimTable(owner:string,cardId:string,additionalIds:s
   if(owner==='邪祭ウーノス')handCard(s,'A',getAction('a2-p05-r1c1')!.name);
   // Fix OPEN placement before play; revival is later triggered by a real wish.
   const open='a2-p01-r1c1';for(const p of Object.values(s.players)){p.hand=p.hand.filter(id=>id!==open);p.open=p.open.filter(id=>id!==open);}
-  s.discard=s.discard.filter(id=>id!==open);s.deck=s.deck.filter(id=>id!==open);s.deck.push(open);
+  s.discard = s.discard.filter(entry => entry.cardInstanceId !== open);s.deck=s.deck.filter(id=>id!==open);s.deck.push(open);
   s.distances.E!.B=s.distances.B!.E='near';
   if(name==='おまえはだまされている')character(s,'C','リーア姫');
   s.deck=[...s.deck.filter(id=>getAction(id)!.category!=='open'),...s.deck.filter(id=>getAction(id)!.category==='open')];

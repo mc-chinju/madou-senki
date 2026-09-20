@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { actionCards } from '@madou/catalog';
-import { viewFor, type GameState } from '../src/index.js';
+import { viewFor, type GameState, discardIds, moveToDiscard } from '../src/index.js';
 import { act, ready, until, finish, pass, closeWindow } from './combat-helpers.js';
 import { character, handCard } from './fixtures.js';
 function place(s: GameState, owner: string, name: string) { const id = handCard(s, owner, name); s.players[owner]!.hand = s.players[owner]!.hand.filter(x => x !== id); s.players[owner]!.followers.push({ cardInstanceId: id, revealed: false }); return id; }
@@ -43,13 +43,13 @@ it('snapshot retains levels and slots across nested reflection after Blessing lo
     const frozen = structuredClone(group(s).targets[0]!.followerDefense!);
     expect(frozen.map(f => f.levels)).toEqual([[6], [4]]);
     s.players.B!.open = s.players.B!.open.filter(id => id !== blessing);
-    s.discard.push(blessing);
+    moveToDiscard(s,blessing,{faceUp:true});
     s.players.B!.followers = s.players.B!.followers.filter(f => f.cardInstanceId !== rear);
-    s.discard.push(rear);
+    moveToDiscard(s,rear,{faceUp:true});
     expect(group(s).targets[0]!.followerDefense).toEqual(frozen);
     s = finish(s);
     expect(s.players.A!.damage).toBe(4);
-    expect(s.discard.filter(id => id === rear)).toHaveLength(1);
+    expect(discardIds(s).filter(id => id === rear)).toHaveLength(1);
     expect(s.players.B!.followers[0]!.cardInstanceId).toBe(guard);
 });
 it('morale reroll replaces the complete saved roll and remains one source evaluation', () => {
@@ -83,7 +83,7 @@ it('morale can be forced to fail and contributes no HP', () => {
     s = act(s, 'C', { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'force-fail', targetRollId: id });
     s = finish(s);
     expect(s.players.B!.damage).toBe(4);
-    expect(s.discard).toContain(source);
+    expect(discardIds(s)).toContain(source);
     expect(s.rolls!.find(r => r.id === id)!.forcedFailure).toBe(true);
 });
 it.each([['スケルトン', '風斬剣'], ['ゾンビー', '黒流弓'], ['ワイト', '裂風斬'], ['デス・ナイト', '天地百撃斬']] as const)('%s survives a real printed technique at its revival upper bound', (name, attackName) => {
@@ -91,7 +91,7 @@ it.each([['スケルトン', '風斬剣'], ['ゾンビー', '黒流弓'], ['ワ�
     const f = place(s, 'B', name);
     s = finish(attack(s, attackName));
     expect(s.players.B!.followers.some(x => x.cardInstanceId === f)).toBe(true);
-    expect(s.discard).not.toContain(f);
+    expect(discardIds(s)).not.toContain(f);
 });
 // Explicit future C10 boundary fixtures: real attack group continuation with distinct per-hit techniques.
 // They validate the consumer only; no heterogeneous attack declaration is implemented or claimed.
@@ -109,13 +109,13 @@ it('future heterogeneous consumer pauses each reflection without reapplying earl
     s = heterogeneous(s, [3, 6]);
     s = child(s);
     expect(group(s).targets[0]!.hits.map(h => h.damage)).toEqual([9, 9]);
-    expect(s.discard).not.toContain(front);
+    expect(discardIds(s)).not.toContain(front);
     expect(s.players.B!.damage).toBe(0);
     expect(group(s).targets[0]!.followerDefense![1]!.hitCursor).toBe(1);
     s = finish(s);
     expect(s.players.A!.damage).toBe(9);
     expect(s.players.B!.damage).toBe(9);
-    expect(s.discard).toEqual(expect.arrayContaining([front, guard]));
+    expect(discardIds(s)).toEqual(expect.arrayContaining([front, guard]));
     expect(s.rolls!.filter(r => r.purpose === 'follower-morale')).toHaveLength(1);
 });
 it('future homogeneous multihit reflection continues every hit once even when counter cards are forbidden', () => {
@@ -137,7 +137,7 @@ it.each([['スケルトン', 3, 4], ['ゾンビー', 4, 5], ['ワイト', 5, 6],
         s = heterogeneous(s, [level, overcap ? limit + 1 : limit]);
         s = finish(s);
         expect(s.players.B!.followers.some(f => f.cardInstanceId === id)).toBe(!overcap);
-        expect(s.discard.includes(id)).toBe(overcap);
+        expect(discardIds(s).includes(id)).toBe(overcap);
     }
 });
 it('future heterogeneous explicit destruction prevents revival but preserves other hit HP reduction', () => {
@@ -149,7 +149,7 @@ it('future heterogeneous explicit destruction prevents revival but preserves oth
     expect(d.hits.map(h => [h.outcome, h.hpReduction])).toEqual([['attribute-destroyed', 0], ['lower-destroyed', 4]]);
     s = finish(s);
     expect(s.players.B!.damage).toBe(16);
-    expect(s.discard).toContain(id);
+    expect(discardIds(s)).toContain(id);
 });
 it('future heterogeneous explicit destruction still applies to spirit-immune golem and respects 飛 versus 空', () => {
     for (const name of ['ウッドゴーレム', '小悪魔', '小天使', '歌う船']) {
@@ -198,12 +198,12 @@ it('future heterogeneous frozen castle still blocks after child interruption cha
     expect(group(s).targets[0]!.followerDefense![1]!.levels).toEqual([6, 6]);
     s.players.B!.faction = 'GOOD';
     s.players.B!.open = s.players.B!.open.filter(id => id !== blessing);
-    s.discard.push(blessing);
+    moveToDiscard(s,blessing,{faceUp:true});
     s = pass(s);
-    expect(s.discard).toContain(castle);
+    expect(discardIds(s)).toContain(castle);
     s = finish(s);
     expect(s.players.B!.damage).toBe(0);
-    expect(s.discard.filter(id => id === castle)).toHaveLength(1);
+    expect(discardIds(s).filter(id => id === castle)).toHaveLength(1);
     expect(s.players.B!.followers.map(f => f.cardInstanceId)).toEqual([guard]);
 });
 it('future heterogeneous reflected hit keeps original on-hit card provenance after return', () => {
@@ -233,5 +233,5 @@ it('real hand reflection before Royal guard retains the original stopped-effect 
     expect(s.windows).toEqual([]);
     expect(s.players.B!.statuses?.find(status => status.kind === 'stopped')).toMatchObject({ sourceActorId: 'A', sourceCardInstanceId: spell });
     expect(s.players.A!.followers.map(follower => follower.cardInstanceId)).toContain(guard);
-    expect(s.discard).toContain(mirror);
+    expect(discardIds(s)).toContain(mirror);
 });

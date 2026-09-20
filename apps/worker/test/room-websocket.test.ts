@@ -108,6 +108,27 @@ describe('room WebSocket and durable recovery', () => {
     expect(after?.game?.deckCount).toBe(game.deck.length);
   });
 
+  it('reads a stored bare-id discard pile as face-up cards nobody claims', async () => {
+    const { room, game } = await fixture();
+    const piled = [game.deck[0]!, game.deck[1]!];
+    const legacy = { ...game, deck: game.deck.slice(2), discard: piled };
+    await runInDurableObject(room, (_instance, state) => {
+      const stored = new RoomStorage<RoomData, RoomEvent, RoomProjection>(state.storage).snapshot()!;
+      state.storage.sql.exec('UPDATE room_snapshot SET value = ? WHERE singleton = 1',
+        JSON.stringify({ ...stored.state, game: legacy }));
+    });
+    const restored = await room.gameSnapshot('A');
+    expect(restored?.game?.discardCount).toBe(2);
+    // Nothing records who let those cards go, so the review list stays empty for every seat.
+    for (const actorId of ['A', 'B', 'C', 'D']) expect((await room.gameSnapshot(actorId))?.game?.self.discardedCardInstanceIds).toEqual([]);
+    await runInDurableObject(room, (_instance, state) => {
+      const stored = new RoomStorage<RoomData, RoomEvent, RoomProjection>(state.storage).snapshot()!;
+      // Reading alone converts nothing on disk; the persisted revision is untouched.
+      expect(stored.state.game!.discard).toEqual(piled);
+      expect(stored.revision).toBe(restored!.revision);
+    });
+  });
+
   it('sends only the seated viewer projection and rejects an unknown seat', async () => {
     const { room, game } = await fixture();
     const a = await connect(room, 'A');

@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,closeWindow,finish,pass,until,readySetup} from './combat-helpers.js';
 import {character,entropy,freshGame,handCard} from './fixtures.js';
 const DISPEL='a2-p02-r3c1';
@@ -19,19 +19,19 @@ it.each(['two','mixed'] as const)('Dispel %s commits a real attack, destroys all
  expect(s.players.A!.hand).toHaveLength(hand-2);expect(s.deck).toEqual(deck);s=closeWindow(s);expect(s.players.B!.followers).toEqual(remaining);
  for(let n=0;n<80&&s.windows!.at(-1)!.kind==='reclaim';n++)s=pass(s);
  expect(s.windows!.at(-1)!.kind).toBe('declaration');expect(s.actions![s.windows!.at(-1)!.continuation.id]!.cardInstanceId).toBe(attack);
- expect(s.discard).toEqual(expect.arrayContaining([DISPEL,...destroyed]));expect(s.reclaimDecisions!.filter(d=>d.source.kind==='ordinary-disposition'&&d.source.trigger==='follower-died').map(d=>d.source.cardInstanceId)).toEqual(destroyed);
+ expect(discardIds(s)).toEqual(expect.arrayContaining([DISPEL,...destroyed]));expect(s.reclaimDecisions!.filter(d=>d.source.kind==='ordinary-disposition'&&d.source.trigger==='follower-died').map(d=>d.source.cardInstanceId)).toEqual(destroyed);
  const v=viewFor(s,'C');expect(v.players.B!.followers).toEqual(mode==='two'?[]:[{position:0,face:'back'}]);expect(v.logs.filter(e=>e.type==='FOLLOWER_DESTROYED').map(e=>e.cardInstanceId)).toEqual(destroyed);expect(v.logs.some(e=>e.cardInstanceId===other)).toBe(false);
- s=finish(s);expect(s.phase).toBe('withdrawal');expect(s.discard).toContain(attack);
+ s=finish(s);expect(s.phase).toBe('withdrawal');expect(discardIds(s)).toContain(attack);
 });
 it('declining Dispel leaves it in hand and ordinary attack begins directly',()=>{
  let {s,attack}=scenario();s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});expect(s.players.A!.hand).toContain(DISPEL);expect(Object.values(s.actions!)).toHaveLength(1);expect(s.players.B!.followers).toHaveLength(2);
 });
 it('Fate cancels Dispel alone without refund or refill and the committed attack resumes once',()=>{
  let {s,attack}=scenario();const fate=handCard(s,'B','命運凶変'),hand=s.players.A!.hand.length;s=start(s,attack);const child=viewFor(s,'B').reactionTargetActionId!;
- s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:child});s=until(s,'attack-abilities');expect(s.players.B!.followers).toHaveLength(2);expect(s.players.A!.hand).toHaveLength(hand-2);expect(s.discard).toContain(DISPEL);expect(Object.keys(s.groups!)).toHaveLength(1);s=finish(s);expect(s.phase).toBe('withdrawal');
+ s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:child});s=until(s,'attack-abilities');expect(s.players.B!.followers).toHaveLength(2);expect(s.players.A!.hand).toHaveLength(hand-2);expect(discardIds(s)).toContain(DISPEL);expect(Object.keys(s.groups!)).toHaveLength(1);s=finish(s);expect(s.phase).toBe('withdrawal');
 });
 it('zero golems still consumes accepted Dispel and proceeds to attack',()=>{
- let {s,attack}=scenario('zero');s=until(start(s,attack),'attack-abilities');expect(s.discard).toContain(DISPEL);expect(s.players.B!.followers).toHaveLength(1);expect(s.events.some(e=>e.type==='FOLLOWER_DESTROYED')).toBe(false);
+ let {s,attack}=scenario('zero');s=until(start(s,attack),'attack-abilities');expect(discardIds(s)).toContain(DISPEL);expect(s.players.B!.followers).toHaveLength(1);expect(s.events.some(e=>e.type==='FOLLOWER_DESTROYED')).toBe(false);
 });
 it('foreign source, unlocked target and illegal attack reject atomically before either card is paid',()=>{
  const {s,attack}=scenario();for(const command of [
@@ -53,5 +53,5 @@ it('Dispel finishes before additional attack payments return to the saved declar
  let {s}=scenario();character(s,'A','黒騎士ガーウィン');const attack=handCard(s,'A','魔空剣'),cost=handCard(s,'A','踏み込み／蹴る');
  s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:true,advanceCardInstanceIds:[cost],dispel:{cardInstanceId:DISPEL,targetId:'B'}});
  expect(s.actions![s.windows!.at(-1)!.continuation.id]!.cardInstanceId).toBe(DISPEL);expect(s.resolution).toEqual(expect.arrayContaining([DISPEL,attack,cost]));
- s=until(s,'attack-abilities');expect(s.discard).toContain(cost);expect(s.players.B!.followers).toHaveLength(1);expect(Object.keys(s.groups!)).toHaveLength(1);s=finish(s);expect(s.phase).toBe('withdrawal');
+ s=until(s,'attack-abilities');expect(discardIds(s)).toContain(cost);expect(s.players.B!.followers).toHaveLength(1);expect(Object.keys(s.groups!)).toHaveLength(1);s=finish(s);expect(s.phase).toBe('withdrawal');
 });

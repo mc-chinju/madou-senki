@@ -6,19 +6,31 @@ export interface DiscardOccurrence {
   id:string;parentEventId:string;actorId:string;cardInstanceId:typeof FAIRY_SWORD;origin:DiscardOrigin;
   decisionId?:string;stage:'pending'|'open'|'closed';
 }
+/** `faceUp` is whether the table already saw the card when it left play, never a new publication. */
+export interface DiscardEntry {cardInstanceId:string;ownerId?:string;faceUp:boolean}
+/** The only way a card enters the pile: every entry records whose card it was and whether it was seen. */
+export function moveToDiscard(s:GameState,cardInstanceId:string,origin:{ownerId?:string;faceUp:boolean}):void {
+  s.discard.push({cardInstanceId,...(origin.ownerId?{ownerId:origin.ownerId}:{}),faceUp:origin.faceUp});
+}
+/** The pile as bare card ids, for the counts and matchings that never cared about the origin. */
+export function discardIds(s:GameState):string[] { return s.discard.map(entry=>entry.cardInstanceId); }
+/** Zones whose cards were already face up on the table when they left it. */
+const FACE_UP_ZONES:DiscardOrigin['zone'][]=['resolution','reclaimReservations','open','attachments','distanceMarkers'];
 /** Move the exact physical card first; record a sword occurrence only for that real movement. */
 export function discardPhysical(s:GameState,cardInstanceId:string,origin:DiscardOrigin,actorId:string,eventId:string):boolean {
   const zone=origin.zone,p=origin.ownerId?s.players[origin.ownerId]:undefined;
+  let faceUp=FACE_UP_ZONES.includes(zone);
   if(zone==='hand'||zone==='attachments'||zone==='open'){
     if(!p)return false;const at=p[zone].indexOf(cardInstanceId);if(at<0)return false;p[zone].splice(at,1);
   }else if(zone==='followers'||zone==='chants'){
-    if(!p)return false;const at=p[zone].findIndex(c=>c.cardInstanceId===cardInstanceId);if(at<0)return false;p[zone].splice(at,1);
+    // A placement is face down until it is revealed; a hidden chant or follower stays hidden in the pile.
+    if(!p)return false;const at=p[zone].findIndex(c=>c.cardInstanceId===cardInstanceId);if(at<0)return false;faceUp=p[zone][at]!.revealed;p[zone].splice(at,1);
   }else if(zone==='distanceMarkers'){
     const entry=Object.entries(s.distanceMarkers??{}).find(([,m])=>m.cardInstanceId===cardInstanceId);if(!entry)return false;delete s.distanceMarkers![entry[0]];
   }else{
     const at=s[zone].indexOf(cardInstanceId);if(at<0)return false;s[zone].splice(at,1);
   }
-  s.discard.push(cardInstanceId);
+  moveToDiscard(s,cardInstanceId,{ownerId:origin.ownerId??actorId,faceUp});
   if(cardInstanceId===FAIRY_SWORD)(s.discardOccurrences??=[]).push({id:`discard-${s.nextEventId++}`,parentEventId:eventId,actorId,cardInstanceId,origin:{...origin},stage:'pending'});
   return true;
 }

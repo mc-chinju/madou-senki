@@ -9,6 +9,7 @@ import {settleDamage,clearDistances} from '../lifecycle/advance.js';
 import {isActive} from '../lifecycle/objectives.js';
 import {openWindow} from '../reactions/windows.js';
 import {beginRoll} from '../rolls/advance.js';
+import {moveToDiscard} from '../discard.js';
 export type LifetimeDecisionKind='instant-death'|'fixed-stop'|'otherworld-modifier'|'soul-drain';
 export function lifetimeDecisionKind(group:AttackGroup):LifetimeDecisionKind{
  const kind=group.technique.lifetimeHit!.kind;return kind==='otherworld'?'otherworld-modifier':kind as LifetimeDecisionKind;
@@ -46,7 +47,8 @@ export function prepareLifetimeHit(s:GameState,g:AttackGroup,t:AttackTarget,dice
 export function consumeSelfCost(s:GameState,a:ActionFrame):DamageIntent[]{
  if(a.substituteOrigin||a.followerOrigin||!a.technique.selfCost||a.selfCostSettled)return [];
  a.selfCostSettled=true;const p=s.players[a.actorId]!;
- s.discard.push(...p.followers.map(f=>f.cardInstanceId));p.followers=[];
+ // Followers spent as a declaration cost keep whatever face they had on the table.
+ for(const f of p.followers)moveToDiscard(s,f.cardInstanceId,{ownerId:p.id,faceUp:f.revealed});p.followers=[];
  if(a.technique.selfCost.damage===0)return [];
  return [{targetId:p.id,damage:a.technique.selfCost.damage,cause:'self-damage',sourceActorId:p.id,...effectProvenance(a),actionId:a.id,eventId:a.eventId}];
 }

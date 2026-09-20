@@ -10,7 +10,8 @@ function secretsFor(game: GameState, viewerId: string): string[] {
   const shown = new Set(game.events.filter(event => event.audience === 'public').flatMap(event => [event.cardInstanceId, event.death?.sourceCardInstanceId]));
   const others = game.seatOrder.filter(id => id !== viewerId).map(id => game.players[id]!);
   return [
-    ...game.discard.filter(id => !shown.has(id)),
+    // A seat reviews its own discards, so only the other seats' unseen cards stay secret from this viewer.
+    ...game.discard.filter(entry => entry.ownerId !== viewerId && !shown.has(entry.cardInstanceId)).map(entry => entry.cardInstanceId),
     ...others.flatMap(p => [...p.hand, ...[...p.followers, ...p.chants].filter(card => !card.revealed).map(card => card.cardInstanceId)]),
     ...others.filter(p => !p.revealed).map(p => p.characterId),
   ];
@@ -45,7 +46,7 @@ test('another seat can trace the whole bot game in the public record while its s
       await expect.poll(() => (latest as RoomView | null)?.game?.revision).toBe(game.revision);
       const frame = frames.at(-1)!;
       expect(JSON.parse(frame).view.game).not.toHaveProperty('discard');
-      expect((latest as RoomView | null)!.game!.discardCount).toBe(game.discard.length);
+      expect((latest as RoomView | null)!.game!.discardCount).toBe(discardIds(game).length);
       for (const secret of secretsFor(game, watcherId)) expect(frame, `revision ${game.revision}`).not.toContain(`"${secret}"`);
       audits++;
     };

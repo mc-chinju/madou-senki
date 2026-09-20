@@ -84,7 +84,7 @@ export interface GameState {
   pending: { kind: 'initial-followers'; round: number; participantIds: PlayerId[]; readyIds: PlayerId[]; placedIds: PlayerId[] } | null;
   distances: Record<PlayerId, Record<PlayerId, 'near' | 'far'>>;
   distanceMarkers?: Record<string,{ a:PlayerId; b:PlayerId; ownerId:PlayerId; cardInstanceId:string }>;
-  deck: string[]; discard: string[]; resolution: string[]; reclaimReservations: string[];
+  deck: string[]; discard: import('./discard.js').DiscardEntry[]; resolution: string[]; reclaimReservations: string[];
   nextEventId: number; events: GameEvent[];
 }
 export interface DerivedStats extends CharacterBaseStats { handLimit: number; followerLimit: number; chantLimit: number; followerLevelBonus: number; moraleBonus: number }
@@ -95,7 +95,7 @@ export function canUseCharacterAbility(player: PlayerState, state: GameState): b
   return !hasStatus(player, 'stopped') && !hasStatus(player, 'ability-disabled') && !vanmilSuppressed(state,player.id);
 }
 export function allCardInstanceIds(state: GameState): string[] {
-  return [...state.deck, ...state.discard, ...state.resolution, ...state.reclaimReservations,
+  return [...state.deck, ...state.discard.map(entry => entry.cardInstanceId), ...state.resolution, ...state.reclaimReservations,
     ...Object.values(state.distanceMarkers??{}).map(marker=>marker.cardInstanceId),
     ...state.seatOrder.flatMap(id => { const p = state.players[id]!; return [...p.hand, ...p.open, ...p.attachments, ...p.followers.map(c => c.cardInstanceId), ...p.chants.map(c => c.cardInstanceId)]; })];
 }

@@ -6,7 +6,7 @@ import type {ConditionalAbilityId} from '@madou/protocol';
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
 import {makeOwnedReclaimTable,nextOwnAction,killOwnedLifetimePlayer} from './owned-reclaim-helpers.js';
-import {transition,viewFor} from '../src/index.js';
+import {transition,viewFor, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until,closeWindow} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const CONDITIONAL_CASES: [string,ConditionalAbilityId][] = [
@@ -66,7 +66,7 @@ it.each(CONDITIONAL_CASES)('%s %s absence-retains-death-clears',(name,id)=>{
  const table=makeOwnedReclaimTable(name,'a2-p23-r1c2',[],true);let s=table.state;
  s.players.B!.permanent={...s.players.B!.permanent,magic_level:20,spirit:20};
  const rift=handCard(s,'B','裂界'),fate=handCard(s,'F','命運凶変'),advance=handCard(s,'E','踏み込み／弓');
- const dawn='a2-p01-r1c2';s.deck=s.deck.filter(c=>c!==dawn);s.discard=s.discard.filter(c=>c!==dawn);
+ const dawn='a2-p01-r1c2';s.deck=s.deck.filter(c=>c!==dawn);s.discard = s.discard.filter(entry => entry.cardInstanceId !== dawn);
  for(const p of Object.values(s.players)){p.hand=p.hand.filter(c=>c!==dawn);p.open=p.open.filter(c=>c!==dawn);}s.deck.push(dawn);
  const setting=()=>viewFor(s,'A').conditionalAbilities.find(o=>o.abilityId===id)!;
  s=finish(act(s,'A',{type:'SET_CONDITIONAL_ABILITY',abilityId:id,targetEventId:setting().targetEventId,enabled:true,...(id==='c2-p03-r1c2-ab03'?{targetIds:[]}: {})}));

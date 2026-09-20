@@ -1,6 +1,6 @@
 import { reset } from 'cloudflare:test';
 import { afterEach, expect, it, vi } from 'vitest';
-import { activeWindowRef, allCardInstanceIds, viewFor, type GameState } from '@madou/engine';
+import { activeWindowRef, allCardInstanceIds, viewFor, type GameState, discardIds } from '@madou/engine';
 import type { ClientEnvelope, GameCommand } from '@madou/protocol';
 import { openTestRoom } from './fixtures/recovery-room.js';
 
@@ -51,7 +51,7 @@ it.each(['canonical-S15-before','canonical-S15-after','canonical-S16'] as const)
  expect((await state()).players.B!.revealed).toBe(false);
  if(zero){const group=Object.values((await state()).groups!)[0]!;expect(group.technique.damage).toBe(0);expect(group.targets[0]!.hits[0]!.damage).toBe(0);}else await step('B',{type:'REVEAL_CHARACTER'});
  for(let n=0;n<300;n++){const s=await state(),w=s.windows?.at(-1);if(!w)break;await step(w.participants[w.cursor]!,{type:'PASS'});}
- const final=await state();expect(final.windows??[]).toEqual([]);expect(final.players.B!.revealed).toBe(true);expect(final.players.B!.damage).toBe(scenario==='canonical-S15-after'?4:0);expect(final.discard.filter(id=>id===(zero?'a2-p08-r3c3':'a2-p24-r1c2'))).toHaveLength(1);
+ const final=await state();expect(final.windows??[]).toEqual([]);expect(final.players.B!.revealed).toBe(true);expect(final.players.B!.damage).toBe(scenario==='canonical-S15-after'?4:0);expect(discardIds(final).filter(id=>id===(zero?'a2-p08-r3c3':'a2-p24-r1c2'))).toHaveLength(1);
 });
 
 it('S21 White Light6 hidden alternate worlds keep foreign snapshots equal until hit through restart and duplicate receipt',async()=>{
@@ -72,7 +72,7 @@ it('S21 White Light6 hidden alternate worlds keep foreign snapshots equal until 
    const ack=await room.command(w.participants[w.cursor]!,envelope);expect(ack).toMatchObject({type:'ack'});const saved=await room.stored(),ids=allCardInstanceIds(saved.state.game!);expect(ids).toHaveLength(220);expect(new Set(ids).size).toBe(220);await room.restart();expect(await room.command(w.participants[w.cursor]!,envelope)).toEqual(ack);expect(await room.stored()).toEqual(saved);
   }
  }
- for(const room of rooms){const s=(await room.stored()).state.game!;expect(s.windows??[]).toEqual([]);expect(s.players.B).toMatchObject({damage:6,revealed:true});expect(s.discard.filter(id=>id==='a2-p14-r1c2')).toHaveLength(1);for(const actor of ['A','C','D'])expect(JSON.stringify((await room.snapshotFor(actor)).game)).not.toContain('c2-p01-r1c1-ab01');}
+ for(const room of rooms){const s=(await room.stored()).state.game!;expect(s.windows??[]).toEqual([]);expect(s.players.B).toMatchObject({damage:6,revealed:true});expect(discardIds(s).filter(id=>id==='a2-p14-r1c2')).toHaveLength(1);for(const actor of ['A','C','D'])expect(JSON.stringify((await room.snapshotFor(actor)).game)).not.toContain('c2-p01-r1c1-ab01');}
 });
 
 it('actual exempt and ordinary Blessing share saved checks leases attempts and outside transcripts',async()=>{

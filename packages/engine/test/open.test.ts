@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { actionCards, getCharacter } from '@madou/catalog';
-import { allCardInstanceIds, createGame, derivedStats, transition } from '../src/index.js';
+import { allCardInstanceIds, createGame, derivedStats, transition, discardIds, moveToDiscard } from '../src/index.js';
 import { entropy, freshGame, handCard } from './fixtures.js';
 const identityEntropy = () => ({ now: 20, dice: [], random: Array(1500).fill(0.999999) });
 function apply(s: ReturnType<typeof createGame>, actorId: string, command: { type: 'PLACE_INITIAL_FOLLOWER'; cardInstanceId: string } | { type: 'PASS_SETUP' }) {
@@ -23,15 +23,15 @@ it('Dawn merges discard and current deck during refill, leaves OPEN outside shuf
   const s = freshGame(); const follower = handCard(s, 'A', '兵士');
   while (s.players.A!.hand.length > 5) s.deck.push(s.players.A!.hand.shift()!);
   const dawn = handCard(s, 'B', '大陸の夜明け'); s.players.B!.hand = s.players.B!.hand.filter(id => id !== dawn);
-  s.deck.unshift(dawn); const discarded = s.deck.pop()!; s.discard.push(discarded);
+  s.deck.unshift(dawn); const discarded = s.deck.pop()!; moveToDiscard(s,discarded,{faceUp:true});
   // The refill runs when the round closes, so the last ready is the command that needs the entropy.
   let staged = apply(s, 'A', { type: 'PLACE_INITIAL_FOLLOWER', cardInstanceId: follower });
-  expect(staged.discard).toEqual([discarded]);
+  expect(discardIds(staged)).toEqual([discarded]);
   for (const id of ['B', 'C', 'D']) staged = apply(staged, id, { type: 'PASS_SETUP' });
   const before = JSON.stringify(staged); const input = { actorId: 'A', command: { type: 'PASS_SETUP' } } as const;
   expect(transition(staged, input, { now: 1, dice: [], random: [] })).toEqual({ ok: false, code: 'INVALID_ENTROPY' }); expect(JSON.stringify(staged)).toBe(before);
   const result = transition(staged, input, identityEntropy()); expect(result.ok).toBe(true); if (!result.ok) throw Error(result.code);
-  expect(result.state.discard).toEqual([]); expect(result.state.players.A!.open).toContain(dawn); expect(result.state.deck).toContain(discarded);
+  expect(discardIds(result.state)).toEqual([]); expect(result.state.players.A!.open).toContain(dawn); expect(result.state.deck).toContain(discarded);
   expect(result.state.players.A!.hand).toHaveLength(5); expect(new Set(allCardInstanceIds(result.state)).size).toBe(220);
   expect(result).toEqual(transition(JSON.parse(before), input, identityEntropy()));
   expect(result.state.events.map(e => e.id)).toEqual(Array.from({ length: result.state.events.length }, (_, i) => i + 1));

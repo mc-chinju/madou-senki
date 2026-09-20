@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {transition,viewFor,gameStats,type GameState} from '../src/index.js';
+import {transition,viewFor,gameStats,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready} from './combat-helpers.js';
 import {entropy,handCard} from './fixtures.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
@@ -20,6 +20,6 @@ it('Fairy Sword public Cham may decline the actual foreign hand discard without 
  const decision=viewFor(s,'C').reclaim!;expect(decision.claims).toHaveLength(1);expect(decision.canDecline).toBe(true);
  expect(viewFor(s,'B').reclaim!.claims).toEqual([]);
  s=finish(act(s,'C',{type:'CHOOSE_RECLAIM',decisionId:decision.decisionId,choice:'decline'}));
- expect(s.discard.filter(id=>id===SWORD)).toHaveLength(1);expect(s.players.C!.hand).not.toContain(SWORD);expect(s.players.C!.attachments).not.toContain(SWORD);expect(s.turnSeat).toBe(1);expect(s.reclaimReservations??[]).not.toContain(SWORD);
+ expect(discardIds(s).filter(id=>id===SWORD)).toHaveLength(1);expect(s.players.C!.hand).not.toContain(SWORD);expect(s.players.C!.attachments).not.toContain(SWORD);expect(s.turnSeat).toBe(1);expect(s.reclaimReservations??[]).not.toContain(SWORD);
  rejected(s,'C',{type:'CHOOSE_RECLAIM',decisionId:decision.decisionId,choice:'take',claimId:decision.claims[0]!.claimId});
 });

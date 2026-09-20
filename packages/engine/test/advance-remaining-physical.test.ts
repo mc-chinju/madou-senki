@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,passReclaims,ready,until} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
@@ -47,7 +47,7 @@ it.each(rows)('Physical %s attack uses its printed range level damage and warrio
   s=finish(s);expect(s.players.B!.damage).toBe(damage);expect(s.players.A!.damage).toBe(0);
   expect(s.rolls?.filter(r=>r.purpose==='excess-level')??[]).toHaveLength(deficit);
   expect(s.distances).toEqual(distances);expect(s.phase).toBe('withdrawal');
-  expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+  expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
   rejected(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:card});
  }
 });
@@ -56,7 +56,7 @@ it.each(rows)('Physical %s approach becomes one near marker without also attacki
  let s=prepared(card);s=finish(act(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:card}));
  expect(s.distances.A!.B).toBe('near');expect(s.distances.B!.A).toBe('near');expect(s.phase).toBe('action');
  expect(Object.values(s.distanceMarkers!)).toEqual([{a:'A',b:'B',ownerId:'A',cardInstanceId:card}]);
- expect(s.players.B!.damage).toBe(0);expect(s.players.A!.hand).not.toContain(card);expect(s.discard).not.toContain(card);
+ expect(s.players.B!.damage).toBe(0);expect(s.players.A!.hand).not.toContain(card);expect(discardIds(s)).not.toContain(card);
  rejected(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});
  rejected(s,'A',{type:'APPROACH',targetId:'C',cardInstanceId:card});
 });
@@ -69,7 +69,7 @@ it.each(rows)('Physical %s advance cancels actual combat maai with one payment a
  rejected(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:card});
  s=finish(s);expect(s.players.B!.damage).toBe(10);expect(s.distances).toEqual(distances);
  expect(Object.values(s.distanceMarkers??{})).toEqual([]);
- expect(s.discard.filter(id=>id===card)).toHaveLength(1);expect(s.players.A!.reclaimUsage?.[getAction(card)!.name]).toBeUndefined();
+ expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);expect(s.players.A!.reclaimUsage?.[getAction(card)!.name]).toBeUndefined();
 });
 
 it.each(rows)('Physical %s approach canceled by actual maai discards its source without moving or attacking',card=>{
@@ -79,7 +79,7 @@ it.each(rows)('Physical %s approach canceled by actual maai discards its source 
  s=act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai});s=finish(s);
  expect(s.distances).toEqual(distances);expect(Object.values(s.distanceMarkers??{})).toEqual([]);
  expect(s.players.B!.damage).toBe(0);expect(s.phase).toBe('action');
- for(const id of [card,maai])expect(s.discard.filter(x=>x===id)).toHaveLength(1);
+ for(const id of [card,maai])expect(discardIds(s).filter(x=>x===id)).toHaveLength(1);
  rejected(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});
  rejected(s,'A',{type:'APPROACH',targetId:'C',cardInstanceId:card});
 });

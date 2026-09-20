@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { act, ready, until, finish, closeWindow, pass } from './combat-helpers.js';
 import { character, handCard, entropy } from './fixtures.js';
-import { transition, viewFor, type GameState } from '../src/index.js';
+import { transition, viewFor, type GameState, discardIds } from '../src/index.js';
 import { declarationNumbers } from '../src/abilities/declaration-resolution.js';
 import { effectPreview, damagePreview } from '../src/abilities/action-modifiers.js';
 const BEAST = 'c2-p06-r2c2-ab02', VANMIL = 'c2-p07-r1c2-ab02', GIL = 'c2-p01-r1c2-ab01';
@@ -115,7 +115,7 @@ describe('counter prerequisites fail through ordinary disposal', () => {
         s = cancelAbility(s, 'C');
         s = finish(s);
         expect(s.players.B!.damage).toBe(10);
-        expect(s.discard).toContain(card);
+        expect(discardIds(s)).toContain(card);
         expect(s.windows).toHaveLength(0);
     });
     it('Fate force-fail of Gil conversion fails defense and spends both sources', () => {
@@ -130,7 +130,7 @@ describe('counter prerequisites fail through ordinary disposal', () => {
         s = act(s, 'C', { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'force-fail', targetRollId: viewFor(s, 'C').reactionTargetRollId! });
         s = finish(s);
         expect(s.players.B!.damage).toBe(10);
-        expect(s.discard).toEqual(expect.arrayContaining([card, fate]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([card, fate]));
     });
     it('canceled redundant conversion keeps an original printed counter legal', () => {
         let s = ready();
@@ -219,7 +219,7 @@ it('Gil conversion can be declined or canceled before its check with ordinary sp
     s = cancelAbility(s, 'C');
     s = finish(s);
     expect(s.players.B!.damage).toBe(10);
-    expect(s.discard).toContain(card);
+    expect(discardIds(s)).toContain(card);
     expect((s.rolls ?? []).filter(r => r.purpose === 'ability-check')).toHaveLength(0);
 });
 

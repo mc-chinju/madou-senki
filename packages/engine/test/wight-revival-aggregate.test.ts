@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,pass,finish,until,closeWindow,readySetup} from './combat-helpers.js';
 import {entropy} from './fixtures.js';
 import {makeWightPhysicalScenario} from './fixtures/wight-physical-scenarios.js';
@@ -25,5 +25,5 @@ it.each([0,3])('structural destruction at hit%i prevents revival while every oth
  s=finish(JSON.parse(JSON.stringify(s)) as GameState);
  expect(s.players.A!.damage).toBe(26);
  expect(s.players.A!.followers).toEqual([]);
- expect(s.discard.filter(id=>id===SK)).toHaveLength(1);
+ expect(discardIds(s).filter(id=>id===SK)).toHaveLength(1);
 });

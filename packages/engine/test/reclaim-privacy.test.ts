@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {transition,viewFor,gameStats,type GameState} from '../src/index.js';
+import {transition,viewFor,gameStats,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 
@@ -26,7 +26,7 @@ it('Hidden owned versus unowned name has the same empty-or-private opportunity e
     expect(a.resolution).toContain(owner.cardId);expect(b.resolution).toContain(owner.cardId);
     a=pass(a);b=pass(b);sameOutsiders(a,b);
   }
-  expect(a.discard).toContain(owner.cardId);expect(b.discard).toContain(owner.cardId);
+  expect(discardIds(a)).toContain(owner.cardId);expect(discardIds(b)).toContain(owner.cardId);
   expect(a.phase).toBe('hand-adjustment');expect(b.phase).toBe('hand-adjustment');
 });
 
@@ -82,7 +82,7 @@ it('A follower bundle persists the public source order until every physical disp
   expect(viewFor(s,'A').reclaim!.cardInstanceId).toBe(second);expect(s.resolution).toContain(second);
   expect(s.phase).toBe('combat');
   for(let n=0;n<4;n++)s=pass(s);
-  expect(s.discard).toEqual(expect.arrayContaining([first,second]));
+  expect(discardIds(s)).toEqual(expect.arrayContaining([first,second]));
   expect(s.followerBundles).toEqual({});expect(s.actions).toEqual({});expect(s.phase).toBe('withdrawal');
 });
 
@@ -105,7 +105,7 @@ it('All-pass zero base extra and combined private histories preserve every publi
   worlds=worlds.map(s=>pass(JSON.parse(JSON.stringify(s)) as GameState));
  }
  compare();expect(recoverySeats).toBe(4);
- for(const s of worlds){expect(s.windows).toEqual([]);expect(s.phase).toBe('withdrawal');expect(s.discard).toContain(card);}
+ for(const s of worlds){expect(s.windows).toEqual([]);expect(s.phase).toBe('withdrawal');expect(discardIds(s)).toContain(card);}
 });
 
 
@@ -136,7 +136,7 @@ it.each(['A','B','C','D'] as const)('Actual source %s starts clockwise recovery 
   s=pass(s);
  }
  expect(s.reclaimDecisions!.find(d=>d.id===decisionId)!.stage).toBe('closed');
- expect(s.discard.filter(c=>c===card)).toHaveLength(1);
+ expect(discardIds(s).filter(c=>c===card)).toHaveLength(1);
  expect(s.players[owner]!.hand).not.toContain(card);
  expect(s.phase).toBe('hand-adjustment');
 });

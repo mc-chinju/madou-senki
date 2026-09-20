@@ -1,4 +1,4 @@
-import {createGame,transition} from '@madou/engine';
+import {createGame,transition, moveToDiscard } from '@madou/engine';
 import {getCharacter} from '@madou/catalog';
 import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 /** Initial allocation only; claim, cancellation and Dawn resolution are produced by commands. */
@@ -12,6 +12,6 @@ export function makeCanonicalRecovery(players:{id:string;name:string}[]){
  for(const p of Object.values(s.players))p.permanent={warrior_level:20,endurance:100};
  const bow=takeCard(s,a,'踏み込み／弓'),fate=takeCard(s,b,'命運凶変'),dawn=takeCard(s,d,'大陸の夜明け');
  s.players[d]!.hand=s.players[d]!.hand.filter(id=>id!==dawn);
- trimHand(s,a,bow);trimHand(s,b,fate);s.deck.unshift(dawn);s.discard.push(s.deck.pop()!);
+ trimHand(s,a,bow);trimHand(s,b,fate);s.deck.unshift(dawn);for(const __discarded of [s.deck.pop()!])moveToDiscard(s,__discarded,{faceUp:true});
  return s;
 }

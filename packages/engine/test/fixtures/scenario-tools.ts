@@ -1,5 +1,5 @@
 import { actionCards, characters } from '@madou/catalog';
-import { initialProtection, factionObjective, pendingSetupSeats, type GameState } from '@madou/engine';
+import { initialProtection, factionObjective, pendingSetupSeats, type GameState, discardIds } from '@madou/engine';
 
 /** Ready every remaining seat through the concurrent setup rounds (G10) and leave setup. */
 export function readySetup(current: () => GameState, pass: (actorId: string) => void): void {
@@ -15,7 +15,7 @@ export const entropy = () => ({ now: 1000, dice: Array(100).fill(1) as number[],
 export function takeCard(state: GameState, owner: string, reference: string): string {
   const card = actionCards.find(entry => entry.name === reference || entry.id === reference); if (!card) throw Error('FIXTURE_UNKNOWN_CARD');
   const id = card.id;
-  state.deck = state.deck.filter(value => value !== id); state.discard = state.discard.filter(value => value !== id);
+  state.deck = state.deck.filter(value => value !== id); state.discard = state.discard.filter(entry => entry.cardInstanceId !== id);
   for (const player of Object.values(state.players)) {
     player.hand = player.hand.filter(value => value !== id); player.open = player.open.filter(value => value !== id);
   }

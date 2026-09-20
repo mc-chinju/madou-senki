@@ -1,11 +1,11 @@
 import {expect,it} from 'vitest';
 import {getAction,getCharacter} from '@madou/catalog';
-import {allCardInstanceIds,gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {allCardInstanceIds,gameStats,transition,viewFor,type GameState, discardIds, moveToDiscard } from '../src/index.js';
 import {act,closeWindow,finish,pass,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const wishes=['a2-p04-r3c2','a2-p04-r3c3'] as const;
 function take(s:GameState,owner:string,id:string){
- s.deck=s.deck.filter(x=>x!==id);s.discard=s.discard.filter(x=>x!==id);
+ s.deck=s.deck.filter(x=>x!==id);s.discard = s.discard.filter(entry => entry.cardInstanceId !== id);
  for(const p of Object.values(s.players)){for(const z of ['hand','open','attachments'] as const)p[z]=p[z].filter(x=>x!==id);for(const z of ['followers','chants'] as const)p[z]=p[z].filter(x=>x.cardInstanceId!==id);}
  s.players[owner]!.hand.push(id);return id;
 }
@@ -21,7 +21,7 @@ function nextOwn(s:GameState,middle=(s:GameState,owner:string)=>act(s,owner,{typ
 }
 it.each(wishes)('%s has a cancellable physical payment and no catalog until the declaration resolves',id=>{
  let s=start(id),before=[...s.players.A!.hand];s=act(s,'A',{type:'PASS_ACTION'});expect(s.players.A!.hand).toEqual(before);expect(viewFor(s,'A').wish).toBeNull();
- s=start(id);const fate=handCard(s,'B','命運凶変');s=play(s,id);expect(s.resolution).toContain(id);expect(viewFor(s,'A').wish).toBeNull();const targetActionId=viewFor(s,'A').reactionTargetActionId!;s=pass(s);s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId}));expect(s.discard).toContain(id);expect(s.wishes??[]).toEqual([]);expect(s.events.some(e=>e.type==='WISH_ACQUIRED')).toBe(false);expect(s.phase).toBe('hand-adjustment');
+ s=start(id);const fate=handCard(s,'B','命運凶変');s=play(s,id);expect(s.resolution).toContain(id);expect(viewFor(s,'A').wish).toBeNull();const targetActionId=viewFor(s,'A').reactionTargetActionId!;s=pass(s);s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId}));expect(discardIds(s)).toContain(id);expect(s.wishes??[]).toEqual([]);expect(s.events.some(e=>e.type==='WISH_ACQUIRED')).toBe(false);expect(s.phase).toBe('hand-adjustment');
 });
 it.each(wishes)('%s privately searches by name, randomly selects a duplicate and shuffles once',id=>{
  let s=start(id);const first=take(s,'D','a2-p04-r3c2'===id?'a2-p04-r3c3':'a2-p04-r3c2');s.players.D!.hand=s.players.D!.hand.filter(x=>x!==first);s.deck.unshift(first);
@@ -29,7 +29,7 @@ it.each(wishes)('%s privately searches by name, randomly selects a duplicate and
  const names=new Map<string,string[]>();for(const card of s.deck){const name=getAction(card)!.name;names.set(name,[...(names.get(name)??[]),card]);}const [name,copies]=[...names].find(([,ids])=>ids.length>1&&getAction(ids[0]!)!.category!=='open')!;
  const previous=[...s.deck],low=finish(choose(s,{kind:'deck',cardName:name},Array(2000).fill(0))),high=finish(choose(s,{kind:'deck',cardName:name},Array(2000).fill(.999)));
  expect(low.players.A!.hand).toContain(copies[0]);expect(high.players.A!.hand).toContain(copies.at(-1));expect(low.deck).not.toEqual(previous.filter(x=>x!==copies[0]));expect(high.deck).toEqual(previous.filter(x=>x!==copies.at(-1)));
- expect(low.events.filter(e=>e.type==='WISH_ACQUIRED'&&e.audience!=='public')).toHaveLength(1);expect(viewFor(low,'C').logs.filter(e=>e.type==='WISH_ACQUIRED').every(e=>!e.cardInstanceId)).toBe(true);expect(low.discard).toContain(id);expect(low.phase).toBe('hand-adjustment');
+ expect(low.events.filter(e=>e.type==='WISH_ACQUIRED'&&e.audience!=='public')).toHaveLength(1);expect(viewFor(low,'C').logs.filter(e=>e.type==='WISH_ACQUIRED').every(e=>!e.cardInstanceId)).toBe(true);expect(discardIds(low)).toContain(id);expect(low.phase).toBe('hand-adjustment');
 });
 it.each(wishes)('%s retains the same private decision on absent name, forged source, stale ID, foreign actor or attempted pass',id=>{
  let s=until(play(start(id),id),'wish'),d=viewFor(s,'A').wish!;
@@ -66,13 +66,13 @@ it.each(wishes)('%s excludes otherworld possessions and all forbidden physical z
  let s=start(id);const assigned=['a2-p03-r1c2','a2-p03-r1c3','a2-p19-r2c3','a2-p11-r3c2','a2-p01-r2c2'];
  for(const card of assigned)take(s,'B',card);s.players.B!.hand=s.players.B!.hand.filter(x=>!assigned.includes(x));s.players.B!.attachments.push(assigned[0]!);s.players.B!.hand.push(assigned[1]!);s.players.B!.followers.push({cardInstanceId:assigned[2]!,revealed:true});s.players.B!.chants.push({cardInstanceId:assigned[3]!,revealed:true});s.players.B!.open.push(assigned[4]!);s.players.B!.presence='otherworld';
  const follower=take(s,'C','a2-p19-r3c1');s.players.C!.hand=s.players.C!.hand.filter(x=>x!==follower);s.players.C!.followers.push({cardInstanceId:follower,revealed:true});
- const disc=take(s,'D','a2-p04-r2c1'),reserved=take(s,'D','a2-p05-r3c1'),marker=take(s,'D','a2-p05-r3c2');s.players.D!.hand=s.players.D!.hand.filter(x=>![disc,reserved,marker].includes(x));s.discard.push(disc);s.reclaimReservations.push(reserved);s.distanceMarkers={prior:{a:'C',b:'D',ownerId:'D',cardInstanceId:marker}};
+ const disc=take(s,'D','a2-p04-r2c1'),reserved=take(s,'D','a2-p05-r3c1'),marker=take(s,'D','a2-p05-r3c2');s.players.D!.hand=s.players.D!.hand.filter(x=>![disc,reserved,marker].includes(x));moveToDiscard(s,disc,{faceUp:true});s.reclaimReservations.push(reserved);s.distanceMarkers={prior:{a:'C',b:'D',ownerId:'D',cardInstanceId:marker}};
  s=until(play(s,id),'wish');const d=viewFor(s,'A').wish!;expect(d.handOwners.some(o=>o.ownerId==='B')).toBe(false);expect(d.publicSources.some(o=>o.ownerId==='B')).toBe(false);
  for(const cardInstanceId of [...assigned,follower,disc,reserved,marker,id,'virtual-follower'])reject(s,'A',{type:'CHOOSE_WISH',decisionId:d.decisionId,source:{kind:'public',cardInstanceId}});
  reject(s,'A',{type:'CHOOSE_WISH',decisionId:d.decisionId,source:{kind:'hand',ownerId:'B'}});
 });
 it.each(wishes)('%s first publishes a deck Fusen once and preserves its selected result through OPEN revival',id=>{
- let s=start(id);character(s,'D','忍びのイダ');const open=take(s,'D','a2-p01-r1c1');s.players.D!.hand=s.players.D!.hand.filter(x=>x!==open);s.deck.unshift(open);s.discard.push(...s.players.D!.hand);s.players.D!.hand=[];s.players.D!.presence='dead';s=until(play(s,id),'wish');const decisionId=viewFor(s,'A').wish!.decisionId;
+ let s=start(id);character(s,'D','忍びのイダ');const open=take(s,'D','a2-p01-r1c1');s.players.D!.hand=s.players.D!.hand.filter(x=>x!==open);s.deck.unshift(open);for(const __discarded of [...s.players.D!.hand])moveToDiscard(s,__discarded,{faceUp:true});s.players.D!.hand=[];s.players.D!.presence='dead';s=until(play(s,id),'wish');const decisionId=viewFor(s,'A').wish!.decisionId;
  s=choose(s,{kind:'deck',cardName:getAction(open)!.name});expect(s.windows!.at(-1)!.kind).toBe('before-roll');expect(s.wishes!.find(d=>d.id===decisionId)!.acquisition!.cardInstanceId).toBe(open);expect(s.players.A!.open).toContain(open);expect(s.players.A!.hand).not.toContain(open);
  s=until(s,'revival');s=act(s,'D',{type:'CHOOSE_REVIVAL',revive:false});s=finish(s);expect(s.events.filter(e=>e.type==='OPEN'&&e.cardInstanceId===open)).toHaveLength(1);expect(s.phase).toBe('hand-adjustment');reject(s,'A',{type:'CHOOSE_WISH',decisionId,source:{kind:'deck',cardName:getAction(open)!.name}});
 });
@@ -88,7 +88,7 @@ it.each(wishes)('%s applies capacity loss immediately, excludes irremovable foll
  const fs=['a2-p19-r2c3','a2-p19-r3c1','a2-p21-r2c1'].map(card=>take(s,'B',card));s=nextOwn(act(s,'A',{type:'PASS_ACTION'}),(s,owner)=>act(s,owner,owner==='B'?{type:'ARRANGE_FOLLOWERS',cardInstanceIds:fs}:{type:'PASS_ACTION'}));
  s=choose(until(play(s,id),'wish'),{kind:'public',cardInstanceId:blessing});expect(gameStats(s,'B').followerLimit).toBe(2);expect(gameStats(s,'A').followerLimit).toBe(3);expect(s.windows!.at(-1)!.kind).toBe('wish-capacity');expect(viewFor(s,'A').wishCapacity).toBeNull();const d=viewFor(s,'B').wishCapacity!;expect(d.followerCount).toBe(1);expect(d.followerIds).not.toContain(fs[2]);expect(viewFor(s,'C').players.B!.followers.every(f=>f.face==='back')).toBe(true);
  reject(s,'B',{type:'CHOOSE_WISH_CAPACITY',decisionId:d.decisionId,followerIds:[fs[2]],chantIds:[]});reject(s,'A',{type:'CHOOSE_WISH_CAPACITY',decisionId:d.decisionId,followerIds:[fs[0]],chantIds:[]});
- s=act(s,'B',{type:'CHOOSE_WISH_CAPACITY',decisionId:d.decisionId,followerIds:[fs[0]],chantIds:[]});s=finish(s);expect(s.players.B!.followers.map(f=>f.cardInstanceId)).toEqual(fs.slice(1));expect(s.discard).toContain(fs[0]);expect(s.phase).toBe('hand-adjustment');
+ s=act(s,'B',{type:'CHOOSE_WISH_CAPACITY',decisionId:d.decisionId,followerIds:[fs[0]],chantIds:[]});s=finish(s);expect(s.players.B!.followers.map(f=>f.cardInstanceId)).toEqual(fs.slice(1));expect(discardIds(s)).toContain(fs[0]);expect(s.phase).toBe('hand-adjustment');
 });
 it.each(wishes)('%s chooses excess chants after Haja loss but retains an excess hand until that owners turn end',id=>{
  let s=start(id);const haja=handCard(s,'B','賢者ハジャ');s.players.B!.hand=s.players.B!.hand.filter(x=>x!==haja);s.players.B!.open.push(haja);
@@ -121,6 +121,6 @@ it.each(wishes)('%s theft leaves the independent spirit growth from an actual su
 });
 it.each(wishes)('%s first publishes a deck Dawn and returns otherworld owners once while its source stays paid',id=>{
  let s=start(id);const dawn=take(s,'D','a2-p01-r1c2');s.players.D!.hand=s.players.D!.hand.filter(x=>x!==dawn);s.deck.unshift(dawn);s.players.B!.presence='otherworld';s=until(play(s,id),'wish');
- s=choose(s,{kind:'deck',cardName:getAction(dawn)!.name});expect(s.players.B!.presence).toBe('active');expect(s.players.A!.open).toContain(dawn);expect(s.deck).not.toContain(id);expect(s.resolution).toContain(id);expect(s.discard).toEqual([]);
- s=finish(s);expect(s.events.filter(e=>e.type==='OPEN'&&e.cardInstanceId===dawn)).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_RETURNED'&&e.actorId==='B')).toHaveLength(1);expect(s.discard).toContain(id);
+ s=choose(s,{kind:'deck',cardName:getAction(dawn)!.name});expect(s.players.B!.presence).toBe('active');expect(s.players.A!.open).toContain(dawn);expect(s.deck).not.toContain(id);expect(s.resolution).toContain(id);expect(discardIds(s)).toEqual([]);
+ s=finish(s);expect(s.events.filter(e=>e.type==='OPEN'&&e.cardInstanceId===dawn)).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_RETURNED'&&e.actorId==='B')).toHaveLength(1);expect(discardIds(s)).toContain(id);
 });

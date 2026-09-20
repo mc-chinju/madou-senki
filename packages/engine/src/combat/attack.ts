@@ -12,7 +12,7 @@ import {validDispel,beginDispel,resolveDispel} from '../effects/dispel.js';
 import {resolveInformationAnytime} from '../effects/anytime-information.js';
 import {resolveNamedAnytimeCard} from '../effects/remaining-anytime-cards.js';
 import {resolveTurnCard,finishTurnCardBatch} from '../effects/remaining-turn-cards.js';
-import {discardPhysical} from '../discard.js';
+import {discardPhysical,moveToDiscard} from '../discard.js';
 import {acceptAnytimeCard,COURAGE} from '../effects/remaining-anytime.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
 import {enqueueLifecycle} from '../lifecycle/events.js';
@@ -173,11 +173,12 @@ function finishDistance(s:GameState,a:ActionFrame,success:boolean):void{
 function finalizeDistance(s:GameState,a:ActionFrame,success:boolean):void{
   const ids=[...(a.distanceAdvances??[]),...(a.distanceMaais??[])];const key=distanceKey(a.actorId,a.distanceTargetId!);let marker:string|undefined;
   if(a.distanceMode==='approach'&&success)marker=a.distanceAdvances!.at(-1);
-  for(const id of ids){const index=s.resolution.indexOf(id);if(index>=0){s.resolution.splice(index,1);if(id!==marker)s.discard.push(id);}}
+  // Advance and maai cards were played face up to change the distance.
+  for(const id of ids){const index=s.resolution.indexOf(id);if(index>=0){s.resolution.splice(index,1);if(id!==marker)moveToDiscard(s,id,{ownerId:a.actorId,faceUp:true});}}
   if(a.distanceMode==='approach')s.phase='action';
   if(a.distanceMode==='approach'&&success){s.distances[a.actorId]![a.distanceTargetId!]='near';s.distances[a.distanceTargetId!]![a.actorId]='near';(s.distanceMarkers??={})[key]={a:a.actorId,b:a.distanceTargetId!,ownerId:a.actorId,cardInstanceId:marker!};s.phase='action';}
   if(a.distanceMode==='withdrawal'){
-    if(success){s.distances[a.actorId]![a.distanceTargetId!]='far';s.distances[a.distanceTargetId!]![a.actorId]='far';const old=s.distanceMarkers?.[key];if(old){s.discard.push(old.cardInstanceId);delete s.distanceMarkers![key];}}
+    if(success){s.distances[a.actorId]![a.distanceTargetId!]='far';s.distances[a.distanceTargetId!]![a.actorId]='far';const old=s.distanceMarkers?.[key];if(old){moveToDiscard(s,old.cardInstanceId,{ownerId:old.ownerId,faceUp:true});delete s.distanceMarkers![key];}}
     s.phase='hand-adjustment';
   }
   delete s.actions![a.id];
@@ -492,7 +493,8 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
       if(hasPendingFatal(s,p.id))reject('STOPPED');
       const group=activeGroup(s,w);const target=s.players[w.continuation.targetId!]!;
-      if(c.discard){s.discard.push(...target.chants.map(chant=>chant.cardInstanceId));target.chants=[];}
+      // A chant swept off the table is only face up if it had already been revealed.
+      if(c.discard){for(const chant of target.chants)moveToDiscard(s,chant.cardInstanceId,{ownerId:target.id,faceUp:chant.revealed});target.chants=[];}
       s.windows!.pop();group.targetCursor++;nextDefense(s,group);
     }else if(c.type==='PASS_WITHDRAWAL'){
       if(w||s.phase!=='withdrawal'||s.seatOrder[s.turnSeat]!==p.id)reject('WRONG_PHASE');recordPass(s,p.id,'withdrawal');

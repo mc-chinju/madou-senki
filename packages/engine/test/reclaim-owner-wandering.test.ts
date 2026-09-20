@@ -3,7 +3,7 @@ import {handCard} from './fixtures.js';
 import {absentRecoveryResponse} from './reclaim-public-absence-helpers.js';
 import {expect,it} from 'vitest';
 import {actionCards,getCharacter} from '@madou/catalog';
-import {allCardInstanceIds,gameStats,viewFor} from '../src/index.js';
+import {allCardInstanceIds,gameStats,viewFor, discardIds } from '../src/index.js';
 import {act,finish,pass,until} from './combat-helpers.js';
 import {makeReclaimWandering} from './fixtures/reclaim-wandering-scenario.js';
 
@@ -27,7 +27,7 @@ it('Actual protected Lia death makes the counter reservation owner wander before
  for(let n=0;s.windows?.length&&n<500;n++){
   expect(s.players.B!.lifeId??'initial-life:B').toBe(life);
   if(s.reclaimReservations.includes(counter)){
-   expect(s.deck).not.toContain(counter);expect(s.discard).not.toContain(counter);
+   expect(s.deck).not.toContain(counter);expect(discardIds(s)).not.toContain(counter);
    for(const p of Object.values(s.players))expect(p.hand).not.toContain(counter);
   }
   const saved=JSON.parse(JSON.stringify(s));
@@ -39,7 +39,7 @@ it('Actual protected Lia death makes the counter reservation owner wander before
  expect(s.players.B!.presence).toBe('wandering');expect(s.players.B!.lifeId??'initial-life:B').toBe(life);
  expect(s.players.B!.hand.filter(id=>id===counter)).toHaveLength(1);
  expect(s.players.B!.reclaimUsage).toEqual(used);expect(s.reclaimReservations).toEqual([]);
- expect(s.reclaim?.[counter]).toBeUndefined();expect(s.deck).not.toContain(counter);expect(s.discard).not.toContain(counter);
+ expect(s.reclaim?.[counter]).toBeUndefined();expect(s.deck).not.toContain(counter);expect(discardIds(s)).not.toContain(counter);
  expect(s.windows??[]).toEqual([]);expect(s.lifecycle??[]).toEqual([]);expect(Object.keys(s.actions??{})).toEqual([]);expect(Object.keys(s.groups??{})).toEqual([]);
  expect(allCardInstanceIds(s).sort()).toEqual(actionCards.map(c=>c.id).sort());
  expect(s.events.filter(e=>e.type==='PLAYER_WANDERING'&&e.actorId==='B')).toHaveLength(1);
@@ -57,6 +57,6 @@ it('Actual protected Lia death makes the counter reservation owner wander before
   const actor=absentRecoveryResponse(s,heal,['B','C'],['D','E','F','A']);expect(actor).not.toBeNull();responses.push(actor!);
   s=pass(JSON.parse(JSON.stringify(s)));
  }
- expect(responses).toEqual(['D','E','F','A']);expect(s.discard.filter(id=>id===heal)).toHaveLength(1);
+ expect(responses).toEqual(['D','E','F','A']);expect(discardIds(s).filter(id=>id===heal)).toHaveLength(1);
 
 });

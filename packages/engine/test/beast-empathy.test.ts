@@ -1,5 +1,5 @@
 import {it,expect} from 'vitest';
-import {viewFor,transition,type GameState} from '../src/index.js';
+import {viewFor,transition,type GameState, discardIds } from '../src/index.js';
 import {act,ready,until,pass,closeWindow,finish} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 const BEAST='c2-p05-r1c2-ab03';
@@ -16,7 +16,7 @@ it('canonical Upa selects ignore, earns a private saved subset after damage, tra
  expect(viewFor(s,'A').beastCapture!.candidates.map(c=>c.cardInstanceId)).toEqual([first,second]);
  for(const actor of ['B','C','D']){expect(viewFor(s,actor).beastCapture).toBeNull();expect(viewFor(s,actor).lifecycleDecision).toBeNull();}
  for(const actor of ['C','D']){expect(JSON.stringify(viewFor(s,actor))).not.toContain(first);expect(JSON.stringify(viewFor(s,actor))).not.toContain(second);}
- s=choose(s,[second]);expect(viewFor(s,'A').beastCapture).toBeNull();expect(s.players.A!.hand).toContain(second);expect(s.players.B!.followers).toEqual([{cardInstanceId:first,revealed:false}]);expect(s.windows!.some(w=>w.id===parent.id)).toBe(true);while(s.windows!.at(-1)!.id!==parent.id)s=pass(s);expect(s.windows!.at(-1)!.continuation).toEqual(parent.continuation);s=finish(s);expect(s.phase).toBe('withdrawal');expect(Object.keys(s.actions!)).toHaveLength(0);expect(s.discard.filter(id=>id===card)).toHaveLength(1);expect(s.resolution).not.toContain(card);
+ s=choose(s,[second]);expect(viewFor(s,'A').beastCapture).toBeNull();expect(s.players.A!.hand).toContain(second);expect(s.players.B!.followers).toEqual([{cardInstanceId:first,revealed:false}]);expect(s.windows!.some(w=>w.id===parent.id)).toBe(true);while(s.windows!.at(-1)!.id!==parent.id)s=pass(s);expect(s.windows!.at(-1)!.continuation).toEqual(parent.continuation);s=finish(s);expect(s.phase).toBe('withdrawal');expect(Object.keys(s.actions!)).toHaveLength(0);expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);expect(s.resolution).not.toContain(card);
  for(const actor of ['C','D'])expect(JSON.stringify(viewFor(s,actor))).not.toContain(second);
 });
 it.each(['empty','pass','all'])('capture %s completes once without costs or refill',mode=>{
@@ -48,7 +48,7 @@ it.each(['blocked-front','zero-body','cancel-ignore','normal-defense'] as const)
 });
 it('actual lethal damage marks target pending then captures before death gift and disposal',()=>{
  let {s,first,second}=start();s.players.B!.damage=viewFor(s,'B').self.stats.endurance-1;s=use(s);s=until(s,'beast-capture');expect(s.players.B!.presence).toBe('pending-death');expect(s.events.some(e=>e.type==='PLAYER_DIED')).toBe(false);expect(s.lifecycle!.filter(t=>t.kind==='death-batch'||t.kind==='beast-capture').map(t=>t.kind)).toEqual(['death-batch','beast-capture']);
- s=choose(s,[first]);s=until(s,'death-gift');expect(s.players.B!.presence).toBe('pending-death');expect(s.players.A!.hand).toContain(first);s=finish(s);expect(s.discard).toContain(second);expect(s.discard).not.toContain(first);expect(s.events.findIndex(e=>e.type==='BEAST_CAPTURED')).toBeLessThan(s.events.findIndex(e=>e.type==='PLAYER_DIED'));
+ s=choose(s,[first]);s=until(s,'death-gift');expect(s.players.B!.presence).toBe('pending-death');expect(s.players.A!.hand).toContain(first);s=finish(s);expect(discardIds(s)).toContain(second);expect(discardIds(s)).not.toContain(first);expect(s.events.findIndex(e=>e.type==='BEAST_CAPTURED')).toBeLessThan(s.events.findIndex(e=>e.type==='PLAYER_DIED'));
 });
 function bundle(mixed=false,boostMagic=false){let s=ready();character(s,'A','獣使いのウパニシャット');const griffin=handCard(s,'A','グリフォン');const fire=mixed?handCard(s,'A','炎竜'):undefined;const beast=place(s,'B','水竜');const prayer=boostMagic?handCard(s,'A','必勝の祈り'):undefined;const o=viewFor(s,'A').followerBundleOptions.find(o=>o.abilityId==='c2-p05-r1c2-ab02')!;s=act(s,'A',{type:'USE_FOLLOWER_ATTACK',abilityId:o.abilityId,targetEventId:o.targetEventId,sources:[{cardInstanceId:griffin,dedicated:false,targetIds:['B']},...(fire?[{cardInstanceId:fire,dedicated:false,targetIds:['B','C','D']}]:[])]});if(prayer){for(let n=0;n<150;n++){if(s.windows!.at(-1)!.kind==='effect-level'&&Object.values(s.actions!).find(a=>a.id===s.windows!.at(-1)!.continuation.id)?.cardInstanceId===fire)break;s=pass(s);}s=priority(s);s=act(s,'A',{type:'PLAY_REACTION',cardInstanceId:prayer,mode:'effect-plus',targetActionId:s.windows!.at(-1)!.continuation.id});s=closeWindow(s,[2]);s=closeWindow(s);}s=until(s,'attack-abilities');return {s,beast,griffin,fire};}
 it.each([false,true])('actual C10 Griffin two warrior hits qualifies individually; mixed=%s magic does not',mixed=>{

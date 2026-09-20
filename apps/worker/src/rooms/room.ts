@@ -264,6 +264,12 @@ export class Room extends DurableObject<Env> {
       };
       delete (game as typeof game & { setupCursor?: number }).setupCursor;
     }
+    const discard = game?.discard as NonNullable<RoomData['game']>['discard'] | string[] | undefined;
+    if (discard?.some(entry => typeof entry === 'string')) {
+      // Saves from before the pile recorded its origins. The seat that let each card go is gone,
+      // so nobody claims them; the table had already seen the ones it was allowed to see.
+      game!.discard = (discard as string[]).map(cardInstanceId => ({ cardInstanceId, faceUp: true }));
+    }
     return snapshot;
   }
 

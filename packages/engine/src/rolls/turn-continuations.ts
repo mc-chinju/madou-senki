@@ -6,6 +6,7 @@ import {isActive} from '../lifecycle/objectives.js';
 import type { GameState } from '../state.js';
 import { EntropyError, refillHand } from '../setup.js';
 import { beginRoll } from './advance.js';
+import { moveToDiscard } from '../discard.js';
 import type { RollFrame } from './frames.js';
 export function advanceTurnRolls(s: GameState, dice: () => number, random: () => number, now: number): void {
     const turn = s.turnRoll!;
@@ -62,7 +63,8 @@ export function resumeTurnRoll(s: GameState, frame: RollFrame, dice: () => numbe
         const index = s.resolution.indexOf(id);
         if (index >= 0) {
             s.resolution.splice(index, 1);
-            s.discard.push(id);
+            // The potion was named in public when it was used.
+            moveToDiscard(s, id, { ownerId: p.id, faceUp: true });
         }
     }
     else

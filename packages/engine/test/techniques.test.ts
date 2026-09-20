@@ -1,3 +1,4 @@
+import {discardIds, moveToDiscard } from '../src/index.js';
 import {passReclaims} from './combat-helpers.js';
 import { expect, it } from 'vitest';
 import * as engine from '../src/index.js';
@@ -30,7 +31,7 @@ it.each(ordinary)('resolves and consumes the ordinary printed technique %s %s', 
   expect(action.technique.effectLevel).toBe(effectLevel);
   state = finish(state);
   expect(state.players.B!.damage).toBe(damage);
-  expect(state.discard).toContain(card);
+  expect(discardIds(state)).toContain(card);
   expect(state.resolution).not.toContain(card);
 });
 
@@ -63,7 +64,7 @@ it.each(dedicated)('applies the optional dedicated section of %s only when selec
   expect(action.checks).toEqual([]);
   state = finish(state);
   for (const target of targets) expect(state.players[target]!.damage).toBe(damage);
-  expect(state.discard).toContain(card);
+  expect(discardIds(state)).toContain(card);
 });
 
 it.each(ordinary.map(([, name]) => name))('rejects a wrong-owner dedicated selection for %s without mutation', name => {
@@ -100,7 +101,7 @@ it.each(extraMaaiTechniques)('does not evade %s with only one of the required tw
   state=until(state,'follower-start');
   state = finish(state);
   expect(state.players.B!.damage).toBe(damage);
-  expect(state.discard).toEqual(expect.arrayContaining([attack, maai]));
+  expect(discardIds(state)).toEqual(expect.arrayContaining([attack, maai]));
 });
 
 it('shares each attacker advance across targets and preserves uncancelled maai toward the retry', () => {
@@ -129,7 +130,7 @@ it('shares each attacker advance across targets and preserves uncancelled maai t
   state = finish(state);
   expect(state.players.B!.damage).toBe(0);
   expect(state.players.C!.damage).toBe(0);
-  expect(state.discard).toEqual(expect.arrayContaining([bFirst, bSecond, cFirst, cSecond, bRetry, cRetry, advance, attack]));
+  expect(discardIds(state)).toEqual(expect.arrayContaining([bFirst, bSecond, cFirst, cSecond, bRetry, cRetry, advance, attack]));
 });
 
 it.each(['雷斬剣', '裂風斬'])('rejects 見切る against %s before consuming the defense', name => {
@@ -153,7 +154,7 @@ it('keeps follower HP bypass distinct from follower bypass and does not silently
   hpBypass = act(hpBypass, 'A', { type: 'ATTACK', cardInstanceId: wind, targetIds: ['B'], dedicated: false });
   hpBypass = finish(hpBypass);
   expect(hpBypass.players.B!.damage).toBe(6);
-  expect(hpBypass.discard).toContain(fort);
+  expect(discardIds(hpBypass)).toContain(fort);
 
   let followerBypass = ready();
   character(followerBypass, 'A', '黒妖精のアーネス');
@@ -204,7 +205,7 @@ it('keeps 裂風斬 ordinary follower HP bypass while still applying level compa
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false });
   state = finish(state);
   expect(state.players.B!.damage).toBe(8);
-  expect(state.discard).toContain(fort);
+  expect(discardIds(state)).toContain(fort);
 });
 
 it('destroys matching-attribute followers before ordinary level defense', () => {
@@ -220,7 +221,7 @@ it('destroys matching-attribute followers before ordinary level defense', () => 
   state = finish(state);
   expect(state.players.B!.damage).toBe(4);
   expect(state.players.B!.followers).toEqual([]);
-  expect(state.discard).toEqual(expect.arrayContaining([white, soldier, attack]));
+  expect(discardIds(state)).toEqual(expect.arrayContaining([white, soldier, attack]));
 });
 
 it('destroys every follower at or below the dedicated final effect level across all targets', () => {
@@ -240,7 +241,7 @@ it('destroys every follower at or below the dedicated final effect level across 
   expect(state.players.C!.damage).toBe(16);
   expect(state.players.B!.followers).toEqual([]);
   expect(state.players.C!.followers).toEqual([]);
-  expect(state.discard).toEqual(expect.arrayContaining([guardian, fireDragon, metalGolem, attack]));
+  expect(discardIds(state)).toEqual(expect.arrayContaining([guardian, fireDragon, metalGolem, attack]));
 });
 
 it('keeps white followers untouched and unrevealed when maai fully evades 破黒剣', () => {
@@ -259,8 +260,8 @@ it('keeps white followers untouched and unrevealed when maai fully evades 破黒
   state = finish(state);
   expect(state.players.B!.damage).toBe(0);
   expect(state.players.B!.followers).toEqual([{ cardInstanceId: guardian, revealed: false }]);
-  expect(state.discard).toEqual(expect.arrayContaining([attack, maai]));
-  expect(state.discard).not.toContain(guardian);
+  expect(discardIds(state)).toEqual(expect.arrayContaining([attack, maai]));
+  expect(discardIds(state)).not.toContain(guardian);
   expect(engine.allCardInstanceIds(state)).toHaveLength(220);
   expect(new Set(engine.allCardInstanceIds(state)).size).toBe(220);
   expect(JSON.parse(JSON.stringify(state))).toEqual(state);
@@ -282,8 +283,8 @@ it('keeps followers untouched and unrevealed when two maai fully evade dedicated
   state = finish(state);
   expect(state.players.B!.damage).toBe(0);
   expect(state.players.B!.followers).toEqual([{ cardInstanceId: fireDragon, revealed: false }]);
-  expect(state.discard).toEqual(expect.arrayContaining([attack, firstMaai, secondMaai]));
-  expect(state.discard).not.toContain(fireDragon);
+  expect(discardIds(state)).toEqual(expect.arrayContaining([attack, firstMaai, secondMaai]));
+  expect(discardIds(state)).not.toContain(fireDragon);
   expect(engine.allCardInstanceIds(state)).toHaveLength(220);
   expect(new Set(engine.allCardInstanceIds(state)).size).toBe(220);
   expect(JSON.parse(JSON.stringify(state))).toEqual(state);
@@ -312,8 +313,8 @@ it('skips follower destruction only for the evaded target in a mixed multi-targe
   expect(state.players.B!.followers).toEqual([{ cardInstanceId: bGuardian, revealed: false }]);
   expect(state.players.C!.damage).toBe(16);
   expect(state.players.C!.followers).toEqual([]);
-  expect(state.discard).toEqual(expect.arrayContaining([attack, firstMaai, secondMaai, cGolem]));
-  expect(state.discard).not.toContain(bGuardian);
+  expect(discardIds(state)).toEqual(expect.arrayContaining([attack, firstMaai, secondMaai, cGolem]));
+  expect(discardIds(state)).not.toContain(bGuardian);
   expect(engine.allCardInstanceIds(state)).toHaveLength(220);
   expect(new Set(engine.allCardInstanceIds(state)).size).toBe(220);
   expect(JSON.parse(JSON.stringify(state))).toEqual(state);
@@ -332,7 +333,7 @@ it('freezes spirit-based damage when the damage window closes', () => {
   state = until(state, 'normal-defense');
   expect(Object.values(state.groups!)[0]!.targets[0]!.hits[0]!.damage).toBe(9);
   state.players.A!.attachments = state.players.A!.attachments.filter(id => id !== charm);
-  state.discard.push(charm);
+  moveToDiscard(state,charm,{faceUp:true});
   expect(JSON.parse(JSON.stringify(state))).toEqual(state);
   state = finish(state);
   expect(state.players.B!.damage).toBe(9);

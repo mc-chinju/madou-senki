@@ -1,6 +1,7 @@
 import {recordAbility,recordAttackEnded,recordCardPlayed} from '../public-record.js';
 import {printedTechniqueAllowed} from './printed-restrictions.js';
 import {offerReclaim} from '../reclaim.js';
+import {moveToDiscard} from '../discard.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
 import {conditionalSourcePreview} from '../abilities/conditional-preview.js';
 import {gameStats} from '../game-stats.js';
@@ -76,7 +77,8 @@ export function discardBundle(s:GameState,b:FollowerBundle):boolean{
    cardInstanceId:a.cardInstanceId,trigger:'named-card-used',usedModeName:'technique'});
   b.reclaimDecisionId=d.id;if(d.stage!=='closed'){s.phase='combat';return false;}
  }
- for(const id of b.actionIds){const a=s.actions?.[id];if(!a||!a.cardInstanceId)continue;const at=s.resolution.indexOf(a.cardInstanceId);if(at>=0){s.resolution.splice(at,1);s.discard.push(a.cardInstanceId);}delete s.actions![id];}
+ // Every source in the bundle was declared in public, so it leaves resolution face up.
+ for(const id of b.actionIds){const a=s.actions?.[id];if(!a||!a.cardInstanceId)continue;const at=s.resolution.indexOf(a.cardInstanceId);if(at>=0){s.resolution.splice(at,1);moveToDiscard(s,a.cardInstanceId,{ownerId:a.actorId,faceUp:true});}delete s.actions![id];}
  delete s.followerBundles![b.id];
  if(!s.windows?.length)s.phase='withdrawal';
  return true;

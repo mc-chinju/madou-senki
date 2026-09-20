@@ -1,4 +1,4 @@
-import {createGame,transition,viewFor,type GameState,type GameCommand} from '@madou/engine';
+import {createGame,transition,viewFor,type GameState,type GameCommand, moveToDiscard } from '@madou/engine';
 import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export function makeSubstituteScenario(players:{id:string;name:string}[],refillOpen=false):GameState {
  let s=createGame(players,entropy(),{startingSeat:0});const [a,b,c,d]=players.map(p=>p.id) as [string,string,string,string];
@@ -11,6 +11,6 @@ export function makeSubstituteScenario(players:{id:string;name:string}[],refillO
  act(a,{type:'ATTACK',cardInstanceId:attack,targetIds:[b,c],dedicated:true});
  for(let n=0;n<100&&!Object.keys(s.groups??{}).length;n++){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'},[3,...Array(100).fill(1)]);}
  for(let n=0;n<20&&!viewFor(s,c).anytimeCardOptions.some(o=>o.cardInstanceId===source);n++){const w=s.windows!.at(-1)!;act(w.participants[w.cursor]!,{type:'PASS'});}
- if(refillOpen){const open=takeCard(s,d,'a2-p01-r1c1');s.players[d]!.hand=s.players[d]!.hand.filter(id=>id!==open);s.discard.push(...s.players[d]!.hand);s.players[d]!.hand=[];s.players[d]!.presence='dead';s.deck.unshift(open);}
+ if(refillOpen){const open=takeCard(s,d,'a2-p01-r1c1');s.players[d]!.hand=s.players[d]!.hand.filter(id=>id!==open);for(const __discarded of [...s.players[d]!.hand])moveToDiscard(s,__discarded,{faceUp:true});s.players[d]!.hand=[];s.players[d]!.presence='dead';s.deck.unshift(open);}
  if(!viewFor(s,c).anytimeCardOptions.some(o=>o.cardInstanceId===source&&o.hitIndex===1))throw Error('SUBSTITUTE_FIXTURE_NO_HIT');return s;
 }

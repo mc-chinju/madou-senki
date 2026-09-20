@@ -3,7 +3,7 @@ import {cloneGameState} from './clone-state.js';
 import {printedTechniqueAllowed} from './combat/printed-restrictions.js';
 import {playWish} from './effects/wish.js';
 import {playTurnChoiceCard} from './effects/turn-choice-cards.js';
-import {discardPhysical} from './discard.js';
+import {discardPhysical,moveToDiscard} from './discard.js';
 import {playRemainingTurnCard,payTurnCardBatch} from './effects/remaining-turn-cards.js';
 import {lifeIdentity} from './abilities/suppression-state.js';
 import {enqueueLifecycle} from './lifecycle/events.js';
@@ -70,7 +70,8 @@ export function transitionTurn(state: GameState, input: GameInput, entropy: Entr
       case 'CHOOSE_DRAW': if (command.draw){enqueueLifecycle(next,{kind:'resume-phase',id:`resume-${next.revision}`,phase:'action'});refillHand(next, p, p.hand.length + 1, random, entropy.now);}else next.phase = 'action'; break;
       case 'ARRANGE_FOLLOWERS': {
         const old = p.followers;
-        next.discard.push(...old.filter(f => !command.cardInstanceIds.includes(f.cardInstanceId)).map(f => f.cardInstanceId));
+        // A follower dropped while arranging was only face up if it had already been revealed.
+        for (const f of old.filter(f => !command.cardInstanceIds.includes(f.cardInstanceId))) moveToDiscard(next,f.cardInstanceId,{ownerId:p.id,faceUp:f.revealed});
         p.followers = command.cardInstanceIds.map(id => old.find(f => f.cardInstanceId === id) ?? {cardInstanceId:id,revealed:false,placedById:p.id,placedLifeId:lifeIdentity(p)});
         p.hand = p.hand.filter(id => !command.cardInstanceIds.includes(id)); next.phase = 'hand-adjustment'; break;
       }

@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
+import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState, discardIds } from '../src/index.js';
 import {entropy} from './fixtures.js';
 import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 it('actual ritual Vanmil survives Rift otherworld departure and later turns without terminal',()=>{
@@ -28,6 +28,6 @@ it('actual ritual Vanmil survives Rift otherworld departure and later turns with
  until(ownAction);expect(s.players.A).toEqual(away);
  expect(s.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='A')).toEqual([]);expect(s.events.filter(e=>e.type==='GAME_COMPLETED')).toEqual([]);expect(s.vanmilDeath).not.toBe(true);
  expect(s.windows??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);
- for(const card of [ritualCard,spear])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ for(const card of [ritualCard,spear])expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
  for(const id of s.seatOrder){const v=viewFor(JSON.parse(JSON.stringify(s)),id);expect(v.outcome).toBeNull();expect(v.players.A!.presence).toBe('otherworld');}
 });
