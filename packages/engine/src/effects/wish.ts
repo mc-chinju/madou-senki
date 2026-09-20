@@ -21,6 +21,9 @@ export interface WishDecision {
  acquisition?:{cardInstanceId:string;ownerId?:string;zone:'hand'|'deck'|PublicZone;randomIndex?:number};
 }
 export interface WishView {decisionId:string;deckNames:{cardName:string;count:number}[];handOwners:{ownerId:string;count:number}[];publicSources:PublicSource[]}
+/** One hidden acquisition as the two seats it concerned may read it back. The record is a window now, so
+ *  what this seat learned is kept beside the game instead of on a line that scrolls out of reach. */
+export interface WishAcquisition {eventId:number;actorId:string;ownerId?:string;cardInstanceId:string}
 export interface WishCapacityView {decisionId:string;actorId:string;followerCount:number;chantCount:number;followerIds:string[];chantIds:string[]}
 export function wishOptions(s:GameState,actorId:string){const p=s.players[actorId];return p&&!s.windows?.length&&s.phase==='action'&&s.seatOrder[s.turnSeat]===actorId&&(p.presence??'active')==='active'&&!hasPendingFatal(s,actorId)&&!hasStatus(p,'stopped')?WISHES.filter(id=>p.hand.includes(id)):[];}
 export function playWish(state:GameState,actorId:string,id:typeof WISHES[number]):TransitionResult{
@@ -101,7 +104,10 @@ export function transitionWish(state:GameState,input:GameInput,random:()=>number
  s.windows!.pop();const a=s.actions![d.actionId]!;enqueueLifecycle(s,{kind:'wish-complete',id:`${d.id}-complete`,decisionId:d.id,rootEventIds:[a.eventId]});
  const publicIdentity=source.kind==='public'&&!!publicSources(state,d).find(o=>o.cardInstanceId===source.cardInstanceId)?.publicIdentity;
  appendEvent(s,now,{type:'WISH_ACQUIRED',actorId:p.id,...(ownerId?{targetId:ownerId}:{}),audience:'public',...(publicIdentity?{cardInstanceId:id}:{})});
- if(!publicIdentity)for(const viewer of [...new Set([p.id,...(ownerId?[ownerId]:[])])])appendEvent(s,now,{type:'WISH_ACQUIRED',actorId:p.id,...(ownerId?{targetId:ownerId}:{}),audience:{playerId:viewer},cardInstanceId:id});
+ // The private copies and the history are the same knowledge: the first copy's id names the entry, so a
+ // reader can tell one acquisition from the next even when the same card is taken twice.
+ if(!publicIdentity){(s.wishHistory??=[]).push({eventId:s.nextEventId,actorId:p.id,...(ownerId?{ownerId}:{}),cardInstanceId:id});
+  for(const viewer of [...new Set([p.id,...(ownerId?[ownerId]:[])])])appendEvent(s,now,{type:'WISH_ACQUIRED',actorId:p.id,...(ownerId?{targetId:ownerId}:{}),audience:{playerId:viewer},cardInstanceId:id});}
  if(getAction(id)!.category==='open'){if(zone==='open')p.open.push(id);else revealOpen(s,p,id,random,now);}else p.hand.push(id);
  s.revision++;return {ok:true,state:s,events:[]};
 }

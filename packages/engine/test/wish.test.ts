@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {getAction,getCharacter} from '@madou/catalog';
 import {allCardInstanceIds,gameStats,transition,viewFor,type GameState, discardIds, moveToDiscard } from '../src/index.js';
-import {act,closeWindow,finish,pass,ready,until} from './combat-helpers.js';
+import {act,closeWindow,finish,pass,pastTheWindow,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const wishes=['a2-p04-r3c2','a2-p04-r3c3'] as const;
 function take(s:GameState,owner:string,id:string){
@@ -43,6 +43,13 @@ it.each(wishes)('%s takes a uniform random hand card with identity private to on
   const done=finish(choose(s,{kind:'hand',ownerId:'B'},Array(2000).fill(value))),card=old[index!]!;expect(done.players.A!.hand).toContain(card);expect(done.players.B!.hand).toEqual(old.filter(x=>x!==card));
   for(const viewer of ['A','B'])expect(viewFor(done,viewer).privateLogs.filter(e=>e.type==='WISH_ACQUIRED').map(e=>e.cardInstanceId)).toEqual([card]);
   for(const viewer of ['C','D'])expect(viewFor(done,viewer).privateLogs.filter(e=>e.type==='WISH_ACQUIRED')).toEqual([]);
+  // Both owners keep what they learned: the record is read through a window and this acquisition scrolls past it.
+  for(const viewer of ['A','B'])expect(viewFor(done,viewer).wishHistory).toMatchObject([{actorId:'A',ownerId:'B',cardInstanceId:card}]);
+  for(const viewer of ['C','D'])expect(viewFor(done,viewer).wishHistory).toEqual([]);
+  const later=pastTheWindow(done);
+  expect(viewFor(later,'A').privateLogs.filter(e=>e.type==='WISH_ACQUIRED')).toEqual([]);
+  for(const viewer of ['A','B'])expect(viewFor(later,viewer).wishHistory).toMatchObject([{cardInstanceId:card}]);
+  for(const viewer of ['C','D'])expect(JSON.stringify(viewFor(later,viewer))).not.toContain(card);
  }
 });
 it.each(wishes)('%s moves an attachment and own follower into hand without retaining installed state',id=>{

@@ -25,6 +25,23 @@ export type LogLine={kind:'event';event:LogView;own:boolean;ownCardInstanceIds?:
 export interface LogSection{key:string;heading:string;lines:LogLine[]}
 /** Where a line stands in the record: for a fold, the last record folded into it, since that is what made it grow. */
 function lineId(line:LogLine):number{return line.kind==='event'?line.event.id:line.lastId;}
+/** The newest record this reader holds, filter or no filter. An id belongs to its record and never moves, so
+ *  this is the mark a reader standing at the end of the record has read up to. Reading it off what the filter
+ *  keeps would leave the mark behind whenever the filter hides the end of the record, and widening it again
+ *  would announce lines that were there all along. */
+export function newestRecordId(view:Pick<PlayerView,'logs'|'privateLogs'>):number{
+ return Math.max(view.logs?.at(-1)?.id??0,view.privateLogs?.at(-1)?.id??0);
+}
+/** Where the reader has read to, once they have been shown the end of the record. The record only grows, so
+ *  what has been read is never unread again: not by a filter that hides it, nor by a page laid in front of it. */
+export function readTo(seenId:number,view:Pick<PlayerView,'logs'|'privateLogs'>):number{
+ return Math.max(seenId,newestRecordId(view));
+}
+/** Lines on screen that arrived after the reader last stood at the end of the record. Widening a filter and
+ *  laying in an older page both bring lines older than that mark into view, so neither of them is an arrival. */
+export function unreadLines(sections:LogSection[],seenId:number):number{
+ return sections.reduce((total,section)=>total+section.lines.filter(line=>lineId(line)>seenId).length,0);
+}
 
 /** Groups the record by turn, folds a run of passes in one window, then joins windows the same seats passed in a row.
  *  The reader's own private record is woven in by event id, so a line only it can see keeps its place in the story.
@@ -188,10 +205,11 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
  // How far the reader has read, kept as the newest line they were shown at the followed end. An id is fixed to
  // its record: narrowing the filter, laying an older page in front, or a window that had to start over all move
  // every line's place but no line's id, so none of them can make a line already read look like it just arrived.
- const newestId=useMemo(()=>sections.reduce((newest,section)=>section.lines.reduce((id,line)=>Math.max(id,lineId(line)),newest),0),[sections]);
+ // The mark is taken from the whole record and not from what the filter keeps: a reader at the followed end has
+ // been shown the end of the record, and a filter that hid the last few lines must not make them arrivals.
+ const newestId=newestRecordId(view);
  const [seenId,setSeenId]=useState(newestId);
- // The record only grows, so what has been read is never unread again, even when the filter hides it for a while.
- const markSeen=()=>setSeenId(seen=>Math.max(seen,newestId));
+ const markSeen=()=>setSeenId(seen=>readTo(seen,view));
  // Newest first stacks arrivals at the top, so the followed end flips with the order.
  const pin=(el:HTMLDivElement)=>{el.scrollTop=orderRef.current==='newest'?0:el.scrollHeight;};
  const atEnd=(el:HTMLDivElement)=>orderRef.current==='newest'?el.scrollTop<24:el.scrollHeight-el.scrollTop-el.clientHeight<24;
@@ -217,7 +235,7 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
   const el=list.current;if(el&&orderRef.current==='oldest')el.scrollTop=Math.max(0,el.scrollHeight-held.height+held.top);},[oldestId,lineCount]);
  const latest=()=>{const el=list.current;if(!el)return;pin(el);follow(true);el.focus({preventScroll:true});};
  const flip=()=>{const next:LogOrder=orderRef.current==='newest'?'oldest':'newest';orderRef.current=next;setOrder(next);storeOrder(next);const el=list.current;if(el&&followingRef.current)pin(el);};
- const unread=useMemo(()=>following?0:sections.reduce((total,section)=>total+section.lines.filter(line=>lineId(line)>seenId).length,0),[sections,seenId,following]);
+ const unread=useMemo(()=>following?0:unreadLines(sections,seenId),[sections,seenId,following]);
  const name=(id:string)=>view.players[id]?.name??'参加者';
  // Two windows of the same kind in a row are one thing to the reader, so the name is said once.
  // Filtering to one seat puts its passes next to each other, so a fold can run over a dozen windows. Past a

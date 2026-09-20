@@ -84,6 +84,16 @@ test('another seat can trace the whole bot game in the public record while its s
     }, { timeout: 120_000 }).toBeGreaterThan(0);
     // Reading the past back is not an arrival, so nothing the reader already saw is announced as new.
     await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toBeVisible();
+    // Neither is widening the filter again. Following a narrowed record still shows the reader its end, so the
+    // lines the filter had been hiding were already there when they scrolled away from it.
+    const filter = watcher.getByLabel('絞り込み');
+    await filter.selectOption('self');
+    await record.evaluate(element => { element.scrollTop = element.scrollHeight; });
+    await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toHaveCount(0);
+    await record.evaluate(element => { element.scrollTop = 0; });
+    await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toBeVisible();
+    await filter.selectOption('all');
+    await expect(watcher.getByRole('button', { name: /新着/ })).toHaveCount(0);
     const firstTurn = record.getByRole('region', { name: /^1手番 / });
     await firstTurn.scrollIntoViewIfNeeded();
     await expect(firstTurn).toBeVisible();

@@ -2,7 +2,7 @@ import {expect,it} from 'vitest';
 import {getAction,getCharacter} from '@madou/catalog';
 import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {gameStats} from '../src/game-stats.js';
-import {act,closeWindow,finish,pass,ready,until} from './combat-helpers.js';
+import {act,closeWindow,finish,pass,pastTheWindow,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const GOOD='a2-p04-r1c1',EVIL='a2-p04-r1c2',SWAP='a2-p04-r1c3',SEE='a2-p04-r2c2',MOTHER='a2-p05-r1c2';
 function source(s:GameState,id:string){handCard(s,'A',getAction(id)!.name);}
@@ -25,6 +25,16 @@ it('ordinary Farseeing saves a private identity choice and private history witho
  const d=viewFor(s,'A').inspection!;expect(d).toMatchObject({zone:'character',characterId:s.players.B!.characterId});expect(viewFor(s,'C').inspection).toBeNull();expect(s.resolution).toContain(SEE);
  s=act(JSON.parse(JSON.stringify(s)),'A',{type:'CHOOSE_INSPECTION',decisionId:d.decisionId,choice:'finish'});s=finish(s);
  expect(s.players.B!.revealed).toBe(false);expect(viewFor(s,'A').privateLogs.some(e=>e.type==='CHARACTER_INSPECTED'&&e.characterId===s.players.B!.characterId)).toBe(true);expect(viewFor(s,'C').logs.filter(e=>e.type==='CHARACTER_INSPECTED').every(e=>!e.characterId)).toBe(true);
+ // The identity is knowledge this seat keeps: the record is read through a window and scrolls past it, so
+ // the panel that lists what was confirmed reads the history beside the game instead.
+ const history=viewFor(s,'A').inspectionHistory.filter(d=>d.zone==='character');
+ expect(history).toMatchObject([{targetId:'B',characterId:s.players.B!.characterId,cards:[]}]);
+ for(const other of ['B','C','D'])expect(viewFor(s,other).inspectionHistory).toEqual([]);
+ for(const other of ['C','D'])expect(JSON.stringify(viewFor(s,other))).not.toContain(s.players.B!.characterId);
+ const later=pastTheWindow(s);
+ expect(viewFor(later,'A').privateLogs.some(e=>e.type==='CHARACTER_INSPECTED')).toBe(false);
+ expect(viewFor(later,'A').inspectionHistory.filter(d=>d.zone==='character')).toMatchObject(history);
+ expect(JSON.stringify(viewFor(later,'C'))).not.toContain(s.players.B!.characterId);
 });
 it('Arseil Farseeing replaces identity inspection with automatic hand inspection and an optional one-card discard',()=>{
  let s=ready();character(s,'A','占星術師のアルセイル');source(s,SEE);const before=structuredClone(s.used);s=until(play(s,SEE,'astrology'),'private-inspection');

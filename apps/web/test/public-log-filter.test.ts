@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { createGame, logPage, LOG_PAGE_MAX, viewFor, type GameState, type LogView, type PlayerView } from '@madou/engine';
 import { playOneStep } from '@madou/engine/bot';
 import { expect, test } from 'vitest';
-import { PublicLog, publicLogSections, type LogSection } from '../src/game/PublicLog.js';
+import { newestRecordId, PublicLog, publicLogSections, readTo, unreadLines, type LogSection } from '../src/game/PublicLog.js';
 import { logInvolves, parseFilter, readerCards, serializeFilter, type LogFilter } from '../src/game/log-filter.js';
 import { seededEntropy } from '../../../packages/engine/test/fixtures.js';
 
@@ -117,6 +117,61 @@ test('the record says whether more of it can be read, and offers the page before
   // run 「対戦準備」 would file the end of the game under the setup.
   expect(publicLogSections(paged)[0]!.heading).toBe('手番の途中から');
   expect(publicLogSections({ ...paged, logStart: 51 } as PlayerView)[0]!.heading).toBe('対戦準備');
+});
+
+/** The reader as the panel keeps them: one mark for how far they have read, moved only by standing at the
+ *  followed end of the record. Everything else the panel does to the record — filtering it, laying an older
+ *  page in front of it, taking in a newer window — leaves the mark alone, so the rules are readable here. */
+function reader(start: PlayerView) {
+  let view = start, seenId = newestRecordId(view);
+  return {
+    // A newer window, or an older page joined to what is held: either way it is the record the reader now has.
+    holds(next: PlayerView) { view = next; },
+    // The reader is shown the end of the record: at the followed end, or by asking for the newest line.
+    follow() { seenId = readTo(seenId, view); },
+    unread(filter: LogFilter) { return unreadLines(publicLogSections(view, 'oldest', filter), seenId); },
+    seen() { return seenId; },
+  };
+}
+
+/** 「新着」 counts what arrived while the reader was away, and nothing else. A filter widened back out and a
+ *  page read back from the past both put lines on screen that were never new to this reader. */
+test('widening the filter and reading the past back announce nothing; a line that arrives is announced', () => {
+  const held = [
+    { id: 11, type: 'TURN_STARTED' as const, actorId: 'B', turnNumber: 2 },
+    { id: 12, type: 'CARD_PLAYED' as const, actorId: 'B', cardInstanceId: 'a2-p05-r3c1', use: 'attack' as const, targetIds: ['A'] },
+    { id: 13, type: 'REST' as const, actorId: 'B', count: 1 },
+    { id: 14, type: 'REST' as const, actorId: 'C', count: 1 },
+  ];
+  // The end of the record is two lines the reader has no share in, so 「自分に関係する」 hides exactly the end.
+  const filtered = publicLogSections(view(held), 'oldest', { kind: 'self' }).flatMap(section => section.lines);
+  expect(Math.max(...filtered.map(line => (line.kind === 'event' ? line.event.id : line.lastId)))).toBe(12);
+  const r = reader(view(held));
+  expect(r.seen()).toBe(14);
+  r.follow();
+  // Widening the filter brings back lines that were there all along.
+  expect(r.unread({ kind: 'all' })).toBe(0);
+  expect(r.unread({ kind: 'seat', actorId: 'C' })).toBe(0);
+  // An older page is laid in front of the reader, not on the end they are following.
+  r.holds(view([{ id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 }, { id: 2, type: 'REST', actorId: 'A', count: 2 }, ...held]));
+  expect(r.unread({ kind: 'all' })).toBe(0);
+  expect(r.unread({ kind: 'self' })).toBe(0);
+  // What did arrive is announced, and only where the filter keeps it.
+  r.holds(view([...held, { id: 15, type: 'REST', actorId: 'C', count: 1 }, { id: 16, type: 'CARD_PLAYED', actorId: 'C', cardInstanceId: 'a2-p05-r3c1', use: 'attack', targetIds: ['A'] }]));
+  expect(r.unread({ kind: 'all' })).toBe(2);
+  expect(r.unread({ kind: 'self' })).toBe(1);
+  // Standing at the end again reads them, and the reader's own record moves the mark as much as the table's.
+  r.follow();
+  expect(r.unread({ kind: 'all' })).toBe(0);
+  r.holds(view([...held, { id: 15, type: 'REST', actorId: 'C', count: 1 }, { id: 16, type: 'CARD_PLAYED', actorId: 'C', cardInstanceId: 'a2-p05-r3c1', use: 'attack', targetIds: ['A'] }],
+    [{ id: 17, type: 'CARD_DRAWN', actorId: 'A', cardInstanceId: 'a2-p01-r1c1' }]));
+  expect(r.unread({ kind: 'all' })).toBe(1);
+  r.follow();
+  expect(r.seen()).toBe(17);
+  expect(r.unread({ kind: 'all' })).toBe(0);
+  // The mark is the whole record's newest line, never the newest line the filter happens to keep.
+  expect(newestRecordId(view([{ id: 3, type: 'REST', actorId: 'B', count: 1 }], [{ id: 5, type: 'CARD_DRAWN', actorId: 'A' }]))).toBe(5);
+  expect(newestRecordId(view([]))).toBe(0);
 });
 
 /** Acceptance (plan Task 4): a bot 4-seat game, counting the lines drawn from an attack's declaration to its ending. */

@@ -1,7 +1,11 @@
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, test } from 'vitest';
+import type { PlayerView } from '@madou/engine';
+import { InformationHistoryPanel } from '../src/game/InformationHistoryPanel.js';
 import { InspectionPanel } from '../src/game/InspectionPanel.js';
+import { TurnChoiceCardPanel } from '../src/game/TurnChoiceCardPanel.js';
+import { WishPanel } from '../src/game/WishPanel.js';
 import { DrawControl, RevealControl, SpiritExpiryNotice } from '../src/game/OptionalTurnControls.js';
 import type { InspectionInputView } from '../src/game/information-input.js';
 
@@ -45,4 +49,37 @@ test('spirit expiry explains the saved turn end and suppression without capping 
   expect(active).toContain('他の有効な修正');
   const suppressed = renderToStaticMarkup(createElement(SpiritExpiryNotice, { names: { B: '楓' }, value: { expiresOnActorId: 'B', active: false } }));
   expect(suppressed).toContain('現在は効果が働いていません');
+});
+
+/** What a seat has privately learned is knowledge it keeps, not a line in the record. The record is read
+ *  through a window of the newest lines now, so a panel that read its history from the record would empty
+ *  itself while the table played on — with nothing on screen to say that anything had been dropped. */
+test('the histories of what a seat confirmed and took are read from what it knows, not from the record', () => {
+  const players = { A: { name: '葵' }, B: { name: '楓' } };
+  // A record window that no longer reaches back to any of it: the panels must not be looking here.
+  const view = {
+    players, self: { id: 'A' }, logs: [{ id: 400, at: 0, type: 'REST', actorId: 'B', count: 1 }], privateLogs: [], logStart: 1,
+    inspectionHistory: [
+      { decisionId: 'inspection-9', actorId: 'A', targetId: 'B', zone: 'character', cards: [], characterId: 'c2-p04-r2c2', discardMode: 'none', choices: ['finish'] },
+      { decisionId: 'inspection-4', actorId: 'A', targetId: 'B', zone: 'all', cards: [{ zone: 'hand', position: 0, cardInstanceId: 'a2-p14-r1c2' }], discardMode: 'none', choices: ['finish'] },
+    ],
+    wishHistory: [{ eventId: 12, actorId: 'A', ownerId: 'B', cardInstanceId: 'a2-p14-r1c2' }],
+    turnChoiceCardOptions: [], wishOptions: [], activeWindow: null, peaceExpiries: [],
+  } as unknown as PlayerView;
+  const identity = renderToStaticMarkup(createElement(TurnChoiceCardPanel, { view, disabled: false, send: () => true }));
+  expect(identity).toContain('自分だけの正体確認履歴');
+  expect(identity).toMatch(/<li>楓: [^<]+<\/li>/);
+  const wish = renderToStaticMarkup(createElement(WishPanel, { view, disabled: false, send: () => true }));
+  expect(wish).toContain('祈願の取得履歴');
+  expect(wish).toContain('葵さんが白光を取得しました');
+  // An identity is not a row of cards, so the revelation panel keeps to the confirmations that named cards.
+  const revelation = renderToStaticMarkup(createElement(InformationHistoryPanel, { view }));
+  expect(revelation).toContain('自分だけの啓示の履歴');
+  expect(revelation.match(/<details>/g)).toHaveLength(1);
+  expect(revelation).toContain('手札 1：白光');
+  // Nothing of the kind to show is still nothing: an empty history draws no panel at all.
+  const empty = { ...view, inspectionHistory: [], wishHistory: [] } as unknown as PlayerView;
+  expect(renderToStaticMarkup(createElement(TurnChoiceCardPanel, { view: empty, disabled: false, send: () => true }))).toBe('');
+  expect(renderToStaticMarkup(createElement(WishPanel, { view: empty, disabled: false, send: () => true }))).toBe('');
+  expect(renderToStaticMarkup(createElement(InformationHistoryPanel, { view: empty }))).toBe('');
 });

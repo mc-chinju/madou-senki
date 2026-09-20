@@ -72,6 +72,7 @@ export interface GameState {
   suppressionDesignations?:import('./abilities/suppression-state.js').SuppressionDesignation[];
   blessingLeases?:import('./abilities/suppression-state.js').BlessingLease[];
   inspectionHistory?:import('./abilities/private-inspection.js').InspectionView[];
+  wishHistory?:import('./effects/wish.js').WishAcquisition[];
   inspections?:import('./abilities/private-inspection.js').PrivateInspection[];
   followerBundles?:Record<string,import('./combat/follower-bundles.js').FollowerBundle>;
   abilities?:Record<string,AbilityFrame>;
