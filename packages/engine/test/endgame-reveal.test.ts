@@ -61,6 +61,9 @@ it('hands out copies, so a reader cannot write back into the game', () => {
   s.outcome = decided();
   const before = JSON.stringify(s);
   const reveal = viewFor(s, 'A').reveal!;
+  // The pile is the one list whose elements are objects, so a shallow copy of it would still hand the game's
+  // own entries out; writing into an entry is what tells the two apart, and emptying the array does not.
+  reveal.discard[0]!.ownerId = 'intruder'; reveal.discard[0]!.faceUp = !reveal.discard[0]!.faceUp;
   reveal.deck.length = 0; reveal.discard.length = 0; reveal.players.B!.hand.push('intruder'); reveal.players.B!.characterId = 'intruder';
   expect(JSON.stringify(s)).toBe(before);
 });

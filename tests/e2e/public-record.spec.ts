@@ -79,7 +79,13 @@ test('another seat can trace the whole bot game in the public record while its s
       const game = await (await request.get(`/__test/rooms/${table.roomId}/game`)).json() as GameState;
       await expect.poll(() => (latest as RoomView | null)?.game?.revision).toBe(game.revision);
       const frame = frames.at(-1)!;
-      expect(JSON.parse(frame).view.game).not.toHaveProperty('discard');
+      const sent = JSON.parse(frame).view.game as PlayerView;
+      expect(sent).not.toHaveProperty('discard');
+      // The line above only ever says the pile is not at the top of the view. Before the outcome that is the
+      // whole claim, and the sweep below carries it; after it the pile has moved under `reveal`, so the same
+      // line would pass on a snapshot that shipped nothing at all. Name where it went instead.
+      if (decided) expect(sent.reveal!.discard.map(entry => entry.cardInstanceId)).toEqual(game.discard.map(entry => entry.cardInstanceId));
+      else expect(sent.reveal).toBeNull();
       expect((latest as RoomView | null)!.game!.discardCount).toBe(game.discard.length);
       const secrets = secretsFor(game, watcherId);
       if (decided) expect(secrets.length, 'a decided game still has something left to open').toBeGreaterThan(0);

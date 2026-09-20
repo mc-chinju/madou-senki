@@ -13,7 +13,7 @@ export async function signIn(context: BrowserContext, name: string): Promise<{ i
 }
 
 let storedRoom: { request: APIRequestContext; roomId: string } | null = null;
-/** Discard pile contents are never sent to players; browser tests read them from the saved game of the latest table. */
+/** Discard pile contents reach players only once the game is decided; browser tests read them from the saved game of the latest table. */
 export async function storedDiscard(): Promise<string[]> {
   return (await storedGame()).discard.map(entry => entry.cardInstanceId);
 }
