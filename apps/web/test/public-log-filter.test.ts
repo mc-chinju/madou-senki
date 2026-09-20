@@ -80,7 +80,7 @@ test('the filter is offered, remembered for this table, and says so when it keep
   expect(parseFilter(null, ['A'])).toEqual({ kind: 'all' });
   expect(serializeFilter({ kind: 'seat', actorId: 'C' })).toBe('seat:C');
   const markup = html(view([{ id: 1, type: 'REST', actorId: 'B', count: 1 }]));
-  expect(markup).toContain('<option value="self">自分に関係する記録</option>');
+  expect(markup).toContain('<option value="self">自分に関係する</option>');
   expect(markup).toContain('<option value="seat:C">凛さん</option>');
   expect(renderToStaticMarkup(createElement(PublicLog, { view: view([]), onInspect: () => {} }))).toContain('記録はまだありません');
 });
@@ -97,6 +97,10 @@ test('the record says whether more of it can be read, and offers the page before
   expect(render({ ...paged, logStart: 51 } as PlayerView, false)).toContain('これが戦記の最初です');
   // A reader with no way to ask is told nothing about an end they cannot reach.
   expect(html(paged)).not.toContain('過去の記録');
+  // A window that opens mid-record holds the tail of a turn it has not read the start of, so calling that
+  // run 「対戦準備」 would file the end of the game under the setup.
+  expect(publicLogSections(paged)[0]!.heading).toBe('手番の途中から');
+  expect(publicLogSections({ ...paged, logStart: 51 } as PlayerView)[0]!.heading).toBe('対戦準備');
 });
 
 /** Acceptance (plan Task 4): a bot 4-seat game, counting the lines drawn from an attack's declaration to its ending. */

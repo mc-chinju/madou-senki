@@ -30,7 +30,10 @@ export interface LogSection{key:string;heading:string;lines:LogLine[]}
 export function publicLogSections(view:PlayerView,order:LogOrder='oldest',filter:LogFilter={kind:'all'}):LogSection[]{
  const name=(id:string)=>view.players[id]?.name??'参加者';
  const seatId=filterSeat(view,filter),ownCards=filter.kind==='self'?readerCards(view):undefined;
- const sections:LogSection[]=[{key:'setup',heading:'対戦準備',lines:[]}];
+ // Only a record held from its very beginning opens with the table being set up. A window that opens partway
+ // through starts inside a turn whose heading has not been read back yet, and must not claim to be the setup.
+ const fromStart=view.logs[0]===undefined||view.logStart===undefined||view.logs[0].id<=view.logStart;
+ const sections:LogSection[]=[{key:'setup',heading:fromStart?'対戦準備':'手番の途中から',lines:[]}];
  const entries=[...view.logs.map(event=>({event,own:false})),...view.privateLogs.map(event=>({event,own:true}))].sort((a,b)=>a.event.id-b.event.id)
   // A turn heading is the frame the kept lines hang in, so it outlives the filter and goes only if nothing hung on it.
   .filter(({event})=>seatId===undefined||event.type==='TURN_STARTED'||logInvolves(event,seatId,ownCards));
@@ -192,7 +195,8 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
  useEffect(()=>{const el=list.current,inner=content.current;if(!el||!inner||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(()=>{if(followingRef.current)pin(el);});observer.observe(inner);observer.observe(el);return ()=>observer.disconnect();},[]);
  // The oldest line sits at the top reading forwards and at the bottom reading backwards, so the far edge flips too.
  const atOlderEnd=(el:HTMLDivElement)=>orderRef.current==='newest'?el.scrollHeight-el.scrollTop-el.clientHeight<48:el.scrollTop<48;
- const oldestId=view.logs[0]?.id,atRecordStart=oldestId===undefined||oldestId<=(view.logStart??0);
+ // A record with no start to point at is all there is: nothing behind it can be asked for.
+ const oldestId=view.logs[0]?.id,atRecordStart=oldestId===undefined||view.logStart===undefined||oldestId<=view.logStart;
  // Where the reader stood when they asked for more, so the arriving page can be laid in without moving them.
  const anchor=useRef<{oldestId:number;height:number;top:number;lineCount:number}|null>(null);
  const loadOlder=()=>{if(!logHistory||logHistory.loading||atRecordStart||oldestId===undefined)return;
@@ -208,13 +212,17 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
  const unread=following?0:Math.max(0,lineCount-seenLines);
  const name=(id:string)=>view.players[id]?.name??'参加者';
  // Two windows of the same kind in a row are one thing to the reader, so the name is said once.
- const windows=(kinds:string[])=>{const names=kinds.map(kind=>windowNames[kind]).filter(Boolean).filter((name,index,all)=>name!==all[index-1]);return names.length?`${names.join('、')}で`:'';};
+ // Filtering to one seat puts its passes next to each other, so a fold can run over a dozen windows. Past a
+ // few names the list stops being read and only says "a long quiet stretch", which a count says better.
+ const windows=(kinds:string[])=>{const names=kinds.map(kind=>windowNames[kind]).filter(Boolean).filter((name,index,all)=>name!==all[index-1]);
+  if(!names.length)return '';
+  return names.length>4?`${names.slice(0,3).join('、')}ほか${names.length-3}件で`:`${names.join('、')}で`;};
  const orderName=order==='newest'?'新しい順':'古い順';
  const choose=(value:string)=>{const next=parseFilter(value,seatIds);setFilter(next);storeFilter(next);follow(true);};
  // Only a reader who can actually ask for more is told where the read record ends.
  const olderEdge=!logHistory?null:logHistory.loading?<p className="muted log-edge" role="status">過去の記録を読み込んでいます…</p>
   :atRecordStart?<p className="muted log-edge">これが戦記の最初です</p>
-  :<button type="button" className="secondary log-edge" onClick={loadOlder}>過去の記録を読む</button>;
+  :<button type="button" className="secondary compact log-edge" onClick={loadOlder}>過去の記録を読む</button>;
  const selfId=(view.self as PlayerView['self']|undefined)?.id;
  return <section className="panel log" aria-label="公開ログ"><div className="section-title log-title"><h2>戦記</h2>
   {/* Which way the record runs is a state, so it is shown as one and read out when it changes. */}
@@ -223,7 +231,8 @@ export function PublicLog({view,onInspect,logHistory}:{view:PlayerView;onInspect
   <div className="log-controls">
    <label className="log-filter">絞り込み<select value={filterKey} onChange={event=>choose(event.target.value)}>
     <option value="all">全員</option>
-    {selfId?<option value="self">自分に関係する記録</option>:null}
+    {/* The label already says these are a filter, so the option names what is kept, not that it is a record. */}
+    {selfId?<option value="self">自分に関係する</option>:null}
     {seatIds.map(id=><option key={id} value={`seat:${id}`}>{name(id)}さん</option>)}</select></label>
    {!following?<button type="button" className="secondary" onClick={latest}>{unread?`最新へ（新着${unread}件）`:'最新へ'}</button>:null}
    <button type="button" className="secondary" onClick={flip}>{order==='newest'?'古い順にする':'新しい順にする'}</button></div></div>
