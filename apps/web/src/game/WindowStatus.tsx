@@ -16,11 +16,11 @@ const rangeNames: Record<StandingScope, string> = { action: 'この行動', turn
 
 /** Public per-seat progress of the open reaction window (G03). */
 export function windowSeatLabel(view: WindowStatusView, id: string): '判断中' | '回答済み' | '任せる' | '対象外' {
-  const w = view.activeWindow;
-  if (!w) return '対象外';
-  // A standing pass outlives the window that took it, so it is public even where the seat is not asked.
+  // A standing pass outlives the window that took it, and a turn-long one outlives the action too: between
+  // one action and the next there is no window at all, and the seat is still leaving its answers to the others.
   if (standingScope(view, id)) return '任せる';
-  if (!w.participantIds.includes(id)) return '対象外';
+  const w = view.activeWindow;
+  if (!w || !w.participantIds.includes(id)) return '対象外';
   return w.passedActorIds.includes(id) ? '回答済み' : '判断中';
 }
 
@@ -29,10 +29,9 @@ export function decisionPanelKey(view: { activeWindow: { windowId: string; windo
   return `${view.activeWindow?.windowId ?? 'none'}:${view.activeWindow?.windowRevision ?? 0}`;
 }
 
-/** Per-seat answers are public only on a pass-ahead window; a standing pass is public on every window. */
+/** Per-seat answers are public only on a pass-ahead window; a standing pass is public for as long as it runs. */
 export function showsWindowSeatLabel(view: WindowStatusView, id: string): boolean {
-  const w = view.activeWindow;
-  return !!w && (w.passAhead || !!standingScope(view, id));
+  return !!standingScope(view, id) || !!view.activeWindow?.passAhead;
 }
 
 /** What the seat may press about the window as a whole, next to whatever the decision panel offers. */
@@ -92,10 +91,12 @@ export function PassAheadButtons({ view, disabled, send }: {
   useEffect(() => { if (followUp && canCancel) { cancel.current?.focus(); setFollowUp(false); } }, [followUp, canCancel]);
   if (!w || !any) return null;
   const passLabel = w.kind === 'reclaim' ? '回収せずに進む' : 'パス（この確認だけ）';
-  // The standing pass also answers the reclaim that closes the action (G11), so say so wherever it is offered.
-  const leaveHint = w.kind === 'reclaim'
-    ? 'この行動に続く回収の回答もまとめて済ませます'
-    : '出目や防御を見てから割り込むことはできなくなり、この行動に続く回収の回答もまとめて済ませます';
+  // The two ranges differ only in how far they reach, so each note opens with its own reach and they can be
+  // read against each other. What both of them cost is the same, including the reclaim that closes the action
+  // (G11), so it is said once underneath rather than spelled out twice.
+  const leaveCost = w.kind === 'reclaim'
+    ? '続く回収の回答もまとめて済ませます'
+    : '出目や防御を見てから割り込むことはできなくなり、続く回収の回答もまとめて済ませます';
   const standing = standingScope(view, view.self.id);
   const answeredHere = w.passedActorIds.includes(view.self.id);
   const leave = (scope: StandingScope) => { setFollowUp(true); send(scope === 'turn' ? { type: 'PASS_ACTION_THROUGH', scope } : { type: 'PASS_ACTION_THROUGH' }); };
@@ -106,8 +107,9 @@ export function PassAheadButtons({ view, disabled, send }: {
       {canLeave ? <button type="button" className="secondary" disabled={disabled} onClick={() => leave('turn')}>この手番は任せる</button> : null}
       {canCancel ? <button ref={cancel} type="button" className="secondary" disabled={disabled} onClick={() => send({ type: 'CANCEL_PASS_THROUGH' })}>任せるのをやめる</button> : null}
     </div>
-    {canLeave ? <p className="hint">「この行動は任せる」: {leaveHint}。誰かが動いたら聞き直します。</p> : null}
-    {canLeave ? <p className="hint">「この手番は任せる」: この手番のあいだ、割り込みの機会は流れます。この手番に続く回収の回答もまとめて済ませます。誰かが動いたら聞き直します。</p> : null}
+    {canLeave ? <p className="hint">「この行動は任せる」: いまの行動が終わるまで、割り込みの機会は流れます。</p> : null}
+    {canLeave ? <p className="hint">「この手番は任せる」: この手番が終わるまで、続く行動の分もまとめて流れます。</p> : null}
+    {canLeave ? <p className="hint">どちらも{leaveCost}。誰かが動いたら聞き直します。</p> : null}
     {canCancel ? <p className="hint">{w.passAhead || !standing ? '' : `${rangeNames[standing]}は任せています。`}「任せるのをやめる」: 次の確認から聞き直します{answeredHere ? '。この確認は回答済みのままです' : ''}。</p> : null}
   </>;
 }
