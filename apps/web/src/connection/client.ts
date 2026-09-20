@@ -121,10 +121,7 @@ export class RoomConnection {
     if (this.logTimer) clearTimeout(this.logTimer);
     this.logTimer = setTimeout(() => { this.logTimer = null; this.logRequest = null;
       this.publish({ logHistory: { ...this.state.logHistory, loading: false } }); }, 10000);
-    // The page ends just before the line the window opens on, so that window has to be held before the
-    // answer arrives: it moves on while the request is in flight, and a page laid against a later window
-    // would leave the lines the two no longer share in neither of them.
-    this.publish({ logHistory: { ...this.joinWindow(this.state.view), loading: true } });
+    this.publish({ logHistory: { ...this.state.logHistory, loading: true } });
     return true;
   }
 
