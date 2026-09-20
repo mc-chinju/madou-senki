@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
 import {gameStats, moveToDiscard, viewFor, type GameState, type LogView} from '../src/index.js';
-import {act, finish, pass, ready, until} from './combat-helpers.js';
+import {act, finish, pass, ready, until, wholeRecord} from './combat-helpers.js';
 import {character, handCard} from './fixtures.js';
 import {makeShurikenPhysical, shurikenCard} from './fixtures/shuriken-physical-scenarios.js';
 import {assignCharacter, takeCard} from './fixtures/scenario-tools.js';
@@ -10,7 +10,8 @@ const ofType = (s: GameState, viewer: string, type: LogView['type']) => viewFor(
 const ownOfType = (s: GameState, viewer: string, type: LogView['type']) => viewFor(s, viewer).privateLogs.filter(log => log.type === type);
 /** Nothing in the shared record may spell out a card that never turned face up. */
 function namesNothing(s: GameState, viewer: string, cardInstanceIds: string[]): void {
-  const shared = JSON.stringify(viewFor(s, viewer).logs);
+  // A card that never turned face up must be unnamed everywhere, not merely in the window a snapshot carries.
+  const shared = JSON.stringify(wholeRecord(s, viewer));
   for (const id of cardInstanceIds) expect(shared, `viewer=${viewer} card=${id}`).not.toContain(id);
 }
 

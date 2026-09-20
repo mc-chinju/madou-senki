@@ -1,25 +1,13 @@
 import {actionCards, getAction} from '@madou/catalog';
 import {expect, it} from 'vitest';
-import {gameStats, logPage, LOG_PAGE_MAX, viewFor, type GameEvent, type GameState, type LogView} from '../src/index.js';
-import {act, closeWindow, finish, pass, passReclaims, ready, until} from './combat-helpers.js';
+import {gameStats, viewFor, type GameEvent, type GameState, type LogView} from '../src/index.js';
+import {act, closeWindow, finish, pass, passReclaims, ready, until, wholeRecord} from './combat-helpers.js';
 import {recordCardPlayed} from '../src/public-record.js';
 import {character, handCard, handCards} from './fixtures.js';
 import {makeR6RollScenario} from './fixtures/r6-roll-scenarios.js';
 
 const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ATTACK_DECLARED', 'ATTACK_RESOLVED', 'CHECK_SKIPPED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
-/** A snapshot only carries the newest window now, so asking what the whole record says walks back to its start. */
-const allLogs = (s: GameState, viewer: string): LogView[] => {
-  const logs: LogView[] = [];
-  let beforeId: number | undefined;
-  for (;;) {
-    const page = logPage(s, viewer, {...(beforeId === undefined ? {} : {beforeId}), limit: LOG_PAGE_MAX});
-    if (!page.logs.length) return logs;
-    logs.unshift(...page.logs);
-    if (page.logs[0]!.id === page.logStart) return logs;
-    beforeId = page.logs[0]!.id;
-  }
-};
-const record = (s: GameState, viewer = 'C') => allLogs(s, viewer).filter(log => RECORD_TYPES.has(log.type));
+const record = (s: GameState, viewer = 'C') => wholeRecord(s, viewer).filter(log => RECORD_TYPES.has(log.type));
 const indexOf = (logs: LogView[], match: Partial<LogView>, from = 0) => logs.findIndex((log, index) => index >= from && Object.entries(match).every(([key, value]) => JSON.stringify(log[key as keyof LogView]) === JSON.stringify(value)));
 
 it('keeps the previous state and its historical payloads independent after a move', () => {
@@ -101,9 +89,9 @@ it('a chant stays unnamed until the attack turns it face up, and every hit adds 
   let s = ready(); character(s, 'A', '侍大将のシン');
   const card = handCard(s, 'A', '天地百撃斬');
   s = act(s, 'A', {type: 'CHANT', cardInstanceId: card, dedicated: true});
-  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(viewFor(s, viewer).logs)).not.toContain(card);
+  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(wholeRecord(s, viewer))).not.toContain(card);
   s = turnOf(s, 'A');
-  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(viewFor(s, viewer).logs)).not.toContain(card);
+  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(wholeRecord(s, viewer))).not.toContain(card);
   s = act(s, 'A', {type: 'START_TURN'}); s = finish(s); s = act(s, 'A', {type: 'CHOOSE_DRAW', draw: false});
   s = act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B', 'C'], dedicated: true});
   s = until(s, 'damage'); s = closeWindow(s, [3]); s = closeWindow(s); s = finish(s);

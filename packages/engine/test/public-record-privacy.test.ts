@@ -2,6 +2,7 @@ import {describe, expect, it} from 'vitest';
 import {createGame, pendingSetupSeats, transition, viewFor, type GameState, type LogView} from '../src/index.js';
 import {choose, legalCommands, type Command} from '../src/bot/index.js';
 import {seededEntropy} from './fixtures.js';
+import {wholeRecord} from './combat-helpers.js';
 
 /** Same seat choice as the bot driver, but keeps the command so the step can be audited. */
 function actingActor(state: GameState): string | undefined {
@@ -86,7 +87,9 @@ describe('public record privacy over full bot games', () => {
       }
       for (const viewerId of next.seatOrder) {
         const view = viewFor(next, viewerId);
-        const fresh = view.logs.filter(log => log.id > lastEventId);
+        // A snapshot carries only the newest window, and one step can add more lines than it holds, so the
+        // lines this step wrote are read back from the record rather than taken from the window.
+        const fresh = wholeRecord(next, viewerId, lastEventId);
         const secret = hiddenFrom(next, viewerId);
         // A seat reviews only what it let go itself. The list is filtered out of next.discard, so
         // "it is in the pile" cannot fail; the seat it is checked against has to come from outside it.

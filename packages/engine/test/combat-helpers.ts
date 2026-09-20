@@ -13,3 +13,16 @@ export function passReclaims(s:engine.GameState){for(let n=0;n<150;n++){if(s.win
 
 /** Close exactly the current boundary, preserving any newly opened child/result window. */
 export function closeWindow(s:engine.GameState,dice:number[]=Array(30).fill(1)){const id=s.windows?.at(-1)?.id;if(!id)throw Error('NO_WINDOW');while(s.windows?.at(-1)?.id===id)s=pass(s,dice);return s;}
+
+/** A snapshot carries only the newest window of the record, so reading it whole walks back page by page.
+ *  `sinceId` stops the walk once older lines appear, for when only what a step just added is being read. */
+export function wholeRecord(s:engine.GameState,viewerId:string,sinceId=0):engine.LogView[]{
+ const logs:engine.LogView[]=[];let beforeId:number|undefined;
+ for(;;){
+  const page=engine.logPage(s,viewerId,{...(beforeId===undefined?{}:{beforeId}),limit:engine.LOG_PAGE_MAX});
+  const kept=page.logs.filter(log=>log.id>sinceId);
+  logs.unshift(...kept);
+  if(!page.logs.length||kept.length<page.logs.length||page.logs[0]!.id===page.logStart)return logs;
+  beforeId=page.logs[0]!.id;
+ }
+}
