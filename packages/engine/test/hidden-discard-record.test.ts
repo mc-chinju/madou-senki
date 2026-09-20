@@ -94,6 +94,19 @@ it('names the follower in its morale check and then in what it did to the attack
   expect(morale).toBeLessThan(defended);
 });
 
+/** Throwing the attack back ends the resolution early; the follower still answered, so the table hears it. */
+it('records the follower that threw the attack back', () => {
+  let s = ready();
+  const attack = handCard(s, 'A', '踏み込み／弓');
+  const follower = handCard(s, 'B', '王立騎士団');
+  s.players.B!.hand = s.players.B!.hand.filter(id => id !== follower);
+  s.players.B!.followers = [{cardInstanceId: follower, revealed: false}];
+  s = until(act(s, 'A', {type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false}), 'normal-defense');
+  s = finish(act(s, 'B', {type: 'START_FOLLOWERS'}));
+  expect(s.players.A!.damage).toBeGreaterThan(0);
+  expect(ofType(s, 'C', 'FOLLOWER_DEFENDED')).toEqual([expect.objectContaining({actorId: 'B', cardInstanceId: follower, followerOutcome: 'reflected'})]);
+});
+
 it('names a card taken back off the table, to everyone', () => {
   let s = ready();
   character(s, 'A', '大神官ジル');

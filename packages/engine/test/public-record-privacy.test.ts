@@ -50,7 +50,8 @@ function playedByCommand(command: Command): Set<string> {
 }
 
 function cardIds(log: LogView): string[] {
-  return [log.cardInstanceId, log.death?.sourceCardInstanceId].filter((id): id is string => typeof id === 'string');
+  // Every field a record can name a card in: a new one has to arrive here, or the sweep stops watching it.
+  return [log.cardInstanceId, ...(log.cardInstanceIds ?? []), log.death?.sourceCardInstanceId].filter((id): id is string => typeof id === 'string');
 }
 
 describe('public record privacy over full bot games', () => {

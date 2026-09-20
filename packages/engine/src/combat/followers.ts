@@ -67,6 +67,7 @@ function morale(s: GameState, g: AttackGroup, t: AttackTarget, d: FollowerDefens
     return true;
 }
 function moraleFailed(d: FollowerDefenseSnapshot): boolean { return d.morale?.success === false; }
+function reflected(d: FollowerDefenseSnapshot): boolean { return d.hits.some(h => h.outcome === 'reflected'); }
 function summarize(s: GameState, t: AttackTarget, d: FollowerDefenseSnapshot): void {
     if(d.source==='virtual')return;
     const outcome = d.morale?.success === false ? 'morale-failed' : d.hits.at(-1)?.outcome ?? 'passed-through';
@@ -75,7 +76,8 @@ function summarize(s: GameState, t: AttackTarget, d: FollowerDefenseSnapshot): v
     // Across several hits it is what the follower did that goes on the line: being ignored by a later hit
     // does not undo the one it answered, so the summary's last-hit wording is not reused here.
     const recorded = d.morale?.success === false ? 'morale-failed' : d.hits.find(h => h.outcome !== 'passed-through')?.outcome ?? 'passed-through';
-    if (recorded !== 'passed-through' && recorded !== 'morale-failed') recordFollowerDefended(s, t.actorId, recorded, d.identityPublic ? d.cardInstanceId : undefined);
+    // A throw back already put its own line down where it interrupted the resolution, and one follower answers once.
+    if (recorded !== 'passed-through' && recorded !== 'morale-failed' && !reflected(d)) recordFollowerDefended(s, t.actorId, recorded, d.identityPublic ? d.cardInstanceId : undefined);
     // Compatibility summary; per-hit outcomes remain authoritative in the frozen source.
     const compatible = outcome === 'earth-nullified' || outcome === 'reflected' ? 'blocked' : outcome;
     t.followerResults!.push({ cardInstanceId: d.cardInstanceId, morale: d.morale ?? null, outcome: compatible, hpReduction: Math.max(0, ...d.hits.map(h => h.hpReduction)) });
@@ -144,6 +146,9 @@ export function resolveFollowerSnapshot(state: GameState, group: AttackGroup, ta
                     }
                     else if (d.source==='physical' && d.descriptor.reflectionLimit !== undefined && technique.effectLevel <= d.descriptor.reflectionLimit && !hit.lineage.includes(d.cardInstanceId)) {
                         hit.defended = true;
+                        // The child group takes over here and the snapshot may never be summarized again
+                        // once every hit is answered, so the throw back is recorded where it happens.
+                        if (!reflected(d)) recordFollowerDefended(state, target.actorId, 'reflected', d.identityPublic ? d.cardInstanceId : undefined);
                         d.hits.push({ hitIndex: index, outcome: 'reflected', hpReduction: 0 });
                         d.hitCursor++;
                         target.pendingFollowerReflection = { cardInstanceId: d.cardInstanceId, hitIndex: index };

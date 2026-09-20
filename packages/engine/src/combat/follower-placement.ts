@@ -11,10 +11,11 @@ export function placeFollower(p: PlayerState, cardInstanceId: string, position?:
 /** Shared initial, re-setup, arrangement, acquisition and maintenance condition. */
 export function canPlaceFollower(p: PlayerState, id: string): boolean { const d = followerFor(id); return !!d && (!d.placementFaction || d.placementFaction === p.faction); }
 export function canRemoveFollower(id: string): boolean { return !!followerFor(id) && !followerFor(id)!.nonremovable; }
-// Maintenance runs after every transition with no event and no clock, so it announces nothing: the other
-// seats see the follower count fall, not which card left. A placement that never turned face up (G10 places
-// face down) therefore stays hidden in the pile, matching `faceUp` = what the table saw, never a new
-// publication. Nothing in the rules asks an illegal placement to be published as it is removed.
+// Maintenance runs after every transition with no event and no clock of its own, so it names nothing: the
+// other seats see the follower count fall and the counted discard line that `moveToDiscard` leaves, not
+// which card left. A placement that never turned face up (G10 places face down) therefore stays hidden in
+// the pile, matching `faceUp` = what the table saw, never a new publication. Nothing in the rules asks an
+// illegal placement to be published as it is removed.
 export function maintainFollowers(s: GameState): void {
     for (const p of Object.values(s.players))
         p.followers = p.followers.filter(f => { if (canPlaceFollower(p, f.cardInstanceId))
