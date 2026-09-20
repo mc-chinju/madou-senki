@@ -84,6 +84,43 @@ export function recordRest(s: GameState, actorId: PlayerId, count: number): void
   record(s, {type: 'REST', actorId, audience: 'public', count});
 }
 
+/** A card nobody saw still leaves a trace: the table learns one more card left this seat, its owner which one. */
+export function recordFaceDownDiscard(s: GameState, ownerId: PlayerId, cardInstanceId: string): void {
+  record(s, {type: 'CARDS_DISCARDED', actorId: ownerId, audience: 'public', count: 1});
+  record(s, {type: 'CARDS_DISCARDED', actorId: ownerId, audience: {playerId: ownerId}, cardInstanceId, count: 1});
+}
+
+/** A chant goes down face down, so only the act is public; the card is named when something turns it over. */
+export function recordChanted(s: GameState, actorId: PlayerId): void {
+  record(s, {type: 'CHANTED', actorId, audience: 'public'});
+}
+
+/** How many followers the seat ended up with is already visible at the table; which cards they are is not. */
+export function recordFollowersArranged(s: GameState, actorId: PlayerId, count: number): void {
+  record(s, {type: 'FOLLOWERS_ARRANGED', actorId, audience: 'public', count});
+}
+
+/** A follower that meets an attack is turned face up first, so its name travels with what it did. */
+export function recordFollowerDefended(s: GameState, actorId: PlayerId, followerOutcome: NonNullable<GameEvent['followerOutcome']>, cardInstanceId?: string): void {
+  record(s, {type: 'FOLLOWER_DEFENDED', actorId, audience: 'public', followerOutcome, ...(cardInstanceId ? {cardInstanceId} : {})});
+}
+
+/** The throw itself is a ROLL_RESOLVED record; this says which follower it was thrown for. */
+export function recordMoraleCheck(s: GameState, actorId: PlayerId, success: boolean, cardInstanceId?: string): void {
+  record(s, {type: 'MORALE_CHECKED', actorId, audience: 'public', success, ...(cardInstanceId ? {cardInstanceId} : {})});
+}
+
+/** Taking a card back is public; the discard pile is not, so a card from it is named only to its taker (G11). */
+export function recordReclaim(s: GameState, actorId: PlayerId, cardInstanceId: string, faceUp: boolean): void {
+  record(s, {type: 'CARD_RECLAIMED', actorId, audience: 'public', ...(faceUp ? {cardInstanceId} : {})});
+  if (!faceUp) record(s, {type: 'CARD_RECLAIMED', actorId, audience: {playerId: actorId}, cardInstanceId});
+}
+
+/** The pile going back under the deck is done in the open; the order it lands in is not recorded. */
+export function recordReshuffle(s: GameState, actorId: PlayerId, count: number): void {
+  record(s, {type: 'DECK_RESHUFFLED', actorId, audience: 'public', count});
+}
+
 /** Status and distance changes are compared once per committed step, so every producer is covered. */
 export function recordStepChanges(before: GameState, s: GameState): void {
   const active = (state: GameState, id: PlayerId) => (state.players[id]?.presence ?? 'active') === 'active';

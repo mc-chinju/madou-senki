@@ -1,4 +1,5 @@
 import {discardPhysical} from '../discard.js';
+import {recordFollowerDefended,recordMoraleCheck} from '../public-record.js';
 import {reclaimEventId} from '../reclaim.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
 import {gameStats} from '../game-stats.js';
@@ -56,6 +57,8 @@ function morale(s: GameState, g: AttackGroup, t: AttackTarget, d: FollowerDefens
     if (frame.stage !== 'applied')
         return false;
     d.morale = { dice: [...frame.faces], threshold: frame.threshold!, success: frame.success! };
+    // The check turned the follower face up above, so the record may say which one was tested.
+    recordMoraleCheck(s, t.actorId, d.morale.success, d.identityPublic ? d.cardInstanceId : undefined);
     delete t.moraleRollId;
     if (!d.morale.success) {
         d.defeated = true;
@@ -64,9 +67,12 @@ function morale(s: GameState, g: AttackGroup, t: AttackTarget, d: FollowerDefens
     return true;
 }
 function moraleFailed(d: FollowerDefenseSnapshot): boolean { return d.morale?.success === false; }
-function summarize(t: AttackTarget, d: FollowerDefenseSnapshot): void {
+function summarize(s: GameState, t: AttackTarget, d: FollowerDefenseSnapshot): void {
     if(d.source==='virtual')return;
     const outcome = d.morale?.success === false ? 'morale-failed' : d.hits.at(-1)?.outcome ?? 'passed-through';
+    // A follower that was ignored or never reached did nothing to record, and a failed morale is already
+    // its own MORALE_CHECKED line. The record keeps the real outcome, not the summary's older wording.
+    if (outcome !== 'passed-through' && outcome !== 'morale-failed') recordFollowerDefended(s, t.actorId, outcome, d.identityPublic ? d.cardInstanceId : undefined);
     // Compatibility summary; per-hit outcomes remain authoritative in the frozen source.
     const compatible = outcome === 'earth-nullified' || outcome === 'reflected' ? 'blocked' : outcome;
     t.followerResults!.push({ cardInstanceId: d.cardInstanceId, morale: d.morale ?? null, outcome: compatible, hpReduction: Math.max(0, ...d.hits.map(h => h.hpReduction)) });
@@ -165,7 +171,7 @@ export function resolveFollowerSnapshot(state: GameState, group: AttackGroup, ta
             }
             d.hits.push({ hitIndex: index, outcome, hpReduction });
         }
-        summarize(target, d);
+        summarize(state, target, d);
     }
     // Never move a source that an interruption already moved elsewhere, or recreate it.
     const player = state.players[target.actorId]!;

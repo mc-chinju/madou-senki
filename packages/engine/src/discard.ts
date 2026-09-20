@@ -1,4 +1,5 @@
 import type {GameState} from './state.js';
+import {recordFaceDownDiscard} from './public-record.js';
 import {offerReclaim,type ReclaimSource} from './reclaim.js';
 export const FAIRY_SWORD='a2-p04-r2c1';
 export type DiscardOrigin=Extract<ReclaimSource,{kind:'actual-discard'}>['origin'];
@@ -11,6 +12,8 @@ export interface DiscardEntry {cardInstanceId:string;ownerId?:string;faceUp:bool
 /** The only way a card enters the pile: every entry records whose card it was and whether it was seen. */
 export function moveToDiscard(s:GameState,cardInstanceId:string,origin:{ownerId?:string;faceUp:boolean}):void {
   s.discard.push({cardInstanceId,...(origin.ownerId?{ownerId:origin.ownerId}:{}),faceUp:origin.faceUp});
+  // A card the table already saw is named by the record that showed it; only the unseen ones need this line.
+  if(!origin.faceUp&&origin.ownerId)recordFaceDownDiscard(s,origin.ownerId,cardInstanceId);
 }
 /** The pile as bare card ids, for the counts and matchings that never cared about the origin. */
 export function discardIds(s:GameState):string[] { return s.discard.map(entry=>entry.cardInstanceId); }

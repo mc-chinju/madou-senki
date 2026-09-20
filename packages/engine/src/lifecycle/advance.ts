@@ -1,4 +1,4 @@
-import {recordDamage} from '../public-record.js';
+import {recordDamage,recordReshuffle} from '../public-record.js';
 import {snapshotCombatDamage,queueCombatRewards} from '../abilities/combat-reward-state.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
 import {rewardSadLove} from '../abilities/sad-love-state.js';
@@ -62,7 +62,7 @@ export function revealOpen(s:GameState,p:PlayerState,id:string,random:()=>number
     const returning=[...s.seatOrder.slice(s.turnSeat),...s.seatOrder.slice(0,s.turnSeat)].filter(id=>s.players[id]!.presence==='otherworld');
     for(const actorId of returning)s.players[actorId]!.presence='active';
     for(const actorId of returning)appendEvent(s,now,{type:'PLAYER_RETURNED',actorId,audience:'public'});
-    s.deck=shuffle([...s.deck,...discardIds(s)],random);s.discard=[];
+    s.deck=shuffle([...s.deck,...discardIds(s)],random);s.discard=[];recordReshuffle(s,p.id,s.deck.length);
    }
    if(id==='a2-p01-r1c1'){const targets=s.seatOrder.filter(actor=>s.players[actor]!.presence==='dead');if(targets.length)enqueueLifecycle(s,{kind:'fusen',id:`open-${s.nextEventId++}`,actorId:p.id,sourceCardInstanceId:id,targetIds:targets,cursor:0});}
 }
@@ -97,7 +97,7 @@ export function advanceLifecycle(s:GameState,random:()=>number,now:number):void{
   if(task.kind==='draw'){
    const p=s.players[task.actorId]!;
    if(!isActive(p)||p.hand.length>=task.target){s.lifecycle!.pop();continue;}
-   if(!s.deck.length&&s.discard.length){s.deck=shuffle(discardIds(s),random);s.discard=[];}
+   if(!s.deck.length&&s.discard.length){s.deck=shuffle(discardIds(s),random);s.discard=[];recordReshuffle(s,p.id,s.deck.length);}
    const id=s.deck.shift();if(!id){s.lifecycle!.pop();continue;}
    const card=getAction(id);if(!card)throw Error('UNKNOWN_CARD');
    if(card.category!=='open'){p.hand.push(id);appendEvent(s,now,{type:'CARD_DRAWN',actorId:p.id,audience:{playerId:p.id},cardInstanceId:id});continue;}

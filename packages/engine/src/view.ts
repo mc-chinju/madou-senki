@@ -64,7 +64,8 @@ export interface PublicPlayerView {
   damage: number; handCount: number; followers: CardBackView[]; chants: CardBackView[]; chantCount: number; open: string[]; attachments: string[]; statuses:PublicStatusView[];
 }
 export interface LogView { count?:number; death?:GameEvent['death']; id: number; at: number; type: GameEvent['type']; actorId: PlayerId; targetId?:PlayerId; cardInstanceId?: string; characterId?: string;
-  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; checkSkip?:GameEvent['checkSkip']; attackOutcome?:GameEvent['attackOutcome']; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'] }
+  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; checkSkip?:GameEvent['checkSkip']; attackOutcome?:GameEvent['attackOutcome']; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'];
+  followerOutcome?:GameEvent['followerOutcome']; success?:boolean }
 export interface PlayerView {
   sadLove:SadLoveView|null;
  shadowJumpCost:ReturnType<typeof shadowJumpCostView>;
@@ -143,6 +144,16 @@ function logView(event: GameEvent, viewerId: PlayerId): LogView {
   if(event.type==='STATUS_CHANGED'&&event.status)result.status={...event.status};
   if(event.type==='DISTANCE_CHANGED'){result.targetId=event.targetId!;result.distance=event.distance!;}
   if(event.type==='PASSED')result.windowKind=event.windowKind!;
+  // A card nobody saw is a number to the table; its owner's own copy of the line carries the name.
+  if(event.type==='CARDS_DISCARDED'){if(event.count!==undefined)result.count=event.count;if(event.audience!=='public')result.cardInstanceId=event.cardInstanceId!;}
+  // CHANTED carries nothing beyond the seat: the card is still face down on the table.
+  if(event.type==='FOLLOWERS_ARRANGED'&&event.count!==undefined)result.count=event.count;
+  // A follower is turned face up before it answers an attack, so the outcome may name it.
+  if(event.type==='FOLLOWER_DEFENDED'){result.followerOutcome=event.followerOutcome!;if(event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;}
+  if(event.type==='MORALE_CHECKED'){result.success=event.success!;if(event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;}
+  // Taken from the table, the card is named to everyone; taken from the pile, only the private copy names it.
+  if(event.type==='CARD_RECLAIMED'&&event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;
+  if(event.type==='DECK_RESHUFFLED'&&event.count!==undefined)result.count=event.count;
   if(event.type==='PLAYER_DIED'&&event.death)result.death={cause:event.death.cause,eventId:event.death.eventId,...(event.death.sourceActorId?{sourceActorId:event.death.sourceActorId}:{}),...(event.death.sourceCardInstanceId?{sourceCardInstanceId:event.death.sourceCardInstanceId}:{})};
   if((event.type==='WISH_ACQUIRED'||event.type==='FOLLOWER_DESTROYED'||event.type==='CHARACTER_INSPECTED'||event.type==='CARD_GIFTED'||event.type==='BEAST_CAPTURED')&&event.targetId)result.targetId=event.targetId;
   if(event.type==='BEAST_CAPTURED'&&event.audience==='public'&&event.count!==undefined)result.count=event.count;

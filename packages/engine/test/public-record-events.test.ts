@@ -187,6 +187,13 @@ it('projects each record type through a fixed field allowlist and hides a concea
     {type: 'STATUS_CHANGED', actorId: 'A', ...secret},
     {type: 'DISTANCE_CHANGED', actorId: 'A', ...secret},
     {type: 'PASSED', actorId: 'A', ...secret},
+    {type: 'CARDS_DISCARDED', actorId: 'A', ...secret},
+    {type: 'CHANTED', actorId: 'A', ...secret},
+    {type: 'FOLLOWERS_ARRANGED', actorId: 'A', ...secret},
+    {type: 'FOLLOWER_DEFENDED', actorId: 'B', ...secret, followerOutcome: 'blocked'},
+    {type: 'MORALE_CHECKED', actorId: 'B', ...secret, success: true},
+    {type: 'CARD_RECLAIMED', actorId: 'A', ...secret},
+    {type: 'DECK_RESHUFFLED', actorId: 'A', ...secret},
   ];
   s.events = events.map((event, index) => ({...event, id: 1000 + index, at: 1, audience: 'public'}));
   const keys = (viewer: string) => viewFor(s, viewer).logs.map(log => [log.type, Object.keys(log).filter(key => !['id', 'at', 'type', 'actorId'].includes(key)).sort()]);
@@ -209,7 +216,20 @@ it('projects each record type through a fixed field allowlist and hides a concea
     ['STATUS_CHANGED', ['status']],
     ['DISTANCE_CHANGED', ['distance', 'targetId']],
     ['PASSED', ['windowKind']],
+    // A face-down discard is a number to the table; the name rides only on the owner's private copy.
+    ['CARDS_DISCARDED', ['count']],
+    // A chant goes down face down, so the line is the seat and nothing else.
+    ['CHANTED', []],
+    ['FOLLOWERS_ARRANGED', ['count']],
+    // A follower that answers an attack is face up by then, so the engine may put its name on the line.
+    ['FOLLOWER_DEFENDED', ['cardInstanceId', 'followerOutcome']],
+    ['MORALE_CHECKED', ['cardInstanceId', 'success']],
+    ['CARD_RECLAIMED', ['cardInstanceId']],
+    ['DECK_RESHUFFLED', ['count']],
   ]);
+  // Only the owner's own line spells out a card the table never saw go.
+  const hidden = viewFor(s, 'C').logs.find(log => log.type === 'CARDS_DISCARDED')!;
+  expect(hidden).not.toHaveProperty('cardInstanceId');
   // G03 判定の公開範囲: the outcome reaches everyone, the threshold only a revealed seat.
   const hiddenRoll = viewFor(s, 'C').logs.find(log => log.type === 'ROLL_RESOLVED')!.roll!;
   expect(hiddenRoll).toEqual({rollId: 'roll-1', kind: 'ability-check', faces: [3, 4], total: 7, attempt: 1, success: true});

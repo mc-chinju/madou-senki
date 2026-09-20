@@ -5,7 +5,8 @@ import { expect, test } from 'vitest';
 import { PublicLog, publicLogSections } from '../src/game/PublicLog.js';
 
 const players = { A: { name: '葵' }, B: { name: '楓' }, C: { name: '凛' }, D: { name: '蓮' } };
-const view = (logs: Omit<LogView, 'at'>[]) => ({ players, logs: logs.map(log => ({ at: 0, ...log })) }) as unknown as PlayerView;
+const view = (logs: Omit<LogView, 'at'>[], privateLogs: Omit<LogView, 'at'>[] = []) =>
+  ({ players, logs: logs.map(log => ({ at: 0, ...log })), privateLogs: privateLogs.map(log => ({ at: 0, ...log })) }) as unknown as PlayerView;
 const html = (v: PlayerView) => renderToStaticMarkup(createElement(PublicLog, { view: v, onInspect: () => {} }));
 
 test('turns become headings and consecutive passes in one window fold into one line', () => {
@@ -151,10 +152,44 @@ test('the reader can flip the record to newest first', () => {
   expect(newest.map(section => section.heading)).toEqual(['2手番 楓さん', '1手番 葵さん', '対戦準備']);
   // The fold still runs over the chronological run, so the two passes stay one line in either order.
   expect(newest[1]!.lines).toEqual([
-    { kind: 'event', event: expect.objectContaining({ id: 5 }) },
+    { kind: 'event', own: false, event: expect.objectContaining({ id: 5 }) },
     { kind: 'passes', id: 3, lastId: 4, windowKinds: ['declaration'], actorIds: ['B', 'C'] },
   ]);
   expect(oldest[1]!.lines.map(line => (line.kind === 'event' ? line.event.id : line.id))).toEqual([3, 5]);
+});
+
+/** The seat's own record belongs in its war record too, as long as the reader can tell it apart. */
+test('folds a run of face-down discards into one counted line and marks what only this reader sees', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'CARDS_DISCARDED', actorId: 'A', count: 1 },
+    { id: 4, type: 'CARDS_DISCARDED', actorId: 'A', count: 1 },
+    { id: 6, type: 'CHANTED', actorId: 'A' },
+    { id: 7, type: 'FOLLOWERS_ARRANGED', actorId: 'A', count: 2 },
+    { id: 8, type: 'MORALE_CHECKED', actorId: 'B', cardInstanceId: 'a2-p20-r3c1', success: false },
+    { id: 9, type: 'FOLLOWER_DEFENDED', actorId: 'B', cardInstanceId: 'a2-p20-r3c1', followerOutcome: 'blocked' },
+    { id: 10, type: 'CARD_RECLAIMED', actorId: 'A', cardInstanceId: 'a2-p02-r1c2' },
+    { id: 11, type: 'CARD_RECLAIMED', actorId: 'B' },
+    { id: 12, type: 'DECK_RESHUFFLED', actorId: 'A', count: 37 },
+  ], [
+    { id: 3, type: 'CARDS_DISCARDED', actorId: 'A', cardInstanceId: 'a2-p01-r1c1', count: 1 },
+    { id: 5, type: 'CARDS_DISCARDED', actorId: 'A', cardInstanceId: 'a2-p02-r1c2', count: 1 },
+    { id: 13, type: 'CARD_DRAWN', actorId: 'A', cardInstanceId: 'a2-p01-r1c1' },
+  ]);
+  const lines = publicLogSections(v)[0]!.lines;
+  expect(lines[0]).toEqual({ kind: 'discards', id: 2, lastId: 5, actorId: 'A', count: 2, cardInstanceIds: ['a2-p01-r1c1', 'a2-p02-r1c2'] });
+  const markup = html(v);
+  expect(markup).toContain('<strong>葵</strong>が2枚を伏せたまま捨てました');
+  expect(markup).toContain('（自分だけに見えています：');
+  expect(markup).toContain('<strong>葵</strong>が詠唱して伏せました');
+  expect(markup).toContain('<strong>葵</strong>が従者を並べました（2枚）');
+  expect(markup).toContain('が士気判定に失敗しました');
+  expect(markup).toMatch(/<strong>楓<\/strong>の<button[^>]*>グリフォン<\/button>が攻撃を防ぎました/);
+  expect(markup).toMatch(/<strong>葵<\/strong>が<button[^>]*>啓示<\/button>を回収しました/);
+  expect(markup).toContain('<strong>楓</strong>がカードを1枚回収しました');
+  expect(markup).toContain('捨て札を山札に戻して混ぜました（37枚）');
+  // A line only this reader can see says so, right where it stands in the record.
+  expect(markup).toMatch(/<button[^>]*>[^<]+<\/button>を引きました<span class="log-own">（自分だけに見えています）<\/span>/);
 });
 
 test('leaving a whole action to the others reads as one line per action', () => {

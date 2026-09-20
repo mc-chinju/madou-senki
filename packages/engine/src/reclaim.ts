@@ -1,6 +1,7 @@
 import {reuseClaims,beginReuse} from './abilities/reuse.js';
 import {REUSE_ABILITIES,type ReuseAbilityId} from './abilities/reuse-sources.js';
 import {discardPhysical} from './discard.js';
+import {recordReclaim} from './public-record.js';
 import {lifeIdentity} from './abilities/suppression-state.js';
 import {hasPendingFatal,hasStatus, type GameState} from './state.js';
 import {getAction} from '@madou/catalog';
@@ -106,7 +107,10 @@ export function commitReclaim(s:GameState,decisionId:string,claimId:string):bool
   if(!claim||claim.chooserId!==w.participants[w.cursor]||claim.printedRider==='courage'&&d.stage!=='beneficiary-choice')return false;
   const beneficiary=s.players[claim.beneficiaryId];
   if(!beneficiary||(beneficiary.presence??'active')!=='active'||lifeIdentity(beneficiary)!==claim.beneficiaryLifeId)return false;
+  // The resolution zone is on the table; the pile is not, whatever face its entry kept.
+  const faceUp=d.fromZone==='resolution';
   if(!reserveReclaimCard(s,d.cardInstanceId,claim.beneficiaryId,d.eventId,claim.beneficiaryLifeId,d.fromZone))return false;
+  recordReclaim(s,claim.beneficiaryId,d.cardInstanceId,faceUp);
   if(claim.right==='base'&&claim.budgetOwnerId){const usage=s.players[claim.budgetOwnerId]!.reclaimUsage??={};
     usage[claim.normalizedName]={baseSpent:true,extraSpentByAbility:[...(usage[claim.normalizedName]?.extraSpentByAbility??[])]};}
   if(!d.claims.some(c=>c.id===claim.id))d.claims.push(claim);

@@ -7,22 +7,38 @@ const labels:Record<string,string>={CARD_DRAWN:'カードを引きました',FOL
 const useNames:Record<NonNullable<LogView['use']>,string>={attack:'攻撃',defense:'防御',counter:'反撃',maai:'間合い',advance:'踏み込み',anytime:'いつでも',turn:'手番',combination:'複合技'};
 /** Uses that always point at an opponent; the record names them instead of tagging the line with a target list. */
 const directedUses=new Set<NonNullable<LogView['use']>>(['attack','defense','counter','maai','advance']);
-/** Lines whose subject is the ability or the attack, not the seat; their text opens with its own particle. */
-const ownParticle=new Set<LogView['type']>(['ABILITY_CANCELED','ATTACK_RESOLVED']);
+/** Lines whose subject is the ability, the attack or the follower, not the seat; their text opens with its own particle. */
+const ownParticle=new Set<LogView['type']>(['ABILITY_CANCELED','ATTACK_RESOLVED','FOLLOWER_DEFENDED','MORALE_CHECKED']);
+/** What the follower did to the attack that reached it. */
+const followerOutcomes:Record<NonNullable<LogView['followerOutcome']>,string>={blocked:'攻撃を防ぎました','equal-destroyed':'攻撃を防いで倒れました','lower-destroyed':'攻撃を受けて倒れました',
+ 'attribute-destroyed':'攻撃で破壊されました','level-destroyed':'攻撃で破壊されました','earth-nullified':'地の魔法を打ち消しました',reflected:'攻撃を跳ね返しました',
+ 'morale-failed':'士気が続かず退きました','passed-through':'攻撃に触れられませんでした'};
 const windowNames:Record<string,string>={declaration:'宣言',
  'before-roll':'判定前','after-roll':'判定後','effect-level':'効果Lv',damage:'ダメージ','attack-abilities':'攻撃時の能力','normal-defense':'防御','defense-advance':'間合いへの踏み込み','follower-entry-abilities':'従者登場前','follower-start':'従者の防御',hit:'命中','hit-abilities':'命中時の能力','on-hit-choice':'命中時の選択','lifecycle-boundary':'区切り','death-gift':'死亡時の託し',revival:'復活',approach:'踏み込み',withdrawal:'離脱',action:'行動','ability-attack':'追加攻撃','technique-double-choice':'ダメージ倍化','hit-advance-choice':'命中後の踏み込み','lifetime-effect-choice':'効果の選択','follower-bypass-choice':'従者の無視','private-inspection':'確認','beast-capture':'獣の捕獲','shadow-jump-cost':'影跳びの支払い'};
 type Inspect=(card:ActionCard|CharacterCard)=>void;
 export type LogOrder='oldest'|'newest';
-export type LogLine={kind:'event';event:LogView}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;actorIds:string[]};
+export type LogLine={kind:'event';event:LogView;own:boolean}|{kind:'passes';id:number;lastId:number;windowKinds:string[];actorIds:string[]}|{kind:'through';id:number;lastId:number;actorIds:string[]}
+ |{kind:'discards';id:number;lastId:number;actorId:string;count:number;cardInstanceIds:string[]};
 export interface LogSection{key:string;heading:string;lines:LogLine[]}
 
-/** Groups the public record by turn, folds a run of passes in one window, then joins windows the same seats passed in a row. */
+/** Groups the record by turn, folds a run of passes in one window, then joins windows the same seats passed in a row.
+ *  The reader's own private record is woven in by event id, so a line only it can see keeps its place in the story. */
 export function publicLogSections(view:PlayerView,order:LogOrder='oldest'):LogSection[]{
  const name=(id:string)=>view.players[id]?.name??'参加者';
  const sections:LogSection[]=[{key:'setup',heading:'対戦準備',lines:[]}];
- for(const event of view.logs){
+ const entries=[...view.logs.map(event=>({event,own:false})),...view.privateLogs.map(event=>({event,own:true}))].sort((a,b)=>a.event.id-b.event.id);
+ for(const {event,own} of entries){
   if(event.type==='TURN_STARTED'){sections.push({key:`turn-${event.id}`,heading:`${event.turnNumber??'?'}手番 ${name(event.actorId)}さん`,lines:[]});continue;}
   const lines=sections.at(-1)!.lines,last=lines.at(-1);
+  if(event.type==='CARDS_DISCARDED'){
+   // The table's count and the owner's names are the same act seen twice, so they share one line.
+   if(last?.kind==='discards'&&last.actorId===event.actorId){
+    if(own){if(event.cardInstanceId)last.cardInstanceIds.push(event.cardInstanceId);}else last.count+=event.count??1;
+    last.lastId=event.id;continue;
+   }
+   lines.push({kind:'discards',id:event.id,lastId:event.id,actorId:event.actorId,count:own?0:event.count??1,
+    cardInstanceIds:own&&event.cardInstanceId?[event.cardInstanceId]:[]});continue;
+  }
   if(event.type==='PASSED'&&event.windowKind==='action-through'){
    // One line per action; the passes it fills in later are never recorded (G03).
    if(last?.kind==='through'&&!last.actorIds.includes(event.actorId)){last.actorIds.push(event.actorId);last.lastId=event.id;continue;}
@@ -33,7 +49,7 @@ export function publicLogSections(view:PlayerView,order:LogOrder='oldest'):LogSe
    if(last?.kind==='passes'&&last.windowKinds.at(-1)===event.windowKind&&!last.actorIds.includes(event.actorId)){last.actorIds.push(event.actorId);last.lastId=event.id;continue;}
    lines.push({kind:'passes',id:event.id,lastId:event.id,windowKinds:[event.windowKind??''],actorIds:[event.actorId]});continue;
   }
-  lines.push({kind:'event',event});
+  lines.push({kind:'event',event,own});
  }
  for(const section of sections)section.lines=section.lines.reduce<LogLine[]>((lines,line)=>{
   const last=lines.at(-1),same=(a:string[],b:string[])=>a.length===b.length&&a.every(id=>b.includes(id));
@@ -101,6 +117,13 @@ function eventText(view:PlayerView,event:LogView,onInspect:Inspect):ReactNode{
   case 'STATUS_CHANGED':{const status=statusNames[event.status!.kind]??'状態';return event.status!.change==='applied'?`${status}状態になりました`:`${status}状態から回復しました`;}
   case 'DISTANCE_CHANGED':return `${name(event.targetId)}さんと${event.distance==='near'?'近距離':'遠距離'}になりました`;
   case 'REST':return `休息しました（${event.count??0}枚）`;
+  case 'CHANTED':return '詠唱して伏せました';
+  case 'FOLLOWERS_ARRANGED':return `従者を並べました（${event.count??0}枚）`;
+  // The follower turned face up to answer the attack, so its name is here unless it never became public.
+  case 'FOLLOWER_DEFENDED':return <>の<CardLink id={event.cardInstanceId} onInspect={onInspect} fallback="従者"/>が{followerOutcomes[event.followerOutcome!]??'攻撃に応じました'}</>;
+  case 'MORALE_CHECKED':return <>の<CardLink id={event.cardInstanceId} onInspect={onInspect} fallback="従者"/>が士気判定に{event.success?'成功しました':'失敗しました'}</>;
+  case 'CARD_RECLAIMED':return event.cardInstanceId?<><CardLink id={event.cardInstanceId} onInspect={onInspect}/>を回収しました</>:'カードを1枚回収しました';
+  case 'DECK_RESHUFFLED':return `捨て札を山札に戻して混ぜました（${event.count??0}枚）`;
   default:return labels[event.type]??'記録';
  }
 }
@@ -151,10 +174,23 @@ export function PublicLog({view,onInspect}:{view:PlayerView;onInspect:Inspect}){
   {/* Anchoring keeps the read line still while browsing; while following, it would fight the pin instead. */}
   <div className={`log-scroll${following?' log-following':''}`} ref={list} onScroll={onScroll} tabIndex={0} role="region" aria-label="戦記の全件"><div ref={content}>{sections.map(section=><section key={section.key} aria-label={section.heading}><h3>{section.heading}</h3>
    {/* Newest first still counts from the oldest line, so a number keeps meaning the same record. */}
-   <ol {...(order==='newest'?{reversed:true,start:section.lines.length}:{})}>{section.lines.map(line=>line.kind==='through'
-   ?<li key={line.id} className={fresh(line.lastId)?'log-new':undefined}><strong>{line.actorIds.map(name).join('・')}</strong>がこの行動を任せました</li>
+   <ol {...(order==='newest'?{reversed:true,start:section.lines.length}:{})}>{section.lines.map((line,index)=>{
+   // A run of lines only this reader can see is one thing to the reader, so the words are said once at
+   // its head and the rule down the side carries the rest. The lines are already in reading order here,
+   // so the head stays the first line the eye meets whichever way the record runs.
+   const previous=section.lines[index-1];
+   const runStart=line.kind==='event'&&line.own&&!(previous?.kind==='event'&&previous.own);
+   const mark=(id:number,own=false)=>`${own?'log-own-line ':''}${fresh(id)?'log-new':''}`.trim()||undefined;
+   return line.kind==='through'
+   ?<li key={line.id} className={mark(line.lastId)}><strong>{line.actorIds.map(name).join('・')}</strong>がこの行動を任せました</li>
    :line.kind==='passes'
-   ?<li key={line.id} className={fresh(line.lastId)?'log-new':undefined}><strong>{line.actorIds.map(name).join('・')}</strong>が{windows(line.windowKinds)}パスしました</li>
-   :<li key={line.event.id} className={fresh(line.event.id)?'log-new':undefined}><strong>{name(line.event.actorId)}</strong>{ownParticle.has(line.event.type)?'':'が'}{eventText(view,line.event,onInspect)}</li>)}</ol></section>)}</div></div>
+   ?<li key={line.id} className={mark(line.lastId)}><strong>{line.actorIds.map(name).join('・')}</strong>が{windows(line.windowKinds)}パスしました</li>
+   :line.kind==='discards'
+   ?<li key={line.id} className={mark(line.lastId)}><strong>{name(line.actorId)}</strong>が{line.count||line.cardInstanceIds.length}枚を伏せたまま捨てました
+    {/* The count is the table's; only this reader knows which cards they were, so the names say so. */}
+    {line.cardInstanceIds.length?<span className="log-own">（自分だけに見えています：{line.cardInstanceIds.map((id,index)=><span key={`${id}-${index}`}>{index?'・':''}<CardLink id={id} onInspect={onInspect}/></span>)}）</span>:null}</li>
+   :<li key={line.event.id} className={mark(line.event.id,line.own)}><strong>{name(line.event.actorId)}</strong>{ownParticle.has(line.event.type)?'':'が'}{eventText(view,line.event,onInspect)}
+    {runStart?<span className="log-own">（自分だけに見えています）</span>:null}</li>;
+   })}</ol></section>)}</div></div>
  </section>;
 }
