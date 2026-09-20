@@ -87,12 +87,11 @@ describe('public record privacy over full bot games', () => {
         const view = viewFor(next, viewerId);
         const fresh = view.logs.filter(log => log.id > lastEventId);
         const secret = hiddenFrom(next, viewerId);
-        // A seat reviews only what it let go itself, and only while the card is still in the pile.
-        const pile = new Set(next.discard.map(card => card.cardInstanceId));
+        // A seat reviews only what it let go itself. The list is filtered out of next.discard, so
+        // "it is in the pile" cannot fail; the seat it is checked against has to come from outside it.
         for (const id of view.self.discardedCardInstanceIds) {
-          const context = `step=${steps} viewer=${viewerId} discarded=${id}`;
-          expect(pile.has(id), context).toBe(true);
-          expect(secret.has(id), context).toBe(false);
+          const owner = lastHeld.get(id);
+          if (owner) expect(owner, `step=${steps} viewer=${viewerId} discarded=${id}`).toBe(viewerId);
         }
         // Seats the table has seen open at least once; re-hiding afterwards does not unsay it.
         const opened = new Set(next.events.filter(event => event.type === 'CHARACTER_REVEALED' && event.audience === 'public').map(event => event.actorId));

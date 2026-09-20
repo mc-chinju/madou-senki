@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
-import {discardIds,type GameState} from '../src/index.js';
-import {act,finish,pass,ready,until} from './combat-helpers.js';
-import {character,handCard} from './fixtures.js';
+import {discardIds,viewFor,type GameState} from '../src/index.js';
+import {act,finish,pass,passReclaims,ready,until} from './combat-helpers.js';
+import {character,handCard,handCards} from './fixtures.js';
 
 /** One pile entry, so a case can read the seat that let the card go and the face it left with. */
 const entry=(s:GameState,id:string)=>s.discard.find(e=>e.cardInstanceId===id);
@@ -33,6 +33,20 @@ it('leaves a dead seat owning the hand it lost, face down',()=>{
   s=finish(act(s,'A',{type:'ATTACK',cardInstanceId:kill,targetIds:['B'],dedicated:false}));
   expect(s.players.B!.presence).toBe('dead');
   for(const id of lost)expect(entry(s,id)).toMatchObject({ownerId:'B',faceUp:false});
+});
+
+// The live attribution is completeAction's disposal, which reads distancePayments; finalizeDistance's
+// own branch never runs today (see c1de19bc), so this watches the path a game actually takes.
+it('gives the maai to the seat that paid it, not to the seat that approached',()=>{
+  let s=ready();const [advance,second]=handCards(s,['A','A'],'踏み込み／殴る') as [string,string];const maai=handCard(s,'B','間合い／休息');
+  s=act(s,'A',{type:'APPROACH',targetId:'B',cardInstanceId:advance});
+  s=passReclaims(act(s,'B',{type:'PLAY_MAAI',cardInstanceId:maai}));
+  s=passReclaims(act(s,'A',{type:'PLAY_ADVANCE',cardInstanceId:second}));
+  s=finish(act(s,'B',{type:'PASS'}));
+  expect(entry(s,maai)).toEqual({cardInstanceId:maai,ownerId:'B',faceUp:true});
+  expect(entry(s,advance)).toEqual({cardInstanceId:advance,ownerId:'A',faceUp:true});
+  expect(viewFor(s,'B').self.discardedCardInstanceIds).toContain(maai);
+  expect(viewFor(s,'A').self.discardedCardInstanceIds).not.toContain(maai);
 });
 
 it('takes a reclaimed card back out of the pile',()=>{

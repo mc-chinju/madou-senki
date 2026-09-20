@@ -121,6 +121,12 @@ describe('room WebSocket and durable recovery', () => {
     expect(restored?.game?.discardCount).toBe(2);
     // Nothing records who let those cards go, so the review list stays empty for every seat.
     for (const actorId of ['A', 'B', 'C', 'D']) expect((await room.gameSnapshot(actorId))?.game?.self.discardedCardInstanceIds).toEqual([]);
+    await runInDurableObject(room, instance => {
+      // The pile the room reads is the converted one, so no bare id reaches the engine. Neither the
+      // count nor the empty review list above would notice if the conversion stopped happening.
+      const read = (instance as unknown as { current(): { state: RoomData } | null }).current()!;
+      expect(read.state.game!.discard).toEqual(piled.map(cardInstanceId => ({ cardInstanceId, faceUp: true })));
+    });
     await runInDurableObject(room, (_instance, state) => {
       const stored = new RoomStorage<RoomData, RoomEvent, RoomProjection>(state.storage).snapshot()!;
       // Reading alone converts nothing on disk; the persisted revision is untouched.
