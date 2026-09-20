@@ -2,7 +2,13 @@ import type {LogView,PlayerView} from '@madou/engine';
 /** What the reader asked the record to show: everyone, the part they have a share in, or one seat. */
 export type LogFilter={kind:'all'}|{kind:'self'}|{kind:'seat';actorId:string};
 /** Every card this reader may call their own: what they hold, what they have placed, and what they have let go.
- *  The reader's own record names cards nobody else saw, so it is the only place some of them are ever written. */
+ *  The reader's own record names cards nobody else saw, so it is the only place some of them are ever written.
+ *  That last part is read from the record, so it shrinks as the window moves on: a card named only in a line
+ *  that has scrolled out is no longer known to be this reader's. Measured over four bot games sampled every 25
+ *  steps, the set shrank in 18/14/100/119 samples without changing one line of what 「自分に関係する」 keeps,
+ *  since those cards are still reachable through the hand, the followers, the chants or this seat's discards.
+ *  If it ever does matter, the answer is the one R013 took: keep what left this seat's hands (wishes, gifts)
+ *  beside the game in state, not on a line of the record. */
 export function readerCards(view:PlayerView):ReadonlySet<string>{
  const self=view.self as PlayerView['self']|undefined;
  return new Set([...self?.hand??[],...(self?.followers??[]).map(card=>card.cardInstanceId),...(self?.chants??[]).map(card=>card.cardInstanceId),

@@ -40,7 +40,39 @@ test('another seat can trace the whole bot game in the public record while its s
       await bot.connect();
       return bot;
     }));
-    let steps = 0, audits = 0;
+    let steps = 0, audits = 0, widenings = 0, narrowedAt: number | null = null;
+    const record = watcher.getByRole('region', { name: '戦記の全件' });
+    const filter = watcher.getByLabel('絞り込み');
+    const toLatest = watcher.getByRole('button', { name: /^最新へ/ });
+    // A reader who follows the record is shown its end, whatever the filter they read it through keeps. So
+    // when they widen the filter again, the lines it had been hiding are not arrivals: they were already
+    // there. This only says anything while the table is still playing — once the game is over, no line the
+    // filter hid can arrive after the reader was last shown the end, and any rule at all would pass.
+    // Reading one other seat is what makes the point: a reader's own passes run all through the record, so
+    // 「自分に関係する」 keeps a line from nearly every window and the end of it never falls far behind.
+    const narrow = async () => {
+      await filter.selectOption(`seat:${table.sessions[0]!.id}`);
+      // Following means there is nothing to catch up on; the mark is written from here as the table plays on.
+      await expect(toLatest).toHaveCount(0);
+    };
+    const widen = async () => {
+      // A reader can only come back to the end of a record they can leave, so one seat's lines have to fill
+      // more than the panel first. Until they do, the reader stays at the end and the round waits.
+      if (await record.evaluate(element => element.scrollHeight - element.clientHeight) < 48) return false;
+      // Nothing may arrive between the reader leaving the end and widening, or an arrival would be counted
+      // and rightly so. The bots are idle inside this step, so the wait is only for the last snapshot.
+      const game = await (await request.get(`/__test/rooms/${table.roomId}/game`)).json() as GameState;
+      await expect.poll(() => (latest as RoomView | null)?.game?.revision).toBe(game.revision);
+      await record.evaluate(element => { element.scrollTop = 0; });
+      await expect(toLatest, 'the reader has to leave the followed end for 「新着」 to mean anything').toBeVisible();
+      await filter.selectOption('all');
+      // Down to a single line: a record the reader was shown the end of has no arrivals in it at all.
+      await expect(toLatest).toHaveText('最新へ');
+      await toLatest.click();
+      await expect(toLatest).toHaveCount(0);
+      widenings++;
+      return true;
+    };
     const audit = async () => {
       const game = await (await request.get(`/__test/rooms/${table.roomId}/game`)).json() as GameState;
       await expect.poll(() => (latest as RoomView | null)?.game?.revision).toBe(game.revision);
@@ -61,19 +93,29 @@ test('another seat can trace the whole bot game in the public record while its s
         expect(result.ok, `seat ${index} step ${steps} ${result.code}`).toBe(true);
         acted = true; steps++;
         if (steps % 40 === 0) await audit();
+        // Rounds of it at least thirty of the table's steps apart, so the lines the filter hides do arrive in
+        // between. A round that cannot be finished yet holds the reader where they are and tries again later.
+        if (steps >= 50 && steps % 10 === 0) {
+          if (narrowedAt === null) { await narrow(); narrowedAt = steps; }
+          else if (steps - narrowedAt >= 30 && await widen()) narrowedAt = null;
+        }
         break;
       }
       if (!acted) await new Promise(resolve => setTimeout(resolve, 50));
     }
+    // The filter is remembered for this table, so a round the game ended in the middle of would follow the
+    // reader through the reload below and read the rest of the test through one seat.
+    await filter.selectOption('all');
     expect(bots[0]!.view()?.outcome).toBeDefined();
     await audit();
     // audit() runs every 40 steps and once more after the outcome, so the count follows the bot game's length.
     expect(audits).toBe(Math.floor(steps / 40) + 1);
     expect(audits).toBeGreaterThanOrEqual(2);
+    // A table too short to reach them would leave the filter unmeasured while still reading as a pass.
+    expect(widenings, 'the table has to play long enough to widen the filter twice').toBeGreaterThanOrEqual(2);
     bots.forEach(bot => bot.close());
 
     await watcher.reload();
-    const record = watcher.getByRole('region', { name: '戦記の全件' });
     await record.evaluate(element => { element.scrollTop = 0; });
     await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toBeVisible();
     // A snapshot carries only the newest window, so the whole game is reached by reading back page by page.
@@ -84,16 +126,6 @@ test('another seat can trace the whole bot game in the public record while its s
     }, { timeout: 120_000 }).toBeGreaterThan(0);
     // Reading the past back is not an arrival, so nothing the reader already saw is announced as new.
     await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toBeVisible();
-    // Neither is widening the filter again. Following a narrowed record still shows the reader its end, so the
-    // lines the filter had been hiding were already there when they scrolled away from it.
-    const filter = watcher.getByLabel('絞り込み');
-    await filter.selectOption('self');
-    await record.evaluate(element => { element.scrollTop = element.scrollHeight; });
-    await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toHaveCount(0);
-    await record.evaluate(element => { element.scrollTop = 0; });
-    await expect(watcher.getByRole('button', { name: '最新へ', exact: true })).toBeVisible();
-    await filter.selectOption('all');
-    await expect(watcher.getByRole('button', { name: /新着/ })).toHaveCount(0);
     const firstTurn = record.getByRole('region', { name: /^1手番 / });
     await firstTurn.scrollIntoViewIfNeeded();
     await expect(firstTurn).toBeVisible();
