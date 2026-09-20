@@ -33,9 +33,10 @@ test('a decided game names each seat, marks the one that never showed itself, an
   expect(html).toContain('白魔術師シェリム');
   expect(html).toContain('大神官ジル');
   expect(html.match(/最後まで非公開/g)).toHaveLength(1);
-  // A hand played down to nothing still gets its row, rather than the row leaving with the cards.
+  // A hand played down to nothing still gets its row, rather than the row leaving with the cards: 「なし」
+  // alone would be satisfied by the empty 従者 row next to it, so the rows themselves are counted.
   expect(html).toContain('雷斬剣');
-  expect(html).toContain('なし');
+  expect(html.match(/<dt>手札<\/dt>/g)).toHaveLength(2);
   // The pile is split by owner: one line under the seat that discarded it, one for the card nobody owned.
   expect(html).toContain('捨て札 1枚（捨てた順）');
   expect(html).toContain('獣王剣');
