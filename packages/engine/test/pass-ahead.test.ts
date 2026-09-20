@@ -13,8 +13,9 @@ function bowAttack(target = 'B') {
 }
 const top = (s: engine.GameState) => s.windows!.at(-1)!;
 /** The same attack against a target that is already face up. A hit turns a hidden target over, and that ends
- *  every turn-long hand-over (G03), so a test about the range itself starts with nothing left to turn. */
-function bowAttackOnRevealed() { const s = bowAttack(); s.players.B!.revealed = true; return s; }
+ *  every turn-long hand-over (G03), so a test about the range itself starts with nothing left to turn. The
+ *  reveal goes through the engine, which carries the rest of what a reveal does with it. */
+function bowAttackOnRevealed() { return act(bowAttack(), 'B', {type: 'REVEAL_CHARACTER'}); }
 const reject = (s: engine.GameState, actorId: string, command: unknown, code: string) => {
   const before = JSON.stringify(s);
   expect(engine.transition(s, {actorId, command} as engine.GameInput, entropy())).toEqual({ok: false, code});
@@ -328,9 +329,11 @@ describe('passing a whole turn through (G03)', () => {
     s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
     s = finish(s);
     // The action is over and the turn goes on, so nothing is open to answer; the reveal still ends the pass.
+    // It is the seat whose own turn it is that reveals, so nothing but the reveal itself can end it here.
     expect(s.windows?.length ?? 0).toBe(0);
     expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D']}]);
-    s = act(s, 'C', {type: 'REVEAL_CHARACTER'});
+    expect(s.players.A!.revealed).toBe(false);
+    s = act(s, 'A', {type: 'REVEAL_CHARACTER'});
     expect(s.standingPasses).toBeUndefined();
   });
 
@@ -344,6 +347,19 @@ describe('passing a whole turn through (G03)', () => {
     expect(s.players.C!.revealed).toBe(false);
     settleDamage(s, [{targetId: 'C', damage: 0, instantDeath: true, cause: 'instant-death', eventId: 'death-event'}], 1000);
     expect(s.events.some(e => e.type === 'CHARACTER_REVEALED' && e.actorId === 'C')).toBe(true);
+    expect(s.standingPasses).toBeUndefined();
+  });
+
+  it('ends at a death, even when the seat that died was already face up', async () => {
+    const {settleDamage} = await import('../src/index.js');
+    let s = bowAttack();
+    s = act(s, 'C', {type: 'REVEAL_CHARACTER'});
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D']}]);
+    // Nothing is turned over here, and the table still changed: one fewer seat to answer for.
+    const before = s.events.length;
+    settleDamage(s, [{targetId: 'C', damage: 0, instantDeath: true, cause: 'instant-death', eventId: 'death-event'}], 1000);
+    expect(s.events.slice(before).some(e => e.type === 'CHARACTER_REVEALED')).toBe(false);
     expect(s.standingPasses).toBeUndefined();
   });
 
@@ -373,7 +389,9 @@ describe('passing a whole turn through (G03)', () => {
     expect(engine.viewFor(s, 'B').logs.filter(log => log.windowKind === 'action-through').map(log => log.standingRange)).toEqual(ranges);
     // A turn-long pass names the turn instead, so pressing it twice in one turn is the one range it is.
     const turn = act(act(bowAttack(), 'C', {type: 'PASS_ACTION_THROUGH', scope: 'turn'}), 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
-    expect(turn.events.filter(e => e.windowKind === 'turn-through').map(e => e.standingRange)).toEqual(['turn-0', 'turn-0']);
+    expect(turn.events.filter(e => e.windowKind === 'turn-through').map(e => e.standingRange)).toEqual(['turn-1', 'turn-1']);
+    // The range names the turn the record's own heading names, so a reader can line the two up.
+    expect(turn.events.filter(e => e.type === 'TURN_STARTED').map(e => e.turnNumber)).toEqual([1]);
   });
 
   it('ends at a hit that turns its target face up, while the action-long hand-over beside it stands', () => {
@@ -401,6 +419,34 @@ describe('passing a whole turn through (G03)', () => {
     s = act(s, 'A', {type: 'ATTACK', cardInstanceId: handCard(s, 'A', '踏み込み／弓'), targetIds: ['B'], dedicated: false});
     expect(top(s)).toMatchObject({kind: 'declaration', passed: []});
     expect(engine.viewFor(s, 'D').legalChoices).toContain('PASS');
+  });
+
+  it('ends when another seat acts where no window is open at all', () => {
+    let s = bowAttackOnRevealed();
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = finish(s);
+    expect(s.windows?.length ?? 0).toBe(0);
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D']}]);
+    // Between two actions there is nothing open to intervene in, but a card played there is still another
+    // seat changing the situation; the hand-over ends and D answers the next window for itself (G03).
+    handCard(s, 'C', '啓示');
+    const option = engine.viewFor(s, 'C').anytimeCardOptions.find(o => o.targetId === 'A')!;
+    s = act(s, 'C', {type: 'PLAY_ANYTIME_CARD', cardInstanceId: option.cardInstanceId, targetId: 'A', targetEventId: option.targetEventId});
+    expect(s.standingPasses).toBeUndefined();
+    s = finish(s);
+    s.phase = 'action';
+    s = act(s, 'A', {type: 'ATTACK', cardInstanceId: handCard(s, 'A', '踏み込み／弓'), targetIds: ['B'], dedicated: false});
+    expect(top(s)).toMatchObject({kind: 'declaration', passed: []});
+  });
+
+  it('is not ended by the seat whose turn it is starting the next action, which is what it was given for', () => {
+    let s = bowAttackOnRevealed();
+    s = act(s, 'D', {type: 'PASS_ACTION_THROUGH', scope: 'turn'});
+    s = finish(s);
+    s.phase = 'action';
+    s = act(s, 'A', {type: 'ATTACK', cardInstanceId: handCard(s, 'A', '踏み込み／弓'), targetIds: ['B'], dedicated: false});
+    expect(s.standingPasses).toEqual([{scope: 'turn', turnNumber: 0, actorIds: ['D']}]);
+    expect(top(s)).toMatchObject({kind: 'declaration', passed: ['D']});
   });
 
   it('is never offered to a bot, which keeps answering window by window', () => {

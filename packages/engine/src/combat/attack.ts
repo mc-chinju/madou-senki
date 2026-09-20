@@ -565,7 +565,8 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       // One line per range for a standing pass; the passes it fills in later are not recorded again. The range
       // is named in the record because two actions of the same turn read alike without it (G03).
       if(w.kind!=='reclaim')recordPass(s,p.id,scope?`${scope}-through`:w.kind,
-        scope==='turn'?`turn-${s.turnNumber??0}`:scope==='action'?`action-${root}`:undefined);
+        // The same number the record's own turn heading carries, which `recordTurn` writes one ahead of the state.
+        scope==='turn'?`turn-${(s.turnNumber??0)+1}`:scope==='action'?`action-${root}`:undefined);
       if(w.kind==='approach'||w.kind==='withdrawal') {if(w.continuation.kind!=='action')reject('WRONG_PHASE');const action=s.actions![w.continuation.id]!;s.windows!.pop();const success=p.id===action.distanceTargetId;finishDistance(s,action,success);}
       else if(w.kind==='reclaim'&&s.reclaimDecisions?.find(d=>d.windowId===w.id)?.stage==='beneficiary-choice'){
         const error=chooseReclaim(s,p.id,{type:'CHOOSE_RECLAIM',decisionId:w.continuation.id,choice:'decline'},roll);if(error)reject(error);resumeReclaimDispositions(s);

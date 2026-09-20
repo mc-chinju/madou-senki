@@ -136,12 +136,15 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
   }else result=transitionChamGift(state,{actorId:input.actorId,command})??transitionAllArmy(state,{actorId:input.actorId,command})??transitionWish(state,{actorId:input.actorId,command},random,entropy.now)??transitionSuppression(state,{actorId:input.actorId,command})??transitionConditionalAbility(state,{actorId:input.actorId,command})??transitionInspection(state,{actorId:input.actorId,command})??transitionTurnPackage(state,{actorId:input.actorId,command})??transitionBeastCapture(state,{actorId:input.actorId,command},entropy.now)??transitionFollowerBundle(state,{actorId:input.actorId,command})??transitionSadLove(state,{actorId:input.actorId,command})??transitionAbilityCommand(state,{actorId:input.actorId,command})??transitionLifecycleCommand(state,{actorId:input.actorId,command},entropy.now)??transitionCore(state,{actorId:input.actorId,command},entropy);
   if(!result.ok)return result;
   const s=result.state;bindPeaceAction(s,state,{actorId:input.actorId,command});
-  // Anything but a pass changed the situation, so every seat is asked again (G03). A turn-long pass is given
-  // for the actions this turn still holds, so only an intervention into an open window ends it early: the
-  // seat whose turn it is opening its next action is what the pass was given for. A reveal ends it too,
-  // wherever it happens; that is written where the reveal is (`dropStandingPasses`), because a death reveals
-  // a character without any command asking for it, and because a hit's reveal ends only the turn-long ones.
-  if(!['PASS','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH'].includes(command.type)&&state.windows?.length)delete s.standingPasses;
+  // Anything but a pass changed the situation, so every seat is asked again (G03). What a turn-long pass was
+  // given for is the turn seat's own actions, so that seat starting its next one is not an intervention; any
+  // other seat acting is, and so is anything at all while a window is open, which is the turn seat playing
+  // into a decision the others are still answering. Reading the open window alone would let a card played
+  // between two actions slip through and then be answered for by the pass it should have ended. A reveal ends
+  // it too, wherever it happens; that is written where the reveal is (`dropStandingPasses`), because a death
+  // reveals a character without any command asking for it, and because a hit's reveal ends only the turn-long ones.
+  if(!['PASS','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH'].includes(command.type)
+    &&(state.windows?.length||input.actorId!==state.seatOrder[state.turnSeat]))delete s.standingPasses;
   if(state.phase==='action'&&state.seatOrder[state.turnSeat]===actor.id&&s.phase!=='action'&&s.earlyTurnBook)s.earlyTurnBook.closed=true;
   if(selectedReveal)startVoluntaryBenefit(s,input.actorId,expiresOnActorId!);
   cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);maintainFollowers(s);

@@ -33,7 +33,10 @@ export function settleDamage(s:GameState,intents:DamageIntent[],now:number):void
  queueCombatRewards(s,intents,doomed,rewardBatchId,'kill');
  if(!doomed.length){queueCombatRewards(s,intents,doomed,rewardBatchId,'damage');return;}
  const order=[...s.seatOrder.slice(s.turnSeat),...s.seatOrder.slice(0,s.turnSeat)].filter(id=>doomed.includes(id));
- for(const id of order){const p=s.players[id]!;p.presence='pending-death';p.lifeId=`life-${p.id}-${s.nextEventId}`;delete p.conditionalSelections;p.deathIdentity=deathIdentity(p);if(!p.revealed){p.revealed=true;appendEvent(s,now,{type:'CHARACTER_REVEALED',actorId:id,audience:'public',characterId:p.characterId});dropStandingPasses(s);}appendEvent(s,now,{type:'DEATH_PENDING',actorId:id,audience:'public'});}
+ for(const id of order){const p=s.players[id]!;p.presence='pending-death';p.lifeId=`life-${p.id}-${s.nextEventId}`;delete p.conditionalSelections;p.deathIdentity=deathIdentity(p);if(!p.revealed){p.revealed=true;appendEvent(s,now,{type:'CHARACTER_REVEALED',actorId:id,audience:'public',characterId:p.characterId});}
+  // A seat leaving the table changes what the actions still to come are worth, whether or not it was
+  // still face down when it went, so every hand-over ends here and not only at the reveal (G03).
+  dropStandingPasses(s);appendEvent(s,now,{type:'DEATH_PENDING',actorId:id,audience:'public'});}
  cleanBlessingLeases(s);
  enqueueLifecycle(s,{kind:'death-batch',rewardBatchId,rootEventIds:[...new Set(intents.map(intent=>intent.eventId))],id:`death-${s.nextEventId++}`,actorIds:order,cursor:0,intents:structuredClone(intents)});
  queueCombatRewards(s,intents,doomed,rewardBatchId,'damage');
