@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
+import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState, discardIds } from '../src/index.js';
 import {entropy} from './fixtures.js';
 import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 it('actual Gaina death and Arseil wandering remain winners after later ritual Vanmil death',()=>{
@@ -38,6 +38,6 @@ it('actual Gaina death and Arseil wandering remain winners after later ritual Va
  expect(s.players.E!.presence).toBe('dead');expect(s.players.F!.presence).toBe('wandering');expect(s.events.filter(e=>e.type==='GAME_COMPLETED')).toHaveLength(1);
  expect(s.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='A')).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='E')).toEqual(deaths);
  expect(s.windows??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);
- for(const card of [ritualCard,spear])expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ for(const card of [ritualCard,spear])expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
  for(const id of s.seatOrder)expect(viewFor(JSON.parse(JSON.stringify(s)),id).outcome).toEqual(s.outcome);
 });

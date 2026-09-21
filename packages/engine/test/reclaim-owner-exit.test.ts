@@ -1,7 +1,7 @@
 import {absentRecoveryResponse} from './reclaim-public-absence-helpers.js';
 import {expect,it} from 'vitest';
 import {actionCards,getAction} from '@madou/catalog';
-import {allCardInstanceIds,viewFor} from '../src/index.js';
+import {allCardInstanceIds,viewFor, discardIds } from '../src/index.js';
 import {act,pass,ready} from './combat-helpers.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
 
@@ -42,14 +42,14 @@ it('Actual Vanmil awakening lets the reserved Fate owner exit without return or 
   const saved=JSON.parse(JSON.stringify(s));
   expect(s.seatOrder.map(id=>viewFor(saved,id))).toEqual(s.seatOrder.map(id=>viewFor(s,id)));
   if(s.reclaimReservations.includes(fate)){
-   expect(s.deck).not.toContain(fate);expect(s.discard).not.toContain(fate);
+   expect(s.deck).not.toContain(fate);expect(discardIds(s)).not.toContain(fate);
    for(const p of Object.values(s.players))expect(p.hand).not.toContain(fate);
   }
   s=pass(saved);if(s.players.B!.presence==='exited'){exited=true;expect(s.players.B!.hand).not.toContain(fate);}
  }
  expect(responses).toEqual(['A','C','D']);
  expect(exited).toBe(true);expect(s.players.B!.presence).toBe('exited');expect(s.individualResults?.B).toBe('won');
- expect(s.players.B!.hand).not.toContain(fate);expect(s.discard.filter(id=>id===fate)).toHaveLength(1);
+ expect(s.players.B!.hand).not.toContain(fate);expect(discardIds(s).filter(id=>id===fate)).toHaveLength(1);
  expect(s.players.B!.reclaimUsage).toEqual(usage);expect(s.reclaimReservations).toEqual([]);expect(s.reclaim?.[fate]).toBeUndefined();
  expect(s.windows??[]).toEqual([]);expect(s.lifecycle??[]).toEqual([]);expect(Object.keys(s.actions??{})).toEqual([]);expect(Object.keys(s.groups??{})).toEqual([]);
  expect(allCardInstanceIds(s).sort()).toEqual(actionCards.map(c=>c.id).sort());

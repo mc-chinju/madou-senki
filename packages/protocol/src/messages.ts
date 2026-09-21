@@ -34,7 +34,8 @@ export type GameCommand =
   | { type: 'REVEAL_CHARACTER'; abilityId?:'c2-p04-r2c1-ab03' }
   | { type: 'START_TURN' }
   | { type: 'PASS' }
-  | { type: 'PASS_ACTION_THROUGH' }
+  /** Leave the rest of the root action, or the rest of this turn, to the other seats (G03); default `action`. */
+  | { type: 'PASS_ACTION_THROUGH'; scope?: 'action' | 'turn' }
   | { type: 'CANCEL_PASS_THROUGH' }
   | { type: 'START_FOLLOWERS'; dedicatedCardInstanceIds?:string[] }
   | { type: 'DISCARD_HIT_CHANTS'; discard: boolean }

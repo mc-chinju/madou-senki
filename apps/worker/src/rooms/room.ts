@@ -1,14 +1,14 @@
 import { DurableObject } from 'cloudflare:workers';
-import { activeWindowRef, commandBaseRef, createGame, transition, viewFor, type Entropy } from '@madou/engine';
+import { activeWindowRef, commandBaseRef, createGame, logPage, transition, viewFor, type Entropy, type LogView } from '@madou/engine';
 import { assertPlayableCatalog, entries, ruleset } from '@madou/catalog';
-import { isRoomCommand, MAX_COMMAND_MESSAGE_BYTES, parseClientEnvelope, type ClientErrorCode, type ClientServerMessage, type RoomCommand } from '@madou/protocol';
+import { isRoomCommand, MAX_COMMAND_MESSAGE_BYTES, parseClientEnvelope, parseLogPageRequest, type ClientErrorCode, type ClientServerMessage, type LogPageRequest, type RoomCommand } from '@madou/protocol';
 import { RoomStorage, type Snapshot } from './storage.js';
 import { projectDirectory, type RoomData, type RoomEvent, type RoomProjection, type RoomView, type RoomSettings, type RoomMutationResult } from './types.js';
 import { deliverProjection } from './outbox.js';
 import type { Session } from '../auth.js';
 import { matchesInvitation } from './invites.js';
 
-type WireMessage = ClientServerMessage<RoomView>;
+type WireMessage = ClientServerMessage<RoomView, LogView>;
 interface Attachment { actorId: string; generation: number }
 
 export class Room extends DurableObject<Env> {
@@ -129,10 +129,24 @@ export class Room extends DurableObject<Env> {
     let value: unknown;
     try { value = JSON.parse(message); }
     catch { this.send(socket, error('INVALID_ENVELOPE')); return; }
+    // Reading further back in the record changes nothing, so it needs no commit and no live generation.
+    const page = parseLogPageRequest(value);
+    if (page) { this.send(socket, page.ok ? this.logPageFor(attached.actorId, page.value) : error(page.code)); return; }
     const response = await this.command(attached.actorId, attached.generation, value);
     this.send(socket, response);
     // A fresh projection also repairs a stale client and a lost prior broadcast.
     this.broadcast();
+  }
+
+  /** An older page of the record, projected exactly as a snapshot projects the newest one, so nothing a
+   *  seat may not see can arrive by asking for it. A passive tab reads the record too, so no generation is
+   *  checked; a finished game still answers, since the record outlives the play. */
+  private logPageFor(actorId: string, request: LogPageRequest): WireMessage {
+    const current = this.current();
+    const game = current && Object.hasOwn(current.state.members, actorId) ? current.state.game : null;
+    const page = game ? logPage(game, actorId, { beforeId: request.beforeId, limit: request.limit })
+      : { logs: [], privateLogs: [], logStart: 0 };
+    return { type: 'log-page', requestId: request.requestId, beforeId: request.beforeId, ...page };
   }
 
   /** Internal RPC boundary; identity and generation are supplied by the server connection. */
@@ -263,6 +277,13 @@ export class Room extends DurableObject<Env> {
         readyIds: [], placedIds: [],
       };
       delete (game as typeof game & { setupCursor?: number }).setupCursor;
+    }
+    const discard = game?.discard as NonNullable<RoomData['game']>['discard'] | string[] | undefined;
+    // Every entry in a save has the same shape, so the first one settles which one it is.
+    if (typeof discard?.[0] === 'string') {
+      // Saves from before the pile recorded its origins. The seat that let each card go is gone,
+      // so nobody claims them; the table had already seen the ones it was allowed to see.
+      game!.discard = (discard as string[]).map(cardInstanceId => ({ cardInstanceId, faceUp: true }));
     }
     return snapshot;
   }

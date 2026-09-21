@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { act, ready, until, finish, closeWindow, pass } from './combat-helpers.js';
 import { character, handCard, entropy } from './fixtures.js';
-import { transition, viewFor, previewDeclarationCandidate, type GameState } from '../src/index.js';
+import { transition, viewFor, previewDeclarationCandidate, type GameState, discardIds } from '../src/index.js';
 const GARWIN = 'c2-p05-r2c1-ab03', FURY = 'c2-p02-r1c2-ab04';
 function priority(s: GameState, actor: string) { for (let n = 0; n < 25; n++) {
     const w = s.windows!.at(-1)!;
@@ -34,7 +34,7 @@ it.each(['hand', 'followers'] as const)('actual Garwin DeathKnight %s source get
     expect(viewFor(s, 'B').currentAttack!.technique).toMatchObject({ effectLevel: 6, damage: 14 });
     expect(source(s)).toMatchObject({ sourceZone: zone, cardInstanceId: card });
     s = finish(s);
-    expect(s.discard.filter(id => id === card)).toHaveLength(1);
+    expect(discardIds(s).filter(id => id === card)).toHaveLength(1);
 });
 it('actual Fury fairy lower attack is warrior/bow and cannot select elemental magic package', () => {
     const s = ready();
@@ -57,7 +57,7 @@ it.each([
     s = closeWindow(s);
     s = cancel(s);
     s = finish(s);
-    expect(s.discard).toContain(card);
+    expect(discardIds(s)).toContain(card);
     expect(s.players.B!.damage).toBe(0);
     expect(s.phase).toBe('withdrawal');
 });
@@ -82,8 +82,8 @@ it('an accepted failed requisite still pays printed Apocalypse self-cost exactly
     s = finish(s);
     expect(s.players.A!.damage).toBe(10);
     expect(s.players.A!.followers).toEqual([]);
-    expect(s.discard.filter(id => id === follower)).toHaveLength(1);
-    expect(s.discard.filter(id => id === card)).toHaveLength(1);
+    expect(discardIds(s).filter(id => id === follower)).toHaveLength(1);
+    expect(discardIds(s).filter(id => id === card)).toHaveLength(1);
 });
 it('co-source waiver validates selected composed usage and preserves each source once', () => {
     let s = ready();
@@ -103,7 +103,7 @@ it('co-source waiver validates selected composed usage and preserves each source
     expect(s.rolls!.filter(r => r.purpose === 'activation')).toHaveLength(1);
     s = finish(s);
     for (const id of [card, component])
-        expect(s.discard.filter(c => c === id)).toHaveLength(1);
+        expect(discardIds(s).filter(c => c === id)).toHaveLength(1);
 });
 it('a successful first Shin check cannot survive source disable before the second resolves', () => {
     let s = ready();
@@ -121,7 +121,7 @@ it('a successful first Shin check cannot survive source disable before the secon
     s.players.B!.statuses = [{ id: 'helper-disabled-between-checks', kind: 'ability-disabled', modifiers: [0], nextCheck: 0 }];
     s = finish(s);
     expect(s.players.B!.damage).toBe(10);
-    expect(s.discard).toContain(card);
+    expect(discardIds(s)).toContain(card);
 });
 it('Shin return retains converted-counter property and parent target provenance', () => {
     let s = ready();
@@ -165,7 +165,7 @@ it('actual Shelim unchanted revival selects waiver but cannot enlarge printed on
     s = finish(s);
     expect(s.players.B!.presence).toBe('wandering');
     expect(s.players.C!.presence).toBe('dead');
-    expect(s.discard).toContain(card);
+    expect(discardIds(s)).toContain(card);
 });
 it('Yotsurm reflected attack copies original fixed numeric values once without replaying declaration choices', () => {
     let s = ready();
@@ -230,7 +230,7 @@ it('actual Shadow grant keeps one target even with helper-inherited all-target a
     expect(child.targets.map(t => t.actorId)).toEqual(['A']);
     expect(s.groups![parent]!.targets[0]!.hits[0]!.defended).toBe(true);
     s = finish(s);
-    expect(s.discard.filter(id => id === card)).toHaveLength(1);
+    expect(discardIds(s).filter(id => id === card)).toHaveLength(1);
 });
 it('selected Beast check waiver includes a composed native activation check but not character ability checks', () => {
     const s = ready();
@@ -253,6 +253,6 @@ it.each([['地槍','地',4],['風矢','風',4],['氷矢','水',4],['炎矢','炎
   expect(candidate.abilities.some(a=>a.abilityId===FURY)).toBe(true);
   s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false,declarationAbilityIds:selected?[FURY]:[]});s=until(s,'normal-defense');
   expect(Object.values(s.groups!)[0]!.technique).toMatchObject({school:'magic',attributes:expect.arrayContaining([attribute]),useLevel:level,effectLevel:level+(selected?1:0)});
-  s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+  s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
  }
 });

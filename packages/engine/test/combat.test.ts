@@ -1,3 +1,4 @@
+import {discardIds} from '../src/index.js';
 import {passReclaims} from './combat-helpers.js';
 import { expect, it } from 'vitest';
 import * as engine from '../src/index.js';
@@ -7,7 +8,7 @@ it('reserves a printed far attack, locks values, passes every public seat and ap
   let s=ready(); const id=handCard(s,'A','踏み込み／弓'); s=act(s,'A',{type:'ATTACK',cardInstanceId:id,targetIds:['B'],dedicated:false});
   expect(s.resolution).toContain(id); expect(engine.activeWindowRef(s)).not.toBeNull();
   expect((s as any).windows.at(-1).participants).toEqual(['A','B','C','D']);
-  s=finish(s); expect(s.players.B!.damage).toBe(4); expect(s.players.B!.revealed).toBe(true); expect(s.discard).toContain(id); expect(s.phase).toBe('withdrawal');
+  s=finish(s); expect(s.players.B!.damage).toBe(4); expect(s.players.B!.revealed).toBe(true); expect(discardIds(s)).toContain(id); expect(s.phase).toBe('withdrawal');
 });
 it('can explicitly skip withdrawal and continue to hand adjustment',()=>{let s=ready();const id=handCard(s,'A','踏み込み／弓');s=act(s,'A',{type:'ATTACK',cardInstanceId:id,targetIds:['B'],dedicated:false});s=finish(s);s=act(s,'A',{type:'PASS_WITHDRAWAL'});expect(s.phase).toBe('hand-adjustment');});
 
@@ -26,7 +27,7 @@ it('failed teleport spends its card and allows a different normal defense',()=>{
   s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false}); s=until(s,'normal-defense');
   s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:teleport,dedicated:false});
   for(let n=0;n<50 && (s as any).windows.at(-1)?.kind!=='normal-defense';n++)s=pass(s,[6,6]);
-  expect(s.discard).toContain(teleport); s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:defense,dedicated:false}); s=finish(s); expect(s.players.B!.damage).toBe(0);
+  expect(discardIds(s)).toContain(teleport); s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:defense,dedicated:false}); s=finish(s); expect(s.players.B!.damage).toBe(0);
 });
 
 it('a printed counter with an effect level equal to the incoming warrior hit cancels both',()=>{
@@ -34,7 +35,7 @@ it('a printed counter with an effect level equal to the incoming warrior hit can
   s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false}); s=until(s,'normal-defense');
   s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false}); s=finish(s);
   expect(s.players.A!.damage).toBe(0); expect(s.players.B!.damage).toBe(0);
-  expect(s.discard).toEqual(expect.arrayContaining([attack,counter]));
+  expect(discardIds(s)).toEqual(expect.arrayContaining([attack,counter]));
 });
 
 it('a higher far counter replaces the incoming hit and damages its attacker',()=>{
@@ -75,7 +76,7 @@ it('locks the dedicated Ida all-target d6x5 damage and ignores followers',()=>{l
 
 it('uses Lancaster dedicated counter check before returning fixed level-six damage-seven',()=>{let s=ready();character(s,'B','早駆けのランカスター');const attack=handCard(s,'A','手裏剣');const counter=handCard(s,'B','閃光槍');s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});s=until(s,'normal-defense');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:true});expect(s.actions![Object.keys(s.actions!).at(-1)!]!.checks).toHaveLength(1);s=finish(s);expect(s.players.A!.damage).toBe(7);expect(s.players.B!.damage).toBe(0);});
 
-it('lets 必勝の祈り change the follower outcome through the effect-level child',()=>{let s=ready();const attack=handCard(s,'A','踏み込み／弓');const prayer=handCard(s,'A','必勝の祈り');const follower=handCard(s,'B','ウッドゴーレム');s.players.B!.hand=s.players.B!.hand.filter(id=>id!==follower);s.players.B!.followers=[{cardInstanceId:follower,revealed:false}];s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});while(s.windows!.at(-1)!.kind!=='effect-level')s=pass(s);const parent=Object.keys(s.actions!)[0]!;s=act(s,'A',{type:'PLAY_REACTION',cardInstanceId:prayer,mode:'effect-plus',targetActionId:parent});s=closeWindow(s,[2]);s=closeWindow(s);s=finish(s);expect(s.players.B!.followers).toEqual([]);expect(s.discard).toContain(follower);expect(s.players.B!.revealed).toBe(true);expect(s.players.B!.damage).toBe(0);});
+it('lets 必勝の祈り change the follower outcome through the effect-level child',()=>{let s=ready();const attack=handCard(s,'A','踏み込み／弓');const prayer=handCard(s,'A','必勝の祈り');const follower=handCard(s,'B','ウッドゴーレム');s.players.B!.hand=s.players.B!.hand.filter(id=>id!==follower);s.players.B!.followers=[{cardInstanceId:follower,revealed:false}];s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});while(s.windows!.at(-1)!.kind!=='effect-level')s=pass(s);const parent=Object.keys(s.actions!)[0]!;s=act(s,'A',{type:'PLAY_REACTION',cardInstanceId:prayer,mode:'effect-plus',targetActionId:parent});s=closeWindow(s,[2]);s=closeWindow(s);s=finish(s);expect(s.players.B!.followers).toEqual([]);expect(discardIds(s)).toContain(follower);expect(s.players.B!.revealed).toBe(true);expect(s.players.B!.damage).toBe(0);});
 
 it('uses a stronger near counter at far range only to block without a returned attack',()=>{let s=ready();const attack=handCard(s,'A','踏み込み／弓');const counter=handCard(s,'B','妖撃破山剣');s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});s=until(s,'normal-defense');s=act(s,'B',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false});s=finish(s);expect(s.players.A!.damage).toBe(0);expect(s.players.B!.damage).toBe(0);expect(s.groups).toEqual({});});
 

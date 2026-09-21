@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
+import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState, discardIds } from '../src/index.js';
 import {entropy} from './fixtures.js';
 import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 it('actual Uonos approach and once-per-game Curse recovery survive the ritual transformation',()=>{
@@ -34,5 +34,5 @@ it('actual Uonos approach and once-per-game Curse recovery survive the ritual tr
  for(const key of ['followers','attachments','chants','open','permanent'] as const)expect(s.players.A![key]).toEqual(before[key]);
  expect(s.players.A!.hand).toEqual(before.hand.filter(id=>id!==ritualCard));
  until(s=>!s.windows?.length);expect(s.players.A!.reclaimUsage?.['呪殺']?.baseSpent).toBe(true);expect(s.distances).toEqual(distances);
- expect(s.discard.filter(id=>id===ritualCard)).toHaveLength(1);expect(s.players.A!.hand.filter(id=>id===spear)).toHaveLength(1);expect(s.outcome).toBeUndefined();
+ expect(discardIds(s).filter(id=>id===ritualCard)).toHaveLength(1);expect(s.players.A!.hand.filter(id=>id===spear)).toHaveLength(1);expect(s.outcome).toBeUndefined();
 });

@@ -1,3 +1,4 @@
+import {discardIds, moveToDiscard } from '../src/index.js';
 import { closeWindow, finish } from './combat-helpers.js';
 import { expect, it } from 'vitest';
 import * as engine from '../src/index.js';
@@ -15,7 +16,7 @@ it('offers optional draw, rests once, adjusts hand and advances seat', () => {
   expect(s.phase).toBe('draw');
   r = step(s, 'A', { type: 'CHOOSE_DRAW', draw: false }); expect(r.ok).toBe(true); if (!r.ok) return; s = r.state;
   r = step(s, 'A', { type: 'REST', cardInstanceIds: [rest] }); expect(r.ok).toBe(true); if (!r.ok) return; s = r.state;
-  s=finish(s);expect(s.players.A!.damage).toBe(2); expect(s.discard).toContain(rest); expect(s.phase).toBe('hand-adjustment');
+  s=finish(s);expect(s.players.A!.damage).toBe(2); expect(discardIds(s)).toContain(rest); expect(s.phase).toBe('hand-adjustment');
   expect(step(s, 'A', { type: 'REST', cardInstanceIds: [rest] })).toEqual({ ok: false, code: 'WRONG_PHASE' });
   r = step(s, 'A', { type: 'END_TURN', discardIds: s.players.A!.hand.slice(5) }); expect(r.ok).toBe(true); if (!r.ok) return;
   expect(r.state.turnSeat).toBe(1); expect(r.state.phase).toBe('turn-start'); expect(engine.allCardInstanceIds(r.state).sort()).toEqual(engine.allCardInstanceIds(s).sort());
@@ -40,7 +41,7 @@ it('checks every recovery status, repeats last modifier, and skips action while 
 it('refills immediately on clearing last stopped status and still offers optional draw', () => {
   const s = started(); const p = s.players.A!;
   (p as any).statuses = [{ id: 'stop-1', kind: 'stopped', modifiers: [-1], nextCheck: 1 }];
-  s.discard.push(...p.hand.splice(2));
+  for(const __discarded of [...p.hand.splice(2)])moveToDiscard(s,__discarded,{faceUp:true});
   const r = engine.transition(s, { actorId: 'A', command: { type: 'START_TURN' } } as any, { ...entropy(), dice: [1, 1] });
   expect(r.ok).toBe(true); if (!r.ok) return;
   const resolved=finish(r.state);expect(resolved.players.A!.hand).toHaveLength(5); expect(resolved.phase).toBe('draw');
@@ -54,6 +55,6 @@ it('reorders hidden followers as a whole normal action and refuses silence chant
   expect(engine.viewFor(s, 'B').players.A!.followers).toEqual([{ position: 0, face: 'back' }, { position: 1, face: 'back' }]);
 });
 
-it('plays bounded printed turn cards and allows the optional no-action choice',()=>{let s=started();const potion=handCard(s,'A','回復の薬');s.players.A!.damage=5;for(const command of [{type:'START_TURN'},{type:'CHOOSE_DRAW',draw:false}]){const r=step(s,'A',command);expect(r.ok).toBe(true);if(!r.ok)return;s=r.state;}let r=engine.transition(s,{actorId:'A',command:{type:'PLAY_TURN_CARD',cardInstanceIds:[potion]}} as any,{...entropy(),dice:[4]});expect(r.ok).toBe(true);if(!r.ok)return;s=finish(closeWindow(r.state,[4]));expect(s.players.A!.damage).toBe(1);expect(s.discard).toContain(potion);expect(s.phase).toBe('hand-adjustment');
+it('plays bounded printed turn cards and allows the optional no-action choice',()=>{let s=started();const potion=handCard(s,'A','回復の薬');s.players.A!.damage=5;for(const command of [{type:'START_TURN'},{type:'CHOOSE_DRAW',draw:false}]){const r=step(s,'A',command);expect(r.ok).toBe(true);if(!r.ok)return;s=r.state;}let r=engine.transition(s,{actorId:'A',command:{type:'PLAY_TURN_CARD',cardInstanceIds:[potion]}} as any,{...entropy(),dice:[4]});expect(r.ok).toBe(true);if(!r.ok)return;s=finish(closeWindow(r.state,[4]));expect(s.players.A!.damage).toBe(1);expect(discardIds(s)).toContain(potion);expect(s.phase).toBe('hand-adjustment');
   let next=started();for(const command of [{type:'START_TURN'},{type:'CHOOSE_DRAW',draw:false},{type:'PASS_ACTION'}]){const result=step(next,'A',command);expect(result.ok).toBe(true);if(!result.ok)return;next=result.state;}expect(next.phase).toBe('hand-adjustment');
   let attached=started();const card=handCard(attached,'A','香具羅');const before=engine.derivedStats(attached.players.A!).warrior_level;for(const command of [{type:'START_TURN'},{type:'CHOOSE_DRAW',draw:false},{type:'PLAY_TURN_CARD',cardInstanceIds:[card]}]){const result=step(attached,'A',command);expect(result.ok).toBe(true);if(!result.ok)return;attached=result.state;}attached=finish(attached);expect(attached.players.A!.attachments).toContain(card);expect(engine.derivedStats(attached.players.A!).warrior_level).toBe(before+1);});

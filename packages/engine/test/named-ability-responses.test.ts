@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,ready,until,pass,passReclaims,finish,closeWindow} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 
@@ -110,7 +110,7 @@ function cancelResponse(s:GameState,actor:string,id:string){
  expect(s.players.D!.hand).toHaveLength(handCount);
  s=passReclaims(closeWindow(s));
  expect(s.abilities![responseId]!.canceled).toBe(true);
- expect(s.discard).toContain(fate);
+ expect(discardIds(s)).toContain(fate);
  s=closeWindow(s);
  return s;
 }
@@ -224,7 +224,7 @@ it.each([SHIN,SORROW])('%s successful response preserves actual Soldier follower
  s=use(s,'A',id);
  s=finish(s);
  expect(s.players.B!.damage).toBe(5);
- expect(s.discard).toContain(soldier);
+ expect(discardIds(s)).toContain(soldier);
 });
 it.each([SHIN,SORROW])('helper: %s hidden responder privacy is owner-only before and during nested Fate',id=>{
  let s=priority(id===SHIN?shadow():transformedSource(),'A');
@@ -323,7 +323,7 @@ it('actual canceled Mirror resumes both saved Shadow checks and the granted phys
  s=finish(s);
  expect(s.players.B!.damage).toBe(0);
  expect(s.players.A!.damage).toBe(1);
- expect(s.discard.filter(card=>card===child)).toHaveLength(1);
+ expect(discardIds(s).filter(card=>card===child)).toHaveLength(1);
 });
 it.each([SHIN,SORROW])('%s may decline without canceling the source or consuming its own attempt',id=>{
  let s=priority(id===SHIN?shadow():transformedSource(),'A');

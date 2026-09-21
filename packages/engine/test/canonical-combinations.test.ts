@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction,actionCards} from '@madou/catalog';
-import {viewFor,gameStats,allCardInstanceIds,type GameState} from '../src/index.js';
+import {viewFor,gameStats,allCardInstanceIds,type GameState, discardIds } from '../src/index.js';
 import {canUseCharacterAbility} from '../src/state.js';
 import {act as checkedAct} from './combat-helpers.js';
 import {makeCanonicalLiaLife} from './fixtures/canonical-lia-life-scenario.js';
@@ -27,7 +27,7 @@ const BAN='c2-p07-r1c2-ab03',BLESS='c2-p03-r1c2-ab04';
 
 it('R6 Task5 actual extra claim cancellation refills Dawn and shuffles while its physical source awaits parent disposition',()=>{
   let s=makeCanonicalRecovery(['A','B','C','D'].map(id=>({id,name:id})));
-  const bow=s.players.A!.hand.find(id=>getAction(id)!.name==='踏み込み／弓')!,fate='a2-p02-r2c3',dawn=s.deck[0]!,discarded=s.discard.at(-1)!;
+  const bow=s.players.A!.hand.find(id=>getAction(id)!.name==='踏み込み／弓')!,fate='a2-p02-r2c3',dawn=s.deck[0]!,discarded=discardIds(s).at(-1)!;
   s=until(act(s,'A',{type:'ATTACK',cardInstanceId:bow,targetIds:['B'],dedicated:false}),'reclaim');
   const decision=viewFor(s,'A').reclaim!,claim=decision.claims.find(c=>c.right==='extra')!;
   expect(claim).toBeDefined();
@@ -37,13 +37,13 @@ it('R6 Task5 actual extra claim cancellation refills Dawn and shuffles while its
   expect(s.resolution).toContain(bow);expect(s.reclaimReservations).not.toContain(bow);
   s=pass(s);
   s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:ability.id});
-  expect(s.players.B!.open).toContain(dawn);expect(s.discard).not.toContain(discarded);
+  expect(s.players.B!.open).toContain(dawn);expect(discardIds(s)).not.toContain(discarded);
   expect([...s.deck,...s.players.B!.hand]).toContain(discarded);
   expect(s.resolution).toContain(bow);expect(s.reclaimReservations).not.toContain(bow);
-  expect(s.deck).not.toContain(bow);expect(s.discard).not.toContain(bow);
+  expect(s.deck).not.toContain(bow);expect(discardIds(s)).not.toContain(bow);
   for(const p of Object.values(s.players))expect(p.hand).not.toContain(bow);
   s=finish(JSON.parse(JSON.stringify(s)));
-  expect(s.discard.filter(id=>id===bow)).toHaveLength(1);expect(s.players.A!.hand).not.toContain(bow);
+  expect(discardIds(s).filter(id=>id===bow)).toHaveLength(1);expect(s.players.A!.hand).not.toContain(bow);
   expect(s.players.A!.reclaimUsage?.['踏み込み／弓']).toEqual({baseSpent:false,extraSpentByAbility:['c2-p02-r1c2-ab03']});
   expect(s.reclaimDecisions!.find(d=>d.id===decision.decisionId)!.attemptedClaimIds).toEqual([claim.claimId]);
   expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);expect(s.windows).toEqual([]);
@@ -113,7 +113,7 @@ it('R6 Task5 living Vanmil ban suspends elected Asfelt value and Lia death reviv
   expect(s.players.A!.presence).toBe('active');
   expect(canUseCharacterAbility(s.players.B!,s)).toBe(false);
   s=act(s,'C',{type:'PASS_SETUP'});s=finish(s);
-  expect(s.discard).toContain(revival);
+  expect(discardIds(s)).toContain(revival);
   expect(s.blessingLeases).toEqual([]);
   expect(s.suppressionDesignations!.map(d=>d.targetId)).toEqual(['B']);
   expect(canUseCharacterAbility(s.players.B!,s)).toBe(false);
@@ -139,7 +139,7 @@ it('R6 Task5 actual Vanmil death retains accepted designations before G15 commit
  s=act(s,'D',{type:'ATTACK',cardInstanceId:card,targetIds:['A'],dedicated:false});
  for(let n=0;n<300&&s.windows?.at(-1)?.kind!=='death-gift';n++){expect(s.suppressionDesignations).toEqual(designated);expect(s.outcome).toBeUndefined();s=pass(s);}
  expect(s.players.A!.presence).toBe('pending-death');expect(s.suppressionDesignations).toEqual(designated);expect(s.outcome).toBeUndefined();
- s=finish(JSON.parse(JSON.stringify(s)));expect(s.players.A!.presence).toBe('dead');expect(s.outcome).toMatchObject({reason:'vanmil-death',winnerIds:['B','C','D']});expect(s.events.filter(e=>e.type==='GAME_COMPLETED')).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='A')).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_REVIVED')).toEqual([]);expect(s.windows??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ s=finish(JSON.parse(JSON.stringify(s)));expect(s.players.A!.presence).toBe('dead');expect(s.outcome).toMatchObject({reason:'vanmil-death',winnerIds:['B','C','D']});expect(s.events.filter(e=>e.type==='GAME_COMPLETED')).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='A')).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_REVIVED')).toEqual([]);expect(s.windows??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
  for(const id of ['A','B','C','D'])expect(viewFor(s,id).outcome).toEqual(s.outcome);
 });
 
@@ -158,5 +158,5 @@ it('R6 Task5 actual two target three hit attack returns one local counter before
  }
  expect(childSeen).toBe(true);expect(followersSeen).toBe(true);expect(s.players.A!.damage).toBe(a+7);expect(s.players.B).toMatchObject({presence:'pending-death',damage:b+14});expect(s.players.C).toMatchObject({presence:'pending-death',damage:c+18});expect(s.lifecycle!.find(t=>t.kind==='death-batch')).toMatchObject({actorIds:['B','C']});expect(s.events.filter(e=>e.type==='PLAYER_DIED')).toEqual([]);
  s=finish(JSON.parse(JSON.stringify(s)));expect(s.events.filter(e=>e.type==='PLAYER_DIED').map(e=>e.actorId)).toEqual(['B','C']);expect(s.players.B!.presence).toBe('dead');expect(s.players.C!.presence).toBe('dead');expect(s.outcome).toBeUndefined();
- expect(s.windows).toEqual([]);expect(s.groups).toEqual({});expect(s.actions).toEqual({});expect(s.lifecycle??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);for(const id of [counter,soldier,source.cardInstanceId])expect(s.discard.filter(x=>x===id)).toHaveLength(1);
+ expect(s.windows).toEqual([]);expect(s.groups).toEqual({});expect(s.actions).toEqual({});expect(s.lifecycle??[]).toEqual([]);expect(s.resolution).toEqual([]);expect(s.reclaimReservations).toEqual([]);for(const id of [counter,soldier,source.cardInstanceId])expect(discardIds(s).filter(x=>x===id)).toHaveLength(1);
 });

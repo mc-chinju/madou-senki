@@ -21,6 +21,9 @@ export interface WishDecision {
  acquisition?:{cardInstanceId:string;ownerId?:string;zone:'hand'|'deck'|PublicZone;randomIndex?:number};
 }
 export interface WishView {decisionId:string;deckNames:{cardName:string;count:number}[];handOwners:{ownerId:string;count:number}[];publicSources:PublicSource[]}
+/** One hidden acquisition as the two seats it concerned may read it back. The record is a window now, so
+ *  what this seat learned is kept beside the game instead of on a line that scrolls out of reach. */
+export interface WishAcquisition {eventId:number;actorId:string;ownerId?:string;cardInstanceId:string}
 export interface WishCapacityView {decisionId:string;actorId:string;followerCount:number;chantCount:number;followerIds:string[];chantIds:string[]}
 export function wishOptions(s:GameState,actorId:string){const p=s.players[actorId];return p&&!s.windows?.length&&s.phase==='action'&&s.seatOrder[s.turnSeat]===actorId&&(p.presence??'active')==='active'&&!hasPendingFatal(s,actorId)&&!hasStatus(p,'stopped')?WISHES.filter(id=>p.hand.includes(id)):[];}
 export function playWish(state:GameState,actorId:string,id:typeof WISHES[number]):TransitionResult{
@@ -81,7 +84,9 @@ export function transitionWish(state:GameState,input:GameInput,random:()=>number
   const offered=wishCapacityView(state,input.actorId);if(!offered||offered.decisionId!==d.id)return {ok:false,code:'WRONG_PHASE'};
   if(c.followerIds.length!==offered.followerCount||c.chantIds.length!==offered.chantCount||c.followerIds.some(id=>!offered.followerIds.includes(id))||c.chantIds.some(id=>!offered.chantIds.includes(id)))return {ok:false,code:'INVALID_DISCARD'};
   const s=structuredClone(state),eventId=s.actions![d.actionId]!.eventId;
-  for(const [zone,ids] of [['followers',c.followerIds],['chants',c.chantIds]] as const)for(const id of ids){discardPhysical(s,id,{zone,ownerId:input.actorId},input.actorId,eventId);appendEvent(s,now,{type:'WISH_DISCARDED',actorId:input.actorId,audience:'public',cardInstanceId:id});}
+  // The capacity discard (G11) is announced by name to the whole table below, so a face-down placement is
+  // turned face up as it goes: the pile records the face the table saw, and never less than that.
+  for(const [zone,ids] of [['followers',c.followerIds],['chants',c.chantIds]] as const)for(const id of ids){const placed=s.players[input.actorId]![zone].find(card=>card.cardInstanceId===id);if(placed)placed.revealed=true;discardPhysical(s,id,{zone,ownerId:input.actorId},input.actorId,eventId);appendEvent(s,now,{type:'WISH_DISCARDED',actorId:input.actorId,audience:'public',cardInstanceId:id});}
   s.windows!.pop();const task=s.lifecycle!.find(t=>t.id===w.continuation.id)!;if(task.kind==='wish-complete')task.waiting=false;s.revision++;return {ok:true,state:s,events:[]};
  }
  if(w.kind!=='wish'||w.continuation.id!==d.actionId||d.stage!=='selection'||d.actorId!==input.actorId||lifeIdentity(state.players[d.actorId]!)!==d.sourceLifeId)return {ok:false,code:'INVALID_TARGET'};
@@ -99,7 +104,10 @@ export function transitionWish(state:GameState,input:GameInput,random:()=>number
  s.windows!.pop();const a=s.actions![d.actionId]!;enqueueLifecycle(s,{kind:'wish-complete',id:`${d.id}-complete`,decisionId:d.id,rootEventIds:[a.eventId]});
  const publicIdentity=source.kind==='public'&&!!publicSources(state,d).find(o=>o.cardInstanceId===source.cardInstanceId)?.publicIdentity;
  appendEvent(s,now,{type:'WISH_ACQUIRED',actorId:p.id,...(ownerId?{targetId:ownerId}:{}),audience:'public',...(publicIdentity?{cardInstanceId:id}:{})});
- if(!publicIdentity)for(const viewer of [...new Set([p.id,...(ownerId?[ownerId]:[])])])appendEvent(s,now,{type:'WISH_ACQUIRED',actorId:p.id,...(ownerId?{targetId:ownerId}:{}),audience:{playerId:viewer},cardInstanceId:id});
+ // The private copies and the history are the same knowledge: the first copy's id names the entry, so a
+ // reader can tell one acquisition from the next even when the same card is taken twice.
+ if(!publicIdentity){(s.wishHistory??=[]).push({eventId:s.nextEventId,actorId:p.id,...(ownerId?{ownerId}:{}),cardInstanceId:id});
+  for(const viewer of [...new Set([p.id,...(ownerId?[ownerId]:[])])])appendEvent(s,now,{type:'WISH_ACQUIRED',actorId:p.id,...(ownerId?{targetId:ownerId}:{}),audience:{playerId:viewer},cardInstanceId:id});}
  if(getAction(id)!.category==='open'){if(zone==='open')p.open.push(id);else revealOpen(s,p,id,random,now);}else p.hand.push(id);
  s.revision++;return {ok:true,state:s,events:[]};
 }

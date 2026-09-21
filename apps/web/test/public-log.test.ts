@@ -5,7 +5,8 @@ import { expect, test } from 'vitest';
 import { PublicLog, publicLogSections } from '../src/game/PublicLog.js';
 
 const players = { A: { name: '葵' }, B: { name: '楓' }, C: { name: '凛' }, D: { name: '蓮' } };
-const view = (logs: Omit<LogView, 'at'>[]) => ({ players, logs: logs.map(log => ({ at: 0, ...log })) }) as unknown as PlayerView;
+const view = (logs: Omit<LogView, 'at'>[], privateLogs: Omit<LogView, 'at'>[] = []) =>
+  ({ players, logs: logs.map(log => ({ at: 0, ...log })), privateLogs: privateLogs.map(log => ({ at: 0, ...log })) }) as unknown as PlayerView;
 const html = (v: PlayerView) => renderToStaticMarkup(createElement(PublicLog, { view: v, onInspect: () => {} }));
 
 test('turns become headings and consecutive passes in one window fold into one line', () => {
@@ -28,6 +29,8 @@ test('turns become headings and consecutive passes in one window fold into one l
   ]))[0]!.lines;
   expect(merged).toEqual([{ kind: 'passes', id: 2, lastId: 5, windowKinds: ['declaration', 'before-roll'], actorIds: ['B', 'C'] }]);
   expect(html(view([{ id: 1, type: 'PASSED', actorId: 'B', windowKind: 'declaration' }, { id: 2, type: 'PASSED', actorId: 'B', windowKind: 'after-roll' }]))).toContain('<strong>楓</strong>が宣言、判定後でパスしました');
+  // Two windows of the same kind in a row are one thing to the reader; the name is not repeated.
+  expect(html(view([{ id: 1, type: 'PASSED', actorId: 'B', windowKind: 'lifecycle-boundary' }, { id: 2, type: 'PASSED', actorId: 'B', windowKind: 'lifecycle-boundary' }]))).toContain('<strong>楓</strong>が区切りでパスしました');
   const markup = html(v);
   expect(markup).toContain('<h3>3手番 葵さん</h3>');
   expect(markup).toContain('<strong>楓・凛・蓮</strong>が宣言でパスしました');
@@ -42,6 +45,9 @@ test('new record types read as sentences with card and ability links, and unknow
     { id: 4, type: 'ABILITY_DECLARED', actorId: 'C' },
     { id: 5, type: 'ROLL_RESOLVED', actorId: 'B', roll: { rollId: 'r', kind: 'excess-level', faces: [3, 4], total: 7, threshold: 8, success: true, attempt: 2 } },
     { id: 6, type: 'ROLL_RESOLVED', actorId: 'C', roll: { rollId: 's', kind: 'status-resistance', faces: [6, 6], total: 12, attempt: 1 } },
+    { id: 61, type: 'ROLL_RESOLVED', actorId: 'A', roll: { rollId: 't', kind: 'training', faces: [5, 4], total: 9, threshold: 7, comparison: 'greater-than', success: true, attempt: 1 } },
+    { id: 62, type: 'ROLL_RESOLVED', actorId: 'A', roll: { rollId: 'u', kind: 'use', faces: [1, 2], total: 3, threshold: 9, success: false, forcedFailure: true, attempt: 1 } },
+    { id: 63, type: 'ROLL_RESOLVED', actorId: 'A', roll: { rollId: 'v', kind: 'attack-damage', faces: [4], total: 4, attempt: 1 } },
     { id: 7, type: 'DAMAGE_APPLIED', actorId: 'B', amount: 21 },
     { id: 8, type: 'STATUS_CHANGED', actorId: 'B', status: { kind: 'stopped', change: 'applied' } },
     { id: 9, type: 'STATUS_CHANGED', actorId: 'B', status: { kind: 'stopped', change: 'removed' } },
@@ -50,11 +56,17 @@ test('new record types read as sentences with card and ability links, and unknow
     { id: 12, type: 'TURN_ENDED', actorId: 'B', turnNumber: 1 },
     { id: 13, type: 'FUTURE_EVENT' as LogView['type'], actorId: 'D' },
   ]));
-  expect(markup).toMatch(/<strong>楓<\/strong>が<button class="card-link" aria-label="[^"]+の詳細を見る">[^<]+<\/button>を防御に使いました（対象: 葵）/);
-  expect(markup).toMatch(/<strong>葵<\/strong>が<button class="card-link" aria-label="[^"]+（[^"]+）の詳細を見る">[^<]+<\/button>を宣言しました（対象: 楓）/);
+  expect(markup).toMatch(/<strong>楓<\/strong>が葵さんへ防御を宣言しました（<button class="card-link" aria-label="[^"]+の詳細を見る">[^<]+<\/button>）/);
+  expect(markup).toMatch(/<strong>葵<\/strong>が楓さんへ<button class="card-link" aria-label="[^"]+（[^"]+）の詳細を見る">[^<]+<\/button>を宣言しました/);
   expect(markup).toContain('<strong>凛</strong>が特殊能力を宣言しました');
-  expect(markup).toContain('使用Lv超過の判定で3・4（合計7）を出しました（目標値8・成功）［振り直し1回目］');
+  // Which throw this is comes before the numbers, so the reader knows what to make of them.
+  expect(markup).toContain('使用Lv超過の判定の振り直し1回目で3・4（合計7）を出しました（目標値8以下・成功）');
+  // 修行 is the one check that wants a bigger total, so the line has to say which way the threshold is read.
+  expect(markup).toContain('修行の判定で5・4（合計9）を出しました（目標値7より大きい・成功）');
+  expect(markup).toContain('使用の判定で1・2（合計3）を出しました（目標値9以下・強制失敗）');
   expect(markup).toContain('<strong>凛</strong>が抵抗の判定で6・6（合計12）を出しました</li>');
+  // One die is already its own total.
+  expect(markup).toContain('<strong>葵</strong>が攻撃ダメージで4を出しました</li>');
   expect(markup).toContain('21ダメージを受けました');
   expect(markup).toContain('停止状態になりました'); expect(markup).toContain('停止状態から回復しました');
   expect(markup).toContain('<strong>葵</strong>が楓さんと近距離になりました');
@@ -64,16 +76,216 @@ test('new record types read as sentences with card and ability links, and unknow
   expect(markup).not.toContain('FUTURE_EVENT');
 });
 
+/** Every name the record prints must be a link, so a reader can open what it refers to. */
+test('every record type names its target and keeps card, person and ability names inside links', () => {
+  const logs: Omit<LogView, 'at'>[] = [
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p05-r3c1', use: 'attack', targetIds: ['B', 'C'] },
+    { id: 3, type: 'CARD_PLAYED', actorId: 'B', cardInstanceId: 'a2-p05-r3c1', use: 'maai', targetIds: ['A'] },
+    { id: 4, type: 'CARD_PLAYED', actorId: 'B', cardInstanceId: 'a2-p05-r3c1', use: 'advance' },
+    { id: 5, type: 'CARD_PLAYED', actorId: 'C', cardInstanceId: 'a2-p02-r1c2', use: 'anytime', targetIds: ['A'] },
+    { id: 51, type: 'CARD_PLAYED', actorId: 'C', cardInstanceId: 'a2-p05-r2c1', use: 'combination', targetIds: ['A'] },
+    // A follower attack and 全軍突撃 name the follower they sent; a virtual follower names its ability.
+    { id: 6, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p20-r3c1', use: 'attack', targetIds: ['B'] },
+    { id: 7, type: 'CARD_PLAYED', actorId: 'A', cardInstanceId: 'a2-p05-r2c2', use: 'attack', targetIds: ['B'] },
+    { id: 8, type: 'ATTACK_DECLARED', actorId: 'D', abilityId: 'c2-p04-r1c1-ab02', targetIds: ['B'] },
+    { id: 9, type: 'ATTACK_DECLARED', actorId: 'D', targetIds: ['B'] },
+    { id: 10, type: 'CHECK_SKIPPED', actorId: 'A', checkSkip: 'level' },
+    { id: 11, type: 'CHECK_SKIPPED', actorId: 'A', checkSkip: 'card' },
+    { id: 12, type: 'CHECK_SKIPPED', actorId: 'D', checkSkip: 'ability', abilityId: 'c2-p06-r2c2-ab02' },
+    { id: 13, type: 'CHECK_SKIPPED', actorId: 'D', checkSkip: 'ability' },
+    { id: 14, type: 'FOLLOWER_DESTROYED', actorId: 'B', targetId: 'A', cardInstanceId: 'a2-p20-r3c1' },
+    { id: 15, type: 'CHARACTER_REVEALED', actorId: 'D', characterId: 'c2-p04-r1c1' },
+    { id: 16, type: 'CHARACTER_TRANSFORMED', actorId: 'D', characterId: 'c2-p01-r1c1' },
+    { id: 17, type: 'PLAYER_REVIVED', actorId: 'C', characterId: 'c2-p06-r2c2' },
+    { id: 18, type: 'PLAYER_DIED', actorId: 'C', death: { cause: 'attack', eventId: 'e', sourceCardInstanceId: 'a2-p05-r3c1' } },
+    { id: 19, type: 'CARD_GIFTED', actorId: 'C', targetId: 'B', cardInstanceId: 'a2-p02-r1c2' },
+    { id: 20, type: 'OPEN', actorId: 'B', cardInstanceId: 'a2-p01-r1c1' },
+    { id: 21, type: 'CHARACTER_INSPECTED', actorId: 'B', targetId: 'D', characterId: 'c2-p04-r2c2' },
+    { id: 22, type: 'ABILITY_DECLARED', actorId: 'D', abilityId: 'c2-p04-r2c2-ab03', targetIds: ['A'] },
+    { id: 23, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'hit', targetIds: ['B'], cardInstanceId: 'a2-p05-r3c1' },
+    { id: 24, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'blocked', targetIds: ['B', 'C'] },
+    { id: 25, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'fizzled', targetIds: ['B'] },
+    { id: 26, type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'nullified', targetIds: ['B'], abilityId: 'c2-p04-r1c1-ab02' },
+  ];
+  const markup = html(view(logs));
+  expect(markup).toContain('が楓さん・凛さんへ攻撃を宣言しました（<button');
+  expect(markup).toContain('が葵さんへ間合いを宣言しました（<button');
+  expect(markup).toMatch(/<strong>楓<\/strong>が<button[^>]*>見切る<\/button>を踏み込みに使いました<\/li>/);
+  // Every line that points at a seat opens the same way, whichever kind of line it is.
+  expect(markup).toMatch(/<strong>凛<\/strong>が葵さんへ<button[^>]*>啓示<\/button>をいつでもに使いました/);
+  // A 複合 card is paid together with a technique, so it is used as one rather than used for one.
+  expect(markup).toMatch(/<strong>凛<\/strong>が葵さんへ<button[^>]*>月の竪琴<\/button>を複合技として使いました/);
+  expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>）');
+  expect(markup).toContain('が楓さんへ攻撃を宣言しました（<button class="card-link" aria-label="氷刃（凍気のアイエル）の詳細を見る">氷刃</button>）');
+  expect(markup).toContain('が楓さんへ攻撃を宣言しました（特殊能力）');
+  expect(markup).toContain('使用Lvを満たしていて判定は要りませんでした');
+  expect(markup).toContain('カードの記述により判定は要りませんでした');
+  expect(markup).toContain('>野獣</button>で判定を免れました');
+  expect(markup).toContain('が特殊能力で判定を免れました');
+  // A declared attack closes with how it ended, right where it ended.
+  // Several attacks can be in flight at once, so the ending names the declaration it closes.
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃（<button class="card-link" aria-label="見切るの詳細を見る">見切る</button>）が命中しました');
+  expect(markup).toContain('<strong>葵</strong>の楓さん・凛さんへの攻撃は防がれました');
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃は不発に終わりました');
+  expect(markup).toContain('<strong>葵</strong>の楓さんへの攻撃（<button class="card-link" aria-label="氷刃（凍気のアイエル）の詳細を見る">氷刃</button>）は無効化されました');
+  expect(markup).toContain('が葵さんの<button class="card-link" aria-label="グリフォンの詳細を見る">グリフォン</button>を破壊しました');
+  // Nothing outside a link may print a card, person or ability name.
+  const plain = markup.replace(/<button[^>]*>[^<]*<\/button>/g, '').replace(/aria-label="[^"]*"/g, '');
+  for (const name of ['見切る', 'グリフォン', '全軍突撃せよ', '啓示', 'そうかっ', '氷刃', '野獣', '必殺', '凍気のアイエル', '白魔術師シェリム', '餓狼ヨーツルム', '忍びのイダ']) {
+    expect(plain, `${name} escaped its link`).not.toContain(name);
+  }
+});
+
+test('the reader can flip the record to newest first', () => {
+  const v = view([
+    { id: 1, type: 'SETUP_COMPLETE', actorId: 'A' },
+    { id: 2, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 3, type: 'PASSED', actorId: 'B', windowKind: 'declaration' },
+    { id: 4, type: 'PASSED', actorId: 'C', windowKind: 'declaration' },
+    { id: 5, type: 'DAMAGE_APPLIED', actorId: 'B', amount: 4 },
+    { id: 6, type: 'TURN_STARTED', actorId: 'B', turnNumber: 2 },
+    { id: 7, type: 'REST', actorId: 'B', count: 1 },
+  ]);
+  const oldest = publicLogSections(v), newest = publicLogSections(v, 'newest');
+  expect(oldest.map(section => section.heading)).toEqual(['対戦準備', '1手番 葵さん', '2手番 楓さん']);
+  expect(newest.map(section => section.heading)).toEqual(['2手番 楓さん', '1手番 葵さん', '対戦準備']);
+  // The fold still runs over the chronological run, so the two passes stay one line in either order.
+  expect(newest[1]!.lines).toEqual([
+    { kind: 'event', own: false, event: expect.objectContaining({ id: 5 }) },
+    { kind: 'passes', id: 3, lastId: 4, windowKinds: ['declaration'], actorIds: ['B', 'C'] },
+  ]);
+  expect(oldest[1]!.lines.map(line => (line.kind === 'event' ? line.event.id : line.id))).toEqual([3, 5]);
+});
+
+/** The seat's own record belongs in its war record too, as long as the reader can tell it apart. */
+test('folds a run of face-down discards into one counted line and marks what only this reader sees', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'CARDS_DISCARDED', actorId: 'A', count: 1 },
+    { id: 4, type: 'CARDS_DISCARDED', actorId: 'A', count: 1 },
+    { id: 6, type: 'CHANTED', actorId: 'A' },
+    { id: 7, type: 'FOLLOWERS_ARRANGED', actorId: 'A', count: 2 },
+    { id: 8, type: 'MORALE_CHECKED', actorId: 'B', cardInstanceId: 'a2-p20-r3c1', success: false },
+    { id: 9, type: 'FOLLOWER_DEFENDED', actorId: 'B', cardInstanceId: 'a2-p20-r3c1', followerOutcome: 'blocked' },
+    { id: 10, type: 'CARD_RECLAIMED', actorId: 'A', cardInstanceId: 'a2-p02-r1c2' },
+    { id: 11, type: 'CARD_RECLAIMED', actorId: 'B' },
+    { id: 12, type: 'DECK_RESHUFFLED', actorId: 'A', count: 37 },
+  ], [
+    { id: 3, type: 'CARDS_DISCARDED', actorId: 'A', cardInstanceId: 'a2-p01-r1c1', count: 1 },
+    { id: 5, type: 'CARDS_DISCARDED', actorId: 'A', cardInstanceId: 'a2-p02-r1c2', count: 1 },
+    { id: 13, type: 'CARD_DRAWN', actorId: 'A', cardInstanceId: 'a2-p01-r1c1' },
+  ]);
+  const lines = publicLogSections(v)[0]!.lines;
+  expect(lines[0]).toEqual({ kind: 'discards', id: 2, lastId: 5, actorId: 'A', count: 2, cardInstanceIds: ['a2-p01-r1c1', 'a2-p02-r1c2'] });
+  const markup = html(v);
+  expect(markup).toContain('<strong>葵</strong>が2枚を伏せたまま捨てました');
+  expect(markup).toContain('（自分だけに見えています：');
+  expect(markup).toContain('<strong>葵</strong>が詠唱して伏せました');
+  expect(markup).toContain('<strong>葵</strong>が従者を並べました（2枚）');
+  expect(markup).toContain('が士気判定に失敗しました');
+  expect(markup).toMatch(/<strong>楓<\/strong>の<button[^>]*>グリフォン<\/button>が攻撃を防ぎました/);
+  expect(markup).toMatch(/<strong>葵<\/strong>が<button[^>]*>啓示<\/button>を回収しました/);
+  expect(markup).toContain('<strong>楓</strong>がカードを1枚回収しました');
+  expect(markup).toContain('捨て札を山札に戻して混ぜました（37枚）');
+  // A line only this reader can see says so, right where it stands in the record.
+  expect(markup).toMatch(/<button[^>]*>[^<]+<\/button>を引きました<span class="log-own">（自分だけに見えています）<\/span>/);
+});
+
+/** The table's line and the reader's own named copy are the same act, so they must not read as two. */
+test('folds the table\'s line and the reader\'s own names of one act together', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'CHANTED', actorId: 'A' },
+    { id: 4, type: 'FOLLOWERS_ARRANGED', actorId: 'A', count: 2 },
+    { id: 6, type: 'CARD_RECLAIMED', actorId: 'A' },
+    { id: 8, type: 'CARD_RECLAIMED', actorId: 'B' },
+  ], [
+    { id: 3, type: 'CHANTED', actorId: 'A', cardInstanceId: 'a2-p01-r1c1' },
+    { id: 5, type: 'FOLLOWERS_ARRANGED', actorId: 'A', count: 2, cardInstanceIds: ['a2-p20-r3c1', 'a2-p05-r2c2'] },
+    { id: 7, type: 'CARD_RECLAIMED', actorId: 'A', cardInstanceId: 'a2-p02-r1c2' },
+  ]);
+  const lines = publicLogSections(v)[0]!.lines;
+  expect(lines.map(line => (line.kind === 'event' ? [line.event.id, line.ownCardInstanceIds ?? null] : line.kind))).toEqual([
+    [2, ['a2-p01-r1c1']], [4, ['a2-p20-r3c1', 'a2-p05-r2c2']], [6, ['a2-p02-r1c2']], [8, null],
+  ]);
+  const markup = html(v);
+  expect(markup).toMatch(/詠唱して伏せました<span class="log-own">（自分だけに見えています：<span><button[^>]*>[^<]+<\/button>/);
+  expect(markup).toMatch(/従者を並べました（2枚）<span class="log-own">（自分だけに見えています：/);
+  // Only the seat that took a card out of the pile learns which card it was (G11).
+  expect(markup).toMatch(/<strong>葵<\/strong>がカードを1枚回収しました<span class="log-own">（自分だけに見えています：/);
+  expect(markup).toContain('<strong>楓</strong>がカードを1枚回収しました</li>');
+});
+
+/** Acts that point at a seat are recorded twice as well, and the reader's copy carries the name, not the count. */
+test('folds the reader\'s named copy of a capture or an inspection onto the line for that seat', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', count: 2 },
+    { id: 3, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'C', count: 1 },
+    { id: 7, type: 'CHARACTER_INSPECTED', actorId: 'A', targetId: 'B' },
+  ], [
+    { id: 4, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', cardInstanceId: 'a2-p01-r1c1' },
+    { id: 5, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', cardInstanceId: 'a2-p02-r1c2' },
+    { id: 6, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'C', cardInstanceId: 'a2-p05-r2c2' },
+    { id: 8, type: 'CHARACTER_INSPECTED', actorId: 'A', targetId: 'B', characterId: 'c2-p04-r2c2' },
+  ]);
+  // The copies for one seat join that seat's line, so the seat a card came from stays right.
+  expect(publicLogSections(v)[0]!.lines.map(line => (line.kind === 'event' ? [line.event.id, line.ownCardInstanceIds ?? null, line.ownCharacterIds ?? null] : line.kind))).toEqual([
+    [2, ['a2-p01-r1c1', 'a2-p02-r1c2'], null], [3, ['a2-p05-r2c2'], null], [7, null, ['c2-p04-r2c2']],
+  ]);
+  const markup = html(v);
+  // The count belongs to the table's copy alone, so a copy that reads alone would say nothing was taken.
+  expect(markup).not.toContain('獣を0枚');
+  expect(markup).toMatch(/楓さんから獣を2枚手札に加えました<span class="log-own">（自分だけに見えています：<span><button[^>]*>[^<]+<\/button><\/span><span>・/);
+  expect(markup).toMatch(/楓さんの正体を確認しました<span class="log-own">（自分だけに見えています：<span><button[^>]*>[^<]+<\/button>/);
+});
+
 test('leaving a whole action to the others reads as one line per action', () => {
   const v = view([
     { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
-    { id: 2, type: 'PASSED', actorId: 'C', windowKind: 'action-through' },
-    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through' },
+    { id: 2, type: 'PASSED', actorId: 'C', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through', standingRange: 'action-a-1' },
     { id: 4, type: 'PASSED', actorId: 'B', windowKind: 'declaration' },
   ]);
   expect(publicLogSections(v)[0]!.lines).toEqual([
-    { kind: 'through', id: 2, lastId: 3, actorIds: ['C', 'D'] },
+    { kind: 'through', id: 2, lastId: 3, scope: 'action', range: 'action-a-1', actorIds: ['C', 'D'] },
     { kind: 'passes', id: 4, lastId: 4, windowKinds: ['declaration'], actorIds: ['B'] },
   ]);
   expect(html(v)).toContain('<strong>凛・蓮</strong>がこの行動を任せました');
+});
+
+test('two actions of the same turn keep their own line even when the lines between them are filtered away', () => {
+  // The seat leaves the first action, then leaves the second one too. A filter on 凛 takes away everything
+  // the other seats did in between, so the two records end up next to each other; they are still two acts.
+  const logs = [
+    { id: 1, type: 'TURN_STARTED' as const, actorId: 'A', turnNumber: 1 },
+    { id: 2, type: 'ATTACK_DECLARED' as const, actorId: 'A', targetIds: ['B'] },
+    { id: 3, type: 'PASSED' as const, actorId: 'C', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 4, type: 'ATTACK_RESOLVED' as const, actorId: 'A', attackOutcome: 'hit' as const, targetIds: ['B'] },
+    { id: 5, type: 'ATTACK_DECLARED' as const, actorId: 'A', targetIds: ['B'] },
+    { id: 6, type: 'PASSED' as const, actorId: 'C', windowKind: 'action-through', standingRange: 'action-a-5' },
+  ];
+  expect(publicLogSections(view(logs), 'oldest', { kind: 'seat', actorId: 'C' })[0]!.lines).toEqual([
+    { kind: 'through', id: 3, lastId: 3, scope: 'action', range: 'action-a-1', actorIds: ['C'] },
+    { kind: 'through', id: 6, lastId: 6, scope: 'action', range: 'action-a-5', actorIds: ['C'] },
+  ]);
+  // Unfiltered, the same two records are told apart by the same range rather than by what stands between them.
+  expect(publicLogSections(view(logs))[0]!.lines.filter(line => line.kind === 'through')).toHaveLength(2);
+});
+
+test('changing your mind about leaving the same action reads as the one state it ended in', () => {
+  const v = view([
+    { id: 1, type: 'TURN_STARTED', actorId: 'A', turnNumber: 1 },
+    // 任せる → 解除 → 任せる: taking it back records nothing, so the two records stand next to each other.
+    { id: 2, type: 'PASSED', actorId: 'D', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 3, type: 'PASSED', actorId: 'D', windowKind: 'action-through', standingRange: 'action-a-1' },
+    { id: 4, type: 'PASSED', actorId: 'D', windowKind: 'turn-through', standingRange: 'turn-1' },
+  ]);
+  expect(publicLogSections(v)[0]!.lines).toEqual([
+    { kind: 'through', id: 2, lastId: 3, scope: 'action', range: 'action-a-1', actorIds: ['D'] },
+    // A wider range is a different thing to have left behind, so it gets its own line.
+    { kind: 'through', id: 4, lastId: 4, scope: 'turn', range: 'turn-1', actorIds: ['D'] },
+  ]);
+  expect(html(v)).toContain('<strong>蓮</strong>がこの手番を任せました');
 });

@@ -1,12 +1,13 @@
-import {getAction} from '@madou/catalog';
+import {actionCards, getAction} from '@madou/catalog';
 import {expect, it} from 'vitest';
 import {gameStats, viewFor, type GameEvent, type GameState, type LogView} from '../src/index.js';
-import {act, closeWindow, finish, pass, passReclaims, ready, until} from './combat-helpers.js';
+import {act, closeWindow, finish, pass, passReclaims, ready, until, wholeRecord} from './combat-helpers.js';
+import {recordCardPlayed} from '../src/public-record.js';
 import {character, handCard, handCards} from './fixtures.js';
 import {makeR6RollScenario} from './fixtures/r6-roll-scenarios.js';
 
-const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
-const record = (s: GameState, viewer = 'C') => viewFor(s, viewer).logs.filter(log => RECORD_TYPES.has(log.type));
+const RECORD_TYPES = new Set(['TURN_STARTED', 'TURN_ENDED', 'REST', 'CARD_PLAYED', 'ATTACK_DECLARED', 'ATTACK_RESOLVED', 'CHECK_SKIPPED', 'ABILITY_DECLARED', 'ABILITY_CANCELED', 'ROLL_RESOLVED', 'DAMAGE_APPLIED', 'STATUS_CHANGED', 'DISTANCE_CHANGED', 'PASSED']);
+const record = (s: GameState, viewer = 'C') => wholeRecord(s, viewer).filter(log => RECORD_TYPES.has(log.type));
 const indexOf = (logs: LogView[], match: Partial<LogView>, from = 0) => logs.findIndex((log, index) => index >= from && Object.entries(match).every(([key, value]) => JSON.stringify(log[key as keyof LogView]) === JSON.stringify(value)));
 
 it('keeps the previous state and its historical payloads independent after a move', () => {
@@ -88,15 +89,19 @@ it('a chant stays unnamed until the attack turns it face up, and every hit adds 
   let s = ready(); character(s, 'A', '侍大将のシン');
   const card = handCard(s, 'A', '天地百撃斬');
   s = act(s, 'A', {type: 'CHANT', cardInstanceId: card, dedicated: true});
-  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(viewFor(s, viewer).logs)).not.toContain(card);
+  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(wholeRecord(s, viewer))).not.toContain(card);
   s = turnOf(s, 'A');
-  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(viewFor(s, viewer).logs)).not.toContain(card);
+  for (const viewer of ['B', 'C', 'D']) expect(JSON.stringify(wholeRecord(s, viewer))).not.toContain(card);
   s = act(s, 'A', {type: 'START_TURN'}); s = finish(s); s = act(s, 'A', {type: 'CHOOSE_DRAW', draw: false});
   s = act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B', 'C'], dedicated: true});
   s = until(s, 'damage'); s = closeWindow(s, [3]); s = closeWindow(s); s = finish(s);
   expect(s.players.B!.damage).toBe(21); expect(s.players.C!.damage).toBe(21);
   const logs = record(s, 'D');
-  expect(logs.filter(log => log.cardInstanceId === card)).toEqual([expect.objectContaining({type: 'CARD_PLAYED', actorId: 'A', use: 'attack', targetIds: ['B', 'C']})]);
+  // The declaration and the ending both name the card, which is how a reader pairs them.
+  expect(logs.filter(log => log.cardInstanceId === card)).toEqual([
+    expect.objectContaining({type: 'CARD_PLAYED', actorId: 'A', use: 'attack', targetIds: ['B', 'C']}),
+    expect.objectContaining({type: 'ATTACK_RESOLVED', actorId: 'A', attackOutcome: 'hit', targetIds: ['B', 'C']}),
+  ]);
   expect(indexOf(logs, {type: 'CARD_PLAYED', cardInstanceId: card})).toBeGreaterThan(indexOf(logs, {type: 'TURN_STARTED', actorId: 'A', turnNumber: 5}));
   expect(logs.filter(log => log.type === 'DAMAGE_APPLIED')).toEqual([
     expect.objectContaining({actorId: 'B', amount: 21}), expect.objectContaining({actorId: 'C', amount: 21}),
@@ -165,12 +170,16 @@ it('approach and withdrawal record the distance cards and the resulting near and
 it('projects each record type through a fixed field allowlist and hides a concealed actor', () => {
   const s = ready();
   const secret = {cardInstanceId: 'a2-p01-r1c1', characterId: 'c2-p01-r1c1', targetId: 'D', count: 9, amount: 9, abilityId: 'secret-ability', windowKind: 'secret', turnNumber: 99, targetIds: ['D'], use: 'attack' as const, distance: 'near' as const, status: {kind: 'stopped' as const, change: 'applied' as const}};
-  const roll = {rollId: 'roll-1', kind: 'ability-check' as const, faces: [3, 4], total: 7, threshold: 8, success: true, attempt: 1};
+  const roll = {rollId: 'roll-1', kind: 'ability-check' as const, faces: [3, 4], total: 7, threshold: 8, comparison: 'greater-than' as const, success: true, attempt: 1};
   const events: Omit<GameEvent, 'id' | 'at' | 'audience'>[] = [
     {type: 'TURN_STARTED', actorId: 'A', ...secret},
     {type: 'TURN_ENDED', actorId: 'A', ...secret},
     {type: 'REST', actorId: 'A', ...secret},
     {type: 'CARD_PLAYED', actorId: 'A', ...secret, roll},
+    {type: 'ATTACK_DECLARED', actorId: 'B', ...secret, concealed: true},
+    {type: 'ATTACK_RESOLVED', actorId: 'B', ...secret, attackOutcome: 'hit', concealed: true},
+    {type: 'CHECK_SKIPPED', actorId: 'B', ...secret, checkSkip: 'ability', concealed: true},
+    {type: 'CHECK_SKIPPED', actorId: 'A', ...secret, checkSkip: 'level'},
     {type: 'ABILITY_DECLARED', actorId: 'B', ...secret, concealed: true},
     {type: 'ABILITY_CANCELED', actorId: 'A', ...secret},
     {type: 'ROLL_RESOLVED', actorId: 'B', ...secret, roll, concealed: true},
@@ -178,6 +187,13 @@ it('projects each record type through a fixed field allowlist and hides a concea
     {type: 'STATUS_CHANGED', actorId: 'A', ...secret},
     {type: 'DISTANCE_CHANGED', actorId: 'A', ...secret},
     {type: 'PASSED', actorId: 'A', ...secret},
+    {type: 'CARDS_DISCARDED', actorId: 'A', ...secret},
+    {type: 'CHANTED', actorId: 'A', ...secret},
+    {type: 'FOLLOWERS_ARRANGED', actorId: 'A', ...secret},
+    {type: 'FOLLOWER_DEFENDED', actorId: 'B', ...secret, followerOutcome: 'blocked'},
+    {type: 'MORALE_CHECKED', actorId: 'B', ...secret, success: true},
+    {type: 'CARD_RECLAIMED', actorId: 'A', ...secret},
+    {type: 'DECK_RESHUFFLED', actorId: 'A', ...secret},
   ];
   s.events = events.map((event, index) => ({...event, id: 1000 + index, at: 1, audience: 'public'}));
   const keys = (viewer: string) => viewFor(s, viewer).logs.map(log => [log.type, Object.keys(log).filter(key => !['id', 'at', 'type', 'actorId'].includes(key)).sort()]);
@@ -186,6 +202,13 @@ it('projects each record type through a fixed field allowlist and hides a concea
     ['TURN_ENDED', ['turnNumber']],
     ['REST', ['count']],
     ['CARD_PLAYED', ['cardInstanceId', 'targetIds', 'use']],
+    // A card-less attack keeps its targets public; only the ability name follows the concealed seat.
+    ['ATTACK_DECLARED', ['targetIds']],
+    // How an attack ended is seen at the table, and it names the card its declaration already named;
+    // only a card-less attack's ability follows the concealed seat.
+    ['ATTACK_RESOLVED', ['attackOutcome', 'cardInstanceId', 'targetIds']],
+    ['CHECK_SKIPPED', ['checkSkip']],
+    ['CHECK_SKIPPED', ['abilityId', 'checkSkip']],
     ['ABILITY_DECLARED', []],
     ['ABILITY_CANCELED', ['abilityId', 'targetIds']],
     ['ROLL_RESOLVED', ['roll']],
@@ -193,12 +216,29 @@ it('projects each record type through a fixed field allowlist and hides a concea
     ['STATUS_CHANGED', ['status']],
     ['DISTANCE_CHANGED', ['distance', 'targetId']],
     ['PASSED', ['windowKind']],
+    // A face-down discard is a number to the table; the name rides only on the owner's private copy.
+    ['CARDS_DISCARDED', ['count']],
+    // A chant goes down face down, so the line is the seat and nothing else.
+    ['CHANTED', []],
+    ['FOLLOWERS_ARRANGED', ['count']],
+    // A follower that answers an attack is face up by then, so the engine may put its name on the line.
+    ['FOLLOWER_DEFENDED', ['cardInstanceId', 'followerOutcome']],
+    ['MORALE_CHECKED', ['cardInstanceId', 'success']],
+    ['CARD_RECLAIMED', ['cardInstanceId']],
+    ['DECK_RESHUFFLED', ['count']],
   ]);
+  // Only the owner's own line spells out a card the table never saw go.
+  const hidden = viewFor(s, 'C').logs.find(log => log.type === 'CARDS_DISCARDED')!;
+  expect(hidden).not.toHaveProperty('cardInstanceId');
+  // G03 判定の公開範囲: the outcome reaches everyone, the threshold only a revealed seat.
   const hiddenRoll = viewFor(s, 'C').logs.find(log => log.type === 'ROLL_RESOLVED')!.roll!;
-  expect(hiddenRoll).toEqual({rollId: 'roll-1', kind: 'ability-check', faces: [3, 4], total: 7, attempt: 1});
+  expect(hiddenRoll).toEqual({rollId: 'roll-1', kind: 'ability-check', faces: [3, 4], total: 7, attempt: 1, success: true});
   const own = viewFor(s, 'B').logs;
   expect(own.find(log => log.type === 'ABILITY_DECLARED')).toMatchObject({abilityId: 'secret-ability', targetIds: ['D']});
-  expect(own.find(log => log.type === 'ROLL_RESOLVED')!.roll).toMatchObject({threshold: 8, success: true});
+  expect(own.find(log => log.type === 'ATTACK_DECLARED')).toMatchObject({abilityId: 'secret-ability', targetIds: ['D']});
+  expect(own.find(log => log.type === 'CHECK_SKIPPED')).toMatchObject({abilityId: 'secret-ability', checkSkip: 'ability'});
+  // The direction the threshold is read travels with it, so it stays behind the same gate.
+  expect(own.find(log => log.type === 'ROLL_RESOLVED')!.roll).toMatchObject({threshold: 8, comparison: 'greater-than', success: true});
 });
 
 
@@ -235,4 +275,185 @@ it('records the public target of revelation in the third-party history', () => {
   expect(record(s, 'C').filter(log => log.cardInstanceId === cardInstanceId)).toEqual([
     expect.objectContaining({type: 'CARD_PLAYED', actorId: 'A', use: 'anytime', targetIds: ['B']}),
   ]);
+});
+
+it.each([true, false])('records why a usage check never happened, naming the ability only for a revealed seat (revealed=%s)', revealed => {
+  let s = ready();
+  character(s, 'A', '餓狼ヨーツルム');
+  s.players.A!.revealed = revealed;
+  s.distances.A!.B = 'near'; s.distances.B!.A = 'near';
+  const card = handCard(s, 'A', '狼牙');
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false, declarationAbilityIds: ['c2-p06-r2c2-ab02']});
+  s = until(s, 'effect-level');
+  const own = record(s, 'A').filter(log => log.type === 'CHECK_SKIPPED');
+  expect(own).toEqual([expect.objectContaining({actorId: 'A', checkSkip: 'ability', abilityId: 'c2-p06-r2c2-ab02'})]);
+  const other = record(s, 'C').filter(log => log.type === 'CHECK_SKIPPED');
+  expect(other).toHaveLength(1);
+  expect(other[0]!.checkSkip).toBe('ability');
+  if (revealed) expect(other[0]).toMatchObject({abilityId: 'c2-p06-r2c2-ab02'});
+  else expect(other[0]).not.toHaveProperty('abilityId');
+});
+
+it('records an attack whose level needed no check at all', () => {
+  let s = ready();
+  const attack = handCard(s, 'A', '踏み込み／弓');
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false});
+  s = until(s, 'normal-defense');
+  expect(record(s, 'C').filter(log => log.type === 'CHECK_SKIPPED')).toEqual([
+    expect.objectContaining({actorId: 'A', checkSkip: 'level'}),
+  ]);
+});
+
+/** A declared attack has to say how it ended, or the reader ties the next damage line to the wrong attack. */
+it('closes a landed attack with its outcome, once, next to the damage it caused', () => {
+  let s = ready();
+  const attack = handCard(s, 'A', '踏み込み／弓');
+  s = finish(act(s, 'A', {type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false}));
+  const logs = record(s, 'C');
+  const outcomes = logs.filter(log => log.type === 'ATTACK_RESOLVED');
+  expect(outcomes).toEqual([expect.objectContaining({actorId: 'A', attackOutcome: 'hit', targetIds: ['B']})]);
+  // The ending sits after the damage it explains, not nineteen lines later under someone else's attack.
+  expect(indexOf(logs, {type: 'ATTACK_RESOLVED'})).toBeGreaterThan(indexOf(logs, {type: 'DAMAGE_APPLIED'}));
+});
+
+it('closes an attack that never landed, so a failed check is not left dangling', () => {
+  let s = ready();
+  // A high 使用Lv forces excess-level checks; every window is closed on sixes so the check fails.
+  const attack = handCard(s, 'A', '白輪');
+  const sixes = Array(30).fill(6);
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false}, sixes);
+  for (let n = 0; n < 300 && s.windows?.length; n++) s = pass(s, sixes);
+  const outcomes = record(s, 'C').filter(log => log.type === 'ATTACK_RESOLVED');
+  expect(outcomes).toEqual([expect.objectContaining({actorId: 'A', attackOutcome: 'fizzled', targetIds: ['B']})]);
+  // Nothing landed, so the record must not carry a damage line the reader could tie to it.
+  expect(record(s, 'C').filter(log => log.type === 'DAMAGE_APPLIED')).toEqual([]);
+});
+
+const ALL_ARMY = 'a2-p05-r2c2';
+const uses = (s: GameState, viewer = 'C') => record(s, viewer).filter(log => log.type === 'CARD_PLAYED').map(log => [log.cardInstanceId, log.use]);
+const outcomes = (s: GameState, viewer = 'C') => record(s, viewer).filter(log => log.type === 'ATTACK_RESOLVED')
+  .map(log => [log.attackOutcome, log.cardInstanceId ?? log.abilityId, (log.targetIds ?? []).join(',')]);
+
+/** 全軍突撃せよ pays two cards for one charge; both of its endings used to be missing. */
+function charge(follower = 'a2-p20-r3c1') {
+  const s = ready();
+  for (const p of Object.values(s.players)) p.permanent = {endurance: 100};
+  handCard(s, 'A', getAction(ALL_ARMY)!.name); handCard(s, 'A', getAction(follower)!.name);
+  return {s, command: {type: 'PLAY_ALL_ARMY' as const, cardInstanceId: ALL_ARMY, followerCardInstanceId: follower, targetIds: ['B']}};
+}
+
+it('closes a charge whose morale failed, and one cancelled before it started', () => {
+  let {s, command} = charge();
+  s.players.A!.permanent = {endurance: 100, spirit: -20};
+  s = closeWindow(closeWindow(act(s, 'A', command)));
+  s = finish(closeWindow(s, [1, 1]));
+  expect(s.players.B!.damage).toBe(0);
+  expect(outcomes(s)).toEqual([['fizzled', command.followerCardInstanceId, 'B']]);
+  // 全軍突撃せよ is printed 複合 like the other two; the follower under it is what declares the attack.
+  expect(uses(s)).toEqual([[ALL_ARMY, 'combination'], [command.followerCardInstanceId, 'attack']]);
+
+  let cancelled = charge();
+  const fate = handCard(cancelled.s, 'B', '命運凶変');
+  let t = pass(act(cancelled.s, 'A', cancelled.command));
+  t = act(t, 'B', {type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel', targetActionId: viewFor(t, 'B').reactionTargetActionId!});
+  t = finish(t);
+  expect(t.players.B!.damage).toBe(0);
+  expect(outcomes(t)).toEqual([['nullified', cancelled.command.followerCardInstanceId, 'B']]);
+});
+
+/** A bundle declares several followers at once, so each declaration needs its own ending to pair with. */
+function bundle(s: GameState, fairy: string, soldier: string) {
+  return act(s, 'A', {type: 'USE_FOLLOWER_ATTACK', abilityId: 'c2-p06-r1c2-ab04', targetEventId: `turn-${s.turnNumber ?? 0}-A-action`,
+    sources: [{cardInstanceId: fairy, dedicated: false, targetIds: ['B']}, {cardInstanceId: soldier, dedicated: false, targetIds: ['B']}]});
+}
+function bundleTable() {
+  const s = ready(); character(s, 'A', '魔聖母ディア'); s.distances.A!.B = s.distances.B!.A = 'near';
+  return {s, fairy: handCard(s, 'A', '妖精族'), soldier: handCard(s, 'A', '兵士')};
+}
+
+it('gives every follower in a bundle its own ending, named, whether it lands or the bundle is thrown away', () => {
+  const landed = bundleTable();
+  const hit = finish(bundle(landed.s, landed.fairy, landed.soldier));
+  expect(outcomes(hit)).toEqual([['hit', landed.fairy, 'B'], ['hit', landed.soldier, 'B']]);
+
+  const stopped = bundleTable();
+  const fate = handCard(stopped.s, 'B', '命運凶変');
+  let t = pass(bundle(stopped.s, stopped.fairy, stopped.soldier));
+  t = act(t, 'B', {type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel-ability', targetAbilityId: viewFor(t, 'B').reactionTargetAbilityId!});
+  t = finish(t);
+  expect(t.players.B!.damage).toBe(0);
+  expect(outcomes(t)).toEqual([['nullified', stopped.fairy, 'B'], ['nullified', stopped.soldier, 'B']]);
+});
+
+it('says an attack landed on the seat that took the hit in the target\'s place', () => {
+  let s = ready(); character(s, 'C', '黒騎士ガーウィン'); handCard(s, 'C', '身代わり');
+  const card = handCard(s, 'A', '踏み込み／弓');
+  s = act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false});
+  s = pass(pass(until(s, 'attack-abilities')));
+  const option = viewFor(s, 'C').anytimeCardOptions.find(o => o.cardInstanceId === 'a2-p02-r2c1')!;
+  s = finish(act(s, 'C', {type: 'PLAY_ANYTIME_CARD', cardInstanceId: 'a2-p02-r2c1', targetEventId: option.targetEventId,
+    targetId: option.targetId, groupId: option.groupId, hitIndex: option.hitIndex}));
+  expect([s.players.B!.damage, s.players.C!.damage]).toEqual([0, 4]);
+  // It landed, on C; calling it blocked against B contradicted the damage line right above it.
+  expect(outcomes(s, 'D')).toEqual([['hit', card, 'C']]);
+});
+
+/** 呪払 is printed as 攻撃の前 and never makes an attack frame, so it must not read as an attack declaration. */
+it('keeps cards that declare no attack out of the attack wording', () => {
+  let s = ready(); character(s, 'B', '黒騎士ガーウィン');
+  const golem = handCard(s, 'B', 'ウッドゴーレム');
+  s.players.B!.hand = s.players.B!.hand.filter(id => id !== golem);
+  s.players.B!.followers = [{cardInstanceId: golem, revealed: false}];
+  handCard(s, 'A', '呪払');
+  const card = handCard(s, 'A', '踏み込み／弓');
+  s = finish(act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false, dispel: {cardInstanceId: 'a2-p02-r3c1', targetId: 'B'}}));
+  const played = record(s, 'C').filter(log => log.type === 'CARD_PLAYED').map(log => [log.cardInstanceId, log.use]);
+  expect(played).toContainEqual(['a2-p02-r3c1', 'anytime']);
+  // One declaration, one ending: the pre-attack card is not a second attack.
+  expect(played.filter(([, use]) => use === 'attack')).toEqual([[card, 'attack']]);
+  expect(outcomes(s)).toHaveLength(1);
+});
+
+/** The word is chosen from the printed category, so a fifth 複合 card cannot come out reading differently. */
+it('gives every card printed 複合 the same word, whatever a caller asks for', () => {
+  const printed = actionCards.filter(card => {
+    const category = (card as {printed_category?: string | string[]}).printed_category;
+    return Array.isArray(category) ? category.includes('複合') : category === '複合';
+  }).map(card => card.id);
+  expect(printed).toEqual(['a2-p05-r1c3', 'a2-p05-r2c1', 'a2-p05-r2c2', 'a2-p05-r2c3']);
+  const s = ready();
+  for (const id of printed) recordCardPlayed(s, 'A', id, 'attack');
+  expect(record(s, 'C').filter(log => log.type === 'CARD_PLAYED').map(log => [log.cardInstanceId, log.use]))
+    .toEqual(printed.map(id => [id, 'combination']));
+});
+
+/** 必勝の祈り is 複合 too, on its own turn and when リーア姫 spends it on someone else's technique. */
+it('says 必勝の祈り was used as a combination, whoever it is spent for', () => {
+  const play = (owner: 'A' | 'C') => {
+    let s = ready();
+    if (owner === 'C') character(s, 'C', 'リーア姫');
+    const card = handCard(s, 'A', '踏み込み／弓'), prayer = handCard(s, owner, '必勝の祈り');
+    s = until(act(s, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false}), 'effect-level');
+    const main = Object.values(s.actions!).find(a => a.kind === 'attack')!;
+    for (let n = 0; n < 10 && s.windows?.at(-1)?.participants[s.windows.at(-1)!.cursor] !== owner; n++) s = pass(s);
+    s = act(s, owner, {type: 'PLAY_REACTION', cardInstanceId: prayer, mode: 'effect-plus', targetActionId: main.id, ...(owner === 'C' ? {dedicated: true} : {})});
+    return {s: finish(s), card, prayer};
+  };
+  for (const owner of ['A', 'C'] as const) {
+    const {s, card, prayer} = play(owner);
+    expect(uses(s, 'D'), owner).toEqual([[card, 'attack'], [prayer, 'combination']]);
+  }
+});
+
+/** Every card printed 複合 gets the same word, and none of them reads as a declaration of its own. */
+it('says a combination card was used as one, never as the attack it was paid for', () => {
+  const spirit = 'a2-p05-r1c3', harp = 'a2-p05-r2c1';
+  const s0 = ready(); character(s0, 'A', '大神官ジル');
+  for (const p of Object.values(s0.players)) p.permanent = {endurance: 100};
+  for (const id of [spirit, harp]) handCard(s0, 'A', getAction(id)!.name);
+  const card = handCard(s0, 'A', '魔詩');
+  const s = finish(act(s0, 'A', {type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false, combinationCardInstanceIds: [spirit, harp]}));
+  expect(uses(s)).toEqual([[card, 'attack'], [spirit, 'combination'], [harp, 'combination']]);
+  // One declaration and one ending: a component is not a second attack.
+  expect(outcomes(s)).toEqual([['hit', card, 'B']]);
 });

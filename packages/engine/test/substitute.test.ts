@@ -1,13 +1,13 @@
 import {getAction,getCharacter} from '@madou/catalog';
 import {expect,it} from 'vitest';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until,closeWindow,readySetup} from './combat-helpers.js';
 import {character,entropy,handCard,freshGame} from './fixtures.js';
 const SUBSTITUTE='a2-p02-r2c1';
 function incoming(){let s=ready();character(s,'C','黒騎士ガーウィン');handCard(s,'C','身代わり');const card=handCard(s,'A','踏み込み／弓');s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});s=until(s,'attack-abilities');s=pass(s);s=pass(s);return s;}
 function take(s:GameState,index?:number){const o=viewFor(s,'C').anytimeCardOptions.find(o=>o.cardInstanceId===SUBSTITUTE&&(index===undefined||o.hitIndex===index))!;expect(o).toBeDefined();return act(s,'C',{type:'PLAY_ANYTIME_CARD',cardInstanceId:SUBSTITUTE,targetEventId:o.targetEventId,targetId:o.targetId,groupId:o.groupId,hitIndex:o.hitIndex});}
 it('one physical Substitute receives only the selected hit, refills once and defers body damage until the original attack ends',()=>{
- let s=incoming();const count=s.players.C!.hand.length;s=take(s);expect(s.players.C!.hand).toHaveLength(count);s=until(s,'normal-defense');expect(s.windows!.at(-1)!.participants).toEqual(['C']);expect(s.players.C!.damage).toBe(0);expect(s.discard).toContain(SUBSTITUTE);s=finish(s);expect(s.players.C!.damage).toBe(4);expect(s.players.B!.damage).toBe(0);expect(s.phase).toBe('withdrawal');
+ let s=incoming();const count=s.players.C!.hand.length;s=take(s);expect(s.players.C!.hand).toHaveLength(count);s=until(s,'normal-defense');expect(s.windows!.at(-1)!.participants).toEqual(['C']);expect(s.players.C!.damage).toBe(0);expect(discardIds(s)).toContain(SUBSTITUTE);s=finish(s);expect(s.players.C!.damage).toBe(4);expect(s.players.B!.damage).toBe(0);expect(s.phase).toBe('withdrawal');
 });
 it('decline leaves the card and original recipient unchanged',()=>{let s=incoming();s=finish(s);expect(s.players.C!.hand).toContain(SUBSTITUTE);expect(s.players.B!.damage).toBe(4);expect(s.players.C!.damage).toBe(0);});
 it('the substitute rejects ordinary defense, maai, followers and own anytime responses without charging cards',()=>{
@@ -19,7 +19,7 @@ it('the substitute may use a real hand counter and the counter resumes the selec
  let s=incoming();const counter=handCard(s,'C','閃光槍');s=until(take(s),'normal-defense');s=act(s,'C',{type:'PLAY_DEFENSE',cardInstanceId:counter,dedicated:false});s=finish(s);expect(s.players.A!.damage).toBe(5);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(0);
 });
 it('Fate cancellation leaves the original hit live while preserving payment and refill',()=>{
- let s=incoming();const fate=handCard(s,'D','命運凶変'),count=s.players.C!.hand.length;s=take(s);const child=viewFor(s,'D').reactionTargetActionId!;s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:child});s=finish(s);expect(s.players.C!.hand).toHaveLength(count);expect(s.players.C!.damage).toBe(0);expect(s.players.B!.damage).toBe(4);expect(s.discard).toContain(SUBSTITUTE);
+ let s=incoming();const fate=handCard(s,'D','命運凶変'),count=s.players.C!.hand.length;s=take(s);const child=viewFor(s,'D').reactionTargetActionId!;s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:child});s=finish(s);expect(s.players.C!.hand).toHaveLength(count);expect(s.players.C!.damage).toBe(0);expect(s.players.B!.damage).toBe(4);expect(discardIds(s)).toContain(SUBSTITUTE);
 });
 
 function multi(withFollower=false,receiverFollower=false){
@@ -35,7 +35,7 @@ it('an actual two-target three-hit attack transfers exactly B hit2 to C while pr
  expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(0);s=finish(s);expect(s.players.B!.damage).toBe(14);expect(s.players.C!.damage).toBe(28);
 });
 it('substitution after real follower destruction keeps its three reductions and transfers only the residual hit damage',()=>{
- let {s,wood}=multi(true);s=until(s,'hit');s=pass(s);s=pass(s);s=take(s,1);s=finish(s);expect(s.discard).toContain(wood);expect(s.players.B!.damage).toBe(4);expect(s.players.C!.damage).toBe(23);
+ let {s,wood}=multi(true);s=until(s,'hit');s=pass(s);s=pass(s);s=take(s,1);s=finish(s);expect(discardIds(s)).toContain(wood);expect(s.players.B!.damage).toBe(4);expect(s.players.C!.damage).toBe(23);
 });
 it('near attack range and newly public same-faction eligibility are not reapplied to the substitute',()=>{
  let s=ready();character(s,'C','聖騎士ランスロット');handCard(s,'C','身代わり');const approach=handCard(s,'A','踏み込み／弓'),attack=handCard(s,'A','踏み込み／蹴る');s=act(s,'A',{type:'APPROACH',cardInstanceId:approach,targetId:'B'});s=finish(s);s=act(s,'A',{type:'ATTACK',cardInstanceId:attack,targetIds:['B'],dedicated:false});s=until(s,'attack-abilities');const expected=Object.values(s.groups!)[0]!.targets[0]!.hits[0]!.damage;s=pass(s);s=pass(s);s=until(take(s),'normal-defense');expect(s.distances.A!.C).toBe('far');s=act(s,'C',{type:'REVEAL_CHARACTER'});s=finish(s);expect(s.players.C!.damage).toBe(expected);expect(s.players.B!.damage).toBe(0);

@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {parseGameCommand} from '@madou/protocol';
-import {transition,viewFor,type GameState,derivedStats} from '../src/index.js';
+import {transition,viewFor,type GameState,derivedStats, discardIds } from '../src/index.js';
 import {act,ready,until,finish,pass,closeWindow,passReclaims} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const GOD='a2-p02-r1c3',FATE='a2-p02-r2c3',PRAYER='a2-p05-r2c3';
@@ -13,7 +13,7 @@ it.each(['reveal-cancel','decline'] as const)('Physical Fate grants hidden Alsei
  s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:FATE,mode:'cancel',targetActionId:parent.id});const child=Object.values(s.actions!).find(a=>a.cardInstanceId===FATE)!;
  expect(s.resolution).toContain(FATE);expect(s.players.C!.hand).not.toContain(FATE);expect(viewFor(s,'D').legalChoices).not.toContain('CANCEL_REACTION');reject(s,'D',{type:'CANCEL_REACTION',targetActionId:child.id});
  if(choice==='reveal-cancel'){s=act(s,'D',{type:'REVEAL_CHARACTER'});s=priority(s,'D');expect(viewFor(s,'D').legalChoices).toContain('CANCEL_REACTION');s=act(s,'D',{type:'CANCEL_REACTION',targetActionId:child.id});expect(s.actions![child.id]!.canceled).toBe(true);}
- s=finish(s);expect(s.players.B!.damage).toBe(choice==='reveal-cancel'?4:0);expect(s.players.D!.revealed).toBe(choice==='reveal-cancel');expect(s.discard.filter(id=>id===FATE)).toHaveLength(1);expect(s.discard.filter(id=>id===attack)).toHaveLength(1);expect(s.players.C!.hand).not.toContain(FATE);expect(s.actions).toEqual({});
+ s=finish(s);expect(s.players.B!.damage).toBe(choice==='reveal-cancel'?4:0);expect(s.players.D!.revealed).toBe(choice==='reveal-cancel');expect(discardIds(s).filter(id=>id===FATE)).toHaveLength(1);expect(discardIds(s).filter(id=>id===attack)).toHaveLength(1);expect(s.players.C!.hand).not.toContain(FATE);expect(s.actions).toEqual({});
 });
 
 it('Physical Prayer rolls an independent d6 and self God replaces it once before frozen effect comparison',()=>{
@@ -24,7 +24,7 @@ it('Physical Prayer rolls an independent d6 and self God replaces it once before
  reject(s,'A',{type:'PLAY_REACTION',cardInstanceId:FATE,mode:'force-fail',targetRollId:roll.id});
  s=act(s,'A',{type:'PLAY_REACTION',cardInstanceId:GOD,mode:'reroll',targetRollId:roll.id});s=passReclaims(closeWindow(s,[6]));expect(s.rolls!.find(r=>r.id===roll.id)).toMatchObject({faces:[6],generation:1});expect(s.rolls!.find(r=>r.id===roll.id)!.attempts.map(a=>a.faces)).toEqual([[2],[6]]);expect(s.actions![parent.id]!.technique.effectLevel).toBe(base);
  s=priority(s,'A');reject(s,'A',{type:'PLAY_REACTION',cardInstanceId:GOD,mode:'reroll',targetRollId:roll.id});s=until(s,'normal-defense');expect(s.actions![parent.id]!.technique).toMatchObject({useLevel:3,effectLevel:base+6,damage:4});
- reject(s,'B',{type:'PLAY_REACTION',cardInstanceId:GOD,mode:'reroll',targetRollId:roll.id});s=finish(s);expect(s.players.B!.damage).toBe(4);expect(s.discard.filter(id=>id===PRAYER)).toHaveLength(1);expect(s.discard.filter(id=>id===GOD)).toHaveLength(1);
+ reject(s,'B',{type:'PLAY_REACTION',cardInstanceId:GOD,mode:'reroll',targetRollId:roll.id});s=finish(s);expect(s.players.B!.damage).toBe(4);expect(discardIds(s).filter(id=>id===PRAYER)).toHaveLength(1);expect(discardIds(s).filter(id=>id===GOD)).toHaveLength(1);
 });
 
 it('Dedicated Lia Prayer cannot reopen an actual technique after its effect level is frozen',()=>{
@@ -48,7 +48,7 @@ it('checks dynamic parry shortage and returns to defense with the failed card sp
   expect(defense.technique.useLevel).toBe(3);
   expect(defense.checks).toHaveLength(3 - derivedStats(state.players.B!).warrior_level);
   for (let i = 0; i < 60 && state.windows!.at(-1)!.kind !== 'normal-defense'; i++) state = pass(state, [6, 6]);
-  expect(state.discard).toContain(parry);
+  expect(discardIds(state)).toContain(parry);
   state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: evade, dedicated: false });
   expect(finish(state).players.B!.damage).toBe(0);
 });

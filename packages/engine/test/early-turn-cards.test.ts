@@ -1,6 +1,6 @@
 import {getAction} from '@madou/catalog';
 import {expect,it} from 'vitest';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,closeWindow,finish,pass,passReclaims,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 import {gameStats} from '../src/game-stats.js';
@@ -11,8 +11,12 @@ it.each([[WAR,'修行（戦士技）','warrior_level'],[MAGIC,'修行（魔法�
   s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceId:id,mode:'ordinary'});expect(s.rolls??[]).toHaveLength(0);
   s=closeWindow(s);expect(s.windows!.at(-1)!.kind).toBe('before-roll');s=closeWindow(s,[...faces]);
   expect(s.rolls!.at(-1)).toMatchObject({threshold:6,comparison:'greater-than',success});
-  expect(viewFor(s,'B').currentRoll).not.toHaveProperty('threshold');expect(viewFor(s,'B').currentRoll).not.toHaveProperty('success');
-  s=finish(s);expect(s.players.A!.attachments.includes(id)).toBe(success);expect(s.discard.includes(id)).toBe(!success);expect(gameStats(s,'A')[stat]).toBe(success?7:6);
+  // G03 判定の公開範囲: the outcome is public, the threshold stays with the revealed seat.
+  // The way the threshold is read is part of it, and 修行 is the one check that wants a bigger total.
+  for(const key of ['threshold','comparison','modifier'])expect(viewFor(s,'B').currentRoll,key).not.toHaveProperty(key);
+  expect(viewFor(s,'B').currentRoll!.success).toBe(success);
+  expect(viewFor(s,'A').currentRoll).toMatchObject({threshold:6,comparison:'greater-than'});
+  s=finish(s);expect(s.players.A!.attachments.includes(id)).toBe(success);expect(discardIds(s).includes(id)).toBe(!success);expect(gameStats(s,'A')[stat]).toBe(success?7:6);
  }
 });
 it('Lancelot explicitly chooses automatic training, while ordinary training has a real intervenable check',()=>{
@@ -25,14 +29,14 @@ it('Secret Book draws three extra cards while preserving the ordinary action and
  let s=ready();handCard(s,'A','秘伝書');const before=s.players.A!.hand.length;
  s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceId:BOOK});expect(s.players.A!.hand).toHaveLength(before-1);
  s=closeWindow(s,[3]);expect(s.rolls!.at(-1)).toMatchObject({purpose:'extra-draw',faces:[3]});s=finish(s);
- expect(s.players.A!.hand).toHaveLength(before+2);expect(s.phase).toBe('action');expect(s.discard).toContain(BOOK);
+ expect(s.players.A!.hand).toHaveLength(before+2);expect(s.phase).toBe('action');expect(discardIds(s)).toContain(BOOK);
  expect(viewFor(s,'A').turnCardOptions.some(o=>o.cardInstanceId===BOOK)).toBe(false);s=act(s,'A',{type:'PASS_ACTION'});expect(s.phase).toBe('hand-adjustment');
 });
 it.each([[CROWN,'ソロモン王の冠'],[CRYSTAL,'赤い水晶球']] as const)('%s attaches through a cancellable actual declaration', (id,name)=>{
  let s=ready();handCard(s,'A',name);const fate=handCard(s,'B','命運凶変');s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceId:id});
  expect(s.players.A!.attachments).not.toContain(id);expect(finish(s).players.A!.attachments).toContain(id);
  const target=viewFor(s,'A').reactionTargetActionId!;s=pass(s);s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target});s=finish(s);
- expect(s.players.A!.attachments).not.toContain(id);expect(s.discard).toContain(id);expect(s.phase).toBe('hand-adjustment');
+ expect(s.players.A!.attachments).not.toContain(id);expect(discardIds(s)).toContain(id);expect(s.phase).toBe('hand-adjustment');
 });
 function nextOwn(s:GameState){
  s=act(s,'A',{type:'END_TURN',discardIds:s.players.A!.hand.slice(gameStats(s,'A').handLimit)});
@@ -56,7 +60,7 @@ it('training forced failure survives a whole-roll reroll and a canceled dedicate
  s=pass(s);s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'force-fail',targetRollId:roll});s=passReclaims(closeWindow(s));
  while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='C')s=pass(s);
  s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:god,mode:'reroll',targetRollId:roll});s=closeWindow(s,[6,6]);s=finish(s);
- expect(s.rolls!.find(r=>r.id===roll)).toMatchObject({forcedFailure:true,success:false,attempts:[{faces:[6,6]},{faces:[6,6]}]});expect(s.discard).toContain(WAR);
+ expect(s.rolls!.find(r=>r.id===roll)).toMatchObject({forcedFailure:true,success:false,attempts:[{faces:[6,6]},{faces:[6,6]}]});expect(discardIds(s)).toContain(WAR);
 });
 it('Secret Book resumes an actual OPEN revival draw without losing the saved extra count or ordinary action',()=>{
  let s=ready();handCard(s,'A','秘伝書');s.players.B!.presence='dead';const open=handCard(s,'C',getAction('a2-p01-r1c1')!.name);s.players.C!.hand=s.players.C!.hand.filter(id=>id!==open);s.deck.unshift(open);const count=s.players.A!.hand.length;
@@ -96,6 +100,6 @@ it.each([[BOOK,'秘伝書','action'],[MAGIC,'修行（魔法技）','hand-adjust
  let s=ready();handCard(s,'A',name);const fate=handCard(s,'B','命運凶変'),hand=s.players.A!.hand.length,magic=gameStats(s,'A').magic_level;
  s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceId:id});const target=viewFor(s,'A').reactionTargetActionId!;s=pass(s);
  s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target}));
- expect(s.phase).toBe(phase);expect(s.players.A!.hand).toHaveLength(hand-1);expect(s.players.A!.attachments).not.toContain(id);expect(s.discard).toContain(id);
+ expect(s.phase).toBe(phase);expect(s.players.A!.hand).toHaveLength(hand-1);expect(s.players.A!.attachments).not.toContain(id);expect(discardIds(s)).toContain(id);
  expect(s.rolls??[]).toHaveLength(0);expect(gameStats(s,'A').magic_level).toBe(magic);
 });

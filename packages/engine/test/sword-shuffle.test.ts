@@ -1,6 +1,6 @@
 import {actionCards} from '@madou/catalog';
 import {expect,it} from 'vitest';
-import {viewFor,transition,gameStats,allCardInstanceIds,type GameState} from '../src/index.js';
+import {viewFor,transition,gameStats,allCardInstanceIds,type GameState, discardIds } from '../src/index.js';
 import {act,closeWindow,finish,pass,until,ready} from './combat-helpers.js';
 import {entropy,character,handCard} from './fixtures.js';
 import {makeSwordShuffleScenario} from './fixtures/sword-shuffle-scenario.js';
@@ -11,11 +11,11 @@ it.each([true,false])('real astrology discard suspends the already queued refill
  while(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]!=='A')s=pass(s);
  const star=viewFor(s,'A').abilityOptions.find(o=>o.abilityId==='c2-p04-r2c1-ab02')!;expect(star).toBeDefined();s=act(s,'A',{type:'USE_ABILITY',abilityId:star.abilityId,targetId:'B',targetEventId:star.targetEventId});s=until(s,'private-inspection');
  const inspection=viewFor(s,'A').inspection!;s=act(s,'A',{type:'CHOOSE_INSPECTION',decisionId:inspection.decisionId,choice:'discard-one',cardInstanceId:SWORD});
- expect(s.lifecycle!.some(t=>t.kind==='draw'&&t.actorId==='A')).toBe(true);expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({kind:'actual-discard',origin:{zone:'hand',ownerId:'B'}});expect(s.discard).toContain(SWORD);expect(s.resolution).not.toContain(SWORD);const deck=[...s.deck],discard=[...s.discard];
- while(viewFor(s,'C').reclaim?.pendingActorId!=='C')s=pass(s);expect(s.deck).toEqual(deck);expect(s.discard).toEqual(discard);expect(viewFor(s,'C').reclaim!.claims).toEqual([]);
+ expect(s.lifecycle!.some(t=>t.kind==='draw'&&t.actorId==='A')).toBe(true);expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({kind:'actual-discard',origin:{zone:'hand',ownerId:'B'}});expect(discardIds(s)).toContain(SWORD);expect(s.resolution).not.toContain(SWORD);const deck=[...s.deck],discard=[...discardIds(s)];
+ while(viewFor(s,'C').reclaim?.pendingActorId!=='C')s=pass(s);expect(s.deck).toEqual(deck);expect(discardIds(s)).toEqual(discard);expect(viewFor(s,'C').reclaim!.claims).toEqual([]);
  const waiting=structuredClone(s.windows!.at(-1));s=act(s,'C',{type:'REVEAL_CHARACTER'});expect(s.windows!.at(-1)).toEqual(waiting);const d=viewFor(s,'C').reclaim!,command={type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims[0]!.claimId} as const;s=act(s,'C',command);
- expect(s.reclaimReservations).toContain(SWORD);expect(s.discard).not.toContain(SWORD);expect(s.resolution).not.toContain(SWORD);expect(s.players.C!.hand).not.toContain(SWORD);expect(s.deck).toEqual(deck);
- const assertProtected=()=>{const reserved=s.reclaimReservations.includes(SWORD);expect([...s.reclaimReservations,...s.players.C!.hand].filter(id=>id===SWORD)).toHaveLength(1);expect(s.deck).not.toContain(SWORD);expect(s.discard).not.toContain(SWORD);expect(s.resolution).not.toContain(SWORD);for(const p of Object.values(s.players))if(reserved||p.id!=='C')expect(p.hand).not.toContain(SWORD);expect(allCardInstanceIds(s).sort()).toEqual(actionCards.map(c=>c.id).sort());};
+ expect(s.reclaimReservations).toContain(SWORD);expect(discardIds(s)).not.toContain(SWORD);expect(s.resolution).not.toContain(SWORD);expect(s.players.C!.hand).not.toContain(SWORD);expect(s.deck).toEqual(deck);
+ const assertProtected=()=>{const reserved=s.reclaimReservations.includes(SWORD);expect([...s.reclaimReservations,...s.players.C!.hand].filter(id=>id===SWORD)).toHaveLength(1);expect(s.deck).not.toContain(SWORD);expect(discardIds(s)).not.toContain(SWORD);expect(s.resolution).not.toContain(SWORD);for(const p of Object.values(s.players))if(reserved||p.id!=='C')expect(p.hand).not.toContain(SWORD);expect(allCardInstanceIds(s).sort()).toEqual(actionCards.map(c=>c.id).sort());};
  const rejectDuplicate=()=>{
   const before=JSON.stringify(s);let consumed=0;
   // Validation scans the raw arrays; numeric accesses on the proxy measure consumption.

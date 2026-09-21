@@ -69,8 +69,9 @@ it('restores a reroll declaration with immediate OPEN refill and does not spend 
   expect(await room.command('A', request)).toEqual(first);
   expect(await room.stored()).toEqual(saved);
   const projected = await room.snapshotFor('B');
+  // G03 判定の公開範囲: the outcome travels to every seat, the threshold only to a revealed one.
   expect(projected.game!.currentRoll!.threshold).toBeUndefined();
-  expect(projected.game!.currentRoll!.success).toBeUndefined();
+  expect(projected.game!.currentRoll!.success).toBe(false);
   for (const card of saved.state.game!.players.A!.hand) expect(JSON.stringify(projected)).not.toContain(card);
   expect(new Set(allCardInstanceIds(saved.state.game!)).size).toBe(220);
 });

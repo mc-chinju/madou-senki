@@ -1,5 +1,6 @@
-import type { GameState } from '../state.js';
+import type { GameState, PlayerId } from '../state.js';
 import {hasStatus} from '../state.js';
+import {isActive} from '../lifecycle/objectives.js';
 import type { Continuation, ReactionWindow, WindowKind } from './continuations.js';
 export function activeWindowRef(state: GameState): { windowId: string; windowRevision: number } | null {
   const w = state.windows?.at(-1); return w ? { windowId: w.id, windowRevision: w.revision } : null;
@@ -53,12 +54,58 @@ export function windowRootEventId(state: GameState, w: ReactionWindow): string {
   }
   return rootEventId(state, source ?? { eventId: w.eventId, parentWindowId: w.parentId });
 }
-/** Record the standing passes of a freshly opened window, dropping them once the action changed. */
+/** Seats with a standing pass running right now, in the order they gave it. */
+export function standingPassActors(state: GameState): PlayerId[] {
+  return (state.standingPasses ?? []).flatMap(saved => saved.actorIds);
+}
+/** How far this seat's standing pass reaches, if it has one. */
+export function standingPassScope(state: GameState, id: PlayerId): 'action' | 'turn' | undefined {
+  return state.standingPasses?.find(saved => saved.actorIds.includes(id))?.scope;
+}
+/** Leave the rest of the action, or of the turn, to the others. A seat sits in one record at a time. */
+export function addStandingPass(state: GameState, id: PlayerId, scope: 'action' | 'turn', rootEventId: string): void {
+  dropStandingPass(state, id);
+  const saved = (state.standingPasses ??= []).find(saved => scope === 'turn'
+    ? saved.scope === 'turn' && saved.turnNumber === (state.turnNumber ?? 0)
+    : saved.scope === 'action' && saved.rootEventId === rootEventId);
+  if (saved) { saved.actorIds.push(id); return; }
+  state.standingPasses.push(scope === 'turn'
+    ? { scope, turnNumber: state.turnNumber ?? 0, actorIds: [id] }
+    : { scope, rootEventId, actorIds: [id] });
+}
+/** Every seat is asked again once a character is revealed, whoever chose it and however it came about (G03).
+ *  Called where the reveal is written rather than from the end of the step, so no window opened later in the
+ *  same step can still be filled in from a hand-over the reveal has already ended.
+ *
+ *  `scope` narrows it to the hand-overs of one range. A hit that turns its target face up is the result of the
+ *  very action a seat handed over, so an action-long hand-over stands; for a turn-long one the identity is new
+ *  information about the actions still to come, and that seat is asked again. */
+export function dropStandingPasses(state: GameState, scope?: 'action' | 'turn'): void {
+  if (!scope) { delete state.standingPasses; return; }
+  const kept = (state.standingPasses ?? []).filter(saved => saved.scope !== scope);
+  if (kept.length) state.standingPasses = kept; else delete state.standingPasses;
+}
+/** Take the standing pass back; the passes it already filled in stay where they were recorded (G03). */
+export function dropStandingPass(state: GameState, id: PlayerId): void {
+  for (const saved of state.standingPasses ?? []) saved.actorIds = saved.actorIds.filter(actorId => actorId !== id);
+  pruneStandingPasses(state);
+}
+/** A standing pass ends with what it was given for: the last window of its action, or its own turn (G03). */
+export function pruneStandingPasses(state: GameState): void {
+  // A seat that left the table is not leaving its answers to anyone; its hand-over goes out with it, so the
+  // others stop being told that a dead seat is passing through the rest of the turn.
+  for (const saved of state.standingPasses ?? []) saved.actorIds = saved.actorIds.filter(id => isActive(state.players[id]!));
+  const kept = (state.standingPasses ?? []).filter(saved => saved.actorIds.length
+    && (saved.scope === 'turn' ? saved.turnNumber === (state.turnNumber ?? 0) : !!state.windows?.length));
+  if (kept.length) state.standingPasses = kept; else delete state.standingPasses;
+}
+/** Record the standing passes of a freshly opened window, dropping the ones the action moved past. */
 export function applyStandingPasses(state: GameState, w: ReactionWindow): void {
-  const saved = state.standingPasses; if (!saved) return;
-  if (!passAhead(w)) return;
-  if (windowRootEventId(state, w) !== saved.rootEventId) { delete state.standingPasses; return; }
-  for (const id of saved.actorIds) if (w.participants.includes(id) && !w.passed.includes(id)) w.passed.push(id);
+  if (!state.standingPasses?.length || !passAhead(w)) return;
+  const root = windowRootEventId(state, w);
+  state.standingPasses = state.standingPasses.filter(saved => saved.scope === 'turn' || saved.rootEventId === root);
+  pruneStandingPasses(state);
+  for (const id of standingPassActors(state)) if (w.participants.includes(id) && !w.passed.includes(id)) w.passed.push(id);
   syncPriority(w);
 }
 export function participants(state: GameState, seat = state.turnSeat): string[] {

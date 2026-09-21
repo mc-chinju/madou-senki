@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { getAction } from '../../packages/catalog/src/index.js';
 import { choose, legalCommands } from '../../packages/engine/src/bot/index.js';
 import { origin, tableFixture } from './helpers.js';
 import { BotClient } from './bot-client.js';
@@ -38,9 +39,17 @@ for (const count of [4]) {
         if (!acted) await new Promise(resolve => setTimeout(resolve, 50));
       }
       expect(bots[0]!.view()?.outcome).toBeDefined();
-      for (const page of table.pages) {
+      for (const [index, page] of table.pages.entries()) {
         await page.reload();
         await expect(page.getByRole('status', { name: '対戦結果' })).toBeVisible();
+        // 決着後の全公開: the screen has never shown another seat's hand before this point, so the panel and
+        // a card only the reveal can name are checked together; nothing else in this suite reaches it.
+        const view = bots[index]!.view()!;
+        const reveal = page.getByRole('region', { name: '全員の手の内' });
+        await expect(reveal).toBeVisible();
+        const opened = view.seatOrder.filter(id => id !== view.self.id).flatMap(id => view.reveal!.players[id]!.hand);
+        expect(opened.length, 'a decided game still leaves cards in somebody else’s hand').toBeGreaterThan(0);
+        await expect(reveal.getByRole('button', { name: `${getAction(opened[0]!)!.name}の詳細を見る` }).first()).toBeVisible();
       }
       const stale = await bots[0]!.send({ type: 'END_TURN', discardIds: [] });
       expect(stale.ok).toBe(false);

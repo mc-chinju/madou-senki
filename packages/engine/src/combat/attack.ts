@@ -12,7 +12,7 @@ import {validDispel,beginDispel,resolveDispel} from '../effects/dispel.js';
 import {resolveInformationAnytime} from '../effects/anytime-information.js';
 import {resolveNamedAnytimeCard} from '../effects/remaining-anytime-cards.js';
 import {resolveTurnCard,finishTurnCardBatch} from '../effects/remaining-turn-cards.js';
-import {discardPhysical} from '../discard.js';
+import {discardPhysical,moveToDiscard} from '../discard.js';
 import {acceptAnytimeCard,COURAGE} from '../effects/remaining-anytime.js';
 import {lifeIdentity} from '../abilities/suppression-state.js';
 import {enqueueLifecycle} from '../lifecycle/events.js';
@@ -20,7 +20,7 @@ import {reserveReclaimCard,reclaimEventId,offerReclaim,closeReclaim,chooseReclai
 import {gameStats} from '../game-stats.js';
 import {revealCharacter} from '../abilities/character-visibility.js';
 import {finishInspection} from '../abilities/private-inspection.js';
-import {advanceDeclaration,prepareDeclarationValue} from '../abilities/declaration-resolution.js';
+import {advanceDeclaration,noChecksAbilityId,prepareDeclarationValue} from '../abilities/declaration-resolution.js';
 import {evaluateReceivedReservations} from '../abilities/received-defense.js';
 import {destructionTargetMultiplier,fixedReflectedTechnique} from '../abilities/follower-destruction.js';
 import {acceptActionModifiers,addPrayer,freezeEffectLevel,prepareModifierDamage,freezeDamage} from '../abilities/action-modifiers.js';
@@ -49,7 +49,7 @@ import { appendEvent, EntropyError, randomSource, refillHand } from '../setup.js
 import { getAction, getCharacter } from '@madou/catalog';
 import { freezeFollowerSnapshot,resolveFollowerSnapshot } from './followers.js';
 import { applyHits } from './hits.js';
-import { applyStandingPasses, openWindow, participants, passAhead, resetParent, syncPriority, windowRootEventId } from '../reactions/windows.js';
+import { addStandingPass, applyStandingPasses, dropStandingPass, openWindow, participants, passAhead, resetParent, standingPassScope, syncPriority, windowRootEventId } from '../reactions/windows.js';
 class Rejected extends Error { constructor(readonly code: EngineErrorCode) { super(code); } }
 function reject(code: EngineErrorCode): never { throw new Rejected(code); }
 function discardAction(s: GameState, action: ActionFrame) {
@@ -173,11 +173,13 @@ function finishDistance(s:GameState,a:ActionFrame,success:boolean):void{
 function finalizeDistance(s:GameState,a:ActionFrame,success:boolean):void{
   const ids=[...(a.distanceAdvances??[]),...(a.distanceMaais??[])];const key=distanceKey(a.actorId,a.distanceTargetId!);let marker:string|undefined;
   if(a.distanceMode==='approach'&&success)marker=a.distanceAdvances!.at(-1);
-  for(const id of ids){const index=s.resolution.indexOf(id);if(index>=0){s.resolution.splice(index,1);if(id!==marker)s.discard.push(id);}}
+  // Advance and maai cards were played face up to change the distance, each by whoever paid it:
+  // the seat being approached pays the maai, so the card is theirs and not the attacker's.
+  for(const id of ids){const index=s.resolution.indexOf(id);if(index>=0){s.resolution.splice(index,1);if(id!==marker)moveToDiscard(s,id,{ownerId:a.distancePayments?.find(p=>p.cardInstanceId===id)?.actorId??a.actorId,faceUp:true});}}
   if(a.distanceMode==='approach')s.phase='action';
   if(a.distanceMode==='approach'&&success){s.distances[a.actorId]![a.distanceTargetId!]='near';s.distances[a.distanceTargetId!]![a.actorId]='near';(s.distanceMarkers??={})[key]={a:a.actorId,b:a.distanceTargetId!,ownerId:a.actorId,cardInstanceId:marker!};s.phase='action';}
   if(a.distanceMode==='withdrawal'){
-    if(success){s.distances[a.actorId]![a.distanceTargetId!]='far';s.distances[a.distanceTargetId!]![a.actorId]='far';const old=s.distanceMarkers?.[key];if(old){s.discard.push(old.cardInstanceId);delete s.distanceMarkers![key];}}
+    if(success){s.distances[a.actorId]![a.distanceTargetId!]='far';s.distances[a.distanceTargetId!]![a.actorId]='far';const old=s.distanceMarkers?.[key];if(old){moveToDiscard(s,old.cardInstanceId,{ownerId:old.ownerId,faceUp:true});delete s.distanceMarkers![key];}}
     s.phase='hand-adjustment';
   }
   delete s.actions![a.id];
@@ -196,6 +198,36 @@ export function finishReceivedDefense(s:GameState):void {
  const g=s.groups?.[w.continuation.id];if(!g||!currentHit(g,w.continuation.targetId!)?.defended)return;
  s.windows!.pop();g.targetCursor++;nextDefense(s,g);
 }
+/** Where a transferred hit ended up: the seat that stepped in, and whether it landed on them. */
+function substitutions(g:AttackGroup):Map<string,{actorId:string;landed:boolean}>{
+  const out=new Map<string,{actorId:string;landed:boolean}>();
+  for(const result of g.substituteResults??[]){
+    const origin=result.group.substituteOrigin,actorId=result.action.targetIds[0];
+    if(!origin||!actorId)continue;
+    out.set(`${origin.targetId}:${origin.hitIndex}`,{actorId,landed:result.group.targets.some(t=>t.hits.some(h=>h.hit))});
+  }
+  return out;
+}
+/** A bundle sends several declarations into one group, so each source closes with its own ending. */
+function recordGroupEndings(s:GameState,g:AttackGroup):void{
+  const moved=substitutions(g);
+  const bySource=new Map<string,{landed:Set<string>;declared:Set<string>}>();
+  for(const t of g.targets)for(const hit of t.hits){
+    const id=hit.sourceActionId??g.actionId;
+    const entry=bySource.get(id)??{landed:new Set<string>(),declared:new Set<string>()};
+    entry.declared.add(t.actorId);
+    const transfer=hit.substitutedBy?moved.get(`${t.actorId}:${hit.index}`):undefined;
+    if(transfer?.landed)entry.landed.add(transfer.actorId);
+    else if(hit.hit)entry.landed.add(t.actorId);
+    bySource.set(id,entry);
+  }
+  if(!bySource.size)bySource.set(g.actionId,{landed:new Set<string>(),declared:new Set(g.targets.map(t=>t.actorId))});
+  for(const [id,entry] of bySource){
+    const frame=s.actions?.[id];
+    if(!frame)continue;
+    recordAttackEnded(s,frame,entry.landed.size?'hit':'blocked',entry.landed.size?[...entry.landed]:[...entry.declared]);
+  }
+}
 function nextDefense(s:GameState,g:AttackGroup){
   if(!g.abilityWindowOpened){g.abilityWindowOpened=true;openWindow(s,'attack-abilities',g.actionId,{kind:'group',id:g.id,targetId:null});return;}
   if(g.stage==='defense'){
@@ -213,7 +245,9 @@ function nextDefense(s:GameState,g:AttackGroup){
   }
   while(g.targetCursor<g.targets.length){const t=g.targets[g.targetCursor]!;if(!isActive(s.players[t.actorId]!)||t.hits.every(hit=>hit.defended)){g.targetCursor++;continue;}if(g.substituteOrigin){openWindow(s,'hit',g.actionId,{kind:'group',id:g.id,targetId:t.actorId});return;}if(hasPendingFatal(s,g.attackerId)&&t.followerBypassChoice===undefined)t.followerBypassChoice=false;if(g.technique.optionalFollowerBypassAtOrBelowEffectLevel&&t.followerBypassChoice===undefined&&s.players[t.actorId]!.followers.length){openWindow(s,'follower-bypass-choice',g.actionId,{kind:'group',id:g.id,targetId:t.actorId},[g.attackerId]);return;}if(!t.followerEntryClosed){openWindow(s,'follower-entry-abilities',`${g.id}-${t.actorId}-follower-entry`,{kind:'group',id:g.id,targetId:t.actorId});return;}t.followerStarted=true;freezeFollowerSnapshot(s,g,t);openWindow(s,'follower-start',g.actionId,{kind:'group',id:g.id,targetId:t.actorId},[t.actorId]);return;
   }
-  const a=s.actions![g.actionId]!;if(g.substituteOrigin){const parent=s.groups?.[g.substituteOrigin.groupId];if(parent)(parent.substituteResults??=[]).push({group:structuredClone(g),action:structuredClone(a)});}else settleLifetimeGroup(s,g,s.events.at(-1)?.at??0);delete s.groups![g.id];completeAction(s,a,'end-attack');
+  const a=s.actions![g.actionId]!;if(g.substituteOrigin){const parent=s.groups?.[g.substituteOrigin.groupId];if(parent)(parent.substituteResults??=[]).push({group:structuredClone(g),action:structuredClone(a)});}else settleLifetimeGroup(s,g,s.events.at(-1)?.at??0);
+  if(!g.substituteOrigin)recordGroupEndings(s,g);
+  delete s.groups![g.id];completeAction(s,a,'end-attack');
 }
 export function startSubstituteHit(s:GameState,card:Pick<ActionFrame,'id'|'actorId'|'parentWindowId'|'substituteTransfer'>):void {
  const saved=card.substituteTransfer!,b=saved.binding,parent=s.groups?.[b.groupId],source=s.actions?.[b.sourceActionId];if(!parent||!source)return;
@@ -255,16 +289,24 @@ function resolveDefenseMaai(s:GameState,g:AttackGroup):void{
 export function resumeDeclarationAction(s:GameState,a:ActionFrame,roll:()=>number):void {
   continueAction(s,a,{kind:'declaration'} as ReactionWindow,roll);
 }
+/** A technique that reaches its effect level with no check ever thrown leaves the reason in the record (G03 判定の公開範囲). */
+function recordSkippedChecks(s:GameState,a:ActionFrame):void{
+  if(a.checkRollId||a.checkSkipRecorded||!['attack','defense','turn-technique'].includes(a.kind))return;
+  a.checkSkipRecorded=true;
+  const abilityId=noChecksAbilityId(s,a);
+  const waivedByCard=a.technique.noChecks||a.kind==='defense'&&!!a.technique.counterNoChecks;
+  recordCheckSkipped(s,a.actorId,abilityId?'ability':waivedByCard?'card':'level',abilityId);
+}
 function continueAction(s:GameState,a:ActionFrame,w:ReactionWindow,roll:()=>number){
   if(a.kind==='turn-card'){
     if(!resolveTurnCard(s,a,roll))return;
     completeAction(s,a,'end-turn-technique');return;
   }
-  if(a.allArmy){if(a.canceled)completeAction(s,a,'end-action');else beginArmyChild(s,a);return;}
+  if(a.allArmy){if(a.canceled){const child=s.actions?.[a.allArmy.childId];if(child)recordAttackEnded(s,child,'nullified');completeAction(s,a,'end-action');}else beginArmyChild(s,a);return;}
   if(a.kind==='lifecycle'){resolveLifecycleAction(s,a,s.events.at(-1)?.at??0);completeAction(s,a,'none');return;}
   if(a.printedComponentParentId){resolvePrintedComponent(s,a);completeAction(s,a,'none');return;}
-  if(a.canceled){if(a.kind==='defense'){finishDefense(s,a);return;}completeAction(s,a,'end-action');return;}
-  if(a.allArmyParentId&&!a.allArmyMoraleDone){if(!advanceArmyMorale(s,a,roll))return;if(a.canceled){completeAction(s,a,'end-action');return;}w={...w,kind:'declaration'};}
+  if(a.canceled){if(a.kind==='defense'){finishDefense(s,a);return;}recordAttackEnded(s,a,'nullified');completeAction(s,a,'end-action');return;}
+  if(a.allArmyParentId&&!a.allArmyMoraleDone){if(!advanceArmyMorale(s,a,roll))return;if(a.canceled){recordAttackEnded(s,a,'fizzled');completeAction(s,a,'end-action');return;}w={...w,kind:'declaration'};}
   if(a.substituteBinding){resolveSubstitute(s,a);completeAction(s,a,'none');return;}
   if(a.preAttack){resolveDispel(s,a);completeAction(s,a,'none');return;}
   if(a.kind==='reaction'&&(a.anytimeEffect==='peace'||a.anytimeEffect==='revelation')){if(!resolveInformationAnytime(s,a))return;completeAction(s,a,'none');return;}
@@ -291,8 +333,9 @@ function continueAction(s:GameState,a:ActionFrame,w:ReactionWindow,roll:()=>numb
       }
     }
     if((a.followerBundleId||a.allArmyParentId)&&a.technique.effectLevelFormula&&!a.useLevelPrepared){if(!a.effectLevelRollId){a.effectLevelRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:'technique-value',formula:'d6',resume:{kind:'action-value',actionId:a.id,value:'effect-level'}},roll).id;return;}a.useLevelPrepared=true;const stats=gameStats(s,a.actorId,{provenance:{kind:'action',id:a.id}});a.checkSpecs=a.technique.noChecks?[]:Array.from({length:Math.max(0,a.technique.useLevel-(a.technique.school==='warrior'?stats.warrior_level:stats.magic_level))},()=>({purpose:'excess-level' as const,modifier:0}));a.checks=a.checkSpecs.map(c=>c.modifier);}
-    if(w.kind==='after-roll' && !a.roll!.success){if(a.kind==='defense'){finishDefense(s,a);return;}completeAction(s,a,'end-action');return;}
+    if(w.kind==='after-roll' && !a.roll!.success){if(a.kind==='defense'){finishDefense(s,a);return;}recordAttackEnded(s,a,'fizzled');completeAction(s,a,'end-action');return;}
     if(a.checks.length){const spec=a.checkSpecs?.shift()??{purpose:'excess-level' as const,modifier:0};a.checks.shift();a.stage='checks';a.checkRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:spec.purpose,formula:'2d6',check:{modifier:spec.modifier},resume:{kind:'action-check',actionId:a.id}},roll).id;return;}
+    recordSkippedChecks(s,a);
     a.stage='effect-level';openWindow(s,'effect-level',a.eventId,{kind:'action',id:a.id});return;
   }
   if(w.kind==='effect-level'){if(a.technique.effectLevelFormula&&!a.effectLevelRollId){a.effectLevelRollId=beginRoll(s,{eventId:a.eventId,rollerId:a.actorId,purpose:'technique-value',formula:'d6',resume:{kind:'action-value',actionId:a.id,value:'effect-level'}},roll).id;return;}if(!prepareDeclarationValue(s,a,'effect',roll))return;freezeEffectLevel(s,a);freezeRelativeDefenseLimits(a.technique);a.stage='damage';openWindow(s,'damage',a.eventId,{kind:'action',id:a.id});return;}
@@ -451,7 +494,8 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
       if(hasPendingFatal(s,p.id))reject('STOPPED');
       const group=activeGroup(s,w);const target=s.players[w.continuation.targetId!]!;
-      if(c.discard){s.discard.push(...target.chants.map(chant=>chant.cardInstanceId));target.chants=[];}
+      // A chant swept off the table is only face up if it had already been revealed.
+      if(c.discard){for(const chant of target.chants)moveToDiscard(s,chant.cardInstanceId,{ownerId:target.id,faceUp:chant.revealed});target.chants=[];}
       s.windows!.pop();group.targetCursor++;nextDefense(s,group);
     }else if(c.type==='PASS_WITHDRAWAL'){
       if(w||s.phase!=='withdrawal'||s.seatOrder[s.turnSeat]!==p.id)reject('WRONG_PHASE');recordPass(s,p.id,'withdrawal');
@@ -508,21 +552,21 @@ export function transitionCombat(state:GameState,input:GameInput,entropy:Entropy
       if(!w)reject('WRONG_PHASE');
       const ahead=passAhead(w);
       if(c.type==='CANCEL_PASS_THROUGH'){
-        if(!s.standingPasses?.actorIds.includes(p.id))reject('WRONG_PHASE');
-        s.standingPasses.actorIds=s.standingPasses.actorIds.filter(id=>id!==p.id);
-        if(!s.standingPasses.actorIds.length)delete s.standingPasses;
+        if(!standingPassScope(s,p.id))reject('WRONG_PHASE');
+        dropStandingPass(s,p.id);
       }else{
       if(c.type==='PASS_ACTION_THROUGH'&&!ahead)reject('WRONG_PHASE');
       // A pass-ahead window takes any unanswered respondent; elsewhere only the priority seat may pass.
       if(ahead?!w.participants.includes(p.id)||w.passed.includes(p.id):w.participants[w.cursor]!==p.id)reject('NOT_PRIORITY');
-      if(c.type==='PASS_ACTION_THROUGH'){
-        const root=windowRootEventId(s,w);
-        const saved=s.standingPasses?.rootEventId===root?s.standingPasses:(s.standingPasses={rootEventId:root,actorIds:[]});
-        if(!saved.actorIds.includes(p.id))saved.actorIds.push(p.id);
-      }
+      const scope=c.type==='PASS_ACTION_THROUGH'?c.scope??'action':undefined;
+      const root=scope?windowRootEventId(s,w):undefined;
+      if(scope)addStandingPass(s,p.id,scope,root!);
       // Reclaim windows stay unrecorded: who holds a reclaim right is secret (G11).
-      // One line per action for a standing pass; the passes it fills in later are not recorded again.
-      if(w.kind!=='reclaim')recordPass(s,p.id,c.type==='PASS_ACTION_THROUGH'?'action-through':w.kind);
+      // One line per range for a standing pass; the passes it fills in later are not recorded again. The range
+      // is named in the record because two actions of the same turn read alike without it (G03).
+      if(w.kind!=='reclaim')recordPass(s,p.id,scope?`${scope}-through`:w.kind,
+        // The same number the record's own turn heading carries, which `recordTurn` writes one ahead of the state.
+        scope==='turn'?`turn-${(s.turnNumber??0)+1}`:scope==='action'?`action-${root}`:undefined);
       if(w.kind==='approach'||w.kind==='withdrawal') {if(w.continuation.kind!=='action')reject('WRONG_PHASE');const action=s.actions![w.continuation.id]!;s.windows!.pop();const success=p.id===action.distanceTargetId;finishDistance(s,action,success);}
       else if(w.kind==='reclaim'&&s.reclaimDecisions?.find(d=>d.windowId===w.id)?.stage==='beneficiary-choice'){
         const error=chooseReclaim(s,p.id,{type:'CHOOSE_RECLAIM',decisionId:w.continuation.id,choice:'decline'},roll);if(error)reject(error);resumeReclaimDispositions(s);
@@ -645,4 +689,4 @@ export function continueFollowerBundle(s:GameState,b:FollowerBundle):void{
  nextDefense(s,g);
 }
 import {printedTechniqueAllowed} from './printed-restrictions.js';
-import {recordAbility,recordCardPlayed,recordPass,recordRoll} from '../public-record.js';
+import {recordAbility,recordAttackEnded,recordCardPlayed,recordCheckSkipped,recordPass,recordRoll} from '../public-record.js';

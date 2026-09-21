@@ -20,7 +20,11 @@ const OTHER_PANEL_WINDOWS=['ability-attack','shadow-jump-cost','beast-capture','
 export function reactionPanelHandles(view:Pick<PlayerView,'activeWindow'|'lifecycleDecision'|'lifetimeDecision'|'techniqueDecision'>):boolean{
   return !!view.activeWindow&&!view.lifecycleDecision&&!view.lifetimeDecision&&!view.techniqueDecision&&!OTHER_PANEL_WINDOWS.includes(view.activeWindow.kind);
 }
-const choiceLabels:Record<string,string>={PASS:'パス',START_FOLLOWERS:'従者で受ける',PLAY_DEFENSE:'防御する',PLAY_MAAI:'間合いを使う',PLAY_ADVANCE:'踏み込みを使う',PLAY_REACTION:'割り込みを使う',CANCEL_REACTION:'アルセイルの固有反応で命運凶変を取り消す'};
+export const choiceLabels:Record<string,string>={PASS:'パス',START_FOLLOWERS:'従者で受ける',PLAY_DEFENSE:'防御する',PLAY_MAAI:'間合いを使う',PLAY_ADVANCE:'踏み込みを使う',PLAY_REACTION:'割り込みを使う',CANCEL_REACTION:'アルセイルの固有反応で命運凶変を取り消す'};
+/** Choices a control of their own answers: a section of this panel, or a panel that owns the whole window
+ *  (`OTHER_PANEL_WINDOWS`, the re-setup decision `LifecyclePanel` takes). The row of plain buttons skips them,
+ *  so none of them can reach the screen as its internal name. */
+export const otherPanelChoices=new Set(['CHOOSE_DARK_SAINT_IGNORE','CHOOSE_FOLLOWER_BYPASS','DISCARD_HIT_CHANTS','PLAY_ANYTIME_CARD','REVEAL_CHARACTER','SET_CONDITIONAL_ABILITY','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH','PLACE_INITIAL_FOLLOWER','PASS_SETUP','ATTACK','PAY_SHADOW_JUMP','CHOOSE_BEAST_CAPTURE','CHOOSE_INSPECTION','CHOOSE_RECLAIM','CHOOSE_WISH','CHOOSE_WISH_CAPACITY']);
 export function ReactionPanel({view,disabled,send}:{view:PlayerView;disabled:boolean;send:(command:GameCommand)=>boolean}){
   const [maaiBundle,setMaaiBundle]=useState<{windowId:string;primaryId:string;ids:string[]}|null>(null);
   const [maaiElection,setMaaiElection]=useState<{windowId:string;abilityId:string}|null>(null);
@@ -35,7 +39,7 @@ export function ReactionPanel({view,disabled,send}:{view:PlayerView;disabled:boo
   const context={substitute:!!view.currentAttack?.substitution,faction:view.self.faction,limitedDefenses:view.currentAttack?.defenseRestrictions.limitedDefenses,characterName:getCharacter(view.self.characterId)?.name,dedicated,defenseRestrictions:view.currentAttack?.defenseRestrictions,rollKind:view.currentRoll?.kind,incomingAttributes:view.currentAttack?.technique.attributes,incomingEffectLevel:view.currentAttack?.technique.effectLevel,statusKinds:view.players[view.self.id]!.statuses.map(status=>status.kind)};
   const restrictions=context.defenseRestrictions;
   const restrictionLabels=[context.limitedDefenses?'転移・反撃・特殊能力で防御':null,restrictions?.maaiProhibited?'間合い不可':null,restrictions?.evadeProhibited?'見切り不可':null,restrictions?.counterProhibited?'反撃不可':null].filter(Boolean);
-  const reactionChoices=view.legalChoices.filter(choice=>choice!=='CHOOSE_DARK_SAINT_IGNORE'&&choice!=='PLAY_ANYTIME_CARD'&&choice!=='REVEAL_CHARACTER'&&choice!=='PASS_ACTION_THROUGH'&&choice!=='CANCEL_PASS_THROUGH'&&!lifecycleCommands.has(choice)&&!lifetimeCommands.has(choice)&&!abilityCommands.has(choice)&&!combinationCommands.has(choice)&&(choice!=='PLAY_REACTION'||allowedModes.length>0));
+  const reactionChoices=view.legalChoices.filter(choice=>!otherPanelChoices.has(choice)&&!lifecycleCommands.has(choice)&&!lifetimeCommands.has(choice)&&!abilityCommands.has(choice)&&!combinationCommands.has(choice)&&(choice!=='PLAY_REACTION'||allowedModes.length>0));
   const cardChoices=reactionChoices.flatMap(choice=>eligibleReactionCards(choice,view.self.hand,view.self.chants.map(card=>card.cardInstanceId),selectedMode,context));
   const usesCard=reactionChoices.some(choice=>['PLAY_DEFENSE','PLAY_REACTION','PLAY_MAAI','PLAY_ADVANCE'].includes(choice));
   const uniqueChoices=defenseCardChoices(view,cardChoices,dedicated);

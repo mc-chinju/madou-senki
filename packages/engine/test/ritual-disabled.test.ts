@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState} from '../src/index.js';
+import {allCardInstanceIds,gameStats,transition,viewFor,type GameCommand,type GameState, discardIds } from '../src/index.js';
 import {entropy} from './fixtures.js';
 import {makeRitualPhysicalScenario,ritualCard} from './fixtures/ritual-physical-scenarios.js';
 it.each(['ritual-disabled','ritual-stopped'] as const)('%s actual mental attack distinguishes character ability disable from inability to perform the ritual',scenario=>{
@@ -27,5 +27,5 @@ it.each(['ritual-disabled','ritual-stopped'] as const)('%s actual mental attack 
  }
  expect(viewFor(s,'A').abilityOptions.some(o=>o.abilityId==='c2-p05-r1c1-ab01')).toBe(false);
  send('A',{type:'USE_REVIVAL_RITUAL'});until(s=>s.windows?.at(-1)?.kind==='lifecycle-boundary');expect(s.players.A).toMatchObject({characterId:'c2-p07-r1c2',damage:0,abilityCharacterIds:['c2-p07-r1c2']});expect(gameStats(s,'A').endurance).toBe(25);expect(s.players.A!.statuses).toEqual(before.players.A!.statuses);
- until(s=>!s.windows?.length);expect(s.discard.filter(id=>id===ritualCard)).toHaveLength(1);expect(s.players.A!.hand).toEqual(before.players.A!.hand.filter(id=>id!==ritualCard));expect(s.outcome).toBeUndefined();
+ until(s=>!s.windows?.length);expect(discardIds(s).filter(id=>id===ritualCard)).toHaveLength(1);expect(s.players.A!.hand).toEqual(before.players.A!.hand.filter(id=>id!==ritualCard));expect(s.outcome).toBeUndefined();
 });

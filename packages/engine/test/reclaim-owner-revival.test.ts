@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {gameStats} from '../src/index.js';
+import {gameStats, discardIds } from '../src/index.js';
 import {act,pass,readySetup} from './combat-helpers.js';
 import {freshGame} from './fixtures.js';
 import {assignCharacter,takeCard,trimHand} from './fixtures/scenario-tools.js';
@@ -54,7 +54,7 @@ it('Actual same-root death and FuSen revival do not give the old reserved prayer
  }
  expect({reserved,died,revived,giftPlayed},JSON.stringify({canceled,events:s.events.filter(e=>e.id>30&&['OPEN','CARD_DRAWN','PLAYER_DIED','PLAYER_REVIVED'].includes(e.type)),fusenInDeck:s.deck.indexOf(fusen),open:s.players.A!.open})).toEqual({reserved:true,died:true,revived:true,giftPlayed:true});
  expect(s.players.B!.presence).toBe('active');expect(s.players.C!.presence).toBe('dead');
- expect(s.players.B!.hand).not.toContain(prayer);expect(s.discard.filter(id=>id===prayer)).toHaveLength(1);
+ expect(s.players.B!.hand).not.toContain(prayer);expect(discardIds(s).filter(id=>id===prayer)).toHaveLength(1);
  expect(s.reclaimReservations).toEqual([]);expect(s.reclaim?.[prayer]).toBeUndefined();
  expect(s.windows??[]).toEqual([]);expect(s.lifecycle??[]).toEqual([]);
  expect(canceled).toBe(true);expect(Object.keys(s.actions??{})).toEqual([]);expect(Object.keys(s.groups??{})).toEqual([]);

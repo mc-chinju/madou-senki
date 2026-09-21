@@ -44,17 +44,33 @@ export interface GameEvent {
   death?:Pick<DamageIntent,'cause'|'eventId'|'sourceActorId'|'sourceCardInstanceId'>;
   id: number; at: number; audience: 'public' | { playerId: PlayerId };
   type: 'WISH_ACQUIRED' | 'WISH_DISCARDED' | 'FOLLOWER_DESTROYED' | 'CHARACTER_INSPECTED' | 'BEAST_CAPTURED' | 'CHARACTER_ASSIGNED' | 'CARD_DRAWN' | 'OPEN' | 'FOLLOWER_PLACED' | 'SETUP_PASSED' | 'CHARACTER_REVEALED' | 'SETUP_COMPLETE' | 'DEATH_PENDING' | 'PLAYER_DIED' | 'PLAYER_REVIVED' | 'PLAYER_WANDERING' | 'PLAYER_RETURNED' | 'PLAYER_EXITED' | 'CHARACTER_TRANSFORMED' | 'FACTION_CHANGED' | 'CARD_GIFTED' | 'GAME_COMPLETED'
-    | 'TURN_STARTED' | 'TURN_ENDED' | 'REST' | 'CARD_PLAYED' | 'ABILITY_DECLARED' | 'ABILITY_CANCELED' | 'ROLL_RESOLVED' | 'DAMAGE_APPLIED' | 'STATUS_CHANGED' | 'DISTANCE_CHANGED' | 'PASSED';
-  actorId: PlayerId; cardInstanceId?: string; characterId?: string; targetId?:string; count?:number;
+    | 'TURN_STARTED' | 'TURN_ENDED' | 'REST' | 'CARD_PLAYED' | 'ATTACK_DECLARED' | 'ATTACK_RESOLVED' | 'CHECK_SKIPPED' | 'ABILITY_DECLARED' | 'ABILITY_CANCELED' | 'ROLL_RESOLVED' | 'DAMAGE_APPLIED' | 'STATUS_CHANGED' | 'DISTANCE_CHANGED' | 'PASSED'
+    | 'CARDS_DISCARDED' | 'CHANTED' | 'FOLLOWERS_ARRANGED' | 'FOLLOWER_DEFENDED' | 'MORALE_CHECKED' | 'CARD_RECLAIMED' | 'DECK_RESHUFFLED';
+  actorId: PlayerId; cardInstanceId?: string; cardInstanceIds?: string[]; characterId?: string; targetId?:string; count?:number;
   /** Public record fields. The text is built by the screen, never by the engine. */
-  targetIds?: PlayerId[]; use?: 'attack' | 'defense' | 'counter' | 'maai' | 'advance' | 'anytime' | 'turn'; abilityId?: string;
+  targetIds?: PlayerId[]; use?: 'attack' | 'defense' | 'counter' | 'maai' | 'advance' | 'anytime' | 'turn' | 'combination'; abilityId?: string;
+  /** Why a usage check never happened: the level was enough, or an ability or the card's own text waived it. */
+  checkSkip?: 'level' | 'ability' | 'card';
+  /** How a declared attack ended. Everyone at the table sees this, so it carries no hidden name. */
+  attackOutcome?: 'hit' | 'blocked' | 'fizzled' | 'nullified';
+  /** What a follower that stood in front of an attack did to it; the follower is face up by then. */
+  followerOutcome?: import('./reactions/continuations.js').FollowerOutcome;
+  /** Whether a morale check passed. */
+  success?: boolean;
   roll?: PublicRollRecord; amount?: number; windowKind?: string; turnNumber?: number;
+  /** Which range a standing pass was given for: the root action, or the turn. Two hand-overs given for the
+   *  same range are one seat settling on an answer; two given for different ranges are two separate acts, and
+   *  the record has to keep them apart even when the lines between them are filtered away (G03). The action's
+   *  root is the id the public view already names as `reactionTargetActionId`, so it tells nothing new. */
+  standingRange?: string;
   status?: { kind: PersistentStatus['kind']; change: 'applied' | 'removed' }; distance?: 'near' | 'far';
   /** The actor's character was hidden when this happened; others see neither the ability name nor the check threshold. */
   concealed?: true;
 }
+/** How far a standing pass reaches: the root action it was given in, or the turn it was given in (G03). */
+export type StandingPass = { actorIds: PlayerId[] } & ({ scope: 'action'; rootEventId: string } | { scope: 'turn'; turnNumber: number });
 /** `attempt` counts throws of the same roll, starting at 1. */
-export interface PublicRollRecord { rollId: string; kind: import('./rolls/frames.js').RollPurpose; faces: number[]; total: number; threshold?: number; success?: boolean; forcedFailure?: true; attempt: number }
+export interface PublicRollRecord { rollId: string; kind: import('./rolls/frames.js').RollPurpose; faces: number[]; total: number; threshold?: number; comparison?: 'greater-than'; success?: boolean; forcedFailure?: true; attempt: number }
 export interface GameState {
   combinationSpirit?:import('./effects/printed-combinations.js').CombinationSpirit[];
   wishes?:import('./effects/wish.js').WishDecision[];
@@ -63,13 +79,15 @@ export interface GameState {
   suppressionDesignations?:import('./abilities/suppression-state.js').SuppressionDesignation[];
   blessingLeases?:import('./abilities/suppression-state.js').BlessingLease[];
   inspectionHistory?:import('./abilities/private-inspection.js').InspectionView[];
+  wishHistory?:import('./effects/wish.js').WishAcquisition[];
   inspections?:import('./abilities/private-inspection.js').PrivateInspection[];
   followerBundles?:Record<string,import('./combat/follower-bundles.js').FollowerBundle>;
   abilities?:Record<string,AbilityFrame>;
   initialFactions?:('GOOD'|'EVIL'|'ヴァンミール')[];turnNumber?:number; lifecycle?:LifecycleTask[]; outcome?:Outcome; individualResults?:Record<string,'won'>; vanmilDeath?:boolean; lifecycleTriggers?:string[];
   windows?: ReactionWindow[]; actions?: Record<string, ActionFrame>; groups?: Record<string, AttackGroup>; used?: string[];
-  /** Seats that left the whole root action to the others (G03); cleared by any accepted intervention. */
-  standingPasses?: { rootEventId: string; actorIds: PlayerId[] };
+  /** Seats that left the rest of a root action, or the rest of a turn, to the others (G03); cleared by any
+   *  accepted intervention. One record per scope, so seats that chose different ranges keep their own. */
+  standingPasses?: StandingPass[];
   rolls?: RollFrame[]; turnRoll?: TurnRollContinuation;
   randomRolls?: RandomRollRecord[];
   reclaim?: Record<string,import('./reclaim.js').ReclaimReservation>;
@@ -80,7 +98,7 @@ export interface GameState {
   pending: { kind: 'initial-followers'; round: number; participantIds: PlayerId[]; readyIds: PlayerId[]; placedIds: PlayerId[] } | null;
   distances: Record<PlayerId, Record<PlayerId, 'near' | 'far'>>;
   distanceMarkers?: Record<string,{ a:PlayerId; b:PlayerId; ownerId:PlayerId; cardInstanceId:string }>;
-  deck: string[]; discard: string[]; resolution: string[]; reclaimReservations: string[];
+  deck: string[]; discard: import('./discard.js').DiscardEntry[]; resolution: string[]; reclaimReservations: string[];
   nextEventId: number; events: GameEvent[];
 }
 export interface DerivedStats extends CharacterBaseStats { handLimit: number; followerLimit: number; chantLimit: number; followerLevelBonus: number; moraleBonus: number }
@@ -91,7 +109,7 @@ export function canUseCharacterAbility(player: PlayerState, state: GameState): b
   return !hasStatus(player, 'stopped') && !hasStatus(player, 'ability-disabled') && !vanmilSuppressed(state,player.id);
 }
 export function allCardInstanceIds(state: GameState): string[] {
-  return [...state.deck, ...state.discard, ...state.resolution, ...state.reclaimReservations,
+  return [...state.deck, ...state.discard.map(entry => entry.cardInstanceId), ...state.resolution, ...state.reclaimReservations,
     ...Object.values(state.distanceMarkers??{}).map(marker=>marker.cardInstanceId),
     ...state.seatOrder.flatMap(id => { const p = state.players[id]!; return [...p.hand, ...p.open, ...p.attachments, ...p.followers.map(c => c.cardInstanceId), ...p.chants.map(c => c.cardInstanceId)]; })];
 }

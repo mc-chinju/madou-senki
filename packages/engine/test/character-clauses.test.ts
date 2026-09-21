@@ -2,7 +2,7 @@ import {describe,expect,it} from 'vitest';
 import {actionCards,characters,getAction,getCharacter} from '@madou/catalog';
 import {allowedFactions,factionObjective,initialProtection,protectedDead,currentDefeatCondition,replaceAllegiance} from '../src/lifecycle/objectives.js';
 import {act,finish,ready} from './combat-helpers.js';
-import {gameStats,techniqueFor} from '../src/index.js';
+import {gameStats,techniqueFor, discardIds } from '../src/index.js';
 import {makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow,nextOwnAction} from './owned-reclaim-helpers.js';
 import {character,handCard,handCards} from './fixtures.js';
 import {printedTechniqueAllowed} from '../src/combat/printed-restrictions.js';
@@ -562,7 +562,7 @@ describe('character source clauses',()=>{
   expect(table.state.players.A!.characterId).toBe(id);expect(canonicalOwnedNames(table.state.players.A!,kind)).toEqual([]);
   let s=playOwnedCardToDiscard(table,cardId);const choice=currentReclaimWindow(s,'A')!;
   expect(choice.cardInstanceId).toBe(cardId);expect(choice.claims.some(c=>c.right==='base')).toBe(false);
-  s=finish(s);expect(s.discard.filter(c=>c===cardId)).toHaveLength(1);
+  s=finish(s);expect(discardIds(s).filter(c=>c===cardId)).toHaveLength(1);
   expect(s.players.A!.reclaimUsage?.[getAction(cardId)!.name]?.baseSpent).not.toBe(true);
  });
 });

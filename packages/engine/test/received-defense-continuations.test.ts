@@ -1,6 +1,6 @@
 import {actionCards,characters} from '@madou/catalog';
 import {describe,it,expect} from 'vitest';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,ready,until,pass,finish,closeWindow as closeBoundary,passReclaims} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 const HALF='c2-p03-r1c1-ab02',LIA='c2-p03-r1c2-ab01',SHIELD='c2-p07-r1c1-ab01',GAINAS='c2-p05-r2c2-ab02';
@@ -63,7 +63,7 @@ function finishFailingResistance(s:GameState){
 it.each([['a2-p17-r2c2',7,3],['a2-p14-r1c2',6,2]])('canonical magic %s damage %i behind actual SoldierHP1 floors last to %i',(card,damage,result)=>{
  let s=incoming('c2-p03-r1c1',card);const soldier=place(s,'B','兵士');
  expect(group(s).technique.damage).toBe(damage);s=closeWindow(use(s,HALF));
- s=finish(s);expect(s.players.B!.damage).toBe(result);expect(s.discard).toContain(soldier);
+ s=finish(s);expect(s.players.B!.damage).toBe(result);expect(discardIds(s)).toContain(soldier);
 });
 it.each([['a2-p17-r2c3',null,5],['a2-p12-r3c1',4,5]])('canonical magic %s resistance failure preserves direct %s and total %i',(card,direct,result)=>{
  let s=incoming('c2-p03-r1c1',card);s.players.B!.permanent!.spirit=0;

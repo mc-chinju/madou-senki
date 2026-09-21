@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {transition,viewFor,type GameState,type GameInput} from '../src/index.js';
+import {transition,viewFor,type GameState,type GameInput, discardIds } from '../src/index.js';
 import {act,ready,until,finish,pass} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 import {coSourceFor} from '../src/combat/combination.js';
@@ -16,7 +16,7 @@ it('Actual Vanmil suppression does not lift Fury mandatory black-counter restric
 });
 it('Loaded preexisting black chant cannot bypass Fury selection validation (structural saved-zone boundary)',()=>{const s=prepared(),card=handCard(s,'A','呪殺');s.players.A!.hand=s.players.A!.hand.filter(id=>id!==card);s.players.A!.chants.push({cardInstanceId:card,revealed:false});reject(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});});
 it('Saved declaration revalidates printed restriction before rolling (structural identity change boundary)',()=>{
- let s=ready();character(s,'A','餓狼ヨーツルム');const card=handCard(s,'A','妖獣');s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});character(s,'A','妖精王フューリー');s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.rolls??[]).toHaveLength(0);expect(s.discard.filter(id=>id===card)).toHaveLength(1);
+ let s=ready();character(s,'A','餓狼ヨーツルム');const card=handCard(s,'A','妖獣');s=act(s,'A',{type:'ATTACK',cardInstanceId:card,targetIds:['B'],dedicated:false});character(s,'A','妖精王フューリー');s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.rolls??[]).toHaveLength(0);expect(discardIds(s).filter(id=>id===card)).toHaveLength(1);
 });
 it('Actual black warrior co-source is refused before either physical source is paid',()=>{const s=prepared(),beast=handCard(s,'A','獣王剣'),black=handCard(s,'A','血流');reject(s,'A',{type:'ATTACK',cardInstanceId:beast,targetIds:['B'],dedicated:false,coSource:{cardInstanceId:black,dedicated:false}});});
 it('Common co-source guard independently rejects black even without faction or level restrictions (structural boundary)',()=>{const s=prepared(),card=handCard(s,'A','血流');s.players.A!.faction='EVIL';s.players.A!.permanent!.warrior_level=10;expect(coSourceFor(s,'A',{cardInstanceId:card,dedicated:false},true)).toBeUndefined();});

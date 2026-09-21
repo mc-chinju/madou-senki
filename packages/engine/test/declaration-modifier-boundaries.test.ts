@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { act, ready, until, finish, closeWindow, pass } from './combat-helpers.js';
 import { character, handCard, entropy } from './fixtures.js';
-import { transition, viewFor, previewDeclarationCandidate, type GameState } from '../src/index.js';
+import { transition, viewFor, previewDeclarationCandidate, type GameState, discardIds } from '../src/index.js';
 const SHELIM_ALL = 'c2-p01-r1c1-ab04', GARWIN_ALL = 'c2-p05-r2c1-ab04';
 const GAINAS_ALL = 'c2-p05-r2c2-ab04', GIL_COUNTER = 'c2-p01-r1c2-ab01';
 const GIL_RANGE = 'c2-p01-r1c2-ab03', BEAST = 'c2-p06-r2c2-ab02', VANMIL = 'c2-p07-r1c2-ab02';
@@ -102,7 +102,7 @@ describe('all-target declaration conditions and preserved targets', () => {
                 s = cancel(s, id!);
                 s = finish(s);
                 expect([s.players.B!.damage, s.players.C!.damage]).toEqual([0, 0]);
-                expect(s.discard.filter(c => c === initial.card)).toHaveLength(1);
+                expect(discardIds(s).filter(c => c === initial.card)).toHaveLength(1);
             }
             else {
                 s = until(s, 'normal-defense');
@@ -185,7 +185,7 @@ describe('range, counter acceptance and failure boundaries', () => {
         s = act(s, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: card, dedicated: false, declarationAbilityIds: [BEAST, GIL_COUNTER] });
         s = finish(s);
         expect(s.players.B!.damage).toBe(4);
-        expect(s.discard).toContain(card);
+        expect(discardIds(s)).toContain(card);
         expect(s.windows).toHaveLength(0);
     });
 });

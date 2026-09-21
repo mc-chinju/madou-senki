@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {actionCards,characters} from '@madou/catalog';
 import {describe,expect,it} from 'vitest';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,ready,until,pass,finish,closeWindow as closeBoundary,passReclaims,readySetup} from './combat-helpers.js';
 import {character,handCard,entropy} from './fixtures.js';
 
@@ -85,7 +85,7 @@ describe('C03 complete mental received defenses',()=>{
   expect(s.outcome).toBeUndefined();
   s=until(s,'death-gift');
   expect(s.players.A!.presence).toBe('pending-death');expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBeGreaterThan(0);
-  expect([...s.discard,...s.resolution].filter(id=>id==='a2-p18-r1c3')).toHaveLength(1);
+  expect([...discardIds(s),...s.resolution].filter(id=>id==='a2-p18-r1c3')).toHaveLength(1);
   expect(viewFor(s,'C').players.A!.pendingFatal).toBe(false);
   s=finish(s);
   expect(s.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='A')).toHaveLength(1);
@@ -238,7 +238,7 @@ it('hidden source identity stays private through attacker roll and committed sto
   const view=viewFor(s,actor),wire=JSON.stringify(view);
   expect(wire).not.toContain(LESTER);expect(wire).not.toContain('吟遊詩人のレスター');
   expect(view.currentRoll!.faces).toEqual([2,2]);
-  if(actor!=='A')expect(view.currentRoll).not.toHaveProperty('success');
+  if(actor!=='A')expect(view.currentRoll).not.toHaveProperty('threshold');
  }
  s=closeWindow(s);
  for(const actor of ['A','C','D']){
@@ -271,8 +271,8 @@ it('Gadyoora fatal batch allows actual death gift once before disposal',()=>{
  s=result(s,GAD,[6,6]);s=until(s,'death-gift');
  s=act(s,'A',{type:'PLAY_DEATH_GIFT',cardInstanceId:gift,giftCardInstanceId:card,targetId:'D'});
  s=closeWindow(s);expect(s.players.D!.hand).toContain(card);
- s=finish(s);expect(s.discard.filter(id=>id===gift)).toHaveLength(1);expect(s.discard).not.toContain(card);
- expect([...s.discard,...s.resolution].filter(id=>id==='a2-p18-r1c3')).toHaveLength(1);
+ s=finish(s);expect(discardIds(s).filter(id=>id===gift)).toHaveLength(1);expect(discardIds(s)).not.toContain(card);
+ expect([...discardIds(s),...s.resolution].filter(id=>id==='a2-p18-r1c3')).toHaveLength(1);
 });
 it('Gadyoora actual fatal disposal followed by Fusen revival restores saved identity once',()=>{
  let s=incoming(GAD);
@@ -290,7 +290,7 @@ it('Gadyoora actual fatal disposal followed by Fusen revival restores saved iden
  s=finish(s);expect(s.players.A!.presence).toBe('active');expect(s.players.A!.statuses).toEqual([]);
  expect(s.players.A!).toMatchObject(identity);
  expect(s.events.filter(e=>e.type==='PLAYER_REVIVED'&&e.actorId==='A')).toHaveLength(1);
- expect([...s.discard,...s.resolution].filter(id=>id==='a2-p18-r1c3')).toHaveLength(1);
+ expect([...discardIds(s),...s.resolution].filter(id=>id==='a2-p18-r1c3')).toHaveLength(1);
 });
 it('helper Lester EVIL allegiance still stores the explicit EVIL extinction objective',()=>{
  let s=incoming();s.players.B!.faction='EVIL';s=result(s,LESTER,[6,6]);
@@ -388,7 +388,7 @@ it('actual reroll introduces sixes and commits the final saved faces once',()=>{
  expect(s.rolls!.find(r=>r.id===rollId)).toMatchObject({faces:[6,6],success:true});
  expect(s.players.A!.objective).toBe('ディアと敵対するものの全滅');
  expect(s.players.A!.statuses).toHaveLength(1);
- s=finish(s);expect(s.players.A!.statuses).toHaveLength(1);expect(s.discard.filter(id=>id===reroll)).toHaveLength(1);
+ s=finish(s);expect(s.players.A!.statuses).toHaveLength(1);expect(discardIds(s).filter(id=>id===reroll)).toHaveLength(1);
 });
 it('helper unlabelled explicit objective still displays its actual enemy factions',async()=>{
  const {replaceAllegiance}=await import('../src/index.js');const s=incoming();
@@ -421,12 +421,12 @@ it('fix I1 actual Ida dedicated Shuriken retains C chant and damage before Gadyo
  expect(s.players.A!.presence).toBe('pending-death');
  expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(5);
  expect(s.players.C!.chants).toEqual([{cardInstanceId:chant,revealed:false}]);
- expect([...s.discard,...s.resolution].filter(id=>id===shuriken)).toHaveLength(1);
+ expect([...discardIds(s),...s.resolution].filter(id=>id===shuriken)).toHaveLength(1);
  reject(s,'A',{type:'DISCARD_HIT_CHANTS',discard:true},'INACTIVE_ACTOR');
  s=finish(s);
  expect(s.events.filter(e=>e.type==='PLAYER_DIED'&&e.actorId==='A')).toHaveLength(1);
  expect(s.players.C!.chants).toEqual([{cardInstanceId:chant,revealed:false}]);
- expect(s.discard.filter(id=>id===shuriken)).toHaveLength(1);
+ expect(discardIds(s).filter(id=>id===shuriken)).toHaveLength(1);
 });
 it('fix I1 leaves nonfatal stopped Ida on-hit choice semantics unchanged',()=>{
  let {s,chant}=dedicatedIdaWithChantedTarget();s=result(s,GAD,[2,2]);
@@ -436,7 +436,7 @@ it('fix I1 leaves nonfatal stopped Ida on-hit choice semantics unchanged',()=>{
  expect(viewFor(s,'A').legalChoices).toContain('DISCARD_HIT_CHANTS');
  s=act(s,'A',{type:'DISCARD_HIT_CHANTS',discard:true});
  expect(s.players.C!.damage).toBe(5);expect(s.players.C!.chants).toEqual([]);
- expect(s.discard.filter(id=>id===chant)).toHaveLength(1);
+ expect(discardIds(s).filter(id=>id===chant)).toHaveLength(1);
 });
 it('fix I1 helper old saved on-hit window with fatal intent hides and atomically rejects discard',()=>{
  let {s,chant}=dedicatedIdaWithChantedTarget();s=until(s,'on-hit-choice');

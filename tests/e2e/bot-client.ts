@@ -66,7 +66,7 @@ export class BotClient {
     const payload = JSON.stringify(envelope);
     this.lastPayload = payload;
     socket.send(payload);
-    const reply = await this.next(message => message.type !== 'snapshot' && (message.commandId === commandId || message.commandId === undefined));
+    const reply = await this.next(message => message.type !== 'snapshot' && message.type !== 'log-page' && (message.commandId === commandId || message.commandId === undefined));
     if (reply.type === 'error') return { ok: false, code: reply.code };
     if (reply.type === 'ack') {
       while ((this.roomView?.revision ?? 0) < reply.revision) {
@@ -83,7 +83,7 @@ export class BotClient {
     const commandId = (JSON.parse(payload) as { commandId: string }).commandId;
     this.lastPayload = payload;
     socket.send(payload);
-    const reply = await this.next(message => message.type !== 'snapshot' && (message.commandId === commandId || message.commandId === undefined));
+    const reply = await this.next(message => message.type !== 'snapshot' && message.type !== 'log-page' && (message.commandId === commandId || message.commandId === undefined));
     if (reply.type === 'error') return { ok: false, code: reply.code };
     if (reply.type === 'ack') return { ok: true, revision: reply.revision };
     return { ok: false };

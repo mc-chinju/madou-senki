@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { actionCards, characters } from '@madou/catalog';
-import { createGame, transition, initialProtection, factionObjective, type Entropy } from '../src/index.js';
+import { createGame, transition, initialProtection, factionObjective, type Entropy, discardIds } from '../src/index.js';
 export const entropy = () => ({ now: 1000, dice: [] as number[], random: Array.from({length: 2000}, (_, i) => ((i * 193 + 17) % 997) / 997) });
 /** Deterministic mulberry32 tape. Dice faces are 1–6; random is in [0, 1). */
 export function seededEntropy(seed: number): Entropy {
@@ -43,7 +43,7 @@ export function loadFixture(name: 'basic-four-player'|'follower-defense-started'
 /** Test-only zone move: preserve every physical card while arranging a scenario. */
 export function handCard(s: ReturnType<typeof createGame>, owner: string, name: string) {
   const id = actionCards.find(c => c.name === name)!.id;
-  s.deck = s.deck.filter((x: string) => x !== id); s.discard = s.discard.filter((x: string) => x !== id);
+  s.deck = s.deck.filter((x: string) => x !== id); s.discard = s.discard.filter(entry => entry.cardInstanceId !== id);
   for (const p of Object.values(s.players) as any[]) {
     p.hand = p.hand.filter((x: string) => x !== id); p.open = p.open.filter((x: string) => x !== id);
   }
@@ -51,7 +51,7 @@ export function handCard(s: ReturnType<typeof createGame>, owner: string, name: 
 }
 export function handCards(s:ReturnType<typeof createGame>,owners:string[],name:string){
   const ids=actionCards.filter(c=>c.name===name).slice(0,owners.length).map(c=>c.id);if(ids.length!==owners.length)throw Error(`NOT_ENOUGH_COPIES:${name}`);
-  ids.forEach((id,index)=>{s.deck=s.deck.filter(x=>x!==id);s.discard=s.discard.filter(x=>x!==id);for(const p of Object.values(s.players)){p.hand=p.hand.filter(x=>x!==id);p.open=p.open.filter(x=>x!==id);}s.players[owners[index]!]!.hand.push(id);});return ids;
+  ids.forEach((id,index)=>{s.deck=s.deck.filter(x=>x!==id);s.discard = s.discard.filter(entry => entry.cardInstanceId !== id);for(const p of Object.values(s.players)){p.hand=p.hand.filter(x=>x!==id);p.open=p.open.filter(x=>x!==id);}s.players[owners[index]!]!.hand.push(id);});return ids;
 }
 export function character(s: ReturnType<typeof createGame>, owner: string, name: string) {
   const c = characters.find(c => c.name === name)!;

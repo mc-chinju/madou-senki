@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const TRAGEDY='a2-p01-r2c3',KEIL='a2-p01-r3c1',AMULET='a2-p01-r3c2',COURAGE='a2-p01-r3c3',PEACE='a2-p02-r1c1',REVELATION='a2-p02-r1c2',SUBSTITUTE='a2-p02-r2c1',HOSTAGE='a2-p02-r2c2';
@@ -22,7 +22,7 @@ it.each(cards)('Fate cancels physical %s after its actual Dawn OPEN and refill, 
  const fate=handCard(s,'D','命運凶変'),dawn=handCard(s,'D',getAction('a2-p01-r1c2')!.name);s.players.D!.hand=s.players.D!.hand.filter(x=>x!==dawn);s.deck.unshift(dawn);s.players.D!.presence='otherworld';
  s=act(s,'C',command);const child=Object.values(s.actions!).find(a=>a.cardInstanceId===id)!;expect(child).toBeDefined();expect(s.players.C!.hand).toHaveLength(hand);expect(s.players.C!.open).toContain(dawn);expect(s.players.D!.presence).toBe('active');
  s=priority(s,'D');s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:child.id});
- for(let n=0;n<150&&s.actions?.[child.id];n++)s=pass(s);expect(s.actions?.[child.id]).toBeUndefined();expect(s.windows!.at(-1)!.id).toBe(parent);expect(s.discard).toContain(id);expect(s.players.C!.hand).toHaveLength(hand);
+ for(let n=0;n<150&&s.actions?.[child.id];n++)s=pass(s);expect(s.actions?.[child.id]).toBeUndefined();expect(s.windows!.at(-1)!.id).toBe(parent);expect(discardIds(s)).toContain(id);expect(s.players.C!.hand).toHaveLength(hand);
  expect(s.events.filter(e=>e.type==='OPEN'&&e.cardInstanceId===dawn)).toHaveLength(1);expect(s.events.filter(e=>e.type==='PLAYER_RETURNED'&&e.actorId==='D')).toHaveLength(1);expect(s.players.B!.permanent?.spirit??0).toBe(0);expect(gameStats(s,'B').spirit).toBe(spirit);expect(s.inspections??[]).toHaveLength(0);expect(Object.values(s.groups??{}).some(g=>g.substituteOrigin)).toBe(false);
  if(id===AMULET||id===COURAGE)expect(s.abilities![command.targetEventId]!.canceled).toBe(false);else if(id===TRAGEDY||id===KEIL||id===HOSTAGE||id===SUBSTITUTE){const g=Object.values(s.groups!)[0]!;expect(g.targets[0]!.hits[0]!.defended).toBe(false);}
  s=finish(s);expect(s.players.C!.open).toContain(dawn);expect(s.events.filter(e=>e.type==='OPEN'&&e.cardInstanceId===dawn)).toHaveLength(1);

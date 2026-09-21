@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction,getCharacter} from '@madou/catalog';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const TRAGEDY='a2-p01-r2c3',KEIL='a2-p01-r3c1',AMULET='a2-p01-r3c2',HOSTAGE='a2-p02-r2c2';
@@ -15,7 +15,7 @@ function priority(s:GameState,actorId:string){for(let n=0;n<20;n++){const w=s.wi
 function play(s:GameState,actorId:string,id:string,targetId?:string){for(let n=0;n<100;n++){const o=viewFor(s,actorId).anytimeCardOptions.find(o=>o.cardInstanceId===id&&(!targetId||o.targetId===targetId));if(o)return act(s,actorId,{type:'PLAY_ANYTIME_CARD',cardInstanceId:id,targetEventId:o.targetEventId,...(targetId?{targetId}:{})});s=pass(s);}throw Error('NO_CARD_OPPORTUNITY');}
 
 it('Tragedy fails all three unresolved hits of the actual public Gainas attack',()=>{
- let s=attack(initial(TRAGEDY));s=play(s,'B',TRAGEDY);s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(0);expect(s.discard).toContain(TRAGEDY);
+ let s=attack(initial(TRAGEDY));s=play(s,'B',TRAGEDY);s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBe(0);expect(discardIds(s)).toContain(TRAGEDY);
 });
 it.each(['c2-p02-r2c2','c2-p03-r1c2'])('Keil protects only the selected %s of a real two-target attack and grows only Lancelot',target=>{
  let s=attack(initial(KEIL,'c2-p05-r2c2',target));s=play(s,'B',KEIL,'B');expect(viewFor(s,'D').logs.find(e=>e.type==='CARD_PLAYED'&&e.cardInstanceId===KEIL)).toMatchObject({actorId:'B',targetIds:['B']});s=finish(s);expect(s.players.B!.damage).toBe(0);expect(s.players.C!.damage).toBeGreaterThan(0);expect(s.players.B!.permanent?.spirit??0).toBe(target==='c2-p02-r2c2'?1:0);
@@ -29,11 +29,11 @@ it.each([TRAGEDY,KEIL,HOSTAGE])('declining %s leaves its physical card untouched
 it.each([TRAGEDY,KEIL,HOSTAGE])('Fate cancels accepted %s without refunding refill or growing Keil',id=>{
  let s=initial(id,id===HOSTAGE?'c2-p01-r2c1':'c2-p05-r2c2',id===HOSTAGE?'c2-p05-r2c1':'c2-p02-r2c2');const fate=handCard(s,'C','命運凶変'),size=s.players.B!.hand.length;
  s=play(attack(s),'B',id,id===KEIL?'B':undefined);expect(s.players.B!.hand).toHaveLength(size);s=priority(s,'C');const target=viewFor(s,'C').reactionTargetActionId!;
- s=finish(act(s,'C',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target}));expect(s.players.B!.damage).toBeGreaterThan(0);expect(s.players.C!.damage).toBe(id===TRAGEDY?0:id===KEIL?15:21);expect(s.players.B!.permanent?.spirit??0).toBe(0);expect(s.discard).toContain(id);
+ s=finish(act(s,'C',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target}));expect(s.players.B!.damage).toBeGreaterThan(0);expect(s.players.C!.damage).toBe(id===TRAGEDY?0:id===KEIL?15:21);expect(s.players.B!.permanent?.spirit??0).toBe(0);expect(discardIds(s)).toContain(id);
 });
 it.each(['c2-p03-r2c1-ab01','c2-p06-r1c1-ab01','c2-p06-r1c2-ab01'])('Amulet cancels only the current actual mental ability %s',abilityId=>{
  let s=ready();character(s,'B',getCharacter(abilityId.slice(0,-5))!.name);handCard(s,'A',getAction(AMULET)!.name);const arrow=handCard(s,'A','踏み込み／弓');s=until(act(s,'A',{type:'ATTACK',cardInstanceId:arrow,targetIds:['B'],dedicated:false}),'normal-defense');const o=viewFor(s,'B').abilityOptions.find(o=>o.abilityId===abilityId)!;
- s=act(s,'B',{type:'USE_ABILITY',abilityId,targetEventId:o.targetEventId});s=play(s,'A',AMULET);s=finish(s);expect(s.rolls?.filter(r=>r.purpose==='ability-check')??[]).toHaveLength(0);expect(s.discard).toContain(AMULET);
+ s=act(s,'B',{type:'USE_ABILITY',abilityId,targetEventId:o.targetEventId});s=play(s,'A',AMULET);s=finish(s);expect(s.rolls?.filter(r=>r.purpose==='ability-check')??[]).toHaveLength(0);expect(discardIds(s)).toContain(AMULET);
 });
 it('wrong faction, hidden named attacker, foreign source and stale event all reject without payment',()=>{
  let s=attack(initial(TRAGEDY));s=priority(s,'B');const event=Object.values(s.groups!)[0]!.actionId;s.players.A!.revealed=false;
@@ -47,7 +47,7 @@ it('public Cham cancels Hostage under ability suppression and Fate cannot cancel
  const o=viewFor(s,'C').abilityOptions.find(o=>o.name==='人質を中止する')!;expect(o).toBeDefined();s=act(s,'C',{type:'USE_ABILITY',abilityId:o.abilityId,targetEventId:o.targetEventId});s=priority(s,'D');
  const source=Object.values(s.abilities!).find(f=>f.printedCardResponse)!;expect(viewFor(s,'D').reactionTargetAbilityId).toBeNull();
  const before=JSON.stringify(s);for(const c of [{mode:'cancel-ability',targetAbilityId:source.id},{mode:'cancel',targetActionId:source.id}])expect(transition(s,{actorId:'D',command:{type:'PLAY_REACTION',cardInstanceId:fate,...c}} as any,entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
- s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);expect(s.discard).toContain(HOSTAGE);expect(s.players.D!.hand).toContain(fate);
+ s=finish(s);expect(s.players.B!.damage).toBeGreaterThan(0);expect(discardIds(s)).toContain(HOSTAGE);expect(s.players.D!.hand).toContain(fate);
 });
 it('Keil protection declared before the attack group persists into only its selected target',()=>{
  let s=initial(KEIL);s.players.B!.revealed=true;const card=s.players.A!.chants[0]!.cardInstanceId;
@@ -63,7 +63,7 @@ it('Fate cancels the Amulet child while its immediate OPEN refill and the origin
  let s=ready();character(s,'B','魔聖母ディア');handCard(s,'A',getAction(AMULET)!.name);const fate=handCard(s,'C','命運凶変'),open=handCard(s,'D',getAction('a2-p01-r1c1')!.name);s.players.D!.hand=s.players.D!.hand.filter(id=>id!==open);s.deck.unshift(open);character(s,'D','忍びのイダ');s.players.D!.presence='dead';
  const arrow=handCard(s,'A','踏み込み／弓');s=until(act(s,'A',{type:'ATTACK',cardInstanceId:arrow,targetIds:['B'],dedicated:false}),'normal-defense');const o=viewFor(s,'B').abilityOptions.find(o=>o.abilityId==='c2-p06-r1c2-ab01')!;
  s=act(s,'B',{type:'USE_ABILITY',abilityId:o.abilityId,targetEventId:o.targetEventId});s=play(s,'A',AMULET);expect(s.players.A!.open).toContain(open);expect(s.windows!.at(-1)!.kind).toBe('before-roll');s=until(s,'revival');s=act(s,'D',{type:'CHOOSE_REVIVAL',revive:false});s=priority(s,'C');const target=viewFor(s,'C').reactionTargetActionId!;
- s=finish(act(s,'C',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target}));expect(s.players.A!.open).toContain(open);expect(s.rolls?.filter(r=>r.purpose==='ability-check')).toHaveLength(1);expect(s.discard).toContain(AMULET);
+ s=finish(act(s,'C',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target}));expect(s.players.A!.open).toContain(open);expect(s.rolls?.filter(r=>r.purpose==='ability-check')).toHaveLength(1);expect(discardIds(s)).toContain(AMULET);
 });
 
 it.each(['c2-p02-r2c2','c2-p03-r1c2'])('Keil legally protects late-revealed %s in one actual Shin two-target three-hit trajectory',target=>{

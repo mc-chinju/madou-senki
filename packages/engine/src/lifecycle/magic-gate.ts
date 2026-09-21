@@ -5,6 +5,7 @@ import type { GameState } from '../state.js';
 import { hasStatus } from '../state.js';
 import { isActive } from './objectives.js';
 import { canPlaceFollower, canRemoveFollower } from '../combat/follower-placement.js';
+import { moveToDiscard } from '../discard.js';
 type Transfer = NonNullable<Extract<GameCommand, {
     type: 'PLAY_TURN_TECHNIQUE';
 }>['followerTransfer']>;
@@ -24,8 +25,10 @@ export function validMagicGate(s: GameState, actorId: string, donorId: string, c
 export function acceptMagicGate(s: GameState, actorId: string, donorId: string, choice: Transfer): NonNullable<ActionFrame['followerTransfer']> {
     const p = s.players[actorId]!;
     if (choice.replacementCardInstanceId) {
+        // The follower it replaces was only face up if it had already been revealed.
+        const replaced = p.followers.find(f => f.cardInstanceId === choice.replacementCardInstanceId);
         p.followers = p.followers.filter(f => f.cardInstanceId !== choice.replacementCardInstanceId);
-        s.discard.push(choice.replacementCardInstanceId);
+        moveToDiscard(s, choice.replacementCardInstanceId, { ownerId: actorId, faceUp: !!replaced?.revealed });
     }
     return { donorId, cardInstanceId: s.players[donorId]!.followers[choice.targetPosition]!.cardInstanceId, destinationPosition: choice.destinationPosition };
 }

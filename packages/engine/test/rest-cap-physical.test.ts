@@ -1,3 +1,4 @@
+import {discardIds} from '../src/index.js';
 import {expect, it} from 'vitest';
 import {getAction} from '@madou/catalog';
 import {gameStats} from '../src/game-stats.js';
@@ -26,7 +27,7 @@ it.each(['a2-p07-r1c1','a2-p07-r1c2','a2-p07-r1c3','a2-p07-r2c1','a2-p07-r2c2','
   expect(state.players.B!.damage).toBe(3);
   expect(state.phase).toBe('hand-adjustment');
   for (const id of [card, second]) {
-    expect(state.discard.filter(value => value === id)).toHaveLength(1);
+    expect(discardIds(state).filter(value => value === id)).toHaveLength(1);
     expect(state.players.A!.hand).not.toContain(id);
     expect(state.resolution).not.toContain(id);
   }
@@ -50,7 +51,7 @@ it.each([5, -5])('Rest resolves against the live maximum after a structural endu
   state = finish(JSON.parse(JSON.stringify(state)));
   expect(state.players.A!.damage).toBe(0);
   expect(gameStats(state, 'A').endurance).toBe(originalMaximum + change);
-  for (const card of cards) expect(state.discard.filter(id => id === card)).toHaveLength(1);
+  for (const card of cards) expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
 });
 
 it.each([0, -1])('A structural maximum reduction to remaining endurance %s schedules death with paid rest still unresolved', remaining => {

@@ -1,3 +1,4 @@
+import {discardIds} from '../src/index.js';
 import { expect, it } from 'vitest';
 import * as engine from '../src/index.js';
 import { closeWindow, act, finish, ready } from './combat-helpers.js';
@@ -14,7 +15,7 @@ it('lets the priority-holding third party cancel a declaration, spends and immed
   s=act(s,'C',{type:'PLAY_REACTION',cardInstanceId:interrupt,mode:'cancel',targetActionId:actionId});
   expect(s.players.C!.hand).toHaveLength(before); expect(s.resolution).toContain(interrupt);
   expect((s.windows!.at(-1)!).passed).toEqual([]);expect(Object.values(s.actions!).some(action=>action.kind==='reaction')).toBe(true);
-  s=finish(s); expect(s.players.B!.damage).toBe(0); expect(s.discard).toContain(attack);
+  s=finish(s); expect(s.players.B!.damage).toBe(0); expect(discardIds(s)).toContain(attack);
 });
 
 it('restores the named third-party interruption fixture at the same priority',()=>{
@@ -45,7 +46,7 @@ it('persists a cancellable reaction child and restores the parent declaration ge
   expect(JSON.stringify(s)).toBe(reopened);
   expect(s.actions![parentId]!.eventId).toBe(originalEvent);
   s=finish(s);
-  expect(s.players.B!.damage).toBe(4);expect(s.discard).toEqual(expect.arrayContaining([attack,fate]));
+  expect(s.players.B!.damage).toBe(4);expect(discardIds(s)).toEqual(expect.arrayContaining([attack,fate]));
 });
 
 it('processes OPEN cards during immediate reaction refill before the child declaration resolves',()=>{

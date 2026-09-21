@@ -1,6 +1,6 @@
 import {reset,runInDurableObject} from 'cloudflare:test';
 import {afterEach,expect,it,vi} from 'vitest';
-import {activeWindowRef,allCardInstanceIds,viewFor} from '@madou/engine';
+import {activeWindowRef,allCardInstanceIds,viewFor, discardIds } from '@madou/engine';
 import {openTestRoom} from './fixtures/recovery-room.js';
 
 afterEach(async()=>{vi.restoreAllMocks();await reset();});
@@ -36,7 +36,7 @@ it('Recovery disconnect never auto-passes a no-claim actor',async()=>{
   for(const room of rooms){
    const before=await room.stored(),s=before.state.game!;
    expect(s.windows!.at(-1)).toMatchObject({kind:'reclaim',cursor});
-   expect(s.resolution).toContain(source);expect(s.discard).not.toContain(source);
+   expect(s.resolution).toContain(source);expect(discardIds(s)).not.toContain(source);
    const envelope={protocolVersion:1 as const,commandId:`disconnect-pass-${cursor}`,expectedRevision:before.revision,...activeWindowRef(s),command:{type:'PASS' as const}};
    const ack=await room.command(actor,envelope);expect(ack).toMatchObject({type:'ack'});receipts.push(ack);
    const saved=await room.stored();expect(saved.revision).toBe(before.revision+1);
@@ -49,7 +49,7 @@ it('Recovery disconnect never auto-passes a no-claim actor',async()=>{
  for(const room of rooms){
   const s=(await room.stored()).state.game!;
   expect(s.windows).toEqual([]);expect(s.phase).toBe('withdrawal');
-  expect(s.discard.filter(id=>id===source)).toHaveLength(1);expect(s.resolution).not.toContain(source);
+  expect(discardIds(s).filter(id=>id===source)).toHaveLength(1);expect(s.resolution).not.toContain(source);
   expect(s.reclaimDecisions!.at(-1)).toMatchObject({stage:'closed'});
  }
 });

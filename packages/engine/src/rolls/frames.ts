@@ -36,6 +36,12 @@ export interface RollAttempt {
 }
 export interface RollFrame {
     excludeSourceAbilityId?:string;
+    /** Whether the roller was open when this frame was set up, which is where the check starts, not where the
+     *  dice are thrown. Revealing inside the judgement's own before-roll window therefore leaves the threshold
+     *  hidden: a reading kept too narrow, never too wide. The record and the history both stay at this reading.
+     *  Absent on a frame saved before this field existed; those are read as hidden by both, which can only
+     *  drop a threshold that used to show, never show one that used to be hidden. */
+    rollerRevealed?: boolean;
     id: string;
     eventId: string;
     rollerId: string;
@@ -74,7 +80,8 @@ export interface PublicRollView {
     stage: RollFrame['stage'];
     generation: number;
     faces: number[];
-    modifier: number;
+    /** A formula multiplier is public; a check's modifier is part of the hidden threshold, so it can be absent. */
+    modifier?: number;
     total: number | null;
     forcedFailure: boolean;
     threshold?: number;

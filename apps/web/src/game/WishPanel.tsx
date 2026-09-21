@@ -4,11 +4,12 @@ import type {PlayerView} from '@madou/engine';
 import type {GameCommand} from '@madou/protocol';
 type Props={view:PlayerView;disabled:boolean;send:(command:GameCommand)=>boolean};
 export function WishPanel(props:Props){
- const {view,disabled,send}=props,history=view.privateLogs.filter(e=>e.type==='WISH_ACQUIRED');
+ // The acquisition is knowledge the two seats keep; the record it was read from is a window and scrolls past.
+ const {view,disabled,send}=props,history=view.wishHistory;
  return <>
   {view.wishOptions.length?<section className="panel" aria-label="祈願の使用"><h2>祈願</h2><p>手番の行動として1枚を使い、取得先を選びます。</p>{view.wishOptions.map((cardInstanceId,i)=><button key={cardInstanceId} disabled={disabled} onClick={()=>send({type:'PLAY_TURN_CARD',cardInstanceId,mode:'wish'})}>祈願を使う（{i+1}枚目）</button>)}</section>:null}
   {view.activeWindow?.kind==='wish'||view.activeWindow?.kind==='wish-capacity'?<WishChoice key={`${view.activeWindow.windowId}-${view.wish?.decisionId??view.wishCapacity?.decisionId??'waiting'}`} {...props}/>:null}
-  {history.length?<section className="panel" aria-label="自分だけの祈願取得履歴"><h2>祈願の取得履歴</h2><p>この取得内容は取得者と元の持ち主だけに表示されます。</p><ul>{history.map(e=><li key={e.id}>{view.players[e.actorId]?.name}さんが{getAction(e.cardInstanceId??'')?.name??'カード'}を取得しました。</li>)}</ul></section>:null}
+  {history.length?<section className="panel" aria-label="自分だけの祈願取得履歴"><h2>祈願の取得履歴</h2><p>この取得内容は取得者と元の持ち主だけに表示されます。</p><ul>{history.map(e=><li key={e.eventId}>{view.players[e.actorId]?.name}さんが{getAction(e.cardInstanceId)?.name??'カード'}を取得しました。</li>)}</ul></section>:null}
  </>;
 }
 function WishChoice({view,disabled,send}:Props){

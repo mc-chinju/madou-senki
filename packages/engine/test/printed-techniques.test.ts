@@ -1,3 +1,4 @@
+import {discardIds} from '../src/index.js';
 import { expect, it } from 'vitest';
 import {techniqueFor} from '../src/effects/registry.js';
 import * as engine from '../src/index.js';
@@ -55,7 +56,7 @@ it.each(ordinary)('resolves and consumes Task 7b ordinary %s %s', (id, name, own
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false });
   state = finish(state);
   expect(state.players.B!.damage).toBe(damage);
-  expect(state.discard).toContain(card);
+  expect(discardIds(state)).toContain(card);
   expect(state.resolution).not.toContain(card);
 });
 
@@ -89,7 +90,7 @@ it.each(dedicated)('applies the selected Task 7b dedicated mode of %s for %s', (
   expect(Object.values(state.actions!)[0]!.technique.noChecks).toBe(name !== '妖撃破山剣');
   state = finish(state);
   expect(state.players.B!.damage).toBe(totalDamage);
-  expect(state.discard.filter(id => id === card)).toHaveLength(1);
+  expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
 });
 
 it.each(ordinary.filter(([, name]) => name !== '破砕剣').map(([, name]) => name))('rejects wrong-owner Task 7b dedicated %s before cost', name => {
@@ -139,7 +140,7 @@ it('runs the non-Shin 天地爆砕剣 spirit-minus-two check before ordinary use
   state = pass(state, [6, 6]);
   state = finish(state);
   expect(state.players.B!.damage).toBe(0);
-  expect(state.discard.filter(id => id === card)).toHaveLength(1);
+  expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
 });
 
 it('freezes one shared dice damage result for all targets and survives JSON replay', () => {
@@ -247,7 +248,7 @@ it('S31 actual dedicated noChecks rejects missing chant then resolves after lega
   expect(Object.values(state.actions!)[0]!).toMatchObject({ fromChant: true, technique: { noChecks: true, chant: true } });
   state = finish(state);
   expect(state.players.B!.damage).toBe(13);
-  expect(state.discard.filter(id => id === card)).toHaveLength(1);
+  expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
   expect(state.resolution).not.toContain(card);
 });
 
@@ -272,7 +273,7 @@ it('uses fixed threshold, dynamic threshold, and attribute-and-threshold followe
   state.players.B!.followers = [{ cardInstanceId: knight, revealed: false }];
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: axe, targetIds: ['B'], dedicated: true });
   state = finish(state);
-  expect(state.discard).toContain(knight);
+  expect(discardIds(state)).toContain(knight);
   expect(state.players.B!.damage).toBe(6);
 
   state = ready();
@@ -285,7 +286,7 @@ it('uses fixed threshold, dynamic threshold, and attribute-and-threshold followe
   state.players.B!.followers = [{ cardInstanceId: guardian, revealed: false }];
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: star, targetIds: ['B'], dedicated: true });
   state = finish(state);
-  expect(state.discard).toContain(guardian);
+  expect(discardIds(state)).toContain(guardian);
   expect(state.players.B!.damage).toBe(13);
 
   state = ready();
@@ -298,7 +299,7 @@ it('uses fixed threshold, dynamic threshold, and attribute-and-threshold followe
   state.players.B!.followers = [{ cardInstanceId: skeleton, revealed: false }, { cardInstanceId: metal, revealed: false }];
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: mountain, targetIds: ['B'], dedicated: false });
   state = finish(state);
-  expect(state.discard).toContain(skeleton);
+  expect(discardIds(state)).toContain(skeleton);
   expect(state.players.B!.followers).toEqual([{ cardInstanceId: metal, revealed: true }]);
 });
 
@@ -314,7 +315,7 @@ it('stops before a matching rear follower when an adequate nonmatching front fol
   state = finish(state);
   expect(state.players.B!.damage).toBe(0);
   expect(state.players.B!.followers).toEqual([{ cardInstanceId: front, revealed: true }, { cardInstanceId: rear, revealed: false }]);
-  expect(state.discard).not.toContain(rear);
+  expect(discardIds(state)).not.toContain(rear);
 });
 
 it('lets one adequate front follower block every fixed hit without revealing the rear follower', () => {
@@ -343,7 +344,7 @@ it('subtracts lower-front HP from each fixed hit before the rear follower blocks
   state = until(state, 'follower-start');
   state = finish(state);
   expect(state.players.B!.damage).toBe(0);
-  expect(state.discard).toContain(front);
+  expect(discardIds(state)).toContain(front);
   expect(state.players.B!.followers).toEqual([{ cardInstanceId: rear, revealed: true }]);
 });
 
@@ -418,7 +419,7 @@ it('destroys all followers that receive ordinary 竜殺天空槍 before level de
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B'], dedicated: false });
   state = finish(state);
   expect(state.players.B!.followers).toEqual([]);
-  expect(state.discard).toEqual(expect.arrayContaining([guardian, skeleton, card]));
+  expect(discardIds(state)).toEqual(expect.arrayContaining([guardian, skeleton, card]));
   expect(state.players.B!.damage).toBe(10);
 });
 
@@ -445,8 +446,8 @@ it('keeps mandatory white restriction and cancels a new technique while consumin
   state = act(state, 'C', { type: 'PLAY_REACTION', cardInstanceId: cancel, mode: 'cancel', targetActionId: actionId });
   state = finish(state);
   expect(state.players.B!.damage).toBe(0);
-  expect(state.discard.filter(id => id === card)).toHaveLength(1);
-  expect(state.discard.filter(id => id === cancel)).toHaveLength(1);
+  expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
+  expect(discardIds(state).filter(id => id === cancel)).toHaveLength(1);
   expect(engine.allCardInstanceIds(state)).toHaveLength(220);
   expect(new Set(engine.allCardInstanceIds(state)).size).toBe(220);
 });
@@ -463,7 +464,7 @@ it.each([
   expect(action.technique).toMatchObject({ effectLevel: 5, damage: 7, noChecks: true, hitCount });
   state = finish(state);
   expect(state.players.B!.damage).toBe(totalDamage);
-  expect(state.discard.filter(id => id === card)).toHaveLength(1);
+  expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
 });
 
 it.each([

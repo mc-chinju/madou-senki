@@ -20,12 +20,13 @@ class Inbox {
   }
 }
 
-/** Exercises the real DO/WebSocket boundary; direct storage access only seeds/inspects test fixtures. */
-export async function openTestRoom(name: ScenarioName, actorIds: string[] = ['A', 'B', 'C', 'D']) {
+/** Exercises the real DO/WebSocket boundary; direct storage access only seeds/inspects test fixtures.
+ *  A prepared game stands in for a named scenario when a test needs a table a scenario cannot reach. */
+export async function openTestRoom(name: ScenarioName, actorIds: string[] = ['A', 'B', 'C', 'D'], prepared?: RoomData['game']) {
   const roomId = crypto.randomUUID();
   const room = env.ROOMS.getByName(roomId);
   const players = actorIds.map(id => ({ id, name: `${id}さん` }));
-  const game = makeScenario(name, players);
+  const game = prepared ?? makeScenario(name, players);
   const state: RoomData = { schemaVersion: 1, roomId, title: name, ownerId: 'A', rulesetId: ruleset.id,
     capacity: players.length, visibility: 'private', status: 'playing', createdAt: 1000, game, inviteHash: 'internal-only', closeVotes: [],
     members: Object.fromEntries(players.map(p => [p.id, { ...p, ready: true, joinedAt: 1000 }])) };
@@ -38,7 +39,7 @@ export async function openTestRoom(name: ScenarioName, actorIds: string[] = ['A'
     if (first.type !== 'snapshot') throw Error('TEST_NO_SNAPSHOT');
     return { inbox, view: first.view };
   }
-  return { room, roomId, initial: game,
+  return { room, roomId, initial: game, connect,
     async command(actorId: string, envelope: ClientEnvelope) {
       const { inbox } = await connect(actorId);
       inbox.socket.send(JSON.stringify(envelope));

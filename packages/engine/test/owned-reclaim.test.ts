@@ -2,7 +2,7 @@ import {expect,it,describe} from 'vitest';
 import {canonicalOwnedNames} from '../src/reclaim-names.js';
 import {act,finish,pass,ready,until,closeWindow} from './combat-helpers.js';
 import {character,handCard,handCards,entropy} from './fixtures.js';
-import {allCardInstanceIds,gameStats,transition,viewFor,type GameState,techniqueFor} from '../src/index.js';
+import {allCardInstanceIds,gameStats,transition,viewFor,type GameState,techniqueFor, discardIds } from '../src/index.js';
 import {getAction,actionCards} from '@madou/catalog';
 import {eventPending} from '../src/reclaim.js';
 import {nextOwnAction,killOwnedLifetimePlayer,reviveOwnedLifetimePlayer,makeOwnedReclaimTable,playOwnedCardToDiscard,currentReclaimWindow,finishOwnedResolution as finishOwned} from './owned-reclaim-helpers.js';
@@ -50,7 +50,7 @@ it('S24 same-name physical copies share one base allowance',()=>{
     expect(s.windows!.at(-1)!.participants[s.windows!.at(-1)!.cursor]).toBe(id);
     s=pass(s);
   }
-  expect(s.discard).toContain(y);
+  expect(discardIds(s)).toContain(y);
   expect(s.players.A!.hand).not.toContain(y);
   expect(new Set(allCardInstanceIds(s)).size).toBe(220);
 });
@@ -106,7 +106,7 @@ it('Using an owned follower as an attack never spends the ordinary follower-deat
   const follower=handCard(s,'A','女神官のシャリア');
   s=until(act(s,'A',{type:'ATTACK',cardInstanceId:follower,targetIds:['B'],dedicated:true}),'reclaim');
   expect(viewFor(s,'A').reclaim).toMatchObject({cardInstanceId:follower,claims:[]});
-  s=finish(s);expect(s.discard).toContain(follower);
+  s=finish(s);expect(discardIds(s)).toContain(follower);
   expect(s.players.A!.reclaimUsage?.['女神官のシャリア']).toBeUndefined();
 });
 
@@ -117,7 +117,7 @@ it('Recovery history survives actual transform death and revival',()=>{
  s.distances.A!.B=s.distances.B!.A='near';
  const sword=handCard(s,'A','破山剣'),lethal=handCard(s,'B','黒翼飛翔剣'),fusen='a2-p01-r1c1',wish='a2-p04-r3c2',dawn='a2-p01-r1c2',advance=handCard(s,'D','踏み込み／弓');
  // Initial deal fixes the next OPEN and revival hand. Every later move uses a real command.
- for(const id of [fusen,wish,dawn,advance]){s.deck=s.deck.filter(x=>x!==id);s.discard=s.discard.filter(x=>x!==id);for(const p of Object.values(s.players)){p.hand=p.hand.filter(x=>x!==id);p.open=p.open.filter(x=>x!==id);}}
+ for(const id of [fusen,wish,dawn,advance]){s.deck=s.deck.filter(x=>x!==id);s.discard = s.discard.filter(entry => entry.cardInstanceId !== id);for(const p of Object.values(s.players)){p.hand=p.hand.filter(x=>x!==id);p.open=p.open.filter(x=>x!==id);}}
  for(const [actor,keep] of [['A',sword],['B',lethal],['C',''],['D','']]){const p=s.players[actor!]!;while(p.hand.length>5){const i=p.hand.findIndex(x=>x!==keep);s.deck.push(p.hand.splice(i,1)[0]!);}while(p.hand.length<5){const i=s.deck.findIndex(x=>getAction(x)!.category!=='open');p.hand.push(s.deck.splice(i,1)[0]!);}}
  const fillers=s.deck.filter(x=>getAction(x)!.category!=='open').slice(0,12);s.deck=s.deck.filter(x=>!fillers.includes(x));s.deck.unshift(fusen,wish,advance,...fillers.slice(0,2),dawn,...fillers.slice(2));
  s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'reclaim');
@@ -129,7 +129,7 @@ it('Recovery history survives actual transform death and revival',()=>{
  s=act(s,'A',{type:'PASS_WITHDRAWAL'});s=act(s,'A',{type:'END_TURN',discardIds:[]});
  s=act(s,'B',{type:'START_TURN'});s=act(s,'B',{type:'CHOOSE_DRAW',draw:false});
  s=finish(act(s,'B',{type:'ATTACK',cardInstanceId:lethal,targetIds:['A'],dedicated:false}));
- expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.reclaimUsage).toEqual(history);expect(s.discard).toContain(sword);
+ expect(s.players.A!.presence).toBe('dead');expect(s.players.A!.reclaimUsage).toEqual(history);expect(discardIds(s)).toContain(sword);
  s=act(s,'B',{type:'PASS_WITHDRAWAL'});s=act(s,'B',{type:'END_TURN',discardIds:[]});
  expect(s.windows!.at(-1)!.kind).toBe('before-roll');s=closeWindow(s,[1]);s=closeWindow(s);
  s=act(s,'A',{type:'CHOOSE_REVIVAL',revive:true});expect(s.players.A!.lifeId).not.toBe(life);expect(s.players.A!.reclaimUsage).toEqual(history);expect(s.players.A!.hand).toContain(wish);
@@ -142,7 +142,7 @@ it('Recovery history survives actual transform death and revival',()=>{
  s=until(act(s,'A',{type:'ATTACK',cardInstanceId:sword,targetIds:['B'],dedicated:false}),'reclaim');
  const next=viewFor(s,'A').reclaim!;expect(next.claims.some(c=>c.right==='base')).toBe(false);expect(s.players.A!.reclaimUsage).toEqual(history);
  const before=JSON.stringify(s);expect(transition(s,{actorId:'A',command:{type:'CHOOSE_RECLAIM',decisionId:next.decisionId,choice:'take',claimId:claim.claimId}},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(before);
- s=finish(s);expect(s.discard).toContain(sword);expect(s.players.A!.reclaimUsage).toEqual(history);
+ s=finish(s);expect(discardIds(s)).toContain(sword);expect(s.players.A!.reclaimUsage).toEqual(history);
 });
 
 it('A printed owned name never grants another users physical card but still permits its own later use',()=>{
@@ -157,14 +157,14 @@ it('A printed owned name never grants another users physical card but still perm
  const before=JSON.stringify(s),views=s.seatOrder.map(id=>viewFor(s,id));
  expect(transition(s,{actorId:'B',command:{type:'CHOOSE_RECLAIM',decisionId:decision,choice:'take',claimId:`${decision}-B-base`}},entropy()).ok).toBe(false);
  expect(JSON.stringify(s)).toBe(before);expect(s.seatOrder.map(id=>viewFor(s,id))).toEqual(views);
- s=finish(s);expect(s.discard).toContain(foreign);expect(s.players.B!.hand).not.toContain(foreign);
+ s=finish(s);expect(discardIds(s)).toContain(foreign);expect(s.players.B!.hand).not.toContain(foreign);
  expect(s.players.B!.reclaimUsage).toBeUndefined();
  s=finish(act(s,'A',{type:'END_TURN',discardIds:s.players.A!.hand.slice(0,Math.max(0,s.players.A!.hand.length-gameStats(s,'A').handLimit))}));
  s=act(s,'B',{type:'START_TURN'});s=act(s,'B',{type:'CHOOSE_DRAW',draw:false});
  s=until(act(s,'B',{type:'PLAY_TURN_TECHNIQUE',cardInstanceId:own!,targetIds:['B'],dedicated:false}),'reclaim');
  const d=viewFor(s,'B').reclaim!;expect(d.claims.map(c=>c.right)).toEqual(['base']);
  s=act(s,'B',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims[0]!.claimId});
- s=finish(s);expect(s.players.B!.hand.filter(id=>id===own)).toHaveLength(1);expect(s.discard).toContain(foreign);
+ s=finish(s);expect(s.players.B!.hand.filter(id=>id===own)).toHaveLength(1);expect(discardIds(s)).toContain(foreign);
  expect(s.players.B!.reclaimUsage?.['封傷']?.baseSpent).toBe(true);
 });
 
@@ -835,7 +835,7 @@ describe('owned technique base recovery',()=>{
   expect(eventPending(s,eventId)).toBe(true);
   s=act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'take',claimId:claim.claimId});
   expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);
-  expect(s.resolution).not.toContain(cardId);expect(s.discard).not.toContain(cardId);
+  expect(s.resolution).not.toContain(cardId);expect(discardIds(s)).not.toContain(cardId);
   // A top-level use closes atomically; a response must remain reserved under its live parent.
   expect(eventPending(s,eventId)).toBe(nested);
   if(nested){
@@ -867,7 +867,7 @@ describe('owned technique base recovery',()=>{
   s=playOwnedCardToDiscard({...table,state:s},cardId);
   const second=currentReclaimWindow(s,table.ownerId)!;
   expect(second.cardInstanceId).toBe(cardId);expect(second.claims.some(c=>c.right==='base')).toBe(false);
-  s=finishOwned(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  s=finishOwned(s);expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);
   if(firstId!==cardId)expect(s.players[table.ownerId]!.hand).toContain(firstId);
   expect(new Set(allCardInstanceIds(s)).size).toBe(220);
  });
@@ -883,7 +883,7 @@ describe('owned technique base recovery',()=>{
   s=playOwnedCardToDiscard({...table,state:s},cardId);const second=currentReclaimWindow(s,table.ownerId)!;
   expect(second.cardInstanceId).toBe(cardId);expect(second.claims.some(c=>c.right==='base')).toBe(false);
   const repeated=JSON.stringify(s);expect(transition(s,{actorId:table.ownerId,command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(repeated);
-  s=finishOwned(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+  s=finishOwned(s);expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
  });
  it.each(OWNED_TECHNIQUE_CASES)('%s owned technique %s (%s) actual-use-disposition',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId),s=playOwnedCardToDiscard(table,cardId),choice=currentReclaimWindow(s,table.ownerId)!;
@@ -895,7 +895,7 @@ describe('owned technique base recovery',()=>{
   const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);const choice=currentReclaimWindow(s,table.ownerId)!;
   expect(choice.claims.some(c=>c.right==='base')).toBe(true);
   s=finishOwned(act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'decline'}));
-  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);
  });
 });
 
@@ -1060,7 +1060,7 @@ describe('owned follower base recovery',()=>{
   s=playOwnedCardToDiscard({...table,state:s},cardId);
   const second=currentReclaimWindow(s,table.ownerId)!;
   expect(second.cardInstanceId).toBe(cardId);expect(second.claims.some(c=>c.right==='base')).toBe(false);
-  s=finishOwned(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  s=finishOwned(s);expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);
   if(firstId!==cardId)expect(s.players[table.ownerId]!.hand).toContain(firstId);
   expect(new Set(allCardInstanceIds(s)).size).toBe(220);
  });
@@ -1076,7 +1076,7 @@ describe('owned follower base recovery',()=>{
   s=playOwnedCardToDiscard({...table,state:s},cardId);const second=currentReclaimWindow(s,table.ownerId)!;
   expect(second.cardInstanceId).toBe(cardId);expect(second.claims.some(c=>c.right==='base')).toBe(false);
   const repeated=JSON.stringify(s);expect(transition(s,{actorId:table.ownerId,command},entropy()).ok).toBe(false);expect(JSON.stringify(s)).toBe(repeated);
-  s=finishOwned(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
+  s=finishOwned(s);expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);expect(allCardInstanceIds(s)).toHaveLength(220);expect(new Set(allCardInstanceIds(s)).size).toBe(220);
  });
  it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) actual-follower-death-only',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId),s=playOwnedCardToDiscard(table,cardId),choice=currentReclaimWindow(s,table.ownerId)!;
@@ -1088,7 +1088,7 @@ describe('owned follower base recovery',()=>{
   const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);const choice=currentReclaimWindow(s,table.ownerId)!;
   expect(choice.claims.some(c=>c.right==='base')).toBe(true);
   s=finishOwned(act(s,table.ownerId,{type:'CHOOSE_RECLAIM',decisionId:choice.decisionId,choice:'decline'}));
-  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);
  });
  it.each(OWNED_FOLLOWER_CASES)('%s owned follower %s (%s) reserve-before-parent-release',(owner,name,cardId)=>{
   const table=makeOwnedReclaimTable(owner,cardId);let s=playOwnedCardToDiscard(table,cardId);
@@ -1098,7 +1098,7 @@ describe('owned follower base recovery',()=>{
   expect(eventPending(s,eventId)).toBe(true);
   expect(s.reclaimReservations.filter(id=>id===cardId)).toHaveLength(1);
   expect(s.reclaim![cardId]).toMatchObject({ownerId:table.ownerId,eventId,decisionId:choice.decisionId});
-  expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(s.discard).not.toContain(cardId);
+  expect(s.players[table.ownerId]!.hand).not.toContain(cardId);expect(discardIds(s)).not.toContain(cardId);
   expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent).toBe(true);
   s=finishOwned(JSON.parse(JSON.stringify(s)));
   expect(eventPending(s,eventId)).toBe(false);
@@ -1121,7 +1121,7 @@ describe('owned follower base recovery',()=>{
   if(getAction(cardId)!.printed_text.includes('チェックに失敗すると捨て札になる')){
    expect(morale).toHaveLength(1);expect(morale[0]).toMatchObject({success:false,faces:[6,6],stage:'applied'});
    expect(s.players[table.ownerId]!.followers.some(f=>f.cardInstanceId===cardId)).toBe(false);
-   expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+   expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);
   }else{
    expect(morale).toHaveLength(0);
    expect(s.players[table.ownerId]!.followers.some(f=>f.cardInstanceId===cardId)).toBe(true);
@@ -1163,7 +1163,7 @@ describe('owned follower base recovery',()=>{
    }
    if(!s.windows?.length)throw Error('OWNED_FOLLOWER_ATTACK_NO_DISPOSITION');s=pass(s);
   }
-  s=finishOwned(s);expect(s.discard.filter(id=>id===cardId)).toHaveLength(1);
+  s=finishOwned(s);expect(discardIds(s).filter(id=>id===cardId)).toHaveLength(1);
   expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId&&d.source.kind==='ordinary-disposition'&&d.source.trigger==='named-card-used')).toHaveLength(1);
   expect(s.players[table.ownerId]!.reclaimUsage?.[name]?.baseSpent??false).toBe(false);
   expect(s.reclaimDecisions?.filter(d=>d.cardInstanceId===cardId&&d.source.kind==='ordinary-disposition'&&d.source.trigger==='follower-died')??[]).toEqual([]);

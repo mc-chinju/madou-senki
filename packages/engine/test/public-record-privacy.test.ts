@@ -2,6 +2,7 @@ import {describe, expect, it} from 'vitest';
 import {createGame, pendingSetupSeats, transition, viewFor, type GameState, type LogView} from '../src/index.js';
 import {choose, legalCommands, type Command} from '../src/bot/index.js';
 import {seededEntropy} from './fixtures.js';
+import {wholeRecord} from './combat-helpers.js';
 
 /** Same seat choice as the bot driver, but keeps the command so the step can be audited. */
 function actingActor(state: GameState): string | undefined {
@@ -31,6 +32,16 @@ function hiddenFrom(state: GameState, viewerId: string): Set<string> {
   }));
 }
 
+/** The seat holding each card right now, by zone. A card the table shares has no holder. */
+function holders(state: GameState): Map<string, string> {
+  const held = new Map<string, string>();
+  for (const id of state.seatOrder) {
+    const p = state.players[id]!;
+    for (const card of [...p.hand, ...p.open, ...p.attachments, ...[...p.followers, ...p.chants].map(c => c.cardInstanceId)]) held.set(card, id);
+  }
+  return held;
+}
+
 /** Cards a command puts face up by naming them; discards, chants and placements stay face down. */
 function playedByCommand(command: Command): Set<string> {
   if (['END_TURN', 'CHANT', 'ARRANGE_FOLLOWERS', 'PLACE_INITIAL_FOLLOWER'].includes(command.type)) return new Set();
@@ -40,7 +51,8 @@ function playedByCommand(command: Command): Set<string> {
 }
 
 function cardIds(log: LogView): string[] {
-  return [log.cardInstanceId, log.death?.sourceCardInstanceId].filter((id): id is string => typeof id === 'string');
+  // Every field a record can name a card in: a new one has to arrive here, or the sweep stops watching it.
+  return [log.cardInstanceId, ...(log.cardInstanceIds ?? []), log.death?.sourceCardInstanceId].filter((id): id is string => typeof id === 'string');
 }
 
 describe('public record privacy over full bot games', () => {
@@ -48,8 +60,14 @@ describe('public record privacy over full bot games', () => {
     const seed = seats + 11;
     const entropy = seededEntropy(seed);
     let state = createGame(Array.from({length: seats}, (_, i) => ({id: `P${i}`, name: `P${i}`})), entropy);
+    // The last seat each card belonged to, so a pile entry can be checked against its real origin.
+    const lastHeld = new Map<string, string>();
+    // Every card the table has already seen, at any point. A reshuffle puts them back under the deck, and the
+    // record still names them there, so the deck sweep below asks only after the cards nobody has seen.
+    const seen = new Set<string>();
     let steps = 0;
     for (; !state.outcome && steps < 5000; steps++) {
+      for (const [card, seat] of holders(state)) lastHeld.set(card, seat);
       const actorId = actingActor(state);
       if (!actorId) throw Error('NO_ACTING_SEAT');
       const command = choose(viewFor(state, actorId), seed);
@@ -58,14 +76,47 @@ describe('public record privacy over full bot games', () => {
       const prev = state, next = result.state;
       const lastEventId = prev.events.at(-1)?.id ?? 0;
       const allowed = new Set([...faceUp(prev), ...faceUp(next), ...playedByCommand(command)]);
+      for (const id of allowed) seen.add(id);
       const played = new Set(next.events.filter(event => event.id > lastEventId && event.type === 'CARD_PLAYED').map(event => event.cardInstanceId));
       // Destroyed followers also pass through resolution; their record belongs to the later stage.
       const destroyed = new Set(prev.seatOrder.flatMap(id => prev.players[id]!.followers.map(card => card.cardInstanceId)));
       for (const id of next.resolution) if (!prev.resolution.includes(id) && !destroyed.has(id)) expect(played.has(id), `step=${steps} resolution=${id} command=${JSON.stringify(command)}`).toBe(true);
-      const naming = next.events.some(event => event.id > lastEventId && event.audience === 'public' && (event.cardInstanceId || event.characterId || event.death));
-      for (const viewerId of naming ? next.seatOrder : []) {
-        const fresh = viewFor(next, viewerId).logs.filter(log => log.id > lastEventId);
+      // A pile entry names the seat the card came from, not whoever's action swept it away. Cards that
+      // never belonged to a seat (straight off the deck) have no owner to check.
+      const alreadyInPile = new Set(prev.discard.map(entry => entry.cardInstanceId));
+      for (const entry of next.discard) {
+        if (alreadyInPile.has(entry.cardInstanceId)) continue;
+        const owner = lastHeld.get(entry.cardInstanceId);
+        if (owner) expect(entry.ownerId, `step=${steps} discarded=${entry.cardInstanceId} command=${JSON.stringify(command)}`).toBe(owner);
+      }
+      for (const viewerId of next.seatOrder) {
+        const view = viewFor(next, viewerId);
+        // 決着後の全公開: every path that can settle `outcome` runs through these games, so the sweep below
+        // is what pins "not one character until the very last step". The step that decides the game is the
+        // first one allowed to name what the other seats were holding, and then it must name all of it.
+        const held = hiddenFrom(next, viewerId);
+        const wire = JSON.stringify(view);
+        if (next.outcome) {
+          expect(view.reveal, `step=${steps} viewer=${viewerId}`).not.toBeNull();
+          for (const id of held) expect(wire.includes(id), `step=${steps} viewer=${viewerId} still closed=${id}`).toBe(true);
+        } else {
+          expect(view.reveal, `step=${steps} viewer=${viewerId}`).toBeNull();
+          // The deck is secret from every seat, its holder included, so it is swept here rather than out of
+          // hiddenFrom. After the outcome the reveal opens it, so this is the only side it is asked on.
+          for (const id of [...held, ...next.deck.filter(id => !seen.has(id))]) expect(wire.includes(id), `step=${steps} viewer=${viewerId} leaked=${id}`).toBe(false);
+        }
+        // A snapshot carries only the newest window, and one step can add more lines than it holds, so the
+        // lines this step wrote are read back from the record rather than taken from the window.
+        const fresh = wholeRecord(next, viewerId, lastEventId);
         const secret = hiddenFrom(next, viewerId);
+        // A seat reviews only what it let go itself. The list is filtered out of next.discard, so
+        // "it is in the pile" cannot fail; the seat it is checked against has to come from outside it.
+        for (const id of view.self.discardedCardInstanceIds) {
+          const owner = lastHeld.get(id);
+          if (owner) expect(owner, `step=${steps} viewer=${viewerId} discarded=${id}`).toBe(viewerId);
+        }
+        // Seats the table has seen open at least once; re-hiding afterwards does not unsay it.
+        const opened = new Set(next.events.filter(event => event.type === 'CHARACTER_REVEALED' && event.audience === 'public').map(event => event.actorId));
         for (const log of fresh) {
           for (const id of cardIds(log)) {
             const context = `step=${steps} viewer=${viewerId} log=${JSON.stringify(log)} command=${JSON.stringify(command)}`;
@@ -73,7 +124,20 @@ describe('public record privacy over full bot games', () => {
             // A card still hidden after the step cannot have been shown, unless this step's command played it.
             if (!playedByCommand(command).has(id)) expect(secret.has(id), context).toBe(false);
           }
-          if (log.characterId && log.actorId !== viewerId) expect(next.players[log.actorId]!.revealed, `step=${steps} log=${JSON.stringify(log)}`).toBe(true);
+          const context = `step=${steps} viewer=${viewerId} log=${JSON.stringify(log)}`;
+          // 隠行 and ALSEIL_SHADOW put a seat back face down, so "it is open right now" is not what the
+          // record promised. Both lines below read the durable fact the projection was built from instead.
+          if (log.characterId && log.actorId !== viewerId) {
+            expect(log.characterId, context).toBe(next.players[log.actorId]!.characterId);
+            expect(opened.has(log.actorId), context).toBe(true);
+          }
+          // The threshold is the roller's modified spirit (G03 判定の公開範囲). A bot game does reach this:
+          // at 6 seats a hidden seat throws excess-level checks, so removing view.ts's gate breaks this line.
+          if (log.roll?.threshold !== undefined && log.actorId !== viewerId) {
+            expect(next.rolls!.find(roll => roll.id === log.roll!.rollId)?.rollerRevealed, context).toBe(true);
+          }
+          // Only the ability-name reading is out of reach here: the bot declares none at 4 or 6 seats.
+          // public-record-events.test.ts's allowlist pins that one instead.
         }
       }
       state = next;

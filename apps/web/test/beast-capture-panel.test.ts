@@ -61,7 +61,7 @@ test('the initial ability explains independent optional capture after positive b
   expect(html).not.toContain('type="checkbox"'); expect(html).not.toContain('<select');
 });
 test('public capture movement names only participants and count', () => {
-  const view = { logs: [{ id: 1, at: 0, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', count: 2 }], players: { A: { name: '葵' }, B: { name: '楓' } } } as unknown as PlayerView;
+  const view = { logs: [{ id: 1, at: 0, type: 'BEAST_CAPTURED', actorId: 'A', targetId: 'B', count: 2 }], privateLogs: [], players: { A: { name: '葵' }, B: { name: '楓' } } } as unknown as PlayerView;
   const html = renderToStaticMarkup(createElement(PublicLog, { view, onInspect: () => {} }));
   expect(html).toContain('楓さんから獣を2枚手札に加えました'); expect(html).not.toContain('BEAST_CAPTURED');
   expect(html).not.toContain('グリフォン'); expect(html).not.toContain('飛竜');

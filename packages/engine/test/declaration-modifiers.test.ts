@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { getCharacter } from '@madou/catalog';
-import { transition, viewFor, previewDeclarationCandidate, type GameState } from '../src/index.js';
+import { transition, viewFor, previewDeclarationCandidate, type GameState, discardIds } from '../src/index.js';
 import { act, ready, until, finish, closeWindow } from './combat-helpers.js';
 import { character, handCard, entropy } from './fixtures.js';
 const sources = JSON.parse(readFileSync(new URL('./fixtures/declaration-modifier-sources.json', import.meta.url), 'utf8'));
@@ -75,7 +75,7 @@ describe('whole declaration packages', () => {
         s = until(s, 'normal-defense');
         expect(viewFor(s, 'B').currentAttack!.technique.effectLevel).toBe(cardName === '烈火' ? (abilityId === FURY ? 8 : 7) : 7);
         s = finish(s);
-        expect(s.discard.filter(id => id === card)).toHaveLength(1);
+        expect(discardIds(s).filter(id => id === card)).toHaveLength(1);
     });
     it('Garwin selects both range and sword numeric clauses together', () => {
         const { s: initial, card } = setup('黒騎士ガーウィン', '破黒剣');
@@ -92,7 +92,7 @@ describe('whole declaration packages', () => {
         s = finish(s);
         expect(s.players.B!.damage).toBe(0);
         expect(s.phase).toBe('withdrawal');
-        expect(s.discard).toEqual(expect.arrayContaining([card, fate]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([card, fate]));
     });
     it('two Shin abilities use separate checks and convert an unchanted sword defense', () => {
         let s = ready();
@@ -106,7 +106,7 @@ describe('whole declaration packages', () => {
         s = finish(s);
         expect(s.rolls!.filter(r => r.rollerId === 'B' && r.purpose === 'ability-check')).toHaveLength(2);
         expect(s.players.B!.damage).toBe(0);
-        expect(s.discard).toContain(sword);
+        expect(discardIds(s)).toContain(sword);
     });
     it('forged and duplicate selections reject atomically', () => {
         const { s, card } = setup('白魔術師シェリム', '烈火');

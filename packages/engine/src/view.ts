@@ -1,3 +1,4 @@
+import {MAX_LOG_PAGE} from '@madou/protocol';
 import {canChooseDarkSaintIgnore} from './effects/dark-saint.js';
 import {chamGiftOption} from './abilities/cham-death-gift.js';
 import {sadLoveView,type SadLoveView} from './abilities/sad-love.js';
@@ -7,7 +8,7 @@ import {virtualBladeOptions,VIRTUAL_BLADES} from './abilities/virtual-blades.js'
 import {distanceExchangeView,maaiAbilityOptions} from './abilities/distance.js';
 import {allArmyOptions} from './effects/all-army.js';
 import {printedCombinationOptions} from './effects/printed-combinations.js';
-import {wishOptions,wishView,wishCapacityView,type WishView,type WishCapacityView} from './effects/wish.js';
+import {wishOptions,wishView,wishCapacityView,type WishView,type WishCapacityView,type WishAcquisition} from './effects/wish.js';
 import {substituteRestricted} from './effects/substitute.js';
 import {peaceExpiryViews} from './abilities/peace-lifetime.js';
 import {turnChoiceCardOptions} from './effects/turn-choice-cards.js';
@@ -16,6 +17,7 @@ import {anytimeCardOptions} from './effects/remaining-anytime.js';
 import {reclaimView} from './reclaim.js';
 import {suppressionTargetViews,type SuppressionTargetView} from './abilities/suppression-state.js';
 import {gameStats} from './game-stats.js';
+import {endgameReveal,type EndgameReveal} from './endgame-reveal.js';
 import {conditionalAbilitySettings,type ConditionalAbilitySetting} from './abilities/conditional-selection.js';
 import {drawAbilityOptions,revealAbilityOptions} from './abilities/turn-information.js';
 import {inspectionView,type InspectionView} from './abilities/private-inspection.js';
@@ -42,7 +44,7 @@ import type {Presence,Outcome,LifecycleDecision,LifecycleAbility} from './lifecy
 import {hasPendingFatal} from './state.js';
 import {isActive,factionObjective,initialProtection,currentDefeatCondition} from './lifecycle/objectives.js';
 import type { AttackGroup, ReactionWindow } from './reactions/continuations.js';
-import { passAhead } from './reactions/windows.js';
+import { passAhead, standingPassScope } from './reactions/windows.js';
 import { projectRoll, unresolvedRoll, visibleRoll } from './rolls/advance.js';
 import type { PublicRollView } from './rolls/frames.js';
 import { getCharacter } from '@madou/catalog';
@@ -63,8 +65,9 @@ export interface PublicPlayerView {
   id: PlayerId; name: string; revealed: boolean; characterId?: string; presence:Presence;
   damage: number; handCount: number; followers: CardBackView[]; chants: CardBackView[]; chantCount: number; open: string[]; attachments: string[]; statuses:PublicStatusView[];
 }
-export interface LogView { count?:number; death?:GameEvent['death']; id: number; at: number; type: GameEvent['type']; actorId: PlayerId; targetId?:PlayerId; cardInstanceId?: string; characterId?: string;
-  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'] }
+export interface LogView { count?:number; death?:GameEvent['death']; id: number; at: number; type: GameEvent['type']; actorId: PlayerId; targetId?:PlayerId; cardInstanceId?: string; cardInstanceIds?: string[]; characterId?: string;
+  targetIds?:PlayerId[]; use?:GameEvent['use']; abilityId?:string; checkSkip?:GameEvent['checkSkip']; attackOutcome?:GameEvent['attackOutcome']; roll?:import('./state.js').PublicRollRecord; amount?:number; windowKind?:string; standingRange?:string; turnNumber?:number; status?:GameEvent['status']; distance?:GameEvent['distance'];
+  followerOutcome?:GameEvent['followerOutcome']; success?:boolean }
 export interface PlayerView {
   sadLove:SadLoveView|null;
  shadowJumpCost:ReturnType<typeof shadowJumpCostView>;
@@ -78,6 +81,8 @@ export interface PlayerView {
   allArmyOptions:ReturnType<typeof allArmyOptions>;
   printedCombinationOptions:ReturnType<typeof printedCombinationOptions>;
   wish:WishView|null;wishCapacity:WishCapacityView|null;wishOptions:ReturnType<typeof wishOptions>;
+  /** Hidden acquisitions this seat took or was taken from. Knowledge outlives the window the record is read through. */
+  wishHistory:WishAcquisition[];
   inspection:InspectionView|null;inspectionHistory:InspectionView[];peaceExpiries:ReturnType<typeof peaceExpiryViews>;
   spiritExpiry:SpiritExpiryView|null;
   drawAbilityOptions:{abilityId:string;name:string}[];
@@ -105,17 +110,47 @@ export interface PlayerView {
   abilityOptions:AbilityOption[];reactionTargetAbilityId:string|null;
   lifetimeDecision:LifetimeDecision|null;
   outcome:Outcome|null; individualResults:Record<string,'won'>; lifecycleDecision:LifecycleDecision|null; lifecycleAbilities:LifecycleAbility[];
+  /** Null while the game is played. Once `outcome` stands it opens every seat for the post-game review;
+   *  the rest of this view stays exactly as it was, so nothing else has to be read twice (オンライン設計 §8). */
+  reveal:EndgameReveal|null;
   rulesetVersion: string; revision: number; phase: GameState['phase']; seatOrder: PlayerId[]; turnSeat: number;
   pending: { kind: 'initial-followers'; round: number; participantIds: PlayerId[]; readyIds: PlayerId[] } | null;
   deckCount: number; discardCount: number; distances: GameState['distances']; distanceMarkers: { a:PlayerId;b:PlayerId;ownerId:PlayerId;cardInstanceId:string }[]; players: Record<PlayerId, PublicPlayerView>;
-  self: { currentObjective:import('./lifecycle/types.js').CurrentObjective;protection:import('./lifecycle/types.js').Protection;defeatCondition:string; id: PlayerId; characterId: string; faction: string; objective: string; damage: number; stats: DerivedStats; hand: string[]; followers: PlacedCard[]; chants: PlacedCard[] };
+  /** Only the viewer's own discards; every other seat is still just `discardCount`. */
+  self: { currentObjective:import('./lifecycle/types.js').CurrentObjective;protection:import('./lifecycle/types.js').Protection;defeatCondition:string; id: PlayerId; characterId: string; faction: string; objective: string; damage: number; stats: DerivedStats; hand: string[]; followers: PlacedCard[]; chants: PlacedCard[]; discardedCardInstanceIds: string[] };
   activeWindow: { windowId:string; windowRevision:number; kind:string; pendingActorId:PlayerId; reason:string; participantIds:PlayerId[]; passedActorIds:PlayerId[]; passAhead:boolean } | null;
-  standingPassActorIds: PlayerId[];
+  /** Seats that left the rest of the action, or of the turn, to the others, and how far each one goes (G03). */
+  standingPasses: { actorId: PlayerId; scope: 'action' | 'turn' }[];
   actionCalculation:null|{actionId:string;actorId:string;cardInstanceId:string|null;abilityName?:string;effectLevel:number;damage:number|null;calculation:CalculationReadiness};
   currentAction: null|{source:'ability';technique?:{calculation?:CalculationReadiness;school?:string;range:string;attributes:string[];useLevel:number;effectLevel?:number;damage?:number|null;hitCount?:number};actionId:string;kind:string;actorId:PlayerId;targetIds:PlayerId[];stage:string;label:string;abilityId?:string;abilityName?:string;abilityEffectIds?:import('./abilities/frames.js').AbilityEffectId[]}|{ source:'card'|'follower';sourceZone?:'hand'|'followers'|'chant';coSourceZone?:'hand'|'followers'|'chant';coSourceCardInstanceId?:string;actionId:string;kind:string;actorId:PlayerId;cardInstanceId:string;targetIds:PlayerId[];stage:string;technique:{calculation?:CalculationReadiness;school?:string;range:string;attributes:string[];useLevel:number;effectLevel?:number;damage?:number|null;hitCount?:number} };
   currentAttack: null|{substitution?:{originalTargetId:string;originalHitIndex:number};reflection?:{source:'ability';actorId:string;sourceCardInstanceId:string};groupId:string;actionId:string;attackerId:PlayerId;targetIds:PlayerId[];hitIndex:number;targetId:PlayerId|null;reason:string;technique:{effectLevel:number;damage:number|null;attributes:string[];destructionEffects:string[];beastIgnore:boolean};defenseRestrictions:{maaiProhibited:boolean;evadeProhibited:boolean;counterProhibited:boolean;maaiBundleSize?:number;limitedDefenses?:('teleport'|'counter')[]};targets:{actorId:PlayerId;hits:{bodyDamage?:{directDamage:number|null;resistanceDamage:number;total:number};index:number;defended:boolean;hit:boolean;sourceCardInstanceId?:string;technique?:{effectLevel:number;damage:number|null;attributes:string[];destructionEffects:string[];beastIgnore:boolean};damageRollId?:string}[]}[]};
   currentRoll:PublicRollView|null;recentRolls:PublicRollView[];reactionTargetRollId:string|null;
   reactionTargetActionId:string|null;legalChoices: string[]; logs: LogView[]; privateLogs: LogView[];
+  /** The id of the oldest public record there is. `logs` starts later than this when older pages remain. */
+  logStart: number;
+}
+/** How much of the record a snapshot carries; the transport settles the most one page may be asked for. */
+export const LOG_WINDOW=50;
+export const LOG_PAGE_MAX=MAX_LOG_PAGE;
+export interface LogPage{logs:LogView[];privateLogs:LogView[];logStart:number}
+/** One window of the record as this seat may read it, ending just before `beforeId`. A snapshot takes the
+ *  newest window and an older page is asked for by id, so both go through the same projection and the same
+ *  allowlist. The seat's own records ride with the window they fall in; nothing precedes the first page, so
+ *  anything older than the oldest public record travels with it rather than being lost. */
+export function logPage(state: GameState, viewerId: PlayerId, options: {beforeId?: number; limit?: number} = {}): LogPage {
+  const limit=Math.min(Math.max(Math.trunc(options.limit??LOG_WINDOW),1),LOG_PAGE_MAX);
+  const publicEvents=state.events.filter(event=>event.audience==='public');
+  const logStart=publicEvents[0]?.id??0;
+  const before=options.beforeId;
+  const page=(before===undefined?publicEvents:publicEvents.filter(event=>event.id<before)).slice(-limit);
+  // Before the table has done anything in public there is no window to hang the seat's own records on, and
+  // they are all it has to read: the newest window carries them rather than letting them go until then.
+  if(!page.length)return {logs:[],logStart,
+    privateLogs:before===undefined?state.events.filter(event=>event.audience!=='public'&&event.audience.playerId===viewerId).map(event=>logView(event,viewerId)):[]};
+  const from=page[0]!.id===logStart?0:page[0]!.id;
+  const own=state.events.filter(event=>event.audience!=='public'&&event.audience.playerId===viewerId&&
+    event.id>=from&&(before===undefined||event.id<before));
+  return {logs:page.map(event=>logView(event,viewerId)),privateLogs:own.map(event=>logView(event,viewerId)),logStart};
 }
 function publicCards(cards: PlacedCard[]): CardBackView[] {
   return cards.map((card, position) => card.revealed ? { position, face: 'front', cardInstanceId: card.cardInstanceId } : { position, face: 'back' });
@@ -128,11 +163,31 @@ function logView(event: GameEvent, viewerId: PlayerId): LogView {
   if(event.type==='REST'&&event.count!==undefined)result.count=event.count;
   if(event.type==='CARD_PLAYED'){result.cardInstanceId=event.cardInstanceId!;result.use=event.use!;if(event.targetIds)result.targetIds=[...event.targetIds];}
   if((event.type==='ABILITY_DECLARED'||event.type==='ABILITY_CANCELED')&&identityVisible){result.abilityId=event.abilityId!;if(event.targetIds)result.targetIds=[...event.targetIds];}
-  if(event.type==='ROLL_RESOLVED'&&event.roll){const r=event.roll;result.roll={rollId:r.rollId,kind:r.kind,faces:[...r.faces],total:r.total,attempt:r.attempt,...(r.forcedFailure?{forcedFailure:true as const}:{}),...(identityVisible&&r.threshold!==undefined?{threshold:r.threshold}:{}),...(identityVisible&&r.success!==undefined?{success:r.success}:{})};}
+  // The attack itself is public even when its ability name is not; the target is what makes the line readable.
+  if(event.type==='ATTACK_DECLARED'){if(event.targetIds)result.targetIds=[...event.targetIds];if(identityVisible)result.abilityId=event.abilityId!;}
+  // How the attack ended is seen at the table. The card was named in public when it was declared; a
+  // card-less attack names its ability only where the declaration already did.
+  if(event.type==='ATTACK_RESOLVED'){result.attackOutcome=event.attackOutcome!;if(event.targetIds)result.targetIds=[...event.targetIds];
+   if(event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;if(identityVisible&&event.abilityId)result.abilityId=event.abilityId;}
+  // Needing no check is visible at the table (G03 判定の公開範囲); only the ability behind it can be concealed.
+  if(event.type==='CHECK_SKIPPED'){result.checkSkip=event.checkSkip!;if(identityVisible&&event.abilityId)result.abilityId=event.abilityId;}
+  // Faces, total, rerolls, forced failure and the outcome are public; only the threshold belongs to a revealed seat (G03 判定の公開範囲).
+  if(event.type==='ROLL_RESOLVED'&&event.roll){const r=event.roll;result.roll={rollId:r.rollId,kind:r.kind,faces:[...r.faces],total:r.total,attempt:r.attempt,...(r.forcedFailure?{forcedFailure:true as const}:{}),...(identityVisible&&r.threshold!==undefined?{threshold:r.threshold,...(r.comparison?{comparison:r.comparison}:{})}:{}),...(r.success!==undefined?{success:r.success}:{})};}
   if(event.type==='DAMAGE_APPLIED'&&event.amount!==undefined)result.amount=event.amount;
   if(event.type==='STATUS_CHANGED'&&event.status)result.status={...event.status};
   if(event.type==='DISTANCE_CHANGED'){result.targetId=event.targetId!;result.distance=event.distance!;}
-  if(event.type==='PASSED')result.windowKind=event.windowKind!;
+  if(event.type==='PASSED'){result.windowKind=event.windowKind!;if(event.standingRange!==undefined)result.standingRange=event.standingRange;}
+  // A card nobody saw is a number to the table; its owner's own copy of the line carries the name.
+  if(event.type==='CARDS_DISCARDED'){if(event.count!==undefined)result.count=event.count;if(event.audience!=='public')result.cardInstanceId=event.cardInstanceId!;}
+  // A chant and a row of followers are face down on the table, so only the seat's own copy names them.
+  if(event.type==='CHANTED'&&event.audience!=='public')result.cardInstanceId=event.cardInstanceId!;
+  if(event.type==='FOLLOWERS_ARRANGED'){if(event.count!==undefined)result.count=event.count;if(event.audience!=='public'&&event.cardInstanceIds)result.cardInstanceIds=[...event.cardInstanceIds];}
+  // A follower is turned face up before it answers an attack, so the outcome may name it.
+  if(event.type==='FOLLOWER_DEFENDED'){result.followerOutcome=event.followerOutcome!;if(event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;}
+  if(event.type==='MORALE_CHECKED'){result.success=event.success!;if(event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;}
+  // Taken from the table, the card is named to everyone; taken from the pile, only the private copy names it.
+  if(event.type==='CARD_RECLAIMED'&&event.cardInstanceId)result.cardInstanceId=event.cardInstanceId;
+  if(event.type==='DECK_RESHUFFLED'&&event.count!==undefined)result.count=event.count;
   if(event.type==='PLAYER_DIED'&&event.death)result.death={cause:event.death.cause,eventId:event.death.eventId,...(event.death.sourceActorId?{sourceActorId:event.death.sourceActorId}:{}),...(event.death.sourceCardInstanceId?{sourceCardInstanceId:event.death.sourceCardInstanceId}:{})};
   if((event.type==='WISH_ACQUIRED'||event.type==='FOLLOWER_DESTROYED'||event.type==='CHARACTER_INSPECTED'||event.type==='CARD_GIFTED'||event.type==='BEAST_CAPTURED')&&event.targetId)result.targetId=event.targetId;
   if(event.type==='BEAST_CAPTURED'&&event.audience==='public'&&event.count!==undefined)result.count=event.count;
@@ -243,7 +298,7 @@ export function viewFor(state: GameState, viewerId: PlayerId): PlayerView {
   if(active?.kind==='reclaim')legalChoices=[...(hasPriority?['CHOOSE_RECLAIM','PASS']:[]),...(!self.revealed&&isActive(self)?['REVEAL_CHARACTER']:[])];
   // Passing needs no priority on a public window; only the interventions below it still do (G03).
   if(active&&isActive(self)&&!state.outcome){
-    const standing=state.standingPasses?.actorIds.includes(viewerId)??false;
+    const standing=!!standingPassScope(state,viewerId);
     if(passAhead(active)&&active.participants.includes(viewerId)&&!active.passed.includes(viewerId)){
       if(!legalChoices.includes('PASS'))legalChoices.push('PASS');
       if(!standing)legalChoices.push('PASS_ACTION_THROUGH');
@@ -280,12 +335,13 @@ export function viewFor(state: GameState, viewerId: PlayerId): PlayerView {
     if (p.revealed) view.characterId = p.characterId;
     players[id] = view;
   }
-  return {shadowJumpCost,allArmyOptions:allArmyOptions(state,viewerId),printedCombinationOptions:printedCombinationOptions(state,viewerId),wish:wishView(state,viewerId),wishCapacity:wishCapacityView(state,viewerId),wishOptions:wishOptions(state,viewerId), turnChoiceCardOptions:turnChoiceCardOptions(state,viewerId),turnCardOptions:turnCardOptions(state,viewerId),anytimeCardOptions:anytimeOptions,reservedCards:state.reclaimReservations.filter(id=>state.reclaim?.[id]?.ownerId===viewerId),reclaim:reclaimView(state,viewerId),suppressionTargets:suppressionTargetViews(state,viewerId),sadLove:sadLoveView(state,viewerId),conditionalAbilities,inspection:inspectionView(state,viewerId),inspectionHistory:structuredClone((state.inspectionHistory??[]).filter(d=>d.actorId===viewerId)),peaceExpiries:peaceExpiryViews(state),spiritExpiry:spiritExpiryView(self,state),drawAbilityOptions:drawAbilityOptions(state,viewerId),revealAbilityOptions:revealAbilityOptions(state,viewerId),declarationCandidates:declarationCandidates(state,viewerId),declarationSelection:declarationSelection(state,viewerId),distanceExchange:distanceExchangeView(state),virtualBladeOptions:virtualBladeOptions(state,viewerId),maaiAbilityOptions:maaiAbilityOptions(state,viewerId),maaiDefense:maaiDefenseView(state,effectiveHitTechnique),beastCapture,followerEntry,followerDefenseResults,virtualFollowerDefense,followerBundleOptions:bundleOptions,followerBundle,followerAttackOptions:followerAttackOptions(state,viewerId),followerDefenseOptions:!substituteRestricted(state,viewerId)&&hasPriority&&active?.kind==='normal-defense'?self.followers.filter(f=>canSelectFollowerDedicated(f.cardInstanceId,self.characterId)).map(f=>({cardInstanceId:f.cardInstanceId})):[],followerPlacementOptions:followerPlacementOptions(self),magicGateTargets:magicGateTargets(state,viewerId),additionalAttackOptions:additionalAttackOptions(state,viewerId),...choices,groupDefenseOptions,techniqueDecision,additionalAttack,abilityOptions,reactionTargetAbilityId:activeAbility?.stage==='declaration'&&!activeAbility.printedCardResponse&&!activeAbility.canceled?activeAbility.id:null,lifetimeDecision,outcome:state.outcome?structuredClone(state.outcome):null,individualResults:{...state.individualResults},lifecycleDecision,lifecycleAbilities, rulesetVersion: state.rulesetVersion, revision: state.revision, phase: state.phase, seatOrder: [...state.seatOrder], turnSeat: state.turnSeat,
+  return {shadowJumpCost,allArmyOptions:allArmyOptions(state,viewerId),printedCombinationOptions:printedCombinationOptions(state,viewerId),wish:wishView(state,viewerId),wishCapacity:wishCapacityView(state,viewerId),wishOptions:wishOptions(state,viewerId),wishHistory:(state.wishHistory??[]).filter(entry=>entry.actorId===viewerId||entry.ownerId===viewerId).map(entry=>({...entry})), turnChoiceCardOptions:turnChoiceCardOptions(state,viewerId),turnCardOptions:turnCardOptions(state,viewerId),anytimeCardOptions:anytimeOptions,reservedCards:state.reclaimReservations.filter(id=>state.reclaim?.[id]?.ownerId===viewerId),reclaim:reclaimView(state,viewerId),suppressionTargets:suppressionTargetViews(state,viewerId),sadLove:sadLoveView(state,viewerId),conditionalAbilities,inspection:inspectionView(state,viewerId),inspectionHistory:structuredClone((state.inspectionHistory??[]).filter(d=>d.actorId===viewerId)),peaceExpiries:peaceExpiryViews(state),spiritExpiry:spiritExpiryView(self,state),drawAbilityOptions:drawAbilityOptions(state,viewerId),revealAbilityOptions:revealAbilityOptions(state,viewerId),declarationCandidates:declarationCandidates(state,viewerId),declarationSelection:declarationSelection(state,viewerId),distanceExchange:distanceExchangeView(state),virtualBladeOptions:virtualBladeOptions(state,viewerId),maaiAbilityOptions:maaiAbilityOptions(state,viewerId),maaiDefense:maaiDefenseView(state,effectiveHitTechnique),beastCapture,followerEntry,followerDefenseResults,virtualFollowerDefense,followerBundleOptions:bundleOptions,followerBundle,followerAttackOptions:followerAttackOptions(state,viewerId),followerDefenseOptions:!substituteRestricted(state,viewerId)&&hasPriority&&active?.kind==='normal-defense'?self.followers.filter(f=>canSelectFollowerDedicated(f.cardInstanceId,self.characterId)).map(f=>({cardInstanceId:f.cardInstanceId})):[],followerPlacementOptions:followerPlacementOptions(self),magicGateTargets:magicGateTargets(state,viewerId),additionalAttackOptions:additionalAttackOptions(state,viewerId),...choices,groupDefenseOptions,techniqueDecision,additionalAttack,abilityOptions,reactionTargetAbilityId:activeAbility?.stage==='declaration'&&!activeAbility.printedCardResponse&&!activeAbility.canceled?activeAbility.id:null,lifetimeDecision,outcome:state.outcome?structuredClone(state.outcome):null,individualResults:{...state.individualResults},lifecycleDecision,lifecycleAbilities,reveal:state.outcome?endgameReveal(state):null, rulesetVersion: state.rulesetVersion, revision: state.revision, phase: state.phase, seatOrder: [...state.seatOrder], turnSeat: state.turnSeat,
     pending: state.pending ? { kind: state.pending.kind, round: state.pending.round, participantIds: [...state.pending.participantIds], readyIds: [...state.pending.readyIds] } : null,
     deckCount: state.deck.length, discardCount: state.discard.length, distances: Object.fromEntries(state.seatOrder.map(a => [a, Object.fromEntries(state.seatOrder.filter(b => a !== b).map(b => [b, state.distances[a]![b]!]))])), distanceMarkers:Object.values(state.distanceMarkers??{}).map(marker=>({...marker})), players,
-    activeWindow:active?{windowId:active.id,windowRevision:active.revision,kind:active.kind,pendingActorId:active.participants[active.cursor]!,reason:active.kind,participantIds:[...active.participants],passedActorIds:[...active.passed],passAhead:passAhead(active)}:null,standingPassActorIds:[...(state.standingPasses?.actorIds??[])],actionCalculation,currentAction,currentAttack,reactionTargetActionId:projectedAbility?null:activeContinuation?.id??rollAction?.id??(activeGroup?.actionId??null),currentRoll:roll?projectRoll(state,roll,viewerId):null,recentRolls:(state.rolls??[]).slice(-30).map(frame=>projectRoll(state,frame,viewerId)),reactionTargetRollId:unresolvedRoll(state)?.id??null,legalChoices,
+    activeWindow:active?{windowId:active.id,windowRevision:active.revision,kind:active.kind,pendingActorId:active.participants[active.cursor]!,reason:active.kind,participantIds:[...active.participants],passedActorIds:[...active.passed],passAhead:passAhead(active)}:null,standingPasses:(state.standingPasses??[]).flatMap(saved=>saved.actorIds.map(actorId=>({actorId,scope:saved.scope}))),actionCalculation,currentAction,currentAttack,reactionTargetActionId:projectedAbility?null:activeContinuation?.id??rollAction?.id??(activeGroup?.actionId??null),currentRoll:roll?projectRoll(state,roll,viewerId):null,recentRolls:(state.rolls??[]).slice(-30).map(frame=>projectRoll(state,frame,viewerId)),reactionTargetRollId:unresolvedRoll(state)?.id??null,legalChoices,
     self: { currentObjective:structuredClone(self.currentObjective??factionObjective(self.faction)),protection:structuredClone(self.protection??initialProtection(self.characterId)),defeatCondition:currentDefeatCondition(self),id: self.id, characterId: self.characterId, faction: self.faction, objective: self.objective, damage: self.damage, stats: gameStats(state,self.id), hand: [...self.hand],
-      followers: self.followers.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })), chants: self.chants.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })) },
-    logs: state.events.filter(e => e.audience === 'public').map(e => logView(e, viewerId)),
-    privateLogs: state.events.filter(e => e.audience !== 'public' && e.audience.playerId === viewerId).map(e => logView(e, viewerId)) };
+      followers: self.followers.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })), chants: self.chants.map(c => ({ cardInstanceId: c.cardInstanceId, revealed: c.revealed })),
+      discardedCardInstanceIds: state.discard.filter(entry => entry.ownerId === viewerId).map(entry => entry.cardInstanceId) },
+    // A long game outgrows one message, so a snapshot carries the newest window and the rest is asked for.
+    ...logPage(state, viewerId) };
 }

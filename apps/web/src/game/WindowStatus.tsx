@@ -1,19 +1,26 @@
 import type { GameCommand } from '@madou/protocol';
 import type { PlayerView } from '@madou/engine';
 import { useEffect, useRef, useState } from 'react';
+import { useProgressFlash } from './progress-flash.js';
 
-export type WindowStatusView = Pick<PlayerView, 'activeWindow' | 'standingPassActorIds' | 'legalChoices'> & {
+export type WindowStatusView = Pick<PlayerView, 'activeWindow' | 'standingPasses' | 'legalChoices'> & {
   players: Record<string, { name: string }>;
   self: { id: string };
 };
+export type StandingScope = PlayerView['standingPasses'][number]['scope'];
+/** How far a seat left its answers to the others, if it did (G03). */
+export function standingScope(view: WindowStatusView, id: string): StandingScope | undefined {
+  return view.standingPasses.find(pass => pass.actorId === id)?.scope;
+}
+const rangeNames: Record<StandingScope, string> = { action: 'この行動', turn: 'この手番' };
 
 /** Public per-seat progress of the open reaction window (G03). */
 export function windowSeatLabel(view: WindowStatusView, id: string): '判断中' | '回答済み' | '任せる' | '対象外' {
+  // A standing pass outlives the window that took it, and a turn-long one outlives the action too: between
+  // one action and the next there is no window at all, and the seat is still leaving its answers to the others.
+  if (standingScope(view, id)) return '任せる';
   const w = view.activeWindow;
-  if (!w) return '対象外';
-  // A standing pass outlives the window that took it, so it is public even where the seat is not asked.
-  if (view.standingPassActorIds.includes(id)) return '任せる';
-  if (!w.participantIds.includes(id)) return '対象外';
+  if (!w || !w.participantIds.includes(id)) return '対象外';
   return w.passedActorIds.includes(id) ? '回答済み' : '判断中';
 }
 
@@ -22,10 +29,9 @@ export function decisionPanelKey(view: { activeWindow: { windowId: string; windo
   return `${view.activeWindow?.windowId ?? 'none'}:${view.activeWindow?.windowRevision ?? 0}`;
 }
 
-/** Per-seat answers are public only on a pass-ahead window; a standing pass is public on every window. */
+/** Per-seat answers are public only on a pass-ahead window; a standing pass is public for as long as it runs. */
 export function showsWindowSeatLabel(view: WindowStatusView, id: string): boolean {
-  const w = view.activeWindow;
-  return !!w && (w.passAhead || view.standingPassActorIds.includes(id));
+  return !!standingScope(view, id) || !!view.activeWindow?.passAhead;
 }
 
 /** What the seat may press about the window as a whole, next to whatever the decision panel offers. */
@@ -43,29 +49,37 @@ export function passAheadControls(view: WindowStatusView) {
 /** One compact line, like the setup round status: who decides now, how far the window got, who is still out. */
 export function WindowRoster({ view }: { view: WindowStatusView }) {
   const w = view.activeWindow;
-  if (!w || !w.passAhead) return null;
+  return w?.passAhead ? <Roster view={view} w={w}/> : null;
+}
+function Roster({ view, w }: { view: WindowStatusView; w: NonNullable<WindowStatusView['activeWindow']> }) {
+  // The same highlight the setup round gets, replayed in place whenever another seat answers.
+  const box = useProgressFlash<HTMLElement>(`${w.windowId}:${w.windowRevision}:${w.passedActorIds.length}`);
   const name = (id: string) => view.players[id]?.name ?? id;
   const mine = w.pendingActorId === view.self.id;
   const waiting = w.participantIds.filter(id => !w.passedActorIds.includes(id) && id !== w.pendingActorId && id !== view.self.id);
-  const standing = view.standingPassActorIds.includes(view.self.id);
+  const standing = standingScope(view, view.self.id);
   const answered = w.passedActorIds.includes(view.self.id);
-  const others = view.standingPassActorIds.filter(id => id !== view.self.id);
-  return <section className="window-roster" aria-label="この確認の回答状況">
+  const others = view.standingPasses.filter(pass => pass.actorId !== view.self.id);
+  return <section className="window-roster" aria-label="この確認の回答状況" ref={box}>
     <p role="status">
       <strong>{mine ? 'あなたの判断です' : `いま ${name(w.pendingActorId)}さん`}</strong>
       <span className="tag">回答 {w.passedActorIds.length} / {w.participantIds.length}席</span>
       <span>{mine ? '' :
-        standing ? 'この行動は任せています。' :
+        standing ? `${rangeNames[standing]}は任せています。` :
         // Leaving the standing pass keeps this answer; the seat is asked again from the next window.
         answered ? 'この確認はパス済みです。次の確認から聞き直します。' :
         'カードを出す番はまだですが、先にパスできます。'}
         {waiting.length ? `未回答: ${waiting.map(name).join('、')}` : '他に未回答の席はありません'}</span>
     </p>
-    {others.length ? <p className="hint">この行動を任せている席: {others.map(name).join('、')}</p> : null}
+    {/* Each seat keeps the range it chose, so the seats are named under the range they left behind. */}
+    {(['action', 'turn'] as const).map(scope => {
+      const seats = others.filter(pass => pass.scope === scope);
+      return seats.length ? <p className="hint" key={scope}>{rangeNames[scope]}を任せている席: {seats.map(pass => name(pass.actorId)).join('、')}</p> : null;
+    })}
   </section>;
 }
 
-/** The pass a respondent may give before its turn, and leaving the whole action to the others. */
+/** The pass a respondent may give before its turn, and leaving the whole action or the whole turn to the others. */
 export function PassAheadButtons({ view, disabled, send }: {
   view: WindowStatusView; disabled: boolean; send: (command: GameCommand) => boolean;
 }) {
@@ -77,19 +91,26 @@ export function PassAheadButtons({ view, disabled, send }: {
   useEffect(() => { if (followUp && canCancel) { cancel.current?.focus(); setFollowUp(false); } }, [followUp, canCancel]);
   if (!w || !any) return null;
   const passLabel = w.kind === 'reclaim' ? '回収せずに進む' : 'パス（この確認だけ）';
-  // The standing pass also answers the reclaim that closes the action (G11), so say so wherever it is offered.
-  const leaveHint = w.kind === 'reclaim'
-    ? 'この行動に続く回収の回答もまとめて済ませます'
-    : '出目や防御を見てから割り込むことはできなくなり、この行動に続く回収の回答もまとめて済ませます';
+  // The two ranges differ only in how far they reach, so each note opens with its own reach and they can be
+  // read against each other. What both of them cost is the same, including the reclaim that closes the action
+  // (G11), so it is said once underneath rather than spelled out twice.
+  const leaveCost = w.kind === 'reclaim'
+    ? '続く回収の回答もまとめて済ませます'
+    : '出目や防御を見てから割り込むことはできなくなり、続く回収の回答もまとめて済ませます';
+  const standing = standingScope(view, view.self.id);
   const answeredHere = w.passedActorIds.includes(view.self.id);
+  const leave = (scope: StandingScope) => { setFollowUp(true); send(scope === 'turn' ? { type: 'PASS_ACTION_THROUGH', scope } : { type: 'PASS_ACTION_THROUGH' }); };
   return <>
     <div className="button-row">
       {canPass ? <button type="button" disabled={disabled} onClick={() => send({ type: 'PASS' })}>{passLabel}</button> : null}
-      {canLeave ? <button type="button" className="secondary" disabled={disabled} onClick={() => { setFollowUp(true); send({ type: 'PASS_ACTION_THROUGH' }); }}>この行動は任せる</button> : null}
+      {canLeave ? <button type="button" className="secondary" disabled={disabled} onClick={() => leave('action')}>この行動は任せる</button> : null}
+      {canLeave ? <button type="button" className="secondary" disabled={disabled} onClick={() => leave('turn')}>この手番は任せる</button> : null}
       {canCancel ? <button ref={cancel} type="button" className="secondary" disabled={disabled} onClick={() => send({ type: 'CANCEL_PASS_THROUGH' })}>任せるのをやめる</button> : null}
     </div>
-    {canLeave ? <p className="hint">「この行動は任せる」: {leaveHint}。誰かが動いたら聞き直します。</p> : null}
-    {canCancel ? <p className="hint">{w.passAhead ? '' : 'この行動は任せています。'}「任せるのをやめる」: 次の確認から聞き直します{answeredHere ? '。この確認は回答済みのままです' : ''}。</p> : null}
+    {canLeave ? <p className="hint">「この行動は任せる」: いまの行動が終わるまで、割り込みの機会は流れます。</p> : null}
+    {canLeave ? <p className="hint">「この手番は任せる」: この手番が終わるまで、続く行動の分もまとめて流れます。</p> : null}
+    {canLeave ? <p className="hint">どちらも{leaveCost}。誰かが動いたら聞き直します。</p> : null}
+    {canCancel ? <p className="hint">{w.passAhead || !standing ? '' : `${rangeNames[standing]}は任せています。`}「任せるのをやめる」: 次の確認から聞き直します{answeredHere ? '。この確認は回答済みのままです' : ''}。</p> : null}
   </>;
 }
 

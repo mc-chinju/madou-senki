@@ -17,7 +17,10 @@ export function beginInspection(s:GameState,f:Pick<AbilityFrame,'eventId'|'actor
  const cards:InspectionView['cards']=zone==='all'?(['hand','followers','chants'] as const).flatMap<InspectionView['cards'][number]>(part=>part==='hand'?target.hand.map((cardInstanceId,position)=>({zone:part,cardInstanceId,position})):target[part].map((c,position)=>({zone:part,cardInstanceId:c.cardInstanceId,position}))):zone==='character'?[]:zone==='hand'?target.hand.map((cardInstanceId,position)=>({position,cardInstanceId})):target[zone].map((c,position)=>({position,cardInstanceId:c.cardInstanceId}));
  const w=openWindow(s,'private-inspection',f.eventId,{kind:'inspection',id:decisionId},[f.actorId]);
  (s.inspections??=[]).push({decisionId,actorId:f.actorId,targetId:target.id,zone,cards,...(zone==='character'?{characterId:target.characterId}:{}),discardMode,choices:['finish',...(cards.length&&discardMode==='one'?['discard-one' as const]:cards.length&&discardMode==='all'?['discard-all' as const]:[])],...('abilityId' in f?{abilityId:f.abilityId}:{cardActionId:f.cardActionId,sourceLifeId:lifeIdentity(s.players[f.actorId]!),targetLifeId:lifeIdentity(target)}),sourceCharacterId:s.players[f.actorId]!.characterId,eventId:f.eventId,turnNumber:s.turnNumber??0,parentWindowId:f.parentWindowId,windowId:w.id,phase:s.phase});
- if('cardActionId' in f&&zone==='all')(s.inspectionHistory??=[]).push(inspectionView(s,f.actorId)!);
+ // What a card let this seat see is knowledge it keeps, not a line in the record: the record is read through
+ // a window now, so a history hung on it would empty itself as the table plays on. The identity a card
+ // named is kept the same way as the cards a card named, and the panels read the zone they belong to.
+ if('cardActionId' in f&&(zone==='all'||zone==='character'))(s.inspectionHistory??=[]).push(inspectionView(s,f.actorId)!);
  if('cardActionId' in f&&zone==='character'){
   s.events.push({id:s.nextEventId++,at:0,type:'CHARACTER_INSPECTED',actorId:f.actorId,targetId:target.id,audience:'public'},
    {id:s.nextEventId++,at:0,type:'CHARACTER_INSPECTED',actorId:f.actorId,targetId:target.id,characterId:target.characterId,audience:{playerId:f.actorId}});

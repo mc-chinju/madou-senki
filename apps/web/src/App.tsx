@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import type { ClientEnvelope } from '@madou/protocol';
-import { RoomConnection, clearPendingDeparture } from './connection/client.js';
+import type { LogView } from '@madou/engine';
+import { RoomConnection, clearPendingDeparture, type ConnectionSnapshot } from './connection/client.js';
+import type { RoomView } from '../../worker/src/rooms/types.js';
 import { Board } from './game/Board.js';
 import { Lobby } from './lobby/Lobby.js';
 import { LoginScreen } from './login/LoginScreen.js';
@@ -21,6 +23,14 @@ export function App(){
 function SiteHeader(){return <header className="site-header"><a href="/" className="brand"><span>魔導戦記</span><small>2nd</small></a><span className="prototype">検証版</span></header>}
 function SiteCredits(){return <footer className="site-credits" aria-label="クレジット"><p>原作カードゲーム: 魔導戦記カードゲーム 2nd edition</p><p>作者: 夢祭遙 · <a href="https://note.com/dreamfv/n/nb58307ec682c" target="_blank" rel="noopener noreferrer">作者配布ページ（新しいタブで開く）</a></p></footer>}
 
+/** A snapshot carries only the newest window of the record; pages read back earlier are laid in front of it,
+ *  so everything the reader has gathered reads as one story and `logStart` still says where the record begins. */
+function mergeHistory(view:RoomView,history:ConnectionSnapshot['logHistory']):RoomView{
+ const game=view.game;
+ if(!game||!history.logs.length&&!history.privateLogs.length)return view;
+ const older=(held:LogView[],newest:LogView[])=>{const first=newest[0]?.id??Infinity;return [...held.filter(log=>log.id<first),...newest];};
+ return {...view,game:{...game,logs:older(history.logs,game.logs),privateLogs:older(history.privateLogs,game.privateLogs)}};
+}
 function RoomRoute({session,roomId}:{session:Session;roomId:string}){
  const [seated,setSeated]=useState<boolean|null>(null);const [error,setError]=useState('');const [joining,setJoining]=useState(false);
  useEffect(()=>{let active=true;void api<{seated:boolean}>(`/api/rooms/${encodeURIComponent(roomId)}/seat`).then(result=>{if(active){if(!result.seated)clearPendingDeparture(sessionStorage,session.id,roomId);setSeated(result.seated)}},reason=>{if(active)setError(reason instanceof Error?reason.message:'着席状態を確認できません')});return()=>{active=false}},[roomId,session.id]);
@@ -34,5 +44,7 @@ function ConnectedRoom({session,roomId}:{session:Session;roomId:string}){
  const connection=useMemo(()=>{const ws=new URL(`/api/rooms/${encodeURIComponent(roomId)}/ws`,location.origin);ws.protocol=location.protocol==='https:'?'wss:':'ws:';return new RoomConnection({actorId:session.id,roomId,url:ws.toString(),storage:sessionStorage})},[roomId,session.id]);
  useEffect(()=>{connection.start();return()=>connection.stop()},[connection]);const state=useSyncExternalStore(connection.subscribe,connection.getSnapshot,connection.getSnapshot);
  useEffect(()=>{if(state.lastAck?.commandType==='LEAVE')location.assign('/')},[state.lastAck]);const send=(command:ClientEnvelope['command'])=>connection.send(command);
- return <><div className={`connection ${state.status}`} role="status"><span aria-hidden="true"/>{statusLabel[state.status]}{state.pending?' · 操作を確認中':''}</div>{state.error?<div className="global-error" role="alert">{errorLabel[state.error]??'操作を完了できませんでした'}</div>:null}{state.view?(state.view.game?<Board room={state.view} actorId={session.id} disabled={state.status!=='ready'} send={send}/>:<WaitingRoom view={state.view} actorId={session.id} disabled={state.status!=='ready'} send={send}/>):<main id="main-content" className="page narrow"><p role="status">卓の状態を受信しています…</p></main>}</>;
+ // Folding the record walks all of it, so the merged view has to keep its identity between snapshots.
+ const room=useMemo(()=>state.view?mergeHistory(state.view,state.logHistory):null,[state.view,state.logHistory]);
+ return <><div className={`connection ${state.status}`} role="status"><span aria-hidden="true"/>{statusLabel[state.status]}{state.pending?' · 操作を確認中':''}</div>{state.error?<div className="global-error" role="alert">{errorLabel[state.error]??'操作を完了できませんでした'}</div>:null}{state.view?(state.view.game?<Board room={room!} actorId={session.id} disabled={state.status!=='ready'} send={send} logHistory={{loading:state.logHistory.loading,load:(beforeId:number)=>connection.requestLogPage(beforeId)}}/>:<WaitingRoom view={state.view} actorId={session.id} disabled={state.status!=='ready'} send={send}/>):<main id="main-content" className="page narrow"><p role="status">卓の状態を受信しています…</p></main>}</>;
 }

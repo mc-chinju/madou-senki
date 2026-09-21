@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,closeWindow,finish,pass,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const SPIRIT='a2-p05-r1c3',HARP='a2-p05-r2c1';
@@ -13,12 +13,12 @@ it('two actual printed components are paid without refill and independently decl
 it.each([SPIRIT,HARP])('Fate cancels only printed component %s, keeps every paid source and resumes the parent once',cancel=>{
  let {s,command}=prepared();const spirit=gameStats(s,'A').spirit,fate=handCard(s,'B','命運凶変');s=act(s,'A',command);
  for(let n=0;n<100;n++){const w=s.windows!.at(-1)!,a=s.actions?.[w.continuation.id];if(a?.cardInstanceId===cancel&&w.kind==='declaration'&&w.participants[w.cursor]==='B')break;s=pass(s);}
- const child=viewFor(s,'B').reactionTargetActionId!;s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:child});s=until(s,'attack-abilities');const g=Object.values(s.groups!)[0]!;expect(g.technique.effectLevel).toBe(cancel===HARP?5:7);expect(g.targets[0]!.hits[0]!.damage).toBe(cancel===HARP?5:9);expect(gameStats(s,'A').spirit).toBe(spirit+(cancel===SPIRIT?0:2));s=finish(s);for(const id of [SPIRIT,HARP,command.cardInstanceId])expect(s.discard.filter(x=>x===id)).toHaveLength(1);
+ const child=viewFor(s,'B').reactionTargetActionId!;s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:child});s=until(s,'attack-abilities');const g=Object.values(s.groups!)[0]!;expect(g.technique.effectLevel).toBe(cancel===HARP?5:7);expect(g.targets[0]!.hits[0]!.damage).toBe(cancel===HARP?5:9);expect(gameStats(s,'A').spirit).toBe(spirit+(cancel===SPIRIT?0:2));s=finish(s);for(const id of [SPIRIT,HARP,command.cardInstanceId])expect(discardIds(s).filter(x=>x===id)).toHaveLength(1);
 });
 it('canceling the original attack ends its declared spirit bonus without returning either physical source',()=>{
  let {s,command}=prepared('踏み込み／弓',[SPIRIT]);const spirit=gameStats(s,'A').spirit,fate=handCard(s,'B','命運凶変');s=act(s,'A',command);
  for(let n=0;n<100;n++){const w=s.windows!.at(-1)!,a=s.actions?.[w.continuation.id];if(a?.cardInstanceId===command.cardInstanceId&&w.kind==='declaration'&&w.participants[w.cursor]==='B')break;s=pass(s);}
- s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:viewFor(s,'B').reactionTargetActionId!}));expect(s.players.B!.damage).toBe(0);expect(gameStats(s,'A').spirit).toBe(spirit);expect(s.discard).toEqual(expect.arrayContaining([SPIRIT,command.cardInstanceId]));
+ s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:viewFor(s,'B').reactionTargetActionId!}));expect(s.players.B!.damage).toBe(0);expect(gameStats(s,'A').spirit).toBe(spirit);expect(discardIds(s)).toEqual(expect.arrayContaining([SPIRIT,command.cardInstanceId]));
 });
 it('Harp preserves printed null damage rather than creating four damage',()=>{
  let {s,command}=prepared(getAction('a2-p18-r1c1')!.name,[HARP]);s=act(s,'A',command);s=until(s,'attack-abilities');const g=Object.values(s.groups!)[0]!;expect(g.technique.damage).toBeNull();expect(g.targets[0]!.hits[0]!.damage).toBeNull();expect(g.technique.effectLevel).toBeGreaterThan(2);

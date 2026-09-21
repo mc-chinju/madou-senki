@@ -1,6 +1,6 @@
 import { reset } from 'cloudflare:test';
 import { afterEach, expect, it } from 'vitest';
-import { activeWindowRef, allCardInstanceIds } from '@madou/engine';
+import { activeWindowRef, allCardInstanceIds, discardIds } from '@madou/engine';
 import type { ClientEnvelope } from '@madou/protocol';
 import { openTestRoom } from './fixtures/recovery-room.js';
 
@@ -92,7 +92,7 @@ it('restores a pending death gift without duplicate cost and keeps the transferr
   expect(ended.players.B!.presence).toBe('dead');
   expect(ended.players.B!.hand).toEqual([]);
   expect(ended.players.C!.hand).toContain(gift);
-  expect(ended.discard).toContain(source);
+  expect(discardIds(ended)).toContain(source);
   expect(JSON.stringify(await room.snapshotFor('A'))).not.toContain(gift);
   expect((await room.snapshotFor('C')).game!.self.hand).toContain(gift);
   expect(new Set(allCardInstanceIds(ended)).size).toBe(220);

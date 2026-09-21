@@ -1,6 +1,7 @@
 import {reuseClaims,beginReuse} from './abilities/reuse.js';
 import {REUSE_ABILITIES,type ReuseAbilityId} from './abilities/reuse-sources.js';
 import {discardPhysical} from './discard.js';
+import {recordReclaim} from './public-record.js';
 import {lifeIdentity} from './abilities/suppression-state.js';
 import {hasPendingFatal,hasStatus, type GameState} from './state.js';
 import {getAction} from '@madou/catalog';
@@ -18,6 +19,8 @@ export function reclaimEventId(s:GameState,source:{eventId:string;parentWindowId
 export type ReclaimRight='base'|'extra'|'unlimited'|'printed';
 export type ReclaimSource={eventId:string;sourceId:string;sourceActorId:string;cardInstanceId:string} & (
   {kind:'ordinary-disposition';fromZone:'resolution';sourceLifeId:string;
+   /** The seat the card left. A follower moved by 魔招門 dies on its new board while `sourceActorId` keeps the reclaim right with the seat that placed it. */
+   heldById?:string;
    trigger:'technique-resolved'|'follower-died'|'named-card-used';usedModeName?:string}
   | {kind:'courage-resolution';fromZone:'resolution';cardInstanceId:'a2-p01-r3c3';beneficiaryId:string;beneficiaryLifeId:string;cancellationSucceeded:true}
   | {kind:'actual-discard';fromZone:'discard';cardInstanceId:'a2-p04-r2c1';discardEventId:string;
@@ -60,7 +63,7 @@ function eligibleClaims(s:GameState,d:ReclaimDecision):ReclaimClaim[] {
     if(source.kind==='courage-resolution'&&!d.checkAttempted&&p.characterId==='c2-p03-r2c1')result.push({
       id:`${d.id}-${id}-courage`,declaringActorId:id,chooserId:source.beneficiaryId,beneficiaryId:source.beneficiaryId,
       beneficiaryLifeId:source.beneficiaryLifeId,normalizedName:'勇気',right:'printed',printedRider:'courage',checkActorId:id});
-    if(source.kind==='actual-discard'&&p.characterId==='c2-p01-r2c2'&&s.discard.includes(source.cardInstanceId))result.push({
+    if(source.kind==='actual-discard'&&p.characterId==='c2-p01-r2c2'&&s.discard.some(entry=>entry.cardInstanceId===source.cardInstanceId))result.push({
       id:`${d.id}-${id}-sword`,declaringActorId:id,chooserId:id,beneficiaryId:id,beneficiaryLifeId:lifeIdentity(p),normalizedName:'ふぇありぃそぅど',right:'printed',printedRider:'fairy-sword'});
   }
   return result;
@@ -81,7 +84,9 @@ export function offerReclaim(s:GameState,source:ReclaimSource):ReclaimDecision {
 export function closeReclaim(s:GameState,id:string):void {
   const d=s.reclaimDecisions?.find(d=>d.id===id);if(!d||d.stage==='closed')return;
   if(d.stage!=='reserved'&&d.fromZone==='resolution') {
-    discardPhysical(s,d.cardInstanceId,{zone:'resolution'},d.sourceActorId,d.eventId);
+    // The pile follows the board the card left, which is not the placer once 魔招門 has moved a follower.
+    const heldById=d.source.kind==='ordinary-disposition'?d.source.heldById:undefined;
+    discardPhysical(s,d.cardInstanceId,{zone:'resolution',...(heldById?{ownerId:heldById}:{})},d.sourceActorId,d.eventId);
   }
   d.stage='closed';
 }
@@ -102,7 +107,10 @@ export function commitReclaim(s:GameState,decisionId:string,claimId:string):bool
   if(!claim||claim.chooserId!==w.participants[w.cursor]||claim.printedRider==='courage'&&d.stage!=='beneficiary-choice')return false;
   const beneficiary=s.players[claim.beneficiaryId];
   if(!beneficiary||(beneficiary.presence??'active')!=='active'||lifeIdentity(beneficiary)!==claim.beneficiaryLifeId)return false;
+  // The resolution zone is on the table; the pile is not, whatever face its entry kept.
+  const faceUp=d.fromZone==='resolution';
   if(!reserveReclaimCard(s,d.cardInstanceId,claim.beneficiaryId,d.eventId,claim.beneficiaryLifeId,d.fromZone))return false;
+  recordReclaim(s,claim.beneficiaryId,d.cardInstanceId,faceUp);
   if(claim.right==='base'&&claim.budgetOwnerId){const usage=s.players[claim.budgetOwnerId]!.reclaimUsage??={};
     usage[claim.normalizedName]={baseSpent:true,extraSpentByAbility:[...(usage[claim.normalizedName]?.extraSpentByAbility??[])]};}
   if(!d.claims.some(c=>c.id===claim.id))d.claims.push(claim);
@@ -170,7 +178,8 @@ export interface ReclaimReservation {
 
 /** Move one physical source, never a snapshot, into the protected reservation zone. */
 export function reserveReclaimCard(s:GameState, cardId:string, ownerId:string, eventId:string, ownerLifeId?:string,fromZone:'resolution'|'discard'='resolution'):boolean {
-  const owner=s.players[ownerId], index=s[fromZone].indexOf(cardId);
+  const owner=s.players[ownerId];
+  const index=fromZone==='discard'?s.discard.findIndex(entry=>entry.cardInstanceId===cardId):s.resolution.indexOf(cardId);
   if (!owner || index<0 || s.reclaimReservations.includes(cardId) || s.reclaim?.[cardId]) return false;
   s[fromZone].splice(index,1);
   s.reclaimReservations.push(cardId);

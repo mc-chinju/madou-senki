@@ -1,6 +1,6 @@
 import {passReclaims,act,ready,until,pass,finish,closeWindow} from './combat-helpers.js';
 import {describe,it,expect} from 'vitest';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {character,handCard,entropy} from './fixtures.js';
 function prepared(s: GameState, actor: string, name: string) { const id = handCard(s, actor, name); s.players[actor]!.hand = s.players[actor]!.hand.filter(c => c !== id); s.players[actor]!.chants.push({ cardInstanceId: id, revealed: false }); return id; }
 function attack(name: string, owner: string, dedicated: boolean, extra: Record<string, unknown> = {}) {
@@ -66,7 +66,7 @@ describe('printed attacks through real transitions', () => {
         const count = s.players.A!.hand.length;
         s = passReclaims(act(s, 'A', { type: 'ATTACK', cardInstanceId: card, targetIds: ['B', 'C'], dedicated: true, advanceCardInstanceIds: [cost] }));
         expect(s.players.A!.hand).toHaveLength(count - 2);
-        expect(s.discard).toContain(cost);
+        expect(discardIds(s)).toContain(cost);
         expect(Object.values(s.actions!)[0]!.technique.effectLevel).toBe(8);
         expect(s.distanceMarkers ?? {}).toEqual({});
         s = finish(s);
@@ -81,7 +81,7 @@ describe('printed attacks through real transitions', () => {
         expect(s.resolution).toEqual(expect.arrayContaining([card, co]));
         s = finish(s);
         expect(s.players.B!.damage).toBe(expected);
-        expect(s.discard).toEqual(expect.arrayContaining([card, co]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([card, co]));
     });
     it('Black Wing batch changes pending damage once', () => {
         let s = attack('黒翼天翔剣', '黒妖精のアーネス', true);
@@ -89,7 +89,7 @@ describe('printed attacks through real transitions', () => {
         s = until(s, 'hit-advance-choice');
         const groupId = group(s).id;
         s = passReclaims(act(s, 'A', { type: 'PAY_HIT_ADVANCES', groupId, cardInstanceIds: [cost] }));
-        expect(s.discard).toContain(cost);
+        expect(discardIds(s)).toContain(cost);
         s = finish(s);
         expect(s.players.B!.damage).toBe(20);
     });
@@ -125,7 +125,7 @@ describe('fixed defenses and source identity', () => {
         s = finish(s);
         expect(s.players.B!.damage).toBe(0);
         expect(s.players.A!.damage).toBe(4);
-        expect(s.discard).toContain(defense);
+        expect(discardIds(s)).toContain(defense);
     });
     it('Leaf rejects fire even for Ida before costs; ordinary enemy check uses minus one', () => {
         let s = ready();
@@ -194,7 +194,7 @@ describe('legality, costs, and saved source choices', () => {
         s = priority(s, 'B');
         s = act(s, 'B', { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel', targetActionId: viewFor(s, 'B').reactionTargetActionId! });
         s = finish(s);
-        expect(s.discard).toEqual(expect.arrayContaining([card, co]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([card, co]));
         expect(s.used).toEqual(expect.arrayContaining([`${event}:A:${card}`, `${event}:A:${co}`]));
         expect(s.players.B!.damage).toBe(0);
     });
@@ -208,7 +208,7 @@ describe('legality, costs, and saved source choices', () => {
         s = priority(s, 'B');
         s = act(s, 'B', { type: 'PLAY_REACTION', cardInstanceId: fate, mode: 'cancel', targetActionId: viewFor(s, 'B').reactionTargetActionId! });
         s = finish(s);
-        expect(s.discard).toEqual(expect.arrayContaining([card, cost]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([card, cost]));
         expect(s.players.B!.damage).toBe(0);
     });
     it('composite formula and inherited multi-hit are evaluated once with persisted provenance', () => {
@@ -285,7 +285,7 @@ describe('legality, costs, and saved source choices', () => {
         s = finish(s);
         expect(s.players.B!.damage).toBe(15);
         expect(s.players.D!.damage).toBe(15);
-        expect(s.discard).toContain(defense);
+        expect(discardIds(s)).toContain(defense);
         expect(s.rolls!.filter(r => r.formula === 'd6-product-min10')).toHaveLength(0);
     });
     it.each(['影分身', '木の葉隠れ'])('%s ordinary has its own minus-one enemy check; failure cancels only the received hit', (name) => {
@@ -525,7 +525,7 @@ describe('pending-hit arithmetic and nested source continuations', () => {
         expect(s.groups![parent.id]!.damageRollId).toBe(damageRoll);
         expect(s.resolution).toEqual(expect.arrayContaining([source, co, defense]));
         s = finish(s);
-        expect(s.discard).toEqual(expect.arrayContaining([source, co, defense]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([source, co, defense]));
         expect(s.randomRolls!.find(r => r.id === damageRoll)).toMatchObject({ faces: [3, 4], total: 7 });
     });
     it('printed Shadow child canceled by Fate consumes the chosen attack and cannot reopen the grant', () => {
@@ -545,7 +545,7 @@ describe('pending-hit arithmetic and nested source continuations', () => {
         s = finish(s);
         expect(s.players.A!.damage).toBe(0);
         expect(s.players.B!.damage).toBe(0);
-        expect(s.discard).toEqual(expect.arrayContaining([card, defense, child]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([card, defense, child]));
         expect(s.phase).toBe('withdrawal');
     });
     it('Lia return does not inherit incoming follower ignore and carries its used source lineage', () => {
@@ -587,7 +587,7 @@ describe('physical follower effects and immutable source legality', () => {
         expect(s.players.B!.damage).toBe(damage);
         expect(s.players.B!.followers.some(f => f.cardInstanceId === follower)).toBe(survives);
         if (!survives)
-            expect(s.discard).toContain(follower);
+            expect(discardIds(s)).toContain(follower);
     });
     it('Magic Sky forbids evade, Black Wing requires two maai, and ordinary targets remain singular', () => {
         let s = attack('魔空剣', '黒騎士ガーウィン', false);
@@ -638,7 +638,7 @@ describe('Beast composed counter entry', () => {
         s = finish(s);
         expect(s.players.A!.damage).toBe(15);
         expect(s.players.B!.damage).toBe(0);
-        expect(s.discard).toEqual(expect.arrayContaining([beast, co]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([beast, co]));
     });
     it('composed defense cancellation spends both cards and resumes its one incoming hit', () => {
         let { s, beast, co } = counterSetup();
@@ -648,7 +648,7 @@ describe('Beast composed counter entry', () => {
         s = finish(s);
         expect(s.players.B!.damage).toBe(5);
         expect(s.players.A!.damage).toBe(0);
-        expect(s.discard).toEqual(expect.arrayContaining([beast, co]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([beast, co]));
     });
     it('insufficient Lv6, noncounter component, and counter prohibition reject before both payments', () => {
         let { s, beast, co } = counterSetup();
@@ -744,7 +744,7 @@ describe('actual source classification and relative references', () => {
         s = finish(s);
         expect(s.players.B!.damage).toBe(0);
         expect(s.players.A!.damage).toBe(returned);
-        expect(s.discard).toEqual(expect.arrayContaining([beast, mirror]));
+        expect(discardIds(s)).toEqual(expect.arrayContaining([beast, mirror]));
     });
     it.each([['天地百撃斬', true], ['神罰', true]] as const)('composite Mirror excludes the first above-boundary %s', (name, chant) => {
         const { s, beast, mirror } = defenseSetup(name, chant);

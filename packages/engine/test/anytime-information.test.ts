@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {gameStats,transition,viewFor,type GameState} from '../src/index.js';
+import {gameStats,transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until,closeWindow} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 const PEACE='a2-p02-r1c1',REVELATION='a2-p02-r1c2';
@@ -13,7 +13,7 @@ it('Revelation outside combat privately snapshots all three zones, keeps their o
 });
 it.each([PEACE,REVELATION])('Fate cancellation of %s outside combat keeps refill and original phase, without effect',id=>{
  let s=ready();handCard(s,'A',getAction(id)!.name);const fate=handCard(s,'B','命運凶変'),hand=s.players.A!.hand.length,spirit=gameStats(s,'B').spirit;s=play(s,'A',id,'B');const target=viewFor(s,'B').reactionTargetActionId!;
- s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target}));expect(s.phase).toBe('action');expect(s.players.A!.hand).toHaveLength(hand);expect(gameStats(s,'B').spirit).toBe(spirit);expect(s.inspections??[]).toHaveLength(0);expect(s.discard).toContain(id);
+ s=finish(act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:target}));expect(s.phase).toBe('action');expect(s.players.A!.hand).toHaveLength(hand);expect(gameStats(s,'B').spirit).toBe(spirit);expect(s.inspections??[]).toHaveLength(0);expect(discardIds(s)).toContain(id);
 });
 it('Peace replaces base spirit with 12 plus existing modifiers until the next own main action actually ends',()=>{
  let s=ready();handCard(s,'A',getAction(PEACE)!.name);s.players.B!.permanent={spirit:2};const original=gameStats(s,'B').spirit;s=finish(play(s,'A',PEACE,'B'));expect(gameStats(s,'B').spirit).toBe(14);expect(viewFor(s,'C').peaceExpiries).toEqual([{targetId:'B',timing:'next-own-action'}]);

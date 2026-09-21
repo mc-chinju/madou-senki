@@ -1,3 +1,4 @@
+import {discardIds, moveToDiscard } from '../src/index.js';
 import { expect, it } from 'vitest';
 import * as engine from '../src/index.js';
 import { act, closeWindow, finish, pass, ready, until, passReclaims } from './combat-helpers.js';
@@ -90,7 +91,7 @@ it.each([
   while (state.windows?.at(-1)?.kind === 'hit-abilities') state = closeWindow(state);
     expect(engine.viewFor(state, 'B').currentRoll).toMatchObject({ purpose: 'status-resistance', modifier });
     state = closeWindow(state, dice); state = closeWindow(state); state = finish(state);
-    expect(state.discard.filter(id => id === card)).toHaveLength(1);
+    expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
     return state.players.B!.damage;
   };
   expect(scenario([1, 1])).toBe(successDamage);
@@ -148,7 +149,7 @@ it.each([
     id: expect.stringContaining(':B:'), kind, modifiers: [...modifiers], nextCheck: 1,
     sourceActorId: 'A', sourceCardInstanceId: card, targetId: 'B',
   }]);
-  expect(state.discard.filter(id => id === card)).toHaveLength(1);
+  expect(discardIds(state).filter(id => id === card)).toHaveLength(1);
   expect(JSON.parse(JSON.stringify(state))).toEqual(state);
 });
 
@@ -228,13 +229,13 @@ it('uses each 結界 copy as a dynamic-level one-hit magic negate and resumes de
   expect(firstAction.technique.useLevel).toBe(7);
   expect(firstAction.checks).toHaveLength(1);
   state = until(state, 'before-roll'); state = closeWindow(state, [6, 6]); state = closeWindow(state); state = passReclaims(state);
-  expect(state.discard).toContain(first);
+  expect(discardIds(state)).toContain(first);
   expect(state.windows!.at(-1)!.kind).toBe('normal-defense');
   expect(engine.transition(state, { actorId: 'B', command: { type: 'PLAY_DEFENSE', cardInstanceId: first!, dedicated: false } }, entropy())).toEqual({ ok: false, code: 'CARD_NOT_IN_HAND' });
   state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: second!, dedicated: false });
   state = until(state, 'before-roll'); state = closeWindow(state, [1, 1]); state = closeWindow(state); state = finish(state);
   expect(state.players.B!.damage).toBe(0);
-  expect(state.discard.filter(id => id === first || id === second)).toHaveLength(2);
+  expect(discardIds(state).filter(id => id === first || id === second)).toHaveLength(2);
 });
 
 it('rejects 結界 against warrior and rejects both fixed defenses under 反撃禁止 before card cost', () => {
@@ -301,7 +302,7 @@ it('consumes failed dedicated 閃光槍 and restores the parent for another defe
   state = act(state, 'A', { type: 'ATTACK', cardInstanceId: attack, targetIds: ['B'], dedicated: false }); state = until(state, 'normal-defense');
   state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: counter, dedicated: true }); state = until(state, 'before-roll');
   state = closeWindow(state, [6, 6]); state = closeWindow(state); state = passReclaims(state);
-  expect(state.discard).toContain(counter);
+  expect(discardIds(state)).toContain(counter);
   expect(state.windows!.at(-1)!.kind).toBe('normal-defense');
   state = act(state, 'B', { type: 'PLAY_DEFENSE', cardInstanceId: evade, dedicated: false }); state = finish(state);
   expect(state.players.B!.damage).toBe(0);
@@ -399,7 +400,7 @@ it('blocks withdrawal after a reflected attack stops its own attacker without pa
   expect(state.players.A!.hand).toContain(distance);
 
   const beforeCompletion = structuredClone({
-    deck: state.deck, discard: state.discard, resolution: state.resolution,
+    deck: state.deck, discard: discardIds(state), resolution: state.resolution,
     playerZones: Object.fromEntries(state.seatOrder.map(id => [id, {
       hand: state.players[id]!.hand, followers: state.players[id]!.followers,
       chants: state.players[id]!.chants, open: state.players[id]!.open,
@@ -411,7 +412,7 @@ it('blocks withdrawal after a reflected attack stops its own attacker without pa
   expect(state.phase).toBe('turn-start');
   expect(state.turnSeat).toBe(1);
   expect({
-    deck: state.deck, discard: state.discard, resolution: state.resolution,
+    deck: state.deck, discard: discardIds(state), resolution: state.resolution,
     playerZones: Object.fromEntries(state.seatOrder.map(id => [id, {
       hand: state.players[id]!.hand, followers: state.players[id]!.followers,
       chants: state.players[id]!.chants, open: state.players[id]!.open,
@@ -436,18 +437,18 @@ it('blocks stopped approach initiation and advertises only the action-phase pass
   expect(JSON.stringify(state)).toBe(snapshot);
   expect(state.players.A!.hand).toContain(advance);
 
-  const beforeCompletion = structuredClone({ hand: state.players.A!.hand, discard: state.discard, status: state.players.A!.statuses });
+  const beforeCompletion = structuredClone({ hand: state.players.A!.hand, discard: discardIds(state), status: state.players.A!.statuses });
   const completed = act(state, 'A', { type: 'PASS_ACTION' });
   expect(completed.phase).toBe('turn-start');
   expect(completed.turnSeat).toBe(1);
-  expect({ hand: completed.players.A!.hand, discard: completed.discard, status: completed.players.A!.statuses }).toEqual(beforeCompletion);
+  expect({ hand: completed.players.A!.hand, discard: discardIds(completed), status: completed.players.A!.statuses }).toEqual(beforeCompletion);
 });
 
 it('lets a restored stopped hand-adjustment state validate END_TURN and advance without refilling', () => {
   const state = ready();
   state.phase = 'hand-adjustment';
   state.players.A!.statuses = [{ id: 'stop', kind: 'stopped', modifiers: [-1], nextCheck: 1 }];
-  state.discard.push(...state.players.A!.hand.splice(2));
+  for(const __discarded of [...state.players.A!.hand.splice(2)])moveToDiscard(state,__discarded,{faceUp:true});
   expect(state.players.A!.hand).toHaveLength(2);
 
   const snapshot = JSON.stringify(state);
@@ -468,7 +469,7 @@ it('lets a restored stopped hand-adjustment state validate END_TURN and advance 
   expect(completed.phase).toBe('turn-start');
   expect(completed.turnSeat).toBe(1);
   expect(completed.players.A!.hand).toEqual(state.players.A!.hand);
-  expect(completed.discard).toEqual(state.discard);
+  expect(discardIds(completed)).toEqual(discardIds(state));
   expect(completed.players.A!.statuses).toEqual(state.players.A!.statuses);
 
   const overfull = ready();
@@ -480,7 +481,7 @@ it('lets a restored stopped hand-adjustment state validate END_TURN and advance 
   expect(discarded.phase).toBe('turn-start');
   expect(discarded.turnSeat).toBe(1);
   expect(discarded.players.A!.hand).toEqual(overfull.players.A!.hand.filter(id => id !== requiredDiscard));
-  expect(discarded.discard).toEqual([...overfull.discard, requiredDiscard]);
+  expect(discardIds(discarded)).toEqual([...discardIds(overfull), requiredDiscard]);
   expect(discarded.players.A!.statuses).toEqual(overfull.players.A!.statuses);
 });
 

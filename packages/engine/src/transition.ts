@@ -24,6 +24,7 @@ import {transitionLifecycleCommand} from './lifecycle/commands.js';
 import {advanceLifecycle,beginResetup,settleProtection,stableOutcome,expireSourceTurn,normalizeTurn,settleDamage,scheduleBoundary} from './lifecycle/advance.js';
 import {isActive} from './lifecycle/objectives.js';
 import { transitionCombat,drainEmptyWindows } from './combat/attack.js';
+import { pruneStandingPasses } from './reactions/windows.js';
 import { transitionTurn } from './turns.js';
 import { getAction } from '@madou/catalog';
 import { parseGameCommand } from '@madou/protocol';
@@ -135,8 +136,15 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
   }else result=transitionChamGift(state,{actorId:input.actorId,command})??transitionAllArmy(state,{actorId:input.actorId,command})??transitionWish(state,{actorId:input.actorId,command},random,entropy.now)??transitionSuppression(state,{actorId:input.actorId,command})??transitionConditionalAbility(state,{actorId:input.actorId,command})??transitionInspection(state,{actorId:input.actorId,command})??transitionTurnPackage(state,{actorId:input.actorId,command})??transitionBeastCapture(state,{actorId:input.actorId,command},entropy.now)??transitionFollowerBundle(state,{actorId:input.actorId,command})??transitionSadLove(state,{actorId:input.actorId,command})??transitionAbilityCommand(state,{actorId:input.actorId,command})??transitionLifecycleCommand(state,{actorId:input.actorId,command},entropy.now)??transitionCore(state,{actorId:input.actorId,command},entropy);
   if(!result.ok)return result;
   const s=result.state;bindPeaceAction(s,state,{actorId:input.actorId,command});
-  // Anything but a pass changed the situation, so every seat is asked again (G03).
-  if(!['PASS','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH'].includes(command.type))delete s.standingPasses;
+  // Anything but a pass changed the situation, so every seat is asked again (G03). What a turn-long pass was
+  // given for is the turn seat's own actions, so that seat starting its next one is not an intervention; any
+  // other seat acting is, and so is anything at all while a window is open, which is the turn seat playing
+  // into a decision the others are still answering. Reading the open window alone would let a card played
+  // between two actions slip through and then be answered for by the pass it should have ended. A reveal ends
+  // it too, wherever it happens; that is written where the reveal is (`dropStandingPasses`), because a death
+  // reveals a character without any command asking for it, and because a hit's reveal ends only the turn-long ones.
+  if(!['PASS','PASS_ACTION_THROUGH','CANCEL_PASS_THROUGH'].includes(command.type)
+    &&(state.windows?.length||input.actorId!==state.seatOrder[state.turnSeat]))delete s.standingPasses;
   if(state.phase==='action'&&state.seatOrder[state.turnSeat]===actor.id&&s.phase!=='action'&&s.earlyTurnBook)s.earlyTurnBook.closed=true;
   if(selectedReveal)startVoluntaryBenefit(s,input.actorId,expiresOnActorId!);
   cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);maintainFollowers(s);
@@ -148,8 +156,7 @@ export function transition(state:GameState,input:GameInput,entropy:Entropy):Tran
    if(!s.lifecycle?.length){settleProtection(s,random,entropy.now);advanceLifecycle(s,random,entropy.now);}
   }
   if(s.turnSeat!==state.turnSeat)expireSourceTurn(s,s.seatOrder[s.turnSeat]!);
-  if(!s.windows?.length)delete s.standingPasses;
-  normalizeTurn(s);cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);if(s.turnSeat!==state.turnSeat)s.turnNumber=(state.turnNumber??0)+1;cleanPeaceLifetimes(s);cleanCombinationSpirit(s);finalizeReclaimReservations(s);advanceDiscardResponses(s);stableOutcome(s,entropy.now);
+  normalizeTurn(s);cleanMotherTruth(s);cleanBlessingLeases(s);cleanSpiritLifetimes(s);cleanConditionalSelections(s);cleanInspections(s);if(s.turnSeat!==state.turnSeat)s.turnNumber=(state.turnNumber??0)+1;pruneStandingPasses(s);cleanPeaceLifetimes(s);cleanCombinationSpirit(s);finalizeReclaimReservations(s);advanceDiscardResponses(s);stableOutcome(s,entropy.now);
   recordStepChanges(state,s);if(s.turnSeat!==state.turnSeat&&state.phase!=='setup')recordTurn(s,'TURN_ENDED',state.seatOrder[state.turnSeat]!,(state.turnNumber??0)+1);
   for(const event of s.events.slice(state.events.length))event.at=entropy.now;
   result.events=structuredClone(s.events.slice(state.events.length));return result;

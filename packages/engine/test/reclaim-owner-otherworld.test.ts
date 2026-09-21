@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {getAction} from '@madou/catalog';
-import {gameStats,transition,viewFor} from '../src/index.js';
+import {gameStats,transition,viewFor, discardIds } from '../src/index.js';
 import {act,pass,ready} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 
@@ -37,7 +37,7 @@ it('Reservation owner actual Rift banishment preserves its life and returns pray
  for(let n=0;s.windows?.length&&n<400;n++){
   expect(s.players.B!.lifeId??'initial-life:B').toBe(life);
   if(s.reclaimReservations.includes(prayer)){
-   expect(s.deck).not.toContain(prayer);expect(s.discard).not.toContain(prayer);
+   expect(s.deck).not.toContain(prayer);expect(discardIds(s)).not.toContain(prayer);
    for(const p of Object.values(s.players))expect(p.hand).not.toContain(prayer);
   }
   const recovery=viewFor(s,'A').reclaim;
@@ -68,6 +68,6 @@ it('Reservation owner actual Rift banishment preserves its life and returns pray
  expect(s.reclaimReservations).toEqual([]);expect(s.reclaim?.[prayer]).toBeUndefined();
  expect(Object.keys(s.actions??{})).toEqual([]);expect(Object.keys(s.groups??{})).toEqual([]);
  expect(s.lifecycle??[]).toEqual([]);expect(s.reclaimDecisions?.filter(d=>d.stage!=='closed')??[]).toEqual([]);
- expect(s.discard.filter(id=>id===rift)).toHaveLength(1);
+ expect(discardIds(s).filter(id=>id===rift)).toHaveLength(1);
  expect(s.used).toContain(`${action.eventId}:B:${prayer}`);
 });

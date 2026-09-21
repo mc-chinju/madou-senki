@@ -1,4 +1,5 @@
-import { isRoomCommand, MAX_COMMAND_MESSAGE_BYTES, parseClientEnvelope, type ClientEnvelope, type ClientErrorCode } from '@madou/protocol';
+import { isRoomCommand, MAX_COMMAND_MESSAGE_BYTES, MAX_LOG_PAGE, parseClientEnvelope, type ClientEnvelope, type ClientErrorCode, type LogPageRequest } from '@madou/protocol';
+import type { LogView } from '@madou/engine';
 import type { RoomView } from '../../../worker/src/rooms/types.js';
 
 export interface SocketTransport {
@@ -30,16 +31,23 @@ function commandBase(game: RoomView['game']): { windowId: string; windowRevision
   if (game.activeWindow) return { windowId: game.activeWindow.windowId, windowRevision: game.activeWindow.windowRevision };
   return game.phase === 'setup' && game.pending ? { windowId: `setup-${game.pending.round}`, windowRevision: 0 } : null;
 }
+/** The record read back past what a snapshot carries. Events never change, so pages gathered once keep
+ *  their meaning across a reconnect and the reader goes on from where they had got to. */
+export interface LogHistory { logs: LogView[]; privateLogs: LogView[]; loading: boolean }
 export interface ConnectionSnapshot {
   status: 'stopped' | 'connecting' | 'reconnecting' | 'syncing' | 'ready' | 'read-only';
   view: RoomView | null;
   error: ClientErrorCode | 'CLIENT_STORAGE_ERROR' | null;
   pending: boolean;
   lastAck: { commandId: string; commandType: ClientEnvelope['command']['type']; revision: number } | null;
+  logHistory: LogHistory;
 }
 
 export class RoomConnection {
-  private state: ConnectionSnapshot = { status: 'stopped', view: null, error: null, pending: false, lastAck: null };
+  private state: ConnectionSnapshot = { status: 'stopped', view: null, error: null, pending: false, lastAck: null,
+    logHistory: { logs: [], privateLogs: [], loading: false } };
+  /** The page being waited for. Only one is ever in flight, so a slow answer cannot pile pages up. */
+  private logRequest: LogPageRequest | null = null;
   private listeners = new Set<() => void>();
   private socket: SocketTransport | null = null;
   private running = false;
@@ -51,6 +59,7 @@ export class RoomConnection {
   private pending: ClientEnvelope | null = null;
   private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
   private responseTimer: ReturnType<typeof setTimeout> | null = null;
+  private logTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly key: string;
 
   constructor(private readonly options: Options) {
@@ -98,6 +107,24 @@ export class RoomConnection {
     return true;
   }
 
+  /** Asks for the page of the record that ends just before `beforeId`. One at a time, and never while the
+   *  socket is unusable; the reader is free to ask again once the answer or a reconnection has arrived. */
+  requestLogPage(beforeId: number, limit = MAX_LOG_PAGE): boolean {
+    if (this.logRequest || !this.socket || !this.synced || !Number.isSafeInteger(beforeId) || beforeId <= 0) return false;
+    const request: LogPageRequest = { type: 'LOG_PAGE', requestId: this.options.commandId?.() ?? crypto.randomUUID(),
+      beforeId, limit: Math.min(Math.max(Math.trunc(limit), 1), MAX_LOG_PAGE) };
+    try { this.socket.send(JSON.stringify(request)); }
+    catch { this.reconnect(); return false; }
+    this.logRequest = request;
+    // An `error` reply carries no requestId, so a refused page is indistinguishable from a lost one. Either
+    // way the wait has to end by itself, or the reader is left reading "loading" until they reconnect.
+    if (this.logTimer) clearTimeout(this.logTimer);
+    this.logTimer = setTimeout(() => { this.logTimer = null; this.logRequest = null;
+      this.publish({ logHistory: { ...this.state.logHistory, loading: false } }); }, 10000);
+    this.publish({ logHistory: { ...this.state.logHistory, loading: true } });
+    return true;
+  }
+
   private open(): void {
     if (!this.running) return;
     const generation = ++this.generation;
@@ -116,6 +143,8 @@ export class RoomConnection {
     if (!this.running) return;
     const readOnly = this.state.status === 'read-only';
     this.generation++; this.synced = false; this.sent = false;
+    // Pages already gathered still hold; only the one this dead socket owed is given up on.
+    if (this.logRequest) { this.logRequest = null; this.publish({ logHistory: { ...this.state.logHistory, loading: false } }); }
     this.clearTimers(); this.socket?.close(); this.socket = null;
     // Passive old tabs must not fight the active tab by acquiring new generations.
     if (readOnly) return;
@@ -139,11 +168,32 @@ export class RoomConnection {
         if (this.responseTimer) clearTimeout(this.responseTimer);
         this.responseTimer = null;
       }
-      this.publish({ view, status: view.readOnly ? 'read-only' : this.pending || view.revision < this.acknowledgedRevision ? 'syncing' : 'ready' });
+      this.publish({ view, logHistory: this.joinWindow(view), status: view.readOnly ? 'read-only' : this.pending || view.revision < this.acknowledgedRevision ? 'syncing' : 'ready' });
       if (!view.readOnly && this.pending) {
         if (!this.sent) this.transmit();
         else if (!this.responseTimer) this.armResponseTimeout();
       }
+      return;
+    }
+    if (message.type === 'log-page') {
+      if (!this.logRequest || !('requestId' in message) || message.requestId !== this.logRequest.requestId) return;
+      const request = this.logRequest;
+      const page = message as unknown as { logs?: unknown; privateLogs?: unknown };
+      const logs = Array.isArray(page.logs) ? page.logs as LogView[] : [];
+      const privateLogs = Array.isArray(page.privateLogs) ? page.privateLogs as LogView[] : [];
+      this.logRequest = null;
+      if (this.logTimer) clearTimeout(this.logTimer);
+      this.logTimer = null;
+      // The page was asked for from the oldest line already held, so it joins what is held to the window the
+      // newest snapshot carries. Taking the window in now is what lets a later window be checked against it.
+      const held = this.state.logHistory;
+      // The page ends just before the oldest line that was held when it was asked for. If the record has
+      // been started over since — a window that ran clean past everything held — the page joins nothing,
+      // and laying it in would open a hole, so it is let go and the window is kept.
+      const joins = !held.logs.length || held.logs[0]!.id === request.beforeId;
+      this.publish({ logHistory: this.joinWindow(this.state.view, joins
+        ? { logs: mergeLogs(held.logs, logs), privateLogs: mergeLogs(held.privateLogs, privateLogs), loading: false }
+        : { ...held, loading: false }) });
       return;
     }
     if (!this.pending || !('commandId' in message) || message.commandId !== this.pending.commandId) return;
@@ -169,6 +219,23 @@ export class RoomConnection {
     }
   }
 
+  /** The snapshot window folded into what the reader has read back, so the two stay one unbroken record.
+   *  Every window is taken in, even before a page has been asked for: what is held is what an arriving page
+   *  is measured against, and a window left out would be a window no page can be joined to.
+   *  The window moves on as the game goes; once it no longer reaches back to the newest line already held,
+   *  the records in between were never seen by this tab and cannot be asked for from either end. A record
+   *  with a hole in it reads as a lie — it files late lines under an early turn and calls itself complete —
+   *  so the gathered pages are given up and what is held starts again as the window they can trust. */
+  private joinWindow(view: RoomView | null, held: LogHistory = this.state.logHistory): LogHistory {
+    const game = view?.game;
+    if (!game) return held;
+    const logs = game.logs ?? [], privateLogs = game.privateLogs ?? [];
+    const newest = held.logs.at(-1)?.id, oldest = logs[0]?.id;
+    if (newest !== undefined && oldest !== undefined && oldest > newest)
+      return { logs: [...logs], privateLogs: [...privateLogs], loading: held.loading };
+    return { logs: mergeLogs(held.logs, logs), privateLogs: mergeLogs(held.privateLogs, privateLogs), loading: held.loading };
+  }
+
   private transmit(): void {
     if (!this.pending || !this.socket || !this.synced || this.sent || this.state.status === 'read-only') return;
     try { this.socket.send(JSON.stringify(this.pending)); this.sent = true; this.armResponseTimeout(); }
@@ -188,12 +255,20 @@ export class RoomConnection {
   private clearTimers(): void {
     if (this.responseTimer) clearTimeout(this.responseTimer);
     if (this.reconnectTimer) clearTimeout(this.reconnectTimer);
-    this.responseTimer = null; this.reconnectTimer = null;
+    if (this.logTimer) clearTimeout(this.logTimer);
+    this.responseTimer = null; this.reconnectTimer = null; this.logTimer = null;
   }
   private publish(patch: Partial<ConnectionSnapshot>): void {
     this.state = { ...this.state, ...patch };
     for (const listener of this.listeners) listener();
   }
+}
+
+/** One record in event order. An event is written once and never rewritten, so an id already held wins. */
+function mergeLogs(held: LogView[], arriving: LogView[]): LogView[] {
+  const ids = new Set(held.map(log => log.id));
+  const added = arriving.filter(log => log && Number.isSafeInteger(log.id) && !ids.has(log.id));
+  return added.length ? [...held, ...added].sort((a, b) => a.id - b.id) : held;
 }
 
 function browserSocket(url: string): SocketTransport {

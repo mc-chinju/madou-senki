@@ -1,4 +1,4 @@
-import {allCardInstanceIds,createGame,transition,viewFor,type GameState,type GameCommand} from '@madou/engine';
+import {allCardInstanceIds,createGame,transition,viewFor,type GameState,type GameCommand, moveToDiscard } from '@madou/engine';
 import {assignCharacter,entropy,takeCard,trimHand,readySetup} from './scenario-tools.js';
 export const wishScenarioNames=['reclaim-wish','reclaim-wish-open'] as const;
 /** Initial deal/OPEN only; actual CHANT and installation prepare the public acquisition sources. */
@@ -19,6 +19,6 @@ export function makeWishScenario(players:{id:string;name:string}[],open=false):G
    else if(next!==a)act(next,{type:'PASS_ACTION'});
   }
  }
- if(open){const id=takeCard(s,d,'a2-p01-r1c1');s.players[d]!.hand=s.players[d]!.hand.filter(x=>x!==id);for(const zone of ['hand','open','attachments'] as const){s.discard.push(...s.players[d]![zone]);s.players[d]![zone]=[];}s.discard.push(...s.players[d]!.followers.map(c=>c.cardInstanceId),...s.players[d]!.chants.map(c=>c.cardInstanceId));s.players[d]!.followers=[];s.players[d]!.chants=[];s.players[d]!.presence='dead';s.deck.unshift(id);}
+ if(open){const id=takeCard(s,d,'a2-p01-r1c1');s.players[d]!.hand=s.players[d]!.hand.filter(x=>x!==id);for(const zone of ['hand','open','attachments'] as const){for(const __discarded of [...s.players[d]![zone]])moveToDiscard(s,__discarded,{faceUp:true});s.players[d]![zone]=[];}for(const __discarded of [...s.players[d]!.followers.map(c=>c.cardInstanceId),...s.players[d]!.chants.map(c=>c.cardInstanceId)])moveToDiscard(s,__discarded,{faceUp:true});s.players[d]!.followers=[];s.players[d]!.chants=[];s.players[d]!.presence='dead';s.deck.unshift(id);}
  if(new Set(allCardInstanceIds(s)).size!==220||!wishes.every(id=>s.players[a]!.hand.includes(id))||s.players[b]!.chants.length!==2||!s.players[b]!.attachments.includes(book))throw Error('WISH_FIXTURE_STATE');return s;
 }

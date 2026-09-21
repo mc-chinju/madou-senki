@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {viewFor,type GameState} from '../src/index.js';
+import {viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
 import {character,handCard,handCards} from './fixtures.js';
 function contested(success:boolean) {
@@ -22,7 +22,7 @@ it('contested approach saves one all-seat source disposition at a time before re
   expect(s.windows!.at(-1)!.kind).toBe('reclaim');expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({cardInstanceId:p.first,sourceActorId:'A',usedModeName:'advance'});
   s=declineSource(s);expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({cardInstanceId:p.maai,sourceActorId:'B',usedModeName:'distance'});
   s=declineSource(s);expect(s.windows).toEqual([]);expect(s.phase).toBe('action');expect(s.distances.A!.B).toBe('near');
-  expect(Object.values(s.distanceMarkers!)[0]!.cardInstanceId).toBe(p.second);expect(s.discard).toEqual(expect.arrayContaining([p.first,p.maai]));
+  expect(Object.values(s.distanceMarkers!)[0]!.cardInstanceId).toBe(p.second);expect(discardIds(s)).toEqual(expect.arrayContaining([p.first,p.maai]));
   expect(s.reclaimDecisions).toHaveLength(2);expect(s.players.A!.reclaimUsage?.['踏み込み／蹴る']).toBeUndefined();
 });
 it('failed approach preserves the owned technique slot and resumes a real later kick declaration',()=>{
@@ -39,7 +39,7 @@ it('failed withdrawal retains each payer and preserves the previous marker once'
   s=act(s,'A',{type:'WITHDRAW',targetId:'B',cardInstanceId:retreat});s=act(s,'B',{type:'PLAY_ADVANCE',cardInstanceId:advance});s=pass(s);
   expect(s.windows!.at(-1)!.kind).toBe('reclaim');s=finish(s);expect(s.distances.A!.B).toBe('near');expect(s.phase).toBe('hand-adjustment');
   expect(s.reclaimDecisions!.slice(-2).map(d=>d.source.sourceActorId).sort()).toEqual(['A','B']);
-  expect(s.discard.filter(id=>id===advance)).toHaveLength(1);expect(Object.values(s.distanceMarkers!)[0]!.cardInstanceId).toBe(p.second);
+  expect(discardIds(s).filter(id=>id===advance)).toHaveLength(1);expect(Object.values(s.distanceMarkers!)[0]!.cardInstanceId).toBe(p.second);
 });
 it('combat maai and advance each pause before the next target and preserve one shared hit through reload',()=>{
   let s=ready();character(s,'A','侍大将のシン');const attack=handCard(s,'A','天地百撃斬');
@@ -49,7 +49,7 @@ it('combat maai and advance each pause before the next target and preserve one s
   const g=s.windows!.at(-1)!.continuation.id,rolls=structuredClone(s.rolls);
   for(const [actorId,cardInstanceId] of [['B',bMaai],['C',cMaai]] as const){
     s=act(s,actorId,{type:'PLAY_MAAI',cardInstanceId});
-    expect(s.windows!.at(-1)!.kind).toBe('reclaim');expect(s.resolution).toContain(cardInstanceId);expect(s.discard).not.toContain(cardInstanceId);
+    expect(s.windows!.at(-1)!.kind).toBe('reclaim');expect(s.resolution).toContain(cardInstanceId);expect(discardIds(s)).not.toContain(cardInstanceId);
     expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({sourceActorId:actorId,usedModeName:'distance'});
     s=declineSource(s);expect(s.groups![g]!.maai!.submissions[actorId]).toEqual([cardInstanceId]);
   }
@@ -57,7 +57,7 @@ it('combat maai and advance each pause before the next target and preserve one s
   expect(s.windows!.at(-1)!.kind).toBe('reclaim');expect(s.groups![g]!.maai!.advances).toEqual([advance]);
   s=declineSource(s);expect(s.windows!.at(-1)).toMatchObject({kind:'normal-defense',continuation:{targetId:'B'}});
   expect(s.groups![g]!.hitCursor).toBe(0);expect(s.rolls).toEqual(rolls);
-  expect(s.discard).toEqual(expect.arrayContaining([bMaai,cMaai,advance]));
+  expect(discardIds(s)).toEqual(expect.arrayContaining([bMaai,cMaai,advance]));
   s=finish(s);expect(s.reclaimDecisions!.filter(d=>[bMaai,cMaai,advance].includes(d.cardInstanceId))).toHaveLength(3);
 });
 it('attack advance costs resolve as a saved batch before the cancellable source declaration',()=>{
@@ -68,7 +68,7 @@ it('attack advance costs resolve as a saved batch before the cancellable source 
   s=declineSource(s);expect(s.reclaimDecisions!.at(-1)!.cardInstanceId).toBe(second);s=declineSource(s);
   expect(s.actions![action.id]!.technique.effectLevel).toBe(level);expect(s.windows!.at(-1)!.kind).toBe('declaration');
   s=pass(s);s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:action.id});s=finish(s);
-  expect(s.players.B!.damage).toBe(0);for(const id of [card,first,second])expect(s.discard.filter(c=>c===id)).toHaveLength(1);
+  expect(s.players.B!.damage).toBe(0);for(const id of [card,first,second])expect(discardIds(s).filter(c=>c===id)).toHaveLength(1);
   expect(s.reclaimDecisions!.filter(d=>[first,second].includes(d.cardInstanceId))).toHaveLength(2);
 });
 it('post-hit advance batch preserves the applied damage once while each paid source waits',()=>{
@@ -80,20 +80,20 @@ it('post-hit advance batch preserves the applied damage once while each paid sou
   expect(s.windows!.at(-1)!.kind).toBe('reclaim');expect(s.groups![id]!.targets[0]!.hits[0]!.damage).toBe(base+10);
   s=declineSource(s);expect(s.groups![id]!.targets[0]!.hits[0]!.damage).toBe(base+10);s=declineSource(s);
   expect(s.windows!.at(-1)!.kind).toBe('hit');expect(s.groups![id]!.postHitAdvanceAmount).toBe(10);
-  s=finish(s);expect(s.players.B!.damage).toBe(base+10);for(const cost of [first,second])expect(s.discard.filter(c=>c===cost)).toHaveLength(1);
+  s=finish(s);expect(s.players.B!.damage).toBe(base+10);for(const cost of [first,second])expect(discardIds(s).filter(c=>c===cost)).toHaveLength(1);
 });
 it('Ida conceal-heal cost pauses before its saved declaration without a technique recovery claim or refund',()=>{
   let s=ready();character(s,'A','忍びのイダ');s.players.A!.damage=5;s.players.A!.revealed=true;
   const cost=handCard(s,'A','間合い／休息'),fate=handCard(s,'B','命運凶変');const hand=s.players.A!.hand.length;
   const option=viewFor(s,'A').abilityOptions.find(o=>o.abilityId==='c2-p04-r2c2-ab04')!;
   s=act(s,'A',{type:'USE_ABILITY',abilityId:option.abilityId,targetEventId:option.targetEventId,costCardInstanceId:cost,conceal:true});
-  expect(s.windows!.at(-1)!.kind).toBe('reclaim');expect(s.resolution).toContain(cost);expect(s.discard).not.toContain(cost);
+  expect(s.windows!.at(-1)!.kind).toBe('reclaim');expect(s.resolution).toContain(cost);expect(discardIds(s)).not.toContain(cost);
   const frame=Object.values(s.abilities!)[0]!;expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({sourceActorId:'A',usedModeName:'distance',trigger:'named-card-used',eventId:frame.eventId});
   expect(s.players.A!.hand).toHaveLength(hand-1);expect(s.players.A).toMatchObject({damage:5,revealed:true});
   s=declineSource(s);expect(s.windows!.at(-1)).toMatchObject({kind:'declaration',continuation:{kind:'ability',id:frame.id}});
-  expect(s.discard.filter(id=>id===cost)).toHaveLength(1);expect(s.players.A!.reclaimUsage?.['間合い／休息']).toBeUndefined();
+  expect(discardIds(s).filter(id=>id===cost)).toHaveLength(1);expect(s.players.A!.reclaimUsage?.['間合い／休息']).toBeUndefined();
   const success=finish(s);expect(success.players.A).toMatchObject({damage:3,revealed:false});expect(success.phase).toBe('hand-adjustment');
   s=pass(s);s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel-ability',targetAbilityId:frame.id});s=finish(s);
   expect(s.players.A).toMatchObject({damage:5,revealed:true});expect(s.phase).toBe('hand-adjustment');
-  expect(s.discard.filter(id=>id===cost)).toHaveLength(1);expect(s.reclaimDecisions!.filter(d=>d.cardInstanceId===cost)).toHaveLength(1);
+  expect(discardIds(s).filter(id=>id===cost)).toHaveLength(1);expect(s.reclaimDecisions!.filter(d=>d.cardInstanceId===cost)).toHaveLength(1);
 });

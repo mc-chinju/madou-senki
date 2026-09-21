@@ -1,6 +1,6 @@
 import {absentRecoveryResponse} from './reclaim-public-absence-helpers.js';
 import {expect,it} from 'vitest';
-import {allCardInstanceIds,gameStats,viewFor} from '../src/index.js';
+import {allCardInstanceIds,gameStats,viewFor, discardIds } from '../src/index.js';
 import {act,finish,pass} from './combat-helpers.js';
 import {makeLiaPrayerScenario} from './fixtures/lia-prayer-scenarios.js';
 
@@ -28,7 +28,7 @@ it('Reservation owner actual death discards its held prayer once after the root 
  expect(s).toEqual(expected);expect(responses).toEqual(['A','C','D']);
  expect(s.players.B!.presence).toBe('dead');expect(s.players.B!.lifeId).not.toBe(life);
  expect(s.reclaimReservations).toEqual([]);expect(s.reclaim![prayer]).toBeUndefined();
- expect(s.discard.filter(id=>id===prayer)).toHaveLength(1);
+ expect(discardIds(s).filter(id=>id===prayer)).toHaveLength(1);
  for(const p of Object.values(s.players))expect(p.hand).not.toContain(prayer);
  expect(s.used).toContain(`${action.eventId}:B:${prayer}`);
  expect(new Set(allCardInstanceIds(s)).size).toBe(220);

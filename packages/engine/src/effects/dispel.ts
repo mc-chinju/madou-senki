@@ -18,7 +18,7 @@ export function validDispel(s:GameState,actorId:string,c:Attack):boolean {
 /** Both cards are committed atomically; this child resolves before the saved attack declaration. */
 export function beginDispel(s:GameState,attack:ActionFrame,targetId:string):void {
  const p=s.players[attack.actorId]!,w=s.windows!.at(-1)!;
- p.hand.splice(p.hand.indexOf(DISPEL),1);s.resolution.push(DISPEL);recordCardPlayed(s,p.id,DISPEL,'attack',[targetId]);(s.used??=[]).push(`${attack.eventId}:${p.id}:${DISPEL}`);
+ p.hand.splice(p.hand.indexOf(DISPEL),1);s.resolution.push(DISPEL);recordCardPlayed(s,p.id,DISPEL,'anytime',[targetId]);(s.used??=[]).push(`${attack.eventId}:${p.id}:${DISPEL}`);
  const id=`a-${s.nextEventId++}`;attack.preAttackPending=id;
  s.actions![id]={id,eventId:attack.eventId,parentWindowId:w.id,actorId:p.id,cardInstanceId:DISPEL,kind:'reaction',targetIds:[targetId],technique:techniqueFor('a2-p05-r3c1')!,groupId:null,stage:'declaration',checks:[],roll:null,canceled:false,
   reclaimOwnerLifeId:lifeIdentity(p),preAttack:{attackId:attack.id,targetLifeId:lifeIdentity(s.players[targetId]!),destroyed:[]}};
@@ -31,7 +31,7 @@ export function resolveDispel(s:GameState,a:ActionFrame):void {
   if(!followerFor(placed.cardInstanceId)?.attributes.includes('ゴ'))continue;
   target.followers=target.followers.filter(f=>f.cardInstanceId!==placed.cardInstanceId);s.resolution.push(placed.cardInstanceId);
   const sourceActorId=placed.placedById??target.id;
-  saved.destroyed.push({kind:'ordinary-disposition',fromZone:'resolution',eventId:reclaimEventId(s,a),sourceId:`${a.id}-${placed.cardInstanceId}`,sourceActorId,sourceLifeId:placed.placedLifeId??lifeIdentity(s.players[sourceActorId]!),cardInstanceId:placed.cardInstanceId,trigger:'follower-died'});
+  saved.destroyed.push({kind:'ordinary-disposition',fromZone:'resolution',eventId:reclaimEventId(s,a),sourceId:`${a.id}-${placed.cardInstanceId}`,sourceActorId,heldById:target.id,sourceLifeId:placed.placedLifeId??lifeIdentity(s.players[sourceActorId]!),cardInstanceId:placed.cardInstanceId,trigger:'follower-died'});
   appendEvent(s,s.events.at(-1)?.at??0,{type:'FOLLOWER_DESTROYED',actorId:a.actorId,targetId:target.id,cardInstanceId:placed.cardInstanceId,audience:'public'});
  }
 }

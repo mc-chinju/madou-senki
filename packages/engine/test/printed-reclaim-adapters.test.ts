@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {transition,viewFor,type GameState} from '../src/index.js';
+import {transition,viewFor,type GameState, discardIds } from '../src/index.js';
 import {act,finish,pass,ready,until} from './combat-helpers.js';
 import {character,entropy,handCard} from './fixtures.js';
 import {gameStats} from '../src/game-stats.js';
@@ -14,11 +14,11 @@ function discardSwordAtTurnEnd(cham=true){
 it('A31 actual hand discard saves an occurrence and keeps concealed Cham in the same public reveal slot',()=>{
   let s=discardSwordAtTurnEnd();const d=s.reclaimDecisions!.at(-1)!;
   expect(d.source).toMatchObject({kind:'actual-discard',fromZone:'discard',origin:{zone:'hand',ownerId:'A'},sourceActorId:'A'});
-  expect(s.discard).toContain(SWORD);expect(s.resolution).not.toContain(SWORD);expect(s.turnSeat).toBe(0);
+  expect(discardIds(s)).toContain(SWORD);expect(s.resolution).not.toContain(SWORD);expect(s.turnSeat).toBe(0);
   s=pass(s);s=pass(s);expect(viewFor(s,'C').reclaim!.claims).toEqual([]);
   const w=structuredClone(s.windows!.at(-1));s=act(JSON.parse(JSON.stringify(s)) as GameState,'C',{type:'REVEAL_CHARACTER'});expect(s.windows!.at(-1)).toEqual(w);
   const c=viewFor(s,'C').reclaim!;s=act(s,'C',{type:'CHOOSE_RECLAIM',decisionId:c.decisionId,choice:'take',claimId:c.claims[0]!.claimId});
-  expect(s.players.C!.hand.filter(id=>id===SWORD)).toHaveLength(1);expect(s.discard).not.toContain(SWORD);expect(s.resolution).not.toContain(SWORD);
+  expect(s.players.C!.hand.filter(id=>id===SWORD)).toHaveLength(1);expect(discardIds(s)).not.toContain(SWORD);expect(s.resolution).not.toContain(SWORD);
   expect(s.turnSeat).toBe(1);expect(s.players.C!.reclaimUsage?.['ふぇありぃそぅど']).toBeUndefined();
 });
 it('A31 concealed Cham and a non-Cham give observers the same explicit discard response schedule',()=>{
@@ -27,7 +27,7 @@ it('A31 concealed Cham and a non-Cham give observers the same explicit discard r
     for(const id of ['A','B','D'])expect(viewFor(a,id)).toEqual(viewFor(b,id));
     expect(a.windows!.at(-1)!.kind).toBe('reclaim');a=pass(a);b=pass(b);
   }
-  expect(a.discard).toContain(SWORD);expect(b.discard).toContain(SWORD);expect(a.turnSeat).toBe(1);
+  expect(discardIds(a)).toContain(SWORD);expect(discardIds(b)).toContain(SWORD);expect(a.turnSeat).toBe(1);
 });
 it('A31 accepts the printed right under ability prohibition but rejects stopped Cham and stale occurrences',()=>{
   for(const kind of ['ability-disabled','stopped'] as const){
@@ -47,7 +47,7 @@ it('A31 canceled installation reaches a distinct discard occurrence and keeps th
   s=act(s,'A',{type:'PLAY_TURN_CARD',cardInstanceId:SWORD});const action=viewFor(s,'A').reactionTargetActionId!;s=pass(s);
   s=act(s,'B',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:action});
   for(let n=0;!s.reclaimDecisions?.some(d=>d.source.kind==='actual-discard')&&n<100;n++)s=pass(s);
-  expect(s.players.A!.attachments).not.toContain(SWORD);expect(s.discard).toContain(SWORD);expect(s.resolution).not.toContain(SWORD);
+  expect(s.players.A!.attachments).not.toContain(SWORD);expect(discardIds(s)).toContain(SWORD);expect(s.resolution).not.toContain(SWORD);
   s=act(s,'A',{type:'REVEAL_CHARACTER'});const d=viewFor(s,'A').reclaim!;
   s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims[0]!.claimId});s=finish(s);
   expect(s.players.A!.hand).toContain(SWORD);expect(s.players.A!.attachments).not.toContain(SWORD);expect(s.phase).toBe('hand-adjustment');
@@ -59,7 +59,7 @@ it('A31 actual death disposal records the old attachment without allowing dead C
   s.players.A!.damage=gameStats(s,'A').endurance-1;const attack=handCard(s,'B','踏み込み／弓');s=act(s,'B',{type:'ATTACK',cardInstanceId:attack,targetIds:['A'],dedicated:false});
   for(let n=0;!s.reclaimDecisions?.some(d=>d.source.kind==='actual-discard')&&n<150;n++)s=pass(s);
   expect(s.players.A!.presence).toBe('dead');expect(s.reclaimDecisions!.at(-1)!.source).toMatchObject({kind:'actual-discard',origin:{zone:'attachments',ownerId:'A'}});
-  expect(s.windows!.at(-1)!.participants).not.toContain('A');expect(viewFor(s,'A').reclaim!.claims).toEqual([]);expect(finish(s).discard).toContain(SWORD);
+  expect(s.windows!.at(-1)!.participants).not.toContain('A');expect(viewFor(s,'A').reclaim!.claims).toEqual([]);expect(discardIds(finish(s))).toContain(SWORD);
 });
 it('A31 death of another holder reserves the discarded sword until the original lethal attack finishes',()=>{
   let s=ready();character(s,'A','大神官ジル');character(s,'C','小妖精のチャム');handCard(s,'B','ふぇありぃそぅど');
@@ -72,7 +72,7 @@ it('A31 death of another holder reserves the discarded sword until the original 
   s=act(s,'C',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims[0]!.claimId});
   expect(s.reclaimReservations).toContain(SWORD);expect(s.resolution).not.toContain(SWORD);expect(s.players.C!.hand).not.toContain(SWORD);
   s=finish(JSON.parse(JSON.stringify(s)) as GameState);expect(s.reclaimReservations).not.toContain(SWORD);expect(s.players.C!.hand.filter(id=>id===SWORD)).toHaveLength(1);
-  expect(s.players.B!.presence).toBe('dead');expect(s.discard.filter(id=>id===attack)).toHaveLength(1);
+  expect(s.players.B!.presence).toBe('dead');expect(discardIds(s).filter(id=>id===attack)).toHaveLength(1);
 });
 it('A31 a later legal discard creates a new occurrence and rejects the first occurrence claim unchanged',()=>{
   let s=discardSwordAtTurnEnd();s=pass(s);s=pass(s);s=act(s,'C',{type:'REVEAL_CHARACTER'});const first=viewFor(s,'C').reclaim!;
@@ -149,7 +149,7 @@ it.each(['base','printed'] as const)('Actual Lester Courage selects one of two s
  expect(transition(s,{actorId:'A',command:{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'take',claimId:d.claims.find(c=>c.right!==right)!.claimId}},entropy()).ok).toBe(false);
  expect(JSON.stringify(s)).toBe(before);
  s=finish(s);expect(s.players.A!.hand.filter(id=>id===COURAGE)).toHaveLength(1);
- expect(s.discard).not.toContain(COURAGE);expect(s.reclaimReservations).toEqual([]);
+ expect(discardIds(s)).not.toContain(COURAGE);expect(s.reclaimReservations).toEqual([]);
  expect(s.players.A!.reclaimUsage?.['勇気']?.baseSpent??false).toBe(right==='base');
  expect(s.rolls?.filter(r=>r.resume.kind==='reclaim-check').length??0).toBe(right==='printed'?1:0);
 });
@@ -178,7 +178,7 @@ it('A09 failed check consumes its one attempt but preserves later public respons
   for(let n=0;s.windows!.at(-1)!.kind!=='reclaim'&&n<40;n++)s=pass(s,Array(30).fill(6));
   expect(s.rolls!.at(-1)!.success).toBe(false);expect(viewFor(s,'D').reclaim!.pendingActorId).toBe('D');
   expect(s.reclaimDecisions!.at(-1)!.checkAttempted).toBe(true);
-  s=finish(s);expect(s.discard).toContain(COURAGE);
+  s=finish(s);expect(discardIds(s)).toContain(COURAGE);
   expect(s.rolls!.filter(r=>r.resume.kind==='reclaim-check')).toHaveLength(1);
 });
 it('A09 canceled Courage has no printed check while its paid card and refill remain',()=>{
@@ -188,7 +188,7 @@ it('A09 canceled Courage has no printed check while its paid card and refill rem
   const courageAction=viewFor(s,'D').reactionTargetActionId!;
   s=act(s,'D',{type:'PLAY_REACTION',cardInstanceId:fate,mode:'cancel',targetActionId:courageAction});s=finish(s);
   expect(s.reclaimDecisions?.some(d=>d.source.kind==='courage-resolution')).toBe(false);
-  expect(s.discard).toContain(COURAGE);expect(s.discard).toContain(fate);
+  expect(discardIds(s)).toContain(COURAGE);expect(discardIds(s)).toContain(fate);
   expect(s.events.some(e=>e.type==='CARD_DRAWN'&&e.actorId==='A')).toBe(true);
 });
 it('Courage rejects EVIL, foreign physical cards, and stale ability targets without mutation',()=>{
@@ -221,7 +221,7 @@ it('A09 successful check can be declined without any budget or recipient transfe
   s=act(s,'C',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'request-check',claimId:d.claims[0]!.claimId});
   for(let n=0;s.windows!.at(-1)!.kind!=='reclaim'&&n<40;n++)s=pass(s);
   s=act(s,'A',{type:'CHOOSE_RECLAIM',decisionId:d.decisionId,choice:'decline'});s=finish(s);
-  expect(s.discard).toContain(COURAGE);expect(s.reclaimReservations).not.toContain(COURAGE);expect(s.players.A!.reclaimUsage?.['勇気']).toBeUndefined();
+  expect(discardIds(s)).toContain(COURAGE);expect(s.reclaimReservations).not.toContain(COURAGE);expect(s.players.A!.reclaimUsage?.['勇気']).toBeUndefined();
 });
 it('A09 reroll reactions reuse the bound check and cannot charge a second attempt',()=>{
   let s=act(toLester(courageResolved()),'C',{type:'REVEAL_CHARACTER'});const reroll=handCard(s,'D','神性介入'),d=viewFor(s,'C').reclaim!;
@@ -277,7 +277,7 @@ it('A09 nested reroll failure restores only the unanswered recovery suffix after
  }
  s=pass(JSON.parse(JSON.stringify(s)));
  expect(s.reclaimDecisions!.find(x=>x.id===d.decisionId)!.stage).toBe('closed');
- s=finish(s);expect(s.discard.filter(id=>id===COURAGE)).toHaveLength(1);
+ s=finish(s);expect(discardIds(s).filter(id=>id===COURAGE)).toHaveLength(1);
  expect(s.rolls!.filter(r=>r.resume.kind==='reclaim-check')).toHaveLength(1);
 });
 
@@ -298,7 +298,7 @@ it.each([[false,'decline'],[false,'pass'],[true,'decline'],[true,'pass']] as con
   s=pass(JSON.parse(JSON.stringify(s)));
  }
  expect(s.reclaimDecisions!.find(x=>x.id===d.decisionId)!.stage).toBe('closed');
- s=finish(s);expect(s.discard.filter(id=>id===COURAGE)).toHaveLength(1);
+ s=finish(s);expect(discardIds(s).filter(id=>id===COURAGE)).toHaveLength(1);
  expect(s.reclaimReservations).not.toContain(COURAGE);
  expect(s.players.A!.reclaimUsage?.['勇気']).toBeUndefined();
 });

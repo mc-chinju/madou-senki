@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
 import type { PlayerView } from '@madou/engine';
+import { useProgressFlash } from './progress-flash.js';
 
 export type SetupView = Pick<PlayerView, 'phase' | 'pending' | 'seatOrder' | 'legalChoices'> & {
-  logs?: readonly { type: string; actorId?: string | undefined }[];
+  logs?: readonly { id?: number; type: string; actorId?: string | undefined }[];
+  logStart?: number;
   players: Record<string, { name: string }>;
   self: { id: string; followers: unknown[]; stats: { followerLimit: number } };
 };
@@ -24,15 +25,20 @@ export function FollowerPositionChoice({ value, disabled, onChange }: {
   </label>;
 }
 
-/** Followers this seat placed in the round before the current one: the refill drew the same number (public log only). */
+/** Followers this seat placed in the round before the current one: the refill drew the same number (public log only).
+ *  A snapshot carries only the newest window of the record, so a round that began before the window opens cannot
+ *  be counted from it. Counting anyway would report a number short by whatever fell off the top, which reads as
+ *  fact; saying nothing instead only costs the sentence that names the figure. */
 export function placedLastRound(view: SetupView): number {
-  let count = 0, passed = false;
+  let count = 0, passed = false, bounded = false;
   for (const entry of [...(view.logs ?? [])].reverse()) {
     if (entry.actorId !== view.self.id) continue;
-    if (entry.type === 'SETUP_PASSED') { if (passed) break; passed = true; }
+    if (entry.type === 'SETUP_PASSED') { if (passed) { bounded = true; break; } passed = true; }
     else if (entry.type === 'FOLLOWER_PLACED' && passed) count++;
   }
-  return count;
+  const oldest = view.logs?.[0]?.id;
+  const whole = oldest === undefined || view.logStart === undefined || oldest <= view.logStart;
+  return bounded || whole ? count : 0;
 }
 
 /** One-line progress for the sticky command bar: stays in view next to the hand while the panel above scrolls away. */
@@ -60,14 +66,7 @@ export function SetupCommandStatus({ view, selected, canPlace, onShowHand }: {
   view: SetupView; selected?: { name: string; placeable: boolean } | undefined; canPlace: boolean; onShowHand?: (() => void) | undefined;
 }) {
   const pending = view.pending;
-  const progress = pending ? `${pending.round}:${pending.readyIds.length}` : '';
-  const box = useRef<HTMLDivElement | null>(null);
-  // Replay the highlight in place: remounting would drop focus from the status line and swap out the live region.
-  useEffect(() => {
-    const box_ = box.current;
-    if (!box_ || !progress) return;
-    box_.classList.remove('flash'); void box_.offsetWidth; box_.classList.add('flash');
-  }, [progress]);
+  const box = useProgressFlash<HTMLDivElement>(pending ? `${pending.round}:${pending.readyIds.length}` : '');
   if (view.phase !== 'setup' || !pending) return null;
   return <div className="setup-status" ref={box}>
     <p role="status" tabIndex={-1}>
